@@ -1,4 +1,4 @@
-# OneScience Guide
+# OneSkills Guide
 
 `oneskills/` 是面向代码智能体的轻量知识入口。
 
