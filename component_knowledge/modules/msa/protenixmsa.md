@@ -1,7 +1,8 @@
 component:
 
   meta:
-    name: ProtenixMSAModule
+    name: MSAModule
+    use: from onescience.modules import MSAModule
     alias: ProtenixMSA
     version: 1.0
     domain: deep_learning
