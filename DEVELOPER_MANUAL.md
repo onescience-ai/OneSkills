@@ -1,10 +1,10 @@
-# Codex Developer Manual
+# Developer Manual
 
-本手册面向维护 `./oneskills/codex/` 的开发人员。
+本手册面向维护 `./oneskills/` 的开发人员。
 
 目标不是解释如何使用某个单独案例，而是说明：
 
-1. 当前 `codex` 的文件结构是什么
+1. 当前的文件结构是什么
 2. 每一层文件分别承担什么职责
 3. 当 `./onescience/` 中新增一个 module 或 model 后，如何补齐当前的 skills / models / contracts / case 体系
 
@@ -12,10 +12,10 @@
 
 ## 1. 当前文件结构
 
-当前推荐将 `codex` 理解为三层：
+当前推荐将当前目录理解为三层：
 
 ```text
-./oneskills/codex/
+./oneskills/
   README.md
   DEVELOPER_MANUAL.md
   models/
@@ -67,7 +67,7 @@
 
 ### 原则 1：模型层与组件层分开，不复述源码
 
-`codex` 的核心不是把 `./onescience/` 重新讲一遍，而是给智能体两个足够稳定的检索入口：
+核心不是把 `./onescience/` 重新讲一遍，而是给智能体两个足够稳定的检索入口：
 
 - 模型层
   - 解决整模型的输入输出组织、主干结构和调用链路
@@ -132,14 +132,14 @@
 
 #### A. 先整理 `OneScience` 侧源码本体
 
-在写 `codex` 文档前，先确认下面几件事：
+在写文档前，先确认下面几件事：
 
 1. 组件实现文件已经稳定存在
 2. 组件注释已经说明清楚：
    - 输入输出 shape
    - 关键参数
    - 组件职责
-3. 代码中的局部变量命名尽量与 `codex` 当前约定一致
+3. 代码中的局部变量命名尽量与当前约定一致
 4. 如果该组件通过某个统一入口调用，对应注册入口已经接好
 
 常见统一入口例如：
@@ -157,9 +157,9 @@
 
 做法：
 
-1. 复制 `./oneskills/codex/contracts/TEMPLATE.md`
+1. 复制 `./oneskills/contracts/TEMPLATE.md`
 2. 生成新的组件文档，例如：
-   - `./oneskills/codex/contracts/mynewmodule.md`
+   - `./oneskills/contracts/mynewmodule.md`
 3. 按模板填写以下信息：
    - 基本信息
    - 组件职责
@@ -179,16 +179,16 @@
 
 现有可参考的契约卡：
 
-- `./oneskills/codex/contracts/panguembedding.md`
-- `./oneskills/codex/contracts/pangufuser.md`
-- `./oneskills/codex/contracts/earthtransformer3dblock.md`
-- `./oneskills/codex/contracts/earthattention3d.md`
+- `./oneskills/contracts/panguembedding.md`
+- `./oneskills/contracts/pangufuser.md`
+- `./oneskills/contracts/earthtransformer3dblock.md`
+- `./oneskills/contracts/earthattention3d.md`
 
 #### C. 检查命名是否需要更新
 
 如果新组件引入了新的高频语义名，或者已有文档中会出现命名混乱，需要更新：
 
-- `./oneskills/codex/contracts/naming_convention.md`
+- `./oneskills/contracts/naming_convention.md`
 
 通常只有在以下情况才需要改：
 
@@ -200,7 +200,7 @@
 
 当前使用：
 
-- `./oneskills/codex/contracts/component_index.md`
+- `./oneskills/contracts/component_index.md`
 
 它实际承担的是：
 
@@ -271,9 +271,9 @@
 
 做法：
 
-1. 复制 `./oneskills/codex/models/TEMPLATE.md`
+1. 复制 `./oneskills/models/TEMPLATE.md`
 2. 生成新的模型文档，例如：
-   - `./oneskills/codex/models/mymodel.md`
+   - `./oneskills/models/mymodel.md`
 3. 按模板填写以下信息：
    - 基本信息
    - 模型定位
@@ -295,16 +295,16 @@
 
 现有可参考模型卡：
 
-- `./oneskills/codex/models/pangu.md`
-- `./oneskills/codex/models/fourcastnet.md`
-- `./oneskills/codex/models/fuxi.md`
-- `./oneskills/codex/models/fengwu.md`
+- `./oneskills/models/pangu.md`
+- `./oneskills/models/fourcastnet.md`
+- `./oneskills/models/fuxi.md`
+- `./oneskills/models/fengwu.md`
 
 #### I. 在模型索引中登记
 
 当前使用：
 
-- `./oneskills/codex/models/model_index.md`
+- `./oneskills/models/model_index.md`
 
 建议补充的字段：
 
@@ -324,7 +324,7 @@
 
 文件：
 
-- `./oneskills/codex/README.md`
+- `./oneskills/README.md`
 
 适用场景：
 
@@ -336,7 +336,7 @@
 
 文件：
 
-- `./oneskills/codex/task/SKILL.md`
+- `./oneskills/task/SKILL.md`
 
 适用场景：
 
@@ -355,7 +355,7 @@
 
 做法：
 
-1. 在 `./oneskills/codex/case/` 下新增一个任务子目录
+1. 在 `./oneskills/case/` 下新增一个任务子目录
 2. 放入：
    - `query.md`
    - `confirm.md`
@@ -363,14 +363,14 @@
 
 建议复用通用流程文件：
 
-- `./oneskills/codex/case/first_round_guide.md`
-- `./oneskills/codex/case/second_round_guide.md`
-- `./oneskills/codex/case/confirm_template.md`
+- `./oneskills/case/first_round_guide.md`
+- `./oneskills/case/second_round_guide.md`
+- `./oneskills/case/confirm_template.md`
 
 现有案例可参考：
 
-- `./oneskills/codex/case/pangu_afno_replacement/query.md`
-- `./oneskills/codex/case/pangu_afno_replacement/confirm.md`
+- `./oneskills/case/pangu_afno_replacement/query.md`
+- `./oneskills/case/pangu_afno_replacement/confirm.md`
 
 ---
 
@@ -380,7 +380,7 @@
 
 ### 第一步：先确认 OneScience 侧是否已经稳定
 
-在写 `codex` 文档之前，先确认：
+在写文档之前，先确认：
 
 1. 组件实现文件已经存在
 2. 对应注册入口已经接好
@@ -456,8 +456,8 @@
 
 1. 在 `./onescience/` 中完成 `mynewfuser.py`
 2. 确认它已注册到 `OneFuser`
-3. 复制 `./oneskills/codex/contracts/TEMPLATE.md`
-4. 新建 `./oneskills/codex/contracts/mynewfuser.md`
+3. 复制 `./oneskills/contracts/TEMPLATE.md`
+4. 新建 `./oneskills/contracts/mynewfuser.md`
 5. 在 `component_index.md` 中登记
 6. 若某个模型已经使用它，再更新对应模型卡
 
@@ -475,8 +475,8 @@
 
 一个最小案例：
 
-1. 复制 `./oneskills/codex/models/TEMPLATE.md`
-2. 新建 `./oneskills/codex/models/mymodel.md`
+1. 复制 `./oneskills/models/TEMPLATE.md`
+2. 新建 `./oneskills/models/mymodel.md`
 3. 在 `model_index.md` 中登记
 4. 若需要回归测试，再新增 `case/<task_name>/query.md` 与 `confirm.md`
 

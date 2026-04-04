@@ -85,8 +85,8 @@
 
 ## 组件契约入口
 
-- `./oneskills/codex/contracts/<component_1>.md`
-- `./oneskills/codex/contracts/<component_2>.md`
+- `./oneskills/contracts/<component_1>.md`
+- `./oneskills/contracts/<component_2>.md`
 
 ## 源码锚点
 

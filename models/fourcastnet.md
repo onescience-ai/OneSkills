@@ -92,10 +92,10 @@ FourCastNet 是一个面向二维全球气象场的 patch-grid AFNO 模型，适
 
 ## 组件契约入口
 
-- `./oneskills/codex/contracts/fourcastnetembedding.md`
-- `./oneskills/codex/contracts/fourcastnetfuser.md`
-- `./oneskills/codex/contracts/fourcastnetafno.md`
-- `./oneskills/codex/contracts/fourcastnetfc.md`
+- `./oneskills/contracts/fourcastnetembedding.md`
+- `./oneskills/contracts/fourcastnetfuser.md`
+- `./oneskills/contracts/fourcastnetafno.md`
+- `./oneskills/contracts/fourcastnetfc.md`
 
 ## 源码锚点
 

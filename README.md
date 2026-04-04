@@ -1,12 +1,12 @@
-# Codex OneScience Guide
+# OneScience Guide
 
-`oneskills/codex` 是面向代码智能体的轻量知识入口。
+`oneskills/` 是面向代码智能体的轻量知识入口。
 
 目标不是复述 `./onescience/` 源码，而是让用户和智能体先通过稳定的组件契约完成大多数开发任务，只有在契约不足时才回到源码。
 
-开发和维护 `codex` 时，优先参考：
+开发和维护 `本目录` 时，优先参考：
 
-- `./oneskills/codex/DEVELOPER_MANUAL.md`
+- `./oneskills/DEVELOPER_MANUAL.md`
 
 ## 目录结构
 

@@ -32,7 +32,7 @@
 
 推荐新增流程：
 
-1. 先复制 `./oneskills/codex/contracts/TEMPLATE.md`
+1. 先复制 `./oneskills/contracts/TEMPLATE.md`
 2. 按组件实际情况填写字段
 3. 将新契约文件加入本表
 4. 若该组件已经替代旧的分裂实现，在风险点中明确写出
@@ -41,37 +41,37 @@
 
 | 组件 | 模块族 | 调用入口 | 注册名 | 输入形态摘要 | 状态 | 契约卡片 |
 |---|---|---|---|---|---|---|
-| OneEmbedding | embedding | `direct_import` | `style="<EmbeddingStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/codex/contracts/oneembedding.md` |
-| PanguEmbedding | embedding | `OneEmbedding` | `PanguEmbedding` | 2D 场 / 3D 场 | `stable` | `./oneskills/codex/contracts/panguembedding.md` |
-| FourCastNetEmbedding | embedding | `OneEmbedding` | `FourCastNetEmbedding` | 2D 场 | `stable` | `./oneskills/codex/contracts/fourcastnetembedding.md` |
-| FuxiEmbedding | embedding | `OneEmbedding` | `FuxiEmbedding` | 3D 时空块 | `stable` | `./oneskills/codex/contracts/fuxiembedding.md` |
-| OneSample | sample | `direct_import` | `style="<SampleStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/codex/contracts/onesample.md` |
-| PanguDownSample | sample | `OneSample` | `PanguDownSample` | 2D token / 3D token | `stable` | `./oneskills/codex/contracts/pangudownsample.md` |
-| PanguUpSample | sample | `OneSample` | `PanguUpSample` | 2D token / 3D token | `stable` | `./oneskills/codex/contracts/panguupsample.md` |
-| FuxiDownSample | sample | `OneSample` | `FuxiDownSample` | 2D 特征图 | `stable` | `./oneskills/codex/contracts/fuxidownsample.md` |
-| FuxiUpSample | sample | `OneSample` | `FuxiUpSample` | 2D 特征图 | `stable` | `./oneskills/codex/contracts/fuxiupsample.md` |
-| OneRecovery | recovery | `direct_import` | `style="<RecoveryStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/codex/contracts/onerecovery.md` |
-| PanguPatchRecovery | recovery | `OneRecovery` | `PanguPatchRecovery` | 2D 特征图 / 3D 特征图 | `stable` | `./oneskills/codex/contracts/pangupatchrecovery.md` |
-| OneFuser | fuser | `direct_import` | `style="<FuserStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/codex/contracts/onefuser.md` |
-| PanguFuser | fuser | `OneFuser` | `PanguFuser` | 3D token | `stable` | `./oneskills/codex/contracts/pangufuser.md` |
-| FourCastNetFuser | fuser | `OneFuser` | `FourCastNetFuser` | 2D patch 网格特征 | `stable` | `./oneskills/codex/contracts/fourcastnetfuser.md` |
-| FengWuFuser | fuser | `OneFuser` | `FengWuFuser` | 3D token | `stable` | `./oneskills/codex/contracts/fengwufuser.md` |
-| OneEncoder | encoder | `direct_import` | `style="<EncoderStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/codex/contracts/oneencoder.md` |
-| FengWuEncoder | encoder | `OneEncoder` | `FengWuEncoder` | 2D 场 | `stable` | `./oneskills/codex/contracts/fengwuencoder.md` |
-| OneDecoder | decoder | `direct_import` | `style="<DecoderStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/codex/contracts/onedecoder.md` |
-| FengWuDecoder | decoder | `OneDecoder` | `FengWuDecoder` | 中分辨率 token + 高分辨率 skip | `stable` | `./oneskills/codex/contracts/fengwudecoder.md` |
-| OneTransformer | transformer | `direct_import` | `style="<TransformerStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/codex/contracts/onetransformer.md` |
-| EarthTransformer2DBlock | transformer | `OneTransformer` | `EarthTransformer2DBlock` | 2D token | `stable` | `./oneskills/codex/contracts/earthtransformer2dblock.md` |
-| EarthTransformer3DBlock | transformer | `OneTransformer` | `EarthTransformer3DBlock` | 3D token | `stable` | `./oneskills/codex/contracts/earthtransformer3dblock.md` |
-| FuxiTransformer | transformer | `OneTransformer` | `FuxiTransformer` | 2D 特征图 | `stable` | `./oneskills/codex/contracts/fuxitransformer.md` |
-| OneAttention | attention | `direct_import` | `style="<AttentionStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/codex/contracts/oneattention.md` |
-| EarthAttention2D | attention | `OneAttention` | `EarthAttention2D` | 2D 窗口化 token | `stable` | `./oneskills/codex/contracts/earthattention2d.md` |
-| EarthAttention3D | attention | `OneAttention` | `EarthAttention3D` | 3D 窗口化 token | `stable` | `./oneskills/codex/contracts/earthattention3d.md` |
-| OneAFNO | afno | `direct_import` | `style="<AFNOStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/codex/contracts/oneafno.md` |
-| FourCastNetAFNO2D | afno | `OneAFNO` | `FourCastNetAFNO2D` | 2D patch 网格特征 | `stable` | `./oneskills/codex/contracts/fourcastnetafno.md` |
-| OneFC | fc | `direct_import` | `style="<FCStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/codex/contracts/onefc.md` |
-| FourCastNetFC | fc | `OneFC` | `FourCastNetFC` | 任意前缀维度的特征张量 | `stable` | `./oneskills/codex/contracts/fourcastnetfc.md` |
-| FuxiFC | fc | `OneFC` | `FuxiFC` | 任意前缀维度的特征张量 | `stable` | `./oneskills/codex/contracts/fuxifc.md` |
+| OneEmbedding | embedding | `direct_import` | `style="<EmbeddingStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/contracts/oneembedding.md` |
+| PanguEmbedding | embedding | `OneEmbedding` | `PanguEmbedding` | 2D 场 / 3D 场 | `stable` | `./oneskills/contracts/panguembedding.md` |
+| FourCastNetEmbedding | embedding | `OneEmbedding` | `FourCastNetEmbedding` | 2D 场 | `stable` | `./oneskills/contracts/fourcastnetembedding.md` |
+| FuxiEmbedding | embedding | `OneEmbedding` | `FuxiEmbedding` | 3D 时空块 | `stable` | `./oneskills/contracts/fuxiembedding.md` |
+| OneSample | sample | `direct_import` | `style="<SampleStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/contracts/onesample.md` |
+| PanguDownSample | sample | `OneSample` | `PanguDownSample` | 2D token / 3D token | `stable` | `./oneskills/contracts/pangudownsample.md` |
+| PanguUpSample | sample | `OneSample` | `PanguUpSample` | 2D token / 3D token | `stable` | `./oneskills/contracts/panguupsample.md` |
+| FuxiDownSample | sample | `OneSample` | `FuxiDownSample` | 2D 特征图 | `stable` | `./oneskills/contracts/fuxidownsample.md` |
+| FuxiUpSample | sample | `OneSample` | `FuxiUpSample` | 2D 特征图 | `stable` | `./oneskills/contracts/fuxiupsample.md` |
+| OneRecovery | recovery | `direct_import` | `style="<RecoveryStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/contracts/onerecovery.md` |
+| PanguPatchRecovery | recovery | `OneRecovery` | `PanguPatchRecovery` | 2D 特征图 / 3D 特征图 | `stable` | `./oneskills/contracts/pangupatchrecovery.md` |
+| OneFuser | fuser | `direct_import` | `style="<FuserStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/contracts/onefuser.md` |
+| PanguFuser | fuser | `OneFuser` | `PanguFuser` | 3D token | `stable` | `./oneskills/contracts/pangufuser.md` |
+| FourCastNetFuser | fuser | `OneFuser` | `FourCastNetFuser` | 2D patch 网格特征 | `stable` | `./oneskills/contracts/fourcastnetfuser.md` |
+| FengWuFuser | fuser | `OneFuser` | `FengWuFuser` | 3D token | `stable` | `./oneskills/contracts/fengwufuser.md` |
+| OneEncoder | encoder | `direct_import` | `style="<EncoderStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/contracts/oneencoder.md` |
+| FengWuEncoder | encoder | `OneEncoder` | `FengWuEncoder` | 2D 场 | `stable` | `./oneskills/contracts/fengwuencoder.md` |
+| OneDecoder | decoder | `direct_import` | `style="<DecoderStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/contracts/onedecoder.md` |
+| FengWuDecoder | decoder | `OneDecoder` | `FengWuDecoder` | 中分辨率 token + 高分辨率 skip | `stable` | `./oneskills/contracts/fengwudecoder.md` | 
+| OneTransformer | transformer | `direct_import` | `style="<TransformerStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/contracts/onetransformer.md` |
+| EarthTransformer2DBlock | transformer | `OneTransformer` | `EarthTransformer2DBlock` | 2D token | `stable` | `./oneskills/contracts/earthtransformer2dblock.md` |
+| EarthTransformer3DBlock | transformer | `OneTransformer` | `EarthTransformer3DBlock` | 3D token | `stable` | `./oneskills/contracts/earthtransformer3dblock.md` |
+| FuxiTransformer | transformer | `OneTransformer` | `FuxiTransformer` | 2D 特征图 | `stable` | `./oneskills/contracts/fuxitransformer.md` |
+| OneAttention | attention | `direct_import` | `style="<AttentionStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/contracts/oneattention.md` |
+| EarthAttention2D | attention | `OneAttention` | `EarthAttention2D` | 2D 窗口化 token | `stable` | `./oneskills/contracts/earthattention2d.md` |
+| EarthAttention3D | attention | `OneAttention` | `EarthAttention3D` | 3D 窗口化 token | `stable` | `./oneskills/contracts/earthattention3d.md` |
+| OneAFNO | afno | `direct_import` | `style="<AFNOStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/contracts/oneafno.md` |
+| FourCastNetAFNO2D | afno | `OneAFNO` | `FourCastNetAFNO2D` | 2D patch 网格特征 | `stable` | `./oneskills/contracts/fourcastnetafno.md` |
+| OneFC | fc | `direct_import` | `style="<FCStyle>"` | 按 `style` 分发 | `stable` | `./oneskills/contracts/onefc.md` |
+| FourCastNetFC | fc | `OneFC` | `FourCastNetFC` | 任意前缀维度的特征张量 | `stable` | `./oneskills/contracts/fourcastnetfc.md` |
+| FuxiFC | fc | `OneFC` | `FuxiFC` | 任意前缀维度的特征张量 | `stable` | `./oneskills/contracts/fuxifc.md` |
 
 ## 天气预测任务的优先检索提示
 
@@ -124,8 +124,8 @@
 
 组件契约建议固定使用：
 
-- `./oneskills/codex/contracts/TEMPLATE.md`
-- `./oneskills/codex/contracts/naming_convention.md`
+- `./oneskills/contracts/TEMPLATE.md`
+- `./oneskills/contracts/naming_convention.md`
 
 ## 调用层建议
 

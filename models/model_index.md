@@ -26,10 +26,10 @@
 
 | 模型 | 任务类型 | 输入形态摘要 | 主干类型 | 主要依赖组件 | 状态 | 模型卡 |
 |---|---|---|---|---|---|---|
-| Pangu | 全球天气预报 / 多层大气与地表联合建模 | surface 2D + upper-air 3D | 3D token trunk | `PanguEmbedding`, `PanguFuser`, `PanguDownSample`, `PanguUpSample`, `PanguPatchRecovery` | `stable` | `./oneskills/codex/models/pangu.md` |
-| FourCastNet | 全球天气预报 / 单时刻 2D 场建模 | 2D 场 | 2D patch-grid AFNO trunk | `FourCastNetEmbedding`, `FourCastNetFuser`, `FourCastNetAFNO2D`, `FourCastNetFC` | `stable` | `./oneskills/codex/models/fourcastnet.md` |
-| Fuxi | 多时间步二维气象场预报 | 多时间步 3D 时空块输入 | 2D U-shape Swin trunk | `FuxiEmbedding`, `FuxiTransformer`, `FuxiDownSample`, `FuxiUpSample`, `FuxiFC` | `stable` | `./oneskills/codex/models/fuxi.md` |
-| FengWu | 多变量中期天气预报 | 多分支 2D 场输入 | 多分支 2D encoder/decoder + 3D fuser | `FengWuEncoder`, `FengWuFuser`, `FengWuDecoder` | `stable` | `./oneskills/codex/models/fengwu.md` |
+| Pangu | 全球天气预报 / 多层大气与地表联合建模 | surface 2D + upper-air 3D | 3D token trunk | `PanguEmbedding`, `PanguFuser`, `PanguDownSample`, `PanguUpSample`, `PanguPatchRecovery` | `stable` | `./oneskills/models/pangu.md` |  
+| FourCastNet | 全球天气预报 / 单时刻 2D 场建模 | 2D 场 | 2D patch-grid AFNO trunk | `FourCastNetEmbedding`, `FourCastNetFuser`, `FourCastNetAFNO2D`, `FourCastNetFC` | `stable` | `./oneskills/models/fourcastnet.md` |
+| Fuxi | 多时间步二维气象场预报 | 多时间步 3D 时空块输入 | 2D U-shape Swin trunk | `FuxiEmbedding`, `FuxiTransformer`, `FuxiDownSample`, `FuxiUpSample`, `FuxiFC` | `stable` | `./oneskills/models/fuxi.md` |
+| FengWu | 多变量中期天气预报 | 多分支 2D 场输入 | 多分支 2D encoder/decoder + 3D fuser | `FengWuEncoder`, `FengWuFuser`, `FengWuDecoder` | `stable` | `./oneskills/models/fengwu.md` |
 
 ## 适合优先看模型卡的问题
 
@@ -43,7 +43,7 @@
 
 新增模型时，建议至少完成以下内容：
 
-1. 复制 `./oneskills/codex/models/TEMPLATE.md`
+1. 复制 `./oneskills/models/TEMPLATE.md`
 2. 填写模型级输入输出、主干结构、主要依赖组件和风险点
 3. 在本表中登记
 4. 检查 `README.md`、`task/SKILL.md`、`DEVELOPER_MANUAL.md` 是否需要同步更新
