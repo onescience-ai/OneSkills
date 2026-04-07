@@ -1,40 +1,27 @@
 # Query
 
-Please read:
+请先读取：
 
 - `./oneskills/case/first_round_guide.md`
 - `./oneskills/task/SKILL.md`
 
-Then handle my task.
+再处理我的任务。
 
-Write the task here.
 
-If the task involves a new dataset, please include when possible:
 
-- Dataset README path or key field summary
-- The reference example or target model you want to reuse
-- Expected delivery scope:
-  - `datapipe only`
-  - or `datapipe + config + train/inference`
-- Where the generated files should go:
-  - current case directory
-  - or `./onescience/src/onescience/datapipes/...`
+此处填入任务
 
-If the task is a model comparison or benchmark, please include when possible:
 
-- The list of models to compare
-- The datapipe or example you want to reuse
-- Whether data split, normalization, and evaluation metrics should stay unified
 
-My main concerns are:
+我目前最关心的是：
 
-- Whether this plan is reasonable and implementable in the current `OneScience` codebase
-- If direct replacement is not possible, what the minimum viable adaptation path is
-- Which parts can be reused directly, and which parts need a bridge layer
-- Keeping changes scoped to files that are directly related to this task
+- 这种改法在现有 `OneScience` 代码里是否合理、是否可实现
+- 如果不能直接替换，最小改造路径应该是什么
+- 哪些部分可以直接复用，哪些地方可能需要加一层桥接
+- 希望尽量少改和这次任务无关的文件
 
-I have mostly read papers and I am not yet familiar with the code details, so please first translate this request into a clear implementation plan before deciding how to write the code.
+我只看过论文，对具体源码实现不熟，所以请你先帮我把这件事翻译成一份清晰的实现方案，再决定后面怎么写代码。
 
-Please summarize your thinking first and output it as a structured document.
+首先将本次思考内容进行总结，并整理为文档输出：
 
-If we later move into the code generation stage, save the generated files in the current case directory by default.
+如果后续进入代码生成阶段，请默认将最终代码文件保存在当前 case 目录下。
