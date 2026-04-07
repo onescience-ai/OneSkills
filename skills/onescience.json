@@ -1,0 +1,13 @@
+{
+  "runtime": {
+    "mode": "slurm",
+    "cluster": {
+      "partition": "hpctest01",
+      "nodes": 1,
+      "gpus_per_node": 1,
+      "cpus_per_task": 8,
+      "memory": "64GB",
+      "time_limit": "02:00:00"
+    }
+  }
+}

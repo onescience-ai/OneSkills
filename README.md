@@ -1,174 +1,206 @@
-
-
 # <div align="center"><strong>oneskills</strong></div>
-### <div align="center"></div>
 
-
-
-OneSkills 是基于 OneScience 构建的一个开源知识与 Skills（能力）库，旨在为智能体（Agents）开发提供可复用、可组合、可扩展的能力模块，优化多种智能体AI4S领域代码生成效果。
+### <div align="center">OneScience Skills Library for AI-native Scientific Research</div>
 
 > 🚀 OneSkills = Knowledge × Skills × Agents
->
+
+---
 
 ## 📖 项目简介
 
-在智能体时代，单一模型能力已无法满足复杂任务需求。OneSkills 提供：
+OneSkills 是基于 OneScience 构建的开源知识与能力库（Skills Library），专为智能体（Agents）开发设计，提供可复用、可组合、可扩展的能力模块，显著优化 AI4S（AI for Science）领域的代码生成效果。
 
-- 📚 **结构化知识库（Knowledge Units）**
-- 🧠 **可执行能力模块（Skills）**
-- 🔗 **面向智能体的标准接口（Agent-ready APIs）**
+在智能体时代，单一模型能力已无法满足复杂科学计算任务需求。OneSkills 通过结构化知识库与可执行能力模块，帮助开发者构建专业级 AI-native 科学研究系统。
 
-帮助开发者更好的使用具备专业能力的智能体系统。
+### 核心特性
+
+- 📚 **结构化知识库**：基于 OneScience 的科学知识与模型组件文档
+- 🧠 **可执行能力模块**：标准化的 Skills 定义与工作流
+- 🔗 **Agent-ready 接口**：专为 Claude Code、Trae 等智能体设计
+- 🌐 **多领域覆盖**：气象、生信、材料、流体等科学领域
+
+---
 
 ## 🔗 与 OneScience 的关系
 
-- **OneScience**：科学知识与智能体基础框架。用于代码运行环境。
-- **OneSkills**：能力层（Skills & Knowledge），基于OneScience构建，用户开发环境。
+| 项目 | 定位 | 用途 |
+|------|------|------|
+| **OneScience** | 科学知识与智能体基础框架 | 代码运行环境、模型训练与推理 |
+| **OneSkills** | 能力层（Skills & Knowledge） | 用户开发环境、智能体能力扩展 |
 
-## 🎯 设计目标
+**关系说明**：
+- OneScience 提供底层科学计算框架与模型实现
+- OneSkills 基于 OneScience 构建，提供能力模块与开发指导
+- 两者协同工作，实现从模型训练到智能体开发的完整链路
 
-- **模块化（Modular）**：每个 模块可独立开发、测试和复用；
-- **标准化（Standardized）**：统一 Skill 接口与描述规范；
-- **可组合（Composable）**：支持多个 Skills 组合形成复杂能力；
-- **领域扩展（Domain Scalable）**：覆盖气象、生信、材料、流体等多领域；
-- **AI 原生（AI-native）**：专为 LLM / Agent 设计；
-
-
+---
 
 ## ⚙️ 快速开始
 
+### 安装使用
 
+OneSkills 是嵌入式开发工具库，无需独立安装。将其克隆到项目目录后，复制 skills 到对应智能体的配置目录：
 
-1. ### 安装
+```bash
+git clone https://github.com/onescience-ai/oneskills.git
 
-   oneskills 是嵌入在当前项目开发环境中的支持工具。在已有项目目录或者新建一个项目目录，例如 mymodel.
-
-   ```shell
-   cd mymodel
-   git clone https://github.com/onescience-ai/oneskills.git
-   #若有必要
-   # git clone https://github.com/onescience-ai/OneScience.git
-   
-   ```
-
-   oneskills项目，用于赋能智能体开发，所以需要在开发环境中集成相关智能体，例如Claude code/ Trae等。详细见操作手册。
-
-   ### 2. 使用一个 Skill
-
-   ​    如下使用trae/task/react_prompt.md 中的skill：
-
-   ```
-   基于./oneskills/trae/task/react_prompt.md中的工作流执行以下任务：
-   将Pangu-Weather模型中的Swin-Transformer Fuser模块替换为FourCastNet的AFNO（Adaptive Fourier Neural Operator）模块，并将改造完成的完整模型代码保存至当前项目hybrid_pangu_fourcastnet.py文件中。
-   ```
-
-   将上述的prompt复制到Trae的对话框中，点击执行按钮，即可开始执行任务。 执行完成后，将在当前项目下生成hybrid_pangu_fourcastnet.py文件。
-
-   ### 3. 开发一个 Skill
-
-   当标准技能无法满足您的需求时，您可以创建自定义技能来扩展 onescience 框架的能力。
-
-   自定义技能文件可以放在当前项目目录下（对目录没有强制要求），技能文件内容通常包括以下部分：
-
-   - 名称（Name）
-   - 描述（Description）
-   - 输入输出定义
-   - 实现逻辑（代码或调用接口）
-
-   以气象模型组合适配的场景为例，编写skills并展示使用过程。
-
-```
----
-name: model_adapter
-description: 通用气象AI模型组合适配器，用于统一不同模型模块的维度、变量和网格，支持模块组合、替换和特征融合。
-tags:
-  - 气象AI
-  - 模型组合
-  - 适配器
----
-
-# 气象AI模型组合适配器
-
-## 1. 技能目标
-提供一种通用方式，将不同气象AI模型（如 Fuxi、Pangu、FourCastNet、GraphCast）模块进行组合。核心目标：
-- **维度适配**：统一各模型输入/输出张量维度、变量集合、时间和空间结构。
-- **模块连接**：通过可插拔适配器实现异构模块无缝组合。
-- **保形与保真**：确保数值稳定性、可微分性及计算效率。
-
-## 2. 适用场景
-- 异构编码器-适配器-解码器组合（如 Fuxi 编码器 + 适配器 + Pangu 解码器）。
-- 模块替换（如 FourCastNet 的 AFNO 层替换为 Pangu 的 3D Swin Transformer）。
-- 多模型特征融合和预训练模型拼接。
-
-## 3. 输入与输出
-| 参数 | 类型 | 描述 |
-|------|------|------|
-| 输入张量 | torch.Tensor | 待组合模块的输出，包含 `(B, T, V, H, W)` 或类似布局 |
-| 输出张量 | torch.Tensor | 适配器处理后的张量，可直接作为下游模块输入 |
-
-## 4. 通用适配流程
-1. **接口分析**：提取输入/输出维度、变量、时间/空间结构及归一化参数。
-2. **维度对齐**：
-   - 变量差异 → 特征投影（`nn.Linear` 或 `1x1 Conv`）
-   - 空间网格差异 → 插值（`grid_sample` / `xarray interp`）
-   - 时间步差异 → 重塑或聚合
-   - 张量顺序不同 → 使用 `einops.rearrange` 或 `torch.permute`
-3. **适配器设计**：
-   - 独立 `nn.Module`，支持梯度回传
-   - 可选可学习参数，用于优化变量映射
-   - 内部记录每一步变换，便于调试
-4. **验证与测试**：
-   - 输出形状检查
-   - 数值范围检查
-   - 单元和集成测试（前向传播无误）
-
-## 5. 各模型典型特征
-- **Fuxi**：高斯网格 `(H=721, W=1440)`，约 70 个变量。
-- **Pangu**：高空+地面变量，使用高斯网格，变量布局略不同。
-- **FourCastNet**：规则网格 `(H=720, W=1440)`，20 个变量，无显式垂直维。
-- **GraphCast**：基于 GNN，均匀经纬网格，垂直层 L=37。
-
-> 适配要点：统一空间网格、变量维度、张量顺序，并根据目标模块位置编码要求调整。
-
-## 6. 输出内容
-- **接口分析表**：模块名称、输入/输出形状、变量列表、网格类型。
-- **适配流程图**：展示数据流、适配器位置和操作。
-- **验证清单**：形状检查点、数值测试和单元测试建议。
-
+# 复制 skills 到你的项目（选择你使用的工具）
+cp -r onescills/skills /your/project/.claude/skills      # Claude Code
+cp -r onescills/skills /your/project/.cursor/skills      # Cursor
+cp -r onescills/skills /your/project/.codex/skills       # Codex CLI
+cp -r onescills/skills /your/project/.kiro/steering      # Kiro
+cp -r onescills/skills /your/project/skills/custom       # DeerFlow 2.0
+cp -r onescills/skills /your/project/.trae/skills         # Trae
+cp -r onescills/skills /your/project/.antigravity        # Antigravity
+cp -r onescills/skills /your/project/.github/superpowers # VS Code (Copilot)
+cp -r onescills/skills /your/project/skills              # OpenClaw
+cp -r onescills/skills /your/project/.windsurf/skills   # Windsurf
+cp -r onescills/skills /your/project/.gemini/skills     # Gemini CLI
+cp -r onescills/skills /your/project/.aider/skills      # Aider
+cp -r onescills/skills /your/project/.opencode/skills   # OpenCode
+cp -r onescills/skills /your/project/.qwen/skills       # Qwen Code
 ```
 
-如上完成了 ./self_skills/earth_skill.md，下面我们在下述任务中使用该skills
+### 智能体配置文件说明
+
+| 工具 | 配置文件 | 路径 | 说明 |
+|------|----------|------|------|
+| **Claude Code** | `CLAUDE.md` | 项目根目录 | - |
+| **Kiro** | `.kiro/steering/*.md` | 项目根目录 | 支持 always/globs/手动三种模式 |
+| **DeerFlow 2.0** | `skills/custom/*/SKILL.md` | 项目根目录 | 字节跳动开源 SuperAgent，自动发现自定义 skills |
+| **Trae** | `.trae/skills/*/*.md` | 项目级规则 | - |
+| **Antigravity** | `GEMINI.md` 或 `AGENTS.md` | 项目根目录 | - |
+| **VS Code** | `.github/copilot-instructions.md` | 项目根目录 | Copilot 自定义指令 |
+| **Cursor** | `.cursor/rules/*.md` | 项目级规则目录 | - |
+| **OpenClaw** | `skills/*/SKILL.md` | 工作区级 skills 目录 | 自动发现 |
+| **Windsurf** | `.windsurf/skills/*/SKILL.md` | 项目级 skills 目录 | - |
+| **Gemini CLI** | `.gemini/skills/*/SKILL.md` | 项目级 skills 目录 | - |
+| **Aider** | `.aider/skills/*/SKILL.md` | 项目级 skills 目录 | - |
+| **OpenCode** | `.opencode/skills/*/SKILL.md` | 项目级 skills 目录 | - |
+| **Qwen Code** | `.qwen/skills/*/SKILL.md` | 项目级 skills 目录 | - |
+
+### 使用 Skills
+
+Skills 通过自然语言提示词触发。以下是一个模型改造任务示例：
 
 ```
-基于 ./oneskills/trae/task/react_prompt.md 中定义的工作流执行以下任务：
+基于 ./oneskills/trae/task/react_prompt.md 中的工作流执行以下任务：
 
 ## 任务目标
-对 Pangu-Weather 模型进行结构改造，将其中的 Swin-Transformer Fuser 模块替换为 FourCastNet 中的 AFNO（Adaptive Fourier Neural Operator）模块，并生成完整模型实现代码。
+将 Pangu-Weather 模型中的 Swin-Transformer Fuser 模块替换为 FourCastNet 的 AFNO（Adaptive Fourier Neural Operator）模块，并将改造完成的完整模型代码保存至当前项目 hybrid_pangu_fourcastnet.py 文件中。
 
 ## 执行约束
-- 必须加载并使用 ./self_skills/earth_skill.md 中定义的技能，以辅助模型结构理解、气象数据处理或模块实现
+- 优先复用 ./oneskills/models/ 中的模型卡
+- 使用 ./oneskills/contracts/ 中的组件契约
+- 生成代码需包含完整的 forward 实现
 ```
 
-和使用skill一样，将上述prompt提交到Trae对话框中，即可提交运行
+将上述提示提交到支持 Skills 的智能体（如 Trae）对话框，即可自动执行任务并生成代码。
+
+### Skills 目录结构
+
+OneSkills 提供了 5 个核心基类型 Skills，覆盖 AI 研究全生命周期：
+
+| Skills 目录 | 作用 |
+|-------------|------|
+| **onescience-auto-research/** | 自主研究编排层，管理 AI 研究全生命周期（文献综述→创意生成→实验执行→论文写作） |
+| **onescience-coder/** | OneScience 代码生成，支持模型、组件、数据管道的代码生成与改造 |
+| **onescience-installer/** | OneScience 安装助手，协助安装和配置 OneScience 环境 |
+| **onescience-planner/** | 研究计划生成器，生成研究计划和实验方案 |
+| **onescience-runtime/** | 运行时环境管理，管理运行时环境和作业提交 |
+
+**完整目录结构**：
+
+```
+oneskills/
+├── skills/                    # 核心 Skills 目录（5 个基类型 Skills）
+│   ├── onescience-auto-research/
+│   ├── onescience-coder/
+│   ├── onescience-installer/
+│   ├── onescience-planner/
+│   ├── onescience-runtime/
+│   └── onescience.json        # 运行时配置文件
+├── models/                    # 模型卡（Model Cards）
+├── contracts/                 # 组件契约（Component Contracts）
+├── datapipes/                 # 数据卡（DataPipe Cards）
+└── self_skills/               # 用户自定义 Skills 目录
+```
+
+### 开发 Skills
+
+当标准 Skills 无法满足需求时，可创建自定义 Skills：
+
+**Skills 文件结构**（YAML 元数据 + Markdown 正文）：
+
+```markdown
+---
+name: skill_name
+description: 技能描述，简明扼要
+tags:
+  - 领域标签
+  - 功能标签
+---
+
+# 技能标题
+
+## 1. 技能目标
+## 2. 适用场景
+## 3. 输入与输出
+## 4. 实现逻辑
+## 5. 验证与测试
+```
+
+**完整示例**：参考 `./skills/` 目录下的现有 Skills 文件。
+
+---
 
 ## 🌍 应用场景
 
-- 📊 数据分析助手
-- 🧑‍💻 开发辅助 Agent
-- 🧠 AI Copilot 系统
+| 场景 | 描述 | 示例 |
+|------|------|------|
+| 📊 **数据分析助手** | 科学数据处理与可视化 | 气象数据读取、网格插值、结果可视化 |
+| 🧑‍💻 **开发辅助 Agent** | 模型代码生成与改造 | 模块替换、特征融合、架构优化 |
+| 🧠 **AI Copilot 系统** | 交互式智能开发 | 自然语言编程、错误诊断、性能优化 |
+| 🔬 **科研工作流** | 复杂科学计算任务 | 多模型组合、跨领域适配、自动化流程 |
 
+---
 
+## 🤝 社区与贡献
 
-## 🤝 社区
+欢迎加入 OneSkills 社区，共同构建 AI-native 科学研究生态：
 
-欢迎加入我们一起构建 AI-native 能力生态：
+### 参与方式
 
-- 提交 Issue
-- 发起 PR
-- 分享你的 Skill
+- **提交 Issue**：报告问题、提出功能需求
+- **发起 PR**：贡献新 Skills、修复 Bug、优化文档
+- **分享 Skill**：分享您的自定义 Skills 至社区
 
-------
+### 贡献指南
+
+1. Fork 项目并创建分支
+2. 添加/修改 Skills 文件
+3. 确保符合项目规范与格式
+4. 提交 Pull Request 并描述变更
+
+### 社区交流
+
+- GitHub Issues：[issues](https://github.com/onescience-ai/oneskills/issues)
+- Discussion：[discussions](https://github.com/onescience-ai/oneskills/discussions)
+
+---
+
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件。
+
+---
 
 ## ⭐ Star History
 
 如果这个项目对你有帮助，欢迎 ⭐️ 支持！
+
+---
+
+<div align="center">
+  <strong>Built with OneScience for AI-native Scientific Research</strong>
+</div>
