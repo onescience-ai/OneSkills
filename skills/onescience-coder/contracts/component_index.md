@@ -2,7 +2,7 @@
 
 ## 目标
 
-本文件是 `./contracts/` 的统一入口索引。
+本文件是 `./oneskills/contracts/` 的统一入口索引。
 
 作用不是复述源码，而是帮助用户与智能体快速回答下面几个问题：
 
@@ -41,16 +41,19 @@
 
 | 组件 | 模块族 | 角色 | 注册方式 | 当前状态 | 契约卡片 |
 |---|---|---|---|---|---|
-| OneEmbedding | embedding | 统一 embedding 入口 | `style="<EmbeddingStyle>"` | `stable` | `./contracts/oneembedding.md` |
-| OneSample | sample | 统一采样入口 | `style="<SampleStyle>"` | `stable` | `./contracts/onesample.md` |
-| OneRecovery | recovery | 统一恢复入口 | `style="<RecoveryStyle>"` | `stable` | `./contracts/onerecovery.md` |
-| OneFuser | fuser | 统一主干融合入口 | `style="<FuserStyle>"` | `stable` | `./contracts/onefuser.md` |
-| OneEncoder | encoder | 统一 encoder 入口 | `style="<EncoderStyle>"` | `stable` | `./contracts/oneencoder.md` |
-| OneDecoder | decoder | 统一 decoder 入口 | `style="<DecoderStyle>"` | `stable` | `./contracts/onedecoder.md` |
-| OneTransformer | transformer | 统一 transformer 入口 | `style="<TransformerStyle>"` | `stable` | `./contracts/onetransformer.md` |
-| OneAttention | attention | 统一 attention 入口 | `style="<AttentionStyle>"` | `stable` | `./contracts/oneattention.md` |
-| OneAFNO | afno | 统一 AFNO 入口 | `style="<AFNOStyle>"` | `stable` | `./contracts/oneafno.md` |
-| OneFC | fc | 统一前馈层入口 | `style="<FCStyle>"` | `stable` | `./contracts/onefc.md` |
+| OneEmbedding | embedding | 统一 embedding 入口 | `style="<EmbeddingStyle>"` | `stable` | `./oneskills/contracts/oneembedding.md` |
+| OneSample | sample | 统一采样入口 | `style="<SampleStyle>"` | `stable` | `./oneskills/contracts/onesample.md` |
+| OneRecovery | recovery | 统一恢复入口 | `style="<RecoveryStyle>"` | `stable` | `./oneskills/contracts/onerecovery.md` |
+| OneFuser | fuser | 统一主干融合入口 | `style="<FuserStyle>"` | `stable` | `./oneskills/contracts/onefuser.md` |
+| OneEncoder | encoder | 统一 encoder 入口 | `style="<EncoderStyle>"` | `stable` | `./oneskills/contracts/oneencoder.md` |
+| OneDecoder | decoder | 统一 decoder 入口 | `style="<DecoderStyle>"` | `stable` | `./oneskills/contracts/onedecoder.md` |
+| OneTransformer | transformer | 统一 transformer 入口 | `style="<TransformerStyle>"` | `stable` | `./oneskills/contracts/onetransformer.md` |
+| OneAttention | attention | 统一 attention 入口 | `style="<AttentionStyle>"` | `stable` | `./oneskills/contracts/oneattention.md` |
+| OneAFNO | afno | 统一 AFNO 入口 | `style="<AFNOStyle>"` | `stable` | `./oneskills/contracts/oneafno.md` |
+| OneFC | fc | 统一前馈层入口 | `style="<FCStyle>"` | `stable` | `./oneskills/contracts/onefc.md` |
+| OneMlp | mlp | 统一 MLP 入口 | `style="<MlpStyle>"` | `stable` | `./oneskills/contracts/onemlp.md` |
+| OneFourier | fourier | 统一谱算子入口 | `style="<FourierStyle>"` | `stable` | `./oneskills/contracts/onefourier.md` |
+| OneHead | head | 统一预测头入口 | `style="<HeadStyle>"` | `stable` | `./oneskills/contracts/onehead.md` |
 
 ## 高层业务组件层
 
@@ -58,20 +61,20 @@
 
 | 组件 | 模块族 | 调用入口 | 注册名 | 输入形态摘要 | 当前状态 | 契约卡片 |
 |---|---|---|---|---|---|---|
-| PanguEmbedding | embedding | `OneEmbedding` | `PanguEmbedding` | 2D 场 / 3D 场 | `stable` | `./contracts/panguembedding.md` |
-| FourCastNetEmbedding | embedding | `OneEmbedding` | `FourCastNetEmbedding` | 2D 场 | `stable` | `./contracts/fourcastnetembedding.md` |
-| FuxiEmbedding | embedding | `OneEmbedding` | `FuxiEmbedding` | 3D 时空块 | `stable` | `./contracts/fuxiembedding.md` |
-| PanguDownSample | sample | `OneSample` | `PanguDownSample` | 2D token / 3D token | `stable` | `./contracts/pangudownsample.md` |
-| PanguUpSample | sample | `OneSample` | `PanguUpSample` | 2D token / 3D token | `stable` | `./contracts/panguupsample.md` |
-| FuxiDownSample | sample | `OneSample` | `FuxiDownSample` | 2D 特征图 | `stable` | `./contracts/fuxidownsample.md` |
-| FuxiUpSample | sample | `OneSample` | `FuxiUpSample` | 2D 特征图 | `stable` | `./contracts/fuxiupsample.md` |
-| PanguPatchRecovery | recovery | `OneRecovery` | `PanguPatchRecovery` | 2D 特征图 / 3D 特征图 | `stable` | `./contracts/pangupatchrecovery.md` |
-| PanguFuser | fuser | `OneFuser` | `PanguFuser` | 3D token | `stable` | `./contracts/pangufuser.md` |
-| FourCastNetFuser | fuser | `OneFuser` | `FourCastNetFuser` | 2D patch 网格特征 | `stable` | `./contracts/fourcastnetfuser.md` |
-| FengWuFuser | fuser | `OneFuser` | `FengWuFuser` | 3D token | `stable` | `./contracts/fengwufuser.md` |
-| FengWuEncoder | encoder | `OneEncoder` | `FengWuEncoder` | 2D 场 | `stable` | `./contracts/fengwuencoder.md` |
-| FengWuDecoder | decoder | `OneDecoder` | `FengWuDecoder` | 中分辨率 token + 高分辨率 skip | `stable` | `./contracts/fengwudecoder.md` |
-| FuxiTransformer | transformer | `OneTransformer` | `FuxiTransformer` | 2D 特征图 | `stable` | `./contracts/fuxitransformer.md` |
+| PanguEmbedding | embedding | `OneEmbedding` | `PanguEmbedding` | 2D 场 / 3D 场 | `stable` | `./oneskills/contracts/panguembedding.md` |
+| FourCastNetEmbedding | embedding | `OneEmbedding` | `FourCastNetEmbedding` | 2D 场 | `stable` | `./oneskills/contracts/fourcastnetembedding.md` |
+| FuxiEmbedding | embedding | `OneEmbedding` | `FuxiEmbedding` | 3D 时空块 | `stable` | `./oneskills/contracts/fuxiembedding.md` |
+| PanguDownSample | sample | `OneSample` | `PanguDownSample` | 2D token / 3D token | `stable` | `./oneskills/contracts/pangudownsample.md` |
+| PanguUpSample | sample | `OneSample` | `PanguUpSample` | 2D token / 3D token | `stable` | `./oneskills/contracts/panguupsample.md` |
+| FuxiDownSample | sample | `OneSample` | `FuxiDownSample` | 2D 特征图 | `stable` | `./oneskills/contracts/fuxidownsample.md` |
+| FuxiUpSample | sample | `OneSample` | `FuxiUpSample` | 2D 特征图 | `stable` | `./oneskills/contracts/fuxiupsample.md` |
+| PanguPatchRecovery | recovery | `OneRecovery` | `PanguPatchRecovery` | 2D 特征图 / 3D 特征图 | `stable` | `./oneskills/contracts/pangupatchrecovery.md` |
+| PanguFuser | fuser | `OneFuser` | `PanguFuser` | 3D token | `stable` | `./oneskills/contracts/pangufuser.md` |
+| FourCastNetFuser | fuser | `OneFuser` | `FourCastNetFuser` | 2D patch 网格特征 | `stable` | `./oneskills/contracts/fourcastnetfuser.md` |
+| FengWuFuser | fuser | `OneFuser` | `FengWuFuser` | 3D token | `stable` | `./oneskills/contracts/fengwufuser.md` |
+| FengWuEncoder | encoder | `OneEncoder` | `FengWuEncoder` | 2D 场 | `stable` | `./oneskills/contracts/fengwuencoder.md` |
+| FengWuDecoder | decoder | `OneDecoder` | `FengWuDecoder` | 中分辨率 token + 高分辨率 skip | `stable` | `./oneskills/contracts/fengwudecoder.md` |
+| FuxiTransformer | transformer | `OneTransformer` | `FuxiTransformer` | 2D 特征图 | `stable` | `./oneskills/contracts/fuxitransformer.md` |
 
 ## 底层通用模块层
 
@@ -79,13 +82,13 @@
 
 | 组件 | 模块族 | 调用入口 | 注册名 | 输入形态摘要 | 当前状态 | 契约卡片 |
 |---|---|---|---|---|---|---|
-| EarthTransformer2DBlock | transformer | `OneTransformer` | `EarthTransformer2DBlock` | 2D token | `stable` | `./contracts/earthtransformer2dblock.md` |
-| EarthTransformer3DBlock | transformer | `OneTransformer` | `EarthTransformer3DBlock` | 3D token | `stable` | `./contracts/earthtransformer3dblock.md` |
-| EarthAttention2D | attention | `OneAttention` | `EarthAttention2D` | 2D 窗口化 token | `stable` | `./contracts/earthattention2d.md` |
-| EarthAttention3D | attention | `OneAttention` | `EarthAttention3D` | 3D 窗口化 token | `stable` | `./contracts/earthattention3d.md` |
-| FourCastNetAFNO2D | afno | `OneAFNO` | `FourCastNetAFNO2D` | 2D patch 网格特征 | `stable` | `./contracts/fourcastnetafno.md` |
-| FourCastNetFC | fc | `OneFC` | `FourCastNetFC` | 任意前缀维度的特征张量 | `stable` | `./contracts/fourcastnetfc.md` |
-| FuxiFC | fc | `OneFC` | `FuxiFC` | 任意前缀维度的特征张量 | `stable` | `./contracts/fuxifc.md` |
+| EarthTransformer2DBlock | transformer | `OneTransformer` | `EarthTransformer2DBlock` | 2D token | `stable` | `./oneskills/contracts/earthtransformer2dblock.md` |
+| EarthTransformer3DBlock | transformer | `OneTransformer` | `EarthTransformer3DBlock` | 3D token | `stable` | `./oneskills/contracts/earthtransformer3dblock.md` |
+| EarthAttention2D | attention | `OneAttention` | `EarthAttention2D` | 2D 窗口化 token | `stable` | `./oneskills/contracts/earthattention2d.md` |
+| EarthAttention3D | attention | `OneAttention` | `EarthAttention3D` | 3D 窗口化 token | `stable` | `./oneskills/contracts/earthattention3d.md` |
+| FourCastNetAFNO2D | afno | `OneAFNO` | `FourCastNetAFNO2D` | 2D patch 网格特征 | `stable` | `./oneskills/contracts/fourcastnetafno.md` |
+| FourCastNetFC | fc | `OneFC` | `FourCastNetFC` | 任意前缀维度的特征张量 | `stable` | `./oneskills/contracts/fourcastnetfc.md` |
+| FuxiFC | fc | `OneFC` | `FuxiFC` | 任意前缀维度的特征张量 | `stable` | `./oneskills/contracts/fuxifc.md` |
 
 ## 按模块族检索
 
@@ -177,6 +180,20 @@
 2. 再看对应 `One*` 入口
 3. 最后看底层模块
 
+### mlp / fourier / head
+
+适用于：
+
+- 神经算子前的点级或 token 级特征映射
+- `FNO / U_FNO / U_NO` 这类谱域主干
+- `U_Net` 多尺度主干后的输出投影
+
+优先顺序：
+
+1. 先看模型卡，确认具体依赖的是哪一个 wrapper
+2. 再看 `OneMlp` / `OneFourier` / `OneHead`
+3. 只有 wrapper 契约仍不足时，再回到对应底层实现
+
 ## 典型检索顺序
 
 对于天气预测、全球格点预报、surface 与 upper-air 联合建模这类任务，推荐优先顺序：
@@ -223,15 +240,15 @@
 
 推荐新增流程：
 
-1. 先复制 `./contracts/TEMPLATE.md`
+1. 先复制 `./oneskills/contracts/TEMPLATE.md`
 2. 按组件实际情况填写字段
 3. 将新契约文件加入本索引
 4. 若该组件已经替代旧实现，在风险点中明确说明
 
 ## 相关文档
 
-- `./contracts/TEMPLATE.md`
-- `./contracts/naming_convention.md`
+- `./oneskills/contracts/TEMPLATE.md`
+- `./oneskills/contracts/naming_convention.md`
 
 ## 检索约定
 
@@ -239,7 +256,7 @@
 
 默认假设：
 
-- `./`
+- `oneskills/`
 - `onescience/`
 
 位于同一工作目录下。
