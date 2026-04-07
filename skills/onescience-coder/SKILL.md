@@ -1,5 +1,5 @@
 ---
-name: onescience_component_workflow
+name: oneskills_onescience_component_workflow
 description: 面向 OneScience 当前推荐模型、组件与 datapipe 的轻量工作流，优先使用模型卡、组件契约与数据卡完成模型复用、模块替换和代码生成。
 ---
 
@@ -24,13 +24,14 @@ description: 面向 OneScience 当前推荐模型、组件与 datapipe 的轻量
 你应该先做的事情是：
 
 1. 理解用户任务目标
-2. 先读取 `./contracts/component_index.md`
-3. 再读取 `./contracts/naming_convention.md`
-4. 若任务涉及数据读取、年份选择、变量组织或 dataloader，读取 `./datapipes/datapipe_index.md`
-5. 按需读取相关 `contracts` 与 `datapipes` 文档
-6. 必要时读取 `./onescience/` 中的源码锚点
-7. 先生成一份“详细执行信息”或“结构化规格说明”
-8. 把这份规格说明交给用户确认
+2. 先读取 `./oneskills/contracts/component_index.md`
+3. 再读取 `./oneskills/contracts/naming_convention.md`
+4. 若任务涉及数据读取、年份选择、变量组织或 dataloader，读取 `./oneskills/datapipes/datapipe_index.md`
+5. 若用户提供的是未登记的新数据集 README、样例文件或数据目录说明，再读取 `./oneskills/task/new_dataset_workflow.md`
+6. 按需读取相关 `contracts` 与 `datapipes` 文档
+7. 必要时读取 `./onescience/` 中的源码锚点
+8. 先生成一份“详细执行信息”或“结构化规格说明”
+9. 把这份规格说明交给用户确认
 
 这份“详细执行信息”至少应包含：
 
@@ -42,6 +43,7 @@ description: 面向 OneScience 当前推荐模型、组件与 datapipe 的轻量
 - 主干特征提取模块
 - 主要 shape 变化
 - 代码实现范围
+- 若涉及数据适配，补充接口兼容性与桥接方案
 - 需要用户确认的关键点
 
 在第一阶段输出结束前，必须追加一个固定的确认区块，不要省略。
@@ -72,17 +74,19 @@ description: 面向 OneScience 当前推荐模型、组件与 datapipe 的轻量
 ## 核心目标
 
 - 尽量少让用户阅读 `./onescience/` 源码
-- 若用户明确提到某个现有模型，优先使用 `./models/` 中的模型卡
-- 优先使用 `./contracts/` 中的组件契约完成任务
-- 若涉及数据流程，优先使用 `./datapipes/` 中的数据卡
+- 若用户明确提到某个现有模型，优先使用 `./oneskills/models/` 中的模型卡
+- 优先使用 `./oneskills/contracts/` 中的组件契约完成任务
+- 若涉及数据流程，优先使用 `./oneskills/datapipes/` 中的数据卡
+- 若用户提供的是未登记的新数据集，优先结合 `./oneskills/task/new_dataset_workflow.md` 完成数据接口设计
 - 只有当契约信息不足时，才回到源码锚点读取实现
 
 ## 允许优先使用的资源
 
-- `./models/*.md`
-- `./contracts/*.md`
-- `./datapipes/*.md`
-- `./README.md`
+- `./oneskills/models/*.md`
+- `./oneskills/contracts/*.md`
+- `./oneskills/datapipes/*.md`
+- `./oneskills/task/new_dataset_workflow.md`
+- `./oneskills/README.md`
 - 用户明确指定的文件
 - `./onescience/` 中与契约卡片对应的源码锚点
 
@@ -91,31 +95,32 @@ description: 面向 OneScience 当前推荐模型、组件与 datapipe 的轻量
 1. 先判断当前是“用户原始 query 阶段”还是“确认后代码生成阶段”
 2. 若是原始 query 阶段，先输出结构化规格说明，不直接输出最终代码
 3. 若是确认后代码生成阶段，再进入正式实现
-4. 若用户明确提到模型名，先读取 `./models/model_index.md`
-5. 按需读取对应模型卡
-6. 识别任务涉及的组件族
-7. 若涉及数据流程，先识别任务涉及的 datapipe
-8. 读取对应契约卡片与 datapipe 卡片
-9. 提取以下信息
+4. 若用户提供的是未登记的新数据集 README、样例文件或数据目录说明，先读取 `./oneskills/task/new_dataset_workflow.md`
+5. 若用户明确提到模型名，先读取 `./oneskills/models/model_index.md`
+6. 按需读取对应模型卡
+7. 识别任务涉及的组件族
+8. 若涉及数据流程，先识别任务涉及的 datapipe
+9. 读取对应契约卡片与 datapipe 卡片
+10. 提取以下信息
    - 注册入口
    - 注册名
    - 构造参数
    - 输入输出 shape
    - 典型调用位置
    - 风险点
-10. 若 datapipe 卡存在，也提取以下信息
+11. 若 datapipe 卡存在，也提取以下信息
    - 数据目录结构
    - 年份或样本划分方式
    - 变量选择方式
    - 样本返回格式
    - dataloader 行为
-11. 若模型卡存在，也提取以下信息
+12. 若模型卡存在，也提取以下信息
    - 输入输出变量组织
    - 主干结构
    - 主要 shape 变化
    - 常见修改点
-12. 先基于模型卡、契约卡与 datapipe 卡生成规格或代码
-13. 若以下信息缺失，再读取源码
+13. 先基于模型卡、契约卡与 datapipe 卡生成规格或代码
+14. 若以下信息缺失，再读取源码
    - 真实默认值
    - 参数边界检查
    - forward 内部张量重排细节
@@ -142,6 +147,56 @@ description: 面向 OneScience 当前推荐模型、组件与 datapipe 的轻量
 - 若任务只是生成建议，不直接扩散修改到无关文件
 - 若任务涉及主干特征提取、token 融合、中间层建模或 trunk 设计，先检查 `fuser` 模块族，再考虑底层 `transformer_layers`
 - 若 `contracts/` 中已经存在可直接复用的 `fuser` 契约，默认不要直接拼装 encoder/decoder 风格的底层 Transformer block
+
+## 数据与接口兼容性原则
+
+当任务要求“沿用某个现有 datapipe、example 或训练流程”，去适配另一套数据或模型时，先做兼容性判断，不要默认它们可以直接互通。
+
+第一轮规格中至少要检查：
+
+- 样本返回格式是否兼容
+- `DataLoader` 的 batch 结构是否兼容
+- 训练脚本的 batch 解包方式是否兼容
+- 模型期望的输入输出协议是否兼容
+- 配置文件里的关键字段是否能直接复用
+
+如果不能直接兼容，第一轮必须明确写出：
+
+- 当前不兼容的原因
+- 最小可行桥接路径
+- 计划在 datapipe、配置层还是调用层做适配
+
+默认优先最小改动路径：
+
+- 先保持现有模型主体不变
+- 先保持现有训练主循环不变
+- 优先在 datapipe、配置或调用层完成桥接
+
+## 新数据集接入补充规则
+
+当用户提供的是 `oneskills/datapipes/` 尚未登记的新数据集时，额外执行以下规则：
+
+1. 第一轮必须明确当前任务是 `datapipe-only` 还是 `full-adaptation`
+2. 第一轮必须明确写出：
+   - 参考 datapipe
+   - 参考 example
+   - 新 datapipe 的文件名和类名
+   - 数据集的输入、输出和划分方式
+   - 是 `case-local` 还是主库集成
+3. 生成新 datapipe 时，优先遵守：
+   - `<DatasetName>.py`
+   - `<DatasetName>Dataset`
+   - `<DatasetName>Datapipe`
+4. 若用户进一步要求复用已有模型训练流程，优先保持：
+   - 模型类不改
+   - 训练主循环尽量不改
+   - 配置结构尽量对齐参考 example
+5. 默认只在以下位置做最小改动：
+   - datapipe 导入
+   - 数据配置项
+   - 输入输出维度
+   - 与旧数据集强耦合的 loss / metrics / inference 逻辑
+6. 如果用户没有明确要求改主库，默认把新 datapipe 与相关训练文件生成到目标 case 目录，而不是直接修改 `./onescience/src/`
 
 ## 天气预测任务补充规则
 
@@ -214,6 +269,7 @@ description: 面向 OneScience 当前推荐模型、组件与 datapipe 的轻量
 - 主干结构建议：
 - 主干特征提取模块：
 - 主要 shape 变化：
+- 若涉及数据适配：接口兼容性与桥接方案：
 - 需要确认的点：
 
 ## 待确认摘要
@@ -229,6 +285,7 @@ description: 面向 OneScience 当前推荐模型、组件与 datapipe 的轻量
 - [ ] 已说明输入输出
 - [ ] 已给出推荐复用组件
 - [ ] 已明确主干特征提取模块来自哪个组件族
+- [ ] 若涉及数据适配，已说明接口兼容性与桥接路径
 - [ ] 已说明主干结构
 - [ ] 已给出主要 shape 变化
 - [ ] 仍需用户确认的点：
