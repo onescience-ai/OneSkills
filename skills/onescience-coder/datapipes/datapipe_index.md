@@ -31,26 +31,26 @@
 
 | Datapipe | 数据类型 | 数据组织方式 | 样本粒度 | 主要配置 | 状态 | 文档 |
 |---|---|---|---|---|---|---|
-| ERA5Datapipe | 全球大气再分析数据 | 每年一个 HDF5 文件 | 连续时间窗样本 | `dataset_dir`, `used_years`, `used_variables`, `input_steps`, `output_steps`, `normalize` | `stable` | `./oneskills/datapipes/era5.md` |
-| CMEMSDatapipe | 全球海洋再分析 / 预报数据 | 按年份目录、按时刻 HDF5 文件 | 连续时间窗样本 | `data_dir`, `channels`, `train_ratio/val_ratio/test_ratio`, `input_steps`, `output_steps` | `stable` | `./oneskills/datapipes/cmems.md` |
-| AirfRANSDatapipe | 二维翼型 CFD 数据 | 每个工况一个目录，含 `manifest.json`、`.vtu` 与 `.vtp` | 单仿真图样本 | `source.data_dir`, `data.splits.*`, `data.sampling.*`, `data.subsampling`, `model_hparams.build_graph` | `stable` | `./oneskills/datapipes/airfrans.md` |
-| ShapeNetCarDatapipe | 三维车体表面 CFD 数据 | `param*/sample/` 目录下成对 `quadpress_smpl.vtk` / `hexvelo_smpl.vtk`，可选预处理缓存 | 单仿真图样本 | `source.data_dir`, `source.preprocessed_save_dir`, `data.splits.fold_id`, `model_hparams.cfd_mesh/r/max_neighbors` | `stable` | `./oneskills/datapipes/shapenetcar.md` |
-| DeepCFDDatapipe | 规则网格稳态流场配对数据 | 同目录下成对 `dataX.pkl` / `dataY.pkl` | 单样本图像张量 | `source.data_dir`, `source.data_x_name`, `source.data_y_name`, `data.split_ratio`, `data.seed`, `batch_size` | `stable` | `./oneskills/datapipes/deepcfd.md` |
-| DeepMind_CylinderFlowDatapipe | 非结构网格圆柱绕流时序图数据 | `meta.json + train/valid/test.tfrecord` | 单轨迹-单时间步 DGL 图样本 | `source.data_dir`, `source.stats_dir`, `data.train_steps/val_steps/test_steps`, `noise_std`, `batch_size` | `stable` | `./oneskills/datapipes/deepmind_cylinderflow.md` |
+| ERA5Datapipe | 全球大气再分析数据 | 每年一个 HDF5 文件 | 连续时间窗样本 | `dataset_dir`, `used_years`, `used_variables`, `input_steps`, `output_steps`, `normalize` | `stable` | `./datapipes/era5.md` |
+| CMEMSDatapipe | 全球海洋再分析 / 预报数据 | 按年份目录、按时刻 HDF5 文件 | 连续时间窗样本 | `data_dir`, `channels`, `train_ratio/val_ratio/test_ratio`, `input_steps`, `output_steps` | `stable` | `./datapipes/cmems.md` |
+| AirfRANSDatapipe | 二维翼型 CFD 数据 | 每个工况一个目录，含 `manifest.json`、`.vtu` 与 `.vtp` | 单仿真图样本 | `source.data_dir`, `data.splits.*`, `data.sampling.*`, `data.subsampling`, `model_hparams.build_graph` | `stable` | `./datapipes/airfrans.md` |
+| ShapeNetCarDatapipe | 三维车体表面 CFD 数据 | `param*/sample/` 目录下成对 `quadpress_smpl.vtk` / `hexvelo_smpl.vtk`，可选预处理缓存 | 单仿真图样本 | `source.data_dir`, `source.preprocessed_save_dir`, `data.splits.fold_id`, `model_hparams.cfd_mesh/r/max_neighbors` | `stable` | `./datapipes/shapenetcar.md` |
+| DeepCFDDatapipe | 规则网格稳态流场配对数据 | 同目录下成对 `dataX.pkl` / `dataY.pkl` | 单样本图像张量 | `source.data_dir`, `source.data_x_name`, `source.data_y_name`, `data.split_ratio`, `data.seed`, `batch_size` | `stable` | `./datapipes/deepcfd.md` |
+| DeepMind_CylinderFlowDatapipe | 非结构网格圆柱绕流时序图数据 | `meta.json + train/valid/test.tfrecord` | 单轨迹-单时间步 DGL 图样本 | `source.data_dir`, `source.stats_dir`, `data.train_steps/val_steps/test_steps`, `noise_std`, `batch_size` | `stable` | `./datapipes/deepmind_cylinderflow.md` |
 
 ## 未登记 Datapipe 的处理方式
 
 如果用户提供的是 `oneskills` 尚未登记的新数据集，不要跳过数据层设计。推荐做法：
 
-1. 先读取 `./oneskills/task/new_dataset_workflow.md`
+1. 先读取 `./task/new_dataset_workflow.md`
 2. 根据数据组织方式，从当前已登记 datapipe 中选择最接近的参考模板
 3. 先把新数据集映射成目标模型真正需要的样本格式，再决定是否需要新建 datapipe
 4. 若任务还要求复用某个已有模型或 example，再继续读取对应模型卡和示例工程
 
 若新数据集以 `vtk / vtu / vtp` 结果文件为主，优先比较：
 
-1. `./oneskills/datapipes/airfrans.md`
-2. `./oneskills/datapipes/shapenetcar.md`
+1. `./datapipes/airfrans.md`
+2. `./datapipes/shapenetcar.md`
 3. 目标模型对应的数据协议是否更接近 `PyG Data` 还是 `DGLGraph`
 
 ## 跨流程复用时的兼容性检查
@@ -80,7 +80,7 @@
 
 新增 datapipe 时，建议至少完成以下内容：
 
-1. 复制 `./oneskills/datapipes/TEMPLATE.md`
+1. 复制 `./datapipes/TEMPLATE.md`
 2. 填写数据目录结构、输入配置、样本构造方式、风险点和源码锚点
 3. 在本文档中登记
 4. 检查 `README.md`、`task/SKILL.md`、`DEVELOPER_MANUAL.md` 是否需要同步更新

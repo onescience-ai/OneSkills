@@ -2,8 +2,8 @@
 
 请先读取：
 
-- `./oneskills/case/second_round_guide.md`
-- `./oneskills/task/SKILL.md`
+- `./case/second_round_guide.md`
+- `./task/SKILL.md`
 
 再继续本任务。
 

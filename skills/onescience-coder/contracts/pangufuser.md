@@ -89,11 +89,11 @@
 
 ## 下层依赖契约入口
 
-- `./oneskills/contracts/onefuser.md`
-- `./oneskills/contracts/onetransformer.md`
-- `./oneskills/contracts/earthtransformer3dblock.md`
-- `./oneskills/contracts/oneattention.md`
-- `./oneskills/contracts/earthattention3d.md`
+- `./contracts/onefuser.md`
+- `./contracts/onetransformer.md`
+- `./contracts/earthtransformer3dblock.md`
+- `./contracts/oneattention.md`
+- `./contracts/earthattention3d.md`
 
 ## 源码锚点
 

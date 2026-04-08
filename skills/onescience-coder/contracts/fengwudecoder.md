@@ -86,15 +86,15 @@
 
 ## 下层依赖契约入口
 
-- `./oneskills/contracts/onedecoder.md`
-- `./oneskills/contracts/onesample.md`
-- `./oneskills/contracts/panguupsample.md`
-- `./oneskills/contracts/onerecovery.md`
-- `./oneskills/contracts/pangupatchrecovery.md`
-- `./oneskills/contracts/onetransformer.md`
-- `./oneskills/contracts/earthtransformer2dblock.md`
-- `./oneskills/contracts/oneattention.md`
-- `./oneskills/contracts/earthattention2d.md`
+- `./contracts/onedecoder.md`
+- `./contracts/onesample.md`
+- `./contracts/panguupsample.md`
+- `./contracts/onerecovery.md`
+- `./contracts/pangupatchrecovery.md`
+- `./contracts/onetransformer.md`
+- `./contracts/earthtransformer2dblock.md`
+- `./contracts/oneattention.md`
+- `./contracts/earthattention2d.md`
 
 ## 源码锚点
 

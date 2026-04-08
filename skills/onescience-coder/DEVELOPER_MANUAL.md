@@ -1,6 +1,6 @@
 # Developer Manual
 
-本手册面向维护 `./oneskills/` 的开发人员。
+本手册面向维护 `./` 的开发人员。
 
 目标不是解释如何使用某个单独案例，而是说明：
 
@@ -16,7 +16,7 @@
 当前推荐将当前目录理解为三层：
 
 ```text
-./oneskills/
+./
   README.md
   DEVELOPER_MANUAL.md
   models/
@@ -178,9 +178,9 @@ datapipe 文档与组件契约解决的问题不同：
 
 做法：
 
-1. 复制 `./oneskills/contracts/TEMPLATE.md`
+1. 复制 `./contracts/TEMPLATE.md`
 2. 生成新的组件文档，例如：
-   - `./oneskills/contracts/mynewmodule.md`
+   - `./contracts/mynewmodule.md`
 3. 按模板填写以下信息：
    - 基本信息
    - 组件职责
@@ -200,16 +200,16 @@ datapipe 文档与组件契约解决的问题不同：
 
 现有可参考的契约卡：
 
-- `./oneskills/contracts/panguembedding.md`
-- `./oneskills/contracts/pangufuser.md`
-- `./oneskills/contracts/earthtransformer3dblock.md`
-- `./oneskills/contracts/earthattention3d.md`
+- `./contracts/panguembedding.md`
+- `./contracts/pangufuser.md`
+- `./contracts/earthtransformer3dblock.md`
+- `./contracts/earthattention3d.md`
 
 #### C. 检查命名是否需要更新
 
 如果新组件引入了新的高频语义名，或者已有文档中会出现命名混乱，需要更新：
 
-- `./oneskills/contracts/naming_convention.md`
+- `./contracts/naming_convention.md`
 
 通常只有在以下情况才需要改：
 
@@ -221,7 +221,7 @@ datapipe 文档与组件契约解决的问题不同：
 
 当前使用：
 
-- `./oneskills/contracts/component_index.md`
+- `./contracts/component_index.md`
 
 它实际承担的是：
 
@@ -292,9 +292,9 @@ datapipe 文档与组件契约解决的问题不同：
 
 做法：
 
-1. 复制 `./oneskills/models/TEMPLATE.md`
+1. 复制 `./models/TEMPLATE.md`
 2. 生成新的模型文档，例如：
-   - `./oneskills/models/mymodel.md`
+   - `./models/mymodel.md`
 3. 按模板填写以下信息：
    - 基本信息
    - 模型定位
@@ -316,16 +316,16 @@ datapipe 文档与组件契约解决的问题不同：
 
 现有可参考模型卡：
 
-- `./oneskills/models/pangu.md`
-- `./oneskills/models/fourcastnet.md`
-- `./oneskills/models/fuxi.md`
-- `./oneskills/models/fengwu.md`
+- `./models/pangu.md`
+- `./models/fourcastnet.md`
+- `./models/fuxi.md`
+- `./models/fengwu.md`
 
 #### I. 在模型索引中登记
 
 当前使用：
 
-- `./oneskills/models/model_index.md`
+- `./models/model_index.md`
 
 建议补充的字段：
 
@@ -345,7 +345,7 @@ datapipe 文档与组件契约解决的问题不同：
 
 文件：
 
-- `./oneskills/README.md`
+- `./README.md`
 
 适用场景：
 
@@ -357,7 +357,7 @@ datapipe 文档与组件契约解决的问题不同：
 
 文件：
 
-- `./oneskills/task/SKILL.md`
+- `./task/SKILL.md`
 
 适用场景：
 
@@ -376,7 +376,7 @@ datapipe 文档与组件契约解决的问题不同：
 
 做法：
 
-1. 在 `./oneskills/case/` 下新增一个任务子目录
+1. 在 `./case/` 下新增一个任务子目录
 2. 放入：
    - `query.md`
    - `confirm.md`
@@ -384,15 +384,15 @@ datapipe 文档与组件契约解决的问题不同：
 
 建议复用通用流程文件：
 
-- `./oneskills/case/first_round_guide.md`
-- `./oneskills/case/second_round_guide.md`
-- `./oneskills/query.md`
-- `./oneskills/confirm.md`
+- `./case/first_round_guide.md`
+- `./case/second_round_guide.md`
+- `./query.md`
+- `./confirm.md`
 
 现有案例可参考：
 
-- `./oneskills/case/pangu_afno_replacement/query.md`
-- `./oneskills/case/pangu_afno_replacement/confirm.md`
+- `./case/pangu_afno_replacement/query.md`
+- `./case/pangu_afno_replacement/confirm.md`
 
 ---
 
@@ -478,8 +478,8 @@ datapipe 文档与组件契约解决的问题不同：
 
 1. 在 `./onescience/` 中完成 `mynewfuser.py`
 2. 确认它已注册到 `OneFuser`
-3. 复制 `./oneskills/contracts/TEMPLATE.md`
-4. 新建 `./oneskills/contracts/mynewfuser.md`
+3. 复制 `./contracts/TEMPLATE.md`
+4. 新建 `./contracts/mynewfuser.md`
 5. 在 `component_index.md` 中登记
 6. 若某个模型已经使用它，再更新对应模型卡
 
@@ -497,8 +497,8 @@ datapipe 文档与组件契约解决的问题不同：
 
 一个最小案例：
 
-1. 复制 `./oneskills/models/TEMPLATE.md`
-2. 新建 `./oneskills/models/mymodel.md`
+1. 复制 `./models/TEMPLATE.md`
+2. 新建 `./models/mymodel.md`
 3. 在 `model_index.md` 中登记
 4. 若需要回归测试，再新增 `case/<task_name>/query.md` 与 `confirm.md`
 

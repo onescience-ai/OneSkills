@@ -86,8 +86,8 @@ U_NO 把 U-Net 的多尺度下采样/上采样结构和 Fourier Neural Operator 
 
 ## 组件契约入口
 
-- `./oneskills/contracts/onefourier.md`
-- `./oneskills/contracts/onemlp.md`
+- `./contracts/onefourier.md`
+- `./contracts/onemlp.md`
 
 ## 源码锚点
 

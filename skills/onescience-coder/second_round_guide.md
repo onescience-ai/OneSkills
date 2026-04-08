@@ -1,6 +1,6 @@
 # Second Round Guide
 
-请先参考 `./oneskills/task/SKILL.md` 中定义的工作流执行任务。
+请先参考 `./task/SKILL.md` 中定义的工作流执行任务。
 
 当前阶段是**第二轮代码生成阶段**。
 
