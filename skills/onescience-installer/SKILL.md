@@ -140,8 +140,6 @@ python -c "import onescience; print('OneScience:', onescience.__version__)"
 
 ## 执行限制
 
-- 不主动执行安装命令，提供完整命令供用户执行
-- 不替用户改写超算系统 module 配置，仅做指导
 - 不处理与 OneScience 安装无关的系统运维问题
 - 如遇权限问题，建议联系超算运维管理员
 
