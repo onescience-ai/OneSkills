@@ -10,69 +10,66 @@
 
 OneSkills 是基于 OneScience 构建的开源知识与能力库（Skills Library），专为智能体（Agents）开发设计，提供可复用、可组合、可扩展的能力模块，聚焦 AI4S（AI for Science）科学智能科研领域，实现从**环境安装、科学代码生成、自动提交、代码测试**的全流程自动化科研能力，显著提升科学研究效率与代码生成效果。
 
-### 核心特性
-
-- 📚 结构化知识库：基于 OneScience 的科学知识与模型组件文档
-- 🧠 可执行能力模块：标准化的 Skills 定义与工作流
-- 🔗 Agent-ready 接口：专为 Claude Code、Trae 等智能体设计
-- 🌐 多领域覆盖：气象、生信、材料、流体等科学领域
 
 **核心 Skills**：
 
-| 目录                              | 作用                    |
-| ------------------------------- | --------------------- 
-| onescience-installer/       | **基于DCU的开发环境安装智能安装**             |
-| onescience-coder/          | **基于成熟模型的代码生成与改造**  |
-| onescience-runtime/         | **基于DCU的智能化作业提交**          |
-| onescience-skill/           | **需求拆解与管理**             |
-| onescience-test/            | **代码测试与验证**             |
+| 技能场景 | 技能名称 | 能力 |
+| ---- | ------------------------------- | --------------------- |
+| 环境配置 | onescience-installer | **多学科开发环境自动化安装** |
+| 代码开发 | onescience-coder | **代码生成与改造，支持模型、组件、数据管道** |
+| 作业管理 | onescience-runtime | **基于DCU的智能化作业提交** |
+| 任务规划 | onescience-skill | **需求拆解与管理** |
+| 质量保证 | onescience-test | **代码测试与验证** |
 
 <br />
 
-
 ## ⚙️ 快速开始
 
-### 安装使用
+### 一、skills安装
 
-OneSkills 是嵌入式开发工具库，无需独立安装。为获得更完整的功能支持，处理复杂任务时建议配合 **OneScience** 使用。 将两者克隆到同一项目目录后，复制 skills 到对应智能体的配置目录:
 
 ```bash
-git clone https://github.com/onescience-ai/onescience.git # 可选
 git clone https://github.com/onescience-ai/oneskills.git
+# git clone https://github.com/onescience-ai/onescience.git # 可选
+
 
 
 cp -r oneskills/skills /your/project/.trae/skills         # Trae
 
 # 其他智能体
-cp -r oneskills/skills /your/project/.claude/skills      # Claude Code
-cp -r oneskills/skills /your/project/.codex/skills       # Codex CLI
-cp -r oneskills/skills /your/project/.opencode/skills   # OpenCode
+# cp -r oneskills/skills /your/project/.claude/skills      # Claude Code
+# cp -r oneskills/skills /your/project/.codex/skills       # Codex CLI
+# cp -r oneskills/skills /your/project/.opencode/skills   # OpenCode
 
 ```
 
-### Trae 远程连接 SSH 配置
 
-在 Trae 中配置远程连接 SSH 的步骤如下：
+
+### 二、使用oneSkills开发代码
+
+Skills 通过自然语言提示词触发。以下是一个数据读取分析任务示例：
+
+```
+使用onescience-skill技能，生成读取部分ERA5数据集代码
+
+```
+
+将上述提示提交到 `OneScience科研智能体` 对话框，即可自动生成代码
+如图：
+
+![usage_screen](./assets/trae_usage.png)
+
+你已经使用oneskill智能开发代码
+
+### 开发完成后，可使用远程连接提交任务
+
 
 1. 打开 Trae IDE，点击左侧边栏的 "远程连接" 图标
 2. 添加新连接，在scnet下载ssh-key登录，配置ssh远程连接
 3. 测试连接，确保能够成功连接到远程服务器
 4. 配置工作目录，设置为你的项目路径
 
-### 使用 OneSkills开始开发
-
-Skills 通过自然语言提示词触发。以下是一个数据读取分析任务示例：
-
-```
-生成读取部分ERA5数据集代码， 并使用slurm提交运行
-
-```
-
-将上述提示提交到 `OneScience科研智能体` 对话框，即可自动生成代码，并提交运行。
-如图：
-
-![usage_screen](./assets/trae_usage.png)
-
+在对话框中输入 提交到scnet运行，即可提交任务，配置方式如下
 
 ### 配置文件说明
 
@@ -169,6 +166,14 @@ tags:
 ```
 
 **完整示例**：参考 `./skills/` 目录下的现有 Skills 文件。
+
+
+## OneSkills 核心特性
+
+- 📚 结构化知识库：基于 OneScience 的科学知识与模型组件文档
+- 🧠 可执行能力模块：标准化的 Skills 定义与工作流
+- 🔗 Agent-ready 接口：专为 Claude Code、Trae 等智能体设计
+- 🌐 多领域覆盖：气象、生信、材料、流体等科学领域
 
 ***
 
