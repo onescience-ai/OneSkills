@@ -13,12 +13,14 @@ description: 在 SLURM 环境中自动提交代码。读取用户手动配置的
 
 ## 功能
 
-在 SLURM 环境中自动提交 AI4S 代码：
+在远程 SLURM 环境中自动提交 AI4S 代码：
 
 - 读取 `onescience.json` 配置
 - 基于 `tpl.slurm` 模板生成 SLURM 脚本（**模板内容固定，禁止修改**）
 - 仅使用模板中的变量替换机制，不添加额外内容
-- 自动提交作业到 SLURM
+- 从 `~/.ssh/config` 自动解析远程登录环境配置
+- 将**生成的 SLURM 脚本**和**用户代码脚本**传输到远端登录节点
+- 通过 SSH 在**远端环境**执行 SLURM 作业提交
 - 支持 DCU 环境配置和分布式训练
 
 ## 用户配置文件路径
@@ -42,7 +44,8 @@ description: 在 SLURM 环境中自动提交代码。读取用户手动配置的
 | `runtime.modules`                 | 模块列表       | \["sghpc-mpi-gcc/26.3", "sghpcdas/25.6"] |
 | `runtime.conda.env_name`          | Conda 环境名称 | "onescience311"                          |
 | `runtime.script.job_name`         | 作业名称       | "onescience\_job"                        |
-| `runtime.script.code_path`        | 代码路径       | "train.py"                               |
+| `runtime.script.code_path`        | 用户代码脚本路径 | "train.py"                               |
+| `runtime.script.path`             | SLURM脚本路径  | "slurm_submit.sh"                        |
 | `runtime.script.env_vars`         | 环境变量       | 包含 ONESCIENCE\_DATASETS\_DIR 等           |
 
 ## SLURM 模板详解
@@ -146,7 +149,8 @@ python {script.code_path}
 | `{cluster.time_limit}`               | `runtime.cluster.time_limit`                      | 时间限制          |
 | `{job_name}`                         | `runtime.script.job_name`                         | 作业名称          |
 | `{conda.env_name}`                   | `runtime.conda.env_name`                          | Conda 环境名称    |
-| `{script.code_path}`                 | `runtime.script.code_path`                        | 要执行的代码路径      |
+| `{script.code_path}`                 | `runtime.script.code_path`                        | 用户代码脚本路径        |
+| `{script.path}`                      | `runtime.script.path`                             | SLURM 脚本路径         |
 | `{env_vars.ONESCIENCE_DATASETS_DIR}` | `runtime.script.env_vars.ONESCIENCE_DATASETS_DIR` | 数据集目录         |
 | `{env_vars.ONESCIENCE_MODELS_DIR}`   | `runtime.script.env_vars.ONESCIENCE_MODELS_DIR`   | 模型目录          |
 | `{modules_config}`                   | `runtime.modules`                                 | 自动生成的模块加载命令   |
@@ -188,12 +192,44 @@ OneScience 环境变量
 代码执行
 ```
 
+## 远程传输机制
+
+### SSH 配置解析
+
+技能通过 `cat ~/.ssh/config` 命令在用户本地终端读取 SSH 配置文件。**注意：`~/.ssh/config` 是用户本地系统的配置文件，不在项目工作区中，不要在工作区搜索。**
+
+解析获取的远程登录配置包括：Host、HostName、User、Port、IdentityFile 等，无需在 `onescience.json` 中配置。
+
+### SSH 配置验证
+
+1. **读取 SSH 配置**：使用命令 `cat ~/.ssh/config` 在用户本地终端读取配置文件（此文件不在工作区中，不要在工作区搜索）
+2. **SSH 配置验证**：
+   - 如果 `~/.ssh/config` 文件**不存在**：停止执行，提示用户 "未找到 SSH 配置文件，请先配置远程主机连接"
+   - 如果配置文件中**无 Host**：停止执行，提示用户 "SSH 配置中未找到任何 Host，请先配置远程主机"
+   - 如果配置文件中有**多个 Host**：列出所有可用主机，提示用户选择具体的 Host
+3. **建立远程连接**：使用 `ssh user@host` 形式连接到用户选择的远程节点
+
+### 执行流程
+
+1. **读取配置**：从 `onescience.json` 中读取 `runtime.script.path`（SLURM脚本路径）和 `runtime.script.env_vars`（环境变量）
+2. **生成脚本**：在本地基于 `tpl.slurm` 模板生成 SLURM 脚本（路径由 `runtime.script.path` 指定，默认 `slurm_submit.sh`）
+3. **解析配置**：通过 `cat ~/.ssh/config` 读取用户本地 SSH 配置，获取配置的主机别名
+4. **传输脚本**：使用 `scp` 将生成的 SLURM 脚本和用户代码脚本（`runtime.script.code_path`）一起传输到远端登录节点
+   - `scp <slurm_script_path> <user@host>:~`
+   - `scp <code_path> <user@host>:~`
+5. **远程提交**：使用 `ssh <user@host> "sbatch ~/<slurm_script_name>"` 在远端环境执行提交命令
+
+> **注意**：SLURM 作业始终在**远端环境**提交，本地环境不需要安装 sbatch 等命令。
+
+> **注意**：使用 `ssh user@host` 形式执行远程命令，其中 `user` 为远程主机用户名，`host` 为主机地址或配置的 Host 别名。
+
 ## 输出
 
 - **作业信息**：作业 ID、状态、提交时间
 - **日志文件**：`logs/%j.out`（其中 %j 为作业 ID）
 - **运行时间**：作业开始和结束时间
 - **环境信息**：Python 路径、节点列表、SLURM 环境变量
+- **传输信息**：远程主机、目标路径、脚本名称
 
 ## 最佳实践
 
@@ -228,6 +264,15 @@ OneScience 环境变量
    - 确认模板文件路径：`tpl.slurm`
    - 确认模板文件未被修改
    - 检查模板变量是否正确配置
+6. **SSH 连接失败**
+   - 检查 `~/.ssh/config` 文件是否存在且格式正确
+   - 确认 SSH 密钥是否正确配置
+   - 如果配置文件中无 Host，提示用户先配置远程主机
+   - 如果配置文件中有多个 Host，提示用户选择具体的 Host
+7. **文件传输失败**
+   - 检查远端用户目录是否有写入权限
+   - 检查网络连接状态
+   - 确认 `runtime.script.code_path` 指定的用户代码脚本存在
 
 ## 注意事项
 
@@ -239,3 +284,9 @@ OneScience 环境变量
 - **独占模式**：默认使用 `--exclusive` 模式，确保作业获得完整节点资源
 - **变量替换**：只允许使用模板中定义的变量，不允许添加新变量
 - **脚本生成**：生成的 SLURM 脚本必须严格遵循模板结构，不允许添加额外内容
+- **SSH 配置**：远程传输依赖 `~/.ssh/config` 文件，需提前配置好 SSH 密钥登录
+- **SSH 格式**：使用 `ssh user@host` 形式执行远程命令
+- **Host 选择**：如果配置文件中有多个 Host，会提示用户选择具体的 Host
+- **传输权限**：确保远端目标目录有写入权限
+- **脚本依赖**：`runtime.script.code_path` 指定的用户代码脚本需提前生成，由其他 skill 创建
+- **脚本路径**：SLURM 脚本路径由 `runtime.script.path` 指定，用户代码脚本路径由 `runtime.script.code_path` 指定
