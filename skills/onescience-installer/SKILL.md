@@ -106,13 +106,13 @@ bash install.sh matchem # 安装材料化学领域
 安装完成后，执行以下完整命令验证安装是否成功（**禁止创建验证脚本，必须严格按照以下命令直接执行**）：
 
 ```bash
-ssh user@host "module load sghpcdas/25.6 && source ~/.bashrc && module load sghpc-mpi-gcc/26.3 && conda activate onescience311 && python -c 'import torch; print(torch.__version__)' && python -c 'import onescience; print(onescience.__version__)'
+ssh user@host "module load sghpcdas/25.6 && source ~/.bashrc && module load sghpc-mpi-gcc/26.3 && conda activate onescience311 && python -c 'import torch; print(torch.__version__)' && python -c 'import onescience; print(onescience.__version__)'"
 ```
 
 **SSH 执行注意事项**：
 - 使用 `ssh user@host "command"` 形式执行远程命令
 - **严格按照文档中的命令执行，不得添加额外内容**
-- 完整验证命令：ssh user@host "module load sghpcdas/25.6 && source ~/.bashrc && module load sghpc-mpi-gcc/26.3 && conda activate onescience311 && python -c 'import torch; print(torch.__version__)' && python -c 'import onescience; print(onescience.__version__)'
+- 完整验证命令：ssh user@host "module load sghpcdas/25.6 && source ~/.bashrc && module load sghpc-mpi-gcc/26.3 && conda activate onescience311 && python -c 'import torch; print(torch.__version__)' && python -c 'import onescience; print(onescience.__version__)'"
 
 ## 领域说明
 
