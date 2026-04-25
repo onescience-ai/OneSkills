@@ -1,0 +1,14 @@
+{
+  "agent": "claude",
+  "skills_dir": ".claude/skills",
+  "integration_targets": [
+    {
+      "source": "integrations/generic-agent.md",
+      "target": ".claude/oneskills/generic-agent.md"
+    },
+    {
+      "source": "integrations/claude",
+      "target": ".claude/oneskills/claude"
+    }
+  ]
+}

@@ -1,37 +1,194 @@
-# oneskills
+# <div align="center">OneSkills</div>
 
-#### 介绍
-OneSkills 是基于 OneScience 构建的一个开源知识与 Skills（能力）库，旨在为智能体（Agents）开发提供可复用、可组合、可扩展的能力模块，优化多种智能体AI4S领域代码生成效果。
+<p align="center">
+  A skills library for AI-native scientific research built around <strong>OneScience</strong>.
+</p>
 
-#### 软件架构
-软件架构说明
+<p align="center">
+  Reusable skills for <strong>workflow orchestration</strong>, <strong>coding</strong>, <strong>debugging</strong>, <strong>runtime submission</strong>, and <strong>environment setup</strong>.
+</p>
 
+<p align="center">
+  Works with <strong>Claude Code</strong>, <strong>Codex CLI</strong>, <strong>Trae</strong>, and other skill-based agents through optional integration adapters.
+</p>
 
-#### 安装教程
+---
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## What is OneSkills?
 
-#### 使用说明
+`OneSkills` 是面向 AI4S（AI for Science）场景的通用技能仓库。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+它把科研开发中的工作流理解、角色协作、代码生成、远程运行与调试经验，整理成可复用的 `SKILL.md` 能力模块，供不同智能体消费。
 
-#### 参与贡献
+仓库核心是：
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+- `skills/`：通用技能
+- `references/`：通用参考资料
+- `integrations/`：可选的智能体适配层
 
+## Core Pipeline
 
-#### 特技
+推荐主链：
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+```text
+onescience-workflow -> onescience-role -> onescience-skill -> onescience-hardware -> onescience-coder -> onescience-runtime -> onescience-debug
+```
+
+其中：
+
+- `onescience-workflow`：理解用户真实科研任务
+- `onescience-role`：做角色协作拆分
+- `onescience-skill`：选择最小执行链
+- 执行技能：负责硬件感知、代码实现、运行、安装、排障
+
+## Included Skills
+
+- `onescience-workflow`
+- `onescience-role`
+- `onescience-skill`
+- `onescience-hardware`
+- `onescience-coder`
+- `onescience-runtime`
+- `onescience-debug`
+- `onescience-installer`
+
+## Supported Requests
+
+当前 `oneskills` 可以直接支持以下用户需求：
+
+- 科研任务梳理：理解“我要接入数据 / 改模型 / 跑远程 / 做评估”这类真实科研目标
+- 工作流与角色拆解：判断当前任务该由谁推进、角色如何交接、下一步进入哪条执行链
+- OneScience 代码实现：完成 DataPipe、模型、组件、配置与入口脚本相关实现或改造
+- 远程环境感知：识别 Host、DCU / GPU、队列、module、conda 与路径约束
+- 远程运行提交：基于 `onescience.json` 与 `tpl.slurm` 生成并提交作业
+- 测试与排障：识别模型测试、Earth DataPipe 测试或完整训练 / 推理流程测试路径
+- 环境安装：在远程 DCU 环境安装并验证 `OneScience`
+- 自定义领域扩展：指导用户补充领域画像、角色协作、模板资产或新增稳定执行能力
+
+更直观地说，用户可以直接提出这类问题：
+
+- “帮我把这个科研任务拆成正确的技能链”
+- “帮我接入某个数据集 / 改某个模型 / 补配置”
+- “帮我识别远程环境并准备运行”
+- “帮我提交到远端跑起来”
+- “帮我判断该怎么测、为什么失败”
+- “帮我在 DCU 环境安装 OneScience”
+
+## Install
+
+推荐使用统一安装器：
+
+```bash
+python3 install/install_oneskills.py --agent codex --project /your/project
+```
+
+支持的目标包括：
+
+- `codex`
+- `claude`
+- `trae`
+- `opencode`
+- `generic`（需额外提供 `--skills-dir`）
+
+常用方式：
+
+```bash
+python3 install/install_oneskills.py --agent codex --project /your/project
+python3 install/install_oneskills.py --agent claude --project /your/project
+python3 install/install_oneskills.py --agent trae --project /your/project
+```
+
+开发期如果希望技能目录始终跟随当前仓库更新，可使用软链接模式：
+
+```bash
+python3 install/install_oneskills.py --agent codex --project /your/project --mode symlink
+```
+
+如果还要把运行资产一并装到项目根目录：
+
+```bash
+python3 install/install_oneskills.py --agent codex --project /your/project --with-runtime-assets
+```
+
+卸载：
+
+```bash
+python3 install/install_oneskills.py --agent codex --project /your/project --uninstall
+```
+
+更多参数见：
+
+- `install/README.md`
+- `install/install_oneskills.py`
+
+跨平台建议：
+
+- `macOS / Linux`：可使用 `copy` 或 `symlink`
+- `Windows`：建议使用默认 `copy`；若显式传入 `--mode symlink`，安装器会自动降级为 `copy`
+
+常见问题见：
+
+- `install/README.md`
+
+### Manual fallback
+
+如果你不想使用安装器，也可以手动复制。
+
+### Codex CLI
+
+```bash
+git clone https://github.com/onescience-ai/oneskills.git
+mkdir -p /your/project/.codex
+cp -r oneskills/skills/* /your/project/.codex/skills/
+```
+
+### Claude Code
+
+```bash
+git clone https://github.com/onescience-ai/oneskills.git
+mkdir -p /your/project/.claude
+cp -r oneskills/skills/* /your/project/.claude/skills/
+```
+
+### Trae
+
+```bash
+git clone https://github.com/onescience-ai/oneskills.git
+mkdir -p /your/project/.trae
+cp -r oneskills/skills/* /your/project/.trae/skills/
+```
+
+### Other agents
+
+你也可以使用 generic 模式安装到任意技能目录：
+
+```bash
+python3 install/install_oneskills.py --agent generic --project /your/project --skills-dir .agent/skills
+```
+
+## Custom Skills
+
+如果你想在不破坏当前产品分层的前提下扩展自定义技能，建议先阅读：
+
+- `docs/user-guides/extend_domain_experience.md`
+- `docs/open-source/custom_skill_contribution.md`
+
+推荐原则：
+
+- 优先扩展现有分层
+- 优先补领域画像与模板资产
+- 只有新增稳定执行能力时，才新增新的 skill
+
+## Optional Integrations
+
+- `integrations/generic-agent.md`
+- `integrations/codex/README.md`
+- `integrations/claude/`
+
+## Contribution Notes
+
+本仓库公开通用技能、公开参考资料与用户可用文档。
+
+如果你想了解如何在本仓库里扩展自定义技能，优先阅读：
+
+- `docs/open-source/custom_skill_contribution.md`
