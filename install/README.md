@@ -88,3 +88,15 @@ python3 install/install_oneskills.py --agent codex --project /path/to/project --
 - 安装记录文件 `.oneskills/install-state/<agent>.json`
 
 它不会删除未被安装器记录的其他用户文件。
+
+### 5. Claude / Codex 插件模式怎么安装？
+
+如果你希望按插件方式安装 Claude Code，或按 Codex 原生 skills 发现方式安装，请看：
+
+- `docs/user-guides/claude_codex_plugin_install.md`
+- `.codex/INSTALL.md`
+
+MCP 配置示例在：
+
+- `onescience-plugin/config-examples/claude.mcp.example.json`
+- `onescience-plugin/config-examples/codex.mcp.example.json`

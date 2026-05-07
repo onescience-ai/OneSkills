@@ -120,6 +120,7 @@ python3 install/install_oneskills.py --agent codex --project /your/project --uni
 
 - `install/README.md`
 - `install/install_oneskills.py`
+- `docs/user-guides/claude_codex_plugin_install.md`
 
 跨平台建议：
 
@@ -144,12 +145,25 @@ cp -r oneskills/skills/* /your/project/.codex/skills/
 
 ### Claude Code
 
-```bash
-git clone https://github.com/onescience-ai/oneskills.git
-mkdir -p /your/project/.claude
-cp -r oneskills/skills/* /your/project/.claude/skills/
+推荐使用 Claude Code 插件安装：
+
+```text
+/plugin marketplace add https://github.com/onescience-ai/oneskills
+/plugin install oneskills@oneskills
 ```
 
+安装后重启 Claude Code，或在支持的版本中执行 `/reload-plugins`。
+
+本地开发调试时，也可以 clone 后把仓库根目录作为 marketplace：
+
+```bash
+git clone https://github.com/onescience-ai/oneskills.git
+```
+
+```text
+/plugin marketplace add ./oneskills
+/plugin install oneskills@oneskills
+```
 ### Trae
 
 ```bash
@@ -184,6 +198,10 @@ python3 install/install_oneskills.py --agent generic --project /your/project --s
 - `integrations/generic-agent.md`
 - `integrations/codex/README.md`
 - `integrations/claude/`
+- `.claude-plugin/`：Claude Code 插件元数据与 marketplace 示例
+- `.codex/INSTALL.md`：Codex 原生 skills 发现安装方式
+
+Claude Code 推荐执行 `/plugin marketplace add https://github.com/onescience-ai/oneskills`。本地测试时执行 `/plugin marketplace add ./oneskills`，不要添加 `./oneskills/.claude-plugin`。这样 marketplace 中的 `source: "./"` 才会指向仓库根目录，并安装完整的 `skills/` 目录。
 
 ## Contribution Notes
 
@@ -192,3 +210,4 @@ python3 install/install_oneskills.py --agent generic --project /your/project --s
 如果你想了解如何在本仓库里扩展自定义技能，优先阅读：
 
 - `docs/open-source/custom_skill_contribution.md`
+
