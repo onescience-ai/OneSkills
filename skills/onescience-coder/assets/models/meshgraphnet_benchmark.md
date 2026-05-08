@@ -88,7 +88,7 @@
 
 ## 组件契约入口
 
-- `./contracts/onemlp.md`
+- `../contracts/onemlp.md`
 
 ## 源码锚点
 

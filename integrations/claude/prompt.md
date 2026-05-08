@@ -1,8 +1,8 @@
 生成项目代码时必须满足以下要求（必须严格遵守）：
 
 0. 开始任务前必须先阅读：
-   - .claude/context.md
-   - .claude/architecture.md（如果存在）
+   - `integrations/claude/context.md`
+   - `integrations/claude/architecture.md`（如果存在）
 
 1. 利用 onescience 已有代码时：
    - 检查注册模块是否遗漏
@@ -32,7 +32,7 @@
    - 一次性生成所有必需文件（数据加载、训练脚本、配置、README、启动脚本）
    - 生成时只做基本语法检查，不要中途停下来做详细review
 
-   **阶段2：依据.claude/skills里的文件完整 Code Review**（所有文件生成完毕后）
+   **阶段2：依据 `integrations/claude/skills/` 里的文件完整 Code Review**（所有文件生成完毕后）
    - **对比参考模型**：确认代码风格和规范一致
    - **验证配置数据**：确认实际值与假设一致
    - 检查 import 是否完整

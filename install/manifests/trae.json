@@ -1,0 +1,5 @@
+{
+  "agent": "trae",
+  "skills_dir": ".trae/skills",
+  "integration_targets": []
+}

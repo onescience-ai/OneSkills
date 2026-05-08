@@ -1,0 +1,20 @@
+{
+  "name": "oneskills",
+  "description": "OneScience / OneSkills plugin marketplace for scientific workflow skills and optional SCnet MCP runtime integration.",
+  "owner": {
+    "name": "OneScience AI",
+    "url": "https://github.com/onescience-ai"
+  },
+  "plugins": [
+    {
+      "name": "oneskills",
+      "description": "OneScience / OneSkills skills for AI-native scientific research workflows, coding, runtime submission, debugging, and environment setup.",
+      "version": "2026.05.07",
+      "source": "./",
+      "author": {
+        "name": "OneScience AI",
+        "url": "https://github.com/onescience-ai"
+      }
+    }
+  ]
+}

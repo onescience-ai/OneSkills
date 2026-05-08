@@ -81,7 +81,7 @@ RegDGCNN 是动态 kNN 图上的点级回归基线，适合在没有显式固定
 
 ## 组件契约入口
 
-- `./contracts/onemlp.md`
+- `../contracts/onemlp.md`
 
 ## 源码锚点
 

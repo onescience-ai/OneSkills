@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "scnet": {
+      "command": "REPLACE_WITH_SCNET_MCP_COMMAND",
+      "args": [],
+      "env": {
+        "SCNET_TOKEN": "REPLACE_WITH_TOKEN_OR_ENV_REFERENCE"
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "agent": "opencode",
+  "skills_dir": ".opencode/skills",
+  "integration_targets": [
+    {
+      "source": "integrations/generic-agent.md",
+      "target": ".opencode/oneskills/generic-agent.md"
+    }
+  ]
+}

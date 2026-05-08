@@ -1,9 +1,9 @@
-# Project Context
-> **重要**: 在开始任何任务前，必须先阅读本文件和 architecture.md
+# Claude Integration Context
+> **重要**: 在开始任何任务前，必须先阅读本文件和 `architecture.md`
 
-This repository belongs to the OneScience scientific computing platform.
+This file is an optional Claude-specific integration context for the OneScience scientific computing platform.
 
-> 详细架构信息请参考 [architecture.md](.claude/architecture.md)
+> 详细架构信息请参考 [architecture.md](./architecture.md)
 
 ## 可复用组件
 

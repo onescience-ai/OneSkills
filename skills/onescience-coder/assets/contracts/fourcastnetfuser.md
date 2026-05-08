@@ -81,11 +81,11 @@
 
 ## 下层依赖契约入口
 
-- `./contracts/onefuser.md`
-- `./contracts/oneafno.md`
-- `./contracts/fourcastnetafno.md`
-- `./contracts/onefc.md`
-- `./contracts/fourcastnetfc.md`
+- `./onefuser.md`
+- `./oneafno.md`
+- `./fourcastnetafno.md`
+- `./onefc.md`
+- `./fourcastnetfc.md`
 
 ## 源码锚点
 

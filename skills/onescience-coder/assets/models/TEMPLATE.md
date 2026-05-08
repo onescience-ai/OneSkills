@@ -85,8 +85,8 @@
 
 ## 组件契约入口
 
-- `./contracts/<component_1>.md`
-- `./contracts/<component_2>.md`
+- `../contracts/<component_1>.md`
+- `../contracts/<component_2>.md`
 
 ## 源码锚点
 

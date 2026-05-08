@@ -65,7 +65,7 @@
 
 ## 风险点
 
-- 很容易和 `./models/transolver.md` 指向的另一套实现混淆。
+- 很容易和 `./transolver.md` 指向的另一套实现混淆。
 - 这是 token 接口，不直接消费 `PyG Data.x / Data.pos`。
 - `slice_num` 会影响注意力切片行为，改动时通常需要联动训练稳定性观察。
 
@@ -77,8 +77,8 @@
 
 ## 组件契约入口
 
-- `./contracts/onetransformer.md`
-- `./contracts/onemlp.md`
+- `../contracts/onetransformer.md`
+- `../contracts/onemlp.md`
 
 ## 源码锚点
 

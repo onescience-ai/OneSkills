@@ -76,10 +76,10 @@
 
 ## 下层依赖契约入口
 
-- `./contracts/onetransformer.md`
-- `./contracts/onesample.md`
-- `./contracts/fuxidownsample.md`
-- `./contracts/fuxiupsample.md`
+- `./onetransformer.md`
+- `./onesample.md`
+- `./fuxidownsample.md`
+- `./fuxiupsample.md`
 
 ## 源码锚点
 

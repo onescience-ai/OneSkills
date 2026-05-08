@@ -86,15 +86,15 @@
 
 ## 下层依赖契约入口
 
-- `./contracts/oneencoder.md`
-- `./contracts/oneembedding.md`
-- `./contracts/panguembedding.md`
-- `./contracts/onesample.md`
-- `./contracts/pangudownsample.md`
-- `./contracts/onetransformer.md`
-- `./contracts/earthtransformer2dblock.md`
-- `./contracts/oneattention.md`
-- `./contracts/earthattention2d.md`
+- `./oneencoder.md`
+- `./oneembedding.md`
+- `./panguembedding.md`
+- `./onesample.md`
+- `./pangudownsample.md`
+- `./onetransformer.md`
+- `./earthtransformer2dblock.md`
+- `./oneattention.md`
+- `./earthattention2d.md`
 
 ## 源码锚点
 

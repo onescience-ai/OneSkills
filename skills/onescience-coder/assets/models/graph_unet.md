@@ -83,7 +83,7 @@ Graph_UNet 是基于图下采样/上采样的层次化 PyG 基线，适合在显
 
 ## 组件契约入口
 
-- `./contracts/onemlp.md`
+- `../contracts/onemlp.md`
 
 ## 源码锚点
 
