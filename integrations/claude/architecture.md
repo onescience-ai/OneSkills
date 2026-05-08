@@ -14,7 +14,7 @@ OneScience 是基于深度学习框架打造的科学计算工具包，专注于
 
 ```
 onescience/
-├── .claude/                    # Claude AI 配置
+├── integrations/claude/        # Claude AI 适配层
 │   ├── checks/                # 检查规则
 │   ├── skills/                # 技能定义
 │   └── settings.json         # 配置文件

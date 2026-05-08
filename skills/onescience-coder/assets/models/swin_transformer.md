@@ -80,8 +80,8 @@ Swin_Transformer 是窗口化注意力的二维结构化网格基线，适合在
 
 ## 组件契约入口
 
-- `./contracts/onetransformer.md`
-- `./contracts/onemlp.md`
+- `../contracts/onetransformer.md`
+- `../contracts/onemlp.md`
 
 ## 源码锚点
 

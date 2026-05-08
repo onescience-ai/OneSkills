@@ -89,11 +89,11 @@
 
 ## 组件契约入口
 
-- `./contracts/oneencoder.md`
-- `./contracts/onedecoder.md`
-- `./contracts/onehead.md`
-- `./contracts/onemlp.md`
-- `./contracts/onefourier.md`
+- `../contracts/oneencoder.md`
+- `../contracts/onedecoder.md`
+- `../contracts/onehead.md`
+- `../contracts/onemlp.md`
+- `../contracts/onefourier.md`
 
 ## 源码锚点
 

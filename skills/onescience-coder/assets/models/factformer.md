@@ -78,8 +78,8 @@ Factformer 是 `CFD_Benchmark` 里的结构化网格 Transformer 基线，核心
 
 ## 组件契约入口
 
-- `./contracts/onetransformer.md`
-- `./contracts/onemlp.md`
+- `../contracts/onetransformer.md`
+- `../contracts/onemlp.md`
 
 ## 源码锚点
 

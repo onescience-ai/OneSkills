@@ -77,8 +77,8 @@ ONO 是 Orthogonal Neural Operator 路线的 Transformer 风格基线，适合�
 
 ## 组件契约入口
 
-- `./contracts/onetransformer.md`
-- `./contracts/onemlp.md`
+- `../contracts/onetransformer.md`
+- `../contracts/onemlp.md`
 
 ## 源码锚点
 

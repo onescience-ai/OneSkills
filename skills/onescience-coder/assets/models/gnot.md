@@ -80,8 +80,8 @@ GNOT 是带 MoE 风格 block 的 neural operator Transformer，适合在标准 t
 
 ## 组件契约入口
 
-- `./contracts/onetransformer.md`
-- `./contracts/onemlp.md`
+- `../contracts/onetransformer.md`
+- `../contracts/onemlp.md`
 
 ## 源码锚点
 

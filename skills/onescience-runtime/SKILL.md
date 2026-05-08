@@ -1,292 +1,74 @@
 ---
 name: onescience-runtime
-description: 在用户使用slurm提交运行情况下
+description: 在代码生成完成后，基于项目根目录的 `onescience.json` 与 `tpl.slurm` 创建远程连接、生成运行脚本，并将作业提交到目标远程环境运行。
 ---
-
-***
-
-name: onescience-runtime
-description: 在 SLURM 环境中自动提交代码。读取用户手动配置的 onescience.json 配置，基于 tpl.slurm 模板生成 SLURM 脚本并提交。
-------------------------------------------------------------------------------------------
 
 # OneScience Runtime Skill
 
-## 功能
+## 职责
 
-在远程 SLURM 环境中自动提交 AI4S 代码：
+在运行任务里：
 
-- 读取 `onescience.json` 配置
-- 基于 `tpl.slurm` 模板生成 SLURM 脚本（**模板内容固定，禁止修改**）
-- 仅使用模板中的变量替换机制，不添加额外内容
-- 从 `~/.ssh/config` 自动解析远程登录环境配置
-- 将**生成的 SLURM 脚本**和**用户代码脚本**传输到远端登录节点
-- 通过 SSH 在**远端环境**执行 SLURM 作业提交
-- 支持 DCU 环境配置和分布式训练
+1. 读取 `onescience-hardware` 提供的完整硬件画像
+2. 读取项目根目录的 `onescience.json`
+3. 读取项目根目录的 `tpl.slurm`
+4. 基于配置生成运行脚本与提交脚本
+5. 创建远程连接
+6. 传输文件并提交作业到远程环境
 
-## 用户配置文件路径
+如果需要进一步判断字段归属或层间交接，读取 `./references/runtime_contract.md`。
+如果需要处理“远程环境未配置”或“远程信息不完整”的异常场景，读取 `../../references/remote_fallback.md`。
 
-`onescience.json`
+## 输入约定
 
-## 配置项说明
+- `onescience.json`：位于当前项目根目录
+- `tpl.slurm`：位于当前项目根目录；本仓库内的标准模板资产位于 `./assets/tpl.slurm`，使用时应复制到用户工程根目录
+- `runtime.script.code_path`：用户代码脚本路径
+- `runtime.script.path`：生成后的 SLURM 脚本路径
+- `onescience-hardware` 输出的完整硬件画像：Host、平台、队列、模块和环境约束
 
-### 核心配置
+如果缺少 `onescience.json`、`tpl.slurm` 或可用的完整硬件画像，直接报告，不要擅自猜测。不要把给 `onescience-coder` 用的代码生成交接摘要误当成运行输入。
 
-| 配置项                               | 描述         | 示例值                                      |
-| --------------------------------- | ---------- | ---------------------------------------- |
-| `runtime.mode`                    | 运行模式       | "slurm"                                  |
-| `runtime.cluster.partition`       | SLURM 分区   | "hpctest02"                              |
-| `runtime.cluster.nodes`           | 节点数        | 1                                        |
-| `runtime.cluster.gpus_per_node`   | 每节点 GPU 数  | 1                                        |
-| `runtime.cluster.cpus_per_task`   | 每任务 CPU 数  | 8                                        |
-| `runtime.cluster.time_limit`      | 时间限制       | "02:00:00"                               |
-| `runtime.cluster.gpu_type`        | GPU 类型     | "dcu"                                    |
-| `runtime.cluster.ntasks_per_node` | 每节点任务数     | 1                                        |
-| `runtime.modules`                 | 模块列表       | \["sghpc-mpi-gcc/26.3", "sghpcdas/25.6"] |
-| `runtime.conda.env_name`          | Conda 环境名称 | "onescience311"                          |
-| `runtime.script.job_name`         | 作业名称       | "onescience\_job"                        |
-| `runtime.script.code_path`        | 用户代码脚本路径 | "train.py"                               |
-| `runtime.script.path`             | SLURM脚本路径  | "slurm_submit.sh"                        |
-| `runtime.script.env_vars`         | 环境变量       | 包含 ONESCIENCE\_DATASETS\_DIR 等           |
+## 执行流程
 
-## SLURM 模板详解
+1. 校验 `onescience.json`、`tpl.slurm`、`runtime.script.code_path` 是否存在。
+2. 读取 `onescience-hardware` 提供的完整硬件画像中的 Host、平台、队列、模块和环境信息。
+3. 从 `onescience.json` 提取集群、模块、conda、脚本和环境变量配置。
+4. 结合模板与硬件画像生成运行脚本；仅使用 `tpl.slurm` 中已有变量做替换，不向模板外追加新段落。
+5. 如有需要，确保作业脚本使用的日志目录存在。
+6. 创建远程连接，并把提交脚本与用户代码脚本传到远端环境。
+7. 在远端执行运行命令或 `sbatch` 提交命令。
+8. 返回作业 ID、提交主机、脚本路径和后续查看日志的方法。
 
-**重要：模板文件路径为** **`tpl.slurm`，模板内容固定，禁止修改。**
+## 模板规则
 
-模板结构如下：
+- `tpl.slurm` 是固定模板
+- 允许做变量替换，不允许改模板结构
+- 变量优先来自 `onescience.json`
+- 缺失变量时，优先报告配置问题，不要静默猜测
 
-### 1. SLURM 作业配置（必须保留）
+## 与硬件分层关系
 
-```bash
-#!/bin/bash
-#SBATCH -p {cluster.partition}        # 分区设置
-#SBATCH -N {cluster.nodes}            # 节点数
-#SBATCH --gres={cluster.gpu_type}:{cluster.gpus_per_node}  # GPU资源
-#SBATCH --cpus-per-task={cluster.cpus_per_task}  # CPU资源
-#SBATCH --ntasks-per-node={cluster.ntasks_per_node}  # 每节点任务数
-#SBATCH -J {job_name}                 # 作业名称
-#SBATCH --time={cluster.time_limit}   # 时间限制
-#SBATCH -o logs/%j.out                # 输出日志
-#SBATCH --exclusive                   # 独占模式
-```
+- `onescience-hardware` 负责先感知目标硬件和远程环境
+- `onescience-coder` 只消费代码生成交接摘要，不提供远程连接所需的完整环境事实
+- `onescience-runtime` 负责在代码生成后真正创建连接、传输文件、运行脚本和提交作业
+- 运行与提交发生在远端环境，本地不要求安装 `sbatch`
 
-### 2. 环境初始化（必须保留）
+## 输出要求
 
-```bash
-echo "START TIME: $(date)"
-module purge
+至少给出：
 
-source /etc/profile
-source /etc/profile.d/modules.sh
-module use /work2/share/sghpc_sdk/modulefiles/
-```
+1. 使用的配置文件路径
+2. 选择的远程主机
+3. 生成的提交脚本路径
+4. 作业 ID 或提交失败原因
+5. 日志查看方式
 
-### 3. DCU 环境配置（必须保留）
+## 约束
 
-```bash
-##### if DCU: Launch DCU ENV #####
-{modules_config}
-```
-
-### 4. Python Conda 环境（必须保留）
-
-```bash
-##### python always Launch Conda ENV #####
-source ~/.bashrc
-conda activate {conda.env_name}
-
-source $ROCM_PATH/cuda/env.sh
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib
-```
-
-### 5. OneScience 环境变量（必须保留）
-
-```bash
-##### onescience datasets and models Launch env #####
-export ONESCIENCE_DATASETS_DIR="{env_vars.ONESCIENCE_DATASETS_DIR}"
-export ONESCIENCE_MODELS_DIR="{env_vars.ONESCIENCE_MODELS_DIR}"
-```
-
-### 6. 运行环境信息（必须保留）
-
-```bash
-##### Show env #####
-which python
-
-##### Set DCU #####
-export HIP_VISIBLE_DEVICES={hip_visible_devices}
-
-export OMP_NUM_THREADS={cluster.cpus_per_task}
-nodes=$(scontrol show hostnames $SLURM_JOB_NODELIST)
-nodes_array=($nodes)
-
-# 第一个节点的地址
-export MASTER_ADDR=$(hostname)
-
-# 在每个节点上启动 torchrun
-echo SLURM_NNODES=$SLURM_NNODES
-echo "Nodes: ${nodes_array[*]}"
-echo SLURM_NTASKS=$SLURM_NTASKS
-```
-
-### 7. 代码执行（必须保留）
-
-```bash
-python {script.code_path}
-```
-
-## 模板变量说明
-
-模板中的变量会被 `onescience.json` 中的配置自动替换：
-
-| 变量                                   | 来源                                                | 描述            |
-| ------------------------------------ | ------------------------------------------------- | ------------- |
-| `{cluster.partition}`                | `runtime.cluster.partition`                       | SLURM 分区名称    |
-| `{cluster.nodes}`                    | `runtime.cluster.nodes`                           | 节点数量          |
-| `{cluster.gpu_type}`                 | `runtime.cluster.gpu_type`                        | GPU 类型（如 dcu） |
-| `{cluster.gpus_per_node}`            | `runtime.cluster.gpus_per_node`                   | 每节点 GPU 数量    |
-| `{cluster.cpus_per_task}`            | `runtime.cluster.cpus_per_task`                   | 每任务 CPU 数量    |
-| `{cluster.ntasks_per_node}`          | `runtime.cluster.ntasks_per_node`                 | 每节点任务数        |
-| `{cluster.time_limit}`               | `runtime.cluster.time_limit`                      | 时间限制          |
-| `{job_name}`                         | `runtime.script.job_name`                         | 作业名称          |
-| `{conda.env_name}`                   | `runtime.conda.env_name`                          | Conda 环境名称    |
-| `{script.code_path}`                 | `runtime.script.code_path`                        | 用户代码脚本路径        |
-| `{script.path}`                      | `runtime.script.path`                             | SLURM 脚本路径         |
-| `{env_vars.ONESCIENCE_DATASETS_DIR}` | `runtime.script.env_vars.ONESCIENCE_DATASETS_DIR` | 数据集目录         |
-| `{env_vars.ONESCIENCE_MODELS_DIR}`   | `runtime.script.env_vars.ONESCIENCE_MODELS_DIR`   | 模型目录          |
-| `{modules_config}`                   | `runtime.modules`                                 | 自动生成的模块加载命令   |
-| `{hip_visible_devices}`              | `runtime.cluster.gpus_per_node`                   | GPU 设备可见性配置   |
-
-## 模板使用规则
-
-### 1. 模板固定性
-
-- **模板文件** **`tpl.slurm`** **内容固定**
-- **禁止修改模板文件**
-- **禁止在生成的 SLURM 脚本中添加模板之外的内容**
-- **只能使用模板中定义的变量替换机制**
-
-### 2. 变量替换规则
-
-- 所有 `{variable}` 格式的变量都会被 `onescience.json` 中的对应配置替换
-- 变量不存在时，保持原样（不替换）
-- 不允许在模板之外添加新的配置项
-
-### 3. 生成脚本结构
-
-生成的 SLURM 脚本必须严格遵循模板结构：
-
-```
-#!/bin/bash
-#SBATCH 配置行
-...
-环境初始化
-...
-DCU 环境配置
-...
-Conda 环境
-...
-OneScience 环境变量
-...
-运行环境信息
-...
-代码执行
-```
-
-## 远程传输机制
-
-### SSH 配置解析
-
-技能通过 `cat ~/.ssh/config` 命令在用户本地终端读取 SSH 配置文件。**注意：`~/.ssh/config` 是用户本地系统的配置文件，不在项目工作区中，不要在工作区搜索。**
-
-解析获取的远程登录配置包括：Host、HostName、User、Port、IdentityFile 等，无需在 `onescience.json` 中配置。
-
-### SSH 配置验证
-
-1. **读取 SSH 配置**：使用命令 `cat ~/.ssh/config` 在用户本地终端读取配置文件（此文件不在工作区中，不要在工作区搜索）
-2. **SSH 配置验证**：
-   - 如果 `~/.ssh/config` 文件**不存在**：停止执行，提示用户 "未找到 SSH 配置文件，请先配置远程主机连接"
-   - 如果配置文件中**无 Host**：停止执行，提示用户 "SSH 配置中未找到任何 Host，请先配置远程主机"
-   - 如果配置文件中有**多个 Host**：列出所有可用主机，提示用户选择具体的 Host
-3. **建立远程连接**：使用 `ssh user@host` 形式连接到用户选择的远程节点
-
-### 执行流程
-
-1. **读取配置**：从 `onescience.json` 中读取 `runtime.script.path`（SLURM脚本路径）和 `runtime.script.env_vars`（环境变量）
-2. **生成脚本**：在本地基于 `tpl.slurm` 模板生成 SLURM 脚本（路径由 `runtime.script.path` 指定，默认 `slurm_submit.sh`）
-3. **解析配置**：通过 `cat ~/.ssh/config` 读取用户本地 SSH 配置，获取配置的主机别名
-4. **传输脚本**：使用 `scp` 将生成的 SLURM 脚本和用户代码脚本（`runtime.script.code_path`）一起传输到远端登录节点
-   - `scp <slurm_script_path> <user@host>:~`
-   - `scp <code_path> <user@host>:~`
-5. **远程提交**：使用 `ssh <user@host> "sbatch ~/<slurm_script_name>"` 在远端环境执行提交命令
-
-> **注意**：SLURM 作业始终在**远端环境**提交，本地环境不需要安装 sbatch 等命令。
-
-> **注意**：使用 `ssh user@host` 形式执行远程命令，其中 `user` 为远程主机用户名，`host` 为主机地址或配置的 Host 别名。
-
-## 输出
-
-- **作业信息**：作业 ID、状态、提交时间
-- **日志文件**：`logs/%j.out`（其中 %j 为作业 ID）
-- **运行时间**：作业开始和结束时间
-- **环境信息**：Python 路径、节点列表、SLURM 环境变量
-- **传输信息**：远程主机、目标路径、脚本名称
-
-## 最佳实践
-
-1. **日志目录**：确保 `logs` 目录存在，否则作业会失败
-2. **资源规划**：根据任务类型合理设置节点数和 GPU 数量
-3. **时间限制**：为作业设置合理的时间限制，避免资源浪费
-4. **模块依赖**：确保在 `modules` 中指定了所有必要的模块
-5. **环境变量**：正确设置 `ONESCIENCE_DATASETS_DIR` 和 `ONESCIENCE_MODELS_DIR` 路径
-6. **模板固定**：模板内容固定，禁止修改，只能通过变量替换进行配置
-
-## 故障排查
-
-### 常见问题
-
-1. **作业提交失败**
-   - 检查 SLURM 分区是否存在
-   - 验证资源请求是否合理
-   - 确保 `logs` 目录存在
-   - 检查模板文件是否存在且未被修改
-2. **环境激活失败**
-   - 检查 Conda 环境是否存在
-   - 验证 `.bashrc` 文件是否正确
-   - 确认模块路径是否正确
-3. **数据路径错误**
-   - 确认 `ONESCIENCE_DATASETS_DIR` 环境变量设置正确
-   - 检查数据集是否存在于指定路径
-4. **模块加载失败**
-   - 验证模块名称是否正确
-   - 检查模块是否在当前环境中可用
-   - 确认模块路径是否已正确设置
-5. **模板相关错误**
-   - 确认模板文件路径：`tpl.slurm`
-   - 确认模板文件未被修改
-   - 检查模板变量是否正确配置
-6. **SSH 连接失败**
-   - 检查 `~/.ssh/config` 文件是否存在且格式正确
-   - 确认 SSH 密钥是否正确配置
-   - 如果配置文件中无 Host，提示用户先配置远程主机
-   - 如果配置文件中有多个 Host，提示用户选择具体的 Host
-7. **文件传输失败**
-   - 检查远端用户目录是否有写入权限
-   - 检查网络连接状态
-   - 确认 `runtime.script.code_path` 指定的用户代码脚本存在
-
-## 注意事项
-
-- **模板固定性**：模板文件内容固定，禁止修改，只能通过变量替换进行配置
-- **配置文件只读**：`onescience.json` 为只读文件，禁止自动修改
-- **日志路径固定**：日志文件固定输出到 `logs/%j.out`
-- **DCU 环境**：模板默认配置为 DCU 环境，不可修改
-- **分布式训练**：模板已配置分布式训练所需的环境变量
-- **独占模式**：默认使用 `--exclusive` 模式，确保作业获得完整节点资源
-- **变量替换**：只允许使用模板中定义的变量，不允许添加新变量
-- **脚本生成**：生成的 SLURM 脚本必须严格遵循模板结构，不允许添加额外内容
-- **SSH 配置**：远程传输依赖 `~/.ssh/config` 文件，需提前配置好 SSH 密钥登录
-- **SSH 格式**：使用 `ssh user@host` 形式执行远程命令
-- **Host 选择**：如果配置文件中有多个 Host，会提示用户选择具体的 Host
-- **传输权限**：确保远端目标目录有写入权限
-- **脚本依赖**：`runtime.script.code_path` 指定的用户代码脚本需提前生成，由其他 skill 创建
-- **脚本路径**：SLURM 脚本路径由 `runtime.script.path` 指定，用户代码脚本路径由 `runtime.script.code_path` 指定
+- 不要引用 `.trae/skills/onescience.json` 之类的私有路径
+- 不要自动修改用户的 `onescience.json`
+- 不要跳过 `onescience-hardware` 已确认的硬件约束
+- 不要把代码生成交接摘要误用为完整硬件画像
+- 不要在代码尚不存在时直接提交空作业
+- 当运行任务依赖远程事实但信息缺失时，返回阻断，不要假设默认 Host 或队列

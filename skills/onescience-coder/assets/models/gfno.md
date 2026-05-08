@@ -83,8 +83,8 @@ GFNO 是面向二维场的 group-equivariant Fourier baseline，适合在旋转/
 
 ## 组件契约入口
 
-- `./contracts/onefourier.md`
-- `./contracts/onemlp.md`
+- `../contracts/onefourier.md`
+- `../contracts/onemlp.md`
 
 ## 源码锚点
 

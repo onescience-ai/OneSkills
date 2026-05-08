@@ -1,0 +1,22 @@
+{
+  "name": "oneskills",
+  "description": "OneScience / OneSkills skills for AI-native scientific research workflows, coding, runtime submission, debugging, and environment setup.",
+  "version": "2026.05.07",
+  "author": {
+    "name": "OneScience AI",
+    "url": "https://gitee.com/onescience-ai"
+  },
+  "homepage": "https://github.com/onescience-ai/oneskills",
+  "repository": "https://github.com/onescience-ai/oneskills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "onescience",
+    "oneskills",
+    "skills",
+    "ai4s",
+    "scientific-computing",
+    "workflow",
+    "mcp",
+    "scnet"
+  ]
+}

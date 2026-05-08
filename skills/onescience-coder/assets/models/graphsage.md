@@ -78,7 +78,7 @@ GraphSAGE 是 `CFD_Benchmark` 里最直接的 PyG 图卷积基线，适合在显
 
 ## 组件契约入口
 
-- `./contracts/onemlp.md`
+- `../contracts/onemlp.md`
 
 ## 源码锚点
 

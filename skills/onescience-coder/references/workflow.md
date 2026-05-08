@@ -19,12 +19,12 @@
 你应该先做的事情是：
 
 1. 理解用户任务目标
-2. 先读取 `./assets/contracts/component_index.md`
-3. 再读取 `./assets/contracts/naming_convention.md`
-4. 若任务涉及数据读取、年份选择、变量组织或 dataloader，读取 `./assets/datapipes/datapipe_index.md`
-5. 若用户提供的是未登记的新数据集 README、样例文件或数据目录说明，再读取 `./assets/task/new_dataset_workflow.md`
-6. 按需读取相关 `./assets/contracts/` 与 `./assets/datapipes/` 文档
-7. 必要时读取 `./onescience/` 中的源码锚点
+2. 先读取 `../assets/contracts/component_index.md`
+3. 再读取 `../assets/contracts/naming_convention.md`
+4. 若任务涉及数据读取、年份选择、变量组织或 dataloader，读取 `../assets/datapipes/datapipe_index.md`
+5. 若用户提供的是未登记的新数据集 README、样例文件或数据目录说明，再读取 `./new_dataset_workflow.md`
+6. 按需读取相关 `../assets/contracts/` 与 `../assets/datapipes/` 文档
+7. 必要时读取 `../../../onescience/` 中的源码锚点
 8. 先生成一份“详细执行信息”或“结构化规格说明”
 9. 把这份规格说明交给用户确认
 
@@ -68,30 +68,30 @@
 
 ## 核心目标
 
-- 尽量少让用户阅读 `./onescience/` 源码
-- 若用户明确提到某个现有模型，优先使用 `./assets/models/` 中的模型卡
-- 优先使用 `./assets/contracts/` 中的组件契约完成任务
-- 若涉及数据流程，优先使用 `./assets/datapipes/` 中的数据卡
-- 若用户提供的是未登记的新数据集，优先结合 `./references/new_dataset_workflow.md` 完成数据接口设计
+- 尽量少让用户阅读 `../../../onescience/` 源码
+- 若用户明确提到某个现有模型，优先使用 `../assets/models/` 中的模型卡
+- 优先使用 `../assets/contracts/` 中的组件契约完成任务
+- 若涉及数据流程，优先使用 `../assets/datapipes/` 中的数据卡
+- 若用户提供的是未登记的新数据集，优先结合 `./new_dataset_workflow.md` 完成数据接口设计
 - 只有当契约信息不足时，才回到源码锚点读取实现
 
 ## 允许优先使用的资源
 
-- `./assets/models/*.md`
-- `./assets/contracts/*.md`
-- `./assets/datapipes/*.md`
-- `./references/new_dataset_workflow.md`
-- `./README.md`
+- `../assets/models/*.md`
+- `../assets/contracts/*.md`
+- `../assets/datapipes/*.md`
+- `./new_dataset_workflow.md`
+- `../../../README.md`
 - 用户明确指定的文件
-- `./onescience/` 中与契约卡片对应的源码锚点
+- `../../../onescience/` 中与契约卡片对应的源码锚点
 
 ## 执行顺序
 
 1. 先判断当前是“用户原始 query 阶段”还是“确认后代码生成阶段”
 2. 若是原始 query 阶段，先输出结构化规格说明，不直接输出最终代码
 3. 若是确认后代码生成阶段，再进入正式实现
-4. 若用户提供的是未登记的新数据集 README、样例文件或数据目录说明，先读取 `./references/new_dataset_workflow.md`
-5. 若用户明确提到模型名，先读取 `./assets/models/model_index.md`
+4. 若用户提供的是未登记的新数据集 README、样例文件或数据目录说明，先读取 `./new_dataset_workflow.md`
+5. 若用户明确提到模型名，先读取 `../assets/models/model_index.md`
 6. 按需读取对应模型卡
 7. 识别任务涉及的组件族
 8. 若涉及数据流程，先识别任务涉及的 datapipe
@@ -123,8 +123,8 @@
 
 说明：
 
-- 模型卡中的源码锚点统一使用 `./onescience/...` 相对路径
-- 契约卡片中的源码锚点统一使用 `./onescience/...` 相对路径
+- 模型卡中的源码锚点统一使用 `../../../onescience/...` 相对路径
+- 契约卡片中的源码锚点统一使用 `../../../onescience/...` 相对路径
 - 默认假设 `oneskills` 与 `onescience` 位于同一工作目录下
 
 ## 模型卡使用原则
@@ -141,7 +141,7 @@
 - 若任务是改造现有模型，先替换调用层，再考虑是否需要改注册层
 - 若任务只是生成建议，不直接扩散修改到无关文件
 - 若任务涉及主干特征提取、token 融合、中间层建模或 trunk 设计，先检查 `fuser` 模块族，再考虑底层 `transformer_layers`
-- 若 `./assets/contracts/` 中已经存在可直接复用的 `fuser` 契约，默认不要直接拼装 encoder/decoder 风格的底层 Transformer block
+- 若 `../assets/contracts/` 中已经存在可直接复用的 `fuser` 契约，默认不要直接拼装 encoder/decoder 风格的底层 Transformer block
 
 ## 数据与接口兼容性原则
 

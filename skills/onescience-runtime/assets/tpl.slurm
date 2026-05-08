@@ -49,5 +49,4 @@ echo SLURM_NNODES=$SLURM_NNODES
 echo "Nodes: ${nodes_array[*]}"
 echo SLURM_NTASKS=$SLURM_NTASKS
 
-
 python {script.code_path}
