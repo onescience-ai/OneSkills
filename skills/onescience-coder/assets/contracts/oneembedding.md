@@ -61,6 +61,22 @@
 - Fuxi 时空块 embedding
   - `style="FuxiEmbedding"`
 
+## CFD / 图模型补充
+
+当前 CFD 图模型中最相关的补充 style 是：
+
+- GraphViT 位置编码
+  - `style="FourierPosEmbedding"`
+  - 常见参数：`pos_start, pos_length`
+  - 典型输入：`mesh_pos, clusters, clusters_mask`
+  - 典型输出：节点位置编码和 cluster 位置编码
+
+补充说明：
+
+- `FourierPosEmbedding` 不是常规 patch embedding，而是面向图节点和 cluster 的 Fourier 位置编码
+- `CFD_Benchmark` 中部分模型直接使用 `onescience.modules.embedding` 下的函数式 `unified_pos_embedding`、`timestep_embedding`，它们不是 `OneEmbedding` 注册入口
+- 判断新 CFD 数据是否适合 GraphViT 时，需要先确认 datapipe 能否提供 `clusters` 与 `clusters_mask`
+
 ## 风险点
 
 - 不要把 `OneEmbedding` 当成具体实现本身
@@ -73,3 +89,4 @@
 - `./onescience/src/onescience/modules/embedding/panguembedding.py`
 - `./onescience/src/onescience/modules/embedding/fourcastnetembedding.py`
 - `./onescience/src/onescience/modules/embedding/fuxiembedding.py`
+- `./onescience/src/onescience/modules/embedding/fourier_pos_embedding.py`

@@ -2,6 +2,30 @@
 
 本文件用于给 `onescience-debug` 提供任务识别与测试路径映射规则。
 
+如需查看仓库内的标准 debug 输入示例，可参考：
+
+- `../assets/examples/dcu_e2e_remote_debug_distributed_blocked.json`
+- `../assets/examples/dcu_e2e_remote_debug_from_ssh_slurm.json`
+- `../assets/examples/dcu_e2e_remote_debug_request.json`
+- `../assets/examples/gpu_model_remote_debug_from_scnet_mcp.json`
+- `../assets/examples/gpu_model_remote_debug_request.json`
+- `../assets/examples/gpu_model_remote_debug_torch_blocked.json`
+- `../assets/examples/cpu_datapipe_remote_debug_request.json`
+
+## Backend 状态与预检状态
+
+远程 debug 请求至少要区分两层语义：
+
+- `expected_resolution.status`
+  这表示 debug 链路对该 backend 的支持状态，例如 `supported` 或 `planned_backend`
+- `expected_resolution.precheck.outcome`
+  这表示当前 host 上是否已经 `ready_to_debug`
+
+因此：
+
+- `status=supported` 不等于一定可以立刻开始远程调试
+- 只要 `precheck.outcome=blocked`，就必须先解决当前 host 的 runtime readiness 问题
+
 ## 可测试任务与测试路径
 
 | 可测试任务类型 | 识别重点 | 测试路径 |

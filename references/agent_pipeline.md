@@ -79,11 +79,10 @@
 
 负责运行提交：
 
-- 读取 `onescience.json`
-- 读取 `tpl.slurm`
-- 创建远程连接
-- 传输文件
-- 生成并提交脚本
+- 作为统一运行入口选择执行通道
+- 在 `ssh_slurm` 通道里读取 `onescience.json` / `tpl.slurm` 并提交
+- 在 `scnet_mcp` 通道里通过本地 SCnet MCP 上传、提交、查状态与下载日志
+- 向 `onescience-debug` 返回统一的本地日志产物
 
 ### `onescience-debug`
 
@@ -108,6 +107,7 @@
 - 角色层已明确，只需执行路由：`onescience-skill`
 - 纯分析或纯编码：`onescience-coder`
 - 已有代码，只想运行：`onescience-hardware -> onescience-runtime`
+- 已有脚本，只想通过 SCnet 运行：`onescience-runtime`
 - 已有结果，只想排查：`onescience-debug`
 - 环境安装：`onescience-hardware -> onescience-installer`
 - 面向远程环境实现：`onescience-hardware -> onescience-coder`
@@ -128,5 +128,6 @@
 - 不要跳过角色层就把科研职责直接硬编码成技能链
 - 不要跳过硬件感知直接生成远程适配代码
 - 不要让 `onescience-hardware` 直接承担运行提交主职责
-- 不要让 `onescience-runtime` 在没有代码和配置时提交空任务
+- 不要让 `onescience-runtime` 在没有代码时提交空任务
+- 不要把显式 SCnet 请求强行改造成 `ssh_slurm` 通道
 - 不要在没有执行证据时声称“已运行成功”

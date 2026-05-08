@@ -54,6 +54,11 @@
 | OneMlp | mlp | 统一 MLP 入口 | `style="<MlpStyle>"` | `stable` | `./onemlp.md` |
 | OneFourier | fourier | 统一谱算子入口 | `style="<FourierStyle>"` | `stable` | `./onefourier.md` |
 | OneHead | head | 统一预测头入口 | `style="<HeadStyle>"` | `stable` | `./onehead.md` |
+| OnePooling | pooling | 统一图池化入口 | `style="<PoolingStyle>"` | `stable` | `./onepooling.md` |
+| OneProcessor | processor | 统一图处理器入口 | `style="<ProcessorStyle>"` | `stable` | `./oneprocessor.md` |
+| OneEdge | edge | 统一边更新入口 | `style="<EdgeStyle>"` | `stable` | `./oneedge.md` |
+| OneNode | node | 统一节点更新入口 | `style="<NodeStyle>"` | `stable` | `./onenode.md` |
+| OneEquivariant | equivariant | 统一等变层入口 | `style="<EquivariantStyle>"` | `stable` | `./oneequivariant.md` |
 
 ## 高层业务组件层
 
@@ -75,6 +80,16 @@
 | FengWuEncoder | encoder | `OneEncoder` | `FengWuEncoder` | 2D 场 | `stable` | `./fengwuencoder.md` |
 | FengWuDecoder | decoder | `OneDecoder` | `FengWuDecoder` | 中分辨率 token + 高分辨率 skip | `stable` | `./fengwudecoder.md` |
 | FuxiTransformer | transformer | `OneTransformer` | `FuxiTransformer` | 2D 特征图 | `stable` | `./fuxitransformer.md` |
+| UNetEncoder1D/2D/3D | encoder | `OneEncoder` | `UNetEncoder*d` | 规则网格多尺度特征 | `stable` | `./oneencoder.md` |
+| UNetDecoder1D/2D/3D | decoder | `OneDecoder` | `UNetDecoder*d` | UNet skip feature 列表 | `stable` | `./onedecoder.md` |
+| UNetHead1D/2D/3D | head | `OneHead` | `UNetHead*d` | 规则网格输出通道投影 | `stable` | `./onehead.md` |
+| GraphViTEncoder | encoder | `OneEncoder` | `GraphViTEncoder` | 图节点、边、状态、位置编码 | `stable` | `./oneencoder.md` |
+| RNNClusterPooling | pooling | `OnePooling` | `RNNClusterPooling` | 节点到 cluster token | `stable` | `./onepooling.md` |
+| GraphViTDecoder | decoder | `OneDecoder` | `GraphViTDecoder` | cluster token 到节点状态增量 | `stable` | `./onedecoder.md` |
+| MeshEdgeBlock | edge | `OneEdge` | `MeshEdgeBlock` | DGL 图边更新 | `stable` | `./oneedge.md` |
+| MeshNodeBlock | node | `OneNode` | `MeshNodeBlock` | DGL 图节点更新 | `stable` | `./onenode.md` |
+| BistrideGraphMessagePassing | processor | `OneProcessor` | `BistrideGraphMessagePassing` | 多尺度图 message passing | `stable` | `./oneprocessor.md` |
+| GroupEquivariantConv2d/3d | equivariant | `OneEquivariant` | `GroupEquivariantConv*d` | GFNO 等变卷积 stem | `stable` | `./oneequivariant.md` |
 
 ## 底层通用模块层
 
@@ -89,6 +104,15 @@
 | FourCastNetAFNO2D | afno | `OneAFNO` | `FourCastNetAFNO2D` | 2D patch 网格特征 | `stable` | `./fourcastnetafno.md` |
 | FourCastNetFC | fc | `OneFC` | `FourCastNetFC` | 任意前缀维度的特征张量 | `stable` | `./fourcastnetfc.md` |
 | FuxiFC | fc | `OneFC` | `FuxiFC` | 任意前缀维度的特征张量 | `stable` | `./fuxifc.md` |
+| Transolver_block | transformer | `OneTransformer` | `Transolver_block` | 点云/网格 token 隐特征 | `stable` | `./onetransformer.md` |
+| Galerkin_Transformer_block | transformer | `OneTransformer` | `Galerkin_Transformer_block` | CFD token 序列 | `stable` | `./onetransformer.md` |
+| Factformer_block | transformer | `OneTransformer` | `Factformer_block` | CFD token 序列 | `stable` | `./onetransformer.md` |
+| PreLNTransformerBlock | transformer | `OneTransformer` | `PreLNTransformerBlock` | GraphViT cluster token | `stable` | `./onetransformer.md` |
+| FNOSpectralConv*d | fourier | `OneFourier` | `FNOSpectralConv*d` | 规则网格谱卷积 | `stable` | `./onefourier.md` |
+| GeoSpectralConv*d | fourier | `OneFourier` | `GeoSpectralConv*d` | 非结构点到规则潜网格投影 | `stable` | `./onefourier.md` |
+| GSpectralConv*d | fourier | `OneFourier` | `GSpectralConv*d` | group-equivariant 谱卷积 | `stable` | `./onefourier.md` |
+| Physics Attention | attention | `OneAttention` | `Physics_Attention_*` | Transolver 物理 attention | `stable` | `./oneattention.md` |
+| Linear / Fact Attention | attention | `OneAttention` | `LinearAttention / FactAttention*d` | 神经算子 attention block | `stable` | `./oneattention.md` |
 
 ## 按模块族检索
 
@@ -194,6 +218,38 @@
 2. 再看 `OneMlp` / `OneFourier` / `OneHead`
 3. 只有 wrapper 契约仍不足时，再回到对应底层实现
 
+### pooling / processor / edge / node
+
+适用于：
+
+- MeshGraphNet / BSMS-MGN 这类显式图结构模型
+- GraphViT 这类节点到 cluster token 再回到节点的流程
+- 非结构网格、粒子、点云流场任务中的 message passing
+- 需要多尺度图处理或层级图 U-Net 的 CFD 任务
+
+优先顺序：
+
+1. 先看模型卡，确认当前案例使用的是 GraphViT、MeshGraphNet 还是 BiStrideMeshGraphNet
+2. 若是标准 MeshGraphNet message passing，先看 `OneEdge` / `OneNode`
+3. 若是多尺度 BSMS-MGN，先看 `OneProcessor`
+4. 若是 GraphViT 的 cluster 压缩，先看 `OnePooling`
+5. 若 datapipe 尚未提供边、cluster、mask 或多尺度索引，优先补数据接口，不要直接改模型 block
+
+### equivariant
+
+适用于：
+
+- GFNO 等 group-equivariant neural operator
+- 需要旋转或反射等变卷积 stem 的结构化网格任务
+- 与 `GSpectralConv*d`、`GroupEquivariantMLP*d` 成套使用的算子主干
+
+优先顺序：
+
+1. 先确认模型目标是否确实是 GFNO 或等变神经算子
+2. 再看 `OneEquivariant`
+3. 同时核对 `OneFourier` 中的 `GSpectralConv*d` 和 `OneMlp` 中的 `GroupEquivariantMLP*d`
+4. 如果只是普通 FNO / U-FNO 对比，不要默认启用等变组件
+
 ## 典型检索顺序
 
 对于天气预测、全球格点预报、surface 与 upper-air 联合建模这类任务，推荐优先顺序：
@@ -202,6 +258,14 @@
 2. `fuser`
 3. `sample`
 4. `recovery`
+
+对于 CFD 代理、神经算子、非结构网格和图网络任务，推荐优先顺序：
+
+1. 先看 `../models/model_index.md` 和最接近的模型卡
+2. 规则网格任务优先检查 `encoder / decoder / head` 或 `mlp / fourier`
+3. 非结构点云转规则潜网格任务优先检查 `mlp / fourier`，特别是 `GeoSpectralConv*d`
+4. 显式图任务优先检查 `mlp / edge / node / processor / pooling`
+5. 等变神经算子任务优先检查 `equivariant / fourier / mlp`
 
 在某个模块族内部，再根据以下条件筛选：
 

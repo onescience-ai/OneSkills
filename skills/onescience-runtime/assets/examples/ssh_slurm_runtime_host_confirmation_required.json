@@ -1,0 +1,14 @@
+﻿{
+  "example_id": "ssh_slurm_runtime_host_confirmation_required",
+  "execution_channel": "ssh_slurm",
+  "runtime_config": "skills/onescience-runtime/assets/examples/slurm_dcu_runtime.json",
+  "confirmation_required": true,
+  "available_hosts": [
+    "login-kunshan",
+    "login-kunshan-backup"
+  ],
+  "missing_info": "Target host is not specified, so the request cannot be submitted directly through the SSH/SLURM channel.",
+  "suggested_action": "Specify the target host first, or bind the host during hardware detection before submitting the run.",
+  "next_action": "onescience-runtime"
+}
+

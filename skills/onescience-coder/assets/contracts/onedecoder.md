@@ -54,6 +54,30 @@
 - FengWu 单分支解码
   - `style="FengWuDecoder"`
 
+## CFD / 图模型补充
+
+当前 CFD、DeepCFD、GraphViT 和 MeshGraphNet 相关模型还会通过 `OneDecoder` 调用以下 style：
+
+- UNet 解码器
+  - `style="UNetDecoder1D"`
+  - `style="UNetDecoder2D"`
+  - `style="UNetDecoder3D"`
+  - 常见参数：`base_channels, num_stages, bilinear, normtype, kernel_size`
+  - 典型输入：来自匹配 `UNetEncoder*d` 的多尺度 feature 列表
+- GraphViT 解码器
+  - `style="GraphViTDecoder"`
+  - 常见参数：`w_size, pos_length, state_size`
+  - 典型输入：cluster token、节点特征、cluster 索引、位置编码、边和边表示
+- MeshGraph 解码器
+  - `style="MeshGraphDecoder"`
+  - 面向图隐状态到物理输出的恢复，使用前要确认具体调用模型
+
+补充约束：
+
+- UNet decoder 和 encoder 的 `base_channels / num_stages / normtype` 应保持一致
+- GraphViT decoder 输出的是节点状态增量，通常要与上一时刻状态相加形成 rollout
+- 解码器是否输出目标物理量或状态增量由模型训练流程决定，不能只看 `OneDecoder`
+
 ## 风险点
 
 - `OneDecoder` 只是入口，不表示所有 decoder 可互换
@@ -64,3 +88,5 @@
 
 - `./onescience/src/onescience/modules/decoder/onedecoder.py`
 - `./onescience/src/onescience/modules/decoder/fengwudecoder.py`
+- `./onescience/src/onescience/modules/decoder/unet_decoder.py`
+- `./onescience/src/onescience/modules/decoder/graphvit_decoder.py`

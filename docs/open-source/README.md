@@ -11,3 +11,9 @@
 ## 当前文档
 
 - `custom_skill_contribution.md`：用户如何在符合产品设计的前提下添加自定义技能
+
+根目录同时提供公开治理文件：
+
+- `LICENSE`
+- `CONTRIBUTING.md`
+- `SECURITY.md`

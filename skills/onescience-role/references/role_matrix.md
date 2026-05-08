@@ -165,6 +165,7 @@
 - 运行前置检查结果
 - 安装结果或提交结果
 - 作业 ID / 日志入口
+- backend 状态说明（stable / planned / unsupported）
 
 推荐下钻：
 

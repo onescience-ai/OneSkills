@@ -1,0 +1,35 @@
+[
+  {
+    "id": "onescience_gitee_workspace",
+    "lifecycle_status": "stable",
+    "workspace_kind": "git_checkout",
+    "supported_installer_backends": [
+      "dcu_remote_install",
+      "gpu_remote_install"
+    ],
+    "repo": {
+      "repo_name": "onescience",
+      "repo_url": "https://gitee.com/onescience-ai/onescience.git",
+      "repo_ref": "main"
+    },
+    "sync": {
+      "default_reuse_existing_worktree": true,
+      "clone_repo_command": "git clone {repo_url}",
+      "working_directory": "{repo_name}",
+      "repo_sync_commands": [
+        "git fetch --all",
+        "git checkout {repo_ref}",
+        "git pull --ff-only"
+      ]
+    },
+    "domain_install": {
+      "command_template": "bash install.sh {dependency_selector}",
+      "default_dependency_selector": "all",
+      "omit_selector_when_default": true
+    },
+    "notes": [
+      "当前稳定工作区引导 profile",
+      "负责 OneScience 仓库获取、同步与 install.sh 入口渲染，不属于硬件环境安装语义"
+    ]
+  }
+]

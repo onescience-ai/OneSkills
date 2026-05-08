@@ -54,6 +54,30 @@
 - FengWu 单分支编码
   - `style="FengWuEncoder"`
 
+## CFD / 图模型补充
+
+当前 CFD、DeepCFD、GraphViT 和 MeshGraphNet 相关模型还会通过 `OneEncoder` 调用以下 style：
+
+- UNet 编码器
+  - `style="UNetEncoder1D"`
+  - `style="UNetEncoder2D"`
+  - `style="UNetEncoder3D"`
+  - 常见参数：`in_channels, base_channels, num_stages, bilinear, normtype, kernel_size`
+  - 典型位置：`DeepCFD.UNet / UNetEx`、`cfdbench.unet`
+- GraphViT 编码器
+  - `style="GraphViTEncoder"`
+  - 常见参数：`nb_gn, state_size, pos_length`
+  - 典型输入：`mesh_pos, edges, states, node_type, pos_enc`
+- MeshGraph 编码器
+  - `style="MeshGraphEncoder"`
+  - 面向图节点/边特征编码，使用前要回到源码确认当前模型是否直接调用
+
+补充约束：
+
+- UNet encoder 返回的是多尺度 skip feature 列表，通常必须交给匹配的 `UNetDecoder*d`
+- GraphViT encoder 返回节点表示和边表示，不能直接接普通 CNN decoder
+- 新数据集接入时，需要先判断是规则网格、非结构点云还是显式图结构，再选择 encoder family
+
 ## 风险点
 
 - `OneEncoder` 只是入口，不表示所有 encoder 可互换
@@ -64,3 +88,5 @@
 
 - `./onescience/src/onescience/modules/encoder/oneencoder.py`
 - `./onescience/src/onescience/modules/encoder/fengwuencoder.py`
+- `./onescience/src/onescience/modules/encoder/unet_encoder.py`
+- `./onescience/src/onescience/modules/encoder/graphvit_encoder.py`

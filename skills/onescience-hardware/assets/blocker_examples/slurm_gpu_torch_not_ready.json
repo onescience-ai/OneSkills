@@ -1,0 +1,102 @@
+﻿{
+  "example_id": "slurm_gpu_torch_not_ready",
+  "expected_backend_id": "slurm_gpu",
+  "hardware_profile": {
+    "schema_version": "v1",
+    "host": "login-gpu",
+    "scheduler_type": "slurm",
+    "platform_type": "cluster",
+    "partition": "gpu_normal",
+    "cpu": {
+      "arch": "x86_64",
+      "vendor": "intel",
+      "model": "Xeon-xxx",
+      "sockets": 2,
+      "cores_per_socket": 24,
+      "threads_per_core": 2,
+      "numa_nodes": 2
+    },
+    "accelerators": [
+      {
+        "kind": "gpu",
+        "vendor": "nvidia",
+        "model": "a100",
+        "count_per_node": 4,
+        "memory_gb": 80,
+        "visibility_env": "CUDA_VISIBLE_DEVICES",
+        "distributed_backend": "nccl"
+      }
+    ],
+    "memory": {
+      "system_gb": 512
+    },
+    "storage": {
+      "dataset_dir": "/mnt/datasets/onedatasets",
+      "models_dir": "/mnt/models/onemodels",
+      "work_dir": "/home/user/project",
+      "log_dir": "/home/user/project/logs"
+    },
+    "software": {
+      "modules": [
+        "cuda/12.1",
+        "gcc/11.2"
+      ],
+      "driver_stack": {
+        "accelerator_runtime_family": "cuda",
+        "driver_version": "550.54",
+        "user_space_version": "12.1",
+        "delivery_mode": "module",
+        "driver_ready": true,
+        "user_space_ready": true,
+        "owner": "platform_admin",
+        "capability_readiness": {
+          "compiler_ready": true,
+          "torch_ready": false,
+          "distributed_runtime_ready": true,
+          "verification_commands": [
+            "module load cuda/12.1",
+            "nvcc --version",
+            "python -c 'import torch; print(torch.__version__)'"
+          ]
+        }
+      },
+      "conda_env": "onescience311",
+      "shell_init": "source ~/.bashrc"
+    },
+    "capabilities": {
+      "supports_sbatch": true,
+      "launch_mode": "python",
+      "supports_torchrun": true,
+      "needs_rocm_env": false,
+      "needs_cuda_env": true
+    }
+  },
+  "codegen_handoff": {
+    "cpu_arch": "x86_64",
+    "accelerator_kind": "gpu",
+    "accelerator_vendor": "nvidia",
+    "accelerator_count_per_node": 4,
+    "distributed_mode": "single",
+    "runtime_mode": "slurm",
+    "launch_mode": "python",
+    "distributed_backend": "nccl",
+    "needs_distributed_entry": false,
+    "needs_device_guard": true,
+    "needs_path_env": true,
+    "needs_cluster_friendly_io": true,
+    "needs_cpu_thread_tuning": true,
+    "needs_numa_awareness": true,
+    "dataset_dir": "/mnt/datasets/onedatasets",
+    "models_dir": "/mnt/models/onemodels",
+    "work_dir": "/home/user/project",
+    "device_visibility_env": "CUDA_VISIBLE_DEVICES",
+    "notes_for_codegen": [
+      "Entry scripts must support CUDA_VISIBLE_DEVICES",
+      "Training entry points must preserve distributed argument placeholders",
+      "Avoid hard-coding GPU device indexes in code"
+    ]
+  }
+}
+
+
+

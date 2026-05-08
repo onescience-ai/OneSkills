@@ -1,12 +1,15 @@
 #!/bin/bash
+# Current stable backend: slurm_dcu
 #SBATCH -p {cluster.partition}
 #SBATCH -N {cluster.nodes}
 #SBATCH --gres={cluster.gpu_type}:{cluster.gpus_per_node}
 #SBATCH --cpus-per-task={cluster.cpus_per_task}
 #SBATCH --ntasks-per-node={cluster.ntasks_per_node}
-#SBATCH -J {job_name}
+#SBATCH -J {script.job_name}
 #SBATCH --time={cluster.time_limit}
+#SBATCH --mem={cluster.memory}
 #SBATCH -o logs/%j.out
+#SBATCH -e logs/%j.err
 #SBATCH --exclusive
 
 echo "START TIME: $(date)"
@@ -17,7 +20,7 @@ source /etc/profile.d/modules.sh #不能删除
 module use /work2/share/sghpc_sdk/modulefiles/ #不能删除
 
 ##### if DCU: Launch DCU ENV #####
-{modules_config}
+{backend.module_setup}
 
 ##### python always Launch Conda ENV #####
 
@@ -35,7 +38,7 @@ export ONESCIENCE_MODELS_DIR="{env_vars.ONESCIENCE_MODELS_DIR}"
 which python
 
 ##### Set DCU #####
-export HIP_VISIBLE_DEVICES={hip_visible_devices}
+{backend.device_visibility_export}
 
 export OMP_NUM_THREADS={cluster.cpus_per_task}
 nodes=$(scontrol show hostnames $SLURM_JOB_NODELIST)

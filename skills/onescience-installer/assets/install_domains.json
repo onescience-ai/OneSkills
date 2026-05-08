@@ -1,0 +1,47 @@
+﻿[
+  {
+    "id": "earth",
+    "display_name": "Earth science",
+    "description": "Weather, ocean, and related earth science models.",
+    "dependency_selector": "earth",
+    "supported_installer_backends": [
+      "dcu_remote_install"
+    ]
+  },
+  {
+    "id": "cfd",
+    "display_name": "CFD and structural mechanics",
+    "description": "Computational fluid dynamics and structural mechanics models.",
+    "dependency_selector": "cfd",
+    "supported_installer_backends": [
+      "dcu_remote_install"
+    ]
+  },
+  {
+    "id": "bio",
+    "display_name": "Bioinformatics",
+    "description": "Protein structure prediction, genomics, and related bioinformatics models.",
+    "dependency_selector": "bio",
+    "supported_installer_backends": [
+      "dcu_remote_install"
+    ]
+  },
+  {
+    "id": "matchem",
+    "display_name": "Materials and chemistry",
+    "description": "Materials science and chemistry simulation models.",
+    "dependency_selector": "matchem",
+    "supported_installer_backends": [
+      "dcu_remote_install"
+    ]
+  },
+  {
+    "id": "all",
+    "display_name": "All domains",
+    "description": "Install dependencies for all OneScience-supported domains.",
+    "dependency_selector": "all",
+    "supported_installer_backends": [
+      "dcu_remote_install"
+    ]
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "example_id": "ssh_slurm_runtime_request",
+  "execution_channel": "ssh_slurm",
+  "intent": "submit_job_script",
+  "hardware_output_example": "skills/onescience-hardware/assets/examples/slurm_dcu_output.json",
+  "runtime_config": "skills/onescience-runtime/assets/examples/slurm_dcu_runtime.json",
+  "local_input": {
+    "code_path": "era5_reader.py",
+    "job_script_path": "slurm_submit.sh"
+  },
+  "submission_target": {
+    "host": "login-kunshan",
+    "partition": "hpctest01",
+    "backend_id": "slurm_dcu"
+  },
+  "command": "sbatch slurm_submit.sh",
+  "authorization": {
+    "submission_authorized": true,
+    "authorization_scope": "current_workflow"
+  },
+  "log_policy": {
+    "remote_log_dir": "logs",
+    "local_log_dir": ".onescience/logs",
+    "include_patterns": [
+      "*.out",
+      "*.err"
+    ],
+    "wait_for_completion": true,
+    "sync_after_completion": true
+  }
+}

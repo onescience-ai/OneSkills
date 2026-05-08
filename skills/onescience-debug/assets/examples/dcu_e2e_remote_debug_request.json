@@ -1,0 +1,31 @@
+{
+  "example_id": "dcu_e2e_remote_debug_request",
+  "hardware_output_example": "skills/onescience-hardware/assets/examples/slurm_dcu_output.json",
+  "debug_request": {
+    "task_type": "remote_debug",
+    "target_scope": "end_to_end_pipeline",
+    "expected_test_path": "e2e_pipeline_test",
+    "needs_remote_execution": true,
+    "requires_runtime_backend": true,
+    "artifacts": [
+      "datapipe.py",
+      "model.py",
+      "train.py",
+      "config.yaml"
+    ]
+  },
+  "expected_resolution": {
+    "status": "supported",
+    "execution_backend": "onescience-runtime",
+    "required_backend_id": "slurm_dcu",
+    "precheck": {
+      "outcome": "ready_to_debug",
+      "driver_stack_owner": "platform_admin",
+      "driver_stack_ready": true,
+      "user_space_runtime_ready": true,
+      "torch_ready": true,
+      "distributed_runtime_ready": true,
+      "blocker_reason": "none"
+    }
+  }
+}

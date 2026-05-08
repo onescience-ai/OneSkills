@@ -1,0 +1,22 @@
+{
+  "example_id": "cpu_install_request_blocked",
+  "request_example": "skills/onescience-installer/assets/request_examples/earth_install_request.json",
+  "hardware_output_example": "skills/onescience-hardware/assets/examples/slurm_cpu_output.json",
+  "expected_resolution": {
+    "status": "unsupported_for_now",
+    "installer_backend": "none",
+    "workspace_bootstrap_profile": "none",
+    "required_backend_id": "slurm_cpu",
+    "precheck": {
+      "outcome": "blocked",
+      "installer_scope": "user_space_only",
+      "driver_stack_owner": "platform_admin",
+      "driver_stack_ready": true,
+      "user_space_runtime_ready": true,
+      "compiler_ready": true,
+      "torch_ready": true,
+      "distributed_runtime_ready": true,
+      "blocker_reason": "backend_not_supported"
+    }
+  }
+}

@@ -1,5 +1,10 @@
 {
   "agent": "trae",
-  "skills_dir": ".trae/skills",
-  "integration_targets": []
+  "skills_dir": ".trae/oneskills/skills",
+  "integration_targets": [
+    {
+      "source": "integrations/generic-agent.md",
+      "target": ".trae/oneskills/integrations/generic-agent.md"
+    }
+  ]
 }

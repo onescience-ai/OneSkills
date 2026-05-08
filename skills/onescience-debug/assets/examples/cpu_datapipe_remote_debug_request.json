@@ -1,0 +1,29 @@
+{
+  "example_id": "cpu_datapipe_remote_debug_request",
+  "hardware_output_example": "skills/onescience-hardware/assets/examples/slurm_cpu_output.json",
+  "debug_request": {
+    "task_type": "remote_debug",
+    "target_scope": "earth_datapipe",
+    "expected_test_path": "earth_datapipe_test",
+    "needs_remote_execution": true,
+    "requires_runtime_backend": true,
+    "artifacts": [
+      "datapipe.py",
+      "dataset.py"
+    ]
+  },
+  "expected_resolution": {
+    "status": "planned_backend",
+    "execution_backend": "onescience-runtime",
+    "required_backend_id": "slurm_cpu",
+    "precheck": {
+      "outcome": "blocked",
+      "driver_stack_owner": "platform_admin",
+      "driver_stack_ready": true,
+      "user_space_runtime_ready": true,
+      "torch_ready": true,
+      "distributed_runtime_ready": true,
+      "blocker_reason": "backend_not_ready"
+    }
+  }
+}

@@ -1,0 +1,139 @@
+[
+  {
+    "id": "slurm_dcu",
+    "status": "stable",
+    "support_matrix": {
+      "runtime": {
+        "status": "stable"
+      },
+      "debug": {
+        "status": "supported",
+        "backend": "onescience-runtime"
+      },
+      "installer": {
+        "status": "supported",
+        "backend": "dcu_remote_install"
+      }
+    },
+    "template": "skills/onescience-runtime/assets/templates/slurm_dcu.sh",
+    "legacy_project_template": "skills/onescience-runtime/assets/tpl.slurm",
+    "example_config": "skills/onescience-runtime/assets/examples/slurm_dcu_runtime.json",
+    "selector": {
+      "scheduler_type": "slurm",
+      "accelerator_kind": "dcu",
+      "accelerator_vendor": "amd"
+    },
+    "environment_constraints": {
+      "visibility_env": "HIP_VISIBLE_DEVICES",
+      "distributed_backend": "rccl",
+      "launch_mode": "python"
+    },
+    "render_fields": [
+      "backend.device_visibility_export",
+      "backend.module_setup",
+      "cluster.cpus_per_task",
+      "cluster.gpu_type",
+      "cluster.gpus_per_node",
+      "cluster.memory",
+      "cluster.nodes",
+      "cluster.ntasks_per_node",
+      "cluster.partition",
+      "cluster.time_limit",
+      "conda.env_name",
+      "env_vars.ONESCIENCE_DATASETS_DIR",
+      "env_vars.ONESCIENCE_MODELS_DIR",
+      "script.code_path",
+      "script.job_name"
+    ]
+  },
+  {
+    "id": "slurm_gpu",
+    "status": "stable",
+    "support_matrix": {
+      "runtime": {
+        "status": "stable"
+      },
+      "debug": {
+        "status": "supported",
+        "backend": "onescience-runtime"
+      },
+      "installer": {
+        "status": "unsupported_for_now",
+        "backend": "none"
+      }
+    },
+    "template": "skills/onescience-runtime/assets/templates/slurm_gpu.sh",
+    "example_config": "skills/onescience-runtime/assets/examples/slurm_gpu_runtime.json",
+    "selector": {
+      "scheduler_type": "slurm",
+      "accelerator_kind": "gpu",
+      "accelerator_vendor": "nvidia"
+    },
+    "environment_constraints": {
+      "visibility_env": "CUDA_VISIBLE_DEVICES",
+      "distributed_backend": "nccl",
+      "launch_mode": "python"
+    },
+    "render_fields": [
+      "backend.device_visibility_export",
+      "backend.module_setup",
+      "cluster.cpus_per_task",
+      "cluster.gpu_type",
+      "cluster.gpus_per_node",
+      "cluster.memory",
+      "cluster.nodes",
+      "cluster.ntasks_per_node",
+      "cluster.partition",
+      "cluster.time_limit",
+      "conda.env_name",
+      "env_vars.ONESCIENCE_DATASETS_DIR",
+      "env_vars.ONESCIENCE_MODELS_DIR",
+      "script.code_path",
+      "script.job_name"
+    ]
+  },
+  {
+    "id": "slurm_cpu",
+    "status": "planned",
+    "support_matrix": {
+      "runtime": {
+        "status": "planned"
+      },
+      "debug": {
+        "status": "planned_backend",
+        "backend": "onescience-runtime"
+      },
+      "installer": {
+        "status": "unsupported_for_now",
+        "backend": "none"
+      }
+    },
+    "template": "skills/onescience-runtime/assets/templates/slurm_cpu.sh",
+    "example_config": "skills/onescience-runtime/assets/examples/slurm_cpu_runtime.json",
+    "selector": {
+      "scheduler_type": "slurm",
+      "accelerator_kind": "cpu",
+      "accelerator_vendor": "none"
+    },
+    "environment_constraints": {
+      "visibility_env": "NONE",
+      "distributed_backend": "gloo",
+      "launch_mode": "python"
+    },
+    "render_fields": [
+      "backend.device_visibility_export",
+      "backend.module_setup",
+      "cluster.cpus_per_task",
+      "cluster.memory",
+      "cluster.nodes",
+      "cluster.ntasks_per_node",
+      "cluster.partition",
+      "cluster.time_limit",
+      "conda.env_name",
+      "env_vars.ONESCIENCE_DATASETS_DIR",
+      "env_vars.ONESCIENCE_MODELS_DIR",
+      "script.code_path",
+      "script.job_name"
+    ]
+  }
+]

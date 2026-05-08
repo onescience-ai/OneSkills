@@ -28,15 +28,15 @@
 
 先问自己：用户最终要交付什么？
 
-1. 只是识别远程 Host、队列、模块、路径约束  
+1. 只是识别远程 Host、队列、模块、路径约束
    -> `onescience-hardware`
-2. 只是实现或修改代码  
+2. 只是实现或修改代码
    -> `onescience-coder`
-3. 只是运行、提交、生成脚本  
+3. 只是运行、提交、生成脚本
    -> `onescience-runtime`
-4. 只是安装远程环境  
+4. 只是安装远程环境
    -> `onescience-installer`
-5. 只是验证、测试、排查  
+5. 只是验证、测试、排查
    -> `onescience-debug`
 
 如果一个请求同时命中多个阶段，优先选择覆盖目标所需的最短链路，而不是默认拉起全流程。
@@ -75,7 +75,37 @@
 - 给 `onescience-coder`：代码生成交接摘要
 - 给 `onescience-runtime`：完整硬件画像 + `onescience.json` + `tpl.slurm`
 
-### 3. 已有代码，只做运行
+### 3. 实现并通过 SCnet 运行
+
+适用信号：
+
+- “生成代码后提交到 SCnet 跑一下”
+- “用本地 SCnet MCP 提交任务”
+
+技能链：
+
+`onescience-coder -> onescience-runtime`
+
+传递规则：
+
+- 给 `onescience-runtime`：`execution_channel=scnet_mcp`、本地脚本路径、运行命令、区域 / 队列偏好、是否需要拉日志
+
+### 4. 已有代码，只做 SCnet 运行
+
+适用信号：
+
+- “这个脚本直接提交到 SCnet”
+- “帮我查 SCnet 任务状态并下载日志”
+
+技能链：
+
+`onescience-runtime`
+
+传递规则：
+
+- 给 `onescience-runtime`：`execution_channel=scnet_mcp`
+
+### 5. 已有代码，只做运行
 
 适用信号：
 
@@ -86,7 +116,7 @@
 
 `onescience-hardware -> onescience-runtime`
 
-### 4. 安装远程环境
+### 6. 安装远程环境
 
 适用信号：
 
@@ -97,7 +127,7 @@
 
 `onescience-hardware -> onescience-installer`
 
-### 5. 运行后排查
+### 7. 运行后排查
 
 适用信号：
 
@@ -115,6 +145,7 @@
 - “角色、岗位、职责、交接、谁来做、科研流程分工” -> `onescience-role`
 - “科研任务、工作流、领域、阶段、我想做什么、怎么推进” -> `onescience-workflow`
 - “实现、改造、接入、生成代码” -> `onescience-coder`
+- “SCnet、区域、队列、task_id、下载日志、MCP 提交” -> `onescience-runtime`
 - “提交、运行、slurm、作业、集群” -> `onescience-runtime`
 - “测试、验证、排查、debug、loss 异常” -> `onescience-debug`
 - “ssh、Host、队列、DCU、GPU、module、conda、硬件约束” -> `onescience-hardware`
@@ -125,9 +156,31 @@
 ## 缺失项处理
 
 - 缺少远程环境事实：先走 `onescience-hardware`
+- 缺少 SCnet 区域或队列：先走 `onescience-runtime` 的 `scnet_mcp` 通道发现，不要硬依赖 SSH 上下文
 - 缺少 `onescience.json` / `tpl.slurm`：仅阻塞运行链路，不阻塞纯代码链路
 - 缺少源码上下文：先说明要读哪些目录或文件
 - 只有代码生成需求：不要强行补 `runtime`
+
+## Backend 状态处理
+
+当 `onescience-hardware` 已经能把环境归一化为某个 `backend_id` 时，执行层除选择技能链外，还应显式暴露：
+
+- `backend_id`
+- `backend_status`
+- `execution_readiness`
+
+其中：
+
+- `backend_status` 用于表达当前目标执行链路是否已经稳定支持该 backend
+- `execution_readiness` 用于表达当前 host 是否已经 ready to execute
+
+`backend_status` 的共享语义与当前各 backend 的支持边界，参考仓库根目录的 `references/shared_contracts.md`。
+
+处理原则：
+
+- 命中已支持 backend 时，可继续进入对应执行 skill
+- 命中未支持 backend 时，应明确阻断对应阶段
+- backend 已支持但 host 未 ready 时，仍可进入对应执行 skill，但必须先显式报告当前 host 的阻断原因
 
 ## 常见误路由
 
@@ -165,3 +218,10 @@
 
 - 安装与提交职责混淆
 - 环境初始化和作业运行边界不清
+
+### 错误 6：把显式 SCnet 请求硬改造成 `ssh_slurm`
+
+后果：
+
+- 强行要求 `onescience.json`、`tpl.slurm` 或 SSH 信息
+- 忽略 SCnet 的区域隔离、队列访问和 MCP 错误面

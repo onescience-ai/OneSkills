@@ -1,0 +1,23 @@
+﻿{
+  "example_id": "scnet_mcp_runtime_request",
+  "execution_channel": "scnet_mcp",
+  "intent": "submit_script",
+  "local_input": {
+    "script_path": "bench_impl/run_scnet_probe.py",
+    "additional_files": []
+  },
+  "submission_target": {
+    "region": "East China Zone 1 (Kunshan)",
+    "queue": "kshdnormal"
+  },
+  "command": "python3 run_scnet_probe.py --steps 2",
+  "authorization": {
+    "submission_authorized": true,
+    "authorization_scope": "current_workflow"
+  },
+  "log_policy": {
+    "download_stdout": true,
+    "download_stderr": true
+  }
+}
+

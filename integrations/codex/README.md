@@ -6,19 +6,24 @@
 
 ## 推荐加载方式
 
-建议同时提供：
+当前推荐由安装器一次性完成两层：
 
-- `skills/`
-- `integrations/generic-agent.md`
-- `integrations/codex/README.md`
+- 项目内 `./.codex/oneskills/skills/`、`./.codex/oneskills/references/`、`./.codex/oneskills/integrations/`
+- 用户级 `~/.codex/skills/onescience-*` bridge skills
 
 其中：
 
-- `skills/` 负责核心能力
-- `integrations/generic-agent.md` 负责通用分层约束
-- 本文件负责 `Codex CLI` 场景下的补充说明
+- 项目内安装负责真实 skill 内容与共享 references
+- 用户级 bridge 负责让当前 Codex 能发现这些 skills
+- `integrations/generic-agent.md` 与本文件负责补充通用约束和 Codex 专属行为约束
 
 ## Codex CLI 下的推荐行为
+
+### 0. 统一入口词先进入 workflow
+
+如果用户只是说“使用/启动/打开/进入 onescience”或“使用/启动/打开/进入 oneskills”，以及“onescience 模式”“oneskills 模式”，默认进入 `onescience-workflow`，识别为 `general-onescience-request`，先询问具体科研目标，不要直接进入执行层。
+
+如果用户明确点名具体 skill，例如 `onescience-coder`、`onescience-runtime`、`onescience-debug`，则直接使用对应 skill；该 skill 再按自身规则判断是否需要回到 `onescience-workflow`。
 
 ### 1. 先走主链，不要跳层
 
@@ -92,6 +97,10 @@
 ## 推荐提示方式
 
 适合在 `Codex CLI` 中使用的入口提示例如：
+
+```text
+使用 oneskills
+```
 
 ```text
 使用 onescience-workflow，先判断这个科研任务属于哪条工作流，再进入最小技能链

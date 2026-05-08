@@ -1,0 +1,29 @@
+{
+  "example_id": "gpu_model_remote_debug_request",
+  "hardware_output_example": "skills/onescience-hardware/assets/examples/slurm_gpu_output.json",
+  "debug_request": {
+    "task_type": "remote_debug",
+    "target_scope": "model",
+    "expected_test_path": "model_test",
+    "needs_remote_execution": true,
+    "requires_runtime_backend": true,
+    "artifacts": [
+      "model.py",
+      "runner.py"
+    ]
+  },
+  "expected_resolution": {
+    "status": "supported",
+    "execution_backend": "onescience-runtime",
+    "required_backend_id": "slurm_gpu",
+    "precheck": {
+      "outcome": "ready_to_debug",
+      "driver_stack_owner": "platform_admin",
+      "driver_stack_ready": true,
+      "user_space_runtime_ready": true,
+      "torch_ready": true,
+      "distributed_runtime_ready": true,
+      "blocker_reason": "none"
+    }
+  }
+}

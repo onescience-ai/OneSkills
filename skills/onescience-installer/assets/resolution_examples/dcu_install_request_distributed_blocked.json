@@ -1,0 +1,22 @@
+{
+  "example_id": "dcu_install_request_distributed_blocked",
+  "request_example": "skills/onescience-installer/assets/request_examples/earth_install_request.json",
+  "hardware_output_example": "skills/onescience-hardware/assets/blocker_examples/slurm_dcu_distributed_not_ready.json",
+  "expected_resolution": {
+    "status": "supported",
+    "installer_backend": "dcu_remote_install",
+    "workspace_bootstrap_profile": "onescience_gitee_workspace",
+    "required_backend_id": "slurm_dcu",
+    "precheck": {
+      "outcome": "blocked",
+      "installer_scope": "user_space_only",
+      "driver_stack_owner": "platform_admin",
+      "driver_stack_ready": true,
+      "user_space_runtime_ready": true,
+      "compiler_ready": true,
+      "torch_ready": true,
+      "distributed_runtime_ready": false,
+      "blocker_reason": "distributed_runtime_not_ready"
+    }
+  }
+}

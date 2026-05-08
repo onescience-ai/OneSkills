@@ -8,10 +8,10 @@
 工作流理解 -> 角色编排 -> 执行路由 -> 硬件感知 -> 代码生成 -> 远程运行 -> 结果排查
 ```
 
-当你需要判断默认链路、分层职责、简化链路或禁止事项时，读取 `references/agent_pipeline.md`。
-当你需要处理“未配置远程环境”或“远程描述模糊”的异常场景时，读取 `references/remote_fallback.md`。
-当你需要按统一格式输出远程异常状态时，读取 `references/remote_status_template.md`。
-当你需要参考最终异常回复示例时，读取 `references/remote_status_examples.md`。
+当你需要判断默认链路、分层职责、简化链路或禁止事项时，读取 `../references/agent_pipeline.md`。
+当你需要处理“未配置远程环境”或“远程描述模糊”的异常场景时，读取 `../references/remote_fallback.md`。
+当你需要按统一格式输出远程异常状态时，读取 `../references/remote_status_template.md`。
+当你需要参考最终异常回复示例时，读取 `../references/remote_status_examples.md`。
 
 ## 核心要求
 
@@ -23,6 +23,25 @@
 6. `onescience-runtime` 与 `onescience-installer` 只消费完整硬件画像，不接管代码生成。
 7. 只有用户明确要求运行、安装、验证或排查时，才进入对应阶段。
 8. 当远程环境缺失或描述模糊时，优先用 `status` / `recognized` / `missing` / `can_continue_locally` / `next_action` 输出当前可执行性。
+
+## 统一入口触发
+
+当用户提示词只是在启用 OneScience / OneSkills 体系，例如：
+
+- “使用 onescience”
+- “启动 onescience”
+- “打开 onescience”
+- “进入 onescience”
+- “onescience 模式”
+- “使用 oneskills”
+- “启动 oneskills”
+- “打开 oneskills”
+- “进入 oneskills”
+- “oneskills 模式”
+
+默认进入 `onescience-workflow`，识别为 `workflow_type=general-onescience-request`，询问用户具体科研目标，不要直接拉起完整执行链。
+
+如果用户明确点名具体 skill，例如 `onescience-workflow`、`onescience-coder`、`onescience-runtime`、`onescience-debug` 等，则优先使用对应 skill 完成工作；该 skill 再根据自身规则决定是否需要转回上游入口。
 
 ## 默认远程工程链路
 

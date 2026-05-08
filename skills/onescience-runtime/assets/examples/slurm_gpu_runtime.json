@@ -1,0 +1,64 @@
+{
+  "runtime": {
+    "mode": "slurm",
+    "backend_id": "slurm_gpu",
+    "target": {
+      "scheduler_type": "slurm",
+      "platform_type": "cluster",
+      "accelerator_kind": "gpu",
+      "accelerator_vendor": "nvidia"
+    },
+    "environment": {
+      "cpu": {
+        "arch": "x86_64",
+        "vendor": "intel"
+      },
+      "accelerator_defaults": {
+        "kind": "gpu",
+        "vendor": "nvidia",
+        "visibility_env": "CUDA_VISIBLE_DEVICES",
+        "distributed_backend": "nccl",
+        "launch_mode": "python"
+      }
+    },
+    "cluster": {
+      "partition": "gpu_normal",
+      "nodes": 1,
+      "gpus_per_node": 1,
+      "cpus_per_task": 8,
+      "memory": "64GB",
+      "time_limit": "02:00:00",
+      "gpu_type": "gpu",
+      "ntasks_per_node": 1
+    },
+    "modules": [
+      "cuda/12.1",
+      "gcc/11.2"
+    ],
+    "conda": {
+      "enabled": true,
+      "env_name": "onescience311",
+      "activate_script": "source ~/.bashrc && conda activate onescience311"
+    },
+    "resources": {
+      "gpu_type": "gpu",
+      "cpu_memory_ratio": 8,
+      "disk_space": "100GB"
+    },
+    "script": {
+      "path": "slurm_submit.sh",
+      "generate": true,
+      "template": "slurm_gpu",
+      "job_name": "weather_forecast_gpu",
+      "code_path": "run_forecast.py",
+      "env_vars": {
+        "ONESCIENCE_DATASETS_DIR": "/mnt/datasets/onedatasets/",
+        "ONESCIENCE_MODELS_DIR": "/mnt/models/onemodels/",
+        "WORLD_SIZE": "${nodes} * ${gpus_per_node}",
+        "MASTER_ADDR": "$(scontrol show hostnames=$SLURM_JOB_NODELIST | head -n 1)",
+        "MASTER_PORT": "29500"
+      },
+      "work_dir": "."
+    }
+  }
+}

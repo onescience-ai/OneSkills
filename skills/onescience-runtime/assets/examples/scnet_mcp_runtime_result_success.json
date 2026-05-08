@@ -1,0 +1,26 @@
+﻿{
+  "example_id": "scnet_mcp_runtime_result_success",
+  "execution_channel": "scnet_mcp",
+  "submission_target": {
+    "region": "East China Zone 1 (Kunshan)",
+    "queue": "kshdnormal"
+  },
+  "remote_context": {
+    "remote_path": "run_scnet_probe.py",
+    "command": "python3 run_scnet_probe.py --steps 2"
+  },
+  "task_id": "1234567",
+  "job_status": "completed",
+  "local_log_dir": ".onescience/logs/scnet-1234567",
+  "synced_logs": [
+    "1234567.out",
+    "1234567.err"
+  ],
+  "sync_status": "synced",
+  "observations": {
+    "status_source": "scnet_get_task_status",
+    "log_readiness": "ready"
+  },
+  "next_action": "onescience-debug"
+}
+

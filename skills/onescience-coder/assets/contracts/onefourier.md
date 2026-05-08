@@ -65,9 +65,48 @@
   - `in_channels=n_hidden`
   - `out_channels=n_hidden`
   - `modes1=modes, modes2=modes`
+- Factorized FNO
+  - `style="FFNOSpectralConv2d"`
+  - `in_channels=n_hidden`
+  - `out_channels=n_hidden`
+  - `modes1=modes, modes2=modes`
 - 非结构 2D 几何投影
   - `style="GeoSpectralConv2d"`
   - `s1=96, s2=96`
+- Group-equivariant FNO
+  - `style="GSpectralConv2d"`
+  - `in_channels=width`
+  - `out_channels=width`
+  - `modes=modes`
+  - `reflection=False`
+- MultiWavelet / wavelet Fourier
+  - `style="MultiWaveletTransform2D"`
+  - `style="WaveletFourierKernel2D"`
+  - `style="WaveletSpatialKernel2D"`
+
+## CFD / 神经算子补充
+
+当前 `cfd_benchmark` 相关模型会使用以下 Fourier style：
+
+- FNO / U-FNO
+  - `FNOSpectralConv1d / FNOSpectralConv2d / FNOSpectralConv3d`
+  - 常见输入：规则网格特征，或经 `GeoSpectralConv*d` 投影后的规则潜网格
+- F-FNO
+  - `FFNOSpectralConv1d / FFNOSpectralConv2d / FFNOSpectralConv3d`
+  - 常见输入：与 FNO 类似，但频域卷积实现为 factorized 版本
+- GFNO
+  - `GSpectralConv2d / GSpectralConv3d`
+  - 常与 `OneEquivariant(style="GroupEquivariantConv*d")` 和 `OneMlp(style="GroupEquivariantMLP*d")` 配套
+- MWT
+  - `MultiWaveletTransform1D / 2D / 3D`
+  - `WaveletFourierKernel1D / 2D / 3D`
+  - `WaveletSpatialKernel2D / 3D`
+
+补充约束：
+
+- `GeoSpectralConv2d/3d` 是非结构点到规则潜网格的桥接层，不是普通 spectral conv
+- `GSpectralConv*d` 需要等变通道布局，不能直接塞到普通 FNO stem 中
+- wavelet / multiwavelet style 的构造参数与 FNO spectral conv 差异较大，复用前要回到对应模型卡或源码确认
 
 ## 风险点
 
@@ -80,3 +119,5 @@
 - `./onescience/src/onescience/modules/fourier/onefourier.py`
 - `./onescience/src/onescience/modules/fourier/fno_layers.py`
 - `./onescience/src/onescience/modules/fourier/geo_spectral.py`
+- `./onescience/src/onescience/modules/fourier/ffno_layers.py`
+- `./onescience/src/onescience/modules/fourier/group_spectral.py`

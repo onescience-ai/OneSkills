@@ -1,14 +1,14 @@
 {
   "agent": "codex",
-  "skills_dir": ".codex/skills",
+  "skills_dir": ".codex/oneskills/skills",
   "integration_targets": [
     {
       "source": "integrations/generic-agent.md",
-      "target": ".codex/oneskills/generic-agent.md"
+      "target": ".codex/oneskills/integrations/generic-agent.md"
     },
     {
       "source": "integrations/codex/README.md",
-      "target": ".codex/oneskills/codex-integration.md"
+      "target": ".codex/oneskills/integrations/codex/README.md"
     }
   ]
 }

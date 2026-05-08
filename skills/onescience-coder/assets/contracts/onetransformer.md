@@ -62,6 +62,37 @@
 - Fuxi U-shape trunk
   - `style="FuxiTransformer"`
 
+## CFD / 图模型补充
+
+当前 CFD、图网络和神经算子相关模型还会通过 `OneTransformer` 调用以下 style：
+
+- Transolver 系列
+  - `style="Transolver_block"`
+  - 典型位置：`Transolver2D / Transolver3D / Transolver*_plus`
+  - 典型输入：点云或网格 token 的隐特征 `fx`
+- CFD_Benchmark 注意力算子
+  - `style="Galerkin_Transformer_block"`
+  - `style="Factformer_block"`
+  - `style="GNOTTransformerBlock"`
+  - 典型输入：由坐标和物理量拼接后升维得到的 token 表示
+- 神经谱块
+  - `style="NeuralSpectralBlock1D"`
+  - `style="NeuralSpectralBlock2D"`
+  - `style="NeuralSpectralBlock3D"`
+  - 典型输入：结构化网格特征，通常与 `U_NO` 类模型相关
+- 图 ViT
+  - `style="PreLNTransformerBlock"`
+  - 典型输入：cluster 级 token `W`、`attention_mask` 和 cluster 位置编码
+- 局部视觉块
+  - `style="SwinTransformerBlock"`
+  - 适合窗口化图像/网格特征，不应默认替代物理 attention block
+
+补充约束：
+
+- `Transolver_block / Galerkin_Transformer_block / Factformer_block` 都会在内部继续调用 `OneAttention` 和 `OneMlp`，调参时要同时核对 attention style
+- `PreLNTransformerBlock` 是 GraphViT 的潜空间 cluster 交互层，不是普通 NLP Transformer block
+- `NeuralSpectralBlock*d` 更接近神经算子 block，输入维度和 patch 参数要与网格维度匹配
+
 ## 风险点
 
 - `OneTransformer` 只是分发入口，不代表统一的 tensor 语义
@@ -74,3 +105,5 @@
 - `./onescience/src/onescience/modules/transformer/earthtransformer2Dblock.py`
 - `./onescience/src/onescience/modules/transformer/earthtransformer3Dblock.py`
 - `./onescience/src/onescience/modules/transformer/fuxitransformer.py`
+- `./onescience/src/onescience/modules/transformer/Transolver_block.py`
+- `./onescience/src/onescience/modules/transformer/Neural_Spectral_Block.py`

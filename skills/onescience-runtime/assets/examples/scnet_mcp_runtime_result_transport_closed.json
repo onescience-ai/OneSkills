@@ -1,0 +1,24 @@
+﻿{
+  "example_id": "scnet_mcp_runtime_result_transport_closed",
+  "execution_channel": "scnet_mcp",
+  "submission_target": {
+    "region": "East China Zone 1 (Kunshan)",
+    "queue": "kshdnormal"
+  },
+  "remote_context": {
+    "remote_path": "run_scnet_probe.py",
+    "command": "python3 run_scnet_probe.py --steps 2"
+  },
+  "task_id": null,
+  "job_status": "unknown",
+  "local_log_dir": ".onescience/logs/scnet-transport-closed",
+  "synced_logs": [],
+  "sync_status": "failed",
+  "failure_reason": "transport_closed",
+  "observations": {
+    "status_source": "not_available",
+    "log_readiness": "unknown"
+  },
+  "next_action": "onescience-runtime"
+}
+

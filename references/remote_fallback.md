@@ -44,6 +44,7 @@
 - 队列 / 分区未知
 - module / conda 约束未知
 - `onescience.json` / `tpl.slurm` 缺失（运行任务）
+- SCnet 区域 / 队列不可识别（`scnet_mcp` 运行任务）
 
 ## 模糊远程描述的处理
 
@@ -110,6 +111,11 @@
 
 - 对纯代码任务：继续
 - 对运行任务：`blocked`
+
+### 场景 5：明确要求提交到 SCnet，但缺少区域或队列
+
+- 若当前环境可调用 SCnet MCP：允许继续，由 `onescience-runtime` 的 `scnet_mcp` 通道自行发现
+- 若当前环境无法调用 SCnet MCP：`blocked`
 
 ## 禁止事项
 

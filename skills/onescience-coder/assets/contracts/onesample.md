@@ -61,6 +61,24 @@
   - `style="FuxiDownSample"`
   - `style="FuxiUpSample"`
 
+## CFD / 图模型补充
+
+当前 CFD 图模型相关的补充 style 是：
+
+- 图空间下采样
+  - `style="SpatialGraphDownsample"`
+  - 常见参数：`in_channels, ratio, r, max_num_neighbors, pool_method`
+  - 典型用途：从节点集合中选取较粗尺度节点，构建多尺度图
+- 图空间上采样
+  - `style="SpatialGraphUpsample"`
+  - 典型用途：将粗尺度节点特征恢复到细尺度节点集合
+
+补充约束：
+
+- `SpatialGraphDownsample / SpatialGraphUpsample` 面向图节点和空间坐标，不是 CNN/UNet 的张量采样层
+- 这些 style 通常需要配套的边索引、节点坐标和采样 id；如果 datapipe 没有提供，应先补预处理流程
+- 对 MeshGraphNet 类任务，普通 processor 不一定需要 `OneSample`；只有多尺度或层级图处理才优先检查它
+
 ## 风险点
 
 - `OneSample` 不会自动检查调用层的 shape 语义是否正确
@@ -73,3 +91,5 @@
 - `./onescience/src/onescience/modules/sample/pangudownsample.py`
 - `./onescience/src/onescience/modules/sample/panguupsample.py`
 - `./onescience/src/onescience/modules/sample/fuxidownsample.py`
+- `./onescience/src/onescience/modules/sample/SpatialGraphDownsample.py`
+- `./onescience/src/onescience/modules/sample/SpatialGraphUpsample.py`

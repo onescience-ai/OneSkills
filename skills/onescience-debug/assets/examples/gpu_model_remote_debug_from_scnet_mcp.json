@@ -1,0 +1,41 @@
+{
+  "example_id": "gpu_model_remote_debug_from_scnet_mcp",
+  "hardware_output_example": "skills/onescience-hardware/assets/examples/slurm_gpu_output.json",
+  "debug_request": {
+    "task_type": "remote_debug",
+    "target_scope": "model",
+    "expected_test_path": "model_test",
+    "needs_remote_execution": true,
+    "requires_runtime_backend": true,
+    "artifacts": [
+      "model.py",
+      "runner.py"
+    ]
+  },
+  "runtime_handoff": {
+    "execution_channel": "scnet_mcp",
+    "submission_target": "华东一区【昆山】/kshdnormal",
+    "task_id": "20260430002",
+    "job_status": "completed",
+    "local_log_dir": ".onescience/logs/scnet-20260430002",
+    "synced_logs": [
+      "20260430002.out",
+      "20260430002.err"
+    ],
+    "sync_status": "synced"
+  },
+  "expected_resolution": {
+    "status": "supported",
+    "execution_backend": "onescience-runtime",
+    "required_backend_id": "slurm_gpu",
+    "precheck": {
+      "outcome": "ready_to_debug",
+      "driver_stack_owner": "platform_admin",
+      "driver_stack_ready": true,
+      "user_space_runtime_ready": true,
+      "torch_ready": true,
+      "distributed_runtime_ready": true,
+      "blocker_reason": "none"
+    }
+  }
+}

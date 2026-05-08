@@ -1,0 +1,60 @@
+{
+  "runtime": {
+    "mode": "slurm",
+    "backend_id": "slurm_cpu",
+    "target": {
+      "scheduler_type": "slurm",
+      "platform_type": "cluster",
+      "accelerator_kind": "cpu",
+      "accelerator_vendor": "none"
+    },
+    "environment": {
+      "cpu": {
+        "arch": "x86_64",
+        "vendor": "amd"
+      },
+      "accelerator_defaults": {
+        "kind": "cpu",
+        "vendor": "none",
+        "visibility_env": "NONE",
+        "distributed_backend": "gloo",
+        "launch_mode": "python"
+      }
+    },
+    "cluster": {
+      "partition": "cpu_normal",
+      "nodes": 1,
+      "gpus_per_node": 0,
+      "cpus_per_task": 16,
+      "memory": "64GB",
+      "time_limit": "02:00:00",
+      "gpu_type": "cpu",
+      "ntasks_per_node": 1
+    },
+    "modules": [
+      "gcc/11.2"
+    ],
+    "conda": {
+      "enabled": true,
+      "env_name": "onescience311",
+      "activate_script": "source ~/.bashrc && conda activate onescience311"
+    },
+    "resources": {
+      "gpu_type": "cpu",
+      "cpu_memory_ratio": 4,
+      "disk_space": "100GB"
+    },
+    "script": {
+      "path": "slurm_submit.sh",
+      "generate": true,
+      "template": "slurm_cpu",
+      "job_name": "cpu_preprocess_job",
+      "code_path": "run_preprocess.py",
+      "env_vars": {
+        "ONESCIENCE_DATASETS_DIR": "/mnt/cpu/onedatasets/",
+        "ONESCIENCE_MODELS_DIR": "/mnt/cpu/onemodels/"
+      },
+      "work_dir": "."
+    }
+  }
+}

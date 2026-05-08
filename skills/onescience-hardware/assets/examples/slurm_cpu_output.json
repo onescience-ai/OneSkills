@@ -1,0 +1,90 @@
+﻿{
+  "example_id": "slurm_cpu_output",
+  "expected_backend_id": "slurm_cpu",
+  "hardware_profile": {
+    "schema_version": "v1",
+    "host": "login-cpu",
+    "scheduler_type": "slurm",
+    "platform_type": "cluster",
+    "partition": "cpu_normal",
+    "cpu": {
+      "arch": "x86_64",
+      "vendor": "amd",
+      "model": "EPYC-xxx",
+      "sockets": 2,
+      "cores_per_socket": 32,
+      "threads_per_core": 2,
+      "numa_nodes": 4
+    },
+    "accelerators": [],
+    "memory": {
+      "system_gb": 512
+    },
+    "storage": {
+      "dataset_dir": "/mnt/cpu/onedatasets",
+      "models_dir": "/mnt/cpu/onemodels",
+      "work_dir": "/home/user/project",
+      "log_dir": "/home/user/project/logs"
+    },
+    "software": {
+      "modules": [
+        "gcc/11.2"
+      ],
+      "driver_stack": {
+        "accelerator_runtime_family": "none",
+        "driver_version": "none",
+        "user_space_version": "none",
+        "delivery_mode": "system",
+        "driver_ready": true,
+        "user_space_ready": true,
+        "owner": "platform_admin",
+        "capability_readiness": {
+          "compiler_ready": true,
+          "torch_ready": true,
+          "distributed_runtime_ready": true,
+          "verification_commands": [
+            "gcc --version",
+            "python -c 'import torch; print(torch.__version__)'"
+          ]
+        }
+      },
+      "conda_env": "onescience311",
+      "shell_init": "source ~/.bashrc"
+    },
+    "capabilities": {
+      "supports_sbatch": true,
+      "launch_mode": "python",
+      "supports_torchrun": false,
+      "needs_rocm_env": false,
+      "needs_cuda_env": false
+    }
+  },
+  "codegen_handoff": {
+    "cpu_arch": "x86_64",
+    "accelerator_kind": "cpu",
+    "accelerator_vendor": "none",
+    "accelerator_count_per_node": 0,
+    "distributed_mode": "single",
+    "runtime_mode": "slurm",
+    "launch_mode": "python",
+    "distributed_backend": "gloo",
+    "needs_distributed_entry": false,
+    "needs_device_guard": false,
+    "needs_path_env": true,
+    "needs_cluster_friendly_io": true,
+    "needs_cpu_thread_tuning": true,
+    "needs_numa_awareness": true,
+    "dataset_dir": "/mnt/cpu/onedatasets",
+    "models_dir": "/mnt/cpu/onemodels",
+    "work_dir": "/home/user/project",
+    "device_visibility_env": "NONE",
+    "notes_for_codegen": [
+      "Do not depend on CUDA or ROCm device variables",
+      "Do not hard-code the CPU dataloader worker count",
+      "Consider NUMA and socket locality when needed"
+    ]
+  }
+}
+
+
+

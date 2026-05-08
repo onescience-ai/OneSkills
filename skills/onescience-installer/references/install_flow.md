@@ -1,47 +1,98 @@
 # Install Flow
 
-本文件用于提供 `onescience-installer` 的详细安装流程、命令模板与常见问题。
+本文件用于提供 `onescience-installer` 的安装流程、输入语义和执行约束。
 
-## 用户输入要求
+## 当前支持边界
 
-用户在使用本技能时，必须确认以下信息：
+当前稳定支持的安装后端仅为：
 
-1. **安装领域**（必须确认）：用户未指定时，智能体必须主动询问用户选择。领域对应关系如下：
-   - 地球科学 -> `earth`
-   - 流体仿真/结构力学 -> `cfd`
-   - 生物信息 -> `bio`
-   - 材料化学 -> `matchem`
-   - 全部安装 -> `all`
+- `dcu_remote_install`
+
+当前安装仍以远程环境执行为前提，不在本地安装 OneScience。
+
+## 关键输入层
+
+安装链路当前消费 5 层输入：
+
+1. `hardware backend`
+   - 来自 `skills/onescience-runtime/assets/backend_specs.json` 的 `support_matrix.installer`
+2. `installer backend profile`
+   - 来自 `../assets/backend_profiles.json`
+   - 描述硬件相关的 user-space 环境准备
+3. `workspace bootstrap profile`
+   - 来自 `../assets/workspace_bootstrap_profiles.json`
+   - 描述仓库来源、工作树复用和安装入口渲染
+4. `install domain profile`
+   - 来自 `../assets/install_domains.json`
+   - 描述领域依赖意图与 `dependency_selector`
+5. `host readiness / precheck`
+   - 来自 `hardware_profile.software.driver_stack` 及其 `capability_readiness`
+
+标准输入资产位置：
+
+- installer backend profile：`../assets/backend_profiles.json`
+- workspace bootstrap profile：`../assets/workspace_bootstrap_profiles.json`
+- install domain profile：`../assets/install_domains.json`
+- request 示例：`../assets/request_examples/*.json`
+- resolution 示例：`../assets/resolution_examples/*.json`
+
+## 输入约束
+
+当前标准 install request 只包含：
+
+- `domain`
+
+不要把以下内容当成用户请求层输入：
+
+- `python_version`
+- `env_name`
+- `repo_name`
+- `repo_url`
+- `repo_ref`
+- `allow_reuse_existing_worktree`
+
+这些属于 backend profile 或 workspace bootstrap profile 的实现细节。
+
+## 驱动层边界
+
+`onescience-installer` 当前只负责 user-space 安装，不负责：
+
+- 安装或升级内核态驱动
+- 加载内核模块
+- 修改系统级 CUDA / ROCm 部署
+- 申请 root 权限或重启节点
+
+进入安装前至少要确认：
+
+- `driver_stack.owner = platform_admin`
+- `driver_stack.driver_ready = true`
+- `driver_stack.user_space_ready = true`
+- `driver_stack.capability_readiness.compiler_ready = true`
+- `driver_stack.capability_readiness.torch_ready = true`
+- `driver_stack.capability_readiness.distributed_runtime_ready = true`
+
+若上述条件不满足，应直接阻断并提示平台侧先处理驱动栈。
 
 ## 安装流程概览
 
-**重要：所有安装操作必须在远程 DCU 平台执行，不得在本地执行。**
+所有安装操作必须在远程环境执行，不得在本地执行。
 
-**关键要求：**
+关键要求：
 
-- 阶段 1（加载环境、获取代码并安装）使用一个远程命令执行
-- 阶段 2（安装验证）使用独立的远程命令执行
+- 阶段 1 使用一个远程命令完成环境准备、工作区同步与领域安装
+- 阶段 2 使用独立远程命令做安装验证
 
-### 前置准备阶段
+前置阶段：
 
 1. 读取完整硬件画像
-2. 确认安装领域
-3. 准备远程安装与验证命令
+2. 根据 `support_matrix.installer` 判断当前 hardware backend 是否受支持
+3. 读取对应 installer backend profile
+4. 读取默认 workspace bootstrap profile
+5. 检查 `software.driver_stack` 与 `capability_readiness`
+6. 确认安装领域
+7. 准备远程安装与验证命令
 
-### 远程安装阶段
-
-4. 远程执行安装
-5. 远程执行验证
-
-## 阶段 1：安装命令
-
-若用户未指定领域，必须先询问用户选择：
-
-- earth（地球科学）
-- cfd（流体仿真/结构力学）
-- bio（生物信息）
-- matchem（材料化学）
-- all（全部安装）
+## `dcu_remote_install` 阶段 1：安装命令骨架
 
 如果 `conda create` 失败，再重试一次，并在 `module load sghpc-mpi-gcc/26.3` 之后、`conda create` 之前插入：
 
@@ -49,21 +100,17 @@
 source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate
 ```
 
-标准安装命令：
+标准流程骨架：
 
 ```bash
-# 加载 DAS 模块
 module load sghpcdas/25.6
 source ~/.bashrc
-# 加载 DTK 模块
 module load sghpc-mpi-gcc/26.3
-# 如果 conda 命令不可用，执行以下激活命令
+# 必要时 fallback:
 # source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate
-# 创建 Python 3.11 环境
 conda create -n onescience311 python=3.11 -y
-# 激活 conda 环境
 conda activate onescience311
-# 获取 OneScience 代码
+
 if [ ! -d onescience ]; then
   git clone https://gitee.com/onescience-ai/onescience.git
 fi
@@ -72,18 +119,16 @@ git fetch --all
 git checkout main
 git pull --ff-only
 
-# 根据用户选择执行对应安装命令
-# 安装全部领域（用户选择 all 时执行）
-bash install.sh
-
-# 安装指定领域
+# dependency_selector 由 install_domains.json 提供
 bash install.sh earth
-bash install.sh cfd
-bash install.sh bio
-bash install.sh matchem
 ```
 
-## 阶段 2：验证命令
+说明：
+
+- 上面最后一行只是 `earth` 的渲染结果示例
+- `all` 场景应使用 workspace bootstrap profile 的默认 selector 省略规则渲染
+
+## `dcu_remote_install` 阶段 2：验证命令
 
 安装完成后，执行以下完整命令验证安装是否成功：
 
@@ -94,30 +139,12 @@ module load sghpcdas/25.6 && source ~/.bashrc && module load sghpc-mpi-gcc/26.3 
 约束：
 
 - 禁止创建验证脚本
-- 必须直接执行上述验证命令
-- 不要向命令中添加额外内容
-
-## 领域说明
-
-| 领域 | 领域名 | 说明 |
-|------|--------|------|
-| 地球科学 | earth | 气象、海洋等地球科学相关模型 |
-| 流体仿真/结构力学 | cfd | 计算流体力学、结构力学相关模型 |
-| 生物信息 | bio | 蛋白质结构预测、基因分析等生物信息模型 |
-| 材料化学 | matchem | 材料科学、化学模拟相关模型 |
+- 必须直接执行验证命令
 
 ## 安装注意事项
 
-- 平台为国产 DCU 远程服务器
+- 当前稳定安装 profile 仍是 DCU 定向 profile
+- 当前领域 profile 只描述依赖选择，不描述命令实现
 - 默认用户已完成 SSH 免密登录配置
 - 命令顺序要固定，避免 `conda` 与 `module` 环境不一致
-- Python 版本固定为 3.11（`onescience311`）
 - 用户未指定领域时，必须先确认领域
-
-## 常见问题
-
-1. **`conda` 命令不可用**：确认已执行 `module load sghpcdas/25.6`
-2. **`conda init bash` 后未生效**：执行 `source ~/.bashrc` 后再继续
-3. **分支不存在或切换失败**：先执行 `git fetch --all`，再重试 `git checkout <branch>`
-4. **`install.sh` 执行报错**：确认当前目录为仓库根目录 `onescience/`
-5. **领域未确认**：先询问用户选择 `earth/cfd/bio/matchem/all`

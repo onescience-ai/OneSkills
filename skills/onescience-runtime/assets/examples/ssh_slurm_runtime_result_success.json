@@ -1,0 +1,24 @@
+{
+  "example_id": "ssh_slurm_runtime_result_success",
+  "execution_channel": "ssh_slurm",
+  "submission_target": {
+    "host": "login-kunshan",
+    "partition": "hpctest01",
+    "backend_id": "slurm_dcu"
+  },
+  "remote_context": {
+    "job_script_path": "slurm_submit.sh",
+    "remote_work_dir": "/home/user/project",
+    "remote_log_dir": "logs",
+    "command": "sbatch slurm_submit.sh"
+  },
+  "job_id": "202605010001",
+  "job_status": "completed",
+  "local_log_dir": ".onescience/logs/job-202605010001",
+  "synced_logs": [
+    "202605010001.out",
+    "202605010001.err"
+  ],
+  "sync_status": "synced",
+  "next_action": "onescience-debug"
+}

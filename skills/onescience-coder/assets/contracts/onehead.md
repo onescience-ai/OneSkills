@@ -52,6 +52,7 @@
 ## 典型调用位置
 
 - `CFD_Benchmark` 中 `U_Net` 的多尺度输出头
+- `DeepCFD` 中 `UNet / UNetEx` 的最终物理场通道投影
 
 ## 典型参数
 
@@ -61,6 +62,12 @@
   - `out_channels=n_hidden`
 - 3D U-Net 输出头
   - `style="UNetHead3D"`
+
+## CFD 补充约束
+
+- `UNetHead1D/2D/3D` 应与对应维度的 `UNetEncoder*d`、`UNetDecoder*d` 成套使用
+- `out_channels` 应等于目标物理量通道数，例如稳态流场中的速度、压力或其它代理变量数量
+- 如果 datapipe 返回的是节点/点云格式，不应直接使用 `UNetHead*d`，需要先转成规则网格或改用图/点云 decoder
 
 ## 风险点
 

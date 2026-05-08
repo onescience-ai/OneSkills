@@ -1,0 +1,70 @@
+﻿[
+  {
+    "id": "dcu_remote_install",
+    "lifecycle_status": "stable",
+    "supported_hardware_backends": [
+      "slurm_dcu"
+    ],
+    "installer_scope": "user_space_only",
+    "defaults": {
+      "python_version": "3.11",
+      "env_name": "onescience311"
+    },
+    "bootstrap": {
+      "shell_init": "source ~/.bashrc",
+      "module_sequence": [
+        "sghpcdas/25.6",
+        "sghpc-mpi-gcc/26.3"
+      ],
+      "fallback_activation_command": "source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate"
+    },
+    "environment": {
+      "create_env_template": "conda create -n {env_name} python={python_version} -y",
+      "activate_env_template": "conda activate {env_name}"
+    },
+    "verify": {
+      "commands": [
+        "python -c 'import torch; print(torch.__version__)'",
+        "python -c 'import onescience; print(onescience.__version__)'"
+      ]
+    },
+    "notes": [
+      "Current stable installer backend",
+      "Suitable for the Slurm + AMD DCU user-space installation path"
+    ]
+  },
+  {
+    "id": "gpu_remote_install",
+    "lifecycle_status": "planned",
+    "supported_hardware_backends": [
+      "slurm_gpu"
+    ],
+    "installer_scope": "user_space_only",
+    "defaults": {
+      "python_version": "3.11",
+      "env_name": "onescience311"
+    },
+    "bootstrap": {
+      "shell_init": "source ~/.bashrc",
+      "module_sequence": [
+        "cuda/12.1",
+        "gcc/11.2"
+      ],
+      "fallback_activation_command": "none"
+    },
+    "environment": {
+      "create_env_template": "conda create -n {env_name} python={python_version} -y",
+      "activate_env_template": "conda activate {env_name}"
+    },
+    "verify": {
+      "commands": [
+        "python -c 'import torch; print(torch.__version__)'",
+        "python -c 'import onescience; print(onescience.__version__)'"
+      ]
+    },
+    "notes": [
+      "Planned installer backend profile",
+      "Currently only a bootstrap skeleton for CUDA clusters and not an enabled support_matrix.installer path"
+    ]
+  }
+]
