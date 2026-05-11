@@ -2,6 +2,16 @@
   "runtime": {
     "mode": "slurm",
     "backend_id": "slurm_dcu",
+    "remote": {
+      "host": "core1-scnet-easyscience2024",
+      "hostname": "zzeshell.scnet.cn",
+      "port": 65032,
+      "user": "easyscience2024",
+      "strict_host_key_checking": "no",
+      "password_authentication": "no",
+      "identity_file": "c:/Users/liu02/.ssh/easyscience2024_zzeshell.scnet.cn_RsaKeyExpireTime_2026-07-13_15-56-41.txt",
+      "remote_work_dir": "/public/home/easyscience2024/oneskills_runtime"
+    },
     "target": {
       "scheduler_type": "slurm",
       "platform_type": "cluster",
