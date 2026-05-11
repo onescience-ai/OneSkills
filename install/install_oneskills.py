@@ -17,7 +17,7 @@ MANIFEST_DIR = ROOT / "install" / "manifests"
 STATE_DIR = ".oneskills/install-state"
 SHARED_REFERENCES_DIR = ROOT / "references"
 DEFAULT_RUNTIME_ASSETS = [
-    ("skills/onescience.json", "onescience.json"),
+    ("skills/onescience-workflow/assets/onescience.default.json", "onescience.json"),
     ("skills/onescience-runtime/assets/tpl.slurm", "tpl.slurm"),
 ]
 INSTALL_PROFILES = ("basic", "runtime")
