@@ -147,16 +147,24 @@ bash install.sh earth
 
 ## `dcu_remote_install` 阶段 2：验证命令
 
-安装完成后，执行以下完整命令验证安装是否成功：
+安装完成后，执行以下**完整**验证。**预期执行位置**：智能体所在当前环境（登录机/工作机）**不是**远端；验证必须由当前环境对目标 Host **一条非交互** `ssh user@host "…"` 发起，引号内整段在远端 shell 执行。不得把工作区或本地 conda 中的 import 当作远端安装验证。
+
+**命令形态（外层双引号 + `python -c` 单引号，避免嵌套双引号被本地 shell 吃掉）：**
 
 ```bash
-module load sghpcdas/25.6 && source ~/.bashrc && module load sghpc-mpi-gcc/26.3 && conda activate onescience311 && python -c 'import torch; print(torch.__version__)' && python -c 'import onescience; print(onescience.__version__)'
+ssh user@host "module load sghpcdas/25.6 && source ~/.bashrc && module load sghpc-mpi-gcc/26.3 && conda activate onescience311 && python -c 'import torch; print(torch.__version__)' && python -c 'import onescience; print(onescience.__version__)'"
 ```
 
-约束：
+### 验证范围（严格）
 
-- 禁止创建验证脚本
-- 必须直接执行验证命令
+- **仅**上述两条 `python -c`：打印 `torch` 与 `onescience` 的版本字符串。
+- **不得**以「更稳妥」为由追加其它包导入、目录存在性、`pip list`、`conda list` 节选、Hydra、数据集路径等检查，除非用户在本轮对话中明确要求。
+
+### 约束
+
+- **禁止**创建验证脚本（含临时 `.sh`、heredoc 落盘、为绕过引号而写的包装脚本）。引号错误应通过改用本节的引号层次修正，而不是写文件。
+- **必须**直接执行验证命令：自当前环境一条 `ssh user@host "…"`（引号内为远端串联），禁止省略 `ssh`、仅在本地或工作区解释器中做 import 验证。
+- **引号反模式（易触发本地 bash 语法错误，智能体不得使用）**：在 `python -c` 中使用 f-string，或在外层使用单引号包裹 SSH 远程命令、同时在 `-c` 参数里使用未转义的双引号嵌套（例如 `ssh host 'python -c "… f\"…\" …"'`）。
 
 ## `gpu_remote_install` 阶段 1：安装命令骨架
 
@@ -204,13 +212,15 @@ bash install.sh earth
 
 ## `gpu_remote_install` 阶段 2：验证命令
 
-安装完成后，`onescience311` 内依赖与动态库已就绪，验证时**只需进入该 conda 环境**并执行导入检查即可
+安装完成后，`onescience311` 内依赖与动态库已就绪。验证的**发起方式**与 DCU 一致：由当前环境对目标 Host 一条非交互 `ssh`，引号内为远端串联。
 
-安装完成后，执行以下完整命令验证安装是否成功：
+**外层双引号**，`python -c` **单引号**：
 
 ```bash
-source ~/.bashrc && conda activate onescience311 && python -c 'import torch; print(torch.__version__)' && python -c 'import onescience; print(onescience.__version__)'
+ssh user@host "source ~/.bashrc && conda activate onescience311 && python -c 'import torch; print(torch.__version__)' && python -c 'import onescience; print(onescience.__version__)'"
 ```
+
+验证范围与禁止项同上文「`dcu_remote_install` 阶段 2」中的**验证范围**与**约束**。
 
 若验证时出现动态库找不到等加载错误，再在**同一条验证命令**里、于 `conda activate` 之后按阶段 1 补上相同的 `export` / `source` 后重试。
 

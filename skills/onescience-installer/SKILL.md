@@ -136,5 +136,9 @@ description: 面向远程硬件环境的 OneScience 安装助手。先读取 `on
 
 4. 遇到连接失败或安装错误时，提供排查建议。
 
-5. 验证安装时不允许创建测试脚本，必须直接在命令行执行验证命令。
+5. **验证安装（硬性约束）**：
+   - **禁止**创建任何验证用脚本（含临时 `.sh`、`python` 多行文件、`cat <<'EOF'` 落盘等）。不得以「引号难写」为由改用脚本；引号问题必须通过**规定的引号层次**解决。
+   - **必须**在一条远程 shell 命令中直接执行文档给出的验证串联命令（见 `./references/install_flow.md` 阶段 2）。
+   - **验证范围仅限文档规定的两项**：`torch.__version__` 与 `onescience.__version__`。不得擅自增加 `xarray`/`dask`/`netCDF4`/`hydra`、路径探测、`dir(onescience)` 等「额外放心检查」；用户明确要求时再扩展。
+   - **SSH 引号规范（与 DCU 验证模板一致）**：`ssh user@host "……远程一条命令……"`，其中 `python -c` 的代码串使用**单引号**包裹，例如 `python -c 'import torch; print(torch.__version__)'`。**禁止**在 `python -c` 内使用 f-string 或再嵌一层未转义的双引号，以免本地 shell 提前截断字符串（典型失败形态：`ssh host 'python -c "import torch; print(f\"...\")"'`）。
 
