@@ -5,6 +5,7 @@ import argparse
 import json
 import platform
 import shutil
+import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -19,6 +20,8 @@ DEFAULT_RUNTIME_ASSETS = [
 ]
 INSTALL_PROFILES = ("basic", "runtime")
 CODEX_BRIDGE_MARKER = "<!-- managed-by: oneskills codex bridge -->"
+MCP_TOOL_URL = "https://gitee.com/onescience-ai/agent-cloud-interaction-protocol/releases/download/v0.1/scnet-mcp-server.exe"
+MCP_TOOL_FILENAME = "scnet-mcp-server.exe"
 
 
 @dataclass
@@ -101,6 +104,10 @@ def build_entries(project_root: Path, manifest: dict, with_runtime_assets: bool)
     return entries
 
 
+def codex_mcp_tool_path(project_root: Path) -> Path:
+    return project_root / ".codex" / "oneskills" / "mcp-tools" / MCP_TOOL_FILENAME
+
+
 def ensure_parent(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -112,6 +119,31 @@ def remove_path(path: Path) -> None:
         path.unlink()
     else:
         shutil.rmtree(path)
+
+
+def install_codex_mcp_tools(project_root: Path, force: bool, dry_run: bool) -> Path:
+    target = codex_mcp_tool_path(project_root)
+    if dry_run:
+        action = "overwrite" if target.exists() else "download"
+        print(f"[dry-run] mcp-tools: {action} {MCP_TOOL_URL} -> {target}")
+        return target
+
+    if target.exists() and target.is_dir():
+        if not force:
+            raise SystemExit(f"发现已存在的 MCP tools 目录，请使用 --force 覆盖：{target}")
+        remove_path(target)
+
+    target.parent.mkdir(parents=True, exist_ok=True)
+    temp_target = target.with_suffix(target.suffix + ".tmp")
+    remove_path(temp_target)
+    try:
+        urllib.request.urlretrieve(MCP_TOOL_URL, temp_target)
+        remove_path(target)
+        temp_target.replace(target)
+    except Exception as exc:
+        remove_path(temp_target)
+        raise SystemExit(f"下载 Codex MCP tool 失败：{MCP_TOOL_URL}") from exc
+    return target
 
 
 def install_copy(source: Path, target: Path) -> None:
@@ -254,7 +286,14 @@ def unregister_codex_bridge_project(project_root: Path, dry_run: bool) -> None:
         state_dir.rmdir()
 
 
-def write_state(project_root: Path, agent: str, mode: str, profile: str, entries: list[InstallEntry]) -> Path:
+def write_state(
+    project_root: Path,
+    agent: str,
+    mode: str,
+    profile: str,
+    entries: list[InstallEntry],
+    mcp_tool_path: Path | None,
+) -> Path:
     state_path = project_root / STATE_DIR / f"{agent}.json"
     state_path.parent.mkdir(parents=True, exist_ok=True)
     with_runtime_assets = profile == "runtime"
@@ -271,6 +310,11 @@ def write_state(project_root: Path, agent: str, mode: str, profile: str, entries
             for entry in entries
         ],
     }
+    if mcp_tool_path:
+        payload["mcp_tools"] = {
+            "url": MCP_TOOL_URL,
+            "target": str(mcp_tool_path.relative_to(project_root)),
+        }
     state_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return state_path
 
@@ -289,7 +333,16 @@ def load_existing_state(project_root: Path, agent: str) -> dict | None:
     return json.loads(state_path.read_text(encoding="utf-8"))
 
 
-def install(project_root: Path, agent: str, mode: str, profile: str, force: bool, skills_dir_override: str | None, dry_run: bool) -> None:
+def install(
+    project_root: Path,
+    agent: str,
+    mode: str,
+    profile: str,
+    force: bool,
+    skills_dir_override: str | None,
+    dry_run: bool,
+    with_mcp_tools: bool,
+) -> None:
     manifest = load_manifest(agent, skills_dir_override)
     with_runtime_assets = profile == "runtime"
     entries = build_entries(project_root, manifest, with_runtime_assets)
@@ -302,6 +355,12 @@ def install(project_root: Path, agent: str, mode: str, profile: str, force: bool
             target = project_root / item["target"]
             if target not in current_targets:
                 stale_targets.append(target)
+        existing_mcp_tools = existing_state.get("mcp_tools")
+        current_mcp_tool = codex_mcp_tool_path(project_root) if agent == "codex" and with_mcp_tools else None
+        if existing_mcp_tools:
+            existing_mcp_target = project_root / existing_mcp_tools["target"]
+            if existing_mcp_target != current_mcp_tool:
+                stale_targets.append(existing_mcp_target)
     conflicts = [entry.target for entry in entries if entry.target.exists() or entry.target.is_symlink()]
     if conflicts and not force:
         conflict_text = "\n".join(f"- {path}" for path in conflicts)
@@ -317,6 +376,8 @@ def install(project_root: Path, agent: str, mode: str, profile: str, force: bool
         for entry in entries:
             print(f"[dry-run] {effective_mode}: {entry.source.relative_to(ROOT)} -> {entry.target}")
         if agent == "codex":
+            if with_mcp_tools:
+                install_codex_mcp_tools(project_root, force, dry_run=True)
             install_codex_bridges(force, dry_run=True)
             register_codex_bridge_project(project_root, dry_run=True)
         return
@@ -336,10 +397,13 @@ def install(project_root: Path, agent: str, mode: str, profile: str, force: bool
             install_symlink(entry.source, entry.target)
 
     if agent == "codex":
+        mcp_tool_path = install_codex_mcp_tools(project_root, force, dry_run=False) if with_mcp_tools else None
         install_codex_bridges(force, dry_run=False)
         register_codex_bridge_project(project_root, dry_run=False)
+    else:
+        mcp_tool_path = None
 
-    state_path = write_state(project_root, agent, effective_mode, profile, entries)
+    state_path = write_state(project_root, agent, effective_mode, profile, entries, mcp_tool_path)
     print(f"Installed OneSkills for {agent} into: {project_root}")
     print(f"Platform: {current_platform_name()}")
     print(f"Mode: {effective_mode}")
@@ -347,11 +411,16 @@ def install(project_root: Path, agent: str, mode: str, profile: str, force: bool
     print(f"State: {state_path}")
     if with_runtime_assets:
         print("Runtime assets: enabled")
+    if mcp_tool_path:
+        print(f"MCP tool: {mcp_tool_path}")
 
 
 def uninstall(project_root: Path, agent: str, dry_run: bool) -> None:
     state_path, state = read_state(project_root, agent)
     items = [project_root / item["target"] for item in state.get("items", [])]
+    mcp_tools = state.get("mcp_tools")
+    if mcp_tools:
+        items.append(project_root / mcp_tools["target"])
 
     if dry_run:
         for item in items:
@@ -388,6 +457,7 @@ def main() -> int:
         help="Install profile. basic: install skills/references/integrations only; runtime: also install onescience.json and tpl.slurm. Default: basic.",
     )
     parser.add_argument("--with-runtime-assets", action="store_true", help="Compatibility alias for --profile runtime.")
+    parser.add_argument("--skip-mcp-tools", action="store_true", help="Codex only: do not download bundled MCP tool binary.")
     parser.add_argument("--uninstall", action="store_true", help="Remove items installed by this installer.")
     parser.add_argument("--force", action="store_true", help="Overwrite existing targets during install.")
     parser.add_argument("--skills-dir", help="Custom skills directory, used with --agent generic or to override manifest defaults.")
@@ -410,7 +480,16 @@ def main() -> int:
     if args.uninstall:
         uninstall(project_root, args.agent, args.dry_run)
     else:
-        install(project_root, args.agent, args.mode, profile, args.force, args.skills_dir, args.dry_run)
+        install(
+            project_root,
+            args.agent,
+            args.mode,
+            profile,
+            args.force,
+            args.skills_dir,
+            args.dry_run,
+            with_mcp_tools=args.agent == "codex" and not args.skip_mcp_tools,
+        )
     return 0
 
 

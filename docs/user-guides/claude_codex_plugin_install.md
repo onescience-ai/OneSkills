@@ -96,6 +96,12 @@ with the real local SCnet MCP launch configuration.
 
 Codex installation is documented in `.codex/INSTALL.md`.
 
+For users, the recommended path is a single prompt inside Codex:
+
+```text
+Fetch and follow instructions from https://raw.githubusercontent.com/onescience-ai/OneSkills/refs/heads/master/.codex/INSTALL.md to install OneSkills skills, download the SCnet MCP server, and generate the Codex MCP config template.
+```
+
 Short version:
 
 ```bash

@@ -35,10 +35,30 @@
 
 ## 推荐用法
 
+注意：`install/install_oneskills.py` 需要用户本地已有 Python。Codex 面向普通用户的首选安装方式不依赖 Python，请使用仓库中的 `.codex/INSTALL.md`，它会用 Git 链接 skills，并直接下载 `scnet-mcp-server.exe`。
+
 安装到指定项目：
 
 ```bash
 python3 install/install_oneskills.py --agent codex --project /path/to/project
+```
+
+Codex 安装默认同时安装 MCP tool；安装器会直接下载 release 二进制：
+
+```text
+https://gitee.com/onescience-ai/agent-cloud-interaction-protocol/releases/download/v0.1/scnet-mcp-server.exe
+```
+
+默认安装位置：
+
+```text
+/path/to/project/.codex/oneskills/mcp-tools/scnet-mcp-server.exe
+```
+
+如果只想安装 skills，可显式跳过 MCP tool：
+
+```bash
+python3 install/install_oneskills.py --agent codex --project /path/to/project --skip-mcp-tools
 ```
 
 按运行档位安装：
