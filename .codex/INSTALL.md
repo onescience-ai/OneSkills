@@ -6,6 +6,12 @@ Use Codex native skill discovery to enable OneScience / OneSkills skills. This p
 https://gitee.com/onescience-ai/agent-cloud-interaction-protocol/releases/download/v0.1/scnet-mcp-server.exe
 ```
 
+It also installs the OneScience source snapshot used by code-reading skills from:
+
+```text
+https://gitee.com/onescience-ai/onescience/releases/download/0.3.0/onescience-0.3.0.zip
+```
+
 ## One-Line User Prompt
 
 Users can paste this single sentence into Codex:
@@ -21,6 +27,7 @@ Codex should complete the installation commands for the current operating system
 - Git
 - Codex with native skills discovery enabled
 - Network access to GitHub and Gitee
+- `unzip` on macOS / Linux, or PowerShell `Expand-Archive` on Windows
 
 ## Install Skills And MCP
 
@@ -38,6 +45,13 @@ if [ ! -e ~/.agents/skills/oneskills ]; then
 fi
 mkdir -p ~/.codex/oneskills/mcp-tools
 curl -L -o ~/.codex/oneskills/mcp-tools/scnet-mcp-server.exe https://gitee.com/onescience-ai/agent-cloud-interaction-protocol/releases/download/v0.1/scnet-mcp-server.exe
+mkdir -p ~/.codex/oneskills/source-cache
+curl -L -o ~/.codex/oneskills/source-cache/onescience-0.3.0.zip https://gitee.com/onescience-ai/onescience/releases/download/0.3.0/onescience-0.3.0.zip
+rm -rf ~/.codex/oneskills/onescience ~/.codex/oneskills/source-cache/onescience-extract
+mkdir -p ~/.codex/oneskills/source-cache/onescience-extract
+unzip -q ~/.codex/oneskills/source-cache/onescience-0.3.0.zip -d ~/.codex/oneskills/source-cache/onescience-extract
+first_dir="$(find ~/.codex/oneskills/source-cache/onescience-extract -mindepth 1 -maxdepth 1 -type d | head -n 1)"
+mv "$first_dir" ~/.codex/oneskills/onescience
 ```
 
 ### Windows PowerShell
@@ -55,9 +69,27 @@ if (-not (Test-Path -LiteralPath "$env:USERPROFILE\.agents\skills\oneskills")) {
 }
 New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex\oneskills\mcp-tools"
 Invoke-WebRequest -Uri "https://gitee.com/onescience-ai/agent-cloud-interaction-protocol/releases/download/v0.1/scnet-mcp-server.exe" -OutFile "$env:USERPROFILE\.codex\oneskills\mcp-tools\scnet-mcp-server.exe" -UseBasicParsing
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex\oneskills\source-cache"
+$zipPath = "$env:USERPROFILE\.codex\oneskills\source-cache\onescience-0.3.0.zip"
+$extractPath = "$env:USERPROFILE\.codex\oneskills\source-cache\onescience-extract"
+$sourcePath = "$env:USERPROFILE\.codex\oneskills\onescience"
+Invoke-WebRequest -Uri "https://gitee.com/onescience-ai/onescience/releases/download/0.3.0/onescience-0.3.0.zip" -OutFile $zipPath -UseBasicParsing
+Remove-Item -LiteralPath $sourcePath -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -LiteralPath $extractPath -Recurse -Force -ErrorAction SilentlyContinue
+Expand-Archive -LiteralPath $zipPath -DestinationPath $extractPath -Force
+$firstDir = Get-ChildItem -LiteralPath $extractPath -Directory | Select-Object -First 1
+Move-Item -LiteralPath $firstDir.FullName -Destination $sourcePath
 ```
 
 Restart Codex after installing so it can discover the skills.
+
+Code-reading skills resolve source anchors such as `./onescience/src/onescience/...` to:
+
+```text
+~/.codex/oneskills/onescience
+```
+
+They should not scan arbitrary local paths such as `D:\Projects\OneScience\onescience`.
 
 ## MCP Setup
 

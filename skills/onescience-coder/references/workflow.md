@@ -24,7 +24,7 @@
 4. 若任务涉及数据读取、年份选择、变量组织或 dataloader，读取 `../assets/datapipes/datapipe_index.md`
 5. 若用户提供的是未登记的新数据集 README、样例文件或数据目录说明，再读取 `./new_dataset_workflow.md`
 6. 按需读取相关 `../assets/contracts/` 与 `../assets/datapipes/` 文档
-7. 必要时读取 `../../../onescience/` 中的源码锚点
+7. 必要时读取项目本地安装的 `./onescience/` 源码锚点；该目录由 OneSkills installer 从 OneScience release zip 下发到 agent 的 `oneskills/onescience` 目录，不要扫描开发机上的任意磁盘路径
 8. 先生成一份“详细执行信息”或“结构化规格说明”
 9. 把这份规格说明交给用户确认
 
@@ -68,7 +68,7 @@
 
 ## 核心目标
 
-- 尽量少让用户阅读 `../../../onescience/` 源码
+- 尽量少让用户阅读 `./onescience/` 源码
 - 若用户明确提到某个现有模型，优先使用 `../assets/models/` 中的模型卡
 - 优先使用 `../assets/contracts/` 中的组件契约完成任务
 - 若涉及数据流程，优先使用 `../assets/datapipes/` 中的数据卡
@@ -83,7 +83,7 @@
 - `./new_dataset_workflow.md`
 - `../../../README.md`
 - 用户明确指定的文件
-- `../../../onescience/` 中与契约卡片对应的源码锚点
+- `./onescience/` 中与契约卡片对应的源码锚点
 
 ## 执行顺序
 
@@ -123,9 +123,12 @@
 
 说明：
 
-- 模型卡中的源码锚点统一使用 `../../../onescience/...` 相对路径
-- 契约卡片中的源码锚点统一使用 `../../../onescience/...` 相对路径
-- 默认假设 `oneskills` 与 `onescience` 位于同一工作目录下
+- 模型卡中的源码锚点统一使用 `./onescience/...` 相对路径
+- 契约卡片中的源码锚点统一使用 `./onescience/...` 相对路径
+- 这里的 `./onescience` 不是当前 shell 工作目录下的任意同名目录，而是 OneSkills 安装根下的本地源码快照：
+  - Codex bridge: `.codex/oneskills/onescience/`
+  - Claude / Trae / OpenCode / generic: 对应 agent 的 `oneskills/onescience/`
+- 如果该源码快照不存在，提示用户重新运行 OneSkills installer 或使用 `--onescience-source-url` 指定源码 zip；不要回退扫描 `D:\`、用户主目录或其他全盘路径
 
 ## 模型卡使用原则
 

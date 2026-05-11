@@ -5,7 +5,9 @@ import argparse
 import json
 import platform
 import shutil
+import tempfile
 import urllib.request
+import zipfile
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -22,12 +24,15 @@ INSTALL_PROFILES = ("basic", "runtime")
 CODEX_BRIDGE_MARKER = "<!-- managed-by: oneskills codex bridge -->"
 MCP_TOOL_URL = "https://gitee.com/onescience-ai/agent-cloud-interaction-protocol/releases/download/v0.1/scnet-mcp-server.exe"
 MCP_TOOL_FILENAME = "scnet-mcp-server.exe"
+ONESCIENCE_SOURCE_URL = "https://gitee.com/onescience-ai/onescience/releases/download/0.3.0/onescience-0.3.0.zip"
 
 
 @dataclass
 class InstallEntry:
-    source: Path
+    source: Path | None
     target: Path
+    url: str | None = None
+    kind: str = "path"
 
 
 def current_platform_name() -> str:
@@ -80,7 +85,26 @@ def append_entry(entries: list[InstallEntry], source: Path, target: Path, seen_t
     seen_targets.add(target)
 
 
-def build_entries(project_root: Path, manifest: dict, with_runtime_assets: bool) -> list[InstallEntry]:
+def append_url_entry(
+    entries: list[InstallEntry],
+    url: str,
+    target: Path,
+    seen_targets: set[Path],
+    kind: str,
+) -> None:
+    if target in seen_targets:
+        return
+    entries.append(InstallEntry(source=None, target=target, url=url, kind=kind))
+    seen_targets.add(target)
+
+
+def build_entries(
+    project_root: Path,
+    manifest: dict,
+    with_runtime_assets: bool,
+    with_onescience_source: bool = True,
+    onescience_source_url: str = ONESCIENCE_SOURCE_URL,
+) -> list[InstallEntry]:
     entries: list[InstallEntry] = []
     skills_dir = project_root / manifest["skills_dir"]
     seen_targets: set[Path] = set()
@@ -91,6 +115,14 @@ def build_entries(project_root: Path, manifest: dict, with_runtime_assets: bool)
 
     # Installed skills consume ../../references from the namespaced skills root.
     append_entry(entries, SHARED_REFERENCES_DIR, skills_dir.parent / "references", seen_targets)
+    if with_onescience_source:
+        append_url_entry(
+            entries,
+            onescience_source_url,
+            skills_dir.parent / "onescience",
+            seen_targets,
+            "onescience_source",
+        )
 
     for mapping in manifest.get("integration_targets", []):
         source = ROOT / mapping["source"]
@@ -154,6 +186,54 @@ def install_copy(source: Path, target: Path) -> None:
         shutil.copy2(source, target)
 
 
+def safe_extract_zip(zip_path: Path, extract_dir: Path) -> None:
+    extract_root = extract_dir.resolve()
+    with zipfile.ZipFile(zip_path) as archive:
+        for member in archive.infolist():
+            member_target = (extract_dir / member.filename).resolve()
+            try:
+                member_target.relative_to(extract_root)
+            except ValueError:
+                raise SystemExit(f"Refusing unsafe zip member path: {member.filename}")
+        archive.extractall(extract_dir)
+
+
+def find_archive_content_root(extract_dir: Path) -> Path:
+    children = [item for item in extract_dir.iterdir() if item.name != "__MACOSX"]
+    if len(children) == 1 and children[0].is_dir():
+        return children[0]
+    return extract_dir
+
+
+def install_onescience_source(url: str, target: Path, force: bool, dry_run: bool) -> None:
+    if dry_run:
+        action = "overwrite" if target.exists() else "download"
+        print(f"[dry-run] onescience-source: {action} {url} -> {target}")
+        return
+    if target.exists() or target.is_symlink():
+        if not force:
+            raise SystemExit(f"OneScience source target exists, use --force to overwrite: {target}")
+        remove_path(target)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="onescience-source-") as tmpdir:
+        tmp_path = Path(tmpdir)
+        zip_path = tmp_path / "onescience.zip"
+        try:
+            urllib.request.urlretrieve(url, zip_path)
+            extract_dir = tmp_path / "extract"
+            extract_dir.mkdir()
+            safe_extract_zip(zip_path, extract_dir)
+            content_root = find_archive_content_root(extract_dir)
+            shutil.copytree(
+                content_root,
+                target,
+                ignore=shutil.ignore_patterns(".git", ".DS_Store", "__pycache__", "*.pyc"),
+            )
+        except Exception as exc:
+            remove_path(target)
+            raise SystemExit(f"Failed to download or extract OneScience source: {url}") from exc
+
+
 def install_symlink(source: Path, target: Path) -> None:
     ensure_parent(target)
     target.symlink_to(source, target_is_directory=source.is_dir())
@@ -175,6 +255,7 @@ def build_codex_bridge_content(skill_name: str) -> str:
     project_skill_file = f".codex/oneskills/skills/{skill_name}/SKILL.md"
     project_skill_refs = f".codex/oneskills/skills/{skill_name}/references/"
     project_shared_refs = ".codex/oneskills/references/"
+    project_onescience_source = ".codex/oneskills/onescience/"
     return "\n".join(
         [
             "---",
@@ -190,12 +271,16 @@ def build_codex_bridge_content(skill_name: str) -> str:
             "Authoritative skill file:",
             f"- `{project_skill_file}` relative to the current project root",
             "",
+            "OneScience source root:",
+            f"- `{project_onescience_source}` relative to the current project root",
+            "",
             "Reference resolution rules:",
             f"- `./references/...` -> `{project_skill_refs}...`",
             f"- `../../references/...` -> `{project_shared_refs}...`",
+            f"- `./onescience/...` -> `{project_onescience_source}...`",
             "- Do not resolve these paths against the current working directory textually; resolve them against the project-local skill location above.",
             "",
-            "If the authoritative skill file does not exist, tell the user to run the OneSkills installer in the current project first.",
+            "If the authoritative skill file or OneScience source root does not exist, tell the user to run the OneSkills installer in the current project first.",
         ]
     ) + "\n"
 
@@ -304,8 +389,9 @@ def write_state(
         "with_runtime_assets": with_runtime_assets,
         "items": [
             {
-                "source": str(entry.source.relative_to(ROOT)),
+                "source": str(entry.source.relative_to(ROOT)) if entry.source else entry.url,
                 "target": str(entry.target.relative_to(project_root)),
+                "kind": entry.kind,
             }
             for entry in entries
         ],
@@ -342,10 +428,18 @@ def install(
     skills_dir_override: str | None,
     dry_run: bool,
     with_mcp_tools: bool,
+    with_onescience_source: bool = True,
+    onescience_source_url: str = ONESCIENCE_SOURCE_URL,
 ) -> None:
     manifest = load_manifest(agent, skills_dir_override)
     with_runtime_assets = profile == "runtime"
-    entries = build_entries(project_root, manifest, with_runtime_assets)
+    entries = build_entries(
+        project_root,
+        manifest,
+        with_runtime_assets,
+        with_onescience_source=with_onescience_source,
+        onescience_source_url=onescience_source_url,
+    )
     effective_mode, mode_warning = resolve_install_mode(mode)
     existing_state = load_existing_state(project_root, agent)
     current_targets = {entry.target for entry in entries}
@@ -374,7 +468,10 @@ def install(
         for target in stale_targets:
             print(f"[dry-run] remove stale: {target}")
         for entry in entries:
-            print(f"[dry-run] {effective_mode}: {entry.source.relative_to(ROOT)} -> {entry.target}")
+            if entry.kind == "onescience_source":
+                install_onescience_source(entry.url or onescience_source_url, entry.target, force, dry_run=True)
+            else:
+                print(f"[dry-run] {effective_mode}: {entry.source.relative_to(ROOT)} -> {entry.target}")
         if agent == "codex":
             if with_mcp_tools:
                 install_codex_mcp_tools(project_root, force, dry_run=True)
@@ -391,7 +488,9 @@ def install(
     for entry in entries:
         if entry.target.exists() or entry.target.is_symlink():
             remove_path(entry.target)
-        if effective_mode == "copy":
+        if entry.kind == "onescience_source":
+            install_onescience_source(entry.url or onescience_source_url, entry.target, force, dry_run=False)
+        elif effective_mode == "copy":
             install_copy(entry.source, entry.target)
         else:
             install_symlink(entry.source, entry.target)
@@ -413,6 +512,8 @@ def install(
         print("Runtime assets: enabled")
     if mcp_tool_path:
         print(f"MCP tool: {mcp_tool_path}")
+    if with_onescience_source:
+        print(f"OneScience source: {manifest['skills_dir'].rsplit('/', 1)[0]}/onescience")
 
 
 def uninstall(project_root: Path, agent: str, dry_run: bool) -> None:
@@ -458,6 +559,8 @@ def main() -> int:
     )
     parser.add_argument("--with-runtime-assets", action="store_true", help="Compatibility alias for --profile runtime.")
     parser.add_argument("--skip-mcp-tools", action="store_true", help="Codex only: do not download bundled MCP tool binary.")
+    parser.add_argument("--skip-onescience-source", action="store_true", help="Do not install the local OneScience source snapshot used by code-reading skills.")
+    parser.add_argument("--onescience-source-url", default=ONESCIENCE_SOURCE_URL, help="OneScience source zip URL. Default: OneScience 0.3.0 release zip.")
     parser.add_argument("--uninstall", action="store_true", help="Remove items installed by this installer.")
     parser.add_argument("--force", action="store_true", help="Overwrite existing targets during install.")
     parser.add_argument("--skills-dir", help="Custom skills directory, used with --agent generic or to override manifest defaults.")
@@ -489,6 +592,8 @@ def main() -> int:
             args.skills_dir,
             args.dry_run,
             with_mcp_tools=args.agent == "codex" and not args.skip_mcp_tools,
+            with_onescience_source=not args.skip_onescience_source,
+            onescience_source_url=args.onescience_source_url,
         )
     return 0
 
