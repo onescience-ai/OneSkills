@@ -74,7 +74,10 @@ def list_skill_directories() -> list[Path]:
     return sorted(
         item
         for item in (ROOT / "skills").iterdir()
-        if item.is_dir() and not item.name.startswith(".") and item.name != "__pycache__"
+        if item.is_dir()
+        and not item.name.startswith(".")
+        and item.name != "__pycache__"
+        and item.name != "references"
     )
 
 
@@ -109,12 +112,14 @@ def build_entries(
     skills_dir = project_root / manifest["skills_dir"]
     seen_targets: set[Path] = set()
     for item in sorted((ROOT / "skills").iterdir()):
-        if item.name.startswith(".") or item.name == "__pycache__":
+        if item.name.startswith(".") or item.name == "__pycache__" or item.name == "references":
             continue
         append_entry(entries, item, skills_dir / item.name, seen_targets)
 
-    # Installed skills consume ../../references from the namespaced skills root.
-    append_entry(entries, SHARED_REFERENCES_DIR, skills_dir.parent / "references", seen_targets)
+    # Shared references live next to each skill package: <skills_dir>/references/
+    # so every SKILL.md can resolve them as ../references/... (matches IDE layouts
+    # that place repo references/ beside skill directories under the same skills root).
+    append_entry(entries, SHARED_REFERENCES_DIR, skills_dir / "references", seen_targets)
     if with_onescience_source:
         append_url_entry(
             entries,
@@ -254,7 +259,7 @@ def codex_bridge_skill_file(skill_name: str) -> Path:
 def build_codex_bridge_content(skill_name: str) -> str:
     project_skill_file = f".codex/oneskills/skills/{skill_name}/SKILL.md"
     project_skill_refs = f".codex/oneskills/skills/{skill_name}/references/"
-    project_shared_refs = ".codex/oneskills/references/"
+    project_shared_refs = ".codex/oneskills/skills/references/"
     project_onescience_source = ".codex/oneskills/onescience/"
     return "\n".join(
         [
@@ -276,7 +281,7 @@ def build_codex_bridge_content(skill_name: str) -> str:
             "",
             "Reference resolution rules:",
             f"- `./references/...` -> `{project_skill_refs}...`",
-            f"- `../../references/...` -> `{project_shared_refs}...`",
+            f"- `../references/...` -> `{project_shared_refs}...`",
             f"- `./onescience/...` -> `{project_onescience_source}...`",
             "- Do not resolve these paths against the current working directory textually; resolve them against the project-local skill location above.",
             "",
@@ -555,7 +560,7 @@ def main() -> int:
         "--profile",
         choices=INSTALL_PROFILES,
         default="basic",
-        help="Install profile. basic: install skills/references/integrations only; runtime: also install onescience.json and tpl.slurm. Default: basic.",
+        help="Install profile. basic: install skill packages, shared references under <skills_dir>/references, and integrations; runtime: also install onescience.json and tpl.slurm. Default: basic.",
     )
     parser.add_argument("--with-runtime-assets", action="store_true", help="Compatibility alias for --profile runtime.")
     parser.add_argument("--skip-mcp-tools", action="store_true", help="Codex only: do not download bundled MCP tool binary.")

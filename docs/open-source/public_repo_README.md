@@ -156,10 +156,10 @@ python3 install/install_oneskills.py --agent codex --project /your/project --uni
 ```bash
 git clone https://github.com/onescience-ai/oneskills.git
 mkdir -p /your/project/.codex/oneskills/skills
-mkdir -p /your/project/.codex/oneskills/references
+mkdir -p /your/project/.codex/oneskills/skills/references
 mkdir -p /your/project/.codex/oneskills/integrations/codex
 cp -r oneskills/skills/* /your/project/.codex/oneskills/skills/
-cp -r oneskills/references/* /your/project/.codex/oneskills/references/
+cp -r oneskills/references/* /your/project/.codex/oneskills/skills/references/
 cp oneskills/integrations/generic-agent.md /your/project/.codex/oneskills/integrations/generic-agent.md
 cp oneskills/integrations/codex/README.md /your/project/.codex/oneskills/integrations/codex/README.md
 ```
@@ -193,9 +193,9 @@ git clone https://github.com/onescience-ai/oneskills.git
 ```bash
 git clone https://github.com/onescience-ai/oneskills.git
 mkdir -p /your/project/.trae/oneskills/skills
-mkdir -p /your/project/.trae/oneskills/references
+mkdir -p /your/project/.trae/oneskills/skills/references
 cp -r oneskills/skills/* /your/project/.trae/oneskills/skills/
-cp -r oneskills/references/* /your/project/.trae/oneskills/references/
+cp -r oneskills/references/* /your/project/.trae/oneskills/skills/references/
 ```
 
 ### Other agents

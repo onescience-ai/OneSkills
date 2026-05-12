@@ -174,7 +174,7 @@
 - `backend_status` 用于表达当前目标执行链路是否已经稳定支持该 backend
 - `execution_readiness` 用于表达当前 host 是否已经 ready to execute
 
-`backend_status` 的共享语义与当前各 backend 的支持边界，参考仓库根目录的 `references/shared_contracts.md`。
+`backend_status` 的共享语义与当前各 backend 的支持边界，见与各 `onescience-*` 技能包目录同级的共享目录 `references/shared_contracts.md`（完整仓库里该目录与 `skills/` 同级；仅向智能体提供 `skills/` 时，将顶层 `references/` 整体置于 `skills/references/` 即可，相对关系不变）。从各技能包根目录（与 `SKILL.md` 同级）读取用 `../references/shared_contracts.md`；从本文件读取用 `../../references/shared_contracts.md`。
 
 处理原则：
 
