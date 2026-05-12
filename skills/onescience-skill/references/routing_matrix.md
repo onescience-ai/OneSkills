@@ -125,7 +125,7 @@
 
 技能链：
 
-`onescience-hardware -> onescience-installer`
+`onescience-installer`（`onescience-installer` 自行完成远端硬件探测，无需先走 `onescience-hardware`）
 
 ### 7. 运行后排查
 

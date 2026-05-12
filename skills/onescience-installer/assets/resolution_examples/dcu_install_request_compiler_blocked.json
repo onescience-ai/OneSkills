@@ -1,7 +1,7 @@
 {
   "example_id": "dcu_install_request_compiler_blocked",
-  "request_example": "skills/onescience-installer/assets/request_examples/earth_install_request.json",
-  "hardware_output_example": "skills/onescience-hardware/assets/blocker_examples/slurm_dcu_compiler_not_ready.json",
+  "request_example": "assets/request_examples/earth_install_request.json",
+  "hardware_probe_result": "ssh 远端探测确认：/opt/dtk-25.04/ 存在，海光 DCU 平台。但 module load compiler/dtk/25.04 失败，gcc 未找到。",
   "expected_resolution": {
     "status": "supported",
     "installer_backend": "dcu_remote_install",

@@ -1,7 +1,7 @@
 {
   "example_id": "gpu_install_request_blocked",
-  "request_example": "skills/onescience-installer/assets/request_examples/earth_install_request.json",
-  "hardware_output_example": "skills/onescience-hardware/assets/examples/slurm_gpu_output.json",
+  "request_example": "assets/request_examples/earth_install_request.json",
+  "hardware_probe_result": "ssh 远端探测确认：nvidia-smi 找到 NVIDIA A100 设备，CUDA 12.2 可用。结论：NVIDIA GPU 平台。",
   "expected_resolution": {
     "status": "unsupported_for_now",
     "installer_backend": "none",
