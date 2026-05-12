@@ -5,6 +5,7 @@ This guide describes how to install OneSkills skills and optional SCnet MCP conf
 - Claude uses `.claude-plugin/plugin.json` plus `.claude-plugin/marketplace.json`.
 - Codex uses native skill discovery by linking `skills/` into `~/.agents/skills`.
 - MCP is optional and must point to a locally installed SCnet MCP server.
+- Code-reading skills expect a project-local OneScience source snapshot under the installed `oneskills/onescience/` directory. The installer downloads the default snapshot from `https://gitee.com/onescience-ai/onescience/releases/download/0.3.0/onescience-0.3.0.zip`.
 
 ## Claude Code
 
@@ -96,6 +97,12 @@ with the real local SCnet MCP launch configuration.
 
 Codex installation is documented in `.codex/INSTALL.md`.
 
+For users, the recommended path is a single prompt inside Codex:
+
+```text
+Fetch and follow instructions from https://raw.githubusercontent.com/onescience-ai/OneSkills/refs/heads/master/.codex/INSTALL.md to install OneSkills skills, download the SCnet MCP server, and generate the Codex MCP config template.
+```
+
 Short version:
 
 ```bash
@@ -113,6 +120,14 @@ cmd /c mklink /J "%USERPROFILE%\.agents\skills\oneskills" "%USERPROFILE%\.codex\
 ```
 
 Restart Codex after installation.
+
+After installation, source anchors such as `./onescience/src/onescience/...` should resolve to:
+
+```text
+~/.codex/oneskills/onescience
+```
+
+Do not point `onescience-coder` at an arbitrary development checkout such as `D:\Projects\OneScience\onescience`.
 
 Optional MCP:
 

@@ -17,6 +17,7 @@
 - `skills/`
 - 共享 `references/`
 - 对应 agent 的 `integrations/` 适配说明
+- OneScience 源码快照：默认从 `https://gitee.com/onescience-ai/onescience/releases/download/0.3.0/onescience-0.3.0.zip` 下载并解压到 `<agent>/oneskills/onescience/`，供 `onescience-coder` 读取源码锚点
 - `runtime` 档位下的项目根运行资产：`onescience.json`、`tpl.slurm`
 - `codex` 下额外补齐用户级 bridge skills，保证安装后可被当前 Codex 发现
 
@@ -35,10 +36,42 @@
 
 ## 推荐用法
 
+注意：`install/install_oneskills.py` 需要用户本地已有 Python。Codex 面向普通用户的首选安装方式不依赖 Python，请使用仓库中的 `.codex/INSTALL.md`，它会用 Git 链接 skills，并直接下载 `scnet-mcp-server.exe`。
+
 安装到指定项目：
 
 ```bash
 python3 install/install_oneskills.py --agent codex --project /path/to/project
+```
+
+Codex 安装默认同时安装 MCP tool；安装器会直接下载 release 二进制：
+
+```text
+https://gitee.com/onescience-ai/agent-cloud-interaction-protocol/releases/download/v0.1/scnet-mcp-server.exe
+```
+
+默认安装位置：
+
+```text
+/path/to/project/.codex/oneskills/mcp-tools/scnet-mcp-server.exe
+```
+
+如果只想安装 skills，可显式跳过 MCP tool：
+
+```bash
+python3 install/install_oneskills.py --agent codex --project /path/to/project --skip-mcp-tools
+```
+
+如果只想安装 skills 文档和契约卡，不下发 OneScience 源码快照：
+
+```bash
+python3 install/install_oneskills.py --agent codex --project /path/to/project --skip-onescience-source
+```
+
+如果需要替换 OneScience 源码版本：
+
+```bash
+python3 install/install_oneskills.py --agent codex --project /path/to/project --onescience-source-url https://gitee.com/onescience-ai/onescience/releases/download/0.3.0/onescience-0.3.0.zip
 ```
 
 按运行档位安装：
@@ -90,6 +123,7 @@ python3 install/install_oneskills.py --agent codex --project /path/to/project --
 
 安装完成后，用户可优先查看安装目录下的 `VERSION` 文件确认当前 skills 版本。
 共享参考资料会与 namespaced skills 同级安装，例如 `.<agent>/oneskills/references/`。
+OneScience 源码快照会与 namespaced skills 同级安装，例如 `.<agent>/oneskills/onescience/`。所有源码锚点 `./onescience/...` 都应解析到这个目录，而不是解析到开发机上的任意 `D:\Projects\OneScience\onescience` 或用户磁盘上的同名目录。
 集成说明会放在 `.<agent>/oneskills/integrations/`，保持与仓库内相同的相对路径结构。
 其中 `codex` 会同时在 `~/.codex/skills/onescience-*` 写入一层 bridge skill，让用户在当前项目中安装后即可直接使用。
 

@@ -120,7 +120,7 @@ git clone https://github.com/onescience-ai/oneskills.git
 在 Codex 窗口中输入以下指令，Codex 会读取安装说明并完成安装：
 
 ```text
-Fetch and follow instructions from https://raw.githubusercontent.com/onescience-ai/OneSkills/refs/heads/master/.codex/INSTALL.md
+Fetch and follow instructions from https://raw.githubusercontent.com/onescience-ai/OneSkills/refs/heads/master/.codex/INSTALL.md to install OneSkills skills, download the SCnet MCP server, and generate the Codex MCP config template.
 ```
 
 ### Trae

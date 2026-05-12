@@ -1,10 +1,15 @@
 {
   "mcpServers": {
     "scnet": {
-      "command": "REPLACE_WITH_SCNET_MCP_COMMAND",
-      "args": [],
+      "command": "C:\\Users\\YOUR_USER\\.codex\\oneskills\\mcp-tools\\scnet-mcp-server.exe",
       "env": {
-        "SCNET_TOKEN": "REPLACE_WITH_TOKEN_OR_ENV_REFERENCE"
+        "SCNET_USERNAME": "",
+        "SCNET_ACCESS_KEY": "",
+        "SCNET_SECRET_KEY": "",
+        "SCNET_DEFAULT_REGION": "\u6838\u5fc3\u8282\u70b9\u3010\u5206\u533a\u4e00\u3011",
+        "SCNET_USE_REAL_API": "true",
+        "SCNET_WORK_DIR": "",
+        "SCNET_DEFAULT_QUEUE": ""
       }
     }
   }

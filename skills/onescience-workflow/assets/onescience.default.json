@@ -1,6 +1,36 @@
 {
   "runtime": {
     "mode": "slurm",
+    "backend_id": "slurm_dcu",
+    "remote": {
+      "host": "",
+      "hostname": "",
+      "port": 22,
+      "user": "",
+      "strict_host_key_checking": "no",
+      "password_authentication": "no",
+      "identity_file": "",
+      "remote_work_dir": ""
+    },
+    "target": {
+      "scheduler_type": "slurm",
+      "platform_type": "cluster",
+      "accelerator_kind": "dcu",
+      "accelerator_vendor": "amd"
+    },
+    "environment": {
+      "cpu": {
+        "arch": "x86_64",
+        "vendor": "amd"
+      },
+      "accelerator_defaults": {
+        "kind": "dcu",
+        "vendor": "amd",
+        "visibility_env": "HIP_VISIBLE_DEVICES",
+        "distributed_backend": "rccl",
+        "launch_mode": "python"
+      }
+    },
     "cluster": {
       "partition": "hpctest01",
       "nodes": 1,
