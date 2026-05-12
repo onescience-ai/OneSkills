@@ -122,7 +122,7 @@ python3 install/install_oneskills.py --agent codex --project /path/to/project --
 如果使用 `generic`，则由 `--skills-dir` 明确指定。
 
 安装完成后，用户可优先查看安装目录下的 `VERSION` 文件确认当前 skills 版本。
-共享参考资料会与 namespaced skills 同级安装，例如 `.<agent>/oneskills/references/`。
+共享参考资料会安装到技能根目录下的 `references/`，例如 `.<agent>/oneskills/skills/references/`（与各 `onescience-*` 技能包同级，技能内通过 `../references/...` 引用）。
 OneScience 源码快照会与 namespaced skills 同级安装，例如 `.<agent>/oneskills/onescience/`。所有源码锚点 `./onescience/...` 都应解析到这个目录，而不是解析到开发机上的任意 `D:\Projects\OneScience\onescience` 或用户磁盘上的同名目录。
 集成说明会放在 `.<agent>/oneskills/integrations/`，保持与仓库内相同的相对路径结构。
 其中 `codex` 会同时在 `~/.codex/skills/onescience-*` 写入一层 bridge skill，让用户在当前项目中安装后即可直接使用。

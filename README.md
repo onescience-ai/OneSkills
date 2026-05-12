@@ -128,9 +128,9 @@ Fetch and follow instructions from https://raw.githubusercontent.com/onescience-
 ```bash
 git clone https://github.com/onescience-ai/oneskills.git
 mkdir -p /your/project/.trae/oneskills/skills
-mkdir -p /your/project/.trae/oneskills/references
+mkdir -p /your/project/.trae/oneskills/skills/references
 cp -r oneskills/skills/* /your/project/.trae/oneskills/skills/
-cp -r oneskills/references/* /your/project/.trae/oneskills/references/
+cp -r oneskills/references/* /your/project/.trae/oneskills/skills/references/
 ```
 
 ### Other agents

@@ -8,7 +8,7 @@
 
 当前推荐由安装器一次性完成两层：
 
-- 项目内 `./.codex/oneskills/skills/`、`./.codex/oneskills/references/`、`./.codex/oneskills/integrations/`
+- 项目内 `./.codex/oneskills/skills/`（含 `./.codex/oneskills/skills/references/` 共享资料）、`./.codex/oneskills/integrations/`
 - 用户级 `~/.codex/skills/onescience-*` bridge skills
 
 其中：

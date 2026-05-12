@@ -8,10 +8,10 @@
 工作流理解 -> 角色编排 -> 执行路由 -> 硬件感知 -> 代码生成 -> 远程运行 -> 结果排查
 ```
 
-当你需要判断默认链路、分层职责、简化链路或禁止事项时，读取 `../references/agent_pipeline.md`。
-当你需要处理“未配置远程环境”或“远程描述模糊”的异常场景时，读取 `../references/remote_fallback.md`。
-当你需要按统一格式输出远程异常状态时，读取 `../references/remote_status_template.md`。
-当你需要参考最终异常回复示例时，读取 `../references/remote_status_examples.md`。
+当你需要判断默认链路、分层职责、简化链路或禁止事项时，读取 `../skills/references/agent_pipeline.md`。
+当你需要处理“未配置远程环境”或“远程描述模糊”的异常场景时，读取 `../skills/references/remote_fallback.md`。
+当你需要按统一格式输出远程异常状态时，读取 `../skills/references/remote_status_template.md`。
+当你需要参考最终异常回复示例时，读取 `../skills/references/remote_status_examples.md`。
 
 ## 核心要求
 
