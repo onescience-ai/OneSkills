@@ -2,7 +2,6 @@
   "example_id": "ssh_slurm_runtime_request",
   "execution_channel": "ssh_slurm",
   "intent": "submit_job_script",
-  "hardware_output_example": "skills/onescience-hardware/assets/examples/slurm_dcu_output.json",
   "runtime_config": "skills/onescience-runtime/assets/examples/slurm_dcu_runtime.json",
   "local_input": {
     "code_path": "era5_reader.py",

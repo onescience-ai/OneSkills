@@ -68,12 +68,12 @@
 
 技能链：
 
-`onescience-hardware -> onescience-coder -> onescience-runtime`
+`onescience-coder -> onescience-runtime`
 
 传递规则：
 
 - 给 `onescience-coder`：代码生成交接摘要
-- 给 `onescience-runtime`：完整硬件画像 + `onescience.json` + `tpl.slurm`
+- 给 `onescience-runtime`：`onescience.json` + `tpl.slurm`（runtime 自行完成远端硬件探测与后端选择）
 
 ### 3. 实现并通过 SCnet 运行
 
@@ -114,7 +114,7 @@
 
 技能链：
 
-`onescience-hardware -> onescience-runtime`
+`onescience-runtime`（runtime 自行完成远端主机发现、硬件探测与执行通道选择）
 
 ### 6. 安装远程环境
 
@@ -138,7 +138,7 @@
 
 - 若已有运行产物：`onescience-debug`
 - 若仍缺远程环境事实：`onescience-hardware -> onescience-debug`
-- 若还没真正提交测试或运行：`onescience-hardware -> onescience-runtime -> onescience-debug`
+- 若还没真正提交测试或运行：`onescience-runtime -> onescience-debug`（runtime 自行完成硬件探测）
 
 ## 关键词到技能
 
@@ -163,7 +163,7 @@
 
 ## Backend 状态处理
 
-当 `onescience-hardware` 已经能把环境归一化为某个 `backend_id` 时，执行层除选择技能链外，还应显式暴露：
+当远端探测已经能把环境归一化为某个 `backend_id` 时，执行层除选择技能链外，还应显式暴露：
 
 - `backend_id`
 - `backend_status`
