@@ -1,0 +1,83 @@
+{
+  "example_id": "scnet_mcp_runtime_happy_path",
+  "summary": "SCnet MCP 运行链路在四阶段内完整闭环，runtime 直接通过 cloud_api 提交、轮询并同步日志。",
+  "terminal_phase": "diagnose",
+  "phases": {
+    "discover": {
+      "intent": "submit_job_script",
+      "execution_mode": "remote_direct",
+      "access_mode": "cloud_api",
+      "execution_channel": "scnet_mcp",
+      "submission_target_candidates": [
+        {
+          "region": "华东一区【昆山】",
+          "queue": "kshdnormal"
+        }
+      ],
+      "backend_candidates": [
+        "scnet_mcp_direct"
+      ],
+      "hardware_profile_ref": "skills/onescience-runtime/assets/runtime_contexts/cloud_api_runtime_context.json",
+      "missing_facts": [],
+      "evidence": {
+        "discovery": {
+          "source": "scnet_region_queue_and_runtime_request"
+        }
+      }
+    },
+    "preflight": {
+      "backend_id": "scnet_mcp_direct",
+      "runtime_profile_ref": "remote_direct_scnet_mcp",
+      "install_profile_ref": "none",
+      "submission_target": {
+        "region": "华东一区【昆山】",
+        "queue": "kshdnormal"
+      },
+      "execution_readiness": "ready_to_execute",
+      "blocking_reason": "none",
+      "confirmation_required": false,
+      "missing_fields": [],
+      "installer_fallback_required": false,
+      "remote_command_plan": "python3 run_scnet_probe.py --steps 2",
+      "evidence": {
+        "preflight": {
+          "channel_ready": true,
+          "remote_path_writable": true
+        }
+      }
+    },
+    "execute": {
+      "submission_state": "submitted",
+      "execution_state": "completed",
+      "job_id": "task-1234567",
+      "remote_context": {
+        "remote_path": "run_scnet_probe.py",
+        "command": "python3 run_scnet_probe.py --steps 2"
+      },
+      "local_log_dir": ".onescience/logs/scnet-1234567",
+      "synced_logs": [
+        "1234567.out",
+        "1234567.err"
+      ],
+      "log_state": "synced",
+      "sync_status": "synced",
+      "evidence": {
+        "execute": {
+          "status_probe": "scnet_get_task_status",
+          "log_sync_mode": "scnet_download_log"
+        }
+      }
+    },
+    "diagnose": {
+      "failure_reason": "none",
+      "status_source": "scnet_get_task_status",
+      "log_readiness": "ready",
+      "next_action": "onescience-runtime",
+      "evidence": {
+        "diagnose": {
+          "classification": "successful_run_with_logs"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "example_id": "scnet_mcp_das_torch_ready",
+  "probe_channel": "scnet_mcp",
+  "execution_mode": "remote_direct",
+  "access_mode": "cloud_api",
+  "semantic_environment_hints": {
+    "region": "核心节点",
+    "queue": "hpctest01",
+    "software_environment": "sghpcdas/25.6",
+    "framework": "torch"
+  },
+  "probe_target": {
+    "region": "核心节点",
+    "queue": "hpctest01",
+    "software_environment": "sghpcdas/25.6"
+  },
+  "requested_checks": [
+    "mcp_service",
+    "region_list",
+    "queue_access",
+    "remote_path_writable",
+    "software_environment",
+    "python_torch"
+  ],
+  "probe_status": "succeeded",
+  "observed_environment_facts": {
+    "mcp_service_available": true,
+    "region_accessible": true,
+    "queue_accessible": true,
+    "remote_path_writable": true,
+    "probe_task_submitted": true,
+    "probe_template": "skills/onescience-runtime/assets/probe_templates/scnet_das_torch_probe.sh",
+    "module_cmd_available": true,
+    "das_module_loaded": true,
+    "das_module": "sghpcdas/25.6",
+    "hpcsdk_module_loaded": true,
+    "hpcsdk_module": "sghpc-mpi-gcc/26.3",
+    "dtk_runtime_ready": true,
+    "dtk_runtime_evidence": "hipcc",
+    "sghpc_runtime_ready": true,
+    "dcu_user_space_ready": true,
+    "conda_env": "onescience311",
+    "conda_env_activated": true,
+    "conda_prefix": "/public/home/user/.conda/envs/onescience311",
+    "saved_python_from_conda": true,
+    "python_ready": true,
+    "python_bin": "/public/home/user/.conda/envs/onescience311/bin/python3",
+    "torch_ready": true,
+    "torch_import_ok": true,
+    "torch_version": "2.x+das",
+    "torch_hip_runtime_ready": true,
+    "dcu_runtime_ready": true
+  },
+  "normalized_output": {
+    "hardware_profile_ready": true,
+    "expected_backend_id": "scnet_mcp_direct",
+    "execution_readiness": "ready_to_execute",
+    "blocking_reason": "none"
+  },
+  "safety": {
+    "read_only": false,
+    "submitted_job": false,
+    "submitted_probe_task": true,
+    "modified_runtime_config": false
+  }
+}

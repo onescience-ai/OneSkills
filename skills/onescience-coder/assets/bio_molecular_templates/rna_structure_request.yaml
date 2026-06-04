@@ -1,0 +1,23 @@
+rna_input:
+  id: rna_or_pair_id
+  sequence: ""
+  second_sequence_for_interaction: ""
+analysis_mode:
+  mfe: true
+  partition_function: true
+  cofold: false
+  consensus_alignment: false
+conditions:
+  temperature_c: 37
+  salt_or_buffer: ""
+constraints:
+  dotbracket_constraint: ""
+  shape_reactivity_file: ""
+regions_of_interest:
+  - name: target_accessibility_region
+    start_0based: null
+    end_0based: null
+outputs:
+  structure_summary: rna_structure_summary.md
+  dotbracket: predicted_structure.dbn
+  pairing_table: base_pairing.tsv

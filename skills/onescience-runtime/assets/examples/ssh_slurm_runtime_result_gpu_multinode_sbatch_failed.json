@@ -1,0 +1,29 @@
+{
+  "example_id": "ssh_slurm_runtime_result_gpu_multinode_sbatch_failed",
+  "execution_channel": "ssh_slurm",
+  "execution_mode": "remote_slurm",
+  "access_mode": "ssh",
+  "submission_target": {
+    "host": "login-gpu",
+    "partition": "gpu_normal",
+    "backend_id": "slurm_gpu_multinode_torchrun"
+  },
+  "remote_context": {
+    "job_script_path": "slurm_multinode_submit.sh",
+    "remote_work_dir": "/home/user/project",
+    "remote_log_dir": "logs",
+    "command": "sbatch slurm_multinode_submit.sh"
+  },
+  "job_id": null,
+  "submission_state": "failed",
+  "execution_state": "failed",
+  "job_status": "failed",
+  "local_log_dir": ".onescience/logs/job-multinode-submit-failed",
+  "synced_logs": [],
+  "log_state": "not_started",
+  "sync_status": "not_started",
+  "blocking_reason": "sbatch_submission_failed",
+  "failure_reason": "sbatch_submission_failed",
+  "stderr_summary": "sbatch: error: Batch job submission failed: Requested node configuration is not available",
+  "next_action": "onescience-runtime"
+}

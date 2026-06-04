@@ -77,5 +77,5 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/head/onehead.py`
-- `./onescience/src/onescience/modules/head/unet_head.py`
+- `{onescience_path}/onescience/src/onescience/modules/head/onehead.py`
+- `{onescience_path}/onescience/src/onescience/modules/head/unet_head.py`

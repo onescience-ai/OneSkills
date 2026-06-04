@@ -225,10 +225,8 @@ Expected skill directories:
 onescience-workflow
 onescience-role
 onescience-skill
-onescience-hardware
 onescience-coder
 onescience-runtime
-onescience-debug
 onescience-installer
 ```
 

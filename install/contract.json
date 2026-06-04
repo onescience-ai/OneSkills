@@ -1,0 +1,18 @@
+{
+  "state_schema_version": 1,
+  "bridge_marker": "<!-- managed-by: oneskills bridge -->",
+  "legacy_bridge_markers": [
+    "<!-- managed-by: oneskills codex bridge -->"
+  ],
+  "supported_bridge_kinds": [
+    "user_skill_links"
+  ],
+  "required_bridge_template_tokens": [
+    "{skill_name}",
+    "{bridge_marker}",
+    "{project_skill_file}",
+    "{project_skill_refs}",
+    "{project_shared_refs}",
+    "{project_onescience_source}"
+  ]
+}

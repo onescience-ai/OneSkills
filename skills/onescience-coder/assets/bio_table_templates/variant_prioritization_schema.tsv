@@ -1,0 +1,2 @@
+sample_id	variant_id	chrom	pos	ref	alt	gene	transcript	consequence	zygosity	vaf	popmax_af	clinvar	cancer_hotspot	evidence_tier	filter_reason	manual_review
+S1	chr7-140453136-A-T	chr7	140453136	A	T	BRAF	NM_004333	missense	het	0.32	0.00001	pathogenic	yes	tier_1		pass

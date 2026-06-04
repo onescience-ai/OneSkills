@@ -15,6 +15,7 @@
 
 - 调用层通过 `style` 选择具体 attention 实现
 - 当前天气相关模型最常见的是 `EarthAttention2D` 与 `EarthAttention3D`
+- 当前生信相关模型中，Protenix 通过它调用 `ProtenixAttention`、`ProtenixAttentionPairBias`、`ProtenixAttentionPairBiasWithLocalAttn`
 - wrapper 本身不定义固定 shape，真实约束来自具体 attention 实现
 
 ## 支持输入
@@ -49,6 +50,9 @@
 
 - EarthTransformer2DBlock
 - EarthTransformer3DBlock
+- ProtenixPairformerBlock
+- ProtenixDiffusionTransformerBlock
+- ProtenixAtomTransformer
 
 ## 典型参数
 
@@ -56,6 +60,12 @@
   - `style="EarthAttention2D"`
 - 三维 Earth attention
   - `style="EarthAttention3D"`
+- Protenix pair bias attention
+  - `style="ProtenixAttentionPairBias"`
+- Protenix local pair bias attention
+  - `style="ProtenixAttentionPairBiasWithLocalAttn"`
+- Protenix gated attention
+  - `style="ProtenixAttention"`
 
 ## CFD / 图模型补充
 
@@ -91,12 +101,14 @@
 
 - wrapper 不会帮调用层把原始网格转换为窗口化张量
 - `EarthAttention2D` 与 `EarthAttention3D` 的输入 shape 不可互换
+- Protenix attention 的 `z` 是 pair representation 或 local atom pair bias，不是气象窗口 mask
 - 只看 wrapper 无法知道 mask 应该按什么窗口布局构造
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/attention/oneattention.py`
-- `./onescience/src/onescience/modules/attention/earthattention2d.py`
-- `./onescience/src/onescience/modules/attention/earthattention3d.py`
-- `./onescience/src/onescience/modules/attention/physicsattention.py`
-- `./onescience/src/onescience/modules/attention/linearattention.py`
+- `{onescience_path}/onescience/src/onescience/modules/attention/oneattention.py`
+- `{onescience_path}/onescience/src/onescience/modules/attention/earthattention2d.py`
+- `{onescience_path}/onescience/src/onescience/modules/attention/earthattention3d.py`
+- `{onescience_path}/onescience/src/onescience/modules/attention/physicsattention.py`
+- `{onescience_path}/onescience/src/onescience/modules/attention/linearattention.py`
+- `{onescience_path}/onescience/src/onescience/modules/attention/protenixattention.py`

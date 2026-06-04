@@ -1,0 +1,22 @@
+query:
+  region: chr1:100000-101000
+  gene: ""
+  variant: ""
+genome_build: GRCh38
+cell_type_or_tissue: ""
+assay_or_feature:
+  - ATAC-seq
+  - ChIP-seq
+tf_or_motif: ""
+databases:
+  - ENCODE
+  - JASPAR
+  - RegulomeDB
+return_fields:
+  - accession
+  - biosample
+  - assay
+  - coordinates
+  - score
+  - evidence
+output_format: bed_or_tsv

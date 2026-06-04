@@ -14,7 +14,8 @@ class OneScienceSourceInstallTest(unittest.TestCase):
             entries = install_oneskills.build_entries(
                 project_root,
                 manifest,
-                with_runtime_assets=False,
+                "basic",
+                "codex",
                 with_onescience_source=True,
             )
 
@@ -22,8 +23,7 @@ class OneScienceSourceInstallTest(unittest.TestCase):
             self.assertIn(".codex/oneskills/onescience", targets)
 
     def test_codex_bridge_mentions_project_local_onescience_source_root(self):
-        bridge = install_oneskills.build_codex_bridge_content("onescience-coder")
-
+        bridge = install_oneskills.build_bridge_content("onescience-coder", ".codex/oneskills/skills")
         self.assertIn(".codex/oneskills/onescience", bridge)
         self.assertIn("./onescience/...", bridge)
 
@@ -35,7 +35,8 @@ class OneScienceSourceInstallTest(unittest.TestCase):
             entries = install_oneskills.build_entries(
                 project_root,
                 manifest,
-                with_runtime_assets=False,
+                "basic",
+                "codex",
                 with_onescience_source=False,
             )
 

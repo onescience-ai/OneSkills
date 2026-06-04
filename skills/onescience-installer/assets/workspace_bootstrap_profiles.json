@@ -5,7 +5,9 @@
     "workspace_kind": "git_checkout",
     "supported_installer_backends": [
       "dcu_remote_install",
-      "gpu_remote_install"
+      "dcu_local_install",
+      "gpu_remote_install",
+      "gpu_local_install"
     ],
     "repo": {
       "repo_name": "onescience",

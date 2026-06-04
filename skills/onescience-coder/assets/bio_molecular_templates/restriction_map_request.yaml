@@ -1,0 +1,23 @@
+sequence:
+  id: plasmid_or_insert
+  source: inline_sequence_or_fasta_path
+  topology: circular
+enzyme_set:
+  include:
+    - EcoRI
+    - BamHI
+    - XhoI
+    - HindIII
+  exclude: []
+cloning_goal:
+  type: diagnostic_digest
+  insert_name: ""
+  insert_coordinates: ""
+constraints:
+  require_unique_cutters: true
+  avoid_insert_internal_sites: true
+  compatible_overhangs_required: false
+expected_outputs:
+  cut_site_table: cut_sites.tsv
+  digest_fragments: digest_fragments.tsv
+  gel_summary: digest_gel.md

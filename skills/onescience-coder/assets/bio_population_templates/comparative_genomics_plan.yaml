@@ -1,0 +1,26 @@
+species:
+  - name: species_a
+    genome_fasta: genomes/a.fa
+    annotation_gff: annotations/a.gff3
+    protein_fasta: proteins/a.faa
+  - name: species_b
+    genome_fasta: genomes/b.fa
+    annotation_gff: annotations/b.gff3
+    protein_fasta: proteins/b.faa
+quality:
+  busco_lineage: ""
+  collapse_isoforms: true
+orthology:
+  method: orthogroup_inference
+  single_copy_required: false
+synteny:
+  enabled: true
+  anchor_type: gene
+selection:
+  enabled: false
+  codon_alignment: ""
+  tree: ""
+outputs:
+  orthogroups: orthogroups.tsv
+  synteny_blocks: synteny.tsv
+  report: comparative_genomics.md

@@ -1,0 +1,51 @@
+{
+  "example_id": "scnet_mcp_runtime_service_unavailable",
+  "summary": "SCnet MCP 运行链路在 preflight 被阻断，因为本地外部 MCP 服务不可用，runtime 不应伪造提交结果。",
+  "terminal_phase": "preflight",
+  "phases": {
+    "discover": {
+      "intent": "submit_job_script",
+      "execution_mode": "remote_direct",
+      "access_mode": "cloud_api",
+      "execution_channel": "scnet_mcp",
+      "submission_target_candidates": [
+        {
+          "region": "华东一区【昆山】",
+          "queue": "kshdnormal"
+        }
+      ],
+      "backend_candidates": [
+        "scnet_mcp_direct"
+      ],
+      "hardware_profile_ref": "skills/onescience-runtime/assets/runtime_contexts/cloud_api_runtime_context.json",
+      "missing_facts": [],
+      "evidence": {
+        "discovery": {
+          "source": "scnet_region_queue_and_runtime_request"
+        }
+      }
+    },
+    "preflight": {
+      "backend_id": "scnet_mcp_direct",
+      "runtime_profile_ref": "remote_direct_scnet_mcp",
+      "install_profile_ref": "none",
+      "submission_target": {
+        "region": "华东一区【昆山】",
+        "queue": "kshdnormal"
+      },
+      "execution_readiness": "blocked_by_host",
+      "blocking_reason": "scnet_service_unavailable",
+      "confirmation_required": false,
+      "missing_fields": [],
+      "installer_fallback_required": false,
+      "remote_command_plan": "python3 run_scnet_probe.py --steps 2",
+      "evidence": {
+        "preflight": {
+          "channel_ready": false,
+          "external_dependency": "local_scnet_mcp_service",
+          "status_source": "not_available"
+        }
+      }
+    }
+  }
+}

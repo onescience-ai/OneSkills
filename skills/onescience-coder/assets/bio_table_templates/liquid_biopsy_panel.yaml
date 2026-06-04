@@ -1,0 +1,28 @@
+assay:
+  type: targeted_panel
+  umi: true
+  target_regions_bed: panel.bed
+samples:
+  manifest: samples.csv
+  matched_wbc_control: optional
+targets:
+  known_mutations:
+    - chrom: chr7
+      pos_1based: null
+      ref: ""
+      alt: ""
+      gene: ""
+qc_thresholds:
+  min_depth: 1000
+  min_alt_reads: 3
+  min_vaf: 0.005
+  require_bidirectional_support: true
+filters:
+  chip_gene_filter: true
+  panel_of_normals: ""
+longitudinal:
+  baseline_sample: ""
+  timepoint_column: collection_day
+outputs:
+  vaf_table: ctdna_vaf.tsv
+  trend_report: ctdna_monitoring.md

@@ -1,0 +1,23 @@
+context:
+  drug_or_condition: ""
+  intended_use: research_or_clinical_review
+genotype_input:
+  file: variants.vcf
+  genome_build: GRCh38
+pgx_targets:
+  genes: [CYP2C19, CYP2D6, HLA-B]
+  star_allele_calls: ""
+evidence:
+  sources: [CPIC, PharmGKB]
+  guideline_version: ""
+interpretation:
+  phenotype: ""
+  confidence: ""
+  limitations: []
+prs:
+  enabled: false
+  summary_stats: ""
+  ancestry_calibration: ""
+outputs:
+  evidence_table: pgx_evidence.tsv
+  review_summary: pgx_review.md

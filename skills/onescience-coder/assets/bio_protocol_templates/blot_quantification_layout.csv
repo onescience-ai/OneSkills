@@ -1,0 +1,3 @@
+image_id,lane,band_id,target,condition,biological_replicate,technical_replicate,loading_control,background_roi,notes
+blot01,1,B1,ProteinX,control,1,1,GAPDH,bg_lane1,
+blot01,2,B2,ProteinX,treatment,1,1,GAPDH,bg_lane2,

@@ -76,5 +76,5 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/embedding/panguembedding.py`
-- `./onescience/src/onescience/modules/embedding/oneembedding.py`
+- `{onescience_path}/onescience/src/onescience/modules/embedding/panguembedding.py`
+- `{onescience_path}/onescience/src/onescience/modules/embedding/oneembedding.py`

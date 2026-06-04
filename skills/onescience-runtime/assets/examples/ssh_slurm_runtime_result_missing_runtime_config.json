@@ -1,0 +1,29 @@
+{
+  "example_id": "ssh_slurm_runtime_result_missing_runtime_config",
+  "execution_channel": "ssh_slurm",
+  "execution_mode": "remote_slurm",
+  "access_mode": "ssh",
+  "submission_target": {
+    "host": "login-kunshan",
+    "partition": "hpctest01",
+    "backend_id": "slurm_dcu"
+  },
+  "remote_context": {
+    "job_script_path": "slurm_submit.sh",
+    "remote_work_dir": "/home/user/project",
+    "remote_log_dir": "logs",
+    "command": "sbatch slurm_submit.sh"
+  },
+  "job_id": null,
+  "submission_state": "not_started",
+  "execution_state": "blocked",
+  "job_status": "unknown",
+  "local_log_dir": ".onescience/logs/job-missing-runtime-config",
+  "synced_logs": [],
+  "log_state": "not_started",
+  "sync_status": "not_started",
+  "blocking_reason": "missing_runtime_config",
+  "failure_reason": "missing_runtime_config",
+  "stderr_summary": "missing onescience.json: ssh_slurm runtime cannot proceed without project runtime config",
+  "next_action": "onescience-workflow"
+}

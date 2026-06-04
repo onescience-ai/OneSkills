@@ -72,6 +72,6 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/embedding/fourcastnetembedding.py`
-- `./onescience/src/onescience/modules/embedding/oneembedding.py`
-- `./onescience/src/onescience/models/fourcastnet/fourcastnet.py`
+- `{onescience_path}/onescience/src/onescience/modules/embedding/fourcastnetembedding.py`
+- `{onescience_path}/onescience/src/onescience/modules/embedding/oneembedding.py`
+- `{onescience_path}/onescience/src/onescience/models/fourcastnet/fourcastnet.py`

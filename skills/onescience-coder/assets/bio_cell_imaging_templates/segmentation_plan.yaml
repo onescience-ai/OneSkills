@@ -1,0 +1,26 @@
+image_inputs:
+  - path: images/sample01.tif
+    sample_id: sample01
+dimensions:
+  axis_order: YX_or_ZYX_or_TZYXC
+  pixel_size_um: null
+channel_map:
+  nucleus: DAPI
+  cytoplasm_or_membrane: ""
+segmentation:
+  method: Cellpose
+  model: nuclei
+  diameter_px: 30
+  flow_threshold: 0.4
+  cellprob_threshold: 0.0
+qc:
+  save_overlay: true
+  min_area_px: 20
+  max_area_px: null
+measurements:
+  morphology: true
+  intensity_channels: []
+outputs:
+  masks_dir: masks/
+  measurements: object_measurements.csv
+  qc_figures: qc/

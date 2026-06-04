@@ -1,0 +1,31 @@
+model_purpose:
+  endpoint: response_or_survival_or_diagnosis
+  intended_use: research_only
+data:
+  cohort: ""
+  sample_unit: patient
+  feature_source: RNAseq_or_methylation_or_proteomics_or_multiomics
+  n_samples: null
+  n_features: null
+splitting:
+  split_level: patient
+  train: ""
+  validation: ""
+  test: ""
+  external_validation: ""
+preprocessing:
+  normalization: ""
+  batch_correction: ""
+  missing_value_strategy: ""
+feature_selection:
+  method: train_only_lasso_or_boruta_or_mrmr
+model:
+  family: regularized_logistic_or_cox_or_xgboost
+  hyperparameter_tuning: nested_cv
+metrics:
+  classification: [auc, auprc, calibration]
+  survival: [c_index, time_dependent_auc]
+interpretability:
+  method: shap_or_coefficients
+limitations:
+  - no_clinical_decision_without_review

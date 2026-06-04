@@ -62,5 +62,5 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/afno/oneafno.py`
-- `./onescience/src/onescience/modules/afno/fourcastnetafno.py`
+- `{onescience_path}/onescience/src/onescience/modules/afno/oneafno.py`
+- `{onescience_path}/onescience/src/onescience/modules/afno/fourcastnetafno.py`

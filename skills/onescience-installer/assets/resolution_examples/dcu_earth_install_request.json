@@ -1,7 +1,7 @@
 {
   "example_id": "dcu_earth_install_request",
-  "request_example": "assets/request_examples/earth_install_request.json",
-  "hardware_probe_result": "ssh 远端探测确认：nvidia-smi 无设备，rocm-smi 存在，/opt/dtk-25.04/ 存在，hipcc 返回 dcc 24.10.0，CPU 为 Hygon。结论：海光 DCU 平台。",
+  "request_example": "skills/onescience-installer/assets/request_examples/earth_install_request.json",
+  "hardware_output_example": "skills/onescience-runtime/assets/hardware_outputs/examples/slurm_dcu_output.json",
   "expected_resolution": {
     "status": "supported",
     "installer_backend": "dcu_remote_install",

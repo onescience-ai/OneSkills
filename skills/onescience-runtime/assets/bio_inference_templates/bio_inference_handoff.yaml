@@ -1,0 +1,40 @@
+﻿bio_task_family: bio-inference
+selected_concrete_skill: ""
+model_family: ""
+inference_mode: ""
+source_anchors:
+  model_card: "skills/onescience-coder/assets/models/<model>.md"
+  example_entry: "{onescience_path}/onescience/examples/biosciences/<model>/..."
+  request_manifest: "{onescience_path}/onescience/examples/biosciences/_manifests/model_requests/<selected_request>.yaml"
+  source_files: []
+input_protocol:
+  input_type: ""
+  input_path: ""
+  required_fields: []
+checkpoint:
+  path: ""
+  version: ""
+  download_required: false
+runtime:
+  cwd: ""
+  device: gpu_or_dcu_or_cpu
+  precision: ""
+  env:
+    ONESCIENCE_MODELS_DIR: ""
+    ONESCIENCE_DATASETS_DIR: ""
+command_plan:
+  dry_run_or_preflight: []
+  run_command: ""
+  seed: null
+  num_samples_or_designs: null
+expected_outputs:
+  output_dir: ""
+  files_or_patterns: []
+validation:
+  output_checks:
+    - "{onescience_path}/onescience/examples/biosciences/_manifests/tools/check_inference_outputs.py"
+  biological_sanity_checks: []
+failure_recovery:
+  fallback_attention_or_precision: ""
+  lower_memory_knobs: []
+execution_entry: "onescience-skill -> onescience-coder -> onescience-runtime"

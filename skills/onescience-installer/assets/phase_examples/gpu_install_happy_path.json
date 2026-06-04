@@ -1,0 +1,90 @@
+{
+  "example_id": "gpu_install_happy_path",
+  "summary": "NVIDIA GPU 安装链路在四阶段内完成环境识别、预检、安装和验证，最终把环境交回 runtime。",
+  "terminal_phase": "verify",
+  "phases": {
+    "discover": {
+      "execution_mode": "remote_slurm",
+      "access_mode": "ssh",
+      "execution_channel": "ssh_slurm",
+      "required_backend_id": "slurm_gpu",
+      "installer_backend_candidates": [
+        "gpu_remote_install"
+      ],
+      "workspace_bootstrap_candidates": [
+        "onescience_gitee_workspace"
+      ],
+      "install_domain": "earth",
+      "hardware_profile_ref": "skills/onescience-runtime/assets/hardware_outputs/examples/slurm_gpu_output.json",
+      "missing_facts": [],
+      "evidence": {
+        "discovery": {
+          "source": "install_request_and_hardware_profile"
+        }
+      }
+    },
+    "precheck": {
+      "installer_backend": "gpu_remote_install",
+      "workspace_bootstrap_profile": "onescience_gitee_workspace",
+      "precheck_outcome": "ready_to_install",
+      "installer_scope": "user_space_only",
+      "blocking_reason": "none",
+      "confirmation_required": false,
+      "platform_action_required": false,
+      "install_command_plan": {
+        "mode": "remote_command",
+        "phase": "install"
+      },
+      "verify_command_plan": {
+        "mode": "remote_command",
+        "phase": "verify"
+      },
+      "evidence": {
+        "precheck": {
+          "driver_stack_ready": true,
+          "user_space_runtime_ready": true,
+          "compiler_ready": true,
+          "torch_ready": true,
+          "distributed_runtime_ready": true
+        }
+      }
+    },
+    "install": {
+      "install_state": "install_commands_completed",
+      "install_command": "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && (conda env list | grep -w onescience311 >/dev/null 2>&1 || conda create -n onescience311 python=3.11 -y) && conda activate onescience311 && ([ -d ~/onescience/.git ] || git clone https://gitee.com/onescience-ai/onescience.git ~/onescience) && cd ~/onescience && git fetch --all && git checkout main && git pull --ff-only && bash install.sh earth",
+      "install_target": {
+        "host": "login-gpu",
+        "backend_id": "slurm_gpu"
+      },
+      "workspace_state": "ready",
+      "install_artifacts": [
+        "conda_env:onescience311",
+        "repo:onescience@main"
+      ],
+      "evidence": {
+        "install": {
+          "command_exit_code": 0
+        }
+      }
+    },
+    "verify": {
+      "verify_command": "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && conda activate onescience311 && pip list | grep torch && pip list | grep onescience",
+      "install_state": "install_succeeded_and_verified",
+      "verify_state": "verified",
+      "installed_env_summary": {
+        "conda_env": "onescience311",
+        "python": "3.11",
+        "framework_stack": "cuda121_module_conda_install_sh",
+        "domain_selector": "earth"
+      },
+      "runtime_ready": true,
+      "next_action": "onescience-runtime",
+      "evidence": {
+        "verify": {
+          "torch_pip_checked": true,
+          "onescience_pip_checked": true
+        }
+      }
+    }
+  }
+}

@@ -63,5 +63,5 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/recovery/onerecovery.py`
-- `./onescience/src/onescience/modules/recovery/pangupatchrecovery.py`
+- `{onescience_path}/onescience/src/onescience/modules/recovery/onerecovery.py`
+- `{onescience_path}/onescience/src/onescience/modules/recovery/pangupatchrecovery.py`

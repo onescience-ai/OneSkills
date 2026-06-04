@@ -2,31 +2,47 @@
   {
     "id": "slurm_dcu",
     "status": "stable",
+    "execution_mode": "remote_slurm",
+    "access_mode": "ssh",
+    "scheduler_type": "slurm",
+    "runtime_profile": "remote_slurm_dcu",
+    "install_profile": "dcu_remote_install_profile",
     "support_matrix": {
       "runtime": {
         "status": "stable"
       },
-      "debug": {
+      "local_slurm_runtime": {
+        "status": "stable",
+        "execution_mode": "local_slurm"
+      },
+      "diagnose": {
         "status": "supported",
         "backend": "onescience-runtime"
       },
       "installer": {
         "status": "supported",
         "backend": "dcu_remote_install"
+      },
+      "local_installer": {
+        "status": "supported",
+        "backend": "dcu_local_install"
       }
     },
     "template": "skills/onescience-runtime/assets/templates/slurm_dcu.sh",
-    "legacy_project_template": "skills/onescience-runtime/assets/tpl.slurm",
+    "project_template": "skills/onescience-runtime/assets/tpl.slurm",
     "example_config": "skills/onescience-runtime/assets/examples/slurm_dcu_runtime.json",
     "selector": {
       "scheduler_type": "slurm",
+      "cpu_arch": "x86_64",
+      "cpu_vendor": "amd",
       "accelerator_kind": "dcu",
       "accelerator_vendor": "amd"
     },
     "environment_constraints": {
       "visibility_env": "HIP_VISIBLE_DEVICES",
       "distributed_backend": "rccl",
-      "launch_mode": "python"
+      "launch_mode": "python",
+      "distributed_mode": "single"
     },
     "render_fields": [
       "backend.device_visibility_export",
@@ -49,30 +65,46 @@
   {
     "id": "slurm_gpu",
     "status": "stable",
+    "execution_mode": "remote_slurm",
+    "access_mode": "ssh",
+    "scheduler_type": "slurm",
+    "runtime_profile": "remote_slurm_gpu",
+    "install_profile": "gpu_remote_install_profile",
     "support_matrix": {
       "runtime": {
         "status": "stable"
       },
-      "debug": {
+      "local_slurm_runtime": {
+        "status": "stable",
+        "execution_mode": "local_slurm"
+      },
+      "diagnose": {
         "status": "supported",
         "backend": "onescience-runtime"
       },
       "installer": {
-        "status": "unsupported_for_now",
-        "backend": "none"
+        "status": "supported",
+        "backend": "gpu_remote_install"
+      },
+      "local_installer": {
+        "status": "supported",
+        "backend": "gpu_local_install"
       }
     },
     "template": "skills/onescience-runtime/assets/templates/slurm_gpu.sh",
     "example_config": "skills/onescience-runtime/assets/examples/slurm_gpu_runtime.json",
     "selector": {
       "scheduler_type": "slurm",
+      "cpu_arch": "x86_64",
+      "cpu_vendor": "intel",
       "accelerator_kind": "gpu",
       "accelerator_vendor": "nvidia"
     },
     "environment_constraints": {
       "visibility_env": "CUDA_VISIBLE_DEVICES",
       "distributed_backend": "nccl",
-      "launch_mode": "python"
+      "launch_mode": "python",
+      "distributed_mode": "single"
     },
     "render_fields": [
       "backend.device_visibility_export",
@@ -93,14 +125,75 @@
     ]
   },
   {
-    "id": "slurm_cpu",
-    "status": "planned",
+    "id": "slurm_gpu_multinode_torchrun",
+    "status": "stable",
+    "execution_mode": "remote_slurm",
+    "access_mode": "ssh",
+    "scheduler_type": "slurm",
+    "runtime_profile": "remote_slurm_gpu_multinode_torchrun",
+    "install_profile": "gpu_remote_install_profile",
     "support_matrix": {
       "runtime": {
-        "status": "planned"
+        "status": "stable"
       },
-      "debug": {
-        "status": "planned_backend",
+      "diagnose": {
+        "status": "supported",
+        "backend": "onescience-runtime"
+      },
+      "installer": {
+        "status": "supported",
+        "backend": "gpu_remote_install"
+      }
+    },
+    "template": "skills/onescience-runtime/assets/templates/slurm_gpu_multinode_torchrun.sh",
+    "example_config": "skills/onescience-runtime/assets/examples/slurm_gpu_multinode_torchrun_runtime.json",
+    "selector": {
+      "scheduler_type": "slurm",
+      "cpu_arch": "x86_64",
+      "cpu_vendor": "intel",
+      "accelerator_kind": "gpu",
+      "accelerator_vendor": "nvidia",
+      "node_scope": "multi_node"
+    },
+    "environment_constraints": {
+      "visibility_env": "CUDA_VISIBLE_DEVICES",
+      "distributed_backend": "nccl",
+      "launch_mode": "torchrun",
+      "distributed_mode": "multi_node"
+    },
+    "render_fields": [
+      "backend.device_visibility_export",
+      "backend.module_setup",
+      "cluster.cpus_per_task",
+      "cluster.gpu_type",
+      "cluster.gpus_per_node",
+      "cluster.memory",
+      "cluster.nodes",
+      "cluster.ntasks_per_node",
+      "cluster.partition",
+      "cluster.time_limit",
+      "conda.env_name",
+      "env_vars.MASTER_PORT",
+      "env_vars.ONESCIENCE_DATASETS_DIR",
+      "env_vars.ONESCIENCE_MODELS_DIR",
+      "script.code_path",
+      "script.job_name"
+    ]
+  },
+  {
+    "id": "slurm_cpu",
+    "status": "stable",
+    "execution_mode": "remote_slurm",
+    "access_mode": "ssh",
+    "scheduler_type": "slurm",
+    "runtime_profile": "remote_slurm_cpu",
+    "install_profile": "cpu_remote_install_profile",
+    "support_matrix": {
+      "runtime": {
+        "status": "stable"
+      },
+      "diagnose": {
+        "status": "supported",
         "backend": "onescience-runtime"
       },
       "installer": {
@@ -112,13 +205,16 @@
     "example_config": "skills/onescience-runtime/assets/examples/slurm_cpu_runtime.json",
     "selector": {
       "scheduler_type": "slurm",
+      "cpu_arch": "x86_64",
+      "cpu_vendor": "amd",
       "accelerator_kind": "cpu",
       "accelerator_vendor": "none"
     },
     "environment_constraints": {
       "visibility_env": "NONE",
       "distributed_backend": "gloo",
-      "launch_mode": "python"
+      "launch_mode": "python",
+      "distributed_mode": "single"
     },
     "render_fields": [
       "backend.device_visibility_export",

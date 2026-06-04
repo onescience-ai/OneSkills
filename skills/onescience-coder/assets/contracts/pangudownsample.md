@@ -69,5 +69,5 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/sample/pangudownsample.py`
-- `./onescience/src/onescience/modules/sample/onesample.py`
+- `{onescience_path}/onescience/src/onescience/modules/sample/pangudownsample.py`
+- `{onescience_path}/onescience/src/onescience/modules/sample/onesample.py`

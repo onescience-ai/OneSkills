@@ -2,6 +2,18 @@
 
 你是一名基于 OneScience 写代码的工程智能体。
 
+## 入口边界
+
+当用户只是询问“技能路线”“该走哪个 skill”“先不要写代码”“先做规划”“先看怎么走”时，不进入本文件后续两阶段代码工作流。
+
+这类请求应先回到上游：
+
+1. `onescience-workflow` 识别领域画像与工作流类型
+2. `onescience-role` 做角色决策与领域任务桶拆解
+3. 若未来需要实现，再把 `onescience-coder` 作为执行入口
+
+不要在这种场景下读取模型卡、组件卡、datapipe 卡或源码锚点，也不要输出实现策略、文件落点或测试计划。
+
 ## 用户交互主流程
 
 本工作流默认采用“两阶段交互”，目标是尽量减少用户一开始需要编写的提示词长度。
@@ -23,10 +35,11 @@
 3. 再读取 `../assets/contracts/naming_convention.md`
 4. 若任务涉及数据读取、年份选择、变量组织或 dataloader，读取 `../assets/datapipes/datapipe_index.md`
 5. 若用户提供的是未登记的新数据集 README、样例文件或数据目录说明，再读取 `./new_dataset_workflow.md`
-6. 按需读取相关 `../assets/contracts/` 与 `../assets/datapipes/` 文档
-7. 必要时读取项目本地安装的 `./onescience/` 源码锚点；该目录由 OneSkills installer 从 OneScience release zip 下发到 agent 的 `oneskills/onescience` 目录，不要扫描开发机上的任意磁盘路径
-8. 先生成一份“详细执行信息”或“结构化规格说明”
-9. 把这份规格说明交给用户确认
+6. 若用户同时要求在多个 PDE / CFD / operator 模型上训练并对比效果，仍按新数据集流程处理，并将任务标记为 `full-adaptation + benchmark-comparison`
+7. 按需读取相关 `../assets/contracts/` 与 `../assets/datapipes/` 文档
+8. 必要时读取项目本地安装的 `./onescience/` 源码锚点；该目录由 OneSkills installer 从 OneScience release zip 下发到 agent 的 `oneskills/onescience` 目录，不要扫描开发机上的任意磁盘路径
+9. 先生成一份“详细执行信息”或“结构化规格说明”
+10. 把这份规格说明交给用户确认
 
 这份“详细执行信息”至少应包含：
 
@@ -91,6 +104,7 @@
 2. 若是原始 query 阶段，先输出结构化规格说明，不直接输出最终代码
 3. 若是确认后代码生成阶段，再进入正式实现
 4. 若用户提供的是未登记的新数据集 README、样例文件或数据目录说明，先读取 `./new_dataset_workflow.md`
+   - 若用户目标是“在不同 PDE / CFD / operator 模型上训练并对比”，按 `full-adaptation + benchmark-comparison` 处理
 5. 若用户明确提到模型名，先读取 `../assets/models/model_index.md`
 6. 按需读取对应模型卡
 7. 识别任务涉及的组件族
@@ -174,13 +188,14 @@
 
 当用户提供的是 `assets/datapipes/` 尚未登记的新数据集时，额外执行以下规则：
 
-1. 第一轮必须明确当前任务是 `datapipe-only` 还是 `full-adaptation`
+1. 第一轮必须明确当前任务是 `datapipe-only`、`full-adaptation` 还是 `full-adaptation + benchmark-comparison`
 2. 第一轮必须明确写出：
    - 参考 datapipe
    - 参考 example
    - 新 datapipe 的文件名和类名
    - 数据集的输入、输出和划分方式
    - 是 `case-local` 还是主库集成
+   - 若是多模型对比，候选模型、每个模型的数据协议、是否需要 adapter/view
 3. 生成新 datapipe 时，优先遵守：
    - `<DatasetName>.py`
    - `<DatasetName>Dataset`
@@ -209,6 +224,52 @@
 
 - 这条规则是为了避免天气类任务默认退化成通用 encoder/decoder 模板
 - 若确认没有合适的 `fuser` 组件，再退回到底层 block 组合
+
+## 生物信息学任务补充规则
+
+当任务是蛋白质结构预测、复合物结构预测、蛋白设计、基因组语言模型或相关数据适配时，额外执行以下检查：
+
+1. 先做覆盖核对：读 `../assets/models/model_index.md` 的“生信覆盖对照”，确认任务是否命中 `examples/biosciences`、`src/onescience/models` 或 `src/onescience/flax_models` 中已有的生信模型族；不要默认把生信任务归到 `Protenix`
+2. 先判断任务类型：
+   - 序列到结构：优先区分 `Protenix`、`OpenFold`、`SimpleFold`
+   - 原版 AF2 JAX 推理：优先看 `AlphaFold`
+   - AF3 JAX JSON 推理：优先看 `AlphaFold3`
+   - 结构到序列：优先看 `ProteinMPNN`
+   - 骨架生成与蛋白设计采样：优先看 `RFdiffusion`
+   - 结构 token 化、结构重建或 PT-DiT 前后处理：优先看 `ProToken`
+   - 序列-结构协同生成、RePaint 或 latent evolution：优先看 `PT-DiT`
+   - 基因组长序列：优先看 `Evo2`
+   - 小分子生成、药物优化或 docking reward：优先看 `MolSculptor`
+   - RFdiffusion 内部 SE(3) 等变结构轨道：仅在需要改内部等变图层时看 `SE3Transformer`
+3. 第一轮规格中必须明确模型输入协议：
+   - AlphaFold v2 FASTA/MSA/template feature pipeline
+   - Protenix / AF3 feature dict
+   - AlphaFold3 JSON / `features.BatchDict`
+   - OpenFold AF2 batch dict
+   - SimpleFold atom-token `feats` dict
+   - ProteinMPNN backbone atoms + chain masks
+   - RFdiffusion Hydra contig / PDB / diffusion config
+   - ProToken PDB-derived residue features / VQ code indexes
+   - PT-DiT ProToken + amino acid embedding latent
+   - Evo2 `tokens/position_ids/labels/loss_mask`
+   - MolSculptor SMILES / molecule graph features / sequence tokens
+4. 若任务涉及 Protenix 推理 JSON，先看 `../assets/datapipes/biology_protein.md`，确认是否能复用 `ProtenixInferAdapter`
+5. 若任务涉及 AlphaFold3 JSON 推理，先看 `../assets/models/alphafold3.md`，再判断是否运行 data pipeline、是否已有 MSA、是否需要 JackHmmer/MMseqs
+6. 若任务涉及 FASTA/MSA/结构文件通用接入，先判断是补 adapter、补 `__getitem__`，还是只生成只读数据索引
+7. 若任务涉及 PT-DiT 或 ProToken，不要把普通 FASTA/PDB 直接当作模型 batch；应先确认 ProToken checkpoint、embedding、padding length 和 codebook 协议
+8. 若任务涉及 Evo2，不要把 `GenomeDataset` 的通用序列输出直接当成 Evo2 训练 batch；应先确认 tokenizer、sample length、label 和 loss mask
+9. 若任务涉及 MolSculptor，不要复用蛋白质 datapipe；应先确认 SMILES 标准化、分子图 padding、采样策略和 reward 依赖
+
+补充说明：
+
+- 生信方向中多个模型都叫结构预测，但 feature dict 协议不兼容
+- AlphaFold/OpenFold 是 AF2-style，AlphaFold3/Protenix 是 AF3-style，SimpleFold 是 flow matching 折叠；不要只按“结构预测”合并路线
+- RFdiffusion 是骨架生成，不负责最终侧链与序列设计；若要补序列，后续再看 `ProteinMPNN`
+- PT-DiT 生成 ProToken/AA latent 或 indexes，结构输出通常还要经过 ProToken decoder
+- MolSculptor 是小分子设计，不处理蛋白序列/结构 batch
+- 如果只是替换 Protenix 内部模块，应先看组件契约中的 `embedding / encoder / msa / pairformer / attention / transformer / diffusion / decoder / linear`
+- 如果只是替换非 Protenix 生信模型内部模块，先看对应契约里的 `所属模块族 / 统一入口 / 注册名 / 注册状态`；若为 `contract_only`，不要当作已注册可运行 wrapper，必须先补 registry 适配或继续沿用模型原生入口
+- 如果只是数据适配，默认优先在 datapipe 或 adapter 层桥接，不改模型主体
 
 ## 输出要求
 

@@ -26,9 +26,10 @@
 
 如果用户只是提到“后面可能要跑到集群”“可能要适配某个 DCU 环境”，但当前交付仍是代码：
 
-- 优先走 `onescience-hardware -> onescience-coder`
+- 优先走 `onescience-coder`
+- 不额外拉起其他环境感知入口
 - 若无法确认远程事实，允许只生成保守代码方案
-- 明确说明哪些远程参数将在运行阶段再确认
+- 明确说明哪些远程参数将在运行或安装阶段再确认
 
 ## 什么时候必须阻断
 
@@ -36,7 +37,6 @@
 
 - `onescience-runtime`
 - `onescience-installer`
-- 依赖远程执行的 `onescience-debug`
 
 常见阻断缺口包括：
 
@@ -57,9 +57,10 @@
 处理顺序：
 
 1. 把它当作环境线索，而不是完整配置
-2. 先交给 `onescience-hardware` 读取 `~/.ssh/config` 并做轻量只读探测
-3. 若只有一个合理候选，可继续
-4. 若有多个候选或仍然不清楚，则只追问最小缺失信息
+2. 优先交给当前公开执行入口做 `discover`
+3. 运行/排查走 `onescience-runtime`，安装/修复走 `onescience-installer`
+4. 若只有一个合理候选，可继续
+5. 若有多个候选或仍然不清楚，则只追问最小缺失信息
 
 ## 建议状态
 
@@ -85,7 +86,7 @@
 - `recognized`：已识别出的 Host / 平台 / 队列 / 路径等线索
 - `missing`：当前阶段真正缺失的字段
 - `can_continue_locally`：是否还能停留在本地或代码阶段继续
-- `next_action`：下一步进入 `coder` / `hardware` / `runtime` / `installer` / `debug`
+- `next_action`：下一步进入 `coder` / `runtime` / `installer`
 
 ## 常见场景
 
@@ -99,13 +100,13 @@
 
 - `status`: `blocked`
 - `can_continue_locally`: `false`
-- `next_action`: `onescience-hardware`
+- `next_action`: `onescience-runtime`
 
 ### 场景 3：只知道“某个 DCU 集群”，但没给 Host
 
 - `status`: `need_clarification`
 - `can_continue_locally`: 视任务而定
-- `next_action`: `onescience-hardware`
+- `next_action`: `onescience-runtime`
 
 ### 场景 4：已有 Host，但缺少 `onescience.json`
 

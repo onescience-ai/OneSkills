@@ -89,6 +89,6 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/fuser/fourcastnetfuser.py`
-- `./onescience/src/onescience/modules/fuser/onefuser.py`
-- `./onescience/src/onescience/models/fourcastnet/fourcastnet.py`
+- `{onescience_path}/onescience/src/onescience/modules/fuser/fourcastnetfuser.py`
+- `{onescience_path}/onescience/src/onescience/modules/fuser/onefuser.py`
+- `{onescience_path}/onescience/src/onescience/models/fourcastnet/fourcastnet.py`

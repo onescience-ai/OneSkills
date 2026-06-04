@@ -1,0 +1,25 @@
+plasmid:
+  id: construct_id
+  sequence_source: fasta_or_genbank_path
+  topology: circular
+host_or_expression_system: ""
+expected_features:
+  - name: origin
+    required: true
+  - name: selectable_marker
+    required: true
+  - name: promoter
+    required: true
+  - name: insert_or_cds
+    required: true
+verification:
+  restriction_digest:
+    required: true
+    enzymes: []
+  sanger:
+    primers: []
+    junctions_to_cover: []
+  functional_checks: []
+outputs:
+  feature_table: plasmid_features.tsv
+  qc_report: plasmid_qc.md

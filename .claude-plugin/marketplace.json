@@ -9,7 +9,7 @@
     {
       "name": "oneskills",
       "description": "OneScience / OneSkills skills for AI-native scientific research workflows, coding, runtime submission, debugging, and environment setup.",
-      "version": "2026.05.07",
+      "version": "2026.05.11",
       "source": "./",
       "author": {
         "name": "OneScience AI",

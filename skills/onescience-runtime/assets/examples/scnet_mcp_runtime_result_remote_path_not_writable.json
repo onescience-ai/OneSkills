@@ -1,0 +1,30 @@
+{
+  "example_id": "scnet_mcp_runtime_result_remote_path_not_writable",
+  "execution_channel": "scnet_mcp",
+  "execution_mode": "remote_direct",
+  "access_mode": "cloud_api",
+  "submission_target": {
+    "region": "华东一区【昆山】",
+    "queue": "kshdnormal"
+  },
+  "remote_context": {
+    "remote_path": "/project/tmp/run_scnet_probe.py",
+    "command": "python3 /project/tmp/run_scnet_probe.py --steps 2"
+  },
+  "task_id": null,
+  "submission_state": "not_started",
+  "execution_state": "blocked",
+  "job_status": "unknown",
+  "local_log_dir": ".onescience/logs/scnet-remote-path-not-writable",
+  "synced_logs": [],
+  "log_state": "not_started",
+  "sync_status": "not_started",
+  "blocking_reason": "remote_path_not_writable",
+  "failure_reason": "remote_path_not_writable",
+  "stderr_summary": "remote path not writable: the selected upload path cannot be created or written in the current region",
+  "observations": {
+    "status_source": "not_available",
+    "log_readiness": "unknown"
+  },
+  "next_action": "onescience-runtime"
+}

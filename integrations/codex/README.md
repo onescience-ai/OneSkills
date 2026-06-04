@@ -8,7 +8,7 @@
 
 当前推荐由安装器一次性完成两层：
 
-- 项目内 `./.codex/oneskills/skills/`（含 `./.codex/oneskills/skills/references/` 共享资料）、`./.codex/oneskills/integrations/`
+- 项目内 `./.codex/oneskills/skills/`、`./.codex/oneskills/references/`、`./.codex/oneskills/integrations/`
 - 用户级 `~/.codex/skills/onescience-*` bridge skills
 
 其中：
@@ -23,7 +23,7 @@
 
 如果用户只是说“使用/启动/打开/进入 onescience”或“使用/启动/打开/进入 oneskills”，以及“onescience 模式”“oneskills 模式”，默认进入 `onescience-workflow`，识别为 `general-onescience-request`，先询问具体科研目标，不要直接进入执行层。
 
-如果用户明确点名具体 skill，例如 `onescience-coder`、`onescience-runtime`、`onescience-debug`，则直接使用对应 skill；该 skill 再按自身规则判断是否需要回到 `onescience-workflow`。
+如果用户明确点名具体 skill，例如 `onescience-coder`、`onescience-runtime`、`onescience-installer`，则直接使用对应 skill；该 skill 再按自身规则判断是否需要回到 `onescience-workflow`。
 
 ### 1. 先走主链，不要跳层
 
@@ -33,9 +33,9 @@
 
 不要因为 `Codex CLI` 擅长直接改文件，就跳过任务理解层和角色层。
 
-### 2. 编码前先判断是否需要硬件感知
+### 2. 编码前先判断是否需要远程执行约束
 
-如果任务涉及以下内容，先进入 `onescience-hardware`：
+如果任务涉及以下内容，优先把约束传给 `onescience-runtime` 的 `discover/preflight`，或 `onescience-installer` 的 `discover/precheck`：
 
 - 远程 Host
 - GPU / DCU
@@ -43,7 +43,7 @@
 - module / conda
 - slurm 运行约束
 
-如果只是纯本地代码生成或代码改造，则不要强行进入硬件链路。
+如果只是纯本地代码生成或代码改造，则不要强行进入远程执行链路。
 
 ### 3. 远程缺失时不要过早中断
 
@@ -111,7 +111,7 @@
 ```
 
 ```text
-使用 onescience-hardware，先判断远程环境是否足够明确；如果不明确，给出缺失项并允许继续本地代码阶段
+使用 onescience-runtime，先判断远程环境是否足够明确；如果不明确，给出缺失项并允许继续本地代码阶段
 ```
 
 ## 一句话原则

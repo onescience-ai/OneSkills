@@ -15,6 +15,7 @@
 
 - 调用层通过 `style` 选择具体 decoder 实现
 - 当前天气相关模型最常用的是 `FengWuDecoder`
+- 当前生信相关模型中，Protenix diffusion 通过它调用 `ProtenixAtomAttentionDecoder`
 - wrapper 本身不定义固定 shape，真实规则来自具体 decoder
 
 ## 支持输入
@@ -48,11 +49,14 @@
 ## 典型调用位置
 
 - FengWu 主模型
+- ProtenixDiffusionModule
 
 ## 典型参数
 
 - FengWu 单分支解码
   - `style="FengWuDecoder"`
+- Protenix atom coordinate update
+  - `style="ProtenixAtomAttentionDecoder"`
 
 ## CFD / 图模型补充
 
@@ -82,11 +86,13 @@
 
 - `OneDecoder` 只是入口，不表示所有 decoder 可互换
 - 只看 wrapper 无法判断输入是 token 序列还是带 skip 的组合输入
+- `ProtenixAtomAttentionDecoder` 需要 atom encoder 提供的 `q_skip/c_skip/p_skip`，不能只传 token 表征
 - `style` 未注册时会直接报错
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/decoder/onedecoder.py`
-- `./onescience/src/onescience/modules/decoder/fengwudecoder.py`
-- `./onescience/src/onescience/modules/decoder/unet_decoder.py`
-- `./onescience/src/onescience/modules/decoder/graphvit_decoder.py`
+- `{onescience_path}/onescience/src/onescience/modules/decoder/onedecoder.py`
+- `{onescience_path}/onescience/src/onescience/modules/decoder/fengwudecoder.py`
+- `{onescience_path}/onescience/src/onescience/modules/decoder/unet_decoder.py`
+- `{onescience_path}/onescience/src/onescience/modules/decoder/graphvit_decoder.py`
+- `{onescience_path}/onescience/src/onescience/modules/decoder/protenixdecoder.py`

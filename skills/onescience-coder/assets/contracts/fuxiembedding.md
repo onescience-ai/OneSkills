@@ -74,6 +74,6 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/embedding/fuxiembedding.py`
-- `./onescience/src/onescience/modules/embedding/oneembedding.py`
-- `./onescience/src/onescience/models/fuxi/fuxi.py`
+- `{onescience_path}/onescience/src/onescience/modules/embedding/fuxiembedding.py`
+- `{onescience_path}/onescience/src/onescience/modules/embedding/oneembedding.py`
+- `{onescience_path}/onescience/src/onescience/models/fuxi/fuxi.py`

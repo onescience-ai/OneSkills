@@ -1,0 +1,36 @@
+{
+  "example_id": "ssh_slurm_missing_sbatch",
+  "probe_channel": "ssh_slurm",
+  "execution_mode": "remote_slurm",
+  "access_mode": "ssh",
+  "semantic_environment_hints": {
+    "scheduler_type": "slurm",
+    "partition": "gpuq"
+  },
+  "probe_target": {
+    "host": "login-gpu",
+    "partition": "gpuq"
+  },
+  "requested_checks": [
+    "ssh_connectivity",
+    "slurm_cli"
+  ],
+  "probe_status": "blocked",
+  "observed_environment_facts": {
+    "scheduler_type": "unknown",
+    "sinfo_available": false,
+    "squeue_available": false,
+    "sbatch_available": false
+  },
+  "normalized_output": {
+    "hardware_profile_ready": false,
+    "expected_backend_id": null,
+    "execution_readiness": "blocked_by_host",
+    "blocking_reason": "missing_sbatch"
+  },
+  "safety": {
+    "read_only": true,
+    "submitted_job": false,
+    "modified_runtime_config": false
+  }
+}

@@ -1,6 +1,6 @@
 #!/bin/bash
 # backend_id: slurm_cpu
-# runtime_status: planned
+# runtime_status: stable
 #SBATCH -p {cluster.partition}
 #SBATCH -N {cluster.nodes}
 #SBATCH --cpus-per-task={cluster.cpus_per_task}

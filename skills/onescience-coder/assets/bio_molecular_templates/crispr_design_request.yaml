@@ -1,0 +1,33 @@
+editing_goal: knockout
+nuclease_or_editor:
+  name: SpCas9
+  pam: NGG
+  guide_length: 20
+organism_reference:
+  organism: ""
+  genome_build: ""
+target:
+  gene_or_locus: ""
+  sequence_or_fasta: ""
+  preferred_region: early_coding_exon
+excluded_regions:
+  - reason: common_snp_or_repeat
+    coordinates: ""
+filters:
+  gc_min_percent: 40
+  gc_max_percent: 70
+  reject_poly_t_4: true
+  require_off_target_scan: true
+editing_window:
+  editor: null
+  editable_base: null
+  window_positions_from_pam_distal: []
+donor_or_pegRNA:
+  required: false
+  donor_type: ssODN_or_dsDNA_or_plasmid
+validation:
+  pcr_amplicon_size_bp: [300, 700]
+  sequencing: amplicon_seq_or_sanger
+outputs:
+  guide_table: guide_candidates.tsv
+  validation_plan: crispr_validation.md

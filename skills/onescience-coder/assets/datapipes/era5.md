@@ -84,6 +84,6 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/datapipes/climate/era5.py`
-- `./onescience/src/onescience/datapipes/climate/utils/invariant.py`
-- `./onescience/src/onescience/datapipes/climate/utils/zenith_angle.py`
+- `{onescience_path}/onescience/src/onescience/datapipes/climate/era5.py`
+- `{onescience_path}/onescience/src/onescience/datapipes/climate/utils/invariant.py`
+- `{onescience_path}/onescience/src/onescience/datapipes/climate/utils/zenith_angle.py`

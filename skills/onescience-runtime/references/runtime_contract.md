@@ -1,197 +1,295 @@
 # Runtime Contract
 
-本文定义 `onescience-runtime` 的字段归属、后端选择、模板渲染规则和作业提交流程。
+本文件说明 `onescience-runtime` 的职责、输入分层与输出边界。
 
-## 稳定后端
+如果需要看四阶段更细的输入/输出交接，继续读取 `./runtime_phase_handoffs.md`。
+如果需要看实际环境探测的输入、输出和安全边界，继续读取 `./runtime_probe_contract.md`。
 
-当前 `ssh_slurm` 通道稳定支持的后端：
-- `backend_id: slurm_dcu`
-- `backend_id: slurm_gpu`
+当前建议把 `onescience-runtime` 视为统一运行与基础诊断入口；它对外是一个 skill，对内拆成 4 个固定阶段：
 
-具体链路边界以 `assets/backend_specs.json` 的 `support_matrix` 为准。
+1. `discover`
+2. `preflight`
+3. `execute`
+4. `diagnose`
 
-## 典型执行顺序
+共享 profile 注册表位于 `../assets/execution_profiles.json`。
 
-远程运行类任务默认按以下顺序推进：
+## 执行模式
 
-1. `onescience-coder`
-2. `onescience-runtime`
-3. `onescience-debug`（按需）
+runtime 现在优先按 `execution_mode` 理解链路：
 
-对于显式 SCnet 请求，也进入 `onescience-runtime`，但选择 `execution_channel=scnet_mcp`。
+- `local`
+- `remote_slurm`
+- `remote_direct`
 
-## 职责边界
+补充接入元数据：
 
-### `onescience-runtime`
+- `access_mode=local`
+- `access_mode=ssh`
+- `access_mode=cloud_api`
 
-负责回答"代码怎么跑起来"：
+推荐映射：
 
-- **自行完成远端主机发现与硬件探测**（不自其他技能获取硬件画像）
-- 选择 `execution_channel`（`ssh_slurm` / `scnet_mcp`）
-- 在 `ssh_slurm` 通道里读取 `onescience.json`、模板和探测结果，渲染并提交作业
-- 在 `scnet_mcp` 通道里通过 SCnet MCP 工具上传脚本、提交任务、查状态并下载日志
-- 统一产出作业状态、本地日志路径和下一步动作
-- 维护远程提交的授权状态
+- `execution_channel=ssh_slurm` 等价于 `execution_mode=remote_slurm` + `access_mode=ssh`
+- `execution_channel=scnet_mcp` 等价于 `execution_mode=remote_direct` + `access_mode=cloud_api`
 
-### `onescience-coder`
+## runtime 的职责
 
-负责回答"代码要怎么写"：
+runtime 负责回答“代码怎么跑起来，并在失败时给出基础执行诊断”：
 
-- 数据读取入口
-- 模型与组件实现
-- 训练 / 推理入口脚本
+- 识别当前执行模式
+- 将用户语义中的环境线索整理为候选事实
+- 通过实际接入通道发现或确认完整环境事实
+- 运行前预检
+- 选择 backend 与 runtime profile
+- 生成脚本或命令
+- 提交 / 执行 / 轮询
+- 同步或下载日志
+- 基于执行证据做基础失败分类
 
-它不负责连接远程环境，也不负责提交作业。
+runtime 不负责：
 
-## 环境事实
+- 安装或修复用户态环境
+- 系统驱动部署
+- 长链路领域测试编排
 
-**环境事实由 runtime 自主远端探测获取**，包括：
+如果预检发现环境未 ready，应回退到 `onescience-installer`，而不是在 runtime 中偷偷补装依赖。
 
-- `host` — SSH 目标地址
-- `scheduler_type` — 调度器类型（如 `slurm`）
-- `platform_type` — 平台类型（如 `cluster`）
-- `accelerator_kind` — 加速器类型（`dcu` / `gpu` / `cpu`）
-- `accelerator_vendor` — 厂商（`amd` / `nvidia` / `none`）
-- `partition` — 队列/分区（从 `onescience.json` 读取）
-- `modules` — 可用模块（从 `onescience.json` 或远端探测）
-- `conda_env` — conda 环境（从 `onescience.json` 读取）
+### Readiness 与安装边界
 
-## 字段分层
+runtime 可以确认目标环境是否 ready，但不能改变目标环境。
 
-### 1. 集群配置（来自 `onescience.json`）
+允许的 readiness confirmation：
 
-- `runtime.cluster.partition`
-- `runtime.cluster.gpu_type`
+- `module load`
+- `conda activate`
+- `python -c 'import torch'`
+- 轻量 probe task
+- 远端路径可写性检查
+
+禁止的 environment mutation：
+
+- `conda create`
+- `pip install`
+- `git clone` / 同步 OneScience 工作区
+- `conda init` / 修改 shell 初始化文件
+- 安装或升级系统 / 用户态依赖
+
+如果 runtime 通过实际通道确认 `python_not_ready`、`torch_not_ready`、`distributed_runtime_not_ready` 或 OneScience import 不可用，应输出 blocker 并把 `next_action` 指向 `onescience-installer`。installer 完成安装和 `verify` 后，再把环境交回 runtime。
+
+## 四阶段稳定交接面
+
+建议把内部 4 阶段视为固定流水线，而不是随意跳转的步骤：
+
+1. `discover`
+   - 产出执行模式、目标候选、环境事实与缺失事实
+2. `preflight`
+   - 产出最终 backend/profile/target，以及 `execution_readiness`
+3. `execute`
+   - 产出提交状态、运行状态、日志同步结果
+4. `diagnose`
+   - 产出基础失败分类、状态来源与下游交接物
+
+稳定判断：
+
+- `discover` 回答“走哪条链路、有哪些候选、缺什么事实”
+- `preflight` 回答“当前能不能执行、为什么不能、该不该回退 installer”
+- `execute` 回答“是否已提交、现在跑到哪一步、日志同步到哪里”
+- `diagnose` 回答“更像哪类失败、下一步该留在 runtime 还是回退 installer/上游”
+
+## 共享输入：`execution_profile`
+
+runtime 消费三类输入：
+
+### 1. `hardware_profile`
+
+环境事实，通常来自 `discover` 阶段产出：
+
+- `host`
+- `scheduler_type`
+- `cpu.*`
+- `accelerators[]`
+- `software.modules`
+- `software.conda_env`
+- `software.driver_stack`
+- `software.capability_readiness`
+- `storage.*`
+
+用户语义中的环境描述只能作为候选输入，例如“昆山 SCnet”“某个 DCU 队列”“GPU 集群”“hpctest01”。这些描述在经过用户确认和实际通道探测前，不应升级为 `hardware_profile`。
+
+### 2. `runtime_profile`
+
+运行方式与模板约束：
+
+- `execution_mode`
+- `access_mode`
+- `scheduler_type`
+- `launch_mode`
+- `visibility_env`
+- `distributed_backend`
+- `template_family`
+- `render_fields`
+- `log_strategy`
+- `status_strategy`
+
+这些 profile id 统一从 `execution_profiles.json.runtime_profiles[]` 读取，不再在 phase 示例、文档和 backend spec 里各自发明别名。
+
+### 3. 项目级运行配置
+
+例如 `onescience.json` 中的：
+
+- `runtime.backend_id`
+- `runtime.execution_profile`
+- `runtime.cluster.*`
+- `runtime.script.*`
+- `runtime.logs.*`
+- `runtime.submission.*`
+
+## 运行配置分层
+
+### 语义环境线索
+
+这些字段只表示候选事实，不表示已确认环境：
+
+- 用户提到的 Host / 集群 / 平台名称
+- 用户提到的 region / queue / partition
+- 用户提到的 CPU / GPU / DCU 类型
+- 用户提到的 module / conda / path 线索
+
+runtime 必须通过实际确认通道把它们升级为环境事实：
+
+- `ssh_slurm`：通过 SSH / SLURM 配置、只读探针或远端命令确认 Host、partition、module、driver stack 与路径可用性。
+- `scnet_mcp`：通过 SCnet MCP 的区域、队列、任务状态和日志接口确认 region、queue、task_id 与日志可用性。
+
+### 环境事实
+
+这些字段只来自 `hardware_profile`，不要猜测：
+
+- `host`
+- `scheduler_type`
+- `partition`
+- `cpu.*`
+- `accelerators[]`
+- `software.*`
+- `storage.*`
+
+### 项目申请与脚本入口
+
+这些字段主要来自 `onescience.json` 或用户输入：
+
 - `runtime.cluster.nodes`
 - `runtime.cluster.gpus_per_node`
 - `runtime.cluster.cpus_per_task`
 - `runtime.cluster.time_limit`
 - `runtime.cluster.memory`
-- `runtime.modules`
-- `runtime.conda.env_name`
-- `runtime.script.env_vars.ONESCIENCE_DATASETS_DIR`
-- `runtime.script.env_vars.ONESCIENCE_MODELS_DIR`
-
-其中 `nodes`、`gpus_per_node`、`cpus_per_task`、`time_limit`、`memory` 属资源申请策略，需要用户确认。
-
-### 2. 代码配置（来自 coder 输出）
-
 - `runtime.script.code_path`
 - `runtime.script.job_name`
 
-### 3. 通道选择与运行时状态（runtime 自身维护）
+### 运行 profile
 
-- `execution_channel`
-- `submission_target`
-- `job_status`
-- `sync_status`
+这些字段由 backend/profile 决定或约束：
+
+- `runtime.execution_profile.execution_mode`
+- `runtime.execution_profile.access_mode`
+- `runtime.execution_profile.runtime_profile_ref`
+- `runtime.execution_profile.install_profile_ref`
+- `runtime.script.template`
+- 模板变量映射
 
 其中：
 
-- `submission_target` 在 `ssh_slurm` 中为 `host/partition`
-- `submission_target` 在 `scnet_mcp` 中为 `region/queue`
+- `runtime_profile_ref` 绑定运行链路与执行模板
+- `install_profile_ref` 只绑定回退 installer 时的安装 profile
+- `install_profile_ref` 不等于 installer backend 名称
 
-### 4. 渲染与提报字段（runtime 在选中 backend 后补齐）
+## backend 选择
 
-- `runtime.script.path`
-- `runtime.script.generate`
-- `runtime.script.template`
-- `backend_id`
-- 模板变量映射结果
-- `backend.module_setup`（从 backend_specs.json 读取）
-- `backend.device_visibility_export`（从 backend_specs.json 读取）
+当前 `backend_specs.json` 中的 stable backend 仍集中在 `remote_slurm`：
 
-### 5. 日志字段（runtime 补齐，支持默认值）
+- `slurm_dcu`
+- `slurm_gpu`
+- `slurm_gpu_multinode_torchrun`
+- `slurm_cpu`
 
-- `runtime.logs.remote_dir` — 默认 `logs`
-- `runtime.logs.local_dir` — 默认 `.onescience/logs`
-- `runtime.logs.include_patterns` — 默认 `*.out` / `*.err`
-- `runtime.logs.wait_for_completion` — 默认 `true`
-- `runtime.logs.sync_after_completion` — 默认 `true`
+对 runtime 来说，backend 选择顺序应是：
 
-### 6. 提交授权字段（runtime 维护）
+1. 先确认 `execution_mode`
+2. 再根据 `hardware_profile` 与 selector 选择 backend
+3. 再读取 backend 绑定的 `runtime_profile` / `install_profile`
+4. 再进入模板渲染、命令生成与执行
 
-- `runtime.submission.confirm_before_first_submit` — 默认 `true`
-- `runtime.submission.reuse_confirmation_in_workflow` — 默认 `true`
+补充说明：
 
-默认行为：第一次提交前确认一次，同一工作流后续提交复用该确认。
+- `remote_slurm` 通过 `backend_specs.json` 选择 backend，再反查 `execution_profiles.json`
+- `remote_direct` 当前主要通过 `execution_channel + runtime_profile_ref` 表达，不要求伪造 `onescience.json`
 
-### 7. `scnet_mcp` 通道字段
+这个顺序意味着：
 
-- `region`
-- `queue`
-- `local_input`
-- `remote_path`
-- `command`
-- `task_id`
+- backend 选择发生在 `preflight` 决策阶段，而不是 `execute` 阶段临时决定
+- `discover` 可以给候选 backend，但不应直接固化最终 backend
+
+## 与 installer 的边界
+
+runtime：
+
+- 发现环境
+- 判断是否 ready
+- 执行作业
+- 回收日志
+- 输出基础诊断
+
+installer：
+
+- 安装缺失依赖
+- 修复用户态运行环境
+- 验证环境 ready
+
+当发现以下问题时，runtime 应回退到 installer，而不是继续执行：
+
+- framework stack 缺失
+- conda/env 未准备好
+- distributed runtime 不满足
+- 用户明确要求先装环境
+
+## 与深度排障的边界
+
+runtime 内部 `diagnose` 阶段只负责：
+
+- 识别执行失败属于提交失败、环境失败、日志未就绪还是业务脚本失败
+- 向下游给出 `failure_reason`、`status_source`、`synced_logs`
+
+它不应接管完整测试框架或深度领域排障。
+
+## 统一输出
+
+runtime 对外至少稳定输出：
+
+- `execution_channel`
+- `execution_mode`
+- `access_mode`
+- `submission_state`
+- `execution_state`
+- `log_state`
+- `submission_target`
+- `job_id/task_id`
+- `local_log_dir`
+- `synced_logs`
+- `sync_status`
+- `failure_reason`
+- `next_action`
+
+如果进入远程日志消费链，建议同时输出：
+
 - `observations.status_source`
 - `observations.log_readiness`
 
-不要求写入 `onescience.json`。
+如果需要对内拆解，建议对应到：
 
-## CPU 与加速卡组合
+- `evidence.discovery`
+- `evidence.preflight`
+- `evidence.execute`
+- `evidence.diagnose`
 
-不要把 CPU 仅视作 `cpus_per_task`，也不要把加速卡仅视作 `gpu_type`。
+一句话原则：
 
-真实环境组合：
-
-- `AMD CPU + AMD DCU`
-- `Intel CPU + NVIDIA GPU`
-- `x86 CPU only`
-- `ARM CPU + NVIDIA GPU`
-
-这些组合影响：
-
-- 设备可见性变量
-- 分布式后端
-- 模板选择
-- dataloader / 线程设置
-- 环境初始化方式
-
-分类：
-- **CPU / accelerator 组合** → 由 runtime 远端探测确认
-- **资源申请数量** → 来自 `onescience.json` / 用户任务输入
-- **模板渲染与提交** → 属于 runtime backend 职责
-
-## Runtime Backend 选择
-
-当前 `ssh_slurm` 通道的 backend 选择以 `backend_specs.json` 的 selector 为准。
-
-典型映射：
-
-| scheduler_type | accelerator_kind | accelerator_vendor | backend_id |
-|---|---|---|---|
-| `slurm` | `dcu` | `amd` | `slurm_dcu` |
-| `slurm` | `gpu` | `nvidia` | `slurm_gpu` |
-| `slurm` | `cpu` | `none` | `slurm_cpu` |
-
-### Backend Registry
-
-位于 `assets/backend_specs.json`，消费时重点关注：
-
-- `selector` — 依据远端探测结果匹配对应 backend
-- `support_matrix` — runtime / installer / debug 三条链路的支持边界
-- `template` — 模板文件名
-- `render_fields` — 渲染前必须准备的字段清单
-
-## `slurm_dcu` 模板渲染字段
-
-当前 `slurm_dcu` 模板至少应能渲染以下字段：
-
-- `cluster.partition`
-- `cluster.nodes`
-- `cluster.gpu_type`
-- `cluster.gpus_per_node`
-- `cluster.cpus_per_task`
-- `cluster.ntasks_per_node`
-- `cluster.time_limit`
-- `cluster.memory`
-- `script.job_name`
-- `script.code_path`
-- `conda.env_name`
-- `env_vars.ONESCIENCE_DATASETS_DIR`
-- `env_vars.ONESCIENCE_MODELS_DIR`
-- `backend.module_setup`
-- `backend.device_visibility_export`
-
-`backend.*` 字段不由用户手写，而由 runtime 根据 backend 规则与探测结果渲染。
+`onescience-runtime` 不是“拿到脚本就提交”，而是“先发现环境、做运行前预检，再执行并给出可消费的运行证据与基础诊断”。

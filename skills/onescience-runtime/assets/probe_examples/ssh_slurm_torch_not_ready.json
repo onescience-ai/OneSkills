@@ -1,0 +1,43 @@
+{
+  "example_id": "ssh_slurm_torch_not_ready",
+  "probe_channel": "ssh_slurm",
+  "execution_mode": "remote_slurm",
+  "access_mode": "ssh",
+  "semantic_environment_hints": {
+    "accelerator_kind": "gpu",
+    "partition": "gpuq"
+  },
+  "probe_target": {
+    "host": "login-gpu",
+    "partition": "gpuq"
+  },
+  "requested_checks": [
+    "ssh_connectivity",
+    "slurm_cli",
+    "accelerator_visibility",
+    "python_torch"
+  ],
+  "probe_status": "blocked",
+  "observed_environment_facts": {
+    "scheduler_type": "slurm",
+    "accelerator_kind": "gpu",
+    "accelerator_vendor": "nvidia",
+    "visibility_env": "CUDA_VISIBLE_DEVICES",
+    "driver_ready": true,
+    "user_space_ready": true,
+    "compiler_ready": true,
+    "torch_ready": false,
+    "distributed_runtime_ready": true
+  },
+  "normalized_output": {
+    "hardware_profile_ready": true,
+    "expected_backend_id": "slurm_gpu",
+    "execution_readiness": "blocked_by_host",
+    "blocking_reason": "torch_not_ready"
+  },
+  "safety": {
+    "read_only": true,
+    "submitted_job": false,
+    "modified_runtime_config": false
+  }
+}

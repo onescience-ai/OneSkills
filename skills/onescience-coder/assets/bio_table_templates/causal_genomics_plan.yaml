@@ -1,0 +1,24 @@
+question:
+  exposure: ""
+  outcome: ""
+  population: ""
+summary_stats:
+  exposure_file: exposure.tsv
+  outcome_file: outcome.tsv
+  qtl_file: optional_qtl.tsv
+ld_reference:
+  panel: ""
+  ancestry: ""
+instrument_selection:
+  p_threshold: 5.0e-8
+  clump_r2: 0.001
+  clump_kb: 10000
+  min_f_statistic: 10
+methods:
+  mendelian_randomization: [ivw, weighted_median, mr_egger]
+  pleiotropy_checks: [egger_intercept, mr_presso, leave_one_out]
+  colocalization: true
+  fine_mapping: false
+outputs:
+  effect_table: causal_effects.tsv
+  sensitivity_report: causal_sensitivity.md

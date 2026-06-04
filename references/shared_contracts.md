@@ -1,223 +1,255 @@
-# Shared Contracts
+﻿# Shared Contracts
 
-本文件用于定义 `onescience-hardware`、`onescience-runtime`、`onescience-installer`、`onescience-debug` 之间共享的跨 skill 契约。
+本文件定义 `onescience-runtime` 与 `onescience-installer` 之间共享的执行契约。
 
-目标不是重复各自 skill 内部的细节，而是明确：
+当前公开执行技能为：
 
-- 哪些字段属于跨 skill 的公共语义
-- 哪些资产必须引用同一套 backend 标识
-- 哪些层可以消费完整硬件画像，哪些层只能消费精简摘要
+- `onescience-runtime`
+- `onescience-installer`
+
+其中：
+
+- 环境识别能力由 `runtime/installer` 的 `discover` 阶段承担
+- 运行后基础诊断能力由 `runtime` 的 `diagnose` 阶段承担
+
+共享 profile 注册表位于 `skills/onescience-runtime/assets/execution_profiles.json`。
 
 ## 核心原则
 
-1. `hardware_profile` 是远程环境事实的唯一共享来源。
-2. `codegen_handoff` 是 `hardware -> coder` 的唯一精简交接面。
-3. `backend_id` 是 `runtime / installer / debug` 在 `ssh_slurm` 通道里共同识别远程执行后端的共享标识。
-4. `runtime.target` 与 `hardware_profile` 的 selector 语义必须一致。
-5. `installer` 与 `debug` 不得自行创造与 `hardware_profile` 平行的远程环境描述。
-6. `execution_channel` 是 `runtime` 对外暴露的统一运行入口语义。
+1. `hardware_profile` 仍是环境事实的唯一共享来源。
+2. `runtime` 与 `installer` 共享同一套 `execution_profile`，不要各自发明并行环境描述。
+3. `execution_mode` 是主执行模式字段；`execution_channel` 只是对外展示用的路由标签。
+4. `backend_id` 仍是 runtime stable backend registry 的共享标识，但后续选择逻辑应先看 `execution_mode` 再看 backend。
+5. `runtime` 负责运行闭环，`installer` 负责环境安装/修复，二者不要互相吞并职责。
 
-## 共享资产
+## 执行模式
 
-当前仓库中的共享资产主要包括：
+当前统一使用：
 
-- `skills/onescience-hardware/assets/examples/*.json`
-- `skills/onescience-runtime/assets/backend_specs.json`
-- `skills/onescience-runtime/assets/examples/*.json`
-- `skills/onescience-installer/assets/backend_profiles.json`
-- `skills/onescience-installer/assets/workspace_bootstrap_profiles.json`
-- `skills/onescience-installer/assets/install_domains.json`
-- `skills/onescience-installer/assets/request_examples/*.json`
-- `skills/onescience-installer/assets/resolution_examples/*.json`
-- `skills/onescience-debug/assets/examples/*.json`
+- `execution_mode=local`
+- `execution_mode=remote_slurm`
+- `execution_mode=remote_direct`
 
-这些资产共同组成：
+配套接入元数据：
 
-`hardware output -> backend spec -> runtime config -> installer/debug request`
+- `access_mode=local`
+- `access_mode=ssh`
+- `access_mode=cloud_api`
 
-`scnet_mcp` 通道的补充规则位于：
+推荐映射：
 
-- `skills/onescience-runtime/references/scnet_channel.md`
+- `execution_channel=ssh_slurm` -> `execution_mode=remote_slurm` + `access_mode=ssh`
+- `execution_channel=scnet_mcp` -> `execution_mode=remote_direct` + `access_mode=cloud_api`
 
-## 共享字段
+## 共享对象：`execution_profile`
 
-### 1. `backend_id`
+建议维护三块共享 profile：
 
-由 `onescience-runtime` backend registry 统一登记，当前包括：
+### 1. `hardware_profile`
+
+只描述环境事实，例如：
+
+- `host`
+- `scheduler_type`
+- `cpu.*`
+- `accelerators[]`
+- `software.driver_stack`
+- `software.capability_readiness`
+- `software.modules`
+- `software.conda_env`
+- `storage.*`
+
+### 2. `runtime_profile`
+
+只描述怎么启动与回收任务，例如：
+
+- `execution_mode`
+- `access_mode`
+- `scheduler_type`
+- `launch_mode`
+- `visibility_env`
+- `distributed_backend`
+- `template_family`
+- `render_fields`
+- `log_strategy`
+- `status_strategy`
+
+这些 profile id 统一登记在 `execution_profiles.json.runtime_profiles[]`。
+
+### 3. `install_profile`
+
+只描述怎么安装/修复用户态环境，例如：
+
+- `installer_backend`
+- `module_setup`
+- `python_env_strategy`
+- `framework_stack`
+- `dependency_family`
+- `precheck_rules`
+
+这些 profile id 统一登记在 `execution_profiles.json.install_profiles[]`，并继续绑定到 installer backend / workspace profile。
+
+## `backend_id` 与 backend registry
+
+`backend_specs.json` 当前主要登记配置驱动的 `remote_slurm` backend。当前 stable backend 包括：
 
 - `slurm_dcu`
 - `slurm_gpu`
+- `slurm_gpu_multinode_torchrun`
 - `slurm_cpu`
 
-约束：
+每个 backend 现在至少应继续描述：
 
-- `hardware` 示例中的 `expected_backend_id` 必须来自 runtime registry
-- `runtime` 示例中的 `runtime.backend_id` 必须来自 runtime registry
-- `ssh_slurm` runtime 结果/请求如果不直接携带 `runtime`，则至少要能通过 `submission_target.backend_id` 或 `runtime_config -> runtime.backend_id` 解析回 registry
-- `installer/debug` 示例中的 `required_backend_id` 必须来自 runtime registry
-
-`scnet_mcp` 通道不依赖 `backend_id` 才能提交，它的主识别字段是 `execution_channel=scnet_mcp`。
-
-### 1.5 `execution_channel`
-
-当前统一值包括：
-
-- `ssh_slurm`
-- `scnet_mcp`
+- `execution_mode`
+- `access_mode`
+- `scheduler_type`
+- `runtime_profile`
+- `install_profile`
+- `support_matrix`
+- `selector`
+- `environment_constraints`
 
 约束：
 
-- 所有运行结果都应携带 `execution_channel`
-- `ssh_slurm` 才消费 `hardware_profile + backend_id + onescience.json`
-- `scnet_mcp` 不应伪造 `onescience.json` 或 SSH 上下文
+- runtime config 的 `runtime.backend_id` 必须来自 registry
+- runtime config 的 `runtime.execution_profile.*_ref` 必须与 registry 中登记的 profile 对齐
+- installer 若消费 `required_backend_id`，也必须来自同一 registry
 
-### 2. `scheduler_type`
+补充约束：
 
-这是共享的运行模式语义，不同层都可见：
-
-- `hardware_profile.scheduler_type`
-- `codegen_handoff.runtime_mode`
-- `runtime.mode`
-- `runtime.target.scheduler_type`
-
-约束：
-
-- 这些字段必须在同一条链路上保持一致
-
-### 3. 主加速卡语义
-
-共享字段包括：
-
-- `hardware_profile.accelerators[].kind`
-- `hardware_profile.accelerators[].vendor`
-- `codegen_handoff.accelerator_kind`
-- `codegen_handoff.accelerator_vendor`
-- `runtime.target.accelerator_kind`
-- `runtime.target.accelerator_vendor`
-
-如果是 CPU-only：
-
-- `hardware_profile.accelerators: []`
-- `accelerator_kind: cpu`
-- `accelerator_vendor: none`
-
-### 4. 运行能力语义
-
-共享字段包括：
-
-- `hardware_profile.capabilities.launch_mode`
-- `codegen_handoff.launch_mode`
-- runtime backend constraint 中的 `launch_mode`
-
-共享字段还包括：
-
-- `hardware_profile.accelerators[].distributed_backend`
-- `codegen_handoff.distributed_backend`
-- runtime backend constraint 中的 `distributed_backend`
-
-### 5. 设备可见性语义
-
-共享字段包括：
-
-- `hardware_profile.accelerators[].visibility_env`
-- `codegen_handoff.device_visibility_env`
-- runtime backend constraint 中的 `visibility_env`
-
-如果是 CPU-only，统一使用：
-
-- `device_visibility_env: NONE`
+- `install_profile_ref` 不等于 installer backend 名称
+- `install_profile_ref` 必须先在 `execution_profiles.json.install_profiles[]` 中登记
+- install profile 再绑定到 `skills/onescience-installer/assets/backend_profiles.json` 里的 installer backend
+- `remote_direct` 通道允许只通过 profile registry 声明轻量 channel backend，例如 `scnet_mcp_direct`
 
 ## 消费边界
 
-### `onescience-coder`
-
-只消费：
-
-- `codegen_handoff`
-
-不要让它直接读取完整硬件画像中的 Host、partition、module、conda 等细节。
-
 ### `onescience-runtime`
+
+负责内部 4 阶段：
+
+1. `discover`
+2. `preflight`
+3. `execute`
+4. `diagnose`
+
+四阶段建议共享同一份最小 phase context，至少稳定携带：
+
+- `execution_mode`
+- `access_mode`
+- `execution_channel`
+- `backend_id`
+- `backend_status`
+- `execution_readiness`
+- `blocking_reason`
+- `submission_blocked`
+- `submission_target`
+- `evidence.*`
 
 消费：
 
-- `execution_channel`
-- `hardware_profile`（仅 `ssh_slurm`）
-- `runtime backend registry`（仅 `ssh_slurm`）
-- 项目级 `onescience.json`（仅 `ssh_slurm`）
+- `hardware_profile`
+- `runtime_profile`
+- 项目级运行配置
+- 本地代码/脚本路径
 
-它负责把共享字段渲染成具体模板变量，或在 `scnet_mcp` 通道中把本地脚本路径、区域、队列和日志下载规则映射到平台调用。
+负责产出：
+
+- `submission_state`
+- `execution_state`
+- `log_state`
+- `job_id/task_id`
+- `local_log_dir`
+- `synced_logs`
+- `sync_status`
+- `status_source`
+- `next_action`
+
+补充约束：
+
+- `preflight` 若发现配置声明的入口脚本、诊断脚本或探针脚本在当前项目中不存在，应直接返回 `submission_blocked=missing_entrypoint`
+- `diagnose` 若缺少最小前置条件，例如模型源码、可实例化类、日志文件或可写 artifact 目录，应返回结构化阻断，不要伪装成业务执行失败
+- artifact 目录不可写属于本地写出受限，应与远端作业失败、代码失败区分开
 
 ### `onescience-installer`
 
+负责内部 4 阶段：
+
+1. `discover`
+2. `precheck`
+3. `install`
+4. `verify`
+
+四阶段建议共享同一份最小 phase context，至少稳定携带：
+
+- `execution_mode`
+- `access_mode`
+- `execution_channel`
+- `required_backend_id`
+- `installer_backend`
+- `workspace_bootstrap_profile`
+- `install_domain`
+- `precheck_outcome`
+- `blocking_reason`
+- `installed_env_summary`
+- `evidence.*`
+
 消费：
 
 - `hardware_profile`
-- `installer backend profile`
+- `install_profile`
 - `workspace bootstrap profile`
 - `install domain profile`
-- 安装请求
 
-它不应跳过 `hardware_profile` 单独推断平台类型。
-它可以读取 `software.driver_stack` 及其 `capability_readiness` 判断驱动栈与基础执行能力是否 ready，但不负责系统级驱动安装。
-它还应区分：
+负责产出：
 
-- backend support status：来自 `support_matrix.installer`
-- installer backend profile：来自 `skills/onescience-installer/assets/backend_profiles.json`
-- workspace bootstrap profile：来自 `skills/onescience-installer/assets/workspace_bootstrap_profiles.json`
-- install domain profile：来自 `skills/onescience-installer/assets/install_domains.json`
-- host readiness outcome：来自当前 `hardware_profile` 的 precheck 结果
+- `install_state`
+- `precheck_outcome`
+- `installed_env_summary`
+- `blocking_reason`
+- `next_action`
 
-额外注意：
+### 代码实现层
 
-- `installer backend profile` 可以先以 `planned` 形态存在
-- `workspace bootstrap profile` 也可以先以 `planned` 形态存在
-- 只有 `support_matrix.installer` 明确切到 `supported`，才表示该安装链路真的可执行
-- install request 当前只应表达领域安装意图，不应重新携带 repo 或 env 细节
+- `onescience-coder` 仍只消费 `codegen_handoff`
 
-### `onescience-debug`
+## 统一状态语义
 
-消费：
+跨层至少保持：
 
-- `hardware_profile`
-- debug 请求
-- backend support matrix
+- `execution_mode`
+- `backend_id`
+- `backend_status`
+- `execution_readiness`
+- `blocking_reason`
 
-它不应只凭关键词推断远程环境；涉及远程执行时必须与共享 backend 语义对齐。
-它还应区分：
+补充约束：
 
-- backend support status：来自 `support_matrix.debug`
-- host readiness outcome：来自当前 `hardware_profile` 的 precheck 结果
+- `remote_slurm` 链路通常仍需要 `backend_id`
+- `remote_direct` 链路可以先只带 `execution_mode + access_mode + execution_readiness`
+- `execution_readiness=blocked_by_host` 时，应显式补细粒度原因
+- `submission_blocked=missing_entrypoint` 时，不应继续进入远程提交
+- `blocking_reason=artifact_dir_not_writable` 时，不应归类为业务代码失败
 
 ## 当前支持边界
 
-当前仓库中的 `backend_specs.json` 不只登记 selector，也登记链路支持矩阵。
+当前 stable runtime backend 集中在 `remote_slurm` 模式。
 
-当前矩阵应按链路理解，而不是对同一个 backend 给出单一全局结论：
+当前 `remote_direct` 主要通过 `scnet_mcp` 这组运行资产表达：
 
-- `slurm_dcu`: runtime=`stable` / installer=`supported` / debug=`supported`
-- `slurm_gpu`: runtime=`stable` / installer=`unsupported_for_now` / debug=`supported`
-- `slurm_cpu`: runtime=`planned` / installer=`unsupported_for_now` / debug=`planned_backend`
-
-因此：
-
-- runtime 的 `stable/planned` 只表达 runtime 自身成熟度
-- `installer/debug` 的支持判断必须来自 `support_matrix`，不能再硬编码成“只有 slurm_dcu 支持”
-- 上游编排层输出的 `backend_status` 必须结合目标执行链路解释
+- 它仍然走 `onescience-runtime`
+- 它不要求伪造 `onescience.json`
+- 它以 `execution_mode=remote_direct` 表达
 
 ## QA 要求
 
-至少应存在以下校验：
+至少应校验：
 
-- hardware 资产自检
-- runtime 资产自检
-- installer 资产自检
-- debug 资产自检
-- shared contract 跨层一致性校验
+- backend registry 中的 `execution_mode/access_mode/scheduler_type/profile refs`
+- runtime config 中的 `execution_profile`
+- runtime request/result 中 `execution_channel` 与 `execution_mode/access_mode` 的一致性
+- installer resolution 与 `support_matrix.installer` 一致性
 
-`shared contract` 校验负责发现：
+一句话原则：
 
-- backend registry 与下游示例之间的漂移
-- 不同 skill 资产对同一 backend 的 support matrix 判断不一致
-- 不同层对 CPU-only / GPU / DCU 语义定义不一致
-- `execution_channel` 结果字段在不同运行通道之间的漂移
+`runtime` 负责“发现环境、预检、执行、基础诊断”，`installer` 负责“安装与修复环境”，共享同一套 `execution_profile`。

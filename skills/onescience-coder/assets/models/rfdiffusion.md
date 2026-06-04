@@ -1,0 +1,160 @@
+# Model Card: RFdiffusion
+
+## 基本信息
+
+- 模型名：`RFdiffusion`
+- 任务类型：`蛋白质骨架生成 / motif scaffolding / binder design / partial diffusion`
+- 当前状态：`stable`
+- 主实现文件：`./onescience/src/onescience/models/rfdiffusion/RoseTTAFoldModel.py`
+
+## 模型定位
+
+RFdiffusion 是 OneScience 中面向蛋白质设计的扩散框架，核心目标是生成蛋白质骨架，而不是从序列直接预测全原子结构或为骨架设计序列。
+
+补充说明：
+
+- 它适合无条件单体生成、基序支架、对称性设计、靶点结合蛋白设计和围绕已有结构的 partial diffusion
+- example 主入口是 `examples/biosciences/RFdiffusion/scripts/run_inference.py`
+- 推理由 Hydra 配置驱动，常用参数来自 `examples/biosciences/RFdiffusion/config/inference/base.yaml`
+- 输出骨架后，通常需要再接 ProteinMPNN / FastRelax / AF2 类筛选流程完成序列设计与评估
+
+## 输入定义
+
+- 推理配置入口：
+  - `contigmap.contigs`
+  - `inference.input_pdb`
+  - `inference.output_prefix`
+  - `inference.num_designs`
+  - `inference.ckpt_override_path`
+  - `ppi.hotspot_res`
+  - `diffuser.partial_T`
+  - `contigmap.inpaint_seq`
+  - `contigmap.inpaint_str`
+  - `contigmap.provide_seq`
+  - `inference.symmetry`
+  - `potentials.guiding_potentials`
+- `RoseTTAFoldModule.forward` 内部输入：
+  - `msa_latent`
+  - `msa_full`
+  - `seq`
+  - `xyz`
+  - `idx`
+  - `t`
+  - `t1d`, `t2d`
+  - `xyz_t`, `alpha_t`
+  - recycling 输入：`msa_prev`, `pair_prev`, `state_prev`
+  - 控制项：`return_raw`, `return_full`, `return_infer`, `use_checkpoint`, `motif_mask`, `i_cycle`, `n_cycle`
+
+## 输出定义
+
+- 推理文件输出：
+  - `.pdb`: 最终预测骨架；设计残基通常以 Glycine 输出，不包含可靠侧链
+  - `.trb`: contig、完整配置、输入输出残基映射和 inpaint 信息
+  - `traj/`: 扩散轨迹 PDB，包括 `pX0` 与 `Xt-1`
+- `RoseTTAFoldModule.forward(return_raw=True)`：
+  - `msa[:, 0]`, `pair`, `xyz`, `state`, `alpha_s[-1]`
+- `RoseTTAFoldModule.forward(return_infer=True)`：
+  - `msa[:, 0]`, `pair`, `xyz`, `state`, `alpha_s[-1]`, `logits_aa`, `pred_lddt`
+- 默认 forward：
+  - `logits`, `logits_aa`, `logits_exp`, `xyz`, `alpha_s`, `lddt`
+
+## 主干结构
+
+- `MSA_emb`
+  - 编码 latent MSA、sequence 和 residue index
+- `Extra_emb`
+  - 编码 full / extra MSA
+- `Recycling`
+  - 把上一轮 `msa/pair/state` 和当前坐标反馈到输入
+- `Templ_emb`
+  - 注入 template / timestep / motif 相关条件
+- `IterativeSimulator`
+  - RoseTTAFold 风格 iterative structure track，内部含 MSA、pair、SE3 更新
+- 预测头：
+  - `DistanceNetwork`
+  - `MaskedTokenNetwork`
+  - `ExpResolvedNetwork`
+  - `LDDTNetwork`
+
+## 主要依赖组件
+
+- `RoseTTAFoldModule`
+- `Diffuser`
+- `Sampler`
+- `SelfConditioning`
+- `ContigMap`
+- `Denoise`
+- `PotentialManager`
+- `ComputeAllAtomCoords`
+- `MSA_emb`, `Extra_emb`, `Templ_emb`, `Recycling`
+- `IterativeSimulator`
+- `SE3TransformerWrapper`
+
+## 主要 Shape 变化
+
+- `msa_latent`: `B, N, L, ...`
+- `msa_full`: `B, N_extra, L, ...`
+- `seq`: `B, L`
+- `xyz`: `B, L, atom, 3`
+- trunk pair: `B, L, L, d_pair`
+- iterative simulator 结构输出：
+  - rotation `R`
+  - translation `T`
+  - torsion / angle `alpha_s`
+- 默认 forward 的 `xyz`: `N_block, B, L, atom, 3` 风格中间骨架序列
+
+## 默认关键参数
+
+- `model.n_extra_block=4`
+- `model.n_main_block=32`
+- `model.n_ref_block=4`
+- `model.d_msa=256`
+- `model.d_pair=128`
+- `diffuser.T=50`
+- `diffuser.partial_T=null`
+- `inference.num_designs=10`
+- `inference.model_directory_path="${oc.env:ONESCIENCE_MODELS_DIR}/RFdiffusion/models"`
+
+## 常见修改点
+
+- 无条件生成：优先改 `contigmap.contigs=[100-200]` 这类长度范围
+- motif scaffolding：优先改 `inference.input_pdb` 与 `contigmap.contigs`
+- binder design：优先改目标链 contig、binder 长度与 `ppi.hotspot_res`
+- partial diffusion：优先改 `diffuser.partial_T`，并保证 contig 长度与输入结构长度一致
+- 使用特殊任务权重时，优先通过 `inference.ckpt_override_path` 指定，不要手动改模型结构
+
+## 风险点
+
+- RFdiffusion 生成的是骨架，不是完整侧链结构；设计残基输出为 Glycine 时需要后续序列设计
+- 推理脚本会按输入特征自动选择 checkpoint；不支持该输入类型的 checkpoint 可能直接崩溃
+- 一般不建议在推理时随意修改 `model`、`preprocess` 或 `diffuser` 中与训练强绑定的参数
+- partial diffusion 要求输入结构长度和 contig 设计长度匹配，否则新增残基无法被正确加噪
+- binder design 对目标裁剪、热点残基选择和后续筛选非常敏感，不能只看单条 PDB 输出判断成功
+- 首次运行可能需要计算并缓存 IGSO3 schedule
+
+## 推荐检索顺序
+
+1. 先看本模型卡
+2. 再看 `examples/biosciences/RFdiffusion/RFdiffusion_README.md`
+3. 若要改推理命令，读 `scripts/run_inference.py` 与 `config/inference/base.yaml`
+4. 若要理解 checkpoint 自动选择和采样流程，读 `utils/rfdiffusion/inference/model_runners.py`
+5. 若要改模型主体，读 `RoseTTAFoldModel.py`、`Track_module.py`、`Embeddings.py`
+6. 若要改等变结构轨道，再读 `se3_transformer.md`
+
+## 组件契约入口
+
+- `../contracts/rfdiffusioncomponents.md`
+- `../contracts/se3transformercomponents.md`
+- 当前 RFdiffusion 未通过 OneScience `One*` wrapper 拼装，优先按模型卡、组件契约、Hydra 配置和 example 推理入口对齐
+- 若需求是“骨架后续序列设计”，再转到 `proteinmpnn.md`
+
+## 源码锚点
+
+- `./onescience/src/onescience/models/rfdiffusion/RoseTTAFoldModel.py`
+- `./onescience/src/onescience/models/rfdiffusion/Track_module.py`
+- `./onescience/src/onescience/models/rfdiffusion/Embeddings.py`
+- `./onescience/src/onescience/models/rfdiffusion/SE3_network.py`
+- `./onescience/src/onescience/models/rfdiffusion/diffusion.py`
+- `./onescience/src/onescience/utils/rfdiffusion/inference/model_runners.py`
+- `./onescience/examples/biosciences/RFdiffusion/RFdiffusion_README.md`
+- `./onescience/examples/biosciences/RFdiffusion/config/inference/base.yaml`

@@ -116,8 +116,8 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/fourier/onefourier.py`
-- `./onescience/src/onescience/modules/fourier/fno_layers.py`
-- `./onescience/src/onescience/modules/fourier/geo_spectral.py`
-- `./onescience/src/onescience/modules/fourier/ffno_layers.py`
-- `./onescience/src/onescience/modules/fourier/group_spectral.py`
+- `{onescience_path}/onescience/src/onescience/modules/fourier/onefourier.py`
+- `{onescience_path}/onescience/src/onescience/modules/fourier/fno_layers.py`
+- `{onescience_path}/onescience/src/onescience/modules/fourier/geo_spectral.py`
+- `{onescience_path}/onescience/src/onescience/modules/fourier/ffno_layers.py`
+- `{onescience_path}/onescience/src/onescience/modules/fourier/group_spectral.py`

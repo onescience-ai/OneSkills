@@ -1,0 +1,26 @@
+screen:
+  type: CRISPR_knockout
+  library_name: ""
+  library_annotation: library.tsv
+inputs:
+  sgrna_count_matrix: counts.tsv
+  sample_metadata: samples.csv
+contrast:
+  treatment: ""
+  control: ""
+qc:
+  min_reads_per_sample: null
+  library_representation_threshold: 300
+  control_guide_check: true
+analysis:
+  normalization: median_ratio
+  hit_calling: MAGeCK_RRA_or_model_based
+  gene_level_aggregation: true
+perturb_seq:
+  enabled: false
+  guide_assignment: ""
+  h5ad: ""
+outputs:
+  gene_hits: gene_hits.tsv
+  sgrna_stats: sgrna_stats.tsv
+  qc_report: screen_qc.md

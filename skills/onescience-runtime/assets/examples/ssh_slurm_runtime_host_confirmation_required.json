@@ -1,14 +1,19 @@
-﻿{
+{
   "example_id": "ssh_slurm_runtime_host_confirmation_required",
   "execution_channel": "ssh_slurm",
+  "execution_mode": "remote_slurm",
+  "access_mode": "ssh",
   "runtime_config": "skills/onescience-runtime/assets/examples/slurm_dcu_runtime.json",
+  "submission_state": "confirmation_required",
+  "execution_state": "blocked",
+  "log_state": "not_started",
+  "blocking_reason": "host_not_confirmed",
   "confirmation_required": true,
   "available_hosts": [
     "login-kunshan",
     "login-kunshan-backup"
   ],
-  "missing_info": "Target host is not specified, so the request cannot be submitted directly through the SSH/SLURM channel.",
-  "suggested_action": "Specify the target host first, then runtime will complete host discovery and hardware probing automatically.",
+  "missing_info": "目标 Host 未明确，当前请求不能直接提交到 SSH/SLURM 通道。",
+  "suggested_action": "请先明确要使用的 Host，或先在 runtime discover 阶段固定 Host 后再提交运行。",
   "next_action": "onescience-runtime"
 }
-

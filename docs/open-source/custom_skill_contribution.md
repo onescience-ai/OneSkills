@@ -53,11 +53,14 @@
 - 配置模板
 - 模型改造模板
 - 训练 / 推理脚本模板
+- 运行 profile、安装 profile 或共享环境画像
 
 优先补到：
 
 - `skills/onescience-coder/assets/`
 - `skills/onescience-coder/references/`
+- `skills/onescience-runtime/assets/`
+- `skills/onescience-installer/assets/`
 
 ## 三、什么时候才建议新增 skill
 
@@ -70,7 +73,8 @@
 
 ## 四、不建议的做法
 
-- 按领域复制一整套 `coder/debug/runtime`
+- 按领域复制一整套 `coder/runtime/installer`
+- 把 runtime 内部 `diagnose` 阶段重新拆成新的公开诊断 skill
 - 只换个名字就新增一个平行 skill
 - 把单项目临时经验直接写成通用技能
 - 把某个智能体的使用偏好误当成通用规则

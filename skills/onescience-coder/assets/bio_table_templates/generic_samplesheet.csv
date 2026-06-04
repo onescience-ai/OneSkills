@@ -1,0 +1,3 @@
+sample,library,lane,condition,batch,fastq_1,fastq_2
+sample1,lib1,L001,control,batch1,/abs/path/sample1_L001_R1.fastq.gz,/abs/path/sample1_L001_R2.fastq.gz
+sample2,lib2,L001,treated,batch1,/abs/path/sample2_L001_R1.fastq.gz,/abs/path/sample2_L001_R2.fastq.gz

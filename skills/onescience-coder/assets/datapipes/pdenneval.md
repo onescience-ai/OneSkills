@@ -22,6 +22,9 @@
 - 这组 datapipe 统一负责空间/时间降采样、train/val 划分、单文件或多文件读取以及模型特定的样本封装。
 - 目标模型不同，返回协议也不同，不能只看文件名就假设接口一致。
 - 某些分支仍保留了占位注释或未完全实现的路径，接入前应先读对应类。
+- 本卡只描述 PDEBench / PDENNEval 数据接口和专属示例路线，不是默认 CFD benchmark 模型索引。
+- 新数据集做 benchmark / 多模型对比时，即使数据接口参考本卡，`FNO / U_Net / LSM` 等默认模型仍应回到 `../models/model_index.md` 和对应模型卡确认实现来源。
+- `onescience.models.pdenneval` 下没有 `lsm`，也没有 `LSM2d`；不要根据 `PDEBenchFNODatapipe` 或 `PDEBenchUNetDatapipe` 推断出 `PDEBenchLSMDatapipe` 或 `pdenneval.lsm`。
 
 ## 输入配置
 
@@ -139,6 +142,12 @@
 - 目标就是复用 PDEBench 路线的 FNO / DeepONet / UNO / PINO / MPNN / UNet 示例。
 - 数据本身已经接近 PDEBench HDF5 组织格式。
 - 希望把“数据协议差异”压在 datapipe 层，而不是把所有模型都硬接成同一种输入。
+
+补充约束：
+
+- 如果用户要求的是新数据集 benchmark 默认候选 `Transolver / FNO / U_Net / LSM`，本卡最多作为 HDF5 / PDEBench 风格数据读取参考。
+- 默认 benchmark 的 `FNO / U_Net / LSM` 优先使用 `onescience.models.cfd_benchmark` 下的模型实现。
+- 只有明确复现 `examples/cfd/PDENNEval/FNO` 或 `examples/cfd/PDENNEval/UNet` 时，才使用 `onescience.models.pdenneval.fno` 或 `onescience.models.pdenneval.unet`。
 
 ## 风险点
 

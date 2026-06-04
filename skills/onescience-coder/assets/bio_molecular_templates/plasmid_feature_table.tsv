@@ -1,0 +1,6 @@
+feature_id	type	start_0based	end_0based	strand	name	evidence	qc_flag
+feat001	origin				pUC_or_other		
+feat002	selectable_marker				ampR_or_kanR		
+feat003	promoter				promoter_name		
+feat004	cds				insert_or_gene		
+feat005	terminator				terminator_name		

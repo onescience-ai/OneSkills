@@ -16,6 +16,7 @@
 - 调用层通过 `style` 选择具体 embedding 实现
 - 它本身不定义固定 shape 语义，真实约束来自被选中的具体组件
 - 当前天气相关模型常通过它调用 `PanguEmbedding`、`FourCastNetEmbedding`、`FuxiEmbedding`
+- 当前生信相关模型中，Protenix 通过它调用 `ProtenixInputFeatureEmbedder`、`ProtenixTemplateEmbedder`、`ProtenixFourierEmbedding`
 
 ## 支持输入
 
@@ -51,6 +52,7 @@
 - FourCastNet 主模型
 - Fuxi 主模型
 - FengWuEncoder
+- Protenix 主模型与 diffusion conditioning
 
 ## 典型参数
 
@@ -60,6 +62,12 @@
   - `style="FourCastNetEmbedding"`
 - Fuxi 时空块 embedding
   - `style="FuxiEmbedding"`
+- Protenix token feature embedding
+  - `style="ProtenixInputFeatureEmbedder"`
+- Protenix template embedding
+  - `style="ProtenixTemplateEmbedder"`
+- Protenix diffusion noise embedding
+  - `style="ProtenixFourierEmbedding"`
 
 ## CFD / 图模型补充
 
@@ -85,8 +93,9 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/embedding/oneembedding.py`
-- `./onescience/src/onescience/modules/embedding/panguembedding.py`
-- `./onescience/src/onescience/modules/embedding/fourcastnetembedding.py`
-- `./onescience/src/onescience/modules/embedding/fuxiembedding.py`
-- `./onescience/src/onescience/modules/embedding/fourier_pos_embedding.py`
+- `{onescience_path}/onescience/src/onescience/modules/embedding/oneembedding.py`
+- `{onescience_path}/onescience/src/onescience/modules/embedding/panguembedding.py`
+- `{onescience_path}/onescience/src/onescience/modules/embedding/fourcastnetembedding.py`
+- `{onescience_path}/onescience/src/onescience/modules/embedding/fuxiembedding.py`
+- `{onescience_path}/onescience/src/onescience/modules/embedding/fourier_pos_embedding.py`
+- `{onescience_path}/onescience/src/onescience/modules/embedding/protenixembedding.py`

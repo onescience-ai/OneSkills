@@ -83,6 +83,6 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/transformer/fuxitransformer.py`
-- `./onescience/src/onescience/modules/transformer/onetransformer.py`
-- `./onescience/src/onescience/models/fuxi/fuxi.py`
+- `{onescience_path}/onescience/src/onescience/modules/transformer/fuxitransformer.py`
+- `{onescience_path}/onescience/src/onescience/modules/transformer/onetransformer.py`
+- `{onescience_path}/onescience/src/onescience/models/fuxi/fuxi.py`

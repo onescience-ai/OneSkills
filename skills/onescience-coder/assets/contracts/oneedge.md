@@ -79,6 +79,6 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/edge/oneedge.py`
-- `./onescience/src/onescience/modules/edge/mesh_edge_block.py`
-- `./onescience/src/onescience/models/meshgraphnet/meshgraphnet.py`
+- `{onescience_path}/onescience/src/onescience/modules/edge/oneedge.py`
+- `{onescience_path}/onescience/src/onescience/modules/edge/mesh_edge_block.py`
+- `{onescience_path}/onescience/src/onescience/models/meshgraphnet/meshgraphnet.py`

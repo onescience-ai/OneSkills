@@ -19,6 +19,16 @@
 - `detected_domain`
 - `workflow_type`
 - `workflow_handoff`
+- `domain_route`
+- `domain_task_family`
+- `stage_intent`
+- `planning_only`
+
+字段分工：
+
+- `domain_route`、`domain_task_family`、`stage_intent` 由 `onescience-workflow` 负责粗判。
+- `onescience-role` 只基于这些字段继续细化角色链、任务桶和交接物。
+- 如果上游字段缺失，role 可以做最小补判，但不要重新输出一套完整 workflow 入口分析。
 
 ## 六类核心角色
 
@@ -80,7 +90,7 @@
 推荐下钻：
 
 - 数据准备进入 `onescience-skill -> onescience-coder`
-- 远程资源相关进入 `onescience-skill -> onescience-hardware`
+- 远程资源相关进入 `onescience-skill -> onescience-runtime` 或 `onescience-installer`
 
 ### 3. `data-engineer`
 
@@ -169,7 +179,7 @@
 
 推荐下钻：
 
-- 感知环境：`onescience-skill -> onescience-hardware`
+- 感知环境：优先 `onescience-skill -> onescience-runtime` 的 discover/preflight；安装场景进入 `onescience-installer`
 - 安装环境：`onescience-skill -> onescience-installer`
 - 提交运行：`onescience-skill -> onescience-runtime`
 
@@ -200,7 +210,7 @@
 
 推荐下钻：
 
-- `onescience-skill -> onescience-debug`
+- 优先 `onescience-skill -> onescience-runtime`
 
 ## 常见角色链
 
@@ -261,7 +271,7 @@
 - `domain-scientist -> data-engineer`：数据口径、变量定义、筛选规则
 - `data-engineer -> model-engineer`：数据读取方案、输入输出形状、路径约束
 - `platform-engineer -> model-engineer`：代码生成交接摘要
-- `platform-engineer -> runtime / installer / debug`：完整硬件画像
+- `platform-engineer -> runtime / installer`：完整环境画像与执行约束
 - `model-engineer -> platform-engineer`：代码入口、脚本路径、配置说明
 - `platform-engineer -> evaluation-engineer`：作业 ID、日志路径、运行信息
 
@@ -269,7 +279,39 @@
 
 - 仅做角色分析：停留在 `onescience-role`
 - 需要进入技能路由：进入 `onescience-skill`
-- 远程环境事实不清：优先让执行层先走 `onescience-hardware`
+- 远程环境事实不清：优先让执行层先走 `onescience-runtime` 或 `onescience-installer`
 - 已明确需要安装：执行层进入 `onescience-installer`
 - 已明确需要提交运行：执行层进入 `onescience-runtime`
-- 已明确需要测试排查：执行层进入 `onescience-debug`
+- 已明确需要测试排查：执行层优先进入 `onescience-runtime` 的 diagnose 路径
+
+## 生物信息领域补充
+
+当 `detected_domain` / `domain` 是 `biology`、`bioinformatics`、`biosciences`，或用户请求明显涉及生信任务时，先读取 `../bio_domain/SKILL.md` 再给出最终角色链。该子路由用于区分：
+
+- OneScience 已有生信模型相关任务：模型推理、模型开发、模块替换、训练、微调、batch 协议、datapipe adapter
+- 通用生信 workflow：RNA-seq、single-cell、variant calling、ATAC/ChIP/Hi-C、microbiome、proteomics、metabolomics 等
+- 生信 tool/database：Biopython、Scanpy、RDKit、NCBI、PDB、ChEMBL、KEGG 等
+- 生命科学邻域任务：clinical protocol、LIMS、Allotrope、实验仪器数据标准化、临床变异和生物标志物
+
+模型相关任务的角色链通常应包含 `model-engineer`，并把源码依据限定在 OneScience 仓库和 `onescience-coder` 模型卡；通用 workflow/tool/database 任务不要误路由成 OneScience 模型改造。
+
+若生信任务需要远程 GPU/DCU、SLURM 或 SCnet 运行，仍由执行层进入 `onescience-runtime` 的 `discover/preflight/execute/diagnose` 闭环；若 preflight 发现环境未 ready，再回退 `onescience-installer`。不要在 role 层承诺硬件可用或展开完整执行链。
+
+## 与 workflow 的边界
+
+`onescience-workflow` 回答：
+
+- 用户目标是什么
+- 属于哪个领域路线
+- 当前是数据、模型、运行、安装、诊断还是全流程阶段
+- 当前是否只做规划
+
+`onescience-role` 回答：
+
+- 当前由哪个科研角色主导
+- 最小角色链是什么
+- 领域任务桶或模型路线是什么
+- 交给下游的 `handoff_artifacts` 是什么
+- 未来执行入口是什么
+
+不要让 role 反向覆盖 workflow 的 `workflow_type` 或 `domain_route`。如果 role 发现上游路由明显不足，只在输出中标记 `route_correction_hint` 或 `missing_upstream_context`，再给出最小可继续的角色层判断。

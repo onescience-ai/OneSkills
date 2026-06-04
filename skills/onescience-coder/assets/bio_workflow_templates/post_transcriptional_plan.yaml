@@ -1,0 +1,23 @@
+assay: alternative_splicing
+input:
+  reads: []
+  count_or_event_matrix: ""
+reference:
+  genome_fasta: reference.fa
+  annotation_gtf: annotation.gtf
+sample_metadata: samples.csv
+controls:
+  input_or_igg: ""
+  replicates: true
+qc:
+  adapter_trimming: true
+  read_length_distribution: true
+  contamination_checks: [rRNA, tRNA]
+analysis:
+  branch: splicing_or_riboseq_or_smallrna_or_clip_or_m6a
+  contrast: condition_treatment_vs_control
+outputs:
+  event_or_peak_table: results.tsv
+  tracks: tracks/
+  figures: figures/
+  report: post_transcriptional_report.md

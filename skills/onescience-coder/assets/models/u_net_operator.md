@@ -73,6 +73,27 @@
 - 若接 DeepCFD 数据，优先新增 operator adapter datapipe，再复用这个 `U_Net`
 - 若只想做 CNN 图像基线，通常更接近 `DeepCFD` 目录下那套 `UNet/UNetEx` 训练流，而不是当前模型
 
+## 导入与实例化约束
+
+- 新数据集接入，特别是 benchmark / 多模型对比案例，默认使用 `onescience.models.cfd_benchmark.U_Net`。
+- 推荐写法：`from onescience.models.cfd_benchmark import U_Net`，再调用 `U_Net.Model(args, device)`。
+- 默认不要走 `from onescience.models.cfd_benchmark.model_factory import get_model`，除非明确复刻原 `CFD_Benchmark` runner。
+- 模型参数应放在 YAML 配置文件中，训练脚本读取 YAML 后转成 `args` 对象传给 `U_Net.Model(args, device)`。
+- 不要在默认 benchmark 任务中导入 `onescience.models.pdenneval.unet.UNet1d/UNet2d/UNet3d`，除非用户明确要求复现 `examples/cfd/PDENNEval/UNet`。
+- 不要把本卡对应的 `U_Net (CFD_Benchmark)` 和 `DeepCFD UNet / UNetEx` 或通用 `onescience.models.unet` 混用。
+
+## 新数据集 benchmark 接入提示
+
+- 多模型对比时，`U_Net (CFD_Benchmark)` 默认需要规则网格或可稳定 reshape 的 operator view
+- 最小数据协议是：
+  - `x -> (Batch, NumPoints, space_dim)`
+  - `fx -> (Batch, NumPoints, fun_dim)` 或 `None`
+  - `y -> (Batch, NumPoints, out_dim)`
+  - `shapelist` 可将 `NumPoints` 恢复为规则网格
+- 如果新数据集是非结构翼型点云或 VTK surface，需要先明确插值、采样到规则网格或跳过 `U_Net`
+- 如果只是把点云顺序硬 reshape 成网格，必须标记为高风险，不应作为默认实现
+- 若目标是纯 CNN baseline，第一轮规格应说明是否改用 `DeepCFD UNet / UNetEx`，而不是默认使用本卡对应的 `CFD_Benchmark U_Net`
+
 ## 风险点
 
 - “U-Net” 在 OneScience 里至少有两套实现；如果第一轮不区分，很容易选错训练入口

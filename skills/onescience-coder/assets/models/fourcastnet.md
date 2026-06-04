@@ -99,7 +99,7 @@ FourCastNet 是一个面向二维全球气象场的 patch-grid AFNO 模型，适
 
 ## 源码锚点
 
-- `./onescience/src/onescience/models/fourcastnet/fourcastnet.py`
-- `./onescience/src/onescience/modules/fuser/fourcastnetfuser.py`
-- `./onescience/src/onescience/modules/afno/fourcastnetafno.py`
-- `./onescience/src/onescience/modules/embedding/fourcastnetembedding.py`
+- `{onescience_path}/onescience/src/onescience/models/fourcastnet/fourcastnet.py`
+- `{onescience_path}/onescience/src/onescience/modules/fuser/fourcastnetfuser.py`
+- `{onescience_path}/onescience/src/onescience/modules/afno/fourcastnetafno.py`
+- `{onescience_path}/onescience/src/onescience/modules/embedding/fourcastnetembedding.py`

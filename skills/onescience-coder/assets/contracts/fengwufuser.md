@@ -84,6 +84,6 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/fuser/fengwufuser.py`
-- `./onescience/src/onescience/modules/fuser/onefuser.py`
-- `./onescience/src/onescience/models/fengwu/fengwu.py`
+- `{onescience_path}/onescience/src/onescience/modules/fuser/fengwufuser.py`
+- `{onescience_path}/onescience/src/onescience/modules/fuser/onefuser.py`
+- `{onescience_path}/onescience/src/onescience/models/fengwu/fengwu.py`

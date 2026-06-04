@@ -61,6 +61,6 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/fc/fuxifc.py`
-- `./onescience/src/onescience/modules/fc/onefc.py`
-- `./onescience/src/onescience/models/fuxi/fuxi.py`
+- `{onescience_path}/onescience/src/onescience/modules/fc/fuxifc.py`
+- `{onescience_path}/onescience/src/onescience/modules/fc/onefc.py`
+- `{onescience_path}/onescience/src/onescience/models/fuxi/fuxi.py`

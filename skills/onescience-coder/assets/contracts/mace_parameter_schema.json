@@ -1,0 +1,683 @@
+{
+  "schema_version": "1.0",
+  "model": "mace",
+  "purpose": "Machine-readable parameter table for OneScience MACE config generation and validation.",
+  "task_types": [
+    "scratch_train",
+    "foundation_finetune",
+    "evaluate",
+    "ase_inference",
+    "relax_or_md",
+    "lammps_export",
+    "stress_or_virial_train"
+  ],
+  "architecture_keys": [
+    "r_max",
+    "num_interactions",
+    "num_channels",
+    "max_L",
+    "max_ell",
+    "hidden_irreps",
+    "correlation",
+    "num_radial_basis",
+    "num_cutoff_basis",
+    "interaction",
+    "MLP_irreps",
+    "radial_MLP"
+  ],
+  "required_by_task": {
+    "scratch_train": [
+      "name",
+      "model",
+      "train_file",
+      "energy_key",
+      "forces_key",
+      "E0s",
+      "r_max",
+      "num_interactions",
+      "num_channels",
+      "max_L",
+      "correlation",
+      "batch_size",
+      "max_num_epochs",
+      "lr",
+      "energy_weight",
+      "forces_weight"
+    ],
+    "foundation_finetune": [
+      "name",
+      "model",
+      "foundation_model",
+      "train_file",
+      "energy_key",
+      "forces_key",
+      "E0s",
+      "batch_size",
+      "max_num_epochs",
+      "lr",
+      "energy_weight",
+      "forces_weight"
+    ],
+    "evaluate": [
+      "model_path",
+      "test_file",
+      "energy_key",
+      "forces_key"
+    ],
+    "ase_inference": [
+      "model_path",
+      "device"
+    ],
+    "relax_or_md": [
+      "model_path",
+      "structure_file",
+      "device"
+    ],
+    "lammps_export": [
+      "model_path",
+      "output_path",
+      "elements"
+    ],
+    "stress_or_virial_train": [
+      "name",
+      "model",
+      "train_file",
+      "energy_key",
+      "forces_key",
+      "E0s",
+      "batch_size",
+      "max_num_epochs",
+      "lr",
+      "energy_weight",
+      "forces_weight"
+    ]
+  },
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "default": null,
+      "required_when": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "seed",
+      "type": "int",
+      "default": 123,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/examples/matchem/mace/train.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "work_dir",
+      "type": "path",
+      "default": null,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/examples/matchem/mace/demo/_parse_config.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "model",
+      "type": "enum",
+      "default": "MACE",
+      "required_when": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true,
+      "allowed_values": ["MACE", "ScaleShiftMACE"]
+    },
+    {
+      "name": "train_file",
+      "type": "path",
+      "default": null,
+      "required_when": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "valid_file",
+      "type": "path",
+      "default": null,
+      "required_when": [],
+      "mutually_exclusive_with": ["valid_fraction"],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "valid_fraction",
+      "type": "float",
+      "default": null,
+      "required_when": [],
+      "mutually_exclusive_with": ["valid_file"],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": false
+    },
+    {
+      "name": "test_file",
+      "type": "path",
+      "default": null,
+      "required_when": ["evaluate"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["evaluate"],
+      "auto_generate": true
+    },
+    {
+      "name": "energy_key",
+      "type": "string",
+      "default": "energy",
+      "required_when": ["scratch_train", "foundation_finetune", "evaluate", "stress_or_virial_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "evaluate", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "forces_key",
+      "type": "string",
+      "default": "forces",
+      "required_when": ["scratch_train", "foundation_finetune", "evaluate", "stress_or_virial_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "evaluate", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "stress_key",
+      "type": "string",
+      "default": null,
+      "required_when": [],
+      "mutually_exclusive_with": ["virials_key"],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train", "evaluate"],
+      "auto_generate": true
+    },
+    {
+      "name": "virials_key",
+      "type": "string",
+      "default": null,
+      "required_when": [],
+      "mutually_exclusive_with": ["stress_key"],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train", "evaluate"],
+      "auto_generate": true
+    },
+    {
+      "name": "E0s",
+      "type": "string_or_dict",
+      "default": null,
+      "required_when": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "foundation_model",
+      "type": "path_or_alias",
+      "default": null,
+      "required_when": ["foundation_finetune"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/examples/matchem/mace/train.py",
+      "tasks": ["foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "multiheads_finetuning",
+      "type": "bool",
+      "default": false,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/examples/matchem/mace/train.py",
+      "tasks": ["foundation_finetune"],
+      "auto_generate": false
+    },
+    {
+      "name": "pt_train_file",
+      "type": "path",
+      "default": null,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/examples/matchem/mace/train.py",
+      "tasks": ["foundation_finetune"],
+      "auto_generate": false
+    },
+    {
+      "name": "foundation_model_elements",
+      "type": "bool",
+      "default": false,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["foundation_finetune"],
+      "auto_generate": false
+    },
+    {
+      "name": "foundation_model_readout",
+      "type": "bool",
+      "default": false,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["foundation_finetune"],
+      "auto_generate": false
+    },
+    {
+      "name": "r_max",
+      "type": "float",
+      "default": 5.0,
+      "required_when": ["scratch_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "num_interactions",
+      "type": "int",
+      "default": 2,
+      "required_when": ["scratch_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "num_channels",
+      "type": "int",
+      "default": null,
+      "required_when": ["scratch_train"],
+      "mutually_exclusive_with": ["hidden_irreps"],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "max_L",
+      "type": "int",
+      "default": null,
+      "required_when": ["scratch_train"],
+      "mutually_exclusive_with": ["hidden_irreps"],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "hidden_irreps",
+      "type": "string",
+      "default": null,
+      "required_when": [],
+      "mutually_exclusive_with": ["num_channels", "max_L"],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "stress_or_virial_train"],
+      "auto_generate": false
+    },
+    {
+      "name": "max_ell",
+      "type": "int",
+      "default": 3,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "stress_or_virial_train"],
+      "auto_generate": false
+    },
+    {
+      "name": "correlation",
+      "type": "int",
+      "default": 3,
+      "required_when": ["scratch_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "num_radial_basis",
+      "type": "int",
+      "default": 8,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "stress_or_virial_train"],
+      "auto_generate": false
+    },
+    {
+      "name": "num_cutoff_basis",
+      "type": "int",
+      "default": 5,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "stress_or_virial_train"],
+      "auto_generate": false
+    },
+    {
+      "name": "scaling",
+      "type": "enum",
+      "default": "rms_forces_scaling",
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true,
+      "allowed_values": ["std_scaling", "rms_forces_scaling", "no_scaling"]
+    },
+    {
+      "name": "batch_size",
+      "type": "int",
+      "default": 5,
+      "required_when": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "valid_batch_size",
+      "type": "int",
+      "default": null,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "evaluate", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "max_num_epochs",
+      "type": "int",
+      "default": 100,
+      "required_when": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "lr",
+      "type": "float",
+      "default": 0.01,
+      "required_when": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "weight_decay",
+      "type": "float",
+      "default": 5e-07,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": false
+    },
+    {
+      "name": "energy_weight",
+      "type": "float",
+      "default": 1.0,
+      "required_when": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "forces_weight",
+      "type": "float",
+      "default": 1.0,
+      "required_when": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "stress_weight",
+      "type": "float",
+      "default": 0.0,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["stress_or_virial_train", "scratch_train", "foundation_finetune"],
+      "auto_generate": true
+    },
+    {
+      "name": "virials_weight",
+      "type": "float",
+      "default": 0.0,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["stress_or_virial_train", "scratch_train", "foundation_finetune"],
+      "auto_generate": true
+    },
+    {
+      "name": "ema",
+      "type": "bool",
+      "default": false,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "ema_decay",
+      "type": "float",
+      "default": 0.99,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "swa",
+      "type": "bool",
+      "default": false,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "start_swa",
+      "type": "int",
+      "default": null,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser_tools.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": false
+    },
+    {
+      "name": "swa_lr",
+      "type": "float",
+      "default": null,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": false
+    },
+    {
+      "name": "scheduler_patience",
+      "type": "int",
+      "default": 50,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "patience",
+      "type": "int",
+      "default": 2048,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "eval_interval",
+      "type": "int",
+      "default": 1,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "error_table",
+      "type": "string",
+      "default": "PerAtomRMSE",
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "evaluate", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "restart_latest",
+      "type": "bool",
+      "default": false,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "save_cpu",
+      "type": "bool",
+      "default": false,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train", "lammps_export"],
+      "auto_generate": true
+    },
+    {
+      "name": "device",
+      "type": "enum",
+      "default": "cuda",
+      "required_when": ["ase_inference", "relax_or_md"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "evaluate", "ase_inference", "relax_or_md", "stress_or_virial_train"],
+      "auto_generate": true,
+      "allowed_values": ["cuda", "cpu", "mps"]
+    },
+    {
+      "name": "default_dtype",
+      "type": "enum",
+      "default": "float64",
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/tools/arg_parser.py",
+      "tasks": ["scratch_train", "foundation_finetune", "evaluate", "ase_inference", "relax_or_md", "stress_or_virial_train"],
+      "auto_generate": true,
+      "allowed_values": ["float32", "float64"]
+    },
+    {
+      "name": "distributed",
+      "type": "bool",
+      "default": false,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/examples/matchem/mace/train.py",
+      "tasks": ["scratch_train", "foundation_finetune", "stress_or_virial_train"],
+      "auto_generate": true
+    },
+    {
+      "name": "num_samples_pt",
+      "type": "int",
+      "default": null,
+      "required_when": [],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/cli/fine_tuning_select.py",
+      "tasks": ["foundation_finetune"],
+      "auto_generate": true
+    },
+    {
+      "name": "model_path",
+      "type": "path",
+      "default": null,
+      "required_when": ["evaluate", "ase_inference", "relax_or_md", "lammps_export"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/calculators/mace.py",
+      "tasks": ["evaluate", "ase_inference", "relax_or_md", "lammps_export"],
+      "auto_generate": true
+    },
+    {
+      "name": "structure_file",
+      "type": "path",
+      "default": null,
+      "required_when": ["relax_or_md"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/examples/matchem/mace/scripts/run_md.py",
+      "tasks": ["relax_or_md"],
+      "auto_generate": true
+    },
+    {
+      "name": "output_path",
+      "type": "path",
+      "default": null,
+      "required_when": ["lammps_export"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/calculators/lammps_mliap_mace.py",
+      "tasks": ["lammps_export"],
+      "auto_generate": true
+    },
+    {
+      "name": "elements",
+      "type": "list_string",
+      "default": null,
+      "required_when": ["lammps_export"],
+      "mutually_exclusive_with": [],
+      "source_script": "./onescience/src/onescience/utils/mace/calculators/lammps_mliap_mace.py",
+      "tasks": ["lammps_export"],
+      "auto_generate": true
+    }
+  ],
+  "validation_rules": [
+    {
+      "id": "mace_foundation_no_arch_override",
+      "severity": "error",
+      "description": "When foundation_model is set, do not emit architecture keys unless explicitly allowed after checkpoint probing."
+    },
+    {
+      "id": "mace_stress_requires_label",
+      "severity": "error",
+      "description": "stress_weight > 0 or compute_stress requires stress_key and a verified stress label."
+    },
+    {
+      "id": "mace_virial_requires_label",
+      "severity": "error",
+      "description": "virials_weight > 0 or compute_virials requires virials_key and a verified virial label."
+    },
+    {
+      "id": "mace_foundation_elements_subset",
+      "severity": "error",
+      "description": "Fine-tuning elements must be supported by checkpoint atomic_numbers unless an explicit expansion strategy is used."
+    }
+  ]
+}

@@ -87,9 +87,9 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/sample/onesample.py`
-- `./onescience/src/onescience/modules/sample/pangudownsample.py`
-- `./onescience/src/onescience/modules/sample/panguupsample.py`
-- `./onescience/src/onescience/modules/sample/fuxidownsample.py`
-- `./onescience/src/onescience/modules/sample/SpatialGraphDownsample.py`
-- `./onescience/src/onescience/modules/sample/SpatialGraphUpsample.py`
+- `{onescience_path}/onescience/src/onescience/modules/sample/onesample.py`
+- `{onescience_path}/onescience/src/onescience/modules/sample/pangudownsample.py`
+- `{onescience_path}/onescience/src/onescience/modules/sample/panguupsample.py`
+- `{onescience_path}/onescience/src/onescience/modules/sample/fuxidownsample.py`
+- `{onescience_path}/onescience/src/onescience/modules/sample/SpatialGraphDownsample.py`
+- `{onescience_path}/onescience/src/onescience/modules/sample/SpatialGraphUpsample.py`

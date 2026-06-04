@@ -1,0 +1,26 @@
+platform: ONT_or_PacBio
+input_data:
+  raw_signal: ""
+  fastq: ""
+  bam: ""
+reference:
+  genome_fasta: reference.fa
+  annotation_gtf: ""
+basecalling:
+  required: false
+  model: ""
+  modified_base_model: ""
+qc:
+  min_read_q: 9
+  min_coverage: null
+analysis_branch:
+  structural_variants: false
+  iso_seq: false
+  methylation: false
+  phasing: false
+outputs:
+  aligned_bam: aligned.bam
+  variants_vcf: variants.vcf
+  transcript_gtf: transcripts.gtf
+  methylation_bed: methylation.bed
+  qc_report: long_read_qc.md

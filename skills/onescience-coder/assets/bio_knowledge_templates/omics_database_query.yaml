@@ -1,0 +1,25 @@
+query_object: dataset_or_metabolite_or_peptide
+identifiers:
+  accession: ""
+  uniprot: ""
+  peptide_sequence: ""
+  inchikey: ""
+  hmdb_id: ""
+databases:
+  - PRIDE
+  - Metabolomics_Workbench
+filters:
+  organism: ""
+  tissue_or_biofluid: ""
+  disease_or_condition: ""
+  instrument: ""
+  assay_type: ""
+return_fields:
+  - accession
+  - title
+  - organism
+  - files
+  - sample_metadata
+download:
+  max_size_gb: null
+  output_dir: data/

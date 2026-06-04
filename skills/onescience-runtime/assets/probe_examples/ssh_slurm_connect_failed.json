@@ -1,0 +1,34 @@
+{
+  "example_id": "ssh_slurm_connect_failed",
+  "probe_channel": "ssh_slurm",
+  "execution_mode": "remote_slurm",
+  "access_mode": "ssh",
+  "semantic_environment_hints": {
+    "host": "login-gpu",
+    "partition": "gpuq"
+  },
+  "probe_target": {
+    "host": "login-gpu",
+    "partition": "gpuq"
+  },
+  "requested_checks": [
+    "ssh_connectivity"
+  ],
+  "probe_status": "blocked",
+  "observed_environment_facts": {
+    "ssh_connectivity": false,
+    "ssh_error_kind": "auth_or_network_unavailable",
+    "scheduler_type": "unknown"
+  },
+  "normalized_output": {
+    "hardware_profile_ready": false,
+    "expected_backend_id": null,
+    "execution_readiness": "blocked_by_host",
+    "blocking_reason": "ssh_connect_failed"
+  },
+  "safety": {
+    "read_only": true,
+    "submitted_job": false,
+    "modified_runtime_config": false
+  }
+}

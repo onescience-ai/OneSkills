@@ -1,6 +1,8 @@
 {
   "example_id": "scnet_mcp_runtime_result_status_fallback",
   "execution_channel": "scnet_mcp",
+  "execution_mode": "remote_direct",
+  "access_mode": "cloud_api",
   "submission_target": {
     "region": "示例区域A",
     "queue": "example-queue-a"
@@ -10,6 +12,8 @@
     "command": "bash /home/example/runtime_wrapper.sh"
   },
   "task_id": "task-example-fallback-001",
+  "submission_state": "submitted",
+  "execution_state": "completed",
   "job_status": "completed",
   "status_summary": "direct status lookup failed and runtime resolved the final state from the region task list fallback",
   "local_log_dir": ".onescience/logs/scnet-task-example-fallback-001",
@@ -17,11 +21,12 @@
     "task-example-fallback-001.out",
     "task-example-fallback-001.err"
   ],
+  "log_state": "synced",
   "sync_status": "synced",
   "observations": {
     "status_source": "scnet_list_regions_tasks",
     "log_readiness": "ready",
     "status_probe_summary": "direct task-status lookup became unavailable for a known task, and the fallback matched the completed state in the region task list"
   },
-  "next_action": "onescience-debug"
+  "next_action": "onescience-runtime"
 }

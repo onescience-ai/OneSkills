@@ -1,0 +1,24 @@
+slide_manifest: slides.csv
+columns:
+  case_id: required
+  slide_id: required
+  file_path: required
+  stain: required
+  label: optional
+tiling:
+  magnification: 20x
+  tile_size_px: 256
+  overlap_px: 0
+  tissue_threshold: 0.5
+  background_filter: true
+stain_processing:
+  normalization: macenko_or_reinhard_or_none
+  reference_slide: ""
+splitting:
+  split_level: patient_or_case
+  train_fraction: 0.7
+  validation_fraction: 0.15
+outputs:
+  tile_manifest: tiles.csv
+  thumbnails: thumbnails/
+  qc_report: wsi_qc.md

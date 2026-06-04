@@ -17,14 +17,14 @@
 - `skills/`
 - 共享 `references/`
 - 对应 agent 的 `integrations/` 适配说明
-- OneScience 源码快照：默认从 `https://gitee.com/onescience-ai/onescience/releases/download/0.3.0/onescience-0.3.0.zip` 下载并解压到 `<agent>/oneskills/onescience/`，供 `onescience-coder` 读取源码锚点
-- `runtime` 档位下的项目根运行资产：`onescience.json`、`tpl.slurm`
-- `codex` 下额外补齐用户级 bridge skills，保证安装后可被当前 Codex 发现
+- `codex`：默认下载 OneScience 源码快照到 `<namespace_root>/onescience/`（供 `onescience-coder` 等读取），可用 `--skip-onescience-source` 跳过；默认下载 SCnet MCP 工具到 `<project>/.codex/oneskills/mcp-tools/scnet-mcp-server.exe`，可用 `--skip-mcp-tools` 跳过
+- `runtime` 档位下的项目根运行资产：`onescience.json`、`tpl.slurm`（其中 `onescience.json` 默认来自 `skills/onescience-workflow/assets/onescience.default.json`）
+- manifest 如声明 `bridge`，则额外补齐用户级 bridge skills，保证安装后可被对应 agent 发现
 
 安装后的统一入口约定：
 
 - “使用 / 启动 / 打开 / 进入 onescience”与“使用 / 启动 / 打开 / 进入 oneskills”默认进入 `onescience-workflow`。
-- 明确点名 `onescience-coder`、`onescience-runtime`、`onescience-debug` 等具体 skill 时，优先使用对应 skill。
+- 明确点名 `onescience-coder`、`onescience-runtime`、`onescience-installer` 等具体 skill 时，优先使用对应 skill。
 
 ## 支持的目标
 
@@ -36,7 +36,7 @@
 
 ## 推荐用法
 
-注意：`install/install_oneskills.py` 需要用户本地已有 Python。Codex 面向普通用户的首选安装方式不依赖 Python，请使用仓库中的 `.codex/INSTALL.md`，它会用 Git 链接 skills，并直接下载 `scnet-mcp-server.exe`。
+注意：`install/install_oneskills.py` 需要用户本地已有 Python。Codex 面向普通用户的首选安装方式不依赖 Python，请使用仓库中的 `.codex/INSTALL.md`（含一行提示安装、SCnet MCP 与 OneScience 源码快照步骤）。
 
 安装到指定项目：
 
@@ -44,31 +44,31 @@
 python3 install/install_oneskills.py --agent codex --project /path/to/project
 ```
 
-Codex 安装默认同时安装 MCP tool；安装器会直接下载 release 二进制：
+`codex` 默认会下载 MCP 工具二进制：
 
 ```text
 https://gitee.com/onescience-ai/agent-cloud-interaction-protocol/releases/download/v0.1/scnet-mcp-server.exe
 ```
 
-默认安装位置：
+落盘位置示例：
 
 ```text
 /path/to/project/.codex/oneskills/mcp-tools/scnet-mcp-server.exe
 ```
 
-如果只想安装 skills，可显式跳过 MCP tool：
+若只需 skills 与文档、不要 MCP 二进制：
 
 ```bash
 python3 install/install_oneskills.py --agent codex --project /path/to/project --skip-mcp-tools
 ```
 
-如果只想安装 skills 文档和契约卡，不下发 OneScience 源码快照：
+若不要 OneScience 源码快照：
 
 ```bash
 python3 install/install_oneskills.py --agent codex --project /path/to/project --skip-onescience-source
 ```
 
-如果需要替换 OneScience 源码版本：
+指定 OneScience 源码 zip：
 
 ```bash
 python3 install/install_oneskills.py --agent codex --project /path/to/project --onescience-source-url https://gitee.com/onescience-ai/onescience/releases/download/0.3.0/onescience-0.3.0.zip
@@ -106,7 +106,14 @@ python3 install/install_oneskills.py --agent codex --project /path/to/project --
 - 可用 `--list-agents` 查看当前 manifest 注册的目标 agent
 - `--profile basic` 是默认档位，适合只安装技能本体
 - `--profile runtime` 适合准备实际提交远程任务的项目
-- `--with-runtime-assets` 仍可使用，但只是兼容旧命令的别名
+
+维护约定：
+
+- `install/contract.json` 声明安装状态版本、bridge marker、legacy marker 与 bridge/template 共享契约
+- `install/manifests/<agent>.json` 只声明 `namespace_root`、`integration_sources` 与可选 `bridge`
+- `install/profile_targets.json` 声明各个 install profile 额外写入的项目根资产
+- `install/templates/bridge_skill.md.tpl` 声明用户级 bridge skill 的文本模板
+- `skills/`、共享 `references/`、`integrations/` 的实际落盘路径由安装器统一从 `namespace_root` 推导
 
 ## FAQ
 
@@ -122,10 +129,10 @@ python3 install/install_oneskills.py --agent codex --project /path/to/project --
 如果使用 `generic`，则由 `--skills-dir` 明确指定。
 
 安装完成后，用户可优先查看安装目录下的 `VERSION` 文件确认当前 skills 版本。
-共享参考资料会安装到技能根目录下的 `references/`，例如 `.<agent>/oneskills/skills/references/`（与各 `onescience-*` 技能包同级，技能内通过 `../references/...` 引用）。
-OneScience 源码快照会与 namespaced skills 同级安装，例如 `.<agent>/oneskills/onescience/`。所有源码锚点 `./onescience/...` 都应解析到这个目录，而不是解析到开发机上的任意 `D:\Projects\OneScience\onescience` 或用户磁盘上的同名目录。
+共享参考资料会与 namespaced skills 同级安装，例如 `.<agent>/oneskills/references/`。
 集成说明会放在 `.<agent>/oneskills/integrations/`，保持与仓库内相同的相对路径结构。
-其中 `codex` 会同时在 `~/.codex/skills/onescience-*` 写入一层 bridge skill，让用户在当前项目中安装后即可直接使用。
+如目标 agent 的 manifest 声明了 `bridge`，安装器会同时在对应用户级 skills 根目录写入一层 bridge skill。
+当前仓库内默认启用该能力的是 `codex`，会写入 `~/.codex/skills/onescience-*`。
 
 ### 2. 重复安装怎么办？
 
@@ -136,15 +143,13 @@ OneScience 源码快照会与 namespaced skills 同级安装，例如 `.<agent>/
 - 先用 `--uninstall` 卸载
 - 或使用 `--force` 直接覆盖
 
-### 3. `--with-runtime-assets` 会安装什么？
+### 3. `--profile runtime` 会安装什么？
 
 更推荐直接使用：
 
 ```bash
 python3 install/install_oneskills.py --agent codex --project /path/to/project --profile runtime
 ```
-
-`--with-runtime-assets` 仍然有效，但只是 `--profile runtime` 的兼容别名。
 
 会额外把下面两个运行资产放到项目根目录：
 
@@ -155,8 +160,8 @@ python3 install/install_oneskills.py --agent codex --project /path/to/project --
 
 当前默认导出的这套项目根运行资产中：
 
-- `onescience.json` 用于声明目标 backend、任务资源与脚本入口
-- `tpl.slurm` 仍是 `slurm_dcu` 兼容路径的根模板
+- `onescience.json` 用于声明目标 backend、任务资源与脚本入口（安装时从 `skills/onescience-workflow/assets/onescience.default.json` 拷贝到项目根；与 workflow 运行时自动初始化行为一致）
+- `tpl.slurm` 是项目根默认导出的 slurm 模板入口
 
 但是否真的支持某条执行链路，不应只看是否安装了这两个文件，还要看：
 
@@ -165,9 +170,10 @@ python3 install/install_oneskills.py --agent codex --project /path/to/project --
 
 当前共享边界是：
 
-- `slurm_dcu`：runtime=`stable` / installer=`supported` / debug=`supported`
-- `slurm_gpu`：runtime=`stable` / installer=`unsupported_for_now` / debug=`supported`
-- `slurm_cpu`：runtime=`planned` / installer=`unsupported_for_now` / debug=`planned_backend`
+- `slurm_dcu`：runtime=`stable` / installer=`supported`
+- `slurm_gpu`：runtime=`stable` / installer=`supported`
+- `slurm_gpu_multinode_torchrun`：runtime=`stable` / installer=`supported`
+- `slurm_cpu`：runtime=`stable` / installer=`unsupported_for_now`
 
 如果未来需要支持其他硬件后端，建议在项目内按契约扩展 backend registry、source template 与 readiness 语义，而不是直接把这套 DCU 根模板改造成“伪通用模板”。
 
@@ -180,7 +186,16 @@ python3 install/install_oneskills.py --agent codex --project /path/to/project --
 - 对应的集成说明文件
 - 如有安装，则删除本次安装的运行资产
 - 安装记录文件 `.oneskills/install-state/<agent>.json`
-- 若当前机器上已没有其他项目注册 `codex` bridge，则同时删除 `~/.codex/skills/onescience-*` bridge 和 `~/.codex/.oneskills/bridge-state.json`
+- 若该 agent 声明了 `bridge`，且当前机器上已没有其他项目注册该 bridge，则同时删除对应用户级 bridge 文件与 bridge state
+
+安装记录当前只保留最小状态：
+
+- `schema_version`
+- `agent`
+- `mode`
+- `profile`
+- `targets`（本次安装写入的相对路径列表；含 `codex` 时可能还有 `onescience` 源码目录等）
+- 可选 `mcp_tools`（`codex` 且未 `--skip-mcp-tools` 时记录 MCP 二进制路径与下载 URL）
 
 它不会删除未被安装器记录的其他用户文件。
 
@@ -192,7 +207,7 @@ python3 install/install_oneskills.py --agent codex --project /path/to/project --
 - `skills/onescience-installer`：读取完整硬件画像，在远程环境安装 `OneScience`
 
 如果你现在是在维护本仓库的安装入口、manifest 或 agent 适配，优先看本目录。
-如果你现在是在维护远程 DCU 环境安装流程，优先看 `skills/onescience-installer/SKILL.md` 与 `skills/onescience-installer/references/install_flow.md`。
+如果你现在是在维护远程 DCU 环境安装流程，优先看 `skills/onescience-installer/SKILL.md`、`skills/onescience-installer/references/install_rules.md` 与 `skills/onescience-installer/references/install_flow.md`。
 
 ### 6. Claude / Codex 插件模式怎么安装？
 

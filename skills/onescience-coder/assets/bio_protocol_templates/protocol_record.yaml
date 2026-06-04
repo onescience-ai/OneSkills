@@ -1,0 +1,31 @@
+protocol:
+  title: ""
+  version: "0.1"
+  purpose: ""
+  source: ""
+  operator: ""
+  date: ""
+materials:
+  reagents:
+    - name: ""
+      vendor: ""
+      catalog: ""
+      lot: ""
+  equipment: []
+samples:
+  - sample_id: ""
+    type: ""
+    storage_location: ""
+constructs:
+  - construct_id: ""
+    sequence_or_map: ""
+steps:
+  - step_id: 1
+    action: ""
+    duration: ""
+    temperature: ""
+    notes: ""
+outputs:
+  data_files: []
+  expected_results: ""
+deviations: []

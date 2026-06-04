@@ -98,6 +98,6 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/decoder/fengwudecoder.py`
-- `./onescience/src/onescience/modules/decoder/onedecoder.py`
-- `./onescience/src/onescience/models/fengwu/fengwu.py`
+- `{onescience_path}/onescience/src/onescience/modules/decoder/fengwudecoder.py`
+- `{onescience_path}/onescience/src/onescience/modules/decoder/onedecoder.py`
+- `{onescience_path}/onescience/src/onescience/models/fengwu/fengwu.py`

@@ -1,7 +1,7 @@
 {
   "example_id": "cpu_install_request_blocked",
-  "request_example": "assets/request_examples/earth_install_request.json",
-  "hardware_probe_result": "ssh 远端探测确认：nvidia-smi、rocm-smi、hipcc 均不可用，/opt/ 下无 DTK/ROCm/CUDA 目录，/dev/kfd 不存在。结论：纯 CPU 平台或无加速器。",
+  "request_example": "skills/onescience-installer/assets/request_examples/earth_install_request.json",
+  "hardware_output_example": "skills/onescience-runtime/assets/hardware_outputs/examples/slurm_cpu_output.json",
   "expected_resolution": {
     "status": "unsupported_for_now",
     "installer_backend": "none",

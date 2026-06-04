@@ -1,0 +1,29 @@
+{
+  "example_id": "ssh_slurm_runtime_result_gpu_multinode_success",
+  "execution_channel": "ssh_slurm",
+  "execution_mode": "remote_slurm",
+  "access_mode": "ssh",
+  "submission_target": {
+    "host": "login-gpu",
+    "partition": "gpu_normal",
+    "backend_id": "slurm_gpu_multinode_torchrun"
+  },
+  "remote_context": {
+    "job_script_path": "slurm_multinode_submit.sh",
+    "remote_work_dir": "/home/user/project",
+    "remote_log_dir": "logs",
+    "command": "sbatch slurm_multinode_submit.sh"
+  },
+  "job_id": "202605010101",
+  "submission_state": "submitted",
+  "execution_state": "completed",
+  "job_status": "completed",
+  "local_log_dir": ".onescience/logs/job-202605010101",
+  "synced_logs": [
+    "202605010101.out",
+    "202605010101.err"
+  ],
+  "log_state": "synced",
+  "sync_status": "synced",
+  "next_action": "onescience-runtime"
+}

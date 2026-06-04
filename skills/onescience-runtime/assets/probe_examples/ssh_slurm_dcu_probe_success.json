@@ -1,0 +1,79 @@
+{
+  "example_id": "ssh_slurm_dcu_probe_success",
+  "probe_channel": "ssh_slurm",
+  "execution_mode": "remote_slurm",
+  "access_mode": "ssh",
+  "semantic_environment_hints": {
+    "accelerator_kind": "dcu",
+    "partition": "hpctest01",
+    "modules": [
+      "sghpcdas/25.6",
+      "sghpc-mpi-gcc/26.3"
+    ]
+  },
+  "probe_target": {
+    "host": "login-kunshan",
+    "partition": "hpctest01",
+    "modules": [
+      "sghpcdas/25.6",
+      "sghpc-mpi-gcc/26.3"
+    ]
+  },
+  "requested_checks": [
+    "ssh_connectivity",
+    "slurm_cli",
+    "partition",
+    "accelerator_visibility",
+    "driver_stack",
+    "software_environment",
+    "python_torch",
+    "path_readiness"
+  ],
+  "probe_status": "succeeded",
+  "observed_environment_facts": {
+    "scheduler_type": "slurm",
+    "cpu_arch": "x86_64",
+    "cpu_vendor": "amd",
+    "accelerator_kind": "dcu",
+    "accelerator_vendor": "amd",
+    "visibility_env": "HIP_VISIBLE_DEVICES",
+    "distributed_backend": "rccl",
+    "module_cmd_available": true,
+    "module_sequence": [
+      "sghpcdas/25.6",
+      "sghpc-mpi-gcc/26.3"
+    ],
+    "module_load_success": true,
+    "driver_ready": true,
+    "conda_env": "onescience311",
+    "conda_env_activated": true,
+    "conda_prefix": "/public/home/user/.conda/envs/onescience311",
+    "preserve_conda_python": true,
+    "saved_python_from_conda": true,
+    "python_ready": true,
+    "python_bin": "/public/home/user/.conda/envs/onescience311/bin/python3",
+    "user_space_ready": true,
+    "dtk_runtime_ready": true,
+    "dtk_runtime_evidence": "hipcc",
+    "sghpc_runtime_ready": true,
+    "dcu_user_space_ready": true,
+    "compiler_ready": true,
+    "torch_ready": true,
+    "torch_import_ok": true,
+    "torch_hip_runtime_ready": true,
+    "dcu_runtime_ready": true,
+    "distributed_runtime_ready": true,
+    "work_dir_writable": true
+  },
+  "normalized_output": {
+    "hardware_profile_ready": true,
+    "expected_backend_id": "slurm_dcu",
+    "execution_readiness": "ready_to_execute",
+    "blocking_reason": "none"
+  },
+  "safety": {
+    "read_only": true,
+    "submitted_job": false,
+    "modified_runtime_config": false
+  }
+}

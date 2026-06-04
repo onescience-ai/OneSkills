@@ -1,0 +1,57 @@
+{
+  "example_id": "ssh_slurm_runtime_host_confirmation",
+  "summary": "ssh_slurm 运行链路在 preflight 被阻断，因为 discover 识别出了多个 Host 候选但用户尚未确认目标 Host。",
+  "terminal_phase": "preflight",
+  "phases": {
+    "discover": {
+      "intent": "submit_job_script",
+      "execution_mode": "remote_slurm",
+      "access_mode": "ssh",
+      "execution_channel": "ssh_slurm",
+      "submission_target_candidates": [
+        {
+          "host": "login-kunshan",
+          "partition": "hpctest01"
+        },
+        {
+          "host": "login-kunshan-backup",
+          "partition": "hpctest01"
+        }
+      ],
+      "backend_candidates": [
+        "slurm_dcu"
+      ],
+      "hardware_profile_ref": "skills/onescience-runtime/assets/hardware_outputs/examples/slurm_dcu_output.json",
+      "missing_facts": [
+        "selected_host"
+      ],
+      "evidence": {
+        "discovery": {
+          "source": "ssh_config_candidates"
+        }
+      }
+    },
+    "preflight": {
+      "backend_id": "slurm_dcu",
+      "runtime_profile_ref": "remote_slurm_dcu",
+      "install_profile_ref": "dcu_remote_install_profile",
+      "execution_readiness": "blocked_by_host",
+      "blocking_reason": "host_not_confirmed",
+      "confirmation_required": true,
+      "available_hosts": [
+        "login-kunshan",
+        "login-kunshan-backup"
+      ],
+      "installer_fallback_required": false,
+      "missing_fields": [
+        "submission_target.host"
+      ],
+      "evidence": {
+        "preflight": {
+          "host_candidates_checked": true,
+          "user_selection_missing": true
+        }
+      }
+    }
+  }
+}

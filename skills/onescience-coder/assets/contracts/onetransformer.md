@@ -15,6 +15,7 @@
 
 - 调用层通过 `style` 选择具体 transformer 实现
 - 当前天气相关模型常通过它调用 `EarthTransformer2DBlock`、`EarthTransformer3DBlock`、`FuxiTransformer`
+- 当前生信相关模型中，Protenix 通过它调用 `ProtenixDiffusionTransformer`、`ProtenixAtomTransformer` 等 diffusion / atom transformer
 - wrapper 本身不规定固定 shape，真实规则来自具体实现
 
 ## 支持输入
@@ -52,6 +53,9 @@
 - FengWuDecoder
 - FengWuFuser
 - Fuxi 主模型
+- ProtenixDiffusionModule
+- ProtenixAtomAttentionEncoder
+- ProtenixAtomAttentionDecoder
 
 ## 典型参数
 
@@ -61,6 +65,14 @@
   - `style="EarthTransformer3DBlock"`
 - Fuxi U-shape trunk
   - `style="FuxiTransformer"`
+- Protenix diffusion transformer
+  - `style="ProtenixDiffusionTransformer"`
+- Protenix atom transformer
+  - `style="ProtenixAtomTransformer"`
+- Protenix diffusion transformer block
+  - `style="ProtenixDiffusionTransformerBlock"`
+- Protenix conditioned transition
+  - `style="ProtenixConditionedTransitionBlock"`
 
 ## CFD / 图模型补充
 
@@ -97,13 +109,15 @@
 
 - `OneTransformer` 只是分发入口，不代表统一的 tensor 语义
 - `EarthTransformer2DBlock` 与 `FuxiTransformer` 都属于 transformer，但输入形态完全不同
+- Protenix transformer 处理 token/pair/atom 局部窗口，不处理规则气象网格
 - 只看 wrapper 无法判断是否需要先展平 token 或先恢复网格
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/transformer/onetransformer.py`
-- `./onescience/src/onescience/modules/transformer/earthtransformer2Dblock.py`
-- `./onescience/src/onescience/modules/transformer/earthtransformer3Dblock.py`
-- `./onescience/src/onescience/modules/transformer/fuxitransformer.py`
-- `./onescience/src/onescience/modules/transformer/Transolver_block.py`
-- `./onescience/src/onescience/modules/transformer/Neural_Spectral_Block.py`
+- `{onescience_path}/onescience/src/onescience/modules/transformer/onetransformer.py`
+- `{onescience_path}/onescience/src/onescience/modules/transformer/earthtransformer2Dblock.py`
+- `{onescience_path}/onescience/src/onescience/modules/transformer/earthtransformer3Dblock.py`
+- `{onescience_path}/onescience/src/onescience/modules/transformer/fuxitransformer.py`
+- `{onescience_path}/onescience/src/onescience/modules/transformer/Transolver_block.py`
+- `{onescience_path}/onescience/src/onescience/modules/transformer/Neural_Spectral_Block.py`
+- `{onescience_path}/onescience/src/onescience/modules/transformer/protenixtransformer.py`

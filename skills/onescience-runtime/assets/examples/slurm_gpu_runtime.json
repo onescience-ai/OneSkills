@@ -2,11 +2,20 @@
   "runtime": {
     "mode": "slurm",
     "backend_id": "slurm_gpu",
+    "execution_profile": {
+      "execution_mode": "remote_slurm",
+      "access_mode": "ssh",
+      "runtime_profile_ref": "remote_slurm_gpu",
+      "install_profile_ref": "gpu_remote_install_profile"
+    },
     "target": {
       "scheduler_type": "slurm",
       "platform_type": "cluster",
+      "cpu_arch": "x86_64",
+      "cpu_vendor": "intel",
       "accelerator_kind": "gpu",
-      "accelerator_vendor": "nvidia"
+      "accelerator_vendor": "nvidia",
+      "node_scope": "single_node"
     },
     "environment": {
       "cpu": {
@@ -18,7 +27,8 @@
         "vendor": "nvidia",
         "visibility_env": "CUDA_VISIBLE_DEVICES",
         "distributed_backend": "nccl",
-        "launch_mode": "python"
+        "launch_mode": "python",
+        "distributed_mode": "single"
       }
     },
     "cluster": {

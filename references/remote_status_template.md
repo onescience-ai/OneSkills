@@ -54,7 +54,7 @@ missing:
   - 队列或分区
   - module / conda 约束
 can_continue_locally: false
-next_action: onescience-hardware
+next_action: onescience-runtime
 reason: 当前远程执行链路所需环境事实不完整
 suggestion: 先补齐最小远程环境信息，再继续运行或安装阶段
 ```
@@ -74,9 +74,9 @@ missing:
   - 具体 Host
   - 队列或分区
 can_continue_locally: true
-next_action: onescience-hardware
+next_action: onescience-runtime
 reason: 当前远程描述不足以唯一确定执行环境
-suggestion: 请补充 Host 名称，或允许先读取 ~/.ssh/config 做归一化识别
+suggestion: 请补充 Host 名称，或允许执行层先读取 ~/.ssh/config 做归一化识别
 ```
 
 ## 模板 4：必须阻断远程阶段
@@ -92,11 +92,11 @@ recognized:
   - 当前请求属于远程运行阶段
 missing:
   - Host
-  - 完整硬件画像
+  - 完整环境画像
   - onescience.json
   - tpl.slurm
 can_continue_locally: false
-next_action: onescience-hardware
+next_action: onescience-runtime
 reason: 当前阶段必须依赖远程环境事实和运行配置
 suggestion: 先补齐远程环境与运行配置，再进入 onescience-runtime
 ```

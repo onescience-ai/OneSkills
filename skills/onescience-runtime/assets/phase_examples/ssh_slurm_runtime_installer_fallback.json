@@ -1,0 +1,50 @@
+{
+  "example_id": "ssh_slurm_runtime_installer_fallback",
+  "summary": "ssh_slurm 运行链路在 preflight 识别到环境未 ready，应显式回退到 installer，而不是继续进入 execute。",
+  "terminal_phase": "preflight",
+  "phases": {
+    "discover": {
+      "intent": "submit_job_script",
+      "execution_mode": "remote_slurm",
+      "access_mode": "ssh",
+      "execution_channel": "ssh_slurm",
+      "submission_target_candidates": [
+        {
+          "host": "login-gpu-a",
+          "partition": "gpuq"
+        }
+      ],
+      "backend_candidates": [
+        "slurm_gpu"
+      ],
+      "hardware_profile_ref": "skills/onescience-runtime/assets/hardware_outputs/blocker_examples/slurm_gpu_torch_not_ready.json",
+      "missing_facts": [],
+      "evidence": {
+        "discovery": {
+          "source": "hardware_profile_and_runtime_request"
+        }
+      }
+    },
+    "preflight": {
+      "backend_id": "slurm_gpu",
+      "runtime_profile_ref": "remote_slurm_gpu",
+      "install_profile_ref": "gpu_remote_install_profile",
+      "submission_target": {
+        "host": "login-gpu-a",
+        "partition": "gpuq",
+        "backend_id": "slurm_gpu"
+      },
+      "execution_readiness": "blocked_by_host",
+      "blocking_reason": "torch_not_ready",
+      "confirmation_required": false,
+      "missing_fields": [],
+      "installer_fallback_required": true,
+      "evidence": {
+        "preflight": {
+          "torch_ready": false,
+          "installer_backend_required": "gpu_remote_install"
+        }
+      }
+    }
+  }
+}

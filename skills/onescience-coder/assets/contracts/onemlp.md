@@ -113,7 +113,7 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/mlp/onemlp.py`
-- `./onescience/src/onescience/modules/mlp/MLP.py`
-- `./onescience/src/onescience/modules/mlp/mesh_graph_mlp.py`
-- `./onescience/src/onescience/modules/mlp/GMLP.py`
+- `{onescience_path}/onescience/src/onescience/modules/mlp/onemlp.py`
+- `{onescience_path}/onescience/src/onescience/modules/mlp/MLP.py`
+- `{onescience_path}/onescience/src/onescience/modules/mlp/mesh_graph_mlp.py`
+- `{onescience_path}/onescience/src/onescience/modules/mlp/GMLP.py`

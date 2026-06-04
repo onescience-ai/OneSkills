@@ -10,6 +10,23 @@
 2. 当前处在数据、模型、运行、评估还是全流程阶段？
 3. 这是不是一个只需规划、不需执行的请求？
 
+## 当前下一跳与规划阶段规则
+
+当用户明确说“先不要写代码”“只告诉我技能路线”“先只看路线”“先做规划”“先看怎么走”，或当前请求尚未授权实现、运行、提交、安装时，优先识别为规划阶段。
+
+此时即使命中了 `data-task`、`model-task`、`runtime-task`、`evaluation-task` 或 `end-to-end-task` 的关键词，也不要展开默认完整链路。输出只应包含最小路由信息：
+
+- 当前所在层：`onescience-workflow`
+- 当前下一跳：通常是 `onescience-role`
+- 如需说明后续方向，最多给出一个 `future_execution_entry`
+
+在规划阶段：
+
+- 不要把 `onescience-skill` 写成当前 pipeline 阶段
+- 不要把 `onescience-coder`、`onescience-runtime` 或 `onescience-installer` 写成当前 `next_skill`
+- 不要创造不存在的 skill，例如 `onescience-test`
+- 如果识别到 `detected_domain=earth`，交接摘要应要求后续优先进入 `onescience-role` 的 `earth` 路径
+
 ## 统一入口请求
 
 ### `general-onescience-request`
@@ -82,6 +99,12 @@
 
 `onescience-workflow -> onescience-role -> onescience-skill -> onescience-coder`
 
+规划阶段：
+
+- 当前下一跳只写 `onescience-role`
+- 未来执行入口最多写 `onescience-coder`
+- 不要提前展开 `onescience-runtime` 或安装/验证链路
+
 ### 3. `model-task`
 
 适用信号：
@@ -94,6 +117,12 @@
 
 `onescience-workflow -> onescience-role -> onescience-skill -> onescience-coder`
 
+规划阶段：
+
+- 当前下一跳只写 `onescience-role`
+- 未来执行入口最多写 `onescience-coder`
+- 不要提前展开运行、诊断或安装链路
+
 ### 4. `runtime-task`
 
 适用信号：
@@ -105,15 +134,32 @@
 
 默认链路：
 
-- 安装：`onescience-workflow -> onescience-role -> onescience-skill -> onescience-hardware -> onescience-installer`
-- 运行：`onescience-workflow -> onescience-role -> onescience-skill -> onescience-hardware -> onescience-runtime`
+- 安装：`onescience-workflow -> onescience-role -> onescience-skill -> onescience-installer`
+- 运行：`onescience-workflow -> onescience-role -> onescience-skill -> onescience-runtime`
 - SCnet / MCP 提交：`onescience-workflow -> onescience-role -> onescience-skill -> onescience-runtime`
 
-如果上游远程环境进一步被归一化到某个 `backend_id`，还应在工作流交接中附带：
+规划阶段：
+
+- 当前下一跳只写 `onescience-role`
+- 若用户只是说后续可能运行或提交，只在 `workflow_handoff` 里保留运行约束
+- 不要把 `onescience-runtime` 当成当前 `next_skill`，除非用户明确要求现在运行、提交、查状态或下载日志
+
+补充说明：
+
+- `onescience-runtime` 公开承担 `discover -> preflight -> execute -> diagnose`
+- `onescience-installer` 公开承担安装与修复，并共享同一套 `execution_profile`
+
+如果上游远程环境已经由 runtime / installer 的实际接入通道确认，并进一步归一化到某个 `backend_id`，还应在工作流交接中附带：
 
 - `backend_id`
 - `backend_status`
 - `execution_readiness`
+
+其中：
+
+- `stable_backend` 可按标准 runtime 链继续推进
+- `planned_backend` 也可继续进入 runtime，但必须在交接中显式保留“planned”语义
+- `unsupported_for_now` 才应在执行阶段阻断并转向说明或安装链路
 
 ### 5. `evaluation-task`
 
@@ -123,10 +169,19 @@
 - “对比指标”
 - “排查日志 / loss / 运行异常”
 
+注意：
+
+- 如果用户说的是“对比多个模型训练效果”，但尚未生成训练代码、尚未运行实验、也没有已有日志或指标结果，应优先归入 `model-task` 或 `end-to-end-task`；只有已有结果、日志或指标需要分析时，才归入 `evaluation-task`。
+
 默认链路：
 
-- 仅分析：`onescience-workflow -> onescience-role -> onescience-skill -> onescience-debug`
-- 缺远程事实：`onescience-workflow -> onescience-role -> onescience-skill -> onescience-hardware -> onescience-debug`
+- 仅分析：`onescience-workflow -> onescience-role -> onescience-skill -> onescience-runtime`
+- 缺远程事实：`onescience-workflow -> onescience-role -> onescience-skill -> onescience-runtime`
+
+规划阶段：
+
+- 当前下一跳只写 `onescience-role`
+- 若用户只是询问路线，不要提前进入 `onescience-runtime`
 
 ### 6. `end-to-end-task`
 
@@ -137,7 +192,13 @@
 
 默认链路：
 
-`onescience-workflow -> onescience-role -> onescience-skill -> onescience-hardware -> onescience-coder -> onescience-runtime -> onescience-debug`
+`onescience-workflow -> onescience-role -> onescience-skill -> onescience-coder -> onescience-runtime`
+
+规划阶段：
+
+- 当前下一跳只写 `onescience-role`
+- 只要求 role 层先拆阶段
+- 不要一次性展开完整执行 pipeline
 
 ## 用户说法到工作流
 
@@ -156,10 +217,38 @@
 - 用户目标摘要
 - 检测到的领域画像
 - 当前工作流类型
+- 领域路由标签：`domain_route`
+- 领域粗任务族：`domain_task_family`
+- 阶段意图：`stage_intent`
+- 是否只做规划：`planning_only`
 - 当前阶段最关心的交付
 - 是否涉及远程环境
 - 已识别与缺失的前置信息
-- 如已识别：`backend_id`、`backend_status` 与 `execution_readiness`
+- 如已由实际通道确认：`backend_id`、`backend_status` 与 `execution_readiness`
+
+推荐结构：
+
+```yaml
+user_intent:
+detected_domain:
+workflow_type:
+domain_route:
+domain_task_family:
+stage_intent:
+planning_only:
+remote_involved:
+workflow_handoff:
+next_skill: onescience-role
+future_execution_entry:
+```
+
+字段边界：
+
+- `domain_route` 只表达进入哪个领域路线，例如 `earth`、`cfd`、`biology`、`materials`、`general-science`。
+- `domain_task_family` 只表达粗粒度任务族，例如 `data-interface`、`model-development`、`inference`、`runtime`、`install`、`diagnose`、`end-to-end`。
+- `stage_intent` 只表达当前用户授权到哪一阶段，例如 `planning`、`implementation`、`runtime`、`install`、`diagnose`、`evaluation`。
+- `planning_only=true` 时，`next_skill` 仍可为 `onescience-role`，但不要把 `onescience-skill`、`onescience-coder`、`onescience-runtime` 或 `onescience-installer` 写成当前已调用链路。
+- `workflow` 不输出角色链、不选择具体 coder 资产、不做模型兼容性表；这些由 `onescience-role` 基于 handoff 继续完成。
 
 ## 常见误设计
 
@@ -195,4 +284,4 @@
 正确做法：
 
 - `oneskills` 是入口别名，不是新的执行 skill
-- 只有用户明确点名 `onescience-coder`、`onescience-runtime` 等具体 skill 时，才直接进入对应 skill
+- 只有用户明确点名 `onescience-coder`、`onescience-runtime`、`onescience-installer` 等具体 skill 时，才直接进入对应 skill

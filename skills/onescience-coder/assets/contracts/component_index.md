@@ -33,7 +33,7 @@
 2. 高层业务组件层
    - 任务里最常直接拼装、替换、组合的组件
 3. 底层通用模块层
-   - block / attention / afno / fc 等下层实现单元
+   - block / attention / afno / fc / linear / pairformer 等下层实现单元
 
 这三层在目录中保持平铺，在索引中进行逻辑分层。
 
@@ -54,6 +54,10 @@
 | OneMlp | mlp | 统一 MLP 入口 | `style="<MlpStyle>"` | `stable` | `./onemlp.md` |
 | OneFourier | fourier | 统一谱算子入口 | `style="<FourierStyle>"` | `stable` | `./onefourier.md` |
 | OneHead | head | 统一预测头入口 | `style="<HeadStyle>"` | `stable` | `./onehead.md` |
+| OneLinear | linear | 统一 linear 入口 | `style="<LinearStyle>"` | `stable` | `./onelinear.md` |
+| OneDiffusion | diffusion | 统一 diffusion 入口 | `style="<DiffusionStyle>"` | `stable` | `./onediffusion.md` |
+| OneMSA | msa | 统一 MSA 模块入口 | `style="<MSAStyle>"` | `stable` | `./onemsa.md` |
+| OnePairformer | pairformer | 统一 Pairformer 入口 | `style="<PairformerStyle>"` | `stable` | `./onepairformer.md` |
 | OnePooling | pooling | 统一图池化入口 | `style="<PoolingStyle>"` | `stable` | `./onepooling.md` |
 | OneProcessor | processor | 统一图处理器入口 | `style="<ProcessorStyle>"` | `stable` | `./oneprocessor.md` |
 | OneEdge | edge | 统一边更新入口 | `style="<EdgeStyle>"` | `stable` | `./oneedge.md` |
@@ -90,6 +94,40 @@
 | MeshNodeBlock | node | `OneNode` | `MeshNodeBlock` | DGL 图节点更新 | `stable` | `./onenode.md` |
 | BistrideGraphMessagePassing | processor | `OneProcessor` | `BistrideGraphMessagePassing` | 多尺度图 message passing | `stable` | `./oneprocessor.md` |
 | GroupEquivariantConv2d/3d | equivariant | `OneEquivariant` | `GroupEquivariantConv*d` | GFNO 等变卷积 stem | `stable` | `./oneequivariant.md` |
+| AlphaFoldJAXEvoformer | transformer | `OneTransformer` | `AlphaFoldJAXEvoformer` | AF2 JAX Evoformer trunk | `contract_only` | `./alphafoldjaxcomponents.md` |
+| AlphaFoldJAXStructureModule | decoder | `OneDecoder` | `AlphaFoldJAXStructureModule` | AF2 JAX single/pair -> atom37 | `contract_only` | `./alphafoldjaxcomponents.md` |
+| OpenFoldEvoformer | transformer | `OneTransformer` | `OpenFoldEvoformer` | OpenFold MSA + pair trunk | `contract_only` | `./openfoldevoformer.md` |
+| OpenFoldStructureModule | decoder | `OneDecoder` | `OpenFoldStructureModule` | OpenFold single/pair -> atom37 | `contract_only` | `./openfoldstructuremodule.md` |
+| AlphaFold3JAXPairformer | pairformer | `OnePairformer` | `AlphaFold3JAXPairformer` | AF3 JAX Pairformer trunk | `contract_only` | `./alphafold3jaxcomponents.md` |
+| AlphaFold3JAXDiffusionHead | diffusion | `OneDiffusion` | `AlphaFold3JAXDiffusionHead` | AF3 JAX atom diffusion samples | `contract_only` | `./alphafold3jaxcomponents.md` |
+| SimpleFoldFoldingDiT | transformer | `OneTransformer` | `SimpleFoldFoldingDiT` | noised atom coords + feats -> velocity | `contract_only` | `./simplefoldfoldingdit.md` |
+| RFdiffusionSampler | diffusion | `OneDiffusion` | `RFdiffusionSampler` | contig/PDB/Hydra config -> backbone samples | `contract_only` | `./rfdiffusioncomponents.md` |
+| SE3Transformer | equivariant | `OneEquivariant` | `SE3Transformer` | DGL graph + fiber features + rel_pos | `component_only` | `./se3transformercomponents.md` |
+| ProteinMPNNFeatureEncoder | encoder | `OneEncoder` | `ProteinMPNNFeatureEncoder` | backbone kNN graph features | `contract_only` | `./proteinmpnncomponents.md` |
+| ProteinMPNNSequenceDecoder | decoder | `OneDecoder` | `ProteinMPNNSequenceDecoder` | backbone graph -> sequence log probs | `contract_only` | `./proteinmpnncomponents.md` |
+| PTDiTDiffusionTransformer | transformer | `OneTransformer` | `PTDiTDiffusionTransformer` | ProToken + AA latent DiT | `contract_only` | `./ptditcomponents.md` |
+| ProTokenVQEncoder | encoder | `OneEncoder` | `ProTokenVQEncoder` | PDB features -> VQ structure tokens | `contract_only` | `./protokencomponents.md` |
+| ProTokenStructureDecoder | decoder | `OneDecoder` | `ProTokenStructureDecoder` | VQ codes -> reconstructed structure | `contract_only` | `./protokencomponents.md` |
+| Evo2Mamba | transformer | `OneTransformer` | `Evo2Mamba` | genome tokens -> logits/loss | `contract_only` | `./evo2mamba.md` |
+| MolSculptorGraphEncoder | encoder | `OneEncoder` | `MolSculptorGraphEncoder` | SMILES / molecule graph -> latent | `contract_only` | `./molsculptorcomponents.md` |
+| MolSculptorSMILESDecoder | decoder | `OneDecoder` | `MolSculptorSMILESDecoder` | graph latent -> generated SMILES | `contract_only` | `./molsculptorcomponents.md` |
+| ProtenixInputFeatureEmbedder | embedding | `OneEmbedding` | `ProtenixInputFeatureEmbedder` | Protenix feature dict -> token single input | `stable` | `./protenixembedding.md` |
+| ProtenixAtomAttentionEncoder | encoder | `OneEncoder` | `ProtenixAtomAttentionEncoder` | atom features / noisy coords -> token + atom skip | `stable` | `./protenixatomattentionencoder.md` |
+| ProtenixMSAModule | msa | `OneMSA` | `ProtenixMSAModule` | MSA tensor + pair representation | `stable` | `./protenixmsa.md` |
+| ProtenixPairformerStack | pairformer | `OnePairformer` | `ProtenixPairformerStack` | single + pair token representation | `stable` | `./protenixpairformer.md` |
+| ProtenixDiffusionModule | diffusion | `OneDiffusion` | `ProtenixDiffusionModule` | noisy atom coords + trunk embeddings | `stable` | `./protenixdiffusion.md` |
+| ProtenixAtomAttentionDecoder | decoder | `OneDecoder` | `ProtenixAtomAttentionDecoder` | token diffusion representation + atom skip -> coordinate update | `stable` | `./protenixdecoder.md` |
+
+## 材料化学 / 原子势函数组件层
+
+这些组件服务于材料化学、计算材料、原子势函数、MLIP fine-tuning 与原子模拟任务。它们通常由模型训练脚本、calculator、Hydra 配置或模型专用工厂间接调用，不一定经过 `One*` wrapper。
+
+当前只登记 MACE 与 UMA，不代表材料组件层只支持这两类。新增材料模型时，在这里追加 `<Model> material stack` 行，并新增 `./<model_route>_material_stack.md`。
+
+| 组件 | 模块族 | 调用入口 | 注册名 | 输入形态摘要 | 当前状态 | 契约卡片 |
+|---|---|---|---|---|---|---|
+| MACE material stack | materials / mace | `onescience.models.mace.MACE` | `MACE` / `ScaleShiftMACE` | PyG-style `AtomicData` / MACE Batch | `stable` | `./mace_material_stack.md` |
+| UMA material stack | materials / uma | `HydraModel` | `hydra` + `escnmd_backbone` | custom_stack `AtomicData` / Hydra dataloader | `stable` | `./uma_material_stack.md` |
 
 ## 底层通用模块层
 
@@ -242,13 +280,115 @@
 - GFNO 等 group-equivariant neural operator
 - 需要旋转或反射等变卷积 stem 的结构化网格任务
 - 与 `GSpectralConv*d`、`GroupEquivariantMLP*d` 成套使用的算子主干
+- SE(3) / 群等变特征更新
+- RFdiffusion structure track 的等变图层
 
 优先顺序：
 
 1. 先确认模型目标是否确实是 GFNO 或等变神经算子
 2. 再看 `OneEquivariant`
 3. 同时核对 `OneFourier` 中的 `GSpectralConv*d` 和 `OneMlp` 中的 `GroupEquivariantMLP*d`
-4. 如果只是普通 FNO / U-FNO 对比，不要默认启用等变组件
+4. 如果是 RFdiffusion 内部结构轨道，再看 `se3transformercomponents.md`
+5. 如果只是普通 FNO / U-FNO 对比，不要默认启用等变组件
+
+### biosciences / 生信模型归一组件
+
+适用于：
+
+- 蛋白结构预测、复合物结构预测、蛋白设计、结构 tokenizer、基因组语言模型和小分子设计
+- 需要理解模型内部调用链，并将可拆组件归一到 `One*` 入口
+- 用户明确要求“补充/修改某个生信模型组件”时，需要先确认该组件属于哪个模块族、入口和 `style`
+
+优先顺序：
+
+1. 先看 `../models/model_index.md`，确认任务属于哪个生信模型族
+2. 再读对应模型卡，确认输入协议和框架栈
+3. 再按本索引的模块族读取高层归一组件契约
+4. 如果状态是 `contract_only`，先确认是否只做设计说明，还是需要在源码 registry 中补真实注册
+5. 只有契约不足时，回到源码锚点
+
+推荐分流：
+
+- AF2 JAX 原版推理：`AlphaFoldJAXEvoformer`、`AlphaFoldJAXStructureModule`
+- AF2 PyTorch/OpenFold 训练或微调：`OpenFoldEvoformer`、`OpenFoldStructureModule`
+- AF3 JAX 推理：`AlphaFold3JAXPairformer`、`AlphaFold3JAXDiffusionHead`
+- AF3 PyTorch/OneScience 组件化结构预测：优先看 Protenix 的 6 个高层入口
+- SimpleFold flow matching：`SimpleFoldFoldingDiT`
+- RFdiffusion 骨架生成：`RFdiffusionSampler`，只有改等变结构轨道时再看 `SE3Transformer`
+- ProteinMPNN inverse folding：`ProteinMPNNFeatureEncoder`、`ProteinMPNNSequenceDecoder`
+- PT-DiT / ProToken 协同设计：`PTDiTDiffusionTransformer`、`ProTokenVQEncoder`、`ProTokenStructureDecoder`
+- Evo2 genome LM：`Evo2Mamba`
+- MolSculptor 小分子设计：`MolSculptorGraphEncoder`、`MolSculptorSMILESDecoder`
+
+补充约束：
+
+- 生信 contracts 不再使用 `direct_model_internal / not_registered` 作为主字段；即使源码尚未注册，也要给出目标 `One*` 入口和 `style`
+- `contract_only` 表示 skill 层已归一，但源码 registry 尚未保证可直接实例化；实现代码时必须先补 wrapper / registry 或继续走原模型入口
+- 不要把 `contract_only` 的 JAX/Flax 组件当作已经可用的 PyTorch `One*` 模块
+- 多个生信模型都可能叫 diffusion、transformer、pairformer，但 feature dict、坐标布局和训练目标不兼容
+- 如果模型卡明确写了“component_only”或“不适合轻量拆解”，默认只作为上下文参考，不生成替换组件
+
+### Protenix / AF3 风格 PyTorch 组件
+
+适用于：
+
+- Protenix / AF3 风格结构预测
+- atom-token 表征桥接
+- MSA 表征更新
+- pair representation trunk
+- diffusion 坐标生成
+- 局部 atom attention encoder / decoder
+- pair-bias attention 与 diffusion transformer
+- Protenix 专用线性投影和初始化
+
+优先顺序：
+
+1. 先看 `Protenix` 模型卡，确认调用链路
+2. 默认只看高层 6 个入口：`ProtenixInputFeatureEmbedder`、`ProtenixAtomAttentionEncoder`、`ProtenixMSAModule`、`ProtenixPairformerStack`、`ProtenixDiffusionModule`、`ProtenixAtomAttentionDecoder`
+3. 再看对应 `OneEmbedding` / `OneEncoder` / `OneMSA` / `OnePairformer` / `OneDiffusion` / `OneDecoder` wrapper
+4. 只有明确要改底层 attention、transformer、linear 或 template 分支时，再看 `protenixattention.md`、`protenixtransformer.md`、`protenixlinear.md`、`protenixrelativepositionencoding.md`
+5. 只有需要新增注册名或改底层初始化时，再回到具体源码
+
+补充约束：
+
+- `msa`、`pairformer`、`diffusion` 是生信结构模型语义，不要和天气里的 `fuser`、`sample`、`recovery` 混作同一类组件
+- `OneLinear` 与 `OneFC` 是不同入口，Protenix 线性层优先走 `OneLinear`
+- `ProtenixAtomAttentionEncoder` 与 `ProtenixAtomAttentionDecoder` 成对服务于 atom-token 桥接，不能当作通用 encoder/decoder 模板
+- `ProtenixAttentionPairBiasWithLocalAttn` 与 `ProtenixAtomTransformer` 的 `n_queries/n_keys` 需要和 atom encoder/decoder 保持一致
+- Protenix 底层契约仍保留，但不再作为生信任务默认检索入口，避免把生信方向过度收束到 Protenix
+### materials / model-specific stacks
+
+适用于：
+
+- 原子势函数训练与微调
+- 能量、力、应力预测
+- ASE/LAMMPS/MD/结构弛豫等材料下游任务
+
+优先顺序：
+
+1. 先看对应模型卡：`../models/<model_route>.md`
+2. 再看对应数据卡：`../datapipes/materials_<model_route>.md`
+3. 再看本目录中的材料组件契约：`./<model_route>_material_stack.md`
+4. 只有当模型卡和契约无法覆盖时，再回到 `./onescience/src/onescience/modules/` 源码
+
+未登记的新材料模型：
+
+- 先参考 `../models/mace.md` 和 `./mace_material_stack.md` 的结构提取组件职责
+- 不要把 MACE 的具体 block 名、E0s 或 extxyz 协议硬套给新模型
+- 在新增契约前，明确该模型的入口、注册名、输入 batch、输出 dict 和风险点
+
+## 材料组件契约新增接口
+
+新增 `<model_route>_material_stack.md` 时至少写清：
+
+- 组件族和调用入口
+- 子组件职责表
+- 输入契约
+- 输出契约
+- 常见修改点
+- 风险点
+- 推荐检索顺序
+- 源码锚点
 
 ## 典型检索顺序
 
@@ -266,6 +406,48 @@
 3. 非结构点云转规则潜网格任务优先检查 `mlp / fourier`，特别是 `GeoSpectralConv*d`
 4. 显式图任务优先检查 `mlp / edge / node / processor / pooling`
 5. 等变神经算子任务优先检查 `equivariant / fourier / mlp`
+
+对于生信任务，推荐先按模型族分流：
+
+1. AF2 JAX 原版推理：`alphafold.md` -> `alphafoldjaxcomponents.md`
+2. AF2 PyTorch/OpenFold：`openfold.md` -> `openfoldevoformer.md` / `openfoldstructuremodule.md`
+3. AF3 JAX 推理：`alphafold3.md` -> `alphafold3jaxcomponents.md`
+4. AF3 PyTorch/OneScience：`protenix.md` -> Protenix 高层 6 个入口
+5. flow matching 折叠：`simplefold.md` -> `simplefoldfoldingdit.md`
+6. 骨架生成：`rfdiffusion.md` -> `rfdiffusioncomponents.md`
+7. inverse folding：`proteinmpnn.md` -> `proteinmpnncomponents.md`
+8. ProToken / PT-DiT：`protoken.md` / `pt_dit.md` -> 对应契约
+9. genome LM：`evo2.md` -> `evo2mamba.md`
+10. 小分子设计：`molsculptor.md` -> `molsculptorcomponents.md`
+
+进入契约卡后，必须继续看卡片里的 `One* 归一映射` 或基本信息三元组：
+
+- `所属模块族`
+- `统一入口`
+- `注册名`
+- `注册状态`
+
+如果注册状态为 `contract_only`，不要直接写 `OneXXX(style=...)` 当作已可运行源码；先补适配注册，或继续沿用模型原生入口。
+
+对于 Protenix / AF3 风格 PyTorch 生物分子结构预测，推荐优先顺序：
+
+1. `embedding`
+2. `encoder`
+3. `msa`
+4. `pairformer`
+5. `attention`
+6. `transformer`
+7. `diffusion`
+8. `decoder`
+9. `linear`
+
+在某个模块族内部，先确认：
+
+- feature dict 是否包含该模块需要的字段
+- `N_token`、`N_atom` 与 atom-token 映射是否一致
+- `c_s`、`c_z`、`c_s_inputs` 是否与模型配置一致
+- `n_queries/n_keys` 是否与 atom 局部窗口配置一致
+- 当前任务是完整模型推理、adapter 适配，还是替换某个内部模块
 
 在某个模块族内部，再根据以下条件筛选：
 
@@ -301,6 +483,8 @@
 - `stable`
 - `in_progress`
 - `legacy_split`
+- `contract_only`
+- `component_only`
 
 推荐新增流程：
 
@@ -316,11 +500,9 @@
 
 ## 检索约定
 
-源码锚点统一使用 `./onescience/...` 相对路径。
+源码锚点统一使用 `{onescience_path}/onescience/...` 路径。
 
 默认假设：
-
-- ``
 - `onescience/`
 
-位于同一工作目录下。
+位于同一工作目录下，若未在同一目录下，则将{onescience_path}设置为与'onescience-coder'技能同级目录。

@@ -1,0 +1,39 @@
+{
+  "example_id": "ssh_slurm_partition_not_accessible",
+  "probe_channel": "ssh_slurm",
+  "execution_mode": "remote_slurm",
+  "access_mode": "ssh",
+  "semantic_environment_hints": {
+    "accelerator_kind": "gpu",
+    "partition": "gpuq-old"
+  },
+  "probe_target": {
+    "host": "login-gpu",
+    "partition": "gpuq-old"
+  },
+  "requested_checks": [
+    "ssh_connectivity",
+    "slurm_cli",
+    "partition"
+  ],
+  "probe_status": "blocked",
+  "observed_environment_facts": {
+    "ssh_connectivity": true,
+    "scheduler_type": "slurm",
+    "sbatch_available": true,
+    "sinfo_available": true,
+    "partition_accessible": false,
+    "partition_probe": "sinfo"
+  },
+  "normalized_output": {
+    "hardware_profile_ready": false,
+    "expected_backend_id": "slurm_gpu",
+    "execution_readiness": "blocked_by_host",
+    "blocking_reason": "partition_not_accessible"
+  },
+  "safety": {
+    "read_only": true,
+    "submitted_job": false,
+    "modified_runtime_config": false
+  }
+}

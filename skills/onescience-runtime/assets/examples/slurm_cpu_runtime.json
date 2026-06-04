@@ -2,11 +2,20 @@
   "runtime": {
     "mode": "slurm",
     "backend_id": "slurm_cpu",
+    "execution_profile": {
+      "execution_mode": "remote_slurm",
+      "access_mode": "ssh",
+      "runtime_profile_ref": "remote_slurm_cpu",
+      "install_profile_ref": "cpu_remote_install_profile"
+    },
     "target": {
       "scheduler_type": "slurm",
       "platform_type": "cluster",
+      "cpu_arch": "x86_64",
+      "cpu_vendor": "amd",
       "accelerator_kind": "cpu",
-      "accelerator_vendor": "none"
+      "accelerator_vendor": "none",
+      "node_scope": "single_node"
     },
     "environment": {
       "cpu": {
@@ -18,7 +27,8 @@
         "vendor": "none",
         "visibility_env": "NONE",
         "distributed_backend": "gloo",
-        "launch_mode": "python"
+        "launch_mode": "python",
+        "distributed_mode": "single"
       }
     },
     "cluster": {

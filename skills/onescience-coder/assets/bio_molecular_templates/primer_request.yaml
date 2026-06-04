@@ -1,0 +1,38 @@
+assay: qPCR
+template:
+  id: target_gene_or_amplicon
+  source: inline_sequence_or_fasta_path
+  sequence: ""
+organism_or_reference: ""
+target_region:
+  start_0based: null
+  length_bp: null
+excluded_regions:
+  - start_0based: null
+    length_bp: null
+    reason: SNP_or_repeat_or_homology
+product_size_range:
+  - [70, 200]
+primer_constraints:
+  number_to_return: 5
+  min_size: 18
+  opt_size: 20
+  max_size: 25
+  min_tm_c: 57
+  opt_tm_c: 60
+  max_tm_c: 63
+  min_gc_percent: 40
+  max_gc_percent: 60
+  max_poly_x: 4
+probe_constraints:
+  required: false
+  probe_type: TaqMan
+  min_tm_c: 65
+  opt_tm_c: 68
+  max_tm_c: 70
+specificity_check:
+  method: local_blast_or_in_silico_pcr
+  database_or_reference: ""
+outputs:
+  candidate_table: primer_candidates.tsv
+  qc_report: primer_qc.md

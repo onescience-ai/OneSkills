@@ -1,0 +1,48 @@
+{
+  "example_id": "ssh_slurm_remote_path_not_writable",
+  "probe_channel": "ssh_slurm",
+  "execution_mode": "remote_slurm",
+  "access_mode": "ssh",
+  "semantic_environment_hints": {
+    "accelerator_kind": "gpu",
+    "partition": "gpuq",
+    "remote_work_dir": "/project/readonly/run"
+  },
+  "probe_target": {
+    "host": "login-gpu",
+    "partition": "gpuq",
+    "remote_work_dir": "/project/readonly/run"
+  },
+  "requested_checks": [
+    "ssh_connectivity",
+    "slurm_cli",
+    "partition",
+    "accelerator_visibility",
+    "python_torch",
+    "path_readiness"
+  ],
+  "probe_status": "blocked",
+  "observed_environment_facts": {
+    "ssh_connectivity": true,
+    "scheduler_type": "slurm",
+    "partition_accessible": true,
+    "accelerator_kind": "gpu",
+    "accelerator_vendor": "nvidia",
+    "driver_ready": true,
+    "python_ready": true,
+    "torch_ready": true,
+    "work_dir_writable": false,
+    "path_probe": "ssh_test_write"
+  },
+  "normalized_output": {
+    "hardware_profile_ready": true,
+    "expected_backend_id": "slurm_gpu",
+    "execution_readiness": "blocked_by_host",
+    "blocking_reason": "remote_path_not_writable"
+  },
+  "safety": {
+    "read_only": false,
+    "submitted_job": false,
+    "modified_runtime_config": false
+  }
+}

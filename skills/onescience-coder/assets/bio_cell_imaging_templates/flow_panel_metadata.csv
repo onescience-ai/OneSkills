@@ -1,0 +1,4 @@
+sample_id,file_path,condition,batch,channel,marker,fluorophore_or_metal,transform,cofactor,parent_gate,gate_name,control_type
+S1,data/S1.fcs,control,batch1,FL1-A,CD3,FITC,logicle,,singlets,T_cells,FMO
+S1,data/S1.fcs,control,batch1,FL2-A,CD4,PE,logicle,,T_cells,CD4_T,FMO
+S1,data/S1.fcs,control,batch1,Time,Time,,none,,root,acquisition_qc,

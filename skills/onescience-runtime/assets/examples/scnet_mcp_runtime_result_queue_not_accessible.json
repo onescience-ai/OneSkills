@@ -1,0 +1,30 @@
+{
+  "example_id": "scnet_mcp_runtime_result_queue_not_accessible",
+  "execution_channel": "scnet_mcp",
+  "execution_mode": "remote_direct",
+  "access_mode": "cloud_api",
+  "submission_target": {
+    "region": "华东一区【昆山】",
+    "queue": "kshdnormal"
+  },
+  "remote_context": {
+    "remote_path": "run_scnet_probe.py",
+    "command": "python3 run_scnet_probe.py --steps 2"
+  },
+  "task_id": null,
+  "submission_state": "not_started",
+  "execution_state": "blocked",
+  "job_status": "unknown",
+  "local_log_dir": ".onescience/logs/scnet-queue-not-accessible",
+  "synced_logs": [],
+  "log_state": "not_started",
+  "sync_status": "not_started",
+  "blocking_reason": "queue_not_accessible",
+  "failure_reason": "queue_not_accessible",
+  "stderr_summary": "queue not accessible: the selected queue is unavailable or not accessible in the current region",
+  "observations": {
+    "status_source": "not_available",
+    "log_readiness": "unknown"
+  },
+  "next_action": "onescience-runtime"
+}

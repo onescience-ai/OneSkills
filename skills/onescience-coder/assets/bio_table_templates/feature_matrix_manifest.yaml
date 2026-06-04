@@ -1,0 +1,26 @@
+matrix:
+  path: matrix.tsv
+  orientation: feature_by_sample
+  delimiter: tab
+  value_type: raw_counts
+  transformed: false
+features:
+  id_type: ensembl_gene_id
+  annotation_path: features.tsv
+  allow_duplicates: false
+metadata:
+  sample_sheet: samples.csv
+  sample_id_column: sample_id
+  required_columns: [condition, batch, replicate]
+normalization:
+  already_normalized: false
+  method: ""
+containers:
+  h5ad: ""
+  layer_for_counts: counts
+downstream:
+  workflow: rnaseq-differential-expression
+  contrast_file: contrast.yaml
+outputs:
+  validated_matrix: matrix.validated.tsv
+  validation_report: matrix_validation.md

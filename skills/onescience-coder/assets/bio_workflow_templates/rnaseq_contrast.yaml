@@ -1,0 +1,17 @@
+design_formula: "~ batch + condition"
+contrast:
+  variable: condition
+  numerator: treated
+  denominator: control
+filters:
+  min_total_counts: 10
+  padj_threshold: 0.05
+  abs_log2fc_threshold: 1.0
+outputs:
+  all_results: deseq2_all_results.csv
+  significant_results: deseq2_significant.csv
+  figures:
+    - pca.png
+    - volcano.png
+    - ma_plot.png
+    - top_genes_heatmap.png

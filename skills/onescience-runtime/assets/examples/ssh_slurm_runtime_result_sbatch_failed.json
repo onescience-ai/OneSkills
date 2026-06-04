@@ -1,6 +1,8 @@
 {
   "example_id": "ssh_slurm_runtime_result_sbatch_failed",
   "execution_channel": "ssh_slurm",
+  "execution_mode": "remote_slurm",
+  "access_mode": "ssh",
   "submission_target": {
     "host": "login-kunshan",
     "partition": "hpctest01",
@@ -13,10 +15,14 @@
     "command": "sbatch slurm_submit.sh"
   },
   "job_id": null,
+  "submission_state": "failed",
+  "execution_state": "failed",
   "job_status": "failed",
   "local_log_dir": ".onescience/logs/job-submit-failed",
   "synced_logs": [],
+  "log_state": "not_started",
   "sync_status": "not_started",
+  "blocking_reason": "sbatch_submission_failed",
   "failure_reason": "sbatch_submission_failed",
   "stderr_summary": "sbatch: error: Batch job submission failed: Invalid account or account/partition combination specified",
   "next_action": "onescience-runtime"

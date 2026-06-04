@@ -1,14 +1,13 @@
 {
   "agent": "codex",
-  "skills_dir": ".codex/oneskills/skills",
-  "integration_targets": [
-    {
-      "source": "integrations/generic-agent.md",
-      "target": ".codex/oneskills/integrations/generic-agent.md"
-    },
-    {
-      "source": "integrations/codex/README.md",
-      "target": ".codex/oneskills/integrations/codex/README.md"
-    }
-  ]
+  "namespace_root": ".codex/oneskills",
+  "integration_sources": [
+    "generic-agent.md",
+    "codex/README.md"
+  ],
+  "bridge": {
+    "kind": "user_skill_links",
+    "root": "~/.codex/skills",
+    "state_path": "~/.codex/.oneskills/bridge-state.json"
+  }
 }

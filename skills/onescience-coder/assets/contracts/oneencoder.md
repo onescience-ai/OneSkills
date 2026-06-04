@@ -15,6 +15,7 @@
 
 - 调用层通过 `style` 选择具体 encoder 实现
 - 当前天气相关模型最常用的是 `FengWuEncoder`
+- 当前生信相关模型中，Protenix 通过它调用 `ProtenixRelativePositionEncoding`、`ProtenixAtomAttentionEncoder`
 - wrapper 本身不定义固定 shape，真实规则来自具体 encoder
 
 ## 支持输入
@@ -48,11 +49,17 @@
 ## 典型调用位置
 
 - FengWu 主模型
+- Protenix 主模型与 diffusion conditioning
+- Protenix input feature embedder 内部 atom attention encoder
 
 ## 典型参数
 
 - FengWu 单分支编码
   - `style="FengWuEncoder"`
+- Protenix 相对位置编码
+  - `style="ProtenixRelativePositionEncoding"`
+- Protenix 原子注意力编码器
+  - `style="ProtenixAtomAttentionEncoder"`
 
 ## CFD / 图模型补充
 
@@ -82,11 +89,13 @@
 
 - `OneEncoder` 只是入口，不表示所有 encoder 可互换
 - 只看 wrapper 无法判断输出是 token、grid 还是多分支结构
+- Protenix atom encoder 处理 token/atom 桥接，不等同于普通图节点编码器
 - `style` 未注册时会直接报错
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/encoder/oneencoder.py`
-- `./onescience/src/onescience/modules/encoder/fengwuencoder.py`
-- `./onescience/src/onescience/modules/encoder/unet_encoder.py`
-- `./onescience/src/onescience/modules/encoder/graphvit_encoder.py`
+- `{onescience_path}/onescience/src/onescience/modules/encoder/oneencoder.py`
+- `{onescience_path}/onescience/src/onescience/modules/encoder/fengwuencoder.py`
+- `{onescience_path}/onescience/src/onescience/modules/encoder/unet_encoder.py`
+- `{onescience_path}/onescience/src/onescience/modules/encoder/graphvit_encoder.py`
+- `{onescience_path}/onescience/src/onescience/modules/encoder/protenixencoding.py`

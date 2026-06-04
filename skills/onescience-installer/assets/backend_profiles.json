@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "id": "dcu_remote_install",
     "lifecycle_status": "stable",
@@ -24,18 +24,91 @@
     },
     "verify": {
       "commands": [
-        "python -c 'import torch; print(torch.__version__)'",
-        "python -c 'import onescience; print(onescience.__version__)'"
-      ]
+        "pip list | grep torch",
+        "pip list | grep onescience"
+      ],
+      "pass_criteria": "输出同时包含 torch 与 onescience 相关包行"
     },
     "notes": [
-      "Current stable installer backend",
-      "Suitable for the Slurm + AMD DCU user-space installation path"
+      "当前稳定 installer backend",
+      "适用于 slurm + amd dcu 的 user-space 安装链路"
+    ]
+  },
+  {
+    "id": "dcu_local_install",
+    "lifecycle_status": "stable",
+    "supported_hardware_backends": [
+      "slurm_dcu"
+    ],
+    "installer_scope": "user_space_only",
+    "defaults": {
+      "python_version": "3.11",
+      "env_name": "onescience311"
+    },
+    "bootstrap": {
+      "shell_init": "source ~/.bashrc",
+      "module_sequence": [
+        "sghpcdas/25.6",
+        "sghpc-mpi-gcc/26.3"
+      ],
+      "fallback_activation_command": "source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate"
+    },
+    "environment": {
+      "create_env_template": "conda create -n {env_name} python={python_version} -y",
+      "activate_env_template": "conda activate {env_name}"
+    },
+    "verify": {
+      "commands": [
+        "pip list | grep torch",
+        "pip list | grep onescience"
+      ],
+      "pass_criteria": "输出同时包含 torch 与 onescience 相关包行"
+    },
+    "notes": [
+      "local_slurm 登录节点场景的稳定 installer backend",
+      "适用于已在 HPC 登录节点内直接调用 sbatch 的 DCU user-space 安装链路"
     ]
   },
   {
     "id": "gpu_remote_install",
-    "lifecycle_status": "planned",
+    "lifecycle_status": "stable",
+    "supported_hardware_backends": [
+      "slurm_gpu",
+      "slurm_gpu_multinode_torchrun"
+    ],
+    "installer_scope": "user_space_only",
+    "defaults": {
+      "python_version": "3.11",
+      "env_name": "onescience311"
+    },
+    "bootstrap": {
+      "shell_init": "source ~/.bashrc",
+      "module_sequence": [
+        "cuda/12.1",
+        "gcc/11.2"
+      ],
+      "fallback_activation_command": "none"
+    },
+    "environment": {
+      "create_env_template": "conda create -n {env_name} python={python_version} -y",
+      "activate_env_template": "conda activate {env_name}"
+    },
+    "verify": {
+      "commands": [
+        "pip list | grep torch",
+        "pip list | grep onescience"
+      ],
+      "pass_criteria": "输出同时包含 torch 与 onescience 相关包行"
+    },
+    "notes": [
+      "当前稳定 installer backend",
+      "适用于 slurm + nvidia gpu 的 user-space 安装链路",
+      "多机 GPU backend 仍可复用这份骨架，但是否放开执行仍以各自的 support_matrix.installer 为准"
+    ]
+  },
+  {
+    "id": "gpu_local_install",
+    "lifecycle_status": "stable",
     "supported_hardware_backends": [
       "slurm_gpu"
     ],
@@ -58,13 +131,14 @@
     },
     "verify": {
       "commands": [
-        "python -c 'import torch; print(torch.__version__)'",
-        "python -c 'import onescience; print(onescience.__version__)'"
-      ]
+        "pip list | grep torch",
+        "pip list | grep onescience"
+      ],
+      "pass_criteria": "输出同时包含 torch 与 onescience 相关包行"
     },
     "notes": [
-      "Planned installer backend profile",
-      "Currently only a bootstrap skeleton for CUDA clusters and not an enabled support_matrix.installer path"
+      "local_slurm 登录节点场景的稳定 installer backend",
+      "适用于已在 HPC 登录节点内直接调用 sbatch 的 NVIDIA GPU user-space 安装链路"
     ]
   }
 ]

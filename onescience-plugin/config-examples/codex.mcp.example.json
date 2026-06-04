@@ -6,7 +6,7 @@
         "SCNET_USERNAME": "",
         "SCNET_ACCESS_KEY": "",
         "SCNET_SECRET_KEY": "",
-        "SCNET_DEFAULT_REGION": "\u6838\u5fc3\u8282\u70b9\u3010\u5206\u533a\u4e00\u3011",
+        "SCNET_DEFAULT_REGION": "核心节点【分区一】",
         "SCNET_USE_REAL_API": "true",
         "SCNET_WORK_DIR": "",
         "SCNET_DEFAULT_QUEUE": ""

@@ -69,6 +69,6 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/sample/fuxidownsample.py`
-- `./onescience/src/onescience/modules/sample/onesample.py`
-- `./onescience/src/onescience/modules/transformer/fuxitransformer.py`
+- `{onescience_path}/onescience/src/onescience/modules/sample/fuxidownsample.py`
+- `{onescience_path}/onescience/src/onescience/modules/sample/onesample.py`
+- `{onescience_path}/onescience/src/onescience/modules/transformer/fuxitransformer.py`

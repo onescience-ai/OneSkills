@@ -16,6 +16,7 @@
 - 调用层通过 `style` 选择具体等变实现
 - 当前 CFD 神经算子中主要用于 `GFNO`
 - 常与 `OneFourier(style="GSpectralConv*d")` 和 `OneMlp(style="GroupEquivariantMLP*d")` 配合使用
+- 生信契约中把 `SE3Transformer` 归一到该入口作为目标注册名；当前需先确认源码 registry 是否已补适配
 
 ## 支持输入
 
@@ -52,11 +53,13 @@
 
 - 与普通卷积相比，等变层内部可能展开 group 维度，后续层必须使用兼容的 `GSpectralConv*d` 或 `GroupEquivariantMLP*d`
 - `reflection` 设置需要在同一 GFNO stem 中保持一致
+- 若使用生信 `SE3Transformer` 契约，需要先补 `style="SE3Transformer"` 的适配注册
 
 ## 典型调用位置
 
 - `GFNO` 的 lifting layer
 - `GFNO` 的 residual 1x1 group convolution
+- RFdiffusion 的 SE(3) 等变结构轨道适配
 
 ## 典型参数
 
@@ -66,15 +69,20 @@
   - `out_channels=width`
   - `kernel_size=1`
   - `reflection=False`
+- SE(3) 等变图层目标契约
+  - `style="SE3Transformer"`
 
 ## 风险点
 
 - `OneEquivariant` 不适合直接替代普通 CNN 卷积；它要求后续层理解 group 通道布局
 - structured 与 unstructured 分支的输入形态不同，只有进入规则网格 stem 后才适合使用 group equivariant conv
 - 如果只想做普通 FNO 对比，不应默认打开 GFNO 的等变组件
+- `SE3Transformer` 目前是 skill 归一目标名，不表示源码 registry 已可直接实例化
+- SE(3) fiber feature 的 degree/channel 约束必须看 `se3transformercomponents.md`
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/equivariant/oneequivariant.py`
-- `./onescience/src/onescience/modules/equivariant/group_conv.py`
-- `./onescience/src/onescience/models/cfd_benchmark/GFNO.py`
+- `{onescience_path}/onescience/src/onescience/modules/equivariant/oneequivariant.py`
+- `{onescience_path}/onescience/src/onescience/modules/equivariant/group_conv.py`
+- `{onescience_path}/onescience/src/onescience/models/cfd_benchmark/GFNO.py`
+- `{onescience_path}/onescience/src/onescience/models/se3_transformer/transformer.py`

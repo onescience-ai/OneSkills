@@ -1,0 +1,37 @@
+{
+  "example_id": "scnet_mcp_queue_accessible",
+  "probe_channel": "scnet_mcp",
+  "execution_mode": "remote_direct",
+  "access_mode": "cloud_api",
+  "semantic_environment_hints": {
+    "region": "华东一区【昆山】",
+    "queue": "kshdnormal"
+  },
+  "probe_target": {
+    "region": "华东一区【昆山】",
+    "queue": "kshdnormal"
+  },
+  "requested_checks": [
+    "mcp_service",
+    "region_list",
+    "queue_access"
+  ],
+  "probe_status": "succeeded",
+  "observed_environment_facts": {
+    "mcp_service_available": true,
+    "region_accessible": true,
+    "queue_accessible": true,
+    "queue_source": "scnet_get_resources"
+  },
+  "normalized_output": {
+    "hardware_profile_ready": true,
+    "expected_backend_id": "scnet_mcp_direct",
+    "execution_readiness": "ready_to_execute",
+    "blocking_reason": "none"
+  },
+  "safety": {
+    "read_only": true,
+    "submitted_job": false,
+    "modified_runtime_config": false
+  }
+}

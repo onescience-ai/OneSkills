@@ -1,0 +1,28 @@
+dataset:
+  roi_manifest: roi_manifest.csv
+  image_format: OME-TIFF
+  pixel_size_um: null
+marker_panel:
+  nuclear_markers: [DNA1, DNA2]
+  membrane_markers: []
+  phenotyping_markers: []
+preprocessing:
+  hot_pixel_removal: true
+  channel_normalization: percentile_or_control_based
+  tissue_mask: true
+segmentation:
+  method: Cellpose_or_Mesmer_or_watershed
+  nucleus_channel: ""
+  membrane_channel: ""
+phenotyping:
+  method: marker_rules_or_clustering
+  marker_thresholds: {}
+spatial_analysis:
+  neighbor_radius_um: 20
+  tests:
+    - neighborhood_enrichment
+    - nearest_neighbor
+outputs:
+  cell_table: cells.tsv
+  mask_dir: masks/
+  qc_report: imc_qc.md

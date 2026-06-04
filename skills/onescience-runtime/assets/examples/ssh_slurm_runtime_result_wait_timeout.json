@@ -1,6 +1,8 @@
 {
   "example_id": "ssh_slurm_runtime_result_wait_timeout",
   "execution_channel": "ssh_slurm",
+  "execution_mode": "remote_slurm",
+  "access_mode": "ssh",
   "submission_target": {
     "host": "login-kunshan",
     "partition": "hpctest01",
@@ -13,9 +15,12 @@
     "command": "sbatch slurm_submit.sh"
   },
   "job_id": "202605010002",
+  "submission_state": "submitted",
+  "execution_state": "running_or_unknown",
   "job_status": "running_or_unknown",
   "local_log_dir": ".onescience/logs/job-202605010002",
   "synced_logs": [],
+  "log_state": "skipped_timeout",
   "sync_status": "skipped_timeout",
   "next_action": "onescience-runtime"
 }

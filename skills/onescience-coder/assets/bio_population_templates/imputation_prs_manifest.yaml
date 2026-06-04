@@ -1,0 +1,26 @@
+genotype:
+  input_prefix: data/genotypes
+  format: plink_bed_or_vcf
+  genome_build: GRCh38
+  ancestry_context: ""
+reference_panel:
+  name: ""
+  build: GRCh38
+  population_match: ""
+pre_imputation_qc:
+  maf_min: 0.01
+  geno_missing_max: 0.02
+  hwe_p_min: 1.0e-6
+  strand_harmonized: false
+imputation:
+  method: server_or_local
+  info_r2_min: 0.8
+prs:
+  enabled: false
+  summary_stats: ""
+  ld_reference: ""
+  method: clumping_or_ldpred_or_prscs
+outputs:
+  dosage: imputed/
+  qc_report: imputation_qc.md
+  prs_scores: prs_scores.tsv

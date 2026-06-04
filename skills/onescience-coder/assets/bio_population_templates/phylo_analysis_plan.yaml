@@ -1,0 +1,21 @@
+input:
+  alignment: alignment.fasta
+  tree: ""
+  partitions: ""
+taxa_metadata: taxa_metadata.tsv
+analysis:
+  mode: maximum_likelihood
+  model_selection: true
+  substitution_model: auto
+  bootstrap_replicates: 1000
+  bayesian_mcmc: false
+rooting:
+  method: outgroup_or_midpoint
+  outgroup_taxa: []
+visualization:
+  label_metadata_fields: []
+  collapse_low_support: false
+outputs:
+  tree_file: result.tree
+  figure: tree.pdf
+  method_summary: phylo_methods.md

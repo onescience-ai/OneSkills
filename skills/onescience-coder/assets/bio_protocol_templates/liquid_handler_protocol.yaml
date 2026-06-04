@@ -1,0 +1,31 @@
+platform:
+  robot: Opentrons_OT2_or_Flex_or_other
+  api_version: "2.16"
+deck:
+  labware:
+    - slot: "1"
+      type: opentrons_96_tiprack_300ul
+      name: tips_300ul
+    - slot: "2"
+      type: nest_96_wellplate_100ul_pcr_full_skirt
+      name: destination_plate
+pipettes:
+  - mount: left
+    model: p300_single_gen2
+reagents:
+  - name: master_mix
+    source_well: A1
+    dead_volume_ul: 20
+transfers:
+  - source: reservoir:A1
+    destination: plate:A1
+    volume_ul: 20
+    mix_after: [3, 10]
+controls:
+  positive_control_wells: []
+  negative_control_wells: []
+simulation:
+  command: opentrons_simulate protocol.py
+outputs:
+  protocol_file: protocol.py
+  run_log: simulation.log

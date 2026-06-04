@@ -78,6 +78,6 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/transformer/earthtransformer3Dblock.py`
-- `./onescience/src/onescience/modules/transformer/onetransformer.py`
-- `./onescience/src/onescience/modules/attention/earthattention3d.py`
+- `{onescience_path}/onescience/src/onescience/modules/transformer/earthtransformer3Dblock.py`
+- `{onescience_path}/onescience/src/onescience/modules/transformer/onetransformer.py`
+- `{onescience_path}/onescience/src/onescience/modules/attention/earthattention3d.py`

@@ -76,5 +76,5 @@
 
 ## 源码锚点
 
-- `./onescience/src/onescience/modules/sample/panguupsample.py`
-- `./onescience/src/onescience/modules/sample/onesample.py`
+- `{onescience_path}/onescience/src/onescience/modules/sample/panguupsample.py`
+- `{onescience_path}/onescience/src/onescience/modules/sample/onesample.py`
