@@ -1,0 +1,11 @@
+[
+  {
+    "id": "generic",
+    "display_name": "通用 onescience 命令",
+    "description": "通过 onescience 命令执行任意 OneScience 子命令",
+    "notes": [
+      "实际执行的命令形式为：onescience {onescience_subcommand} {onescience_args}",
+      "命令模板见 cli_flow.md 的 §4（远端）或 §7（就地）"
+    ]
+  }
+]
