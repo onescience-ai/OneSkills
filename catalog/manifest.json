@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "package": "oneskills",
+  "version": "2026.06.08",
+  "skills_version": "2026.06.08",
+  "generated_at": "2026-06-08T08:07:30+00:00",
+  "skills": [
+    {
+      "id": "skill:onescience-cli",
+      "name": "onescience-cli",
+      "description": "在远程 SSH/SLURM 环境中通过 `onescience` 命令执行任意 OneScience 子命令。根据命令级别（lightweight/normal/compute）自动选择执行通道。环境初始化由 `onescience-installer` 技能处理，计算节点申请与作业提交由 `onescience-runtime` 技能处理。本技能只负责 `onescience` 命令的调度与执行。",
+      "layer": "cli",
+      "tags": [
+        "cli",
+        "onescience",
+        "execution"
+      ],
+      "location": "skills/onescience-cli/SKILL.md",
+      "source": "official"
+    },
+    {
+      "id": "skill:onescience-coder",
+      "name": "onescience-coder",
+      "description": "面向 OneScience 代码库的实现技能。用于用户已进入实现阶段时分析可行性、选择最小改造路径，并按需完成 DataPipe、模型、组件或配置相关代码实现。若用户只是询问技能路线、规划路径、先不要写代码或尚未授权实现，应先进入 onescience-workflow / onescience-role，而不是直接触发本 skill。",
+      "layer": "codegen",
+      "tags": [
+        "codegen",
+        "onescience",
+        "implementation"
+      ],
+      "location": "skills/onescience-coder/SKILL.md",
+      "source": "official"
+    },
+    {
+      "id": "skill:onescience-installer",
+      "name": "onescience-installer",
+      "description": "在远程 SSH/SLURM 或已进入目标容器/登录节点的环境中安装、修复并验证 OneScience。内部固定执行 discover -> precheck -> install -> verify，消费 execution_profile、hardware_profile、install profile、workspace bootstrap profile 与 install domain profile；用户要求安装 earth/cfd/bio/matchem/all 等环境时使用。",
+      "layer": "installer",
+      "tags": [
+        "installer",
+        "onescience",
+        "environment"
+      ],
+      "location": "skills/onescience-installer/SKILL.md",
+      "source": "official"
+    },
+    {
+      "id": "skill:onescience-role",
+      "name": "onescience-role",
+      "description": "OneScience 内部角色决策层。用于在用户工作流已明确后，从科研工作流程中的人员角色视角识别当前负责人、选择最小角色链，并把角色交接物转交给执行层技能。",
+      "layer": "role",
+      "tags": [
+        "role",
+        "onescience",
+        "collaboration"
+      ],
+      "location": "skills/onescience-role/SKILL.md",
+      "source": "official"
+    },
+    {
+      "id": "skill:onescience-runtime",
+      "name": "onescience-runtime",
+      "description": "【统一运行与基础诊断技能】在代码生成完成后，识别执行模式、做运行前预检、提交任务、轮询状态、同步日志，并基于执行证据给出基础失败分类。不直接处理用户请求，需由上游技能调用。",
+      "layer": "runtime",
+      "tags": [
+        "runtime",
+        "onescience",
+        "execution"
+      ],
+      "location": "skills/onescience-runtime/SKILL.md",
+      "source": "official"
+    },
+    {
+      "id": "skill:onescience-skill",
+      "name": "onescience-skill",
+      "description": "OneScience 执行层编排入口。用于把工作流层或角色层结论路由到最小执行链路；公开执行技能为 `onescience-runtime` 与 `onescience-installer`。",
+      "layer": "routing",
+      "tags": [
+        "routing",
+        "onescience",
+        "execution"
+      ],
+      "location": "skills/onescience-skill/SKILL.md",
+      "source": "official"
+    },
+    {
+      "id": "skill:onescience-workflow",
+      "name": "onescience-workflow",
+      "description": "OneScience / OneSkills 面向科研人员真实任务的用户入口。用于直接理解“我要接入数据、改模型、跑远程、做评估”这类自然语言需求；当用户说“使用/启动/打开/进入 onescience”或“使用/启动/打开/进入 oneskills”时，也先进入本 skill 抽取领域画像与任务阶段，再按需下钻到内部角色层和执行层。",
+      "layer": "workflow",
+      "tags": [
+        "workflow",
+        "onescience",
+        "entry"
+      ],
+      "location": "skills/onescience-workflow/SKILL.md",
+      "source": "official"
+    }
+  ]
+}

@@ -17,7 +17,9 @@ MANIFEST_DIR = ROOT / "install" / "manifests"
 CONTRACT_PATH = ROOT / "install" / "contract.json"
 PROFILE_TARGETS_PATH = ROOT / "install" / "profile_targets.json"
 BRIDGE_TEMPLATE_PATH = ROOT / "install" / "templates" / "bridge_skill.md.tpl"
+OPENCODE_CONFIG_SNIPPET_PATH = ROOT / "install" / "templates" / "opencode.jsonc.snippet"
 STATE_DIR = ".oneskills/install-state"
+AGENTS_WITH_ONESCIENCE_SOURCE = {"codex", "opencode"}
 SHARED_REFERENCES_DIR = ROOT / "references"
 INTEGRATIONS_DIR = ROOT / "integrations"
 GENERIC_AGENT = "generic"
@@ -163,14 +165,21 @@ def build_generic_manifest(skills_dir_override: str | None, require_skills_dir: 
     return manifest
 
 
-def load_manifest(agent: str, skills_dir_override: str | None, require_skills_dir: bool = True) -> dict:
+def load_manifest(
+    agent: str,
+    skills_dir_override: str | None,
+    require_skills_dir: bool = True,
+    namespace_root_override: str | None = None,
+) -> dict:
     if agent == GENERIC_AGENT:
         return build_generic_manifest(skills_dir_override, require_skills_dir=require_skills_dir)
     manifest_path = MANIFEST_DIR / f"{agent}.json"
     if not manifest_path.exists():
         raise SystemExit(f"不支持的 agent: {agent}")
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    if skills_dir_override:
+    if namespace_root_override:
+        manifest["namespace_root"] = PurePosixPath(namespace_root_override).as_posix()
+    elif skills_dir_override:
         manifest["namespace_root"] = namespace_root_from_skills_dir(skills_dir_override)
     return manifest
 
@@ -283,7 +292,7 @@ def build_entries(
     # Installed skills consume ../../references from the namespaced skills root.
     append_entry(entries, SHARED_REFERENCES_DIR, namespace_root / "references", seen_targets)
 
-    if agent == "codex" and with_onescience_source:
+    if agent in AGENTS_WITH_ONESCIENCE_SOURCE and with_onescience_source:
         append_url_entry(
             entries,
             onescience_source_url,
@@ -613,17 +622,50 @@ def collect_conflicts(entries: list[InstallEntry]) -> list[Path]:
     return [entry.target for entry in entries if entry.target.exists() or entry.target.is_symlink()]
 
 
+def build_opencode_config_snippet(skills_dir: str) -> str:
+    template = OPENCODE_CONFIG_SNIPPET_PATH.read_text(encoding="utf-8")
+    return template.replace("{skills_paths_entry}", skills_dir)
+
+
+def opencode_config_snippet_rel_path(namespace_root: str) -> str:
+    return (PurePosixPath(namespace_root) / "opencode.jsonc.snippet").as_posix()
+
+
+def opencode_skills_paths_merge_optional(skills_dir: str) -> bool:
+    return PurePosixPath(skills_dir).as_posix() == ".opencode/skills"
+
+
+def write_opencode_config_snippet(
+    project_root: Path,
+    namespace_root: str,
+    skills_dir: str,
+    force: bool,
+    dry_run: bool,
+) -> Path:
+    target = project_root / opencode_config_snippet_rel_path(namespace_root)
+    content = build_opencode_config_snippet(skills_dir)
+    if dry_run:
+        print(f"[dry-run] opencode-config-snippet: {target}")
+        return target
+    if target.exists() and not force:
+        raise SystemExit(f"OpenCode 配置片段已存在，请使用 --force 覆盖：{target}")
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(content, encoding="utf-8")
+    return target
+
+
 def build_install_plan(
     project_root: Path,
     agent: str,
     mode: str,
     profile: str,
     skills_dir_override: str | None,
+    namespace_root_override: str | None = None,
     with_onescience_source: bool = True,
     onescience_source_url: str = ONESCIENCE_SOURCE_URL,
     with_mcp_tools: bool = False,
 ) -> InstallPlan:
-    manifest = load_manifest(agent, skills_dir_override)
+    manifest = load_manifest(agent, skills_dir_override, namespace_root_override=namespace_root_override)
     bridge_config = resolve_bridge_config(manifest)
     skills_dir = manifest_skills_dir(manifest)
     entries = build_entries(project_root, manifest, profile, agent, with_onescience_source, onescience_source_url)
@@ -702,6 +744,7 @@ def install(
     profile: str,
     force: bool,
     skills_dir_override: str | None,
+    namespace_root_override: str | None,
     dry_run: bool,
     with_mcp_tools: bool,
     with_onescience_source: bool = True,
@@ -713,6 +756,7 @@ def install(
         mode,
         profile,
         skills_dir_override,
+        namespace_root_override=namespace_root_override,
         with_onescience_source=with_onescience_source,
         onescience_source_url=onescience_source_url,
         with_mcp_tools=with_mcp_tools,
@@ -725,6 +769,9 @@ def install(
     selected_skill_names = skill_names_for_profile(profile)
     if dry_run:
         print_install_plan(plan, profile, onescience_source_url)
+        if agent == "opencode":
+            namespace_root = PurePosixPath(plan.skills_dir).parent.as_posix()
+            write_opencode_config_snippet(project_root, namespace_root, plan.skills_dir, force, dry_run=True)
         if agent == "codex" and with_mcp_tools:
             install_codex_mcp_tools(project_root, force, dry_run=True)
         if plan.bridge_config:
@@ -759,7 +806,20 @@ def install(
         )
         register_bridge_project(plan.bridge_config, project_root, dry_run=False)
 
-    state_path = write_state(project_root, agent, plan.effective_mode, profile, plan.entries, mcp_tool_path)
+    opencode_snippet_path: Path | None = None
+    state_entries = list(plan.entries)
+    if agent == "opencode":
+        namespace_root = PurePosixPath(plan.skills_dir).parent.as_posix()
+        opencode_snippet_path = write_opencode_config_snippet(
+            project_root,
+            namespace_root,
+            plan.skills_dir,
+            force,
+            dry_run=False,
+        )
+        state_entries.append(InstallEntry(source=None, target=opencode_snippet_path, kind="opencode_config_snippet"))
+
+    state_path = write_state(project_root, agent, plan.effective_mode, profile, state_entries, mcp_tool_path)
     print(f"Installed OneSkills for {agent} into: {project_root}")
     print(f"Platform: {current_platform_name()}")
     print(f"Mode: {plan.effective_mode}")
@@ -769,9 +829,18 @@ def install(
         print(f"Profile assets: enabled ({profile})")
     if mcp_tool_path:
         print(f"MCP tool: {mcp_tool_path}")
-    if agent == "codex" and with_onescience_source:
+    if agent in AGENTS_WITH_ONESCIENCE_SOURCE and with_onescience_source:
         ns = PurePosixPath(plan.skills_dir).parent.as_posix()
         print(f"OneScience source: {ns}/onescience")
+    if opencode_snippet_path:
+        print(f"OpenCode config snippet: {opencode_snippet_path}")
+        if opencode_skills_paths_merge_optional(plan.skills_dir):
+            print(
+                "Skills are under OpenCode's default discovery path (.opencode/skills); "
+                "merging opencode.jsonc is optional unless you rely on a project-level config."
+            )
+        else:
+            print("Merge skills.paths from the snippet into your project opencode.jsonc.")
 
 
 def uninstall(project_root: Path, agent: str, skills_dir_override: str | None, dry_run: bool) -> None:
@@ -812,7 +881,11 @@ def main() -> int:
     parser.add_argument(
         "--skip-onescience-source",
         action="store_true",
-        help="Codex only: do not install the local OneScience source snapshot used by code-reading skills.",
+        help="Codex/OpenCode: do not install the local OneScience source snapshot used by code-reading skills.",
+    )
+    parser.add_argument(
+        "--namespace-root",
+        help="Override manifest namespace_root, e.g. .opencode or vendor/oneskills/2026.05.15.",
     )
     parser.add_argument(
         "--onescience-source-url",
@@ -847,9 +920,10 @@ def main() -> int:
             profile,
             args.force,
             args.skills_dir,
+            args.namespace_root,
             args.dry_run,
             with_mcp_tools=args.agent == "codex" and not args.skip_mcp_tools,
-            with_onescience_source=args.agent != "codex" or not args.skip_onescience_source,
+            with_onescience_source=args.agent not in AGENTS_WITH_ONESCIENCE_SOURCE or not args.skip_onescience_source,
             onescience_source_url=args.onescience_source_url,
         )
     return 0

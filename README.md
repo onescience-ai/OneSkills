@@ -25,6 +25,8 @@
 - `skills/`：通用技能
 - `references/`：通用参考资料
 - `integrations/`：可选的智能体适配层
+- `catalog/manifest.json`：官方 skill 清单（供 OneCode Catalog ingest）
+- `.well-known/skills/index.json`：远程 skill 索引（供 `skills.urls` 拉取）
 
 公开版本信息：
 
@@ -150,7 +152,10 @@ python3 install/install_oneskills.py --agent codex --project /your/project
 python3 install/install_oneskills.py --agent codex --project /your/project
 python3 install/install_oneskills.py --agent claude --project /your/project
 python3 install/install_oneskills.py --agent trae --project /your/project
+python3 install/install_oneskills.py --agent opencode --project /your/project
 ```
+
+OpenCode 默认会把 skill 安装到 `.opencode/skills/`，与 OpenCode 自动发现路径一致；通常不必修改 `opencode.jsonc`。若使用了非默认 `--namespace-root`，可参考 `.opencode/opencode.jsonc.snippet` 合并 `skills.paths`。详见 `integrations/opencode/README.md`。
 
 开发期如果希望技能目录始终跟随当前仓库更新，可使用软链接模式：
 

@@ -1,5 +1,16 @@
 # Release Notes
 
+## 2026.06.05
+
+本次发布主要为 OneCode Catalog 接入做准备，并增强 OpenCode 安装体验：
+
+- 新增官方 skill 清单 `catalog/manifest.json` 与远程索引 `.well-known/skills/index.json`，便于 Catalog 发现与检索顶层技能
+- OpenCode 安装器默认会下载 OneScience 源码快照到项目 `.opencode/onescience/`，供代码阅读与实现类 skill 使用
+- OpenCode 安装布局与默认发现路径对齐：skills 安装到 `.opencode/skills/`，并生成 `.opencode/opencode.jsonc.snippet` 供需要时合并配置
+- 支持通过 `--namespace-root` 将 skills 安装到自定义目录（如 `vendor/oneskills/<version>/`）
+- 在 `onescience-workflow`、`onescience-role`、`onescience-skill` 中补充 Catalog 协作说明：何时搜索 AI 原语、何时直接用已选原语、skill 发现优先级
+- 新增 `references/catalog_integration.md`，统一说明 skill 与 AI 原语的发现与加载约定
+
 ## 2026.05.15
 
 本次发布版本主要收紧 `onescience-workflow -> onescience-role -> onescience-skill` 的协作边界：

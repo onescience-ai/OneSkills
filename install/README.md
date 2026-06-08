@@ -124,13 +124,13 @@ python3 install/install_oneskills.py --agent codex --project /path/to/project --
 - `codex` → `.codex/oneskills/skills/`
 - `claude` → `.claude/oneskills/skills/`
 - `trae` → `.trae/oneskills/skills/`
-- `opencode` → `.opencode/oneskills/skills/`
+- `opencode` → `.opencode/skills/`（与 OpenCode 默认发现路径一致；同时默认下载 `onescience/` 到 `.opencode/onescience/`，并生成 `.opencode/opencode.jsonc.snippet`）
 
 如果使用 `generic`，则由 `--skills-dir` 明确指定。
 
 安装完成后，用户可优先查看安装目录下的 `VERSION` 文件确认当前 skills 版本。
-共享参考资料会与 namespaced skills 同级安装，例如 `.<agent>/oneskills/references/`。
-集成说明会放在 `.<agent>/oneskills/integrations/`，保持与仓库内相同的相对路径结构。
+共享参考资料会与 namespaced skills 同级安装，例如 `.<agent>/oneskills/references/`；OpenCode 默认则为 `.opencode/references/`。
+集成说明会放在 namespaced 根目录下的 `integrations/`；OpenCode 默认则为 `.opencode/integrations/`。
 如目标 agent 的 manifest 声明了 `bridge`，安装器会同时在对应用户级 skills 根目录写入一层 bridge skill。
 当前仓库内默认启用该能力的是 `codex`，会写入 `~/.codex/skills/onescience-*`。
 
@@ -209,7 +209,42 @@ python3 install/install_oneskills.py --agent codex --project /path/to/project --
 如果你现在是在维护本仓库的安装入口、manifest 或 agent 适配，优先看本目录。
 如果你现在是在维护远程 DCU 环境安装流程，优先看 `skills/onescience-installer/SKILL.md`、`skills/onescience-installer/references/install_rules.md` 与 `skills/onescience-installer/references/install_flow.md`。
 
-### 6. Claude / Codex 插件模式怎么安装？
+### 6. OpenCode 如何配置 skills.paths？
+
+OpenCode 默认会自动扫描 `.opencode/skills/*/SKILL.md`。因此使用默认 OpenCode 安装布局时，通常**不必**修改 `opencode.jsonc`。
+
+安装器仍会写入配置片段，供非默认布局或项目级显式配置时使用：
+
+```text
+<project>/.opencode/opencode.jsonc.snippet
+```
+
+若需要显式声明，可将片段中的 `skills.paths` 合并进项目或全局 `opencode.jsonc`：
+
+```jsonc
+{
+  "skills": {
+    "paths": [".opencode/skills"]
+  }
+}
+```
+
+全局安装示例：
+
+```bash
+python3 install/install_oneskills.py --agent opencode --project ~
+```
+
+若希望安装到持久化 vendor 目录：
+
+```bash
+python3 install/install_oneskills.py --agent opencode --project /path/to/project \
+  --namespace-root vendor/oneskills/2026.05.15
+```
+
+此时 `skills.paths` 应改为 `vendor/oneskills/2026.05.15/skills`，且通常需要写入 `opencode.jsonc`。
+
+### 7. Claude / Codex 插件模式怎么安装？
 
 如果你希望按插件方式安装 Claude Code，或按 Codex 原生 skills 发现方式安装，请看：
 
