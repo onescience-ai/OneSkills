@@ -19,6 +19,7 @@
 runtime 现在优先按 `execution_mode` 理解链路：
 
 - `local`
+- `local_slurm`
 - `remote_slurm`
 - `remote_direct`
 
@@ -30,6 +31,8 @@ runtime 现在优先按 `execution_mode` 理解链路：
 
 推荐映射：
 
+- `execution_channel=local_direct` 等价于 `execution_mode=local` + `access_mode=local`
+- `execution_channel=local_slurm` 等价于 `execution_mode=local_slurm` + `access_mode=local`
 - `execution_channel=ssh_slurm` 等价于 `execution_mode=remote_slurm` + `access_mode=ssh`
 - `execution_channel=scnet_mcp` 等价于 `execution_mode=remote_direct` + `access_mode=cloud_api`
 

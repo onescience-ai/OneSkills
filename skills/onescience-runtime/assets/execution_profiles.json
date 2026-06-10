@@ -103,6 +103,23 @@
       ]
     },
     {
+      "id": "local_direct_python",
+      "profile_status": "stable",
+      "execution_mode": "local",
+      "access_mode": "local",
+      "scheduler_type": "none",
+      "launch_mode": "python_or_shell",
+      "visibility_env": "NONE",
+      "distributed_backend": "none",
+      "distributed_mode": "single",
+      "template_family": "direct_command",
+      "log_strategy": "local_file",
+      "status_strategy": "process_exit",
+      "supported_backend_ids": [
+        "local_direct_generic"
+      ]
+    },
+    {
       "id": "remote_direct_scnet_mcp",
       "profile_status": "stable",
       "execution_mode": "remote_direct",
@@ -156,6 +173,18 @@
       "workspace_bootstrap_profile": "none",
       "supported_backend_ids": [
         "slurm_cpu"
+      ]
+    },
+    {
+      "id": "local_direct_install_profile",
+      "profile_status": "unsupported_for_now",
+      "execution_mode": "local",
+      "access_mode": "local",
+      "scheduler_type": "none",
+      "installer_backend": "none",
+      "workspace_bootstrap_profile": "none",
+      "supported_backend_ids": [
+        "local_direct_generic"
       ]
     },
     {

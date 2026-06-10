@@ -53,6 +53,7 @@ runtime 使用以下执行模式：
 
 路由映射：
 
+- `execution_channel=local_direct` 等价于 `local + local`
 - `execution_channel=local_slurm` 等价于 `local_slurm + local`
 - `execution_channel=ssh_slurm` 等价于 `remote_slurm + ssh`
 - `execution_channel=scnet_mcp` 等价于 `remote_direct + cloud_api`
@@ -91,12 +92,21 @@ runtime 使用以下执行模式：
 - 请求里直接出现区域、队列、`task_id`、下载日志、MCP 提交
 - 目标是直接上传脚本并通过平台 API 运行
 
-### `local`
+### `local`（同环境直接运行模式）
 
 适用场景：
 
 - 用户明确要求在本地直接运行
-- 当前任务不需要远程提交
+- Coding 环境与运行环境是同一环境
+- 当前任务不需要远程提交或进入队列
+
+执行特点：
+
+- `execution_channel=local_direct`
+- 不经过 SSH、不上传、不提交调度器
+- `discover` 阶段只确认本地入口脚本、解释器、依赖和路径约束
+- `execute` 阶段直接生成并执行本地命令
+- 运行状态以本地进程退出码、stdout/stderr 与本地日志目录为准
 
 远程意图优先于任何“本地最小验证”建议。只要用户明确要求远程执行、远程测试、提交到 SLURM 或提交到 SCnet，就不要在本地执行测试脚本、训练脚本、业务入口脚本，或通过 import 运行依赖来判断远程环境；本地只允许做文件存在性、提交清单、命令模板渲染和不触发业务依赖的静态语法检查。
 

@@ -157,12 +157,24 @@ SCnet MCP 不可用是外部依赖阻断，不是 runtime 契约失败。
 
 ### `local`
 
-只做本地只读检查或安全路径检查：
+`probe_channel=local` 需要区分两类 readiness：
+
+- `execution_mode=local`：本地直跑 readiness
+- `execution_mode=local_slurm`：本地 Slurm readiness
+
+本地直跑只做本地只读检查或安全路径检查：
 
 - Python 可用性
 - 依赖 import
 - 数据 / 模型 / 工作目录
 - CPU / GPU 可见性
+
+本地 Slurm 额外确认：
+
+- `sbatch` / `squeue` / `sacct` 是否可直接调用
+- 当前 partition / queue 是否可访问
+- 本地渲染后的 job script 路径是否可写
+- 目标 module / conda / python / torch 是否 ready
 
 ## 六、安全边界
 

@@ -1,0 +1,31 @@
+{
+  "example_id": "local_slurm_runtime_request",
+  "execution_channel": "local_slurm",
+  "execution_mode": "local_slurm",
+  "access_mode": "local",
+  "intent": "submit_job_script",
+  "hardware_output_example": "skills/onescience-runtime/assets/hardware_outputs/examples/slurm_gpu_output.json",
+  "runtime_config": "skills/onescience-runtime/assets/examples/local_slurm_gpu_runtime.json",
+  "local_input": {
+    "code_path": "run_forecast.py",
+    "job_script_path": "slurm_submit.sh"
+  },
+  "submission_target": {
+    "partition": "gpu_normal",
+    "backend_id": "slurm_gpu"
+  },
+  "command": "sbatch slurm_submit.sh",
+  "authorization": {
+    "submission_authorized": true,
+    "authorization_scope": "current_workflow"
+  },
+  "log_policy": {
+    "local_log_dir": ".onescience/logs",
+    "include_patterns": [
+      "*.out",
+      "*.err"
+    ],
+    "wait_for_completion": true,
+    "sync_after_completion": true
+  }
+}

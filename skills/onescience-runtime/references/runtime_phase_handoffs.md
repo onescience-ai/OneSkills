@@ -60,7 +60,7 @@
 
 目标：
 
-- 识别当前请求属于 `local`、`remote_slurm` 还是 `remote_direct`
+- 识别当前请求属于 `local`、`local_slurm`、`remote_slurm` 还是 `remote_direct`
 - 从用户语义里提取环境线索，并标记为候选事实
 - 收集或消费环境事实
 - 归一化 backend 候选与提交目标候选

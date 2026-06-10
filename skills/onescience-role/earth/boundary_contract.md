@@ -9,7 +9,7 @@
 当任务已经进入 Earth 领域的 `role` 层时，这一层只负责两件事：
 
 1. 把当前请求归入合适的 Earth 任务桶。
-2. 把领域决策整理成可交给 `onescience-coder` 的交接摘要。
+2. 把领域决策整理成可交给 `onescience-skill` 的交接摘要。
 
 ## Role 层回答的问题
 
@@ -40,7 +40,7 @@
 
 ## Role 层的核心产物
 
-`onescience-role` 在 Earth 领域至少应产出这些内容，再交给 `onescience-coder`：
+`onescience-role` 在 Earth 领域至少应产出这些内容，再交给 `onescience-skill`：
 
 - `earth_task_type`
 - `current_role`
@@ -48,6 +48,8 @@
 - `stage_goal`
 - `handoff_artifacts`
 - `coder_reference_targets`
+- `next_skill`（始终为 `onescience-skill`）
+- `execution_entry`（最终执行入口，由路由层消费）
 - 是否允许进入代码生成
 
 ## `earth_task_type` 的职责边界
@@ -76,9 +78,9 @@
 
 - `skills/onescience-role/references/role_matrix.md`
 
-## 给 Coder 的交接要求
+## 给执行层的交接要求
 
-当 Earth `role` 层把任务继续下探到 `onescience-coder` 时，交接内容至少要表达清楚：
+当 Earth `role` 层把任务下探到 `onescience-skill` 路由层时，交接内容至少要表达清楚：
 
 1. 当前任务属于哪个 Earth 任务桶
 2. 当前阶段的唯一主目标是什么
@@ -102,8 +104,9 @@
 
 1. 把任务归类为 `earth_task_type=new-data-interface-construction`
 2. 判断当前阶段主目标是先形成数据读取与接口约定
-3. 交接给 `coder`：
+3. 设置 `next_skill=onescience-skill`、`execution_entry=onescience-coder`
+4. 在 `handoff_artifacts` 中注明 coder 参考入口：
    - 先看 `examples/earth/TJ-Data/`
    - 再看 `onescience-coder/references/new_dataset_workflow.md`
    - 再选最接近的 Earth example 训练入口
-4. 若当前是规划阶段，明确禁止继续生成实现代码
+5. 若当前是规划阶段，明确禁止继续生成实现代码

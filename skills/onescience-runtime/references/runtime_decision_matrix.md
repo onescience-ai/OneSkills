@@ -51,11 +51,14 @@
 当前使用：
 
 - `execution_mode=local`
+- `execution_mode=local_slurm`
 - `execution_mode=remote_slurm`
 - `execution_mode=remote_direct`
 
 推荐映射：
 
+- `execution_channel=local_direct` -> `local + local`
+- `execution_channel=local_slurm` -> `local_slurm + local`
 - `execution_channel=ssh_slurm` -> `remote_slurm + ssh`
 - `execution_channel=scnet_mcp` -> `remote_direct + cloud_api`
 

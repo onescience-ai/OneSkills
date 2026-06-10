@@ -1,0 +1,60 @@
+{
+  "runtime": {
+    "mode": "none",
+    "backend_id": "local_direct_generic",
+    "execution_profile": {
+      "execution_mode": "local",
+      "access_mode": "local",
+      "runtime_profile_ref": "local_direct_python",
+      "install_profile_ref": "local_direct_install_profile"
+    },
+    "target": {
+      "scheduler_type": "none",
+      "platform_type": "workstation",
+      "accelerator_kind": "cpu",
+      "accelerator_vendor": "none"
+    },
+    "environment": {
+      "cpu": {
+        "arch": "x86_64",
+        "vendor": "generic"
+      },
+      "accelerator_defaults": {
+        "kind": "cpu",
+        "vendor": "none",
+        "visibility_env": "NONE",
+        "distributed_backend": "none",
+        "launch_mode": "python_or_shell",
+        "distributed_mode": "single"
+      }
+    },
+    "cluster": {
+      "partition": "local",
+      "nodes": 1,
+      "gpus_per_node": 0,
+      "cpus_per_task": 4,
+      "memory": "16GB",
+      "time_limit": "00:30:00",
+      "gpu_type": "none",
+      "ntasks_per_node": 1
+    },
+    "modules": [],
+    "conda": {
+      "enabled": false,
+      "env_name": "base",
+      "activate_script": ""
+    },
+    "script": {
+      "path": "local_direct.sh",
+      "generate": true,
+      "template": "local_direct_generic",
+      "job_name": "local_quickstart",
+      "code_path": "run_local_task.py",
+      "env_vars": {
+        "ONESCIENCE_DATASETS_DIR": "./data",
+        "ONESCIENCE_MODELS_DIR": "./models"
+      },
+      "work_dir": "."
+    }
+  }
+}

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "package": "oneskills",
-  "version": "2026.06.09",
-  "skills_version": "2026.06.09",
-  "generated_at": "2026-06-08T18:03:05+00:00",
+  "version": "2026.06.10",
+  "skills_version": "2026.06.10",
+  "generated_at": "2026-06-10T01:29:49+00:00",
   "skills": [
     {
       "id": "skill:onescience-cli",
@@ -42,6 +42,19 @@
         "environment"
       ],
       "location": "skills/onescience-installer/SKILL.md",
+      "source": "official"
+    },
+    {
+      "id": "skill:onescience-parallel",
+      "name": "onescience-parallel",
+      "description": "将 PyTorch 模型改造为支持 Pipeline Parallelism (PP) + Tensor Parallelism (TP) 的分布式训练模型。 适用场景：单机单卡模型改多卡分布式、模型拆分为多个 pipeline stage、替换 nn.Linear 为并行线性层、 编写 forward_step_func / model_provider / dataset_provider、配置 PipelineTensorShapeConfig、 创建 Distributed 版本模块（DistributedFuser / DistributedAttention / DistributedMlp）。 当用户提到以下任何关键词时，务必使用此 skill： \"流水线并行\"、\"pipeline parallel\"、\"模型并行改造\"、\"分布式训练\"、\"stage 拆分\"、 \"ColumnParallelLinear\"、\"RowParallelLinear\"、\"pretrain 接口\"、\"forward_step_func\"、 \"model_provider\"、\"TP 并行\"、\"张量并行\"、\"多卡训练\"、\"Megatron\"。",
+      "layer": "codegen",
+      "tags": [
+        "codegen",
+        "onescience",
+        "implementation"
+      ],
+      "location": "skills/onescience-parallel/SKILL.md",
       "source": "official"
     },
     {

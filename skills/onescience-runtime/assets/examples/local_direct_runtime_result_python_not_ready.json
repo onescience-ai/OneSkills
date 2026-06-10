@@ -1,0 +1,26 @@
+{
+  "example_id": "local_direct_runtime_result_python_not_ready",
+  "execution_channel": "local_direct",
+  "execution_mode": "local",
+  "access_mode": "local",
+  "submission_target": {
+    "work_dir": ".",
+    "backend_id": "local_direct_generic"
+  },
+  "remote_context": {
+    "command": "bash local_direct.sh",
+    "work_dir": "."
+  },
+  "job_id": null,
+  "submission_state": "not_started",
+  "execution_state": "blocked",
+  "job_status": "unknown",
+  "local_log_dir": ".onescience/logs/local-direct",
+  "synced_logs": [],
+  "log_state": "not_started",
+  "sync_status": "not_started",
+  "failure_reason": "python3_not_found",
+  "blocking_reason": "python3_not_found",
+  "stderr_summary": "python3 command not found in current local environment",
+  "next_action": "onescience-installer"
+}

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "package": "oneskills",
-  "version": "2026.06.09",
-  "skills_version": "2026.06.09",
+  "version": "2026.06.10",
+  "skills_version": "2026.06.10",
   "manifest_path": "catalog/manifest.json",
   "skills": [
     {
@@ -22,6 +22,12 @@
       "name": "onescience-installer",
       "description": "在远程 SSH/SLURM 或已进入目标容器/登录节点的环境中安装、修复并验证 OneScience。内部固定执行 discover -> precheck -> install -> verify，消费 execution_profile、hardware_profile、install profile、workspace bootstrap profile 与 install domain profile；用户要求安装 earth/cfd/bio/matchem/all 等环境时使用。",
       "layer": "installer"
+    },
+    {
+      "id": "skill:onescience-parallel",
+      "name": "onescience-parallel",
+      "description": "将 PyTorch 模型改造为支持 Pipeline Parallelism (PP) + Tensor Parallelism (TP) 的分布式训练模型。 适用场景：单机单卡模型改多卡分布式、模型拆分为多个 pipeline stage、替换 nn.Linear 为并行线性层、 编写 forward_step_func / model_provider / dataset_provider、配置 PipelineTensorShapeConfig、 创建 Distributed 版本模块（DistributedFuser / DistributedAttention / DistributedMlp）。 当用户提到以下任何关键词时，务必使用此 skill： \"流水线并行\"、\"pipeline parallel\"、\"模型并行改造\"、\"分布式训练\"、\"stage 拆分\"、 \"ColumnParallelLinear\"、\"RowParallelLinear\"、\"pretrain 接口\"、\"forward_step_func\"、 \"model_provider\"、\"TP 并行\"、\"张量并行\"、\"多卡训练\"、\"Megatron\"。",
+      "layer": "codegen"
     },
     {
       "id": "skill:onescience-role",

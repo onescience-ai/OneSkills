@@ -1,0 +1,28 @@
+{
+  "example_id": "local_slurm_runtime_result_partition_not_accessible",
+  "execution_channel": "local_slurm",
+  "execution_mode": "local_slurm",
+  "access_mode": "local",
+  "submission_target": {
+    "partition": "gpu_normal",
+    "backend_id": "slurm_gpu"
+  },
+  "remote_context": {
+    "job_script_path": "slurm_submit.sh",
+    "remote_work_dir": ".",
+    "remote_log_dir": "logs",
+    "command": "sbatch slurm_submit.sh"
+  },
+  "job_id": null,
+  "submission_state": "not_started",
+  "execution_state": "blocked",
+  "job_status": "unknown",
+  "local_log_dir": ".onescience/logs",
+  "synced_logs": [],
+  "log_state": "not_started",
+  "sync_status": "not_started",
+  "failure_reason": "queue_not_accessible",
+  "blocking_reason": "queue_not_accessible",
+  "stderr_summary": "partition gpu_normal is not accessible from current local slurm environment",
+  "next_action": "onescience-runtime"
+}

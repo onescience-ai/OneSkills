@@ -231,5 +231,51 @@
       "script.code_path",
       "script.job_name"
     ]
+  },
+  {
+    "id": "local_direct_generic",
+    "status": "stable",
+    "execution_mode": "local",
+    "access_mode": "local",
+    "scheduler_type": "none",
+    "runtime_profile": "local_direct_python",
+    "install_profile": "local_direct_install_profile",
+    "support_matrix": {
+      "runtime": {
+        "status": "stable"
+      },
+      "diagnose": {
+        "status": "supported",
+        "backend": "onescience-runtime"
+      },
+      "installer": {
+        "status": "unsupported_for_now",
+        "backend": "none"
+      }
+    },
+    "template": "skills/onescience-runtime/assets/templates/local_direct.sh",
+    "example_config": "skills/onescience-runtime/assets/examples/local_direct_runtime.json",
+    "selector": {
+      "scheduler_type": "none",
+      "accelerator_kind": "cpu",
+      "accelerator_vendor": "none"
+    },
+    "environment_constraints": {
+      "visibility_env": "NONE",
+      "distributed_backend": "none",
+      "launch_mode": "python_or_shell",
+      "distributed_mode": "single"
+    },
+    "render_fields": [
+      "runtime.module_setup",
+      "backend.module_setup",
+      "conda.activate_script",
+      "conda.env_name",
+      "script.code_path",
+      "script.job_name",
+      "script.work_dir",
+      "env_vars.ONESCIENCE_DATASETS_DIR",
+      "env_vars.ONESCIENCE_MODELS_DIR"
+    ]
   }
 ]
