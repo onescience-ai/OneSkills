@@ -1,4 +1,4 @@
-﻿---
+---
 name: onescience-skill
 description: OneScience 执行层编排入口。用于把工作流层或角色层结论路由到最小执行链路；公开执行技能为 `onescience-runtime` 与 `onescience-installer`。
 ---
