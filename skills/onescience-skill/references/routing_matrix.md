@@ -26,8 +26,10 @@
 
 当前公开执行技能为：
 
-1. `onescience-runtime`
-2. `onescience-installer`
+1. `onescience-paper-repro`
+2. `onescience-coder`
+3. `onescience-runtime`
+4. `onescience-installer`
 
 ## 最小技能链优先级
 
@@ -132,11 +134,37 @@
 
 - 若已有运行产物：`onescience-runtime`
 - 若仍需重新执行并诊断：`onescience-runtime`
+
+### 7. 论文复现
+
+适用信号：
+
+- "复现这篇论文"
+- "实现这篇论文 / implement this paper"
+- arxiv 链接或论文 ID
+- 上游传递 `task_method=paper2code` 或 `domain_task_family=paper-reproduction`
+
+技能链：
+
+`onescience-paper-repro -> onescience-coder`
+
+传递规则：
+
+- 给 `onescience-paper-repro`：`paper_source`、真实 `domain_route`、mode（minimal/full/educational）、framework（pytorch/jax/numpy）、`output_dir`、`implementation_code_used=false`
+- `onescience-paper-repro` 生成审计用 `reproduction_spec.md` 和自包含 `coder_task_description.md` 后，只把 `coder_task_description.md` 作为编码任务输入交给 `onescience-coder`
+- paper2code 的默认交付是代码与 walkthrough notebook 生成，不自动涉及 runtime/installer
+- 如果用户同时要求运行验证生成的代码，才按标准规则追加 `onescience-runtime`
+- 追加 runtime 时，链路为 `onescience-paper-repro -> onescience-coder -> onescience-runtime`，并向 coder 传递 `required_chain=[onescience-coder, onescience-runtime]`、`final_execution_skill=onescience-runtime`、`chain_continuation_required=true`
+- 禁止把 paper2code 路由为“查找官方 GitHub 并 clone 到输出目录”
+- 禁止为 paper2code 发起 GitHub/GitLab/Bitbucket/code repository 查询
+- 禁止参考官方或第三方已实现代码；执行层只能把论文来源和领域路线传给 `onescience-paper-repro`，再由它把审计 artifact、复现规格和任务描述传给 `onescience-coder`
+
 ## 关键词到技能
 
 - “角色、岗位、职责、交接、谁来做、科研流程分工” -> `onescience-role`
 - “科研任务、工作流、领域、阶段、我想做什么、怎么推进” -> `onescience-workflow`
 - “实现、改造、接入、生成代码” -> `onescience-coder`
+- “复现论文、论文复现、paper2code、arxiv” -> `onescience-paper-repro`
 - “SCnet、区域、队列、task_id、下载日志、MCP 提交” -> `onescience-runtime`
 - “提交、运行、slurm、作业、集群” -> `onescience-runtime`
 - “测试、验证、排查、debug、loss 异常” -> `onescience-runtime`

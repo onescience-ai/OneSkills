@@ -2,6 +2,14 @@
 
 你是一名基于 OneScience 写代码的工程智能体。
 
+## Paper2Code 覆盖规则
+
+当用户请求包含“复现论文”“实现论文”“implement this paper”“根据论文生成代码”“paper to code”，或上游传递 `task_method=paper2code` / `domain_task_family=paper-reproduction` 但没有 `paper_repro_handoff=true`、`task_description_path` 和 `task_description_content` 时，立即停止本文件的通用两阶段模型/组件工作流，退回 `onescience-paper-repro`。
+
+论文下载、解析、贡献识别、歧义审计和完整任务描述生成由 `onescience-paper-repro` 负责。coder 只消费 `coder_task_description.md` 的路径和全文，并基于该任务书与 skills 内契约重新生成代码；不要读取 `reproduction_spec.md` 来补齐任务细节。如果 `coder_task_description.md` 明显不完整，应退回上游重新生成，而不是自行综合两份文档。不要搜索、打开、下载、clone、复制或参考 GitHub/GitLab/Bitbucket、official code、repository、source code、model zoo、package implementation、官方实现或第三方复现。用户指定的保存目录只是本轮生成代码的输出目录，不是已有代码仓库的 clone/copy 目标。
+
+如果用户只给论文标题、arxiv 链接、本地 PDF 或粘贴正文，但尚未有 `onescience-paper-repro` 产物，当前下一跳是 `onescience-paper-repro`，不是 coder。
+
 ## 入口边界
 
 当用户只是询问“技能路线”“该走哪个 skill”“先不要写代码”“先做规划”“先看怎么走”时，不进入本文件后续两阶段代码工作流。
@@ -72,6 +80,7 @@
 2. 优先复用已有推荐组件
 3. 在契约不足时再读取源码
 4. 输出完整代码和必要说明
+5. 代码生成完成后执行静态需求一致性 review，发现偏差时先回改代码，再输出最终结果
 
 ### 为什么默认采用两阶段
 
@@ -134,6 +143,7 @@
    - 参数边界检查
    - forward 内部张量重排细节
    - 与当前目标文件直接耦合的实现细节
+15. 若已经生成或修改代码，执行代码生成后静态 review，并根据 review 反馈调整代码
 
 说明：
 
@@ -183,6 +193,25 @@
 - 先保持现有模型主体不变
 - 先保持现有训练主循环不变
 - 优先在 datapipe、配置或调用层完成桥接
+
+## 代码生成后 Review 规则
+
+代码生成后必须执行一次静态需求一致性 review。该 review 只检查代码与需求、规格和契约是否一致，不运行训练、推理、测试脚本，不下载数据，不提交远程任务，也不做日志 debug。
+
+若上游交接包含 `coder_static_review_required=true`，静态 review 是完成代码生成前的硬性门槛；最终输出必须包含 `静态需求一致性 review 结果`，否则不能视为已完成。
+
+review 步骤：
+
+1. 把用户需求、第一轮确认内容、上游任务描述和已读取的模型卡、组件契约、datapipe 卡整理为需求清单；若是 `paper_repro_handoff=true` / `paper2code` 任务，上游任务描述只取 `coder_task_description.md`，不要读取或综合 `reproduction_spec.md`。
+2. 逐项对照生成代码：
+   - 参数数量和名称是否完整，例如需求要求 9 个参数时，构造函数、配置和调用层都不能只实现 8 个。
+   - 模型结构是否命中需求，例如要求 Swin Transformer 时，代码中必须体现 window partition、shifted window 或对应契约组件，不能替换成其它 backbone。
+   - 输入输出变量、时间步、shape、batch 格式和返回字段是否匹配。
+   - 数据处理、训练目标、loss、rollout、metric、checkpoint、配置入口是否覆盖需求。
+   - 是否遵守已确认的 OneScience 复用组件和最小适配路径。
+   - 文件路径、类名、注册名、导入路径和示例调用是否一致。
+3. 如果发现不一致，立即修改代码并复查；最终输出只保留已修正后的实现说明和 review 摘要。
+4. 如果某项需求因信息缺失无法确认，标记为“需用户确认”，不要把它当作已通过。
 
 ## 新数据集接入补充规则
 
@@ -292,6 +321,7 @@
 - 不主动安装依赖或新增本地包
 - 不主动运行训练、推理、测试或其它本地脚本
 - 不主动下载数据或执行联网获取资源的操作
+- 必须执行代码生成后的静态需求一致性 review；静态 review 不属于运行验证，不需要额外授权
 - 若确实需要运行本地验证，必须先明确请求用户确认
 - 若用户未明确要求运行，只输出代码、使用说明和必要的验证建议，由用户自行测试
 
@@ -362,6 +392,7 @@
 - 完整代码
 - 复用组件说明
 - shape 变化说明
+- 静态需求一致性 review 结果
 - 如有必要，补充验证建议
 
 默认不要自行运行代码；除非用户明确要求，否则只生成结果并说明用户后续如何验证。

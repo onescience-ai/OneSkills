@@ -212,6 +212,41 @@
 
 - 优先 `onescience-skill -> onescience-runtime`
 
+### 7. `paper-reproducer`（论文复现交接角色）
+
+职责：
+
+- 将论文复现任务组织为可交给执行层的阶段化交接物
+- 明确论文来源、复现模式、框架偏好、领域路线、实现范围和阶段门槛
+- 确认进入代码生成前必须先完成或复用合格的 `reproduction_spec.md` 与 `coder_task_description.md`
+
+关注点：
+
+- 论文核心贡献和复现范围的精确识别
+- 实现细节的歧义审计（防幻觉）
+- 复现规格与 coder 任务描述的结构化组织
+- 下游代码生成边界和 OneScience 复用提示
+- 与真实科学领域路线（earth / biology / materials / cfd 等）的组合，不用 `paper2code` 覆盖领域
+
+典型输入：
+
+- `paper_source`：arxiv ID/URL、本地 PDF、粘贴文本或已知论文名
+- 运行模式（minimal / full / educational）
+- 框架偏好（pytorch / jax / numpy）
+- 上游 workflow 传递的 `task_method=paper2code` 或 `domain_task_family=paper-reproduction`
+- 上游 workflow 传递的真实 `domain_route`
+
+典型输出：
+
+- 角色链与阶段化交接物
+- `paper_source`、mode、framework、真实 `domain_route`
+- 已存在或待生成的论文解析材料、`reproduction_spec.md`、`coder_task_description.md` 引用
+- `execution_entry=onescience-paper-repro`
+
+推荐下钻：
+
+- `onescience-skill -> onescience-paper-repro -> onescience-coder`
+
 ## 常见角色链
 
 ### 1. 纯角色规划
@@ -265,7 +300,27 @@
 
 - 从问题定义到最终验证的完整科研工程闭环
 
-## 推荐交接物
+### 7. 论文复现链
+
+`research-lead -> paper-reproducer`
+
+若论文主题已经落入明确科学领域，优先组合领域角色：
+
+`research-lead -> domain-scientist -> model-engineer -> paper-reproducer`
+
+适用场景：
+
+- 将论文来源转化为代码生成交接物
+- 论文复现前处理流水线（获取解析 → 复现信息抽取 → 歧义审计 → coder 任务描述）
+
+强制约束：
+
+- `paper-reproducer` 是 paper2code 的主责角色；`domain-scientist` 和 `model-engineer` 只能作为领域/模型语义辅助角色，不能把主链退化为纯 `research-lead -> model-engineer`
+- 不要把论文复现解释成“获取官方代码”“下载官方仓库”或“克隆论文代码到本地”
+- 不要把 handoff artifact 写成“论文官方代码仓库地址”“官方仓库版本”“GitHub 搜索关键词”
+- 用户指定的输出目录只传递为 `output_dir`，表示下游新生成代码落点
+
+推荐交接物：
 
 - `research-lead -> 任何角色`：任务目标摘要、交付边界、优先级
 - `domain-scientist -> data-engineer`：数据口径、变量定义、筛选规则
@@ -274,6 +329,10 @@
 - `platform-engineer -> runtime / installer`：完整环境画像与执行约束
 - `model-engineer -> platform-engineer`：代码入口、脚本路径、配置说明
 - `platform-engineer -> evaluation-engineer`：作业 ID、日志路径、运行信息
+- `research-lead -> paper-reproducer`：`paper_source`、mode、framework、用户意图
+- `paper-reproducer -> onescience-paper-repro`：`paper_source`、mode、framework、真实 `domain_route`、`output_dir`、`implementation_code_used=false`、stage 顺序约束
+- `domain-scientist -> model-engineer`：论文所属领域约束、模型/数据/评估语义、可复用 OneScience 卡片
+- `paper-reproducer -> onescience-skill -> onescience-paper-repro -> onescience-coder`：论文来源、真实 `domain_route`、论文解析 artifact、复现规格、完整任务描述、模式标志
 
 ## 角色到执行层入口映射
 
