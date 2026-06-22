@@ -22,7 +22,7 @@ description: OneScience 生信模型推理范畴路由。用于执行当前 OneS
 
 - `references/model_inference_matrix.md`：模型到入口、输入、checkpoint、输出和高危混淆点的矩阵。
 - `references/inference_execution_contract.md`：所有生信模型推理必须遵守的 preflight、run、postflight 契约。
-- `../../../../onescience-runtime/assets/bio_inference_templates/bio_inference_handoff.yaml`：交给 `onescience-skill -> onescience-coder/runtime` 前的统一交接模板。
+- `../../../onescience-runtime/assets/bio_inference_templates/bio_inference_handoff.yaml`：交给 `onescience-skill -> onescience-coder/runtime` 前的统一交接模板。
 - `{onescience_path}/onescience/examples/biosciences/_manifests/inference_run_manifest.yaml`：单次推理运行的可复现 manifest。
 - `{onescience_path}/onescience/examples/biosciences/_manifests/model_requests/`：OneScience 官方 per-model request 示例。
 - `{onescience_path}/onescience/examples/biosciences/_manifests/tools/validate_bio_inference_manifest.py`：无第三方依赖地检查 manifest 是否缺关键字段。

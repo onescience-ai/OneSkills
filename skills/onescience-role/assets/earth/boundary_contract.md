@@ -72,7 +72,7 @@
 
 优先读取：
 
-- `skills/onescience-role/earth/task_map.md`
+- `skills/onescience-role/assets/earth/task_map.md`
 
 必要时回退通用角色补充：
 

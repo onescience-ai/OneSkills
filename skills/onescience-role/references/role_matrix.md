@@ -345,7 +345,7 @@
 
 ## 生物信息领域补充
 
-当 `detected_domain` / `domain` 是 `biology`、`bioinformatics`、`biosciences`，或用户请求明显涉及生信任务时，先读取 `../bio_domain/SKILL.md` 再给出最终角色链。该子路由用于区分：
+当 `detected_domain` / `domain` 是 `biology`、`bioinformatics`、`biosciences`，或用户请求明显涉及生信任务时，先读取 `../assets/bio_domain/SKILL.md` 再给出最终角色链。该子路由用于区分：
 
 - OneScience 已有生信模型相关任务：模型推理、模型开发、模块替换、训练、微调、batch 协议、datapipe adapter
 - 通用生信 workflow：RNA-seq、single-cell、variant calling、ATAC/ChIP/Hi-C、microbiome、proteomics、metabolomics 等

@@ -44,7 +44,7 @@
 7. `earth-multi-stage-workflow`
 适用：需要把数据、模型、训练、推理等多个阶段串成一个完整流程。
 
-具体说明和参考入口见 `skills/onescience-role/earth/task_map.md`。
+具体说明和参考入口见 `skills/onescience-role/assets/earth/task_map.md`。
 
 ## Earth Role 的输出要求
 
@@ -81,11 +81,11 @@
 
 默认先读取：
 
-- `skills/onescience-role/earth/boundary_contract.md`
+- `skills/onescience-role/assets/earth/boundary_contract.md`
 
 再按任务桶细分需要读取：
 
-- `skills/onescience-role/earth/task_map.md`
+- `skills/onescience-role/assets/earth/task_map.md`
 
 必要时回退：
 

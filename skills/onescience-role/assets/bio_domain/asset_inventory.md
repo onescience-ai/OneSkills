@@ -71,7 +71,7 @@ role 层使用规则：
 
 QA 要求：
 
-- `skills/onescience-role/bio_domain/**/scripts/` 不应存在
+- `skills/onescience-role/assets/bio_domain/**/scripts/` 不应存在
 - leaf `SKILL.md` 的脚本引用必须指向 coder/runtime/installer 资产路径或 `{onescience_path}/onescience` 下的 OneScience 仓库资产
 - 新增执行脚本时必须先选择目标资产层，不再放回 role 子树
 

@@ -26,8 +26,8 @@ description: OneScience 生信模型开发范畴路由。用于 AlphaFold、Open
 
 ## 可复用模板
 
-- `../../../../onescience-coder/assets/bio_model_templates/model_handoff.yaml`：模型训练、微调、模块修改和 batch/adapter 改造任务的交接模板。纯推理任务使用 `onescience-runtime/assets/bio_inference_templates/bio_inference_handoff.yaml`。
-- `../../../../onescience-coder/assets/bio_model_templates/datapipe_adapter_handoff.yaml`：datapipe/adapter 兼容性判断和桥接计划模板。
+- `../../../onescience-coder/assets/bio_model_templates/model_handoff.yaml`：模型训练、微调、模块修改和 batch/adapter 改造任务的交接模板。纯推理任务使用 `onescience-runtime/assets/bio_inference_templates/bio_inference_handoff.yaml`。
+- `../../../onescience-coder/assets/bio_model_templates/datapipe_adapter_handoff.yaml`：datapipe/adapter 兼容性判断和桥接计划模板。
 
 当用户请求已经要转入实现层时，优先按模板补齐字段再交给 `onescience-skill -> onescience-coder`。
 

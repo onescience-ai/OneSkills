@@ -45,7 +45,7 @@
 7. `cfd-multi-stage-workflow`
 适用：需要把新数据接口、模型适配、训练、推理、评估等多个阶段串成完整闭环。
 
-具体说明和参考入口见 `skills/onescience-role/cfd/task_map.md`。
+具体说明和参考入口见 `skills/onescience-role/assets/cfd/task_map.md`。
 
 ## CFD Role 的输出要求
 
@@ -109,11 +109,11 @@
 
 默认先读取：
 
-- `skills/onescience-role/cfd/boundary_contract.md`
+- `skills/onescience-role/assets/cfd/boundary_contract.md`
 
 再按任务桶细分需要读取：
 
-- `skills/onescience-role/cfd/task_map.md`
+- `skills/onescience-role/assets/cfd/task_map.md`
 
 必要时回退：
 
