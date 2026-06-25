@@ -2,12 +2,12 @@
 
 ## 基本信息
 
-- 组件名：`FuxiTransformer`
-- 所属模块族：`transformer`
-- 统一入口：`OneTransformer`
-- 注册名：`style="FuxiTransformer"`
+- **组件名称**: `FuxiTransformer`
+- **模块族**: `transformer`
+- **统一入口**: `not_applicable`
+- **注册名称**: `style="FuxiTransformer"`
 
-## 组件职责
+## 组件说明
 
 在二维特征图上执行 Fuxi 的 U 形 trunk 特征提取。
 
@@ -17,7 +17,13 @@
 - 内部结构为 `FuxiDownSample -> SwinTransformerV2Stage -> FuxiUpSample`
 - 中间会通过 skip connection 将下采样输出与 trunk 输出拼接
 
-## 支持输入
+该组件的核心实现包括 `FuxiTransformer`，定位为Transformer 模块，由上层 OneScience 模型或流水线通过 Python API 调用。
+
+## 用途
+
+使用注意力或窗口注意力对 token 序列建模，适用于 FuXi/FengWu 等天气预测主干。
+
+## 输入规格
 
 - 2D 输入：`(Batch, embed_dim, Height, Width)`
 - 3D 输入：`not_applicable`
@@ -29,7 +35,17 @@
 - `SwinTransformerV2Stage` 输出后做中心 crop
 - 与下采样输出拼接后再上采样回原分辨率
 
-## 构造参数
+## 输出规格
+
+- 2D 输出：`(Batch, embed_dim, Height, Width)`
+- 3D 输出：`not_applicable`
+
+明确约束：
+
+- 输出 shape 与输入 shape 保持一致
+- `input_resolution` 指的是下采样后的 trunk 网格尺寸，不是输入特征图尺寸
+
+## 参数
 
 - `embed_dim`
   - 输入与输出特征通道数
@@ -44,42 +60,119 @@
 - `depth`
   - `SwinTransformerV2Stage` 的 block 层数
 
-## 输出约定
+## 关键依赖
 
-- 2D 输出：`(Batch, embed_dim, Height, Width)`
-- 3D 输出：`not_applicable`
+- `onetransformer`
+- `onesample`
+- `fuxidownsample`
+- `fuxiupsample`
+- `helpers`
+- `swin_transformer_v2`
+- `fuxi_utils`
 
-明确约束：
-
-- 输出 shape 与输入 shape 保持一致
-- `input_resolution` 指的是下采样后的 trunk 网格尺寸，不是输入特征图尺寸
-
-## 典型调用位置
-
-- Fuxi 主模型 trunk 部分
-
-## 典型参数
-
-- Fuxi 默认配置
-  - `embed_dim=1536`
-  - `num_groups=32`
-  - `input_resolution=(90, 180)`
-  - `num_heads=8`
-  - `window_size=7`
-  - `depth=48`
-
-## 风险点
+## 使用注意与风险
 
 - 该组件输入是二维特征图，不是 token 序列
 - `input_resolution` 与真实下采样后 trunk 尺寸不一致会导致 padding / crop 逻辑出错
 - 上下游通道数必须与 `embed_dim` 对齐
 
-## 下层依赖契约入口
+## 启动方式
 
-- `./onetransformer.md`
-- `./onesample.md`
-- `./fuxidownsample.md`
-- `./fuxiupsample.md`
+主要通过 Python API 在模型配置或上层模块中实例化，不是独立 CLI 入口。下面的命令会从源码模块导入组件并打印完整构造签名，便于确认全部 API 参数：
+
+```sh
+python -c "from onescience.modules.transformer.fuxitransformer import FuxiTransformer; import inspect; print(inspect.signature(FuxiTransformer))"
+```
+
+在真实任务中应由对应模型配置传入尺寸、通道数和隐空间维度等参数。
+
+## 输入规格
+
+- 2D 输入：`(Batch, embed_dim, Height, Width)`
+- 3D 输入：`not_applicable`
+
+内部统一做法：
+
+- 先下采样到较低分辨率网格
+- 对不整除窗口大小的 trunk 网格先做 ZeroPad
+- `SwinTransformerV2Stage` 输出后做中心 crop
+- 与下采样输出拼接后再上采样回原分辨率
+
+默认参数信息：
+
+- `FuxiTransformer` 构造默认参数：`embed_dim=1536`，`num_groups=32`，`input_resolution=(90, 180)`，`num_heads=8`，`window_size=7`，`depth=48`
+
+## 运行接口
+
+- `FuxiTransformer`：实例化后通过 `forward` 等运行时接口参与流水线。
+
+## 主要函数
+
+- `forward`
+
+## 执行资源
+
+- 运行设备由上层任务决定，训练和高分辨率推理通常建议使用 GPU。
+- 图构建、邻居搜索或大分辨率气象场处理会占用较多内存，批量大小需随网格规模调整。
+- 需要保证依赖库和 OneScience 模块路径可用，并与模型配置中的精度、设备和维度设置一致。
+
+## 操作限制
+
+- 不负责完整数据预处理、变量标准化、训练循环或损失函数编排。
+- 仅在输入形状、变量顺序、图结构和上下游组件契约一致时可稳定工作。
+- 源码中未声明的 CLI 参数、自动下载或外部数据读取能力不应假定存在。
+
+## 规划决策
+
+### 描述
+
+FuxiTransformer 是 OneScience 中面向气象/地球系统建模的Transformer 模块，用于在模型流水线中完成特征变换、尺度组织或结果重建。
+
+```text
+气象场或 token 特征
+  -> 参数化特征变换
+  -> 尺度/通道/分支组织
+  -> 上层预测模型继续融合或输出
+```
+
+### 使用时机
+
+- 任务需要 `Transformer 模块` 能力，且组件输入输出契约与当前模型阶段匹配。
+- 组件所属模型族或图/生成网络语义与任务目标一致。
+
+### 输入
+
+- 上游模型阶段提供的张量、图结构、条件特征或噪声特征。
+- 与源码构造参数一致的通道数、分辨率、patch/window 尺寸、隐层维度和特征语义。
+
+### 输出
+
+- 可直接交给下一阶段的中间特征、图对象、节点/边表示或预测场。
+- 输出结构应按 `spec.md` 的 `output_schema` 和 `code_references` 进行校验。
+
+### 执行步骤
+
+1. 确认组件所属模型族、模块族和上游/下游阶段。
+2. 根据源码构造参数准备尺寸、通道、图特征维度和可选超参数。
+3. 按 `usage.md` 的运行接口实例化组件，并传入契约化输入。
+4. 检查输出形状、数据类型、设备和变量顺序是否满足下一阶段要求。
+5. 在完整模型中通过单步前向或小批量样例验证集成效果。
+
+### 约束
+
+- 不跨越组件职责边界承担数据下载、全局训练调度或模型族外的语义转换。
+- 不在未确认形状、图结构或变量顺序时直接替换已有模块。
+- 规划中涉及代码位置时只以 `spec.md` 的 `code_references` 为准。
+
+### 下一阶段建议
+
+- 若组件用于新流水线，下一阶段应补齐上游输入准备和下游形状断言。
+- 若组件替换已有模块，下一阶段应做等价输入样例对比和端到端 smoke test。
+
+### 回退策略
+
+- 当输入维度或依赖不匹配时，退回到同模型族的统一入口组件或相邻基础组件。
+- 当源码缺少独立运行入口时，优先在上层模型配置中集成验证，而不是为该组件臆造 CLI。
 
 ## 源码锚点
 
