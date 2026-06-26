@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "package": "oneskills",
-  "version": "2026.06.26",
-  "skills_version": "2026.06.26",
-  "generated_at": "2026-06-25T19:03:12+00:00",
+  "version": "2026.06.27",
+  "skills_version": "2026.06.27",
+  "generated_at": "2026-06-26T19:04:14+00:00",
   "skills": [
     {
       "id": "skill:onescience-cli",

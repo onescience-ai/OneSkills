@@ -83,6 +83,13 @@
 | FengWuFuser | fuser | `OneFuser` | `FengWuFuser` | 3D token | `stable` | `./fengwufuser.md` |
 | FengWuEncoder | encoder | `OneEncoder` | `FengWuEncoder` | 2D 场 | `stable` | `./fengwuencoder.md` |
 | FengWuDecoder | decoder | `OneDecoder` | `FengWuDecoder` | 中分辨率 token + 高分辨率 skip | `stable` | `./fengwudecoder.md` |
+| GraphCastEmbedder | embedding | `OneEmbedding` | `GraphCastEmbedder` | 2D lat-lon grid | `stable` | `./graphcast_embedder.md` |
+| XiheEmbedding | embedding | `OneEmbedding` | `XiheEmbedding` | 2D masked ocean field | `stable` | `./xiheembedding.md` |
+| XiheFuse | fuser | `OneFuser` | `XiheFuse` | 2D masked token | `stable` | `./xihefuse.md` |
+| XiheGlobalSIEFuser | fuser | `OneFuser` | `XiheGlobalSIEFuser` | 2D masked token with global SIE | `stable` | `./xiheglobalsiefuser.md` |
+| XiheLocalSIEFuser | fuser | `OneFuser` | `XiheLocalSIEFuser` | 2D masked token with local SIE | `stable` | `./xihelocalsiefuser.md` |
+| XihePatchRecovery | recovery | `OneRecovery` | `XihePatchRecovery` | 2D masked feature map | `stable` | `./xihepatchrecovery.md` |
+| XiheUpSample | sample | `OneSample` | `XiheUpSample` | 2D masked feature map | `stable` | `./xiheupsample.md` |
 | FuxiTransformer | transformer | `OneTransformer` | `FuxiTransformer` | 2D 特征图 | `stable` | `./fuxitransformer.md` |
 | UNetEncoder1D/2D/3D | encoder | `OneEncoder` | `UNetEncoder*d` | 规则网格多尺度特征 | `stable` | `./oneencoder.md` |
 | UNetDecoder1D/2D/3D | decoder | `OneDecoder` | `UNetDecoder*d` | UNet skip feature 列表 | `stable` | `./onedecoder.md` |
@@ -90,8 +97,11 @@
 | GraphViTEncoder | encoder | `OneEncoder` | `GraphViTEncoder` | 图节点、边、状态、位置编码 | `stable` | `./oneencoder.md` |
 | RNNClusterPooling | pooling | `OnePooling` | `RNNClusterPooling` | 节点到 cluster token | `stable` | `./onepooling.md` |
 | GraphViTDecoder | decoder | `OneDecoder` | `GraphViTDecoder` | cluster token 到节点状态增量 | `stable` | `./onedecoder.md` |
-| MeshEdgeBlock | edge | `OneEdge` | `MeshEdgeBlock` | DGL 图边更新 | `stable` | `./oneedge.md` |
-| MeshNodeBlock | node | `OneNode` | `MeshNodeBlock` | DGL 图节点更新 | `stable` | `./onenode.md` |
+| MeshGraphEncoder | encoder | not_applicable | `MeshGraphEncoder` | 图节点/边特征编码 | `stable` | `./mesh_graph_encoder.md` |
+| MeshGraphDecoder | decoder | not_applicable | `MeshGraphDecoder` | 图特征解码到输出 | `stable` | `./mesh_graph_decoder.md` |
+| MeshEdgeBlock | edge | `OneEdge` | `MeshEdgeBlock` | DGL 图边更新 | `stable` | `./mesh_edge_block.md` |
+| MeshNodeBlock | node | `OneNode` | `MeshNodeBlock` | DGL 图节点更新 | `stable` | `./mesh_node_block.md` |
+| MeshGraphMLP | mlp | not_applicable | `MeshGraphMLP` | 图节点/边 MLP 映射 | `stable` | `./mesh_graph_mlp.md` |
 | BistrideGraphMessagePassing | processor | `OneProcessor` | `BistrideGraphMessagePassing` | 多尺度图 message passing | `stable` | `./oneprocessor.md` |
 | GroupEquivariantConv2d/3d | equivariant | `OneEquivariant` | `GroupEquivariantConv*d` | GFNO 等变卷积 stem | `stable` | `./oneequivariant.md` |
 | AlphaFoldJAXEvoformer | transformer | `OneTransformer` | `AlphaFoldJAXEvoformer` | AF2 JAX Evoformer trunk | `contract_only` | `./alphafoldjaxcomponents.md` |
@@ -151,6 +161,9 @@
 | GSpectralConv*d | fourier | `OneFourier` | `GSpectralConv*d` | group-equivariant 谱卷积 | `stable` | `./onefourier.md` |
 | Physics Attention | attention | `OneAttention` | `Physics_Attention_*` | Transolver 物理 attention | `stable` | `./oneattention.md` |
 | Linear / Fact Attention | attention | `OneAttention` | `LinearAttention / FactAttention*d` | 神经算子 attention block | `stable` | `./oneattention.md` |
+| DBlock | layer | not_applicable | `DBlock` | 生成/判别网络基础层 | `stable` | `./dblock.md` |
+| Graph | utils | not_applicable | `Graph` | GraphCast 图构建工具 | `stable` | `./graph.md` |
+| GNNLayerUtils | utils | not_applicable | `gnnlayer_utils` | GNN 图层工具函数 | `stable` | `./gnnlayer_utils.md` |
 
 ## 按模块族检索
 

@@ -40,6 +40,8 @@
 | `FourCastNet` | weather / global forecasting | 2D fields | AFNO trunk | `stable` | [fourcastnet.md](./fourcastnet.md) |
 | `Fuxi` | weather / spatiotemporal forecasting | multi-step 2D/3D blocks | U-shape Swin trunk | `stable` | [fuxi.md](./fuxi.md) |
 | `FengWu` | weather / medium-range forecasting | multi-branch 2D inputs | encoder-decoder + 3D fuser | `stable` | [fengwu.md](./fengwu.md) |
+| `GraphCast` | weather / global forecasting | 2D lat-lon grid fields | mesh graph processor | `stable` | [graphcast.md](./graphcast.md) |
+| `Xihe` | weather / ocean forecasting | 2D masked ocean fields | U-shape with masked fusion | `stable` | [xihe.md](./xihe.md) |
 | `AlphaFold` | biosciences / protein folding | AlphaFold v2 FASTA/MSA/template features | JAX/Haiku Evoformer + StructureModule | `stable` | [alphafold.md](./alphafold.md) |
 | `OpenFold` | biosciences / protein folding | OpenFold AF2 batch dict | PyTorch Evoformer + StructureModule | `stable` | [openfold.md](./openfold.md) |
 | `AlphaFold3` | biosciences / biomolecular structure | AF3 JSON / JAX feature batch | JAX/Haiku Pairformer + diffusion | `stable` | [alphafold3.md](./alphafold3.md) |
