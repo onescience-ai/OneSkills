@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "package": "oneskills",
-  "version": "2026.06.29",
-  "skills_version": "2026.06.29",
+  "version": "2026.06.30",
+  "skills_version": "2026.06.30",
   "manifest_path": "catalog/manifest.json",
   "skills": [
     {
