@@ -1,9 +1,42 @@
 # <div align="center">OneSkills</div>
 
-OneSkills是面向AI4S的科研智能体技能库，聚焦科研开发、实验运行与环境交付等关键环节，提供可复用、可组合、可落地的任务执行能力。
+<div align="center">
 
-## 支持Agent
-**NOTE: 需要拉取skills仓库**
+面向 AI4S 的科研智能体技能库
+
+</div>
+
+<div align="center">
+
+![AI4S](https://img.shields.io/badge/AI4S-%E7%A7%91%E7%A0%94%E6%99%BA%E8%83%BD%E4%BD%93-2563eb)
+![Claude Code](https://img.shields.io/badge/Claude%20Code-%E6%94%AF%E6%8C%81-0f766e)
+![Codex](https://img.shields.io/badge/Codex-%E6%94%AF%E6%8C%81-0f766e)
+![Trae](https://img.shields.io/badge/Trae-%E6%94%AF%E6%8C%81-0f766e)
+![OpenCode](https://img.shields.io/badge/OpenCode-%E6%94%AF%E6%8C%81-0f766e)
+![Runtime](https://img.shields.io/badge/Runtime-%E5%8F%AF%E9%80%89%E6%A1%A3%E4%BD%8D-f59e0b)
+![License](https://img.shields.io/badge/License-Apache--2.0-16a34a)
+
+</div>
+
+<div align="center">
+
+[安装 / Installation](../../install/README.md)
+
+</div>
+
+<div align="center">
+
+[中文](./README.md) | [English](./README_EN.md)
+
+</div>
+
+---
+
+OneSkills 是面向 AI4S 的科研智能体技能库，聚焦科研开发、实验运行与环境交付等关键环节，提供可复用、可组合、可落地的任务执行能力。
+
+## 支持的智能体
+
+**说明：需要先拉取 skills 仓库**
 
 ```bash 
 git clone https://gitee.com/onescience-ai/oneskills.git
@@ -36,12 +69,12 @@ cd oneskills
 - 提交科研任务到远端环境并排查运行失败原因：`使用OneScience技能把这个训练任务提交到远端GPU集群并诊断运行失败原因`
 - 判断一个科研需求应该如何拆解、执行、验证：`使用OneScience技能帮我拆解这个科研需求并规划执行与验证路径`
 
-## Contribution Notes
+## 贡献说明
 
-本仓库公开通用技能、公开参考资料与用户可用文档，如果你想了解如何在本仓库中扩展自定义技能，优先阅读：`docs/open-source/custom_skill_contribution.md`
+本仓库公开通用技能、公开参考资料与用户可用文档。如果你想了解如何在本仓库中扩展自定义技能，优先阅读：[docs/open-source/custom_skill_contribution.md](custom_skill_contribution.md)
 
-## Project Governance
+## 项目治理
 
-- `LICENSE`
-- `CONTRIBUTING.md`
-- `SECURITY.md`
+- [LICENSE](../../LICENSE)
+- [CONTRIBUTING.md](../../CONTRIBUTING.md)
+- [SECURITY.md](../../SECURITY.md)
