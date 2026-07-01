@@ -20,13 +20,13 @@ AI4S-oriented skill library for research agents
 
 <div align="center">
 
-[Installation](../../install/README.md)
+[Installation](./install/README.md)
 
 </div>
 
 <div align="center">
 
-[中文](./public_repo_README.md) | [English](./public_repo_README_EN.md)
+[中文](./README.md) | [English](./README_EN.md)
 
 </div>
 

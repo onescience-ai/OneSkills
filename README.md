@@ -20,7 +20,7 @@
 
 <div align="center">
 
-[安装 / Installation](../../install/README.md)
+[安装 / Installation](./install/README.md)
 
 </div>
 

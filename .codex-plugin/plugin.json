@@ -1,0 +1,41 @@
+{
+  "name": "oneskills",
+  "version": "2026.05.11",
+  "description": "OneScience / OneSkills skills for AI-native scientific research workflows, coding, runtime submission, debugging, and environment setup.",
+  "author": {
+    "name": "OneScience AI",
+    "url": "https://github.com/onescience-ai"
+  },
+  "homepage": "https://github.com/onescience-ai/oneskills",
+  "repository": "https://github.com/onescience-ai/oneskills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "onescience",
+    "oneskills",
+    "skills",
+    "ai4s",
+    "scientific-computing",
+    "workflow",
+    "mcp",
+    "scnet"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "OneSkills",
+    "shortDescription": "Scientific research, coding, runtime, and workflow skills for Codex",
+    "longDescription": "Use OneSkills to guide AI-native scientific research workflows, coding, runtime submission, debugging, environment setup, and optional SCnet MCP integration.",
+    "developerName": "OneScience AI",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "使用 onescience",
+      "使用 onescience 技能",
+      "使用 oneskills"
+    ],
+    "websiteURL": "https://github.com/onescience-ai/oneskills"
+  }
+}
