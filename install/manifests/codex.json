@@ -1,10 +1,7 @@
 {
   "agent": "codex",
   "namespace_root": ".codex/oneskills",
-  "integration_sources": [
-    "generic-agent.md",
-    "codex/README.md"
-  ],
+  "integration_sources": [],
   "bridge": {
     "kind": "user_skill_links",
     "root": "~/.codex/skills",

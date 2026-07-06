@@ -874,7 +874,7 @@ def main() -> int:
         "--profile",
         choices=INSTALL_PROFILES,
         default="basic",
-        help="Install profile. basic: install skills/references/integrations only; runtime: also install onescience.json and tpl.slurm. Default: basic.",
+        help="Install profile. basic: install skills/references only; runtime: also install onescience.json and tpl.slurm. Default: basic.",
     )
     parser.add_argument("--with-runtime-assets", action="store_true", help="Compatibility alias for --profile runtime.")
     parser.add_argument("--skip-mcp-tools", action="store_true", help="Codex only: do not download bundled MCP tool binary.")

@@ -1,8 +1,5 @@
 {
   "agent": "opencode",
   "namespace_root": ".opencode",
-  "integration_sources": [
-    "generic-agent.md",
-    "opencode/README.md"
-  ]
+  "integration_sources": []
 }
