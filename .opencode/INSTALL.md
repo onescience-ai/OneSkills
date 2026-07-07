@@ -1,30 +1,30 @@
-# Install OneSkills for OpenCode
+# 为 OpenCode 安装 OneSkills
 
-Use the repository-local OpenCode plugin to enable OneScience / OneSkills skills inside OpenCode. This path keeps the integration self-contained in the cloned repository and does not require Python.
+使用仓库内置的 OpenCode 插件，即可在 OpenCode 中启用 OneScience / OneSkills 技能。该方式会将集成保持在当前克隆仓库内完成，不依赖 Python。
 
-## One-Line User Prompt
+## 单句用户提示词
 
-Users can paste this single sentence into OpenCode:
+用户可以将下面这句话直接粘贴到 OpenCode 中：
 
 ```text
-Fetch and follow instructions from https://github.com/onescience-ai/oneskills/blob/master/.opencode/INSTALL.md to install OneSkills for OpenCode from the current repository checkout.
+请获取并按照 https://github.com/onescience-ai/oneskills/blob/master/.opencode/INSTALL.md 中的说明，从当前仓库检出为 OpenCode 安装 OneSkills。
 ```
 
-OpenCode should update the local `opencode.json` if needed, point it at `.opencode/plugins/oneskills.js`, restart guidance should be given after config changes, and the user should not be asked to manually discover skill paths unless the default plugin flow fails.
+如有需要，OpenCode 应自动更新本地 `opencode.json`，将其指向 `.opencode/plugins/oneskills.js`；在配置变更后应提示用户重启；除非默认插件流程失败，否则不应要求用户手动查找技能路径。
 
-## Prerequisites
+## 前置条件
 
-- [OpenCode.ai](https://opencode.ai) installed
-- A local checkout of this repository
-- Network access to GitHub if the user is fetching this file remotely
+- 已安装 [OpenCode.ai](https://opencode.ai)
+- 已在本地检出当前仓库
+- 如果用户需要远程获取本文件，则需具备访问 GitHub 的网络能力
 
-## Install
+## 安装
 
-Add the local plugin to the `plugin` array in your OpenCode config.
+将本地插件加入 OpenCode 配置中的 `plugin` 数组。
 
-### Project-level config
+### 项目级配置
 
-If you want OneSkills only for the current repository, add this to the project `opencode.json`:
+如果你只想在当前仓库中启用 OneSkills，请在项目的 `opencode.json` 中加入以下内容：
 
 ```json
 {
@@ -32,9 +32,9 @@ If you want OneSkills only for the current repository, add this to the project `
 }
 ```
 
-### Global config
+### 全局配置
 
-If you want to load this repository checkout from a global OpenCode config, use the absolute path to the plugin file instead:
+如果你想从全局 OpenCode 配置中加载当前仓库检出，请改为使用插件文件的绝对路径：
 
 ```json
 {
@@ -42,7 +42,7 @@ If you want to load this repository checkout from a global OpenCode config, use 
 }
 ```
 
-On Windows, that looks like:
+在 Windows 上，示例如下：
 
 ```json
 {
@@ -50,30 +50,30 @@ On Windows, that looks like:
 }
 ```
 
-If `plugin` already exists, append the OneSkills entry instead of replacing existing plugins.
+如果 `plugin` 已存在，请在保留原有插件的前提下追加 OneSkills 条目，而不是直接覆盖整个数组。
 
-Restart OpenCode after saving the config.
+保存配置后，重启 OpenCode。
 
-## What this loads
+## 该插件会加载什么
 
-The local plugin at `.opencode/plugins/oneskills.js`:
+位于 `.opencode/plugins/oneskills.js` 的本地插件会：
 
-- registers the repository `skills/` directory automatically
-- injects a OneSkills bootstrap into the first user message
-- maps OneSkills prompts to OpenCode-native tools
-- keeps the integration self-contained inside this repository
+- 自动注册仓库内的 `skills/` 目录
+- 在用户的第一条消息中注入 OneSkills 启动提示
+- 将 OneSkills 提示词映射到 OpenCode 原生工具
+- 将整个集成保持为当前仓库内的自包含方案
 
-This means you normally do not need to manually add `skills.paths` to `opencode.json` when using the plugin.
+这意味着在使用该插件时，通常无需再手动向 `opencode.json` 添加 `skills.paths`。
 
-## Verify
+## 验证
 
-Before restarting OpenCode, confirm the plugin file exists:
+在重启 OpenCode 前，请先确认插件文件存在：
 
 ```text
 .opencode/plugins/oneskills.js
 ```
 
-After restarting OpenCode, try one of these prompts:
+重启 OpenCode 后，可以尝试以下任一提示词：
 
 ```text
 使用 oneskills
@@ -87,32 +87,32 @@ After restarting OpenCode, try one of these prompts:
 use skill tool to list skills
 ```
 
-The expected entry behavior is that OneSkills routes general OneScience requests through `onescience-workflow`.
+预期行为是：OneSkills 会通过 `onescience-workflow` 路由通用的 OneScience 请求。
 
-## Troubleshooting
+## 故障排查
 
-### Plugin not loading
+### 插件未加载
 
-1. Check that `.opencode/plugins/oneskills.js` exists.
-2. Verify the `plugin` entry in `opencode.json` points to the right path.
-3. Restart OpenCode after editing config.
-4. If you configured a global path, make sure it points to this repository checkout.
+1. 检查 `.opencode/plugins/oneskills.js` 是否存在。
+2. 确认 `opencode.json` 中的 `plugin` 条目指向了正确路径。
+3. 修改配置后重启 OpenCode。
+4. 如果你配置的是全局路径，请确认它指向的是当前仓库检出位置。
 
-### Skills not found
+### 未找到技能
 
-1. Use the `skill` tool to list discovered skills.
-2. Confirm the repository still contains `skills/onescience-workflow/SKILL.md`.
-3. Confirm the plugin loaded successfully.
-4. If the plugin flow is blocked in your environment, fall back to explicitly adding the repository `skills/` directory through OpenCode's skill path configuration.
+1. 使用 `skill` 工具列出已发现的技能。
+2. 确认仓库中仍然存在 `skills/onescience-workflow/SKILL.md`。
+3. 确认插件已成功加载。
+4. 如果你的环境中插件流程受限，可退回为通过 OpenCode 的技能路径配置显式添加仓库 `skills/` 目录。
 
-### Repository moved
+### 仓库位置发生变化
 
-If you move this repository, update the plugin path in any global `opencode.json` that points at the old checkout.
+如果你移动了当前仓库，请同步更新所有全局 `opencode.json` 中仍指向旧路径的插件配置。
 
-## Update
+## 更新
 
-Pull the latest repository changes, then restart OpenCode so the plugin and skills reload from the updated checkout.
+拉取仓库最新变更后，重启 OpenCode，以便从更新后的检出中重新加载插件和技能。
 
-## Uninstall
+## 卸载
 
-Remove the OneSkills plugin entry from `opencode.json`, then restart OpenCode.
+从 `opencode.json` 中移除 OneSkills 的插件条目，然后重启 OpenCode。

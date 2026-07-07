@@ -44,8 +44,6 @@
 
 ## OneSkills 发布契约
 
-- 官方 skill 清单：`catalog/manifest.json`
-- 远程索引：`.well-known/skills/index.json`
 - Catalog ingest 只索引 `skills/` 下顶层 skill；`onescience/` 源码树是 coder 依赖锚点，不作为 skill 检索
 
 ## OpenCode 安装布局

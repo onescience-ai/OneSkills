@@ -77,19 +77,9 @@ If Claude Code does not appear to load the skills, check that the installed plug
 
 ### 3. Optional SCnet MCP
 
-`scnet_mcp` is an external service. OneSkills only provides the routing and runtime contract. If your local machine already has the SCnet MCP server, copy the example config and edit it:
-
-```bash
-cp ~/oneskills/onescience-plugin/config-examples/claude.mcp.example.json ~/oneskills/.mcp.json
-```
-
-Replace:
-
-- `REPLACE_WITH_SCNET_MCP_COMMAND`
-- `args`
-- `SCNET_TOKEN`
-
-with the real local SCnet MCP launch configuration.
+`scnet_mcp` is an external service. OneSkills only provides the routing and runtime contract.
+MCP configuration is handled by the OneScience Copilot VS Code extension. Refer to the
+extension's built-in setup flow for SCnet MCP configuration.
 
 ## Codex
 
@@ -112,14 +102,6 @@ cmd /c mklink /J "%USERPROFILE%\.agents\skills\oneskills" "%USERPROFILE%\.codex\
 ```
 
 Restart Codex after installation.
-
-Optional MCP:
-
-```bash
-cp ~/.codex/oneskills/onescience-plugin/config-examples/codex.mcp.example.json ~/.codex/oneskills/.mcp.json
-```
-
-Then edit the copied `.mcp.json` with the real SCnet MCP command and credentials.
 
 ## Notes
 

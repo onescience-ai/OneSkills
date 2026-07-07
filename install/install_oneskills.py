@@ -21,7 +21,6 @@ OPENCODE_CONFIG_SNIPPET_PATH = ROOT / "install" / "templates" / "opencode.jsonc.
 STATE_DIR = ".oneskills/install-state"
 AGENTS_WITH_ONESCIENCE_SOURCE = {"codex", "opencode"}
 SHARED_REFERENCES_DIR = ROOT / "references"
-INTEGRATIONS_DIR = ROOT / "integrations"
 GENERIC_AGENT = "generic"
 ONESCIENCE_SOURCE_URL = "https://gitee.com/onescience-ai/onescience/releases/download/0.3.0/onescience-0.3.0.zip"
 MCP_TOOL_URL = "https://gitee.com/onescience-ai/agent-cloud-interaction-protocol/releases/download/v0.1/scnet-mcp-server.exe"
@@ -300,12 +299,6 @@ def build_entries(
             seen_targets,
             "onescience_source",
         )
-
-    integrations_root = namespace_root / "integrations"
-    for source_rel in manifest.get("integration_sources", []):
-        source = INTEGRATIONS_DIR / source_rel
-        target = integrations_root / source_rel
-        append_entry(entries, source, target, seen_targets)
 
     for mapping in profile_assets(profile):
         append_entry(entries, ROOT / mapping["source"], project_root / mapping["target"], seen_targets)

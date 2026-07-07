@@ -250,8 +250,3 @@ python3 install/install_oneskills.py --agent opencode --project /path/to/project
 
 - `docs/user-guides/claude_codex_plugin_install.md`
 - `.codex/INSTALL.md`
-
-MCP 配置示例在：
-
-- `onescience-plugin/config-examples/claude.mcp.example.json`
-- `onescience-plugin/config-examples/codex.mcp.example.json`

@@ -2,9 +2,8 @@
 
 ## 2026.06.05
 
-本次发布主要为 OneCode Catalog 接入做准备，并增强 OpenCode 安装体验：
+本次发布主要为 OpenCode 安装体验增强：
 
-- 新增官方 skill 清单 `catalog/manifest.json` 与远程索引 `.well-known/skills/index.json`，便于 Catalog 发现与检索顶层技能
 - OpenCode 安装器默认会下载 OneScience 源码快照到项目 `.opencode/onescience/`，供代码阅读与实现类 skill 使用
 - OpenCode 安装布局与默认发现路径对齐：skills 安装到 `.opencode/skills/`，并生成 `.opencode/opencode.jsonc.snippet` 供需要时合并配置
 - 支持通过 `--namespace-root` 将 skills 安装到自定义目录（如 `vendor/oneskills/<version>/`）
