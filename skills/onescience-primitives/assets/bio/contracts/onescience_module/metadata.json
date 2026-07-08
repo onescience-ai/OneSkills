@@ -1,0 +1,17 @@
+{
+  "name": "onescience_module",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "onescience_module 是 OneScience 模型侧的基础组件契约，面向 MedGemma 等继承统一 Module 基类的模型，描述其模型实例化参数记录、checkpoint 保存与加载、registry 反序列化、设备定位、参数统计和 torch 模型包装能力。它不是生物算法本体，而是为生信模型接入 OneScience 运行、持久化和调度体系提供通用生命周期接口，并提醒当前 medgemma 对 onescience.modules.Module 的导入链需要核对 __init__.py 导出状态。",
+  "tags": [
+    "model-lifecycle",
+    "checkpoint",
+    "registry",
+    "medgemma",
+    "model-wrapper"
+  ]
+}

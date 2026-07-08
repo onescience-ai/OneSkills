@@ -9,6 +9,7 @@ description: >
  "流水线并行"、"pipeline parallel"、"模型并行改造"、"分布式训练"、"stage 拆分"、
  "ColumnParallelLinear"、"RowParallelLinear"、"pretrain 接口"、"forward_step_func"、
  "model_provider"、"TP 并行"、"张量并行"、"多卡训练"、"Megatron"。
+type: executor
 ---
 
 # Pipeline Parallel 改造 Skill

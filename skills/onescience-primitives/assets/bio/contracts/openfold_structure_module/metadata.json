@@ -1,0 +1,17 @@
+{
+  "name": "openfold_structure_module",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "OpenFold StructureModule 组件契约描述 AF2-style folding 中从 single/pair representation 到 atom14/atom37 坐标的结构恢复过程，覆盖 IPA、backbone update、angle resnet、输出约定、参数和风险，并给出面向 OneDecoder 的规划映射。",
+  "tags": [
+    "protein",
+    "structure-prediction",
+    "openfold",
+    "decoder",
+    "coordinates"
+  ]
+}

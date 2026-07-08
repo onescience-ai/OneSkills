@@ -1,0 +1,17 @@
+{
+  "name": "protenix_transformer",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "protenix_transformer 覆盖 ProtenixConditionedTransitionBlock、ProtenixDiffusionTransformerBlock、ProtenixDiffusionTransformer 和 ProtenixAtomTransformer，是 Protenix diffusion 内部连接 pair-bias attention、conditioned transition 与 atom local attention 的主干；实现上通过 OneTransformer 注册，既支持 token diffusion 表征更新，也支持 atom 局部窗口 cross-attention；使用时必须区分 global z 与 local atom pair p；规划时重点校验 n_queries/n_keys、cross_attention_mode、blocks_per_ckpt 和 diffusion/atom encoder-decoder维度一致性。",
+  "tags": [
+    "protenix",
+    "transformer",
+    "diffusion-transformer",
+    "atom-transformer",
+    "conditioned-transition"
+  ]
+}

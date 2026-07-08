@@ -1,0 +1,17 @@
+{
+  "name": "xihe",
+  "type": "model",
+  "domain": "oceanography",
+  "version": "source-derived-2026-06-23",
+  "visibility": "public",
+  "created_at": "2026-06-23",
+  "updated_at": "2026-06-23",
+  "description": "Xihe 原语用于全球高分辨率海洋涡旋分辨率预报，基于二维海洋变量 patch embedding、带海陆掩膜的 XiheFuser、多尺度下采样/上采样和 patch recovery 构建 U 形主干。使用时通过配置对象提供图像尺寸、patch、通道数和 mask 路径，以 forward(x) 输入海洋变量场并输出预测场。规划上适合海洋规则网格预测，关键决策包括掩膜路径、海陆掩膜降采样策略、patch 尺寸、输入输出变量集合和高分辨率显存预算。",
+  "tags": [
+    "ocean-forecast",
+    "eddy-resolving",
+    "sea-land-mask",
+    "global-ocean",
+    "patch-forecast"
+  ]
+}

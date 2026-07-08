@@ -1,6 +1,6 @@
 {
   "example_id": "scnet_mcp_runtime_happy_path",
-  "summary": "SCnet MCP 运行链路在四阶段内完整闭环，runtime 直接通过 cloud_api 提交、轮询并同步日志。",
+  "summary": "SCnet 运行链路在四阶段内保持闭环，但平台侧提交、状态查询与日志获取委托给 scnet-chat，runtime 负责交接与结果归一化。",
   "terminal_phase": "diagnose",
   "phases": {
     "discover": {
@@ -42,7 +42,8 @@
       "evidence": {
         "preflight": {
           "channel_ready": true,
-          "remote_path_writable": true
+          "remote_path_writable": true,
+          "delegated_executor": "scnet-chat"
         }
       }
     },
@@ -63,14 +64,15 @@
       "sync_status": "synced",
       "evidence": {
         "execute": {
-          "status_probe": "scnet_get_task_status",
-          "log_sync_mode": "scnet_download_log"
+          "delegated_executor": "scnet-chat",
+          "status_probe": "scnet-chat delegated status query",
+          "log_sync_mode": "scnet-chat delegated log retrieval"
         }
       }
     },
     "diagnose": {
       "failure_reason": "none",
-      "status_source": "scnet_get_task_status",
+      "status_source": "scnet-chat delegated status query",
       "log_readiness": "ready",
       "next_action": "onescience-runtime",
       "evidence": {

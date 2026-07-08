@@ -1,0 +1,15 @@
+{
+  "name": "unified_pos_embedding",
+  "type": "component",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-28",
+  "updated_at": "2026-06-28",
+  "description": "unified_pos_embedding 是函数式统一位置嵌入原语，用归一化坐标计算输入 1D/2D/3D 网格点到固定参考网格点的欧氏距离矩阵；实现上根据 shapelist 生成输入网格与 ref 参考网格，并广播计算距离；使用时应提供合法维度列表、参考分辨率和 batchsize，在规划中将其作为相对位置/距离特征而非可学习 embedding。",
+  "tags": [
+    "positional-encoding",
+    "grid-distance",
+    "relative-position"
+  ]
+}

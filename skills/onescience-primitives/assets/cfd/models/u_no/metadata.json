@@ -1,0 +1,16 @@
+{
+  "name": "u_no",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "U_NO 是 OneScience CFD_Benchmark 中的U-shaped Neural Operator模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：将 U-Net 下采样/上采样结构与 Fourier operator 处理结合，在多尺度路径中注入谱算子建模能力。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“需要比 FNO 更强的多尺度表达、同时保持算子学习属性的规则网格 CFD 任务。”时优先考虑，若出现“结构尺寸过小导致多次下采样不稳定，或无法提供正确 `shapelist` 的任务。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "u-shaped-operator",
+    "fourier-operator",
+    "multiscale",
+    "cfd"
+  ]
+}

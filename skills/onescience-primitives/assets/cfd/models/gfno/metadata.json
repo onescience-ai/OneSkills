@@ -1,0 +1,16 @@
+{
+  "name": "gfno",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "GFNO 是 OneScience CFD_Benchmark 中的group equivariant Fourier operator模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：在 FNO 思路上加入群等变谱卷积与等变 MLP，用于利用二维场中的旋转/反射等对称先验。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“具有明显几何对称性、希望比较等变先验收益的 2D CFD 场预测。”时优先考虑，若出现“非 2D 场、无对称先验或 `space_dim/shapelist` 与 GFNO 设定不匹配的任务。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "equivariant-operator",
+    "fourier-operator",
+    "symmetry-modeling",
+    "cfd"
+  ]
+}

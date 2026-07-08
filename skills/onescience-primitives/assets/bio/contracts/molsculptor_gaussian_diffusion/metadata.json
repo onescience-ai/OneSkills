@@ -1,0 +1,16 @@
+{
+  "name": "molsculptor_gaussian_diffusion",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "molsculptor_gaussian_diffusion 是 MolSculptor 的高斯扩散调度组件，维护 beta/alpha 累积量并实现 q_sample、p_mean_variance、p_ddim 等前向加噪和反向采样公式。它可作为 TargetDiff 类扩散任务的调度参考，但不包含蛋白口袋条件建模或分子合法性约束。",
+  "tags": [
+    "molecule",
+    "diffusion-schedule",
+    "sampling",
+    "latent-generation"
+  ]
+}

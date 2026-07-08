@@ -1,0 +1,16 @@
+{
+  "name": "meshgraphnet",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "MeshGraphNet 是 OneScience CFD_Benchmark 中的encode-process-decode 图消息传递模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：分别编码节点和边特征，经多层 Edge->Node 消息传递 processor 更新节点表示，再解码节点目标物理量。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“已有 DGLGraph/CuGraphCSC、显式边特征和非结构网格拓扑的节点级预测。”时优先考虑，若出现“只有 `(x, fx)` operator view 而没有 graph/edge_features 的数据；模型本身不负责构图。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "mesh-graph",
+    "message-passing",
+    "unstructured-mesh",
+    "cfd"
+  ]
+}

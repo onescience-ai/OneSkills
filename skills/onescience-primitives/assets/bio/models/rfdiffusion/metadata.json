@@ -1,0 +1,17 @@
+{
+  "name": "rfdiffusion",
+  "type": "model",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-29",
+  "updated_at": "2026-06-29",
+  "description": "RFdiffusion 是蛋白质骨架生成与设计原语，以 Hydra 推理配置、contig、输入 PDB、hotspot、partial diffusion 或 symmetry 条件驱动 RoseTTAFold 风格 iterative structure track 和扩散采样生成骨架；使用时通过 run_inference.py 设置输出前缀、设计数量和任务条件，产出 PDB/TRB/轨迹文件，规划时应围绕无条件生成、motif scaffolding、binder design、partial diffusion 和后续 ProteinMPNN/结构验证流程选择参数与 checkpoint。",
+  "tags": [
+    "protein",
+    "backbone-generation",
+    "diffusion",
+    "motif-scaffolding",
+    "binder-design"
+  ]
+}

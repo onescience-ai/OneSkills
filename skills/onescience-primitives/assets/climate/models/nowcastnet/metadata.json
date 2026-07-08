@@ -1,0 +1,17 @@
+{
+  "name": "nowcastnet",
+  "type": "model",
+  "domain": "meteorology",
+  "version": "source-derived-2026-06-23",
+  "visibility": "public",
+  "created_at": "2026-06-23",
+  "updated_at": "2026-06-23",
+  "description": "NowcastNet 原语用于短临降水外推，主生成网络先由 Evolution_Network 预测强度增量和运动场，通过 warp 对最后一帧逐步平流得到演化结果，再结合生成编码器、噪声投影和生成解码器补充细节；辅助文件提供仅演化输出和判别器。使用时以 all_frames 五维序列张量调用 forward，输出未来降水序列。规划上适合雷达回波或降水图像的分钟级 nowcasting，关键决策包括输入长度、预测长度、图像尺寸、设备和是否使用生成式细节增强。",
+  "tags": [
+    "precipitation-nowcasting",
+    "radar-forecast",
+    "motion-field",
+    "generative-forecast",
+    "short-term-forecast"
+  ]
+}

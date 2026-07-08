@@ -1,0 +1,17 @@
+{
+  "name": "mace_radial",
+  "type": "component",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "mace_radial 是 MACE 的径向距离处理原语，提供 Bessel、Gaussian、Chebychev 基函数、Polynomial cutoff、ZBL 短程排斥以及 Agnesi/Soft 距离变换。其实现把边距离展开成可被等变消息传递消费的径向特征，并用平滑截断和可选短程排斥控制局部相互作用。使用时应确保 `r_max`、距离单位、构图 cutoff 和 checkpoint 配置一致，规划上优先用于边特征设计、pair repulsion 稳定性评估和 foundation fine-tuning cutoff 兼容性判断。",
+  "tags": [
+    "materials",
+    "radial-basis",
+    "cutoff",
+    "short-range-repulsion",
+    "edge-features"
+  ]
+}

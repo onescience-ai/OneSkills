@@ -1,0 +1,16 @@
+{
+  "name": "ptdit_structure_transformer",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "ptdit_structure_transformer 是 PT-DiT 的结构表征 transformer 辅助模块，包含归一化、transition、outer product 和 outer difference，用于从蛋白 residue single 表征构造或更新 pair 表征。它与 LaProteina 的结构生成和 motif 约束任务相关，但并非 LaProteina 源码直接依赖。",
+  "tags": [
+    "protein",
+    "pair-representation",
+    "structure-modeling",
+    "transformer"
+  ]
+}

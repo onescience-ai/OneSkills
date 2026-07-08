@@ -1,0 +1,25 @@
+{
+  "description": "scnet-chat 测试用例清单（与 assets 下脚本对应）",
+  "unit_tests": {
+    "runner": "python -m unittest assets.test_intent_unit -v",
+    "scope": "IntentRecognizer 意图与参数解析，无网络"
+  },
+  "integration_tests": {
+    "runner": "python assets/run_integration_tests.py",
+    "requires": ["~/.scnet-chat.env 有效", "pip install aiohttp"],
+    "cases": [
+      {"id": "config_exists", "type": "env", "description": "配置文件存在"},
+      {"id": "cache_file", "type": "env", "description": "缓存 JSON 存在或自动执行 cache.py"},
+      {"id": "job_py_queues", "type": "api", "description": "job.py --queues 返回 code 0"},
+      {"id": "nl_user", "type": "nl", "input": "查询用户", "description": "用户信息"},
+      {"id": "nl_walltime", "type": "nl", "input": "机时", "description": "机时查询"},
+      {"id": "nl_queues", "type": "nl", "input": "查询队列", "description": "队列 JSON"},
+      {"id": "nl_cluster", "type": "nl", "input": "集群信息", "description": "集群信息"},
+      {"id": "nl_jobs", "type": "nl", "input": "查询作业", "description": "实时作业列表 AC"},
+      {"id": "nl_history", "type": "nl", "input": "历史作业 最近1天", "description": "历史作业"},
+      {"id": "nl_help", "type": "nl", "input": "帮助", "description": "帮助文本"},
+      {"id": "nl_submit_sleep", "type": "nl", "input": "提交作业 sleep 120", "description": "提交 sleep 作业（默认墙钟）；若平台返回 Access/permission denied 则记为 SKIP 仍算通过"},
+      {"id": "nl_delete_job", "type": "nl", "input": "删除作业 <上一步ID>", "description": "提交成功后等待 8s 再删，降低实时 API 延迟导致的「未找到作业」"}
+    ]
+  }
+}

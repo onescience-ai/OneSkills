@@ -1,0 +1,16 @@
+{
+  "name": "shapenetcar",
+  "type": "datapipe",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "ShapeNetCar 数据处理原语用于将三维汽车外流场 VTK 结果或预处理 npy 缓存转换为 PyG 图样本；实现上按 param fold 划分训练/验证，读取 quadpress_smpl.vtk 与 hexvelo_smpl.vtk，构造表面压力点、外部速度点、SDF、法向量、surf 标记和 CFD 网格边或半径图，并使用训练统计量归一化；使用时配置数据目录、预处理缓存、统计目录、fold_id 和图参数后调用 train/val dataloader；规划上适合三维汽车几何相关流场/压力回归，不适合二维翼型、规则网格 benchmark 或缺少 VTK 字段对应关系的数据。",
+  "tags": [
+    "car-aerodynamics",
+    "surface-pressure",
+    "unstructured-mesh",
+    "geometry-regression"
+  ]
+}

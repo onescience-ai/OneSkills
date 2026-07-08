@@ -1,0 +1,16 @@
+{
+  "name": "transolver",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "Transolver 是 OneScience CFD_Benchmark 中的物理切片 Transformer模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：CFD_Benchmark 版本使用标准 `(x, fx, T)` token 接口，通过 Transolver_block 的物理状态切片注意力进行全局建模。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“非结构或结构 token 都可组织成 `(x, fx)` 的 CFD 场预测，尤其需要几何感知全局交互时。”时优先考虑，若出现“误把该文件当成 PyG Data 接口的 Transolver2D/3D；两者输入协议不同。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "physics-attention",
+    "token-operator",
+    "field-regression",
+    "cfd"
+  ]
+}

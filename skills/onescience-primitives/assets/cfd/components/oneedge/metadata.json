@@ -1,0 +1,15 @@
+{
+  "name": "OneEdge",
+  "type": "component",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-28",
+  "updated_at": "2026-06-28",
+  "description": "OneEdge 是图神经网络边更新的统一入口，目前主要分发到 MeshEdgeBlock；实现上按 style 实例化边更新模块并在 forward 中透传边特征、节点特征和图对象；使用时应保证图拓扑、边顺序和特征维度一致，并在规划中把它放在 message passing 的边更新阶段。",
+  "tags": [
+    "graph-edge",
+    "message-passing",
+    "meshgraphnet"
+  ]
+}

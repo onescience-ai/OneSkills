@@ -1,0 +1,19 @@
+{
+  "name": "boltz_data_pipeline",
+  "type": "datapipe",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "boltz_data_pipeline 用于 Boltz 风格生物分子结构数据的解析、过滤、裁剪、token 化、特征化和结构写出，核心实现包含 FASTA/A3M/YAML/CSV/schema 解析、动态与静态过滤、BoltzTokenizer、BoltzCropper、BoltzFeaturizer 以及 PDB/mmCIF writer；使用时应先将输入组织成 Boltz schema、Record、Target 或 Manifest，再按训练/推理需求执行过滤、裁剪和特征化；规划时应判断任务是结构输入解析、复合物 token 化、局部 crop、对称性处理还是结果写出。",
+  "tags": [
+    "boltz",
+    "biomolecular-structure",
+    "tokenization",
+    "cropping",
+    "symmetry",
+    "mmcif",
+    "pdb"
+  ]
+}

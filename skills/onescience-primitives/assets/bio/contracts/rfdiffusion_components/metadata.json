@@ -1,0 +1,17 @@
+{
+  "name": "rfdiffusion_components",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "RFdiffusion 组件契约描述蛋白骨架生成中的 sampler、diffuser 和 RoseTTAFold 网络主体，说明 contig/PDB/扩散配置如何驱动结构轨道去噪采样，并给出面向 OneDiffusion 与 OneTransformer 的目标映射、输入输出协议、典型参数、checkpoint 选择和设计任务风险。",
+  "tags": [
+    "protein",
+    "backbone-generation",
+    "diffusion",
+    "design",
+    "rosettafold"
+  ]
+}

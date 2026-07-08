@@ -1,0 +1,17 @@
+{
+  "name": "simplefold",
+  "type": "model",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-29",
+  "updated_at": "2026-06-29",
+  "description": "SimpleFold 是基于 flow matching 的生成式蛋白质结构预测原语，使用通用 Transformer/DiT 风格 FoldingDiT、原子局部编码、ESM 条件融合、token trunk 和 atom decoder 将特征化蛋白样本的噪声坐标转换为速度场并采样结构；使用时可通过 simplefold CLI 从 FASTA 推理，也可用 process/tokenize/train 脚本准备训练数据，规划时应围绕模型规模、backend、num_steps、tau、ESM 表征、atom_to_token 映射和训练/推理特征协议进行决策。",
+  "tags": [
+    "protein",
+    "structure-prediction",
+    "flow-matching",
+    "generative-folding",
+    "transformer"
+  ]
+}

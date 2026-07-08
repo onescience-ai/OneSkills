@@ -1,0 +1,17 @@
+{
+  "name": "uma_escn_md_block",
+  "type": "component",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "uma_escn_md_block 是 UMA eSCNMD backbone 的单层等变消息传递原语，负责按 `norm -> edgewise -> residual -> norm -> atomwise -> residual` 更新节点球谐表示。其实现结合 SO2/SO3 线性层、Wigner/rotation mapping、径向 cutoff、edgewise 消息和 spectral/grid atomwise 前馈，在局部图上保持旋转相关表示的结构一致。使用时由 eSCNMDBackbone 或 MoE backbone 堆叠调用，规划上用于决定 lmax/mmax、sphere_channels、ff_type、activation checkpoint 和 MoE chunk 策略，并需重点检查边几何、SO3 mapping、归一化和 checkpoint 结构兼容性。",
+  "tags": [
+    "materials",
+    "uma",
+    "equivariant-message-passing",
+    "spherical-harmonics",
+    "backbone-block"
+  ]
+}

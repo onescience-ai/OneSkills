@@ -1,0 +1,17 @@
+{
+  "name": "uma_loss",
+  "type": "component",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "uma_loss 是 UMA 多任务训练损失原语，提供 MAE、MSE、per-atom MAE、L2 向量范数以及支持 mask/per-structure reduction 的 DDP 多任务损失封装。其实现通过 registry 注册基础 loss，并用 `DDPMTLoss` 或 `DDPLoss` 在不同 rank 原子数、batch size 和任务 mask 不一致时修正全局平均。使用时通常由 UMA Hydra task 配置和 `MLIPTrainEvalUnit` 构建，规划上用于选择 property loss、reduction、coefficient、normalizer/element reference 后处理和 DDP 修正策略，并需重点检查输入输出 shape、`natoms`、`mult_mask` 与多任务 key 对齐。",
+  "tags": [
+    "materials",
+    "uma",
+    "multi-task-loss",
+    "per-atom-loss",
+    "distributed-training"
+  ]
+}

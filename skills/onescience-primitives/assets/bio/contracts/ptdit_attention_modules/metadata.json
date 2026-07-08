@@ -1,0 +1,16 @@
+{
+  "name": "ptdit_attention_modules",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "ptdit_attention_modules 是 PT-DiT 的蛋白 latent 注意力组件族，覆盖 query/key/value 生成、注意力核、输出投影、RoPE、hyper attention 和 invariant point attention。它与 LaProteina 的蛋白生成和结构约束任务语义相关，适合作为蛋白 latent transformer 的候选组件。",
+  "tags": [
+    "protein",
+    "attention",
+    "latent-generation",
+    "structure-aware"
+  ]
+}

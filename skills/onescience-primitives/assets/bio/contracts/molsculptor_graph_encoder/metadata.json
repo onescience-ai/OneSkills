@@ -1,0 +1,16 @@
+{
+  "name": "molsculptor_graph_encoder",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "molsculptor_graph_encoder 是 MolSculptor 的小分子图编码模块，将 atom/bond 离散特征转为前缀图 latent 表征，适合与 TargetDiff、GenScore、DiffDock 这类蛋白-配体或小分子任务在分子表示阶段对齐。它当前属于 MolSculptor 源码模块，不能直接替代上述模型原生图网络。",
+  "tags": [
+    "molecule",
+    "molecular-graph",
+    "ligand",
+    "graph-encoder"
+  ]
+}

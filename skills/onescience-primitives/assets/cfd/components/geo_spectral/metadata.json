@@ -1,0 +1,16 @@
+{
+  "name": "GeoSpectral",
+  "type": "component",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-28",
+  "updated_at": "2026-06-28",
+  "description": "GeoSpectral 原语包含 IPHI、GeoSpectralConv2d 和 GeoSpectralConv3d，用显式 DFT/IDFT 与可学习坐标逆映射在非结构几何或变形坐标上执行谱卷积；实现上在有坐标输入时构造 Fourier 基矩阵，在无坐标时退化为规则网格 FFT；使用时需要准备 channel-first 特征和归一化坐标，并在规划中控制点数、modes 与显存复杂度。",
+  "tags": [
+    "geo-fno",
+    "spectral-convolution",
+    "irregular-mesh",
+    "coordinate-mapping"
+  ]
+}

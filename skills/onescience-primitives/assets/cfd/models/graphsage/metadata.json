@@ -1,0 +1,16 @@
+{
+  "name": "graphsage",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "GraphSAGE 是 OneScience CFD_Benchmark 中的图邻域聚合模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：将坐标与节点特征拼接编码后，在给定 edge_index 上使用 SAGEConv 做多层邻域聚合并解码为节点物理量。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“已有稳定图拓扑且希望使用轻量图基线的非结构网格节点回归。”时优先考虑，若出现“没有 `edge_index` 的数据，或需要复杂多尺度池化/解池化的图任务。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "graph-neural-network",
+    "neighbor-aggregation",
+    "unstructured-mesh",
+    "cfd"
+  ]
+}

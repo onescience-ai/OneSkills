@@ -1,0 +1,16 @@
+{
+  "name": "mwt",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "MWT 是 OneScience CFD_Benchmark 中的multiwavelet transform operator模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：使用多小波变换式 Fourier 组件在多尺度频域中建模物理场，结构分支会把空间尺寸补到 2 的幂。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“规则网格上需要多尺度频域表达、且可接受 2 的幂 padding 的算子学习任务。”时优先考虑，若出现“`shapelist` 与真实网格不一致或 padding 后边界处理敏感的任务。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "multiwavelet",
+    "operator-learning",
+    "structured-grid",
+    "cfd"
+  ]
+}

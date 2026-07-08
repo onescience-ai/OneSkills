@@ -1,0 +1,17 @@
+{
+  "name": "bio_molecular_design_app",
+  "type": "application",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "面向 PCR/qPCR/测序引物探针、CRISPR guide 与编辑实验、限制性酶切和克隆图谱、质粒注释验证、RNA 二级结构与结构探针分析的分子生物学设计应用卡。该卡使用 bio_molecular_templates 与 bio_molecular_tools，强调本地可交接的设计约束、候选筛选表、轻量检查脚本和实验验证计划。",
+  "tags": [
+    "primer-design",
+    "crispr",
+    "restriction-digest",
+    "plasmid",
+    "rna-structure"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "u_net",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "U_Net 是 OneScience CFD_Benchmark 中的CFD_Benchmark U-shape field surrogate模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：CFD_Benchmark 版本用统一 `(x, fx)` 接口进入 U-shape 多尺度编码解码主干，与 DeepCFD 图像 UNet 不是同一套接口。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“可稳定 reshape 为规则网格的 CFD 场代理建模，或需要和 FNO/U_FNO/U_NO 使用同一 benchmark datapipe 对比。”时优先考虑，若出现“直接喂 `(Batch, Channels, H, W)` 图像 batch，或把非结构点云硬 reshape 成网格。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "unet",
+    "multiscale",
+    "structured-grid",
+    "cfd"
+  ]
+}

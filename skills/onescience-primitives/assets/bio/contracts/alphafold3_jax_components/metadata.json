@@ -1,0 +1,17 @@
+{
+  "name": "alphafold3_jax_components",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "AlphaFold3 JAX 组件契约描述 AF3 推理网络中的 Pairformer、DiffusionHead、atom cross attention 和 confidence heads，说明其如何从 folding input 与 feature batch 生成复合物结构样本、置信度和 ranking 信息，并给出面向 OnePairformer、OneDiffusion、OneAttention、OneHead 的规划映射、输入输出协议和风险边界。",
+  "tags": [
+    "protein",
+    "structure-prediction",
+    "complex",
+    "diffusion",
+    "pairformer"
+  ]
+}

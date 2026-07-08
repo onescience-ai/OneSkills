@@ -1,0 +1,15 @@
+{
+  "name": "OneNode",
+  "type": "component",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-28",
+  "updated_at": "2026-06-28",
+  "description": "OneNode 是图神经网络节点更新的统一入口，目前主要分发到 MeshNodeBlock；实现上按 style 创建节点更新模块并透传 edge_features、node_features 和 graph；使用时应保证边更新已完成且图方向与聚合语义正确，并在规划中把它放在 message passing 的节点聚合更新阶段。",
+  "tags": [
+    "graph-node",
+    "message-passing",
+    "meshgraphnet"
+  ]
+}

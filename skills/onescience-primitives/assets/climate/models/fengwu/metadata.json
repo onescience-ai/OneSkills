@@ -1,0 +1,17 @@
+{
+  "name": "fengwu",
+  "type": "model",
+  "domain": "meteorology",
+  "version": "source-derived-2026-06-23",
+  "visibility": "public",
+  "created_at": "2026-06-23",
+  "updated_at": "2026-06-23",
+  "description": "FengWu 原语用于全球中期天气预报，将地表变量与多类高空变量拆分为六个分支分别编码，再在中分辨率三维变量网格上执行跨变量融合，最后通过对应解码器恢复各变量场。实现上以 FengWuEncoder、FengWuFuser、FengWuDecoder 为核心，适合在已有气象张量预处理流水线中以 Python API 调用 forward(surface, z, r, u, v, t)。规划上应优先用于多变量、多气压层、需要跨变量耦合的全球预报任务，修改时重点关注变量分支数、压力层数、patch 尺寸与窗口配置。",
+  "tags": [
+    "weather-forecast",
+    "medium-range-forecast",
+    "global-atmosphere",
+    "multi-variable-fusion",
+    "pressure-level"
+  ]
+}

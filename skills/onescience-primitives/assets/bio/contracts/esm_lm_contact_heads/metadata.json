@@ -1,0 +1,16 @@
+{
+  "name": "esm_lm_contact_heads",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "esm_lm_contact_heads 是 ESM 输出头组件，包含 masked language modeling head 与 contact prediction head，分别用于蛋白 token 概率预测和残基接触图估计。它适用于蛋白表征评估、接触辅助分析和预训练任务，不应被误用为分子对接评分或扩散采样模块。",
+  "tags": [
+    "protein",
+    "language-model-head",
+    "contact-prediction",
+    "esm"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "diffdock",
+  "type": "datapipe",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "diffdock 数据处理原语负责把 PDBBind、Binding MOAD 或推理输入中的蛋白-配体复合物转换为 DiffDock 训练/采样可用的 PyG HeteroData 异构图，并在训练时注入平移、旋转和扭转扩散噪声与 score 标签；实现上读取 PDB/SDF/MOL2/SMILES、构建配体键图、受体残基图、可选全原子图和 ESM 嵌入，按 split/cache 组织样本并通过 DataLoader 或 DataListLoader 输出 batch；使用时通过训练配置构造 PDBBind/MOAD 数据集和 loader，规划时应先确认数据集模式、split、缓存目录、构图半径、扭转匹配和 GPU/CPU loader 策略，失败时优先回退到分子解析、受体裁剪和缓存重建检查。",
+  "tags": [
+    "protein-ligand-docking",
+    "heterogeneous-graph",
+    "molecular-complex",
+    "diffusion-noise",
+    "pdbbind",
+    "binding-moad"
+  ]
+}

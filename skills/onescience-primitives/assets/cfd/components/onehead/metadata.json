@@ -1,0 +1,15 @@
+{
+  "name": "OneHead",
+  "type": "component",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-28",
+  "updated_at": "2026-06-28",
+  "description": "OneHead 是预测头统一入口，通过 style 分发到 UNetHead、MaskedMSAHead 和材料性质 head；实现上仅实例化目标 head 并透传 forward，通常用于主干或 decoder 后的最终通道映射；使用时应确认输入已具备目标空间分辨率或节点语义，并在规划中把 head 定位为输出投影而非完整 decoder。",
+  "tags": [
+    "prediction-head",
+    "output-projection",
+    "field-channel"
+  ]
+}

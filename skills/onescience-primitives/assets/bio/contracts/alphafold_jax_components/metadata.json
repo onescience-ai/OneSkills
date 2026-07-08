@@ -1,0 +1,16 @@
+{
+  "name": "alphafold_jax_components",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "AlphaFold JAX 组件契约描述 AF2 原版推理流水线中的 Evoformer、StructureModule 和置信度头，说明其如何从 raw features 经 MSA、template、pair/single 表征更新生成结构和置信度，并给出在 OneScience 组件体系中面向 OneTransformer、OneDecoder 和 OneHead 的规划映射、输入输出协议、源码锚点与迁移风险。",
+  "tags": [
+    "protein",
+    "structure-prediction",
+    "evoformer",
+    "confidence"
+  ]
+}

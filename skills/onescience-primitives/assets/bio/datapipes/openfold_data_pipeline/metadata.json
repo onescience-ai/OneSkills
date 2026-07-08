@@ -1,0 +1,18 @@
+{
+  "name": "openfold_data_pipeline",
+  "type": "datapipe",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "openfold_data_pipeline 用于构建 OpenFold/AlphaFold2 风格的蛋白单体或多聚体训练与推理特征，核心实现覆盖 FASTA 解析、MSA 工具调用、template 检索、mmCIF 解析、特征处理、多链 pairing 和 DataModule 装配；使用时需要准备序列、MSA/template 数据库或已预处理特征，并通过 DataPipeline、FeaturePipeline 或 DataModule 接入；规划时应优先判断任务是单体还是多聚体、是否需要外部 MSA/template 工具、以及输出 batch 是否与 OpenFold 模型协议一致。",
+  "tags": [
+    "openfold",
+    "alphafold2",
+    "protein-folding",
+    "msa",
+    "template",
+    "multimer"
+  ]
+}

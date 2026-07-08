@@ -1,0 +1,16 @@
+{
+  "name": "esm_rotary_embedding",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "esm_rotary_embedding 是 ESM attention 可选的旋转位置编码组件，通过对 query/key 的成对维度施加正余弦旋转，将相对位置信息注入蛋白序列表征。它适合作为 ESM 多头注意力的辅助模块，不能单独承担蛋白结构、对接或生成任务。",
+  "tags": [
+    "protein",
+    "rotary-embedding",
+    "attention",
+    "esm"
+  ]
+}

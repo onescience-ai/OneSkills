@@ -1,0 +1,16 @@
+{
+  "name": "ptdit_diffusion_transformer",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "ptdit_diffusion_transformer 是 PT-DiT 的蛋白 latent diffusion transformer，在 ProToken latent token 上通过时间条件和可选标签条件执行去噪预测，适用于蛋白序列-结构联合生成、补全和 latent 编辑。它可作为 LaProteina 类蛋白生成任务的模块参考，但需要处理 latent 词表、长度 padding 和采样协议差异。",
+  "tags": [
+    "protein",
+    "diffusion",
+    "transformer",
+    "protein-design"
+  ]
+}

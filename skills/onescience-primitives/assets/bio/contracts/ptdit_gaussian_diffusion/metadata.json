@@ -1,0 +1,16 @@
+{
+  "name": "ptdit_gaussian_diffusion",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "ptdit_gaussian_diffusion 是 PT-DiT 的高斯扩散调度组件，负责蛋白 latent token 的线性 beta schedule、前向加噪、x0 还原、后验均值方差和 DDIM 步进。它适合作为蛋白 latent 扩散采样计划的调度参考，不负责结构解码或序列合法性校验。",
+  "tags": [
+    "protein",
+    "diffusion-schedule",
+    "sampling",
+    "latent-generation"
+  ]
+}

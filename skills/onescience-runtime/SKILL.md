@@ -1,6 +1,7 @@
 ---
 name: onescience-runtime
-description: 【统一运行与基础诊断技能】在代码生成完成后，识别执行模式、做运行前预检、提交任务、轮询状态、同步日志，并基于执行证据给出基础失败分类。不直接处理用户请求，需由上游技能调用。
+description: 【统一运行与基础诊断技能】接收脚本路径或命令，识别执行模式、做运行前预检、提交任务、轮询状态、同步日志，并基于执行证据给出基础失败分类。负责执行数据集构建脚本、模型训练脚本、推理脚本等。对于 SCnet 上已由 scnet-chat 覆盖的作业、文件、账户、区域、队列与集群等平台操作，委托 scnet-chat 技能处理。 不负责生成任务执行启动脚本（应由对应任务技能生成，如 onescience-dataset-builder），仅在未提供启动脚本时生成默认脚本作为兜底（可能存在问题）。不直接处理用户请求，需由 orchestrator 调用。
+type: executor
 ---
 
 # OneScience Runtime Skill
@@ -56,7 +57,7 @@ runtime 使用以下执行模式：
 - `execution_channel=local_direct` 等价于 `local + local`
 - `execution_channel=local_slurm` 等价于 `local_slurm + local`
 - `execution_channel=ssh_slurm` 等价于 `remote_slurm + ssh`
-- `execution_channel=scnet_mcp` 等价于 `remote_direct + cloud_api`
+- `execution_channel=scnet_mcp` 表示 SCnet 云平台执行上下文，对应 `remote_direct + cloud_api` 的路由标签；命中 SCnet 作业、文件、账户、区域、队列或集群相关需求时，直接调用 `scnet-chat` 技能执行
 
 ### `local_slurm`（登录节点直接提交模式）
 
@@ -84,13 +85,19 @@ runtime 使用以下执行模式：
 - 上游已经提供完整硬件画像与 backend 选择
 - 当前正式稳定 backend 都落在这个模式上
 
-### `remote_direct`（SCnet MCP）
+### `remote_direct`（SCnet 云平台路由）
 
 适用场景：
 
 - 用户明确提到 `SCnet`
 - 请求里直接出现区域、队列、`task_id`、下载日志、MCP 提交
-- 目标是直接上传脚本并通过平台 API 运行
+- 目标是把任务交给 SCnet 平台执行或观察
+
+执行边界：
+
+- `execution_channel=scnet_mcp` 在 runtime 中仅表示 SCnet 云平台执行上下文
+- 命中作业查询、作业提交、文件管理、账户信息、区域切换、队列/集群查询、缓存刷新、运行日志下载等 SCnet 需求时，直接调用 `scnet-chat` 技能执行
+- runtime 仍负责输入校验、远程意图边界、执行交接、结果归一化与基础诊断
 
 ### `local`（同环境直接运行模式）
 
@@ -137,6 +144,7 @@ runtime 现在同时消费：
 - 当前环境已安装并可调用对应平台接入
 - 用户请求或上游上下文中应能提供本地脚本路径、运行命令或已有 `task_id`
 - 这个模式不依赖 `onescience.json` 或 SSH 上下文
+- 命中 `scnet-chat` 负责的 SCnet 需求时，runtime 只负责整理交接输入与消费执行结果，不在本 skill 内直接编排 SCnet MCP 细节
 
 如果当前环境缺少运行所需依赖，但问题属于“环境未安装/未修复”，应回退到 `onescience-installer`，不要在 runtime 中临时补装。注意不要把 `install_profile_ref` 误当成 installer backend 名称；真正的安装骨架仍由 install profile 再绑定到 `dcu_remote_install/gpu_remote_install` 等 installer backend。
 
@@ -145,22 +153,23 @@ runtime 现在同时消费：
 1. 先确定 `execution_mode`
 2. 进入 `discover`
    - 收集语义环境线索，形成候选 Host / region / queue / backend
-   - 通过对应实际通道确认环境事实：`ssh_slurm` 走 SSH / SLURM 探针，`scnet_mcp` 走 SCnet MCP 区域、队列和任务接口
+   - 通过对应实际通道确认环境事实：`ssh_slurm` 走 SSH / SLURM 探针；`scnet_mcp` 用于确认 SCnet 路由上下文与交接所需事实，命中 SCnet 作业、文件、账户、区域、队列或集群相关需求时直接调用 `scnet-chat` 技能执行
 3. 进入 `preflight`
    - 检查 Host/路径/配置是否完整
    - 检查环境是否已 ready
    - 检查配置声明的本地入口脚本、训练脚本、诊断脚本或探针脚本是否真实存在于当前项目
    - 若配置里声明了入口文件但当前项目不存在，直接阻断并返回 `submission_blocked=missing_entrypoint`，不要继续远程提交
    - 若环境缺失，回退到 `onescience-installer`
+   - 若命中 SCnet 作业查询、作业提交、文件管理、账户信息、区域切换、队列/集群查询等需求，只整理交接输入并直接调用 `scnet-chat` 技能执行，不在 runtime 内扩展新的 SCnet 工作流
 4. 进入 `execute`
    - `remote_slurm`：读取 `onescience.json`、模板和 backend specs，生成并提交作业
-   - `remote_direct`：上传、提交、查状态、下载日志
+   - `remote_direct`：命中 SCnet 作业、文件、账户、区域、队列或集群相关需求时，直接调用 `scnet-chat` 技能执行；runtime 仅记录提交状态、状态来源、日志可用性与阻断原因
    - `local`：本地直接执行
 5. 进入 `diagnose`
    - 分类提交失败、环境失败、日志未就绪或业务脚本失败
    - 先检查 diagnose 所需最小前置条件是否满足，例如代码文件、模型类、探针脚本、日志文件或可写 artifact 目录
    - 若最小前置条件缺失，直接返回结构化阻断，不要假设项目里存在模型源码、可导入依赖或可写输出目录
-   - 返回可消费的日志与状态证据
+   - 对 `scnet-chat` 返回的任务状态、日志、阻断与平台错误做结果归一化，返回可消费的日志与状态证据
 
 ## 远程提交授权规则
 
@@ -175,7 +184,7 @@ runtime 现在同时消费：
 - 日志同步属于 `onescience-runtime` 的职责
 - 本地日志目录默认是 `.onescience/logs/<job_id>/`
 - `remote_slurm` 默认同步 `*.out` 与 `*.err`
-- `remote_direct` 默认下载平台关联的标准输出与错误日志
+- `remote_direct` 默认记录平台关联的标准输出与错误日志位置；当执行由 `scnet-chat` 完成时，runtime 只消费并归一化其返回结果
 - 同步失败时，应报告 `sync_status=failed`
 - 作业等待超时，应返回 `execution_state=running_or_unknown`
 
@@ -184,12 +193,13 @@ runtime 现在同时消费：
 - 不要自动修改用户的 `onescience.json`
 - 不要在 Host 未确认时默认选择远程主机
 - 不要把用户语义中的环境线索直接当成已确认环境事实
-- 不要绕过 SSH / SLURM / SCnet MCP 等实际接入通道伪造环境探测结果
+- 不要绕过 SSH / SLURM / SCnet 通道等实际接入路径伪造环境探测结果
 - 不要在发现入口脚本、探针脚本或模型源码缺失后继续提交远程任务
 - 不要把代码生成交接摘要误用为完整硬件画像
 - 不要在代码尚不存在时提交空作业
 - 不要把安装行为混进 runtime
 - 不要把深度测试编排混进 runtime
+- 命中 SCnet 作业、文件、账户、区域、队列与集群相关需求时，直接调用 `scnet-chat` 技能执行，不要在 runtime 中重复实现
 - 不要把排队阶段的占位日志内容当成真实日志交给下游
 - 不要把 artifact 目录不可写误判成业务代码失败；应明确标记为本地写出受限
 

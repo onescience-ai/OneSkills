@@ -1,0 +1,17 @@
+{
+  "name": "protenix_atom_attention_encoder",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "protenix_atom_attention_encoder 将 Protenix 原子级参考特征、局部 atom pair 和可选 noisy 坐标条件编码为 token 表征，并返回 diffusion decoder 复用的 q/c/p skip；实现上通过 OneEncoder 注册 ProtenixAtomAttentionEncoder，内部使用局部 atom transformer 和 atom-to-token 聚合；使用时必须提供 ref_pos、ref_mask、ref_element、ref_atom_name_chars、ref_space_uid、atom_to_token_idx 等字段；规划时应重点检查 atom-token 映射、n_queries/n_keys、has_coords 路径和显存压力。",
+  "tags": [
+    "protenix",
+    "atom-attention",
+    "atom-token",
+    "local-attention",
+    "structure-feature"
+  ]
+}

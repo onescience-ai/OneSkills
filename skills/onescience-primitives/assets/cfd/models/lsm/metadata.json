@@ -1,0 +1,16 @@
+{
+  "name": "lsm",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "LSM 是 OneScience CFD_Benchmark 中的latent spectral model模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：将输入场映射到隐藏空间后结合谱卷积、Transformer 和 U 型多尺度结构，在潜在空间中学习 CFD 算子。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“希望同时比较谱算子、注意力和多尺度局部结构的强基线任务。”时优先考虑，若出现“资源很紧或只需要轻量基线的任务；LSM 组件多，调参和排错成本更高。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "latent-spectral-model",
+    "hybrid-operator",
+    "multiscale",
+    "cfd"
+  ]
+}

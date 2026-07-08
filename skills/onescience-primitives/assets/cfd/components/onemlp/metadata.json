@@ -1,0 +1,15 @@
+{
+  "name": "OneMlp",
+  "type": "component",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-28",
+  "updated_at": "2026-06-28",
+  "description": "OneMlp 是多层感知机实现的统一入口，通过 style 分发到通用 MLP、MeshGraph MLP、群等变 MLP 和 XiHe MLP；实现上只做注册表实例化和 forward 透传，输入最后一维或通道布局要求由底层决定；使用时应根据数据是 token、图特征还是等变通道选择 style，并在规划中避免混用参数命名。",
+  "tags": [
+    "mlp",
+    "feature-projection",
+    "channel-mixing"
+  ]
+}

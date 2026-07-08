@@ -1,0 +1,18 @@
+{
+  "name": "targetdiff",
+  "type": "datapipe",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "targetdiff 数据处理原语负责把蛋白口袋-配体配对数据或 PDBBind 亲和力数据转换为 TargetDiff 可训练/采样的 ProteinLigandData 图对象，并用 LMDB 缓存加速后续读取；实现上读取 index.pkl 中的 pocket/ligand 文件，解析蛋白原子字典和配体 SDF/MOL2 原子、键、坐标、芳香性等字段，拼接为带 protein_* 与 ligand_* 前缀的 PyG Data，再通过 featurizer transform 生成模型输入特征；使用时通过 get_dataset 按 config.name 选择 pl 或 pdbbind 数据集，并可按 split 文件返回 train/test subset，规划时应先确认原始数据目录、LMDB 缓存、split、原子特征模式和后续生成/属性预测任务，失败时优先检查 index、分子解析和 transform 字段。",
+  "tags": [
+    "target-conditioned-generation",
+    "protein-ligand",
+    "lmdb-dataset",
+    "molecule-generation",
+    "pdbbind",
+    "property-prediction"
+  ]
+}

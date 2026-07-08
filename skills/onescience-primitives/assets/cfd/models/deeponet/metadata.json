@@ -1,0 +1,16 @@
+{
+  "name": "deeponet",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "DeepONet 是 OneScience CFD_Benchmark 中的branch-trunk 算子学习模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：使用 Branch Net 编码输入函数特征、Trunk Net 编码评估坐标，再通过点级特征乘积输出物理场。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“输入函数特征和评估坐标可清晰分离的稳态或条件算子学习任务。”时优先考虑，若出现“缺少有效 fx、强依赖局部拓扑或需要规则网格谱卷积的任务。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "operator-learning",
+    "branch-trunk",
+    "field-regression",
+    "cfd"
+  ]
+}

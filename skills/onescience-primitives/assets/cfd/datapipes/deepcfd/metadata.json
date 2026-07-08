@@ -1,0 +1,16 @@
+{
+  "name": "deepcfd",
+  "type": "datapipe",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "DeepCFD 数据处理原语用于读取成对 pickle 数组并组织为规则网格稳态流场回归样本；实现上一次性加载 dataX/dataY，按随机种子和 split_ratio 划分训练与测试，并计算输出通道 loss 权重；使用时配置数据目录、输入输出文件名、划分比例和 dataloader 参数后调用 train/test dataloader；规划上适合图像式规则网格 X 到 Y 回归，不适合大型无法一次性入内存、需要独立验证集或点云图协议的数据。",
+  "tags": [
+    "steady-flow",
+    "regular-grid",
+    "flow-field-regression",
+    "channel-weighting"
+  ]
+}

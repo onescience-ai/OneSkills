@@ -1,0 +1,16 @@
+{
+  "name": "deepmind_cylinderflow",
+  "type": "datapipe",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "DeepMind CylinderFlow 数据处理原语用于将 DeepMind 涡激圆柱流 TFRecord 轨迹转换为 DGL 图样本，服务于 MeshGraphNet 式下一时刻预测和 rollout；实现上解析 meta.json 与 train/valid/test.tfrecord，构造网格边、边特征、节点速度和节点类型特征、目标速度/压力，并保存节点和边统计量；使用时配置样本数、时间步、噪声和 GraphDataLoader 参数后调用 train/val/test dataloader；规划上适合图上的瞬态圆柱流预测，不适合普通稳态 VTK 或规则网格 benchmark。",
+  "tags": [
+    "cylinder-flow",
+    "mesh-graph",
+    "rollout",
+    "tfrecord"
+  ]
+}

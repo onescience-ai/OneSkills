@@ -1,0 +1,17 @@
+{
+  "name": "protenix_linear",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "protenix_linear 覆盖 ProtenixLinear、ProtenixLinearNoBias 和 ProtenixBiasInitLinear，提供 Protenix 模型内部投影层及其截断正态、ReLU 缩放、零初始化和 bias 初始化策略；实现上通过 OneLinear 注册，服务 input/pair 初始化、relative position projection、MSA projection、Pairformer、diffusion 和 attention 内部投影；使用时需明确 bias、initializer 和 precision；规划时重点避免用普通 nn.Linear 破坏初始化语义，并检查混合精度下 precision/autocast 行为。",
+  "tags": [
+    "protenix",
+    "linear",
+    "projection",
+    "initialization",
+    "precision"
+  ]
+}

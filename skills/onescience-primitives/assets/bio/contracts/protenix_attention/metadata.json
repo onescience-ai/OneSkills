@@ -1,0 +1,17 @@
+{
+  "name": "protenix_attention",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "protenix_attention 提供 Protenix/AF3 风格 gated multi-head attention、pair-bias attention 和 atom local attention，服务 Pairformer single update、diffusion transformer 和 atom transformer；实现上包含 ProtenixAttention、ProtenixAttentionPairBias、ProtenixAttentionPairBiasWithLocalAttn，并通过 pair representation z 生成 attention bias；使用时需区分 global token attention 和 local atom window；规划时重点检查 z 的形态、head 数整除、local n_queries/n_keys 和 SDPA/bias 兼容性。",
+  "tags": [
+    "protenix",
+    "attention",
+    "pair-bias",
+    "local-attention",
+    "atom-window"
+  ]
+}

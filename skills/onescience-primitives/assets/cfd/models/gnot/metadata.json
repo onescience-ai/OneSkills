@@ -1,0 +1,16 @@
+{
+  "name": "gnot",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "GNOT 是 OneScience CFD_Benchmark 中的graph neural operator transformer模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：分别预处理坐标分支和场特征分支，再通过 GNOT block 建模位置与函数值之间的算子交互。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“坐标与输入场需要双分支交互建模的点级/网格级算子任务。”时优先考虑，若出现“只有单一路输入且无法构造有信息量 fx 的任务；GNOT 的双分支优势会被削弱。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "neural-operator",
+    "cross-attention",
+    "field-regression",
+    "cfd"
+  ]
+}

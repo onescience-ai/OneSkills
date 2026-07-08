@@ -1,0 +1,16 @@
+{
+  "name": "esm_axial_attention",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "esm_axial_attention 是面向蛋白 MSA 表征的轴向注意力组件，按行和列分别在序列维、同源序列维传播信息，适合 MSA Transformer 风格的蛋白序列上下文建模。它可为蛋白结构、对接或设计任务提供候选表征模块，但不是上述五个模型的直接源码依赖。",
+  "tags": [
+    "protein",
+    "msa",
+    "attention",
+    "esm"
+  ]
+}

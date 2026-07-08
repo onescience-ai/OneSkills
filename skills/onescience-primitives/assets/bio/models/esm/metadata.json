@@ -1,0 +1,18 @@
+{
+  "name": "esm",
+  "type": "model",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-29",
+  "updated_at": "2026-06-29",
+  "description": "ESM 是面向蛋白质序列建模、表征提取、结构预测、接触预测与变异效应打分的蛋白语言模型原语，核心实现以 ESM2/MSA Transformer/ESMFold/GVP inverse folding 等模块为主，通过氨基酸 token、MSA 或结构坐标特征驱动 Transformer、folding trunk 与结构头输出序列表征、logits、contact map、PDB 结构或序列采样结果；使用时通常通过预训练权重、FASTA 输入和示例 CLI/API 调用完成表征提取、ESMFold 推理或 variant scoring，规划时应根据任务类型选择 ESM2 表征、ESMFold 折叠、MSA contact prediction 或 inverse folding，并优先控制序列长度、batch token 数、chunk size 与模型权重路径。",
+  "tags": [
+    "protein",
+    "protein-language-model",
+    "structure-prediction",
+    "representation-extraction",
+    "variant-scoring",
+    "inverse-folding"
+  ]
+}

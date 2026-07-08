@@ -1,0 +1,16 @@
+{
+  "name": "protoken_vq_encoder",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "protoken_vq_encoder 是 ProToken 的蛋白结构 token 编码模块，将 residue、template、torsion、pair 和结构上下文编码为 single/pair 表征，供后续量化成 ProToken latent。它与 LaProteina 的蛋白结构生成任务最相关，可作为蛋白结构压缩表示或 inverse folding 前置模块参考。",
+  "tags": [
+    "protein",
+    "structure-token",
+    "encoder",
+    "inverse-folding"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "esm_multihead_attention",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "esm_multihead_attention 是 ESM 系列使用的通用多头注意力组件，支持 self/cross attention、mask、bias、增量状态和 rotary embedding 选项，用于蛋白序列或逆折叠模型中的上下文混合。它与 DiffDock、LaProteina 的蛋白表征需求相关，但规划时需确认实际模型是否沿用 ESM attention 链路。",
+  "tags": [
+    "protein",
+    "attention",
+    "sequence-modeling",
+    "esm"
+  ]
+}

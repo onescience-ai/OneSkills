@@ -1,0 +1,16 @@
+{
+  "name": "protoken_bottleneck",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "protoken_bottleneck 是 ProToken 的结构表征压缩与量化瓶颈模块，用于把连续 single 表征投影到有限 codebook 或 latent 空间，并输出量化表征、索引和辅助损失。它是 PT-DiT/ProToken 蛋白 latent 生成链路的关键桥接组件，规划时需与 encoder、decoder、latent diffusion 协同使用。",
+  "tags": [
+    "protein",
+    "quantization",
+    "structure-token",
+    "latent-representation"
+  ]
+}

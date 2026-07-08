@@ -1,0 +1,19 @@
+{
+  "name": "alphafold3",
+  "type": "model",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-01",
+  "updated_at": "2026-07-01",
+  "description": "AlphaFold3 是 OneScience 中的 JAX/Haiku AF3-style 复合物结构预测实现，面向蛋白、RNA、DNA、配体、离子和共价连接等多分子输入；它以 JSON fold input 和 data pipeline 生成的 BatchDict 为入口，通过 target feature embedding、Evoformer/Pairformer trunk、atom cross attention、diffusion sampling、distogram 和 confidence heads 输出坐标样本、结构文件、PAE/PDE/pLDDT 与排序结果。使用时通过 alphafold3 示例脚本控制 data pipeline、inference、flash attention、recycle 和 diffusion sample；规划时应优先用于 AF3 JAX 推理复用，而不是 Protenix 的 PyTorch/OneScience 组件改造。",
+  "tags": [
+    "protein",
+    "rna",
+    "dna",
+    "ligand",
+    "structure-prediction",
+    "diffusion",
+    "alphafold3"
+  ]
+}

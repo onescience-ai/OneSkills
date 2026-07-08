@@ -25,5 +25,5 @@
   "blocking_reason": "backend_not_supported",
   "failure_reason": "backend_not_supported",
   "stderr_summary": "backend not supported: no registered ssh_slurm backend matches the current hardware/profile combination",
-  "next_action": "onescience-workflow"
+  "next_action": "onescience-orchestrator"
 }

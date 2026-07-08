@@ -1,0 +1,16 @@
+{
+  "name": "protoken_vq_decoder",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "protoken_vq_decoder 是 ProToken 的结构 token 解码前半段模块，将量化后的 residue latent 重建为 single/pair 表征并输出 distogram 预测。它适合从 latent token 回到结构表征空间，常与 protein decoder 联用完成坐标重建。",
+  "tags": [
+    "protein",
+    "structure-token",
+    "decoder",
+    "distogram"
+  ]
+}

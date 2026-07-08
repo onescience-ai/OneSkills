@@ -1,0 +1,18 @@
+{
+  "name": "esm_sequence_batch_converter",
+  "type": "datapipe",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "esm_sequence_batch_converter 用于将蛋白质序列、FASTA 数据或 MSA 对齐结果转换为 ESM 风格 token batch，核心实现由 Alphabet 管理词表和特殊 token，BatchConverter/MSABatchConverter 负责 padding、截断和 token id 组装；使用时需要选择对应 alphabet 并传入 label-sequence 或 MSA 元组；规划时应判断输入是单序列还是 MSA、是否需要结构 split dataset，以及下游是否接受 ESM token 协议。",
+  "tags": [
+    "esm",
+    "protein-sequence",
+    "tokenization",
+    "msa",
+    "fasta",
+    "batch-conversion"
+  ]
+}

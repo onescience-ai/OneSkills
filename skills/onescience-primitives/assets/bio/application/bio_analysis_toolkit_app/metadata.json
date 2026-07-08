@@ -1,0 +1,18 @@
+{
+  "name": "bio_analysis_toolkit_app",
+  "type": "application",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-03",
+  "updated_at": "2026-07-03",
+  "description": "面向通用生信工具选择、脚本接口设计和统计可视化交接的应用卡，覆盖 Python 生信编程、R/Bioconductor、化学信息学、质谱数据处理、统计建模与图表规划，并与单细胞工具应用卡保持边界衔接。该卡提供工具选择模板和输入输出契约，不直接替代端到端科研流程编排。",
+  "tags": [
+    "analysis-toolkit",
+    "python-bio",
+    "r-bioconductor",
+    "cheminformatics",
+    "mass-spectrometry",
+    "statistics-visualization"
+  ]
+}

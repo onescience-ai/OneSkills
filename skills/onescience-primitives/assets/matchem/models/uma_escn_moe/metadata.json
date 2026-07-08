@@ -1,0 +1,18 @@
+{
+  "name": "uma_escn_moe",
+  "type": "model",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-23",
+  "updated_at": "2026-06-30",
+  "description": "uma_escn_moe 是 UMA 通用材料机器学习势函数中的 eSCNMDMoeBackbone 原语，核心功能是在 eSCNMDBackbone 的等变原子结构表征之上加入 MOLE/MoE 专家路由，使多数据域、多任务或强异构材料体系能够按 charge、spin、dataset 以及可选组成信息动态混合专家参数。其实现原理是先继承基础 eSCNMD 主干完成构图、距离展开、Wigner 旋转和 eSCNMD_Block 等变消息传递，再用 convert_model_to_MOLE_model 将指定层的线性或 SO2 子层替换为 MOLE 专家层，通过 routing_mlp 生成每个体系的 expert_mixing_coefficients，并可在推理部署前用 merge_MOLE_model 将 so2 类型专家合并为普通 eSCNMDBackbone。使用时通常通过 Hydra 配置注册名 `escnmd_moe_backbone` 作为 UMA backbone，并配合 MLP_Energy_Head、MLP_EFS_Head、DatasetSpecificMoEWrapper 或 DatasetSpecificSingleHeadWrapper 完成能量、力、应力任务；规划决策上，只有当普通 UMA backbone 难以覆盖多域差异、需要专家路由或需要按 dataset/组成动态适配时才优先选择该原语，并需重点确认 num_experts、moe_type、layers_moe、dataset_list、checkpoint 兼容性、PBC、Jd rotation basis、elem_refs、normalizer_rmsd 与 head/task 同源关系。",
+  "tags": [
+    "materials",
+    "universal-mlip",
+    "mixture-of-experts",
+    "multi-domain-modeling",
+    "energy-force-prediction",
+    "stress-prediction"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "f_fno",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "F_FNO 是 OneScience CFD_Benchmark 中的factorized Fourier operator模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：用分解式 Fourier 卷积沿各空间轴建模，相比标准 FNO 更强调各维度频域因子的高效组合。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“规则网格多维场预测，希望在 FNO 基础上控制谱卷积计算量的对比实验。”时优先考虑，若出现“点集无法合理投影到规则潜在网格，或 `shapelist` 与真实网格不一致。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "factorized-fourier",
+    "spectral-convolution",
+    "structured-grid",
+    "cfd"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "BE_MPNN",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "BE_MPNN 是 BENO 系列中面向椭圆型 PDE 代理求解的边界嵌入异构图神经网络模型原语，核心功能是在带复杂边界形状与非均匀边界值的二维区域上，根据 BENO 数据管道构造的 G1/G2 异构图预测采样节点处的标量解场；实现原理是先用双分支 MLP 编码节点和边特征，再通过多步残差消息传递网络分别处理场分支与边界分支，并在每个 InteractionNetwork 中用轻量 Transformer 将边界点序列压缩为全局边界向量注入节点更新，最后由双分支解码器合并输出；使用时通常通过 OneScience 的 BENO 训练或推理脚本加载 conf/beno.yaml，准备 RHS/SOL/BC npy 数据并构造 HeteroData 后调用 HeteroGNS.forward；规划上适合选择为 BENO datapipe 下游的主模型，用于 elliptic PDE surrogate、boundary-conditioned operator learning 与不规则域解场预测，若数据字段、边界点数或图结构协议偏离默认假设，应优先改造 datapipe 或适配层，再谨慎调整模型输入维度和边界编码器。",
+  "tags": [
+    "elliptic-pde",
+    "boundary-embedding",
+    "heterogeneous-graph",
+    "message-passing",
+    "surrogate-modeling"
+  ]
+}

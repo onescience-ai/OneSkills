@@ -1,0 +1,18 @@
+{
+  "name": "pt_dit",
+  "type": "model",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-01",
+  "updated_at": "2026-07-01",
+  "description": "PT-DiT 是 OneScience 中基于 ProToken 的蛋白质序列与结构协同生成模型，使用 ProToken 结构 embedding 与氨基酸 embedding 拼接为 token latent，再通过 JAX/Flax Diffusion Transformer 采样兼容的序列和结构表示；它依赖 ProToken 词表、embedding、decoder checkpoint 和 PT-DiT checkpoint。使用时常通过 de_novo_design.py 生成 latent、protoken indexes 和 aatype indexes，并可调用 ProToken decoder 输出 PDB；规划时应把它用于蛋白 co-design、结构 token latent 生成和 RePaint/插值类任务，而不是传统 folding 或 ProteinMPNN inverse folding。",
+  "tags": [
+    "protein",
+    "protein-design",
+    "diffusion-transformer",
+    "protoken",
+    "sequence-structure-codesign",
+    "de-novo-design"
+  ]
+}

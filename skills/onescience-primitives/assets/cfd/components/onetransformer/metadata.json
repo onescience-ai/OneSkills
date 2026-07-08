@@ -1,0 +1,16 @@
+{
+  "name": "OneTransformer",
+  "type": "component",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-28",
+  "updated_at": "2026-06-28",
+  "description": "OneTransformer 是 Transformer 类 block 的统一入口，通过 style 分发到 EarthTransformer、Fuxi、Transolver、Galerkin/Factformer/GNOT、NeuralSpectral、Swin 和 Protenix Transformer；实现上只做注册表实例化和 forward 透传，真实输入语义由底层决定；使用时应根据网格维度、token 组织、物理注意力或生物结构语义选择 style，并在规划中同步校验 attention/MLP 子组件配置。",
+  "tags": [
+    "transformer",
+    "operator-block",
+    "token-mixing",
+    "physics-attention"
+  ]
+}

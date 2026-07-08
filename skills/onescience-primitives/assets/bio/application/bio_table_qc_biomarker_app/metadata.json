@@ -1,0 +1,18 @@
+{
+  "name": "bio_table_qc_biomarker_app",
+  "type": "application",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "面向表达矩阵、样本表、FASTQ/BAM/VCF/BED/序列/公共数据 manifest、组学生物标志物、ctDNA VAF、因果基因组学、药物基因组和临床变异优先级表的表格 QC 与转化标志物应用卡。该卡使用 bio_table_templates 与 bio_table_qc_tools，并保留数据基础和转化标志物任务的审核边界。",
+  "tags": [
+    "feature-table",
+    "metadata",
+    "data-foundation",
+    "biomarker",
+    "ctdna",
+    "clinical-variant"
+  ]
+}

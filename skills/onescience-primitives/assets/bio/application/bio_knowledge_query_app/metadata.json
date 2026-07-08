@@ -1,0 +1,19 @@
+{
+  "name": "bio_knowledge_query_app",
+  "type": "application",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "面向生物知识库和公共数据库查询设计的应用卡，覆盖文献/序列、通路/PPI、蛋白质组/代谢组、调控注释、单细胞图谱、结构/化合物和变异/临床证据查询。该卡负责查询设计和证据字段交接，实际联网或数据库访问由执行层按权限处理。",
+  "tags": [
+    "database-query",
+    "omics-database",
+    "regulatory-annotation",
+    "literature-sequence",
+    "pathway-ppi",
+    "variant-clinical",
+    "evidence-handoff"
+  ]
+}

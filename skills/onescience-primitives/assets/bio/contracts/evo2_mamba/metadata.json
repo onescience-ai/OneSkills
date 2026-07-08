@@ -1,0 +1,17 @@
+{
+  "name": "evo2_mamba",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "Evo2 Mamba 组件契约描述长基因组序列语言模型中的 tokenizer、FASTA prediction dataset、Mamba forward 与 reweighted loss，说明其面向 OneTransformer 的目标映射、输入输出、配置参数、训练推理边界和 NeMo/Megatron 生态依赖。",
+  "tags": [
+    "genome",
+    "language-model",
+    "mamba",
+    "fasta",
+    "sequence-modeling"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "protenix_embedding",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "protenix_embedding 覆盖 ProtenixInputFeatureEmbedder、ProtenixTemplateEmbedder 和 ProtenixFourierEmbedding，用于把 AF3/Protenix 风格 feature dict 投影为 token single 输入、template pair 更新或 diffusion noise 条件；实现上通过 OneEmbedding 注册表调用 protenixembedding.py，并依赖 atom attention encoder、pairformer 和 Protenix 线性层；使用时应按输入、template 或 diffusion noise 三种场景分别准备字段和维度；规划时优先检查 c_s_inputs、template 分支启用状态、noise embedding 维度和 Protenix feature dict 完整性。",
+  "tags": [
+    "protenix",
+    "embedding",
+    "template",
+    "noise-conditioning",
+    "atom-token-feature"
+  ]
+}

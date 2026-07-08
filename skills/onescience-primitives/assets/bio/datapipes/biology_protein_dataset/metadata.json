@@ -1,0 +1,18 @@
+{
+  "name": "biology_protein_dataset",
+  "type": "datapipe",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "biology_protein_dataset 用于将蛋白质 FASTA、MSA、结构文件或 Protenix JSON 组织为模型可消费的数据样本，核心实现通过 BioDataset 统一配置、ProteinDataset 发现并关联序列/比对/结构文件，再按 UnifiedDataPipeline 或 adapter 输出特征；使用时需要准备 source.path、MSA/结构目录或 input_json_path，并根据下游模型选择通用 pipeline 或 Protenix 推理 adapter；规划时应优先判断输入是否为 Protenix JSON、是否需要多链复合物、非 JSON 训练路径是否已补齐，以及下游是否接受当前返回协议。",
+  "tags": [
+    "protein",
+    "msa",
+    "structure",
+    "fasta",
+    "multimer",
+    "biomolecular-feature"
+  ]
+}

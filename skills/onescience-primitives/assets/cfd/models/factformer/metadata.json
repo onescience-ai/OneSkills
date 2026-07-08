@@ -1,0 +1,16 @@
+{
+  "name": "factformer",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "Factformer 是 OneScience CFD_Benchmark 中的factorized attention Transformer模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：将坐标/位置编码与场特征拼接后映射为 token，通过多层 Factformer_block 做结构化网格全局建模。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“结构化网格上的中大规模场预测，尤其需要比普通自注意力更省的全局交互。”时优先考虑，若出现“非结构化几何；源码会对 `geotype='unstructured'` 抛出异常。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "factorized-attention",
+    "structured-grid",
+    "field-regression",
+    "cfd"
+  ]
+}

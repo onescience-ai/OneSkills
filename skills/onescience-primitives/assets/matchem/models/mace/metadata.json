@@ -1,0 +1,17 @@
+{
+  "name": "mace",
+  "type": "model",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-23",
+  "updated_at": "2026-06-30",
+  "description": "MACE 是面向原子尺度材料体系的 E(3)-等变高阶消息传递势函数模型，核心功能是从原子构型预测总能量，并通过能量对坐标和晶胞扰动的解析导数得到力、应力、virial、Hessian 等物理量。其实现以局部邻域图为输入，结合径向基、球谐边属性、多层等变 interaction、many-body product basis 与逐原子能量读出完成能量聚合，ScaleShiftMACE 还支持对相互作用能量做 scale/shift 后再叠加原子参考能。使用时通常通过 extxyz 数据、MACE demo YAML 或 Python API 准备 AtomicData/PyG 风格 batch，规划上优先用于 MLIP 训练、预训练 foundation model 微调、ASE/LAMMPS/MD 和结构弛豫任务，并需在数据字段、E0s、cutoff、stress/virial 约定和下游稳定性之间做明确决策。",
+  "tags": [
+    "materials",
+    "interatomic-potential",
+    "energy-force-prediction",
+    "molecular-dynamics",
+    "structure-relaxation"
+  ]
+}

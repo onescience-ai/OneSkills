@@ -1,0 +1,18 @@
+{
+  "name": "bio_qc_report_app",
+  "type": "application",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "面向生物信息 QC 报告、可复现交付、临床研究方案草案和实验设计/功效说明的报告模板应用卡。该卡使用 bio_report_templates/report_outline.md，用于把 QC 结果、方法、参数、图表、失败样本、研究设计、样本量假设和风险说明组织成可交付报告结构。",
+  "tags": [
+    "qc-report",
+    "reproducibility",
+    "report-outline",
+    "study-design",
+    "clinical-protocol",
+    "quality-control"
+  ]
+}

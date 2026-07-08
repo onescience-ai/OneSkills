@@ -1,0 +1,16 @@
+{
+  "name": "pdenneval",
+  "type": "datapipe",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "PDENNEval 数据处理原语家族用于读取 PDEBench 风格 HDF5/H5 数据，并按 FNO、DeepONet、MPNN、UNet、UNO、PINO 等模型族整理不同样本协议；实现上支持单文件或多 seed/group 懒加载、空间/时间/样本降采样、train/val 划分、网格坐标构造和模型特定返回结构，PINO 还提供 PDE residual dataloader；使用时需明确选择对应 Datapipe 类并配置 file_name、single_file、initial_step、降采样与 batch 参数；规划上适合 PDEBench operator learning 与多模型评估，不适合默认假设所有模型共用同一 batch 协议或直接推断不存在的 LSM 路线。",
+  "tags": [
+    "pdebench",
+    "operator-learning",
+    "hdf5",
+    "multi-model-evaluation"
+  ]
+}

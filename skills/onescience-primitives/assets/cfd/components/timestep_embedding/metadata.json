@@ -1,0 +1,15 @@
+{
+  "name": "timestep_embedding",
+  "type": "component",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-28",
+  "updated_at": "2026-06-28",
+  "description": "timestep_embedding 是函数式时间步正弦嵌入原语，用不同频率的 cos/sin 将一维时间步、扩散噪声等级或 rollout step 编码为固定维度向量；实现上按 max_period 构造指数频率并拼接余弦与正弦特征，奇数维时补零；使用时应传入一维 timesteps 张量并保证输出维度与下游条件网络一致，在规划中将其作为条件编码而非可学习时间模型。",
+  "tags": [
+    "time-embedding",
+    "sinusoidal-encoding",
+    "conditioning"
+  ]
+}

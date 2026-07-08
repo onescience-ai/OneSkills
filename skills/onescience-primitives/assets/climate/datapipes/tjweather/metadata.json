@@ -1,0 +1,18 @@
+{
+  "name": "tjweather",
+  "type": "datapipe",
+  "domain": "meteorology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2025-06-11",
+  "updated_at": "2026-06-24",
+  "description": "TJDatapipe 是面向中科天机 TJWeather NetCDF 气象数据的逐时间步数据处理原语，负责按显式年份划分读取 data/<year>/*.nc 文件，将连续 NetCDF 文件序列组织为多步输入和多步预测目标，并完成变量筛选、z-score 标准化、patch 尺寸对齐裁剪、经纬度网格和太阳天顶角特征生成，最终封装为训练、验证或测试阶段可直接使用的 DataLoader。实现上由 TJDatapipe 提供 train/val/test dataloader 入口，由 TJDataset 负责读取 metadata.json、校验变量和年份、加载 global_means/global_stds 统计量、推断 NetCDF 维度名、构建跨年份样本索引并在取样时按窗口打开文件；使用时需要准备包含 metadata.json、stats/global_means.npy、stats/global_stds.npy 和 data/<year>/*.nc 的数据目录，并在 params.dataset 中显式配置 channels、train_years、val_years、test_years、time_res 与 img_size。规划上适合优先复用于已经整理为 TJWeather 协议的规则经纬度气象预报任务；若数据仍是其他目录布局、变量名或统计量协议不一致，应先进行路径适配、元数据修复或格式转换，再接入模型训练和推理流程。",
+  "tags": [
+    "tjweather",
+    "weather-forecast",
+    "netcdf",
+    "time-window",
+    "regional-weather",
+    "solar-zenith"
+  ]
+}

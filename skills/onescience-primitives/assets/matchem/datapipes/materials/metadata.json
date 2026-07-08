@@ -1,0 +1,18 @@
+{
+  "name": "materials",
+  "type": "datapipe",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-23",
+  "updated_at": "2026-07-01",
+  "description": "materials 数据处理原语面向材料机器学习势函数任务，负责把 ASE 数据库、ASE 可读结构文件或多数据集配置中的原子体系样本转换为统一的 AtomicData 训练批次，支持能量、力、应力、分子电荷/自旋、周期晶胞、表面固定原子和多数据域采样等场景。其实现原理可以概括为：先按数据集配置创建单数据源样本集合，再按 split、原子数、元数据条件和采样比例筛选或扩展样本，然后把 ASE 原子结构转换为标准原子图数据对象，依次补齐 dataset、charge、spin、fixed、cell、stress 等任务字段，最后将多结构样本拼接为 batch 并交给运行时加载器迭代。使用时通过配置数据源格式、路径、字段读取策略、数据变换、采样策略、批次构造函数和任务统计量来启动；规划决策上应先判断任务是否属于 UMA 材料数据链路，明确数据格式、标签字段、PBC 语义、charge/spin、stress shape、元素参考能量和归一化常数是否同源，再决定采用单数据集、混合数据集、分子专用或 EFS 专用处理路径。",
+  "tags": [
+    "materials",
+    "atomic-data",
+    "ase-db",
+    "multi-dataset-sampling",
+    "energy-force-stress",
+    "universal-mlip"
+  ]
+}

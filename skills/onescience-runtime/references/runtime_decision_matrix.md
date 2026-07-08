@@ -34,8 +34,8 @@
 | Host / partition / SLURM 队列 | SSH / SLURM 只读探针 | `confirmation_required=true` 或阻断 |
 | GPU / DCU / CPU 类型 | `hardware_profile` 探测与 backend selector | 只作为 backend candidate |
 | module / conda / driver stack | 远端只读命令或已有硬件画像 | 未确认前不得判定 ready |
-| SCnet region / queue | SCnet MCP 区域与队列接口 | 由 `scnet_mcp` 通道发现或阻断 |
-| SCnet task_id | SCnet MCP task status / list fallback | 只查状态，不重新提交 |
+| SCnet region / queue | SCnet 通道返回结果或 `scnet-chat` 委托结果 | 由 `scnet_mcp` 路由发现或阻断 |
+| SCnet task_id | SCnet 通道状态结果或 fallback 结果 | 只查状态，不重新提交 |
 | 远端路径 | SSH / SCnet 可写性检查 | 不可写则阻断或回退可写目录 |
 
 确认后才能升级为：
@@ -60,12 +60,12 @@
 - `execution_channel=local_direct` -> `local + local`
 - `execution_channel=local_slurm` -> `local_slurm + local`
 - `execution_channel=ssh_slurm` -> `remote_slurm + ssh`
-- `execution_channel=scnet_mcp` -> `remote_direct + cloud_api`
+- `execution_channel=scnet_mcp` -> `remote_direct + cloud_api`（SCnet 路由标签；命中 SCnet 作业、文件、账户、区域、队列或集群相关需求时，直接调用 `scnet-chat` 技能执行）
 
 | 条件 | 结论 | 下一步 |
 | --- | --- | --- |
-| 用户明确要求 `SCnet` / MCP 提交 | `execution_mode=remote_direct` | 进入 `scnet_mcp` 规则 |
-| 请求里直接出现 `region` / `queue` / `task_id` / 下载日志 | `execution_mode=remote_direct` | 进入 `scnet_mcp` 规则 |
+| 用户明确要求 `SCnet` / MCP 提交 | `execution_mode=remote_direct` | 进入 `scnet_mcp` 路由；命中 SCnet 作业、文件、账户、区域、队列或集群相关需求时，直接调用 `scnet-chat` 技能执行 |
+| 请求里直接出现 `region` / `queue` / `task_id` / 下载日志 | `execution_mode=remote_direct` | 进入 `scnet_mcp` 路由；命中对应 SCnet 需求时，直接调用 `scnet-chat` 技能执行 |
 | 用户明确要求读取 `onescience.json` / `tpl.slurm` / `sbatch` | `execution_mode=remote_slurm` | 进入 `remote_slurm` 规则 |
 | 用户只说“提交远程运行”，未提 SCnet | 默认 `execution_mode=remote_slurm` | 进入 `remote_slurm` 规则 |
 | 用户未明确要求执行，只是在改代码或做方案 | 不进入运行闭环 | 回到 `onescience-coder` 或上游 skill |
@@ -153,8 +153,8 @@
 
 | 检查项 | 结果 | 动作 |
 | --- | --- | --- |
-| 本地 SCnet MCP 可调用 | 继续 | 进入区域/队列选择 |
-| 本地 SCnet MCP 未安装、已卸载或连接失败 | 阻断 | 标记外部依赖阻断，不伪造真实回归 |
+| 本地 SCnet 接入可调用 | 继续 | 进入 `scnet_mcp` 路由，并优先委托 `scnet-chat` 处理已覆盖的平台操作 |
+| 本地 SCnet 接入未安装、已卸载或连接失败 | 阻断 | 标记外部依赖阻断，不伪造真实回归 |
 | 用户未明确要求 SCnet，但上下文“可能”适合 SCnet | 需确认 | 向用户确认是否改走 SCnet |
 
 建议对“需确认是否改走 SCnet”的返回，收口成与
@@ -165,8 +165,8 @@
 
 | 检查项 | 结果 | 动作 |
 | --- | --- | --- |
-| 区域已通过 SCnet MCP 确认，队列也来自该区域 | 继续 | 提交任务 |
-| 区域已通过 SCnet MCP 确认，但队列未明确 | 继续 | 先发现该区域可访问队列，再显式选择 |
+| 区域已确认，队列也来自该区域 | 继续 | 直接调用 `scnet-chat` 技能执行平台动作，runtime 记录结果 |
+| 区域已确认，但队列未明确 | 继续 | 由 `scnet-chat` 发现该区域可访问队列，再显式选择 |
 | 切换了区域 | 继续 | 必须重新获取该区域队列 |
 | 队列来自旧区域或无访问权限 | 阻断 | 重新选择当前区域可访问队列 |
 

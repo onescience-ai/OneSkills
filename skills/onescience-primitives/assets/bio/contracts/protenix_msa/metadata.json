@@ -1,0 +1,17 @@
+{
+  "name": "protenix_msa",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "protenix_msa 使用 Protenix feature dict 中的 msa、has_deletion 和 deletion_value 更新 pair representation z，是 Protenix recycling 中 template 之后、PairformerStack 之前的 MSA 分支；实现上通过 OneMSA 注册 ProtenixMSAModule，内部采样 MSA 行、one-hot 编码并经过 MSA block、outer product mean 与 pairformer block；使用时必须传入 dict 类型 msa_configs 并保证 MSA token 类别数为 32；规划时重点检查 MSA 缺失降级、train/test cutoff、N_msa*N_token 显存和 z 的 N_token^2 内存。",
+  "tags": [
+    "protenix",
+    "msa",
+    "pair-representation",
+    "recycling",
+    "multiple-sequence-alignment"
+  ]
+}

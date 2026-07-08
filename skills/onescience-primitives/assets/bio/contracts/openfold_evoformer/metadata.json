@@ -1,0 +1,17 @@
+{
+  "name": "openfold_evoformer",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "OpenFold Evoformer 组件契约描述 AF2-style PyTorch 路线中的 EvoformerStack 和 ExtraMSAStack，说明其如何更新 MSA、pair 与 single representation，并给出面向 OneTransformer 的目标映射、输入输出、关键参数、显存风险和与 Protenix Pairformer 的边界。",
+  "tags": [
+    "protein",
+    "structure-prediction",
+    "openfold",
+    "evoformer",
+    "msa"
+  ]
+}

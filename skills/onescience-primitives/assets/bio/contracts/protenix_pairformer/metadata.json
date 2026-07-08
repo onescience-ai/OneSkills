@@ -1,0 +1,17 @@
+{
+  "name": "protenix_pairformer",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "protenix_pairformer 覆盖 ProtenixPairformerBlock 和 ProtenixPairformerStack，是 Protenix trunk 中更新 token single representation 与 pair representation 的核心模块；实现上通过 OnePairformer 注册，内部组合 triangular multiplication、triangular attention、pair transition 和可选 pair-bias single attention；使用时需要传入 s、z 和可选 pair_mask，并根据主 trunk、MSA block 或 template branch 设置 c_s；规划时重点评估 z 的 N_token^2 内存、c_s=0 纯 pair 更新、checkpoint/chunk 和长 token 推理清缓存策略。",
+  "tags": [
+    "protenix",
+    "pairformer",
+    "pair-representation",
+    "trunk",
+    "triangle-attention"
+  ]
+}

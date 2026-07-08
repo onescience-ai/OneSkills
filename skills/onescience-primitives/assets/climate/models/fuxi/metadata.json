@@ -1,0 +1,16 @@
+{
+  "name": "fuxi",
+  "type": "model",
+  "domain": "meteorology",
+  "version": "source-derived-2026-06-23",
+  "visibility": "public",
+  "created_at": "2026-06-23",
+  "updated_at": "2026-06-23",
+  "description": "Fuxi 原语用于从多时间步二维气象场生成目标时刻预测场，先用三维 patch embedding 将时间、纬向、经向局部块编码为特征，再压缩时间维并通过二维 Transformer 主干提取空间上下文，最后用全连接恢复 patch 并插值到目标网格。使用时以单个五维张量调用 forward(x)，要求 patch 的时间长度等于输入时间步。规划上适合短序列到单帧的全球天气预报改造，重点决策输入时间步、patch 尺寸、输出通道和空间恢复策略。",
+  "tags": [
+    "weather-forecast",
+    "spatiotemporal-forecast",
+    "global-atmosphere",
+    "patch-forecast"
+  ]
+}

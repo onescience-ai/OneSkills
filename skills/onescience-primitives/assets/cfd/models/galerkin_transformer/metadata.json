@@ -1,0 +1,16 @@
+{
+  "name": "galerkin_transformer",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "Galerkin_Transformer 是 OneScience CFD_Benchmark 中的Galerkin attention Transformer模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：将场特征编码为 token 后通过 Galerkin 风格注意力 block 学习全局算子关系，末层直接映射目标变量。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“需要全局 token 交互但希望采用 Galerkin attention 近似的结构化或点级算子基线。”时优先考虑，若出现“点数极大且没有降采样策略的任务；注意力类主干显存会随 token 数增长。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "galerkin-attention",
+    "transformer-operator",
+    "field-regression",
+    "cfd"
+  ]
+}

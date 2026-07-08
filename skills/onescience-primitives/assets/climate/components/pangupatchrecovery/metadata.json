@@ -1,0 +1,16 @@
+{
+  "name": "pangupatchrecovery",
+  "type": "module",
+  "domain": "weather",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "PanguPatchRecovery 是 OneScience 中面向气象/地球系统建模的重建模块，用于在模型流水线中完成特征变换、尺度组织或结果重建。实现上主要通过源码中声明的类、前向接口和局部依赖模块完成张量、patch、图节点/边或生成特征的变换。使用时应在 OneScience 模型配置或 Python API 中实例化，并保证输入维度、变量语义和上下游组件契约一致。规划时优先根据模型族、尺度变化、输入输出形状和依赖组件选择是否使用该原语。",
+  "tags": [
+    "气象预测",
+    "三维气象场",
+    "patch建模",
+    "重建模块"
+  ]
+}

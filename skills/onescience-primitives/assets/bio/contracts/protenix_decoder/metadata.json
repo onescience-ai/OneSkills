@@ -1,0 +1,17 @@
+{
+  "name": "protenix_decoder",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "protenix_decoder 指 ProtenixAtomAttentionDecoder，用于把 token 级 diffusion 表征解码回原子坐标更新 r_update，是 ProtenixDiffusionModule 单步 denoising 的最后阶段；实现上通过 OneDecoder 注册，复用 atom encoder 产生的 q_skip、c_skip、p_skip，并通过 ProtenixAtomTransformer 在 atom 局部窗口更新 query；使用时必须保证 atom_to_token_idx、a、skip 表征和 local window 参数对齐；规划时重点检查 c_token=768 场景、skip 缺失和输出是坐标增量而非最终坐标。",
+  "tags": [
+    "protenix",
+    "decoder",
+    "atom-attention",
+    "coordinate-update",
+    "denoising"
+  ]
+}

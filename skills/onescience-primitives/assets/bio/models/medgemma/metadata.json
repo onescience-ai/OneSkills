@@ -1,0 +1,17 @@
+{
+  "name": "medgemma",
+  "type": "model",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "MedGemma 是医学文本与医学影像理解原语，核心功能是以 OpenAI Chat Completion 风格消息输入执行医学问答、报告辅助分析和医学图像相关提示生成；实现上封装外部 MedGemma 4B/27B 权重，优先使用 vLLMModelRunner，失败或配置关闭时回退 TransformersModelRunner，并由 MedGemmaPredictor 统一格式化 prompt 与响应；使用时通过配置文件指定模型路径、tokenizer、推理采样参数和输入 JSON/JSONL，规划时应根据文本或多模态医学任务选择模型变体并明确临床安全边界，失败时回退到纯文本、关闭 vLLM 或检查模型路径。",
+  "tags": [
+    "medical-language-model",
+    "medical-qa",
+    "medical-imaging",
+    "multimodal-generation",
+    "clinical-text"
+  ]
+}

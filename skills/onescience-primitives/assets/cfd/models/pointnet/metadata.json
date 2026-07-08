@@ -1,0 +1,16 @@
+{
+  "name": "pointnet",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "PointNet 是 OneScience CFD_Benchmark 中的点云 MLP 基线模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：将点坐标与点级特征拼接后用共享 MLP 做局部点表示和输出，是不显式使用邻接关系的轻量点云基线。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“需要快速建立非结构点集回归下限，或图拓扑暂不可用的点云 CFD 任务。”时优先考虑，若出现“强依赖局部邻域、边界连通性或长程相互作用的任务。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "point-cloud",
+    "pointwise-mlp",
+    "unstructured-mesh",
+    "cfd"
+  ]
+}

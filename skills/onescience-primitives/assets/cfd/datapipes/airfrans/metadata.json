@@ -1,0 +1,16 @@
+{
+  "name": "airfrans",
+  "type": "datapipe",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "AirfRANS 数据处理原语用于将二维翼型非结构网格仿真目录转换为点云图样本，支持速度、压力和湍流黏度等流场回归任务；实现上读取 manifest、VTU/VTP 几何与场数据，按全量网格或单元采样方式构造输入特征、目标、表面标记和半径图，并使用训练集统计量归一化；使用时通过配置数据根目录、split、采样和 dataloader 参数后调用 train/val/test dataloader；规划上适合需要保留翼型几何、边界条件和点级流场监督的代理模型任务，不适合命名规则或 VTK 字段不一致的数据。",
+  "tags": [
+    "airfoil",
+    "flow-field-regression",
+    "unstructured-mesh",
+    "surrogate-modeling"
+  ]
+}

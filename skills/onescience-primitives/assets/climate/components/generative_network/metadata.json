@@ -1,0 +1,16 @@
+{
+  "name": "generative_network",
+  "type": "module",
+  "domain": "weather",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "Generative 网络组件由编码器和条件解码器组成，利用演化特征调制生成过程，适用于二维场生成或恢复。实现上主要通过源码中声明的类、前向接口和局部依赖模块完成张量、patch、图节点/边或生成特征的变换。使用时应在 OneScience 模型配置或 Python API 中实例化，并保证输入维度、变量语义和上下游组件契约一致。规划时优先根据模型族、尺度变化、输入输出形状和依赖组件选择是否使用该原语。",
+  "tags": [
+    "生成建模",
+    "条件生成",
+    "特征重建",
+    "网络层"
+  ]
+}

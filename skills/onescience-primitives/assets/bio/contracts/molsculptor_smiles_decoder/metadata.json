@@ -1,0 +1,16 @@
+{
+  "name": "molsculptor_smiles_decoder",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "molsculptor_smiles_decoder 是 MolSculptor 的 SMILES 序列解码模块，使用条件 transformer 将图 latent 或条件向量转为分子 token logits，服务于小分子生成和重构。它与 TargetDiff 的目标约束分子生成任务语义相关，但输出协议和训练目标需要适配后才能复用。",
+  "tags": [
+    "molecule",
+    "smiles",
+    "decoder",
+    "molecular-generation"
+  ]
+}

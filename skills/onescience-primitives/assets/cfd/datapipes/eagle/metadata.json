@@ -1,0 +1,16 @@
+{
+  "name": "eagle",
+  "type": "datapipe",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "Eagle 数据处理原语用于读取 split 文本指向的 CFD 网格时序样本，并将不同节点数和边数的轨迹窗口 padding 成统一 batch；实现上读取 sim.npz、triangles.npy 和可选 cluster 标签，把三角面转为双向边，构造速度、压力、节点类型、mask、cell/cluster 等字段，并用自定义 collate 对变长图样本补齐；使用时配置数据目录、split 目录、窗口长度、cluster 和 dataloader 参数；规划上适合网格时序预测和带聚类/pooling 的模型，不适合固定规则网格或要求 PyG/DGL 图对象的流程。",
+  "tags": [
+    "mesh-forecasting",
+    "temporal-window",
+    "padding-collate",
+    "cluster-pooling"
+  ]
+}

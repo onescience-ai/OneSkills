@@ -1,0 +1,17 @@
+{
+  "name": "mace_loss",
+  "type": "component",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "mace_loss 是 MACE 训练损失原语，提供能量、力、应力、virial、dipole 及 Huber/L1L2 等组合损失，并在分布式场景中通过 loss 归约保持尺度一致。其实现读取 MACE Batch 标签和模型输出 dict，按 per-atom、权重字段、任务 mask 与子项系数计算标量目标。使用时通常由训练脚本或 `get_loss_fn` 根据配置实例化，规划上用于选择 energy/forces/stress/virial/dipole 权重、处理 DDP 原子数差异和新增 property 的损失接入，并需重点核验字段名、单位、shape、符号和 per-atom 归一化。",
+  "tags": [
+    "materials",
+    "training-loss",
+    "energy-force-loss",
+    "stress",
+    "distributed-training"
+  ]
+}

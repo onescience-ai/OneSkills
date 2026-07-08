@@ -1,0 +1,17 @@
+{
+  "name": "uma_graph_compute",
+  "type": "component",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "uma_graph_compute 是 UMA 的原子近邻图构建与 PBC 距离计算原语，负责按 cutoff、max_neighbors 和周期边界条件生成 `edge_index`、边距离、边向量、cell offsets 与邻居计数。其实现逐结构调用 `radius_graph_pbc` 或 `radius_graph_pbc_v2`，再对 batch 内原子索引做 offset 合并，并用 cell offsets 修正周期距离。使用时通常由 UMA backbone、calculator 或推理脚本在 on-the-fly graph 场景调用，规划上用于决定 cutoff、邻居上限、PBC 版本和外部图输入策略，并需重点检查混合 PBC、zero cell、训练/推理图策略一致性和显存边数。",
+  "tags": [
+    "materials",
+    "uma",
+    "neighbor-graph",
+    "periodic-boundary",
+    "edge-geometry"
+  ]
+}

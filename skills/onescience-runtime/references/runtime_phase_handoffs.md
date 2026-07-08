@@ -127,7 +127,7 @@
 - `installer_fallback_required`
 - `evidence.preflight`
 
-`preflight` 负责把候选环境线索通过实际接入通道确认成事实：`ssh_slurm` 使用 SSH / SLURM 探针，`scnet_mcp` 使用 SCnet MCP 区域、队列、任务与日志接口。未确认前不得进入 `execute`。
+`preflight` 负责把候选环境线索通过实际接入通道确认成事实：`ssh_slurm` 使用 SSH / SLURM 探针；`scnet_mcp` 用于确认 SCnet 路由上下文与交接所需事实，命中 SCnet 作业、文件、账户、区域、队列或集群相关需求时直接调用 `scnet-chat` 技能执行。未确认前不得进入 `execute`。
 
 典型分流：
 

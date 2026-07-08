@@ -1,0 +1,17 @@
+{
+  "name": "openfold",
+  "type": "model",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-29",
+  "updated_at": "2026-06-29",
+  "description": "OpenFold 是 AlphaFold2/OpenFold 风格的蛋白质结构预测原语，使用 MSA、template、recycling、Evoformer 与 StructureModule 将蛋白序列特征转换为 atom37 坐标和置信度相关输出；使用时应通过 OpenFold feature pipeline 或预计算特征构造 batch，并用 pretrained 脚本或 AlphaFold API 运行，规划时重点判断 monomer/multimer/seq embedding preset、数据库依赖、recycling 维度和长序列内存策略。",
+  "tags": [
+    "protein",
+    "structure-prediction",
+    "alphafold2-style",
+    "msa",
+    "template-modeling"
+  ]
+}

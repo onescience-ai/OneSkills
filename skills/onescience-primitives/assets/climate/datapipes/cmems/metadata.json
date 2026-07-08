@@ -1,0 +1,18 @@
+{
+  "name": "cmems",
+  "type": "datapipe",
+  "domain": "oceanography",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2025-06-11",
+  "updated_at": "2026-06-24",
+  "description": "CMEMSDatapipe 是面向 CMEMS 全球海洋预报数据的 HDF5 数据处理原语，负责按年份读取海洋场数据，校验变量与时间步元数据，将连续时间序列切分为输入窗口和预测窗口，并完成 NaN 均值填补、可选标准化、经纬度网格与太阳天顶角特征构造，最终封装为可供训练、验证、测试或推理使用的数据加载器。实现上由 CMEMSDatapipe 负责运行时 DataLoader 与采样器装配，由 CMEMSDataset 执行 HDF5 文件发现、变量索引、滑动窗口采样、统计量读取和样本返回；使用时需要准备包含 data/<year>.h5、stats/global_means.npy、stats/global_stds.npy 以及变量/time_step 元数据的数据目录，并通过 used_years 与 used_variables 显式控制数据阶段和通道选择。规划上适合优先复用在已转换为规则经纬度 HDF5 的 CMEMS 海洋预报任务中；若路径布局、变量命名、统计量或时间轴协议不一致，应先做数据转换、元数据修复或外层适配，再接入下游模型流程。",
+  "tags": [
+    "cmems",
+    "ocean-forecast",
+    "marine-data",
+    "hdf5",
+    "time-window",
+    "solar-zenith"
+  ]
+}

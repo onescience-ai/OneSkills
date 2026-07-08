@@ -1,0 +1,18 @@
+{
+  "name": "molsculptor",
+  "type": "model",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-01",
+  "updated_at": "2026-07-01",
+  "description": "MolSculptor 是 OneScience 中面向小分子生成、分子优化和药物设计辅助的 JAX/Flax 工具链，围绕 SMILES、分子图、图编码器、序列解码器、latent diffusion transformer 和 reward/NSGA-II 筛选组织生成流程；它以 RDKit 图特征、分子 token、latent token 和 docking case 为主要输入，输出生成 SMILES、分子性质、相似度和 docking reward 等结果。使用时通常通过 molsculptor 的 inference、training 或 case 脚本调用；规划时应将它用于小分子任务，而不是蛋白结构预测、蛋白设计或基因组序列建模。",
+  "tags": [
+    "small-molecule",
+    "drug-design",
+    "molecule-generation",
+    "smiles",
+    "latent-diffusion",
+    "molecular-optimization"
+  ]
+}

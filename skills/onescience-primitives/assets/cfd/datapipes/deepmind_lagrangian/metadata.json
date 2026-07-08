@@ -1,0 +1,16 @@
+{
+  "name": "deepmind_lagrangian",
+  "type": "datapipe",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "DeepMind Lagrangian 数据处理原语用于将粒子轨迹 TFRecord 转换为 DGL 图时间窗口样本，支持 GNS/MeshGraphNet 类粒子 rollout；实现上解析 metadata.json 和 split.tfrecord，基于历史位置计算速度窗口、边界特征、粒子类型 one-hot、加速度目标，并按半径动态构图；使用时配置 split、序列数、历史步数、噪声和 GraphDataLoader 参数；规划上适合拉格朗日粒子动力学预测，不适合静态网格、欧拉规则场或普通 VTK 几何回归。",
+  "tags": [
+    "particle-rollout",
+    "lagrangian",
+    "dynamic-graph",
+    "tfrecord"
+  ]
+}

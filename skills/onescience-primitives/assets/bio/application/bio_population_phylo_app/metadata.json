@@ -1,0 +1,17 @@
+{
+  "name": "bio_population_phylo_app",
+  "type": "application",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "面向 GWAS summary QC、Newick 树校验、比较基因组、基因型填补/PRS 和病原监测元数据交接的群体遗传与系统发育应用卡。该卡使用 bio_population_tools 与 bio_population_templates，用于生成可运行轻量检查和结构化分析计划。",
+  "tags": [
+    "gwas",
+    "phylogenetics",
+    "newick",
+    "population-genetics",
+    "pathogen-surveillance"
+  ]
+}

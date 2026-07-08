@@ -34,7 +34,7 @@ runtime 现在优先按 `execution_mode` 理解链路：
 - `execution_channel=local_direct` 等价于 `execution_mode=local` + `access_mode=local`
 - `execution_channel=local_slurm` 等价于 `execution_mode=local_slurm` + `access_mode=local`
 - `execution_channel=ssh_slurm` 等价于 `execution_mode=remote_slurm` + `access_mode=ssh`
-- `execution_channel=scnet_mcp` 等价于 `execution_mode=remote_direct` + `access_mode=cloud_api`
+- `execution_channel=scnet_mcp` 表示 `execution_mode=remote_direct` + `access_mode=cloud_api` 的 SCnet 路由上下文；命中 SCnet 作业、文件、账户、区域、队列或集群相关需求时，直接调用 `scnet-chat` 技能执行，runtime 只消费结果
 
 ## runtime 的职责
 
@@ -162,7 +162,7 @@ runtime 消费三类输入：
 runtime 必须通过实际确认通道把它们升级为环境事实：
 
 - `ssh_slurm`：通过 SSH / SLURM 配置、只读探针或远端命令确认 Host、partition、module、driver stack 与路径可用性。
-- `scnet_mcp`：通过 SCnet MCP 的区域、队列、任务状态和日志接口确认 region、queue、task_id 与日志可用性。
+- `scnet_mcp`：通过 SCnet 通道确认 region、queue、task_id 与日志可用性；命中 SCnet 作业、文件、账户、区域、队列或集群相关需求时，直接调用 `scnet-chat` 技能执行，runtime 只消费结果。
 
 ### 环境事实
 

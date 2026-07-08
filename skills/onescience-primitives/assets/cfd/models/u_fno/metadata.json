@@ -1,0 +1,16 @@
+{
+  "name": "u_fno",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "U_FNO 是 OneScience CFD_Benchmark 中的U-Net enhanced Fourier operator模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：在 FNO 谱卷积主干旁加入 U_Net 多尺度分支，以同时捕获全局频域关系和局部多尺度结构。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“规则网格场预测中既需要 FNO 全局建模又希望加强局部细节的对比实验。”时优先考虑，若出现“无法稳定形成规则网格的点云；非结构分支仍依赖 2D Geo 投影。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "fourier-operator",
+    "unet-branch",
+    "multiscale",
+    "cfd"
+  ]
+}

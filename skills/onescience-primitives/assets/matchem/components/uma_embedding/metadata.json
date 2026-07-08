@@ -1,0 +1,17 @@
+{
+  "name": "uma_embedding",
+  "type": "component",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "uma_embedding 是 UMA 主干初始化与条件编码原语，负责将原子图边度、charge、spin 和 dataset 条件转化为 eSCNMD backbone 可消费的节点或系统级嵌入。其实现通过径向 MLP、PolynomialEnvelope、按边聚合和 embedding table，把边距离/方向、图级电荷自旋和数据集 id 对齐到节点球谐表示或条件向量。使用时通常由 eSCNMDBackbone 或 MoE backbone 在 forward 早期调用，规划上用于决定边度嵌入通道、charge/spin 条件、dataset_list 扩展和多数据集 head/MoE 路由，并需重点检查字段缺失、dataset 映射和 checkpoint 通道兼容。",
+  "tags": [
+    "materials",
+    "uma",
+    "embedding",
+    "dataset-conditioning",
+    "charge-spin"
+  ]
+}

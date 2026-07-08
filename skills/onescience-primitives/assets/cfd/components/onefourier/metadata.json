@@ -1,0 +1,16 @@
+{
+  "name": "OneFourier",
+  "type": "component",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-28",
+  "updated_at": "2026-06-28",
+  "description": "OneFourier 是 Fourier 与 wavelet 谱算子的统一入口，通过 style 分发到 FNO、Factorized FNO、Geo-FNO、Group Spectral 和 MultiWavelet 等实现；它只负责注册表实例化和 forward 透传，频域截断、几何投影和输出网格由底层 style 决定；使用时应根据规则/非结构网格、维度、modes 和坐标映射需求选择算子，并在规划中控制显式 DFT 的显存风险。",
+  "tags": [
+    "spectral-operator",
+    "fourier",
+    "neural-operator",
+    "geo-fno"
+  ]
+}

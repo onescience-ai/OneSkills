@@ -1,0 +1,17 @@
+{
+  "name": "pangu",
+  "type": "model",
+  "domain": "meteorology",
+  "version": "source-derived-2026-06-23",
+  "visibility": "public",
+  "created_at": "2026-06-23",
+  "updated_at": "2026-06-23",
+  "description": "Pangu 原语实现 Pangu-Weather 风格三维全球天气预报，将地表变量和高空变量分别 patch embedding 后沿压力层维拼接，在三维 Swin/窗口融合主干中完成编码、下采样、深层融合、上采样和恢复。使用时输入一个按通道拼接的四维张量，forward 返回地表输出和高空输出。规划上适合需要统一三维大气结构建模的全球预报任务，关键决策包括地表静态掩码、压力层数、patch 尺寸、三维窗口和输出变量集合。",
+  "tags": [
+    "weather-forecast",
+    "global-atmosphere",
+    "3d-atmosphere",
+    "pressure-level",
+    "surface-variable"
+  ]
+}

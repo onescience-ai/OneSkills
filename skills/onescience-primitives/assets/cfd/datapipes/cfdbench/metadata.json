@@ -1,0 +1,16 @@
+{
+  "name": "cfdbench",
+  "type": "datapipe",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "CFDBench 数据处理原语用于读取 tube、cavity、cylinder、dam 等二维 CFD 基准 case 目录，并组织成静态监督或自回归预测 batch；实现上读取 case.json、u.npy、v.npy，按随机种子切分 train/val/test，构造 mask、边界/物性参数并在 collate 阶段统一张量；使用时配置数据子集名、task_type、split 和 dataloader 参数后调用三个 dataloader；规划上适合规则网格 CFD benchmark 与多模型对比，不适合需要压力通道、固定官方 split 或图拓扑的任务。",
+  "tags": [
+    "benchmark",
+    "regular-grid",
+    "autoregressive-forecasting",
+    "flow-field-regression"
+  ]
+}

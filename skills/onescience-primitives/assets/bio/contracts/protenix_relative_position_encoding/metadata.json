@@ -1,0 +1,16 @@
+{
+  "name": "protenix_relative_position_encoding",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "protenix_relative_position_encoding 使用 token 级 asym_id、residue_index、entity_id、sym_id 和 token_index 构造 Protenix pair representation 的相对位置编码；实现上通过 OneEncoder 注册 ProtenixRelativePositionEncoding，并将残基、token、chain 和 entity 关系 one-hot 后投影到 c_z；使用时需要保证 token 元信息齐全且语义正确；规划时重点评估 N_token^2 显存、token_index 缺失和链/实体标识错配风险。",
+  "tags": [
+    "protenix",
+    "relative-position",
+    "pair-representation",
+    "token-feature"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "bio_workflow_template_app",
+  "type": "application",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "面向生物信息端到端流程配置和样本交接的模板应用卡，覆盖 bulk RNA-seq、单细胞、空间组学、变异检测、表观调控、长读长、微生物组、蛋白质组/代谢组、多组学、免疫信息、基因组组装注释、功能基因组筛选、转录后调控和蛋白设计结构验证等流程模板。该卡只提供结构化配置、样本表和执行前交接，不承载完整科研编排，也不直接执行外部分析工具。",
+  "tags": [
+    "bio-pipeline-template",
+    "rnaseq",
+    "single-cell",
+    "spatial-multiomics",
+    "long-read",
+    "variant-calling",
+    "functional-screen",
+    "protein-design-validation"
+  ]
+}

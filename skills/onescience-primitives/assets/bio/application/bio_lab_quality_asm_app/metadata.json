@@ -1,0 +1,17 @@
+{
+  "name": "bio_lab_quality_asm_app",
+  "type": "application",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "面向实验室仪器数据标准化和 Allotrope/ASM JSON 交接的应用卡。该卡使用 bio_lab_quality_tools 中的 convert_to_asm、validate_asm、flatten_asm 和 export_parser 脚本，用于把 plate reader、qPCR、cell counter、spectrophotometer 等仪器输出转成结构化 JSON/CSV，并保留字段分类、单位和校验边界。",
+  "tags": [
+    "lab-instrument",
+    "asm",
+    "allotrope",
+    "lims",
+    "data-standardization"
+  ]
+}

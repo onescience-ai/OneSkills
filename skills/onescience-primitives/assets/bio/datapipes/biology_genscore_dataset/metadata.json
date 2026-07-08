@@ -1,0 +1,17 @@
+{
+  "name": "genscore",
+  "type": "datapipe",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "genscore 数据处理原语负责为 GenScore 蛋白-配体打分模型构建训练和推理图样本：训练时读取预处理好的 PDBbind ID、配体图、蛋白图和标签，推理时从蛋白/口袋 PDB 与配体 SDF/MOL2 实时生成 PyG Data；实现上使用 MDAnalysis 提取残基特征和距离边，使用 RDKit 提取配体原子/键/坐标特征，可选通过 ProDy/OpenBabel 从全蛋白和参考配体生成口袋；使用时通过 PDBbindDataset 或 VSDataset 接入训练/虚筛流程，规划时应根据输入是否已是口袋、是否需要贡献分析和是否有预处理图文件选择路径，失败时优先检查口袋生成、分子格式和图特征维度。",
+  "tags": [
+    "protein-ligand-scoring",
+    "virtual-screening",
+    "pocket-extraction",
+    "graph-featurization",
+    "pdbbind"
+  ]
+}

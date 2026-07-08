@@ -1,0 +1,17 @@
+{
+  "name": "bio_protocol_automation_app",
+  "type": "application",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "面向液体处理机器人协议、ELN/库存登记和实验图像定量布局的应用卡，覆盖 Opentrons/Flex/OT-2 或通用液体处理、PCR/qPCR setup、serial dilution、plate replication、协议记录、样本/构件注册、Western blot、gel、dot blot 和 plate image 定量布局。它使用 bio_protocol_templates 中的 YAML/CSV 模板，把湿实验步骤、样本、板图、控件、模拟、版本追溯和人工审核点转成可交接结构，不直接运行设备协议。",
+  "tags": [
+    "lab-protocol",
+    "liquid-handling",
+    "eln",
+    "plate-map",
+    "assay-quantification"
+  ]
+}

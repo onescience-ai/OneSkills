@@ -1,0 +1,17 @@
+{
+  "name": "laproteina",
+  "type": "model",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "LaProteina 是蛋白结构生成与 motif scaffolding 原语，核心功能是在给定长度、CATH 条件或 motif 约束下采样蛋白骨架/全原子表示并保存为 PDB；实现上采用 product-space flow matching，把 CA 骨架坐标与局部 latent 表示作为联合数据模态，通过 LocalLatentsTransformer、可选 partial autoencoder、自条件和 guidance/autoguidance 完成生成；使用时通过 Hydra 配置和 inference/training 脚本指定 checkpoint、autoencoder、采样步数、长度与 motif 参数，规划时应先判断是无条件生成、条件生成还是 motif scaffolding，再安排设计性评估、序列/结构验证和失败回退。",
+  "tags": [
+    "protein-generation",
+    "backbone-generation",
+    "flow-matching",
+    "motif-scaffolding",
+    "designability"
+  ]
+}

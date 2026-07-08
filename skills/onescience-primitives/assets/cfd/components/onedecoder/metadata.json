@@ -1,0 +1,16 @@
+{
+  "name": "OneDecoder",
+  "type": "component",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-28",
+  "updated_at": "2026-06-28",
+  "description": "OneDecoder 是解码器组件的统一注册入口，通过 style 将 UNet、GraphViT、MeshGraph、FengWu 和 Protenix 原子注意力解码器接入统一构造方式；实现上只负责注册表分发和 forward 透传，真实输入输出由具体 decoder 决定；使用时应把它放在 encoder/processor 之后，并在规划中保证 skip、token、图特征或 atom 表征与所选 decoder 的契约一致。",
+  "tags": [
+    "decoder",
+    "feature-reconstruction",
+    "graph-decoding",
+    "field-output"
+  ]
+}

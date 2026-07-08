@@ -1,0 +1,16 @@
+{
+  "name": "OneAttention",
+  "type": "component",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-28",
+  "updated_at": "2026-06-28",
+  "description": "OneAttention 是注意力组件的统一注册入口，用 style 将气象、CFD、图网络和生物结构模型中的具体注意力实现延迟实例化；实现上依赖注册表与 instantiate_registered_style 进行分发，forward 仅透传到底层 attention，因此输入输出 shape、mask 语义和窗口组织均由具体 style 决定；使用时应先根据网格维度、是否非结构化、是否需要 pair bias 或物理注意力选择 style，并在规划阶段避免把不同注意力族视为可无损互换。",
+  "tags": [
+    "attention",
+    "operator-dispatch",
+    "mesh-attention",
+    "token-mixing"
+  ]
+}

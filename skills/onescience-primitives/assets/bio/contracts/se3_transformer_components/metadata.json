@@ -1,0 +1,17 @@
+{
+  "name": "se3_transformer_components",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "SE3Transformer 组件契约描述 DGL 图上的 SE(3)-equivariant sparse graph attention 与 tensor field convolution，说明其在 RFdiffusion 结构轨道中的输入 fiber、edge features、basis 构造、输出约定和面向 OneEquivariant 的规划映射。",
+  "tags": [
+    "protein",
+    "equivariant",
+    "graph",
+    "structure-track",
+    "se3"
+  ]
+}

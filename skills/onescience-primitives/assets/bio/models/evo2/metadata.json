@@ -1,0 +1,16 @@
+{
+  "name": "evo2",
+  "type": "model",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-29",
+  "updated_at": "2026-06-29",
+  "description": "Evo2 是面向基因组序列的长上下文语言模型原语，通过 NeMo/Megatron Mamba 架构对 tokenized genome sequence 建模，支持 logits 推理与带 loss_mask 的语言模型训练；使用时需要准备 FASTA 或预处理后的 token/position/label/loss_mask 字段，并通过 Evo2 数据集、训练脚本或 MambaModel API 调用，规划时应围绕序列长度、tokenizer、label offset、模型并行配置和 checkpoint 转换风险进行决策。",
+  "tags": [
+    "genome",
+    "dna-language-model",
+    "long-sequence-modeling",
+    "sequence-generation"
+  ]
+}

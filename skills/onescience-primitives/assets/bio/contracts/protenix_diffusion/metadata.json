@@ -1,0 +1,17 @@
+{
+  "name": "protenix_diffusion",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "protenix_diffusion 覆盖 ProtenixDiffusionConditioning、ProtenixDiffusionSchedule 和 ProtenixDiffusionModule，是 Protenix 结构生成阶段从 noisy atom coordinates 到 denoised coordinates 的核心模块；实现上通过 OneDiffusion 注册，内部串联 conditioning、atom attention encoder、diffusion transformer 和 atom attention decoder；使用时传入 x_noisy、noise level、input_feature_dict、s_inputs、s_trunk 和 z_trunk；规划时需区分单步 denoising 与完整 sample_diffusion 采样循环，并检查 atom-token 映射、N_sample 和 trunk 条件。",
+  "tags": [
+    "protenix",
+    "diffusion",
+    "coordinate-denoising",
+    "structure-generation",
+    "atom-coordinate"
+  ]
+}

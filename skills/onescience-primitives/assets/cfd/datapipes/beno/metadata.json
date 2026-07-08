@@ -1,0 +1,16 @@
+{
+  "name": "beno",
+  "type": "datapipe",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "BENO 数据处理原语用于将椭圆 PDE 代理学习中的 RHS、SOL、BC 数组转换为异构图样本；实现上读取固定前缀的 npy 文件，构造平滑场、梯度、边界距离、采样节点、图边和边特征，并缓存为 pt 文件；使用时配置数据目录、文件前缀、缓存目录和样本数后调用 train/test dataloader；规划上适合保留 BENO 异构图输入协议的规则底网格 PDE 问题，不适合边界点数、字段列含义或目标尺度差异过大的数据。",
+  "tags": [
+    "elliptic-pde",
+    "heterogeneous-graph",
+    "boundary-condition",
+    "surrogate-modeling"
+  ]
+}

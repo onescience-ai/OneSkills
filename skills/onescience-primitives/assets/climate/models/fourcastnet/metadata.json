@@ -1,0 +1,17 @@
+{
+  "name": "fourcastnet",
+  "type": "model",
+  "domain": "meteorology",
+  "version": "source-derived-2026-06-23",
+  "visibility": "public",
+  "created_at": "2026-06-23",
+  "updated_at": "2026-06-23",
+  "description": "FourCastNet 原语用于二维全球天气场预测，将单时刻气象场切分为 patch token，叠加可学习位置编码后在二维 patch 网格上反复执行 AFNO 风格频域混合与通道 MLP，最终通过线性头恢复原始空间网格。使用时通过 forward(x) 输入四维气象场，输出同分辨率预测场。规划上适合单帧到单帧、强调频域全局交互和高吞吐推理的天气预报任务，改造重点是变量通道、patch 尺寸、深度和频域稀疏阈值。",
+  "tags": [
+    "weather-forecast",
+    "global-atmosphere",
+    "spectral-mixing",
+    "patch-forecast",
+    "afno"
+  ]
+}

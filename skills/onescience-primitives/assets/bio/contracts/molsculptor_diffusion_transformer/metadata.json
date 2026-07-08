@@ -1,0 +1,16 @@
+{
+  "name": "molsculptor_diffusion_transformer",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "molsculptor_diffusion_transformer 是 MolSculptor 的 latent diffusion transformer，用时间嵌入、可选标签嵌入、adaLN 条件残差块和输出投影在分子 latent token 空间预测噪声或残差。它与 TargetDiff 的扩散式配体生成最相关，规划时应区分 latent token 扩散和三维坐标扩散的输入输出差异。",
+  "tags": [
+    "molecule",
+    "diffusion",
+    "transformer",
+    "latent-generation"
+  ]
+}

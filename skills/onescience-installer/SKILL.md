@@ -1,6 +1,7 @@
 ---
 name: onescience-installer
 description: 在远程 SSH/SLURM 或已进入目标容器/登录节点的环境中安装、修复并验证 OneScience。内部固定执行 discover -> precheck -> install -> verify，消费 execution_profile、hardware_profile、install profile、workspace bootstrap profile 与 install domain profile；用户要求安装 earth/cfd/bio/matchem/all 等环境时使用。
+type: executor
 ---
 
 # OneScience Installer

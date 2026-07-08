@@ -1,0 +1,17 @@
+{
+  "name": "genscore",
+  "type": "model",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "GenScore 是蛋白-配体结合构象打分原语，核心功能是读取蛋白口袋和配体构象并输出候选配体的 score，也可计算原子级或残基级贡献；实现上以配体图编码器和蛋白图编码器为双塔主干，可选择 GraphTransformer 或 GatedGCN，再用配体-靶点节点对的混合密度输出建模距离与亲和相关信号；使用时通过 CLI 指定 PDB/SDF/MOL2、checkpoint、encoder 和贡献分析开关，规划时适合作为 docking 后的候选排序与可解释性分析节点，失败时应优先检查口袋生成、模型权重和图特征维度。",
+  "tags": [
+    "protein-ligand-scoring",
+    "binding-affinity",
+    "virtual-screening",
+    "graph-model",
+    "contribution-analysis"
+  ]
+}

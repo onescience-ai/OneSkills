@@ -1,0 +1,17 @@
+{
+  "name": "bio_cell_imaging_cytometry_app",
+  "type": "application",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "面向流式细胞术、IMC、显微图像分割、WSI tile 计划和图像数据管理的细胞成像与细胞术应用卡。该卡使用 bio_cell_imaging_templates 与 bio_cell_imaging_tools，用于生成图像/标记面板交接、mask 测量和 cytometry 表 QC。",
+  "tags": [
+    "bioimage",
+    "segmentation",
+    "flow-cytometry",
+    "imaging-mass-cytometry",
+    "digital-pathology"
+  ]
+}

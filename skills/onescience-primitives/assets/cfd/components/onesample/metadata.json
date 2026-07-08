@@ -1,0 +1,16 @@
+{
+  "name": "OneSample",
+  "type": "component",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-28",
+  "updated_at": "2026-06-28",
+  "description": "OneSample 是上采样和下采样组件的统一入口，通过 style 分发到 Pangu、Fuxi、XiHe 以及图空间采样实现；实现上只负责注册表实例化和 forward 透传，不解释 token、网格或图节点语义；使用时应按模型族准备对应输入，并在规划中确认采样前后的尺度、节点集合和 skip 对齐关系。",
+  "tags": [
+    "sampling",
+    "downsample",
+    "upsample",
+    "multi-scale"
+  ]
+}

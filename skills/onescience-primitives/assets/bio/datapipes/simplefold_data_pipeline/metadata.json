@@ -1,0 +1,17 @@
+{
+  "name": "simplefold_data_pipeline",
+  "type": "datapipe",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "simplefold_data_pipeline 用于 SimpleFold 蛋白折叠任务的结构数据处理、mmCIF 预处理、结构 token 化以及训练/推理 DataModule 构建，核心实现通过 process_mmcif、process_structure 和 ProteinDataProcessor 将结构样本转为 SimpleFold 所需格式；使用时根据训练或预测选择 SimpleFoldTrainingDataModule 或 SimpleFoldInferenceDataModule；规划时应判断输入是原始 mmCIF/PDB 还是已处理结构样本，并确认下游 FoldingDiT 是否需要 noised_pos、t 和 feats 字段。",
+  "tags": [
+    "simplefold",
+    "protein-folding",
+    "mmcif",
+    "structure-processing",
+    "folding-dit"
+  ]
+}

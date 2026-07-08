@@ -1,0 +1,17 @@
+{
+  "name": "mace_block",
+  "type": "component",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "mace_block 是 MACE 势函数主干的核心积木原语，负责节点嵌入、径向嵌入封装、等变交互、many-body product basis、逐原子能量/偶极读出、原子参考能和 scale/shift 处理。其实现基于原子近邻图、球谐边属性、径向基特征和 E(3) 等变张量运算，将节点 one-hot、边几何与多头任务信息逐层更新为可聚合的物理输出。使用时应由 MACE 模型或 Python API 传入已按 MACE 约定构造的图张量，规划上优先用于能量-力势函数主干搭建、foundation model 微调结构保持和新增 property 的 readout 扩展，并需重点约束 irreps、correlation、cutoff、head 与 checkpoint 兼容性。",
+  "tags": [
+    "materials",
+    "interatomic-potential",
+    "equivariant-message-passing",
+    "energy-readout",
+    "many-body-interaction"
+  ]
+}

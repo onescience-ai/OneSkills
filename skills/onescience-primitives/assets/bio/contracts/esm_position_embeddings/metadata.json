@@ -1,0 +1,16 @@
+{
+  "name": "esm_position_embeddings",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "esm_position_embeddings 是 ESM 蛋白语言模型位置编码组件，提供可学习位置编码和正弦位置编码两类实现，用于把蛋白序列 token 的位置信息注入序列表征。它与 DiffDock、LaProteina 等蛋白相关任务在序列表征阶段语义相关，但未在上述五个模型源码中发现直接 import，规划时应作为 ESM 表征模块候选而非强制依赖。",
+  "tags": [
+    "protein",
+    "sequence-embedding",
+    "position-embedding",
+    "esm"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "swin_transformer",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "Swin_Transformer 是 OneScience CFD_Benchmark 中的窗口注意力 Transformer模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：仅支持 `structured_2D`，将网格 token padding 到窗口大小倍数后通过 SwinTransformerBlock 做窗口化注意力建模。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“规则二维网格上比较窗口局部注意力与全局注意力/谱算子的任务。”时优先考虑，若出现“非结构化、1D 或 3D 几何；源码会对非 `structured_2D` 抛出异常。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "window-attention",
+    "structured-grid",
+    "local-global-modeling",
+    "cfd"
+  ]
+}

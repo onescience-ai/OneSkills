@@ -1,0 +1,17 @@
+{
+  "name": "graphcast",
+  "type": "model",
+  "domain": "meteorology",
+  "version": "source-derived-2026-06-23",
+  "visibility": "public",
+  "created_at": "2026-06-23",
+  "updated_at": "2026-06-23",
+  "description": "GraphCast 原语用于基于图神经网络的全球天气预报，将规则经纬网格特征映射到多分辨率 icosahedral mesh，在 mesh 上进行消息传递或图 Transformer 处理，再解码回经纬网格输出。使用时通过 GraphCastNet.forward(grid_nfeat) 输入单 batch 网格特征，模型内部负责输入展平、图编码、处理器、解码和输出恢复。规划上适合需要网格到非结构网格交互、长距离传播和可选图分区的全球预报任务，关键决策包括 mesh level、processor 类型、特征维度、分区方式和 checkpoint 策略。",
+  "tags": [
+    "weather-forecast",
+    "global-atmosphere",
+    "graph-neural-network",
+    "mesh-forecast",
+    "grid-to-mesh"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "mace_func_utils",
+  "type": "component",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "mace_func_utils 是 MACE 的图几何、自动微分和统计工具原语，负责准备周期图、计算边向量与长度、从能量导出力/virial/stress/Hessian、提取不变量并计算训练统计量。其实现围绕坐标、晶胞扰动、batch、shifts 和能量张量建立 autograd 路径，用 scatter 聚合生成图级或逐原子物理量。使用时通常由 MACE forward、训练统计脚本或 calculator 间接调用，规划上用于决定是否开启力、应力、virial、Hessian、LAMMPS 兼容和训练前统计量计算，并需严格保护坐标梯度、PBC 偏移和单位/符号约定。",
+  "tags": [
+    "materials",
+    "autograd",
+    "forces",
+    "stress",
+    "graph-geometry"
+  ]
+}

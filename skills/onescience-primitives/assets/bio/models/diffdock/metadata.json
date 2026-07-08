@@ -1,0 +1,17 @@
+{
+  "name": "diffdock",
+  "type": "model",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "DiffDock 是蛋白-小分子对接与配体构象采样原语，核心功能是在给定受体结构和配体描述后预测配体平移、旋转与可旋转键扭转的扩散 score，并可结合 confidence 模型对候选 pose 重排序；实现上使用 E(3) 等变张量积卷积、球谐特征、距离展开和蛋白-配体交叉图进行消息传递，运行时由采样脚本加载 score/confidence checkpoint 与模型参数配置，规划时应先判断任务是否属于小分子-蛋白对接，再检查 PDB/SDF/SMILES、模型目录、ESM 嵌入和采样步数等条件，失败时优先回退到输入清洗、减少采样数或关闭 confidence 重排序。",
+  "tags": [
+    "protein-ligand-docking",
+    "molecular-docking",
+    "pose-generation",
+    "diffusion",
+    "confidence-reranking"
+  ]
+}

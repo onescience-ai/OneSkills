@@ -1,0 +1,17 @@
+{
+  "name": "proteinmpnn_components",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-02",
+  "updated_at": "2026-07-02",
+  "description": "ProteinMPNN 组件契约描述从蛋白骨架构造 kNN 几何图并自回归设计氨基酸序列的 encoder-decoder 流程，覆盖特征构造、解码约束、输入输出、常见参数、推理约束和面向 OneEncoder、OneDecoder 的目标映射。",
+  "tags": [
+    "protein",
+    "inverse-folding",
+    "sequence-design",
+    "backbone",
+    "knn-graph"
+  ]
+}

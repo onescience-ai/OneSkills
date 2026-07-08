@@ -1,0 +1,16 @@
+{
+  "name": "OneEncoder",
+  "type": "component",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-28",
+  "updated_at": "2026-06-28",
+  "description": "OneEncoder 是编码器组件统一入口，通过 style 分发到 UNet、GraphViT、MeshGraph、FengWu 和 Protenix 编码实现；它使用注册表延迟实例化并在 forward 中透传输入，真实 shape 与输出结构由底层 encoder 决定；使用时应根据数据拓扑选择编码器族，并在规划中提前约束输出是否为 token、grid、多尺度 skip、图节点边表征或 atom/pair 条件表征。",
+  "tags": [
+    "encoder",
+    "feature-extraction",
+    "graph-encoding",
+    "tokenization"
+  ]
+}

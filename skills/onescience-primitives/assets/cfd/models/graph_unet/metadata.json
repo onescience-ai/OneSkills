@@ -1,0 +1,16 @@
+{
+  "name": "graph_unet",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "Graph_UNet 是 OneScience CFD_Benchmark 中的图 U-Net 多尺度模型原语，核心功能是面向 CFD 代理建模、算子学习或非结构网格节点回归输出物理场预测。其实现原理为：在图结构上通过 GCN/TopKPooling/上采样形成编码-解码路径，用多尺度图表示输出节点级物理场。 代码中通过 `Model(args, device)` 或显式图接口完成实例化，并在运行时调用 `forward` 等业务入口；使用时需要让 datapipe 提供与 `space_dim/fun_dim/out_dim/geotype/shapelist` 等配置一致的输入。规划决策上，它适合在“非结构图中存在明显多尺度局部结构，且图拓扑可以稳定构造的节点回归任务。”时优先考虑，若出现“点序或图连接不稳定的任务；池化会改变节点集合，需要谨慎维护索引映射。”则应切换到更匹配的数据适配或辅助模型路线。",
+  "tags": [
+    "graph-neural-network",
+    "graph-unet",
+    "multiscale",
+    "unstructured-mesh"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "esm_transformer_layers",
+  "type": "module",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-06",
+  "updated_at": "2026-07-06",
+  "description": "esm_transformer_layers 是 ESM 蛋白语言模型的 Transformer 层组件族，覆盖普通序列层、MSA 轴向层、归一化残差块和前馈网络，用于从蛋白 token 或 MSA token 中提取上下文表征。它可作为 DiffDock、LaProteina 等蛋白任务的表征候选模块，但不是上述五个模型的直接导入组件。",
+  "tags": [
+    "protein",
+    "transformer",
+    "sequence-modeling",
+    "msa"
+  ]
+}

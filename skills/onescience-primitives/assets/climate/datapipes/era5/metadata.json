@@ -1,0 +1,18 @@
+{
+  "name": "era5",
+  "type": "datapipe",
+  "domain": "meteorology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2025-06-11",
+  "updated_at": "2026-06-23",
+  "description": "ERA5Datapipe 是面向全球天气预报任务的 ERA5 HDF5 数据处理原语，负责按年份读取气象场文件，校验变量元数据，将连续时间步切分为输入窗口与预测窗口，并可基于全局统计量完成标准化，同时构造经纬度网格上的太阳天顶角特征，最终封装为可训练、验证或测试使用的 DataLoader。实现上由 ERA5Datapipe 负责运行时 DataLoader 与分布式采样器装配，由 ERA5Dataset 完成 HDF5 读取、变量索引、样本索引、归一化和时间特征生成；使用时需准备包含 yearly HDF5、variables/time_step 属性和 global_means/global_stds 统计量的数据目录，并通过 used_years 显式控制 train/val/test 划分。规划上适合优先复用在年尺度 ERA5 规则网格预测任务中；若数据路径、变量名、时间轴或统计量结构与约定不一致，应先做路径适配、元数据修复或外层 adapter，而不是直接改动模型主体。",
+  "tags": [
+    "era5",
+    "weather-forecast",
+    "global-atmosphere",
+    "hdf5",
+    "time-window",
+    "climate-data"
+  ]
+}

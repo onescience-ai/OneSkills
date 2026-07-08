@@ -1,6 +1,6 @@
 {
   "example_id": "scnet_mcp_runtime_status_fallback",
-  "summary": "SCnet MCP 运行链路在 execute 阶段触发状态查询回退，diagnose 需要显式保留 fallback 来源而不是伪装成主查询成功。",
+  "summary": "SCnet 运行链路在 execute 阶段由 scnet-chat 触发状态查询回退，diagnose 需要显式保留 fallback 来源而不是伪装成主查询成功。",
   "terminal_phase": "diagnose",
   "phases": {
     "discover": {
@@ -42,7 +42,8 @@
       "evidence": {
         "preflight": {
           "task_id_present": true,
-          "fallback_path_enabled": true
+          "fallback_path_enabled": true,
+          "delegated_executor": "scnet-chat"
         }
       }
     },
@@ -63,15 +64,16 @@
       "sync_status": "synced",
       "evidence": {
         "execute": {
-          "status_probe": "scnet_list_regions_tasks",
-          "status_probe_fallback_from": "scnet_get_task_status",
-          "log_sync_mode": "scnet_download_log"
+          "delegated_executor": "scnet-chat",
+          "status_probe": "scnet-chat delegated region task list query",
+          "status_probe_fallback_from": "scnet-chat delegated direct status query",
+          "log_sync_mode": "scnet-chat delegated log retrieval"
         }
       }
     },
     "diagnose": {
       "failure_reason": "status_fallback_used",
-      "status_source": "scnet_list_regions_tasks",
+      "status_source": "scnet-chat delegated region task list query",
       "log_readiness": "ready",
       "next_action": "onescience-runtime",
       "evidence": {

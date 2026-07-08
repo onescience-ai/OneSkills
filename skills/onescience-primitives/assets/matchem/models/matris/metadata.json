@@ -1,0 +1,17 @@
+{
+  "name": "matris",
+  "type": "model",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-23",
+  "updated_at": "2026-06-30",
+  "description": "MatRIS 是面向材料表征与原子间相互作用模拟的图神经势函数模型，核心功能是在晶体或分子结构上预测能量、力、应力和磁矩，并可接入 ASE calculator、结构优化和分子动力学流程。其实现以 RadiusGraph 为输入，通过 GraphConverter 构造原子图与三体 line graph，使用原子类型嵌入、径向距离基、三体角度基、多层 atom graph/line graph 交互块更新节点、边和三体特征，再由 EnergyHead、ForceStressHead 与 MagmomHead 读出物理量；使用时可直接实例化 MatRIS、调用预训练 load 接口或经 MatRISCalculator/StructOptimizer 间接调用。规划上应根据任务是否需要 e/f/s/m、是否使用守恒力、是否加载 matris_10m_oam 或 matris_10m_mp 预训练权重、输入结构周期性和 cutoff 约束来选择运行路径与验证策略。",
+  "tags": [
+    "materials",
+    "interatomic-potential",
+    "energy-force-stress",
+    "magnetic-moment",
+    "structure-relaxation"
+  ]
+}

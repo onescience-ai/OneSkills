@@ -1,0 +1,18 @@
+{
+  "name": "graphViT",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2021-07-15",
+  "updated_at": "2024-06-01",
+  "description": "graphViT 是面向 Eagle 网格 CFD 时序预测的图-视觉 Transformer 模型原语，核心功能是在动态非结构网格上自回归预测下一时刻速度与压力等节点状态；实现上先通过 GNN 编码局部节点、边和节点类型信息，再用基于簇的 RNN 池化把细粒度网格压缩为簇级 latent graph，经多层 Pre-LN Transformer 建模长距离全局依赖，最后把簇特征检索回节点并解码为状态增量，同时对输入、墙面和禁用节点执行边界状态覆盖；使用时通常配合 EagleDatapipe 和 conf/graphvit_eagle.yaml，通过 train_graphvit.py 或 eval_graphvit.py 启动，也可直接调用 GraphViT.forward 输入 mesh_pos、edges、state、node_type、clusters 和 clusters_mask；规划上适用于需要聚类池化、全局注意力和长时间滚动预测的二维非结构网格流体任务，若缺少 cluster 文件、节点类型 one-hot 或状态维度与配置不一致，应先修正数据管道和字段映射，再调整模型规模与训练策略。",
+  "tags": [
+    "cfd",
+    "mesh-forecasting",
+    "fluid-dynamics",
+    "graph-transformer",
+    "temporal-forecasting",
+    "cluster-pooling"
+  ]
+}
