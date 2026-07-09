@@ -55,6 +55,7 @@ assets/
    - 若 `filters.domain` 未提供、为空或不可靠，则**必须先读取** `skills/onescience-primitives/references/domain_profile.md`，再结合 `user_request` 与 `task_state_summary` 按其中定义的领域信号进行回退判定
    - 回退判定结果若为 `climate | cfd | matchem | bio`，则只检索对应的 `assets/<domain>/`
    - 回退判定结果若为 `unknown`，说明无法稳定路由到单一领域；此时允许检索 `assets/` 下全部 domain 目录，但输出中的 `detected_domain` 必须保持为 `unknown`
+   - 当请求已路由到生信领域，且涉及生信工作流、模型/数据管线/应用选择或多候选资源取舍时，可读取`skills/onescience-primitives/references/bio_profile.md`文档作为召回提示；该文件只辅助候选排序和边界解释，不能替代 `metadata.json` 证据
 1. **判定 category scope**：根据 `user_request`、`content_request`、`task_state_summary` 判断是否明确指定资源类别。
    - 若明确指定模型、组件、数据管线、应用、工作流规划或契约类资源，则只检索对应 category
    - 若未明确指定，则检索当前 domain scope 下全部实际存在的 category 目录
@@ -136,7 +137,7 @@ content:
   - 应用 / `app` / `toolkit` / `template` → `application`
   - 工作流规划 / `planning` / `route` / `decision` → `workflow-planning`
   - 若请求未明确 category，则检索当前 domain scope 下全部实际存在的 category 目录
-- **`detected_domain`**：按标准化领域枚举输出 `climate | cfd | matchem | bio | unknown`。
+- **`detected_domain`**：按标准化 domain 枚举输出 `climate | cfd | matchem | bio | unknown`。
   - 若 `filters.domain` 已明确提供，则优先使用该值作为检索路由依据；输出时仍需与命中资源的 `metadata.json.domain` 保持一致性
   - 若 `filters.domain` 缺失，则以 `domain_profile.md` 回退判定结果作为领域判断基线
   - 若命中结果跨多个不兼容 domain、或回退判定本身为 `unknown`、或资源证据不足以支撑单一领域，则填 `unknown`

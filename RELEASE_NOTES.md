@@ -1,14 +1,17 @@
 # Release Notes
 
-## 2026.06.05
+## 2026.07.08
 
-本次发布主要为 OpenCode 安装体验增强：
+本次发布版本主要围绕技能安装标准化与 OneScience 架构重构展开：
 
-- OpenCode 安装器默认会下载 OneScience 源码快照到项目 `.opencode/onescience/`，供代码阅读与实现类 skill 使用
-- OpenCode 安装布局与默认发现路径对齐：skills 安装到 `.opencode/skills/`，并生成 `.opencode/opencode.jsonc.snippet` 供需要时合并配置
-- 支持通过 `--namespace-root` 将 skills 安装到自定义目录（如 `vendor/oneskills/<version>/`）
-- 在 `onescience-workflow`、`onescience-role`、`onescience-skill` 中补充 Catalog 协作说明：何时搜索 AI 原语、何时直接用已选原语、skill 发现优先级
-- 新增 `references/catalog_integration.md`，统一说明 skill 与 AI 原语的发现与加载约定
+- 标准化 OneSkills 在 Claude Code、Codex、Trae、OpenCode 等智能体中的公开安装入口，统一在公开 README 中给出推荐安装方式与使用备注
+- 补齐公开仓库首页的能力说明、典型使用场景、贡献入口与项目治理导航，提升 `docs/open-source/public_repo_README.md` 的可读性与用户上手体验
+- 将科研任务入口明确为自然语言需求，覆盖论文复现、模型训练、数据分析、数据集构建、推理评估与工作流编排等场景
+- 重构 OneScience 架构说明，形成 `onescience-orchestrator`、Resource Layer、Expert Layer、Executor Layer 的分层模型
+- 明确 `Task State` 作为系统唯一事实源，串联意图理解、资源召回、专家规划、执行调度、结果观察与反馈再规划闭环
+- 将 AI 原语资源与轻量规划知识统一沉淀到 Resource Layer，并约定 orchestrator、expert、executor 在不同阶段召回不同粒度的资源内容
+- 明确新能力接入路径：可资源化为 AI 原语或 Planning Knowledge，也可封装为执行技能，或进一步专家化为领域规划技能
+- 梳理能力演进路径，从隐式经验、资源化沉淀、反复验证，到技能化固化与内核无感扩展
 
 ## 2026.05.15
 
