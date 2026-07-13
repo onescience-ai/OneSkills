@@ -17,7 +17,7 @@
 - 需要模型推理、生成、打分或验证时，通常建议召回 `models` 下的 `model` primitive。
 - 需要模型输入准备、数据标准、tokenization、feature pipeline、dataset adapter 时，通常建议召回 `datapipes` 下的资源。
 - 需要模板、轻量脚本、QC 检查、报告骨架、交接文件或可复用小工具时，通常建议召回 `application` 下的资源。
-- 需要实现细节、组件改造、调试、接口契约或模型内部结构时，通常建议召回 `contracts` 下的资源。
+- 需要实现细节、组件改造、调试、接口契约或模型内部结构时，通常建议召回 `components` 下的资源。
 - 需要完整科研流程规划、节点依赖、质量检查和回退策略时，通常建议召回 `workflow-planning` 下的工作流资源。
 
 ## 通用应用资源提示
@@ -162,6 +162,6 @@ TCR/BCR repertoire、VDJ、clonotype、scirpy/MIXCR、neoantigen、HLA/MHC bindi
 - 先确认请求已路由到生信领域，再选择 category scope；不要直接做全局模糊搜索。
 - 若用户明确请求某个 primitive 名称，优先检查该资源是否真实存在，并读取其 `metadata.json` 判断语义是否匹配。
 - 若本文档建议多个候选资源，先用用户请求中的对象、输入数据、交付物和当前任务阶段缩小范围。
-- 若命中模型类资源且需要规格或使用说明，按 `SKILL.md` 的规则继续检查依赖组件和相关 `contracts`。
+- 若命中模型类资源且需要规格或使用说明，按 `SKILL.md` 的规则继续检查依赖组件和相关 `components`。
 - `why_matched` 应说明用户需求与资源 `description`、category 或工作流语义之间的对应关系，避免只复述资源名。
 - `limitations` 应来自资源文件中的约束、本文档边界提示或缺失文件说明；不确定时说明需要人工复核或外部依赖。

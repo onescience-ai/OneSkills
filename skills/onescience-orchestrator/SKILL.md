@@ -1,6 +1,7 @@
 ---
 name: onescience-orchestrator
 description: OneScience / OneSkills 通用任务编排主控技能。负责基于符合统一资源契约的资源摘要理解用户意图、召回 type=expert 的相关专家规划技能、收集并融合多个规划 proposal、维护 Task State、绑定资源，并按步骤调度 type=executor 的 coder/paper-repro/runtime/installer/evaluator 等执行技能。它不承载具体领域专家知识；新增任务类型应通过新增资源包、专家规划技能或执行技能扩展。注意：本技能负责编排调度但不直接执行任务，任务1（规划）完成后必须先调用对应的 type=executor 执行技能完成实际执行，才能进入任务2（下一步规划），即规划和执行不能在同一调用步骤中完成。
+type: orchestrator
 ---
 
 # OneScience Orchestrator

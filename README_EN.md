@@ -47,12 +47,13 @@ Recommended installation methods for each agent:
 
 ## Capabilities
 
-- **Task understanding and orchestration**: task routing accuracy reaches **100%**, role collaboration execution accuracy reaches **90%**, and orchestration coordination accuracy reaches **100%**
-- **Data tasks**: code generation pass rate for data tasks reaches **70%**
+- **Task understanding and orchestration**: uses `onescience-orchestrator` as the main controller and coordinates `resource`, `expert`, and `executor` skills in layers to complete resource retrieval, intent recognition, expert planning, global plan merging, execution scheduling, and task status updates
+- **Primitive resource retrieval**: supports retrieving models, components, data pipelines, application cards, workflow plans, and contract resources from natural-language requirements, covering domains such as bioinformatics, fluids, weather/climate, and materials chemistry
+- **Data tasks**: supports data processing plan design, code generation for data tasks, dataset construction startup script generation, quality checks, and metadata generation, with a code generation pass rate for data tasks of **70%**
 - **Model tasks**: covers mainstream weather-domain models such as FourCastNet and Pangu-Weather, with a model-task code generation pass rate of **87.5%**
-- **Paper reproduction tasks**: supports task decomposition, code implementation, and verification, covering key steps such as data access, model adaptation, and configuration completion
-- **Engineering tasks**: supports code generation, configuration repair, and entry script completion for scientific code refactoring and project structure cleanup
-- **Runtime tasks**: supports remote environment identification, dependency installation, job submission, and failure diagnosis
+- **Paper reproduction tasks**: supports paper information extraction, task decomposition, code implementation, and verification, covering key steps such as data access, model adaptation, and configuration completion
+- **Engineering tasks**: supports code generation, configuration repair, entry script completion, and distributed training adaptation for scientific code refactoring and project structure cleanup
+- **Runtime tasks**: supports remote environment identification, dependency installation, job submission, log synchronization, and failure diagnosis, as well as SCNet supercomputing platform job and file management
 - **Evaluation tasks**: supports experiment verification path planning, test strategy selection, and result inspection
 
 ## Use Cases

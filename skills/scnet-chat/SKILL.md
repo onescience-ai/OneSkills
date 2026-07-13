@@ -17,6 +17,7 @@ clawhub:
   repo: https://github.com/wiltonMotta/scnet-chat
   autoEnable: true
   version: 2.1.0
+type: executor
 ---
 
 # SCNet Chat 技能
