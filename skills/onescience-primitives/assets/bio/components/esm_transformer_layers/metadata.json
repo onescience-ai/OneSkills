@@ -1,6 +1,6 @@
 {
   "name": "esm_transformer_layers",
-  "type": "module",
+  "type": "component",
   "domain": "biology",
   "version": "1.0.0",
   "visibility": "public",

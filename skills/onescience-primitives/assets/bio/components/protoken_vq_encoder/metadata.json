@@ -1,6 +1,6 @@
 {
   "name": "protoken_vq_encoder",
-  "type": "module",
+  "type": "component",
   "domain": "biology",
   "version": "1.0.0",
   "visibility": "public",

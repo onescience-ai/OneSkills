@@ -8,18 +8,6 @@ CLI 推理示例：
 cd "$ONESCIENCE_DIR/examples/biosciences/simplefold" && python -c "from simplefold.cli import main; main()" --simplefold_model simplefold_100M --ckpt_dir "$ONESCIENCE_MODELS_DIR/simplefold" --num_steps 500 --tau 0.01 --nsample_per_protein 1 --plddt --fasta_path "$RUN_DIR/simplefold_fasta_inputs" --output_dir "$RUN_DIR/simplefold_out" --backend torch --output_format pdb
 ```
 
-脚本推理示例：
-
-```sh
-cd "$ONESCIENCE_DIR" && python examples/biosciences/simplefold/inference.py --simplefold_model simplefold_100M --ckpt_dir "$ONESCIENCE_MODELS_DIR/simplefold" --num_steps 500 --tau 0.01 --nsample_per_protein 1 --plddt --fasta_path examples/biosciences/esm/data/few_proteins.fasta --output_dir "$RUN_DIR/simplefold_out" --backend torch --output_format pdb
-```
-
-批量候选初筛示例：
-
-```sh
-cd "$ONESCIENCE_DIR" && python examples/biosciences/simplefold/inference.py --simplefold_model simplefold_100M --ckpt_dir "$ONESCIENCE_MODELS_DIR/simplefold" --num_steps 300 --tau 0.01 --nsample_per_protein 1 --plddt --fasta_path "$RUN_DIR/proteinmpnn_fastas" --output_dir "$RUN_DIR/simplefold_screen" --backend torch --output_format pdb
-```
-
 # input_schema
 
 - 输入对象：蛋白 FASTA 文件或目录、SimpleFold checkpoint 目录、输出目录、模型规模、采样步数、温度、每条序列采样数和后端。

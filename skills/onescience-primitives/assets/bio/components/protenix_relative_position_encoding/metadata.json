@@ -1,6 +1,6 @@
 {
   "name": "protenix_relative_position_encoding",
-  "type": "module",
+  "type": "component",
   "domain": "biology",
   "version": "1.0.0",
   "visibility": "public",

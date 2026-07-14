@@ -1,6 +1,6 @@
 {
   "name": "evo2_mamba",
-  "type": "module",
+  "type": "component",
   "domain": "biology",
   "version": "1.0.0",
   "visibility": "public",

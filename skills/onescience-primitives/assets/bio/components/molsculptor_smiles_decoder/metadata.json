@@ -1,6 +1,6 @@
 {
   "name": "molsculptor_smiles_decoder",
-  "type": "module",
+  "type": "component",
   "domain": "biology",
   "version": "1.0.0",
   "visibility": "public",

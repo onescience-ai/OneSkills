@@ -1,6 +1,6 @@
 {
   "name": "protenix_diffusion",
-  "type": "module",
+  "type": "component",
   "domain": "biology",
   "version": "1.0.0",
   "visibility": "public",
