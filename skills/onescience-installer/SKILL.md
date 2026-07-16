@@ -1,105 +1,78 @@
 ---
 name: onescience-installer
-description: 在远程 SSH/SLURM 或已进入目标容器/登录节点的环境中安装、修复并验证 OneScience。内部固定执行 discover -> precheck -> install -> verify，消费 execution_profile、hardware_profile、install profile、workspace bootstrap profile 与 install domain profile；用户要求安装 earth/cfd/bio/matchem/all 等环境时使用。
+description: OneScience 环境安装技能。用于根据 onescience.json 安装或验证 OneScience、创建或复用 conda 环境、检测已有 onescience 包、在记录的 conda 环境或当前环境中安装 Python 包；缺少 run_site 或远程 SSH 配置时先调用 onescience-runsite 补齐运行站点配置。
 type: executor
 ---
 
-# OneScience Installer
+# OneScience 安装器
 
-**本技能根目录：** 与当前 `SKILL.md` 同目录。资产路径均按本技能根目录解析，不按当前工作目录猜测。
+## 主流程
 
-需要渲染安装/探测/验证命令时，读取 `./references/install_flow.md`。
-需要 discover / precheck / install / verify 细则、占位符渲染与失败语义时，读取 `./references/install_rules.md`。  
-需要阶段结构化示例时，读取 `./assets/phase_examples/`。  
-需要安装请求 resolution 示例时，读取 `./assets/resolution_examples/`。
+1. 读取根目录 `onescience.json`。
+2. 校验运行站点配置：
+   - 必须能从 `onescience.json.runtime.execution_profile.run_site` 获取 `local` 或 `remote`。
+   - 当 `run_site=remote` 时，必须能从 `onescience.json.runtime.ssh` 获取 SSH 信息。
+   - 如果缺少 `run_site`，或 `run_site=remote` 但 SSH 信息不完整，读取 `./references/runsite-handoff.md`，调用 `skills/onescience-runsite` 补齐配置；只有 runsite 成功写回或更新 `onescience.json` 后，才能继续安装流程。
+3. 读取 `./references/discover-route.md`，识别用户意图、安装领域、Python 包列表、`runtime.conda` 状态和目标环境路径。
+4. 根据“意图 + 环境路径 + conda 状态”读取对应分支文件，并且只读取命中的分支文件。
+5. 需要渲染探测、安装、验证命令时，读取 `./references/install_flow.md`。
+6. 命中 Conda 路径时，若目标端初始找不到 `conda`，必须先按 `install_flow.md` 的 `{module_init}` + `{conda_recovery}` 逻辑尝试恢复：先初始化 `module`，再通过 `module avail 2>&1` 匹配并 `module load` 可用的 `anaconda` / `anaconda3` / `miniconda` / `conda` 类模块；若仍失败，再执行 profile 内已有 fallback 激活命令；只有恢复后仍不可用时才允许阻断。
+7. 检测成功、安装成功且验证成功后，读取 `./references/writeback-conda-state.md` 写回 `onescience.json.runtime.conda`。
+8. 写回成功后，若当前任务带有上游 handoff / resume 信息，则返回调用它的技能继续执行；若没有明确调用方，则交回 `onescience-orchestrator` 规划后续任务。
 
-## 1. 职责与边界
+## 必要资产
 
-本技能是 OneScience 的唯一公开安装/修复入口，目标是把指定运行环境推进到“可交回 `onescience-runtime` 继续运行验证”的状态。
+- `./assets/backend_profiles.json`：环境名、Python 版本、module 顺序、verify 口径。
+- `./assets/workspace_bootstrap_profiles.json`：OneScience 仓库和 `install.sh` 入口。
+- `./assets/install_domains.json`：`earth/cfd/bio/matchem/all` 到 install selector 的映射。
+- `./assets/conda_env.example.json`：成功写回格式示例。
 
-**负责：**
+installer 的环境信息写回位置是 `onescience.json.runtime.conda`。除 `runtime.conda` 外，不修改 `onescience.json` 的其它信息。
 
-- 执行 `discover -> precheck -> install -> verify` 四阶段安装闭环
-- 消费并补齐 `execution_mode`、`access_mode`、`execution_channel`、`required_backend_id`、`hardware_profile`
-- 根据 `backend_specs.json`、`execution_profiles.json` 和本技能资产解析 installer backend、workspace bootstrap profile、install domain profile
-- 只做 user-space 安装：创建/复用 Conda 环境、获取 OneScience 仓库、执行 `bash install.sh`
-- 用独立 verify 命令确认 `torch` 与 `onescience` 包可见，并产出结构化安装状态
+## 意图识别流程
 
-**不负责：**
+1. 用户要求“安装 OneScience 环境”“安装 earth/cfd/bio/matchem/all 环境”“安装 onescience 包”“初始化 OneScience 环境”时，设为 `install_intent=bootstrap`。
+2. 用户要求“安装 Python 包”“安装 pip 包”“补装依赖”“安装某个包到 OneScience 环境”时，设为 `install_intent=python_packages`。
+3. 用户没有明确意图时，先询问要安装 OneScience 环境还是安装 Python 包；不要在意图未知时进入安装分支。
+4. `install_intent=bootstrap` 必须解析安装领域；无法从请求映射到 `install_domains.json` 时，询问用户安装哪个领域或是否安装 `all`。
+5. `install_intent=python_packages` 必须解析包名列表；缺少包名时只询问包名。
 
-- 安装或升级内核态驱动、系统级 CUDA/ROCm、root 权限组件
-- 修改远端 `setup.py`、`requirements.txt`、`constraints.txt` 来绕过安装失败
-- 提交 `sbatch`、训练、推理、日志轮询或 runtime diagnose
-- 在 `precheck` 已阻断时继续执行安装命令
-- 把 `install_profile_ref` 当成 installer backend 名称；真正 backend 必须由 profile 绑定到 `./assets/backend_profiles.json`
+## 分支映射
 
-安装成功不等于运行成功。只有 `verify` 通过时，`next_action` 才能指向 `onescience-runtime`。
+| 前置状态 / 用户意图                                 | 必读工作流 |
+|---------------------------------------------|---|
+| 缺少 `run_site`，或远程模式缺少 SSH 信息                | `./references/runsite-handoff.md` |
+| 进入安装后的通用发现、意图识别、路径判定                        | `./references/discover-route.md` |
+| `runtime.conda` 缺失，需要先判断目标环境是否已有 OneScience 包 | `./references/detect-existing-onescience.md` |
+| 意图是安装 OneScience，且目标路径是创建或复用 Conda 环境       | `./references/install-onescience-conda.md` |
+| 意图是安装 OneScience，且目标路径是当前环境                 | `./references/install-onescience-current.md` |
+| 意图是安装 Python 包，且目标路径是 Conda 环境              | `./references/install-python-packages-conda.md` |
+| 意图是安装 Python 包，且目标路径是当前环境                   | `./references/install-python-packages-current.md` |
+| 检测成功、安装成功并验证成功后需要写回 `onescience.json.runtime.conda` | `./references/writeback-conda-state.md` |
 
-## 2. 固定阶段
+## 硬门禁
 
-| 阶段 | 目标 | 关键输出 |
-|------|------|----------|
-| `discover` | 收集安装目标与环境事实 | `execution_mode`、`required_backend_id`、`install_domain`、`missing_facts` |
-| `precheck` | 判断能否安装 | `installer_backend`、`precheck_outcome`、`blocking_reason` |
-| `install` | 在目标环境执行安装 | `install_state`、`install_command`、`workspace_state` |
-| `verify` | 验证安装结果 | `verify_state`、`runtime_ready`、`next_action` |
+- 环境检测阶段（`detect-existing-onescience.md`）：可直接执行检测命令，不需要用户确认；检测完成后只报告结果，不得自动创建环境或安装包。
+- 创建 Conda 环境、安装 OneScience、安装 Python 包前：必须获得用户明确同意。
+- `run_site=remote` 时，在 SSH 信息齐备前不要执行安装、验证或包检测。
+- `run_site=remote` 时不要在本端 shell 执行 `conda`、`git clone`、`install.sh` 或 `pip install`。
+- `runtime.conda` 缺失时，必须先走 `detect-existing-onescience.md`；若目标环境已有 `onescience` 和 `torch` 包，写回环境信息到 `runtime.conda` 并返回，不创建环境；若都没有，只报告检测结果，询问是否创建 conda 环境并安装 onescience。
+- 已有 `runtime.conda.enabled=true` 时，后续 Conda 路径必须使用记录的 `env_name` 和 `activate_script`。
+- 已有 `runtime.conda.enabled=false` 时，默认按当前环境路径处理；除非用户明确同意，否则不要创建 Conda 环境。
+- 安装失败或验证失败时，不要写入成功状态。
 
-四阶段必须按顺序推进。`precheck_outcome=blocked` 时终止在 `precheck`；`install` 失败时不得继续 `verify`；`verify` 失败时不得交回 runtime。
+## 输出契约
 
-各阶段输入、决策树、模板选择与失败语义见 `./references/install_rules.md`。
+阶段汇报和最终输出至少包含：
 
-## 3. Discover 门禁（硬约束）
-
-1. 加载本技能后，若上游未提供可靠 `execution_mode`，**第一条 Shell 命令只能是** `./references/install_flow.md` 的 `§0`。
-2. `§0` 执行后、下一条 Shell 之前，必须先汇报：
-
-```
-execution_mode=<local_slurm|remote_slurm>
-IN_CONTAINER=<yes|no>
-hostname=<§0 输出>
-next_step=<主机发现仅 remote | 硬件探测>
-```
-
-3. 在 `execution_mode` 未确认前，**禁止**执行 `install_flow.md` 的 `§3`–`§8`（安装或验证）。
-4. `IN_CONTAINER=no` 时视为 `remote_slurm`，**无需再问**「装在本机还是远程」；**严禁**在本端 shell 执行 `conda`、`git clone` 或 `install.sh`。
-5. `remote_slurm` 在 SSH 四元组齐备前，本 shell 只允许 `§0`、读取 `onescience.json` / `~/.ssh/config`，以及 `./references/install_rules.md` §5 允许的 SSH 补问。
-
-主机发现、领域映射、硬件探测与 backend 识别细则见 `./references/install_rules.md` §1。
-
-## 4. 阶段执行要点
-
-| 阶段 | 进入条件 | 动作摘要 |
-|------|----------|----------|
-| `precheck` | `discover` 完成且 `missing_facts` 已补齐 | 读 `install_rules.md` §2，核对 support matrix 与 driver_stack readiness |
-| `install` | `precheck_outcome=ready_to_install` | 读 `install_flow.md` 渲染并执行安装命令；细则见 `install_rules.md` §3 |
-| `verify` | `install` 命令成功完成 | 读 `install_flow.md` 渲染并执行 verify 命令；细则见 `install_rules.md` §4 |
-
-## 5. 用户交互
-
-只在 SSH 四元组仍缺、多个 Host 需择一、或完全无法映射安装领域时询问用户。细则见 `./references/install_rules.md` §5。
-
-## 6. 最终输出
-
-每次阶段汇报或终止时，至少包含：
-
+- `run_site`
+- `workflow`
+- `install_intent`
+- `conda_state`（至少区分 `preinstalled`、`recovered_via_module`、`recovered_via_fallback`、`unavailable`）
 - `install_state`
-- `precheck_outcome`
-- `installed_env_summary`
-- `blocking_reason`
+- `verify_state`
+- `conda_writeback`
+- `blocking_reason`（至少覆盖 `conda_module_not_found`、`conda_module_load_failed`、`conda_unavailable_after_recovery`）
 - `next_action`
-
-失败处理矩阵见 `./references/install_rules.md` §6。
-
-## 7. 参考文件
-
-| 文件 | 用途 |
-|------|------|
-| `./references/install_flow.md` | 可渲染命令模板（§0–§8） |
-| `./references/install_rules.md` | discover / precheck / install / verify 细则与占位符渲染 |
-| `./assets/backend_profiles.json` | installer backend：module、Conda、verify 口径 |
-| `./assets/workspace_bootstrap_profiles.json` | 仓库获取、同步与 `install.sh` 入口 |
-| `./assets/install_domains.json` | 安装领域到 `{dependency_selector}` 的映射 |
-| `./assets/phase_examples/` | 四阶段结构化示例 |
-| `./assets/resolution_examples/` | 安装请求 resolution 示例 |
-| `skills/onescience-runtime/assets/backend_specs.json` | installer support matrix |
-| `skills/onescience-runtime/assets/execution_profiles.json` | runtime/install profile registry |
+- `resume_target`
+- `resume_phase`

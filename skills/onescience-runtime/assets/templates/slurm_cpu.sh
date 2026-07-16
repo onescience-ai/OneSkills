@@ -19,9 +19,7 @@ source /etc/profile.d/modules.sh
 ##### CPU backend module setup #####
 {backend.module_setup}
 
-##### python always Launch Conda ENV #####
-source ~/.bashrc
-conda activate {conda.env_name}
+{conda.activate_script}
 
 ##### onescience datasets and models Launch env #####
 export ONESCIENCE_DATASETS_DIR="{env_vars.ONESCIENCE_DATASETS_DIR}"

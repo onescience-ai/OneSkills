@@ -1,0 +1,9 @@
+{
+  "runtime": {
+    "conda": {
+      "enabled": true,
+      "env_name": "onescience311",
+      "activate_script": "source ~/.bashrc && conda activate onescience311"
+    }
+  }
+}

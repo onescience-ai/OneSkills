@@ -22,9 +22,7 @@ module use /work2/share/sghpc_sdk/modulefiles/ #不能删除
 ##### DCU backend module setup #####
 {backend.module_setup}
 
-##### python always Launch Conda ENV #####
-source ~/.bashrc
-conda activate {conda.env_name}
+{conda.activate_script}
 
 source $ROCM_PATH/cuda/env.sh #不能删除
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib #不能删除

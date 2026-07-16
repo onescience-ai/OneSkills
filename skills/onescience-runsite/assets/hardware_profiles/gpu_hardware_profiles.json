@@ -1,0 +1,142 @@
+{
+  "profiles": [
+    {
+      "profile_id": "slurm_gpu_single_node",
+      "description": "Single-node GPU cluster configuration with Intel Xeon CPU and NVIDIA A100 GPU",
+      "cpu": {
+        "arch": "x86_64",
+        "vendor": "intel",
+        "model": "Xeon-xxx",
+        "sockets": 2,
+        "cores_per_socket": 24,
+        "threads_per_core": 2,
+        "numa_nodes": 2
+      },
+      "accelerators": [
+        {
+          "kind": "gpu",
+          "vendor": "nvidia",
+          "model": "a100",
+          "count_per_node": 4,
+          "memory_gb": 80,
+          "visibility_env": "CUDA_VISIBLE_DEVICES",
+          "distributed_backend": "nccl"
+        }
+      ],
+      "memory": {
+        "system_gb": 512
+      },
+      "storage": {
+        "dataset_dir": "/mnt/datasets/onedatasets",
+        "models_dir": "/mnt/models/onemodels",
+        "work_dir": "/home/user/project",
+        "log_dir": "/home/user/project/logs"
+      },
+      "software": {
+        "modules": [
+          "cuda/12.1",
+          "gcc/11.2"
+        ],
+        "driver_stack": {
+          "accelerator_runtime_family": "cuda",
+          "driver_version": "550.54",
+          "user_space_version": "12.1",
+          "delivery_mode": "module",
+          "driver_ready": true,
+          "user_space_ready": true,
+          "owner": "platform_admin",
+          "capability_readiness": {
+            "compiler_ready": true,
+            "torch_ready": true,
+            "distributed_runtime_ready": true,
+            "verification_commands": [
+              "module load cuda/12.1",
+              "nvcc --version",
+              "python -c 'import torch; print(torch.__version__)'"
+            ]
+          }
+        },
+        "shell_init": "source ~/.bashrc"
+      },
+      "capabilities": {
+        "supports_sbatch": true,
+        "launch_mode": "python",
+        "supports_torchrun": true,
+        "needs_rocm_env": false,
+        "needs_cuda_env": true
+      }
+    },
+    {
+      "profile_id": "slurm_gpu_multi_node",
+      "description": "Multi-node GPU cluster configuration with torchrun support for distributed training",
+      "schema_version": "v1",
+      "host": "login-gpu",
+      "scheduler_type": "slurm",
+      "platform_type": "cluster",
+      "partition": "gpu_normal",
+      "cpu": {
+        "arch": "x86_64",
+        "vendor": "intel",
+        "model": "Xeon-xxx",
+        "sockets": 2,
+        "cores_per_socket": 24,
+        "threads_per_core": 2,
+        "numa_nodes": 2
+      },
+      "accelerators": [
+        {
+          "kind": "gpu",
+          "vendor": "nvidia",
+          "model": "a100",
+          "count_per_node": 4,
+          "memory_gb": 80,
+          "visibility_env": "CUDA_VISIBLE_DEVICES",
+          "distributed_backend": "nccl"
+        }
+      ],
+      "memory": {
+        "system_gb": 512
+      },
+      "storage": {
+        "dataset_dir": "/mnt/datasets/onedatasets",
+        "models_dir": "/mnt/models/onemodels",
+        "work_dir": "/home/user/project",
+        "log_dir": "/home/user/project/logs"
+      },
+      "software": {
+        "modules": [
+          "cuda/12.1",
+          "gcc/11.2"
+        ],
+        "driver_stack": {
+          "accelerator_runtime_family": "cuda",
+          "driver_version": "550.54",
+          "user_space_version": "12.1",
+          "delivery_mode": "module",
+          "driver_ready": true,
+          "user_space_ready": true,
+          "owner": "platform_admin",
+          "capability_readiness": {
+            "compiler_ready": true,
+            "torch_ready": true,
+            "distributed_runtime_ready": true,
+            "verification_commands": [
+              "module load cuda/12.1",
+              "nvcc --version",
+              "python -c 'import torch; print(torch.__version__)'",
+              "torchrun --help"
+            ]
+          }
+        }
+      },
+      "capabilities": {
+        "supports_sbatch": true,
+        "launch_mode": "torchrun",
+        "default_node_scope": "multi_node",
+        "supports_torchrun": true,
+        "needs_rocm_env": false,
+        "needs_cuda_env": true
+      }
+    }
+  ]
+}

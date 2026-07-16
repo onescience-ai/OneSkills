@@ -15,7 +15,6 @@ source /etc/profile.d/modules.sh
 ##### Local direct module setup #####
 {backend.module_setup}
 
-##### python always Launch Conda ENV #####
 {conda.activate_script}
 
 export ONESCIENCE_DATASETS_DIR="{env_vars.ONESCIENCE_DATASETS_DIR}"

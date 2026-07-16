@@ -29,6 +29,13 @@
       ],
       "pass_criteria": "输出同时包含 torch 与 onescience 相关包行"
     },
+    "package_install": {
+      "install_template": "pip install {python_packages}",
+      "verify_template": "pip show {python_packages}",
+      "require_conda_activation_for_remote": true,
+      "require_conda_activation_for_local_non_container": true,
+      "skip_conda_activation_for_local_container": true
+    },
     "notes": [
       "当前稳定 installer backend",
       "适用于 slurm + amd dcu 的 user-space 安装链路"
@@ -63,6 +70,13 @@
         "pip list | grep onescience"
       ],
       "pass_criteria": "输出同时包含 torch 与 onescience 相关包行"
+    },
+    "package_install": {
+      "install_template": "pip install {python_packages}",
+      "verify_template": "pip show {python_packages}",
+      "require_conda_activation_for_remote": true,
+      "require_conda_activation_for_local_non_container": true,
+      "skip_conda_activation_for_local_container": true
     },
     "notes": [
       "local_slurm 登录节点场景的稳定 installer backend",
@@ -100,6 +114,13 @@
       ],
       "pass_criteria": "输出同时包含 torch 与 onescience 相关包行"
     },
+    "package_install": {
+      "install_template": "pip install {python_packages}",
+      "verify_template": "pip show {python_packages}",
+      "require_conda_activation_for_remote": true,
+      "require_conda_activation_for_local_non_container": true,
+      "skip_conda_activation_for_local_container": true
+    },
     "notes": [
       "当前稳定 installer backend",
       "适用于 slurm + nvidia gpu 的 user-space 安装链路",
@@ -135,6 +156,13 @@
         "pip list | grep onescience"
       ],
       "pass_criteria": "输出同时包含 torch 与 onescience 相关包行"
+    },
+    "package_install": {
+      "install_template": "pip install {python_packages}",
+      "verify_template": "pip show {python_packages}",
+      "require_conda_activation_for_remote": true,
+      "require_conda_activation_for_local_non_container": true,
+      "skip_conda_activation_for_local_container": true
     },
     "notes": [
       "local_slurm 登录节点场景的稳定 installer backend",

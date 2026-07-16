@@ -1,0 +1,72 @@
+{
+  "runtime": {
+    "execution_profile": {
+      "run_site": "remote",
+      "execution_mode": "slurm",
+      "access_mode": "scnet"
+    },
+    "ssh": {
+      "host": "dzeshell.hpccube.com",
+      "hostname": "dzeshell.hpccube.com",
+      "port": 22,
+      "user": "test",
+      "strict_host_key_checking": "no",
+      "password_authentication": "no",
+      "identity_file": "",
+      "work_dir": "~/onescience-work"
+    },
+    "scnet": {
+      "SCNET_ACCESS_KEY": "<SCNET_ACCESS_KEY>",
+      "SCNET_SECRET_KEY": "<SCNET_SECRET_KEY>",
+      "SCNET_USER": "alice",
+      "region": "核心节点",
+      "remote_work_dir": "~/onescience-work"
+    },
+    "target": {
+      "scheduler_type": "slurm",
+      "platform_type": "cluster",
+      "cpu_arch": "x86_64",
+      "cpu_vendor": "amd",
+      "accelerator_kind": "dcu",
+      "accelerator_vendor": "amd",
+      "node_scope": "single_node"
+    },
+    "environment": {
+      "cpu": {
+        "arch": "x86_64",
+        "vendor": "amd"
+      },
+      "accelerator_defaults": {
+        "kind": "dcu",
+        "vendor": "amd",
+        "visibility_env": "HIP_VISIBLE_DEVICES",
+        "distributed_backend": "rccl",
+        "launch_mode": "python",
+        "distributed_mode": "single"
+      }
+    },
+    "cluster": {
+      "partition": "hpctest01",
+      "nodes": 1,
+      "gpus_per_node": 1,
+      "cpus_per_task": 8,
+      "memory": "64GB",
+      "time_limit": "02:00:00",
+      "gpu_type": "dcu",
+      "ntasks_per_node": 1
+    },
+    "modules": [
+      "sghpc-mpi-gcc/26.3",
+      "sghpcdas/25.6"
+    ],
+    "resources": {
+      "gpu_type": "dcu",
+      "cpu_memory_ratio": 8,
+      "disk_space": "100GB"
+    },
+    "env_vars": {
+      "ONESCIENCE_DATASETS_DIR": "/public/share/sugonhpcapp01/onestore/onedatasets/",
+      "ONESCIENCE_MODELS_DIR": "/public/share/sugonhpcapp01/onestore/onemodels/"
+    }
+  }
+}

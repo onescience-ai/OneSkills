@@ -1,0 +1,12 @@
+{
+  "ssh": {
+    "host": "",
+    "hostname": "",
+    "port": 22,
+    "user": "",
+    "strict_host_key_checking": "no",
+    "password_authentication": "no",
+    "identity_file": "",
+    "remote_work_dir": ""
+  }
+}

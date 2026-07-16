@@ -10,13 +10,12 @@ type: orchestrator
 
 ## 核心职责
 
-1. 检查并初始化项目级 `onescience.json`：若项目根目录缺失，则自动从 `./assets/onescience.default.json` 生成，不覆盖用户已有配置
-2. 按职责选择并调用 type=resource 技能获取资源：先检查可用 `type=resource` 技能的 `description` 是否覆盖 orchestrator 当前职责所需的知识，再仅调用匹配的 resource 技能，输入用户请求和 Task State，获取 `matched_resources` 列表（摘要模式）
-3. 基于资源识别用户意图：分析已召回资源的 `matched_resources` 和用户请求，生成 `intent_profile`
-4. 召回专家规划技能：根据用户意图查找并召回 `type=expert` 的专家技能
-5. 收集专家规划结果：向专家技能传递上下文，接收 `planner_proposal`
-6. 融合优化为 Global Plan：合并多个 proposals，生成全局计划
-7. 循环规划执行：
+1. 按职责选择并调用 type=resource 技能获取资源：先检查可用 `type=resource` 技能的 `description` 是否覆盖 orchestrator 当前职责所需的知识，再仅调用匹配的 resource 技能，输入用户请求和 Task State，获取 `matched_resources` 列表（摘要模式）
+2. 基于资源识别用户意图：分析已召回资源的 `matched_resources` 和用户请求，生成 `intent_profile`
+3. 召回专家规划技能：根据用户意图查找并召回 `type=expert` 的专家技能
+4. 收集专家规划结果：向专家技能传递上下文，接收 `planner_proposal`
+5. 融合优化为 Global Plan：合并多个 proposals，生成全局计划
+6. 循环规划执行：
    - 从 Global Plan 选择下一步 `Next Step Spec`
    - 调用 `type=executor` 执行技能执行任务
    - 记录 artifacts 和 observation
@@ -28,7 +27,6 @@ type: orchestrator
 
 ```text
 用户目标
--> [阶段0] 检查项目根目录 `onescience.json`，缺失时从 `./assets/onescience.default.json` 自动初始化
 -> [阶段1] 先按 `type=resource` 技能的 description 与当前职责做匹配，再调用匹配的 resource 技能获取 matched_resources（摘要模式）
 -> [阶段1] 基于已召回资源的 matched_resources 识别 intent_profile
 -> [阶段2] 根据 intent_aspects 召回 type=expert 专家技能
@@ -62,7 +60,7 @@ type: orchestrator
 - orchestrator 不得为获取资源知识而直接 `Read` / `Glob` / `Grep` 任意 `type=resource` 技能的 `assets/` 目录。
 - orchestrator 只允许消费 `matched_resources[*].content` 及其配套元数据；资源 `path` 仅用于标识、绑定和交接，不是本地可读路径。
 - 若专家技能或执行技能需要更详细的资源内容，应由下游再次调用匹配的 `type=resource` 技能获取，而不是追踪 `path` 去读取资源资产文件。
-- orchestrator 允许读取自身的非资源参考文档和初始化资产；例如 `./assets/onescience.default.json` 属于 orchestrator 自身初始化资产，不属于 `type=resource` 资源语料。
+- orchestrator 允许读取自身的非资源参考文档；这些文档不属于 `type=resource` 资源语料。
 
 本技能是 OneScience / OneSkills 体系的统一入口，当用户输入以下任一关键词或短语时应当被调起：
 
@@ -80,23 +78,6 @@ type: orchestrator
 - 论文复现、paper2code、从论文到代码再到运行验证
 - 需要资源选择、规划、执行和观察闭环的复杂任务
 
-
-## 首次使用项目初始化
-
-本 skill 是 OneScience 体系的用户入口之一，负责对用户无感地完成项目级运行配置初始化。
-
-每次处理用户请求时，先检查当前用户项目根目录是否存在 `onescience.json`：
-
-- 如果不存在，自动从 `./assets/onescience.default.json` 生成一份到项目根目录 `onescience.json`。
-- `./assets/onescience.default.json` 必须保持与项目级 `onescience.json` 相同的基础字段结构，至少包含 `runtime.backend_id`、`runtime.remote`、`runtime.target`、`runtime.environment`、`runtime.cluster`、`runtime.modules`、`runtime.conda`、`runtime.resources`、`runtime.script`。
-- 不要要求用户先输入“初始化当前项目”之类的提示词。
-- 不要在生成前打断用户确认；这是 OneScience 项目配置的默认初始化行为。
-- 如果项目根目录已经存在 `onescience.json`，不要覆盖，不要重写用户配置。
-- 生成后可以在最终输出中简短说明“已初始化项目级 onescience.json”，但不要把这变成用户必须参与的交互流程。
-- 自动生成 `onescience.json` 只表示配置文件存在；其中队列、分区、conda 环境、脚本路径等字段仍应在真正进入 `onescience-runtime` 前结合硬件画像和用户项目上下文校正。
-
-`tpl.slurm` 不需要由 workflow 初始化；项目缺失模板时，`onescience-runtime` 会使用自身 `assets/tpl.slurm` 作为只读模板兜底。
-
 ## 分层模型
 
 1. `orchestrator`：资源摘要检索、意图识别、专家召回、proposal 融合、状态维护、执行调度。
@@ -105,13 +86,6 @@ type: orchestrator
 4. `resource registry / resource packs`：模型卡、数据卡、论文资源、组件契约、运行模板、评估标准等。
 
 ## 工作流程
-
-### 阶段零：项目初始化（必须优先执行）
-
-1. 检查当前用户项目根目录是否存在 `onescience.json`。
-2. 如果不存在，自动从 `./assets/onescience.default.json` 生成到项目根目录。
-3. 如果已经存在，则直接保留，不覆盖、不重写。
-4. 该初始化只确保项目存在基础运行配置；真正进入 `onescience-runtime` 前，仍需按硬件画像、远程接入方式和用户项目上下文校正关键字段。
 
 ### 阶段一：资源召回与意图识别
 

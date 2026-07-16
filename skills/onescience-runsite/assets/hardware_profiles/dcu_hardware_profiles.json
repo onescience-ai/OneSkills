@@ -1,0 +1,66 @@
+{
+  "profiles": [
+    {
+      "profile_id": "slurm_dcu_standard",
+      "description": "Standard DCU cluster configuration with AMD EPYC CPU and AMD Instinct DCU",
+      "cpu": {
+        "arch": "x86_64",
+        "vendor": "amd",
+        "model": "EPYC-xxx",
+        "sockets": 2,
+        "cores_per_socket": 32,
+        "threads_per_core": 2,
+        "numa_nodes": 4
+      },
+      "accelerators": [
+        {
+          "kind": "dcu",
+          "vendor": "amd",
+          "model": "instinct-xxx",
+          "count_per_node": 4,
+          "memory_gb": 32,
+          "visibility_env": "HIP_VISIBLE_DEVICES",
+          "distributed_backend": "rccl"
+        }
+      ],
+      "memory": {
+        "system_gb": 512
+      },
+      "software": {
+        "modules": [
+          "sghpc-mpi-gcc/26.3",
+          "sghpcdas/25.6"
+        ],
+        "driver_stack": {
+          "accelerator_runtime_family": "rocm",
+          "driver_version": "6.0",
+          "user_space_version": "25.6",
+          "delivery_mode": "module",
+          "user_space_runtime": "dtk",
+          "user_space_delivery": "sghpc",
+          "driver_ready": true,
+          "user_space_ready": true,
+          "owner": "platform_admin",
+          "capability_readiness": {
+            "compiler_ready": true,
+            "torch_ready": true,
+            "distributed_runtime_ready": true,
+            "verification_commands": [
+              "module load sghpcdas/25.6",
+              "module load sghpc-mpi-gcc/26.3",
+              "hipcc --version",
+              "python -c 'import torch; print(torch.__version__)'"
+            ]
+          }
+        }
+      },
+      "capabilities": {
+        "supports_sbatch": true,
+        "launch_mode": "python",
+        "supports_torchrun": false,
+        "needs_rocm_env": true,
+        "needs_cuda_env": false
+      }
+    }
+  ]
+}

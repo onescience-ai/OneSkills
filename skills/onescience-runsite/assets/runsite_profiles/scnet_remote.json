@@ -1,0 +1,9 @@
+{
+  "scnet": {
+    "SCNET_ACCESS_KEY": "",
+    "SCNET_SECRET_KEY": "",
+    "SCNET_USER": "",
+    "region": "",
+    "remote_work_dir": ""
+  }
+}

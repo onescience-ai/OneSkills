@@ -20,9 +20,7 @@ source /etc/profile.d/modules.sh
 ##### GPU backend module setup #####
 {backend.module_setup}
 
-##### python always Launch Conda ENV #####
-source ~/.bashrc
-conda activate {conda.env_name}
+{conda.activate_script}
 
 ##### CUDA backend env #####
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib
