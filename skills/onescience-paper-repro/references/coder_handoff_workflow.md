@@ -9,7 +9,7 @@
 1. 先确认 `reproduction_spec.md` 已通过 `audit_workflow.md`。
 2. 逐节展开 spec，不得只概述背景。
 3. 保留 `MISSING:`、`INFERRED:`、`ASSUMPTION:` 标签。
-4. 不得引入 spec 中没有证据的新任务、新模型、新参数、新数据或新公式。
+4. 不得引入 spec 中没有证据的新任务、新模型、新参数、新数据或新公式；若某项来自官方开源仓库只读参考，必须在任务描述中保留 `OFFICIAL_REPO_REFERENCE:` 标签，并说明对应文件/模块、用途、补的是哪个论文缺口；若该项涉及论文与官方仓库的冲突，必须沿用 spec 中“论文优先”的冲突处理结论。 
 5. 不得写“详见 reproduction_spec.md”“以 reproduction_spec.md 为准”“请再读取 spec”。
 6. 如果 spec 中存在冲突处理结论，必须原样写入任务描述。
 7. 必须使用下方强制模板生成 `coder_task_description.md`；模板中的 `<...>` 占位符必须由审计后的 `reproduction_spec.md` 逐项展开填充，不能原样保留。
@@ -72,7 +72,7 @@ domain_task_family=paper-reproduction
 paper_workdir=.paper2code_work/<paper_key>
 task_description_path=<coder_task_description.md 路径>
 task_description_content=<coder_task_description.md 全文>
-coder_reference_mode=assets_only
+coder_reference_mode=paper_plus_official_repo_readonly
 coder_static_review_required=true
 next_action=onescience-coder
 ```

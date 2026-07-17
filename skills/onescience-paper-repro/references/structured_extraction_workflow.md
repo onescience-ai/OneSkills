@@ -11,6 +11,7 @@
 - 推断得到的内容标为 `INFERRED:`。
 - 论文未说明但实现必须选择的内容标为 `MISSING:` 或 `ASSUMPTION:`。
 - 不得把领域经验、实现便利性或常见做法写成论文事实。
+- 只有当论文正文、附录、补充材料、用户材料和公开页面对某个实现必需细节仍缺失或说明不足时，才允许使用官方开源仓库只读参考；引用时必须明确标注为 `OFFICIAL_REPO_REFERENCE:`，并写清对应 URL、文件/模块位置、补充的是哪个缺失细节，以及它是补充实现线索而不是论文事实来源。
 
 ## 全面性与准确性门槛
 
@@ -83,7 +84,9 @@
 - DOI、arXiv ID、URL、本地 PDF 路径、补充材料路径。
 - 访问或解析时间。
 - 使用的材料范围：正文、图表、附录、补充材料、用户提供材料。
-- 明确写入：`implementation_code_used=false`。不得搜索、读取或引用官方/第三方代码仓库作为事实来源。
+- 明确写入：`implementation_code_used=official_repo_readonly_optional`。
+- 若使用了官方开源仓库只读参考，必须记录官方仓库 URL、使用范围、涉及的模型/数据/训练/推理/评估文件或模块、补充的是哪个缺失或说明不足的实现细节，并明确这些内容属于 `OFFICIAL_REPO_REFERENCE:`，不得写成论文事实；若论文已明确某项，则官方仓库不能重新作为该项的主依据。
+- 不得搜索、读取或引用第三方代码仓库作为事实来源；不得下载、clone 或复制任何仓库到本地。
 - 若存在多个版本，记录版本号和选择理由。
 
 ### 2. 任务与问题定义
@@ -271,7 +274,9 @@
 - 本地材料路径：
 - 解析时间：
 - 使用材料范围：
-- implementation_code_used=false
+- implementation_code_used=official_repo_readonly_optional
+- official_repo_reference_used=true|false
+- official_repo_reference_scope=
 
 ## 证据与可信度规则
 

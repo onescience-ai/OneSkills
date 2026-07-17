@@ -14,7 +14,7 @@ type: executor
 - 核心职责：论文获取、解析、信息抽取、任务描述生成。
 - 不负责：编码实现、调用其他技能、任务规划。
 
-不要搜索、打开、下载、clone、复制或参考 GitHub/GitLab/Bitbucket、official code、repository、source code、model zoo、package implementation、官方实现或第三方复现。论文复现规格必须来自论文正文、附录、补充材料、用户提供材料和公开数据/论文页面信息；若论文没有说明，实现必须选择的项要标记为待决策假设。
+论文复现规格必须优先来自论文正文、附录、补充材料、用户提供材料和公开数据/论文页面信息。只有当这些来源对某个实现必需细节仍缺失或说明不足时，才允许补充使用官方开源仓库的只读参考；优先从论文正文、附录或补充材料中解析官方仓库，若论文未给出，再在 GitHub 上搜索官方开源仓库。只允许在线读取与该缺失细节直接相关的模型、数据处理、特征/变量选择、训练、推理和评估实现信息，例如层数、hidden size、参数形状或具体实现连线；禁止下载、clone、复制仓库到本地，禁止参考第三方复现仓库。若论文与官方仓库实现存在冲突，以论文为主，并把差异写入规格中的冲突、缺口或假设；官方仓库内容只能作为补充实现线索，不能升级为论文事实来源。
 
 ## 输入输出接口
 
@@ -43,7 +43,7 @@ type: executor
   "metadata": {
     "task_method": "paper2code",
     "domain_task_family": "paper-reproduction",
-    "coder_reference_mode": "assets_only",
+    "coder_reference_mode": "paper_plus_official_repo_readonly",
     "coder_static_review_required": true
   }
 }
@@ -71,7 +71,7 @@ type: executor
 4. `./references/coder_handoff_workflow.md`
    - 负责从审计后的 `reproduction_spec.md` 展开生成自包含 `coder_task_description.md`，并完成交接。
 
-解析论文和审计时，先总结论文内容，生成 `paper_content_summary.md`；再根据摘要中的任务、数据对象、模型关键词和评估关键词，读取 `./assets/domain_knowledge/` 下各领域文件的表头摘要，召回对应领域知识：
+解析论文和审计时，先总结论文内容，生成 `paper_content_summary.md`；如论文中已给出官方仓库，则记录仓库 URL/名称；只有当论文正文、附录、补充材料、用户材料和公开页面对某个实现必需细节仍缺失或说明不足时，才可只读查看官方开源仓库中与该缺失细节直接相关的实现内容；若论文未给出官方仓库，再在 GitHub 搜索官方开源仓库。随后再根据摘要中的任务、数据对象、模型关键词和评估关键词，读取 `./assets/domain_knowledge/` 下各领域文件的表头摘要，召回对应领域知识：
 
 - `earth.md`：气象、海洋、地球系统。
 - `cfd.md`：流体、PDE、CFD。
