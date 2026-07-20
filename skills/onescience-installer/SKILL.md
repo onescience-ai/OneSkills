@@ -16,7 +16,7 @@ type: executor
 3. 读取 `./references/discover-route.md`，识别用户意图、安装领域、Python 包列表、`runtime.conda` 状态和目标环境路径。
 4. 根据“意图 + 环境路径 + conda 状态”读取对应分支文件，并且只读取命中的分支文件。
 5. 需要渲染探测、安装、验证命令时，读取 `./references/install_flow.md`。
-6. 命中 Conda 路径时，若目标端初始找不到 `conda`，必须先按 `install_flow.md` 的 `{module_init}` + `{conda_recovery}` 逻辑尝试恢复：先初始化 `module`，再通过 `module avail 2>&1` 匹配并 `module load` 可用的 `anaconda` / `anaconda3` / `miniconda` / `conda` 类模块；若仍失败，再执行 profile 内已有 fallback 激活命令；只有恢复后仍不可用时才允许阻断。
+6. OneScience 自身是特殊 bootstrap 目标，不属于普通 Python 包：安装 `onescience`、`OneScience 环境`、`earth/cfd/bio/matchem/all` 时必须下载/同步 `workspace_bootstrap_profiles.json` 指定的仓库到 `{repo_dir}`，进入仓库后执行 `bash install.sh {dependency_selector}`；不得渲染 `pip install onescience`、`python -m pip install onescience` 或把 `onescience` 放入 `{python_packages}`。
 7. 检测成功、安装成功且验证成功后，读取 `./references/writeback-conda-state.md` 写回 `onescience.json.runtime.conda`。
 8. 写回成功后，若当前任务带有上游 handoff / resume 信息，则返回调用它的技能继续执行；若没有明确调用方，则交回 `onescience-orchestrator` 规划后续任务。
 
@@ -31,8 +31,8 @@ installer 的环境信息写回位置是 `onescience.json.runtime.conda`。除 `
 
 ## 意图识别流程
 
-1. 用户要求“安装 OneScience 环境”“安装 earth/cfd/bio/matchem/all 环境”“安装 onescience 包”“初始化 OneScience 环境”时，设为 `install_intent=bootstrap`。
-2. 用户要求“安装 Python 包”“安装 pip 包”“补装依赖”“安装某个包到 OneScience 环境”时，设为 `install_intent=python_packages`。
+1. 用户要求“安装 OneScience 环境”“安装 earth/cfd/bio/matchem/all 环境”“安装 onescience 包”“初始化 OneScience 环境”时，设为 `install_intent=bootstrap`。`onescience` 包名大小写不敏感，命中后永远按 bootstrap 处理。
+2. 用户要求“安装 Python 包”“安装 pip 包”“补装依赖”“安装某个包到 OneScience 环境”时，设为 `install_intent=python_packages`；但包名列表里若包含 `onescience`，必须拆分并将 `onescience` 路由到 `install_intent=bootstrap`，其余普通 Python 包才允许继续走 pip 分支。
 3. 用户没有明确意图时，先询问要安装 OneScience 环境还是安装 Python 包；不要在意图未知时进入安装分支。
 4. `install_intent=bootstrap` 必须解析安装领域；无法从请求映射到 `install_domains.json` 时，询问用户安装哪个领域或是否安装 `all`。
 5. `install_intent=python_packages` 必须解析包名列表；缺少包名时只询问包名。
@@ -56,6 +56,7 @@ installer 的环境信息写回位置是 `onescience.json.runtime.conda`。除 `
 - 创建 Conda 环境、安装 OneScience、安装 Python 包前：必须获得用户明确同意。
 - `run_site=remote` 时，在 SSH 信息齐备前不要执行安装、验证或包检测。
 - `run_site=remote` 时不要在本端 shell 执行 `conda`、`git clone`、`install.sh` 或 `pip install`。
+- 禁止用 pip 安装 OneScience 自身：任何 `pip install onescience`、`python -m pip install onescience`、`pip install {python_packages}` 且 `{python_packages}` 含 `onescience` 的命令都必须视为错误路由并停止，改走 `install-onescience-conda.md` 或 `install-onescience-current.md`。
 - `runtime.conda` 缺失时，必须先走 `detect-existing-onescience.md`；若目标环境已有 `onescience` 和 `torch` 包，写回环境信息到 `runtime.conda` 并返回，不创建环境；若都没有，只报告检测结果，询问是否创建 conda 环境并安装 onescience。
 - 已有 `runtime.conda.enabled=true` 时，后续 Conda 路径必须使用记录的 `env_name` 和 `activate_script`。
 - 已有 `runtime.conda.enabled=false` 时，默认按当前环境路径处理；除非用户明确同意，否则不要创建 Conda 环境。
@@ -68,11 +69,9 @@ installer 的环境信息写回位置是 `onescience.json.runtime.conda`。除 `
 - `run_site`
 - `workflow`
 - `install_intent`
-- `conda_state`（至少区分 `preinstalled`、`recovered_via_module`、`recovered_via_fallback`、`unavailable`）
 - `install_state`
 - `verify_state`
 - `conda_writeback`
-- `blocking_reason`（至少覆盖 `conda_module_not_found`、`conda_module_load_failed`、`conda_unavailable_after_recovery`）
 - `next_action`
 - `resume_target`
 - `resume_phase`

@@ -15,8 +15,7 @@
       "module_sequence": [
         "sghpcdas/25.6",
         "sghpc-mpi-gcc/26.3"
-      ],
-      "fallback_activation_command": "source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate"
+      ]
     },
     "environment": {
       "create_env_template": "conda create -n {env_name} python={python_version} -y",
@@ -57,8 +56,7 @@
       "module_sequence": [
         "sghpcdas/25.6",
         "sghpc-mpi-gcc/26.3"
-      ],
-      "fallback_activation_command": "source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate"
+      ]
     },
     "environment": {
       "create_env_template": "conda create -n {env_name} python={python_version} -y",
@@ -100,8 +98,7 @@
       "module_sequence": [
         "cuda/12.1",
         "gcc/11.2"
-      ],
-      "fallback_activation_command": "none"
+      ]
     },
     "environment": {
       "create_env_template": "conda create -n {env_name} python={python_version} -y",
@@ -143,8 +140,7 @@
       "module_sequence": [
         "cuda/12.1",
         "gcc/11.2"
-      ],
-      "fallback_activation_command": "none"
+      ]
     },
     "environment": {
       "create_env_template": "conda create -n {env_name} python={python_version} -y",

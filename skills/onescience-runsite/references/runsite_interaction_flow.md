@@ -9,8 +9,8 @@
   ├─ 存在且完整：展示摘要 -> 询问是否复用 -> 交接
   ├─ 存在但不完整：展示缺失字段 -> 只补问缺失字段 -> 修改 -> 交接
   └─ 不存在：询问本地/远程
-        ├─ 本地：本地工作流
-        └─ 远程：远程工作流
+        ├─ 本地：本地工作流 -> 硬件检测/确认 -> 生成配置
+        └─ 远程：远程工作流 -> 硬件检测/确认 -> 生成配置
 ```
 
 执行本流程时必须先完成上述分支判断，再读取当前分支对应的工作流文件；不要在开始时一次性读取全部参考文档。
@@ -39,7 +39,7 @@
 
 不要出现“需要提供 SCnet 连接信息、SSH 连接信息和 Slurm 集群资源信息，请一次性填写以下字段”这类把不同阶段信息混在一起的补问。
 
-已有 `onescience.json` 不完整时，只能补问缺失字段，但仍必须逐一列出缺失字段。远程连接验证失败后要求用户重新提交连接信息时，也必须列出 SSH 或 SCnet 所需字段。
+已有 `onescience.json` 不完整时，必须先根据 `run_site`、`execution_mode`、`access_mode` 判断哪些配置块必填，再只补问这些必填块中的缺失字段，但仍必须逐一列出缺失字段。远程连接验证失败后要求用户重新提交连接信息时，也必须列出 SSH 或 SCnet 所需字段。
 
 ## 2. 已有配置话术
 
@@ -188,7 +188,7 @@ SSH 连接验证成功后，才询问：
 | d | `cluster.cpus_per_task` | `8` | 请提供每个任务需要的 CPU 核心数；直接回车使用 8。 |
 | e | `cluster.memory` | `64GB` | 请提供内存大小，例如 64GB；直接回车使用 64GB。 |
 | f | `cluster.time_limit` | `02:00:00` | 请提供作业时间限制 HH:MM:SS；直接回车使用 02:00:00。 |
-| g | `cluster.gpu_type` | `dcu` | 请提供加速器类型，例如 dcu、gpu、a100；直接回车使用 dcu。 |
+| g | `cluster.gpu_type` | 检测或确认的 `accelerator_kind` | 请提供 Slurm 加速器类型；直接回车使用刚刚检测或确认的 dcu/gpu。 |
 | h | `cluster.ntasks_per_node` | `1` | 请提供每节点任务数；直接回车使用 1。 |
 
 也可以一次性列出清单：
@@ -201,9 +201,32 @@ SSH 连接验证成功后，才询问：
 - cpus_per_task：每个任务需要的 CPU 核心数；直接回车使用 8
 - memory：内存大小，例如 64GB；直接回车使用 64GB
 - time_limit：作业时间限制 HH:MM:SS；直接回车使用 02:00:00
-- gpu_type：加速器类型，例如 dcu、gpu、a100；直接回车使用 dcu
+- gpu_type：Slurm 加速器类型；直接回车使用刚刚检测或确认的 dcu/gpu
 - ntasks_per_node：每节点任务数；直接回车使用 1
 ```
+
+## 6.1 硬件检测与 modules
+
+当用户已提供完整运行信息后，必须先检测实际运行平台的加速器类型，再生成 `onescience.json`：
+
+- 本地直接执行、本地 Slurm 执行：检测本机。
+- 远程 SSH 直接执行、远程 SSH Slurm 执行：在 SSH 验证成功后，通过该 SSH Host 别名检测远程平台。
+- 检测目标只判断加速器是 `dcu` 还是 `gpu`；不要做 module、conda、作业队列或远端环境诊断。
+
+检测命令：
+
+```bash
+python skills/onescience-runsite/scripts/runsite_config.py detect-hardware
+python skills/onescience-runsite/scripts/runsite_config.py detect-hardware --ssh-alias <alias>
+```
+
+若输出 `hardware_detected=false`，不要继续生成配置；必须询问：
+
+```text
+未能自动检测到运行平台加速器类型，请确认是 dcu 还是 gpu。
+```
+
+用户确认后，在 `generate` 中传入 `--accelerator-kind dcu|gpu`。脚本会从 `assets/hardware_profiles/{dcu|gpu}_hardware_profiles.json` 匹配 profile，并把 `software.modules` 写入 `onescience.json.runtime.modules`。不要手写 modules，除非用户明确覆盖。
 
 ## 7. 密钥输出
 

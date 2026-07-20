@@ -1,8 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-mkdir -p logs
-
 echo "START TIME: $(date)"
 module purge || true
 
@@ -24,4 +22,5 @@ export ONESCIENCE_MODELS_DIR="{env_vars.ONESCIENCE_MODELS_DIR}"
 which python
 
 cd "{script.work_dir}"
-python {script.code_path}
+mkdir -p logs
+python {script.code_path} > >(tee logs/stdout.log) 2> >(tee logs/stderr.log >&2)

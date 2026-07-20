@@ -16,10 +16,14 @@
 - `runtime.env_vars.*`
 - `evidence.preflight`
 
+## Entry Gate
+
+进入本执行分支前必须已有当前轮次 preflight 证据：`preflight_passed=true`、`execution_readiness=ready`、`evidence.preflight.status=passed`、`evidence.preflight.conda_checked=true`、`evidence.preflight.environment_checked=true`、`evidence.preflight.channel_checked=true`、`evidence.preflight.entrypoint_checked=true`。任一缺失或失败时，不得上传文件或通过 SSH 执行业务脚本，必须回到 `preflight`；若缺少 `runtime.conda` 或远端环境未 ready，立即委托 `onescience-installer`。
+
 ## Steps
 
 1. 先确定本地测试目录 `work_dir`，优先取 `runtime.script.work_dir`，缺失时回退到 `runtime.script.code_path` 所在目录。
-2. 在本地测试目录生成 `run_job.sh`，内容参考 `./assets/templates/local_direct.sh`，并按 `runtime.conda.enabled` 分支渲染。
+2. 在本地测试目录生成 `run_job.sh`；`ssh_direct` 固定匹配 `./assets/templates/local_direct.sh` 模板，并按 `runtime.conda.enabled` 分支渲染。
 3. 远端根目录取 `runtime.ssh.work_dir`，例如 `~/oneskills-test`。
 4. 取本地测试目录的最后一个子目录名作为上传根名；例如 `tests/run01` 的最后子目录名是 `run01`。
 5. 在远端创建 `runtime.ssh.work_dir/<最后子目录名>/`，并把本地目录中的文件按相对路径完整上传到这个目录下。
@@ -27,7 +31,7 @@
 7. 如果 `runtime.modules` 非空，把每个 `module load <module>` 也按顺序写进远端脚本。
 8. 通过 SSH 在远端进入上传目录并执行 `bash run_job.sh`。
 9. 记录远端 stdout/stderr、退出码、产物文件和日志目录。
-10. 执行完成后，把远端日志下载到当前根目录的 `.onescience/logs/<job_name>/`，其中 `job_name` 优先取 `runtime.script.job_name`，否则用测试目录最后一级目录名。
+10. 执行完成后，把远端测试目录的 `logs/` 下载到本地测试目录的 `logs/`，即 `<work_dir>/logs/`；`local_log_dir` 必须输出该路径。`job_name` 优先取 `runtime.script.job_name`，否则用测试目录最后一级目录名，但不再作为本地日志目录的额外子目录。
 11. 若发现是 SSH 连接字段缺失、`runtime.ssh.work_dir` 错误、远端工作目录不可写、入口路径不对、module 名称写错等配置问题，暂停当前执行尝试并立即调用 `skills/onescience-runsite/SKILL.md`；无需向用户二次确认。runsite 成功后回到 `discover` 并继续原测试任务。
 12. 若远端执行阶段暴露出 conda 不可用、解释器缺失、缺包、OneScience/torch 不可导入或分布式运行时未就绪，暂停当前执行尝试并立即调用 `skills/onescience-installer/SKILL.md`；无需向用户二次确认。installer verify 成功后回到 `preflight` 并继续原测试任务。
 
@@ -52,8 +56,8 @@ module load sghpc-mpi-gcc/26.3
 module load sghpcdas/25.6
 
 cd ~/oneskills-test/run01
-mkdir -p .onescience/logs/run01
-bash run_test.sh 2>&1 | tee .onescience/logs/run01/stdout.log
+mkdir -p logs
+bash run_test.sh > >(tee logs/stdout.log) 2> >(tee logs/stderr.log >&2)
 ```
 
 远端执行与日志下载：
@@ -62,7 +66,8 @@ bash run_test.sh 2>&1 | tee .onescience/logs/run01/stdout.log
 ssh user@host "mkdir -p ~/oneskills-test/run01"
 rsync -a tests/run01/ user@host:~/oneskills-test/run01/
 ssh user@host "cd ~/oneskills-test/run01 && bash run_job.sh"
-rsync -a user@host:~/oneskills-test/run01/.onescience/logs/run01/ .onescience/logs/run01/
+mkdir -p tests/run01/logs
+rsync -a user@host:~/oneskills-test/run01/logs/ tests/run01/logs/
 ```
 
 ### 需要切换 conda 环境
@@ -78,8 +83,8 @@ module load sghpcdas/25.6
 source ~/.bashrc && conda activate onescience311
 
 cd ~/oneskills-test/run01
-mkdir -p .onescience/logs/run01
-python train.py 2>&1 | tee .onescience/logs/run01/stdout.log
+mkdir -p logs
+python train.py > >(tee logs/stdout.log) 2> >(tee logs/stderr.log >&2)
 ```
 
 远端执行与日志下载：
@@ -88,7 +93,8 @@ python train.py 2>&1 | tee .onescience/logs/run01/stdout.log
 ssh user@host "mkdir -p ~/oneskills-test/run01"
 rsync -a tests/run01/ user@host:~/oneskills-test/run01/
 ssh user@host "cd ~/oneskills-test/run01 && bash run_job.sh"
-rsync -a user@host:~/oneskills-test/run01/.onescience/logs/run01/ .onescience/logs/run01/
+mkdir -p tests/run01/logs
+rsync -a user@host:~/oneskills-test/run01/logs/ tests/run01/logs/
 ```
 
 ## Output

@@ -130,7 +130,7 @@ SSH 连接信息完成并验证通过后，再问：
 | `cpus_per_task` | `8` |
 | `memory` | `64GB` |
 | `time_limit` | `02:00:00` |
-| `gpu_type` | `dcu` |
+| `gpu_type` | 检测或确认的 `accelerator_kind` |
 | `ntasks_per_node` | `1` |
 
 带默认值的字段必须告诉用户可以直接回车使用默认值。
@@ -145,13 +145,33 @@ SSH 连接信息完成并验证通过后，再问：
 - cpus_per_task：每个任务需要的 CPU 核心数；直接回车使用 8
 - memory：内存大小，例如 64GB；直接回车使用 64GB
 - time_limit：作业时间限制 HH:MM:SS；直接回车使用 02:00:00
-- gpu_type：加速器类型，例如 dcu、gpu、a100；直接回车使用 dcu
+- gpu_type：Slurm 加速器类型；直接回车使用后续检测或用户确认的 dcu/gpu
 - ntasks_per_node：每节点任务数；直接回车使用 1
 ```
 
 不要把 SCnet、SSH 连接字段与 Slurm 集群资源字段合并成一次性补问。连接字段必须先完成，Slurm 字段只能在用户确认使用 Slurm 后再问。
 
-## 5. 生成配置示例
+## 5. 硬件检测与 modules
+
+当 SSH 连接信息完成并验证通过，且 Slurm 选择与资源字段也已完成后，必须检测远程运行平台的加速器类型：
+
+```bash
+python skills/onescience-runsite/scripts/runsite_config.py detect-hardware --ssh-alias <alias>
+```
+
+若输出 `hardware_detected=true` 且 `accelerator_kind` 为 `dcu` 或 `gpu`，后续 `generate` 必须传入对应的 `--accelerator-kind`。
+
+若输出 `hardware_detected=false`，不要生成配置，必须询问用户：
+
+```text
+未能自动检测到远程运行平台加速器类型，请确认是 dcu 还是 gpu。
+```
+
+用户确认后，使用确认值作为 `--accelerator-kind`。脚本会从 `assets/hardware_profiles/{dcu|gpu}_hardware_profiles.json` 匹配 profile，并把 `software.modules` 写入 `onescience.json.runtime.modules`。不要手写 modules，除非用户明确覆盖。
+
+只允许做上述硬件类型检测；不要在 runsite 中执行远端 `module avail`、`conda` 检查、Slurm 队列检查或提交作业。
+
+## 6. 生成配置示例
 
 ### SSH 直连，不使用 Slurm
 
@@ -160,6 +180,7 @@ python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onesc
   --run-site remote \
   --execution-mode none \
   --access-mode ssh \
+  --accelerator-kind dcu \
   --ssh-data '{"host":"my-cluster","hostname":"192.168.1.100","port":22,"user":"alice","identity_file":"~/.ssh/id_rsa","remote_work_dir":"/home/alice/work"}'
 ```
 
@@ -170,6 +191,7 @@ python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onesc
   --run-site remote \
   --execution-mode slurm \
   --access-mode ssh \
+  --accelerator-kind dcu \
   --ssh-data '{"host":"my-cluster","hostname":"192.168.1.100","port":22,"user":"alice","identity_file":"~/.ssh/id_rsa","remote_work_dir":"/home/alice/work"}' \
   --cluster-data '{"partition":"hpctest01","nodes":1,"gpus_per_node":1,"cpus_per_task":8,"memory":"64GB","time_limit":"02:00:00","gpu_type":"dcu","ntasks_per_node":1}'
 ```
@@ -181,6 +203,7 @@ python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onesc
   --run-site remote \
   --execution-mode none \
   --access-mode scnet \
+  --accelerator-kind dcu \
   --scnet-data '{"SCNET_ACCESS_KEY":"<key>","SCNET_SECRET_KEY":"<secret>","SCNET_USER":"alice","region":"核心节点","remote_work_dir":"~/work"}' \
   --ssh-data '{"host":"my-cluster","hostname":"192.168.1.100","port":22,"user":"alice","identity_file":"~/.ssh/id_rsa","remote_work_dir":"/home/alice/work"}'
 ```
@@ -192,11 +215,12 @@ python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onesc
   --run-site remote \
   --execution-mode slurm \
   --access-mode scnet \
+  --accelerator-kind dcu \
   --scnet-data '{"SCNET_ACCESS_KEY":"<key>","SCNET_SECRET_KEY":"<secret>","SCNET_USER":"alice","region":"核心节点","remote_work_dir":"~/work"}' \
   --ssh-data '{"host":"my-cluster","hostname":"192.168.1.100","port":22,"user":"alice","identity_file":"~/.ssh/id_rsa","remote_work_dir":"/home/alice/work"}' \
   --cluster-data '{"partition":"hpctest01","nodes":1,"gpus_per_node":1,"cpus_per_task":8,"memory":"64GB","time_limit":"02:00:00","gpu_type":"dcu","ntasks_per_node":1}'
 ```
 
-## 6. 完成后回传
+## 7. 完成后回传
 
 远程配置生成或复用完成后，`onescience-runsite` 只返回配置交接，不提交作业、不继续探测远端环境。若本次是被某个技能调用来补齐配置，`next_action` 指向调用技能；若没有调用方，`next_action` 指向 `onescience-orchestrator`，让 orchestrator 规划下一步。远程连接验证失败时仍然 `next_action=ask_user`。

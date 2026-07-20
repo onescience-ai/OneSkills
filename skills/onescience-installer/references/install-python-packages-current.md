@@ -6,6 +6,7 @@
 
 - 已获得包名列表。
 - 用户已经明确同意直接在当前环境安装。
+- 包名列表不得包含 `onescience`；若发现 `onescience`（大小写不敏感，含版本约束或 extras），立即停止本工作流并路由到 `install-onescience-current.md`。
 
 ## 步骤
 

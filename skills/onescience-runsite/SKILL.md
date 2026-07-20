@@ -1,6 +1,6 @@
 ---
 name: onescience-runsite
-description: 解析、校验、保存和复用 OneScience 运行站点配置。用于任意技能在继续执行任务前补齐运行站点配置，完成配置发现、缺失字段补问、已有配置复用、remote 连接验证和结构化回传。不做安装、不提交作业、不执行运行、不做远端环境诊断。
+description: 解析、校验、保存和复用 OneScience 运行站点配置。用于任意技能在继续执行任务前补齐运行站点配置，完成配置发现、缺失字段补问、已有配置复用、remote 连接验证、运行平台 DCU/GPU 类型确认、modules 写入和结构化回传。不做安装、不提交作业、不执行运行、不做远端环境诊断。
 type: executor
 ---
 
@@ -38,11 +38,12 @@ type: executor
 - 如果用户选择 SCnet，只能先补问 SCnet 连接字段；不要同时补问 SSH 字段或 Slurm 集群资源字段。SCnet 验证完成后，再单独补问 SSH 字段。
 - 如果用户选择 SSH，只能先补问 SSH 连接字段；不要同时补问 Slurm 集群资源字段。
 - 只有用户明确选择使用 Slurm 后，才补问 Slurm 集群资源字段。
-- 已有 `onescience.json` 不完整时，只能补问缺失字段；补问时仍必须列出每个缺失字段。
+- 已有 `onescience.json` 不完整时，必须先根据 `run_site`、`execution_mode`、`access_mode` 判断哪些配置块是必填，再只补问这些必填块中缺失的字段；补问时仍必须列出每个缺失字段。
 - 远程连接验证失败后，要求用户重新提交信息时，也必须列出对应接入方式需要重新提供的字段。
-- 只要 `run_site=remote`，都必须列出并补齐 SSH 字段：`host`/别名、`hostname`、`port`、`user`、`identity_file`、`remote_work_dir`。
-- 如果使用 SCnet，至少列出：`SCNET_ACCESS_KEY`、`SCNET_SECRET_KEY`、`SCNET_USER`、`region`、`remote_work_dir`。
-- 如果使用 Slurm，至少列出：`partition`、`nodes`、`gpus_per_node`、`cpus_per_task`、`memory`、`time_limit`、`gpu_type`、`ntasks_per_node`。
+- 只要 `run_site=remote`，都必须校验并补齐 SSH 字段：`host`/别名、`hostname`、`port`、`user`、`identity_file`、`remote_work_dir`。
+- 只要 `run_site=remote` 且 `access_mode=scnet`，都必须额外校验并补齐 SCnet 字段：`SCNET_ACCESS_KEY`、`SCNET_SECRET_KEY`、`SCNET_USER`、`region`、`remote_work_dir`。
+- 只要 `execution_mode=slurm`，都必须校验并补齐 Slurm 字段：`partition`、`nodes`、`gpus_per_node`、`cpus_per_task`、`memory`、`time_limit`、`gpu_type`、`ntasks_per_node`。
+- 用户提供完整运行信息后，必须检测对应运行平台加速器类型：本地直接/本地 Slurm 检测本机；远程 SSH 直接/远程 SSH Slurm 通过已验证 SSH Host 别名检测远程。若未检测出，先询问用户确认 `dcu` 还是 `gpu`，再生成配置。
 
 有脚本时优先用 `scripts/runsite_config.py`、`scripts/ssh_config.py`、`scripts/scnet_config.py`。
 
@@ -95,7 +96,7 @@ type: executor
 
 - 安装环境：`conda create`、`pip install`、`git clone`、`bash install.sh`
 - 提交或运行作业：`sbatch`、`srun`、训练脚本、推理脚本
-- 除连接验证外做远端就绪探测：远端 `sbatch`、`squeue`、`sacct`、module/conda 检查、远端可写性检查
+- 除连接验证和有限 DCU/GPU 类型检测外做远端就绪探测：远端 `sbatch`、`squeue`、`sacct`、module/conda 检查、远端可写性检查
 - 提交任务或调用 `scnet-chat` 执行任务
 - 明文输出 SCnet 密钥
 - 重新创建已存在的项目根目录 `onescience.json`
@@ -106,7 +107,7 @@ type: executor
 
 - 读取和检查项目根目录 `./onescience.json`
 - 检测本地 `sbatch`
-- 检测硬件类型：DCU/GPU/CPU
+- 检测运行平台加速器类型：DCU/GPU；remote 时只能通过已验证 SSH Host 做有限检测
 - 对 remote 配置做有限的 SSH/SCnet 连通性验证；SSH 私钥权限过宽时可自动修复并重试
 - 读取 `assets/runsite.example.json` 和各类 profile
 - 写入 `~/.ssh/config` 和 `~/.scnet-chat.env`
@@ -120,7 +121,8 @@ type: executor
 python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onescience.json check
 python skills/onescience-runsite/scripts/runsite_config.py detect-local-slurm
 python skills/onescience-runsite/scripts/runsite_config.py detect-hardware
-python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onescience.json generate --run-site local --execution-mode none
+python skills/onescience-runsite/scripts/runsite_config.py detect-hardware --ssh-alias <alias>
+python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onescience.json generate --run-site local --execution-mode none --accelerator-kind dcu
 python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onescience.json modify --field runtime.cluster.partition --value hpctest01
 ```
 
@@ -140,6 +142,7 @@ python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onesc
   --run-site remote \
   --execution-mode slurm \
   --access-mode ssh \
+  --accelerator-kind dcu \
   --ssh-data '{"host":"cluster","hostname":"192.168.1.100","port":22,"user":"alice","identity_file":"~/.ssh/id_rsa","remote_work_dir":"/home/alice/work"}' \
   --cluster-data '{"partition":"hpctest01","nodes":1,"gpus_per_node":1,"cpus_per_task":8,"memory":"64GB","time_limit":"02:00:00","gpu_type":"dcu","ntasks_per_node":1}'
 ```
@@ -158,8 +161,8 @@ python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onesc
     "access_mode": "ssh|scnet|"
   },
   "hardware_detected": {
-    "accelerator_kind": "dcu|gpu|cpu",
-    "accelerator_vendor": "amd|nvidia|intel",
+    "accelerator_kind": "dcu|gpu",
+    "accelerator_vendor": "amd|nvidia",
     "cpu_arch": "x86_64|arm64"
   },
   "credential_source": "~/.ssh/config|~/.scnet-chat.env|null",

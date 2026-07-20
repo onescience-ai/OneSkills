@@ -16,16 +16,20 @@
 - `runtime.env_vars.*`
 - `evidence.preflight`
 
+## Entry Gate
+
+进入本执行分支前必须已有当前轮次 preflight 证据：`preflight_passed=true`、`execution_readiness=ready`、`evidence.preflight.status=passed`、`evidence.preflight.conda_checked=true`、`evidence.preflight.environment_checked=true`、`evidence.preflight.channel_checked=true`、`evidence.preflight.entrypoint_checked=true`。任一缺失或失败时，不得生成 `run_job.slurm` 或调用 `sbatch`，必须回到 `preflight`；若缺少 `runtime.conda` 或环境未 ready，立即委托 `onescience-installer`。
+
 ## Steps
 
 1. 先确定测试目录 `work_dir`，优先取 `runtime.script.work_dir`。
-2. 在测试目录生成 `run_job.slurm`，脚本内容参考 `./assets/templates/slurm_cpu.sh`、`./assets/templates/slurm_dcu.sh`、`./assets/templates/slurm_gpu.sh`、`./assets/templates/slurm_gpu_multinode_torchrun.sh` 或 `./assets/tpl.slurm`，再由 `runtime.cluster.*`、`runtime.target.*`、`runtime.modules`、`runtime.script.*`、`runtime.env_vars.*` 和 `runtime.conda.enabled` 渲染。
+2. 在测试目录生成 `run_job.slurm`：`local_slurm` 必须先根据目标硬件选择唯一模板，CPU 匹配 `./assets/templates/slurm_cpu.sh`，DCU 匹配 `./assets/templates/slurm_dcu.sh`，GPU 匹配 `./assets/templates/slurm_gpu.sh`；仅当预检已明确是多机多卡 torchrun 入口时，才允许改用 `./assets/templates/slurm_gpu_multinode_torchrun.sh`。选定模板后，再由 `runtime.cluster.*`、`runtime.target.*`、`runtime.modules`、`runtime.script.*`、`runtime.env_vars.*` 和 `runtime.conda.enabled` 渲染。
 3. 如果 `runtime.conda.enabled=true`，在 `run_job.slurm` 中加入 `runtime.conda.activate_script`。
 4. 如果 `runtime.conda.enabled=false`，在 `run_job.slurm` 中跳过 conda 激活，直接使用当前目标环境。
 5. `runtime.modules` 中的 module 按顺序逐个写入 `module load <module>`。
-6. 在 `work_dir` 中执行 `sbatch run_job.slurm`。
+6. 在 `work_dir` 中创建 `logs/` 后执行 `sbatch run_job.slurm`；SLURM 的 `#SBATCH -o logs/%j.out` / `#SBATCH -e logs/%j.err` 会在脚本正文执行前打开日志文件，因此该目录必须先存在。
 7. 使用 `squeue` / `sacct` 轮询任务状态。
-8. 从本地或作业输出目录读取 `*.out` / `*.err`，并写入当前根目录的 `.onescience/logs/<job_name>/`。
+8. 从本地测试目录的 `logs/` 读取 `*.out` / `*.err`；若集群把日志写到其它作业输出目录，则复制回 `<work_dir>/logs/`，`local_log_dir` 必须输出该路径。
 9. 若 `sbatch`、`squeue`、`sacct` 或作业日志反馈 partition、GRES、`gpus_per_node`、`memory`、CPU、node 或 time limit 不可用，读取 `./references/slurm-resource-retry.md`，探测可用资源，临时重渲染 `run_job.slurm` 并按预算重试；不要直接写回 `onescience.json`。
 10. 若资源探测后仍找不到兼容 partition 或资源，或调整会改变用户明确要求的并行规模，暂停当前执行尝试并立即调用 `skills/onescience-runsite/SKILL.md`；无需向用户二次确认。runsite 成功后回到 `discover` 并继续原测试任务。
 11. 若发现是 `work_dir` 缺失、入口脚本路径错误、module 名称写错等非资源类配置问题，暂停当前执行尝试并立即调用 `skills/onescience-runsite/SKILL.md`；无需向用户二次确认。runsite 成功后回到 `discover` 并继续原测试任务。
@@ -37,6 +41,7 @@
 
 ```bash
 cd tests/run01
+mkdir -p logs
 cat > run_job.slurm <<'EOF'
 #SBATCH -p hpctest01
 #SBATCH -N 1
@@ -49,8 +54,8 @@ sbatch run_job.slurm
 ### 结果落盘
 
 ```bash
-mkdir -p .onescience/logs/run01
-cp *.out *.err .onescience/logs/run01/
+mkdir -p logs
+cp *.out *.err logs/
 ```
 
 ## Output

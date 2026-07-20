@@ -19,6 +19,10 @@
 - `evidence.preflight`
 - 用户当前意图：提交新任务 / 观察已有任务 / 平台管理动作
 
+## Entry Gate
+
+进入本执行分支前必须已有当前轮次 preflight 证据：`preflight_passed=true`、`execution_readiness=ready`、`evidence.preflight.status=passed`、`evidence.preflight.conda_checked=true`、`evidence.preflight.environment_checked=true`、`evidence.preflight.channel_checked=true`、`evidence.preflight.entrypoint_checked=true`。任一缺失或失败时，不得委托 `scnet-chat` 提交新任务，必须回到 `preflight`；若缺少 `runtime.conda` 或目标环境未 ready，立即委托 `onescience-installer`。
+
 ## Routing Boundary
 
 `scnet_skill` 表示 `run_site=remote + access_mode=scnet` 的 SCnet 平台执行上下文；`execution_mode` 可以为空、`none` 或 `slurm`。当 `execution_mode=slurm` 时，runtime2 仍然委托 `scnet-chat` 提交任务，只把队列和资源字段整理为 scnet-chat 参数，不在本地或远端直接执行 `sbatch`。
@@ -92,12 +96,12 @@ runtime 在本通道中只负责：
 2. 先确定本地测试目录 `work_dir`，优先取 `runtime.script.work_dir`。
 3. 远端根目录取 `scnet.remote_work_dir` 或 `scnet.work_dir`，例如 `~/oneskills-test`。
 4. 取本地测试目录最后一个子目录名作为上传根名；例如 `tests/run01` 的最后子目录名是 `run01`。
-5. 在远端创建 `scnet.remote_work_dir/<最后子目录名>/`，并按相对路径上传本地测试目录中的所有文件。
+5. 在远端创建 `scnet.remote_work_dir/<最后子目录名>/` 及其 `logs/` 子目录，并按相对路径上传本地测试目录中的所有文件；若后续使用 SLURM，`logs/` 必须在提交前存在。
 6. 先优先询问 `scnet-chat` 是否可自动生成 `run_job.slurm`；如果可以，直接让 `scnet-chat` 在远端生成并提交。
 7. 如果 `scnet-chat` 未自动生成 `run_job.slurm`，runtime2 必须参考 `./assets/templates/slurm_cpu.sh`、`./assets/templates/slurm_dcu.sh`、`./assets/templates/slurm_gpu.sh`、`./assets/templates/slurm_gpu_multinode_torchrun.sh` 或 `./assets/tpl.slurm`，再根据 `runtime.cluster.*`、`runtime.target.*`、`runtime.modules`、`runtime.script.*`、`runtime.env_vars.*` 和 `runtime.conda.enabled` 在本地生成同名脚本，并上传到同一远端目录。
 8. 如果 `runtime.conda.enabled=true`，远端脚本中保留 `runtime.conda.activate_script`；如果 `runtime.conda.enabled=false`，远端脚本中跳过激活步骤。
 9. 通过 `scnet-chat` 触发远端提交、状态查询和日志下载；提交命令必须包含来自 `onescience.json.runtime.scnet` 的区域、队列和工作目录，例如 `在{region}提交作业 bash run_job.slurm --queue {partition} --work-dir {scnet.remote_work_dir} --ppn {ppn} --wall-time {wall_time} --job-name {job_name}`。
-10. 任务完成后，把远端日志下载到当前根目录的 `.onescience/logs/<job_name>/`。
+10. 任务完成后，把远端测试目录或平台侧任务的 stdout/stderr 日志下载到本地测试目录的 `logs/`，即 `<work_dir>/logs/`；`local_log_dir` 必须输出该路径。不要下载到 `.onescience/logs/<job_name>/`。
 11. 若发现是 `scnet.region`、`scnet.partition`、`scnet.remote_work_dir` 错误，上传根目录错误、入口路径不对、任务清单不完整、cluster/resource 字段错误等配置问题，暂停当前执行尝试并立即调用 `skills/onescience-runsite/SKILL.md`；无需向用户二次确认。runsite 成功后回到 `discover` 并继续原测试任务。
 12. 若平台侧证据指向环境问题，例如解释器不存在、缺包、OneScience/torch 不可用或分布式运行时未就绪，暂停当前执行尝试并立即调用 `skills/onescience-installer/SKILL.md`；无需向用户二次确认。installer verify 成功后回到 `preflight` 并继续原测试任务。
 
@@ -119,7 +123,7 @@ runtime 在本通道中只负责：
 3. 上传 tests/run01/ 下所有文件，保持相对路径
 4. 使用 onescience.json.runtime.scnet.partition 作为 --queue 提交 run_job.slurm
 5. 查询 task_id
-6. 下载日志到 .onescience/logs/run01/
+6. 下载日志到 tests/run01/logs/
 ```
 
 ## Output

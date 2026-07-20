@@ -13,6 +13,8 @@
 
 阶段顺序固定，不建议跳过前置阶段直接执行。
 
+`execute` 阶段有硬门禁：只有当前轮次 `preflight` 明确产出 `preflight_passed=true`、`execution_readiness=ready`、`blocking_reason` 为空或 `none`、`evidence.preflight.status=passed`、`evidence.preflight.conda_checked=true` 且 `evidence.preflight.environment_checked=true` 后，才能读取或执行 execute 分支。缺少任一证据时，必须回到 `preflight`；不得因为已有 `execution_channel`、脚本路径、历史日志或用户要求“跑一下”而直接提交任务。
+
 ## 委托恢复不变量
 
 `onescience-runsite` 与 `onescience-installer` 只负责解除 runtime 当前遇到的配置或环境阻断；它们成功后必须把控制权交回 `onescience-runtime`，由 runtime 继续原测试任务。
@@ -31,6 +33,7 @@
 - `execution_mode`
 - `access_mode`
 - `execution_channel`
+- `preflight_passed`
 - `submission_target`
 - `execution_readiness`
 - `blocking_reason`
@@ -47,6 +50,8 @@
 - `submission_state/execution_state/log_state` 解决“现在跑到哪一步”
 
 ## 执行三元组与通道归一
+
+discover 每次进入时，必须先调用 `onescience-runsite` 对当前 `onescience.json` 做检查、复用或补齐；不要直接信任历史配置。只有 runsite 完成已有配置校验、远程连接验证或缺失字段补齐并写回后，runtime 才重新读取 `onescience.json`，再做三元组归一与 `execution_channel` 派生。
 
 规范字段：
 
@@ -106,6 +111,8 @@
 
 只有 `enabled=true` 时，执行模板才会渲染 conda 激活步骤；`enabled=false` 时必须跳过激活步骤，直接以当前目标环境做 readiness 检查。
 
+`runtime.conda` 缺失、`enabled` 缺失或结构不属于上述两种形态时，不能默认解释为 `enabled=false`，也不能跳过环境检查进入 execute。它属于环境发现/修复阻断，必须设置 `next_action=onescience-installer`、`installer_reason=missing_conda_config`，立即调用 `skills/onescience-installer/SKILL.md` 做 discover / install / verify。installer verify 成功后，runtime 重新读取 `onescience.json.runtime.conda` 并从 `preflight` 开始恢复。
+
 `runtime.modules` 的值按顺序逐个执行 `module load <module>`。
 
 ### SCnet 提交配置
@@ -141,12 +148,23 @@
 - `slurm_adjustments.candidate_partitions`
 - `slurm_adjustments.retry_count`
 
+## 统一日志目录
+
+runtime 的执行证据必须绑定到当前测试目录，而不是项目根目录的隐藏日志目录。
+
+- `work_dir` 优先取 `runtime.script.work_dir`；缺失时回退到 `runtime.script.code_path` 所在目录。
+- 本地日志目录统一为 `<work_dir>/logs/`，`local_log_dir` 必须输出该路径。
+- 远程 SSH/SCnet 执行时，远端日志先落在远端测试目录的 `logs/`，任务结束后同步回本地 `<work_dir>/logs/`。
+- 禁止把远程任务日志下载到 `.onescience/logs/<job_name>/` 作为最终落盘位置。
+- `job_name` 只作为作业名、日志文件名前缀或任务识别字段，不再派生本地日志子目录。
+
 ## Runsite handoff contract
 
 当 discover、preflight、execute 或 diagnose 发现配置问题时，统一自动交给 `onescience-runsite`，交接结构至少包含：
 
 - `next_action=onescience-runsite`
 - `config_reason`
+  - `validate_runtime_config`
   - `missing_runtime_config`
   - `unsupported_execution_tuple`
   - `config_tuple_conflict`

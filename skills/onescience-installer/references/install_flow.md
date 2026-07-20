@@ -18,11 +18,9 @@
 | `{repo_dir}` | `~/` + `workspace_bootstrap_profiles.json.repo.repo_name`；当前稳定 profile 默认 `~/onescience` |
 | `{dependency_selector}` | `install_domains.json.dependency_selector`，如 `earth`、`cfd`、`bio`、`matchem`、`all` |
 | `{module_loads}` | 由 `backend_profiles.json.bootstrap.module_sequence` 渲染出的 `module load ... && ...` 命令串 |
-| `{module_init}` | 若 `module` 命令尚不可用，依次尝试 source `/usr/share/Modules/init/sh`、`/usr/share/Modules/init/profile.sh`、`/etc/profile.d/modules.sh`、`/usr/share/lmod/lmod/init/sh` 的初始化命令片段 |
-| `{conda_recovery}` | 当 `conda` 不在 PATH 时，先执行 `{module_init}`，再通过 `module avail 2>&1` 匹配 `anaconda` / `anaconda3` / `miniconda` / `conda` 类模块，优先加载最具体候选（如 `anaconda3/2023.09`）；若仍失败，再执行 profile 内已有的 fallback 激活命令；若最终仍不可用，则输出明确哨兵信息并退出 |
 | `{python_packages}` | 需要安装或校验的 Python 包列表，渲染为空格分隔参数 |
 
-> `{ssh_options}`、`{repo_dir}`、`{dependency_selector}`、`{module_loads}`、`{module_init}`、`{conda_recovery}`、`{python_packages}` 的渲染来源由 `../SKILL.md` 路由到对应工作流后确定。
+> `{ssh_options}`、`{repo_dir}`、`{dependency_selector}`、`{module_loads}`、`{python_packages}` 的渲染来源由 `../SKILL.md` 路由到对应工作流后确定。
 
 ## 目录
 
@@ -67,7 +65,7 @@ hostname && (test -f /.dockerenv && echo IN_CONTAINER=yes || echo IN_CONTAINER=n
 ## §0b 镜像环境检测（remote_slurm）
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "(test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && {module_loads} && echo === CURRENT_ENV_ONESCIENCE_CHECK === && ((python -m pip show onescience || pip show onescience) 2>/dev/null && echo CURRENT_ENV_HAS_ONESCIENCE=yes || echo CURRENT_ENV_HAS_ONESCIENCE=no) && echo === CONDA_ENVS === && (command -v conda >/dev/null 2>&1 && conda env list || echo conda:not_found) && echo === CONDA_ENV_ONESCIENCE_CHECK === && if command -v conda >/dev/null 2>&1; then for env in \$(conda env list | grep -v \"^#\" | awk \"{print \$1}\" | grep -v \"^$\"); do echo \"Checking env: \$env\" && conda activate \$env 2>/dev/null && ((python -m pip show onescience || pip show onescience) 2>/dev/null && echo \"ENV_NAME=\$env\") || true; done; fi"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "(test -f ~/.bashrc && source ~/.bashrc || true) && {module_loads} && echo === CURRENT_ENV_ONESCIENCE_CHECK === && ((python -m pip show onescience || pip show onescience) 2>/dev/null && echo CURRENT_ENV_HAS_ONESCIENCE=yes || echo CURRENT_ENV_HAS_ONESCIENCE=no) && echo === CONDA_ENVS === && (command -v conda >/dev/null 2>&1 && conda env list || echo conda:not_found) && echo === CONDA_ENV_ONESCIENCE_CHECK === && if command -v conda >/dev/null 2>&1; then for env in \$(conda env list | grep -v \"^#\" | awk \"{print \$1}\" | grep -v \"^$\"); do echo \"Checking env: \$env\" && conda activate \$env 2>/dev/null && ((python -m pip show onescience || pip show onescience) 2>/dev/null && echo \"ENV_NAME=\$env\") || true; done; fi"'
 ```
 
 ---
@@ -75,7 +73,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 ## §0c 镜像环境检测（local_slurm）
 
 ```bash
-bash -lc "(test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && {module_loads} && echo === CURRENT_ENV_ONESCIENCE_CHECK === && ((python -m pip show onescience || pip show onescience) 2>/dev/null && echo CURRENT_ENV_HAS_ONESCIENCE=yes || echo CURRENT_ENV_HAS_ONESCIENCE=no) && echo === CONDA_ENVS === && (command -v conda >/dev/null 2>&1 && conda env list || echo conda:not_found) && echo === CONDA_ENV_ONESCIENCE_CHECK === && if command -v conda >/dev/null 2>&1; then for env in \$(conda env list | grep -v \"^#\" | awk \"{print \$1}\" | grep -v \"^$\"); do echo \"Checking env: \$env\" && conda activate \$env 2>/dev/null && ((python -m pip show onescience || pip show onescience) 2>/dev/null && echo \"ENV_NAME=\$env\") || true; done; fi"
+bash -lc "(test -f ~/.bashrc && source ~/.bashrc || true) && {module_loads} && echo === CURRENT_ENV_ONESCIENCE_CHECK === && ((python -m pip show onescience || pip show onescience) 2>/dev/null && echo CURRENT_ENV_HAS_ONESCIENCE=yes || echo CURRENT_ENV_HAS_ONESCIENCE=no) && echo === CONDA_ENVS === && (command -v conda >/dev/null 2>&1 && conda env list || echo conda:not_found) && echo === CONDA_ENV_ONESCIENCE_CHECK === && if command -v conda >/dev/null 2>&1; then for env in \$(conda env list | grep -v \"^#\" | awk \"{print \$1}\" | grep -v \"^$\"); do echo \"Checking env: \$env\" && conda activate \$env 2>/dev/null && ((python -m pip show onescience || pip show onescience) 2>/dev/null && echo \"ENV_NAME=\$env\") || true; done; fi"
 ```
 
 ---
@@ -101,27 +99,21 @@ bash -lc "(test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {c
    ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} "python3 -m pip show torch 2>&1 || echo torch:not_found"
    ```
 
-4. 检测是否有 conda:
+4. 检测指定的 conda 环境是否存在:
    ```bash
-   ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} "which conda 2>&1 || echo conda:not_found"
+   ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_loads} && ((conda env list 2>&1 || (source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda env list 2>&1)) | grep -w {env_name} || echo env:{env_name}:not_found)"'
    ```
 
-5. 如果有 conda，检测指定的 conda 环境是否存在:
+5. 如果该 conda 环境存在，检测其中的包:
    ```bash
-   ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} "conda env list 2>&1 | grep -w {env_name} || echo env:{env_name}:not_found"
-   ```
-
-6. 如果该 conda 环境存在，检测其中的包:
-   ```bash
-   ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} "source \$(conda info --base)/etc/profile.d/conda.sh && conda activate {env_name} && python -m pip show onescience && python -m pip show torch"
+   ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_loads} && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && python -m pip show onescience && python -m pip show torch"'
    ```
 
 执行说明：
 - 按顺序执行上述命令，每个命令单独执行
 - 根据每个命令的输出判断相应的状态
 - 如果步骤 1-3 都成功（当前环境有 python + onescience + torch），可跳过后续步骤
-- 如果步骤 4 返回 `conda:not_found`，可跳过步骤 5-6
-- 如果步骤 5 返回 `env:{env_name}:not_found`，可跳过步骤 6
+- 如果步骤 4 返回 `env:{env_name}:not_found`，可跳过步骤 5
 
 ---
 
@@ -146,19 +138,14 @@ bash -lc "(test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {c
    python3 -m pip show torch 2>&1 || echo torch:not_found
    ```
 
-4. 检测是否有 conda:
+4. 检测指定的 conda 环境是否存在
    ```bash
-   which conda 2>&1 || echo conda:not_found
+   bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_loads} && ((conda env list 2>&1 || (source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda env list 2>&1)) | grep -w {env_name} || echo env:{env_name}:not_found)"
    ```
 
-5. 如果有 conda，检测指定的 conda 环境是否存在
+5. 如果该 conda 环境存在，检测其中的包:
    ```bash
-   conda env list 2>&1 | grep -w {env_name} || echo env:{env_name}:not_found
-   ```
-
-6. 如果该 conda 环境存在，检测其中的包*:
-   ```bash
-   source $(conda info --base)/etc/profile.d/conda.sh && conda activate {env_name} && python -m pip show onescience && python -m pip show torch
+   bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_loads} && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && python -m pip show onescience && python -m pip show torch"
    ```
 
 执行说明：同 §0d，按顺序执行，根据输出判断状态。
@@ -184,7 +171,7 @@ bash -lc "(test -f ~/.bashrc && source ~/.bashrc || true) && echo === NVIDIA ===
 ## §3 DCU 安装（remote_slurm，新建 conda 环境）
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y || (source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda create -n {env_name} python={python_version} -y)) && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y || (source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda create -n {env_name} python={python_version} -y)) && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
 ```
 
 ---
@@ -194,7 +181,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 **使用场景**：当 `conda_env_exists=true` 或检测到镜像环境时使用。
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
 ```
 
 ---
@@ -202,7 +189,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 ## §4 DCU 验证（remote_slurm）
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && pip list | grep torch && pip list | grep onescience"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip list | grep torch && pip list | grep onescience"'
 ```
 
 ---
@@ -210,7 +197,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 ## §3b DCU 当前环境安装（remote_slurm，不创建/激活 conda）
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (command -v conda >/dev/null 2>&1 || source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate) && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
 ```
 
 ---
@@ -218,7 +205,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 ## §4b DCU 当前环境验证（remote_slurm，不创建/激活 conda）
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && pip list | grep torch && pip list | grep onescience"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (command -v conda >/dev/null 2>&1 || source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate) && pip list | grep torch && pip list | grep onescience"'
 ```
 
 ---
@@ -226,7 +213,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 ## §5 GPU 安装（remote_slurm，新建 conda 环境）
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load cuda/12.1 && module load gcc/11.2 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y) && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y) && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
 ```
 
 ---
@@ -236,7 +223,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 **使用场景**：当 `conda_env_exists=true` 或检测到镜像环境时使用。
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load cuda/12.1 && module load gcc/11.2 && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
 ```
 
 ---
@@ -244,7 +231,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 ## §6 GPU 验证（remote_slurm）
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load cuda/12.1 && module load gcc/11.2 && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && pip list | grep torch && pip list | grep onescience"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && conda activate {env_name} && pip list | grep torch && pip list | grep onescience"'
 ```
 
 ---
@@ -270,13 +257,13 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 **安装：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y || (source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda create -n {env_name} python={python_version} -y)) && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y || (source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda create -n {env_name} python={python_version} -y)) && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
 ```
 
 **验证：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && pip list | grep torch && pip list | grep onescience"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip list | grep torch && pip list | grep onescience"
 ```
 
 ---
@@ -288,13 +275,13 @@ bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && 
 **安装：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
 ```
 
 **验证：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && pip list | grep torch && pip list | grep onescience"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip list | grep torch && pip list | grep onescience"
 ```
 
 ---
@@ -304,13 +291,13 @@ bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && 
 **安装：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (command -v conda >/dev/null 2>&1 || source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate) && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
 ```
 
 **验证：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && pip list | grep torch && pip list | grep onescience"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (command -v conda >/dev/null 2>&1 || source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate) && pip list | grep torch && pip list | grep onescience"
 ```
 
 ---
@@ -320,13 +307,13 @@ bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && 
 **安装：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load cuda/12.1 && module load gcc/11.2 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y) && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y) && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
 ```
 
 **验证：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load cuda/12.1 && module load gcc/11.2 && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && pip list | grep torch && pip list | grep onescience"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && conda activate {env_name} && pip list | grep torch && pip list | grep onescience"
 ```
 
 ---
@@ -338,13 +325,13 @@ bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && 
 **安装：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load cuda/12.1 && module load gcc/11.2 && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
 ```
 
 **验证：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && module load cuda/12.1 && module load gcc/11.2 && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && pip list | grep torch && pip list | grep onescience"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && conda activate {env_name} && pip list | grep torch && pip list | grep onescience"
 ```
 
 ---
@@ -368,7 +355,7 @@ bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && 
 ## §9 远端 Python 包安装
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && {module_loads} && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && pip install {python_packages}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_loads} && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip install {python_packages}"'
 ```
 
 ---
@@ -376,7 +363,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 ## §10 远端 Python 包验证
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && {module_loads} && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && pip show {python_packages}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_loads} && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip show {python_packages}"'
 ```
 
 ---
@@ -384,7 +371,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 ## §11 本地非容器 Python 包安装
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && {module_loads} && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && pip install {python_packages}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_loads} && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip install {python_packages}"
 ```
 
 ---
@@ -392,7 +379,7 @@ bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && 
 ## §12 本地非容器 Python 包验证
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && {module_loads} && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && pip show {python_packages}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_loads} && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip show {python_packages}"
 ```
 
 ---
@@ -416,7 +403,7 @@ bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && 
 ## §15 远端 Python 包预检测（Conda 环境）
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && {module_loads} && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && pip show {python_packages}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_loads} && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip show {python_packages}"'
 ```
 
 ---
@@ -432,7 +419,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 ## §16 本地 Python 包预检测（Conda 环境）
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_init} && {conda_recovery} && {module_loads} && eval \"$(conda shell.posix hook 2>/dev/null)\" >/dev/null 2>&1 || true && conda activate {env_name} && pip show {python_packages}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_loads} && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip show {python_packages}"
 ```
 
 ---

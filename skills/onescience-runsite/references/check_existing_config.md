@@ -28,7 +28,7 @@ python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onesc
 
 若存在但不完整：
 
-- 展示缺失字段。
+- 先根据 `runtime.execution_profile.run_site`、`runtime.execution_profile.execution_mode`、`runtime.execution_profile.access_mode` 判断哪些配置块是必填，再展示这些必填块中的缺失字段。
 - 只补问缺失字段；不要删除或重建文件。
 - 补问时必须逐一列出缺失字段名、含义、默认值或是否可留空；不要只说“请提供 SSH 信息”“请提供 SCnet 信息”或“请提供 cluster 信息”。
 - 若远程连接字段和 Slurm cluster 字段同时缺失，必须分阶段补问：先补齐并验证连接字段，再询问或补问 Slurm cluster 字段。

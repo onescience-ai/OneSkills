@@ -9,6 +9,7 @@
 #SBATCH --time={cluster.time_limit}
 #SBATCH --mem={cluster.memory}
 #SBATCH -o logs/%j.out
+#SBATCH -e logs/%j.err
 
 echo "START TIME: $(date)"
 module purge

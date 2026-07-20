@@ -51,6 +51,12 @@
 
 `runtime.execution_profile` 放置模式选择。
 
+`onescience-runsite` 校验已有配置时，必须先根据 `run_site`、`execution_mode`、`access_mode` 三个字段推导必填配置块，再检查这些配置块是否存在且完整。
+
+- `run_site=remote` -> `runtime.ssh` 必填。
+- `run_site=remote` 且 `access_mode=scnet` -> `runtime.scnet` 额外必填。
+- `execution_mode=slurm` -> `runtime.cluster` 必填。
+
 `runtime.ssh` 在 `run_site=remote` 时必须补齐；即使 `access_mode=scnet`，也要保存并验证 SSH 信息：
 
 ```json
@@ -108,6 +114,11 @@ runsite 负责：
   - `runtime.modules`
   - `runtime.resources`
   - `runtime.env_vars`
+- 在完整运行信息收集完成后，检测对应运行平台的加速器类型：
+  - local direct / local slurm：检测本地。
+  - remote SSH direct / remote SSH slurm：通过已验证 SSH Host 别名检测远程。
+  - 检测失败时停止写配置并询问用户确认 `dcu` 或 `gpu`。
+  - 根据最终 `accelerator_kind` 匹配 `assets/hardware_profiles/{dcu|gpu}_hardware_profiles.json`，把 `software.modules` 写入 `runtime.modules`。
 - 禁止写入或更新 `runtime.conda`：该字段由 `onescience-installer` 技能独占管理。
 - 输出交接信息。
 - 回传控制信息只属于技能交接输出，不写入 `onescience.json`。
