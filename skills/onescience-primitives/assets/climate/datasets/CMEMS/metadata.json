@@ -1,0 +1,17 @@
+{
+  "name": "CMEMS",
+  "type": "dataset",
+  "domain": "weather",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-23",
+  "updated_at": "2026-06-23",
+  "description": "CMEMS 海洋再分析/预报数据，HDF5 年文件覆盖海温、海面高度、10m 风、海流、盐度和位温等多深度变量。",
+  "tags": [
+    "ocean",
+    "cmems",
+    "hdf5",
+    "forecasting",
+    "marine"
+  ]
+}

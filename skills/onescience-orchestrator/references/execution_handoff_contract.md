@@ -38,7 +38,13 @@ execution_result:
     next_recommendation: <下一步建议>
 ```
 
-## 常见执行技能的职责
+## 常见执行技能的职责（仅用于 handoff 便利摘要，不是权威边界来源）
+
+本节只用于帮助上游快速组织 handoff 字段，不是 orchestrator 判定 executor 职责边界、排他范围或明确不负责事项的权威来源。
+
+- 最终 scope / exclusivity / non-responsibility 判断，必须回到对应 executor 的完整 `SKILL.md`。
+- 若本节简写摘要与 executor 自身 `SKILL.md` 冲突，以 executor 自身 `SKILL.md` 为准。
+- 技能名称、frontmatter `description` 和本节摘要都只能用于初筛，不得替代完整 `SKILL.md` 阅读来做最终任务拆分。
 
 ### onescience-coder
 - 接收：step spec、资源路径、目标目录、运行时参数（数据源路径、输出路径等）
@@ -91,8 +97,10 @@ source_dir = os.path.join(source_dir, "ERA5")
 
 ## Observation 处理
 
-- **success**：写入 artifacts，交给 orchestrator 判断是否进入下一阶段
-- **partial**：记录已完成部分和缺失项，orchestrator 继续拆分
-- **failed**：记录失败证据，orchestrator 进入修复流程
-- **blocked**：记录阻断原因和所需用户输入
+- success：写入 artifacts，交给 orchestrator 基于最新 Task State 判断是否需要继续规划下一步
+- partial：记录已完成部分、缺失项和残余风险；orchestrator 必须先回到 observation/planning，再重新选择一个新的 next_step
+- failed：记录失败证据；orchestrator 必须先完成 observation，再决定 repair、replan 或 blocked，不能直接串行调用下一个 executor
+- blocked：记录阻断原因和所需用户输入；只有阻断被消除后才允许继续
+
+- 执行技能返回的结果只表示当前步骤的观察输入，不授权直接跳转到下一条 executor 链路。
 

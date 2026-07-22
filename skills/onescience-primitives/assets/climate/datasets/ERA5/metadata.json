@@ -1,0 +1,20 @@
+{
+  "name": "ERA5",
+  "type": "dataset",
+  "domain": "weather",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-06-29",
+  "updated_at": "2026-07-20",
+  "description": "ERA5 全球气象再分析数据，按年份 HDF5 保存 1979-2025 时段的 6 小时多变量规则网格大气场，主时序数据为 243 通道 `fields[T,C,H,W]`，并提供静态场以及用于标准化的年度/外部统计量。规划上适合全球天气预报、时序外推和气象基础模型训练，使用时应保持按年份的因果划分，并以 `fields.attrs[\"variables\"]` 作为变量通道顺序依据。",
+  "tags": [
+    "weather",
+    "era5",
+    "reanalysis",
+    "global-atmosphere",
+    "hdf5",
+    "forecasting",
+    "243-channel",
+    "static-fields"
+  ]
+}

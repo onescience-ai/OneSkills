@@ -105,10 +105,13 @@ any -> blocked
 - 召回专家前，必须先记录由用户请求和资源摘要形成的 `intent_profile`。
 - 如果按 `intent_profile` 召回不到专家，设置 `planning_mode=direct_step`，并记录 orchestrator 直接规划的原因。
 - 走专家规划时，设置 `planning_mode=expert_proposal_synthesis`，记录候选专家、已收集 proposal 和融合后的 `global_plan`。
-- 每次调用执行技能后，必须写入 `artifacts` 和 `observations`。
-- 如果执行失败，不要直接结束；先进入 `observation`，再让专家规划技能判断修复或阻断。
+- 每次调用执行技能后，必须先进入 `observation`，再写入 `artifacts` 和 `observations`，不能直接从 execution 跳到下一次执行。
+- `partial` 必须记录已完成部分、缺失项、残余风险和下一步建议，并默认回到 `observation -> planning`。
+- `failed` 必须先记录失败证据，再由规划阶段决定进入 `repair` 或 `blocked`，不能直接结束。
+- `repair` 只能针对最新 `observation` 生成新的修复步，不能沿用失败前的 `active_step` 或旧 handoff。
 - 用户新增约束时，追加到 `constraints`，不要覆盖原始 `user_goal`。
 - 只有所有 `completion_criteria` 都满足或明确不可继续时，才进入 `complete` 或 `blocked`。
+- `Task State` 是选择下一步执行的唯一事实源；在更新后的 state 上必须重新选择 `next_step`，不得沿用旧计划文本或旧 handoff 直接继续执行。
 
 ## Direct Step 与专家融合
 

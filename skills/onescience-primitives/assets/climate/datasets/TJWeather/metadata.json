@@ -1,0 +1,16 @@
+{
+  "name": "TJWeather",
+  "type": "dataset",
+  "domain": "weather",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-04-15",
+  "updated_at": "2026-04-15",
+  "description": "TJWeather/TJ1-GB 气象数据目录，用于区域天气模型训练或评测，根目录仅暴露 TJ1-GB 子目录。",
+  "tags": [
+    "weather",
+    "regional",
+    "forecasting",
+    "tjweather"
+  ]
+}
