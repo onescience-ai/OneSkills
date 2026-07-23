@@ -1,100 +1,69 @@
-# component_info
-
-OpenFold 是 AF2-style folding 模型原语，定位于基于 MSA、template 和 recycling 协议的蛋白结构预测；它的关键特征是以专用 feature dict 为输入，经 Evoformer 更新 MSA/pair/single 表征，再由 StructureModule 生成 atom37 坐标。
-
 # architecture_overview
 
-OpenFold 是 OneScience 中的 AlphaFold2 / OpenFold 风格结构预测实现，适合已有 AF2 特征流水线、MSA、template 和 recycling 协议的蛋白质结构预测任务。
-
-补充说明：
-
-- 模型类名是 `AlphaFold`
-- 支持 monomer、multimer 与 seq embedding 相关配置分支
-- 它与 Protenix 的主要差异是：OpenFold 使用 Evoformer + StructureModule 的 AF2 协议，Protenix 使用 Pairformer + diffusion 的 AF3 风格协议
+OpenFold 的公开模型类是 `onescience.models.openfold.model.AlphaFold`。它接受 dict-like config，根据 `config.globals.is_multimer` 与 `config.globals.seqemb_mode_enabled` 选择输入嵌入路径，再组合 recycling、template、Extra MSA、Evoformer、StructureModule 和辅助 heads。`forward` 原生支持 autograd，因而可以作为训练或推理模型调用。
 
 # parameter_scale
 
-- 具体参数来自 `onescience.configs.bio.openfold.config.model_config(...)`
-- `config_preset` 决定 monomer / multimer / seq 模式
-- `long_sequence_inference`、`use_deepspeed_evoformer_attention` 会影响推理内存与 attention 实现
-- tracing 需要 `config.data.predict.fixed_size=True`
+- `AlphaFold(config)` 的通道、block 数、template/extra-MSA 开关和结构模块规模全部由 `config.model` 决定。
+- `config.globals.is_multimer` 控制多聚体分支；`seqemb_mode_enabled` 控制 preembedding 分支。
+- recycling 次数不是构造参数，而是 `batch["aatype"].shape[-1]`。
+- 长序列优化、chunking 和 activation checkpointing 由配置及模型辅助方法控制。
 
 # architecture_structure
 
-- InputEmbedder / InputEmbedderMultimer
-  - 生成 MSA representation 与 pair representation
-- RecyclingEmbedder
-  - 把上一轮结构、MSA、pair 信息注入下一轮
-- Template stack
-  - 处理 template pair / template angle 等特征
-- ExtraMSAStack
-  - 处理 extra MSA
-- EvoformerStack
-  - 交替更新 MSA、pair、single 表征
-- StructureModule
-  - IPA 和结构更新，恢复 atom 坐标
-- Aux heads
-  - 按配置输出 distogram、pLDDT、masked MSA 等辅助头
+```text
+OpenFold feature dict with recycle dimension
+  -> InputEmbedder / InputEmbedderMultimer / PreembeddingEmbedder
+  -> RecyclingEmbedder
+  -> optional TemplateEmbedder
+  -> optional ExtraMSAStack
+  -> EvoformerStack
+  -> StructureModule
+  -> auxiliary heads
+```
+
+除最后一轮 recycling 外，中间轮默认不保留梯度；最终结果再经过辅助 heads。
 
 # input_schema
 
-- 主输入：`batch: dict[str, Tensor]`
-- 每个 feature 的最后一维是 recycling 维度，forward 中逐 cycle 取 `t[..., cycle_no]`
-- 核心字段：
-  - `aatype`: `[*, N_res]`
-  - `target_feat`: `[*, N_res, C_tf]`
-  - `residue_index`: `[*, N_res]`
-  - `msa_feat`: `[*, N_seq, N_res, C_msa]`
-  - `seq_mask`: `[*, N_res]`
-  - `msa_mask`: `[*, N_seq, N_res]`
-  - `pair_mask`: `[*, N_res, N_res]`
-  - `extra_msa_mask`: `[*, N_extra, N_res]`
-  - template 相关字段：`template_aatype`, `template_all_atom_positions`, `template_all_atom_mask`, `template_pseudo_beta`, `template_pseudo_beta_mask`
+- `forward(batch: dict[str, Tensor])`。
+- 每个输入 tensor 的最后一维是 recycling 维。
+- 核心字段包括 `aatype`、`target_feat`、`residue_index`、`msa_feat`、`seq_mask`、`msa_mask`、`pair_mask`、`extra_msa_mask`。
+- 启用 template 时还需要 `template_mask`、`template_aatype`、`template_all_atom_positions`、`template_all_atom_mask`、`template_pseudo_beta` 与 `template_pseudo_beta_mask`。
 
 # output_schema
 
-- 主结构输出：
-  - `final_atom_positions`
-  - `final_atom_mask`
-  - `final_affine_tensor`
-- 中间表征：
-  - `msa`
-  - `pair`
-  - `single`
-- 辅助输出：
-  - `num_recycles`
-  - aux heads 输出，具体取决于配置
+- 结构输出包含 `final_atom_positions`、`final_atom_mask`、`final_affine_tensor`。
+- 表征输出包含 `msa`、`pair`、`single` 和 structure-module 输出 `sm`。
+- `num_recycles` 记录实际轮数；存在 `asym_id` 时会透传。
+- 辅助 heads 根据配置加入 distogram、predicted LDDT、masked MSA、PAE/TM 等结果。
 
 # shape_transformations
 
-- `msa_feat`: `[*, N_seq, N_res, C_msa]`
-- MSA embedding: `[*, N_seq, N_res, C_m]`
-- Pair embedding: `[*, N_res, N_res, C_z]`
-- Single representation: `[*, N_res, C_s]`
-- Structure output atom37: `[*, N_res, 37, 3]`
-- recycling 维度在 outer forward 中逐轮消去
+1. 每轮从所有 batch tensor 的末维选取当前 recycle slice。
+2. 输入嵌入产生 MSA `(B, N_seq, N_res, C_m)` 与 pair `(B, N_res, N_res, C_z)` 表征。
+3. Evoformer 更新 MSA/pair 并产生 single `(B, N_res, C_s)`。
+4. StructureModule 生成 atom37 坐标 `(B, N_res, 37, 3)` 及相关表示。
+5. 最后一轮结果进入辅助 heads。
 
 # key_dependencies
 
-- `InputEmbedder`
-- `InputEmbedderMultimer`
-- `RecyclingEmbedder`
-- `ExtraMSAStack`
-- `EvoformerStack`
-- `StructureModule`
+- `openfold_evoformer`
+- `openfold_structure_module`
 
 # common_modification_points
 
-- 接入新数据时，优先复用 OpenFold feature pipeline，不要只生成 `aatype`
-- 改 monomer/multimer 时，需要同时确认 input embedder、template searcher、feature processor 和配置 preset
-- 若启用 seq embedding mode，alignment runner 只用于 template，序列表征来自 embedding generator
-- 修改 recycling 次数或 fixed-size tracing 时，要同步检查 batch 最后一维和 padding
+- 切换 monomer、multimer 或 seq embedding 时同步替换输入特征与配置。
+- 修改 recycling 次数时修改 batch 末维，而不是为模型添加不存在的参数。
+- 调整长序列内存时优先使用源码已有 chunking、inplace-safe 和 activation-checkpointing 机制。
+- 训练代码在 forward 结果上组合损失；推理代码使用 `torch.no_grad()` 并解析输出字典。
 
 # implementation_risks
 
-- OpenFold 的 batch 协议与 `onescience.datapipes.biology.ProteinDataset` 的通用特征不是一回事，需要专门 adapter 或 OpenFold feature pipeline
-- `examples/biosciences/openfold/run_pretrained_openfold.py` 会使用 alignment、template、database 工具链，不能离线假设所有特征已存在
-- monomer 和 multimer 使用不同 template searcher 与 input embedder，不能只改模型配置名
+- OpenFold batch 不是通用蛋白数据字典，缺失专用 feature 字段不能通过填充占位值解决。
+- 所有 feature 的 recycling 末维必须一致。
+- monomer/multimer/template 配置与特征协议不匹配会在嵌入阶段失败。
+- 输出辅助字段随配置变化，后续代码不应假设所有 heads 始终存在。
 
 # code_references
 
@@ -102,4 +71,4 @@ OpenFold 是 OneScience 中的 AlphaFold2 / OpenFold 风格结构预测实现，
 - `{onescience_path}/onescience/src/onescience/models/openfold/embedders.py`
 - `{onescience_path}/onescience/src/onescience/models/openfold/evoformer.py`
 - `{onescience_path}/onescience/src/onescience/models/openfold/structure_module.py`
-- `{onescience_path}/onescience/examples/biosciences/openfold/run_pretrained_openfold.py`
+- `{onescience_path}/onescience/src/onescience/models/openfold/heads.py`

@@ -1,61 +1,46 @@
 # launch
 
-MolSculptor 可通过小分子 inference 脚本、training 脚本或具体 case 脚本启动。下面是 PI3K de novo 生成示例:
+MolSculptor 在 OneScience 中是 Flax 分子扩散 Transformer。代码生成应直接使用 `DiffusionTransformer` 的 `init/apply` 接口；完整分子编码—去噪—解码流程可使用同包的 `Inferencer`。
 
 ```sh
-python onescience/examples/biosciences/molsculptor/inference/diff_evo_denovo_pi3k.py --config_path ./configs/molsculptor_config.py --params_path ./ckpts/molsculptor_dit.pkl --logger_path ./outputs/molsculptor_pi3k/log.txt --save_path ./outputs/molsculptor_pi3k --total_step 100 --device_batch_size 8 --vae_config_path ./configs/molsculptor_vae.py --vae_params_path ./ckpts/molsculptor_vae.pkl --alphabet_path ./assets/molsculptor_alphabet.pkl --init_molecule_path onescience/examples/biosciences/molsculptor/cases/case_pi3k/padding_molecule_propane.pkl --num_latent_tokens 16 --dim_latent 32 --eq_steps 10 --callback_step 10 --beam_size 5 --sampling_method beam --n_replicate 1 --diffusion_timesteps 500
-```
-
-预训练 autoencoder 示例:
-
-```sh
-bash onescience/examples/biosciences/molsculptor/training/scripts/pretrain_ae.sh
+python -c "from onescience.flax_models.MolSculptor.src.model.diffusion_transformer import DiffusionTransformer; from onescience.flax_models.MolSculptor.train.inference import InferEncoder, InferDecoder, Inferencer; import inspect; print(inspect.signature(DiffusionTransformer)); print(inspect.signature(DiffusionTransformer.__call__)); print(inspect.signature(InferEncoder)); print(inspect.signature(InferDecoder)); print(inspect.signature(Inferencer))"
 ```
 
 # input_schema
 
-- 小分子输入: SMILES、初始分子 pickle、分子图特征或 case-local 配置。
-- docking case 输入: PDBQT receptor、DSDP 脚本、缓存路径和 reward 配置。
-- 常用默认/显式参数:
-  - `n_padding_atom=64` 用于图 padding。
-  - `sampling_method` 可选 `greedy`、`beam`、`top_p`、`top_k`、`nucleus`。
-  - `diffusion_timesteps` 来自 diffusion config。
-  - `beam_size`、`top_k`、`top_p` 控制 SMILES 解码策略。
+- `tokens`：浮点分子 token/特征，形状 `[batch, token_count, channels]`。
+- `tokens_mask`：有效 token mask，形状 `[batch, token_count]`。
+- `time`：扩散时间，形状 `[batch]`；`tokens_rope_index` 为整型旋转位置索引。
+- 可选 `label` 和 `force_drop_ids` 用于带标签条件及 classifier-free guidance。
+- 主要配置为 `hidden_size`、`n_iterations`、时间/标签嵌入、DiT block、输出头及 `bf16_flag`。
+- 输出与输入 token 保持 batch、token 和原始通道维，表示当前扩散步的预测。
 
 # runtime_interfaces
 
-- `diff_evo_denovo_pi3k.py`: PI3K de novo 小分子生成入口。
-- `diff_evo_opt_dual.py`: dual inhibitor 优化入口。
-- `Inferencer`: 图编码与序列采样入口。
-- `smi2graph_features`: SMILES 到 padded graph features。
-- `GaussianDiffusion`: latent diffusion 调度。
-- `dsdp_reward`: docking reward 计算。
-- `NSGA_II`: 多目标候选选择。
+- `DiffusionTransformer(config, global_config)`：完整 Flax 去噪网络。
+- `DiffusionTransformer.init(...)`：从样例输入初始化参数树。
+- `DiffusionTransformer.apply(...)`：训练和推理共用前向接口。
+- `InferEncoder`、`InferDecoder`：分子图与扩散 token 之间的编码/解码组件。
+- `Inferencer`：组合 checkpoint、编码器、扩散采样器和解码器的高层推理对象。
 
 # main_functions
 
-- `infer`
-- `smi2graph_features`
-- `standardize`
-- `encoding_graphs`
-- `make_graph_feature`
-- `tokens2smiles`
-- `LogP_reward`
-- `QED_reward`
-- `SA_reward`
-- `tanimoto_sim`
-- `dsdp_reward`
-- `NSGA_II`
+- `DiffusionTransformer.__call__`
+- `DiffusionTransformer.init`
+- `DiffusionTransformer.apply`
+- `Inferencer`
+- `InferEncoder`
+- `InferDecoder`
 
 # execution_resources
 
-- 需要 JAX/Flax、RDKit、训练或推理 checkpoint、case 配置。
-- docking reward 还依赖外部 docking 二进制、PDBQT 文件和 case 脚本。
-- 批量生成和 diffusion sampling 推荐 GPU；reward 筛选可能偏 CPU/外部程序密集。
+- 依赖 JAX、Flax、`ml_collections.ConfigDict` 及和模型配置一致的参数树。
+- 训练通常需要加速器；`bf16_flag`、设备 mesh 和 batch 大小应由运行环境决定。
+- 完整分子生成还需要匹配的图编码器/解码器、归一化统计量和扩散调度配置。
 
 # operation_limits
 
-- 不处理蛋白结构预测、蛋白 backbone 生成或 DNA/RNA 序列建模。
-- SMILES 无效、sanitize 失败或图超出 padding 上限时需要过滤。
-- docking case 的外部依赖不可在通用环境中假设存在。
-- 生成分子不等于已验证药物候选，必须经过化学有效性和下游筛选。
+- `DiffusionTransformer` 只执行 token 去噪，不单独负责原始分子文件读取、图构建或化学有效性修复。
+- `tokens_rope_index` 的类型和拓扑顺序必须与编码器一致。
+- 参数树与配置的隐藏维度、block 数、条件嵌入设置不匹配时无法加载。
+- 生成分子仍需价态、连通性、去重和任务属性验证。

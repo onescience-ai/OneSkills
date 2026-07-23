@@ -6,7 +6,7 @@
   "visibility": "public",
   "created_at": "2026-06-29",
   "updated_at": "2026-06-29",
-  "description": "ProteinMPNN 是蛋白质骨架条件序列设计原语，以 N/CA/C/O 骨架坐标、链设计 mask、残基索引和链编码为输入，通过几何图特征、encoder-decoder 消息传递和自回归 decoding 生成或打分氨基酸序列；使用时通常经 PDB/JSONL/helper 约束文件和 CLI/API 完成固定链、固定位点、PSSM、tied positions 或 omit AA 设计，规划时应优先维护骨架原子顺序、chain_M 设计控制、CA-only 权重一致性和后续结构验证流程。",
+  "description": "ProteinMPNN 是 OneScience 中的蛋白骨架条件序列模型资源。`ProteinMPNN` 以骨架坐标、序列、有效位点 mask、设计位点 `chain_M`、残基索引、链编码和随机解码噪声为输入，使用几何图编码器与自回归解码器返回 21 类氨基酸 log probability；同一源码还提供 `sample`、`tied_sample`、条件与无条件概率接口及 PDB/约束特征化工具。该资源用于按源码 API 构建设计、打分和训练代码。",
   "tags": [
     "protein",
     "inverse-folding",

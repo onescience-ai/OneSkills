@@ -1,83 +1,46 @@
 # launch
 
-DiffDock 通常通过 examples 中的采样脚本启动，配置文件中显式指定受体、配体、score 模型和采样参数：
+DiffDock 的模型入口位于 `onescience.models.diffdock`。模型目录、checkpoint 与设备均由调用方显式传入：
 
 ```sh
-cd "$ONESCIENCE_DIR" && python examples/biosciences/diffdock/scripts/sample_diffdock.py --config examples/biosciences/diffdock/configs/sampling.yml
-```
-
-训练 score 模型时使用训练脚本和 YAML 配置：
-
-```sh
-cd "$ONESCIENCE_DIR" && python examples/biosciences/diffdock/scripts/train_diffdock.py --config examples/biosciences/diffdock/configs/training.yml
-```
-
-Python API 加载 score 模型示例：
-
-```python
-from onescience.models.diffdock.score_wrapper import load_score_model
-
-model, model_args, t_to_sigma = load_score_model(
-    model_dir="${ONESCIENCE_DATASETS_DIR}/diffdock/score_model",
-    ckpt="best_ema_inference_epoch_model.pt",
-    no_parallel=True,
-)
+python -c "from onescience.models.diffdock import build_score_model, load_model_args, load_score_model; from onescience.models.diffdock.cg_model import CGModel; import inspect; print(inspect.signature(load_model_args)); print(inspect.signature(build_score_model)); print(inspect.signature(load_score_model)); print(inspect.signature(CGModel.forward))"
 ```
 
 # input_schema
 
-- 单复合物采样：
-  - `input.complex_name`: 复合物名称，默认示例为 `6o5u_test`
-  - `input.protein_path`: 受体 PDB 路径
-  - `input.ligand_description`: 配体 SDF/MOL2 路径或 SMILES
-  - `input.protein_sequence`: 可选蛋白序列
-  - `input.lm_embeddings`: 可选语言模型嵌入
-- CSV 批量采样：
-  - `input.protein_ligand_csv`: CSV 路径
-  - CSV 字段：`complex_name`、`protein_path`、`ligand_description`、`protein_sequence`
-- 模型参数默认值：
-  - `model.ckpt=best_ema_inference_epoch_model.pt`
-  - `model.old_score_model=false`
-  - `confidence.confidence_ckpt=best_model_epoch75.pt`
-  - `sampling.samples_per_complex=10`
-  - `sampling.batch_size=10`
-  - `sampling.inference_steps=20`
-  - `sampling.sigma_schedule=expbeta`
-  - `sampling.no_final_step_noise=true`
-  - `sampling.initial_noise_std_proportion=1.0`
-  - `runtime.device=auto`
+- `model_dir`：包含 `model_parameters.yml` 的目录；`checkpoint_name` 为该目录下的 score 权重。
+- `complex_batch`：DiffDock datapipe 生成的 PyG complex batch，至少包含 ligand/receptor 节点、坐标、边、batch、时间噪声特征与可选 LM embedding。
+- 模型参数控制 `sigma_embed_dim`、`sh_lmax`、卷积层数、cross-distance cutoff、torsion 与 confidence 分支等结构。
+- `CGModel.forward` 返回平移 score `(B, 3)`、旋转 score `(B, 3)` 和按可旋转键排列的 torsion score；confidence 配置可产生不同输出。
 
 # runtime_interfaces
 
-- `load_model_args`: 从模型目录读取 `model_parameters.yml`。
-- `model_uses_lm_embeddings`: 判断模型参数是否依赖 ESM/语言模型嵌入。
-- `build_score_model`: 根据模型参数构建 score 模型和噪声调度函数。
-- `load_score_model`: 加载 checkpoint、EMA 权重并切换到 eval 模式。
-- `CGModel.forward`: 默认粗粒度 score 预测入口。
-- `AAModel.forward`: 全原子 score 预测入口。
-- `CGModel.torsional_forward`: 仅计算扭转 score 的入口。
+- `load_model_args(model_dir)`：读取模型配置。
+- `model_uses_lm_embeddings(model_args)`：检查 datapipe 是否必须提供语言模型表征。
+- `build_score_model(model_args, device, t_to_sigma, ...)`：构建未加载权重的 score 网络，供训练使用。
+- `load_score_model(model_dir, ckpt, device, ...)`：构建、加载权重并切换到 eval。
+- `CGModel.forward(data)`：粗粒度 score 入口。
+- `CGModel.torsional_forward(data)`：仅计算扭转相关输出。
 
 # main_functions
 
-- `forward`
-- `torsional_forward`
 - `load_model_args`
 - `model_uses_lm_embeddings`
 - `build_score_model`
 - `load_score_model`
+- `forward`
+- `torsional_forward`
 
 # execution_resources
 
-- 推荐 GPU；`samples_per_complex`、`batch_size`、交叉边数量和是否启用 confidence 模型会直接影响显存。
-- 需要可读的 score 模型目录、checkpoint、`model_parameters.yml`、受体 PDB 和配体文件。
-- 若配置中启用 ESM 嵌入，需要准备 ESM 依赖、缓存或预计算 embedding。
-- 输出目录需要可写，采样会写入候选 pose、日志和可能的重排序结果。
-- CPU 可用于小规模 smoke 测试，但实际采样通常会很慢。
+- 需要 PyTorch、PyG/e3nn 相关依赖、score checkpoint 和已构图的蛋白-配体 batch。
+- 训练或推理代码需要数据构图知识时，召回 datapipe 资源 `biology_diffdock_dataset`；不要从 examples 查找数据入口。
+- 推理采样还需由后续代码实现噪声 schedule、迭代更新、候选保存和可选 confidence 重排。
+- 训练代码应使用 `build_score_model`，并从 datapipe 提供时间步、目标 score 和 loss 所需字段。
 
 # operation_limits
 
-- 适用于小分子-蛋白对接，不适用于蛋白-蛋白、蛋白-核酸或从头药物生成。
-- 采样质量依赖输入受体构象和口袋定义；未处理的全蛋白、大量异质原子或异常链编号可能导致图构建失败。
-- confidence 重排序只能辅助筛选 pose，不能等同于实验亲和力验证。
-- `AAModel` 部分高级分支未完整实现，默认优先走 `CGModel`。
-- 配体无可旋转键时扭转输出为空，这是合法情况。
+- 模型只预测对接扩散 score，不负责读取 PDB/SDF、构图或完整采样循环。
+- 适用于小分子-蛋白对接，不适用于蛋白-蛋白或从头分子生成。
+- 配置中的 LM embedding、全原子/粗粒度和 torsion 选项必须与数据字段及 checkpoint 一致。
+- 无可旋转键时 torsion 输出为空是合法结果。

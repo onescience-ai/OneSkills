@@ -1,8 +1,6 @@
-# component_info
-
-PT-DiT 是基于 ProToken 的蛋白序列-结构协同生成组件，核心功能是在 ProToken 结构词表与氨基酸词表构成的 latent 空间中执行 diffusion transformer 采样，并将结果映射回 `protoken_indexes` 和 `aatype_indexes`；它不是传统序列到结构预测，也不是 ProteinMPNN 式 backbone-to-sequence inverse folding。
-
 # architecture_overview
+
+PT-DiT 是基于 ProToken 的蛋白序列-结构协同生成模型，核心功能是在 ProToken 结构词表与氨基酸词表构成的 latent 空间中执行 diffusion transformer 采样，并将结果映射回 `protoken_indexes` 和 `aatype_indexes`；它不是传统序列到结构预测，也不是 ProteinMPNN 式 backbone-to-sequence inverse folding。
 
 PT-DiT 生成路线:
   ProToken id
@@ -84,15 +82,12 @@ PT-DiT 生成路线:
 
 # key_dependencies
 
-- `DiffusionTransformer`
-- `DiffusionTransformerBlock`
-- `GaussianDiffusion`
-- `TimestepEmbedder`
-- `LabelEmbedder`
-- `ProToken VQ_Decoder`
-- `Protein_Decoder`
-- `protoken_emb.pkl`
-- `aatype_emb.pkl`
+- `ptdit_attention_modules`
+- `ptdit_structure_transformer`
+- `ptdit_diffusion_transformer`
+- `ptdit_gaussian_diffusion`
+- `protoken_vq_decoder`
+- `protoken_protein_decoder`
 
 # common_modification_points
 
@@ -115,6 +110,3 @@ PT-DiT 生成路线:
 - `{onescience_path}/onescience/src/onescience/flax_models/Pt_DiT/model/diffusion_transformer.py`
 - `{onescience_path}/onescience/src/onescience/flax_models/Pt_DiT/train/schedulers.py`
 - `{onescience_path}/onescience/src/onescience/flax_models/Pt_DiT/README.md`
-- `{onescience_path}/onescience/examples/biosciences/pt_dit/example_scripts/de_novo_design.py`
-- `{onescience_path}/onescience/examples/biosciences/pt_dit/configs/dit_config.py`
-- `{onescience_path}/onescience/examples/biosciences/pt_dit/configs/global_config.py`

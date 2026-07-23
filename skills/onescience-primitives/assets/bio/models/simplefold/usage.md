@@ -1,44 +1,44 @@
 # launch
 
-SimpleFold 用于蛋白 FASTA 的快速单序列结构折叠和设计候选初筛。用户说“快速预测这些蛋白序列结构”“不用完整 MSA/template，先筛一下 ProteinMPNN 设计序列”“用 SimpleFold 生成 PDB 和 pLDDT”时召回。
-
-CLI 推理示例：
+SimpleFold 是 Lightning 完整流匹配结构模型，内部架构为 `FoldingDiT`。训练器调用 `training_step`；推理器将原始 batch 交给 `predict_step`，由 processor、ESM 条件、sampler 和 EMA 模型共同完成采样。
 
 ```sh
-cd "$ONESCIENCE_DIR/examples/biosciences/simplefold" && python -c "from simplefold.cli import main; main()" --simplefold_model simplefold_100M --ckpt_dir "$ONESCIENCE_MODELS_DIR/simplefold" --num_steps 500 --tau 0.01 --nsample_per_protein 1 --plddt --fasta_path "$RUN_DIR/simplefold_fasta_inputs" --output_dir "$RUN_DIR/simplefold_out" --backend torch --output_format pdb
+python -c "from onescience.models.simplefold.simplefold import SimpleFold; from onescience.models.simplefold.torch.architecture import FoldingDiT; import inspect; print(inspect.signature(SimpleFold)); print(inspect.signature(SimpleFold.training_step)); print(inspect.signature(SimpleFold.predict_step)); print(inspect.signature(FoldingDiT)); print(inspect.signature(FoldingDiT.forward))"
 ```
 
 # input_schema
 
-- 输入对象：蛋白 FASTA 文件或目录、SimpleFold checkpoint 目录、输出目录、模型规模、采样步数、温度、每条序列采样数和后端。
-- FASTA header 应能追踪候选来源；来自 ProteinMPNN 的批量候选建议使用稳定序列 ID。
-- 常用默认/显式参数：`simplefold_model=simplefold_100M`，`num_steps=500`，`tau=0.01`，`nsample_per_protein=1`，`backend=torch`，`output_format=pdb`。
-- `--plddt` 用于输出置信度；批量初筛可先降低 `num_steps`，高价值候选再用 OpenFold 或 Protenix 复核。
-- SimpleFold 输入是氨基酸序列，不接受 RFdiffusion backbone 作为直接输入；骨架需先经 ProteinMPNN 转为序列。
-- 智能体召回时建议记录：`usage_mode=fast_structure_prediction | design_screening`，`entrypoint=simplefold CLI | inference.py`，`input_artifacts=fasta | fasta_dir`，`output_artifacts=pdb | plddt`，`preflight_checks=fasta_validity | checkpoint_dir | output_dir | backend`。
+- `SimpleFold` 构造需要 `architecture`、特征 `processor`、flow-matching `loss/path/sampler`；训练还需 optimizer/scheduler。
+- `FoldingDiT.forward(noised_pos, t, feats, self_cond=None)` 接受 `[batch, atoms, 3]` 噪声坐标、扩散时间和特征字典。
+- 核心特征包括 `ref_pos`、`ref_charge`、`ref_element`、`ref_atom_name_chars`、`atom_pad_mask`、atom-to-token 映射、残基/实体/链/对称索引及 `esm_s`。
+- 推理 batch 还可包含 `num_repeats`；processor 负责把序列/结构记录转换为上述模型特征。
+- 架构输出为坐标/速度预测；`predict_step` 返回并可保存 sampler 生成的结构候选与置信度相关结果。
 
 # runtime_interfaces
 
-- `simplefold.cli.main`：CLI 入口，可通过 `python -c "from simplefold.cli import main; main()"` 调用。
-- `inference.py`：示例推理脚本，适合按 FASTA 文件或目录批量生成结构。
-- `SimpleFold.sample`：执行结构采样。
-- `SimpleFold.forward`：模型前向计算。
+- `SimpleFold(...)`：组合训练、EMA、ESM 条件和采样逻辑的完整 Lightning 模型。
+- `SimpleFold.training_step(batch, batch_idx)`：flow matching 或 pLDDT 训练入口。
+- `SimpleFold.predict_step(batch, batch_idx)`：完整推理采样入口。
+- `SimpleFold.configure_optimizers()`：创建训练优化器和调度器。
+- `FoldingDiT.forward(noised_pos, t, feats, self_cond=None)`：底层去噪网络接口。
 
 # main_functions
 
-- `forward`
-- `sample`
+- `SimpleFold.training_step`
+- `SimpleFold.predict_step`
+- `SimpleFold.configure_optimizers`
+- `FoldingDiT.forward`
 
 # execution_resources
 
-- 推荐 GPU；短序列和小批量可用于快速初筛。
-- 需要 SimpleFold checkpoint、FASTA 输入、可写输出目录；部分配置可能依赖 ESM 表征或模型 token/atom 特征。
-- 输出通常为 PDB 和 pLDDT/置信度信息；用于快速过滤明显不可折叠候选。
-- 观察项应包含：输出 PDB 数量、pLDDT 是否生成、序列是否被跳过、失败是否来自 FASTA 格式、checkpoint、后端或显存。
+- 依赖 PyTorch、Lightning、ESM 权重、processor、flow path/sampler 及训练 checkpoint。
+- 从 mmCIF/PDB 或结构样本构造训练/推理 batch 时，召回 datapipe 资源 `simplefold_data_pipeline`。
+- 原子数、重复采样数、ESM 规模和 Transformer 宽度决定 GPU/DCU 显存。
+- 推理应优先使用 checkpoint 中同步的 EMA 参数；训练环境可使用 FSDP。
 
 # operation_limits
 
-- SimpleFold 不替代 OpenFold 的完整 MSA/template 协议；高价值候选应做更严格结构验证。
-- 不用于蛋白-核酸-配体复合物预测；复合物任务召回 Protenix。
-- 不生成骨架和序列设计；骨架生成用 RFdiffusion，序列设计用 ProteinMPNN。
-- 长序列、大批量或低置信度结果需要拆分批次、调整步数或换用更合适模型复核。
+- 底层 `FoldingDiT` 不读取 FASTA 或保存结构，完整数据转换与采样由 `SimpleFold` 负责。
+- ESM 模型名称、嵌入层数/宽度必须和架构配置一致。
+- atom-to-token 映射、mask、参考原子属性或链索引错误会导致形状错误或无效结构。
+- 预测坐标需结合 pLDDT、几何检查和独立验证使用。

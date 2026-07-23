@@ -1,58 +1,52 @@
 # description
 
-AlphaFold 规划知识用于判断何时调用原版 AF2/Multimer JAX 推理流水线，并把蛋白 FASTA、数据库、模板日期、preset、参数目录和输出目录组织成可执行推理任务。
+AlphaFold 规划知识用于基于 `RunModel` 构建 JAX/Haiku 单体或多聚体结构推理代码，并确保配置、参数树与特征管线相互匹配。
 
 # when_to_use
 
-- 用户要求复用原版 AlphaFold v2 或 AlphaFold-Multimer 推理。
-- 输入是蛋白 FASTA，目标是结构预测、pLDDT、pTM、ipTM、PAE 或 ranked PDB。
-- 用户明确需要 AF2/Multimer 数据库检索、template search 或 Amber relaxation。
-- 当 `workflow_type=protein_design_to_structure_validation` 且用户显式要求原版 AlphaFold/Multimer JAX 路线作为 AF2-style 复核时，可作为结构验证阶段；若用户未指定原版 JAX，OpenFold 通常是 PyTorch AF2 路线。
-- 不用于 AF3 多分子复合物、核酸、配体结构预测；这类需求优先 AlphaFold3 或 Protenix。
-- 不用于 OpenFold/PyTorch AF2 batch、训练或微调；这类需求优先 OpenFold。
+- 已有 AlphaFold 配置、参数和数据管线特征，需要直接构建模型推理。
+- 需要单体或多聚体 AlphaFold 结果与 pLDDT、PAE、pTM/ipTM 等置信度。
+- 需要检查特征处理、模型 shape 或 checkpoint 是否与源码接口兼容。
+- 不用于构建原生训练循环；`RunModel` 只实现推理包装。
 
 # inputs
 
-- 任务类型: monomer、monomer_ptm、multimer。
-- 生物输入: FASTA 文件、链信息、模板日期限制。
-- 资源输入: 参数目录、数据库目录、外部搜索工具路径、输出目录。
-- 运行策略: 是否 relax、是否复用 features、是否批量调度。
-- 端到端上游产物: ProteinMPNN 设计 FASTA、候选 ID、可选 SimpleFold/OpenFold 初筛结果；需要另行准备 AlphaFold v2 数据库、模板日期和参数目录。
+- `ml_collections.ConfigDict` 模型配置。
+- 与配置匹配的 Haiku 参数树；若省略将随机初始化。
+- AlphaFold 数据管线输出的 raw feature dict 或已处理 feature dict。
+- `random_seed` 与目标 JAX device/runtime。
 
 # outputs
 
-- 调用决策: 是否使用 alphafold。
-- 执行计划: run script、preset、数据库 preset、模板日期、输出路径。
-- 结果产物: feature pickle、result pickle、ranked PDB、confidence JSON、timings。
-- 下游交接: 将 ranked PDB、confidence JSON、PAE/pLDDT/pTM/ipTM、候选 ID 和 timings 交给 ranking/report；复合物或含配体候选转 AlphaFold3/Protenix。
+- `RunModel` 实例及可复用的特征处理、shape 检查和预测调用代码。
+- 模型 prediction dictionary，包括结构与可用置信度字段。
+- 对单体/多聚体模式、参数来源和 feature contract 的显式记录。
 
 # procedure
 
-1. 确认输入是蛋白序列而不是核酸、小分子或 backbone design。
-2. 若是端到端 workflow，确认本阶段是用户显式要求的 `af2_jax_validation`，并核对上游 FASTA 是否来自设计序列或候选筛选。
-3. 判断单体或多体，选择 `model_preset`。
-4. 检查数据库、外部工具、参数和模板日期。
-5. 生成 run_alphafold 命令。
-6. 运行后检查 ranked PDB、pLDDT、pTM/ipTM 和 PAE。
-7. 根据结果决定是否 relax、复核或进入下游筛选。
+1. 从用户任务确定 monomer 或 multimer，并读取真实配置中的 `multimer_mode`。
+2. 加载与该配置匹配的参数树；没有预训练参数时明确标记随机初始化。
+3. 使用对应数据管线生成 raw feature dict。
+4. 实例化 `RunModel(config, params)`，调用 `process_features`。
+5. 可选调用 `eval_shape` 提前验证 JIT shape。
+6. 调用 `predict(feat, random_seed)`，按字典中实际存在的字段消费结果。
+7. 若需要文件产物，在模型调用之后另建序列化步骤。
 
 # constraints
 
-- `model_preset` 必须和 FASTA 链组织一致。
-- 数据库检索不可在缺少数据库和工具的环境中假定可运行。
-- multimer 不应被简化为 monomer 拼接输入。
-- 输出结构置信度不足时，不应直接进入实验结论。
-- AlphaFold 是 JAX/Haiku AF2 路线，不应与 OpenFold PyTorch batch 或 Protenix/AlphaFold3 AF3 feature dict 混用。
-- 本卡只声明原版 AF2 JAX 验证 stage contract；端到端 workflow 的骨架生成、序列设计、工具预检和候选排序不在本卡内实现。
+- 只从 `onescience.flax_models.alphafold` 及其数据管线导入实现。
+- monomer/multimer 配置、参数和特征不可交叉混用。
+- FASTA 不是 `predict` 的直接输入，必须先通过数据管线。
+- 不把随机初始化结果声明为预训练推理结果。
 
 # next_phase_recommendation
 
-- 高置信 ranked PDB 可进入结构分析、突变设计或 docking。
-- 多体任务建议结合 ipTM、PAE 和接口质量筛选。
-- 低置信区域可用 AlphaFold3/Protenix 或实验信息复核。
+- 将预测字典交给结构序列化或质量评估步骤。
+- 多模型结果可按 `ranking_confidence` 排序。
+- 若用户要求训练，转交编码规划补充独立 Haiku 训练循环和损失规格。
 
 # fallback
 
-- 缺少完整数据库时使用 `reduced_dbs` 或复用已有 features。
-- GPU/内存不足时降低 batch/subbatch 或拆分长序列。
-- multimer pipeline 失败时先单链验证 FASTA 和 MSA，再恢复多链输入。
+- JIT shape 失败时先用 `eval_shape` 定位不匹配字段。
+- 参数树不匹配时回到 checkpoint 与 config 配对，不修改层名绕过加载。
+- 特征缺失时回到对应单体/多聚体数据管线重新构造。

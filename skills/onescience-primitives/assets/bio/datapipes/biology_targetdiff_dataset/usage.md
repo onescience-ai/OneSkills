@@ -1,88 +1,52 @@
 # launch
 
-训练扩散模型时会通过配置调用 targetdiff datapipe：
+该 datapipe 将蛋白口袋和配体解析为 TargetDiff 所需的 `ProteinLigandData`，并用 transform 生成蛋白原子、配体原子和键特征。训练/推理代码直接调用 `get_dataset` 和 `ProteinLigandDataLoader`。
 
 ```sh
-cd "$ONESCIENCE_DIR/examples/biosciences/targetdiff" && python scripts/train_diffusion.py configs/training.yml --device cuda --logdir ./logs_diffusion --tag smoke
-```
-
-采样脚本会从 checkpoint 的训练配置恢复数据集与 transform：
-
-```sh
-cd "$ONESCIENCE_DIR/examples/biosciences/targetdiff" && python scripts/sample_diffusion.py configs/sampling.yml --data_id 0 --device cuda:0 --batch_size 100 --result_path ./outputs/sample_0
-```
-
-Python API 构造数据集示例：
-
-```python
-from torch_geometric.transforms import Compose
-import onescience.utils.targetdiff.transforms as trans
-from onescience.datapipes.targetdiff import get_dataset
-
-transform = Compose([
-    trans.FeaturizeProteinAtom(),
-    trans.FeaturizeLigandAtom("add_aromatic"),
-    trans.FeaturizeLigandBond(),
-])
-dataset, subsets = get_dataset(config=config.data, transform=transform)
+python -c "from onescience.datapipes.targetdiff import get_dataset; from onescience.datapipes.targetdiff.pl_pair_dataset import PocketLigandPairDataset; from onescience.datapipes.targetdiff.pdbbind import PDBBindDataset; from onescience.datapipes.targetdiff.pl_data import ProteinLigandData, ProteinLigandDataLoader; from onescience.utils.targetdiff.transforms import FeaturizeProteinAtom, FeaturizeLigandAtom, FeaturizeLigandBond; import inspect; print(inspect.signature(get_dataset)); print(inspect.signature(PocketLigandPairDataset)); print(inspect.signature(PDBBindDataset)); print(inspect.signature(ProteinLigandData.from_protein_ligand_dicts)); print(inspect.signature(ProteinLigandDataLoader)); print(inspect.signature(FeaturizeProteinAtom)); print(inspect.signature(FeaturizeLigandAtom)); print(inspect.signature(FeaturizeLigandBond))"
 ```
 
 # input_schema
 
-- 配置默认示例：
-  - `data.name=pl`
-  - `data.path=${ONESCIENCE_DATASETS_DIR}/targetdiff/data/crossdocked_v1.1_rmsd1.0_pocket10`
-  - `data.split=${ONESCIENCE_DATASETS_DIR}/targetdiff/data/crossdocked_pocket10_pose_split.pt`
-  - `data.transform.ligand_atom_mode=add_aromatic`
-  - `data.transform.random_rot=false`
-- `PocketLigandPairDataset` 参数：
-  - `raw_path`
-  - `transform`
-  - `version=final`
-- `PDBBindDataset` 参数：
-  - `raw_path`
-  - `transform`
-  - `emb_path=None`
-  - `heavy_only=false`
-- DataLoader 建议：
-  - `follow_batch=("protein_element", "ligand_element", "ligand_bond_type")`
-  - `exclude_keys=["ligand_nbh_list"]`
+- `config.name="pl"` 使用 `PocketLigandPairDataset`，需要原始目录、`index.pkl` 及其引用的蛋白/配体文件。
+- `config.name="pdbbind"` 使用 `PDBBindDataset`；可选 embedding 路径与 heavy-atom 策略由构造参数传入。
+- 可选 `config.split` 指向由样本索引组成的字典；存在时 `get_dataset` 返回 `(dataset, subsets)`，否则只返回 dataset。
+- `ProteinLigandData` 字段以 `protein_`/`ligand_` 前缀保存坐标、元素、原子特征、键索引/类型等。
+- 默认 `follow_batch` 为 `protein_element`、`ligand_element`、`ligand_bond_type`，从而产生 TargetDiff 模型所需的 batch index。
+- 默认 transform 下蛋白特征为 27 维，`add_aromatic` 配体原子类型为 13 类；改变 transform 后必须同步模型构造参数。
 
 # runtime_interfaces
 
-- `get_dataset`: 根据配置创建数据集并可返回 split subsets。
-- `PocketLigandPairDataset`: 口袋-配体生成数据集。
-- `PDBBindDataset`: 亲和力/性质预测数据集。
-- `ProteinLigandData.from_protein_ligand_dicts`: 合并 protein/ligand 字典为 PyG Data。
-- `ProteinLigandDataLoader`: 默认 follow_batch 的 DataLoader。
-- `torchify_dict`: numpy 到 tensor 的字段转换。
-- `get_batch_connectivity_matrix`: 从 batch bond index 重建连通矩阵。
-- `FeaturizeProteinAtom`: 蛋白原子特征变换。
-- `FeaturizeLigandAtom`: 配体原子类型变换。
-- `FeaturizeLigandBond`: 配体键特征变换。
+- `get_dataset(config, transform=...)`：按 `pl`/`pdbbind` 创建 dataset 和可选 subsets。
+- `PocketLigandPairDataset`：LMDB 缓存的口袋—配体生成数据集。
+- `PDBBindDataset`：性质/亲和力数据集。
+- `ProteinLigandData.from_protein_ligand_dicts(...)`：合并两类结构字段。
+- `ProteinLigandDataLoader`：带正确 `follow_batch` 的 PyG loader。
+- `torchify_dict`、`get_batch_connectivity_matrix`：张量转换和按 batch 重建键矩阵。
 
 # main_functions
 
 - `get_dataset`
-- `__getitem__`
-- `get_ori_data`
-- `from_protein_ligand_dicts`
+- `PocketLigandPairDataset.__getitem__`
+- `PDBBindDataset.__getitem__`
+- `ProteinLigandData.from_protein_ligand_dicts`
+- `ProteinLigandDataLoader.__init__`
 - `torchify_dict`
 - `get_batch_connectivity_matrix`
-- `__call__`
+- `FeaturizeProteinAtom.__call__`
+- `FeaturizeLigandAtom.__call__`
+- `FeaturizeLigandBond.__call__`
 
 # execution_resources
 
-- 首次处理需要 CPU、RDKit/PDB 解析依赖和可写 LMDB 目录。
-- 后续训练读取为 LMDB read-only，适合重复实验。
-- 数据 transform 主要是 CPU 张量操作。
-- 训练脚本使用 PyG DataLoader；batch size 由训练配置控制。
-- 大型 CrossDocked 数据集会占用较多磁盘和文件缓存。
+- 首次预处理依赖蛋白/配体解析、RDKit、PyTorch Geometric 和可写 LMDB 目录，主要使用 CPU。
+- 训练读取 LMDB 为只读；大型 CrossDocked 数据集需要足够磁盘和文件缓存。
+- `num_workers`、batch size 和 follow-batch 张量决定主机内存；模型前向再将 batch 移到加速器。
 
 # operation_limits
 
-- 新口袋若没有写入兼容的 `index.pkl`，不能直接走该 datapipe。
-- 生成任务和性质预测任务的字段不同，不能随意互换 `pl` 与 `pdbbind` 配置。
-- batch 时应排除 `ligand_nbh_list`，否则默认 collate 可能失败。
-- 若 LMDB 已存在，修改原始 index 后不会自动重建，需清理旧缓存。
-- 配体解析失败的样本会被跳过，训练前应统计跳过数量。
+- 没有兼容 `index.pkl` 的新口袋不能直接作为 `PocketLigandPairDataset` 原始样本。
+- `pl` 生成数据与 `pdbbind` 性质数据字段/标签不同，不能无条件互换。
+- collate 时应排除字典字段 `ligand_nbh_list`，避免默认 PyG 拼接失败。
+- LMDB 已存在时修改原始索引不会自动重建；数据版本或 transform 契约变化应使用新的缓存。
+- 该 datapipe 不决定推理时每个配体的原子数，也不执行 TargetDiff 反向扩散。

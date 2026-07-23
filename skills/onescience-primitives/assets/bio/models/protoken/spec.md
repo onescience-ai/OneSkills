@@ -1,8 +1,6 @@
-# component_info
-
-ProToken 是蛋白质结构 tokenizer / VQ 编码解码组件，核心功能是把 PDB 结构和 residue/atom features 映射到离散结构 token，并从 token embedding 重建蛋白结构；它常作为 PT-DiT 的结构词表与 decoder 后端，不应被当作直接从序列预测结构的 AF2/AF3 模型。
-
 # architecture_overview
+
+ProToken 是蛋白质结构 tokenizer / VQ 编码解码模型，核心功能是把 PDB 结构和 residue/atom features 映射到离散结构 token，并从 token embedding 重建蛋白结构；它常作为 PT-DiT 的结构词表与 decoder 后端，不应被当作直接从序列预测结构的 AF2/AF3 模型。
 
 PDB 编码路线:
   PDB
@@ -84,14 +82,10 @@ PDB 编码路线:
 
 # key_dependencies
 
-- `VQ_Encoder`
-- `VQTokenizer`
-- `VQ_Decoder`
-- `Protein_Decoder`
-- `InferenceVQWithLossCell`
-- `BottleneckModel`
-- `FlashEvoformerStack`
-- `StructureModule`
+- `protoken_vq_encoder`
+- `protoken_bottleneck`
+- `protoken_vq_decoder`
+- `protoken_protein_decoder`
 
 # common_modification_points
 

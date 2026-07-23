@@ -6,7 +6,7 @@
   "visibility": "public",
   "created_at": "2026-07-06",
   "updated_at": "2026-07-06",
-  "description": "GenScore 是蛋白-配体结合构象打分原语，核心功能是读取蛋白口袋和配体构象并输出候选配体的 score，也可计算原子级或残基级贡献；实现上以配体图编码器和蛋白图编码器为双塔主干，可选择 GraphTransformer 或 GatedGCN，再用配体-靶点节点对的混合密度输出建模距离与亲和相关信号；使用时通过 CLI 指定 PDB/SDF/MOL2、checkpoint、encoder 和贡献分析开关，规划时适合作为 docking 后的候选排序与可解释性分析节点，失败时应优先检查口袋生成、模型权重和图特征维度。",
+  "description": "GenScore 是 OneScience 中的蛋白-配体图打分模型资源。`GenScore` 组合配体与靶点图编码器，将两侧节点表征展开为有效节点对，并返回混合密度参数 `pi`、`sigma`、`mu`、距离、原子类型、键类型和 batch 索引；源码同时提供 GraphTransformer、GatedGCN 以及高层 `scoring` 接口。模型前向并不直接等同于最终标量分数，训练与推理代码应按损失或评估函数完成后处理。",
   "tags": [
     "protein-ligand-scoring",
     "binding-affinity",

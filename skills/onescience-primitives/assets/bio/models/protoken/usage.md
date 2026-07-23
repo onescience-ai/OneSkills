@@ -1,29 +1,16 @@
 # launch
 
-PDB 编码与重建示例:
+ProToken 通过 `src/onescience/flax_models/protoken` 中的 Flax 模型 API 使用。训练和推理代码分别组合编码器、瓶颈、VQ 解码器与蛋白结构解码器：
 
 ```sh
-python onescience/src/onescience/flax_models/protoken/scripts/infer.py --pdb_path ./input.pdb --save_dir_path ./outputs/protoken --load_ckpt_path ./ckpts/protoken_params.pkl --padding_len 768
-```
-
-token indexes 解码为结构示例:
-
-```sh
-python onescience/src/onescience/flax_models/protoken/scripts/decode_structure.py --input_path ./outputs/protoken/vq_code_indexes.pkl --output_dir ./outputs/protoken_decode --load_ckpt_path ./ckpts/protoken_params.pkl --padding_len 768
+python -c "from onescience.flax_models.protoken.model.encoder import VQ_Encoder; from onescience.flax_models.protoken.model.bottleneck import BottleneckModel; from onescience.flax_models.protoken.model.decoder import VQ_Decoder, Protein_Decoder; from onescience.flax_models.protoken.inference.inference import InferenceVQWithLossCell; import inspect; print(inspect.signature(VQ_Encoder)); print(inspect.signature(BottleneckModel)); print(inspect.signature(VQ_Decoder)); print(inspect.signature(Protein_Decoder)); print(inspect.signature(InferenceVQWithLossCell))"
 ```
 
 # input_schema
 
-- `infer.py` 输入:
-  - `--pdb_path`: 单个 PDB。
-  - `--save_dir_path`: 输出目录。
-  - `--load_ckpt_path`: ProToken checkpoint。
-  - `--padding_len`: 常见默认 `768`。
-- `decode_structure.py` 输入:
-  - `--input_path`: token index pickle。
-  - `--output_dir`: 输出目录。
-  - ProToken checkpoint。
-  - padding length / output path。
+- PDB 编码输入应先转换为 residue/atom feature dict、mask、aatype、residue index 与几何字段；模型类不直接读取文件路径。
+- checkpoint 参数树、padding length、VQ codebook 和模型配置必须对应同一训练规格。
+- 解码输入是离散 token index 或对应 codebook embedding，以及结构恢复所需的序列和 mask 字段。
 - 与 PT-DiT 联动输入:
   - `protoken_emb.pkl`。
   - `aatype_emb.pkl`。
@@ -31,21 +18,19 @@ python onescience/src/onescience/flax_models/protoken/scripts/decode_structure.p
 
 # runtime_interfaces
 
-- `scripts/infer.py`: PDB 到 token 与重建结构。
-- `scripts/decode_structure.py`: token indexes 到 PDB。
-- `VQTokenizer`: 离散 codebook quantization。
-- `InferenceVQWithLossCell`: encoder/tokenizer/decoder 推理封装。
-- `Protein_Decoder`: 结构输出。
+- `VQ_Encoder.__call__`：把结构特征编码为连续 latent。
+- `BottleneckModel.__call__`：执行瓶颈映射与量化相关处理。
+- `VQ_Decoder.__call__`：把量化 latent 解码为结构表示。
+- `Protein_Decoder.__call__`：输出蛋白结构相关预测。
+- `InferenceVQWithLossCell.__call__`：组合 encoder、tokenizer、decoder 与推理损失。
 
 # main_functions
 
-- `inference`
-- `decode`
-- `squared_euclidean_distance_fn`
-- `entropy_loss_fn`
-- `compute_plddt`
-- `from_pdb_string`
-- `to_pdb`
+- `VQ_Encoder.__call__`
+- `BottleneckModel.__call__`
+- `VQ_Decoder.__call__`
+- `Protein_Decoder.__call__`
+- `InferenceVQWithLossCell.__call__`
 
 # execution_resources
 

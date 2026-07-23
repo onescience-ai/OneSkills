@@ -6,7 +6,7 @@
   "visibility": "public",
   "created_at": "2026-07-01",
   "updated_at": "2026-07-01",
-  "description": "AlphaFold 是 OneScience 中保留的 DeepMind AlphaFold v2 JAX/Haiku 蛋白质结构预测流水线，面向单体、pTM 和 multimer 场景；它以 FASTA、MSA、模板和特征处理结果为输入，通过 Evoformer、StructureModule 与可选 Amber relaxation 输出 atom37 结构、置信度和排序结果。使用时通常通过 alphafold 示例脚本组织数据库、模板日期、模型 preset 和输出目录；规划时应把它定位为原版 AF2/Multimer 推理复用路线，而不是轻量训练模块或 PyTorch/OpenFold batch 的直接替代品。",
+  "description": "AlphaFold 是 OneScience 中基于 JAX/Haiku 的 AlphaFold 模型资源。公开入口 `RunModel` 接收模型配置、可选参数和由数据管线产生的特征字典，提供 `process_features`、`init_params`、`eval_shape` 与 `predict`；模型根据 `multimer_mode` 调用单体或多聚体实现，并在预测结果中补充 pLDDT、PAE、pTM、ipTM 与排序置信度等可用指标。该资源用于按源码 API 构建推理代码，输出协议是内存中的模型结果字典。",
   "tags": [
     "protein",
     "structure-prediction",

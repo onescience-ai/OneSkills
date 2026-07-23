@@ -1,111 +1,67 @@
-# component_info
-
-AlphaGenome 是面向调控基因组学的 DNA 序列模型组件，核心功能是在长序列上下文中同时预测多类基因组功能轨迹、接触图和剪接信号，并为变异效应评分、区间评分和微调提供统一模型接口；它处理的是 DNA/基因组区间，不是蛋白结构、蛋白设计或小分子生成任务。
-
 # architecture_overview
 
-AlphaGenome 采用 U-Net + Transformer 混合架构，硬性基准来自 `examples/biosciences/alphagenome/README.md` 中的模型架构描述。
-
-DNA 序列: `(1 Mbp, 4)`
-  -> DnaEmbedder: 卷积嵌入 `4 -> 768`
-  -> DownResBlock x7: `1 bp -> 128 bp`, `768 -> 1536`
-  -> TransformerTower x9: MHABlock + MLPBlock + PairUpdateBlock
-  -> SequenceToPairBlock: 序列表示转成成对表示
-  -> UpResBlock x7: 融合 skip connection, `128 bp -> 1 bp`
-  -> OutputEmbedder: 生物体特异调整
-  -> GenomeTracksHead / ContactMapsHead / SpliceSitesHead
+AlphaGenome 资源由 Haiku 网络 `model.AlphaGenome` 和高层接口 `dna_model.AlphaGenomeModel` 组成。`create_model` 生成参数初始化、主预测和 junction 预测函数；`create` 从本地 Orbax checkpoint 恢复参数与状态，并把 organism metadata、参考序列和可选注释资源装配为可调用模型。
 
 # parameter_scale
 
-- 支持最长约 `1,048,576` bp 输入窗口。
-- 1 bp 分辨率输出包括 ATAC、DNase、CAGE、RNA-seq、PRO-cap 和剪接相关输出。
-- 128 bp 分辨率输出包括 ChIP-TF、ChIP-Histone 等轨迹。
-- 2048 bp 分辨率输出包括 Hi-C contact map。
-- README 示例中模型版本支持 `FOLD_0` 到 `FOLD_4` 以及 `all_folds`。
+- `ModelSettings.num_splice_sites=512`。
+- `ModelSettings.splice_site_threshold=0.1`。
+- 参数规模由 checkpoint 与 `model.AlphaGenome` 定义决定，不在 `AlphaGenomeModel` 构造器中重新指定。
+- `create` 用 `(1, 2048, 4)` 的 DNA shape 和 `(1,)` 的 organism index 推导 checkpoint 目标树；这不是所有公开预测方法的固定输入长度声明。
 
 # architecture_structure
 
-- `DNAOneHotEncoder`: DNA 字符串到 `(L, 4)` one-hot。
-- `DnaEmbedder`: 序列卷积嵌入。
-- `DownResBlock`: U-Net 下采样编码。
-- `TransformerTower`: 长序列 attention 与 pair update。
-- `SequenceToPairBlock`: 生成 pair representation。
-- `UpResBlock`: 上采样并融合 skip connection。
-- `OutputEmbedder`: 输出轨迹的生物体特异性调整。
-- `GenomeTracksHead`: ATAC/DNase/CAGE/RNA-seq/ChIP/PRO-cap 等轨迹。
-- `ContactMapsHead`: Hi-C 接触图。
-- `SpliceSitesClassificationHead`, `SpliceSitesUsageHead`, `SpliceSitesJunctionHead`: 剪接相关输出。
+```text
+DNA sequence / genomic interval / variant
+  -> DNAOneHotEncoder or FastaExtractor
+  -> Haiku AlphaGenome trunk
+  -> sequence and pair representations
+  -> output heads and splice-junction branch
+  -> Output / VariantOutput
+  -> optional interval or variant scorers
+```
+
+网络层定义位于 `model/model.py`，卷积、注意力和输出 heads 分别位于相应模块；高层数据抽取、输出过滤和评分编排位于 `model/dna_model.py`。
 
 # input_schema
 
-- 核心生物输入:
-  - 参考基因组 FASTA，通常需要 `.fai` 索引。
-  - genomic interval: chromosome, start, end。
-  - organism: `HOMO_SAPIENS` 或 `MUS_MUSCULUS`。
-  - model version: `FOLD_0` 到 `FOLD_4` 或 `all_folds`。
-- 变异评分输入:
-  - SNV 或 VCF。
-  - reference interval。
-  - requested outputs / ontology terms。
-- 微调输入:
-  - regions CSV，列包含 chromosome,start,end。
-  - BigWig 信号文件。
-  - 预训练模型目录。
+- `create(checkpoint_path, organism_settings=None, model_settings=ModelSettings(), device=None)` 从本地 checkpoint 构造模型。
+- `predict_sequence` 接收 DNA 字符串、organism、`requested_outputs`、可选 ontology terms 与 interval。
+- `predict_interval` 依赖对应 organism 的 `FastaExtractor`。
+- `predict_variant` 接收变异与上下文信息，并可使用参考序列、剪接位点和注释。
+- `score_interval`、`score_variant`、`score_ism_variants` 在预测输入基础上接收相应 scorer 配置。
 
 # output_schema
 
-- 推理输出:
-  - 各预测类型保存为 `.npy`。
-  - 典型 shape 包括 `(1048576, n_tracks)`、`(8192, n_tracks)` 和 contact map 相关输出。
-- 变异评分输出:
-  - 每个变异的评分表 CSV。
-  - `variant_scoring_summary.csv`。
-  - SDK 中可返回 AnnData 风格评分表。
-- 评估输出:
-  - 包含 `bundle`, `metric`, `value` 的 CSV。
-- 微调输出:
-  - finetuned model checkpoint 和训练日志。
+- 序列和区间预测返回 `dna_output.Output`。
+- 变异预测返回包含 reference/alternate 预测的变异输出对象。
+- 评分方法返回 scorer 生成的映射或表结构，具体字段由选择的 interval/variant scorer 决定。
+- 输出 tracks 会按 organism metadata、requested output types 和 ontology terms 过滤。
 
 # shape_transformations
 
-- DNA string -> one-hot: `(L, 4)`
-- DnaEmbedder: `(L, 768)`
-- DownResBlock x7: `(L / 128, 1536)`
-- TransformerTower: `(L / 128, hidden)`
-- SequenceToPairBlock: `(L / 2048, L / 2048, pair_channel)`
-- UpResBlock x7: `(L, 1536)` 与 `(L / 128, 3072)`
-- Genome tracks: 1 bp 或 128 bp 轨迹
-- Contact maps: 2048 bp 接触图
+1. DNA 字符串被编码为末维为 4 的 one-hot 数组并增加 batch 维。
+2. trunk 生成多尺度序列表征和成对表征。
+3. heads 按 metadata 产生不同 output type 的 tracks；padding tracks 在高层接口中被过滤。
+4. 变异路径对 reference 与 alternate 序列分别预测，再由 scorer 比较或聚合。
 
 # key_dependencies
 
-- `AlphaGenome`
-- `AlphaGenomeModel`
-- `DNAOneHotEncoder`
-- `SequenceEncoder`
-- `SequenceDecoder`
-- `TransformerTower`
-- `GenomeTracksHead`
-- `ContactMapsHead`
-- `CenterMaskVariantScorer`
-- `ContactMapScorer`
-- `GeneVariantScorer`
-- `DataPipeline`
+当前没有与 AlphaGenome 内部模块一一对应的独立 bio component primitive；构建代码时应直接使用本模型架构说明和源码引用中的接口。
 
 # common_modification_points
 
-- 新轨迹预测任务优先改 output metadata、head 配置和数据束，不改核心 trunk。
-- 变异效应任务优先选择合适的 scorer，例如 center mask、contact map、gene mask、polyadenylation 或 splice junction。
-- 微调任务优先调整 regions CSV、BigWig 输入、batch size、learning rate 和训练步数。
-- 物种切换必须同步 organism、参考基因组、metadata 和 model version。
+- 用 `OrganismSettings` 绑定非默认 metadata、FASTA、GTF、PAS 和 splice-site feather 文件。
+- 通过 `requested_outputs` 和 ontology terms 缩小输出范围，避免无关 track 计算与搬运。
+- 新增评分逻辑时扩展 scorer 层，不修改主模型输出头的张量协议。
+- 需要低层模型调用时使用 `create_model` 返回的函数；常规预测优先使用 `create` 和 `AlphaGenomeModel`。
 
 # implementation_risks
 
-- AlphaGenome 只处理 DNA/基因组区间，不处理蛋白 FASTA、PDB、小分子或复合物结构。
-- 输入窗口长度、染色体坐标和 FASTA 索引错误会直接导致抽取失败或 shape 不匹配。
-- 变异评分必须保证 reference allele 与参考基因组一致。
-- `all_folds` 推理资源消耗高于单 fold。
-- BigWig 微调数据需要和训练区间、track metadata 对齐。
+- 未配置 `FastaExtractor` 时，区间和需要参考序列的变异方法会失败。
+- 某些 scorer 只有在提供 GTF、PAS 或剪接注释后才可用。
+- 自动设备选择要求 GPU 或 TPU；若明确使用 CPU，必须显式传入 JAX device。
+- checkpoint metadata 与外部 metadata 不匹配会导致输出 track 解释错误。
 
 # code_references
 
@@ -116,4 +72,3 @@ DNA 序列: `(1 Mbp, 4)`
 - `{onescience_path}/onescience/src/onescience/flax_models/alphagenome/model/convolutions.py`
 - `{onescience_path}/onescience/src/onescience/flax_models/alphagenome/model/variant_scoring/variant_scoring.py`
 - `{onescience_path}/onescience/src/onescience/flax_models/alphagenome/finetuning/finetune.py`
-- `{onescience_path}/onescience/examples/biosciences/alphagenome/README.md`

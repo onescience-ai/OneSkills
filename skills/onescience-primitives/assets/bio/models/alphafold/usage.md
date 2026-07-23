@@ -1,50 +1,46 @@
 # launch
 
-AlphaFold 通过示例脚本启动，常见模式是先准备数据库、参数目录、FASTA 和输出目录，再选择 monomer 或 multimer preset。
+AlphaFold 模型通过 `src/onescience/flax_models/alphafold` 中的 JAX API 使用。数据管线先生成 raw feature dict，`RunModel` 再完成特征处理和推理：
 
 ```sh
-python onescience/examples/biosciences/alphafold/run_alphafold.py --fasta_paths onescience/examples/biosciences/alphafold/fasta/af2-monomer-protein.fasta --output_dir ./outputs/alphafold --data_dir ${AF2_DATA_DIR} --model_preset monomer --db_preset reduced_dbs --max_template_date 2024-01-01
+python -c "from onescience.flax_models.alphafold.model.model import RunModel; import inspect; print(inspect.signature(RunModel)); print(inspect.signature(RunModel.process_features)); print(inspect.signature(RunModel.predict))"
 ```
 
 # input_schema
 
-- 必需输入: FASTA 文件、AlphaFold 参数目录、数据库根目录、输出目录。
-- 常用参数:
-  - `--fasta_paths`: 单个或多个 FASTA 路径。
-  - `--output_dir`: 预测产物目录。
-  - `--data_dir`: 数据库根目录。
-  - `--model_preset`: 默认按任务选择，单体常用 `monomer`，复合物用 `multimer`。
-  - `--db_preset`: 资源受限时可用 `reduced_dbs`，完整检索用 `full_dbs`。
-  - `--max_template_date`: 必须显式给定，避免模板泄漏。
-- 输入 FASTA 的链组织必须和 preset 匹配，multimer 应走 multimer pipeline。
+- `model_config`：`ml_collections.ConfigDict`，其中 `config.model.global_config.multimer_mode` 决定单体或 multimer 网络。
+- `model_params`：与配置匹配的 JAX 参数树；缺省时 `RunModel.init_params` 会随机初始化，只适合结构或接口测试。
+- `raw_features`：单体 `DataPipeline` 或 multimer `DataPipelineMultimer` 生成的 NumPy feature dict，包含序列、MSA、template、mask、residue index 等字段。
+- `random_seed`：控制特征采样和 multimer MSA sampling。
+- `predict` 返回模型结果字典，包含结构模块输出、atom 坐标、pLDDT/PAE/PTM/IPTM 等可用置信度字段；具体字段随 preset 变化。
 
 # runtime_interfaces
 
-- `run_alphafold.py`: 端到端推理入口。
-- `DataPipeline`: 单体 MSA 与 template 特征构造。
-- `DataPipelineMultimer`: 多链特征构造、MSA pairing 与 chain merge。
-- `RunModel.process_features`: 把 raw feature dict 转成模型输入。
-- `RunModel.predict`: 执行模型推理并返回结果字典。
-- `AmberRelaxation`: 可选结构松弛接口。
+- `DataPipeline.process`：从序列及数据库搜索结果构造单体 raw features。
+- `DataPipelineMultimer.process`：构造多链特征、MSA pairing 和 chain merge 结果。
+- `RunModel(config, params)`：绑定模型配置与权重。
+- `RunModel.process_features(raw_features, random_seed)`：把 raw features 转为网络输入。
+- `RunModel.eval_shape(feat)`：不执行完整数值推理地检查输出结构。
+- `RunModel.predict(feat, random_seed)`：执行 JAX 推理。
+- `get_confidence_metrics(prediction_result, multimer_mode)`：从预测结果计算排名与置信度指标。
 
 # main_functions
 
-- `predict_structure`
+- `process`
 - `process_features`
+- `eval_shape`
 - `predict`
 - `get_confidence_metrics`
-- `make_sequence_features`
-- `make_msa_features`
 
 # execution_resources
 
-- 需要 JAX/Haiku、HH-suite/HMMER/Kalign 等外部搜索工具和 AlphaFold 数据库。
-- GPU 推理推荐使用；长序列、multimer 和完整数据库检索会显著增加 CPU、内存和磁盘开销。
-- 数据库检索阶段依赖大量本地文件和可执行程序，轻量环境中不要默认运行。
+- 需要 JAX、Haiku、模型参数以及与任务匹配的 MSA/template 特征；从原始 FASTA 构建特征时还需要数据库和外部搜索工具。
+- GPU/TPU 适合模型推理；数据库搜索主要消耗 CPU、内存和磁盘 I/O。
+- 训练或微调代码必须显式提供参数初始化、optimizer、loss 与数据迭代逻辑；`RunModel.predict` 本身是推理封装。
 
 # operation_limits
 
-- 不支持 DNA/RNA 或小分子复合物的 AF3-style 输入。
-- 不适合作为 OneScience `One*` wrapper 组件直接改造。
-- MSA 和 template 缺失会降低结果质量或导致 pipeline 失败。
-- `max_template_date`、数据库版本和参数版本会影响可复现性。
+- AlphaFold v2 主要处理蛋白单体和 multimer，不支持 AF3 式核酸、配体和自定义化学组分输入。
+- 单体和 multimer 的 feature dict 不可混用；配置、参数与数据 preset 必须一致。
+- 随机初始化只能验证接口，不能产生可信结构。
+- MSA、template、数据库版本及 template 截止日期影响结果质量和可复现性。

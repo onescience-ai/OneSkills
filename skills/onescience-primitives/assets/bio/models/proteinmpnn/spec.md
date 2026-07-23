@@ -1,100 +1,68 @@
-# component_info
-
-ProteinMPNN 是蛋白质 inverse folding 和骨架条件序列设计原语，核心功能是根据固定或部分固定的蛋白骨架几何生成氨基酸序列；它适合工程化设计约束场景，支持固定链、固定位点、PSSM、omit AA 与 tied positions 等控制。
-
 # architecture_overview
 
-ProteinMPNN 用蛋白质骨架几何作为条件生成或打分氨基酸序列，适合蛋白设计、固定链/设计链控制、PSSM / tied positions / omit AA 等工程化 inverse folding 场景。
-
-补充说明：
-
-- 任务方向与 OpenFold / Protenix 相反：不是从序列预测结构，而是从结构骨架设计序列
-- 训练版和推理版实现分别在 `model_utils.py` 与 `protein_mpnn_utils.py`
-- example 主入口是 `examples/biosciences/ProteinMPNN/protein_mpnn_run.py`
+ProteinMPNN 的完整公开实现位于 `protein_mpnn_utils.py`。`ProteinMPNN` 将 N/CA/C/O 骨架或 CA-only 坐标转为 kNN 几何图，经无掩码 encoder 更新骨架表征，再按设计 mask 与 decoding order 使用自回归 decoder 预测氨基酸。该文件同时提供约束特征化、采样和条件概率接口。
 
 # parameter_scale
 
-- `num_letters=21`
-- `hidden_dim=128`
-- `num_encoder_layers=3`
-- `num_decoder_layers=3`
-- `k_neighbors=32`
-- `augment_eps=0.1`
-- `dropout=0.1`
-- example 默认模型名：`v_48_020`
-- 常见采样温度：`0.1`, `0.15`, `0.2`, `0.25`, `0.3`
+- `ProteinMPNN(num_letters, node_features, edge_features, hidden_dim, num_encoder_layers=3, num_decoder_layers=3, vocab=21, k_neighbors=64, augment_eps=0.05, dropout=0.1, ca_only=False)`。
+- `num_letters` 控制输出类别数，常规蛋白序列模型与 `vocab=21` 配套。
+- `k_neighbors=64` 与 `augment_eps=0.05` 是该完整实现的默认值；不要用另一实现或脚本中的值覆盖。
 
 # architecture_structure
 
-- `ProteinFeatures`
-  - 从 `N, CA, C, O` 推导 `Cb`
-  - 基于 CA kNN 取邻居
-  - 构造 RBF 距离特征、链内/链间位置编码和 edge embedding
-- Encoder layers
-  - 对骨架图做无掩码消息传递
-- Decoder layers
-  - 按 `chain_M` 和随机 decoding order 做自回归序列建模
-- Output projection
-  - 输出 21 类氨基酸 log probability
+```text
+backbone coordinates + masks + residue/chain indices
+  -> ProteinFeatures or CA_ProteinFeatures
+  -> edge projection
+  -> EncLayer stack
+sequence tokens + decoding order
+  -> sequence embedding
+  -> masked DecLayer stack
+  -> W_out
+  -> amino-acid log probabilities
+```
 
 # input_schema
 
-- 训练简化版 `featurize(batch, device)` 返回：
-  - `X`: `(Batch, L_max, 4, 3)`，骨架原子顺序为 `N, CA, C, O`
-  - `S`: `(Batch, L_max)`，氨基酸整数标签
-  - `mask`: `(Batch, L_max)`
-  - `lengths`
-  - `chain_M`: `(Batch, L_max)`，1 表示需要预测 / 设计的位置
-  - `residue_idx`: `(Batch, L_max)`
-  - `mask_self`: `(Batch, L_max, L_max)`
-  - `chain_encoding_all`: `(Batch, L_max)`
-- 模型 forward：
-  - `ProteinMPNN.forward(X, S, mask, chain_M, residue_idx, chain_encoding_all)`
+- `forward(X, S, mask, chain_M, residue_idx, chain_encoding_all, randn, use_input_decoding_order=False, decoding_order=None)`。
+- 全原子骨架 `X` 的典型 shape 为 `(B, L, 4, 3)`，原子顺序为 N、CA、C、O；CA-only 模式使用与其特征器匹配的坐标。
+- `S` 是 `(B, L)` 残基 token；`mask` 是有效残基 mask；`chain_M` 是需要设计/预测的位置 mask。
+- `residue_idx` 和 `chain_encoding_all` 为 `(B, L)`；`randn` 用于产生解码顺序。
 
 # output_schema
 
-- `log_probs`: `(Batch, L, 21)`
-- 推理工具还支持：
-  - `sample`
-  - `tied_sample`
-  - `conditional_probs`
-  - `unconditional_probs`
-  - score / probs / FASTA 输出
+- `forward` 返回 `(B, L, num_letters)` 的 log probability。
+- `sample` 与 `tied_sample` 返回采样序列及概率/顺序等字典字段。
+- `conditional_probs` 与 `unconditional_probs` 返回相应条件下的氨基酸 log probability。
+- `tied_featurize` 返回模型输入张量和 PSSM、omit-AA、tied-position 等约束张量。
 
 # shape_transformations
 
-- backbone coordinates: `(B, L, 4, 3)`
-- edge features after kNN: `(B, L, K, edge_features)`
-- node hidden: `(B, L, hidden_dim)`
-- sequence embedding: `(B, L, hidden_dim)`
-- output log probs: `(B, L, 21)`
+1. 骨架通过 kNN 转为 `(B, L, K, edge_features)`。
+2. edge 投影到 `hidden_dim`，node hidden 初始化后经 encoder 更新。
+3. `S` 嵌入为 `(B, L, hidden_dim)`。
+4. decoding order 生成前向/后向邻接 mask，decoder 逐位置组合结构与已知序列信息。
+5. 输出层映射到 `num_letters` 并执行 `log_softmax`。
 
 # key_dependencies
 
-- `featurize`
-- `ProteinFeatures`
-- `EncLayer`
-- `DecLayer`
-- `ProteinMPNN`
-- 推理版 `parse_PDB`, `tied_featurize`, `StructureDatasetPDB`
+- `proteinmpnn_components`
 
 # common_modification_points
 
-- 只设计部分链时，优先使用 `chain_id_jsonl` 或 `pdb_path_chains`，不要在模型 forward 中硬改 mask
-- 固定位点、omit AA、PSSM、tied positions 这类约束优先走 helper JSON，而不是改模型主体
-- 若使用 CA-only 权重，必须同步打开 `--ca_only` 并走 CA-only 解析逻辑
-- 新 PDB 批量输入优先转为 JSONL / `StructureDatasetPDB` 可读结构
+- 固定链、固定位点、omit AA、PSSM 和 tied positions 应通过 `tied_featurize` 的约束输入实现。
+- 切换 CA-only 时同步使用 `CA_ProteinFeatures` 和匹配 checkpoint。
+- 需要确定性 decoding order 时显式传 `use_input_decoding_order=True` 与 `decoding_order`。
+- 训练使用 `forward` 的 log probability 和 `loss_nll`/`loss_smoothed`；推理使用 sample 系列方法。
 
 # implementation_risks
 
-- `X` 的 4 个原子顺序固定为 `N, CA, C, O`，顺序错会导致几何特征全部错位
-- `chain_M` 是设计位置控制的核心 mask，不能和普通 padding `mask` 混用
-- 推理版 `protein_mpnn_utils.py` 比训练版支持更多约束，二者同名类不能盲目替换
-- `max_length`、batch size 和 kNN 邻居数会显著影响显存
+- `chain_M` 与 padding `mask` 语义不同，混用会错误设计固定位置。
+- 全骨架原子顺序错误会系统性破坏几何特征。
+- `protein_mpnn_utils.py` 与 `model_utils.py` 存在不同实现细节，checkpoint 和默认参数不能跨实现混用。
+- 约束 tensor 必须与 batch、链顺序和 residue index 对齐。
 
 # code_references
 
-- `{onescience_path}/onescience/src/onescience/models/proteinmpnn/model_utils.py`
 - `{onescience_path}/onescience/src/onescience/models/proteinmpnn/protein_mpnn_utils.py`
-- `{onescience_path}/onescience/examples/biosciences/ProteinMPNN/protein_mpnn_run.py`
-- `{onescience_path}/onescience/examples/biosciences/ProteinMPNN/README.md`
+- `{onescience_path}/onescience/src/onescience/models/proteinmpnn/model_utils.py`

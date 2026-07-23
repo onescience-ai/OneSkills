@@ -1,62 +1,55 @@
 # description
 
-TargetDiff 的规划知识用于把“基于蛋白口袋生成候选小分子”的目标拆成口袋数据准备、扩散 checkpoint 加载、原子数策略选择、批量采样、化学重构和下游 docking/打分过滤流程。
+TargetDiff 规划知识用于直接基于 `ScorePosNet3D` 的张量接口构建蛋白口袋条件配体扩散训练、似然估计、embedding 提取或反向采样代码。
 
 # when_to_use
 
-- 用户给出蛋白口袋，希望生成新的三维小分子候选。
-- 任务处于药物发现 workflow 的 `target_conditioned_molecule_generation` 阶段。
-- 用户需要围绕已知靶点空间探索不同原子数或多个候选分子。
-- 用户需要生成后再进行 docking、GenScore 打分或 ADMET 过滤。
-- 不在用户已有配体只要求对接 pose 时使用；此时应召回 DiffDock。
-- 不在只要求蛋白结构生成或医学问答时使用。
+- 已有蛋白口袋原子坐标/特征和配体训练样本，需要训练 TargetDiff。
+- 已有初始化配体坐标/类型，需要执行反向扩散采样。
+- 需要固定坐标提取 embedding 或估计 diffusion likelihood。
+- 属性预测任务需要独立构建 `PropPredNet` 系列。
 
 # inputs
 
-- 靶点输入：蛋白口袋结构、数据集样本 ID 或可转换为 TargetDiff 数据对象的新口袋。
-- 模型输入：pretrained diffusion checkpoint、训练配置、采样配置。
-- 采样输入：num samples、num steps、batch size、pos_only、center_pos_mode、sample_num_atoms。
-- 资源输入：GPU、输出目录、数据集路径、图构建依赖。
-- 下游需求：是否需要分子重构、有效性过滤、docking、打分或性质预测。
+- checkpoint 对应的 model config。
+- `protein_atom_feature_dim` 与 `ligand_atom_feature_dim`。
+- 蛋白 `protein_pos`、`protein_v`、`batch_protein`。
+- 训练的 clean `ligand_pos`、`ligand_v`、`batch_ligand`，或采样的初始化 position/type。
+- 采样的 `num_steps`、`center_pos_mode` 与 `pos_only`。
 
 # outputs
 
-- 召回决策：使用 TargetDiff 进行靶点条件分子生成。
-- 执行计划：采样配置、data_id、device、batch_size、result_path。
-- 结果产物：`result_{data_id}.pt`，包含生成坐标、原子类型和轨迹。
-- 下游交接：将生成原子坐标/类型转为分子格式，再交给化学有效性检查、DiffDock、GenScore 或性质预测。
+- 前向 position/type predictions 与 hidden representations。
+- `get_diffusion_loss` 的 position、type 和总 loss。
+- `sample_diffusion` 的最终 position/type 与可选轨迹。
+- likelihood KL 或属性模型输出。
 
 # procedure
 
-1. 判断任务是否是从蛋白口袋生成新小分子，而不是对已有配体 docking。
-2. 确认是否已有 TargetDiff 数据集样本；若是新口袋，先规划数据对象构建。
-3. 检查 pretrained checkpoint 和训练配置中的数据路径。
-4. 选择原子数策略：`prior` 用于常规生成，`ref` 用于参考配体原子数，`range` 用于扫描。
-5. 设置采样数量、步数、batch size 和输出目录。
-6. 运行采样并保存 `result_{data_id}.pt`。
-7. 将 `pred_ligand_pos` 与 `pred_ligand_v` 转换为化学结构候选。
-8. 做价态、成键、碰撞、口袋适配和重复候选过滤。
-9. 对通过过滤的候选接 DiffDock/GenScore/性质预测。
+1. 从 checkpoint 保存的配置确定 diffusion schedule、refine net 和 feature dimensions。
+2. 召回 `biology_targetdiff_dataset`，用与训练一致的 featurizer 构造蛋白/配体张量和 batch index。
+3. 实例化 `ScorePosNet3D(config, protein_dim, ligand_dim)` 并加载 state dict。
+4. 训练调用 `get_diffusion_loss`，对返回的 `loss` 反向传播。
+5. 推理初始化配体原子数、position 和 type，调用 `sample_diffusion`。
+6. embedding/likelihood 任务分别调用 `fetch_embedding`/`likelihood_estimation`。
+7. 若为性质任务，独立实例化 `PropPredNet` 或 `PropPredNetEnc`。
 
 # constraints
 
-- 不能把原始坐标和原子类型直接当作可用药物分子。
-- 新靶点必须经过与训练数据一致的 featurizer 和数据对象构造。
-- `num_steps` 降低会加速但可能损害生成质量。
-- `pos_only` 不适合完整从头分子生成。
-- 下游排序必须考虑化学有效性和口袋相互作用，不能只看生成数量。
+- 模型接口只接收源码签名中的 config 与张量参数。
+- feature dimensions、atom vocabulary、config 与 checkpoint 必须一致。
+- protein 与 ligand batch index 必须描述同一组图。
+- 生成坐标/类型不是完整化学分子，后处理不属于模型前向。
 
 # next_phase_recommendation
 
-- 先进行分子重构、价态修复和去重。
-- 对候选做 DiffDock pose 优化或对接复核。
-- 使用 GenScore 或属性预测模型进行排序。
-- 对 Top-K 候选进行药化过滤、合成可行性和人工检查。
+- 训练结果进入 optimizer、validation 和 checkpoint 流程。
+- 采样结果进入成键、价态、化学有效性与口袋适配评估。
+- 需要 scoring 时把有效分子交给 docking/打分模型。
 
 # fallback
 
-- checkpoint 加载失败：核对路径和训练配置版本。
-- data_id 无效：检查数据集 split 和样本数量。
-- 显存不足：降低 `--batch_size`、`sample.num_samples` 或 `sample.num_steps`。
-- 生成分子无效率高：切换 `sample_num_atoms` 策略、调整步数或加强后处理。
-- 新口袋无法构图：先回退到 benchmark 数据对象，或补齐蛋白/配体 featurizer 流程。
+- state dict 失败时恢复 checkpoint 内的 config 与 feature vocabulary。
+- 数值或坐标异常时检查 center mode 和 batch mapping。
+- 显存不足时减少 ligand batch/采样轨迹或步数，但记录质量影响。
+- 无效分子率高时先检查 `biology_targetdiff_dataset`、atom vocabulary 与后处理，不擅改模型层名。

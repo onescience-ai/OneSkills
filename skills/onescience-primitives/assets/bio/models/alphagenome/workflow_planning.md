@@ -1,55 +1,52 @@
 # description
 
-AlphaGenome 规划知识用于把基因组区间预测、变异效应分析、轨迹评估和微调任务转换成可执行脚本或 SDK 调用，并确保参考基因组、物种、模型 fold、输出类型和资源约束一致。
+AlphaGenome 规划知识用于从本地 checkpoint 构建 DNA 序列、基因组区间和变异预测/评分代码，并按所需方法装配 organism metadata、参考序列和注释资源。
 
 # when_to_use
 
-- 用户处理 DNA 序列、基因组区间、调控组学轨迹、Hi-C 接触图或剪接信号。
-- 用户需要 SNV/VCF 变异效应评分。
-- 用户需要 ATAC、DNase、CAGE、RNA-seq、ChIP、PRO-cap、Hi-C 或 splicing 预测。
-- 不用于蛋白 FASTA、PDB、配体或小分子任务。
+- 需要对 DNA 字符串预测 AlphaGenome 输出 tracks。
+- 需要对基因组 interval 或 variant 预测，且可提供对应 organism 资源。
+- 需要调用 interval、variant 或 ISM scorer。
+- 不用于蛋白结构或小分子模型任务。
 
 # inputs
 
-- 任务模式: inference、variant_scoring、track_eval、finetuning。
-- 基因组输入: FASTA、FAI、chromosome/start/end、VCF 或内置 variant。
-- 模型输入: model_dir、model_version、organism。
-- 输出需求: `.npy` 轨迹、CSV 评分、评估结果或微调 checkpoint。
-- 资源输入: 是否允许下载、GPU/CPU、数据目录。
+- 本地 AlphaGenome checkpoint path。
+- `ModelSettings` 与可选 JAX device。
+- organism、requested output types 和可选 ontology terms。
+- 预测对象：DNA sequence、genome interval、variant 或 ISM variants。
+- 按方法需要提供 FASTA、GTF、PAS 与 splice-site annotation paths。
 
 # outputs
 
-- 调用决策: 是否使用 AlphaGenome。
-- 执行计划: 对应脚本、参数、输入文件和输出目录。
-- 产物说明: 预测轨迹、评分表、summary CSV、评估指标或 finetuned checkpoint。
-- 下游建议: 调控注释、候选变异排序、轨迹可视化或实验验证。
+- 由 `create` 构建的 `AlphaGenomeModel`。
+- `dna_output.Output`、variant output 或 scorer 结果。
+- 对可用 organism 资源、请求 tracks 和缺失 scorer 依赖的记录。
 
 # procedure
 
-1. 判断任务是否属于 DNA/调控基因组学。
-2. 确认物种、参考基因组和坐标系统。
-3. 选择推理、变异评分、轨迹评估或微调入口。
-4. 检查模型权重来源和是否允许下载。
-5. 生成命令或 SDK 调用。
-6. 检查输出 shape、track 类型、CSV 汇总和失败日志。
-7. 将结果交给下游可视化、排序或统计分析。
+1. 确定调用 `predict_sequence`、`predict_interval`、`predict_variant` 或评分方法。
+2. 仅为该方法准备必要的 `OrganismSettings` 资源。
+3. 调用 `create(checkpoint_path, organism_settings=..., model_settings=..., device=...)`。
+4. 传入真实 organism、requested outputs、ontology terms 和预测对象。
+5. 检查返回对象中的 metadata 与 track shape。
+6. 评分任务再调用对应 score 方法，并保留 scorer 名称与参数。
 
 # constraints
 
-- 只支持 DNA/基因组语义输入。
-- FASTA、FAI、organism、model version 和 metadata 必须一致。
-- 变异评分必须校验 reference allele。
-- `all_folds` 资源成本更高。
-- 微调 BigWig 与 regions 必须在坐标和长度上匹配。
+- checkpoint、测试区间和轨迹列表均由调用方显式提供。
+- 区间预测依赖 `FastaExtractor`；相关 scorer 依赖各自注释资源。
+- CPU 运行需要显式传入 CPU JAX device。
+- requested outputs 必须来自源码定义的 `dna_output.OutputType`。
 
 # next_phase_recommendation
 
-- 轨迹输出可进入可视化、peak/track 比较和功能注释。
-- 变异评分可进入候选排序、基因注释和实验优先级评估。
-- 微调结果应在独立验证区间上评估。
+- 将输出 tracks 转交下游统计、可视化或变异排序。
+- 对大量 variants 使用批处理与稳定的 interval 对齐策略。
+- 需要微调时以 `finetuning/finetune.py` 的源码接口另建训练计划。
 
 # fallback
 
-- 无本地权重时显式允许下载或提供 `model_dir`。
-- 显存不足时使用单 fold、缩小 batch 或减少输出类型。
-- FASTA/坐标错误时先用小区间 smoke test。
+- checkpoint restore 失败时核验 checkpoint tree 与 metadata，而不是更改参数名。
+- 缺少 FASTA/annotation 时退回仅需 DNA 字符串的 `predict_sequence`，前提是满足用户目标。
+- scorer 不可用时返回原始 prediction output，并明确缺少的注释依赖。

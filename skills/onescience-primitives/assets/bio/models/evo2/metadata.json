@@ -6,7 +6,7 @@
   "visibility": "public",
   "created_at": "2026-06-29",
   "updated_at": "2026-06-29",
-  "description": "Evo2 是面向基因组序列的长上下文语言模型原语，通过 NeMo/Megatron Mamba 架构对 tokenized genome sequence 建模，支持 logits 推理与带 loss_mask 的语言模型训练；使用时需要准备 FASTA 或预处理后的 token/position/label/loss_mask 字段，并通过 Evo2 数据集、训练脚本或 MambaModel API 调用，规划时应围绕序列长度、tokenizer、label offset、模型并行配置和 checkpoint 转换风险进行决策。",
+  "description": "Evo2 是 OneScience 中面向基因组 token 序列的 Mamba 语言模型资源。`MambaModel.forward` 接收 `input_ids`、`position_ids` 及可选 `labels`、`loss_mask`、推理上下文或预计算 decoder 输入；无标签时返回模型输出，有标签时返回训练损失。`mamba_forward_step` 规定训练 batch 的字段映射，FASTA dataset、tokenizer 与配置模块负责准备输入；该资源用于按源码接口构建训练或推理代码。",
   "tags": [
     "genome",
     "dna-language-model",

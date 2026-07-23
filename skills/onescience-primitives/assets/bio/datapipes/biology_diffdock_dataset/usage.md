@@ -1,93 +1,47 @@
 # launch
 
-训练脚本会通过配置构造 diffdock datapipe 和 loader：
+该 datapipe 将 PDBBind/MOAD 复合物转换为 DiffDock 异构图，并在训练取样时注入扩散噪声与 score 标签。训练代码应直接用 `construct_loader`；只需要 dataset 时使用 `construct_datasets`。
 
 ```sh
-cd "$ONESCIENCE_DIR" && python examples/biosciences/diffdock/scripts/train_diffdock.py --config examples/biosciences/diffdock/configs/training.yml
-```
-
-Python API 构造 loader 示例：
-
-```python
-from functools import partial
-import torch
-from onescience.datapipes.diffdock.loader import construct_loader
-from onescience.utils.diffdock.diffusion_utils import t_to_sigma as t_to_sigma_compl
-
-t_to_sigma = partial(t_to_sigma_compl, args=config)
-train_loader, val_loader, val_dataset2 = construct_loader(
-    config=config,
-    t_to_sigma=t_to_sigma,
-    device=torch.device("cuda"),
-)
+python -c "from onescience.datapipes.diffdock.loader import build_noise_transform, construct_datasets, construct_loader; from onescience.datapipes.diffdock.pdbbind import PDBBind, NoiseTransform; from onescience.datapipes.diffdock.moad import MOAD; import inspect; print(inspect.signature(build_noise_transform)); print(inspect.signature(construct_datasets)); print(inspect.signature(construct_loader)); print(inspect.signature(PDBBind)); print(inspect.signature(MOAD)); print(inspect.signature(NoiseTransform))"
 ```
 
 # input_schema
 
-- 必备数据路径：
-  - PDBBind: `pdbbind_dir`、`split_train`、`split_val`
-  - MOAD: `moad_dir`、MOAD split pickle、cluster-to-ligand pickle
-  - cache: `cache_path`
-- 常用默认参数：
-  - `dataset=pdbbind`
-  - `batch_size=4`
-  - `num_workers=1`
-  - `num_dataloader_workers=0`
-  - `remove_hs=true`
-  - `receptor_radius=30`
-  - `c_alpha_max_neighbors=10`
-  - `atom_radius=5`
-  - `atom_max_neighbors=8`
-  - `num_conformers=1`
-  - `matching_popsize=20`
-  - `matching_maxiter=20`
-  - `matching_tries=1`
-  - `all_atoms=false`
-  - `crop_beyond=20`
-  - `sampling_alpha=1.0`
-  - `sampling_beta=1.0`
-- 推理构图输入：
-  - `protein_path_list`: 蛋白 PDB 路径列表
-  - `ligand_descriptions`: SMILES 或配体文件路径列表
+- `config.dataset` 支持 `pdbbind`、`moad`、`generalisation` 及受支持的 combined training。
+- PDBBind 需要 `pdbbind_dir`、`split_train`、`split_val`、`cache_path`；MOAD 需要 `moad_dir`、split/cluster 元数据和 cache。
+- 构图参数包括 `receptor_radius`、`c_alpha_max_neighbors`、`all_atoms`、`atom_radius`、`atom_max_neighbors`、去氢与构象匹配设置。
+- 噪声参数包括 translation/rotation/torsion 的时间到 sigma 映射、`sampling_alpha/beta`、`no_torsion` 和裁剪距离。
+- loader 输出 PyG `HeteroData` batch 或 data list，含 receptor/ligand 节点、边、坐标、时间特征和 translation/rotation/torsion score 标签。
 
 # runtime_interfaces
 
-- `construct_datasets`: 按配置构造 train/val 数据集。
-- `construct_loader`: 构造 train/val loader，并按设备选择 batch 形式。
-- `build_noise_transform`: 创建扩散噪声 transform。
-- `PDBBind`: PDBBind 图数据集。
-- `MOAD`: Binding MOAD 图数据集。
-- `CombineDatasets`: 合并两个训练数据集。
-- `DataLoader`: PyG Batch collate loader。
-- `DataListLoader`: list collate loader。
-- `NoiseTransform`: 训练时噪声注入和 score 标签生成。
+- `construct_datasets(config, t_to_sigma, device=None)`：构造训练、验证和可选第二验证集。
+- `construct_loader(config, t_to_sigma, device=None)`：构造训练/验证 loader。
+- `build_noise_transform(config, t_to_sigma)`：创建 `NoiseTransform`。
+- `PDBBind`、`MOAD`、`CombineDatasets`：数据集实现。
+- `DataLoader` / `DataListLoader`：按设备选择 PyG batch 或 list collate。
+- `NoiseTransform`：坐标加噪并生成监督 score。
 
 # main_functions
 
 - `construct_datasets`
 - `construct_loader`
 - `build_noise_transform`
-- `get`
-- `get_complex`
-- `get_receptor`
-- `get_ligand`
-- `inference_preprocessing`
-- `preprocessing`
-- `apply_noise`
-- `forward`
+- `NoiseTransform.apply_noise`
+- `PDBBind.get`
+- `MOAD.get`
 
 # execution_resources
 
-- CPU 可完成预处理和缓存构建，但 RDKit/ProDy/距离矩阵计算会比较耗时。
-- GPU 训练时通常使用 `DataListLoader`，CPU 或普通路径使用 PyG Batch。
-- 需要可写缓存目录；首次运行会生成 pickle 缓存。
-- 多进程预处理受 `num_workers` 控制，过大可能带来 RDKit/文件句柄压力。
-- ESM embedding 需要额外磁盘和内存。
+- 预处理依赖 RDKit、ProDy/PyG 等分子结构工具和可写缓存目录，主要使用 CPU。
+- 大型数据集首次构图和 conformer matching 耗时较长；后续复用 pickle/cache。
+- CUDA 设备默认选择 `DataListLoader`，CPU 路径选择 PyG `DataLoader`；训练器需匹配这一 batch 形式。
+- 可选 ESM embedding 增加磁盘和内存需求。
 
 # operation_limits
 
-- 不适合直接处理蛋白-蛋白、蛋白-核酸或非小分子 docking 数据。
-- SMILES 推理输入依赖 RDKit conformer 生成，失败时需要换用显式 SDF/MOL2。
-- MOAD 依赖固定的数据目录组织和 cluster split 文件。
-- `all_atoms`、`pdbsidechain`、`distillation` 等分支在当前训练入口中不是稳定主路径。
-- 若缓存已存在，参数变更不一定会覆盖旧缓存，应通过新 cache path 或清理缓存保证一致性。
+- 当前 loader 明确支持 PDBBind/MOAD 主路径，不支持未迁移的 pdbsidechain、triple-training 和 distillation 分支。
+- 缓存键包含有限配置；更改构图参数时应使用新的 cache path，避免读取陈旧图。
+- SMILES 推理构图中的 conformer 生成可能失败，此时应提供显式三维配体结构。
+- 该 datapipe 只准备数据，不构造 DiffDock 模型、优化器或采样循环。

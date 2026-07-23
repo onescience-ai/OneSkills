@@ -1,10 +1,6 @@
-# component_info
-
-MolSculptor 是小分子图到序列生成与 latent diffusion 优化组件，核心功能是把 SMILES 转成 RDKit 分子图特征，经 Encoder/Decoder 或 DiffusionTransformer 生成候选分子，并用 LogP、QED、SA、Tanimoto、docking reward 和 NSGA-II 做筛选；它的输入语义是小分子，不是 FASTA、MSA、PDB folding batch 或 ProToken 结构 token。
-
 # architecture_overview
 
-MolSculptor 的架构由三条主线组成:
+MolSculptor 是小分子图到序列生成与 latent diffusion 优化模型，核心功能是把 SMILES 转成 RDKit 分子图特征，经 Encoder/Decoder 或 DiffusionTransformer 生成候选分子，并用 LogP、QED、SA、Tanimoto、docking reward 和 NSGA-II 做筛选。它的架构由三条主线组成：
 
 SMILES / graph 路线:
   SMILES
@@ -96,19 +92,10 @@ optimization 路线:
 
 # key_dependencies
 
-- `Encoder`
-- `Decoder`
-- `InferEncoder`
-- `InferDecoder`
-- `Inferencer`
-- `L2SeqGenerator`
-- `MMDSeqGenerator`
-- `DiffusionTransformer`
-- `GaussianDiffusion`
-- `TrainDataLoader`
-- `AEDataLoader`
-- `dsdp_reward`
-- `NSGA_II`
+- `molsculptor_graph_encoder`
+- `molsculptor_smiles_decoder`
+- `molsculptor_diffusion_transformer`
+- `molsculptor_gaussian_diffusion`
 
 # common_modification_points
 
@@ -134,5 +121,3 @@ optimization 路线:
 - `{onescience_path}/onescience/src/onescience/flax_models/MolSculptor/src/model/diffusion_transformer.py`
 - `{onescience_path}/onescience/src/onescience/flax_models/MolSculptor/train/scheduler.py`
 - `{onescience_path}/onescience/src/onescience/flax_models/MolSculptor/train/rewards.py`
-- `{onescience_path}/onescience/examples/biosciences/molsculptor/inference`
-- `{onescience_path}/onescience/examples/biosciences/molsculptor/cases`

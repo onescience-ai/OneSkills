@@ -6,7 +6,7 @@
   "visibility": "public",
   "created_at": "2026-07-06",
   "updated_at": "2026-07-06",
-  "description": "TargetDiff 是靶点条件小分子生成原语，核心功能是在给定蛋白口袋后通过扩散过程生成配体三维坐标和离散原子类型，也提供属性预测网络用于结合相关性质估计；实现上以 ScorePosNet3D 为主模型，联合连续坐标扩散和离散原子类型扩散，并可选择 UniTransformer 等变注意力或 EGNN 作为 refine net；使用时通过采样配置、checkpoint、数据集 ID 和设备参数启动采样，规划时适合用于从蛋白口袋出发生成候选小分子，后续应接化学有效性、对接、打分和性质过滤，失败时优先检查数据集、checkpoint 和原子数采样策略。",
+  "description": "TargetDiff 是 OneScience 中的蛋白口袋条件三维配体扩散模型资源。`ScorePosNet3D` 由模型配置和蛋白/配体特征维度构造，联合建模连续坐标与离散原子类型，提供前向预测、`get_diffusion_loss`、`likelihood_estimation`、`fetch_embedding` 和 `sample_diffusion`；属性预测由独立的 `PropPredNet` 或 `PropPredNetEnc` 承担。该资源用于按真实张量接口构建训练和采样代码。",
   "tags": [
     "target-conditioned-generation",
     "molecule-generation",

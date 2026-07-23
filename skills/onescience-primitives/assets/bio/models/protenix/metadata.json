@@ -6,7 +6,7 @@
   "visibility": "public",
   "created_at": "2026-06-29",
   "updated_at": "2026-06-29",
-  "description": "Protenix 是 AlphaFold3 风格的蛋白、核酸、配体和多分子复合物结构预测原语，以 AF3/Protenix feature dict 为输入，通过 input feature embedder、relative position、template/MSA、Pairformer、diffusion structure module 和 confidence heads 生成多样本原子坐标、置信度与接触概率；使用时推荐通过统一推理入口和 ProtenixInferAdapter 准备 JSON、MSA、CCD/RDKit 等依赖，规划时应优先判断分子类型、token/pair/atom 特征完整性、N_cycle/N_sample/N_step 与显存策略。",
+  "description": "Protenix 是 OneScience 中的 AlphaFold3 风格复合物结构模型资源。`Protenix(configs)` 直接组合 OneScience modules 中的输入嵌入、相对位置编码、MSA、Pairformer、扩散和输出头；`forward` 接收 `input_feature_dict`、完整/裁剪标签字典及 `train`、`inference` 或 `eval` 模式，返回预测、更新后的标签和日志字典。训练模式还要求当前步和对称置换对象；该资源用于构建源码级训练或推理调用，不依赖统一推理示例。",
   "tags": [
     "protein",
     "complex-structure-prediction",

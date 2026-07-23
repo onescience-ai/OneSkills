@@ -1,30 +1,41 @@
 # launch
 
+该原语描述 OneScience AlphaFold JAX 模型内部的 Haiku 组件。组件应在 `hk.transform` 作用域内构造，并由完整 `RunModel` 或 `AlphaFold` 模型提供配置、参数树和 feature batch；不要把内部模块当作独立文件入口。
+
 ```sh
-python {onescience_path}/onescience/examples/biosciences/alphafold/run_alphafold.py --fasta_paths input.fasta --output_dir outputs/alphafold --model_preset monomer --db_preset reduced_dbs --max_template_date 2024-06-01
+python -c "from onescience.flax_models.alphafold.model.modules import AlphaFoldIteration, EmbeddingsAndEvoformer, EvoformerIteration; from onescience.flax_models.alphafold.model.folding import StructureModule; import inspect; print(inspect.signature(AlphaFoldIteration)); print(inspect.signature(AlphaFoldIteration.__call__)); print(inspect.signature(EmbeddingsAndEvoformer)); print(inspect.signature(EvoformerIteration)); print(inspect.signature(StructureModule))"
 ```
 
 # input_schema
 
-准备 FASTA、数据库路径和 template/MSA 相关配置。模型内部需要 `aatype`、`residue_index`、`seq_mask`、`msa`、`msa_mask`、`deletion_matrix`、template 原子坐标与 mask 等 feature。monomer 与 multimer 的 feature 处理路径不同，不能混用。
+- `AlphaFoldIteration` 接受 `config`、`global_config`、ensemble/non-ensemble feature 字典和 `is_training`。
+- 特征包含 `aatype`、`residue_index`、`seq_mask`、MSA/deletion、模板坐标与 mask；monomer 与 multimer 字段不可混用。
+- `StructureModule` 接受 Evoformer `representations`、原始 batch、训练标志和可选 PRNG key。
+- 输出包括 MSA/pair/single 表征、结构模块结果和启用的辅助头；训练模式还包含各头损失。
 
 # runtime_interfaces
 
-- `RunModel.process_features`: 将 raw feature dict 转为模型可用 batch。
-- `RunModel.predict`: 执行模型推理并返回结构和置信度结果。
-- `get_confidence_metrics`: 从模型输出计算 ranking confidence 相关指标。
+- `modules.AlphaFoldIteration` / `modules_multimer.AlphaFoldIteration`：单次 recycling 内的完整组件图。
+- `EmbeddingsAndEvoformer`：输入嵌入、模板、extra-MSA 和 Evoformer 主干。
+- `EvoformerIteration`：单个 Evoformer block。
+- `folding.StructureModule` / `folding_multimer.StructureModule`：表征到原子坐标与 frame 的结构头。
+- `RunModel.process_features`、`RunModel.predict`：建议用于完整模型集成。
 
 # main_functions
 
-- `process_features`
-- `predict`
-- `init_params`
-- `get_confidence_metrics`
+- `AlphaFoldIteration.__call__`
+- `EmbeddingsAndEvoformer.__call__`
+- `EvoformerIteration.__call__`
+- `StructureModule.__call__`
 
 # execution_resources
 
-需要 JAX/Haiku 运行环境、AlphaFold 参数、序列数据库、MSA/template 搜索工具和足够内存。长序列、多模型、多 recycle 会显著增加显存和运行时间。
+- 依赖 JAX、Haiku、AlphaFold 参数树和完整特征化数据。
+- 长序列、MSA 深度、模板数、recycling 和 ensemble 数决定加速器内存。
+- 组件参数名和作用域必须与 checkpoint 的 Haiku 参数树保持一致。
 
 # operation_limits
 
-`contract_only` 风险来自原始 contract：不要直接写成已可运行的 `OneTransformer(style="AlphaFoldJAXEvoformer")`。若缺少参数会随机初始化并产生 warning，不适合真实推理；relax 输出不是模型 raw output，应分开处理。
+- 这些是完整模型的内部模块，不提供 FASTA/MSA 搜索、参数加载或结构文件写出。
+- monomer 与 multimer 使用不同模块和特征契约。
+- 绕过 `RunModel` 时调用方必须自行维护 Haiku RNG、参数树、ensemble 与 recycling 状态。

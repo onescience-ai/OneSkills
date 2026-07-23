@@ -1,60 +1,51 @@
 # description
 
-GenScore 的规划知识用于判断何时需要对蛋白-配体候选构象进行模型打分，并把用户输入转换为口袋准备、配体读取、encoder/checkpoint 选择、score 输出和可选贡献分析的执行计划。
+GenScore 规划知识用于构建蛋白图与配体图的混合密度前向、训练损失或高层 scoring 代码，并保持 encoder、图特征和 checkpoint 一致。
 
 # when_to_use
 
-- DiffDock 或其它 docking 流程已经产生候选 pose，需要排序或复筛。
-- 用户提供蛋白口袋 PDB 和配体 SDF/MOL2，希望计算候选分数。
-- 用户需要解释哪些配体原子或蛋白残基对模型分数贡献较大。
-- 虚拟筛选任务需要快速批量排序候选配体。
-- 不在需要生成新分子或新构象时使用；该类任务应召回 TargetDiff 或 docking 模型。
+- 已有配体与蛋白/口袋图，需要计算节点对混合密度输出。
+- 需要训练或评估 GenScore 双塔图模型。
+- 需要用源码 `scoring` 对结构输入生成最终 score 或贡献结果。
+- 不用于生成 docking pose 或新分子。
 
 # inputs
 
-- 蛋白输入：口袋 PDB，或全蛋白 PDB 加参考配体。
-- 配体输入：SDF/MOL2，可能包含一个或多个候选构象。
-- 模型输入：checkpoint 路径和 encoder 类型。
-- 运行参数：batch size、num workers、cutoff、是否并行构图。
-- 分析需求：常规 score、原子贡献或残基贡献。
+- `GraphTransformer` 或 `GatedGCN` 的真实构造参数。
+- 配体/靶点 PyG graph batches，包含 `x`、`pos`、`batch`，配体还含 `edge_index`。
+- `GenScore` 的 `in_channels`、`hidden_dim`、`n_gaussians`、dropout 和 `dist_threhold`。
+- 可选 checkpoint 与高层 scoring 所需结构数据。
 
 # outputs
 
-- 召回决策：是否使用 GenScore，以及使用 `gt` 还是 `gatedgcn` checkpoint。
-- 执行计划：CLI/API 参数、输入文件、输出前缀。
-- 结果产物：score CSV、原子贡献 CSV 或残基贡献 CSV。
-- 下游交接：把排序后的候选交给结构检查、MD、药化过滤或报告生成。
+- 模型前向七元组，或经评估函数得到的 score/贡献结果。
+- 训练 loss 与 checkpoint 加载结果。
+- encoder 类型和特征维度记录。
 
 # procedure
 
-1. 判断任务是否为蛋白-配体打分或 docking 后排序。
-2. 检查蛋白输入是否是口袋；若是全蛋白，要求提供参考配体并启用口袋生成。
-3. 检查配体文件格式和构象数量。
-4. 选择 encoder 和 checkpoint，确保两者匹配。
-5. 判断是否需要贡献分析；若需要，选择原子或残基贡献之一。
-6. 生成推理命令并显式设置 `--batch_size`、`--num_workers`、`--outprefix`。
-7. 运行后检查 CSV 是否存在、score 是否可排序、样本数量是否与输入一致。
-8. 将排序结果与上游 pose ID 或配体 ID 合并。
+1. 召回 `biology_genscore_dataset` datapipe 构造配体图、蛋白/口袋图与 batch，再检查两侧 node/edge feature 维度和配对。
+2. 用源码 `_build_encoder` 等价参数构造两个同输出通道的 encoder。
+3. 构造 `GenScore`，保持源码参数名 `dist_threhold`。
+4. 加载匹配的 `model_state_dict`。
+5. 训练时将七元组交给源码损失；推理时交给 `run_an_eval_epoch` 或使用高层 `scoring`。
+6. 检查 score 数量与输入配体 ID 一致。
 
 # constraints
 
-- 原子贡献和残基贡献不能同时启用。
-- 口袋生成必须提供参考配体。
-- 训练和推理的特征维度必须一致。
-- 不能把模型 score 直接当作实验亲和力或毒性结论。
-- 输出排序应保留原始配体 ID，避免多构象混淆。
+- 构造参数、路径和样本均由调用方显式传入源码接口。
+- `GenScore.forward` 不直接返回最终标量 score。
+- ligand/target encoder 输出必须含 `x`、`pos`、`batch`。
+- encoder 类型、feature dims 和 checkpoint 必须一致。
 
 # next_phase_recommendation
 
-- 对 Top-K 候选做可视化、碰撞检查和相互作用分析。
-- 对高分候选接入更高成本的物理重打分或 MD。
-- 如果来自 DiffDock，上游应保留 pose 文件路径和 confidence，便于联合排序。
-- 若贡献分析显示关键残基异常，应回看口袋裁剪和输入质子化状态。
+- 将 score 与配体 ID 交给候选排序。
+- 原子/残基贡献输出可进入可解释性报告。
+- 训练后同时验证混合密度 loss 和最终 scoring 指标。
 
 # fallback
 
-- PDB 或配体读取失败：转换格式、清理异常原子和键序。
-- 口袋生成失败：手工提供预裁剪口袋 PDB。
-- checkpoint 加载失败：换用与 encoder 匹配的模型权重。
-- 显存不足：降低 batch size 或切到 CPU 小批量验证。
-- 分数异常集中：检查输入是否全蛋白、配体是否全部同一构象或特征预处理是否缺失。
+- checkpoint 加载失败时重建准确 encoder 与 feature dims。
+- 图 batch 失配时回到 `biology_genscore_dataset`，不在 forward 内广播不同样本。
+- 最终 score 缺失时检查评估后处理，而不是修改七元组返回值。

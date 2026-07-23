@@ -1,92 +1,45 @@
 # launch
 
-文件批量推理示例：
+MedGemma 是 OneScience `Module` 形式的医学生成模型，使用配置选择 vLLM 或 Transformers 后端。推理代码直接构造 `MedGemma` 并传入 OpenAI Chat Completion 风格的消息。
 
 ```sh
-cd "$ONESCIENCE_DIR" && python examples/biosciences/medgemma/runner/medical_inference_runner.py --config examples/biosciences/medgemma/configs/inference_config.yaml --input "$RUN_DIR/medgemma_input.jsonl" --model_path "$ONESCIENCE_DATASETS_DIR/medgemma/modelscope/google/medgemma-1.5-4b-it" --dump_dir "$RUN_DIR/medgemma_predictions"
-```
-
-交互式推理示例：
-
-```sh
-cd "$ONESCIENCE_DIR" && python examples/biosciences/medgemma/runner/medical_inference_runner.py --config examples/biosciences/medgemma/configs/inference_config.yaml --interactive --model_path "$ONESCIENCE_DATASETS_DIR/medgemma/modelscope/google/medgemma-1.5-4b-it" --dump_dir "$RUN_DIR/medgemma_predictions"
-```
-
-Python API 示例：
-
-```python
-from onescience.models.medgemma.medgemma import MedGemma
-
-model = MedGemma(configs)
-result = model.inference({
-    "messages": [{"role": "user", "content": "请总结这段医学文本的关键信息。"}],
-    "parameters": {"max_tokens": 500, "temperature": 0.7, "top_p": 0.9, "n": 1},
-})
+python -c "from onescience.models.medgemma.medgemma import MedGemma; import inspect; print(inspect.signature(MedGemma)); print(inspect.signature(MedGemma.forward)); print(inspect.signature(MedGemma.inference)); print(inspect.signature(MedGemma.predict_text)); print(inspect.signature(MedGemma.predict_multimodal))"
 ```
 
 # input_schema
 
-- CLI 参数：
-  - `--config`: 配置文件路径，必需
-  - `--input`: JSON/JSONL 输入文件路径
-  - `--interactive`: 交互模式开关
-  - `--model_path`: 覆盖配置中的模型路径
-  - `--dump_dir`: 覆盖配置中的输出目录
-- 配置默认参数：
-  - `seed=42`
-  - `eval_only=true`
-  - `model.variant=4b`
-  - `model.tokenizer_path=null`
-  - `model.prompt_format=chat`
-  - `model.is_multimodal=true`
-  - `inference.gpu_memory_utilization=0.9`
-  - `inference.max_model_len=null`
-  - `inference.tensor_parallel_size=1`
-  - `inference.default_max_tokens=500`
-  - `inference.temperature=0.7`
-  - `inference.top_p=0.9`
-  - `inference.batch_size=1`
-  - `inference.use_vllm=true`
-  - `output.output_format=json`
-- JSON/JSONL 样本字段：
-  - `messages`: Chat messages
-  - `text`: 单轮文本输入
-  - `question`: 问题文本
-  - `id`: 可选样本 ID
+- `configs.model`：至少包含 `variant`、`is_multimodal`、`model_path`、`tokenizer_path`。
+- `configs.inference`：包含 `use_vllm`、`gpu_memory_utilization`、`max_model_len`、`tensor_parallel_size`、`default_max_tokens`、`temperature`、`top_p`。
+- `forward` 输入 `messages: list[dict]`，每项至少有 `role` 和 `content`；采样参数为 `max_tokens`、`temperature`、`top_p`、`n`。
+- `inference` 接受含 `messages` 或 `instances` 的字典，并从可选 `parameters` 读取采样参数。
+- 输出为模型运行器格式化的 Chat Completion 风格字典。
 
 # runtime_interfaces
 
-- `MedGemma.forward`: 以 messages 和采样参数执行生成。
-- `MedGemma.inference`: OneScience 兼容推理入口，支持 `messages` 或 `instances`。
-- `MedGemma.predict_text`: 简化文本推理入口。
-- `MedGemma.predict_multimodal`: 多模态入口，目前图像推理未完整实现。
-- `MedGemmaPredictor.predict`: prompt 转换、runner 调用和响应格式化入口。
-- `VLLMModelRunner.generate`: vLLM 生成入口。
-- `TransformersModelRunner.generate`: Transformers 回退生成入口。
-- `MedicalInferenceRunner.run_from_file`: JSON/JSONL 批量推理入口。
+- `MedGemma(configs)`：完整模型封装并初始化运行后端。
+- `MedGemma.forward(messages, max_tokens=None, temperature=0.7, top_p=0.9, n=1)`：生成入口。
+- `MedGemma.inference(data)`：OneScience 统一字典接口。
+- `MedGemma.predict_text(...)`、`predict_multimodal(...)`：简化任务接口。
+- `VLLMModelRunner`、`TransformersModelRunner`：实际模型加载与生成后端。
+- `MedGemmaPredictor.predict(...)`：消息转换与响应格式化。
 
 # main_functions
 
-- `forward`
-- `inference`
-- `predict_text`
-- `predict_multimodal`
-- `predict`
-- `generate`
-- `run_from_file`
+- `MedGemma.forward`
+- `MedGemma.inference`
+- `MedGemma.predict_text`
+- `MedGemma.predict_multimodal`
+- `MedGemmaPredictor.predict`
 
 # execution_resources
 
-- 4B 模型通常需要 GPU；27B 文本模型需要更高显存或张量并行。
-- vLLM 后端需要安装 vLLM 并有兼容模型格式。
-- Transformers 后端需要模型和 tokenizer 可由本地路径加载。
-- 输出目录必须可写，文件推理会保存单样本结果、汇总和错误记录。
-- 医学图像任务还需要图像文件、图像预处理和多模态 prompt 支持；当前源码仅提供部分接口。
+- 需要本地可读取的模型与 tokenizer；模型变体和 tokenizer 必须匹配。
+- vLLM 后端适合 GPU 批量推理，Transformers 是兼容回退；大模型可能需要 tensor parallel。
+- 调用方负责控制上下文长度、输出 token 数、显存利用率和结果持久化。
 
 # operation_limits
 
-- 生成内容不能替代医生诊断或治疗建议。
-- 当前多模态图像推理在源码中未完整接入，实际会退化为文本推理。
-- JSON/JSONL 输入缺少有效字段时不会产生预测。
-- `use_vllm=true` 但 vLLM 不可用时会回退到 Transformers，性能可能明显下降。
-- 模型路径、tokenizer 路径和配置变体必须一致。
+- 模型生成内容不能替代医生诊断、治疗建议或临床复核。
+- 当前源码的多模态路径并未完整实现，图像任务不能假定与文本路径具有相同可用性。
+- `instances` 必须能被转换为消息；缺少 `messages` 和 `instances` 会抛出 `ValueError`。
+- vLLM 初始化失败时会回退到 Transformers，吞吐量和显存行为会变化。

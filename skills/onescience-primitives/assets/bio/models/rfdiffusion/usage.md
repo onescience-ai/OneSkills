@@ -1,57 +1,42 @@
 # launch
 
-RFdiffusion 用于蛋白骨架生成、motif scaffolding、binder design、partial diffusion 和对称设计。用户说“生成蛋白骨架”“保留这个 motif 重新设计 scaffold”“围绕靶标设计 binder”“对已有结构做 partial diffusion”时召回。
-
-无条件骨架生成示例：
+RFdiffusion 的模型主体是 `RoseTTAFoldModule`。上层扩散循环负责构造每一时间步的 MSA、序列、模板和坐标特征，模型 `forward` 预测结构更新、序列 logits 与置信度。
 
 ```sh
-cd "$ONESCIENCE_DIR/examples/biosciences/RFdiffusion" && python scripts/run_inference.py inference.output_prefix="$RUN_DIR/rfdiffusion/design" inference.num_designs=10 contigmap.contigs='[100-150]' inference.model_directory_path="$ONESCIENCE_MODELS_DIR/RFdiffusion/models"
-```
-
-motif scaffolding 示例：
-
-```sh
-cd "$ONESCIENCE_DIR/examples/biosciences/RFdiffusion" && python scripts/run_inference.py inference.input_pdb="$ONESCIENCE_DIR/examples/biosciences/RFdiffusion/examples/input_pdbs/5TPN.pdb" inference.output_prefix="$RUN_DIR/rfdiffusion/motif" inference.num_designs=10 contigmap.contigs='[10-40/A163-181/10-40]' inference.model_directory_path="$ONESCIENCE_MODELS_DIR/RFdiffusion/models"
-```
-
-binder design 示例：
-
-```sh
-cd "$ONESCIENCE_DIR/examples/biosciences/RFdiffusion" && python scripts/run_inference.py inference.input_pdb="$RUN_DIR/target.pdb" inference.output_prefix="$RUN_DIR/rfdiffusion/binder" inference.num_designs=20 contigmap.contigs='[A1-150/0 80-120]' ppi.hotspot_res='[A30,A67,A91]' inference.model_directory_path="$ONESCIENCE_MODELS_DIR/RFdiffusion/models"
+python -c "from onescience.models.rfdiffusion.RoseTTAFoldModel import RoseTTAFoldModule; import inspect; print(inspect.signature(RoseTTAFoldModule)); print(inspect.signature(RoseTTAFoldModule.forward))"
 ```
 
 # input_schema
 
-- 基础输入：Hydra override 参数、`inference.output_prefix`、`inference.num_designs`、`contigmap.contigs`、模型权重目录。
-- 无条件生成：至少需要 contig 长度，如 `'[100-150]'`。
-- motif scaffolding：需要 `inference.input_pdb` 和含固定 motif 片段的 contig，如 `'[10-40/A163-181/10-40]'`。
-- binder design：需要目标 PDB、目标链 contig、binder 长度范围，可选 `ppi.hotspot_res` 指定热点残基。
-- partial diffusion：需要输入 PDB、与输入长度一致的 contig，并设置 `diffuser.partial_T`。
-- 常见默认参数：`diffuser.T=50`，`diffuser.partial_T=null`，`inference.num_designs=10`；首次运行可能生成 IGSO3 缓存。
-- 智能体召回时建议记录：`usage_mode=unconditional | motif_scaffolding | binder_design | partial_diffusion | symmetry_design`，`entrypoint=run_inference.py`，`input_artifacts=contig | input_pdb | hotspot_res`，`output_artifacts=backbone_pdb | trb | trajectory`，`preflight_checks=contig_syntax | checkpoint_dir | output_prefix | input_pdb_chain_ids`。
+- 必需张量：`msa_latent`、`msa_full`、`seq`、初始 `xyz`、残基索引 `idx` 和扩散时间 `t`。
+- 模板条件由 `t1d`、`t2d`、`xyz_t`、`alpha_t` 提供；`motif_mask` 标记固定/条件残基。
+- recycling 可传 `msa_prev`、`pair_prev`、`state_prev`；`return_raw`、`return_full`、`return_infer` 控制返回层级。
+- 构造参数描述 extra/main/refinement block 数、MSA/pair/template 宽度、attention heads、SE(3) 参数、总时间步和 motif 策略。
+- `return_infer=True` 返回 MSA、pair、最终坐标、state、torsion、序列 logits 和 pLDDT；默认训练返回 distogram/orientation、序列、resolved、轨迹坐标、torsion、LDDT logits。
 
 # runtime_interfaces
 
-- `run_inference.py`：Hydra CLI 推理入口，接收 contig、输入 PDB、checkpoint 和输出前缀。
-- `Sampler`：根据任务配置选择 checkpoint、解析 contig、准备扩散输入并调度采样。
-- `Diffuser`：执行坐标与旋转扩散过程。
-- `RoseTTAFoldModule.forward`：RFdiffusion 的结构预测/去噪主体。
+- `RoseTTAFoldModule(...)`：RFdiffusion 完整神经网络主体。
+- `RoseTTAFoldModule.forward(...)`：单个扩散/回收步骤的训练与推理接口。
+- `MSA_emb`、`Extra_emb`、`Templ_emb`、`Recycling`：输入与 recycling 模块。
+- `IterativeSimulator`：结构/序列迭代更新主干。
+- `DistanceNetwork`、`MaskedTokenNetwork`、`LDDTNetwork`：辅助预测头。
 
 # main_functions
 
-- `sample`
-- `forward`
+- `RoseTTAFoldModule.forward`
+- `IterativeSimulator.forward`
+- `Recycling.forward`
 
 # execution_resources
 
-- 推荐 GPU；设计数量、长度、轨迹保存和对称设计会增加运行时间和磁盘占用。
-- 需要 RFdiffusion 权重目录、可写输出目录；有条件设计还需要输入 PDB 的链 ID 与 contig 一致。
-- 输出通常包括 backbone PDB、TRB 元数据、可选轨迹文件；这些输出可直接进入 ProteinMPNN 序列设计。
-- 观察项应包含：PDB 数量是否达到 `num_designs`、TRB 是否存在、contig 是否解析成功、失败是否来自 checkpoint、PDB 链号、热点残基或显存。
+- 依赖 PyTorch、SE(3) 模块以及与网络配置一致的 RFdiffusion checkpoint。
+- 长链、模板数、MSA 深度和扩散步数共同决定显存与耗时；GPU/DCU 是常规运行环境。
+- 完整生成需由上层采样器维护扩散时间表、self-conditioning/recycling 状态和输出结构。
 
 # operation_limits
 
-- RFdiffusion 主要生成骨架，不负责输出最终可表达的氨基酸序列；通常必须后接 ProteinMPNN。
-- 不用于给定序列的结构预测；序列折叠应召回 OpenFold、SimpleFold、ESMFold 或 Protenix。
-- partial diffusion 要求输入结构长度、mask 和 contig 对齐；不满足时不要硬跑。
-- binder design 成功率依赖靶标裁剪、热点选择和后续筛选；不能把生成 PDB 数量等同于成功设计数量。
+- `forward` 是单步模型接口，不会自行执行完整反向扩散循环或保存 PDB。
+- motif mask、contig 映射、模板坐标和残基索引必须处于同一编号体系。
+- 网络宽度、SE(3) 参数、时间步和输入序列表示必须与 checkpoint 一致。
+- 生成骨架仍需 ProteinMPNN 等序列设计及独立结构验证。

@@ -1,31 +1,43 @@
 # launch
 
+该原语描述 RFdiffusion 的加噪器、embedding/recycling、迭代结构模拟器与采样 runner。神经网络组件由 `RoseTTAFoldModule` 编排；完整反向扩散由 `Sampler`/`SelfConditioning` 维护状态。
+
 ```sh
-python {onescience_path}/onescience/examples/biosciences/RFdiffusion/scripts/run_inference.py inference.output_prefix=outputs/rfdiffusion/sample inference.num_designs=1 contigmap.contigs=[100-100] diffuser.T=50
+python -c "from onescience.models.rfdiffusion.diffusion import Diffuser; from onescience.models.rfdiffusion.Embeddings import Recycling; from onescience.models.rfdiffusion.Track_module import IterativeSimulator; from onescience.utils.rfdiffusion.inference.model_runners import Sampler, SelfConditioning; import inspect; print(inspect.signature(Diffuser)); print(inspect.signature(Diffuser.diffuse_pose)); print(inspect.signature(Recycling)); print(inspect.signature(IterativeSimulator)); print(inspect.signature(Sampler.sample_init)); print(inspect.signature(Sampler.sample_step)); print(inspect.signature(SelfConditioning.sample_step))"
 ```
 
 # input_schema
 
-准备 Hydra override、可选 input PDB、contig map、hotspot residue、partial diffusion 参数、symmetry 和 guiding potentials。partial diffusion 时 contig 长度必须与输入结构长度一致。
+- `Diffuser` 配置位置/旋转扩散时间表、总步数和 IGSO3 cache；`diffuse_pose` 接受 backbone 坐标、序列、原子 mask 与固定 motif mask。
+- embedding 组件读取 MSA、序列、残基索引、模板 `t1d/t2d/xyz_t/alpha_t` 和 recycling 状态。
+- `IterativeSimulator` 输入 MSA/pair/state、坐标、残基索引与 motif mask，输出更新轨迹。
+- `Sampler` 还需要模型 checkpoint、contig 映射、扩散/去噪配置和可选 guiding potentials。
 
 # runtime_interfaces
 
-- `Sampler`: 初始化模型、配置、contig、diffuser、denoiser。
-- `SelfConditioning`: 支持自条件采样。
-- `RoseTTAFoldModule.forward`: 神经网络主体去噪。
-- `Diffuser.diffuse_pose`: 对 backbone 坐标和 frame 加噪。
+- `Diffuser.diffuse_pose(...)`：对 backbone 坐标和 frame 前向加噪。
+- `MSA_emb`、`Extra_emb`、`Templ_emb`、`Recycling`：输入与回收组件。
+- `IterativeSimulator.forward(...)`：SE(3) 结构更新主干。
+- `Sampler.sample_init()`、`Sampler.sample_step(...)`：初始化并执行反向扩散步骤。
+- `SelfConditioning`：在 `Sampler` 上增加自条件状态。
 
 # main_functions
 
-- `forward`
-- `sample_init`
-- `diffuse_pose`
-- `denoise_step`
+- `Diffuser.diffuse_pose`
+- `Recycling.forward`
+- `IterativeSimulator.forward`
+- `Sampler.sample_init`
+- `Sampler.sample_step`
 
 # execution_resources
 
-需要 RFdiffusion 权重、Hydra 配置、可选 IGSO3 schedule cache 和 GPU。首次运行可能生成 schedule cache；复杂 binder/motif/symmetry 任务会增加内存和时间。
+- 依赖 PyTorch、SE(3) 网络、RFdiffusion checkpoint 和 IGSO3 时间表/cache。
+- 扩散步数、链长、模板/MSA 特征和 guiding potentials 决定计算量。
+- 首次生成旋转扩散 cache 需要可写目录；运行时配置应显式传入该位置。
 
 # operation_limits
 
-`contract_only` 表示不可直接假设 `OneDiffusion(style="RFdiffusionSampler")` 可运行。RFdiffusion 输出骨架，不等于完成序列和侧链设计；通常需要接 ProteinMPNN 或其他设计/relax 工具。
+- `Diffuser` 只执行前向加噪，不能代替反向采样器。
+- `Sampler` 是模型工作流组件，不等同于 `RoseTTAFoldModule` 本身。
+- partial diffusion 的 contig 长度、输入结构和 motif mask 必须严格对齐。
+- RFdiffusion 组件输出骨架状态，不负责最终序列和侧链设计。

@@ -6,7 +6,7 @@
   "visibility": "public",
   "created_at": "2026-06-29",
   "updated_at": "2026-06-29",
-  "description": "SimpleFold 是基于 flow matching 的生成式蛋白质结构预测原语，使用通用 Transformer/DiT 风格 FoldingDiT、原子局部编码、ESM 条件融合、token trunk 和 atom decoder 将特征化蛋白样本的噪声坐标转换为速度场并采样结构；使用时可通过 simplefold CLI 从 FASTA 推理，也可用 process/tokenize/train 脚本准备训练数据，规划时应围绕模型规模、backend、num_steps、tau、ESM 表征、atom_to_token 映射和训练/推理特征协议进行决策。",
+  "description": "SimpleFold 是 OneScience 中基于 PyTorch Lightning 与 flow matching 的蛋白结构模型资源。`SimpleFold` 组合 architecture、processor、loss、path 与 sampler，提供 `training_step`、`predict_step`、EMA checkpoint 和优化器配置；其 PyTorch 主干 `FoldingDiT.forward(noised_pos, t, feats, self_cond=None)` 预测结构采样所需表示。训练与推理代码必须提供处理后的特征和组件对象，模型输出按源码中的张量和 Lightning 预测协议解释。",
   "tags": [
     "protein",
     "structure-prediction",

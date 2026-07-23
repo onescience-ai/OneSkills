@@ -1,52 +1,45 @@
 # launch
 
-AlphaFold3 通过 JSON 输入和示例脚本启动，可以分别控制 data pipeline 和 inference。
+AlphaFold3 使用 `src/onescience/flax_models/alphafold3` 中的 Haiku 模型。调用方负责准备模型配置、参数、随机数和已经 featurise 的 `BatchDict`：
 
 ```sh
-python onescience/examples/biosciences/alphafold3/run_alphafold.py --json_path onescience/examples/biosciences/alphafold3/inputs/7r6r_data.json --model_dir ${AF3_MODEL_DIR} --output_dir ./outputs/alphafold3 --run_data_pipeline=true --run_inference=true --flash_attention_implementation=xla --num_recycles=10 --num_diffusion_samples=5
+python -c "from onescience.flax_models.alphafold3.model.model import Model; import inspect; print(inspect.signature(Model)); print(inspect.signature(Model.__call__)); print(inspect.signature(Model.get_inference_result))"
 ```
 
 # input_schema
 
-- 必需输入: AF3 JSON、模型参数目录、输出目录。
-- 常用参数:
-  - `--json_path`: 单个 JSON 输入。
-  - `--input_dir`: 批量 JSON 输入目录。
-  - `--run_data_pipeline`: 默认按输入是否已有特征决定；已有 MSA/template 时可关闭。
-  - `--run_inference`: 只做数据搜索时可关闭。
-  - `--flash_attention_implementation`: 兼容优先可用 `xla`。
-  - `--num_recycles`: 常见默认 `10`。
-  - `--num_diffusion_samples`: 常见默认 `5`。
-- JSON 可描述蛋白、RNA、DNA、配体、离子、用户 CCD、模板、MSA 和 bonds。
+- `model_config`：`Model.Config`，主要字段包括 `num_recycles`、`return_embeddings`、`return_distogram`、Evoformer 与 diffusion/confidence/distogram head 配置。
+- `model_params`：与配置和化学常量版本匹配的 Haiku 参数树。
+- `feature_batch`：AF3 featurisation 产生的 `BatchDict`，描述 protein、RNA、DNA、ligand、ion、bond、MSA、template 和 atom/token 映射。
+- `rng_key`：JAX PRNG key，控制扩散采样。
+- `Model.__call__` 返回 diffusion samples、confidence 输出和 distogram；按配置可附带 single/pair embeddings。
+- `get_inference_result` 将张量结果转换为结构、标量置信度和可写出数组。
 
 # runtime_interfaces
 
-- `run_alphafold.py`: 端到端推理入口。
-- `make_model_config`: 构建模型配置。
-- `ModelRunner`: 加载参数并执行推理。
-- `process_fold_input`: 执行 data pipeline 和 featurisation。
-- `predict_structure`: 针对 fold input 生成结构样本。
-- `write_outputs`: 写出结构、置信度和可选 embedding/distogram。
+- `DataPipeline.process`：补齐序列搜索、template 和化学输入信息。
+- `featurisation.featurise_input`：把 fold input 转成模型 `BatchDict`。
+- `Model(config)`：构建完整 AF3 网络。
+- `Model.__call__(batch, key=None)`：执行 recycle、diffusion 和 heads。
+- `Model.get_inference_result(batch, result, target_name)`：生成每个扩散样本的结构化推理结果。
 
 # main_functions
 
-- `make_model_config`
-- `predict_structure`
-- `write_fold_input_json`
-- `write_outputs`
-- `process_fold_input`
-- `post_process_inference_result`
-- `write_output`
+- `process`
+- `featurise_input`
+- `__call__`
+- `get_inference_result`
+- `get_predicted_structure`
 
 # execution_resources
 
-- 需要 JAX/Haiku、模型参数、数据库、MSA 搜索工具、CCD/RDKit 相关资源。
-- GPU 推理推荐使用；不同 flash attention 实现对 GPU、CUDA/cuDNN/Triton 兼容性要求不同。
-- data pipeline 可能大量占用 CPU、磁盘 I/O 和数据库读取。
+- 需要 JAX/Haiku、AF3 参数、CCD 数据文件和与输入分子类型匹配的 featurisation 依赖。
+- 从序列构建 MSA/template 时需要数据库与搜索工具；预计算 features 可跳过该阶段。
+- token-pair 表征为平方复杂度，长链和大型复合物需要 GPU/TPU、大显存及受控 diffusion sample 数。
 
 # operation_limits
 
-- 不应把 Protenix 的 PyTorch feature dict 直接喂给 AlphaFold3 JAX 模型。
-- pair embeddings 体积随 `N_token^2` 增长，保存时要评估磁盘与内存。
-- 配体和自定义 CCD 输入需要化学组件定义一致。
-- 模型权重和结果使用条款需由用户确认。
+- 不能把 Protenix 或 OpenFold 的 feature dict 直接传给 AF3 `Model`。
+- 配体、自定义 CCD、共价键和 atom/token 映射必须在 featurisation 阶段一致。
+- 模型类不负责参数发现、输入 JSON 解析或结果落盘；后续技能应围绕这些 API 构建 adapter。
+- 权重与模型配置、化学常量版本不一致会导致 shape 或语义错误。

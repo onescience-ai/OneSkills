@@ -6,7 +6,7 @@
   "visibility": "public",
   "created_at": "2026-06-29",
   "updated_at": "2026-06-29",
-  "description": "OpenFold 是 AlphaFold2/OpenFold 风格的蛋白质结构预测原语，使用 MSA、template、recycling、Evoformer 与 StructureModule 将蛋白序列特征转换为 atom37 坐标和置信度相关输出；使用时应通过 OpenFold feature pipeline 或预计算特征构造 batch，并用 pretrained 脚本或 AlphaFold API 运行，规划时重点判断 monomer/multimer/seq embedding preset、数据库依赖、recycling 维度和长序列内存策略。",
+  "description": "OpenFold 是 OneScience 中的 PyTorch AlphaFold2 风格结构模型资源。`AlphaFold(config)` 根据 `config.globals` 与 `config.model` 构造输入嵌入、recycling、template、Extra MSA、Evoformer、StructureModule 和辅助头；`forward(batch)` 接收末维为 recycling 轮次的 OpenFold 特征字典，返回 atom37 坐标、mask、仿射表示及 MSA、pair、single 等结果。该资源用于基于源码接口构建训练或推理代码，不依赖 pretrained 示例脚本。",
   "tags": [
     "protein",
     "structure-prediction",

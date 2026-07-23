@@ -6,7 +6,7 @@
   "visibility": "public",
   "created_at": "2026-07-06",
   "updated_at": "2026-07-06",
-  "description": "LaProteina 是蛋白结构生成与 motif scaffolding 原语，核心功能是在给定长度、CATH 条件或 motif 约束下采样蛋白骨架/全原子表示并保存为 PDB；实现上采用 product-space flow matching，把 CA 骨架坐标与局部 latent 表示作为联合数据模态，通过 LocalLatentsTransformer、可选 partial autoencoder、自条件和 guidance/autoguidance 完成生成；使用时通过 Hydra 配置和 inference/training 脚本指定 checkpoint、autoencoder、采样步数、长度与 motif 参数，规划时应先判断是无条件生成、条件生成还是 motif scaffolding，再安排设计性评估、序列/结构验证和失败回退。",
+  "description": "LaProteina 是 OneScience 中基于 PyTorch Lightning 与 product-space flow matching 的蛋白生成模型资源。`Proteina` 由实验配置构造 flow matcher、局部 latent Transformer 和可选冻结 autoencoder，使用 `training_step` 完成加噪、条件处理与损失计算；推理前通过 `configure_inference` 绑定采样配置，再由 `predict_step` 返回每个样本的 atom37 坐标与残基类型。该资源描述真实类与张量契约。",
   "tags": [
     "protein-generation",
     "backbone-generation",

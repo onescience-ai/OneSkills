@@ -1,10 +1,6 @@
-# component_info
-
-DiffDock 是用于蛋白-小分子对接的生成式 score 模型组件，主要负责在扩散采样过程中估计配体整体平移、整体旋转和可旋转键扭转方向；源码同时提供粗粒度 `CGModel`、全原子 `AAModel`、张量积卷积层和 checkpoint 加载包装器，可被上层采样、训练与 confidence 重排序流程复用。
-
 # architecture_overview
 
-DiffDock 将分子对接表示为蛋白-配体复合物图上的等变扩散去噪问题。模型不是直接输出单一对接构象，而是在每个噪声时间步上预测三类 score：
+DiffDock 是用于蛋白-小分子对接的生成式 score 模型。它将分子对接表示为蛋白-配体复合物图上的等变扩散去噪问题，并在每个噪声时间步上预测三类 score：
 
 - `tr`: 配体质心平移 score
 - `rot`: 配体整体旋转 score
@@ -121,18 +117,7 @@ Confidence 输出头
 
 # key_dependencies
 
-- `CGModel`
-- `AAModel`
-- `TensorProductConvLayer`
-- `FasterTensorProduct`
-- `AtomEncoder`
-- `GaussianSmearing`
-- `load_score_model`
-- `build_score_model`
-- `t_to_sigma`
-- `so3.score_norm`
-- `torus.score_norm`
-- DiffDock datapipes for ligand/receptor graph construction
+当前没有与 DiffDock 模型内部层一一对应的 bio component primitive。训练和推理的数据构图应另外召回 `biology_diffdock_dataset` datapipe；模型结构与加载接口直接使用本模型资源。
 
 # common_modification_points
 
