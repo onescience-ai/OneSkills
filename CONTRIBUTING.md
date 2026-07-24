@@ -1,42 +1,42 @@
-# Contributing
+# 贡献指南
 
-Thanks for contributing to `OneSkills`.
+感谢你对 `OneSkills` 的贡献。
 
-## Scope
 
-Public contributions should focus on:
+## 贡献范围
+
+公开贡献应聚焦于以下目录：
 
 - `skills/`
 - `docs/`
 
-Do not add private maintenance material to the public product surface.
+请勿将私有维护材料添加至公开产品界面中。
 
-## Before You Change Anything
+## 变更前须知
 
-Read the relevant public docs first:
+请先阅读相关公开文档：
 
 - [README.md](README.md)
-- [docs/open-source/README.md](docs/open-source/README.md)
 
-Keep changes minimal:
+保持变更最小化：
 
-- extend an existing skill before adding a new one
+- 优先扩展现有技能，而非新增技能
 
-## Documentation Expectations
+## 文档要求
 
-Update docs when behavior changes.
+当行为发生变更时，需同步更新文档。
 
-Typical places:
+常见更新位置：
 
-- product overview: `README.md`
-- public extension guidance: `docs/`
+- 产品概述：`README.md`
+- 公开扩展指南：`docs/`
 
-## Pull Request Notes
+## Pull Request 规范
 
-A useful PR description should state:
+一份有效的 PR 描述应包含以下信息：
 
-- what changed
-- which user-facing behavior changed
-- which directories were affected
-- which public checks were run
-- whether there are compatibility caveats
+- 变更内容
+- 哪些面向用户的行为发生了变化
+- 涉及哪些目录
+- 执行了哪些公开检查
+- 是否存在兼容性注意事项

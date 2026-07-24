@@ -1,16 +1,16 @@
-# Security Policy
+# 安全策略
 
-If you believe you found a security issue in `OneSkills`, do not publish full details in a public issue first.
+如果你认为在 `OneSkills` 中发现了安全问题，请勿首先在公开 Issue 中披露完整细节。
 
-Please contact the maintainers through a private channel if one is available to you. Include:
+请通过你可用的私有渠道联系维护者。报告应包含以下信息：
 
-- affected files or feature area
-- impact summary
-- reproduction steps
-- any suggested mitigation
+- 受影响的文件或功能区域
+- 影响摘要
+- 复现步骤
+- 任何建议的缓解措施
 
-If you do not have a private contact path yet, open a minimal public issue requesting security contact instructions without disclosing the full vulnerability details.
+如果你目前没有私有联系方式，可先创建一个仅包含"请求安全联系方式"的最小化公开 Issue，不要在其中披露漏洞的完整细节。
 
-## Supported Versions
+## 支持的版本
 
-Security fixes are expected to target the latest maintained version first.
+安全修复仅针对最新维护版本。
