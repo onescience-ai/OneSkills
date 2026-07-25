@@ -14,7 +14,29 @@ type: executor
 
 ## 工作流
 
-创建或更新工作目录；当 `step_handoff.inputs.runtime.code_save_dir`、上游交接物或用户明确指定了代码保存目录时，`infer_workdir` 必须使用 `<code_save_dir>/.infer_work/`。其中 `code_save_dir` 用于保存最终代码入口、runner 或用户要求的结果输出，`infer_workdir` 用于保存模型知识、计划、manifest、runtime 请求/结果、验证报告等 infer 中间知识产物。若上游已显式提供 `step_handoff.inputs.runtime.infer_workdir`，则应直接使用该目录，并要求其与 `code_save_dir` 语义保持一致；若未提供代码保存目录，但 `step_handoff.inputs.runtime.workdir`、`task_context.relevant_artifacts` 或用户明确指定了工作目录，则沿用该目录；否则兼容性回退到 `.onescience/infer/<run_id>/`。进入具体代码生成或执行阶段时，必须从 `infer_workdir` 中已保存的知识文件读取并交接，不依赖未落盘的会话上下文。
+创建或更新工作目录：
+
+**产物路径规则：**
+
+- `repro_artifact_dir`：所有可复现推理产物的根目录，默认 `<work_dir>/repro_artifacts/<run_id>/`。该目录与源码目录（如 `paper_cases/`）强制隔离，不得将推理脚本、输出结果散落在案例源码目录中。
+  - `repro_artifact_dir/code/`：生成的推理启动器脚本、runner 等代码产物（默认 = `code_save_dir`）
+  - `repro_artifact_dir/outputs/`：推理输出结果（mmCIF、confidence JSON、ranking CSV 等）
+  - `repro_artifact_dir/logs/`：运行日志
+  - `repro_artifact_dir/.infer_work/`：中间知识产物（= `infer_workdir`）
+
+- `code_save_dir` 用于保存最终代码入口和 runner。若上游已显式提供 `step_handoff.inputs.runtime.code_save_dir`，优先使用；若未提供，默认 = `<repro_artifact_dir>/code/`。
+
+- `infer_workdir` 用于保存模型知识、计划、manifest、runtime 请求/结果、验证报告等 infer 中间知识产物，默认 = `<repro_artifact_dir>/.infer_work/`。若上游已显式提供 `step_handoff.inputs.runtime.infer_workdir`，则直接使用该目录。
+
+- 若上游未提供 `code_save_dir`，但 `step_handoff.inputs.runtime.workdir`、`task_context.relevant_artifacts` 或用户明确指定了工作目录，则 `repro_artifact_dir` 首选 `<work_dir>/repro_artifacts/<run_id>/`；否则兼容性回退到 `.onescience/infer/<run_id>/`。
+
+- 进入具体代码生成或执行阶段时，必须从 `infer_workdir` 中已保存的知识文件读取并交接，不依赖未落盘的会话上下文。
+
+**GPU 分配规则：**
+
+- 禁止将论文协议参数（如 seed 数量）硬编码为 GPU 数量。`seed_count`（协议参数）、`gpu_count`（硬件资源）、`worker_count`（并发工作单元）必须分别建模为独立变量。
+- 代码生成和执行阶段必须通过 `nvidia-smi --query-gpu=index,name,memory.total,memory.free --format=csv,noheader` 或 `rocm-smi` 检测实际可用 GPU 列表，不得硬编码 GPU 索引。
+- `worker_count = seed_count × samples_per_seed`（或其他业务粒度），`gpu_count = 实际可用 GPU 数`。调度策略：`worker_count > gpu_count` 时分批轮转执行，`worker_count <= gpu_count` 时一卡一 worker。
 
 本技能不依赖 `scripts/` 目录下的预置脚本；如需生成或修改推理入口，使用项目原生入口或交接给 `onescience-coder` 产出明确文件。
 

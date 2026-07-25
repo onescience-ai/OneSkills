@@ -42,6 +42,7 @@ step_handoff:
       execution_intent: <plan_only | generate_code | run_local | run_remote | validate_only | unknown>
       execution_mode: <local | local_slurm | remote_slurm | remote_direct | unknown>
       code_save_dir: <用户指定的代码保存目录，可选>
+      repro_artifact_dir: <可复现产物根目录，默认 <work_dir>/repro_artifacts/<run_id>/>
       infer_workdir: <infer 工作目录，可选；推荐显式提供>
       workdir: <infer 工作目录兼容字段；当提供 code_save_dir 时优先使用 <code_save_dir>/.infer_work/<run_id>>
       package_requirements: <需要安装或确认的包，可选>
@@ -91,6 +92,7 @@ step_handoff:
     "execution_mode": "local | local_slurm | remote_slurm | remote_direct | unknown",
     "hardware": "cpu | cuda | dcu | tpu | unknown",
     "code_save_dir": "",
+    "repro_artifact_dir": "",
     "infer_workdir": "",
     "workdir": "",
     "package_requirements": [],
@@ -106,7 +108,7 @@ step_handoff:
 }
 ```
 
-`runtime.code_save_dir` 用于保存最终代码入口、runner 和用户要求的结果输出；`runtime.infer_workdir` / `runtime.workdir` 用于保存 infer 中间知识产物。若提供 `code_save_dir`，则应将 `infer_workdir` 规范化为 `<code_save_dir>/.infer_work/<run_id>`，并将 `workdir` 视为该 infer 工作目录的兼容字段，而不是最终代码输出目录。
+`runtime.code_save_dir` 用于保存最终代码入口、runner 和用户要求的结果输出；`runtime.infer_workdir` / `runtime.workdir` 用于保存 infer 中间知识产物。`runtime.repro_artifact_dir` 是可复现产物的根目录，其下包含 `code/`（代码产物）、`outputs/`（推理输出结果）、`logs/`（运行日志）和 `.infer_work/`（中间知识产物）四个子目录。若提供 `repro_artifact_dir`，则 `code_save_dir` 默认 = `<repro_artifact_dir>/code/`，`infer_workdir` 默认 = `<repro_artifact_dir>/.infer_work/<run_id>`。所有推理脚本和输出结果必须写入 `repro_artifact_dir` 下，不得散落在案例源码目录中。
 
 `domain_metadata` 承载领域特有信息，不把任何领域字段作为通用必填项：
 
@@ -125,6 +127,7 @@ step_handoff:
   "schema_version": "onescience-infer-run-v2",
   "run_id": "",
   "code_save_dir": "",
+  "repro_artifact_dir": "",
   "infer_workdir": "",
   "workdir": "",
   "handoff_path": "",
@@ -178,6 +181,7 @@ execution_result:
   status: <success | partial | failed | blocked>
   artifacts:
     code_save_dir: <最终代码或输出目录>
+    repro_artifact_dir: <可复现产物根目录>
     infer_workdir: <infer 中间知识产物目录>
     workdir: <兼容字段，指向 infer_workdir>
     handoff: <step_handoff.json>

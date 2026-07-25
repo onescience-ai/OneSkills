@@ -55,3 +55,15 @@
 ## 决策门
 
 在至少存在一个有效输入 sample 或 batch 之前，不要运行推理；如果用户明确只要求生成代码或规划则例外。如果无法准备数据，返回 `blocked` 或 `partial`，并在 `execution_result.observation.missing` 中说明缺少的数据源、凭据、字段映射、schema、单位、参考版本、结构、mesh 或其它关键元数据。
+
+### MSA 搜索显存预算检查
+
+当数据准备涉及 MMseqs2 GPU 模式进行 MSA 搜索时，必须在切换为 GPU 模式前完成显存预算检查：
+
+1. **获取 MMseqs 数据库索引大小**：执行 `du -sh <mmseqs_db_dir>/*.idx` 获取所有索引文件的大小，汇总并乘以系数 2.5 作为运行时显存占用的估算值（系数覆盖索引加载、中间缓存和比对结果的显存需求）。
+2. **获取可用 GPU 显存**：通过 `nvidia-smi --query-gpu=index,memory.total,memory.free --format=csv,noheader` 获取目标 GPU 的空闲显存。
+3. **决策**：
+   - 若估算显存 < 可用显存 × 70%：可以使用 `--use_mmseqs_gpu=true`
+   - 若估算显存 >= 可用显存 × 70%：**自动回退为 `--use_mmseqs_gpu=false`**，使用 CPU 模式执行 MSA 搜索。回退原因写入 `data_preparation_plan.md` 的 `mmseqs_fallback_reason` 字段
+4. **MSA 缓存复用**：若存在已有 MSA 搜索缓存目录（如 `alignDB/`），在 `data_preparation_plan.md` 中记录缓存路径，并优先检查缓存命中。对于已缓存的序列，可直接使用预计算结果，跳过重复的全库搜索。
+5. **CPU 并发度**：CPU 模式下的 `--mmseqs_n_cpu` 参数应从 `nproc` 动态获取可用 CPU 核数，并考虑多 worker 并行时 CPU 资源的竞争（建议预留 2 核给系统进程）。

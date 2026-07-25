@@ -74,6 +74,41 @@ preflight 必须通过当前 `execution_channel` 对目标环境做真实发现�
 
 任何一项检查未执行、无证据或失败时，设置 `preflight_passed=false`、`execution_readiness=blocked`，并根据阻断类型自动委托 `onescience-runsite` 或 `onescience-installer`。环境类阻断必须走 `onescience-installer`。
 
+### 登录节点 vs 计算节点环境区分
+
+在 SLURM 集群环境中，登录节点（login node）与计算节点（compute node）的环境通常不同。preflight 在登录节点执行环境检查时，必须遵守以下规则：
+
+1. **核心验证项（必须在登录节点通过）**：
+   - Python 解释器存在且可执行
+   - `import onescience` 成功
+   - `import torch` 成功（或对应框架）
+   - conda 环境可激活
+   - 入口脚本存在
+
+2. **可选验证项（允许在登录节点失败，推迟到计算节点验证）**：
+   - 特定的系统级共享库（如 `libmsgpackc.so.2`、`libcudnn.so`、`libnccl.so` 等仅计算节点才有的库）
+   - GPU 驱动级依赖
+   - 高速网络库（如 InfiniBand verbs）
+   - SLURM 作业执行时的实际资源可用性
+
+3. **共享库缺失跳过规则**：
+   - 若在登录节点执行 `conda activate` 或环境验证时，遇到特定共享库（如 `libmsgpackc.so.2`）缺失导致 `ldconfig` 或 `ldd` 循环扫描：
+     - 记录该库缺失为 `warning`（非 `error`），不阻塞 `preflight_passed`
+     - 将缺失的库列表写入 `evidence.preflight.missing_libs_on_login_node`
+     - 设置 `evidence.preflight.deferred_lib_checks=true`，表示库依赖完整性将在计算节点执行时由作业脚本自检
+   - **禁止**在登录节点为查找特定 `.so` 文件而遍历整个文件系统
+   - 已知登录节点不可用的库白名单（匹配到后直接跳过不检索）：
+     - `libmsgpackc.so.2`
+     - `libcudnn*.so*`
+     - `libnccl*.so*`
+     - `libcublas*.so*`
+     - `libnvrtc*.so*`
+
+4. **执行通道差异**：
+   - `local_direct` 通道：所有库依赖必须在当前环境通过，不允许 defer
+   - `local_slurm` 通道：允许将计算节点特有的库检查推迟到 SLURM 作业执行阶段
+   - `ssh_*` 通道：远端检查按上述规则，登录节点/计算节点以远端环境为准
+
 ## SCnet Config Rules
 
 当 `execution_channel=scnet_mcp` 且用户意图包含”提交新任务”时，runtime2 必须读取 `onescience.json.runtime.scnet`，并把它作为交给 `scnet-chat` 的提交参数来源。

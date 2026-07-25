@@ -20,10 +20,21 @@
 生成的推理代码应支持：
 
 - 对 config、checkpoint、input、output directory、device、dtype、batch size、seed 和领域参数提供显式 CLI 参数
-- 在 `code_save_dir` 或项目原生目录下使用确定性的最终输出路径，并在 `infer_workdir` 中记录对应引用
+- 输出路径必须使用 `repro_artifact_dir` 下的子目录：推理脚本写入 `<repro_artifact_dir>/code/`，推理输出结果写入 `<repro_artifact_dir>/outputs/`，运行日志写入 `<repro_artifact_dir>/logs/`。不得将推理产物散落在源码目录（如 `paper_cases/`）中。
+- 在 `infer_workdir` 中记录对应引用
 - 结构化日志和机器可读的结果摘要
 - 对缺失文件、格式错误输入、device 不匹配和无效输出给出清晰失败信息
 - 除非用户明确要求，执行期间不要隐藏式下载
+
+### GPU 分配规则
+
+生成多 GPU 推理代码时，必须遵守以下规则：
+
+- 禁止将协议参数（如 seed 数量）硬编码为 GPU 数量。将 `seed_count`（协议参数）、`gpu_count`（从 `nvidia-smi` 或 `rocm-smi` 检测的硬件资源）、`worker_count`（并发工作单元）分别建模为独立变量。
+- GPU 列表必须通过命令行参数 `--gpus` 传入，不得硬编码默认值（如 `default="0,1,2,3,4"`）。
+- 不得含有对具体 GPU 数量的硬编码校验（如 `len(gpu_ids) != 5`）。
+- 调度策略：`worker_count > gpu_count` 时分批轮转执行，`worker_count <= gpu_count` 时一卡一 worker。
+- `worker_count` 的粒度应根据推理独立性选择：多个 seed-sample 组合可独立并发拆分为 worker，而非仅按 seed 级拆分。
 
 对于 HuggingFace 模型，若文档给出官方 API 模式，应使用该模式。对于仓库模型，复用官方 runner 或 datapipe 模块，不要重新实现内部逻辑。
 
@@ -35,6 +46,7 @@
 infer_handoff=true
 task_method=inference_codegen
 infer_workdir=<code_save_dir>/.infer_work/<run_id>
+repro_artifact_dir=<repro_artifact_dir>
 code_save_dir=<用户代码保存目录>
 model_knowledge_path=<infer_workdir>/model_knowledge.md
 model_knowledge_content=<model_knowledge.md 全文或执行所需完整内容>

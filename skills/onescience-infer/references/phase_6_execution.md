@@ -10,6 +10,7 @@
 {
   "task": "run inference",
   "code_save_dir": "",
+  "repro_artifact_dir": "",
   "infer_workdir": "",
   "workdir": "",
   "entrypoint": "",
@@ -50,11 +51,28 @@
 - `infer_workdir` 中所需知识文件已存在，并已据此构造 `runtime_request.json.knowledge_inputs`
 - 入口文件存在
 - Config、checkpoint 和输入文件存在或可解析
+- **`repro_artifact_dir` 已创建且目录结构完备**：`code/`、`outputs/`、`logs/` 子目录均已创建，推理脚本和产物已正确写入对应子目录，未散落在源码目录中
 - 输出目录可写
 - 数据 manifest 满足模型输入契约
 - 需要安装或确认的 package 已写入 `runtime_request.json.package_requirements`
 - Python、框架、加速后端、内存、模块、conda、容器或镜像需求已写入 `runtime_request.json.environment_requirements`
 - 对大型下载、package 安装、环境修改或远程提交等需要授权的操作，已获得用户授权；未授权时返回 `blocked` 或把执行标记为 `pending`
+
+### GPU 预检
+
+当推理涉及 GPU 时，执行前必须完成：
+
+- 通过 `nvidia-smi --query-gpu=index,name,memory.total,memory.free --format=csv,noheader`（或 `rocm-smi`）获取实际可用 GPU 列表及其显存信息，写入 `evidence.preflight.gpu_info`
+- 将检测到的 GPU 列表与生成的推理脚本中声明的 `--gpus` 参数做一致性校验：脚本不得硬编码 GPU 数量，必须与实际可用 GPU 列表匹配
+- `gpu_count` = 实际空闲 GPU 数（显存占用 < 10% 视为空闲），`worker_count` = 推理任务需要的并发工作单元数。调度策略：`worker_count > gpu_count` 时分批轮转，`worker_count <= gpu_count` 时一卡一 worker
+
+### MMseqs / MSA 数据管线预检
+
+当推理输入依赖 MMseqs2 或 JackHmmer 进行 MSA 搜索时：
+
+- 若启用 `--use_mmseqs_gpu=true`，必须先估算 MMseqs 数据库索引（Uniref90、MGnify、BFD、Uniprot）的预估显存占用（通过 `du -sh <mmseqs_db_dir>/*.idx` 获取索引文件大小并 ×2.5 作为运行时显存估算系数），与可用 GPU 显存对比
+- 若估算显存超出单卡可用显存的 70%，**自动回退 `--use_mmseqs_gpu=false`**，使用 CPU 模式搜索，并将回退原因记录到 `evidence.preflight.mmseqs_fallback_reason`
+- 若存在已有 MSA 搜索缓存目录（如 `alignDB`），优先检查缓存命中，避免对每个案例重复全库搜索
 
 执行前检查、命令构造和失败诊断应以 `infer_workdir` 中保存的知识产物为准，不要在这些文件已存在时重新凭会话上下文猜测模型 IO、数据格式、checkpoint 约束或预期输出。
 
