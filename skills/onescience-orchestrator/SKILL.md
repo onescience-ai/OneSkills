@@ -179,6 +179,14 @@ type: orchestrator
      - 每个步骤的预期产物
    - 使用清晰的结构化格式（markdown表格或编号列表）
    - 确保用户可以完整了解任务执行全貌
+   - 当 Global Plan 中包含长时间运行的任务（预估运行时间 > 10 分钟），必须在执行该任务前增加一个"执行前依赖预检"步骤：
+     - 该步骤为 orchestrator_step，使用 Bash 工具
+     - 检查内容包括：关键 Python 模块是否可导入、CUDA 扩展是否可用、环境依赖是否一致
+     - 检查方法参考 `references/pre_execution_checklist.md`
+     - 预检失败时，在 Global Plan 中插入修复步骤后再执行主任务，不得直接运行主任务
+   - 当 Global Plan 中包含批量处理任务时（数据项 > 100），必须在规划中评估分片并行策略：
+     - 评估可用 GPU 数量和任务的可分片性
+     - 若可分片且在计划时间窗口内单卡 > 30 分钟，应拆分为多个并行子任务
    - 从 Global Plan 中选择当前应执行的第一步 `Next Step Spec`
 
 ### 阶段三：执行与状态更新
@@ -371,6 +379,8 @@ planner proposals -> global plan synthesis
 - 读取本地文件内容：使用 Read 工具；仅限项目工作区文件、用户文件和 orchestrator 自身的非资源参考文件，不得用于读取任何 resource skill 的 `assets/` 目录
 - 执行简单 shell 命令：使用 Bash 工具
 - 搜索文件或内容：使用 Glob 或 Grep 工具；仅限项目工作区文件或 orchestrator 自身非资源文件，不得用于搜索任何 resource skill 的 `assets/` 目录
+  - 执行文件搜索前，若用户提供的路径信息较模糊或前次搜索失败，必须读取 `references/path_resolution.md`，按渐进式路径搜索策略执行，最多 3 轮重试
+  - 搜索失败后必须先分析原因（工具不可用、路径层级错误、模式失配），再调整策略，不得直接换一种模式无差别重试
 - 写入或修改配置文件：使用 Write 或 Edit 工具
 
 orchestrator 执行这些步骤后，仍需生成 `execution_result` 包含 `artifacts` 和 `observation`，并更新 `Task State`。
@@ -412,3 +422,5 @@ orchestrator 执行这些步骤后，仍需生成 `execution_result` 包含 `art
 - 需要专家召回、planner proposal 和计划融合协议时，读取 `references/planner_contract.md`。
 - 需要资源分层、摘要匹配和资源绑定规则时，读取 `references/resource_contract.md`。
 - 需要执行技能 handoff 格式时，读取 `references/execution_handoff_contract.md`。
+- 需要在模糊路径条件下搜索项目文件时，读取 `references/path_resolution.md`。
+- 需要为长时间运行任务添加执行前依赖预检时，读取 `references/pre_execution_checklist.md`。
