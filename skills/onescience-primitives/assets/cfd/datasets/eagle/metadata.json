@@ -1,0 +1,17 @@
+{
+  "name": "eagle",
+  "type": "dataset",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-27",
+  "updated_at": "2026-07-27",
+  "description": "Eagle CFD 变长非结构网格时序数据，包含 sim.npz、triangles.npy 和 constrained_kmeans 聚类。",
+  "tags": [
+    "cfd",
+    "mesh",
+    "time-series",
+    "graph-learning",
+    "numpy"
+  ]
+}

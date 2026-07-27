@@ -1,0 +1,16 @@
+{
+  "name": "cfd_benchmark",
+  "type": "dataset",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-27",
+  "updated_at": "2026-07-27",
+  "description": "CFD_Benchmark 汇总 Airfoil、pipe、Navier-Stokes、Darcy、elasticity、diffusion-sorption、plas 等规则网格 PDE/CFD benchmark。",
+  "tags": [
+    "cfd",
+    "benchmark",
+    "pde",
+    "operator-learning"
+  ]
+}

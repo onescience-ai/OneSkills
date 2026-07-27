@@ -1,0 +1,16 @@
+{
+  "name": "cfdbench",
+  "type": "dataset",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-27",
+  "updated_at": "2026-07-27",
+  "description": "CFDBench tube/cavity/cylinder/dam 二维规则网格流场 case 数据，包含 case 参数和 u/v 速度时序。",
+  "tags": [
+    "cfd",
+    "benchmark",
+    "flow-simulation",
+    "case-data"
+  ]
+}

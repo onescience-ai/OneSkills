@@ -1,0 +1,17 @@
+{
+  "name": "la_proteina",
+  "type": "dataset",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-21",
+  "updated_at": "2026-07-21",
+  "description": "La-Proteina 数据原语提供结构化蛋白设计数据、AFDB 资源和预训练权重，面向蛋白设计与结构生成。",
+  "tags": [
+    "protein-design",
+    "afdb",
+    "pdb",
+    "weights",
+    "structure"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "protenix",
+  "type": "dataset",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-21",
+  "updated_at": "2026-07-21",
+  "description": "Protenix 数据原语面向蛋白复合物结构建模与推理接入，覆盖 mmCIF、bioassembly、MSA 和序列到 PDB 索引文件。它更像一个结构与检索资产包，而不是单一训练集。",
+  "tags": [
+    "protein-structure",
+    "mmcif",
+    "bioassembly",
+    "msa",
+    "index"
+  ]
+}

@@ -1,5 +1,5 @@
 ## access
-平台挂载路径为 `/public/share/sugonhpcapp01/onestore/onedatasets/TJWeather`；在作业脚本中以只读数据根目录传入，避免复制大文件。
+数据获取路径优先使用 `${ONESCIENCE_DATASETS_DIR}/TJWeather`；若运行环境未设置 `ONESCIENCE_DATASETS_DIR`，则回退到默认挂载路径 `/public/share/sugonhpcapp01/onestore/onedatasets/TJWeather`。在作业脚本中以只读数据根目录传入，避免复制大文件。
 
 ## data_schema
 TJ1-GB 子目录保存实际数据；根目录未提供 README 或 metadata。

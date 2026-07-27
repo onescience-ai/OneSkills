@@ -1,5 +1,5 @@
 ## access
-ERA5 的逻辑存储路径为 `$ONESCIENCE_DATASETS_DIR/ERA5`；当前平台挂载路径可映射为 `/public/share/sugonhpcapp01/onestore/onedatasets/ERA5`。在作业脚本中应以只读数据根目录传入，避免复制大文件。
+数据获取路径优先使用 `${ONESCIENCE_DATASETS_DIR}/ERA5`；若运行环境未设置 `ONESCIENCE_DATASETS_DIR`，则回退到默认挂载路径 `/public/share/sugonhpcapp01/onestore/onedatasets/ERA5`。在作业脚本中应以只读数据根目录传入，避免复制大文件。
 
 ## data_schema
 读取变量时必须先从 `fields.attrs["variables"]` 中查找变量名对应的通道索引，再从 `fields[:, index, :, :]` 或 `fields[t, index, :, :]` 提取数据；不要硬编码通道顺序。

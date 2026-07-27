@@ -1,0 +1,17 @@
+{
+  "name": "diffdock",
+  "type": "dataset",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-21",
+  "updated_at": "2026-07-21",
+  "description": "DiffDock 数据原语覆盖 PDBBind、BindingMOAD、P-L 与推理输入缓存，并配有 score 模型参数和 split 文件。它面向蛋白-配体对接与采样。",
+  "tags": [
+    "docking",
+    "protein-ligand",
+    "pdbbind",
+    "bindingmoad",
+    "hetero-graph"
+  ]
+}

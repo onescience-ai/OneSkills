@@ -1,0 +1,16 @@
+{
+  "name": "esmfold",
+  "type": "dataset",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-21",
+  "updated_at": "2026-07-21",
+  "description": "ESMFold 数据原语提供运行所需的 data 和 weight 目录，更接近推理支撑包而不是传统训练集。",
+  "tags": [
+    "esmfold",
+    "protein-folding",
+    "weights",
+    "runtime-data"
+  ]
+}

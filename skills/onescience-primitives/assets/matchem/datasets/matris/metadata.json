@@ -1,0 +1,16 @@
+{
+  "name": "matris",
+  "type": "dataset",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-27",
+  "updated_at": "2026-07-27",
+  "description": "MatRIS 声子与热力学性质参考表，包含 PBE 和 PBEsol 两套 CSV。",
+  "tags": [
+    "materials",
+    "matris",
+    "phonon",
+    "csv"
+  ]
+}

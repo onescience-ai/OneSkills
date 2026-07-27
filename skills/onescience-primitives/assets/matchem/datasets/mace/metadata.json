@@ -1,0 +1,16 @@
+{
+  "name": "mace",
+  "type": "dataset",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-27",
+  "updated_at": "2026-07-27",
+  "description": "MACE 势模型示例与基准数据集合，包含 ANI1x HDF5/extxyz、水、DMC 溶剂和 nanotube extxyz 数据。",
+  "tags": [
+    "materials",
+    "mace",
+    "extxyz",
+    "molecular-potential"
+  ]
+}

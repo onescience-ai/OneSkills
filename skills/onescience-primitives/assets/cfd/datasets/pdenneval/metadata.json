@@ -1,0 +1,16 @@
+{
+  "name": "pdenneval",
+  "type": "dataset",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-27",
+  "updated_at": "2026-07-27",
+  "description": "PDENNEval/PDEBench 数据集合，包含 PDEBench HDF5/H5 文件和生成数据 zip。",
+  "tags": [
+    "cfd",
+    "pde",
+    "benchmark",
+    "operator-learning"
+  ]
+}

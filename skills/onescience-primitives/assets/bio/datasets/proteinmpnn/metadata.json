@@ -1,0 +1,17 @@
+{
+  "name": "proteinmpnn",
+  "type": "dataset",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-21",
+  "updated_at": "2026-07-21",
+  "description": "ProteinMPNN 数据原语提供链级 `.pt` 结构样本、蛋白元数据和序列聚类划分，用于蛋白序列设计和骨架条件生成。",
+  "tags": [
+    "protein-design",
+    "backbone",
+    "pt",
+    "cluster-split",
+    "sequence-design"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "targetdiff",
+  "type": "dataset",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-21",
+  "updated_at": "2026-07-21",
+  "description": "TargetDiff 数据原语提供 pocket-ligand pair、PDBBind 相关样本和 LMDB 缓存构建路径，用于靶点条件分子生成。",
+  "tags": [
+    "protein-ligand",
+    "generation",
+    "pocket",
+    "lmdb",
+    "pdbbind"
+  ]
+}

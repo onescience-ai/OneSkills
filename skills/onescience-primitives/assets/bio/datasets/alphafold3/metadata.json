@@ -1,0 +1,17 @@
+{
+  "name": "alphafold3",
+  "type": "dataset",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-21",
+  "updated_at": "2026-07-21",
+  "description": "AlphaFold 3 数据原语提供 mmseqsDB、public_databases、alignDB 和 jackhmmer_split 等数据库/分割资源。",
+  "tags": [
+    "alphafold3",
+    "database",
+    "mmseqs",
+    "jackhmmer",
+    "reference-db"
+  ]
+}

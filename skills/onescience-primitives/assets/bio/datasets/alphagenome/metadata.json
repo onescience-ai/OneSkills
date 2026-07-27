@@ -1,0 +1,17 @@
+{
+  "name": "alphagenome",
+  "type": "dataset",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-21",
+  "updated_at": "2026-07-21",
+  "description": "AlphaGenome 数据原语提供物种参考序列与版本化训练目录，面向基因组基础模型、参考序列接入和分层任务训练。",
+  "tags": [
+    "genome",
+    "reference",
+    "training-split",
+    "species",
+    "versioned"
+  ]
+}

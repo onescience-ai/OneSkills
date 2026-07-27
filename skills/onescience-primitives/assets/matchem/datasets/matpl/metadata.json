@@ -1,0 +1,16 @@
+{
+  "name": "matpl",
+  "type": "dataset",
+  "domain": "materials",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-27",
+  "updated_at": "2026-07-27",
+  "description": "MatPL/PWMLFF 材料势数据集合，覆盖 AuAg、Cu、HfO2、LiSiC 等体系，包含 PWdata、MOVEMENT、extxyz 和训练配置。",
+  "tags": [
+    "materials",
+    "matpl",
+    "materials-property",
+    "structure-data"
+  ]
+}

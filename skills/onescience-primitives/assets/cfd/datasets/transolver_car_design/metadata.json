@@ -1,0 +1,16 @@
+{
+  "name": "transolver_car_design",
+  "type": "dataset",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-27",
+  "updated_at": "2026-07-27",
+  "description": "Transolver-Car-Design 三维汽车外流场数据，包含 preprocessed_data/param0..param8 图缓存和可视化/线性回归辅助文件。",
+  "tags": [
+    "cfd",
+    "car-design",
+    "aerodynamics",
+    "transolver"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "vortex_shedding_mgn",
+  "type": "dataset",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-27",
+  "updated_at": "2026-07-27",
+  "description": "DeepMind CylinderFlow 圆柱绕流 TFRecord 图数据，包含 meta.json、train/valid/test 和统计文件。",
+  "tags": [
+    "cfd",
+    "vortex-shedding",
+    "meshgraphnet",
+    "flow-prediction"
+  ]
+}

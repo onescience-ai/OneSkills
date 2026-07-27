@@ -1,0 +1,16 @@
+{
+  "name": "pinnsformer",
+  "type": "dataset",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-27",
+  "updated_at": "2026-07-27",
+  "description": "PINNsFormer 示例 PDE 数据，包含 convection.mat 和 cylinder_nektar_wake.mat。",
+  "tags": [
+    "pde",
+    "pinnsformer",
+    "mat-file",
+    "physics-informed-learning"
+  ]
+}

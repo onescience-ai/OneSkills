@@ -1,0 +1,17 @@
+{
+  "name": "beno",
+  "type": "dataset",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-27",
+  "updated_at": "2026-07-27",
+  "description": "BENO 边界条件神经算子数据，按 Dirichlet/Neumann 和 N32 前缀组织 RHS/SOL/BC NumPy 数组。",
+  "tags": [
+    "cfd",
+    "pde",
+    "boundary-operator",
+    "numpy",
+    "heterogeneous-graph"
+  ]
+}

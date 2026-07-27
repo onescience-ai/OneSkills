@@ -1,0 +1,16 @@
+{
+  "name": "deepcfd",
+  "type": "dataset",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-27",
+  "updated_at": "2026-07-27",
+  "description": "DeepCFD 成对 pickle 输入/输出规则网格张量数据，适用于二维流场代理模型训练。",
+  "tags": [
+    "cfd",
+    "aerodynamics",
+    "regular-grid",
+    "surrogate-modeling"
+  ]
+}

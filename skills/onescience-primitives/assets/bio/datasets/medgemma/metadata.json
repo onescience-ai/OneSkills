@@ -1,0 +1,17 @@
+{
+  "name": "medgemma",
+  "type": "dataset",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-21",
+  "updated_at": "2026-07-21",
+  "description": "MedGemma 数据原语整合胸片、病理、临床和医学问答等多模态数据目录，更适合做医学多任务 benchmark 集。",
+  "tags": [
+    "medical",
+    "multimodal",
+    "ehr",
+    "xray",
+    "pathology"
+  ]
+}

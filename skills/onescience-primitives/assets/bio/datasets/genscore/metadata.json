@@ -1,0 +1,17 @@
+{
+  "name": "genscore",
+  "type": "dataset",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-21",
+  "updated_at": "2026-07-21",
+  "description": "GenScore 数据原语面向蛋白-配体打分、虚拟筛选和口袋建模，覆盖 PDBbind_flat、PDBbind_v2020、CASF-2016、inferdata 与 rtmscore_s。",
+  "tags": [
+    "scoring",
+    "virtual-screening",
+    "pdbbind",
+    "casf",
+    "pocket"
+  ]
+}

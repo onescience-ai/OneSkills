@@ -1,0 +1,17 @@
+{
+  "name": "alphafold2_3_0",
+  "type": "dataset",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-21",
+  "updated_at": "2026-07-21",
+  "description": "AlphaFold 2.3.0 数据原语提供参数文件和公共数据库，用于 AlphaFold 系列复现、模板搜索和 MSA 构建。",
+  "tags": [
+    "alphafold",
+    "database",
+    "params",
+    "msa",
+    "template-search"
+  ]
+}

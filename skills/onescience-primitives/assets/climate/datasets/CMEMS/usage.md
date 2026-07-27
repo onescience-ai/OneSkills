@@ -1,5 +1,5 @@
 ## access
-平台挂载路径为 `/public/share/sugonhpcapp01/onestore/onedatasets/CMEMS`；在作业脚本中以只读数据根目录传入，避免复制大文件。
+数据获取路径优先使用 `${ONESCIENCE_DATASETS_DIR}/CMEMS`；若运行环境未设置 `ONESCIENCE_DATASETS_DIR`，则回退到默认挂载路径 `/public/share/sugonhpcapp01/onestore/onedatasets/CMEMS`。在作业脚本中以只读数据根目录传入，避免复制大文件。
 
 ## data_schema
 metadata.json 给出 years=[2010,2011,2012]、variables 列表和 total_files=365；data/h5/newdata 存放年度 h5；stats/stats-new 存放统计量。

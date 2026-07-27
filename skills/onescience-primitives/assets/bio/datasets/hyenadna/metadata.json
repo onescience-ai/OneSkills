@@ -1,0 +1,17 @@
+{
+  "name": "hyenadna",
+  "type": "dataset",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-21",
+  "updated_at": "2026-07-21",
+  "description": "HyenaDNA 数据原语提供 genome benchmark、species 数据和 hg38 参考资源，用于长序列建模和下游基因组分类任务。",
+  "tags": [
+    "genome",
+    "dna",
+    "benchmark",
+    "fasta",
+    "long-sequence"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "evo2",
+  "type": "dataset",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-21",
+  "updated_at": "2026-07-21",
+  "description": "Evo2 数据原语提供 chr20/21/22 FASTA、genome_data 和预处理数据，面向超长 DNA 序列建模。",
+  "tags": [
+    "evo2",
+    "genome",
+    "fasta",
+    "long-context",
+    "tokenization"
+  ]
+}

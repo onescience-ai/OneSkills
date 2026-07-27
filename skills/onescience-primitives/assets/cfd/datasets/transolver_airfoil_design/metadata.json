@@ -1,0 +1,16 @@
+{
+  "name": "transolver_airfoil_design",
+  "type": "dataset",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-07-27",
+  "updated_at": "2026-07-27",
+  "description": "Transolver-Airfoil-Design 二维翼型非结构网格 VTK 数据，包含 manifest split 和 internal/aerofoil/freestream 文件。",
+  "tags": [
+    "cfd",
+    "airfoil",
+    "design",
+    "transolver"
+  ]
+}
