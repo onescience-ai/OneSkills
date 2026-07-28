@@ -29,7 +29,42 @@
 - 与 baseline 对比的误差图、差值图或散点图
 - 标量或 tensor 输出的直方图、范围摘要或 embedding 摘要
 
-绘图代码应与推理入口分离。将图片保存到 `infer_workdir`，并在 `validation_report.md` 中引用；`validation_report.md` 本身也应保存在 `infer_workdir`，并引用本次验证所依据的知识文件与最终输出路径。 
+### 生信结构输出
+
+当推理产物包含 `.pdb`、`.cif` 或 `.mmcif`，且用户请求结构可视化或该可视化对验证有用时：
+
+1. 向 `onescience-primitives` 发出 `resource_retrieval_request`，使用 `filters.domain: bio`、`filters.keyword: complex structure visualization`、`content_request: 完整内容`；需要 bundled renderer 时设置 `include_execution_assets: true`。
+2. 只消费 resource 返回的 `content` 与已校验的 `content.execution_assets`，不得沿 `matched_resources[].path` 直接读取 primitive 资产。
+3. 将结构路径、结构来源、链/实体信息、pLDDT/PAE 来源、请求视图和输出格式交给 `onescience-data-analyzer`。
+4. AF3 多样本通过 `samples_manifest_path` 交接；每个样本必须把同一 seed/sample 的 CIF、`confidences.json` 与 `summary_confidences.json` 原子配对，并记录三个文件的路径和 SHA-256。
+5. 完整 PAE 只能来自 `confidences.json.pae`；summary 中的 `chain_pair_pae_min` 不能被扩展、插值或复制为 PAE matrix。数据缺失时必须标记 unavailable。
+6. `single_file_compatibility: true` 保留旧结构路径调用；没有完整 confidence JSON 时只允许结构视图，PAE 验证不得伪成功。
+7. 蛋白质单体和复合物都绑定 `complex_structure_visualization`；由 primitive 的 scene mode 决策区分。
+8. 只有上游模型或文件契约明确说明 B-factor 承载 pLDDT 时，才把它标记为 pLDDT。
+9. 在 `validation_report.md` 中记录 renderer、scene mode、sample count、provenance、PAE 状态、validation flags、输出文件、warnings 和质量检查。
+
+建议 handoff 的必要字段：
+
+```yaml
+samples_manifest_path: <AF3 samples manifest；多样本首选>
+single_file_compatibility: <true | false>
+structure_path: <PDB/mmCIF/CIF>
+confidence_path: <同一样本 *_confidences.json>
+summary_confidences_path: <同一样本 *_summary_confidences.json>
+structure_source: <model or experiment>
+confidence_semantic: <plddt | b_factor | external | none>
+confidence_source: <field or external file>
+pae_source: <af3_confidences_json | none>
+expected_sample_count: <integer>
+validation_flags:
+  - "--expect-samples <N>"
+  - "--require-pae"
+  - "--require-plddt-provenance"
+requested_outputs: <html/png/pml/pse>
+```
+
+绘图代码应与推理入口分离。仅用于内部验证的图片保存到 `infer_workdir`；用户明确要求交付的可视化保存到 `code_save_dir` 或上游指定的结果目录，并在 `validation_report.md` 中引用。`validation_report.md` 本身保存在 `infer_workdir`，并引用本次验证所依据的知识文件与最终输出路径。
+
 ## Baseline 对比
 
 使用最合适的可用 baseline：

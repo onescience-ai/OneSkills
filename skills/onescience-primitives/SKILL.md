@@ -1,6 +1,6 @@
 ---
 name: onescience-primitives
-description: OneScience 原语资源召回技能。根据自然语言需求检索相关原语资源（模型、组件、数据管线、应用、工作流规划、契约等），通过范围判定、快速过滤和语义匹配召回，按内容需求返回相应知识；不做科研规划与代码实现。
+description: OneScience 原语资源召回技能。根据自然语言需求检索相关原语资源（模型、组件、数据管线、应用、可视化规范、工作流规划、契约等），通过范围判定、快速过滤和语义匹配召回，按内容需求返回相应知识；不做科研规划与代码实现。
 type: resource
 ---
 
@@ -30,6 +30,7 @@ assets/
         spec.md                  ← 规格知识（架构、参数、依赖）
         usage.md                 ← 使用知识（启动示例、接口、限制）
         workflow_planning.md     ← 规划决策知识（时机、流程、约束）
+        scripts/                 ← 可选受控执行资产；必须由 metadata.json.execution_assets 白名单声明
 ```
 
 当前 `assets/` 顶层按 domain 组织，实际目录以仓库中的现状为准；当前可见的顶层 domain 包括：
@@ -45,6 +46,7 @@ assets/
 - `models`
 - `datapipes`
 - `application`
+- `visualization`
 - `workflow-planning`
 - `contracts`
 
@@ -59,7 +61,7 @@ assets/
    - 回退判定结果若为 `unknown`，说明无法稳定路由到单一领域；此时允许检索 `assets/` 下全部 domain 目录，但输出中的 `detected_domain` 必须保持为 `unknown`
    - 当请求已路由到生信领域，且涉及生信工作流、模型/数据管线/应用选择或多候选资源取舍时，可读取`skills/onescience-primitives/references/bio_profile.md`文档作为召回提示；该文件只辅助候选排序和边界解释，不能替代 `metadata.json` 证据
 1. **判定 category scope**：根据 `user_request`、`content_request`、`task_state_summary` 判断是否明确指定资源类别。
-   - 若明确指定模型、组件、数据管线、应用、工作流规划或契约类资源，则只检索对应 category
+   - 若明确指定模型、组件、数据管线、应用、可视化规范、工作流规划或契约类资源，则只检索对应 category
    - 若未明确指定，则检索当前 domain scope 下全部实际存在的 category 目录
 2. **枚举候选集**：在已确定的 domain/category scope 内，列出所有资源目录，得到完整候选集。
 3. **快速过滤**：仅当 `filters.keyword` 提供了关键词时执行；结合目录名、`metadata.json` 的 `name`、`domain`、`description` 与 `tags` 排除明显不相关的资源。未提供关键词时跳过本步。
@@ -71,7 +73,8 @@ assets/
    - `"使用说明"`：读取 `usage.md`（若存在）
    - `"规格说明"`：读取 `spec.md`（若存在）
    - `"工作流规划知识"`：读取 `workflow_planning.md`（若存在）
-   - `"完整内容"`：读取该资源目录下实际存在的相关文件并组织为结构化内容（见下方 `content` 完整格式）
+   - `"完整内容"`：只读取 `metadata.json`、`spec.md`、`usage.md`、`workflow_planning.md` 中实际存在的文件并组织为结构化内容；不得因为请求完整内容而自动返回任意脚本
+   - 当且仅当 `include_execution_assets: true` 时，读取命中资源 `metadata.json.execution_assets` 白名单并按下方安全规则返回受控执行资产
 8. **【强制】检索依赖组件**：当命中的资源为模型类型（`models` category 下的资源）且需要获取规格知识和使用知识时，**必须**执行以下步骤：
    - 读取该模型的 `spec.md` 文件，定位 `# key_dependencies` 部分
    - 提取所有列出的依赖组件名称（每行一个组件名）
@@ -89,6 +92,7 @@ resource_retrieval_request:
   user_request: <用户需求描述>
   task_state_summary: <当前任务状态摘要，可选>
   content_request: <内容需求，可选>
+  include_execution_assets: <true | false，可选，默认 false>
   filters:
     domain: <领域过滤，可选>
     keyword: <关键词过滤，可选>
@@ -103,9 +107,9 @@ resource_retrieval_result:
   status: success | partial | failed
   query_summary: <需求摘要>
   detected_domain: <climate | cfd | matchem | bio | unknown>
-  task_intent: <model | component | datapipe | application | workflow >
+  task_intent: <model | component | datapipe | application | visualization | workflow | contract | mixed>
   matched_resources:
-    - type: model_primitive | component_primitive | datapipe_primitive | application_primitive
+    - type: model_primitive | component_primitive | datapipe_primitive | application_primitive | visualization_primitive
       path: assets/<domain>/<category>/<primitive_name>/
       name: <原语名称>
       why_matched: <匹配理由，1句话>
@@ -121,7 +125,21 @@ content:
   spec: <spec.md 内容>
   usage: <usage.md 内容>
   workflow_planning: <workflow_planning.md 内容>
+  execution_assets:
+    - path: <metadata.json.execution_assets 中声明的相对路径>
+      kind: <python_cli | template | other>
+      media_type: <MIME type>
+      sha256: <校验值>
+      content: <小型文本文件原文；大于 64 KiB 的资产仅返回受控物化结果>
 ```
+
+执行资产强制规则：
+
+- 只有请求显式包含 `include_execution_assets: true` 时才能返回。
+- 只允许 `metadata.json.execution_assets` 中逐项声明的相对路径；拒绝未声明文件、绝对路径、`..` 和路径穿越。
+- 规范化后的路径必须仍位于当前 primitive 目录内。
+- 返回前校验 SHA-256；不匹配时不返回内容，并将结果标记为 `partial` 或 `failed`。
+- 调用方只能消费 `content.execution_assets`，不得沿 `matched_resources[].path` 直接读取文件；大于 64 KiB 的静态资产不得注入模型上下文。
 
 ## 字段取值规则
 
@@ -137,6 +155,7 @@ content:
   - 组件 / `module` / `block` / `encoder` / `decoder` → `components`
   - 数据管线 / `datapipe` / `dataset` / `loader` / `preprocessing` → `datapipes`
   - 应用 / `app` / `toolkit` / `template` → `application`
+  - 可视化 / `visualization` / `visualize` / `render` / `PyMOL` / `cartoon` / `surface` → `visualization`
   - 工作流规划 / `planning` / `route` / `decision` → `workflow-planning`
   - 若请求未明确 category，则检索当前 domain scope 下全部实际存在的 category 目录
 - **`detected_domain`**：按标准化 domain 枚举输出 `climate | cfd | matchem | bio | unknown`。
@@ -148,12 +167,14 @@ content:
   - `components` 下的 `component` 或普通 `module` → `component_primitive`
   - `datapipes` 下的 `datapipe` → `datapipe_primitive`
   - `application` 下的 `application` → `application_primitive`
+  - `visualization` 下的 `visualization` → `visualization_primitive`
   - 若 `metadata.json.type` 与目录语义冲突，优先采用更能反映资源用途的目录语义，并在 `limitations` 中说明
 - **`task_intent`**：根据 `user_request` 的主要意图判断。
   - 需要完整模型能力时填 `model`
   - 需要组件、模块、算子或内部结构时填 `component`
   - 需要数据准备、数据处理、数据接口时填 `datapipe`
   - 需要模板、脚本集合、分析工具或交付应用时填 `application`
+  - 需要结构、数据或模型结果的视觉呈现规范时填 `visualization`
   - 需要契约、接口约束或对接规则时填 `contract`
   - 需要工作流规划、路由、决策知识时填 `workflow`
   - 多种意图并存且无法归一时填 `mixed`

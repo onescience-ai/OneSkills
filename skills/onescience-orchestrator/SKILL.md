@@ -280,7 +280,7 @@ resource_retrieval_request:
 ```yaml
 resource_retrieval_result:
   detected_domain: <earth/biology/materials/cfd/general-science>
-  task_intent: <data/model/contract/workflow/tool/config>
+  task_intent: <data/model/visualization/contract/workflow/tool/config>
   content_request: summary_only
   matched_resources:
     - type: <具体资源类型>

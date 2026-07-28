@@ -22,6 +22,17 @@
 - **箱线图/小提琴图**：组间表达量比较
 - **Venn图**：集合交集关系
 
+## 三维分子结构
+
+PDB、mmCIF、CIF、蛋白质单体和多分子复合物不使用通用统计图规范。执行器必须通过 `onescience-primitives` 获取 `complex_structure_visualization` 的 content，并按该 primitive 处理：
+
+- 蛋白质单体和多聚体 ribbon/cartoon。
+- 蛋白-蛋白、蛋白-核酸、蛋白-配体和混合复合物。
+- 默认 protein ribbon、DNA/RNA tube+slab、ligand sticks、metal spheres、water hidden，以及可靠的 pLDDT 视图和组合式自定义视图。
+- PyMOL 的 PNG/PML/PSE 或 3Dmol.js、Mol*、NGL 的交互 HTML。
+
+本文件只负责路由提示，不复制 primitive 中的阈值、场景或质量门禁，避免两份规范漂移。
+
 ## 配色方案
 
 - **热图**：RdYlBu_r（红-黄-蓝）或viridis
@@ -43,3 +54,7 @@
 - `scanpy`：单细胞数据
 - `biopython`：序列处理
 - `networkx`：网络图
+- `pymol`：高质量静态结构图、PML 和 PSE
+- `3Dmol.js`：轻量交互式 Web 结构视图
+- `Mol*`：大型 mmCIF 和复杂结构交互
+- `NGL`：浏览器内分子结构渲染

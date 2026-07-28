@@ -18,6 +18,7 @@
 - 需要模型输入准备、数据标准、tokenization、feature pipeline、dataset adapter 时，通常建议召回 `datapipes` 下的资源。
 - 需要模板、轻量脚本、QC 检查、报告骨架、交接文件或可复用小工具时，通常建议召回 `application` 下的资源。
 - 需要实现细节、组件改造、调试、接口契约或模型内部结构时，通常建议召回 `components` 下的资源。
+- 需要 PDB/mmCIF/CIF 的蛋白单体、复合物、蛋白-核酸或蛋白-配体三维展示，或需要 chain、pLDDT、surface、interface、PyMOL 场景规范时，优先召回 `visualization` 下的 `complex_structure_visualization`。
 - 需要完整科研流程规划、节点依赖、质量检查和回退策略时，通常建议召回 `workflow-planning` 下的工作流资源。
 
 ## 通用应用资源提示
@@ -122,6 +123,8 @@ Pooled CRISPR/RNAi screen、Perturb-seq、DepMap、sgRNA count、MAGeCK/RRA、li
 ### `protein-design-structure-validation`
 
 RFdiffusion、ProteinMPNN、SimpleFold/OpenFold/AlphaFold/Protenix/AlphaFold3 验证、binder design、candidate ranking 需求，通常建议考虑召回 `protein-design-structure-validation` 工作流资源。按节点可考虑 `rfdiffusion`、`proteinmpnn`、`alphafold`、`openfold`、`simplefold`、`alphafold3`、`protenix` 以及对应数据管线。若需求是 primer、CRISPR、plasmid 或 RNA 结构设计，才考虑 `bio_molecular_design_app`；不要用它替代结构模型。
+
+当结构预测或回折叠已产出 PDB/mmCIF/CIF，并需要展示、置信度着色或界面检查时，可同时召回 `complex_structure_visualization`；它负责场景规范，不替代结构质量评估。
 
 边界提示：RFdiffusion、ProteinMPNN 和 folding/complex prediction 模型角色不同，不要互换。
 

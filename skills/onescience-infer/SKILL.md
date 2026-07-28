@@ -108,6 +108,8 @@ execution_result:
 
 当需要本地或远程执行、SLURM 提交、SCnet 路由、日志同步、执行诊断或运行前环境处理时，使用 `onescience-runtime`。runtime 完成后若当前任务仍属于 infer 当前步骤，则 infer 恢复并完成结果验证；若后续问题已超出 infer 的推理工作流边界，则返回 `execution_result` 给 `onescience-orchestrator` 决定下一技能。
 
+当推理结果需要领域可视化，尤其是 PDB/mmCIF/CIF 分子结构渲染时，将可视化步骤交接给 `onescience-data-analyzer`；本技能负责提供输出路径、结构元数据、置信度来源和验证标准，不在 infer 内重复维护渲染规范。
+
 当数据接入、格式转换、重网格化或可复用数据集构建成为实质性子任务时，使用 `onescience-dataset-builder` 等数据工作流技能；若该数据子任务已超出 infer 当前步骤的显式委托范围，则返回 orchestrator 决策。
 
 当用户只要求规划或代码生成时，不要静默安装 package、提交远程作业或下载大型数据集。如果用户明确要求运行推理，则在完成必要的预检和授权后继续进入执行阶段。

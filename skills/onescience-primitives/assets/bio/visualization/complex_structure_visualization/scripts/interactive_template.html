@@ -1,0 +1,2956 @@
+<div id="__CSV_ROOT_ID__" class="csv-root">
+  <header class="csv-brand">
+    <h1>OneScience Visualization</h1>
+    <span class="text-small text-muted" data-document-title></span>
+  </header>
+
+  <div class="viz-controls csv-sample-controls" data-sample-controls hidden>
+    <label class="form-label csv-sample-field">
+      推理样本
+      <select class="form-select" data-sample-select aria-label="切换 AlphaFold 3 推理样本"></select>
+    </label>
+    <span class="text-small text-muted" data-sample-summary></span>
+  </div>
+
+  <section class="csv-sequence-panel" aria-label="聚合物序列">
+    <div class="csv-sequence-toolbar">
+      <label class="csv-sequence-filter">
+        <span>Sequence of</span>
+        <select class="form-select" data-sequence-filter aria-label="选择显示的序列类型">
+          <option value="all">全部</option>
+          <option value="protein">蛋白质</option>
+          <option value="nucleic">DNA / RNA</option>
+        </select>
+      </label>
+      <span class="text-small text-muted">悬停三维结构可定位对应残基或核苷酸</span>
+    </div>
+    <div class="csv-sequence-tracks" data-sequence-tracks></div>
+  </section>
+
+  <div class="viz-controls csv-top-controls" aria-label="结构视图">
+    <button type="button" class="btn btn-primary" data-builtin-view="default" aria-pressed="true">默认视图</button>
+    <button type="button" class="btn" data-builtin-view="plddt" aria-pressed="false">pLDDT</button>
+    <button type="button" class="btn btn-ghost" data-action="add-view" aria-expanded="false">＋ 添加视图</button>
+  </div>
+
+  <section class="card csv-editor" data-editor hidden aria-label="添加自定义结构视图">
+    <h3>添加自定义视图</h3>
+    <form data-view-form>
+      <div class="viz-grid csv-form-grid">
+        <label class="form-label">
+          视图名称
+          <input class="form-control" name="view_name" value="自定义视图" maxlength="40" />
+        </label>
+
+        <label class="form-label">
+          蛋白表示
+          <select class="form-select" name="protein_rep">
+            <option value="ribbon">Ribbon</option>
+            <option value="cartoon">Cartoon</option>
+            <option value="tube">Tube / trace</option>
+            <option value="surface">Ribbon + 半透明表面</option>
+            <option value="sticks">Sticks</option>
+            <option value="hidden">隐藏</option>
+          </select>
+        </label>
+
+        <label class="form-label">
+          蛋白着色
+          <select class="form-select" name="protein_color">
+            <option value="chain">按链</option>
+            <option value="domain">按结构域范围</option>
+            <option value="secondary">按二级结构</option>
+            <option value="mono">单色</option>
+          </select>
+        </label>
+
+        <label class="form-label">
+          结构域范围
+          <input class="form-control" name="domain_ranges" placeholder="A:1-120; A:121-220" />
+        </label>
+
+        <label class="form-label">
+          DNA / RNA 着色
+          <select class="form-select" name="nucleic_color">
+            <option value="chain">按链</option>
+            <option value="base">按碱基</option>
+          </select>
+        </label>
+
+        <label class="form-label">
+          配体
+          <select class="form-select" name="ligand_rep">
+            <option value="sticks">Sticks</option>
+            <option value="ballstick">Ball &amp; stick</option>
+            <option value="spheres">Spheres</option>
+            <option value="hidden">隐藏</option>
+          </select>
+        </label>
+
+        <label class="form-label">
+          金属 / 无机离子
+          <select class="form-select" name="metal_rep">
+            <option value="spheres">Spheres</option>
+            <option value="sticks">Sticks</option>
+            <option value="hidden">隐藏</option>
+          </select>
+        </label>
+
+        <label class="form-label">
+          水分子
+          <select class="form-select" name="water_rep">
+            <option value="hidden">默认隐藏</option>
+            <option value="relevant">仅相关水（3.5 Å）</option>
+            <option value="all">全部小球</option>
+          </select>
+        </label>
+
+        <label class="form-label">
+          分析叠加层
+          <select class="form-select" name="analysis_layer">
+            <option value="none">无</option>
+            <option value="interface">4 Å 几何界面 residues</option>
+            <option value="surface">蛋白半透明表面</option>
+          </select>
+        </label>
+
+        <label class="form-label">
+          背景色
+          <input class="form-control form-control-color" type="color" name="background" />
+        </label>
+      </div>
+
+      <fieldset class="csv-fieldset">
+        <legend class="text-small">DNA / RNA 表示（可组合）</legend>
+        <div class="viz-row csv-inline-options">
+          <label class="form-check">
+            <input class="form-check-input" type="checkbox" name="nucleic_tube" checked />
+            <span class="form-check-label">Tube</span>
+          </label>
+          <label class="form-check">
+            <input class="form-check-input" type="checkbox" name="nucleic_slab" checked />
+            <span class="form-check-label">Slab</span>
+          </label>
+          <label class="form-check">
+            <input class="form-check-input" type="checkbox" name="nucleic_ladder" />
+            <span class="form-check-label">Ladder</span>
+          </label>
+          <label class="form-check">
+            <input class="form-check-input" type="checkbox" name="nucleic_sticks" />
+            <span class="form-check-label">All-atom sticks</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="csv-fieldset">
+        <legend class="text-small">独立结构显示</legend>
+        <div class="viz-row csv-visibility" data-visibility></div>
+      </fieldset>
+
+      <div class="viz-controls csv-editor-actions">
+        <button type="button" class="btn btn-primary" data-action="preview-view">预览</button>
+        <button type="button" class="btn" data-action="save-view" disabled>生成视图</button>
+        <button type="button" class="btn btn-ghost" data-action="cancel-view">取消</button>
+        <span class="text-small text-muted" data-preview-status>调整参数后先预览，再生成视图。</span>
+      </div>
+    </form>
+  </section>
+
+  <section class="csv-structure-section" aria-label="三维结构视图">
+    <div class="csv-panel-header" data-structure-header>Structure overview</div>
+    <div class="csv-structure-layout">
+      <div class="csv-stage-wrap">
+        <div
+          id="__CSV_ROOT_ID__-stage"
+          class="csv-stage"
+          role="img"
+          aria-label="可交互的生物大分子复合物三维结构。默认显示蛋白 ribbon、核酸双螺旋带与碱基片、配体 sticks、金属 spheres，并隐藏水分子。"
+        ></div>
+        <div class="csv-focus-vignette" data-focus-vignette hidden aria-hidden="true"></div>
+        <aside class="csv-dynamic-bonds" data-dynamic-bonds hidden aria-label="Dynamic bonds 局部视图">
+          <div>
+            <strong>Dynamic bonds</strong>
+            <div class="text-small" data-dynamic-bonds-label></div>
+          </div>
+          <button type="button" class="btn btn-ghost" data-action="bonds-off">Off</button>
+        </aside>
+      </div>
+      <aside class="csv-confidence-panel" aria-label="当前视图图例">
+        <div class="csv-confidence-title" data-confidence-title>View legend</div>
+        <div class="csv-legend" data-legend></div>
+        <div class="text-small csv-confidence-note" data-confidence-note></div>
+      </aside>
+    </div>
+    <div class="viz-row text-small csv-footer">
+      <span class="text-muted" data-status aria-live="polite">正在解析结构…</span>
+      <button type="button" class="btn btn-ghost" data-action="reset-camera">重置视角</button>
+    </div>
+  </section>
+
+  <section class="csv-pae-section" data-pae-panel aria-label="二维 Predicted Aligned Error 视图">
+    <div class="csv-panel-header">Predicted Aligned Error (PAE)</div>
+    <div class="csv-pae-layout">
+      <div class="csv-pae-canvas-wrap">
+        <canvas
+          data-pae-canvas
+          width="720"
+          height="720"
+          role="img"
+          aria-label="Predicted Aligned Error heatmap，横轴为 scored token，纵轴为 aligned token"
+        ></canvas>
+        <div class="tooltip csv-pae-tooltip" data-pae-tooltip hidden></div>
+      </div>
+      <div class="csv-pae-summary">
+        <div class="csv-pae-stat" data-pae-stat></div>
+        <div class="csv-pae-scale" aria-label="PAE 色阶，深绿色为低误差，浅绿色为高误差"></div>
+        <div class="viz-row text-small csv-pae-ticks" aria-hidden="true">
+          <span>0</span><span>5</span><span>10</span><span>15</span><span>20</span><span>25</span><span>30 Å</span>
+        </div>
+        <p class="text-small text-muted" data-pae-status aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  #__CSV_ROOT_ID__ {
+    width: 100%;
+    color: var(--foreground);
+    --csv-af-header: #b9d4f1;
+    --csv-af-header-text: #0a0a0a;
+    --csv-af-very-high: #0053d6;
+    --csv-af-high: #65cbf3;
+    --csv-af-low: #ffdb13;
+    --csv-af-very-low: #ff7d45;
+  }
+  #__CSV_ROOT_ID__ [hidden] {
+    display: none;
+  }
+  #__CSV_ROOT_ID__ .csv-brand {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.55rem 1rem;
+    margin: 0 0 0.8rem;
+  }
+  #__CSV_ROOT_ID__ .csv-brand h1 {
+    margin: 0;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+  }
+  #__CSV_ROOT_ID__ .csv-sample-controls,
+  #__CSV_ROOT_ID__ .csv-top-controls,
+  #__CSV_ROOT_ID__ .csv-editor {
+    margin-bottom: 0.55rem;
+  }
+  #__CSV_ROOT_ID__ .csv-sample-field {
+    min-width: min(22rem, 100%);
+  }
+  #__CSV_ROOT_ID__ .csv-sequence-panel {
+    margin-bottom: 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 0.6rem;
+    background: var(--card);
+    overflow: hidden;
+  }
+  #__CSV_ROOT_ID__ .csv-sequence-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  #__CSV_ROOT_ID__ .csv-sequence-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 600;
+  }
+  #__CSV_ROOT_ID__ .csv-sequence-filter .form-select {
+    width: auto;
+    min-width: 8rem;
+  }
+  #__CSV_ROOT_ID__ .csv-sequence-tracks {
+    display: grid;
+    gap: 0.45rem;
+    max-height: 10.5rem;
+    padding: 0.65rem 0.75rem;
+    overflow: auto;
+  }
+  #__CSV_ROOT_ID__ .csv-sequence-track {
+    display: grid;
+    grid-template-columns: minmax(7.5rem, max-content) minmax(0, 1fr);
+    align-items: start;
+    gap: 0.65rem;
+  }
+  #__CSV_ROOT_ID__ .csv-sequence-chain {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    padding: 0.14rem 0.35rem;
+    border-left: 0.28rem solid var(--csv-chain-color);
+    background: var(--card);
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+  #__CSV_ROOT_ID__ .csv-sequence-residues {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.08rem;
+    min-width: 25rem;
+    font: 600 0.82rem/1.35 ui-monospace, SFMono-Regular, Consolas, monospace;
+  }
+  #__CSV_ROOT_ID__ .csv-sequence-residue {
+    min-width: 1.08rem;
+    padding: 0.08rem 0.12rem;
+    color: var(--foreground);
+    text-align: center;
+    border-radius: 0.2rem;
+    transition: color 80ms ease, background 80ms ease, transform 80ms ease;
+  }
+  #__CSV_ROOT_ID__ .csv-sequence-residue.is-hovered {
+    color: #ffffff;
+    background: #d92323;
+    transform: translateY(-1px) scale(1.08);
+  }
+  #__CSV_ROOT_ID__ .csv-panel-header,
+  #__CSV_ROOT_ID__ .csv-confidence-title {
+    padding: 0.65rem 0.9rem;
+    color: var(--csv-af-header-text);
+    background: var(--csv-af-header);
+    font-weight: 500;
+  }
+  #__CSV_ROOT_ID__ .csv-structure-section,
+  #__CSV_ROOT_ID__ .csv-pae-section {
+    margin-top: 0.75rem;
+  }
+  #__CSV_ROOT_ID__ .csv-structure-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 290px);
+    align-items: stretch;
+  }
+  #__CSV_ROOT_ID__ .csv-confidence-panel {
+    min-width: 0;
+    border-left: 1px solid var(--border);
+  }
+  #__CSV_ROOT_ID__ .csv-confidence-panel .csv-legend {
+    display: grid;
+    gap: 0.7rem;
+    padding: 1rem 0.9rem 0.6rem;
+  }
+  #__CSV_ROOT_ID__ .csv-confidence-panel .csv-legend > span {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  #__CSV_ROOT_ID__ .csv-confidence-note {
+    padding: 0.2rem 0.9rem 1rem;
+    color: var(--muted-foreground);
+  }
+  #__CSV_ROOT_ID__ .csv-inline-options,
+  #__CSV_ROOT_ID__ .csv-visibility,
+  #__CSV_ROOT_ID__ .csv-footer {
+    justify-content: flex-start;
+    gap: 0.85rem;
+  }
+  #__CSV_ROOT_ID__ .csv-editor h3 {
+    margin-top: 0;
+  }
+  #__CSV_ROOT_ID__ .csv-custom-view-tab {
+    display: inline-flex;
+    align-items: stretch;
+  }
+  #__CSV_ROOT_ID__ .csv-custom-view-tab > .btn:first-child {
+    border-radius: 0.45rem 0 0 0.45rem;
+  }
+  #__CSV_ROOT_ID__ .csv-custom-view-delete {
+    min-width: 2rem;
+    padding-inline: 0.4rem;
+    border-left: 0;
+    border-radius: 0 0.45rem 0.45rem 0;
+    color: var(--muted-foreground);
+  }
+  #__CSV_ROOT_ID__ .csv-custom-view-delete:hover {
+    color: #b42318;
+  }
+  #__CSV_ROOT_ID__ .csv-form-grid {
+    margin-bottom: 0.65rem;
+  }
+  #__CSV_ROOT_ID__ .csv-fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0 0 0.65rem;
+  }
+  #__CSV_ROOT_ID__ .csv-fieldset legend {
+    margin-bottom: 0.35rem;
+    color: var(--muted-foreground);
+  }
+  #__CSV_ROOT_ID__ .csv-swatch {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 1rem;
+    height: 1rem;
+    background: var(--csv-swatch);
+  }
+  #__CSV_ROOT_ID__ .csv-stage-wrap {
+    position: relative;
+    width: 100%;
+    height: 560px;
+    min-height: 420px;
+    overflow: hidden;
+    background: var(--background);
+  }
+  #__CSV_ROOT_ID__ .csv-stage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #__CSV_ROOT_ID__ .csv-focus-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        circle at 50% 50%,
+        transparent 0 29%,
+        color-mix(in srgb, var(--background) 8%, transparent) 47%,
+        color-mix(in srgb, var(--background) 34%, transparent) 100%
+      );
+    -webkit-backdrop-filter: blur(2.2px) saturate(0.72);
+    backdrop-filter: blur(2.2px) saturate(0.72);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 0 24%, #000 66%);
+    mask-image: radial-gradient(circle at 50% 50%, transparent 0 24%, #000 66%);
+  }
+  #__CSV_ROOT_ID__ .csv-dynamic-bonds {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: min(22rem, calc(100% - 1.6rem));
+    padding: 0.55rem 0.65rem;
+    color: var(--popover-foreground);
+    background: color-mix(in srgb, var(--popover) 94%, transparent);
+    border: 1px solid var(--border);
+    border-radius: 0.55rem;
+    box-shadow: 0 0.45rem 1.4rem color-mix(in srgb, var(--foreground) 18%, transparent);
+  }
+  #__CSV_ROOT_ID__ .csv-dynamic-bonds[hidden] {
+    display: none;
+  }
+  #__CSV_ROOT_ID__ .csv-dynamic-bonds > div {
+    min-width: 0;
+  }
+  #__CSV_ROOT_ID__ [data-dynamic-bonds-label] {
+    overflow: hidden;
+    color: var(--muted-foreground);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #__CSV_ROOT_ID__ .csv-footer {
+    min-height: 1.6rem;
+    justify-content: space-between;
+    padding-top: 0.35rem;
+  }
+  #__CSV_ROOT_ID__ .csv-pae-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 680px) minmax(210px, 1fr);
+    gap: 1rem;
+    align-items: start;
+    padding-top: 0.75rem;
+  }
+  #__CSV_ROOT_ID__ .csv-pae-canvas-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+  }
+  #__CSV_ROOT_ID__ [data-pae-canvas] {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  #__CSV_ROOT_ID__ .csv-pae-tooltip {
+    position: absolute;
+    pointer-events: none;
+    max-width: 15rem;
+  }
+  #__CSV_ROOT_ID__ .csv-pae-summary {
+    padding: 0.4rem 0;
+  }
+  #__CSV_ROOT_ID__ .csv-pae-stat {
+    margin-bottom: 0.8rem;
+  }
+  #__CSV_ROOT_ID__ .csv-pae-scale {
+    height: 1rem;
+    border: 1px solid var(--border);
+    background: linear-gradient(
+      90deg,
+      #00441b 0%,
+      #006d2c 12.5%,
+      #238b45 25%,
+      #41ab5d 37.5%,
+      #74c476 50%,
+      #a1d99b 62.5%,
+      #c7e9c0 75%,
+      #e5f5e0 87.5%,
+      #f7fcf5 100%
+    );
+  }
+  #__CSV_ROOT_ID__ .csv-pae-ticks {
+    justify-content: space-between;
+    gap: 0.2rem;
+  }
+  @media (max-width: 820px) {
+    #__CSV_ROOT_ID__ .csv-structure-layout,
+    #__CSV_ROOT_ID__ .csv-pae-layout {
+      grid-template-columns: 1fr;
+    }
+    #__CSV_ROOT_ID__ .csv-confidence-panel {
+      border-left: 0;
+      border-top: 1px solid var(--border);
+    }
+  }
+  @media (max-width: 520px) {
+    #__CSV_ROOT_ID__ .csv-stage-wrap {
+      height: 480px;
+    }
+    #__CSV_ROOT_ID__ .csv-sequence-track {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+    #__CSV_ROOT_ID__ .csv-inline-options,
+    #__CSV_ROOT_ID__ .csv-visibility {
+      gap: 0.5rem;
+    }
+  }
+</style>
+
+<script
+  data-csv-engine="3dmol-2.5.4"
+  data-sha256="__CSV_THREEDMOL_SHA256__"
+>__CSV_THREEDMOL_RUNTIME__</script>
+<script>
+  (() => {
+    const root = document.getElementById("__CSV_ROOT_ID__");
+    root.dataset.vizState = "loading";
+    const stage = document.getElementById("__CSV_ROOT_ID__-stage");
+    const documentTitle = root.querySelector("[data-document-title]");
+    const status = root.querySelector("[data-status]");
+    const legend = root.querySelector("[data-legend]");
+    const editor = root.querySelector("[data-editor]");
+    const viewForm = root.querySelector("[data-view-form]");
+    const visibilityBox = root.querySelector("[data-visibility]");
+    const addViewButton = root.querySelector("[data-action='add-view']");
+    const previewViewButton = root.querySelector("[data-action='preview-view']");
+    const saveViewButton = root.querySelector("[data-action='save-view']");
+    const previewStatus = root.querySelector("[data-preview-status]");
+    const sampleControls = root.querySelector("[data-sample-controls]");
+    const sampleSelect = root.querySelector("[data-sample-select]");
+    const sampleSummary = root.querySelector("[data-sample-summary]");
+    const sequenceFilter = root.querySelector("[data-sequence-filter]");
+    const sequenceTracks = root.querySelector("[data-sequence-tracks]");
+    const structureHeader = root.querySelector("[data-structure-header]");
+    const confidenceTitle = root.querySelector("[data-confidence-title]");
+    const confidenceNote = root.querySelector("[data-confidence-note]");
+    const focusVignette = root.querySelector("[data-focus-vignette]");
+    const dynamicBondsPanel = root.querySelector("[data-dynamic-bonds]");
+    const dynamicBondsLabel = root.querySelector("[data-dynamic-bonds-label]");
+    const paePanel = root.querySelector("[data-pae-panel]");
+    const paeCanvas = root.querySelector("[data-pae-canvas]");
+    const paeTooltip = root.querySelector("[data-pae-tooltip]");
+    const paeStatus = root.querySelector("[data-pae-status]");
+    const paeStat = root.querySelector("[data-pae-stat]");
+    const viewerPayload = JSON.parse(
+      new TextDecoder().decode(
+        Uint8Array.from(
+          atob("__CSV_SAMPLE_PAYLOAD_B64__"),
+          character => character.charCodeAt(0)
+        )
+      )
+    );
+
+    let viewer;
+    let model;
+    let activeSample;
+    let activeSampleIndex = 0;
+    let format = "cif";
+    let structureData = "";
+    let atomMetadata = [];
+    let manifest = {};
+    let runtimeConfig = {};
+    let paeData = null;
+    let decodedPae = null;
+    let resizeObserver;
+    let activeViewId = "default";
+    let customViewCounter = 0;
+    let initializeAttempts = 0;
+    const customViews = new Map();
+    const customViewNodes = new Map();
+    const sequenceNodes = new Map();
+    let interfaceResidues = new Set();
+    let interfaceCacheKey = "";
+    let mappedAtomFraction = 0;
+    let editorReturnViewId = "default";
+    let previewConfig = null;
+    let previewRenderedConfig = null;
+    let previewSceneActive = false;
+    let dynamicBondState = null;
+    let secondaryStructureInfo = null;
+
+    function resolvedHex(variable) {
+      const marker = document.createElement("span");
+      marker.style.color = `var(${variable})`;
+      marker.style.display = "none";
+      root.appendChild(marker);
+      const raw = getComputedStyle(marker).color;
+      marker.remove();
+      const canvas = document.createElement("canvas");
+      canvas.width = 1;
+      canvas.height = 1;
+      const context = canvas.getContext("2d");
+      context.fillStyle = raw;
+      context.fillRect(0, 0, 1, 1);
+      const [red, green, blue] = context.getImageData(0, 0, 1, 1).data;
+      return `#${[red, green, blue]
+        .map(value => value.toString(16).padStart(2, "0"))
+        .join("")}`;
+    }
+
+    const colors = {
+      series1: resolvedHex("--viz-series-1"),
+      series2: resolvedHex("--viz-series-2"),
+      series3: resolvedHex("--viz-series-3"),
+      series4: resolvedHex("--viz-series-4"),
+      series5: resolvedHex("--viz-series-5"),
+      series6: resolvedHex("--viz-series-6"),
+      foreground: resolvedHex("--foreground"),
+      background: resolvedHex("--background"),
+      popover: resolvedHex("--popover"),
+      popoverForeground: resolvedHex("--popover-foreground"),
+      muted: resolvedHex("--muted-foreground"),
+      border: resolvedHex("--border")
+    };
+
+    const proteinPalette = [
+      colors.series1,
+      colors.series4,
+      colors.series5,
+      colors.series6,
+      colors.series2,
+      colors.series3
+    ];
+    const nucleicPalette = [
+      colors.series2,
+      colors.series3,
+      colors.series5,
+      colors.series6
+    ];
+    const rcsbProteinPalette = [
+      "#2F8F7D",
+      "#4F73B8",
+      "#B45F7A",
+      "#8C6BB1",
+      "#4C88A8",
+      "#A36D3F"
+    ];
+    const rcsbNucleicPalette = [
+      "#7A5AA6",
+      "#D8893C",
+      "#4C8BCB",
+      "#C65D5D"
+    ];
+    const basePalette = {
+      A: colors.series2,
+      T: colors.series3,
+      U: colors.series3,
+      G: colors.series4,
+      C: colors.series5
+    };
+    const plddtPalette = {
+      veryHigh: "#0053D6",
+      confident: "#65CBF3",
+      low: "#FFDB13",
+      veryLow: "#FF7D45"
+    };
+
+    function entityColor(entity, config = {}) {
+      if (entity.role === "protein") {
+        const index = manifest.proteins.findIndex(item => item.id === entity.id);
+        const palette = config.visualPreset === "rcsb"
+          ? rcsbProteinPalette
+          : proteinPalette;
+        return palette[Math.max(index, 0) % palette.length];
+      }
+      if (entity.role === "dna" || entity.role === "rna") {
+        const nucleic = [...manifest.dna, ...manifest.rna];
+        const index = nucleic.findIndex(item => item.id === entity.id);
+        const palette = config.visualPreset === "rcsb"
+          ? rcsbNucleicPalette
+          : nucleicPalette;
+        return palette[Math.max(index, 0) % palette.length];
+      }
+      if (entity.role === "ligand") return colors.series4;
+      if (entity.role === "metal") return colors.series5;
+      if (entity.role === "water") return colors.series6;
+      return colors.muted;
+    }
+
+    function atomEntity(atom) {
+      return atom.properties && atom.properties.entityId
+        ? atom.properties.entityId
+        : `${atom.properties && atom.properties.role ? atom.properties.role : "other"}:${atom.chain || "_"}`;
+    }
+
+    function isVisible(atom, config) {
+      const entityId = atomEntity(atom);
+      return config.visibility[entityId] !== false;
+    }
+
+    function rolePredicate(roles, config) {
+      const accepted = new Set(Array.isArray(roles) ? roles : [roles]);
+      return atom => {
+        const role = atom.properties && atom.properties.role;
+        return accepted.has(role) && isVisible(atom, config);
+      };
+    }
+
+    function confidenceColor(atom) {
+      const value = Number(atom.properties && atom.properties.plddt);
+      if (!Number.isFinite(value)) return colors.muted;
+      if (value >= 90) return plddtPalette.veryHigh;
+      if (value >= 70) return plddtPalette.confident;
+      if (value >= 50) return plddtPalette.low;
+      return plddtPalette.veryLow;
+    }
+
+    function proteinChainColor(atom, config = {}) {
+      const chain = String(atom.chain || "_");
+      const index = manifest.proteins.findIndex(entity => entity.chain === chain);
+      const palette = config.visualPreset === "rcsb"
+        ? rcsbProteinPalette
+        : proteinPalette;
+      return palette[Math.max(index, 0) % palette.length];
+    }
+
+    function nucleicChainColor(atom, config = {}) {
+      const chain = String(atom.chain || "_");
+      const nucleic = [...manifest.dna, ...manifest.rna];
+      const index = nucleic.findIndex(entity => entity.chain === chain);
+      const palette = config.visualPreset === "rcsb"
+        ? rcsbNucleicPalette
+        : nucleicPalette;
+      return palette[Math.max(index, 0) % palette.length];
+    }
+
+    function canonicalBase(residueName) {
+      const name = String(residueName || "").toUpperCase();
+      if (name === "A" || name === "DA" || name === "ADE") return "A";
+      if (name === "T" || name === "DT" || name === "THY") return "T";
+      if (name === "U" || name === "DU" || name === "URA") return "U";
+      if (name === "G" || name === "DG" || name === "GUA") return "G";
+      if (name === "C" || name === "DC" || name === "CYT") return "C";
+      return null;
+    }
+
+    const aminoAcidCodes = {
+      ALA: "A", ARG: "R", ASN: "N", ASP: "D", CYS: "C",
+      GLN: "Q", GLU: "E", GLY: "G", HIS: "H", ILE: "I",
+      LEU: "L", LYS: "K", MET: "M", PHE: "F", PRO: "P",
+      SER: "S", THR: "T", TRP: "W", TYR: "Y", VAL: "V",
+      ASX: "B", GLX: "Z", SEC: "U", PYL: "O", UNK: "X"
+    };
+
+    function residueLetter(residueName, role) {
+      if (role === "dna" || role === "rna") {
+        return canonicalBase(residueName) || "N";
+      }
+      return aminoAcidCodes[String(residueName || "").toUpperCase()] || "X";
+    }
+
+    function polymerEntities() {
+      return [...manifest.proteins, ...manifest.dna, ...manifest.rna];
+    }
+
+    function buildSequenceTracks() {
+      sequenceNodes.clear();
+      sequenceTracks.replaceChildren();
+      const filter = sequenceFilter.value;
+      const groups = new Map();
+      const atoms = model.selectedAtoms({
+        predicate: atom =>
+          atom.properties &&
+          ["protein", "dna", "rna"].includes(atom.properties.role)
+      });
+      atoms.forEach(atom => {
+        const role = atom.properties.role;
+        if (filter === "protein" && role !== "protein") return;
+        if (filter === "nucleic" && role !== "dna" && role !== "rna") return;
+        const entityId = atomEntity(atom);
+        const groupKey = `${role}|${entityId}|${atom.chain || "_"}`;
+        if (!groups.has(groupKey)) {
+          groups.set(groupKey, {
+            role,
+            entityId,
+            chain: String(atom.chain || "_"),
+            residues: new Map()
+          });
+        }
+        const key = residueKey(atom);
+        const group = groups.get(groupKey);
+        if (!group.residues.has(key)) {
+          group.residues.set(key, {
+            key,
+            chain: String(atom.chain || "_"),
+            resi: atom.resi,
+            resn: String(atom.resn || ""),
+            role,
+            firstIndex: Number.isFinite(Number(atom.index))
+              ? Number(atom.index)
+              : group.residues.size
+          });
+        }
+      });
+
+      [...groups.values()].forEach(group => {
+        const entity = polymerEntities().find(item => item.id === group.entityId) || {
+          role: group.role,
+          chain: group.chain,
+          label: `${group.role.toUpperCase()} · Chain ${group.chain}`
+        };
+        const track = document.createElement("div");
+        track.className = "csv-sequence-track";
+        const chainLabel = document.createElement("div");
+        chainLabel.className = "csv-sequence-chain";
+        chainLabel.style.setProperty(
+          "--csv-chain-color",
+          entityColor(entity, { visualPreset: "rcsb" })
+        );
+        chainLabel.textContent = entity.label ||
+          `${group.role.toUpperCase()} · Chain ${group.chain}`;
+
+        const residueBox = document.createElement("div");
+        residueBox.className = "csv-sequence-residues";
+        [...group.residues.values()]
+          .sort((left, right) => left.firstIndex - right.firstIndex)
+          .forEach(residue => {
+            const node = document.createElement("span");
+            node.className = "csv-sequence-residue";
+            node.textContent = residueLetter(residue.resn, residue.role);
+            node.title =
+              `${residue.chain}:${residue.resi} ${residue.resn}`;
+            node.dataset.residueKey = residue.key;
+            if (!sequenceNodes.has(residue.key)) {
+              sequenceNodes.set(residue.key, []);
+            }
+            sequenceNodes.get(residue.key).push(node);
+            residueBox.appendChild(node);
+          });
+        track.append(chainLabel, residueBox);
+        sequenceTracks.appendChild(track);
+      });
+
+      if (!sequenceTracks.childElementCount) {
+        const empty = document.createElement("span");
+        empty.className = "text-small text-muted";
+        empty.textContent = "当前筛选没有可显示的聚合物序列。";
+        sequenceTracks.appendChild(empty);
+      }
+    }
+
+    function clearSequenceHighlight() {
+      sequenceNodes.forEach(nodes => {
+        nodes.forEach(node => node.classList.remove("is-hovered"));
+      });
+    }
+
+    function setSequenceHighlight(atom) {
+      clearSequenceHighlight();
+      if (!atom || !atom.properties) return;
+      const role = atom.properties.role;
+      if (!["protein", "dna", "rna"].includes(role)) return;
+      const nodes = sequenceNodes.get(residueKey(atom)) || [];
+      nodes.forEach(node => node.classList.add("is-hovered"));
+      if (nodes[0]) {
+        const panelRect = sequenceTracks.getBoundingClientRect();
+        const nodeRect = nodes[0].getBoundingClientRect();
+        if (nodeRect.top < panelRect.top) {
+          sequenceTracks.scrollTop -= panelRect.top - nodeRect.top + 6;
+        } else if (nodeRect.bottom > panelRect.bottom) {
+          sequenceTracks.scrollTop += nodeRect.bottom - panelRect.bottom + 6;
+        }
+      }
+    }
+
+    function baseColor(atom, config = {}) {
+      return basePalette[canonicalBase(atom.resn)] || nucleicChainColor(atom, config);
+    }
+
+    function parseDomainRanges(text) {
+      return String(text || "")
+        .split(";")
+        .map((part, index) => {
+          const match = part.trim().match(/^([^:]+):(\d+)-(\d+)$/);
+          if (!match) return null;
+          return {
+            chain: match[1].trim(),
+            start: Number(match[2]),
+            end: Number(match[3]),
+            color: proteinPalette[index % proteinPalette.length]
+          };
+        })
+        .filter(Boolean);
+    }
+
+    function proteinColorFunction(config) {
+      if (config.proteinColor === "plddt") return confidenceColor;
+      if (config.proteinColor === "secondary") {
+        return atom => {
+          if (atom.ss === "h") return colors.series1;
+          if (atom.ss === "s") return colors.series2;
+          return colors.series3;
+        };
+      }
+      if (config.proteinColor === "mono") return () => colors.series1;
+      if (config.proteinColor === "domain") {
+        const ranges = parseDomainRanges(config.domainRanges);
+        if (ranges.length) {
+          return atom => {
+            const match = ranges.find(range =>
+              range.chain === String(atom.chain) &&
+              Number(atom.resi) >= range.start &&
+              Number(atom.resi) <= range.end
+            );
+            return match ? match.color : colors.muted;
+          };
+        }
+      }
+      return atom => proteinChainColor(atom, config);
+    }
+
+    function nucleicColorFunction(config) {
+      if (config.nucleicColor === "plddt") return confidenceColor;
+      return config.nucleicColor === "base"
+        ? atom => baseColor(atom, config)
+        : atom => nucleicChainColor(atom, config);
+    }
+
+    function nucleicDisplayColor(config, atom, base) {
+      if (config.nucleicColor === "plddt") return confidenceColor(atom);
+      if (config.nucleicColor === "base") {
+        return basePalette[base] || baseColor(atom, config);
+      }
+      return nucleicChainColor(atom, config);
+    }
+
+    function defaultVisibility() {
+      const values = {};
+      [
+        ...manifest.proteins,
+        ...manifest.dna,
+        ...manifest.rna,
+        ...manifest.ligands,
+        ...manifest.metals,
+        ...manifest.waters,
+        ...manifest.others
+      ].forEach(entity => {
+        values[entity.id] = true;
+      });
+      return values;
+    }
+
+    function makeConfig(overrides = {}) {
+      return {
+        name: "默认视图",
+        proteinRep: "ribbon",
+        proteinColor: "chain",
+        domainRanges: "",
+        nucleicTube: true,
+        nucleicSlab: true,
+        nucleicLadder: false,
+        nucleicSticks: false,
+        nucleicColor: "chain",
+        ligandRep: "sticks",
+        metalRep: "spheres",
+        waterRep: "hidden",
+        analysisLayer: "none",
+        background: colors.background,
+        visualPreset: "custom",
+        visibility: defaultVisibility(),
+        ...overrides
+      };
+    }
+
+    const paeLayout = {
+      left: 82,
+      top: 52,
+      size: 540
+    };
+
+    const paeGreens = [
+      [0, 68, 27],
+      [0, 109, 44],
+      [35, 139, 69],
+      [65, 171, 93],
+      [116, 196, 118],
+      [161, 217, 155],
+      [199, 233, 192],
+      [229, 245, 224],
+      [247, 252, 245]
+    ];
+
+    function decodePaePayload(payload) {
+      if (!payload || payload.available !== true) return null;
+      if (payload.encoding !== "uint16-le" || Number(payload.scale) <= 0) {
+        throw new Error(`不支持的 PAE 编码：${payload.encoding || "未知"}`);
+      }
+      const bytes = Uint8Array.from(
+        atob(payload.values_b64),
+        character => character.charCodeAt(0)
+      );
+      const expected = Number(payload.size) * Number(payload.size) * 2;
+      if (bytes.length !== expected) {
+        throw new Error(`PAE 数据长度 ${bytes.length} 与期望 ${expected} 不一致`);
+      }
+      return bytes;
+    }
+
+    function paeValue(row, column) {
+      if (!decodedPae || !paeData) return NaN;
+      const offset = (row * Number(paeData.size) + column) * 2;
+      const quantized = decodedPae[offset] | (decodedPae[offset + 1] << 8);
+      return quantized / Number(paeData.scale);
+    }
+
+    function paeColor(value, displayMax) {
+      const normalized = Math.min(1, Math.max(0, value / displayMax));
+      const position = normalized * (paeGreens.length - 1);
+      const lower = Math.floor(position);
+      const upper = Math.min(paeGreens.length - 1, lower + 1);
+      const fraction = position - lower;
+      return paeGreens[lower].map((channel, index) =>
+        Math.round(channel + (paeGreens[upper][index] - channel) * fraction)
+      );
+    }
+
+    function drawPaeUnavailable(message) {
+      const context = paeCanvas.getContext("2d");
+      context.clearRect(0, 0, paeCanvas.width, paeCanvas.height);
+      context.fillStyle = colors.background;
+      context.fillRect(0, 0, paeCanvas.width, paeCanvas.height);
+      context.fillStyle = colors.muted;
+      context.font = "16px system-ui, sans-serif";
+      context.textAlign = "center";
+      context.fillText(message, paeCanvas.width / 2, paeCanvas.height / 2);
+      paeStat.textContent = "当前样本没有完整 PAE 矩阵。";
+      paeStatus.textContent = "需要 AF3 *_confidences.json 中的 pae 数组。";
+    }
+
+    function drawPae() {
+      paeTooltip.hidden = true;
+      if (!paeData || !decodedPae) {
+        drawPaeUnavailable("PAE unavailable");
+        return;
+      }
+      const context = paeCanvas.getContext("2d");
+      const size = Number(paeData.size);
+      const displayMax = Number(paeData.display_max);
+      const imageCanvas = document.createElement("canvas");
+      imageCanvas.width = size;
+      imageCanvas.height = size;
+      const imageContext = imageCanvas.getContext("2d");
+      const pixels = imageContext.createImageData(size, size);
+      for (let row = 0; row < size; row += 1) {
+        for (let column = 0; column < size; column += 1) {
+          const [red, green, blue] = paeColor(
+            paeValue(row, column),
+            displayMax
+          );
+          const offset = (row * size + column) * 4;
+          pixels.data[offset] = red;
+          pixels.data[offset + 1] = green;
+          pixels.data[offset + 2] = blue;
+          pixels.data[offset + 3] = 255;
+        }
+      }
+      imageContext.putImageData(pixels, 0, 0);
+
+      context.clearRect(0, 0, paeCanvas.width, paeCanvas.height);
+      context.fillStyle = colors.background;
+      context.fillRect(0, 0, paeCanvas.width, paeCanvas.height);
+      context.imageSmoothingEnabled = false;
+      context.drawImage(
+        imageCanvas,
+        paeLayout.left,
+        paeLayout.top,
+        paeLayout.size,
+        paeLayout.size
+      );
+      context.strokeStyle = colors.foreground;
+      context.lineWidth = 1.5;
+      context.strokeRect(
+        paeLayout.left,
+        paeLayout.top,
+        paeLayout.size,
+        paeLayout.size
+      );
+
+      context.save();
+      context.strokeStyle = colors.border;
+      context.fillStyle = colors.muted;
+      context.lineWidth = 1;
+      context.font = "12px system-ui, sans-serif";
+      const tickStep = size <= 300 ? 50 : Math.ceil(size / 6 / 100) * 100;
+      const ticks = [];
+      for (let tick = 0; tick < size; tick += tickStep) ticks.push(tick);
+      if (ticks[ticks.length - 1] !== size) ticks.push(size);
+      ticks.forEach(tick => {
+        const ratio = tick / size;
+        const x = paeLayout.left + ratio * paeLayout.size;
+        const y = paeLayout.top + ratio * paeLayout.size;
+        context.beginPath();
+        context.moveTo(x, paeLayout.top + paeLayout.size);
+        context.lineTo(x, paeLayout.top + paeLayout.size + 7);
+        context.stroke();
+        context.textAlign = tick === size ? "right" : tick === 0 ? "left" : "center";
+        context.textBaseline = "top";
+        context.fillText(String(tick), x, paeLayout.top + paeLayout.size + 10);
+        context.beginPath();
+        context.moveTo(paeLayout.left - 7, y);
+        context.lineTo(paeLayout.left, y);
+        context.stroke();
+        context.textAlign = "right";
+        context.textBaseline = tick === size ? "bottom" : tick === 0 ? "top" : "middle";
+        context.fillText(String(tick), paeLayout.left - 11, y);
+      });
+
+      (paeData.chain_boundaries || []).forEach((boundary, index) => {
+        const start = Number(boundary.start);
+        const end = Number(boundary.end) + 1;
+        if (start > 0) {
+          const position = paeLayout.left + start / size * paeLayout.size;
+          context.strokeStyle = colors.foreground;
+          context.globalAlpha = 0.55;
+          context.beginPath();
+          context.moveTo(position, paeLayout.top);
+          context.lineTo(position, paeLayout.top + paeLayout.size);
+          context.moveTo(paeLayout.left, paeLayout.top + start / size * paeLayout.size);
+          context.lineTo(paeLayout.left + paeLayout.size, paeLayout.top + start / size * paeLayout.size);
+          context.stroke();
+          context.globalAlpha = 1;
+        }
+        const center = (start + end) / 2 / size;
+        context.fillStyle = colors.foreground;
+        context.font = "500 12px system-ui, sans-serif";
+        context.textAlign = "center";
+        context.textBaseline = "bottom";
+        context.fillText(
+          `Chain ${boundary.chain}`,
+          paeLayout.left + center * paeLayout.size,
+          paeLayout.top - 9
+        );
+        context.save();
+        context.translate(
+          paeLayout.left - 53,
+          paeLayout.top + center * paeLayout.size
+        );
+        context.rotate(-Math.PI / 2);
+        context.textAlign = "center";
+        context.textBaseline = "top";
+        context.fillText(`Chain ${boundary.chain}`, 0, 0);
+        context.restore();
+      });
+
+      context.fillStyle = colors.foreground;
+      context.font = "500 14px system-ui, sans-serif";
+      context.textAlign = "center";
+      context.textBaseline = "top";
+      context.fillText(
+        "Scored token / residue",
+        paeLayout.left + paeLayout.size / 2,
+        paeLayout.top + paeLayout.size + 42
+      );
+      context.save();
+      context.translate(18, paeLayout.top + paeLayout.size / 2);
+      context.rotate(-Math.PI / 2);
+      context.fillText("Aligned token / residue", 0, 0);
+      context.restore();
+      context.restore();
+
+      paeStat.replaceChildren();
+      const lines = [
+        `矩阵 ${size} × ${size}`,
+        `平均 PAE ${Number(paeData.mean).toFixed(2)} Å`,
+        `范围 ${Number(paeData.min).toFixed(1)}–${Number(paeData.max).toFixed(1)} Å`
+      ];
+      lines.forEach(line => {
+        const item = document.createElement("div");
+        item.textContent = line;
+        paeStat.appendChild(item);
+      });
+      paeStatus.textContent =
+        "深绿表示低误差/高相对置信；悬停热图可查看真实 token 对 PAE。";
+    }
+
+    function handlePaePointer(event) {
+      if (!paeData || !decodedPae) return;
+      const rect = paeCanvas.getBoundingClientRect();
+      const canvasX = (event.clientX - rect.left) * paeCanvas.width / rect.width;
+      const canvasY = (event.clientY - rect.top) * paeCanvas.height / rect.height;
+      if (
+        canvasX < paeLayout.left ||
+        canvasY < paeLayout.top ||
+        canvasX >= paeLayout.left + paeLayout.size ||
+        canvasY >= paeLayout.top + paeLayout.size
+      ) {
+        paeTooltip.hidden = true;
+        return;
+      }
+      const size = Number(paeData.size);
+      const column = Math.min(
+        size - 1,
+        Math.floor((canvasX - paeLayout.left) / paeLayout.size * size)
+      );
+      const row = Math.min(
+        size - 1,
+        Math.floor((canvasY - paeLayout.top) / paeLayout.size * size)
+      );
+      const scored = `${paeData.token_chain_ids[column]}:${paeData.token_res_ids[column]}`;
+      const aligned = `${paeData.token_chain_ids[row]}:${paeData.token_res_ids[row]}`;
+      const value = paeValue(row, column);
+      const detail = `Scored ${scored} · Aligned ${aligned} · PAE ${value.toFixed(1)} Å`;
+      paeTooltip.textContent = detail;
+      paeTooltip.hidden = false;
+      const wrap = paeCanvas.parentElement.getBoundingClientRect();
+      const left = Math.min(
+        wrap.width - 220,
+        Math.max(8, event.clientX - wrap.left + 12)
+      );
+      const top = Math.min(
+        wrap.height - 54,
+        Math.max(8, event.clientY - wrap.top + 12)
+      );
+      paeTooltip.style.left = `${left}px`;
+      paeTooltip.style.top = `${top}px`;
+      paeStatus.textContent = detail;
+    }
+
+    function selectInitialSample() {
+      const samples = Array.isArray(viewerPayload.samples)
+        ? viewerPayload.samples
+        : [];
+      if (!samples.length) throw new Error("样本载荷为空");
+      const defaultIndex = samples.findIndex(
+        sample => sample.id === viewerPayload.default_sample_id
+      );
+      activeSampleIndex = defaultIndex >= 0 ? defaultIndex : 0;
+      activeSample = samples[activeSampleIndex];
+    }
+
+    function assignSample(sample) {
+      activeSample = sample;
+      format = sample.structure_format;
+      structureData = sample.structure_data;
+      atomMetadata = sample.atom_metadata;
+      manifest = sample.manifest;
+      runtimeConfig = sample.runtime_config;
+      paeData = sample.pae;
+      decodedPae = decodePaePayload(paeData);
+      interfaceResidues = new Set();
+      interfaceCacheKey = "";
+      mappedAtomFraction = 0;
+    }
+
+    function buildSampleControls() {
+      sampleSelect.replaceChildren();
+      viewerPayload.samples.forEach(sample => {
+        const option = document.createElement("option");
+        option.value = sample.id;
+        option.textContent = sample.label;
+        sampleSelect.appendChild(option);
+      });
+      sampleSelect.value = activeSample.id;
+      sampleControls.hidden = viewerPayload.samples.length <= 1;
+    }
+
+    function updateSampleSummary() {
+      const summary = runtimeConfig.summary_confidences || {};
+      const parts = [
+        Number.isFinite(Number(summary.ranking_score))
+          ? `ranking ${Number(summary.ranking_score).toFixed(4)}`
+          : null,
+        Number.isFinite(Number(summary.iptm))
+          ? `ipTM ${Number(summary.iptm).toFixed(2)}`
+          : null,
+        Number.isFinite(Number(summary.ptm))
+          ? `pTM ${Number(summary.ptm).toFixed(2)}`
+          : null,
+        paeData ? `PAE ${Number(paeData.mean).toFixed(2)} Å` : null
+      ].filter(Boolean);
+      sampleSummary.textContent = parts.join(" · ");
+    }
+
+    function updatePlddtButton() {
+      const button = root.querySelector("[data-builtin-view='plddt']");
+      const available = runtimeConfig.confidence_semantic === "plddt";
+      button.disabled = !available;
+      if (available) {
+        button.removeAttribute("aria-label");
+      } else {
+        button.setAttribute("aria-label", "pLDDT 不可用：置信度语义未确认");
+        if (activeViewId === "plddt") activeViewId = "default";
+      }
+    }
+
+    function clearScene() {
+      viewer.removeAllSurfaces();
+      viewer.removeAllLabels();
+      viewer.removeAllShapes();
+      viewer.setStyle({}, {});
+    }
+
+    function subtract(left, right) {
+      return { x: left.x - right.x, y: left.y - right.y, z: left.z - right.z };
+    }
+
+    function add(left, right) {
+      return { x: left.x + right.x, y: left.y + right.y, z: left.z + right.z };
+    }
+
+    function scale(vector, factor) {
+      return { x: vector.x * factor, y: vector.y * factor, z: vector.z * factor };
+    }
+
+    function dot(left, right) {
+      return left.x * right.x + left.y * right.y + left.z * right.z;
+    }
+
+    function cross(left, right) {
+      return {
+        x: left.y * right.z - left.z * right.y,
+        y: left.z * right.x - left.x * right.z,
+        z: left.x * right.y - left.y * right.x
+      };
+    }
+
+    function normalize(vector) {
+      const length = Math.hypot(vector.x, vector.y, vector.z);
+      return length > 1e-6 ? scale(vector, 1 / length) : null;
+    }
+
+    function ringAtomNames(base) {
+      return base === "A" || base === "G"
+        ? new Set(["N9", "C8", "N7", "C5", "C6", "N1", "C2", "N3", "C4"])
+        : new Set(["N1", "C2", "N3", "C4", "C5", "C6"]);
+    }
+
+    function makeBasePlate(
+      atoms,
+      color,
+      halfThickness = 0.14,
+      interactionAtom = null
+    ) {
+      const center = atoms.reduce(
+        (sum, atom) => ({ x: sum.x + atom.x, y: sum.y + atom.y, z: sum.z + atom.z }),
+        { x: 0, y: 0, z: 0 }
+      );
+      center.x /= atoms.length;
+      center.y /= atoms.length;
+      center.z /= atoms.length;
+
+      let normal = null;
+      for (let index = 1; index < atoms.length - 1 && !normal; index += 1) {
+        const candidate = cross(
+          subtract(atoms[index], atoms[0]),
+          subtract(atoms[index + 1], atoms[0])
+        );
+        if (Math.hypot(candidate.x, candidate.y, candidate.z) > 0.08) {
+          normal = normalize(candidate);
+        }
+      }
+      if (!normal) return false;
+
+      let axisU = normalize(subtract(atoms[0], center));
+      if (!axisU) return false;
+      const axisV = normalize(cross(normal, axisU));
+      if (!axisV) return false;
+      axisU = normalize(cross(axisV, normal));
+
+      const ordered = atoms
+        .map(atom => ({
+          x: atom.x,
+          y: atom.y,
+          z: atom.z,
+          angle: Math.atan2(
+            dot(subtract(atom, center), axisV),
+            dot(subtract(atom, center), axisU)
+          )
+        }))
+        .sort((left, right) => left.angle - right.angle);
+
+      const offset = scale(normal, halfThickness);
+      const top = ordered.map(point => add(point, offset));
+      const bottom = ordered.map(point => subtract(point, offset));
+      const vertices = [];
+      const normals = [];
+      const faces = [];
+
+      top.forEach(point => {
+        vertices.push(new $3Dmol.Vector3(point.x, point.y, point.z));
+        normals.push(new $3Dmol.Vector3(normal.x, normal.y, normal.z));
+      });
+      bottom.forEach(point => {
+        vertices.push(new $3Dmol.Vector3(point.x, point.y, point.z));
+        normals.push(new $3Dmol.Vector3(-normal.x, -normal.y, -normal.z));
+      });
+
+      for (let index = 1; index < ordered.length - 1; index += 1) {
+        faces.push(0, index, index + 1);
+        faces.push(ordered.length, ordered.length + index + 1, ordered.length + index);
+      }
+
+      for (let index = 0; index < ordered.length; index += 1) {
+        const next = (index + 1) % ordered.length;
+        const edgeMidpoint = scale(add(ordered[index], ordered[next]), 0.5);
+        const sideNormal = normalize(subtract(edgeMidpoint, center));
+        const start = vertices.length;
+        [top[index], top[next], bottom[next], bottom[index]].forEach(point => {
+          vertices.push(new $3Dmol.Vector3(point.x, point.y, point.z));
+          normals.push(new $3Dmol.Vector3(sideNormal.x, sideNormal.y, sideNormal.z));
+        });
+        faces.push(start, start + 1, start + 2, start, start + 2, start + 3);
+      }
+
+      viewer.addCustom({
+        vertexArr: vertices,
+        normalArr: normals,
+        faceArr: faces,
+        color,
+        opacity: 0.95,
+        clickable: Boolean(interactionAtom),
+        callback: interactionAtom
+          ? () => handleAtomSelection(interactionAtom)
+          : undefined,
+        hoverable: Boolean(interactionAtom),
+        hover_callback: interactionAtom
+          ? () => setSequenceHighlight(interactionAtom)
+          : undefined,
+        unhover_callback: interactionAtom
+          ? () => clearSequenceHighlight()
+          : undefined
+      });
+      return true;
+    }
+
+    function nucleicResidues(config) {
+      const residues = new Map();
+      model.selectedAtoms({ predicate: rolePredicate(["dna", "rna"], config) }).forEach(atom => {
+        const base = canonicalBase(atom.resn);
+        if (!base) return;
+        const key = `${atom.chain}:${atom.resi}:${atom.resn}`;
+        if (!residues.has(key)) {
+          residues.set(key, {
+            key,
+            base,
+            chain: String(atom.chain || "_"),
+            entityId: atomEntity(atom),
+            atoms: []
+          });
+        }
+        residues.get(key).atoms.push(atom);
+      });
+      return [...residues.values()];
+    }
+
+    function residueCenter(residue) {
+      const allowed = ringAtomNames(residue.base);
+      const ringAtoms = residue.atoms.filter(atom =>
+        allowed.has(String(atom.atom || "").toUpperCase())
+      );
+      if (ringAtoms.length < 5) return null;
+      const center = ringAtoms.reduce(
+        (sum, atom) => ({ x: sum.x + atom.x, y: sum.y + atom.y, z: sum.z + atom.z }),
+        { x: 0, y: 0, z: 0 }
+      );
+      center.x /= ringAtoms.length;
+      center.y /= ringAtoms.length;
+      center.z /= ringAtoms.length;
+      return { center, ringAtoms };
+    }
+
+    function addNucleicSlabs(config) {
+      let count = 0;
+      nucleicResidues(config).forEach(residue => {
+        const geometry = residueCenter(residue);
+        if (!geometry) return;
+        const referenceAtom = geometry.ringAtoms[0];
+        const color = nucleicDisplayColor(config, referenceAtom, residue.base);
+        const halfThickness = config.visualPreset === "rcsb" ? 0.085 : 0.14;
+        if (makeBasePlate(
+          geometry.ringAtoms,
+          color,
+          halfThickness,
+          referenceAtom
+        )) {
+          count += 1;
+          if (config.visualPreset === "rcsb") {
+            const sugar = residue.atoms.find(atom =>
+              String(atom.atom || "").toUpperCase() === "C1'"
+            );
+            if (sugar) {
+              viewer.addCylinder({
+                start: sugar,
+                end: geometry.center,
+                radius: 0.085,
+                fromCap: 1,
+                toCap: 1,
+                color,
+                clickable: true,
+                callback: () => handleAtomSelection(referenceAtom),
+                hoverable: true,
+                hover_callback: () => setSequenceHighlight(referenceAtom),
+                unhover_callback: () => clearSequenceHighlight()
+              });
+            }
+          }
+        }
+      });
+      return count;
+    }
+
+    function addNucleicLadder(config) {
+      const residues = nucleicResidues(config)
+        .map(residue => {
+          const geometry = residueCenter(residue);
+          if (!geometry) return null;
+          const sugar = residue.atoms.find(atom => String(atom.atom || "").toUpperCase() === "C1'");
+          return geometry ? { ...residue, ...geometry, sugar } : null;
+        })
+        .filter(Boolean);
+
+      residues.forEach(residue => {
+        if (!residue.sugar) return;
+        const color = nucleicDisplayColor(
+          config,
+          residue.ringAtoms[0],
+          residue.base
+        );
+        viewer.addCylinder({
+          start: residue.sugar,
+          end: residue.center,
+          radius: 0.12,
+          fromCap: 1,
+          toCap: 1,
+          color,
+          clickable: true,
+          callback: () => handleAtomSelection(residue.ringAtoms[0]),
+          hoverable: true,
+          hover_callback: () => setSequenceHighlight(residue.ringAtoms[0]),
+          unhover_callback: () => clearSequenceHighlight()
+        });
+      });
+
+      const chains = [...new Set(residues.map(residue => residue.chain))];
+      if (chains.length < 2) return 0;
+      const left = residues.filter(residue => residue.chain === chains[0]);
+      const right = residues.filter(residue => residue.chain === chains[1]);
+      const candidates = [];
+      left.forEach(leftResidue => {
+        right.forEach(rightResidue => {
+          const delta = subtract(leftResidue.center, rightResidue.center);
+          const distance = Math.hypot(delta.x, delta.y, delta.z);
+          if (distance >= 3 && distance <= 12) {
+            candidates.push({ left: leftResidue, right: rightResidue, distance });
+          }
+        });
+      });
+      candidates.sort((a, b) => a.distance - b.distance);
+      const usedLeft = new Set();
+      const usedRight = new Set();
+      let pairCount = 0;
+      candidates.forEach(candidate => {
+        if (usedLeft.has(candidate.left.key) || usedRight.has(candidate.right.key)) return;
+        usedLeft.add(candidate.left.key);
+        usedRight.add(candidate.right.key);
+        const midpoint = scale(add(candidate.left.center, candidate.right.center), 0.5);
+        const leftColor = nucleicDisplayColor(
+          config,
+          candidate.left.ringAtoms[0],
+          candidate.left.base
+        );
+        const rightColor = nucleicDisplayColor(
+          config,
+          candidate.right.ringAtoms[0],
+          candidate.right.base
+        );
+        viewer.addCylinder({
+          start: candidate.left.center,
+          end: midpoint,
+          radius: 0.11,
+          fromCap: 1,
+          toCap: 0,
+          color: leftColor,
+          clickable: true,
+          callback: () => handleAtomSelection(candidate.left.ringAtoms[0]),
+          hoverable: true,
+          hover_callback: () => setSequenceHighlight(candidate.left.ringAtoms[0]),
+          unhover_callback: () => clearSequenceHighlight()
+        });
+        viewer.addCylinder({
+          start: midpoint,
+          end: candidate.right.center,
+          radius: 0.11,
+          fromCap: 0,
+          toCap: 1,
+          color: rightColor,
+          clickable: true,
+          callback: () => handleAtomSelection(candidate.right.ringAtoms[0]),
+          hoverable: true,
+          hover_callback: () => setSequenceHighlight(candidate.right.ringAtoms[0]),
+          unhover_callback: () => clearSequenceHighlight()
+        });
+        pairCount += 1;
+      });
+      return pairCount;
+    }
+
+    function residueKey(atom) {
+      return `${atom.chain}:${atom.resi}:${atom.resn}`;
+    }
+
+    function currentViewConfig() {
+      if (!editor.hidden && previewSceneActive && previewRenderedConfig) {
+        return previewRenderedConfig;
+      }
+      return customViews.get(activeViewId) || builtInConfig(activeViewId);
+    }
+
+    const elementPalette = {
+      H: "#FFFFFF",
+      C: "#7A8491",
+      N: "#2F6BFF",
+      O: "#E64646",
+      F: "#66C96A",
+      CL: "#40B84A",
+      BR: "#9C4A2E",
+      I: "#6D3F98",
+      P: "#F28C28",
+      S: "#F2C230",
+      FE: "#C86A34",
+      MG: "#4BB55C",
+      ZN: "#7A7FC8",
+      CA: "#58A75E",
+      NA: "#7B5CD6",
+      K: "#8A57B5"
+    };
+
+    function elementColor(atom) {
+      return elementPalette[String(atom.elem || "C").toUpperCase()] || "#D28B39";
+    }
+
+    function resetDynamicBondUi() {
+      dynamicBondState = null;
+      dynamicBondsPanel.hidden = true;
+      focusVignette.hidden = true;
+      dynamicBondsLabel.textContent = "";
+    }
+
+    function closeDynamicBonds(restoreCamera = true) {
+      if (!dynamicBondState) return;
+      const savedView = dynamicBondState.savedView;
+      resetDynamicBondUi();
+      applyScene(currentViewConfig(), true);
+      if (restoreCamera && Array.isArray(savedView)) {
+        viewer.setView(savedView);
+        viewer.render();
+      }
+    }
+
+    function localBondAtoms(atom, cutoff = 4.5) {
+      const config = currentViewConfig();
+      const allAtoms = model.selectedAtoms({});
+      const selectedResidue = allAtoms.filter(candidate =>
+        residueKey(candidate) === residueKey(atom)
+      );
+      const anchors = selectedResidue.length ? selectedResidue : [atom];
+      const cutoffSquared = cutoff * cutoff;
+      return allAtoms.filter(candidate => {
+        if (candidate.properties && candidate.properties.role === "water") return false;
+        if (!isVisible(candidate, config)) return false;
+        return anchors.some(anchor => {
+          const dx = candidate.x - anchor.x;
+          const dy = candidate.y - anchor.y;
+          const dz = candidate.z - anchor.z;
+          return dx * dx + dy * dy + dz * dz <= cutoffSquared;
+        });
+      });
+    }
+
+    const proteinHydrogenDonors = {
+      ARG: new Set(["NE", "NH1", "NH2"]),
+      ASN: new Set(["ND2"]),
+      GLN: new Set(["NE2"]),
+      LYS: new Set(["NZ"]),
+      SER: new Set(["OG"]),
+      THR: new Set(["OG1"]),
+      TRP: new Set(["NE1"]),
+      TYR: new Set(["OH"])
+    };
+    const proteinHydrogenAcceptors = {
+      ARG: new Set([]),
+      ASN: new Set(["OD1"]),
+      ASP: new Set(["OD1", "OD2"]),
+      GLN: new Set(["OE1"]),
+      GLU: new Set(["OE1", "OE2"]),
+      SER: new Set(["OG"]),
+      THR: new Set(["OG1"]),
+      TYR: new Set(["OH"])
+    };
+    const nucleicHydrogenDonors = {
+      A: new Set(["N6"]),
+      C: new Set(["N4"]),
+      G: new Set(["N1", "N2"]),
+      T: new Set(["N3"]),
+      U: new Set(["N3"])
+    };
+    const nucleicHydrogenAcceptors = {
+      A: new Set(["N1", "N3", "N7"]),
+      C: new Set(["N3", "O2"]),
+      G: new Set(["N3", "N7", "O6"]),
+      T: new Set(["O2", "O4"]),
+      U: new Set(["O2", "O4"])
+    };
+    const nucleicBackboneAcceptors = new Set([
+      "OP1", "OP2", "O1P", "O2P", "O2'", "O3'", "O4'", "O5'"
+    ]);
+
+    function normalizedAtomName(atom) {
+      return String(atom.atom || "").trim().toUpperCase().replace(/\*/g, "'");
+    }
+
+    function canonicalBaseName(atom) {
+      const residue = String(atom.resn || "").trim().toUpperCase();
+      if (["A", "DA", "ADE"].includes(residue)) return "A";
+      if (["C", "DC", "CYT"].includes(residue)) return "C";
+      if (["G", "DG", "GUA"].includes(residue)) return "G";
+      if (["T", "DT", "THY"].includes(residue)) return "T";
+      if (["U", "DU", "URA"].includes(residue)) return "U";
+      return null;
+    }
+
+    function bondedAtoms(atom, atomByIndex, heavyOnly = false) {
+      const neighbors = [];
+      (Array.isArray(atom.bonds) ? atom.bonds : []).forEach(index => {
+        const neighbor = atomByIndex.get(Number(index));
+        if (!neighbor) return;
+        if (heavyOnly && String(neighbor.elem || "").toUpperCase() === "H") return;
+        neighbors.push(neighbor);
+      });
+      return neighbors;
+    }
+
+    function isHydrogenDonor(atom, atomByIndex) {
+      const role = atom.properties && atom.properties.role;
+      const residue = String(atom.resn || "").trim().toUpperCase();
+      const name = normalizedAtomName(atom);
+      if (role === "protein") {
+        if (name === "N" && residue !== "PRO") return true;
+        return Boolean(
+          proteinHydrogenDonors[residue] &&
+          proteinHydrogenDonors[residue].has(name)
+        );
+      }
+      if (role === "dna" || role === "rna") {
+        const base = canonicalBaseName(atom);
+        if (
+          base &&
+          nucleicHydrogenDonors[base] &&
+          nucleicHydrogenDonors[base].has(name)
+        ) {
+          return true;
+        }
+        return role === "rna" && name === "O2'";
+      }
+      const element = String(atom.elem || "").toUpperCase();
+      return ["N", "O"].includes(element) &&
+        bondedAtoms(atom, atomByIndex).some(
+          neighbor => String(neighbor.elem || "").toUpperCase() === "H"
+        );
+    }
+
+    function isHydrogenAcceptor(atom) {
+      const role = atom.properties && atom.properties.role;
+      const residue = String(atom.resn || "").trim().toUpperCase();
+      const name = normalizedAtomName(atom);
+      if (role === "protein") {
+        if (name === "O" || name === "OXT") return true;
+        return Boolean(
+          proteinHydrogenAcceptors[residue] &&
+          proteinHydrogenAcceptors[residue].has(name)
+        );
+      }
+      if (role === "dna" || role === "rna") {
+        if (nucleicBackboneAcceptors.has(name)) return true;
+        const base = canonicalBaseName(atom);
+        return Boolean(
+          base &&
+          nucleicHydrogenAcceptors[base] &&
+          nucleicHydrogenAcceptors[base].has(name)
+        );
+      }
+      return false;
+    }
+
+    function angleDegrees(left, vertex, right) {
+      const first = normalize(subtract(left, vertex));
+      const second = normalize(subtract(right, vertex));
+      if (!first || !second) return null;
+      const cosine = Math.max(-1, Math.min(1, dot(first, second)));
+      return Math.acos(cosine) * 180 / Math.PI;
+    }
+
+    function minimumAntecedentAngle(center, target, atomByIndex) {
+      const angles = bondedAtoms(center, atomByIndex, true)
+        .map(antecedent => angleDegrees(antecedent, center, target))
+        .filter(value => Number.isFinite(value));
+      return angles.length ? Math.min(...angles) : null;
+    }
+
+    function covalentPathWithinTwoBonds(left, right, atomByIndex) {
+      const targetIndex = Number(right.index);
+      const firstShell = Array.isArray(left.bonds) ? left.bonds.map(Number) : [];
+      if (firstShell.includes(targetIndex)) return true;
+      return firstShell.some(index => {
+        const neighbor = atomByIndex.get(index);
+        return neighbor &&
+          Array.isArray(neighbor.bonds) &&
+          neighbor.bonds.map(Number).includes(targetIndex);
+      });
+    }
+
+    function putativeHydrogenBonds(focusAtoms, localAtoms, allAtoms) {
+      const atomByIndex = new Map(allAtoms.map(candidate => [
+        Number(candidate.index),
+        candidate
+      ]));
+      const candidates = [];
+      focusAtoms.forEach(focusAtom => {
+        localAtoms.forEach(localAtom => {
+          if (residueKey(focusAtom) === residueKey(localAtom)) return;
+          const delta = subtract(focusAtom, localAtom);
+          const distance = Math.hypot(delta.x, delta.y, delta.z);
+          if (distance < 2.4 || distance > 3.5) return;
+          if (covalentPathWithinTwoBonds(focusAtom, localAtom, atomByIndex)) return;
+
+          const orientations = [];
+          if (
+            isHydrogenDonor(focusAtom, atomByIndex) &&
+            isHydrogenAcceptor(localAtom)
+          ) {
+            orientations.push({ donor: focusAtom, acceptor: localAtom });
+          }
+          if (
+            isHydrogenDonor(localAtom, atomByIndex) &&
+            isHydrogenAcceptor(focusAtom)
+          ) {
+            orientations.push({ donor: localAtom, acceptor: focusAtom });
+          }
+          orientations.forEach(orientation => {
+            const donorAngle = minimumAntecedentAngle(
+              orientation.donor,
+              orientation.acceptor,
+              atomByIndex
+            );
+            const acceptorAngle = minimumAntecedentAngle(
+              orientation.acceptor,
+              orientation.donor,
+              atomByIndex
+            );
+            if (
+              !Number.isFinite(donorAngle) ||
+              !Number.isFinite(acceptorAngle) ||
+              donorAngle < 100 ||
+              acceptorAngle < 100
+            ) {
+              return;
+            }
+            candidates.push({
+              ...orientation,
+              distance,
+              geometryScore: Math.min(donorAngle, acceptorAngle)
+            });
+          });
+        });
+      });
+
+      const bestByDonor = new Map();
+      candidates.forEach(candidate => {
+        const donorId = Number(candidate.donor.index);
+        const existing = bestByDonor.get(donorId);
+        if (
+          !existing ||
+          candidate.geometryScore > existing.geometryScore + 0.01 ||
+          (
+            Math.abs(candidate.geometryScore - existing.geometryScore) <= 0.01 &&
+            candidate.distance < existing.distance
+          )
+        ) {
+          bestByDonor.set(donorId, candidate);
+        }
+      });
+      return [...bestByDonor.values()];
+    }
+
+    function unambiguousTemplateDoubleBond(left, right) {
+      if (residueKey(left) !== residueKey(right)) return false;
+      const leftRole = left.properties && left.properties.role;
+      const rightRole = right.properties && right.properties.role;
+      if (leftRole !== "protein" || rightRole !== "protein") return false;
+      const pair = [normalizedAtomName(left), normalizedAtomName(right)]
+        .sort()
+        .join(":");
+      const residue = String(left.resn || "").trim().toUpperCase();
+      if (pair === "C:O") return true;
+      if (residue === "ASN" && pair === "CG:OD1") return true;
+      return residue === "GLN" && pair === "CD:OE1";
+    }
+
+    function displayedBondOrder(left, right, parsedOrder) {
+      const order = Number(parsedOrder);
+      if (Number.isFinite(order) && order >= 1.5) {
+        return Math.min(3, Math.max(2, Math.round(order)));
+      }
+      return unambiguousTemplateDoubleBond(left, right) ? 2 : 1;
+    }
+
+    function localCovalentBonds(localAtoms) {
+      const atomByIndex = new Map(localAtoms.map(candidate => [
+        Number(candidate.index),
+        candidate
+      ]));
+      const seen = new Set();
+      const bonds = [];
+      localAtoms.forEach(left => {
+        const partnerIndices = Array.isArray(left.bonds) ? left.bonds : [];
+        partnerIndices.forEach((rawIndex, position) => {
+          const right = atomByIndex.get(Number(rawIndex));
+          if (!right) return;
+          const key = [Number(left.index), Number(right.index)]
+            .sort((a, b) => a - b)
+            .join(":");
+          if (seen.has(key)) return;
+          seen.add(key);
+          const leftOrder = Array.isArray(left.bondOrder)
+            ? left.bondOrder[position]
+            : 1;
+          const reversePosition = Array.isArray(right.bonds)
+            ? right.bonds.map(Number).indexOf(Number(left.index))
+            : -1;
+          const rightOrder =
+            reversePosition >= 0 && Array.isArray(right.bondOrder)
+              ? right.bondOrder[reversePosition]
+              : 1;
+          bonds.push({
+            left,
+            right,
+            order: displayedBondOrder(
+              left,
+              right,
+              Math.max(Number(leftOrder) || 1, Number(rightOrder) || 1)
+            )
+          });
+        });
+      });
+      return bonds;
+    }
+
+    function addElementBondCylinder(start, end, color, radius, caps) {
+      viewer.addCylinder({
+        start,
+        end,
+        radius,
+        fromCap: caps[0],
+        toCap: caps[1],
+        color
+      });
+    }
+
+    function drawSplitCovalentBond(left, right, offset, radius) {
+      const start = add(left, offset);
+      const end = add(right, offset);
+      const midpoint = scale(add(start, end), 0.5);
+      addElementBondCylinder(start, midpoint, elementColor(left), radius, [1, 0]);
+      addElementBondCylinder(midpoint, end, elementColor(right), radius, [0, 1]);
+    }
+
+    function drawLocalCovalentBonds(bonds) {
+      bonds.forEach(bond => {
+        const axis = normalize(subtract(bond.right, bond.left));
+        if (!axis) return;
+        const reference = Math.abs(axis.z) < 0.85
+          ? { x: 0, y: 0, z: 1 }
+          : { x: 0, y: 1, z: 0 };
+        const perpendicular = normalize(cross(axis, reference));
+        if (!perpendicular) return;
+        let offsets = [0];
+        let radius = 0.13;
+        if (bond.order === 2) {
+          offsets = [-0.1, 0.1];
+          radius = 0.07;
+        } else if (bond.order >= 3) {
+          offsets = [-0.13, 0, 0.13];
+          radius = 0.055;
+        }
+        offsets.forEach(amount => {
+          drawSplitCovalentBond(
+            bond.left,
+            bond.right,
+            scale(perpendicular, amount),
+            radius
+          );
+        });
+      });
+    }
+
+    function drawPutativeHydrogenBonds(hydrogenBonds) {
+      hydrogenBonds.forEach(bond => {
+        viewer.addCylinder({
+          start: bond.donor,
+          end: bond.acceptor,
+          radius: 0.04,
+          dashed: true,
+          dashLength: 0.18,
+          gapLength: 0.13,
+          color: colors.series3,
+          opacity: 0.82
+        });
+      });
+    }
+
+    function activateDynamicBonds(atom) {
+      const savedView = dynamicBondState && dynamicBondState.savedView
+        ? dynamicBondState.savedView
+        : viewer.getView();
+      if (dynamicBondState) {
+        resetDynamicBondUi();
+        applyScene(currentViewConfig(), true);
+      }
+      const allAtoms = model.selectedAtoms({});
+      const focusAtoms = allAtoms.filter(candidate =>
+        residueKey(candidate) === residueKey(atom)
+      );
+      const localAtoms = localBondAtoms(atom);
+      const localIds = new Set(localAtoms.map(candidate => candidate.index));
+      const localSelection = {
+        predicate: candidate => localIds.has(candidate.index)
+      };
+      viewer.addStyle(localSelection, {
+        sphere: {
+          colorfunc: elementColor,
+          scale: 0.24
+        }
+      });
+      const covalentBonds = localCovalentBonds(localAtoms);
+      const hydrogenBonds = putativeHydrogenBonds(
+        focusAtoms.length ? focusAtoms : [atom],
+        localAtoms,
+        allAtoms
+      );
+      drawLocalCovalentBonds(covalentBonds);
+      drawPutativeHydrogenBonds(hydrogenBonds);
+      const doubleBondCount = covalentBonds.filter(bond => bond.order === 2).length;
+
+      const score = Number(atom.properties && atom.properties.plddt);
+      const atomScore = Number(atom.properties && atom.properties.atomPlddt);
+      const scoreText =
+        runtimeConfig.confidence_semantic === "plddt" && Number.isFinite(score)
+          ? ` · residue pLDDT ${score.toFixed(1)}${
+              Number.isFinite(atomScore) ? ` · atom ${atomScore.toFixed(1)}` : ""
+            }`
+          : "";
+      const labelText =
+        `${atom.chain || "_"}:${atom.resi} ${atom.resn || ""} ${atom.atom || ""}`;
+      viewer.addLabel(`${labelText}${scoreText}`, {
+        position: atom,
+        backgroundColor: colors.popover,
+        fontColor: colors.popoverForeground,
+        borderColor: colors.foreground,
+        borderThickness: 1,
+        fontSize: 13,
+        inFront: true
+      });
+      dynamicBondState = {
+        savedView,
+        residue: residueKey(atom),
+        atomIds: localIds
+      };
+      dynamicBondsLabel.textContent =
+        `${labelText} · ${localAtoms.length} atoms within 4.5 Å · ` +
+        `${hydrogenBonds.length} possible H-bond(s) · ` +
+        `${doubleBondCount} double bond(s)`;
+      dynamicBondsPanel.hidden = false;
+      focusVignette.hidden = false;
+      status.textContent = `Dynamic bonds：${labelText}${scoreText}`;
+      viewer.zoomTo(localSelection);
+      viewer.zoom(1.45, 360);
+      viewer.render();
+    }
+
+    function computeInterfaceResidues(config) {
+      const visibilityKey = Object.entries(config.visibility)
+        .filter(([, visible]) => visible !== false)
+        .map(([entityId]) => entityId)
+        .sort()
+        .join("|");
+      if (visibilityKey === interfaceCacheKey) return;
+      interfaceCacheKey = visibilityKey;
+      interfaceResidues = new Set();
+      const cutoff = 4;
+      const cellSize = cutoff;
+      const partners = model.selectedAtoms({
+        predicate: atom => {
+          const role = atom.properties && atom.properties.role;
+          return ["dna", "rna", "ligand", "metal"].includes(role) &&
+            atom.elem !== "H" &&
+            isVisible(atom, config);
+        }
+      });
+      const grid = new Map();
+      const cellKey = atom =>
+        `${Math.floor(atom.x / cellSize)}:${Math.floor(atom.y / cellSize)}:${Math.floor(atom.z / cellSize)}`;
+      partners.forEach(atom => {
+        const key = cellKey(atom);
+        if (!grid.has(key)) grid.set(key, []);
+        grid.get(key).push(atom);
+      });
+      model.selectedAtoms({
+        predicate: atom =>
+          atom.properties &&
+           atom.properties.role === "protein" &&
+           atom.elem !== "H" &&
+           isVisible(atom, config)
+      }).forEach(atom => {
+        const cellX = Math.floor(atom.x / cellSize);
+        const cellY = Math.floor(atom.y / cellSize);
+        const cellZ = Math.floor(atom.z / cellSize);
+        for (let x = cellX - 1; x <= cellX + 1; x += 1) {
+          for (let y = cellY - 1; y <= cellY + 1; y += 1) {
+            for (let z = cellZ - 1; z <= cellZ + 1; z += 1) {
+              const neighbors = grid.get(`${x}:${y}:${z}`) || [];
+              if (neighbors.some(partner => {
+                const dx = atom.x - partner.x;
+                const dy = atom.y - partner.y;
+                const dz = atom.z - partner.z;
+                return dx * dx + dy * dy + dz * dz <= cutoff * cutoff;
+              })) {
+                interfaceResidues.add(residueKey(atom));
+                return;
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function relevantWaterIds(config) {
+      if (config.waterRep !== "relevant") return null;
+      const cutoff = 3.5;
+      const targets = model.selectedAtoms({
+        predicate: atom => {
+          const role = atom.properties && atom.properties.role;
+          return ["ligand", "metal", "protein", "dna", "rna"].includes(role) &&
+            atom.elem !== "H" &&
+            isVisible(atom, config);
+        }
+      });
+      const grid = new Map();
+      const cellKey = atom =>
+        `${Math.floor(atom.x / cutoff)}:${Math.floor(atom.y / cutoff)}:${Math.floor(atom.z / cutoff)}`;
+      targets.forEach(atom => {
+        const key = cellKey(atom);
+        if (!grid.has(key)) grid.set(key, []);
+        grid.get(key).push(atom);
+      });
+      const ids = new Set();
+      model.selectedAtoms({
+        predicate: atom =>
+          atom.properties &&
+          atom.properties.role === "water" &&
+          isVisible(atom, config)
+      }).forEach(water => {
+        const cellX = Math.floor(water.x / cutoff);
+        const cellY = Math.floor(water.y / cutoff);
+        const cellZ = Math.floor(water.z / cutoff);
+        let relevant = false;
+        for (let x = cellX - 1; x <= cellX + 1 && !relevant; x += 1) {
+          for (let y = cellY - 1; y <= cellY + 1 && !relevant; y += 1) {
+            for (let z = cellZ - 1; z <= cellZ + 1 && !relevant; z += 1) {
+              const neighbors = grid.get(`${x}:${y}:${z}`) || [];
+              relevant = neighbors.some(target => {
+                const dx = water.x - target.x;
+                const dy = water.y - target.y;
+                const dz = water.z - target.z;
+                return dx * dx + dy * dy + dz * dz <= cutoff * cutoff;
+              });
+            }
+          }
+        }
+        if (relevant) {
+          ids.add(water.index);
+        }
+      });
+      return ids;
+    }
+
+    function applyProtein(config) {
+      if (config.proteinRep === "hidden") return;
+      const selection = { predicate: rolePredicate("protein", config) };
+      const colorfunc = proteinColorFunction(config);
+      if (config.proteinRep === "sticks") {
+        viewer.setStyle(selection, {
+          stick: { colorfunc, radius: 0.12, singleBonds: true }
+        });
+      } else if (config.visualPreset === "rcsb") {
+        viewer.setStyle(selection, {
+          cartoon: {
+            style: "oval",
+            thickness: 0.26,
+            arrows: true,
+            tubes: false,
+            colorfunc
+          }
+        });
+      } else {
+        const cartoon = config.proteinRep === "tube"
+          ? { style: "trace", thickness: 0.38, colorfunc }
+          : config.proteinRep === "cartoon"
+            ? { style: "rectangle", thickness: 0.34, arrows: true, colorfunc }
+            : { style: "oval", ribbon: true, thickness: 0.24, colorfunc };
+        viewer.setStyle(selection, { cartoon });
+      }
+
+      if (config.proteinRep === "surface" || config.analysisLayer === "surface") {
+        viewer.addSurface(
+          $3Dmol.SurfaceType.VDW,
+          { color: colors.series1, opacity: 0.38 },
+          selection
+        );
+      }
+      if (config.analysisLayer === "interface") {
+        computeInterfaceResidues(config);
+        const visibleProtein = rolePredicate("protein", config);
+        viewer.addStyle(
+          {
+            predicate: atom =>
+              visibleProtein(atom) &&
+              interfaceResidues.has(residueKey(atom))
+          },
+          {
+            stick: { color: colors.series4, radius: 0.15, singleBonds: true }
+          }
+        );
+      }
+    }
+
+    function applyNucleic(config) {
+      const selection = { predicate: rolePredicate(["dna", "rna"], config) };
+      const colorfunc = nucleicColorFunction(config);
+      if (config.nucleicTube) {
+        viewer.setStyle(selection, {
+          cartoon: config.visualPreset === "rcsb"
+            ? {
+                style: "oval",
+                width: 0.8,
+                thickness: 0.18,
+                colorfunc
+              }
+            : { style: "trace", thickness: 0.34, colorfunc }
+        });
+      }
+      if (config.nucleicSticks) {
+        viewer.addStyle(selection, {
+          stick: { colorfunc, radius: 0.1, singleBonds: true }
+        });
+      }
+      const slabCount = config.nucleicSlab ? addNucleicSlabs(config) : 0;
+      const pairCount = config.nucleicLadder ? addNucleicLadder(config) : 0;
+      return { slabCount, pairCount };
+    }
+
+    function applyLigands(config) {
+      if (config.ligandRep === "hidden") return;
+      const selection = { predicate: rolePredicate("ligand", config) };
+      if (config.ligandRep === "spheres") {
+        viewer.setStyle(selection, {
+          sphere: { color: colors.series4, scale: 0.32 }
+        });
+      } else if (config.ligandRep === "ballstick") {
+        viewer.setStyle(selection, {
+          stick: { color: colors.series4, radius: 0.13 },
+          sphere: { color: colors.series4, scale: 0.24 }
+        });
+      } else {
+        viewer.setStyle(selection, {
+          stick: { color: colors.series4, radius: 0.15 }
+        });
+      }
+    }
+
+    function applyMetals(config) {
+      if (config.metalRep === "hidden") return;
+      const selection = { predicate: rolePredicate("metal", config) };
+      if (config.metalRep === "sticks") {
+        viewer.setStyle(selection, {
+          stick: { color: colors.series5, radius: 0.17, showNonBonded: true }
+        });
+      } else {
+        viewer.setStyle(selection, {
+          sphere: { color: colors.series5, scale: 0.48 }
+        });
+      }
+    }
+
+    function applyWaters(config) {
+      if (config.waterRep === "hidden") return;
+      const relevantIds = relevantWaterIds(config);
+      viewer.setStyle(
+        {
+          predicate: atom =>
+            atom.properties &&
+            atom.properties.role === "water" &&
+            isVisible(atom, config) &&
+            (!relevantIds || relevantIds.has(atom.index))
+        },
+        {
+          sphere: { color: colors.series6, scale: 0.22 }
+        }
+      );
+    }
+
+    function visibleEntityCount(config, role) {
+      const groups = {
+        protein: manifest.proteins,
+        dna: manifest.dna,
+        rna: manifest.rna,
+        ligand: manifest.ligands,
+        metal: manifest.metals,
+        water: manifest.waters
+      };
+      return (groups[role] || []).filter(entity => config.visibility[entity.id] !== false).length;
+    }
+
+    function applyOthers(config) {
+      viewer.setStyle(
+        { predicate: rolePredicate("other", config) },
+        {
+          stick: { color: colors.muted, radius: 0.12 },
+          sphere: { color: colors.muted, scale: 0.2 }
+        }
+      );
+    }
+
+    function renderLegend(config) {
+      legend.replaceChildren();
+      const appendItem = (label, color) => {
+        const item = document.createElement("span");
+        const swatch = document.createElement("span");
+        swatch.className = "csv-swatch";
+        swatch.style.setProperty("--csv-swatch", color);
+        swatch.setAttribute("aria-hidden", "true");
+        item.append(swatch, document.createTextNode(label));
+        legend.appendChild(item);
+      };
+      if (config.proteinColor === "plddt") {
+        [
+          ["Very high (pLDDT ≥ 90)", plddtPalette.veryHigh],
+          ["High (90 > pLDDT ≥ 70)", plddtPalette.confident],
+          ["Low (70 > pLDDT ≥ 50)", plddtPalette.low],
+          ["Very low (pLDDT < 50)", plddtPalette.veryLow]
+        ].forEach(([label, color]) => {
+          appendItem(label, color);
+        });
+        confidenceTitle.textContent = "Model Confidence";
+        const summary = runtimeConfig.plddt_summary;
+        const provenance = manifest.confidence_provenance || {};
+        const mean = summary && Number.isFinite(Number(summary.mean))
+          ? `平均 ${Number(summary.mean).toFixed(2)}`
+          : "";
+        confidenceNote.textContent = [
+          "pLDDT 是局部置信度指标。",
+          mean,
+          provenance.ribbon_source
+            ? `Ribbon 数据：${provenance.ribbon_source}`
+            : "",
+          `原子映射 ${(mappedAtomFraction * 100).toFixed(1)}%`
+        ].filter(Boolean).join(" ");
+        return;
+      }
+
+      confidenceTitle.textContent = "View legend";
+      confidenceNote.textContent = "默认视图按链着色；水分子默认隐藏。";
+      [
+        ...manifest.proteins,
+        ...manifest.dna,
+        ...manifest.rna,
+        ...manifest.ligands,
+        ...manifest.metals
+      ]
+        .filter(entity => config.visibility[entity.id] !== false)
+        .slice(0, 10)
+        .forEach(entity => {
+          appendItem(entity.label, entityColor(entity, config));
+        });
+    }
+
+    function setActiveButton(viewId) {
+      root.querySelectorAll("[data-builtin-view], [data-custom-view]").forEach(button => {
+        const selected =
+          button.dataset.builtinView === viewId ||
+          button.dataset.customView === viewId;
+        button.classList.toggle("btn-primary", selected);
+        button.setAttribute("aria-pressed", String(selected));
+      });
+    }
+
+    function applyScene(config, preserveCamera = true) {
+      clearScene();
+      viewer.setBackgroundColor(config.background);
+      applyProtein(config);
+      const nucleicStats = applyNucleic(config);
+      applyLigands(config);
+      applyMetals(config);
+      applyWaters(config);
+      applyOthers(config);
+      renderLegend(config);
+
+      const proteinCount = visibleEntityCount(config, "protein");
+      const dnaCount = visibleEntityCount(config, "dna");
+      const ligandCount = visibleEntityCount(config, "ligand");
+      const metalCount = visibleEntityCount(config, "metal");
+      const details = [
+        `${proteinCount} 个蛋白实体`,
+        `${dnaCount} 条 DNA`,
+        config.proteinColor === "plddt" &&
+        Number.isFinite(Number(runtimeConfig.global_quality))
+          ? `全局 pLDDT ${Number(runtimeConfig.global_quality).toFixed(2)}`
+          : null,
+        nucleicStats.slabCount ? `${nucleicStats.slabCount} 个 slab` : null,
+        nucleicStats.pairCount ? `${nucleicStats.pairCount} 个 ladder 配对` : null,
+        ligandCount ? `${ligandCount} 个配体` : null,
+        metalCount ? `${metalCount} 个离子` : null
+      ].filter(Boolean);
+      const configWarning =
+        config.proteinColor === "domain" && !parseDomainRanges(config.domainRanges).length
+          ? "未提供有效结构域范围，已回退为按链着色"
+          : "";
+      const warnings = [
+        configWarning,
+        ...representationWarnings(config, nucleicStats)
+      ].filter(Boolean);
+      structureHeader.textContent =
+        config.proteinColor === "plddt"
+          ? `Model confidence · ${activeSample.label}`
+          : `${config.name} · ${activeSample.label}`;
+      status.textContent = `${config.name}：${details.join(" · ")}${
+        warnings.length ? `；${warnings.join("；")}` : ""
+      }`;
+
+      if (!preserveCamera) {
+        viewer.zoomTo({
+          predicate: atom =>
+            atom.properties &&
+            atom.properties.role !== "water" &&
+            isVisible(atom, config)
+        });
+        viewer.zoom(1.9, 500);
+      }
+      viewer.render();
+    }
+
+    function builtInConfig(viewId) {
+      if (viewId === "plddt") {
+        return makeConfig({
+          name: "pLDDT",
+          proteinRep: "ribbon",
+          proteinColor: "plddt",
+          nucleicColor: "plddt",
+          visualPreset: "rcsb"
+        });
+      }
+      return makeConfig({ visualPreset: "rcsb" });
+    }
+
+    function activateView(viewId, preserveCamera = true) {
+      if (dynamicBondState) closeDynamicBonds(true);
+      activeViewId = viewId;
+      const config = customViews.get(viewId) || builtInConfig(viewId);
+      setActiveButton(viewId);
+      applyScene(config, preserveCamera);
+    }
+
+    function entityGroups() {
+      return [
+        ...manifest.proteins,
+        ...manifest.dna,
+        ...manifest.rna,
+        ...manifest.ligands,
+        ...manifest.metals,
+        ...manifest.waters,
+        ...manifest.others
+      ];
+    }
+
+    function buildVisibilityControls() {
+      visibilityBox.replaceChildren();
+      entityGroups().forEach(entity => {
+        const wrapper = document.createElement("label");
+        wrapper.className = "form-check";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = true;
+        checkbox.className = "form-check-input";
+        checkbox.dataset.entityId = entity.id;
+        const text = document.createElement("span");
+        text.className = "form-check-label";
+        text.textContent = entity.label;
+        wrapper.append(checkbox, text);
+        visibilityBox.appendChild(wrapper);
+      });
+    }
+
+    function customConfigFromForm() {
+      const fields = viewForm.elements;
+      const visibility = defaultVisibility();
+      visibilityBox.querySelectorAll("[data-entity-id]").forEach(checkbox => {
+        visibility[checkbox.dataset.entityId] = checkbox.checked;
+      });
+      return makeConfig({
+        name: String(fields.view_name.value || "自定义视图").trim() || "自定义视图",
+        proteinRep: String(fields.protein_rep.value),
+        proteinColor: String(fields.protein_color.value),
+        domainRanges: String(fields.domain_ranges.value || ""),
+        nucleicTube: fields.nucleic_tube.checked,
+        nucleicSlab: fields.nucleic_slab.checked,
+        nucleicLadder: fields.nucleic_ladder.checked,
+        nucleicSticks: fields.nucleic_sticks.checked,
+        nucleicColor: String(fields.nucleic_color.value),
+        ligandRep: String(fields.ligand_rep.value),
+        metalRep: String(fields.metal_rep.value),
+        waterRep: String(fields.water_rep.value),
+        analysisLayer: String(fields.analysis_layer.value),
+        background: String(fields.background.value),
+        visibility
+      });
+    }
+
+    function addCustomView(config) {
+      customViewCounter += 1;
+      const id = `custom-${customViewCounter}`;
+      customViews.set(id, config);
+      const tab = document.createElement("span");
+      tab.className = "csv-custom-view-tab";
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "btn";
+      button.dataset.customView = id;
+      button.setAttribute("aria-pressed", "false");
+      button.textContent = config.name;
+      button.addEventListener("click", () => {
+        if (!editor.hidden) setEditorOpen(false);
+        activateView(id);
+      });
+      const removeButton = document.createElement("button");
+      removeButton.type = "button";
+      removeButton.className = "btn csv-custom-view-delete";
+      removeButton.textContent = "×";
+      removeButton.title = `删除 ${config.name}`;
+      removeButton.setAttribute("aria-label", `删除自定义视图 ${config.name}`);
+      removeButton.addEventListener("click", event => {
+        event.stopPropagation();
+        deleteCustomView(id);
+      });
+      tab.append(button, removeButton);
+      customViewNodes.set(id, tab);
+      addViewButton.before(tab);
+      return id;
+    }
+
+    function deleteCustomView(id) {
+      const config = customViews.get(id);
+      if (!config) return;
+      customViews.delete(id);
+      const node = customViewNodes.get(id);
+      if (node) node.remove();
+      customViewNodes.delete(id);
+      if (editorReturnViewId === id) editorReturnViewId = "default";
+      if (activeViewId === id) {
+        activateView("default", true);
+      }
+      status.textContent = `已删除自定义视图：${config.name}`;
+    }
+
+    function resetPreviewState(message = "调整参数后先预览，再生成视图。") {
+      previewConfig = null;
+      saveViewButton.disabled = true;
+      previewStatus.textContent = message;
+    }
+
+    function setEditorOpen(open) {
+      editor.hidden = !open;
+      addViewButton.setAttribute("aria-expanded", String(open));
+      if (open) {
+        if (dynamicBondState) closeDynamicBonds(true);
+        editorReturnViewId = activeViewId;
+        previewSceneActive = false;
+        previewRenderedConfig = null;
+        viewForm.elements.background.value = colors.background;
+        viewForm.elements.view_name.value = `自定义视图 ${customViewCounter + 1}`;
+        resetPreviewState();
+      } else {
+        previewSceneActive = false;
+        previewRenderedConfig = null;
+        resetPreviewState();
+      }
+    }
+
+    function previewCustomView() {
+      if (dynamicBondState) closeDynamicBonds(true);
+      previewConfig = customConfigFromForm();
+      previewRenderedConfig = previewConfig;
+      applyScene(previewConfig, true);
+      previewSceneActive = true;
+      saveViewButton.disabled = false;
+      previewStatus.textContent = "预览已更新；确认效果后可生成视图。";
+      status.textContent = `${previewConfig.name}：当前仅为预览，尚未生成视图按钮。`;
+    }
+
+    function commitCustomView() {
+      if (!previewConfig) {
+        previewStatus.textContent = "请先预览当前设置。";
+        return;
+      }
+      const committed = previewConfig;
+      const id = addCustomView(committed);
+      setEditorOpen(false);
+      activateView(id, true);
+      status.textContent = `已生成自定义视图：${committed.name}`;
+    }
+
+    function cancelCustomView() {
+      const shouldRestore = previewSceneActive;
+      setEditorOpen(false);
+      if (shouldRestore) activateView(editorReturnViewId, true);
+    }
+
+    function hydrateAtoms() {
+      const atoms = model.selectedAtoms({});
+      const metadataQueues = new Map();
+      atomMetadata.forEach((metadata, metadataIndex) => {
+        const key = [
+          String(metadata.c || "_"),
+          String(metadata.i ?? ""),
+          String(metadata.r || ""),
+          String(metadata.a || "")
+        ].join("|");
+        if (!metadataQueues.has(key)) metadataQueues.set(key, []);
+        metadataQueues.get(key).push({ metadata, metadataIndex });
+      });
+      const usedMetadata = new Set();
+      let mappedCount = 0;
+      atoms.forEach((atom, fallbackIndex) => {
+        const key = [
+          String(atom.chain || "_"),
+          String(atom.resi ?? ""),
+          String(atom.resn || ""),
+          String(atom.atom || "")
+        ].join("|");
+        const queue = metadataQueues.get(key) || [];
+        let entry = queue.find(item => !usedMetadata.has(item.metadataIndex));
+        if (!entry) {
+          const index = Number.isInteger(atom.index) ? atom.index : fallbackIndex;
+          if (atomMetadata[index] && !usedMetadata.has(index)) {
+            entry = { metadata: atomMetadata[index], metadataIndex: index };
+          }
+        }
+        const metadata = entry && entry.metadata;
+        if (!metadata) return;
+        usedMetadata.add(entry.metadataIndex);
+        mappedCount += 1;
+        atom.atom = metadata.a || atom.atom;
+        atom.resn = metadata.r || atom.resn;
+        atom.chain = metadata.c || atom.chain;
+        atom.resi = metadata.i !== null && metadata.i !== undefined
+          ? metadata.i
+          : atom.resi;
+        atom.properties = {
+          ...(atom.properties || {}),
+          role: metadata.role,
+          entityId: metadata.e,
+          plddt: Number.isFinite(Number(metadata.p))
+            ? Number(metadata.p)
+            : null,
+          atomPlddt: Number.isFinite(Number(metadata.ap))
+            ? Number(metadata.ap)
+            : null
+        };
+      });
+      mappedAtomFraction = atoms.length ? mappedCount / atoms.length : 0;
+    }
+
+    function collectSecondaryStructureInfo() {
+      const residueAssignments = new Map();
+      const nucleicResidueAtoms = new Map();
+      model.selectedAtoms({}).forEach(atom => {
+        const role = atom.properties && atom.properties.role;
+        if (role === "protein") {
+          const key = residueKey(atom);
+          const raw = String(atom.ss || "c").toLowerCase();
+          const assignment = raw === "h" ? "h" : raw === "s" ? "s" : "c";
+          const existing = residueAssignments.get(key);
+          if (!existing || (existing === "c" && assignment !== "c")) {
+            residueAssignments.set(key, assignment);
+          }
+        } else if (role === "dna" || role === "rna") {
+          const base = canonicalBase(atom.resn);
+          if (!base) return;
+          const key = residueKey(atom);
+          if (!nucleicResidueAtoms.has(key)) {
+            nucleicResidueAtoms.set(key, { base, atoms: new Set() });
+          }
+          nucleicResidueAtoms.get(key).atoms.add(
+            String(atom.atom || "").toUpperCase()
+          );
+        }
+      });
+
+      const counts = { h: 0, s: 0, c: 0 };
+      residueAssignments.forEach(assignment => {
+        counts[assignment] += 1;
+      });
+      let incompleteNucleicResidues = 0;
+      nucleicResidueAtoms.forEach(residue => {
+        const expected = ringAtomNames(residue.base);
+        let observed = 0;
+        residue.atoms.forEach(atomName => {
+          if (expected.has(atomName)) observed += 1;
+        });
+        if (observed < 5) incompleteNucleicResidues += 1;
+      });
+
+      const proteinResidues = residueAssignments.size;
+      const assignedResidues = counts.h + counts.s;
+      const statusValue = !proteinResidues
+        ? "not-applicable"
+        : assignedResidues
+          ? "assigned"
+          : proteinResidues <= 8
+            ? "short-fragment-all-coil"
+            : "warning-all-coil";
+      const details = {
+        status: statusValue,
+        source:
+          runtimeConfig.structure_diagnostics &&
+          runtimeConfig.structure_diagnostics.secondary_structure_source
+            ? runtimeConfig.structure_diagnostics.secondary_structure_source
+            : "3dmol-2.5.4:coordinate_inference",
+        protein_residues: proteinResidues,
+        counts,
+        nucleic_residues: nucleicResidueAtoms.size,
+        incomplete_nucleic_residues: incompleteNucleicResidues
+      };
+      root.dataset.secondaryStructureStatus = details.status;
+      root.dataset.secondaryStructureCounts = JSON.stringify(details.counts);
+      root.dataset.renderer = "3dmol-2.5.4";
+      return details;
+    }
+
+    function representationWarnings(config, nucleicStats) {
+      if (config.visualPreset !== "rcsb" || !secondaryStructureInfo) return [];
+      const warnings = [];
+      if (secondaryStructureInfo.status === "warning-all-coil") {
+        warnings.push("未识别到 α/β 二级结构，当前按 coil 显示");
+      } else if (secondaryStructureInfo.status === "short-fragment-all-coil") {
+        warnings.push("短肽缺少稳定二级结构，默认按 coil 显示；可在自定义视图选择 sticks");
+      }
+      if (
+        secondaryStructureInfo.incomplete_nucleic_residues > 0 &&
+        nucleicStats.slabCount === 0
+      ) {
+        warnings.push(
+          `${secondaryStructureInfo.incomplete_nucleic_residues} 个核苷酸缺少完整环原子，无法生成 slab`
+        );
+      }
+      return warnings;
+    }
+
+    function handleAtomSelection(atom) {
+      activateDynamicBonds(atom);
+    }
+
+    function loadSample(sampleId, preserveCamera = true) {
+      const sampleIndex = viewerPayload.samples.findIndex(
+        sample => sample.id === sampleId
+      );
+      if (sampleIndex < 0) throw new Error(`找不到样本 ${sampleId}`);
+      resetDynamicBondUi();
+      clearSequenceHighlight();
+      if (model) {
+        clearScene();
+        if (typeof viewer.removeModel === "function") {
+          viewer.removeModel(model);
+        } else if (typeof viewer.removeAllModels === "function") {
+          viewer.removeAllModels();
+        }
+      }
+      activeSampleIndex = sampleIndex;
+      assignSample(viewerPayload.samples[sampleIndex]);
+      sampleSelect.value = activeSample.id;
+      model = viewer.addModel(structureData, format, {
+        noComputeSecondaryStructure: false
+      });
+      hydrateAtoms();
+      secondaryStructureInfo = collectSecondaryStructureInfo();
+      viewer.setClickable({}, true, handleAtomSelection);
+      viewer.setHoverDuration(55);
+      viewer.setHoverable(
+        {
+          predicate: atom =>
+            atom.properties &&
+            ["protein", "dna", "rna"].includes(atom.properties.role)
+        },
+        true,
+        atom => setSequenceHighlight(atom),
+        () => clearSequenceHighlight()
+      );
+      buildSequenceTracks();
+      buildVisibilityControls();
+      updatePlddtButton();
+      updateSampleSummary();
+      drawPae();
+      const config = customViews.get(activeViewId) || builtInConfig(activeViewId);
+      setActiveButton(activeViewId);
+      applyScene(config, preserveCamera);
+      root.dataset.vizState = "ready";
+    }
+
+    function initialize() {
+      if (!window.$3Dmol) {
+        initializeAttempts += 1;
+        if (initializeAttempts > 80) {
+          root.dataset.vizState = "error";
+          status.textContent = "内置分子渲染引擎加载失败。";
+          return;
+        }
+        status.textContent = "分子渲染引擎正在加载…";
+        window.setTimeout(initialize, 120);
+        return;
+      }
+
+      selectInitialSample();
+      assignSample(activeSample);
+      documentTitle.textContent = viewerPayload.title || activeSample.title || "";
+      buildSampleControls();
+      viewer = $3Dmol.createViewer(stage, {
+        backgroundColor: colors.background,
+        antialias: true
+      });
+      viewer.setViewStyle({
+        style: "outline",
+        color: colors.foreground,
+        width: 0.035
+      });
+
+      root.querySelectorAll("[data-builtin-view]").forEach(button => {
+        button.addEventListener("click", () => {
+          if (!editor.hidden) setEditorOpen(false);
+          activateView(button.dataset.builtinView);
+        });
+      });
+      sampleSelect.addEventListener("change", () => {
+        try {
+          if (!editor.hidden) setEditorOpen(false);
+          loadSample(sampleSelect.value, true);
+        } catch (error) {
+          status.textContent = `样本切换失败：${error && error.message ? error.message : "未知错误"}`;
+        }
+      });
+      sequenceFilter.addEventListener("change", buildSequenceTracks);
+      paeCanvas.addEventListener("mousemove", handlePaePointer);
+      paeCanvas.addEventListener("mouseleave", () => {
+        paeTooltip.hidden = true;
+        if (paeData) {
+          paeStatus.textContent =
+            "深绿表示低误差/高相对置信；悬停热图可查看真实 token 对 PAE。";
+        }
+      });
+      addViewButton.addEventListener("click", () => {
+        if (editor.hidden) {
+          setEditorOpen(true);
+        } else {
+          cancelCustomView();
+        }
+      });
+      root.querySelector("[data-action='cancel-view']")
+        .addEventListener("click", cancelCustomView);
+      root.querySelector("[data-action='bonds-off']")
+        .addEventListener("click", () => closeDynamicBonds(true));
+      root.querySelector("[data-action='reset-camera']").addEventListener("click", () => {
+        if (dynamicBondState) closeDynamicBonds(false);
+        const config = currentViewConfig();
+        viewer.zoomTo({
+          predicate: atom =>
+            atom.properties &&
+            atom.properties.role !== "water" &&
+            isVisible(atom, config)
+        });
+        viewer.zoom(1.9, 500);
+        viewer.render();
+      });
+      previewViewButton.addEventListener("click", () => {
+        try {
+          previewCustomView();
+        } catch (error) {
+          status.textContent = `自定义视图预览失败：${error && error.message ? error.message : "未知错误"}`;
+        }
+      });
+      saveViewButton.addEventListener("click", () => {
+        try {
+          commitCustomView();
+        } catch (error) {
+          status.textContent = `自定义视图生成失败：${error && error.message ? error.message : "未知错误"}`;
+        }
+      });
+      viewForm.addEventListener("input", () => {
+        if (previewConfig) {
+          resetPreviewState("设置已改变，请重新预览后再生成。");
+        }
+      });
+      viewForm.addEventListener("submit", event => {
+        event.preventDefault();
+        previewCustomView();
+      });
+
+      resizeObserver = new ResizeObserver(() => {
+        viewer.resize();
+        viewer.render();
+      });
+      resizeObserver.observe(stage);
+      loadSample(activeSample.id, false);
+    }
+
+    try {
+      initialize();
+    } catch (error) {
+      root.dataset.vizState = "error";
+      status.textContent =
+        `可视化初始化失败：${error && error.message ? error.message : "未知错误"}`;
+      console.error(error);
+    }
+  })();
+</script>
