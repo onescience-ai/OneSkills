@@ -42,13 +42,30 @@
       "source_proposals": [],
       "depends_on": [],
       "execution_skill": "string|null",
+      "detail_bundle_id": "string|null",
       "status": "pending|active|done|failed|skipped"
+    }
+  ],
+  "plan_detail_store": [
+    {
+      "detail_bundle_id": "string",
+      "stage_id": "string",
+      "execution_skill": "string|null",
+      "detail_bundle": {},
+      "detail_provenance": [],
+      "required_resources": [],
+      "expected_artifacts": [],
+      "completion_criteria": [],
+      "fallback_detail": [],
+      "risk_notes": []
     }
   ],
   "active_step": {
     "step_id": "string",
     "goal": "string",
     "execution_skill": "string",
+    "detail_bundle_id": "string|null",
+    "detail_bundle": {},
     "status": "pending|running|done|failed|blocked"
   },
   "resource_bindings": [
@@ -102,15 +119,21 @@ any -> blocked
 ## 更新规则
 
 - 每次调用专家规划技能前，先提供当前 `Task State` 摘要。
+- 资源召回返回后回到 orchestrator 主循环，继续生成 `intent_profile`；`resource_retrieval_result` 是中间观察，不是终点。
 - 召回专家前，必须先记录由用户请求和资源摘要形成的 `intent_profile`。
+- 专家召回步骤本身要留下状态痕迹；即使没有命中任何专家，也记录“已召回、未命中”的结果。
+- `intent_aspects` 中的 `aspect_key` 只是轻量追踪键；没有稳定键时可以只保留 `goal` 与 `evidence`。
 - 如果按 `intent_profile` 召回不到专家，设置 `planning_mode=direct_step`，并记录 orchestrator 直接规划的原因。
-- 走专家规划时，设置 `planning_mode=expert_proposal_synthesis`，记录候选专家、已收集 proposal 和融合后的 `global_plan`。
-- 每次调用执行技能后，必须先进入 `observation`，再写入 `artifacts` 和 `observations`，不能直接从 execution 跳到下一次执行。
-- `partial` 必须记录已完成部分、缺失项、残余风险和下一步建议，并默认回到 `observation -> planning`。
-- `failed` 必须先记录失败证据，再由规划阶段决定进入 `repair` 或 `blocked`，不能直接结束。
-- `repair` 只能针对最新 `observation` 生成新的修复步，不能沿用失败前的 `active_step` 或旧 handoff。
+- 走专家规划时，设置 `planning_mode=expert_proposal_synthesis`，记录候选专家、已收集 proposal、融合后的 `global_plan`，以及与各 stage 对应的 `plan_detail_store`。
+- proposal 融合后，不仅要写入 `global_plan` 骨架，还必须为每个 executor_step 写入按目标 executor 裁剪后的 detail bundle；不得只保留阶段 `goal`。
+- 选择 `next_step` 时，必须同时选出对应的 `detail_bundle_id` 和 detail bundle 内容，写入 `active_step`。
+- 若当前 `active_step.execution_skill` 非空，则该步骤视为 executor-owned；在收到对应 executor 的 `execution_result` 之前，orchestrator 不以自身 direct tool 结果替代该步骤，也不绕过该 owner 推进后续步骤。
+- 每次调用执行技能后，先进入 `observation`，再写入 `artifacts` 和 `observations`；随后可在同一 orchestrator 循环中选择下一步继续执行。
+- `partial` 记录已完成部分、缺失项、残余风险和下一步建议，并默认回到 `observation -> planning`。
+- `failed` 记录失败证据，再由规划阶段决定进入 `repair` 或 `blocked` 分支。
+- `repair` 针对最新 `observation` 生成新的修复步；若沿用原阶段骨架，也要重新核对对应 detail bundle 是否充分。
 - 用户新增约束时，追加到 `constraints`，不要覆盖原始 `user_goal`。
-- 只有所有 `completion_criteria` 都满足或明确不可继续时，才进入 `complete` 或 `blocked`。
+- 当所有 `completion_criteria` 都满足时进入 `complete`；若暂时不可继续，则保持 `blocked` 直到条件变化或用户改写目标。
 - `Task State` 是选择下一步执行的唯一事实源；在更新后的 state 上必须重新选择 `next_step`，不得沿用旧计划文本或旧 handoff 直接继续执行。
 
 ## Direct Step 与专家融合
@@ -123,4 +146,5 @@ any -> blocked
 - `planner_candidates`
 - `planner_proposals`
 - `global_plan`
-- 当前从 `global_plan` 中选出的 `active_step`
+- `plan_detail_store`
+- 当前从 `global_plan` 中选出的 `active_step`（含 detail bundle 引用或当前细节内容）

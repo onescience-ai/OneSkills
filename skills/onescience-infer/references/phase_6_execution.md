@@ -42,6 +42,8 @@
 
 `package_requirements` 和 `environment_requirements` 来自 `step_handoff.inputs.runtime`、`infer_workdir` 中保存的 `model_knowledge.md` / `model_loading_plan.md` / `inference_plan.md`、项目 `requirements.txt` / `pyproject.toml` / 环境文件、官方 README、导入错误或模型加载计划。只记录有来源的信息；无法确认版本时写入范围、约束或 `MISSING:`，不要猜测精确版本。
 
+如果本阶段存在多个待执行输入、多个候选结果或多个待处理目标，则应将它们纳入同一次执行流程或批处理流程。只有在真实阻断或用户要求中断时，才在当前输入处暂停。
+
 如果用户要求本地执行，且当前环境合适，也应把 package 和环境需求记录到 `runtime_request.json`。如果用户要求 SLURM、SCnet、SSH 或远程执行，则路由到 `onescience-runtime`，并保留远程执行意图。
 
 ## 执行前检查

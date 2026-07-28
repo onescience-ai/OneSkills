@@ -17,12 +17,15 @@
 
 ## 委托恢复不变量
 
-`onescience-runsite` 与 `onescience-installer` 只负责解除 runtime 当前遇到的配置或环境阻断；它们成功后必须把控制权交回 `onescience-runtime`，由 runtime 继续原测试任务。
+`onescience-runsite` 与 `onescience-installer` 只负责解除 runtime 当前遇到的配置或环境阻断；它们成功后把控制权交回 `onescience-runtime`，由 runtime 继续原测试任务。
 
+- runtime 允许自动委托的下游技能仅限 `onescience-runsite`、`onescience-installer` 和文档已明确的平台动作执行方 `scnet-chat`。
+- 这些自动委托只服务于 runtime 当前步骤的恢复，不决定新的业务 executor 或新的全局下一阶段。
 - 配置修复成功：重新读取根目录 `onescience.json`，从 `discover` 重新开始，并继续走 `preflight -> execute -> diagnose`。
 - 环境修复且 installer verify 成功：重新读取根目录 `onescience.json` 与 `runtime.conda`，从 `preflight` 重新开始，并继续走 `execute -> diagnose`。
 - 自动委托的 `next_action` 是内部交接标记，不是最终答复；不要在 runsite/installer 成功后停止在“已修复配置/环境”。
 - 只有委托方被阻断、需要用户补充信息、installer verify 失败，或恢复后出现新的配置/环境/业务阻断时，才停止并报告当前阻断。
+- 若恢复后发现问题已超出 runtime 的运行治理边界，例如需要新的代码实现、训练/推理策略调整、后续评估阶段路由或其他业务 executor 决策，runtime 返回 observation 与 recommendation 给 `onescience-orchestrator`，不自行切换到 `onescience-coder`、`onescience-trainer`、`onescience-infer` 等业务技能。
 - 恢复后必须沿用原始测试意图、入口脚本、远程/本地边界和提交目标候选，不要把远程测试任务降级成本地 smoke test。
 
 ## 共享 phase context

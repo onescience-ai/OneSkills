@@ -18,7 +18,7 @@ type: executor
 5. 需要渲染探测、安装、验证命令时，读取 `./references/install_flow.md`。
 6. OneScience 自身是特殊 bootstrap 目标，不属于普通 Python 包：安装 `onescience`、`OneScience 环境`、`earth/cfd/bio/matchem/all` 时必须下载/同步 `workspace_bootstrap_profiles.json` 指定的仓库到 `{repo_dir}`，进入仓库后执行 `bash install.sh {dependency_selector}`；不得渲染 `pip install onescience`、`python -m pip install onescience` 或把 `onescience` 放入 `{python_packages}`。
 7. 检测成功、安装成功且验证成功后，读取 `./references/writeback-conda-state.md` 写回 `onescience.json.runtime.conda`。
-8. 写回成功后，若当前任务带有上游 handoff / resume 信息，则返回调用它的技能继续执行；若没有明确调用方，则交回 `onescience-orchestrator` 规划后续任务。
+8. 写回成功后，若当前任务带有上游 handoff / resume 信息，则返回调用它的技能继续执行；若没有明确调用方，则交回 `onescience-orchestrator` 规划后续任务。installer 不得自行推断新的业务 downstream skill；除文档中已明确的 runsite 补齐调用外，后续由谁执行一律由 caller 或 `onescience-orchestrator` 决定。
 
 ## 必要资产
 

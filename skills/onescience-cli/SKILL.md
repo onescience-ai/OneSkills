@@ -34,6 +34,7 @@ type: executor
 - 修改远端代码、配置或依赖
 - 安装系统级组件或驱动
 - 深度诊断训练/测试失败的业务原因
+- 决定当前命令步骤之外的后续业务 executor 或全局工作流下一阶段
 
 ## 2. 固定阶段
 
@@ -46,6 +47,8 @@ type: executor
 三阶段按顺序推进，每阶段向用户实时汇报当前步骤。`lightweight` 级别跳过 precheck 直接进入 execute 快速通道。
 
 `precheck` 发现不在计算节点时，交由 `onescience-runtime` 通过 sbatch 提交作业处理。`precheck` 发现环境未加载时，提示调用 `onescience-installer`。
+
+CLI 只允许在当前命令步骤内进行这些显式委托：`onescience-runtime` 用于计算节点申请 / 提交 / 运行治理，`onescience-installer` 用于环境初始化。除这两类窄委托外，CLI 不得自行决定其他 downstream 业务技能；若后续问题超出 CLI 当前命令执行边界，必须返回 `onescience-orchestrator` 决策。
 
 ## 3. Discover 阶段
 
@@ -305,12 +308,11 @@ onescience {onescience_subcommand} {onescience_args}
 
 **状态跟踪流程**：
 1. 调用 runtime 提交 sbatch 作业
-2. 记录 `job_id`
-3. 使用 `squeue -j {job_id}` 轮询状态
-4. 作业完成后：
-   - 同步日志
-   - 提取执行结果
-   - 向用户展示
+2. 消费 runtime 返回的提交状态、日志引用与执行结果
+3. 若 runtime 返回的是继续等待 / 恢复当前命令步骤所需的信息，则在 CLI 当前命令上下文内继续完成展示
+4. 若 runtime 返回的阻断或下一动作已超出 CLI 当前命令边界，则返回 `onescience-orchestrator` 决策
+
+CLI 不应在 runtime 已接管提交 / 状态 / 日志治理后，再自行扩展为 runtime 管理器（例如直接轮询 `squeue` 代替 runtime 的状态治理职责）。
 
 ## 9. 参考文件
 

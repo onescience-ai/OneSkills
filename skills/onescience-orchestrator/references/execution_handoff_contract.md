@@ -1,6 +1,6 @@
 # Execution Handoff Contract
 
-执行技能（`type=executor`）只接收当前步骤的明确任务，不重新规划整个用户目标。
+执行技能（`type=executor`）只接收当前步骤的明确任务，不重新规划整个用户目标。executor 拥有当前 step，不拥有全局工作流；除非该技能自己的 `SKILL.md` 明确声明了下游委托与恢复规则，否则完成或受阻后都把控制权交回 `onescience-orchestrator`。
 
 ## Handoff 格式
 
@@ -37,6 +37,14 @@ execution_result:
     risks: <风险>
     next_recommendation: <下一步建议>
 ```
+
+## Step Owner 与下游委托规则
+
+- `step_handoff.execution_skill` 是当前步骤的权威 owner；当前步骤被选定为 `executor_step` 后，orchestrator 正式 dispatch 给该 owner。若 owner 判断需要调整，先回到新一轮 planning / selection。
+- `execution_result` 是 `executor_step` 的正式完成回执；caller 以该回执更新 observation，而不是用自身工具结果替代 executor-owned 步骤。
+- executor 只在自身 `SKILL.md` 明确写出的窄委托 / 恢复合同内调用下游技能。该合同至少说明：可委托技能、触发条件、委托覆盖范围，以及委托完成后的恢复位置。
+- 若当前 skill 没有写明上述合同，或当前问题已超出合同范围，则返回 `execution_result` 给 `onescience-orchestrator`，由 orchestrator 决定后续技能与下一步。
+- 运行通道歧义、环境歧义、下一业务阶段归属、跨技能后续链路选择等，默认由 `onescience-orchestrator` 决定；只有当前 skill 明确声明可在窄范围内恢复当前任务时，才继续内部委托。
 
 ## 常见执行技能的职责（仅用于 handoff 便利摘要，不是权威边界来源）
 
@@ -98,9 +106,8 @@ source_dir = os.path.join(source_dir, "ERA5")
 ## Observation 处理
 
 - success：写入 artifacts，交给 orchestrator 基于最新 Task State 判断是否需要继续规划下一步
-- partial：记录已完成部分、缺失项和残余风险；orchestrator 必须先回到 observation/planning，再重新选择一个新的 next_step
-- failed：记录失败证据；orchestrator 必须先完成 observation，再决定 repair、replan 或 blocked，不能直接串行调用下一个 executor
+- partial：记录已完成部分、缺失项和残余风险；orchestrator 先回到 observation/planning，再重新选择一个新的 next_step。若当前修复动作仍属于某个 executor-owned 范围，继续通过对应 executor dispatch。
+- failed：记录失败证据；orchestrator 先完成 observation，再决定 repair、replan 或 blocked。若失败后的下一动作超出当前 skill 明确声明的恢复合同，回到 orchestrator 决策。
 - blocked：记录阻断原因和所需用户输入；只有阻断被消除后才允许继续
 
-- 执行技能返回的结果只表示当前步骤的观察输入，不授权直接跳转到下一条 executor 链路。
-
+- 执行技能返回的结果只表示当前步骤的观察输入，不等同于直接跳转到下一条 executor 链路；后续由 orchestrator 基于最新 Task State 重新选择。

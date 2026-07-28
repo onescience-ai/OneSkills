@@ -167,9 +167,11 @@ installer 负责：
     "method": "ssh|scnet",
     "attempts": 1
   },
-  "next_action": "onescience-runtime"
+  "next_action": "<caller_skill_or_onescience-orchestrator>"
 }
 ```
+
+`next_action` 表示“回 caller 或回 orchestrator”的上下文字段，不是默认跳转目标。除非 `onescience-runtime` 或 `onescience-installer` 就是明确调用方，否则不要把它们写成默认下一步；runsite 也不得自行推断新的业务 downstream skill。
 
 不要在交接信息中输出 SSH 私钥内容、`SCNET_ACCESS_KEY` 或 `SCNET_SECRET_KEY` 明文。
 

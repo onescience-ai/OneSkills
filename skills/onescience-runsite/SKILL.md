@@ -183,6 +183,7 @@ python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onesc
 
 - 如果 `onescience-runsite` 是被其它技能临时调用来补齐配置，完成后必须优先回到调用它的技能，让调用方重新读取 `./onescience.json` 并继续原任务。
 - 调用方身份来自技能调用上下文，不要求脚本参数，也不写入 `onescience.json`。
+- `next_action` 表示“回 caller 或回 orchestrator”的上下文字段，不是默认跳转目标；runsite 不得自行推断新的业务 downstream skill。
 - 如果没有明确调用方，或配置完成后无法判断应继续运行、安装、编码还是诊断，`next_action` 必须是 `onescience-orchestrator`，由 orchestrator 重新规划下一步。
 - 只有远程连接验证失败、缺少必要用户信息或需要用户明确确认时，才把 `next_action` 设为 `ask_user`。
 - 不要在完成配置后默认跳到 `onescience-runtime` 或 `onescience-installer`；除非它们就是调用方。

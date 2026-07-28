@@ -15,6 +15,7 @@
 - 不下载数据、模型权重或依赖。
 - 不提交远程作业。
 - 不把报错日志调试当作本检查的一部分。
+- 不生成或回填任何冒充真实训练 / 推理 / 评测执行证据的文件，例如 `trainer.log`、`train.log`、`metrics.json`、`predictions.json`、`targets.json`。
 
 ## 检查输入
 

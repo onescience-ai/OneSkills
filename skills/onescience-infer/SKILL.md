@@ -49,6 +49,13 @@ type: executor
 5. 推理执行：读取 `references/phase_6_execution.md`
 6. 结果验证：读取 `references/phase_7_validation.md`
 
+## 连续执行规则
+
+- `next_recommendation` 只是路由建议，不是当前任务结束信号。
+- 除非遇到用户确认、缺少凭据、缺少模型 / 数据 / 入口、运行时失败或其他真实阻断，否则本技能在当前调用内应从已完成阶段自动进入下一阶段。
+- 当本阶段存在多个待执行输入、多个候选结果或多个待处理目标时，执行阶段应按批或逐个完成全部项，而不是在第一个对象结束后返回“下一步建议”。
+- 只有 `success` 且全部需要的候选、验证和落盘产物都已完成时，才返回最终 `execution_result`；如果还保留未执行候选或未完成的下游步骤，状态应视为 `partial` 或 `blocked`。
+
 ## 交接边界
 
 ### 输入契约
@@ -95,15 +102,17 @@ execution_result:
 
 ### 下游技能
 
-当需要生成或修改模型专用 Python pipeline、runner、adapter、绘图代码和测试时，使用 `onescience-coder`。
+当需要生成或修改模型专用 Python pipeline、runner、adapter、绘图代码和测试时，使用 `onescience-coder`。该委托只覆盖 infer 当前步骤内的代码落盘与实现子动作；若 coder 返回后后续仍属于当前 infer 步骤，则恢复 infer 继续完成该步骤；若下一任务已超出 infer 当前职责，则交回 `onescience-orchestrator`。
 
-当需要安装依赖、修复 CUDA/PyTorch、配置 conda 环境、检查硬件或提交运行时，把 package 和环境需求写入执行阶段的 runtime handoff，由 `onescience-runtime` 在执行过程中统一处理。
+当需要安装依赖、修复 CUDA/PyTorch、配置 conda 环境、检查硬件或提交运行时，把 package 和环境需求写入执行阶段的 runtime handoff，由 `onescience-runtime` 在执行过程中统一处理。该委托只覆盖 infer 当前步骤内的运行与环境子动作，不授权 infer 在 runtime 返回后继续选择新的业务 executor。
 
-当需要本地或远程执行、SLURM 提交、SCnet 路由、日志同步、执行诊断或运行前环境处理时，使用 `onescience-runtime`。
+当需要本地或远程执行、SLURM 提交、SCnet 路由、日志同步、执行诊断或运行前环境处理时，使用 `onescience-runtime`。runtime 完成后若当前任务仍属于 infer 当前步骤，则 infer 恢复并完成结果验证；若后续问题已超出 infer 的推理工作流边界，则返回 `execution_result` 给 `onescience-orchestrator` 决定下一技能。
 
-当数据接入、格式转换、重网格化或可复用数据集构建成为实质性子任务时，使用 `onescience-dataset-builder` 等数据工作流技能。
+当数据接入、格式转换、重网格化或可复用数据集构建成为实质性子任务时，使用 `onescience-dataset-builder` 等数据工作流技能；若该数据子任务已超出 infer 当前步骤的显式委托范围，则返回 orchestrator 决策。
 
 当用户只要求规划或代码生成时，不要静默安装 package、提交远程作业或下载大型数据集。如果用户明确要求运行推理，则在完成必要的预检和授权后继续进入执行阶段。
+
+infer 只拥有当前执行步骤，不拥有全局工作流；除上述显式窄委托外，不自行决定后续交给哪个业务技能执行。
 
 ## 证据规则
 

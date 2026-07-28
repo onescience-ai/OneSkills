@@ -98,8 +98,6 @@ content:
   limitations: "仅支持 0.25° 分辨率，需要 GPU 推理"
 ```
 
-resource 技能可以根据资源类型自行决定 `content` 的组织方式，只要能清晰传达所需信息即可。
-
 ## 使用场景
 
 ### orchestrator 调用（获取摘要）

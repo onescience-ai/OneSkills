@@ -14,7 +14,7 @@ orchestrator 在召回专家前，先基于用户请求和资源摘要形成意�
   "domain_hints": ["earth", "biology", "cfd", "materials", "general"],
   "intent_aspects": [
     {
-      "aspect_id": "paper_reproduction",
+      "aspect_key": "paper_reproduction",
       "goal": "extract method and generate reproduction spec",
       "evidence": ["paper resource summary", "user says reproduce"]
     }
@@ -25,7 +25,7 @@ orchestrator 在召回专家前，先基于用户请求和资源摘要形成意�
 }
 ```
 
-`intent_aspects` 是专家召回的基本单位。一个复杂任务可以有多个方面，例如 paper reproduction、model codegen、runtime validation。
+`intent_aspects` 是专家召回的基本单位。`aspect_key` 只是轻量追踪键，不是强制全局 ID；如果没有稳定键，也可以仅保留 `goal` 和 `evidence`。
 
 ## Planner 召回输入
 
@@ -34,7 +34,7 @@ orchestrator 在召回专家前，先基于用户请求和资源摘要形成意�
   "task_state": {},
   "intent_profile": {},
   "assigned_aspect": {
-    "aspect_id": "string",
+    "aspect_key": "string|null",
     "goal": "string",
     "evidence": []
   },
@@ -81,7 +81,14 @@ orchestrator 在召回专家前，先基于用户请求和资源摘要形成意�
       ],
       "expected_artifacts": [],
       "completion_criteria": [],
-      "fallback": "string"
+      "fallback": "string",
+      "detail_bundle": {
+        "bundle_kind": "generic|implementation_spec|training_spec|runtime_contract|install_spec|validation_spec",
+        "payload": "<按目标 executor 裁剪的决定性细节>"
+      },
+      "risk_notes": [],
+      "fallback_detail": [],
+      "acceptance_evidence": []
     }
   ],
   "resource_preferences": [],
@@ -103,23 +110,26 @@ orchestrator 对多个 proposal 做融合和优化：
 - 若 executor 能力视图不完整、任一台账字段缺失，或只基于技能名称 / frontmatter `description` / 简写摘要而未完成完整 `SKILL.md` 阅读，则不得继续计划融合或选择 `next_step`。
 - 在合并后、生成最终 `global_plan` 前，必须按可调用 `type=executor` 技能做能力覆盖拆分。
 - 如果一个阶段可由宽泛 executor 一次性完成，但阶段内部包含已有专门 executor 可执行的子动作，必须拆成多个阶段，并用 `depends_on` 串接 artifact 流。
+- 如果当前 executor 能力台账中存在某个原子动作的明确 owner，该动作应进入对应 `executor_step`，不保留为 `orchestrator_step`。
 - 原子动作拆分时，必须同时检查 executor 在完整 `SKILL.md` 中声明的负责事项与明确不负责事项，不能根据技能名称或 handoff 简写职责直接推断。
 - 宽泛 executor 只负责生成或修改代码、入口、配置、脚本等前置产物；训练、推理、评估、运行、安装、数据构建等已有专门 executor 覆盖的动作必须交给对应专门 executor。
 - trainer/coder 规范性示例：若 trainer 的完整 `SKILL.md` 已明确训练策略、完整训练脚本内容生成与训练执行组织归 trainer，而 coder 只负责把已定义内容写入仓库或项目结构，则训练核心决策和执行组织必须交给 trainer，coder 只承担落盘子动作。
 - 示例：`生成模型并完成训练和推理` 不应作为一个宽泛 executor 的单阶段；应先查询当前可用的 `type=executor` 技能，再按职责边界拆成“前置产物生成阶段 + 训练阶段 + 推理阶段”等多个阶段，并用 artifact 依赖串接。
+- 生成融合后的 executor_step 时，不得只保留 `goal`；必须同时提取与目标 executor 匹配的决定性细节，形成 detail bundle，并保留来源 proposal。
+- detail bundle 只保留会影响执行结果的内容：如文件落点、接口约束、数据/张量语义、训练模式、checkpoint 语义、运行入口、配置证据、验证标准与 fallback 触发条件；叙述性背景和无关说明不得原样堆入 handoff。
 - 如果两个 proposal 对同一资源契约冲突，先标记冲突，再选择更高置信度或要求进一步确认。
-- 如果一个 proposal 的阶段只在失败路径需要，放入 fallback，不进入主路径。
-- 每轮只选一个当前 `next_step` 执行，避免把完整链路一次性压给执行技能；在选择前必须基于最新 `Task State`、`observations` 和 `artifacts` 重新评估，而不是沿用旧计划文本。
+- 如果一个 proposal 的阶段只在失败路径需要，放入 fallback，不进入主路径；若 fallback 会影响目标 executor 的执行边界，将触发条件保留到 detail bundle。
+- 每一轮只选一个当前 `next_step` 执行；完成该步的 observation 与状态更新后，允许在同一 skill 内继续下一轮。每次选步前都必须基于最新 `Task State`、`observations` 和 `artifacts` 重新评估，而不是沿用旧计划文本。
 
 ## 无专家召回时的 direct step
 
-orchestrator 不应在召回前先判断“是否需要专家”。标准流程是：
+orchestrator 默认先按 intent_aspects 执行专家召回，并记录召回结果。标准流程是：
 
 ```text
-intent_profile -> 按 intent_aspects 召回专家 -> 收集 proposal
+intent_profile -> 按 intent_aspects 执行专家召回 -> 记录召回结果 -> 命中则收集 proposal / 未命中则进入 direct_step
 ```
 
-如果没有召回到任何专家，才进入 `direct_step`。这表示当前任务是通用任务、单步任务，或当前专家体系尚未覆盖。
+如果没有召回到任何专家，则进入 `direct_step`。这表示当前任务是通用任务、单步任务，或当前专家体系尚未覆盖；前提是专家召回步骤已经执行并留下空结果记录。
 
 进入 `direct_step` 后，orchestrator 应直接生成当前步骤：
 
@@ -136,7 +146,7 @@ intent_profile -> 按 intent_aspects 召回专家 -> 收集 proposal
 }
 ```
 
-direct step 仍必须使用 `intent_profile` 和资源摘要，不允许丢失 Task State。
+`direct_step` 仍必须使用 `intent_profile` 和资源摘要，不允许丢失 Task State。
 
 ## Planner 禁止事项
 
@@ -145,3 +155,4 @@ direct step 仍必须使用 `intent_profile` 和资源摘要，不允许丢失 T
 - 不要假设自己是唯一主规划者；只规划 `assigned_aspect`。
 - 不要把未来所有步骤都写成必须立即执行的技能链。
 - 不要在没有资源契约时猜测关键 shape、路径、参数或硬件事实。
+- 不要只返回一个粗粒度 `goal` 就期待 orchestrator 或 executor 自行补全实现细节；凡是会影响目标 executor 执行结果的关键要求，都应进入对应 stage 的 detail bundle。

@@ -15,10 +15,12 @@ type: executor
 3. 每个步骤都先输出详细执行信息，等待用户确认后再编码。
 4. 编码时优先复用已有实现，保持最小改动，不猜测缺失契约。
 5. 所有步骤完成后，若本地环境支持最小冒烟测试则优先执行冒烟测试（最多 6 次），否则执行静态需求一致性检查。
+6. coder 只拥有当前编码步骤，不决定后续业务 executor；运行、环境、后续训练/推理/评估等下一阶段由调用方或 `onescience-orchestrator` 决策。
 
 ## 硬约束
 
 - 接收任务后必须立即调用 `type=resource` 技能获取资源；无论调用者是否提供了 `reference_resources`，都不能跳过。
+- `resource_retrieval_request` 是技能间控制消息，不是面向用户的执行结果；不得只输出请求 YAML 后停止。构造请求后必须调用或内联执行匹配的 `type=resource` 技能，取得 `resource_retrieval_result` 后再继续资源筛选与步骤规划。
 - 每个步骤如需补充知识，必须再次调用 `type=resource` 技能；不能沿资源 `path` 直接读取文件补洞。
 - 允许作为编码依据的只有两类内容：
   - `reference_resources[*].content`
@@ -121,3 +123,5 @@ execution_result:
 ```
 
 `verification_mode` 与 `verification_results` 为必填项。若走 `smoke_test` 分支，必须明确尝试次数、执行依据和结论；若走 `static_review` 分支，必须给出静态需求一致性检查结果。
+
+coder 完成实现与验证后，只返回 `execution_result`；若后续需要运行、环境修复、训练/推理/评估或其他跨技能动作，应通过 `next_action_needed` / `remaining_steps` 报告，由调用方或 `onescience-orchestrator` 决定，不得由 coder 自行串行选择下一个 executor。

@@ -20,6 +20,8 @@ type: executor
 
 在消费上游交接或生成产物前，先读取 `references/workflow_contract.md`。随后必须先根据 `step_handoff.step_goal`、`task_context.user_goal`、`inputs`、`resource_bindings` 和用户直接请求，从 `type=resource` 技能中召回与训练目标相关的资源，获取训练规格知识、模型/数据使用知识和训练规划决策知识；无论上游是否提供了 `resource_bindings`，都不能跳过初始资源召回。资源 `path` 仅用于标识和追踪，允许作为训练依据的只有用户明确提供内容、上游已展开的资源内容和资源技能返回的 `matched_resources[*].content`。
 
+资源召回是 trainer 内部子流程，`resource_retrieval_request` 不是面向用户或上游的最终执行结果。构造请求后必须调用或内联执行匹配的 `type=resource` 技能，取得 `resource_retrieval_result` 后继续阶段 0 到阶段 3；不得只输出请求 YAML 后结束当前训练步骤。
+
 阶段 0 到阶段 3 在执行具体任务前，必须先基于当前阶段目标评估已召回资源是否足够；若资源缺失、粒度不足或与当前阶段目标不匹配，应再次调用 `type=resource` 技能，按当前阶段目标补充召回资源，再结合资源内容完成该阶段产物。阶段 4 之后消费阶段 0 到阶段 3 已落盘的知识产物与资源使用记录，由 trainer 生成完整训练脚本内容；仅在需要仓库改写或最终文件落点时，按需交接给 `onescience-coder`。
 
 随后按顺序执行以下阶段，并在进入某个阶段时读取对应阶段文件：
@@ -78,15 +80,17 @@ execution_result:
 
 ### 下游技能
 
-当需要将 trainer 已定义的训练脚本内容写入仓库、修改项目现有文件、补齐最终文件路径或对接项目原生目录结构时，使用 `onescience-coder`。`onescience-coder` 负责代码落盘与静态对齐，不负责补全 trainer 尚未明确的训练核心决策。
+当需要将 trainer 已定义的训练脚本内容写入仓库、修改项目现有文件、补齐最终文件路径或对接项目原生目录结构时，使用 `onescience-coder`。`onescience-coder` 负责代码落盘与静态对齐，不负责补全 trainer 尚未明确的训练核心决策。该委托只覆盖 trainer 当前步骤内的文件落盘子动作；若 coder 返回后当前步骤仍由 trainer 持有，则恢复 trainer 继续完成训练工作流；若后续任务已超出 trainer 当前职责，则交回 `onescience-orchestrator`。
 
-当需要安装依赖、修复 CUDA/PyTorch、配置 conda 环境、检查硬件或提交运行时，把 package 和环境需求写入执行阶段的 runtime handoff，由 `onescience-runtime` 在执行过程中统一处理运行通道与环境动作。训练执行阶段的外层控制与结果解释仍由 trainer 持有。
+当需要安装依赖、修复 CUDA/PyTorch、配置 conda 环境、检查硬件或提交运行时，把 package 和环境需求写入执行阶段的 runtime handoff，由 `onescience-runtime` 在执行过程中统一处理运行通道与环境动作。训练执行阶段的外层控制与结果解释仍由 trainer 持有。该委托只覆盖 trainer 当前步骤内的运行与环境子动作，不授权 trainer 自行选择新的业务 executor。
 
-当需要本地或远程执行、SLURM 提交、SCnet 路由、日志同步、执行诊断或运行前环境处理时，通过 `onescience-runtime` 选择和调用合适的运行通道。
+当需要本地或远程执行、SLURM 提交、SCnet 路由、日志同步、执行诊断或运行前环境处理时，通过 `onescience-runtime` 选择和调用合适的运行通道。runtime 返回后若下一动作仍属于当前 trainer 步骤，则由 trainer 恢复并继续；若已超出训练工作流边界，则返回 `execution_result` 给 `onescience-orchestrator` 决策。
 
-当数据接入、格式转换、重网格化、切分构建或可复用数据集构建成为实质性子任务时，使用 `onescience-dataset-builder` 等数据工作流技能。
+当数据接入、格式转换、重网格化、切分构建或可复用数据集构建成为实质性子任务时，使用 `onescience-dataset-builder` 等数据工作流技能；若该数据子任务超出 trainer 当前步骤的显式委托范围，则返回 orchestrator 决策。
 
 当用户只要求规划或代码生成时，不要静默安装 package、提交远程作业或下载大型数据集。如果用户明确要求运行训练，则在完成必要的预检和授权后继续进入执行阶段。
+
+trainer 只拥有当前执行步骤，不拥有全局工作流；除上述显式窄委托外，不得自行决定后续交给哪个业务技能执行。
 
 ## 证据规则
 

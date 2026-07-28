@@ -13,9 +13,11 @@ type: resource
 本技能的 `assets/` 目录**仅供本技能内部使用**。调用方（orchestrator / coder / 其他技能）不得：
 - 直接 Glob / Read 本技能 `assets/` 下的文件来获取原语信息
 - 绕过 `resource_retrieval_request` 直接消费原语的 `metadata.json`、`spec.md`、`usage.md` 等文件内容
-- 在未输出 `resource_retrieval_request` 之前，阅读或引用 `assets/` 下的任何文件
+- 在未收到或构造 `resource_retrieval_request` 之前，禁止阅读或引用 `assets/` 下的任何文件
 
 调用方必须通过 `resource_retrieval_request → resource_retrieval_result` 的完整闭环获取资源。
+
+当本技能被上游技能调用时，`resource_retrieval_request` 是输入控制消息，不是需要回显给用户的最终内容。本技能直接执行召回流程并返回 `resource_retrieval_result`。
 
 ## 原语资产目录
 

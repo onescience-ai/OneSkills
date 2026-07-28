@@ -42,7 +42,7 @@
 - SLURM 资源重试耗尽、找不到兼容 partition，或调整会改变用户明确要求的并行规模 -> `next_action=onescience-runsite` 或 `ask_user`，并带上 `candidate_partitions`、`adjusted_cluster_overrides`、`resource_probe_evidence`
 - 环境/缺包/解释器问题 -> `next_action=onescience-installer`，并立即调用 `skills/onescience-installer/SKILL.md`；无需向用户二次确认。installer verify 成功后回到 `preflight`，重新通过后继续执行原测试任务。
 - `work_dir`、入口路径、module 名称、不可自动调整的 cluster 资源字段或执行三元组存在配置问题 -> `next_action=onescience-runsite`，并立即调用 `skills/onescience-runsite/SKILL.md`；无需向用户二次确认。runsite 成功补齐或确认配置后回到 `discover`，重新通过后继续执行原测试任务。
-- 已有明确业务日志、退出码或错误输出指向用户脚本本身失败 -> `next_action=onescience-coder` 或回上游 skill
+- 已有明确业务日志、退出码或错误输出指向用户脚本本身失败 -> 返回 `execution_result` 中的结构化 `observation` 与 `next_recommendation`，由 `onescience-orchestrator` 决定是否交给 `onescience-coder` 或其他业务技能；只有当前 runtime 调用合同已明确 caller-resume 时，才回该 caller
 - 仅日志未就绪、任务仍在运行或等待 -> `next_action=onescience-runtime`
 
 ## Rules

@@ -102,6 +102,8 @@ execute 分支映射：
 - `scnet_mcp`：交接给 `scnet-chat` 时显式要求平台日志下载到当前测试目录的 `logs/`，并在 runtime 输出中记录 `local_log_dir=<work_dir>/logs/`。
 - `job_name` 只用于作业名、日志文件名前缀或远端任务识别；不再作为本地日志目录的额外子目录。
 
+> `<work_dir>/logs/` 下的日志与 runtime 声明的输出文件，只有在 preflight 通过并进入真实 `execute` 阶段后，才可作为权威训练 / 推理 / 评测运行证据。runtime 不得为了满足 expected outputs 而创建占位或合成的 `trainer.log`、`train.log`、`metrics.json`、`predictions.json`、`targets.json` 等证据文件；若在 `execute` 前被阻断，应输出结构化状态、阻断原因和缺失产物信息，而不是补造运行结果。
+
 若 `execution_mode=slurm` 且 `sbatch`、`squeue`、`sacct` 或作业日志反馈 partition / GRES / GPU 数 / memory / CPU / node 资源不可用，继续读取：
 
 - `./references/slurm-resource-retry.md`
@@ -133,10 +135,12 @@ execute 分支映射：
 
 `onescience-runsite` 和 `onescience-installer` 是 runtime 的中途修复步骤，不是最终任务终点。
 
-- 调用 `onescience-runsite` 解决配置问题后，必须重新读取 `onescience.json`，从 `discover` 恢复，并继续执行原测试任务直到进入 `execute/diagnose` 或遇到新的真实阻断。
-- 调用 `onescience-installer` 解决环境问题且 verify 成功后，必须重新读取 `onescience.json` 与 `runtime.conda`，从 `preflight` 恢复，并继续执行原测试任务直到进入 `execute/diagnose` 或遇到新的真实阻断。
-- 不要把 `next_action=onescience-runsite` 或 `next_action=onescience-installer` 的一次性交接结果当作最终答复；只有对方阻断、需要用户补充信息、verify 失败，或恢复后出现新的阻断时，才停止并向用户报告。
+- runtime 允许自动委托的下游技能仅限 `onescience-runsite`、`onescience-installer`，以及文档中已明确的平台动作执行方 `scnet-chat`；这些委托只用于恢复当前 runtime 步骤，不决定新的业务 executor。
+- 调用 `onescience-runsite` 解决配置问题后，重新读取 `onescience.json`，从 `discover` 恢复，并继续原测试任务直到进入 `execute/diagnose` 或遇到新的真实阻断。
+- 调用 `onescience-installer` 解决环境问题且 verify 成功后，重新读取 `onescience.json` 与 `runtime.conda`，从 `preflight` 恢复，并继续原测试任务直到进入 `execute/diagnose` 或遇到新的真实阻断。
+- `next_action=onescience-runsite` 或 `next_action=onescience-installer` 只是一次性内部交接；只有对方阻断、需要用户补充信息、verify 失败，或恢复后出现新的阻断时，才停止并向用户报告。
 - 恢复时沿用原始用户意图、测试入口、运行通道候选和已确认的远程边界；不要因修复完成而替换成新的本地最小验证。
+- 若 diagnose 或执行证据表明后续问题已超出 runtime 的运行治理边界（例如需要新的业务代码实现、训练/推理策略重定义、后续评估阶段选择等），runtime 只返回 `execution_result` 中的 observation / recommendation，由 `onescience-orchestrator` 决定下一技能；runtime 不自行切换到 `onescience-coder`、`onescience-trainer`、`onescience-infer` 等业务 executor。
 
 ## Hard Gates
 
