@@ -113,6 +113,7 @@ type: orchestrator
    - 输入：用户原始请求、当前 `Task State` 摘要、`content_request: "摘要"`（或使用默认摘要语义）
    - `filters.domain` 仅在当前任务领域可以合理推断时填写
    - `filters.keyword` 仅围绕当前任务目标、预期产物、操作类型、阻塞问题或当前步骤目的填写
+   - **可视化信号传递**：当 `intent_profile.visualization_needed` 为 `true` 时，初始资源召回必须包含可视化信号词（如 `可视化 visualization 3D pLDDT PAE render`），避免 primitives 因语义排序截断而遗漏可视化原语
    - 接收：`matched_resources` 列表，每项包含 `path`、`type`、`name`、`why_matched`、`limitations`、`content`
    - orchestrator 只消费摘要形式的 `content`，不要求 `content` 必须是对象结构
    - `resource_retrieval_result` 是阶段一的中间观察；资源召回返回后应回到 orchestrator 主循环，继续步骤 3 的 `intent_profile` 识别
@@ -127,6 +128,7 @@ type: orchestrator
      - `operation_type`: 操作类型（开发、修复、评估、运行、安装）
      - `execution_phase`: 当前阶段（规划、实现、验证、诊断）
      - `intent_aspects`: 任务涉及的意图方面列表，如 `["paper_reproduction", "runtime_verification"]`
+     - `visualization_needed`: 当用户请求中提到结构可视化、3D 展示、pLDDT/PAE 着色、交互式视图、PyMOL、3Dmol 等可视化需求时，必须设为 `true`，并在后续资源召回中确保向 primitives 传递可视化信号词
 
 ### 阶段二：专家召回与计划融合
 

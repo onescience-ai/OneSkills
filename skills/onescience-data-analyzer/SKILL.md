@@ -44,9 +44,20 @@ type: executor
 1. 若 `step_handoff.resource_bindings` 已包含 `visualization_primitive` 的完整 `content` 和 `content.execution_assets`：
    - 先检查 `execution_assets_summary`：若 `unavailable + failed == total`，跳过校验直接进入阶段二降级决策。
    - 否则遍历每个资产，校验 `status` 为 `available` 或 `materialized` 的资产 SHA-256，再物化到工作区。
-2. 若资源绑定不完整或缺少执行资产，向 `onescience-primitives` 请求 `content_request: "完整内容"` 和 `include_execution_assets: true`。
-3. 请求时使用 `filters.domain: bio`、`filters.keyword: complex structure visualization`；不得沿返回的裸 `path` 直接读取原语资产。
-4. 请求返回后，检查 `execution_assets_summary`，进入阶段二降级决策。
+2. 若资源绑定不完整或缺少执行资产，向 `onescience-primitives` 发起以下资源召回请求：
+   - `user_request`：必须包含可视化信号词（如"交互式 3D 蛋白质结构可视化、pLDDT 置信度着色、PAE 热图渲染"），确保 primitives 技能能正确路由到 `visualization` category
+   - `content_request: "完整内容"`
+   - `include_execution_assets: true`
+   - `filters.domain: bio`
+   - `filters.keyword: complex_structure_visualization`
+   - 不得沿返回的裸 `path` 直接读取原语资产
+3. **【强制】召回结果校验**：收到 `resource_retrieval_result` 后，执行以下校验：
+   a. 检查 `matched_resources` 是否包含 `name=complex_structure_visualization` 且 `type=visualization_primitive` 的资源。
+   b. 若**未召回**该原语（即返回空列表或不包含 visualization_primitive），**不得直接放弃**。必须执行以下回退步骤：
+      ① 检查 `resource_retrieval_result.detected_domain` 是否为 `bio`，`task_intent` 是否包含 `visualization`。
+      ② 若 `task_intent` 不包含 `visualization`，说明 primitives 可能未正确识别可视化意图。此时**重新发起请求**，将 `user_request` 修改为以可视化为主意图的描述（如"需要蛋白质复杂结构三维可视化、pLDDT/PAE 置信度着色、交互式 3D 视图的原语规范"），并显式设置 `filters.keyword: complex structure visualization pLDDT PAE 3D interactive render`。
+      ③ 二次请求后仍未召回，在 `visualization_result.quality_checks` 中记录 `primitive_not_recalled: true`，`recall_retry_count: 2`，`last_error: unable to match complex_structure_visualization after retry`，进入阶段二降级决策（仅生成非交互式图表，明确说明结构三维渲染不可用）。
+   c. 若**已召回**，检查 `execution_assets_summary`，进入阶段二降级决策。
 
 ### 阶段二：降级决策
 
@@ -148,7 +159,12 @@ type: executor
       "pae_token_mapping_valid": true
     },
     "warnings": [],
-    "quality_checks": {}
+    "quality_checks": {"template_rebuilt_from_spec": false,
+      "validation_skipped": false,
+      "interaction_smoke_test": "passed",
+      "primitive_not_recalled": false,
+      "recall_retry_count": 0
+    }
   },
   "summary": "分析与可视化完成概要"
 }

@@ -60,14 +60,28 @@ assets/
    - 回退判定结果若为 `climate | cfd | matchem | bio`，则只检索对应的 `assets/<domain>/`
    - 回退判定结果若为 `unknown`，说明无法稳定路由到单一领域；此时允许检索 `assets/` 下全部 domain 目录，但输出中的 `detected_domain` 必须保持为 `unknown`
    - 当请求已路由到生信领域，且涉及生信工作流、模型/数据管线/应用选择或多候选资源取舍时，可读取`skills/onescience-primitives/references/bio_profile.md`文档作为召回提示；该文件只辅助候选排序和边界解释，不能替代 `metadata.json` 证据
-1. **判定 category scope**：根据 `user_request`、`content_request`、`task_state_summary` 判断是否明确指定资源类别。
+1. **判定 category scope**：根据 `user_request`、`content_request`、`filters.keyword`、`task_state_summary` 判断是否明确指定资源类别。
    - 若明确指定模型、组件、数据管线、应用、可视化规范、工作流规划或契约类资源，则只检索对应 category
    - 若未明确指定，则检索当前 domain scope 下全部实际存在的 category 目录
+   - **【强制】可视化信号识别**：当 `user_request` 或 `filters.keyword` 中出现以下任一信号时，必须将 `visualization` 纳入检索范畴：
+     - 显式可视化词：`可视化`、`visualization`、`visualize`、`visual`、`render`、`rendering`
+     - 三维结构渲染词：`3D`、`三维`、`结构展示`、`structure view`、`interactive`、`交互式`
+     - 置信度着色词：`pLDDT`、`PAE`、`confidence coloring`、`B-factor`、`chain coloring`
+     - 分子可视化工具名：`PyMOL`、`3Dmol`、`MolStar`、`NGL`、`cartoon`、`ribbon`、`surface`、`stick`
+     - 结构文件格式（需渲染）：`.pdb`、`.cif`、`.mmcif`、`.pse`、`.pml`
+     - 当上述任一信号出现时，即使主意图被判定为 model/datapipe/application，也必须将 `visualization` category 纳入检索范围，不可遗漏
 2. **枚举候选集**：在已确定的 domain/category scope 内，列出所有资源目录，得到完整候选集。
 3. **快速过滤**：仅当 `filters.keyword` 提供了关键词时执行；结合目录名、`metadata.json` 的 `name`、`domain`、`description` 与 `tags` 排除明显不相关的资源。未提供关键词时跳过本步。
 4. **语义匹配**：遍历剩余每个候选资源的 `metadata.json`，对比 `user_request` 与 `description` 字段的语义相关性。
 5. **上下文增强**：结合 `task_state_summary` 进一步筛选和排序，但不能用上下文替代资源本身的证据。
-6. **按匹配度排序并截断**：按语义相关性排序，返回最相关的 **3-5 个**资源；没有强相关资源时返回空列表，不要凑数。
+6. **按匹配度排序并截断**：按语义相关性排序，返回最相关的 **5-8 个**资源；没有强相关资源时返回空列表，不要凑数。
+   - **【强制】多类别覆盖保障**：当检索范围为全部 category（即未限定单一 category），且候选集中存在多个 category 的实际资源时，截断必须满足以下覆盖规则：
+     a. 先按语义匹配度排序得到全序列表。
+     b. 从高到低选取前 5 个资源（保障核心语义匹配质量）。
+     c. 检查这 5 个资源是否覆盖了候选集中所有实际存在资源的 category。若某个 category 中的全部资源均未进入前 5，且该 category 中存在至少一个资源的语义匹配度不低于最高分的 60%，则从该 category 中取匹配度最高的 1 个资源追加到结果中（即使超出 5-8 范围也不得丢弃）。
+     d. 追加后结果总数不超过 10 个；若超过 10 个，按语义匹配度去掉末尾超出部分。
+     e. 追加的资源在 `why_matched` 中备注 `category_coverage` 标签，说明其被保留是因为类别覆盖而非纯语义排序。
+   - **说明**：此规则确保当查询信号隐含多类别需求（如"分析蛋白质结构预测结果并可视化"），`visualization` 类资源不会因 model/component 类资源在纯语义排序中得分略高而被截断丢弃。
 7. **逐个组织内容**：对每个命中的资源，按 `content_request` 分别读取并填充该资源的 `content` 字段：
    - 留空或 `"摘要"`：优先只读取 `metadata.json`，生成简短摘要，`description` 字段的关键信息不进行过度压缩
    - `"使用说明"`：读取 `usage.md`（若存在）
@@ -179,9 +193,10 @@ content:
   - 组件 / `module` / `block` / `encoder` / `decoder` → `components`
   - 数据管线 / `datapipe` / `dataset` / `loader` / `preprocessing` → `datapipes`
   - 应用 / `app` / `toolkit` / `template` → `application`
-  - 可视化 / `visualization` / `visualize` / `render` / `PyMOL` / `cartoon` / `surface` → `visualization`
+  - 可视化 / `visualization` / `visualize` / `visual` / `render` / `rendering` / `3D` / `三维` / `结构展示` / `interactive` / `交互式` / `pLDDT` / `PAE` / `PyMOL` / `3Dmol` / `cartoon` / `ribbon` / `surface` / `stick` / `.pdb` / `.cif` / `.mmcif` → `visualization`
   - 工作流规划 / `planning` / `route` / `decision` → `workflow-planning`
   - 若请求未明确 category，则检索当前 domain scope 下全部实际存在的 category 目录
+  - 当 `filters.keyword` 中包含明确的可视化信号但 `user_request` 未直接体现时，仍须将 `visualization` category 纳入检索范围
 - **`detected_domain`**：按标准化 domain 枚举输出 `climate | cfd | matchem | bio | unknown`。
   - 若 `filters.domain` 已明确提供，则优先使用该值作为检索路由依据；输出时仍需与命中资源的 `metadata.json.domain` 保持一致性
   - 若 `filters.domain` 缺失，则以 `domain_profile.md` 回退判定结果作为领域判断基线
@@ -211,6 +226,8 @@ content:
 - 回退判定为 `climate`、`cfd`、`matchem` 或 `bio` 时，只能搜索对应 domain 目录。
 - 回退判定为 `unknown` 时，才允许搜索全部 domain 目录。
 - 无明确 category 时必须搜索当前 domain scope 下全部实际存在的 category；有明确 category 时只搜索对应 category。
+- 当检索范围为全部 category 且用户请求中隐含多类型需求时，必须执行多类别覆盖保障规则，确保 `visualization`、`workflow-planning` 等非主力 category 中的高匹配资源不会被 model/component 类资源完全挤占截断位置。
+- 当 `filters.keyword` 包含可视化信号词但 `user_request` 语义较弱时，仍必须匹配 `visualization` category 并至少检查该 category 下是否存在匹配资源。
 - 通过语义匹配 `metadata.json` 的 `description` 字段召回，不依赖额外索引文件。
 - `why_matched` 说明 query 与 description 的对应关系（1句话）。
 - 摘要模式下的 `content` 从 `description` 字段提取核心能力一段话。
