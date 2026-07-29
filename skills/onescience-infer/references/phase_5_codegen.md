@@ -36,6 +36,90 @@
 - 调度策略：`worker_count > gpu_count` 时分批轮转执行，`worker_count <= gpu_count` 时一卡一 worker。
 - `worker_count` 的粒度应根据推理独立性选择：多个 seed-sample 组合可独立并发拆分为 worker，而非仅按 seed 级拆分。
 
+### 多 seed 并行代码生成
+
+当 phase_6 的多卡聚合判断决定启用多 seed 并行时，生成的推理入口脚本必须支持以下模式：
+
+**必须支持的 CLI 参数**：
+
+```
+--seed SEED              单个 seed 值（多卡模式下每个进程传入不同的 seed）
+--num_seeds N            seed 总数（用于元数据记录）
+--output_dir DIR         每个 seed 的输出独立子目录（如 outputs/seed_1/）
+--gpus GPU_IDS           可用 GPU 列表（如 "0,1,2,3,4,5,6,7"）
+```
+
+**单进程模式（兼容单卡）**：
+
+```python
+# 单卡/单 seed 模式：直接使用传入的 seed
+python run_inference.py --input_json input.json --seed 1 --output_dir outputs/
+```
+
+**多进程调度脚本模式（多卡多 seed）**：
+
+生成一个 shell 调度脚本 `run_multi_seed.sh`，内容模板：
+
+```bash
+#!/bin/bash
+# 多 seed 并行调度脚本 — 由 onescience-infer 自动生成
+# 每个 seed 是独立进程，通过 CUDA_VISIBLE_DEVICES 隔离到不同 GPU
+
+set -e
+
+GPU_IDS=(${GPU_IDS:-0 1 2 3 4 5 6 7})
+NUM_SEEDS=${NUM_SEEDS:-${#GPU_IDS[@]}}
+INPUT_JSON="${1:-input.json}"
+OUTPUT_BASE="${2:-outputs}"
+
+echo "=== Multi-Seed Parallel Inference ==="
+echo "GPUs: ${GPU_IDS[*]}"
+echo "Seeds: ${NUM_SEEDS}"
+echo "Input: ${INPUT_JSON}"
+
+for i in $(seq 0 $((NUM_SEEDS - 1))); do
+    SEED=$((i + 1))
+    GPU_ID=${GPU_IDS[$i]}
+    SEED_OUTDIR="${OUTPUT_BASE}/seed_${SEED}"
+    LOGFILE="${OUTPUT_BASE}/seed_${SEED}.log"
+    mkdir -p "${SEED_OUTDIR}"
+
+    echo "[$(date)] Launching seed=${SEED} on GPU ${GPU_ID}..."
+    CUDA_VISIBLE_DEVICES=${GPU_ID} python run_inference.py \
+        --input_json "${INPUT_JSON}" \
+        --seed "${SEED}" \
+        --output_dir "${SEED_OUTDIR}" \
+        > "${LOGFILE}" 2>&1 &
+done
+
+echo "[$(date)] All seeds launched. Waiting for completion..."
+wait
+
+echo "[$(date)] All seeds completed."
+echo "Outputs in: ${OUTPUT_BASE}/seed_*/"
+
+# 可选：合并所有 seed 结果
+python -c "
+import json, os, glob
+results = []
+for d in sorted(glob.glob('${OUTPUT_BASE}/seed_*/')):
+    result_file = os.path.join(d, 'result.json')
+    if os.path.exists(result_file):
+        with open(result_file) as f:
+            results.append(json.load(f))
+print(f'Merged {len(results)} seed results')
+# 取最优结果（按置信度分数）
+best = max(results, key=lambda r: r.get('confidence_score', 0))
+print(f'Best seed: {best[\"seed\"]}, score: {best.get(\"confidence_score\", \"N/A\")}')
+"
+```
+
+**关键约束**：
+- 代码中不得硬编码 GPU 数量或 seed 数量；全部通过环境变量或 CLI 参数传入
+- 每个 seed 的输出写入独立子目录，避免文件冲突
+- 多 seed 并行不依赖任何跨卡通信库（不需要 NCCL/MPI/torchrun）
+- 推理脚本本身保持单进程单 seed 逻辑不变；并行调度由外层 shell 脚本处理
+
 对于 HuggingFace 模型，若文档给出官方 API 模式，应使用该模式。对于仓库模型，复用官方 runner 或 datapipe 模块，不要重新实现内部逻辑。
 
 ## Infer -> Coder 交接

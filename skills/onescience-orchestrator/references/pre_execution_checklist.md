@@ -99,6 +99,66 @@ ls -la <文件路径>
 test -f <文件路径> && echo "EXISTS" || echo "MISSING"
 ```
 
+### 2.7 GPU 显存预算估算
+
+**适用场景**：任务涉及 GPU 推理或训练，且模型/输入规模较大（如蛋白质结构预测、大语言模型推理、长序列处理）。
+
+当任务属于 `onescience-infer` 或 `onescience-trainer` 管理的 GPU 密集型任务时，必须执行显存预算估算。详细策略见对应技能中的 `gpu-oom-handling.md`：
+
+1. **估算模型权重显存**：
+   - 参数量 × bytes_per_element（float32=4, float16=2）
+   - 验证方式：检查 checkpoint 文件大小
+   ```bash
+   du -sh <checkpoint_path>
+   ```
+
+2. **估算输入数据显存**：
+   - tokens × dimensions × bytes_per_element
+   - 对于蛋白质结构预测：num_tokens × token_dim × 4
+
+3. **估算中间激活显存**：
+   - 模型权重显存的 2-5 倍
+   - 若有 recycles 参数：× (1 + num_recycles × 0.3)
+
+4. **估算结果物化显存**：
+   - 输出张量大小 × 2.0（Python 内存拷贝开销）
+
+5. **总估算与可用显存对比**：
+   ```bash
+   nvidia-smi --query-gpu=index,memory.total,memory.free --format=csv,noheader
+   ```
+
+6. **风险判定**：
+   | 总估算 / 单卡可用显存 | 风险等级 | 处理方式 |
+   |---|---|---|
+   | < 60% | 低风险 | 正常执行 |
+   | 60%-80% | 中风险 | 在 Global Plan 中标记需启用内存优化参数 |
+   | 80%-95% | 高风险 | 在 Global Plan 中插入低内存配置步骤（最小 recycles、分段物化） |
+   | > 95% | 单卡超限 | 不阻断——进入多卡聚合判断（步骤 7） |
+
+7. **多卡聚合判断**（仅当单卡超限时执行）：
+   - 确认任务是否支持多 seed 并行（检查推理入口是否有 `--seed` 参数）
+   - 若支持：计算最低配置下每张卡是否可容纳单任务
+     - `task_memory_low = model + base_activation × 1.3 + materialization × 0.5`
+   - 筛选可行 GPU：
+     ```bash
+     nvidia-smi --query-gpu=index,memory.free --format=csv,noheader | \
+       awk -F', ' -v t=<threshold> '{if($2>t) print "GPU "$1" feasible"}'
+     ```
+   - 决策：
+     | 可行 GPU 数 | 决策 | Global Plan 调整 |
+     |---|---|---|
+     | 0 | 阻断 | `blocking_reason=gpu_oom_all_gpus_insufficient` |
+     | 1 | 单卡低内存模式 | 插入 `num_recycles=1` + 分段物化步骤 |
+     | >=2 | 多卡多 seed 并行 | 插入多 seed 并行调度步骤，`num_seeds = feasible_gpus`（不做人为截断） |
+   - 若任务不支持多 seed：按原单卡超限处理，阻断并建议降低输入规模
+
+估算结果写入预检报告中的 `gpu_memory_budget` 字段。
+
+**参考案例**：
+- AlphaFold 3 7PNM (5337 tokens, 10 recycles)：推理 35 GiB + 物化 69 GiB，单卡需求 104 GiB > 可用 83 GiB → 单卡超限。多卡聚合：最低配置 ~74 GiB/卡 < 83 GiB，8 张卡均可行 → 自动启用 8 seed 多卡并行。
+- Evo 2 SAE (100k tokens, FFT 计算)：单次 FFT 需要巨大中间内存。若预检阶段完成估算，可自动选择分块处理策略（chunk_size=8192）。
+
 ## 3. 预检失败处理流程
 
 ### 3.1 失败分类
@@ -111,6 +171,9 @@ test -f <文件路径> && echo "EXISTS" || echo "MISSING"
 | 权限问题 | `PermissionError` / `Access denied` | 阻断并告知用户，要求用户授权或调整 |
 | GPU 不可用 | `torch.cuda.is_available()=False` | 确认是否需要 GPU；若需要则阻断 |
 | 环境不一致 | `pip check` 返回冲突 | 在 Global Plan 中插入 `pip install` 修复冲突 |
+| GPU 显存不足（单卡） | 显存预算估算 > 95% 且任务不支持多 seed | 阻断并建议降低输入规模 |
+| GPU 显存不足（全部卡） | 多卡聚合后 0 张卡可行 | 阻断，`blocking_reason=gpu_oom_all_gpus_insufficient` |
+| GPU 显存高风险（多卡可行） | 多卡聚合后 >=2 张卡可行 | 在 Global Plan 中插入多 seed 并行调度步骤 |
 
 ### 3.2 修复步骤插入规则
 

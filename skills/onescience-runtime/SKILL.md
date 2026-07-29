@@ -142,6 +142,10 @@ execute 分支映射：
 - 恢复时沿用原始用户意图、测试入口、运行通道候选和已确认的远程边界；不要因修复完成而替换成新的本地最小验证。
 - 若 diagnose 或执行证据表明后续问题已超出 runtime 的运行治理边界（例如需要新的业务代码实现、训练/推理策略重定义、后续评估阶段选择等），runtime 只返回 `execution_result` 中的 observation / recommendation，由 `onescience-orchestrator` 决定下一技能；runtime 不自行切换到 `onescience-coder`、`onescience-trainer`、`onescience-infer` 等业务 executor。
 
+### Workspace 模型路径自动发现
+
+preflight 阶段 conda 环境 ready 后，会自动检查 `ONESCIENCE_MODELS_DIR` 是否仍为默认值。若环境名匹配已知 workspace 前缀（如 `bioscience-`）且探测到 workspace 中有 `onemodel` 目录或 `env.sh`，会自动委托 `onescience-installer` 写回正确路径。此检查为非阻断优化，未发现时不影响执行。详见 `./references/preflight.md` 的 "Workspace 模型路径自动发现" 区域。
+
 ## Hard Gates
 
 - runtime 自身不要直接改写用户的 `onescience.json`；discover 每次进入时都必须立即加载并执行 `skills/onescience-runsite/SKILL.md` 做运行站点校验。已有配置时先让 runsite 走检查/复用/远程连接验证分支，缺失或冲突时再由 runsite 按其边界写回或补问。

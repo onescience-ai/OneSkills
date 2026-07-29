@@ -29,6 +29,19 @@
 - 多维 → 3D图/平行坐标/降维可视化
 - PDB/mmCIF/CIF → `complex_structure_visualization` 三维结构场景
 
+### 3.5. 执行资产预验证（仅结构可视化）
+
+当 `viz_type=complex_structure` 时，在进入完整渲染流程之前，必须先执行轻量级的资产可用性预验证：
+
+1. 向 `onescience-primitives` 发起 `include_execution_assets: true` 请求，绑定 `complex_structure_visualization`。
+2. 检查返回的 `execution_assets_summary`：
+   - 若 `available + materialized < total`，逐资产检查 `status` 字段，确认哪些资产不可用及其原因。
+3. 按降级决策矩阵（见 `onescience-data-analyzer/SKILL.md` 的「阶段二：降级决策」）判断：
+   - `scripts/render_complex_structure.py` 和 `scripts/vendor/3Dmol-2.5.4.min.js` 均可用 → 进入步骤 4 完整渲染流程。
+   - 任一必需资产不可用 → 立即向 orchestrator 返回 `status: blocked`，附带结构化的 `blocked_details`（包含逐资产状态和 `execution_assets_summary`），不进入后续解析与渲染阶段，避免浪费前序准备时间。
+   - 仅非必需资产（模板、验证器、许可证）不可用 → 标记对应降级策略，继续进入步骤 4。
+4. 将 `status=available` 的资产内容内联到工作区，将 `status=materialized` 的资产通过 `materialized_path` 引用。
+
 ### 4. 图表生成
 - 应用领域配色方案
 - 设置坐标轴与标签（符合领域规范）

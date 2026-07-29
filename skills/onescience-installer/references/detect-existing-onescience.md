@@ -37,6 +37,7 @@
        }
      }
      ```
+   - 读取 `workspace-model-path-discovery.md`，自动探测 workspace 中的 `onemodel` 和 `onedata` 目录，若有发现则写回 `onescience.json.runtime.script.env_vars`
    - 输出 `install_state=current_env_ready`
    - 返回上游调用方或 `onescience-orchestrator`
 
@@ -54,6 +55,7 @@
        }
      }
      ```
+   - 读取 `workspace-model-path-discovery.md`，自动探测 workspace 中的 `onemodel` 和 `onedata` 目录，若有发现则写回 `onescience.json.runtime.script.env_vars`
    - 输出 `install_state=conda_env_ready`
    - 返回上游调用方或 `onescience-orchestrator`
 

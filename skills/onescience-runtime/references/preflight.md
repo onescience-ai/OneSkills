@@ -203,6 +203,60 @@ preflight 必须通过当前 `execution_channel` 对目标环境做真实发现�
 - 缺失业务运行所需包
 - 分布式运行时未就绪
 
+## Workspace 模型路径自动发现
+
+当 conda 环境 ready（`enabled=true` 且环境可激活）后，检查 `ONESCIENCE_MODELS_DIR` 是否仍为默认值。此检查为**非阻断**优化：即使未发现 workspace 特有路径也不阻塞执行，但若发现则自动写回以加速后续模型加载。
+
+### 触发条件
+
+同时满足以下条件时执行检查：
+
+1. `runtime.conda.enabled=true` 且环境已通过 readiness 验证
+2. `runtime.script.env_vars.ONESCIENCE_MODELS_DIR` 为默认值（`/public/share/sugonhpcapp01/onestore/onemodels/`）或缺失
+3. conda 环境名匹配已知 workspace 前缀，或 `runtime.ssh.work_dir` 指向已知 workspace 路径
+   - 已知前缀：`bioscience-`、`earth-`、`cfd-`、`matchem-`
+   - 已知路径前缀：`/public/home/onesci/`
+
+### 探测逻辑
+
+按以下优先级探测 workspace 模型路径（使用与 installer 的 `workspace-model-path-discovery.md` 相同的逻辑）：
+
+1. 从 `runtime.conda.env_name` 推断 workspace 根路径：
+   - `bioscience-evo2` → 检查 `/public/home/onesci/bioscience/`
+   - 其他含 `-` 前缀的环境名 → 检查 `/public/home/onesci/<prefix>/`
+2. 在 workspace 根路径下探测 `env.sh`：
+   ```bash
+   # 远程
+   ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} \
+     'test -f {workspace_root}/onescience/env.sh && source {workspace_root}/onescience/env.sh 2>/dev/null && echo "MODELS_DIR=$ONESCIENCE_MODELS_DIR" || echo "ENV_SH_NOT_FOUND"'
+   
+   # 本地
+   test -f {workspace_root}/onescience/env.sh && source {workspace_root}/onescience/env.sh 2>/dev/null && echo "MODELS_DIR=$ONESCIENCE_MODELS_DIR" || echo "ENV_SH_NOT_FOUND"
+   ```
+3. 若 env.sh 未找到，直接检查 `onemodel` 目录是否存在：
+   ```bash
+   test -d {workspace_root}/onemodel && echo "ONEMODEL_DIR={workspace_root}/onemodel" && ls {workspace_root}/onemodel/ 2>/dev/null | head -5
+   ```
+
+### 发现后处理
+
+若探测到有效路径（路径真实存在），自动委托 `onescience-installer` 写回：
+
+- `next_action=onescience-installer`
+- `installer_reason=workspace_model_path_detected`
+- `resume_target=onescience-runtime`
+- `resume_phase=preflight`
+- `execution_context` 中携带探测到的路径信息
+
+installer 执行 `workspace-model-path-discovery.md` 写回后，runtime 重新读取 `onescience.json` 并从 `preflight` 继续。
+
+### 未发现时处理
+
+若 workspace 模型路径未找到：
+- 不阻塞 preflight，不设置 `blocking_reason`
+- 将探测结果写入 `evidence.preflight.model_path_discovery`：`{"detected": false, "searched_paths": [...]}`
+- 下游技能在需要模型时，由 orchestrator 的 `path_resolution.md` section 5 兜底查找
+
 ## Runtime Handoff
 
 当环境未 ready 时，至少输出：

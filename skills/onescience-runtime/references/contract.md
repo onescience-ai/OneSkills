@@ -202,6 +202,7 @@ runtime 的执行证据必须绑定到当前测试目录，而不是项目根目
   - `onescience_not_ready`
   - `missing_packages`
   - `distributed_runtime_not_ready`
+  - `workspace_model_path_detected`
 - `config_problem`
   - `missing_work_dir`
   - `wrong_script_path`

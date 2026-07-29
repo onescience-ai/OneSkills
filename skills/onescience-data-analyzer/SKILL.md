@@ -39,10 +39,32 @@ type: executor
 
 先将 `bio`、`biology`、`bioinformatics` 归一化为生信领域。当输入为 `.pdb`、`.cif`、`.mmcif`，或 `requirements.viz_type=complex_structure` 时：
 
-1. 若 `step_handoff.resource_bindings` 已包含 `visualization_primitive` 的完整 `content` 和 `content.execution_assets`，先校验资产 SHA-256，再原样物化和执行白名单生成器；不得让模型重写模板。
-2. 只有资源标识、规范不完整或缺少执行资产时，才向 `onescience-primitives` 请求 `content_request: 完整内容` 和 `include_execution_assets: true`。
-3. 重新请求时使用 `filters.domain: bio`、`filters.keyword: complex structure visualization`；不得沿返回的裸 `path` 直接读取原语资产。
-4. 必须绑定 `visualization_primitive` 类型的 `complex_structure_visualization` 并请求 `include_execution_assets: true`；执行资产缺失或 SHA-256 不匹配时停止并报告，不得按文本规范临时重写模板。
+### 阶段一：执行资产获取
+
+1. 若 `step_handoff.resource_bindings` 已包含 `visualization_primitive` 的完整 `content` 和 `content.execution_assets`：
+   - 先检查 `execution_assets_summary`：若 `unavailable + failed == total`，跳过校验直接进入阶段二降级决策。
+   - 否则遍历每个资产，校验 `status` 为 `available` 或 `materialized` 的资产 SHA-256，再物化到工作区。
+2. 若资源绑定不完整或缺少执行资产，向 `onescience-primitives` 请求 `content_request: "完整内容"` 和 `include_execution_assets: true`。
+3. 请求时使用 `filters.domain: bio`、`filters.keyword: complex structure visualization`；不得沿返回的裸 `path` 直接读取原语资产。
+4. 请求返回后，检查 `execution_assets_summary`，进入阶段二降级决策。
+
+### 阶段二：降级决策
+
+按资产角色分级处理，不允许全有或全无阻断。核心资产定义：
+
+| 资产 | 角色 | 不可用时的行为 |
+|---|---|---|
+| `scripts/render_complex_structure.py` | **渲染器入口（必需）** | 阻塞，无法降级。返回 `status: blocked`，`blocked_details` 记录缺失原因。 |
+| `scripts/vendor/3Dmol-2.5.4.min.js` | **离线运行时（必需）** | 阻塞，无法降级。离线 HTML 无法在没有 3Dmol.js 时渲染三维结构。 |
+| `scripts/interactive_template.html` | **HTML 模板（可降级）** | 模板不可用但渲染器和运行时可用时，基于 `complex_structure_visualization` 的 `spec.md` 中 `# renderer_profiles` 和 `# top_level_views` 章节构建最小功能模板。必须支持默认视图、pLDDT 视图、序列联动和 PAE 面板，但可省略自定义视图和 Dynamic bonds 的完整交互。在 `visualization_result.quality_checks` 中标记 `template_rebuilt_from_spec: true`。 |
+| `scripts/validate_visualization.py` | **验证器（可跳过）** | 不可用时跳过静态验证步骤，在 `visualization_result.quality_checks` 中标记 `validation_skipped: true`，`interaction_smoke_test` 设为 `not_run`。 |
+| `scripts/vendor/3DMOL-LICENSE.txt` | **许可证文本（可跳过）** | 不可用时跳过内联，记录 warning。 |
+
+降级禁止事项（不可跨越的红线）：
+- 渲染器入口不可用时，**不得**根据 spec.md 或 usage.md 手写替代 `render_complex_structure.py`——这等同于重写核心渲染逻辑。
+- 3Dmol.js 运行时不可用时，**不得**将离线 HTML 改为 CDN 外链——违反离线确定性交付约束。
+- 模板降级仅允许在渲染器和运行时均可用时触发；降级产出的 HTML 必须仍在 `# output_schema` 约束内，且 `capability_downgrades` 必须逐项记录缺失功能。
+
 5. orchestrator 交接的 `step_handoff.inputs.visualization` 与下方直接调用 JSON 的 `data_path`、`requirements` 字段映射为同一内部请求。
 6. PyMOL 不可用时可以回退交互式 Web renderer，但不得把 Web 输出声明为 `.pse` 或真实 PyMOL session。
 7. `samples_manifest_path` 非空时进入多样本模式；manifest 中每个样本必须原子绑定同一 seed/sample 的 `structure`、`confidence` 与 `summary` 三个文件，任一缺失或校验失败则整条样本失败。

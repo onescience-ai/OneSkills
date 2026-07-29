@@ -34,8 +34,9 @@ installer 的环境信息写回位置是 `onescience.json.runtime.conda`。除 `
 1. 用户要求“安装 OneScience 环境”“安装 earth/cfd/bio/matchem/all 环境”“安装 onescience 包”“初始化 OneScience 环境”时，设为 `install_intent=bootstrap`。`onescience` 包名大小写不敏感，命中后永远按 bootstrap 处理。
 2. 用户要求“安装 Python 包”“安装 pip 包”“补装依赖”“安装某个包到 OneScience 环境”时，设为 `install_intent=python_packages`；但包名列表里若包含 `onescience`，必须拆分并将 `onescience` 路由到 `install_intent=bootstrap`，其余普通 Python 包才允许继续走 pip 分支。
 3. 用户没有明确意图时，先询问要安装 OneScience 环境还是安装 Python 包；不要在意图未知时进入安装分支。
-4. `install_intent=bootstrap` 必须解析安装领域；无法从请求映射到 `install_domains.json` 时，询问用户安装哪个领域或是否安装 `all`。
-5. `install_intent=python_packages` 必须解析包名列表；缺少包名时只询问包名。
+4. **若上游调用方传入 `installer_reason=workspace_model_path_detected`**：conda 环境已就绪，跳过环境检测与安装步骤，直接路由到 `./references/workspace-model-path-discovery.md` 完成模型路径探测与写回。这是 runtime 的轻量委托，不涉及 conda 创建或 pip 安装。
+5. `install_intent=bootstrap` 必须解析安装领域；无法从请求映射到 `install_domains.json` 时，询问用户安装哪个领域或是否安装 `all`。
+6. `install_intent=python_packages` 必须解析包名列表；缺少包名时只询问包名。
 
 ## 分支映射
 
@@ -49,6 +50,8 @@ installer 的环境信息写回位置是 `onescience.json.runtime.conda`。除 `
 | 意图是安装 Python 包，且目标路径是 Conda 环境              | `./references/install-python-packages-conda.md` |
 | 意图是安装 Python 包，且目标路径是当前环境                   | `./references/install-python-packages-current.md` |
 | 检测成功、安装成功并验证成功后需要写回 `onescience.json.runtime.conda` | `./references/writeback-conda-state.md` |
+| 环境就绪后需要自动探测 workspace 模型与数据集路径 | `./references/workspace-model-path-discovery.md` |
+| 上游委托 `installer_reason=workspace_model_path_detected`（纯路径发现） | `./references/workspace-model-path-discovery.md`，无需走 conda 检测/安装分支 |
 
 ## 硬门禁
 
