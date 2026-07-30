@@ -1,6 +1,6 @@
 # 安装流程 - 命令模板
 
-本文件只放可渲染、可拷贝执行的命令模板。流程路由见 `../SKILL.md`；具体执行过程见对应的功能工作流文件。
+本文件只放可渲染、可拷贝执行的命令模板。流程路由见 `../SKILL.md`；具体执行过程见对应的功能工作流文件。OneScience bootstrap 的执行顺序固定为：先下载 wheel，再探测 METADATA 中的 `Provides-Extra`，最后通过 `pip install \"onescience[{resolved_extra}]\" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` 安装。
 
 ## 占位符
 
@@ -13,14 +13,16 @@
 | `{ssh_server}` | 优先 `hostname`，否则 `host` |
 | `{env_name}` | `backend_profiles.json.defaults.env_name`，当前默认 `onescience311` |
 | `{python_version}` | `backend_profiles.json.defaults.python_version`，当前默认 `3.11` |
-| `{repo_url}` | `workspace_bootstrap_profiles.json.repo.repo_url` |
-| `{repo_ref}` | `workspace_bootstrap_profiles.json.repo.repo_ref` |
-| `{repo_dir}` | `~/` + `workspace_bootstrap_profiles.json.repo.repo_name`；当前稳定 profile 默认 `~/onescience` |
-| `{dependency_selector}` | `install_domains.json.dependency_selector`，如 `earth`、`cfd`、`bio`、`matchem`、`all` |
+| `{wheel_dir}` | `workspace_bootstrap_profiles.json.wheel.wheel_dir`，当前默认 `~/onescience_wheels` |
+| `{wheel_glob}` | `workspace_bootstrap_profiles.json.wheel.wheel_glob`，当前默认 `onescience*.whl` |
+| `{download_wheel_command}` | `workspace_bootstrap_profiles.json.wheel.download_wheel_command` |
+| `{resolved_extra}` | 安装阶段在下载 wheel 并确定 backend 后，根据领域 + 加速卡组合并校验后的 wheel extra，如 `earth-dcu` |
+| `{metadata_probe_command}` | `workspace_bootstrap_profiles.json.wheel.metadata_probe_command` |
+| `{wheel_install_command}` | `workspace_bootstrap_profiles.json.wheel.install_command_template`，当前默认 `pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` |
 | `{module_loads}` | 由 `backend_profiles.json.bootstrap.module_sequence` 渲染出的 `module load ... && ...` 命令串 |
 | `{python_packages}` | 需要安装或校验的 Python 包列表，渲染为空格分隔参数 |
 
-> `{ssh_options}`、`{repo_dir}`、`{dependency_selector}`、`{module_loads}`、`{python_packages}` 的渲染来源由 `../SKILL.md` 路由到对应工作流后确定。
+> `{ssh_options}`、`{wheel_dir}`、`{wheel_glob}`、`{download_wheel_command}`、`{resolved_extra}`、`{metadata_probe_command}`、`{wheel_install_command}`、`{module_loads}`、`{python_packages}` 的渲染来源由 `../SKILL.md` 路由到对应工作流后确定。
 
 ## 目录
 
@@ -171,7 +173,7 @@ bash -lc "(test -f ~/.bashrc && source ~/.bashrc || true) && echo === NVIDIA ===
 ## §3 DCU 安装（remote_slurm，新建 conda 环境）
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y || (source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda create -n {env_name} python={python_version} -y)) && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y || (source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda create -n {env_name} python={python_version} -y)) && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"'
 ```
 
 ---
@@ -181,7 +183,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 **使用场景**：当 `conda_env_exists=true` 或检测到镜像环境时使用。
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"'
 ```
 
 ---
@@ -197,7 +199,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 ## §3b DCU 当前环境安装（remote_slurm，不创建/激活 conda）
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (command -v conda >/dev/null 2>&1 || source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate) && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (command -v conda >/dev/null 2>&1 || source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate) && pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"'
 ```
 
 ---
@@ -213,7 +215,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 ## §5 GPU 安装（remote_slurm，新建 conda 环境）
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y) && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y) && conda activate {env_name} && pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"'
 ```
 
 ---
@@ -223,7 +225,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 **使用场景**：当 `conda_env_exists=true` 或检测到镜像环境时使用。
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"'
 ```
 
 ---
@@ -239,7 +241,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 ## §5b GPU 当前环境安装（remote_slurm，不创建/激活 conda）
 
 ```bash
-ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"'
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"'
 ```
 
 ---
@@ -257,7 +259,7 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 **安装：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y || (source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda create -n {env_name} python={python_version} -y)) && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y || (source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda create -n {env_name} python={python_version} -y)) && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"
 ```
 
 **验证：**
@@ -275,7 +277,7 @@ bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && 
 **安装：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && { conda activate {env_name} || { source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate && conda activate {env_name}; }; } && pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"
 ```
 
 **验证：**
@@ -291,7 +293,7 @@ bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && 
 **安装：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (command -v conda >/dev/null 2>&1 || source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate) && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load sghpcdas/25.6 && module load sghpc-mpi-gcc/26.3 && (command -v conda >/dev/null 2>&1 || source /work2/share/sghpc_sdk/Linux_x86_64/25.6/das/conda/bin/activate) && pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"
 ```
 
 **验证：**
@@ -307,7 +309,7 @@ bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && 
 **安装：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y) && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && (conda env list | grep -w {env_name} >/dev/null 2>&1 || conda create -n {env_name} python={python_version} -y) && conda activate {env_name} && pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"
 ```
 
 **验证：**
@@ -325,7 +327,7 @@ bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && 
 **安装：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && conda activate {env_name} && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && conda activate {env_name} && pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"
 ```
 
 **验证：**
@@ -341,7 +343,7 @@ bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && 
 **安装：**
 
 ```bash
-bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && ([ -d {repo_dir}/.git ] || git clone {repo_url} {repo_dir}) && cd {repo_dir} && git fetch --all && git checkout {repo_ref} && git pull --ff-only && bash install.sh {dependency_selector}"
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && module load cuda/12.1 && module load gcc/11.2 && pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"
 ```
 
 **验证：**

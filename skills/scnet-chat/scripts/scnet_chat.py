@@ -12,14 +12,9 @@ SCNet Chat Skill - 查询SCNet账户信息、作业信息和文件管理
 6. 作业管理（提交作业、删除作业、查询队列等）
 
 配置方式：
-仅支持从 ~/.scnet-chat.env 文件读取配置
-
-配置文件示例:
-    SCNET_ACCESS_KEY=your_access_key_here
-    SCNET_SECRET_KEY=your_secret_key_here
-    SCNET_USER=your_username_here
-
-如果配置文件不存在，启动时会交互式提示用户输入配置并自动保存
+优先从项目根目录 onescience.json 的 runtime.scnet 读取配置。
+若项目级配置缺失，应停止并提示上游先调用 onescience-runsite 补齐，
+而不是在 scnet-chat 内部交互式创建用户级默认配置。
 """
 
 import hmac
@@ -34,10 +29,7 @@ from typing import Optional, Dict, Any, List, Tuple
 from datetime import datetime, timedelta
 
 # 导入配置管理模块
-from config_manager import (
-    load_config, create_config_template, check_config,
-    write_env_file, DEFAULT_ENV_PATH
-)
+from config_manager import load_config, check_config
 
 # ============== 日志模块 ==============
 
@@ -2114,38 +2106,18 @@ class NotebookCreateWizard:
 
 def main():
     """主函数"""
-    # 从 ~/.scnet-chat.env 加载配置
+    # 从项目级 onescience.json.runtime.scnet 加载配置
     config = load_config()
     is_valid, missing_keys = check_config(config)
 
     if not is_valid:
-        print("❌ 错误: 缺少必要的配置项")
+        print("❌ 错误: 缺少项目级 SCNet 配置")
         print(f"\n缺失的配置项: {', '.join(missing_keys)}")
-        print(f"\n配置文件未找到: {DEFAULT_ENV_PATH}")
-        print(f"\n请提供以下配置信息:")
-
-        # 交互式获取配置
-        print("\n请输入 SCNet 配置信息:")
-        access_key = input("SCNET_ACCESS_KEY: ").strip()
-        secret_key = input("SCNET_SECRET_KEY: ").strip()
-        user = input("SCNET_USER: ").strip()
-
-        if not all([access_key, secret_key, user]):
-            print("❌ 配置信息不完整，退出")
-            sys.exit(1)
-
-        # 保存配置到文件
-        config = {
-            'access_key': access_key,
-            'secret_key': secret_key,
-            'user': user
-        }
-        if write_env_file(config):
-            print(f"\n✅ 配置已保存到: {DEFAULT_ENV_PATH}")
-        else:
-            print(f"\n⚠️  配置保存失败，但会继续使用当前配置")
+        print("\n请先调用 onescience-runsite 补齐项目根目录 onescience.json 的 runtime.scnet 字段。")
+        print("禁止在 scnet-chat 内部交互式创建用户级默认配置后继续提交任务。")
+        sys.exit(1)
     else:
-        print(f"✅ 已从 {DEFAULT_ENV_PATH} 加载配置")
+        print("✅ 已从项目级 onescience.json.runtime.scnet 加载配置")
 
     access_key = config.get('access_key')
     secret_key = config.get('secret_key')

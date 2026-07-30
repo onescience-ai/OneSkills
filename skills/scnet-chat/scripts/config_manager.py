@@ -1,9 +1,9 @@
 """
-SCNet Chat 配置文件管理模块
-支持从以下来源读取配置（优先级从高到低）：
-1. 项目根目录 onescience.json 的 runtime.run_site 字段
-2. ~/.scnet-chat.env 文件
-如果配置缺失，提示调用 onescience-runsite 技能获取
+SCNet Chat 配置文件管理模块。
+
+执行型提交通道必须优先使用项目根目录 onescience.json 中的
+runtime.scnet 配置；缺失时应返回阻断，由上游调用 onescience-runsite
+与用户交互补齐项目级运行配置，而不是回退到用户级默认配置继续提交。
 """
 
 import os
@@ -31,7 +31,7 @@ def load_from_onescience_json():
     """
     从项目根目录的 onescience.json 文件读取 SCNet 配置
 
-    读取路径: onescience.json -> runtime.run_site
+    读取路径: onescience.json -> runtime.scnet
 
     Returns:
         dict: 配置字典，包含 access_key, secret_key, user
@@ -60,14 +60,14 @@ def load_from_onescience_json():
         with open(onescience_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
-        # 读取 runtime.run_site 配置
-        run_site = data.get('runtime', {}).get('run_site', {})
+        # 读取 runtime.scnet 配置
+        scnet = data.get('runtime', {}).get('scnet', {})
 
-        if run_site:
+        if scnet:
             # 映射字段
-            access_key = run_site.get('SCNET_ACCESS_KEY', '').strip()
-            secret_key = run_site.get('SCNET_SECRET_KEY', '').strip()
-            user = run_site.get('SCNET_USER')
+            access_key = scnet.get('SCNET_ACCESS_KEY', '').strip()
+            secret_key = scnet.get('SCNET_SECRET_KEY', '').strip()
+            user = scnet.get('SCNET_USER')
 
             # 只保存非空值
             if access_key:
@@ -204,7 +204,7 @@ def load_config(config_path=None, verbose=True):
     加载配置（优先从 onescience.json 读取，然后从 ~/.scnet-chat.env 读取）
 
     优先级顺序：
-    1. 项目根目录 onescience.json 的 runtime.run_site 字段
+    1. 项目根目录 onescience.json 的 runtime.scnet 字段
     2. ~/.scnet-chat.env 文件
 
     Args:
@@ -223,26 +223,14 @@ def load_config(config_path=None, verbose=True):
         if verbose and all(config.get(key) for key in REQUIRED_KEYS):
             print("[OK] 从 onescience.json 加载 SCNet 配置")
 
-    # 如果配置不完整，尝试从 .env 文件补充
-    if not all(config.get(key) for key in REQUIRED_KEYS):
-        config_from_env = load_env_file(config_path)
-        if config_from_env:
-            # 只补充缺失的字段
-            for key in REQUIRED_KEYS:
-                if not config.get(key) and config_from_env.get(key):
-                    config[key] = config_from_env[key]
-            if verbose and all(config.get(key) for key in REQUIRED_KEYS):
-                print("[OK] 从 ~/.scnet-chat.env 补充 SCNet 配置")
-
-    # 如果配置仍然不完整，提供帮助信息
+    # 如果配置仍然不完整，提供帮助信息。
+    # 执行型提交通道不应回退到 ~/.scnet-chat.env，否则会绕过项目级 runsite 配置。
     if verbose and not all(config.get(key) for key in REQUIRED_KEYS):
         missing_keys = [key for key in REQUIRED_KEYS if not config.get(key)]
-        print(f"[WARNING] SCNet 配置不完整，缺少: {', '.join(missing_keys)}")
+        print(f"[WARNING] SCNet 项目配置不完整，缺少: {', '.join(missing_keys)}")
         print()
-        print("获取配置的方式：")
-        print("  1. 调用 onescience-runsite 技能自动配置（推荐）")
-        print("  2. 手动编辑 ~/.scnet-chat.env 文件")
-        print("  3. 访问 https://www.scnet.cn/ui/console/index.html#/personal/auth-manage")
+        print("请先调用 onescience-runsite 技能补齐项目根目录 onescience.json 的 runtime.scnet 字段。")
+        print("不要依赖 ~/.scnet-chat.env 作为运行任务提交的兜底来源。")
         print()
 
     return config

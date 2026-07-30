@@ -3,7 +3,7 @@
     "id": "earth",
     "display_name": "地球科学",
     "description": "气象、海洋等地球科学相关模型。",
-    "dependency_selector": "earth",
+    "extra_family": "earth",
     "supported_installer_backends": [
       "dcu_remote_install",
       "gpu_remote_install"
@@ -13,7 +13,7 @@
     "id": "cfd",
     "display_name": "流体仿真/结构力学",
     "description": "计算流体力学、结构力学相关模型。",
-    "dependency_selector": "cfd",
+    "extra_family": "cfd",
     "supported_installer_backends": [
       "dcu_remote_install",
       "gpu_remote_install"
@@ -23,7 +23,7 @@
     "id": "bio",
     "display_name": "生物信息",
     "description": "蛋白质结构预测、基因分析等生物信息模型。",
-    "dependency_selector": "bio",
+    "extra_family": "bio",
     "supported_installer_backends": [
       "dcu_remote_install",
       "gpu_remote_install"
@@ -33,7 +33,7 @@
     "id": "matchem",
     "display_name": "材料化学",
     "description": "材料科学、化学模拟相关模型。",
-    "dependency_selector": "matchem",
+    "extra_family": "matchem",
     "supported_installer_backends": [
       "dcu_remote_install",
       "gpu_remote_install"
@@ -43,7 +43,7 @@
     "id": "all",
     "display_name": "全部安装",
     "description": "安装 OneScience 支持的全部领域依赖。",
-    "dependency_selector": "all",
+    "extra_family": "all",
     "supported_installer_backends": [
       "dcu_remote_install",
       "gpu_remote_install"

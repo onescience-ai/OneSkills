@@ -35,7 +35,7 @@ type: executor
 ## Workflow
 
 1. **确定用户意图**：识别用户是想查询作业、管理文件、查看账户信息还是切换区域
-2. **检查配置**：确保 `~/.scnet-chat.env` 文件存在且包含必要的环境变量
+2. **检查配置**：优先检查项目根目录 `onescience.json.runtime.scnet` 是否完整；缺失时应先调用 `onescience-runsite` 与用户交互补齐，不能依赖 `~/.scnet-chat.env` 直接提交任务
 3. **执行命令**（根据操作系统选择正确的启动脚本）：
    - **macOS/Linux**: `./scripts/run "自然语言命令"`
    - **Windows**: `./scripts/run.bat "自然语言命令"`
@@ -264,14 +264,14 @@ scnet-chat 依赖远程 API，网络不稳定时可能出现超时或连接失�
 
 SCNet Chat 支持多种配置来源，按以下优先级读取（高优先级覆盖低优先级）：
 
-1. **项目根目录 `onescience.json`**（推荐）
-   - 路径：`runtime.run_site` 字段
-   - 字段：`SCNET_ACCESS_KEY`、`SCNET_SECRET_KEY`、`SCNET_USER`
-   - 优点：与 OneScience 运行环境配置统一管理
+1. **项目根目录 `onescience.json`**（推荐且用于运行任务提交）
+   - 路径：`runtime.scnet` 字段
+   - 字段：`SCNET_ACCESS_KEY`、`SCNET_SECRET_KEY`、`SCNET_USER`，以及 `region`、`remote_work_dir`、`partition/queue` 等提交相关字段
+   - 优点：与 OneScience 运行环境配置统一管理，是 runtime/scnet 提交的权威来源
 
-2. **用户目录 `~/.scnet-chat.env`**（兼容方式）
+2. **用户目录 `~/.scnet-chat.env`**（仅兼容独立使用）
    - 手动配置文件
-   - 用于独立使用 scnet-chat 或临时覆盖配置
+   - 可用于独立使用 scnet-chat 做账户类/查询类操作；不应用作缺失项目级 `onescience.json.runtime.scnet` 时的任务提交兜底
 
 ### 配置方式
 
@@ -292,16 +292,18 @@ SCNET_USER=your_username
 
 #### 方式 3：手动编辑 onescience.json
 
-直接编辑项目根目录的 `onescience.json` 文件中的 `runtime.run_site` 字段：
+直接编辑项目根目录的 `onescience.json` 文件中的 `runtime.scnet` 字段：
 
 ```json
 {
   "runtime": {
-    "run_site": {
+    "scnet": {
       "SCNET_ACCESS_KEY": "your_access_key",
       "SCNET_SECRET_KEY": "your_secret_key",
       "SCNET_USER": "your_username",
-      "remote_work_dir": ""
+      "region": "核心节点",
+      "remote_work_dir": "",
+      "partition": "comp"
     }
   }
 }

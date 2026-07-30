@@ -1199,55 +1199,9 @@ def handle_job_submit(params: Dict[str, Any]) -> str:
         if "错误" in result or "失败" in result:
             return result
     
-    # 如果没有指定队列，从缓存获取默认队列
+    # 提交作业时必须显式提供 queue，不能回退到默认队列或自动切区。
     if not params.get("queue"):
-        try:
-            import json
-            with open(get_cache_path(), 'r', encoding='utf-8') as f:
-                cache = json.load(f)
-            clusters = cache.get('clusters', [])
-            
-            # 首先尝试从当前默认区域获取队列
-            default_cluster = None
-            for cluster in clusters:
-                if cluster.get('default') or cluster.get('isDefault'):
-                    default_cluster = cluster
-                    break
-            
-            # 如果当前默认区域有队列，使用它
-            if default_cluster:
-                job_managers = default_cluster.get('JobManagers', [])
-                if job_managers:
-                    queues = job_managers[0].get('queues', [])
-                    if queues:
-                        params['queue'] = queues[0].get('queueName', '')
-            
-            # 如果当前默认区域没有队列，查找其他有队列的区域
-            if not params.get("queue"):
-                for cluster in clusters:
-                    cluster_name = cluster.get('clusterName', '')
-                    # 跳过 ac 区域
-                    if cluster_name == 'ac':
-                        continue
-                    job_managers = cluster.get('JobManagers', [])
-                    if job_managers:
-                        queues = job_managers[0].get('queues', [])
-                        if queues:
-                            queue_name = queues[0].get('queueName', '')
-                            if queue_name:
-                                params['queue'] = queue_name
-                                # 切换到这个有队列的区域
-                                print(f"{Colors.YELLOW}⚠ 当前区域无可用队列，自动切换到 {cluster_name} 进行提交{Colors.END}")
-                                switch_result = handle_switch_cluster(cluster_name)
-                                if "错误" in switch_result or "失败" in switch_result:
-                                    return f"切换区域失败: {switch_result}"
-                                break
-        except Exception as e:
-            pass
-    
-    # 检查队列是否为空
-    if not params.get("queue"):
-        return f"错误：未指定队列，且无法从缓存获取默认队列。\n请使用 --queue 参数指定队列，或先刷新缓存获取可用队列。\n查询可用队列：python scripts/run \"查询队列\""
+        return "错误：未指定队列。请先通过 onescience-runsite/项目级 onescience.json 补齐 runtime.scnet.partition（或显式传入 --queue）后再提交，禁止使用默认队列兜底。"
 
     # GAP_NPROC 与 GAP_PPN 是平台二选一参数。两者相同通常来自上层 skill
     # 同时传 ppn/nproc；保留 PPN，避免平台回退到 1 核。两者不同则拒绝提交。

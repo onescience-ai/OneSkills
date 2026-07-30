@@ -1,6 +1,6 @@
 ---
 name: onescience-runtime
-description: 【统一运行与基础诊断技能】按 discover、preflight、execute、diagnose 固定闭环执行测试任务，依据 onescience.json 的 execution_profile 三元组路由执行通道；SCnet 提交任务时必须读取根级 onescience.json.scnet 并把 region、partition/queue、work_dir 和资源参数交给 scnet-chat；配置问题自动委托 onescience-runsite 补齐后回到 runtime 继续原测试任务，环境问题自动委托 onescience-installer 安装或修复并 verify 成功后回到 runtime 继续原测试任务；当 execution_mode 为 slurm 且提交或运行反馈表明 partition、gpus_per_node、memory 等资源不可用时，探测可用 SLURM 资源并受控调整后重试。
+description: 【统一运行与基础诊断技能】按 discover、preflight、execute、diagnose 固定闭环执行测试任务，依据 onescience.json 的 execution_profile 三元组路由执行通道；SCnet 提交任务时必须读取根级 onescience.json.runtime.scnet 并把 region、partition/queue、work_dir 和资源参数交给 scnet-chat；配置问题由 onescience-runsite 负责补齐，`onescience.json` 缺失时 runtime 先委托 runsite，`runtime.conda` 缺失时 runtime 在 preflight 再委托 onescience-installer；环境问题由 onescience-installer 安装或修复并 verify 成功后回到 runtime 继续原测试任务；当 execution_mode 为 slurm 且提交或运行反馈表明 partition、gpus_per_node、memory 等资源不可用时，探测可用 SLURM 资源并受控调整后重试。
 type: executor
 ---
 
@@ -141,10 +141,6 @@ execute 分支映射：
 - `next_action=onescience-runsite` 或 `next_action=onescience-installer` 只是一次性内部交接；只有对方阻断、需要用户补充信息、verify 失败，或恢复后出现新的阻断时，才停止并向用户报告。
 - 恢复时沿用原始用户意图、测试入口、运行通道候选和已确认的远程边界；不要因修复完成而替换成新的本地最小验证。
 - 若 diagnose 或执行证据表明后续问题已超出 runtime 的运行治理边界（例如需要新的业务代码实现、训练/推理策略重定义、后续评估阶段选择等），runtime 只返回 `execution_result` 中的 observation / recommendation，由 `onescience-orchestrator` 决定下一技能；runtime 不自行切换到 `onescience-coder`、`onescience-trainer`、`onescience-infer` 等业务 executor。
-
-### Workspace 模型路径自动发现
-
-preflight 阶段 conda 环境 ready 后，会自动检查 `ONESCIENCE_MODELS_DIR` 是否仍为默认值。若环境名匹配已知 workspace 前缀（如 `bioscience-`）且探测到 workspace 中有 `onemodel` 目录或 `env.sh`，会自动委托 `onescience-installer` 写回正确路径。此检查为非阻断优化，未发现时不影响执行。详见 `./references/preflight.md` 的 "Workspace 模型路径自动发现" 区域。
 
 ## Hard Gates
 

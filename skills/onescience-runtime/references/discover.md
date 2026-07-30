@@ -22,6 +22,7 @@
    - `access_mode=ssh` 表示 SSH 接入
    - `run_site=local` 且 `access_mode` 为空、缺失、`none`、`None` 或 `null` 时，视为本地访问路径
    - 兼容旧写法时，只把它们归一到上述语义，不反向用旧字段驱动 routing
+   - `onescience.json` 缺失时先委托 `onescience-runsite`；`runtime.conda` 缺失则留给后续 preflight 再委托 `onescience-installer`
 5. 用归一后的三元组派生 `execution_channel`：
    - `(local, none, empty)` -> `local_direct`
    - `(local, slurm, empty)` -> `local_slurm`

@@ -1,37 +1,24 @@
 [
   {
-    "id": "onescience_gitee_workspace",
+    "id": "onescience_wheel_bootstrap",
     "lifecycle_status": "stable",
-    "workspace_kind": "git_checkout",
+    "workspace_kind": "wheel_install",
     "supported_installer_backends": [
       "dcu_remote_install",
       "dcu_local_install",
       "gpu_remote_install",
       "gpu_local_install"
     ],
-    "repo": {
-      "repo_name": "onescience",
-      "repo_url": "https://gitee.com/onescience-ai/onescience.git",
-      "repo_ref": "main"
-    },
-    "sync": {
-      "default_reuse_existing_worktree": true,
-      "clone_repo_command": "git clone {repo_url}",
-      "working_directory": "{repo_name}",
-      "repo_sync_commands": [
-        "git fetch --all",
-        "git checkout {repo_ref}",
-        "git pull --ff-only"
-      ]
-    },
-    "domain_install": {
-      "command_template": "bash install.sh {dependency_selector}",
-      "default_dependency_selector": "all",
-      "omit_selector_when_default": true
+    "wheel": {
+      "wheel_dir": "~/onescience_wheels",
+      "wheel_glob": "onescience*.whl",
+      "download_wheel_command": "pip download --no-deps onescience -d {wheel_dir} -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai",
+      "metadata_probe_command": "cd {wheel_dir} && unzip -p ./{wheel_glob} '*/METADATA' | sed -n 's/^Provides-Extra: //p'",
+      "install_command_template": "pip install \"onescience[{resolved_extra}]\" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"
     },
     "notes": [
       "当前稳定工作区引导 profile",
-      "负责 OneScience 仓库获取、同步与 install.sh 入口渲染，不属于硬件环境安装语义"
+      "负责 OneScience wheel 发现、extras 探测与基于 extra 的 onescience 安装入口，不属于硬件环境安装语义"
     ]
   }
 ]
