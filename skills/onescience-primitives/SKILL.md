@@ -17,6 +17,14 @@ type: resource
 
 调用方必须通过 `resource_retrieval_request → resource_retrieval_result` 的完整闭环获取资源。
 
+**协议范围豁免**：当调用方已构造合法的 `resource_retrieval_request`（包含 `user_request` 和/或 `filters`），并按本技能「召回流程」中的步骤（命名直查或常规召回管道）执行资源检索时，调用方**可以**对 `skills/onescience-primitives/assets/` 目录执行 Glob、Read 等操作——这属于本技能召回逻辑的执行，不是违规的直接消费。豁免范围仅限于：
+- 枚举候选集（步骤 2）：Glob 列出资源目录
+- 快速过滤/语义匹配（步骤 3-4）：Read 各资源的 `metadata.json`
+- 内容组织（步骤 7）：Read 命中资源的 `spec.md`、`usage.md`、`workflow_planning.md` 及经白名单校验的执行资产
+- 命名直查（命名直查模式步骤 1-3）：Glob 搜索目录名、Read `metadata.json`
+
+调用方仍然**不得**沿 `matched_resources[].path` 自由读取任意文件，**不得**在未构造请求的情况下随意浏览 `assets/` 目录，**不得**消费未在 `execution_assets` 白名单中声明的脚本或文件。
+
 当本技能被上游技能调用时，`resource_retrieval_request` 是输入控制消息，不是需要回显给用户的最终内容。本技能直接执行召回流程并返回 `resource_retrieval_result`。
 
 ## 原语资产目录
@@ -53,12 +61,44 @@ assets/
 ## 召回流程
 
 > 本技能没有统一索引文件，原语信息以各资源目录下的 `metadata.json` 为主。因此必须先确定检索范围，再枚举该范围内的资源目录并逐个读取 `metadata.json`，不要凭目录名猜测。
+>
+> **【路径规范】**：本技能所有 `assets/` 目录的绝对路径为 `skills/onescience-primitives/assets/`。在以下步骤中，凡出现 `assets/<domain>/` 或 `assets/<domain>/<category>/` 等路径，均指代相对于仓库根目录的 `skills/onescience-primitives/assets/<domain>/...`。使用 Glob、Read 等工具访问资产文件时，必须拼接完整路径前缀 `skills/onescience-primitives/`，不得使用不包含此前缀的相对路径。
+>
+> **【命名直查优先】**：在执行常规召回管道（步骤 0-6）之前，必须先检查是否满足命名直查条件。
+
+### 命名直查模式
+
+当调用方明确知道目标原语名称时，跳过召回管道，直接定位并返回该原语。
+
+**触发条件**（同时满足以下两项时进入命名直查）：
+a. `filters.keyword` 中包含一个可识别的原语名称（如 `complex_structure_visualization`、`alphafold3`、`openfold_data_pipeline` 等——即 `assets/<domain>/<category>/` 下的某个目录名）
+b. `filters.domain` 已明确指定（如 `bio`、`cfd`、`climate`、`matchem`）
+
+**命名直查执行步骤**：
+1. 从 `filters.keyword` 中提取原语名称候选（将关键词按下划线连接、去空格、去标点等规范化处理后，与目录名比对）
+2. 在 `skills/onescience-primitives/assets/<filters.domain>/` 下递归搜索匹配的目录名（使用 Glob 搜索 `skills/onescience-primitives/assets/<domain>/**/<name>/metadata.json`，其中 `<domain>` 替换为实际 domain 值如 `bio`，`<name>` 替换为从 keyword 提取的目录名）
+3. 若找到唯一匹配，直接读取该目录的 `metadata.json`；若找到多个匹配（跨 category），读取所有匹配并取 domain 和 keyword 语义最接近的一个
+4. 若未找到匹配，回退到常规召回管道（步骤 0-6）
+5. 命中后，直接跳转到步骤 7（组织内容），**跳过步骤 0-6 的枚举、过滤、语义匹配和截断**
+6. 命名直查命中的资源在 `why_matched` 中标注 `named_lookup`，说明是通过名称直查而非语义匹配
+
+**重要约束**：
+- 命名直查是精确匹配辅助机制，不是语义搜索的替代品
+- 若 keyword 同时包含多个候选名称，对每个名称分别执行直查
+- 命名直查仍然遵守内容组织规则（步骤 7-9），包括执行资产白名单校验
+- 命名直查不绕过强制协议：调用方仍需通过 `resource_retrieval_request` 发起，不得直接读取 assets
+
+---
+
+### 常规召回管道
+
+以下步骤仅在命名直查未命中时执行。
 
 0. **判定 domain scope**：先判断调用方是否通过 `filters.domain` 显式提供 domain。
-   - 若 `filters.domain` 明确给出，则**直接使用调用方提供的 domain**，只检索对应的 `assets/<domain>/`，且**不要再读取** `skills/onescience-primitives/references/domain_profile.md` 做二次判断
+   - 若 `filters.domain` 明确给出，则**直接使用调用方提供的 domain**，只检索对应的 `skills/onescience-primitives/assets/<domain>/`，且**不要再读取** `skills/onescience-primitives/references/domain_profile.md` 做二次判断
    - 若 `filters.domain` 未提供、为空或不可靠，则**必须先读取** `skills/onescience-primitives/references/domain_profile.md`，再结合 `user_request` 与 `task_state_summary` 按其中定义的领域信号进行回退判定
-   - 回退判定结果若为 `climate | cfd | matchem | bio`，则只检索对应的 `assets/<domain>/`
-   - 回退判定结果若为 `unknown`，说明无法稳定路由到单一领域；此时允许检索 `assets/` 下全部 domain 目录，但输出中的 `detected_domain` 必须保持为 `unknown`
+   - 回退判定结果若为 `climate | cfd | matchem | bio`，则只检索对应的 `skills/onescience-primitives/assets/<domain>/`
+   - 回退判定结果若为 `unknown`，说明无法稳定路由到单一领域；此时允许检索 `skills/onescience-primitives/assets/` 下全部 domain 目录，但输出中的 `detected_domain` 必须保持为 `unknown`
    - 当请求已路由到生信领域，且涉及生信工作流、模型/数据管线/应用选择或多候选资源取舍时，可读取`skills/onescience-primitives/references/bio_profile.md`文档作为召回提示；该文件只辅助候选排序和边界解释，不能替代 `metadata.json` 证据
 1. **判定 category scope**：根据 `user_request`、`content_request`、`filters.keyword`、`task_state_summary` 判断是否明确指定资源类别。
    - 若明确指定模型、组件、数据管线、应用、可视化规范、工作流规划或契约类资源，则只检索对应 category
@@ -90,7 +130,7 @@ assets/
    - `"完整内容"`：只读取 `metadata.json`、`spec.md`、`usage.md`、`workflow_planning.md` 中实际存在的文件并组织为结构化内容；不得因为请求完整内容而自动返回任意脚本
    - 当且仅当 `include_execution_assets: true` 时，按以下子步骤物化受控执行资产：
    a. 从命中资源的 `metadata.json.execution_assets` 读取白名单数组。
-   b. 遍历白名单中的每一项资产声明，以 primitive 目录（即 `assets/<domain>/<category>/<resource_name>/`）为基准拼接相对路径，得到资产的绝对磁盘路径。
+   b. 遍历白名单中的每一项资产声明，以 primitive 目录（即 `skills/onescience-primitives/assets/<domain>/<category>/<resource_name>/`）为基准拼接相对路径，得到资产的绝对磁盘路径。
    c. 对每个资产执行：
       ① 检查文件是否存在。不存在时，该资产的 `status` 标记为 `unavailable`，`reason` 填 `file_not_found`，跳过后续校验。
       ② 读取文件原始内容，计算 SHA-256 并与白名单中的 `sha256` 比对。不匹配时，`status` 标记为 `failed`，`reason` 填 `sha256_mismatch`（记录期望值与实际值），不返回该资产的内容，不挂载到结果。
@@ -219,6 +259,10 @@ content:
   - 多种意图并存且无法归一时填 `mixed`
 
 ## 质量要求
+
+- **命名直查优先**：收到请求后，首先检查 `filters.keyword` 是否包含可识别的原语目录名。若满足命名直查条件（domain 已指定 + keyword 含目录名），必须优先执行命名直查，不得跳过直查直接进入常规召回管道。
+- 命名直查命中后，直接跳转到内容组织步骤，不受语义排序和截断限制。
+- 命名直查未命中时，回退到常规召回管道。
 
 - 先判定 domain scope，再判定 category scope；不要跳过范围判定直接做全局模糊搜索。
 - 调用方给出 `filters.domain` 时，必须直接使用该值路由，且不得再读取 `domain_profile.md` 做二次领域判断。

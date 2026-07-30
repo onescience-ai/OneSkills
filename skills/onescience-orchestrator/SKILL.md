@@ -106,6 +106,15 @@ type: orchestrator
 
 1. 建立或更新 Task State：初始化任务状态或从上一步的执行结果更新状态。
 
+1.5 **【强制】资源调用前预分析**：在调用 type=resource 技能之前，先扫描 `user_request` 中是否包含以下可视化信号词，并记录到 `pre_call_signals`：
+   - 显式可视化词：`可视化`、`visualization`、`visualize`、`render`、`rendering`
+   - 三维展示词：`3D`、`三维`、`interactive`、`交互式`
+   - 置信度着色词：`pLDDT`、`PAE`、`confidence coloring`、`B-factor`
+   - 分子可视化工具：`PyMOL`、`3Dmol`、`MolStar`、`NGL`、`cartoon`、`ribbon`
+   - 结构文件后缀：`.pdb`、`.cif`、`.mmcif`
+   - 若命中任一信号，`pre_call_signals.visualization` 设为 `true`
+   - 此步骤在资源调用前执行，不依赖 `intent_profile`
+
 2. 调用 type=resource 技能获取资源摘要（作为资源召回步骤）：
    - 先检查可用 `type=resource` 技能的 `description`，并输出 `selected_resource_skills`
    - 仅选择那些 `description` 明确覆盖当前职责所需知识范围的 resource 技能进行调用
@@ -113,14 +122,14 @@ type: orchestrator
    - 输入：用户原始请求、当前 `Task State` 摘要、`content_request: "摘要"`（或使用默认摘要语义）
    - `filters.domain` 仅在当前任务领域可以合理推断时填写
    - `filters.keyword` 仅围绕当前任务目标、预期产物、操作类型、阻塞问题或当前步骤目的填写
-   - **可视化信号传递**：当 `intent_profile.visualization_needed` 为 `true` 时，初始资源召回必须包含可视化信号词（如 `可视化 visualization 3D pLDDT PAE render`），避免 primitives 因语义排序截断而遗漏可视化原语
+   - **【强制】可视化信号前传**：当 `pre_call_signals.visualization` 为 `true` 时，`filters.keyword` 中必须追加可视化信号词（如 `可视化 visualization 3D pLDDT PAE render interactive`），确保 primitives 的 visualization category 被路由且不被截断
    - 接收：`matched_resources` 列表，每项包含 `path`、`type`、`name`、`why_matched`、`limitations`、`content`
    - orchestrator 只消费摘要形式的 `content`，不要求 `content` 必须是对象结构
    - `resource_retrieval_result` 是阶段一的中间观察；资源召回返回后应回到 orchestrator 主循环，继续步骤 3 的 `intent_profile` 识别
    - 已构造 `resource_retrieval_request` 时，应继续完成资源技能调用或内联召回，并消费 `resource_retrieval_result`；不要把请求说明或裸 YAML 作为当前轮次的最终输出
 
 3. 基于资源摘要识别用户意图：
-   - 输入：用户请求 + 已调用 resource 技能返回的 `matched_resources`
+   - 输入：用户请求 + 已调用 resource 技能返回的 `matched_resources` + `pre_call_signals`
    - 输出：`intent_profile` 包括：
      - `domain`: earth/biology/materials/cfd/general-science
      - `task_goal`: 用户最终目标
@@ -128,7 +137,18 @@ type: orchestrator
      - `operation_type`: 操作类型（开发、修复、评估、运行、安装）
      - `execution_phase`: 当前阶段（规划、实现、验证、诊断）
      - `intent_aspects`: 任务涉及的意图方面列表，如 `["paper_reproduction", "runtime_verification"]`
-     - `visualization_needed`: 当用户请求中提到结构可视化、3D 展示、pLDDT/PAE 着色、交互式视图、PyMOL、3Dmol 等可视化需求时，必须设为 `true`，并在后续资源召回中确保向 primitives 传递可视化信号词
+     - `visualization_needed`: 当 `pre_call_signals.visualization` 为 `true` 或 `user_request` 中提到结构可视化、3D 展示、pLDDT/PAE 着色、交互式视图、PyMOL、3Dmol 等可视化需求时，必须设为 `true`
+
+3.5 **【强制】可视化原语补召**：当 `intent_profile.visualization_needed` 为 `true` 时，检查步骤 2 返回的 `matched_resources` 是否包含 `type=visualization_primitive` 的资源：
+   a. 若**已包含** visualization_primitive，记录资源路径到 `intent_profile`，继续步骤 4。
+   b. 若**未包含** visualization_primitive，必须发起**第二次资源调用**（命名直查模式）：
+      - `user_request`：以可视化为主意图（如"蛋白质复杂结构三维可视化、pLDDT/PAE 置信度着色、交互式 3D 视图"）
+      - `filters.domain`：使用步骤 2 中已确定的 domain（如 `bio`）
+      - `filters.keyword: complex_structure_visualization`（精确目录名，触发 primitives 命名直查）
+      - `content_request: "摘要"`
+      - 将补召返回的 visualization_primitive **追加合并**到步骤 2 的 `matched_resources` 中
+   c. 补召返回的资源在 `why_matched` 中备注 `orchestrator_remedial_lookup`。
+   d. **此步骤不可跳过**：不能因为步骤 2 未返回 visualization 就认为不需要可视化。`visualization_needed=true` 时必须在交给 executor 之前确保 visualization 原语已就位。
 
 ### 阶段二：专家召回与计划融合
 

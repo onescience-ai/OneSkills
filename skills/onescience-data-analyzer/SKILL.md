@@ -49,13 +49,13 @@ type: executor
    - `content_request: "完整内容"`
    - `include_execution_assets: true`
    - `filters.domain: bio`
-   - `filters.keyword: complex_structure_visualization`
+   - `filters.keyword: complex_structure_visualization`（**必须使用下划线分隔的精确目录名**，以触发 primitives 的命名直查模式，绕过语义排序和截断）
    - 不得沿返回的裸 `path` 直接读取原语资产
 3. **【强制】召回结果校验**：收到 `resource_retrieval_result` 后，执行以下校验：
    a. 检查 `matched_resources` 是否包含 `name=complex_structure_visualization` 且 `type=visualization_primitive` 的资源。
    b. 若**未召回**该原语（即返回空列表或不包含 visualization_primitive），**不得直接放弃**。必须执行以下回退步骤：
       ① 检查 `resource_retrieval_result.detected_domain` 是否为 `bio`，`task_intent` 是否包含 `visualization`。
-      ② 若 `task_intent` 不包含 `visualization`，说明 primitives 可能未正确识别可视化意图。此时**重新发起请求**，将 `user_request` 修改为以可视化为主意图的描述（如"需要蛋白质复杂结构三维可视化、pLDDT/PAE 置信度着色、交互式 3D 视图的原语规范"），并显式设置 `filters.keyword: complex structure visualization pLDDT PAE 3D interactive render`。
+      ② 若 `task_intent` 不包含 `visualization`，说明 primitives 可能未正确识别可视化意图。此时**重新发起请求**，将 `user_request` 修改为以可视化为主意图的描述（如"需要蛋白质复杂结构三维可视化、pLDDT/PAE 置信度着色、交互式 3D 视图的原语规范"），并显式设置 `filters.keyword: complex_structure_visualization pLDDT PAE 3D interactive render`（保留精确目录名 `complex_structure_visualization` 作为第一个 keyword 以触发命名直查）。
       ③ 二次请求后仍未召回，在 `visualization_result.quality_checks` 中记录 `primitive_not_recalled: true`，`recall_retry_count: 2`，`last_error: unable to match complex_structure_visualization after retry`，进入阶段二降级决策（仅生成非交互式图表，明确说明结构三维渲染不可用）。
    c. 若**已召回**，检查 `execution_assets_summary`，进入阶段二降级决策。
 
