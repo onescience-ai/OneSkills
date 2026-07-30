@@ -1,6 +1,6 @@
 ---
 name: onescience-runtime
-description: 【统一运行与基础诊断技能】按 discover、preflight、execute、diagnose 固定闭环执行测试任务，依据 onescience.json 的 execution_profile 三元组路由执行通道；SCnet 提交任务时必须读取根级 onescience.json.runtime.scnet 并把 region、partition/queue、work_dir 和资源参数交给 scnet-chat；配置问题由 onescience-runsite 负责补齐，`onescience.json` 缺失时 runtime 先委托 runsite，`runtime.conda` 缺失时 runtime 在 preflight 再委托 onescience-installer；环境问题由 onescience-installer 安装或修复并 verify 成功后回到 runtime 继续原测试任务；当 execution_mode 为 slurm 且提交或运行反馈表明 partition、gpus_per_node、memory 等资源不可用时，探测可用 SLURM 资源并受控调整后重试。
+description: 【统一运行与基础诊断技能】按 discover、preflight、execute、diagnose 固定闭环执行测试任务，依据 onescience.json 的 execution_profile 三元组路由执行通道。preflight 阶段完整委托 onescience-installer 执行环境就绪预检（installer_reason=preflight_validation），runtime 只消费 readiness 结果；SCnet 提交任务时必须读取根级 onescience.json.runtime.scnet 并把 region、partition/queue、work_dir 和资源参数交给 scnet-chat；配置问题自动委托 onescience-runsite 补齐；环境问题由 onescience-installer 安装或修复并 verify 成功后回到 runtime 继续原测试任务；当 execution_mode 为 slurm 且提交或运行反馈表明 partition、gpus_per_node、memory 等资源不可用时，探测可用 SLURM 资源并受控调整后重试。
 type: executor
 ---
 
@@ -26,46 +26,30 @@ type: executor
 
 ### 2. preflight
 
-discover 得到通道后，继续读取 `runtime.conda`：
+discover 得到通道后，runtime 不再自行执行环境检测。preflight 阶段改为**完整委托** `onescience-installer` 执行环境就绪预检：
 
-- `runtime.conda.enabled`
-- `runtime.conda.env_name`（仅 `enabled=true` 时需要）
-- `runtime.conda.activate_script`（仅 `enabled=true` 时需要）
+1. 组装 preflight 上下文：`execution_channel`、`runtime.conda`、入口脚本路径、业务依赖列表等
+2. 以 `installer_reason=preflight_validation` 委托 `skills/onescience-installer/SKILL.md` 执行完整的环境就绪检查
+3. installer 返回 `preflight_result`：
+   - `status=passed`：设置 `preflight_passed=true`、`execution_readiness=ready`，进入 execute
+   - `status=partial`：记录警告和建议，若可继续执行则进入 execute
+   - `status=failed`：installer 已进入修复流程；修复成功后重新读取 `onescience.json`，从 preflight 重新开始
+   - `status=blocked`：记录阻断原因，停止并向 orchestrator 报告
 
-`runtime.conda` 缺失不是可默认跳过 conda 的信号。缺少该结构、`enabled` 缺失、`enabled=true` 但缺少 `env_name`，或无法通过当前执行通道确认环境 ready 时，必须设置 `next_action=onescience-installer` 并立即调用 `skills/onescience-installer/SKILL.md` 做发现、安装或修复；installer verify 成功后重新读取 `onescience.json` 与 `runtime.conda`，再从 `preflight` 重新检查。
-
-并按需读取：
-
-- `runtime.scnet.*`（当 `execution_channel=scnet_mcp` 或后续需要委托 `scnet-chat` 提交任务时，这是 SCnet region/partition/work_dir/资源参数的唯一主来源）
-- `runtime.modules.*`
-- `runtime.script.work_dir`
-- `runtime.script.*`
-- `runtime.cluster.*`
-- `runtime.target.*`
-- `runtime.env_vars.*`
-- `runtime.ssh.work_dir`
-- `runtime.ssh.*`
-- `runtime.scnet.work_dir`
-
-需要进入预检细节时，读取：
-
-- `./references/preflight.md`
-- `./references/contract.md`
+**职责说明**：环境就绪检测（conda 校验、Python 解释器、onescience/torch 导入、CUDA 扩展、入口脚本语法、环境依赖一致性、GPU 可访问性、GPU 显存预算、共享库检查等）全部由 installer 的 `preflight-validation.md` 统一执行。runtime 只消费 installer 返回的 readiness 结果，不自行做环境探测。
 
 ### 3. execute
 
 preflight 确认可执行后，根据 `execution_channel` 只读取一个执行分支；只有 `runtime.conda.enabled=true` 时才会在对应模板中渲染 `activate_script`。
 
-进入 execute 前必须重新核对：
+进入 execute 前必须重新核对（证据来自 installer 的 `preflight_result`）：
 
-- `preflight_passed=true`
+- `preflight_passed=true`（installer 返回 `status=passed` 或可继续执行的 `partial`）
 - `execution_readiness=ready`
 - `blocking_reason` 为空或 `none`
-- `evidence.preflight.status=passed`
-- `evidence.preflight.conda_checked=true`
-- `evidence.preflight.environment_checked=true`
+- `evidence.preflight.status=passed`（来自 installer 的 preflight_result.status）
 
-任一缺失或为 false 时，禁止读取 execute 分支，必须回到 `preflight`。若阻断原因是缺少 `runtime.conda`、conda 不可用、解释器缺失、缺包、OneScience/torch 不可导入或分布式运行时未就绪，立即委托 `onescience-installer`，不要自行假设环境可用。
+任一缺失或为 false 时，禁止读取 execute 分支，必须回到 `preflight` 重新委托 installer 做环境就绪检查。若阻断原因是 installer 返回 `failed` 且 installer 已在修复流程中，等待 installer 修复完成后重新读取 `onescience.json` 并从 `preflight` 恢复。
 
 execute 分支映射：
 
@@ -148,8 +132,8 @@ execute 分支映射：
 - `onescience-runsite` 完成校验、确认可复用或补齐配置后，runtime 必须重新读取 `onescience.json` 并从 `discover` 继续；不要直接使用 runsite 调用前缓存的三元组或历史 `execution_channel`。
 - `onescience.json` 缺失、三元组无法归一或关键字段冲突时，设置 `next_action=onescience-runsite` 作为内部交接标记，并直接调用 `onescience-runsite` 补齐配置；无需向用户二次确认，也不要自行猜测后继续执行。`onescience-runsite` 完成后，重新读取 `onescience.json` 并从 `discover` 恢复，继续原测试任务。
 - 远程执行意图优先于任何本地最小验证建议。只要用户明确要求远程执行、提交到 SLURM 或提交到 SCnet，就不要在本地执行业务脚本替代远程验证。
-- 未完成 preflight 或 preflight 未通过时，禁止进入 execute。不得因为已有 `execution_channel`、已有脚本路径、用户说“跑一下”或存在历史 `onescience.json` 就跳过环境发现检查。
-- 发现 conda 缺失、conda 不可用、解释器缺失、缺包、OneScience/torch 不可导入或分布式运行时未就绪时，设置 `next_action=onescience-installer` 作为内部交接标记，并直接调用 `skills/onescience-installer/SKILL.md` 安装或修复；无需向用户二次确认，也不要在 runtime 中补装。installer verify 成功后，重新读取 `onescience.json` 和 `runtime.conda`，从 `preflight` 恢复，继续原测试任务。
+- 未完成 preflight 或 preflight 未通过时，禁止进入 execute。不得因为已有 `execution_channel`、已有脚本路径、用户说"跑一下"或存在历史 `onescience.json` 就跳过环境就绪检查。preflight 已完整委托 `onescience-installer` 执行，runtime 只消费 installer 返回的 `preflight_result.status`。
+- 若 installer 返回 `preflight_result.status=failed` 且 installer 已在修复流程中，等待 installer 修复完成后重新读取 `onescience.json` 并从 `preflight` 恢复；不自行判断环境是否可用。
 - 命中 SCnet 作业、文件、账户、区域、队列、集群、日志下载等平台动作时，继续委托 `scnet-chat` 技能执行；runtime 只负责交接输入、消费结果与基础诊断。
 - 通过 `scnet-chat` 提交任务前，必须先读取 `onescience.json.runtime.scnet` 中的 `region`、`partition`/`queue`、`remote_work_dir`/`work_dir`、资源参数和作业名等信息；`partition` 归一为 scnet-chat 的 `--queue` 参数。不要依赖 scnet-chat 的缓存默认区域或默认队列，也不要用用户自然语言里的 region/partition 直接覆盖该配置。
 - 不要在代码入口、探针脚本或远端提交目标缺失时继续提交空作业。

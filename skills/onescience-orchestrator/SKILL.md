@@ -220,15 +220,28 @@ type: orchestrator
      - 对当前 `next_step` 展示其执行细节摘要，说明本轮保留了哪些专家细节以及为什么这些细节对目标 executor 是必要的
    - 使用清晰的结构化格式（markdown表格或编号列表）
    - 确保用户可以完整了解任务执行全貌
-   - 当 Global Plan 中包含长时间运行的任务（预估运行时间 > 10 分钟），必须在执行该任务前增加一个"执行前依赖预检"步骤：
-    - 该步骤为 orchestrator_step，使用 Bash 工具
-    - 检查内容包括：关键 Python 模块是否可导入、CUDA 扩展是否可用、环境依赖是否一致
-    - 检查方法参考 references/pre_execution_checklist.md
-    - 预检失败时，在 Global Plan 中插入修复步骤后再执行主任务，不得直接运行主任务
+   - 当 Global Plan 中包含长时间运行的任务（预估运行时间 > 10 分钟），必须在执行该任务前规划一个 `executor_step`，委托 `onescience-installer` 执行环境就绪预检（传入 `installer_reason=preflight_validation`）。installer 预检通过后方可继续执行主任务；预检失败时由 installer 自行修复或在 Global Plan 中插入修复步骤，不得直接运行主任务。
    - 当 Global Plan 中包含批量处理任务时（数据项 > 100），必须在规划中评估分片并行策略：
     - 评估可用 GPU 数量和任务的可分片性
     - 若可分片且在计划时间窗口内单卡 > 30 分钟，应拆分为多个并行子任务
    - 从 Global Plan 中选择当前应执行的第一步 `Next Step Spec`
+
+   **【硬路由兜底】可视化步骤强制定向到 `onescience-data-analyzer`**：
+
+   当以下三个条件**同时满足**时，必须在 Global Plan 中创建一个 `executor_step`，其 `execution_skill` 必须为 `onescience-data-analyzer`，不得使用其他 executor，也不得降级为 `orchestrator_step`：
+
+   a. `intent_profile.visualization_needed` 为 `true`（已通过步骤 1.5/3 判定）
+   b. `matched_resources` 中已包含 `type=visualization_primitive` 的原语（已通过步骤 2 或步骤 3.5 补召获取）
+   c. 任务涉及结构数据文件（`.pdb`、`.cif`、`.mmcif`）的三维渲染或复杂结构可视化
+
+   此规则是步骤 4-6 中动态 executor 能力台账匹配的**安全兜底**，不是替代。注意以下强制约束：
+
+   - 即使步骤 4-6 的 executor 能力台账查询中未能将可视化步骤匹配到 `onescience-data-analyzer`，也必须强制执行本条规则。不能因为"能力台账中未列出 data-analyzer 负责可视化"、"data-analyzer 的 SKILL.md 未被正确解析"、或"没有找到合适的 executor"而跳过可视化步骤或降级为 orchestrator 自执行。
+   - 禁止以"快速产出可验证的结果"为由，绕过 data-analyzer 使用本地脚本（如 Matplotlib）生成替代图表。可视化原语一旦被召回，对应的三维结构渲染必须通过 data-analyzer 的标准流水线执行。
+   - 若 data-analyzer 执行后返回 `status: blocked`（如渲染器入口或 3Dmol.js 运行时缺失），由 data-analyzer 自身的降级决策模块记录阻断原因，orchestrator 不得在收到 blocked 结果后自行用本地脚本补做可视化。
+   - orchestrator 的自执行限制（步骤 9 中 `orchestrator_step` 的约束）和禁止自执行的动作列表（代码生成/修改/配置落盘等）在此同样适用：不得在可视化步骤中用 orchestrator 自身工具替代 data-analyzer。
+
+   此硬路由规则仅在同时满足条件 a、b、c 时触发。若仅有可视化信号但未召回 visualization_primitive，仍按步骤 3.5 的补召逻辑处理。
 
 ### 阶段三：执行与状态更新
 
@@ -486,4 +499,3 @@ orchestrator 执行这些步骤后，仍需生成 `execution_result` 包含 `art
 - 需要资源分层、摘要匹配和资源绑定规则时，读取 `references/resource_contract.md`。
 - 需要执行技能 handoff 格式时，读取 `references/execution_handoff_contract.md`。
 - 需要在模糊路径条件下搜索项目文件时，读取 `references/path_resolution.md`。
-- 需要为长时间运行任务添加执行前依赖预检时，读取 `references/pre_execution_checklist.md`。

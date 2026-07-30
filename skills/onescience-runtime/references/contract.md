@@ -13,7 +13,7 @@
 
 阶段顺序固定，不建议跳过前置阶段直接执行。
 
-`execute` 阶段有硬门禁：只有当前轮次 `preflight` 明确产出 `preflight_passed=true`、`execution_readiness=ready`、`blocking_reason` 为空或 `none`、`evidence.preflight.status=passed`、`evidence.preflight.conda_checked=true` 且 `evidence.preflight.environment_checked=true` 后，才能读取或执行 execute 分支。缺少任一证据时，必须回到 `preflight`；不得因为已有 `execution_channel`、脚本路径、历史日志或用户要求“跑一下”而直接提交任务。
+`execute` 阶段有硬门禁：只有当前轮次 `preflight` 明确产出 `preflight_passed=true`、`execution_readiness=ready`、`blocking_reason` 为空或 `none`，且 `evidence.preflight.status=passed`（来自 installer 的 `preflight_result`）后，才能读取或执行 execute 分支。缺少任一证据时，必须回到 `preflight` 重新委托 `onescience-installer` 执行环境就绪预检；不得因为已有 `execution_channel`、脚本路径、历史日志或用户要求"跑一下"而直接提交任务。
 
 ## 委托恢复不变量
 
@@ -22,7 +22,7 @@
 - runtime 允许自动委托的下游技能仅限 `onescience-runsite`、`onescience-installer` 和文档已明确的平台动作执行方 `scnet-chat`。
 - 这些自动委托只服务于 runtime 当前步骤的恢复，不决定新的业务 executor 或新的全局下一阶段。
 - 配置修复成功：重新读取根目录 `onescience.json`，从 `discover` 重新开始，并继续走 `preflight -> execute -> diagnose`。
-- 环境修复且 installer verify 成功：重新读取根目录 `onescience.json` 与 `runtime.conda`，从 `preflight` 重新开始，并继续走 `execute -> diagnose`。
+- 环境修复且 installer verify 成功：重新读取根目录 `onescience.json` 与 `runtime.conda`，从 `preflight` 重新开始。preflight 将重新委托 installer 以 `installer_reason=preflight_validation` 执行环境就绪预检，验证通过后继续走 `execute -> diagnose`。
 - 自动委托的 `next_action` 是内部交接标记，不是最终答复；不要在 runsite/installer 成功后停止在“已修复配置/环境”。
 - 只有委托方被阻断、需要用户补充信息、installer verify 失败，或恢复后出现新的配置/环境/业务阻断时，才停止并报告当前阻断。
 - 若恢复后发现问题已超出 runtime 的运行治理边界，例如需要新的代码实现、训练/推理策略调整、后续评估阶段路由或其他业务 executor 决策，runtime 返回 observation 与 recommendation 给 `onescience-orchestrator`，不自行切换到 `onescience-coder`、`onescience-trainer`、`onescience-infer` 等业务技能。
@@ -114,7 +114,7 @@ discover 每次进入时，必须先调用 `onescience-runsite` 对当前 `onesc
 
 只有 `enabled=true` 时，执行模板才会渲染 conda 激活步骤；`enabled=false` 时必须跳过激活步骤，直接以当前目标环境做 readiness 检查。
 
-`runtime.conda` 缺失、`enabled` 缺失或结构不属于上述两种形态时，不能默认解释为 `enabled=false`，也不能跳过环境检查进入 execute。它属于环境发现/修复阻断，必须设置 `next_action=onescience-installer`、`installer_reason=missing_conda_config`，立即调用 `skills/onescience-installer/SKILL.md` 做 discover / install / verify。installer verify 成功后，runtime 重新读取 `onescience.json.runtime.conda` 并从 `preflight` 开始恢复。
+`runtime.conda` 缺失、`enabled` 缺失或结构不属于上述两种形态时，不能默认解释为 `enabled=false`。runtime 在 preflight 阶段已完整委托 `onescience-installer`（`installer_reason=preflight_validation`）执行环境就绪预检，installer 的 `preflight-validation.md` 将处理 conda 配置校验并在需要时进入发现/修复流程。
 
 `runtime.modules` 的值按顺序逐个执行 `module load <module>`。
 
@@ -192,10 +192,11 @@ runtime 的执行证据必须绑定到当前测试目录，而不是项目根目
 
 ## Installer handoff contract
 
-当 preflight 或 execute 发现环境问题时，统一自动交给 `onescience-installer`，交接结构至少包含：
+runtime 在 preflight 阶段完整委托 `onescience-installer` 执行环境就绪预检，交接结构至少包含：
 
 - `next_action=onescience-installer`
 - `installer_reason`
+  - `preflight_validation`（preflight 阶段完整环境就绪预检，runtime 不再自行做环境探测）
   - `missing_conda_config`
   - `conda_unusable`
   - `python_not_ready`
@@ -216,19 +217,15 @@ runtime 的执行证据必须绑定到当前测试目录，而不是项目根目
   - `execution_channel`
 - `transport_context`
   - `runtime.ssh.work_dir` / `runtime.scnet.work_dir` 或等价字段
-- `evidence`
-  - conda 检查结果
-  - import/probe 失败结果
-  - 缺包或解释器错误信号
+- `evidence`（若为环境修复后恢复，传入之前收集的 evidence）
 
 恢复规则：
 
 1. 立即加载并执行 `skills/onescience-installer/SKILL.md`；不要向用户二次确认是否委托。
-2. `onescience-installer` 完成环境修复并 verify 成功后，runtime 必须重新读取 `onescience.json.runtime.conda`。
-3. 恢复点固定从 `preflight` 重新开始，不继续使用旧的内存态 conda 信息。
-4. 重新通过 preflight 后，runtime 必须继续进入 `execute` 并运行原测试任务；不得把 installer 的成功 verify 作为最终输出。
-5. runtime 不负责写回安装成功状态，只消费修复后最新的 `onescience.json`。
-6. installer 若 verify 失败、安装被阻断或需要用户授权/补充信息，runtime 才停止并报告阻断。
+2. 若 `installer_reason=preflight_validation`：installer 执行完整环境就绪预检后返回 `preflight_result`。runtime 根据 `status` 决定下一步（passed/partial → execute，failed → 等待修复，blocked → 停止并报告）。
+3. 若 `installer_reason` 为环境修复：installer 完成环境修复并 verify 成功后，runtime 重新读取 `onescience.json.runtime.conda`，从 `preflight` 重新开始（将重新以 `preflight_validation` 委托 installer 做预检）。
+4. runtime 不负责写回安装成功状态，只消费修复后最新的 `onescience.json`。
+5. installer 若 verify 失败、安装被阻断或需要用户授权/补充信息，runtime 才停止并报告阻断。
 
 ## 稳定输出
 
@@ -258,4 +255,4 @@ runtime 对外至少稳定输出：
 
 一句话原则：
 
-`onescience-runtime` 负责“发现执行链路、做预检、执行、回收日志并给出基础诊断”；配置补齐自动交给 `onescience-runsite`，环境安装与修复自动交给 `onescience-installer`。
+`onescience-runtime` 负责"发现执行链路、做执行调度、回收日志并给出基础诊断"。配置补齐自动交给 `onescience-runsite`，环境就绪检测与修复完整委托 `onescience-installer`。runtime 不自行做环境探测。

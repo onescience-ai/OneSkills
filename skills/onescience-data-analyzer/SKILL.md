@@ -44,14 +44,28 @@ type: executor
 1. 若 `step_handoff.resource_bindings` 已包含 `visualization_primitive` 的完整 `content` 和 `content.execution_assets`：
    - 先检查 `execution_assets_summary`：若 `unavailable + failed == total`，跳过校验直接进入阶段二降级决策。
    - 否则遍历每个资产，校验 `status` 为 `available` 或 `materialized` 的资产 SHA-256，再物化到工作区。
-2. 若资源绑定不完整或缺少执行资产，向 `onescience-primitives` 发起以下资源召回请求：
-   - `user_request`：必须包含可视化信号词（如"交互式 3D 蛋白质结构可视化、pLDDT 置信度着色、PAE 热图渲染"），确保 primitives 技能能正确路由到 `visualization` category
-   - `content_request: "完整内容"`
-   - `include_execution_assets: true`
-   - `filters.domain: bio`
-   - `filters.keyword: complex_structure_visualization`（**必须使用下划线分隔的精确目录名**，以触发 primitives 的命名直查模式，绕过语义排序和截断）
-   - 不得沿返回的裸 `path` 直接读取原语资产
-3. **【强制】召回结果校验**：收到 `resource_retrieval_result` 后，执行以下校验：
+2. 若资源绑定不完整或缺少执行资产，按以下优先级获取：
+
+   a. **【优先】直接使用 `catalog_search`**：调用 `catalog_search` 工具（kind=primitive, domain=bio, q=complex_structure_visualization）。此路径直接查询 OneCode 内置 catalog（含 bundled seed 原语），不依赖 `onescience-primitives` 技能的间接协议，避免因消息模拟链路中的工具可用性或参数传递问题导致检索失败。若命中：
+      - 使用 `catalog_resolve(id, part=body)` 获取完整内容（含 `execution_assets`）
+      - 提取 `matched_resources` 中 `type=visualization_primitive` 的资源
+      - 直接跳转到阶段一的步骤 3（召回结果校验），跳过步骤 2b
+
+   b. **【回退】通过 `onescience-primitives` 协议获取**：仅当 `catalog_search` 未命中时，向 `onescience-primitives` 发起以下资源召回请求：
+      - `user_request`：必须包含可视化信号词（如"交互式 3D 蛋白质结构可视化、pLDDT 置信度着色、PAE 热图渲染"），确保 primitives 技能能正确路由到 `visualization` category
+      - `content_request: "完整内容"`
+      - `include_execution_assets: true`
+      - `filters.domain: bio`
+      - `filters.keyword: complex_structure_visualization`（**必须使用下划线分隔的精确目录名**，以触发 primitives 的命名直查模式，绕过语义排序和截断）
+      - 不得沿返回的裸 `path` 直接读取原语资产
+3. **【强制】召回结果校验**：根据检索路径不同，校验方式如下：
+
+   **若来自路径 2a（`catalog_resolve` 直接返回）**：
+   - `catalog_resolve` 成功返回即表示原语已命中，无需再做"是否包含 visualization_primitive"的检查
+   - 直接从返回结果中提取 `execution_assets`（位于 `companions` 或返回体的 `execution_assets` 字段）
+   - 直接跳转到阶段二降级决策
+
+   **若来自路径 2b（`resource_retrieval_result`）**：
    a. 检查 `matched_resources` 是否包含 `name=complex_structure_visualization` 且 `type=visualization_primitive` 的资源。
    b. 若**未召回**该原语（即返回空列表或不包含 visualization_primitive），**不得直接放弃**。必须执行以下回退步骤：
       ① 检查 `resource_retrieval_result.detected_domain` 是否为 `bio`，`task_intent` 是否包含 `visualization`。

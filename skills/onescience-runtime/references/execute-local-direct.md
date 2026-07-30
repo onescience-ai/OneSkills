@@ -15,7 +15,7 @@
 
 ## Entry Gate
 
-进入本执行分支前必须已有当前轮次 preflight 证据：`preflight_passed=true`、`execution_readiness=ready`、`evidence.preflight.status=passed`、`evidence.preflight.conda_checked=true`、`evidence.preflight.environment_checked=true`、`evidence.preflight.entrypoint_checked=true`。任一缺失或失败时，不得生成或执行 `run_job.sh`，必须回到 `preflight`；若缺少 `runtime.conda` 或环境未 ready，立即委托 `onescience-installer`。
+进入本执行分支前必须已有当前轮次 preflight 证据（来自 installer 的 `preflight_result`）：`preflight_passed=true`、`execution_readiness=ready`、`evidence.preflight.status=passed`。任一缺失或失败时，不得生成或执行 `run_job.sh`，必须回到 `preflight` 重新委托 `onescience-installer`（`installer_reason=preflight_validation`）执行环境就绪预检。
 
 ## Steps
 

@@ -35,8 +35,9 @@ installer 的环境信息写回位置是 `onescience.json.runtime.conda`。除 `
 2. 用户要求“安装 Python 包”“安装 pip 包”“补装依赖”“安装某个包到 OneScience 环境”时，设为 `install_intent=python_packages`；但包名列表里若包含 `onescience`，必须拆分并将 `onescience` 路由到 `install_intent=bootstrap`，其余普通 Python 包才允许继续走 pip 分支。
 3. 用户没有明确意图时，先询问要安装 OneScience 环境还是安装 Python 包；不要在意图未知时进入安装分支。
 4. **若上游调用方传入 `installer_reason=workspace_model_path_detected`**：conda 环境已就绪，跳过环境检测与安装步骤，直接路由到 `./references/workspace-model-path-discovery.md` 完成模型路径探测与写回。这是 runtime 的轻量委托，不涉及 conda 创建或 pip 安装。
-5. `install_intent=bootstrap` 必须解析安装领域；无法从请求映射到 `install_domains.json` 时，询问用户安装哪个领域或是否安装 `all`。
-6. `install_intent=python_packages` 必须解析包名列表；缺少包名时只询问包名。
+5. **若上游调用方传入 `installer_reason=preflight_validation`**：进入纯环境就绪验证模式，读取 `./references/preflight-validation.md` 执行完整的环境预检。此模式不做任何安装操作；若预检发现环境缺失，再按失败分类路由到对应安装分支。此模式是 orchestrator 和 runtime 的环境前置检测的统一入口，实现环境检测职责从 orchestrator/runtime 向 installer 的完整迁移。
+6. `install_intent=bootstrap` 必须解析安装领域；无法从请求映射到 `install_domains.json` 时，询问用户安装哪个领域或是否安装 `all`。
+7. `install_intent=python_packages` 必须解析包名列表；缺少包名时只询问包名。
 
 ## 分支映射
 
@@ -52,6 +53,7 @@ installer 的环境信息写回位置是 `onescience.json.runtime.conda`。除 `
 | 检测成功、安装成功并验证成功后需要写回 `onescience.json.runtime.conda` | `./references/writeback-conda-state.md` |
 | 环境就绪后需要自动探测 workspace 模型与数据集路径 | `./references/workspace-model-path-discovery.md` |
 | 上游委托 `installer_reason=workspace_model_path_detected`（纯路径发现） | `./references/workspace-model-path-discovery.md`，无需走 conda 检测/安装分支 |
+| `installer_reason=preflight_validation`（纯环境就绪预检，不安装） | `./references/preflight-validation.md` |
 
 ## 硬门禁
 

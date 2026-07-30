@@ -17,11 +17,18 @@ type: resource
 
 调用方必须通过 `resource_retrieval_request → resource_retrieval_result` 的完整闭环获取资源。
 
-**协议范围豁免**：当调用方已构造合法的 `resource_retrieval_request`（包含 `user_request` 和/或 `filters`），并按本技能「召回流程」中的步骤（命名直查或常规召回管道）执行资源检索时，调用方**可以**对 `skills/onescience-primitives/assets/` 目录执行 Glob、Read 等操作——这属于本技能召回逻辑的执行，不是违规的直接消费。豁免范围仅限于：
+**协议范围豁免**：当调用方已构造合法的 `resource_retrieval_request`（包含 `user_request` 和/或 `filters`），并按本技能「召回流程」中的步骤执行资源检索时，调用方**可以**使用以下工具操作——这属于本技能召回逻辑的执行，不是违规的直接消费。豁免范围分为两级：
+
+**优先路径 —— `catalog_search` + `catalog_resolve`**：
+- 使用 `catalog_search` 工具（kind=primitive, domain=..., q=...）搜索原语
+- 使用 `catalog_resolve` 工具（part=body/contract/location）获取 companions 和契约
+- `catalog_search` 搜索的是 OneCode 内置 catalog（含 bundled seed 原语），不依赖本地文件系统
+
+**降级路径 —— 文件系统 Glob/Read**（仅当 `catalog_search` 无结果且确认 `skills/onescience-primitives/assets/` 目录在本地存在时使用）：
 - 枚举候选集（步骤 2）：Glob 列出资源目录
 - 快速过滤/语义匹配（步骤 3-4）：Read 各资源的 `metadata.json`
 - 内容组织（步骤 7）：Read 命中资源的 `spec.md`、`usage.md`、`workflow_planning.md` 及经白名单校验的执行资产
-- 命名直查（命名直查模式步骤 1-3）：Glob 搜索目录名、Read `metadata.json`
+- 命名直查（命名直查模式步骤 3-4）：Glob 搜索目录名、Read `metadata.json`
 
 调用方仍然**不得**沿 `matched_resources[].path` 自由读取任意文件，**不得**在未构造请求的情况下随意浏览 `assets/` 目录，**不得**消费未在 `execution_assets` 白名单中声明的脚本或文件。
 
@@ -60,9 +67,18 @@ assets/
 
 ## 召回流程
 
+> **【检索路径优先级】**：OneScience 原语资产可能存储在两处：
+> 1. **数据库/Blob Store**（通过 `catalog_search` + `catalog_resolve` 访问）：bundled seed 或已同步至 OneCode 内置 catalog 的原语。这是**默认检索路径**，优先级最高。
+> 2. **本地文件系统**（通过 Glob + Read 访问 `skills/onescience-primitives/assets/`）：通过 oneskills 安装器解压到磁盘的原语。这是**降级检索路径**，仅在路径 1 无结果且确认本地 assets 目录存在时使用。
+>
+> **强制规则**：
+> - 执行召回时，**必须先尝试路径 1**（`catalog_search`），不得跳过。
+> - 仅当 `catalog_search` 返回空结果，**且**确认 `skills/onescience-primitives/assets/` 目录在本地存在时，才回退到路径 2（文件系统 Glob/Read）。
+> - 回退到路径 2 后，命名直查和常规召回管道的文件系统操作规则（步骤 0-9）仍然适用。
+
 > 本技能没有统一索引文件，原语信息以各资源目录下的 `metadata.json` 为主。因此必须先确定检索范围，再枚举该范围内的资源目录并逐个读取 `metadata.json`，不要凭目录名猜测。
 >
-> **【路径规范】**：本技能所有 `assets/` 目录的绝对路径为 `skills/onescience-primitives/assets/`。在以下步骤中，凡出现 `assets/<domain>/` 或 `assets/<domain>/<category>/` 等路径，均指代相对于仓库根目录的 `skills/onescience-primitives/assets/<domain>/...`。使用 Glob、Read 等工具访问资产文件时，必须拼接完整路径前缀 `skills/onescience-primitives/`，不得使用不包含此前缀的相对路径。
+> **【路径规范】**：本技能所有 `assets/` 目录的绝对路径为 `skills/onescience-primitives/assets/`。资源目录采用**三层嵌套结构**：`<domain>/<category>/<primitive_name>/`（如 `bio/visualization/complex_structure_visualization/`）。在以下步骤中，凡出现 `assets/<domain>/` 或 `assets/<domain>/<category>/` 等路径，均指代相对于仓库根目录的 `skills/onescience-primitives/assets/<domain>/...`。使用 Glob 搜索候选资源时必须使用 `**` 递归模式（如 `assets/bio/**/metadata.json`），不得使用单层 `*` 导致遗漏嵌套子目录。使用 Read 工具访问资产文件时，必须拼接完整路径前缀 `skills/onescience-primitives/`，不得使用不包含此前缀的相对路径。
 >
 > **【命名直查优先】**：在执行常规召回管道（步骤 0-6）之前，必须先检查是否满足命名直查条件。
 
@@ -76,11 +92,12 @@ b. `filters.domain` 已明确指定（如 `bio`、`cfd`、`climate`、`matchem`�
 
 **命名直查执行步骤**：
 1. 从 `filters.keyword` 中提取原语名称候选（将关键词按下划线连接、去空格、去标点等规范化处理后，与目录名比对）
-2. 在 `skills/onescience-primitives/assets/<filters.domain>/` 下递归搜索匹配的目录名（使用 Glob 搜索 `skills/onescience-primitives/assets/<domain>/**/<name>/metadata.json`，其中 `<domain>` 替换为实际 domain 值如 `bio`，`<name>` 替换为从 keyword 提取的目录名）
-3. 若找到唯一匹配，直接读取该目录的 `metadata.json`；若找到多个匹配（跨 category），读取所有匹配并取 domain 和 keyword 语义最接近的一个
-4. 若未找到匹配，回退到常规召回管道（步骤 0-6）
-5. 命中后，直接跳转到步骤 7（组织内容），**跳过步骤 0-6 的枚举、过滤、语义匹配和截断**
-6. 命名直查命中的资源在 `why_matched` 中标注 `named_lookup`，说明是通过名称直查而非语义匹配
+2. **优先使用 `catalog_search`**：调用 `catalog_search` 工具（kind=primitive, domain=<filters.domain>, q=<从 keyword 提取的名称>）。若命中，直接使用 `catalog_resolve` 获取 body/contract，并跳转到步骤 6。
+3. **回退到文件系统**：若 `catalog_search` 未命中且确认 `skills/onescience-primitives/assets/` 目录存在，则在 `skills/onescience-primitives/assets/<filters.domain>/` 下递归搜索匹配的目录名（使用 Glob 搜索 `skills/onescience-primitives/assets/<domain>/**/<name>/metadata.json`，其中 `<domain>` 替换为实际 domain 值如 `bio`，`<name>` 替换为从 keyword 提取的目录名）。必须使用 `**` 递归匹配，不得使用单层 `*`。
+4. 若找到唯一匹配，直接读取该目录的 `metadata.json`；若找到多个匹配（跨 category），读取所有匹配并取 domain 和 keyword 语义最接近的一个
+5. 若未找到匹配，回退到常规召回管道（步骤 0-6）
+6. 命中后，直接跳转到步骤 7（组织内容），**跳过步骤 0-6 的枚举、过滤、语义匹配和截断**
+7. 命名直查命中的资源在 `why_matched` 中标注 `named_lookup`，说明是通过名称直查而非语义匹配
 
 **重要约束**：
 - 命名直查是精确匹配辅助机制，不是语义搜索的替代品
@@ -94,7 +111,9 @@ b. `filters.domain` 已明确指定（如 `bio`、`cfd`、`climate`、`matchem`�
 
 以下步骤仅在命名直查未命中时执行。
 
-0. **判定 domain scope**：先判断调用方是否通过 `filters.domain` 显式提供 domain。
+0. **优先使用 `catalog_search`**：首先调用 `catalog_search` 工具（kind=primitive），传入 domain、keyword 等过滤条件。若返回非空结果，直接对结果项使用 `catalog_resolve(part=body)` 获取完整内容，跳过后续文件系统枚举步骤。仅当 `catalog_search` 无结果时，继续执行以下文件系统流程。
+
+   **判定 domain scope**：先判断调用方是否通过 `filters.domain` 显式提供 domain。
    - 若 `filters.domain` 明确给出，则**直接使用调用方提供的 domain**，只检索对应的 `skills/onescience-primitives/assets/<domain>/`，且**不要再读取** `skills/onescience-primitives/references/domain_profile.md` 做二次判断
    - 若 `filters.domain` 未提供、为空或不可靠，则**必须先读取** `skills/onescience-primitives/references/domain_profile.md`，再结合 `user_request` 与 `task_state_summary` 按其中定义的领域信号进行回退判定
    - 回退判定结果若为 `climate | cfd | matchem | bio`，则只检索对应的 `skills/onescience-primitives/assets/<domain>/`
@@ -110,7 +129,7 @@ b. `filters.domain` 已明确指定（如 `bio`、`cfd`、`climate`、`matchem`�
      - 分子可视化工具名：`PyMOL`、`3Dmol`、`MolStar`、`NGL`、`cartoon`、`ribbon`、`surface`、`stick`
      - 结构文件格式（需渲染）：`.pdb`、`.cif`、`.mmcif`、`.pse`、`.pml`
      - 当上述任一信号出现时，即使主意图被判定为 model/datapipe/application，也必须将 `visualization` category 纳入检索范围，不可遗漏
-2. **枚举候选集**：在已确定的 domain/category scope 内，列出所有资源目录，得到完整候选集。
+2. **枚举候选集**：在已确定的 domain/category scope 内，使用 Glob 递归搜索 `skills/onescience-primitives/assets/<domain>/**/metadata.json`（必须使用 `**` 递归匹配，不得使用单层 `*`），得到完整候选集。从每个匹配路径中提取三层信息：domain（`assets/` 后第一段）、category（domain 后第一段）、primitive_name（category 后第一段）。示例：路径 `assets/bio/visualization/complex_structure_visualization/metadata.json` → domain=`bio`, category=`visualization`, primitive_name=`complex_structure_visualization`。后续所有路径拼接必须保留完整的 `<domain>/<category>/<primitive_name>/` 三层结构，不得省略中间 category 层。
 3. **快速过滤**：仅当 `filters.keyword` 提供了关键词时执行；结合目录名、`metadata.json` 的 `name`、`domain`、`description` 与 `tags` 排除明显不相关的资源。未提供关键词时跳过本步。
 4. **语义匹配**：遍历剩余每个候选资源的 `metadata.json`，对比 `user_request` 与 `description` 字段的语义相关性。
 5. **上下文增强**：结合 `task_state_summary` 进一步筛选和排序，但不能用上下文替代资源本身的证据。
