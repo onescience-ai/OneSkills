@@ -45,7 +45,7 @@ assets/
         spec.md                  ← 规格知识（架构、参数、依赖）
         usage.md                 ← 使用知识（启动示例、接口、限制）
         workflow_planning.md     ← 规划决策知识（时机、流程、约束）
-        scripts/                 ← 可选受控执行资产；必须由 metadata.json.execution_assets 白名单声明
+        scripts/                 ← 可选受控执行资产；必须由 spec.md 的 # execution_assets 结构化白名单 白名单声明
 ```
 
 当前 `assets/` 顶层按 domain 组织，实际目录以仓库中的现状为准；当前可见的顶层 domain 包括：
@@ -148,7 +148,15 @@ b. `filters.domain` 已明确指定（如 `bio`、`cfd`、`climate`、`matchem`�
    - `"工作流规划知识"`：读取 `workflow_planning.md`（若存在）
    - `"完整内容"`：只读取 `metadata.json`、`spec.md`、`usage.md`、`workflow_planning.md` 中实际存在的文件并组织为结构化内容；不得因为请求完整内容而自动返回任意脚本
    - 当且仅当 `include_execution_assets: true` 时，按以下子步骤物化受控执行资产：
-   a. 从命中资源的 `metadata.json.execution_assets` 读取白名单数组。
+   a. 读取命中资源的 spec.md，定位唯一的一级标题
+   # execution_assets。
+
+   读取该标题后紧邻的第一个 yaml 代码块，并从根字段
+   execution_assets 获取白名单数组。
+
+   不得从其他章节、自然语言、表格或 scripts/ 目录推测资产。
+   若章节不存在、代码块不存在、YAML 无法解析、根字段缺失或
+   出现重复 # execution_assets 标题，则视为白名单不可用。
    b. 遍历白名单中的每一项资产声明，以 primitive 目录（即 `skills/onescience-primitives/assets/<domain>/<category>/<resource_name>/`）为基准拼接相对路径，得到资产的绝对磁盘路径。
    c. 对每个资产执行：
       ① 检查文件是否存在。不存在时，该资产的 `status` 标记为 `unavailable`，`reason` 填 `file_not_found`，跳过后续校验。
@@ -210,7 +218,7 @@ content:
   usage: <usage.md 内容>
   workflow_planning: <workflow_planning.md 内容>
   execution_assets:
-    - path: <metadata.json.execution_assets 中声明的相对路径>
+    - path: < spec.md 的 `# execution_assets` 结构化白名单中声明的相对路径 >
       kind: <python_cli | template | javascript_runtime | license | other>
       media_type: <MIME type>
       sha256: <白名单声明的校验值>
@@ -230,7 +238,7 @@ content:
 执行资产强制规则：
 
 - 只有请求显式包含 `include_execution_assets: true` 时才能返回。
-- 只允许 `metadata.json.execution_assets` 中逐项声明的相对路径；拒绝未声明文件、绝对路径、`..` 和路径穿越。
+- 只允许 `spec.md 的 # execution_assets 结构化白名单` 中逐项声明的相对路径；拒绝未声明文件、绝对路径、`..` 和路径穿越。
 - 规范化后的路径必须仍位于当前 primitive 目录内。
 - 返回前校验 SHA-256；不匹配时不返回该资产内容，逐资产标记 `status: failed` 及 `reason: sha256_mismatch`（记录期望值与实际值），但不应影响其他已通过校验的资产。
 - 调用方只能消费 `content.execution_assets`，不得沿 `matched_resources[].path` 直接读取文件。

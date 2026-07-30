@@ -120,7 +120,7 @@ primitive spec
 # acceptance
 
 - 召回类型为 `visualization_primitive`、domain 为 `bio`。
-- execution assets 只能从 metadata 白名单返回。
+- execution assets 只能从 spec.md 的 # execution_assets 结构化白名单返回
 - 首屏只有默认视图、pLDDT、已保存自定义视图和添加视图。
 - 页面左上角固定标题，视图上方提供 polymer sequence 筛选和 hover 联动。
 - 默认规则与 `default_scene` 一致。

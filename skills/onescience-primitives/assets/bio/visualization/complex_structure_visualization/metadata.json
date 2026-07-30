@@ -27,42 +27,5 @@
     "sequence-linkage",
     "dynamic-bonds",
     "rcsb-style"
-  ],
-  "execution_assets": [
-    {
-      "path": "scripts/render_complex_structure.py",
-      "kind": "python_cli",
-      "purpose": "解析 PDB/mmCIF 与 AF3 confidence JSON、校验 pLDDT/PAE 来源并确定性生成单样本或多样本交互 HTML",
-      "media_type": "text/x-python",
-      "sha256": "37c23533c6d96e05627ace5686deeaf366eab4a9a4547d2d9f21821e32deb83a"
-    },
-    {
-      "path": "scripts/interactive_template.html",
-      "kind": "template",
-      "purpose": "3Dmol.js RCSB-like 三维结构、序列 hover、带平行双键和虚线可能氢键的局部 bonds 聚焦、自定义视图预览/删除、AlphaFold 固定 pLDDT 色阶、Canvas PAE 与多样本切换模板",
-      "media_type": "text/html",
-      "sha256": "bb4abee6739902e09bcaf251a24b5a1846dc11e0189a3e9dcbae92486b5f6ff7"
-    },
-    {
-      "path": "scripts/validate_visualization.py",
-      "kind": "python_cli",
-      "purpose": "检查生成文件、固定标题/RCSB-like 视觉规则、序列、Dynamic bonds 虚线可能氢键/平行双键标记、自定义预览/删除、pLDDT 来源、PAE、多样本及片段约束",
-      "media_type": "text/x-python",
-      "sha256": "eb71b4a52a88906a831a52a168a7b0cdb24f2debb16948499dd8888940d001ac"
-    },
-    {
-      "path": "scripts/vendor/3Dmol-2.5.4.min.js",
-      "kind": "javascript_runtime",
-      "purpose": "固定的跨平台 3Dmol.js classic runtime，由生成器校验并内联到离线 HTML",
-      "media_type": "text/javascript",
-      "sha256": "1297081865a4d6c0b2ac22d3e909724da8c03ba0caf7bfc78c8a3d9d8b143f4e"
-    },
-    {
-      "path": "scripts/vendor/3DMOL-LICENSE.txt",
-      "kind": "license",
-      "purpose": "3Dmol.js 2.5.4 及其合并依赖的许可证文本",
-      "media_type": "text/plain",
-      "sha256": "4c6eaaed856f3f28a3b1a98e74f4a8a71618de7d51ea4155c29f6f793bcef861"
-    }
   ]
 }
