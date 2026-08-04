@@ -25,7 +25,7 @@ orchestrator 在召回专家前，先基于用户请求和资源摘要形成意�
 }
 ```
 
-`intent_aspects` 是专家召回的基本单位。`aspect_key` 只是轻量追踪键，不是强制全局 ID；如果没有稳定键，也可以仅保留 `goal` 和 `evidence`。
+`intent_aspects` 是专家召回的唯一驱动单位。orchestrator 必须逐个方面进行严格匹配，并为每个方面记录召回结果。`aspect_key` 只是轻量追踪键，不是强制全局 ID；如果没有稳定键，也可以仅保留 `goal` 和 `evidence`。
 
 ## Planner 召回输入
 
@@ -58,6 +58,8 @@ orchestrator 在召回专家前，先基于用户请求和资源摘要形成意�
 ```
 
 `available_execution_skills` 不是技能名称列表；它必须来自 orchestrator 对当前所有 `type=executor` 技能完整读取各自权威 `SKILL.md` 后形成的证据化能力台账。frontmatter `description`、技能名称或其他摘要只能帮助列举候选 executor，不能替代该台账作为职责边界依据。
+
+orchestrator 还必须维护一份仅供内部校验的 executor inventory 状态，至少包含：`all_executor_skills`、`read_executor_skills`、`missing_executor_skills`、`executor_inventory_complete`。其中 `all_executor_skills` 是当前轮次发现的全部 `type=executor` 技能集合，`read_executor_skills` 是已完成权威 `SKILL.md` 全文读取并写入证据化台账的技能集合，`missing_executor_skills = all_executor_skills - read_executor_skills`。
 
 ## Planner Proposal 输出
 
@@ -107,7 +109,9 @@ orchestrator 对多个 proposal 做融合和优化：
 - 合并重复 stage。
 - 在合并后、生成最终 `global_plan` 前，必须先完整查询当前所有可用的 `type=executor` 技能，并逐个完整读取其权威 `SKILL.md`，形成 executor 能力视图。
 - executor 能力视图至少应覆盖：`skill_name`、`source_of_truth`、输入要求、输出产物、职责边界、明确不负责事项、下游交接对象、覆盖的专门原子动作、前置条件，以及对应证据段落。
+- 必须先做集合校验：`set(all_executor_skills) == set(read_executor_skills)`；若不相等，立刻计算 `missing_executor_skills`，设置 `executor_inventory_complete=false`，并停止后续计划融合、`global_plan` 生成与 `next_step` 选择。
 - 若 executor 能力视图不完整、任一台账字段缺失，或只基于技能名称 / frontmatter `description` / 简写摘要而未完成完整 `SKILL.md` 阅读，则不得继续计划融合或选择 `next_step`。
+- 上述全量技能列表和读取状态用于 orchestrator 内部校验与 Task State 记录，不作为默认前端输出内容；默认只向用户展示 inventory 汇总状态（例如 `executor inventory: 13/13 complete`），仅在 `executor_inventory_complete=false` 或进入阻断时展示 `missing_executor_skills`。
 - 在合并后、生成最终 `global_plan` 前，必须按可调用 `type=executor` 技能做能力覆盖拆分。
 - 如果一个阶段可由宽泛 executor 一次性完成，但阶段内部包含已有专门 executor 可执行的子动作，必须拆成多个阶段，并用 `depends_on` 串接 artifact 流。
 - 如果当前 executor 能力台账中存在某个原子动作的明确 owner，该动作应进入对应 `executor_step`，不保留为 `orchestrator_step`。

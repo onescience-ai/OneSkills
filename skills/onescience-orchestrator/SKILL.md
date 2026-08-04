@@ -12,12 +12,14 @@ type: orchestrator
 
 1. 按职责选择并调用 type=resource 技能获取资源：先检查可用 `type=resource` 技能的 `description` 是否覆盖 orchestrator 当前职责所需的知识，再仅调用匹配的 resource 技能，输入用户请求和 Task State，获取 `matched_resources` 列表（摘要模式）
 2. 基于资源识别用户意图：分析已召回资源的 `matched_resources` 和用户请求，生成 `intent_profile`
-3. 执行专家召回：根据用户意图查找 `type=expert` 的专家技能，并记录本轮召回状态；召回可以命中 0 个专家，但该状态必须进入 Task State
-4. 收集专家规划结果：命中专家时传递上下文并接收 `planner_proposal`；未命中时保留空召回结果，并进入后续 `direct_step` 判定
-5. 融合优化为 Global Plan：合并多个 proposals，生成全局计划
+3. 执行专家召回：以 `intent_profile.intent_aspects` 为唯一召回驱动，逐个方面查找对应的 `type=expert` 专家技能，并记录本轮召回状态；每个匹配结果都必须进入 Task State，未命中的方面也必须保留空结果痕迹
+4. 收集专家规划结果：对所有命中的专家逐个传递上下文并接收 `planner_proposal`；只要某个意图方面命中专家，就必须执行该专家的规划回执收集，不能因为其他专家已返回而跳过
+5. 融合优化为 Global Plan：先收集完所有命中的专家 proposals，再合并生成全局计划
    - 在任何计划融合、direct_step 规划、下一步选择之前，必须先完整查询当前所有可用的 `type=executor` 技能。
    - 枚举所有 executor 后，必须逐个完整读取其权威 `SKILL.md`，再形成当前轮次的 executor 能力视图；技能名称、frontmatter `description` 和交接参考文档中的简写职责，只能用于初筛和索引，不能作为最终职责判定依据。
    - 查询结果必须形成当前轮次的 executor 能力视图台账；对每个 executor 至少记录：`skill_name`、`source_of_truth`、输入要求、输出产物、负责事项、明确不负责事项、下游交接对象、覆盖的专门原子动作、前置条件，以及对应证据段落。
+   - 同时必须维护当前轮次的内部 executor inventory：`all_executor_skills`、`read_executor_skills`、`missing_executor_skills`、`executor_inventory_complete`。
+   - 在继续规划前必须做集合校验：`set(all_executor_skills) == set(read_executor_skills)`；若不相等，立刻计算 `missing_executor_skills`，设置 `executor_inventory_complete=false`，并停止后续 proposal 融合、`Global Plan` 生成和 `Next Step Spec` 选择。
    - 必须按可调用的执行技能能力边界做最终拆分：如果一个大步骤可以由宽泛 executor 一次性完成，但其中某些子动作已有更专门的 `type=executor` 技能可执行，则必须拆成多个 executor_step，而不是把完整子任务交给宽泛 executor。
    - 若任一 executor 未完成完整读取、能力台账字段缺失，或职责边界仍未核定，则先补齐查询结果与边界核定，再继续本轮规划；在信息补齐前不要融合 proposal、生成最终 `Global Plan`，也不要选择 `Next Step Spec`。
 6. 循环规划执行：
@@ -152,8 +154,8 @@ type: orchestrator
 
 ### 阶段二：专家召回与计划融合
 
-4. 根据 intent_aspects 执行专家召回：
-   - 遍历 `intent_profile.intent_aspects`，为每个方面查找对应的 `type=expert` 规划技能
+4. 根据 `intent_profile.intent_aspects` 严格执行专家召回：
+   - 遍历 `intent_profile.intent_aspects`，为每个方面查找对应的 `type=expert` 规划技能；匹配规则以方面本身为准，不得用泛化相似度替代
    - 无论是否找到匹配专家，都记录本轮召回结果；任务看起来简单、通用或适合 `direct_step` 时，也先留下“已召回、未命中”的状态痕迹
    - 记录 `planner_candidates` 列表；若为空，也要保留空召回结果
 
@@ -169,7 +171,9 @@ type: orchestrator
      - 技能的下游交接对象与前置条件
      - 技能当前是否覆盖每个候选步骤中的原子动作
      - 上述判断对应的证据段落
+   - 同时维护内部 inventory 校验结果：记录 `all_executor_skills`、`read_executor_skills`、`missing_executor_skills`，并计算 `executor_inventory_complete`
    - frontmatter `description`、技能名称和 handoff 文档中的简写职责，只能用于列举候选 executor，不能替代完整 `SKILL.md` 作为边界依据
+   - 若 `set(all_executor_skills) != set(read_executor_skills)`，则立即停止计划融合，输出缺失技能名单到内部状态，并仅以简短摘要向用户报告 inventory 未完成
    - 若 executor 能力视图不完整、存在未核定边界的 executor，或任一 executor 缺少证据化台账，则先补齐查询结果后再继续计划融合
    - 融合和优化 proposals，生成统一的 `Global Plan`：
      - 先生成 `global_plan` 的调度骨架，再为每个 `executor_step` 生成按目标 executor 裁剪的 detail bundle
@@ -203,6 +207,8 @@ type: orchestrator
    - 视为通用任务、单步任务或专家体系尚未覆盖的任务
    - 该分支只在“阶段一资源召回完成 + 阶段二专家召回已执行且记录为空结果”之后进入
    - 查询可用 executor 技能能力：必须列举当前所有可用的 `type=executor` 技能，并逐个完整读取对应 `SKILL.md`，形成完整的 executor 能力视图台账
+   - 同时维护内部 inventory 校验结果：记录 `all_executor_skills`、`read_executor_skills`、`missing_executor_skills`，并计算 `executor_inventory_complete`
+   - 若 `set(all_executor_skills) != set(read_executor_skills)`，则立即停止 direct_step 规划，输出缺失技能名单到内部状态，并仅以简短摘要向用户报告 inventory 未完成
    - 若 executor 能力视图不完整、缺少证据化台账，或仍有 executor 边界未核定，则先补齐台账后再进入 direct_step 规划
    - 由 orchestrator 基于 `intent_profile`、`matched_resources` 和完整的 executor 能力视图直接规划完整的 `Global Plan`
    - 为每个步骤标注执行方式：`executor_step` 或 `orchestrator_step`
@@ -210,7 +216,9 @@ type: orchestrator
 7. 【强制要求】向前端输出 Global Plan（无论步骤5还是步骤6）：
    - 先向用户输出 Global Plan 作为过程性可见结果，然后在同一 skill 循环内继续执行第一步
    - 输出格式必须包含：
-     - 当前轮次完整的 executor 能力视图摘要：列出本轮查询到的全部 `type=executor` 技能，以及每个技能的权威来源、职责边界、关键输入输出、不负责事项、下游交接对象和证据段落
+     - 当前轮次的 executor inventory 汇总状态：仅展示简短摘要，例如 `executor inventory: 13/13 complete`
+     - 若 `executor_inventory_complete=false` 或进入 blocked，才额外展示 `missing_executor_skills`；默认不向用户列出完整 `all_executor_skills` 或 `read_executor_skills`
+     - 当前轮次 executor 能力视图的摘要性结论：只概括与当前计划相关的职责边界、关键输入输出和选择依据，不默认枚举全部 executor 明细
      - 计划总步骤数和预计耗时
      - 每个步骤的序号、目标描述、执行方式（executor_step/orchestrator_step）
      - executor_step 标注具体执行技能名称，以及为何该技能而不是其他 executor 更匹配该步骤

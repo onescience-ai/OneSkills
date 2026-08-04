@@ -24,7 +24,7 @@
       "planner_id": "string",
       "matched_aspect": "string",
       "match_reason": "string",
-      "status": "candidate|queried|rejected"
+      "status": "candidate|queried|received|merged|rejected"
     }
   ],
   "planner_proposals": [
@@ -32,14 +32,22 @@
       "planner_id": "string",
       "covered_aspect": "string",
       "confidence": "high|medium|low",
-      "status": "received|merged|rejected|conflict"
+      "status": "received|merged|rejected|conflict",
+      "source_proposal": "string"
     }
   ],
+  "executor_inventory": {
+    "all_executor_skills": ["string"],
+    "read_executor_skills": ["string"],
+    "missing_executor_skills": ["string"],
+    "executor_inventory_complete": true,
+    "user_visible_summary": "string"
+  },
   "global_plan": [
     {
       "stage_id": "string",
       "goal": "string",
-      "source_proposals": [],
+      "source_proposals": ["string"],
       "depends_on": [],
       "execution_skill": "string|null",
       "detail_bundle_id": "string|null",
@@ -52,7 +60,7 @@
       "stage_id": "string",
       "execution_skill": "string|null",
       "detail_bundle": {},
-      "detail_provenance": [],
+      "detail_provenance": ["string"],
       "required_resources": [],
       "expected_artifacts": [],
       "completion_criteria": [],
@@ -125,6 +133,10 @@ any -> blocked
 - `intent_aspects` 中的 `aspect_key` 只是轻量追踪键；没有稳定键时可以只保留 `goal` 与 `evidence`。
 - 如果按 `intent_profile` 召回不到专家，设置 `planning_mode=direct_step`，并记录 orchestrator 直接规划的原因。
 - 走专家规划时，设置 `planning_mode=expert_proposal_synthesis`，记录候选专家、已收集 proposal、融合后的 `global_plan`，以及与各 stage 对应的 `plan_detail_store`。
+- 在任何计划融合、`global_plan` 生成或 `next_step` 选择之前，必须先写入 `executor_inventory`：记录当前轮次发现的全部 executor、已完整读取并入账的 executor、差集 `missing_executor_skills`，并计算 `executor_inventory_complete`。
+- `executor_inventory_complete=true` 的前提是 `set(all_executor_skills) == set(read_executor_skills)`，且每个已读 executor 都已写入证据化能力台账；若不满足，保持 `executor_inventory_complete=false`，不得继续规划推进。
+- `user_visible_summary` 只保留面向用户的简短汇总，例如 `executor inventory: 13/13 complete`；完整列表默认只保存在 Task State 内部，只有 inventory 不完整或进入 blocked 时才向用户展开 `missing_executor_skills`。
+- 只要 `intent_aspects` 命中多个专家，就默认按多专家 proposal synthesis 处理；不得在尚未收齐所有命中专家回执前提前定稿。
 - proposal 融合后，不仅要写入 `global_plan` 骨架，还必须为每个 executor_step 写入按目标 executor 裁剪后的 detail bundle；不得只保留阶段 `goal`。
 - 选择 `next_step` 时，必须同时选出对应的 `detail_bundle_id` 和 detail bundle 内容，写入 `active_step`。
 - 若当前 `active_step.execution_skill` 非空，则该步骤视为 executor-owned；在收到对应 executor 的 `execution_result` 之前，orchestrator 不以自身 direct tool 结果替代该步骤，也不绕过该 owner 推进后续步骤。
