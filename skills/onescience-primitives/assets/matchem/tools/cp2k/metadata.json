@@ -1,0 +1,22 @@
+{
+  "name": "cp2k",
+  "type": "tool",
+  "domain": "matchem",
+  "version": "docs-derived-2026-08",
+  "visibility": "public",
+  "created_at": "2026-08-05",
+  "updated_at": "2026-08-05",
+  "description": "CP2K是开源的大体系量子化学和分子动力学模拟软件，支持混合Gaussian与平面波（GPW）方法，可在DFT级别处理数千原子的体系。核心方法：密度泛函理论（DFT/LDA/GGA/hybrid/meta-GGA）、Post-HF（MP2/RPA/GW）、半经验方法（DFTB/PM6/PM7）、机器学习势函数、QM/MM混合计算、增强采样（metadynamics/umbrella sampling）。输入文件使用嵌套层次结构，关键段：&GLOBAL（运行类型/项目名）、&FORCE_EVAL（方法/基组/体系定义）、&MOTION（MD/优化参数）。核心功能：结构优化、分子动力学（BOMD/AIMD）、振动分析、NEB过渡态、电子结构分析、光谱计算。结合Quickstep模块实现高效DFT，支持DBCSR稀疏矩阵优化、GPU加速。适用场景：大体系第一性原理MD（数百至数千原子）、液体/溶液体系DFT模拟、催化反应QM/MM、生物体系QM/MM。不适用：小分子高精度量子化学（可用Gaussian/ORCA），十万原子级经典MD（应使用LAMMPS/GROMACS）。",
+  "tags": [
+    "cp2k",
+    "dft",
+    "first-principles",
+    "gpw",
+    "qm-mm",
+    "molecular-dynamics",
+    "metadynamics",
+    "aimd",
+    "mpi",
+    "hpc"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "deepmd_kit",
+  "type": "tool",
+  "domain": "matchem",
+  "version": "docs-derived-2026-08",
+  "visibility": "public",
+  "created_at": "2026-08-05",
+  "updated_at": "2026-08-05",
+  "description": "DeePMD-kit是Deep Potential分子动力学模型训练与部署工具集。基于深度学习从第一性原理数据训练原子间势函数（MLIP），支持多种descriptor类型（se_e2_a/se_e2_r/se_e3/se_atten/DPA-2/DPA-3/DPA-4/hybrid）、能量/力/应力/virial训练、偶极/极化率/电子态密度训练、长程静电（DPLR/DPRc）、spin势函数。核心工作流：使用dpdata准备训练数据（支持VASP/CP2K/LAMMPS/QCHEM等多种格式转换）→ 编写模型训练input.json配置（descriptor+fitting_net参数）→ dp train训练 → dp freeze冻结模型 → dp compress压缩模型 → dp test测试精度 → 部署到LAMMPS（pair_style deepmd）、ASE、GROMACS、i-PI等进行MD模拟。支持多GPU并行训练、多任务训练、预训练模型微调（finetuning）、Model Deviation计算（主动学习关键组件）。预训练模型：DPA-3等。适用场景：从AIMD数据训练MLIP进行大规模经典MD模拟，主动学习数据生成流程（配合DP-GEN）。不适用：直接进行第一性原理计算，非原子尺度任务。",
+  "tags": [
+    "deepmd-kit",
+    "deepmd",
+    "deep-potential",
+    "mlip",
+    "potential-training",
+    "molecular-dynamics",
+    "lammps",
+    "dpdata",
+    "dpa-3",
+    "hpc",
+    "gpu-training"
+  ]
+}

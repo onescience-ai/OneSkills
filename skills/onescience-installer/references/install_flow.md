@@ -21,8 +21,14 @@
 | `{wheel_install_command}` | `workspace_bootstrap_profiles.json.wheel.install_command_template`，当前默认 `pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` |
 | `{module_loads}` | 由 `backend_profiles.json.bootstrap.module_sequence` 渲染出的 `module load ... && ...` 命令串 |
 | `{python_packages}` | 需要安装或校验的 Python 包列表，渲染为空格分隔参数 |
+| `{download_url}` | `hpc_software_profiles.json[].download.url` |
+| `{archive_file}` | 下载后的文件名，由 `wget --content-disposition` 自动确定，或从 URL 提取 |
+| `{install_dir}` | `hpc_software_profiles.json[].install.default_install_dir` 或用户指定路径 |
+| `{verify_command}` | `hpc_software_profiles.json[].verify.command` |
+| `{required_modules}` | `hpc_software_profiles.json[].runtime.required_modules`，渲染为 `module load ...` 命令串 |
 
 > `{ssh_options}`、`{wheel_dir}`、`{wheel_glob}`、`{download_wheel_command}`、`{resolved_extra}`、`{metadata_probe_command}`、`{wheel_install_command}`、`{module_loads}`、`{python_packages}` 的渲染来源由 `../SKILL.md` 路由到对应工作流后确定。
+> `{download_url}`、`{archive_file}`、`{install_dir}`、`{verify_command}`、`{required_modules}` 的渲染来源由 `install-hpc-software.md` 工作流确定。
 
 ## 目录
 
@@ -53,6 +59,12 @@
 - `§17` 当前环境 Python 包预检测
 - `§18` 远端当前环境 Python 包安装
 - `§19` 远端当前环境 Python 包验证
+- `§20` HPC 软件下载（remote_slurm）
+- `§21` HPC 软件下载（local_slurm）
+- `§22` HPC 软件解压（remote_slurm）
+- `§23` HPC 软件解压（local_slurm）
+- `§24` HPC 软件验证（remote_slurm）
+- `§25` HPC 软件验证（local_slurm）
 
 ---
 
@@ -446,4 +458,52 @@ ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash 
 
 ```bash
 ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && {module_loads} && pip show {python_packages}"'
+```
+
+---
+
+## §20 HPC 软件下载（remote_slurm）
+
+```bash
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && mkdir -p {install_dir} && cd {install_dir} && wget --content-disposition \"{download_url}\""'
+```
+
+---
+
+## §21 HPC 软件下载（local_slurm）
+
+```bash
+bash -lc "set -o pipefail && mkdir -p {install_dir} && cd {install_dir} && wget --content-disposition \"{download_url}\""
+```
+
+---
+
+## §22 HPC 软件解压（remote_slurm）
+
+```bash
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && mkdir -p {install_dir} && cd {install_dir} && tar -xzf {archive_file} -C {install_dir} --strip-components=1"'
+```
+
+---
+
+## §23 HPC 软件解压（local_slurm）
+
+```bash
+bash -lc "set -o pipefail && mkdir -p {install_dir} && cd {install_dir} && tar -xzf {archive_file} -C {install_dir} --strip-components=1"
+```
+
+---
+
+## §24 HPC 软件验证（remote_slurm）
+
+```bash
+ssh {ssh_options} -p {ssh_port} -i {ssh_identity} {ssh_user}@{ssh_server} 'bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && export PATH={install_dir}/bin:\$PATH && export LD_LIBRARY_PATH={install_dir}/lib64:\$LD_LIBRARY_PATH && {verify_command}"'
+```
+
+---
+
+## §25 HPC 软件验证（local_slurm）
+
+```bash
+bash -lc "set -o pipefail && (test -f ~/.bashrc && source ~/.bashrc || true) && export PATH={install_dir}/bin:\$PATH && export LD_LIBRARY_PATH={install_dir}/lib64:\$LD_LIBRARY_PATH && {verify_command}"
 ```

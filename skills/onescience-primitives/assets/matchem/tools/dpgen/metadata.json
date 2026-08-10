@@ -1,0 +1,21 @@
+{
+  "name": "dpgen",
+  "type": "tool",
+  "domain": "matchem",
+  "version": "docs-derived-2026-08",
+  "visibility": "public",
+  "created_at": "2026-08-05",
+  "updated_at": "2026-08-05",
+  "description": "DP-GEN（Deep Potential GENerator）是主动学习框架，用于自动化生成Deep Potential势函数的训练数据。通过「探索-标注-训练」循环，从初始少量AIMD数据出发，自动探索构型空间并标注新的训练数据。核心流程：1）使用多模型ensemble进行MD探索，通过Model Deviation筛选不确定构型；2）使用VASP/CP2K等第一性原理软件标注筛选出的构型；3）重新训练势函数模型并迭代。关键组件：machine.json（探索参数）、train.json（训练参数）、param.json（整体配置）。核心命令：dpgen run（启动迭代）、dpgen debug（调试）、dpgen collect（收集结果）。支持并发任务提交，支持多种DFT软件（VASP/CP2K/PWmat/PWscf/SIESTA/Gaussian）。适用场景：构建材料体系的MLIP数据库，需要从少量数据自动扩展到高质量势函数。配合DeepMD-kit使用实现端到端势函数开发。",
+  "tags": [
+    "dp-gen",
+    "dpgen",
+    "active-learning",
+    "training-data-generation",
+    "model-deviation",
+    "mlip",
+    "deepmd",
+    "dft-labeling",
+    "hpc"
+  ]
+}

@@ -67,9 +67,15 @@
 - 分子性质预测
 - 第一性原理 / 计算化学
 - MACE / UMA / 其它材料模型 / MLIP / U-MLIP
+- GROMACS / LAMMPS / 分子动力学 / MD 模拟
 - extxyz / xyz / ASE / LAMMPS / DeepMD 数据
 - OC20 / OMAT / OMOL
 - 能量、力、应力、势函数、结构弛豫、MD
+- VASP、LAMMPS、CP2K、Gaussian、GROMACS、DP-GEN
+- DeepMD-kit / Deep Potential 训练 / 并发学习
+- INCAR、POSCAR、POTCAR、KPOINTS、in.lammps、input.cp2k
+- DFT 计算 / 分子动力学模拟 / 结构优化 / 过渡态搜索 / 声子计算
+- 赝势 / PAW / 基组 / 力场参数 / 系综设置
 
 领域归类说明：
 

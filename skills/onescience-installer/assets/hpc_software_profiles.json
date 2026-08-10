@@ -1,0 +1,89 @@
+[
+  {
+    "id": "gromacs",
+    "display_name": "GROMACS",
+    "version": "v2024.1.dtk2604",
+    "description": "高性能分子动力学模拟软件，主要面向生物大分子体系（如蛋白质、核酸、脂质）以及复杂材料体系的动力学行为研究。支持 thread-MPI 和 MPI 两种并行模式。",
+    "domain": "matchem",
+    "download": {
+      "url": "https://download.sourcefind.cn:65024/file/9/GROMACS/DTK-26.04/GROMACS-v2024.1.dtk2604-17Apr2026.tar.gz",
+      "method": "wget",
+      "flags": "--content-disposition",
+      "archive_type": "tar.gz"
+    },
+    "install": {
+      "default_install_dir": "~/hpc_software/gromacs",
+      "extract_command": "tar -xzf {archive_file} -C {install_dir} --strip-components=1",
+      "binary_subdir": "bin",
+      "library_subdir": "lib64"
+    },
+    "runtime": {
+      "required_modules": [
+        "compiler/dtk"
+      ],
+      "optional_modules": [
+        "compiler/gcc/9.3.0",
+        "mpi/hpcx/2.4.1/gcc-7.3.1"
+      ],
+      "environment_vars": {
+        "PATH": "{install_dir}/bin",
+        "LD_LIBRARY_PATH": "{install_dir}/lib64"
+      },
+      "rocm_env_source": "source {ROCM_PATH}/cuda/env.sh"
+    },
+    "verify": {
+      "command": "gmx --version",
+      "pass_criteria": "输出包含 GROMACS 版本信息"
+    },
+    "test_example": {
+      "description": "使用 thread-MPI 版本的 benchRI 算例测试 mdrun 基本功能",
+      "commands": [
+        "gmx mdrun -s benchRI/benchRI.tpr -o benchRI/benchRI.trr -c benchRI/benchRI_out.gro -e benchRI/benchRI.edr -g benchRI/benchRI.log -cpt -1 -nstlist 200 -pin on -ntmpi 4 -ntomp 6 -nb gpu -pme gpu -bonded gpu -npme 1 -nsteps 1000"
+      ]
+    },
+    "lifecycle_status": "stable"
+  },
+  {
+    "id": "lammps",
+    "display_name": "LAMMPS",
+    "version": "stable2Aug2023.dtk2604",
+    "description": "高性能分子动力学模拟软件，广泛应用于材料科学、物理学、化学和工程等领域。能够模拟和研究原子、分子、颗粒、连续体和粗粒化体系的动力学行为。",
+    "domain": "matchem",
+    "download": {
+      "url": "https://download.sourcefind.cn:65024/file/9/LAMMPS/DTK-26.04/LAMMPS-stable2Aug2023.dtk2604-17Apr2026.tar.gz",
+      "method": "wget",
+      "flags": "--content-disposition",
+      "archive_type": "tar.gz"
+    },
+    "install": {
+      "default_install_dir": "~/hpc_software/lammps",
+      "extract_command": "tar -xzf {archive_file} -C {install_dir} --strip-components=1",
+      "binary_subdir": "bin",
+      "library_subdir": "lib64"
+    },
+    "runtime": {
+      "required_modules": [
+        "compiler/dtk/25.04"
+      ],
+      "optional_modules": [
+        "mpi/hpcx/2.4.1/gcc-7.3.1",
+        "mathlib/fftw/3.3.8/double/gnu"
+      ],
+      "environment_vars": {
+        "PATH": "{install_dir}/bin",
+        "LD_LIBRARY_PATH": "{install_dir}/lib64"
+      }
+    },
+    "verify": {
+      "command": "lmp_mpi -h",
+      "pass_criteria": "输出包含 LAMMPS 命令行帮助信息"
+    },
+    "test_example": {
+      "description": "使用 GPU 加速包（-sf gpu -pk gpu）运行 in.lj 算例",
+      "commands": [
+        "mpirun -np 4 lmp_mpi -sf gpu -pk gpu 1 -in in.lj"
+      ]
+    },
+    "lifecycle_status": "stable"
+  }
+]

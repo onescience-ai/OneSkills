@@ -1,0 +1,21 @@
+{
+  "name": "gromacs",
+  "type": "tool",
+  "domain": "matchem",
+  "version": "docs-derived-2026-08",
+  "visibility": "public",
+  "created_at": "2026-08-05",
+  "updated_at": "2026-08-05",
+  "description": "GROMACS（GROningen MAchine for Chemical Simulations）是高性能开源分子动力学模拟软件，主要用于生物分子体系（蛋白质、核酸、脂质膜）和软物质体系的模拟。支持多种力场：AMBER、CHARMM、OPLS-AA、GROMOS、MARTINI（粗粒化）等。核心流程：pdb2gmx（生成拓扑）→ editconf/solvate（溶剂化）→ grompp（生成输入）→ mdrun（运行MD）。关键文件：top/itp（拓扑/参数）、gro/pdb（坐标）、mdp（模拟参数）、tpr（二进制输入）、xtc/trr（轨迹）。核心功能：能量最小化（steepest descent/CG）、NVT/NPT平衡、生产MD、自由能计算（FEP/BAR/WHAM）、增强采样（umbrella sampling/steered MD）、主成分分析（PCA）、氢键/二级结构分析。支持GPU加速（CUDA/OpenCL/SYCL），MPI+thread-MPI并行，典型性能可达微秒/天级别。适用场景：蛋白质折叠、配体结合、膜蛋白、离子通道、药物设计、高分子、粗粒化模拟。不适用：第一性原理计算（应使用VASP/CP2K），材料体系的经典MD（LAMMPS更合适）。",
+  "tags": [
+    "gromacs",
+    "molecular-dynamics",
+    "protein-simulation",
+    "amber",
+    "charmm",
+    "martini",
+    "free-energy",
+    "gpu-accelerated",
+    "hpc"
+  ]
+}

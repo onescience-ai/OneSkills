@@ -1,0 +1,24 @@
+{
+  "name": "vasp",
+  "type": "tool",
+  "domain": "matchem",
+  "version": "wiki-derived-2026-08",
+  "visibility": "public",
+  "created_at": "2026-08-05",
+  "updated_at": "2026-08-05",
+  "description": "VASP（Vienna Ab initio Simulation Package）是第一性原理电子结构计算和量子力学-分子动力学模拟软件。采用平面波基组和PAW赝势方法，支持DFT（LDA/GGA/meta-GGA/hybrid/van der Waals）、HF、GW、RPA等方法。核心功能：结构弛豫（ISIF/IBRION）、电子自洽计算、态密度/能带计算、光学性质、分子动力学（BOMD）、过渡态搜索（NEB/CI-NEB/dimer）、声子谱计算（finite differences/DFPT）、介电性质、力学性质、STM模拟等。核心输入文件：INCAR（计算参数）、POSCAR（晶体结构）、POTCAR（赝势）、KPOINTS（k点）。关键参数：ENCUT（截断能400-600eV）、ISIF（自由度控制2/3/4）、ISMEAR/SIGMA（展宽）、EDIFF/EDIFFG（收敛标准）、NCORE/KPAR（并行）。适用场景：周期性体系的第一性原理计算（晶体、表面、界面、缺陷）。不适用：大体系经典MD（应使用LAMMPS/GROMACS），非周期性分子量化计算（可考虑Gaussian/ORCA）。",
+  "tags": [
+    "vasp",
+    "dft",
+    "first-principles",
+    "electronic-structure",
+    "structure-relaxation",
+    "band-structure",
+    "dos",
+    "neb",
+    "phonon",
+    "paw",
+    "plane-wave",
+    "hpc"
+  ]
+}

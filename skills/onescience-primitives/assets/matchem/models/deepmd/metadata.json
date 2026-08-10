@@ -1,0 +1,22 @@
+{
+  "name": "deepmd",
+  "type": "model",
+  "domain": "matchem",
+  "version": "docs-derived-2026-08",
+  "visibility": "public",
+  "created_at": "2026-08-05",
+  "updated_at": "2026-08-05",
+  "description": "Deep Potential（DeepMD）是基于深度学习的原子间势函数模型，由embedding net和fitting net组成。核心架构：descriptor（embedding net）将局部原子环境编码为对称性保持的特征向量 → fitting net将特征映射为原子能量。支持多种descriptor类型：se_e2_a（双体角度型，最常用）、se_e2_r（双体径向型）、se_e3（三体角度型）、se_atten（注意力机制型）、DPA-2（多任务预训练模型）、DPA-3（大规模预训练模型）、DPA-4（最新架构）、hybrid（混合descriptor）。通过能量对坐标/晶胞参数的自动微分获得力、应力、virial。支持长程静电（DPLR：Deep Potential Long Range）、范围校正（DPRc）、spin势函数、偶极/极化率/DOS预测。可导出frozen model（.pb）用于LAMMPS（pair_style deepmd）、ASE、GROMACS、i-PI等的推理部署。适用场景：从AIMD数据训练的经典MD势函数，材料/分子体系的能量/力/应力预测。与MACE互补：MACE强调E(3)-等变架构，DeepMD强调与LAMMPS/DP-GEN生态的深度集成。",
+  "tags": [
+    "deep-potential",
+    "deepmd",
+    "mlip",
+    "embedding-net",
+    "fitting-net",
+    "se_e2_a",
+    "dpa-3",
+    "dpa-4",
+    "molecular-dynamics",
+    "lammps"
+  ]
+}

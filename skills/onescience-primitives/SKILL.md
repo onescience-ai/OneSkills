@@ -61,6 +61,7 @@ assets/
 - `models`
 - `datapipes`
 - `application`
+- `tools`
 - `visualization`
 - `workflow-planning`
 - `contracts`
@@ -129,6 +130,12 @@ b. `filters.domain` 已明确指定（如 `bio`、`cfd`、`climate`、`matchem`�
      - 分子可视化工具名：`PyMOL`、`3Dmol`、`MolStar`、`NGL`、`cartoon`、`ribbon`、`surface`、`stick`
      - 结构文件格式（需渲染）：`.pdb`、`.cif`、`.mmcif`、`.pse`、`.pml`
      - 当上述任一信号出现时，即使主意图被判定为 model/datapipe/application，也必须将 `visualization` category 纳入检索范围，不可遗漏
+   - **【强制】工具信号识别**：当 `user_request` 或 `filters.keyword` 中出现以下任一信号时，必须将 `tools` 纳入检索范畴：
+     - HPC 计算软件名：`VASP`、`LAMMPS`、`CP2K`、`Gaussian`、`GROMACS`、`Quantum ESPRESSO`、`ORCA`
+     - AI 训练工具：`DeepMD-kit`、`deepmd`、`DP-GEN`、`dpgen`、`DPA`、`Deep Potential`
+     - 方法关键词：`第一性原理`、`DFT`、`密度泛函`、`分子动力学`、`MD模拟`、`量化计算`、`结构弛豫`、`过渡态`、`声子谱`、`能带计算`、`态密度`、`NEB`、`CI-NEB`、`NPT`、`NVT`、`Langevin`、`Berendsen`、`赝势`、`PAW`、`电子结构`、`波函数`
+     - 输入文件关键词：`INCAR`、`POSCAR`、`POTCAR`、`KPOINTS`、`in.lammps`、`input.cp2k`
+     - 当上述任一信号出现时，即使主意图被判定为 model/datapipe/application，也必须将 `tools` category 纳入检索范围，不可遗漏
 2. **枚举候选集**：在已确定的 domain/category scope 内，使用 Glob 递归搜索 `skills/onescience-primitives/assets/<domain>/**/metadata.json`（必须使用 `**` 递归匹配，不得使用单层 `*`），得到完整候选集。从每个匹配路径中提取三层信息：domain（`assets/` 后第一段）、category（domain 后第一段）、primitive_name（category 后第一段）。示例：路径 `assets/bio/visualization/complex_structure_visualization/metadata.json` → domain=`bio`, category=`visualization`, primitive_name=`complex_structure_visualization`。后续所有路径拼接必须保留完整的 `<domain>/<category>/<primitive_name>/` 三层结构，不得省略中间 category 层。
 3. **快速过滤**：仅当 `filters.keyword` 提供了关键词时执行；结合目录名、`metadata.json` 的 `name`、`domain`、`description` 与 `tags` 排除明显不相关的资源。未提供关键词时跳过本步。
 4. **语义匹配**：遍历剩余每个候选资源的 `metadata.json`，对比 `user_request` 与 `description` 字段的语义相关性。
@@ -199,9 +206,9 @@ resource_retrieval_result:
   status: success | partial | failed
   query_summary: <需求摘要>
   detected_domain: <climate | cfd | matchem | bio | unknown>
-  task_intent: <model | component | datapipe | application | visualization | workflow | contract | mixed>
+  task_intent: <model | component | datapipe | application | tools | visualization | workflow | contract | mixed>
   matched_resources:
-    - type: model_primitive | component_primitive | datapipe_primitive | application_primitive | visualization_primitive
+    - type: model_primitive | component_primitive | datapipe_primitive | application_primitive | tool_primitive | visualization_primitive
       path: assets/<domain>/<category>/<primitive_name>/
       name: <原语名称>
       why_matched: <匹配理由，1句话>
@@ -262,8 +269,10 @@ content:
   - 应用 / `app` / `toolkit` / `template` → `application`
   - 可视化 / `visualization` / `visualize` / `visual` / `render` / `rendering` / `3D` / `三维` / `结构展示` / `interactive` / `交互式` / `pLDDT` / `PAE` / `PyMOL` / `3Dmol` / `cartoon` / `ribbon` / `surface` / `stick` / `.pdb` / `.cif` / `.mmcif` → `visualization`
   - 工作流规划 / `planning` / `route` / `decision` → `workflow-planning`
+  - 工具 / `tool` / `software` / `hpc_software` / `计算软件` / `模拟软件` / `HPC软件` → `tools`
   - 若请求未明确 category，则检索当前 domain scope 下全部实际存在的 category 目录
   - 当 `filters.keyword` 中包含明确的可视化信号但 `user_request` 未直接体现时，仍须将 `visualization` category 纳入检索范围
+  - 当 `filters.keyword` 中包含明确的工具信号（如 VASP、LAMMPS、CP2K 等 HPC 软件名）但 `user_request` 未直接体现时，仍须将 `tools` category 纳入检索范围
 - **`detected_domain`**：按标准化 domain 枚举输出 `climate | cfd | matchem | bio | unknown`。
   - 若 `filters.domain` 已明确提供，则优先使用该值作为检索路由依据；输出时仍需与命中资源的 `metadata.json.domain` 保持一致性
   - 若 `filters.domain` 缺失，则以 `domain_profile.md` 回退判定结果作为领域判断基线
@@ -274,6 +283,7 @@ content:
   - `datapipes` 下的 `datapipe` → `datapipe_primitive`
   - `application` 下的 `application` → `application_primitive`
   - `visualization` 下的 `visualization` → `visualization_primitive`
+  - `tools` 下的 `tool` → `tool_primitive`
   - 若 `metadata.json.type` 与目录语义冲突，优先采用更能反映资源用途的目录语义，并在 `limitations` 中说明
 - **`task_intent`**：根据 `user_request` 的主要意图判断。
   - 需要完整模型能力时填 `model`
@@ -283,6 +293,7 @@ content:
   - 需要结构、数据或模型结果的视觉呈现规范时填 `visualization`
   - 需要契约、接口约束或对接规则时填 `contract`
   - 需要工作流规划、路由、决策知识时填 `workflow`
+  - 需要 HPC 计算软件使用知识、参数指导、计算流程指导时填 `tool`
   - 多种意图并存且无法归一时填 `mixed`
 
 ## 质量要求
