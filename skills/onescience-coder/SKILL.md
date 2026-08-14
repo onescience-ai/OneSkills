@@ -1,8 +1,20 @@
 ---
 name: onescience-coder
-description: OneScience 分步编码执行技能。接收任务后强制调用资源技能获取规格知识、使用知识和规划决策知识，按步骤输出执行信息、等待确认后再执行；所有步骤完成后，若本地环境支持最小冒烟测试则优先执行冒烟测试（最多 6 次），否则执行静态需求一致性检查。
+description: OneScience 分步编码执行技能。接收任务后强制调用资源技能获取规格知识、使用知识和规划决策知识，按步骤输出执行信息、等待确认后再执行；所有步骤完成后，若本地环境支持最小冒烟测试则优先执行全路径冒烟测试（forward/backward/train-loop/val-loop/CL/config 共 6 项，最多 6 次），否则执行静态需求一致性检查。
 type: executor
 ---
+
+## 输入获取方式
+
+本技能支持两种输入方式：
+
+1. **上下文 handoff**（默认）：从调用方传入的 `step_handoff` 获取任务信息。
+2. **文件 handoff**（autonomous_mode）：从 `.onescience/handoff/step_{step_id}.yaml`
+   读取任务信息。执行后，将结果写入 `.onescience/handoff/step_{step_id}_result.yaml`。
+
+启动时优先检查 `.onescience/handoff/` 目录是否存在对应的交接文件；若存在则使用文件模式，否则使用上下文模式。
+
+文件交接格式参见 `skills/onescience-orchestrator/references/file_handoff_contract.md`。
 
 # OneScience Coder
 
@@ -14,8 +26,9 @@ type: executor
 2. 基于资源内容规划目录结构、识别步骤依赖，并把任务拆成可独立确认和执行的步骤。
 3. 每个步骤都先输出详细执行信息，等待用户确认后再编码。
 4. 编码时优先复用已有实现，保持最小改动，不猜测缺失契约。
-5. 所有步骤完成后，若本地环境支持最小冒烟测试则优先执行冒烟测试（最多 6 次），否则执行静态需求一致性检查。
+5. 所有步骤完成后，若本地环境支持最小冒烟测试则优先执行全路径冒烟测试（forward/backward/train_loop/val_loop/CL/config 共 6 项，最多 6 次），否则执行静态需求一致性检查。
 6. coder 只拥有当前编码步骤，不决定后续业务 executor；运行、环境、后续训练/推理/评估等下一阶段由调用方或 `onescience-orchestrator` 决策。
+7. 若上游 `step_handoff.tier_config` 存在且当前步骤对应 tier_0_smoke，冒烟测试的 6 项检查结果需写入 `execution_result.tier_result` 回传给 orchestrator。
 
 ## 硬约束
 

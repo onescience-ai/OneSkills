@@ -61,3 +61,75 @@ run_evaluation(model_or_checkpoint, eval_loader, parameters) -> metrics_and_repo
 - 预期日志、checkpoint 和 metrics 输出位置是否清晰
 
 如果缺失 package、环境或加速后端，把来源和触发证据记录下来，并在阶段 5 的 `runtime_request.json.package_requirements` 中交给 `onescience-runtime`；如果因缺少配置、checkpoint 或数据契约失败，返回阻塞状态。
+
+## 分层训练缩放（Tiered Training Scale）
+
+若上游 `step_handoff.tier_config` 存在，trainer 按以下预设尺度生成训练计划。若 `tier_config` 缺失，回退到本节以上的默认逻辑。
+
+### 预设尺度定义
+
+Tier 的语义是跨领域通用的（smoke → quick → full），但具体参数值需根据论文领域和 `tier_config.data_scale` 动态填充。
+
+| 参数 | tier_0 (smoke) | tier_1 (quick) | tier_2 (full) |
+|---|---|---|---|
+| 对应 tier_id | tier_0_smoke | tier_1_quick_repro | tier_2_full_repro |
+| n_samples | 取 tier_config 中预设值或论文全量 1/50 | 取 tier_config 中预设值或论文全量 1/10~1/5 | 论文全量 |
+| n_epochs | 3 | 30 | 论文默认 |
+| batch_size | 1 | 1 | 论文配置 |
+| early_stopping | 否 | patience=5 | patience=20 |
+| 产物保存 | 不保存权重 | 保存所有权重 | 保存权重 + 全量 checkpoint |
+| 预期 wallclock | < 5 min | < 60 min | < 48 hours（可增减） |
+| 是否可交付 | 否 | **是**（默认最终产物） | 是 |
+
+**跨领域参数映射**（trainer 根据 `tier_config.data_scale` 中的 key 自动适配）：
+
+| 领域 | data_scale key 示例 | n_samples 含义 |
+|---|---|---|
+| CFD | `{n_foils: 10}` | 翼型数量 |
+| 生信/蛋白质 | `{n_sequences: 50}` | 序列/结构数量 |
+| 材料 | `{n_frames: 100}` | MD 帧数 |
+| 气象 | `{n_samples: 200}` | 样本数 |
+| 通用 | `{n_train: 100}` | 训练样本数 |
+
+若 `tier_config.data_scale` 存在，优先使用其值；若不存在，使用上述默认推导值。
+
+### 选择逻辑
+
+```
+tier_config.active_tier == "tier_0_smoke"         → 生成 smoke 训练计划（仅验证 pipeline，不保存权重）
+tier_config.active_tier == "tier_1_quick_repro"   → 生成 quick 训练计划（小数据全流程，保存权重）
+tier_config.active_tier == "tier_2_full_repro"    → 生成 full 训练计划（论文级完整训练）
+无 tier_config                                     → 回退到当前 phase_3 默认逻辑
+```
+
+### Early Stopping 兜底（Tier 1 和 Tier 2 必须实现）
+
+训练脚本必须包含 Early Stopping 逻辑，确保在模型收敛时自动停止，不浪费 SLURM 机时：
+
+- 监控指标：validation loss
+- 阈值：val_loss 在 patience 个 epoch 内无改善（min_delta=1e-4）时停止
+- 停止时保存 best checkpoint（非 last checkpoint），在日志中标注 `"Early stopping at epoch X, best val_loss: Y"`
+- Tier 1 推荐 patience=5，Tier 2 推荐 patience=20
+
+### Tier 结果回传
+
+训练验证完成后（阶段 6），在 `execution_result` 中追加 `tier_result` 字段：
+
+```yaml
+tier_result:
+  tier_id: "tier_1_quick_repro"
+  status: "pass"
+  checks_passed: 4
+  checks_total: 4
+  completed_epochs: 30
+  stopped_early: false
+  best_val_loss: 0.042
+  model_weights_paths:
+    MLP: "metrics/10_samples/MLP/model.pt"
+    PointNet: "metrics/10_samples/PointNet/model.pt"
+  test_rmse:
+    MLP: 0.589
+    PointNet: 0.757
+```
+
+当 `tier_result.status == "pass"` 时，tier 的所有 training 相关 checks 视为满足。orchestrator 侧据此更新 `tiered_completion_contract` 中对应 check 状态。

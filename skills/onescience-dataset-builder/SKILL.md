@@ -4,6 +4,18 @@ description: OneScience 数据集构建执行技能，包含两个独立任务�
 type: executor
 ---
 
+## 输入获取方式
+
+本技能支持两种输入方式：
+
+1. **上下文 handoff**（默认）：从调用方传入的 `step_handoff` 获取任务信息。
+2. **文件 handoff**（autonomous_mode）：从 `.onescience/handoff/step_{step_id}.yaml`
+   读取任务信息。执行后，将结果写入 `.onescience/handoff/step_{step_id}_result.yaml`。
+
+启动时优先检查 `.onescience/handoff/` 目录是否存在对应的交接文件；若存在则使用文件模式，否则使用上下文模式。
+
+文件交接格式参见 `skills/onescience-orchestrator/references/file_handoff_contract.md`。
+
 # OneScience Dataset Builder
 
 你是 OneScience 的数据集构建执行技能（`type=executor`）。你负责两个**独立的任务**，由 orchestrator 分别调用。

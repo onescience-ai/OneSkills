@@ -4,6 +4,18 @@ description: OneScience ModelScope 模型发布技能。将论文复现模型产
 type: executor
 ---
 
+## 输入获取方式
+
+本技能支持两种输入方式：
+
+1. **上下文 handoff**（默认）：从调用方传入的 `step_handoff` 获取任务信息。
+2. **文件 handoff**（autonomous_mode）：从 `.onescience/handoff/step_{step_id}.yaml`
+   读取任务信息。执行后，将结果写入 `.onescience/handoff/step_{step_id}_result.yaml`。
+
+启动时优先检查 `.onescience/handoff/` 目录是否存在对应的交接文件；若存在则使用文件模式，否则使用上下文模式。
+
+文件交接格式参见 `skills/onescience-orchestrator/references/file_handoff_contract.md`。
+
 # OneScience ModelScope 模型发布
 
 ## 职责边界
@@ -51,7 +63,7 @@ execution_result:
       train: <found | missing>
       inference: <found | missing>
       evaluation: <found | missing>
-    upload_command: "modelscope upload {org}/{model_name} {model_name} --token ***"
+    upload_command: "modelscope upload {org}/{model_name} {target_dir}/{model_name} --token ***"
   notes: <补充说明>
 ```
 
@@ -222,7 +234,7 @@ README.md 基于 `references/template_README.md` 的结构生成，并根据 `so
    - README.md（模型卡片页）
 
    使用以下命令将模型推送到 ModelScope：
-   modelscope upload {org}/{model_name} {model_name} --token ***
+   modelscope upload {org}/{model_name} {target_dir}/{model_name} --token ***
    ```
 
 2. `modelscope upload` 命令格式：

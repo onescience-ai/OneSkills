@@ -4,6 +4,18 @@ description: OneScience 环境安装技能。用于根据 onescience.json 安装
 type: executor
 ---
 
+## 输入获取方式
+
+本技能支持两种输入方式：
+
+1. **上下文 handoff**（默认）：从调用方传入的 `step_handoff` 获取任务信息。
+2. **文件 handoff**（autonomous_mode）：从 `.onescience/handoff/step_{step_id}.yaml`
+   读取任务信息。执行后，将结果写入 `.onescience/handoff/step_{step_id}_result.yaml`。
+
+启动时优先检查 `.onescience/handoff/` 目录是否存在对应的交接文件；若存在则使用文件模式，否则使用上下文模式。
+
+文件交接格式参见 `skills/onescience-orchestrator/references/file_handoff_contract.md`。
+
 # OneScience 安装器
 
 ## 主流程
@@ -34,13 +46,14 @@ installer 的环境信息写回位置是 `onescience.json.runtime.conda`。除 `
 
 1. 用户要求“安装 OneScience 环境”“安装 earth/cfd/bio/matchem/all 环境”“安装 onescience 包”“初始化 OneScience 环境”时，设为 `install_intent=bootstrap`。`onescience` 包名大小写不敏感，命中后永远按 bootstrap 处理。
 2. 用户要求“安装 Python 包”“安装 pip 包”“补装依赖”“安装某个包到 OneScience 环境”时，设为 `install_intent=python_packages`；但包名列表里若包含 `onescience`，必须拆分并将 `onescience` 路由到 `install_intent=bootstrap`，其余普通 Python 包才允许继续走 pip 分支。
-3. 用户要求“安装 GROMACS”“安装 LAMMPS”“帮我在服务器装 HPC 软件”“安装分子动力学软件”等涉及 HPC 科学计算软件安装的请求时，设为 `install_intent=hpc_software`。从用户请求中解析软件名，与 `./assets/hpc_software_profiles.json` 中的条目匹配；匹配成功后路由到对应安装分支。
+3. 用户要求"安装 GROMACS""安装 LAMMPS""帮我在服务器装 HPC 软件""安装分子动力学软件"等涉及 HPC 科学计算软件安装的请求时，设为 `install_intent=hpc_software`。从用户请求中解析软件名，与 `./assets/hpc_software_profiles.json` 中的条目匹配；匹配成功后路由到对应安装分支。
 4. 用户没有明确意图时，先询问要安装 OneScience 环境、安装 Python 包还是安装 HPC 软件；不要在意图未知时进入安装分支。
 5. **若上游调用方传入 `installer_reason=workspace_model_path_detected`**：conda 环境已就绪，跳过环境检测与安装步骤，直接路由到 `./references/workspace-model-path-discovery.md` 完成模型路径探测与写回。这是 runtime 的轻量委托，不涉及 conda 创建或 pip 安装。
 6. **若上游调用方传入 `installer_reason=preflight_validation`**：进入纯环境就绪验证模式，读取 `./references/preflight-validation.md` 执行完整的环境预检。此模式不做任何安装操作；若预检发现环境缺失，再按失败分类路由到对应安装分支。此模式是 orchestrator 和 runtime 的环境前置检测的统一入口，实现环境检测职责从 orchestrator/runtime 向 installer 的完整迁移。
 7. `install_intent=bootstrap` 必须解析安装领域；无法从请求映射到 `install_domains.json` 时，询问用户安装哪个领域或是否安装 `all`。
 8. `install_intent=python_packages` 必须解析包名列表；缺少包名时只询问包名。
 9. `install_intent=hpc_software` 必须从 `./assets/hpc_software_profiles.json` 中匹配到 target software；无法匹配时告知用户当前支持的软件列表并询问。
+10. **autonomous_mode** 下意图不明确时：若 `install_intent` 无法自动判定且 `autonomous_mode: true`，使用默认安全策略（不安装新环境、不覆盖已有配置），并返回 `status: blocked` 告知原因，而非向用户提问。
 
 ## 分支映射
 
@@ -63,10 +76,12 @@ installer 的环境信息写回位置是 `onescience.json.runtime.conda`。除 `
 
 - 环境检测阶段（`detect-existing-onescience.md`）：可直接执行检测命令，不需要用户确认；检测完成后只报告结果，不得自动创建环境或安装包。
 - 创建 Conda 环境、安装 OneScience、安装 Python 包前：必须获得用户明确同意。
+  - **autonomous_mode 例外**：当上游 `step_handoff.execution_flags.autonomous_mode` 为 `true` 时，安装确认自动通过，不向用户提问。但安装失败后仍需报告失败原因，不得静默跳过。若安装过程涉及不可逆操作（如覆盖已有 conda 环境），仍需返回 `status: blocked` 说明风险，不得直接覆盖。
 - `run_site=remote` 时，在 SSH 信息齐备前不要执行安装、验证或包检测。
 - `run_site=remote` 时不要在本端 shell 执行 `conda` 或任何安装/验证命令；远端安装必须通过远端执行模板完成。
 - 禁止把 `onescience` 当作普通包塞进 `{python_packages}`；bootstrap 路径必须先下载 wheel 以探测 extra，再通过 `pip install \"onescience[{resolved_extra}]\" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` 完成安装，而不是把下载下来的 wheel 直接拿来安装。
 - `runtime.conda` 缺失时，必须先走 `detect-existing-onescience.md`；若目标环境已有 `onescience` 和 `torch` 包，写回环境信息到 `runtime.conda` 并返回，不创建环境；若都没有，只报告检测结果，询问是否创建 conda 环境并安装 onescience。
+  - **autonomous_mode 例外**：当 `autonomous_mode: true` 且 `runtime.conda` 缺失、目标环境无 `onescience` 时，自动创建 conda 环境并安装 onescience（使用 `install_domains.json` 中与任务领域匹配的默认 extra），不向用户提问。
 - 已有 `runtime.conda.enabled=true` 时，后续 Conda 路径必须使用记录的 `env_name` 和 `activate_script`。
 - 已有 `runtime.conda.enabled=false` 时，默认按当前环境路径处理；除非用户明确同意，否则不要创建 Conda 环境。
 - 安装失败或验证失败时，不要写入成功状态。

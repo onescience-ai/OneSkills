@@ -200,20 +200,71 @@ resource_retrieval_result:
 
 不要自动生成下一步骤代码，除非用户明确一次性确认了多个具体步骤。
 
+> **autonomous_mode 例外**：当上游 `step_handoff.execution_flags.autonomous_mode` 为 `true` 时，跳过本节的确认等待。当前步骤完成后，直接输出简短完成摘要（1-2 行），然后立即进入下一步骤编码，不等待用户回复。
+
 ## 8. 所有步骤完成后的最终验证
 
 所有编码步骤完成后，必须进行一次最终验证。
 
-### 8.1 本地冒烟测试分支
+### 8.1 全路径冒烟测试分支（Full-Path Smoke Test）
 
-仅当当前本地环境可直接运行目标代码、且具备最小必要前提时，才进入本地冒烟测试分支。
+仅当当前本地环境可直接运行目标代码且具备最小必要前提时，才进入本地冒烟测试分支。
+
+**必须依次执行的检查项**（任一项失败则停止后续、记录原因并修复后再重试）：
+
+| 序号 | 检查项 | 验证方法 | 超时 | 通过标准 |
+|---|---|---|---|---|
+| 1 | forward_pass | `out = model(data)` 或等效的单次前向调用 | 30s | 不报错，输出 tensor shape 与预期一致 |
+| 2 | backward_pass | `loss = criterion(out, target); loss.backward()` | 30s | backward 不报错，梯度非 None |
+| 3 | train_loop_dry_run | 完整训练循环 1 epoch：数据加载 + forward + backward + optimizer.step + loss 记录 | 120s | 不报错，loss 为有限数值（非 NaN/Inf），loss 整体趋势递减 |
+| 4 | validation_loop_dry_run | 完整验证循环 1 batch：数据加载 + forward + 指标计算 | 60s | 不报错，指标为有限数值 |
+| 5 | domain_metric_dry_run | 执行论文核心指标的计算入口（如 CFD 面板法 CL、生信 pLDDT、材料能量/力），至少检查所需数据的可达性 | 30s | 不报错 或 返回明确的不可计算原因（如 `no_surface_points`、`missing_field`）并附带说明 |
+| 6 | config_consistency | 检查 params.yaml / 配置文件中的维度（encoder/decoder channel list）与模型定义一致 | — | encoder[-1] == decoder[0] 等 shape 不冲突 |
 
 执行规则：
-1. 只做最小范围的冒烟测试，不扩展成完整训练、推理、benchmark 或远程提交流程。
-2. 总尝试次数不超过 6 次，含首次。
-3. 每次失败后，只有在已经识别到明确可修正偏差时，才允许回改后再次尝试。
-4. 达到 6 次上限后仍失败，必须停止，不得标记为 `success`。
-5. 最终结果必须记录：尝试次数、执行依据、使用的本地入口/命令、结论。
+1. 按序号顺序执行，任一项 fail → 记录失败原因 → 修复代码 → 从失败的检查项重新开始
+2. 总尝试次数（从检查项 1 重新开始的次数）不超过 6 次
+3. 每次失败后，只有在已识别到明确可修正偏差时，才允许回改后再次尝试
+4. 达到 6 次上限后仍失败 → `status: failed`，禁止标记为 `success`
+5. **以上 6 项全部 PASS 后，才允许进入 SLURM 提交或远程执行**。不得跳过任何一项
+6. 最终结果必须记录：每项 pass/fail 状态、总尝试次数、使用的本地入口/命令、结论
+
+**autonomous_mode 下的额外约束**：即使 `execution_flags.autonomous_mode == true`，本节的 6 项全路径冒烟检查仍必须完整执行。冒烟测试失败不得静默跳过进入下一步——必须修复后重试，直至全部通过或达到 6 次上限。
+
+**SLURM 环境下的冒烟测试执行优化**（适用于登录节点 / 计算节点分离的集群）：
+
+1. **优先使用 `sbatch --wait`**：直接用 `sbatch --wait smoke_job.sh` 提交冒烟作业。`--wait` 会让 sbatch 阻塞直到作业完成，返回 exit code 即表示作业结束。无需手动 `sleep + sacct` 轮询。
+
+   ```bash
+   # 推荐写法
+   sbatch --wait smoke_job.sh && echo "PASS: smoke test completed" || echo "FAIL"
+   ```
+
+2. **若 `--wait` 不可用，使用 `srun`（仅限极短作业）**：对于 forward_pass / backward_pass（30s 内），可优先尝试 `srun` 交互式执行，直接在计算节点上运行并返回输出。
+
+   ```bash
+   # 仅用于 30s 内的检查项
+   srun -p <partition> --gres=dcu:1 python smoke_test.py
+   ```
+
+3. **自适应轮询（兜底方案）**：若 `sbatch --wait` 和 `srun` 均不可用，使用短间隔自适应轮询替代固定长睡眠：
+   - 每次 sleep **不超过 10 秒**，然后用 `sacct -j <jobid>` 检查状态
+   - 总轮询预算不超过检查项超时的 **2 倍**（如 forward_pass 超时 30s → 轮询预算 60s）
+   - **严禁使用 90-110 秒的固定 sleep**，这浪费了大量等待时间
+
+   ```bash
+   # 自适应轮询示例（替代 sleep 90）
+   for i in $(seq 1 20); do
+     sleep 5
+     state=$(sacct -j $JOBID --format=State --noheader 2>/dev/null | head -1 | tr -d ' ')
+     case "$state" in
+       COMPLETED) echo "PASS"; break ;;
+       FAILED|TIMEOUT|CANCELLED) echo "FAIL ($state)"; break ;;
+     esac
+   done
+   ```
+
+4. **避免在登录节点执行大型命令**：登录节点通常无 GPU/DCU 驱动，不要在上面执行 `find / -maxdepth 6`、`import torch` 等会超时的命令。需要运行代码时始终通过 SLURM 提交到计算节点。
 
 ### 8.2 静态需求一致性检查分支
 
@@ -244,3 +295,17 @@ resource_retrieval_result:
 ### Paper2Code
 
 如果任务是论文复现但没有上游 `onescience-paper-repro` 的 `coder_task_description.md`，退回论文复现前处理；不要自行搜索、下载或参考官方/第三方代码仓库。
+
+### 自主执行模式（Autonomous Mode）
+
+当上游 `step_handoff.execution_flags.autonomous_mode` 为 `true` 时：
+
+1. **跳过步骤确认**：不执行第 5 节的用户确认流程（即不输出"用户操作"确认请求块，不等用户回复）。仍输出执行信息摘要（步骤编号、名称、目标、文件清单，3-5 行），然后直接开始编码。
+
+2. **连续执行所有步骤**：当前步骤完成后，按第 7 节的 autonomous_mode 例外规则直接进入下一步骤，逐步骤完成编码，直到所有步骤完成。
+
+3. **执行信息简化**：每步只输出步骤编号、名称、目标、文件清单（3-5 行），不输出完整的资源评估和详细执行信息模板。
+
+4. **失败处理**：若任一步骤编码遇到无法自动解决的问题（资源内容不足、接口冲突、不可自动决策的设计选择），返回 `status: blocked` 并说明具体原因，不静默跳过或猜测实现。
+
+5. **始终执行最终验证**：所有步骤完成后，必须执行第 8 节的最终验证（冒烟测试或静态需求一致性检查）。

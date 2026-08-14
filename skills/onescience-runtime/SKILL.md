@@ -4,6 +4,18 @@ description: 【统一运行与基础诊断技能】按 discover、preflight、e
 type: executor
 ---
 
+## 输入获取方式
+
+本技能支持两种输入方式：
+
+1. **上下文 handoff**（默认）：从调用方传入的 `step_handoff` 获取任务信息。
+2. **文件 handoff**（autonomous_mode）：从 `.onescience/handoff/step_{step_id}.yaml`
+   读取任务信息。执行后，将结果写入 `.onescience/handoff/step_{step_id}_result.yaml`。
+
+启动时优先检查 `.onescience/handoff/` 目录是否存在对应的交接文件；若存在则使用文件模式，否则使用上下文模式。
+
+文件交接格式参见 `skills/onescience-orchestrator/references/file_handoff_contract.md`。
+
 # OneScience Runtime
 
 ## 执行流程
@@ -137,6 +149,15 @@ execute 分支映射：
 - 命中 SCnet 作业、文件、账户、区域、队列、集群、日志下载等平台动作时，继续委托 `scnet-chat` 技能执行；runtime 只负责交接输入、消费结果与基础诊断。
 - 通过 `scnet-chat` 提交任务前，必须先读取 `onescience.json.runtime.scnet` 中的 `region`、`partition`/`queue`、`remote_work_dir`/`work_dir`、资源参数和作业名等信息；`partition` 归一为 scnet-chat 的 `--queue` 参数。不要依赖 scnet-chat 的缓存默认区域或默认队列，也不要用用户自然语言里的 region/partition 直接覆盖该配置。
 - 不要在代码入口、探针脚本或远端提交目标缺失时继续提交空作业。
+
+### autonomous_mode 下的预检自动修复
+
+当上游 `step_handoff.execution_flags.autonomous_mode` 为 `true` 时：
+
+1. 若 preflight 返回 `preflight_passed=false`，自动委托 `onescience-installer`（传入 `installer_reason=preflight_validation` 和 `execution_flags.autonomous_mode: true`）进行环境修复。
+2. 修复完成后重新读取 `onescience.json`，从 `preflight` 恢复。
+3. 最多自动重试 2 次；2 次后仍失败则返回 `status: blocked` 并输出具体原因。
+4. 若执行的业务代码运行失败（execute 阶段返回非零），自动进入 diagnose 流程获取诊断信息，并尝试基础修复；修复后自动重跑，最多 2 次重试。
 
 ## Output Contract
 

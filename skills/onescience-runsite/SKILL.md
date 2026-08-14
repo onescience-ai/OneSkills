@@ -4,6 +4,18 @@ description: 解析、校验、保存和复用 OneScience 运行站点配置。�
 type: executor
 ---
 
+## 输入获取方式
+
+本技能支持两种输入方式：
+
+1. **上下文 handoff**（默认）：从调用方传入的 `step_handoff` 获取任务信息。
+2. **文件 handoff**（autonomous_mode）：从 `.onescience/handoff/step_{step_id}.yaml`
+   读取任务信息。执行后，将结果写入 `.onescience/handoff/step_{step_id}_result.yaml`。
+
+启动时优先检查 `.onescience/handoff/` 目录是否存在对应的交接文件；若存在则使用文件模式，否则使用上下文模式。
+
+文件交接格式参见 `skills/onescience-orchestrator/references/file_handoff_contract.md`。
+
 # OneScience 运行站点
 
 `onescience-runsite` 是独立的配置工作流。它只负责把用户的运行位置、调度方式、接入方式、账号信息和资源提示整理成项目根目录的
@@ -29,6 +41,19 @@ type: executor
 | 创建远程配置，包含 SSH 或 SCnet        | `references/remote_runsite.md`        |
 
 ## 补问硬规则
+
+### 预配置免交互（Autonomous Mode）
+
+当上游 `step_handoff.execution_flags.autonomous_mode` 为 `true` 时：
+
+1. 若 `onescience.json` 已存在且完整，直接验证并使用，不触发任何补问流程。
+2. 若 `onescience.json` 缺失或不完整，按以下优先级自动处理：
+   - 检测本地环境（GPU/CUDA、conda 等）是否可用 → 自动生成本地配置（`run_site=local`），不向用户提问。
+   - 若本地不支持但存在 `.onescience/default_remote.json` 预配置文件 → 读取并使用。
+   - 若必须使用远程环境但配置信息不完整 → 返回 `status: blocked` 并输出缺失字段清单（不进入逐字段补问流程）。
+3. 禁止在 autonomous_mode 下向用户发起任何交互式提问。
+
+### 标准补问规则（默认模式）
 
 - 不允许只说“请提供 SSH 信息”“请提供 SCnet 信息”“请提供 cluster 信息”。
 - 需要用户提供信息时，必须逐一列出字段名、含义、是否可留空或默认值。

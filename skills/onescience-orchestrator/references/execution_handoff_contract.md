@@ -7,8 +7,12 @@
 ```yaml
 step_handoff:
   step_id: <步骤ID>
+  attempt: <当前尝试次数，从 1 开始>
   execution_skill: <执行技能名称>
   step_goal: <本步骤目标>
+  step_wallclock_budget_seconds: <步骤墙钟预算，autonomous_mode 下必填>
+  execution_flags:
+    autonomous_mode: <true|false>
   task_context:
     user_goal: <用户最终目标>
     constraints: <约束列表>
@@ -27,7 +31,9 @@ step_handoff:
 ```yaml
 execution_result:
   skill: <执行技能名称>
-  status: <success | partial | failed | blocked>
+  attempt: <当前尝试次数>
+  status: <success | partial | failed | blocked | step_timeout>
+  failure_category: <transient | environment | dependency | data | code | scientific | platform | unknown | null>
   artifacts:
     <产物清单>
   observation:
@@ -36,6 +42,10 @@ execution_result:
     missing: <缺失项>
     risks: <风险>
     next_recommendation: <下一步建议>
+  events:
+    - event_type: <step_started|repair_attempted|retry_started|diagnosis_completed>
+      timestamp: <ISO8601>
+      description: <事件描述>
 ```
 
 ## Step Owner 与下游委托规则
@@ -105,9 +115,16 @@ source_dir = os.path.join(source_dir, "ERA5")
 
 ## Observation 处理
 
-- success：写入 artifacts，交给 orchestrator 基于最新 Task State 判断是否需要继续规划下一步
+- success：写入 artifacts 和 events，交给 orchestrator 基于最新 Task State 判断是否需要继续规划下一步
 - partial：记录已完成部分、缺失项和残余风险；orchestrator 先回到 observation/planning，再重新选择一个新的 next_step。若当前修复动作仍属于某个 executor-owned 范围，继续通过对应 executor dispatch。
-- failed：记录失败证据；orchestrator 先完成 observation，再决定 repair、replan 或 blocked。若失败后的下一动作超出当前 skill 明确声明的恢复合同，回到 orchestrator 决策。
-- blocked：记录阻断原因和所需用户输入；只有阻断被消除后才允许继续
+- failed：记录失败证据和 `failure_category`。orchestrator 根据 failure_category 选择策略：
+  - `transient` → 指数退避重试（最多 2 次）
+  - `code` → 委托 onescience-coder 修复后重试（最多 2 次）
+  - `environment` → 委托 onescience-installer 修复环境后重试
+  - `scientific` / `dependency` → 直接进入 blocked，需要人工研判
+  - `platform` → 阻塞后重试 1 次，仍失败则 block
+  - `unknown` → 进入 diagnose 后根据诊断结果再判定
+- blocked：记录阻断原因和所需用户输入；只有阻断被解除后才允许继续
+- step_timeout：步骤超过 wallclock 预算，写入 event，进入 blocked。恢复后 budget 翻倍，attempt 递增后重新执行。
 
 - 执行技能返回的结果只表示当前步骤的观察输入，不等同于直接跳转到下一条 executor 链路；后续由 orchestrator 基于最新 Task State 重新选择。

@@ -39,14 +39,15 @@ type: orchestrator
 -> [阶段2] 根据 intent_aspects 执行 type=expert 专家召回
 -> [阶段2] 记录专家召回结果（可能命中 0 个专家）
 -> [阶段2] 若命中专家则收集 planner_proposal，未命中则以空召回结果进入 direct_step 判定
--> [阶段2] 融合优化为 Global Plan
+-> [阶段2] 融合优化为 Global Plan（global_plan_version=1，记录初始 revision_history）
 -> [阶段3] 基于最新 Task State 从 Global Plan 选择当前唯一一个 Next Step Spec
--> [阶段3] 调用 type=executor 执行当前步骤
--> [阶段3] 执行结果先进入 observation，记录 artifacts/observation，更新 Task State
+-> [阶段3] 调用 type=executor 执行当前步骤（记录 step_started event，设置 wallclock 预算）
+-> [阶段3] 执行结果先进入 observation，记录 artifacts/observation/event，更新 Task State
 -> [循环] 根据 observation 判断：
-   - success 且未完成 -> 基于更新后的状态重新规划并重新选择下一步
+   - success 且未完成 -> 基于更新后的状态重新规划并重新选择下一步（必要时递增 plan_version）
    - partial -> 记录缺失项与残余风险，进入规划/拆分分支，再重新选择下一步
-   - failed -> 记录失败证据，进入 repair、replan 或 blocked 分支
+   - failed -> 根据 failure_category 选择策略（retry/delegate/block），写入 event
+   - step_timeout -> 记录 event，进入 blocked；恢复后预算翻倍，attempt 递增重试
    - blocked -> 记录阻断原因，并在阻断解除后继续后续轮次
    - 已完成 -> 输出最终结果
 ```
@@ -102,11 +103,252 @@ type: orchestrator
 3. `execution skills`：具体落地，必须是 `type=executor`；orchestrator 不预设固定技能名单，而是在需要调度执行技能时查询当前可用的 `type=executor` 技能及其职责边界后再做调度。
 4. `resource registry / resource packs`：模型卡、数据卡、论文资源、组件契约、运行模板、评估标准等。
 
+## 自主执行模式（Autonomous Mode）
+
+当用户请求中包含以下任一语义时，设置 `autonomous_mode: true` 并写入 `Task State.execution_flags`：
+
+**中文触发词**：`一直执行`、`不间断`、`自动完成`、`不要停`、`一次性完成`、`自动执行`、`连续执行`、`全程自动`、`不要中断`、`别停`、`不用确认`
+
+**英文触发词**：`keep running`、`don't stop`、`continuously`、`autonomously`、`non-stop`、`without interruption`、`auto-complete`
+
+**任务语义触发**：任务描述为完整端到端流程（如"复现论文X并发布到ModelScope"、"从论文到训练到推理一条龙"），用户已明确表达了完成全部步骤的意图。
+
+### autonomous_mode 下的行为变化
+
+1. **Global Plan 输出简化**：仍输出 Global Plan 给用户看，但末尾追加提示：
+   ```
+   > [自主执行模式已激活，将按计划自动执行全部步骤，中途不暂停确认。步骤超时预算已启用]
+   ```
+   然后立即在同一轮内继续执行第一步，不等待用户回复。
+
+2. **handoff 注入标记**：在发给所有 executor 的 `step_handoff` 中追加以下字段：
+   ```yaml
+   step_handoff:
+     # ... 原有字段 ...
+     attempt: 1
+     execution_flags:
+       autonomous_mode: true
+     step_wallclock_budget_seconds: 3600
+   ```
+   其中 `step_wallclock_budget_seconds` 根据该步骤的预估耗时设置（取预估时间的 3 倍，最小 600 秒，最大 7200 秒）。
+
+3. **observation 处理加速**：若 executor 返回 `success` 且尚未完成全部步骤，直接选择下一个 `Next Step Spec` 并调用下一个 executor，不等待、不确认。
+
+4. **自动执行停止条件**：只有遇到以下情况才停止：
+   - 全部 `completion_criteria` 满足 → 输出最终结果并结束
+   - executor 返回 `blocked` → 输出阻断原因，停止等待用户处理
+   - executor 返回 `failed` 且根据 failure_category 策略处理失败（见下方"失败分类策略"）
+   - 步骤墙钟超时（`step_timeout`）→ 记录 event，进入 blocked
+
+5. **不可自动决策时的处理**：若 orchestrator 自身在 planning / selection 阶段遇到歧义（如多个 executor 都可执行但无法自动判定最优选择），优先选择匹配度最高的 executor 并记录低置信度标记；不得在 autonomous_mode 下向用户提问。
+
+6. **决策分级策略**：autonomous_mode=true 时，遇到分叉决策按以下三级处理：
+
+| 级别 | 判定条件 | 策略 | 示例 |
+|---|---|---|---|
+| level_1_reversible | 决策可回退、不影响最终目标 | `auto_choose_first`：直接选优先级最高的选项 | 先训练哪个模型、先读哪个文件 |
+| level_2_scope_affecting | 影响范围但不改变核心目标 | `auto_with_log`：自动选择并记录决策日志到 `decision_policy.active_decisions` | 数据子集大小、epoch 数调整 |
+| level_3_goal_altering | 涉及核心目标变化或外部资源硬阻塞 | `block_and_escalate`：暂停执行，写入 `.onescience/task_state.json` 的 blocked 状态，附带决策选项和 fallback；若 wallclock 超过 `decision_policy.level_3_fallback_timeout_seconds` 无人响应，自动使用 fallback 选项 | 数据替代方案选择、不可达外部资源 |
+
+Block 时的写入格式：
+```json
+{
+  "blocked_reason": "decision_required",
+  "decision_level": "level_3_goal_altering",
+  "decision_prompt": "<描述当前阻塞的决策点>",
+  "options": [
+    {"label": "...", "description": "...", "is_fallback": false},
+    {"label": "...", "description": "...", "is_fallback": true}
+  ],
+  "fallback_timeout_seconds": 300,
+  "fallback_option_index": 1
+}
+```
+
+7. **OpenCode Todo 同步**：autonomous_mode=true 时，orchestrator 必须在以下关键节点调用 `todowrite` 将任务执行进度同步到 OpenCode 界面，确保用户可实时感知当前执行状态：
+
+   | 时机 | todowrite 操作 |
+   |---|---|
+   | Global Plan 输出后 | 将所有计划步骤写入 todo 列表（status: pending） |
+   | 每个 executor 调用前 | 将当前步骤标记为 in_progress，同步 active_step 信息 |
+   | 每个 executor 成功返回后 | 将完成步骤标记为 completed |
+   | 步骤失败进入 blocked | 标记当前步骤为 pending，在 content 中追加 blocked 原因 |
+   | 任务全部完成 | 标记所有步骤为 completed |
+
+   todowrite content 示例：
+   ```json
+   {
+     "content": "步骤1：论文解析 → paper-repro",
+     "status": "completed",
+     "priority": "high"
+   }
+   ```
+
+   **注意**：todowrite 仅用于界面进度展示，Task State 仍是 orchestrator 内部唯一事实源，不要用 todowrite 替代 task_state.json 的读写。
+
+   **容错规则**：todowrite 调用失败（工具不可用、超时、参数错误等）**不得阻断自动化执行**。失败时仅记录一条 `event_type=warning` 到 `Task State.events`（如 `todowrite_sync_failed`），然后继续后续步骤。界面 todo 列表缺失不影响任务实质性推进。
+
+7a. **失败分类策略**：autonomous_mode=true 时，收到 executor 返回 `failed` 后根据 `execution_result.failure_category` 执行差异化策略：
+
+| failure_category | 策略 | 重试上限 | 示例 |
+|---|---|---|---|
+| `transient` | `retry_with_backoff`：记录 event `repair_attempted`，递增 `attempt`，指数退避后重试 | 2 次 | 网络波动 |
+| `code` | `delegate_to_coder`：委托 onescience-coder 修复代码后重试 | 2 次 | 冒烟测试失败 |
+| `environment` | `delegate_to_installer`：委托 onescience-installer 修复环境后重试 | 2 次 | conda 依赖缺失 |
+| `data` | `retry_re_fetch`：重新获取数据后重试 | 1 次 | 数据校验失败 |
+| `scientific` | `block_and_escalate`：立即暂停，标记为需要人工研判 | — | 论文方法不可复现 |
+| `dependency` | `block_and_escalate`：立即暂停 | — | 外部 API 不可达 |
+| `platform` | `block_and_retry_once`：记录 event 后阻塞，重试 1 次 | 1 次 | executor 无响应 |
+| `unknown` | `block_with_diagnosis`：进入诊断，根据诊断结果再判定 | — | 无法自动分类 |
+
+- 每次执行失败/修复/重试均写入 `events` 和 `observations`。
+- 超过重试上限 → 进入 `blocked` 状态。
+- `scientific` 和 `dependency` 类别不自动重试，直接 blocked。
+
+7b. **步骤超时保护**：autonomous_mode=true 时，每次调用 executor 前设置步骤墙钟预算：
+
+- 从 `active_step.step_wallclock_budget_seconds` 获取预算，并记录 `step_started_at`。
+- executor 返回时检查 wallclock 是否超过 `step_wallclock_budget_seconds`：
+  - 未超过 → 正常流程。
+  - 超过 → 标记 `status: step_timeout`，写入 event（`event_type=step_timed_out`），进入 blocked。
+- blocked 恢复后重新执行时，attempt 递增，预算 = `original_budget * budget_multiplier_on_retry`。
+
+7c. **Event 记录**：autonomous_mode=true 时，orchestrator 必须在以下时机写入 event 到 `Task State.events`：
+  - 调用 executor 前 → `step_started`
+  - 收到结果后 → `step_completed` / `step_failed` / `blocked` / `step_timed_out`
+  - 进入修复 → `repair_attempted`
+  - 开始重试 → `retry_started`
+  - 诊断完成 → `diagnosis_completed`
+  - tier 升级/回退 → `tier_escalated` / `tier_fallback`
+  - 计划修改 → `plan_revised`
+  - 每次 observation 写入后 → `observation_recorded`
+
+7d. **Plan Version 递增**：每次对 `global_plan` 做结构性修改时（非简单状态更新），递增 `global_plan_version`，并追加一条 `global_plan_revision_history`。
+
+8. **探索预算**：autonomous_mode 下的数据探索类步骤受硬性预算约束。orchestrator 在初始化时写入 `Task State.exploration_budget`，并在每次探索动作执行前后更新 `used` 和 `wallclock_seconds_used`。
+
+预算定义（与 `references/task_state_contract.md` 中的 schema 一致）：
+
+| 预算类别 | 最大尝试 | 最大耗时 | 耗尽后策略 |
+|---|---|---|---|
+| data_acquisition | 3 次 | 600s（10 分钟） | report_blocker_and_proceed_with_fallback |
+| speed_measurement | 2 次 | 无单独限制 | use_last_measured_value |
+| structure_probing | 2 次 | 120s（2 分钟） | skip_and_mark_unavailable |
+
+预算检查规则：
+- 每次执行探索动作前检查：对应类别的 `used < max_attempts` 且 `wallclock_seconds_used < max_wallclock_seconds`
+- 若任一条件不满足 → 跳过探索，直接按 `on_exhausted` 策略处理
+- 测速类操作（`curl -r ... -o /dev/null`、`timeout ... curl` 等）只允许执行 `speed_measurement.max_attempts` 次不同测速策略的测试；同一策略的重复执行视为同一次尝试
+
 ## 工作流程
 
 ### 阶段一：资源召回与意图识别
 
 1. 建立或更新 Task State：初始化任务状态或从上一步的执行结果更新状态。
+   - **持久化**：每次更新 Task State 后，将当前完整 Task State 原子写入 `.onescience/task_state.json`（先写 `.tmp` 再 rename）。
+   - **恢复**：每次 orchestrator 启动时，先检查 `.onescience/task_state.json` 是否存在：
+     - 若存在且 `status` 非 `complete` 非 `blocked`，读取并恢复上一个任务，输出"检测到未完成任务，正在恢复..."。检查 `active_step.attempt` 和 `step_wallclock_budget_seconds`，若上次 steps 墙钟已超过预算则判定为 `step_timeout`，否则从 `active_step` 继续。
+     - 若存在且 `status` 为 `blocked` 且 `active_step.status` 为 `step_timeout`，恢复时递增 `attempt`，budget 翻倍。
+     - 若不存在或已完成/已阻断，正常开始新任务。
+
+   Task State 文件格式：
+   ```json
+   {
+     "task_id": "paper-repro-2406.01465",
+     "user_goal": "复现 https://arxiv.org/abs/2406.01465 论文",
+     "status": "execution",
+     "current_phase": "training",
+     "global_plan_version": 1,
+     "global_plan": { },
+     "completed_steps": ["step-1", "step-2"],
+     "active_step": { "step_id": "step-3", "attempt": 1, "step_wallclock_budget_seconds": 3600 },
+     "execution_flags": { "autonomous_mode": true },
+     "step_wallclock_budget": { "enabled": true, "default_budget_seconds": 3600, "budget_multiplier_on_retry": 2.0 },
+     "last_updated": "2026-08-05T10:30:00Z"
+   }
+   ```
+
+1.6 **【强制】初始化分层完成契约（Tiered Completion Contract）**：
+
+若任务涉及模型训练/论文复现/模型产出（由 `intent_profile.operation_type` 包含 `train`/`reproduce` 或 `artifact_type` 包含 `model` 判定），orchestrator 必须在阶段一 Task State 初始化完成后，立即写入 `tiered_completion_contract`。**各 tier 的 checks 和描述为通用模板，orchestrator 必须根据论文实际内容（领域 domain、模型类 model_type、核心指标 core_metric、数据规模 data_scale）做以下动态填充**：
+
+```yaml
+tiered_completion_contract:
+  active_tier: "tier_0_smoke"
+  tiers:
+    - tier_id: "tier_0_smoke"
+      description: "最小化代码正确性验证——必须通过"
+      checks:
+        - name: "forward_pass"
+          status: "pending"
+        - name: "backward_pass"
+          status: "pending"
+        - name: "train_loop_dry_run"
+          status: "pending"
+        - name: "validation_loop_dry_run"
+          status: "pending"
+        # 【动态填充】若论文核心指标有对应的计算逻辑（如 CFD 的 CL 面板法、生信的 pLDDT、材料的能量/力），
+        # 替换为 "{core_metric}_dry_run"；若无特殊计算逻辑，删除本行
+        - name: "{core_metric}_dry_run"
+          status: "pending"
+        - name: "config_consistency"
+          status: "pending"
+      status: "pending"
+      max_wallclock_minutes: 15
+      on_fail: "fix_and_retry_max_3_times"
+      escalation: "always"
+
+    - tier_id: "tier_1_quick_repro"
+      description: "小数据量端到端复现，产出可发布的模型包——默认可交付层"
+      # 【动态填充】根据论文数据规模推导：
+      #   - data_scale: 从 reproduction_spec 中提取论文全量数据规模，Tier 1 取 1/10 ~ 1/5
+      #   - max_wallclock: 预估，小数据单卡通常 < 60 min
+      checks:
+        - name: "model_weights_saved"
+          status: "pending"
+        - name: "test_metric_finite"       # 通用名，替换论文实际指标（RMSE/MAE/Accuracy/F1/...）
+          status: "pending"
+        # 【动态填充】同 tier_0，替换为 "{core_metric}_traceable"
+        - name: "{core_metric}_traceable"
+          status: "pending"
+        - name: "modelscope_audit_passed"
+          status: "pending"
+      status: "pending"
+      is_deliverable: true
+      escalation_trigger: "user_goal 包含 '全量' / '完整复现' / 'match paper results' / '论文指标'"
+
+    - tier_id: "tier_2_full_repro"
+      description: "全量数据+完整训练——仅在显式要求时触发"
+      data_scale_preset: "full"
+      checks:
+        - name: "full_training_completed"
+          status: "pending"
+        - name: "test_metric_in_paper_range"
+          status: "pending"
+      status: "pending"
+      is_deliverable: true
+      fallback_tier: "tier_1_quick_repro"
+      fallback_status_on_failure: "partial"
+  resolution: "tier_contract_driven"
+  deliverable_tier: "tier_1_quick_repro"
+```
+
+**动态填充规则**（orchestrator 在写入时必须执行）：
+
+| 占位符 | 填充来源 | 填充方法 |
+|---|---|---|
+| `{core_metric}` | `plan_detail_store` 中 paper-repro 阶段的 `core_metric` 字段 | 直接替换为论文核心指标名（如 CFD 的 `cl`、生信的 `plddt`、材料的 `energy_force`）；若无特殊指标，删除对应的 check 行 |
+| `data_scale` | `matched_resources` 中的数据卡或 reproduction_spec 中的 `dataset_size` | Tier 1 的 `data_scale` 取论文全量的 1/10~1/5，Tier 2 取论文全量；同时写入 `data_scale_preset` 字段供 trainer 使用 |
+| `description` | `intent_profile.domain` | Tier 1 description 中的领域词根据 domain 改写（如 `earth`→"气象数据"、`bio`→"蛋白质序列"、`cfd`→"翼型 CFD"、`materials`→"材料结构"） |
+| `checks` 中的指标名 | 论文指标 | `test_rmse_finite` → 若论文用 MAE 改为 `test_mae_finite`，若用 Accuracy 改为 `test_accuracy_finite`；`test_rmse_in_paper_range` 同理 |
+
+**填充示例**：
+- CFD 翼型论文（arXiv:2504.15993）：`{core_metric}` = `cl`，`data_scale` = `{n_foils: 10}`, description = "翼型 CFD 数据"
+- 蛋白质结构预测：`{core_metric}` = `plddt`，`data_scale` = `{n_sequences: 50}`, description = "蛋白质序列数据"
+- 材料力场训练：`{core_metric}` = `energy_force`，`data_scale` = `{n_frames: 100}`, description = "材料结构数据"
+- 通用分类/回归（无领域特殊指标）：删除 `{core_metric}` 相关的 check 行，仅保留通用 checks
+
+若任务不涉及训练/复现（如纯安装、纯配置、纯查询），跳过此步骤，不初始化 `tiered_completion_contract`。
 
 1.5 **【强制】资源调用前预分析**：在调用 type=resource 技能之前，先扫描 `user_request` 中是否包含以下可视化信号词，并记录到 `pre_call_signals`：
    - 显式可视化词：`可视化`、`visualization`、`visualize`、`render`、`rendering`
@@ -219,6 +461,18 @@ type: orchestrator
      - 当前轮次的 executor inventory 汇总状态：仅展示简短摘要，例如 `executor inventory: 13/13 complete`
      - 若 `executor_inventory_complete=false` 或进入 blocked，才额外展示 `missing_executor_skills`；默认不向用户列出完整 `all_executor_skills` 或 `read_executor_skills`
      - 当前轮次 executor 能力视图的摘要性结论：只概括与当前计划相关的职责边界、关键输入输出和选择依据，不默认枚举全部 executor 明细
+     - **【新增】若已初始化 `tiered_completion_contract`，输出分层概览**：
+       
+       ```
+       ## 任务分层概览
+       | 层级 | 描述 | 数据规模 | 预计耗时 | 是否可交付 |
+       |---|---|---|---|---|
+       | Tier 0 | 代码冒烟验证 | 5 foils × 3 epochs | ~15 min | 否 |
+       | Tier 1 | 小规模端到端复现 | 10 foils × 30 epochs | ~30 min | **是（默认交付）** |
+       | Tier 2 | 全量完整复现 | 150 foils × 400 epochs | ~48 h | 是 |
+       
+       > 当前目标：Tier 1 完成即交付。Tier 2 仅在显式要求'全量复现'时触发。
+       ```
      - 计划总步骤数和预计耗时
      - 每个步骤的序号、目标描述、执行方式（executor_step/orchestrator_step）
      - executor_step 标注具体执行技能名称，以及为何该技能而不是其他 executor 更匹配该步骤
@@ -266,6 +520,16 @@ type: orchestrator
      - 执行技能必须是 `type=executor`
      - 若执行技能需要更深资源内容，必须重新调用匹配的 `type=resource` 技能获取，不得沿着资源 `path` 直接读取文件
      - 执行技能返回 `execution_result`，仅表示当前步骤的执行结果，不授权直接串行调用下一个 executor
+     - **文件交接模式（autonomous_mode）**：当 `autonomous_mode: true` 时，executor_step 采用文件交接而非上下文传递，避免 orchestrator 上下文膨胀：
+       1. 将 `step_handoff`（含 attempt、step_wallclock_budget_seconds、tier_config 字段）以原子写入方式输出：先写入 `.onescience/handoff/step_{step_id}.yaml.tmp`，完整写入后 rename 为 `.onescience/handoff/step_{step_id}.yaml`。
+       2. 使用 Skill 工具调用目标 executor，传入简要指令：
+          ```
+          请读取 .onescience/handoff/step_{step_id}.yaml 获取当前步骤信息并执行。
+          完成后将结果原子写入 .onescience/handoff/step_{step_id}_result.yaml（先写 .tmp 再 rename）。
+          ```
+       3. executor 执行完毕后，从 `.onescience/handoff/step_{step_id}_result.yaml` 读取 `execution_result`（含 `attempt`、`failure_category`、`events`、`tier_result`）
+       4. 将结果写回 `.onescience/task_state.json`（原子写入：先写 .tmp 再 rename），更新 `tiered_completion_contract`、写入 observation 和 events
+       5. 所有步骤完成后，将 handoff 目录归档到 `.onescience/archive/{task_id}/`
    - 如果 `Next Step Spec.step_type=orchestrator_step`：
      - 只有在当前轮次完整 executor 能力台账已证明：该步骤不属于任何 executor 已声明负责的原子动作、也不是任何 executor-owned 步骤中的业务子动作时，才由 orchestrator 使用智能体自身工具执行。
      - 由 orchestrator 使用智能体自身工具执行（如 WebFetch 下载文件、Read 读取内容、受限 Bash 只读检查等）
@@ -274,24 +538,61 @@ type: orchestrator
 10. 记录执行结果并更新状态：
     - 所有执行结果先进入 `observation`，再根据更新后的 `Task State` 决定后续动作
     - 将 `artifacts` 和 `observation` 写回 `Task State`
+    - 将 executor 返回的 `events`（如有）合并到 `Task State.events`
     - 更新 `Task State.completed_steps`、`Task State.current_phase`、`Task State.active_step` 与对应 `global_plan` 步骤状态
+    - 写入 observation 对应的 event（`observation_recorded`）
+    - 原子写入 `.onescience/task_state.json`
 
 11. 基于 observation 决策：
-    - 分析 `observation.status`（success/partial/failed/blocked）
+    - 分析 `observation.status`（success/partial/failed/blocked/step_timeout）和 `failure_category`（若 failed）
     - 如果 `success`：
-      - 标记当前步骤完成
-      - 若全部 `completion_criteria` 已满足，则输出最终结果并结束
-      - 否则必须基于更新后的 `Task State`、`artifacts`、`observations` 和 `Global Plan` 重新选择下一个 `Next Step Spec`
+      - 标记当前步骤完成，写入 `step_completed` event
+      - **【强制 tier_check】若 `tiered_completion_contract` 已初始化**，执行 tier_check 子流程（见下方 11.1），再根据 tier 判定结果决定后续动作
+      - 若 tier contract 不存在：若全部 `completion_criteria` 已满足，则输出最终结果并结束；否则必须基于更新后的 `Task State`、`artifacts`、`observations` 和 `Global Plan` 重新选择下一个 `Next Step Spec`（若 plan 结构性修改则递增 `global_plan_version`）
     - 如果 `partial`：
       - 记录已完成部分、缺失项、残余风险和 `next_recommendation`
+      - 写入 `step_partial` event
       - 回到规划阶段，对当前步骤做细化、拆分或补充前置步骤
       - 选出新的 `Next Step Spec` 后，在同一 skill 循环中继续执行
     - 如果 `failed`：
-      - 记录失败证据与失败摘要
-      - 再决定进入最小修复范围的 repair、重新召回资源/专家，或进入 blocked 分支
+      - 记录失败证据与失败摘要，写入 `step_failed` event
+      - 根据 `failure_category` 执行分策略处理（参见"7a. 失败分类策略"表）：
+        - `transient` → `retry_with_backoff`：递增 `attempt`，写入 `retry_started` event 后重试
+        - `code` → `delegate_to_coder`：委托 coder 修复，写入 `repair_attempted` event
+        - `environment` → `delegate_to_installer`：委托 installer 修复
+        - `scientific` / `dependency` → 直接进入 blocked
+        - `platform` → 写入 event 后阻塞，重试 1 次
+        - `unknown` → 进入 diagnose 后再判定
+      - 重试超过上限 → 进入 blocked
+    - 如果 `step_timeout`：
+      - 写入 `step_timed_out` event，记录超时详情
+      - 进入 blocked 状态
+      - 恢复后 `attempt` 递增，预算 = `original_budget * budget_multiplier_on_retry`
     - 如果 `blocked`：
       - 记录阻断原因、缺失输入或外部依赖
       - 若可通过重新规划消除阻断，则在同一循环中继续；否则保持 blocked 状态等待外部条件变化
+
+11.1 **tier_check 子流程**（仅在 `tiered_completion_contract` 已初始化时执行）：
+
+```
+1. 从 executor 返回的 execution_result.tier_result（若存在）或 observation 中提取当前步骤对应的 check 结果
+2. 更新 tiered_completion_contract.tiers[active_tier].checks 中对应项的 status
+3. 遍历当前 tier 的所有 checks：
+   - 若仍存在 status=pending 的 check → 当前 tier 未完成，继续下一步 execution
+   - 若全部 check 已非 pending：
+     a. 全部 pass → 当前 tier status = pass
+     b. 有 fail → 当前 tier status = fail
+4. 若当前 tier status = pass：
+   a. 检查 escalation 规则：
+      - 若 escalation == "always"（如 tier_0）→ active_tier 切换为下一 tier，进入 execution
+      - 若当前 tier.is_deliverable == true：
+        * 若 escalation_trigger 命中（user_goal 含触发词）且下一 tier 存在 → active_tier 切换到下一 tier
+        * 否则 → status: complete，输出最终结果
+   b. 将 tier_config 注入到下一 tier 相关步骤的 step_handoff 中（file_handoff_contract 中的 tier_config 格式）
+5. 若当前 tier status = fail：
+   a. 若 fallback_tier 存在（如 tier_2 → tier_1）→ deliverable_tier 指向 fallback_tier，status: partial
+   b. 若无 fallback → status: failed
+```
 
 12. 重新选择下一步并进入下一轮：
     - 只有在 observation 完成且 `Task State` 已更新后，才允许重新选择一个新的 `Next Step Spec`
