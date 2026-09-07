@@ -11,7 +11,7 @@
 | 层级 | 名称 | 职责 | 典型形态 |
 | --- | --- | --- | --- |
 | 内核层 | orchestrator | 理解用户目标、召回资源、召回专家、融合计划、调度执行、维护 Task State | `onescience-orchestrator` |
-| 资源层 | resource skills | 通过统一契约召回模型、数据、组件、应用、工作流知识 | `type=resource` skill |
+| 资源层 | resource skills | 通过统一契约召回 primitive 知识，包括模型、数据、组件、应用、工具、数据库、服务和工作流知识 | `type=resource` skill |
 | 专家层 | expert skills | 针对复杂任务做规划、取舍和 fallback，输出 `planner_proposal` | `type=expert` skill |
 | 执行层 | executor skills | 落地稳定流程，返回可追踪的 `execution_result` | `type=executor` skill |
 
@@ -50,26 +50,23 @@
 - 使用示例、启动参数、依赖环境和限制
 - 工作流规划知识、适用条件、失败模式和 fallback
 
-资源应放在对应 `type=resource` skill 自己的 `assets/` 目录下，而不是绕过资源 skill 直接堆到公共目录。已有 `onescience-primitives` 负责 OneScience 原语资源召回；如果你的资源不属于它的边界，应新增或扩展对应的资源 skill。
+可复用资源应优先蒸馏成 primitive，并放入统一原语库 `skills/onescience-primitives/assets/`。第三方工具、数据库、服务、数据集、工作流知识、输出格式和校验契约都可以成为 primitive；只有当资源需要独立检索规则、权限控制、provider 集成或存储生命周期时，才新增独立 `type=resource` skill。
 
 推荐结构：
 
 ```text
-skills/<resource-skill-name>/
-  SKILL.md
+skills/onescience-primitives/
   assets/
     <domain>/
       <category>/
-        <resource_name>/
+        <primitive_name>/
           metadata.json
           spec.md
           usage.md
           workflow_planning.md
-  references/
-    <retrieval_rules>.md
 ```
 
-资源 skill 的关键约束：
+Primitive resource 的关键约束：
 
 - `SKILL.md` frontmatter 必须包含 `type: resource`。
 - 必须接收 `resource_retrieval_request`。
@@ -167,8 +164,8 @@ type: executor
 
 1. 写清楚这条领域经验解决什么问题。
 2. 判断它是资源、专家规划，还是稳定执行。
-3. 能资源化就先资源化，不要急着新增 executor 或 expert。
-4. 如果新增资源，放到对应 `type=resource` skill 的 `assets/` 中，并补齐 `metadata.json`。
+3. 能原语化就先原语化，不要急着新增 executor 或 expert。
+4. 如果新增资源，优先放到 `onescience-primitives/assets/` 中，并补齐 `metadata.json`、`spec.md`、`usage.md` 和 `workflow_planning.md`。
 5. 如果新增 expert，确保它只返回 `planner_proposal`，不直接执行。
 6. 如果新增 executor，确保它接收 `step_handoff` 并返回 `execution_result`。
 7. 补充使用限制、失败条件和最小验证说明。
@@ -178,7 +175,7 @@ type: executor
 
 - 是否没有把领域规则硬编码进 `onescience-orchestrator`？
 - 是否先判断了 resource / expert / executor 的正确接入点？
-- 新增资源是否通过 `type=resource` skill 暴露，而不是让调用方直接读 `assets/`？
+- 新增资源是否作为 primitive 通过 `type=resource` skill 暴露，而不是让调用方直接读 `assets/`？
 - `metadata.json` 的 `description` 是否足够支持召回？
 - expert 是否只规划，不执行？
 - executor 是否只执行当前步骤，不重新定义用户目标？
@@ -195,4 +192,4 @@ type: executor
 
 ## 一句话原则
 
-领域知识先资源化，复杂决策再专家化，稳定流程才执行化；所有扩展都通过统一契约交给 `onescience-orchestrator` 召回、融合和调度。
+领域知识先原语化，复杂决策再专家化，稳定流程才执行化；所有扩展都通过统一契约交给 `onescience-orchestrator` 召回、融合和调度。

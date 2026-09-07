@@ -1,0 +1,44 @@
+{
+  "name": "scvi_tools",
+  "primitive_id": "bio.tools.scvi_tools",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "third_party_open_source",
+  "provider_name": "scverse",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/scvi-tools",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "scvi-tools is a third-party probabilistic modeling tool primitive for single-cell batch correction, transfer learning, multimodal integration, uncertainty-aware differential expression, and related generative models. Use it when a Scanpy-style workflow needs learned latent representations or model-based integration rather than only exploratory preprocessing.",
+  "tags": [
+    "scvi-tools",
+    "batch-correction",
+    "transfer-learning",
+    "multimodal",
+    "probabilistic-modeling",
+    "single-cell",
+    "deep-learning"
+  ],
+  "capabilities": [
+    "Train scVI-family models on raw-count AnnData or MuData inputs.",
+    "Produce latent representations, denoised expression, and label-transfer outputs.",
+    "Support multimodal integration, spatial deconvolution, and RNA velocity-adjacent models where applicable.",
+    "Expose uncertainty-aware downstream analysis for cell states and differential expression."
+  ],
+  "requirements": [
+    "Python environment with scvi-tools, PyTorch, and anndata installed.",
+    "Raw count inputs and model-specific covariates or modality registration.",
+    "GPU optional, but helpful for large models."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

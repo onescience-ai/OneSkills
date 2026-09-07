@@ -1,0 +1,44 @@
+{
+  "name": "statistical_analysis",
+  "primitive_id": "general.tools.statistical_analysis",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/statistical-analysis",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "Statistical analysis is a cross-domain analysis primitive for test selection, assumption checking, effect sizes, power sensitivity, Bayesian alternatives, and research reporting. Use it when comparing groups, testing hypotheses, analyzing experiments or surveys, checking diagnostics, or writing statistical results.",
+  "tags": [
+    "statistics",
+    "hypothesis-testing",
+    "assumption-checks",
+    "effect-size",
+    "regression",
+    "bayesian",
+    "reporting"
+  ],
+  "capabilities": [
+    "Select statistical tests from design, outcome, predictor, and dependency structure.",
+    "Require assumption checks and remedial alternatives before interpretation.",
+    "Report effect sizes, intervals, and exact test statistics.",
+    "Route low-level model implementation to statsmodels, scipy, pingouin, pymc, or domain executors."
+  ],
+  "requirements": [
+    "A clear outcome, predictor/group structure, study design, and unit of analysis.",
+    "Raw or cleaned analysis table with missingness and exclusions documented.",
+    "Appropriate statistical package or executor when real computation is required."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

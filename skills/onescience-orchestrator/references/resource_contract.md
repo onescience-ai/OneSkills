@@ -1,5 +1,31 @@
 # Resource Contract
 
+## Primitive Unification Extension
+
+The resource contract now treats `primitive` as the common representation for reusable scientific capabilities. A primitive may be first-party OneScience content or a third-party tool, package, database, service, dataset, workflow pattern, output format, or validation contract.
+
+`type=resource` skills should keep returning the existing `resource_retrieval_result` envelope for compatibility. Each `matched_resources[]` item may additionally include:
+
+```yaml
+primitive_id: <stable identity such as bio.tools.scanpy>
+category: <models | components | datapipes | datasets | tools | databases | services | application | visualization | workflow-planning | contracts | output-format>
+provider:
+  kind: <first_party | third_party_open_source | third_party_commercial | community | internal>
+  name: <provider name>
+provenance:
+  distilled_from: <source skill, repository, upstream docs, or catalog record>
+  copied_execution_assets: <true | false>
+requirements:
+  runtime: <python/package/system/service requirements, optional>
+contracts:
+  resource_output: resource_retrieval_result
+  execution_asset_policy: sha256_whitelist | none
+```
+
+Callers must treat these fields as metadata for planning and binding. They still consume resource substance only from `matched_resources[*].content`, and they still must not bypass a resource skill by directly reading `assets/`.
+
+Compatibility rule: legacy resource types such as `model_primitive`, `component_primitive`, `datapipe_primitive`, `application_primitive`, `tool_primitive`, and `visualization_primitive` remain valid. New categories should use `<category>_primitive` when a specific type is needed, or include `category` explicitly when preserving an older `type` value.
+
 本文档定义所有技能调用 type=resource 技能时的统一输入输出格式。
 
 ## 核心原则
@@ -181,4 +207,3 @@ resource_bindings:
 - **多个候选**：保持为 candidate，交由专家融合阶段排序
 - **契约冲突**：标记为 conflict，不要自行融合
 - **需要详细内容**：在 handoff 中说明还缺少什么内容，由执行技能重新调用对应的 `type=resource` 技能获取
-

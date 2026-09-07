@@ -2,7 +2,9 @@
 
 This guide is for `OneSkills` users and contributors, explaining how to contribute new domain experience, resource knowledge, or custom skills within the current architecture.
 
-Core principle: **Resources are also accessed through skills. Do not directly dump new resources into `skills/onescience-primitives/assets/`. Instead, implement or extend a corresponding `type=resource` skill and place resource files under that skill's own `assets/` directory.**
+Core principle: **Reusable scientific capabilities should first be expressed as primitives exposed through `type=resource` skills. `onescience-primitives` is the default unified primitive registry; add a separate `type=resource` skill only when a capability needs an independent retrieval contract, lifecycle, access policy, or storage backend.**
+
+Third-party tools, databases, services, datasets, workflow knowledge, output formats, and validation contracts can all be primitives. "Third-party" is captured as provider / provenance metadata; it is not a reason to keep the capability outside the primitive layer.
 
 ## 1. Current Architecture Layers
 
@@ -23,54 +25,55 @@ For any new capability, first classify it into one of the following three entry 
 
 | Entry Point | Applicable Targets | Placement | Output to System |
 | --- | --- | --- | --- |
-| A: Resource Skill | Reusable, recallable model / data / component / application / workflow knowledge | `assets/` of the corresponding `type=resource` skill | `resource_retrieval_result` |
+| A: Primitive Resource | Reusable, recallable model / data / component / application / tool / database / service / workflow / contract knowledge | `assets/` of `onescience-primitives`, unless an independent resource skill is justified | `resource_retrieval_result` |
 | B: Executor Skill | Stable entry points, fixed steps, verifiable results | New or extended `type=executor` skill | `execution_result` |
 | C: Expert Skill | Complex judgment rules requiring dynamic planning and fallback per task | New or extended `type=expert` skill | `planner_proposal` |
 
 Decision rules:
 
-- Callable, reusable "capability or knowledge" → Entry Point A: Resource Skill.
-- Has a stable CLI / API / job entry point with verifiable output → Entry Point B: Executor Skill.
-- Requires planning, trade-offs, and fallback based on task characteristics → Entry Point C: Expert Skill.
-- Lightweight, unverified experience not yet worth independent solidification → First deposit into the planning knowledge resource of the corresponding resource skill.
+In this guide, "Entry Point A" now means `Primitive Resource`. Older wording that says "Resource Skill" should be interpreted as primitive content exposed through `onescience-primitives`, unless a separate resource skill is explicitly justified.
+
+- Callable, reusable capability or knowledge -> Entry Point A: Primitive Resource.
+- Has a stable CLI / API / job entry point with verifiable output -> Entry Point B: Executor Skill.
+- Requires planning, trade-offs, and fallback based on task characteristics -> Entry Point C: Expert Skill.
+- Lightweight, unverified experience not yet worth independent solidification -> first distill it into primitive planning knowledge.
 
 ## 3. How to Add Resources
 
-The landing point for resource contributions is "the corresponding resource type skill," not a centralized public assets directory.
+The default landing point for reusable resource contributions is the unified primitive registry, `skills/onescience-primitives/assets/`. Add a separate resource skill only when the resource needs its own retrieval rules, access control, provider integration, or storage lifecycle.
 
-### 3.1 Resource Skill Structure
+### 3.1 Primitive Structure
 
-When adding a new resource type, create or extend a `type=resource` skill, for example:
+When adding a new primitive, extend `onescience-primitives` with the existing three-level layout:
 
 ```text
-skills/<resource-skill-name>/
-  SKILL.md
+skills/onescience-primitives/
   assets/
     <domain>/
       <category>/
-        <resource_name>/
+        <primitive_name>/
           metadata.json
           spec.md
           usage.md
           workflow_planning.md
-  references/
-    <retrieval_rules>.md
 ```
 
 Notes:
 
-- `SKILL.md` defines the resource recall scope, input/output contracts, filtering rules, and content organization.
-- `assets/` stores resource files privately managed by this resource skill.
-- `references/` stores this resource skill's own retrieval rules, domain routing rules, or schema documentation.
+- `metadata.json` must be sufficient for recall and should include stable identity, type, provider, provenance, capabilities, requirements, and tags.
+- `spec.md` stores input/output, dependencies, architecture, contracts, and implementation risks.
+- `usage.md` stores installation or invocation guidance, resource needs, common failures, and limitations.
+- `workflow_planning.md` stores decision rules, when to use the primitive, fallback, and handoff notes.
 - Callers can only obtain resource content through `resource_retrieval_request -> resource_retrieval_result`; they must not directly read any resource skill's `assets/`.
 
-Do NOT add new resources directly to:
+Use a new `type=resource` skill instead of `onescience-primitives` only when one of these is true:
 
-```text
-skills/onescience-primitives/assets/
-```
+- The resource requires a live provider API, credential gating, or remote catalog query that should not live inside the generic primitive registry.
+- The resource has a domain-specific retrieval algorithm that would make `onescience-primitives` noisy or slow.
+- The resource has a separate release cadence, license boundary, or access policy.
+- The resource registry is owned by another plugin and should expose the same `resource_retrieval_result` contract.
 
-### 3.2 Resource Skill Frontmatter
+### 3.2 Separate Resource Skill Frontmatter
 
 ```yaml
 ---
@@ -84,7 +87,7 @@ type: resource
 
 | File | Purpose | Serves |
 | --- | --- | --- |
-| `metadata.json` | Basic identification info: `name`, `type`, `domain`, `description`, `tags`, `version` | Resource recall, quick matching |
+| `metadata.json` | Basic identification info: `name`, `primitive_id`, `type`, `domain`, `category`, `description`, `tags`, `version`, `provider_kind`, `provider_name`, `source` | Resource recall, quick matching, provenance |
 | `spec.md` | Specification knowledge: architecture, input/output, dependencies, source anchors, implementation risks | coder / executor |
 | `usage.md` | Usage knowledge: startup methods, interfaces, resource requirements, limitations, common failures | executor |
 | `workflow_planning.md` | Planning decision knowledge: when to use, procedure, constraints, fallback | expert / orchestrator |
@@ -136,8 +139,8 @@ Only add a `type=expert` or `type=executor` skill when:
 
 Do NOT add a new skill when:
 
-- It is just adding a model, dataset, component, application, or template; this should first be made into a resource of a resource skill.
-- It is just documenting experience from a project; this should first be deposited as resource planning knowledge.
+- It is just adding a model, dataset, component, application, tool, service, or template; this should first be made into a primitive resource.
+- It is just documenting experience from a project; this should first be distilled as primitive planning knowledge.
 - It is just copying `coder/runtime/installer` under a different domain name.
 - It is just splitting a phase of runtime's internal `discover/preflight/execute/diagnose` into a public skill.
 - It is just turning an agent preference into a general rule.
@@ -272,7 +275,7 @@ Specific expert skills may add extension fields such as `planner_payload` withou
 It is recommended to solidify capabilities along the following path:
 
 1. Implicit experience: temporary prompts, manual operations, one-off scripts.
-2. Resource deposit: write into the corresponding `type=resource` skill's `assets/`.
+2. Primitive distillation: write the reusable part into `onescience-primitives/assets/` or an explicitly justified `type=resource` skill.
 3. Repeated validation: recalled multiple times in real tasks, collecting observations and failure conditions.
 4. Skill solidification: only after the workflow is stable, boundaries are clear, and outputs are verifiable, judge whether to solidify as `type=executor` or `type=expert`.
 5. Core-transparent extension: after registration, recalled or scheduled by the orchestrator without modifying the main control logic.
@@ -287,9 +290,9 @@ Solidification criteria:
 
 1. Clearly describe what problem the new capability solves.
 2. Determine whether it should be a resource, executor, or expert skill per entry point A/B/C.
-3. Prioritize minimal changes: if it can be a resource skill, do not add an executor / expert skill.
+3. Prioritize minimal changes: if it can be a primitive, do not add an executor / expert skill.
 4. Complete the necessary files per contract:
-   - resource: `SKILL.md`, resource files under `assets/`, necessary retrieval rules
+   - primitive resource: `metadata.json`, `spec.md`, `usage.md`, `workflow_planning.md`, optional whitelisted `execution_assets`
    - executor: `SKILL.md`, necessary `references/`, `scripts/`, or `assets/`
    - expert: `SKILL.md`, necessary planning protocols or reference documents
 5. Check for overlapping responsibilities with existing skills.
@@ -299,7 +302,7 @@ Solidification criteria:
 ## 9. PR Self-Check Checklist
 
 - Have you avoided modifying the orchestrator's domain hardcoded rules?
-- Are new resources placed under the corresponding `type=resource` skill's `assets/`, rather than directly into `skills/onescience-primitives/assets/`?
+- Are reusable capabilities represented as primitives under `onescience-primitives`, or is a separate resource skill clearly justified?
 - Does the resource skill accept `resource_retrieval_request` and return `resource_retrieval_result`?
 - Does the resource skill explicitly prohibit callers from directly reading its `assets/`?
 - If adding a resource, is `metadata.json`'s `description` sufficient to support recall?
@@ -309,4 +312,4 @@ Solidification criteria:
 
 ## 10. One-Sentence Principle
 
-Resources are accessed through `type=resource` skills, execution is delivered through `type=executor` skills, and complex decisions are planned by `type=expert` skills; all three follow unified contracts, and are uniformly recalled, fused, and scheduled by the orchestrator.
+Primitives are the shared representation of reusable scientific capability, resources are accessed through `type=resource` skills, execution is delivered through `type=executor` skills, and complex decisions are planned by `type=expert` skills; all three follow unified contracts and are uniformly recalled, fused, and scheduled by the orchestrator.

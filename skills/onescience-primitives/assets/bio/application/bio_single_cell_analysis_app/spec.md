@@ -25,6 +25,17 @@
 
 输出包括过滤后的 `.h5ad`、QC 表、QC 图、训练后的 latent 表示、聚类标签、UMAP 坐标、差异表达结果、标签迁移结果、整合后的对象和报告素材。
 
+# execution_handoff_contract
+
+执行交接必须显式包含以下字段，不允许由环境变量、脚本默认值或历史上下文推断：
+
+- `input_h5ad` 或 10x 输入路径。
+- `output_dir`。
+- `batch_key`、`label_key`、`layer` 和 raw counts 来源。
+- QC thresholds，包括 `min_genes`、`min_cells`、`max_mito_pct` 或对应的阈值选择策略。
+- sample and batch metadata fields，用于记录样本、批次、条件和分组来源。
+- expected outputs，包括 processed `.h5ad`、QC tables、QC figures、UMAP coordinates、Leiden labels 和 marker tables。
+
 # shape_transformations
 
 AnnData 主矩阵: cells x features
@@ -36,10 +47,25 @@ AnnData 主矩阵: cells x features
 
 # key_dependencies
 
-- AnnData/Scanpy 数据对象约定
-- scvi-tools 模型训练与推理接口
+- `bio.components.anndata`：共享的 AnnData 容器与 I/O 约定
+- `bio.datasets.cellxgene_census`：公共参考图谱和大规模查询入口
+- `bio.tools.scanpy`：第三方 Scanpy 工具 primitive，提供单细胞探索分析、预处理、聚类和可视化的使用知识
+- `bio.tools.scvi_tools`：概率模型、批次校正和迁移学习入口
+- `bio.tools.scvelo`：RNA velocity 和轨迹方向入口
+- `bio.tools.pydeseq2`：pseudobulk 和 bulk RNA-seq 差异分析入口
 - pandas/numpy 表格处理
 - matplotlib/seaborn 或 scanpy plotting 图形输出
+
+# primitive_composition
+
+- application primitive: `bio.application.bio_single_cell_analysis_app`
+- component primitive: `bio.components.anndata`
+- dataset primitive: `bio.datasets.cellxgene_census`
+- tool primitive: `bio.tools.scanpy`
+- tool primitive: `bio.tools.scvi_tools`
+- tool primitive: `bio.tools.scvelo`
+- tool primitive: `bio.tools.pydeseq2`
+- 组合边界：应用卡只引用工具能力和约束，不复制第三方执行脚本；实际环境安装、命令执行和结果收集由 coder/runtime 负责
 
 # common_modification_points
 

@@ -1,0 +1,45 @@
+{
+  "name": "nextflow_workflow",
+  "primitive_id": "general.workflow-planning.nextflow_workflow",
+  "type": "workflow-planning",
+  "domain": "general",
+  "category": "workflow-planning",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "third_party_open_source",
+  "provider_name": "Nextflow / nf-core",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/nextflow",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "Nextflow workflow is a cross-domain reproducible-workflow primitive for building, running, configuring, and debugging Nextflow and nf-core pipelines. Use it for DSL2 processes, channels, modules, samplesheets, container profiles, HPC/cloud execution, resume behavior, and nf-core-compliant development.",
+  "tags": [
+    "nextflow",
+    "nf-core",
+    "workflow",
+    "pipeline",
+    "dsl2",
+    "containers",
+    "hpc",
+    "reproducibility"
+  ],
+  "capabilities": [
+    "Plan runs of existing nf-core or custom Nextflow pipelines.",
+    "Capture DSL2 workflow, process, channel, module, and configuration constraints.",
+    "Specify local, HPC, cloud, container, Conda, Docker, Singularity, or Apptainer execution profiles.",
+    "Use pinned revisions, test profiles, tracing, reports, and resume behavior for reproducibility."
+  ],
+  "requirements": [
+    "Java-compatible Nextflow runtime and a selected execution backend.",
+    "Pinned pipeline revision, profiles, parameters, and samplesheets for real runs.",
+    "Container or environment strategy for each process."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "name": "pylabrobot",
+  "primitive_id": "general.tools.pylabrobot",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/pylabrobot",
+    "distilled_from_version": "1.2",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 6,
+      "scripts": 7,
+      "assets": 1
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/analytical-equipment.md",
+      "title": "Analytical Equipment",
+      "purpose": "Extended source guidance for analytical equipment.",
+      "source": "scientific-agent-skills/skills/pylabrobot/references/analytical-equipment.md",
+      "sha256": "d699a61be9fb15572a0cf7c2f3a6d2865007f75e6c508225e302fb9d29f3afea",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/hardware-backends.md",
+      "title": "Hardware Backends",
+      "purpose": "Extended source guidance for hardware backends.",
+      "source": "scientific-agent-skills/skills/pylabrobot/references/hardware-backends.md",
+      "sha256": "0df6a7606526b5be1a727968bbc18986a2c7af2f3559e2d8d028741af61ab2ae",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/liquid-handling.md",
+      "title": "Liquid Handling",
+      "purpose": "Extended source guidance for liquid handling.",
+      "source": "scientific-agent-skills/skills/pylabrobot/references/liquid-handling.md",
+      "sha256": "777b9db97453134fb224d38e886e9539eb18dc1ab7e328455cc9181e487583fa",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/material-handling.md",
+      "title": "Material Handling",
+      "purpose": "Extended source guidance for material handling.",
+      "source": "scientific-agent-skills/skills/pylabrobot/references/material-handling.md",
+      "sha256": "af8529cfc15591127b7f0ccb23623392887dbdc62c8d542d46e2df6a36648aad",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/resources.md",
+      "title": "Resources",
+      "purpose": "Extended source guidance for resources.",
+      "source": "scientific-agent-skills/skills/pylabrobot/references/resources.md",
+      "sha256": "2b4f197616f83543c446d421863141bea0508ede2bb828e88fcabdfb8a5e19d1",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/visualization.md",
+      "title": "Visualization",
+      "purpose": "Extended source guidance for visualization.",
+      "source": "scientific-agent-skills/skills/pylabrobot/references/visualization.md",
+      "sha256": "7c7778ed6858caf7ced217c35081cb3f96ecda1718c8fe732b6db666f8f9b3f9",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "PyLabRobot primitive for lab-automation resources, liquid-handling plans, offline simulation, resource trees, and supported-device integrations.",
+  "tags": [
+    "pylabrobot",
+    "lab-automation",
+    "liquid-handling",
+    "simulation",
+    "resources"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for pylabrobot.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

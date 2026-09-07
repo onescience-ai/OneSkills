@@ -1,0 +1,24 @@
+{
+  "name": "statistical_power",
+  "primitive_id": "general.workflow-planning.statistical_power",
+  "type": "workflow-planning",
+  "domain": "general",
+  "category": "workflow-planning",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/statistical-power",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "Statistical power is a pre-study planning primitive for sample-size calculation, detectable-effect sensitivity, attrition adjustment, and power analysis matched to experimental design. Use it after selecting a design and before data collection.",
+  "tags": ["statistical-power", "sample-size", "power-analysis", "sensitivity", "study-planning", "effect-size"],
+  "capabilities": ["Calculate or plan sample size for common study designs.", "Run sensitivity analyses for detectable effects without using misleading observed-power claims.", "Carry design structure, alpha, power, effect size, attrition, and multiplicity assumptions into an analysis handoff."],
+  "requirements": ["Chosen study design, estimand, effect-size definition, alpha, target power, and allocation ratio.", "Attrition or missingness assumptions when relevant.", "Power-analysis implementation package or executor when numeric calculation is required."],
+  "contracts": {"resource_output": "resource_retrieval_result", "execution_asset_policy": "none"}
+}

@@ -63,9 +63,9 @@ User Research Goal
 ### Layer 2: Resource
 
 - Skill: `onescience-primitives`
-- Responsibilities: Recall primitive resources from `skills/onescience-primitives/assets/`
-- Coverage: `bio`, `cfd`, `climate`, `matchem`
-- Common resources: models, components, datapipes, applications, workflow-planning, contracts
+- Responsibilities: Recall unified primitive resources from `skills/onescience-primitives/assets/`, including first-party OneScience resources and distilled third-party scientific tools / databases / services
+- Coverage: currently `bio`, `cfd`, `climate`, `matchem`, and `general`; `general` carries cross-domain research methods, databases, workflows, and delivery-format primitives
+- Common resources: models, components, datapipes, datasets, tools, databases, services, applications, visualization, workflow-planning, contracts, output formats
 - Constraint: Callers may only consume `matched_resources[*].content` returned by the resource skill; they may not bypass the resource contract by directly reading assets
 
 ### Layer 3: Expert
@@ -77,7 +77,10 @@ Experts are responsible only for planning. They do not write code directly, subm
 
 ### Layer 4: Executor
 
-The current execution skills are grouped into four categories:
+The current execution skills are grouped into five categories:
+
+**Primitive & Capability Governance**
+- `onescience-primitive-distiller`: Distills `scientific-agent-skills`, third-party scientific tools, databases, services, datasets, output formats, or workflow knowledge into `onescience-primitives` asset packages
 
 **Coding & Reproduction**
 - `onescience-coder`: Step-by-step coding, minimal smoke testing, or static requirement consistency checking
@@ -223,10 +226,11 @@ To extend custom skills, it is recommended to first read:
 
 - [`docs/user-guides/extend_domain_experience.md`](docs/user-guides/extend_domain_experience.md)
 - [`docs/open-source/custom_skill_contribution.md`](docs/open-source/custom_skill_contribution.md)
+- [`docs/open-source/primitive_unification_roadmap.md`](docs/open-source/primitive_unification_roadmap.md)
 
 Recommended extension order:
 
-1. Prioritize supplementing `onescience-primitives` resource assets so that existing orchestrator / expert / executor skills can recall them.
+1. Distill reusable scientific capabilities into `onescience-primitives` when they can be described as primitives, including third-party tools, databases, datasets, services, workflow knowledge, contracts, and output formats.
 2. When a task requires complex planning and will be reused, add a new `type=expert` skill.
 3. When a capability has stable inputs/outputs, can execute independently, and can return artifacts / observations, add a new `type=executor` skill.
 4. Avoid hardcoding domain workflows into `onescience-orchestrator`.

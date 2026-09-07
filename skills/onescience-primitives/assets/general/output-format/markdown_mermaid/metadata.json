@@ -1,0 +1,28 @@
+{
+  "name": "markdown_mermaid",
+  "primitive_id": "general.output-format.markdown_mermaid",
+  "type": "output-format",
+  "domain": "general",
+  "category": "output-format",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/markdown-mermaid-writing",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "Markdown and Mermaid is a text-first scientific documentation output primitive. Use it for research documents, READMEs, architecture notes, workflow diagrams, and version-controlled deliverables where editable Markdown and accessible Mermaid should remain the source of truth.",
+  "tags": ["markdown", "mermaid", "documentation", "diagram", "version-control", "accessibility"],
+  "capabilities": [
+    "Represent scientific workflows, architectures, schemas, timelines, and relationships as Markdown with Mermaid diagrams.",
+    "Keep diagrams diffable, editable, and renderable without a binary source of truth.",
+    "Apply document templates, heading, citation, and diagram accessibility conventions."
+  ],
+  "requirements": ["Markdown renderer with Mermaid support when diagrams must be previewed.", "A document type and intended audience."],
+  "contracts": {"resource_output": "resource_retrieval_result", "execution_asset_policy": "none"}
+}

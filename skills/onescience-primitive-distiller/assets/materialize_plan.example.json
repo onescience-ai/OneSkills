@@ -1,0 +1,20 @@
+{
+  "plans": [
+    {
+      "skill": "scanpy",
+      "domain": "bio",
+      "category": "tools",
+      "name": "scanpy",
+      "primitive_id": "bio.tools.scanpy",
+      "type": "tool",
+      "description": "Scanpy primitive for single-cell analysis planning, AnnData workflows, preprocessing, clustering, differential expression, and visualization handoff.",
+      "tags": [
+        "scanpy",
+        "single-cell",
+        "anndata",
+        "rna-seq",
+        "clustering"
+      ]
+    }
+  ]
+}

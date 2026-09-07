@@ -1,0 +1,121 @@
+{
+  "name": "scikit_learn",
+  "primitive_id": "general.tools.scikit_learn",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/scikit-learn",
+    "distilled_from_version": "1.2",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 8,
+      "scripts": 2,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/common_workflows.md",
+      "title": "Common Workflows",
+      "purpose": "Extended source guidance for common workflows.",
+      "source": "scientific-agent-skills/skills/scikit-learn/references/common_workflows.md",
+      "sha256": "46622a76232e595eafa8b568c4f52ee11479e24482ff36a1b6a1590cc3d95931",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/core_capabilities.md",
+      "title": "Core Capabilities",
+      "purpose": "Extended source guidance for core capabilities.",
+      "source": "scientific-agent-skills/skills/scikit-learn/references/core_capabilities.md",
+      "sha256": "071aa20353e1ab33c3d20a6e2f81c43ef5847142bdabd8fa3658fd424e098b13",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/model_evaluation.md",
+      "title": "Model Evaluation",
+      "purpose": "Extended source guidance for model evaluation.",
+      "source": "scientific-agent-skills/skills/scikit-learn/references/model_evaluation.md",
+      "sha256": "95825afc97206a6588c7fd1f9358e2b130bbbbe6ae5f1032923ee7dbaf6c11e5",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/pipelines_and_composition.md",
+      "title": "Pipelines And Composition",
+      "purpose": "Extended source guidance for pipelines and composition.",
+      "source": "scientific-agent-skills/skills/scikit-learn/references/pipelines_and_composition.md",
+      "sha256": "c856b5b21e03b1cf5e4094211a831b69f1ff1d8ecd7b0174ca3a28674aec0033",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/preprocessing.md",
+      "title": "Preprocessing",
+      "purpose": "Extended source guidance for preprocessing.",
+      "source": "scientific-agent-skills/skills/scikit-learn/references/preprocessing.md",
+      "sha256": "e510e9f984e29162f950500edca082fe8d647c7bdb4ac066c295eb5eead8a2e1",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/quick_reference.md",
+      "title": "Quick Reference",
+      "purpose": "Extended source guidance for quick reference.",
+      "source": "scientific-agent-skills/skills/scikit-learn/references/quick_reference.md",
+      "sha256": "c34ef2f24089f22e80a1ca7794b2c089ce9fc07e6286206140c99f56fa30990e",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/supervised_learning.md",
+      "title": "Supervised Learning",
+      "purpose": "Extended source guidance for supervised learning.",
+      "source": "scientific-agent-skills/skills/scikit-learn/references/supervised_learning.md",
+      "sha256": "f257bc6e165777baf81ffdc55c2f6e36bc770a94fb42d3b9b6ed844c3a7f8c83",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/unsupervised_learning.md",
+      "title": "Unsupervised Learning",
+      "purpose": "Extended source guidance for unsupervised learning.",
+      "source": "scientific-agent-skills/skills/scikit-learn/references/unsupervised_learning.md",
+      "sha256": "a1f2a140c20e20f20de9c24a3be2ccacece1f192a1745c5f70a0c5e3cb972850",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "scikit-learn primitive for supervised learning, clustering, dimensionality reduction, preprocessing, model evaluation, hyperparameter tuning, and pipeline construction.",
+  "tags": [
+    "scikit-learn",
+    "machine-learning",
+    "pipelines",
+    "clustering",
+    "evaluation"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for scikit-learn.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

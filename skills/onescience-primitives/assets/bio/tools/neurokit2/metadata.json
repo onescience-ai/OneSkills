@@ -1,0 +1,157 @@
+{
+  "name": "neurokit2",
+  "primitive_id": "bio.tools.neurokit2",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/neurokit2",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 12,
+      "scripts": 7,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/bio_module.md",
+      "title": "Bio Module",
+      "purpose": "Extended source guidance for bio module.",
+      "source": "scientific-agent-skills/skills/neurokit2/references/bio_module.md",
+      "sha256": "5c7d76b5f985d1b98f79a2198381c64e5849e9d4c518a86393ada35e512cee58",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/complexity.md",
+      "title": "Complexity",
+      "purpose": "Extended source guidance for complexity.",
+      "source": "scientific-agent-skills/skills/neurokit2/references/complexity.md",
+      "sha256": "444fafc253125e0885a4604823f19652f57846f5c0c2d6b66fe9ff03687bf526",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/ecg_cardiac.md",
+      "title": "Ecg Cardiac",
+      "purpose": "Extended source guidance for ecg cardiac.",
+      "source": "scientific-agent-skills/skills/neurokit2/references/ecg_cardiac.md",
+      "sha256": "1bae1ce905dc54fbadea0963f2b24e5d8864a7c6e8f7d4ef96ccd130e97819c9",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/eda.md",
+      "title": "Eda",
+      "purpose": "Extended source guidance for eda.",
+      "source": "scientific-agent-skills/skills/neurokit2/references/eda.md",
+      "sha256": "68764a27968cd8f04cf1178f8bc260f87035e36c7b58dec9a35a7955f0e40313",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/eeg.md",
+      "title": "Eeg",
+      "purpose": "Extended source guidance for eeg.",
+      "source": "scientific-agent-skills/skills/neurokit2/references/eeg.md",
+      "sha256": "8213421bd5eb700658fa8c5304be12aab10bc8fff77e58354891557f62379878",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/emg.md",
+      "title": "Emg",
+      "purpose": "Extended source guidance for emg.",
+      "source": "scientific-agent-skills/skills/neurokit2/references/emg.md",
+      "sha256": "155cbfd43bc44fdf4e08cbc4d8c8108a8716bd53ab872ddc94cead50bb4e2cde",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/eog.md",
+      "title": "Eog",
+      "purpose": "Extended source guidance for eog.",
+      "source": "scientific-agent-skills/skills/neurokit2/references/eog.md",
+      "sha256": "95b9e64cf5e9d647bc35abf59cd6802fe39bae9de767c4c5ed4b7d6883779791",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/epochs_events.md",
+      "title": "Epochs Events",
+      "purpose": "Extended source guidance for epochs events.",
+      "source": "scientific-agent-skills/skills/neurokit2/references/epochs_events.md",
+      "sha256": "e713c11a7f0d260da9739d110d8613b20ccb80eb1c64efcacb35471c9ebc8998",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/hrv.md",
+      "title": "Hrv",
+      "purpose": "Extended source guidance for hrv.",
+      "source": "scientific-agent-skills/skills/neurokit2/references/hrv.md",
+      "sha256": "9da83898b4018fb63559b73d42262e01f71cd14b8732b0031131db7447c2090d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/ppg.md",
+      "title": "Ppg",
+      "purpose": "Extended source guidance for ppg.",
+      "source": "scientific-agent-skills/skills/neurokit2/references/ppg.md",
+      "sha256": "38e4d2f4a2a21aa14e633c868b696aa0f611cb6a8f8f02b38f07e4206d8ea2e3",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/rsp.md",
+      "title": "Rsp",
+      "purpose": "Extended source guidance for rsp.",
+      "source": "scientific-agent-skills/skills/neurokit2/references/rsp.md",
+      "sha256": "ed87c5dea94ac69332102e47ac0a3b181230eba32ab8aa4411ec74e1747c61f6",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/signal_processing.md",
+      "title": "Signal Processing",
+      "purpose": "Extended source guidance for signal processing.",
+      "source": "scientific-agent-skills/skills/neurokit2/references/signal_processing.md",
+      "sha256": "830afd80cfe8713a1566f1f9d05a3cda85bf0250c74b5d1ba8d724aa938d8492",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "NeuroKit2 primitive for physiological time-series preprocessing, event and interval analysis, multimodal alignment, variability analysis, and complexity workflows.",
+  "tags": [
+    "neurokit2",
+    "biosignal",
+    "physiology",
+    "time-series",
+    "analysis"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for neurokit2.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

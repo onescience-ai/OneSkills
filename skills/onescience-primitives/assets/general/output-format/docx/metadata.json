@@ -1,0 +1,24 @@
+{
+  "name": "docx",
+  "primitive_id": "general.output-format.docx",
+  "type": "output-format",
+  "domain": "general",
+  "category": "output-format",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "third_party_open_source",
+  "provider_name": "Anthropic skills / OOXML ecosystem",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/docx",
+    "distilled_from_version": "2.1",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "DOCX is a scientific document output primitive for creating, reading, editing, validating, and rendering Word documents and templates. Use it for formal reports, manuscripts, memos, tables of contents, tracked changes, comments, and image-embedded office deliverables.",
+  "tags": ["docx", "word", "ooxml", "report", "manuscript", "office-document"],
+  "capabilities": ["Create and edit structured Word documents and templates.", "Preserve headings, tables, lists, images, comments, and tracked-change semantics.", "Render and validate the final document instead of trusting the source script alone."],
+  "requirements": ["DOCX-compatible generation or editing toolchain.", "LibreOffice or equivalent for rendering when visual inspection is required.", "A source document, template, or structured content outline."],
+  "contracts": {"resource_output": "resource_retrieval_result", "execution_asset_policy": "none"}
+}

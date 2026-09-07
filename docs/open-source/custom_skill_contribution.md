@@ -2,7 +2,9 @@
 
 本指南面向 `OneSkills` 用户与贡献者，说明如何在当前架构下贡献新的领域经验、资源知识或自定义 skill。
 
-核心原则：**资源也通过 skill 接入。新增资源不要直接堆到 `skills/onescience-primitives/assets/`，而应实现或扩展对应资源类型的 `type=resource` skill，并把资源文件放在该 skill 自己的 `assets/` 目录下。**
+核心原则：**可复用科研能力应先表达为 primitive，并通过 `type=resource` skill 暴露。`onescience-primitives` 是默认统一 primitive registry；只有当能力需要独立检索契约、生命周期、访问策略或存储后端时，才新增独立 `type=resource` skill。**
+
+第三方工具、数据库、服务、数据集、工作流知识、输出格式和校验契约都可以成为 primitive。“第三方”应写入 provider / provenance 元数据，而不是留在 primitive 层之外的理由。
 
 ## 一、当前架构分层
 
@@ -23,54 +25,53 @@
 
 | 接入点 | 适用对象 | 放置位置 | 输出给系统的形态 |
 | --- | --- | --- | --- |
-| A：资源技能化 | 可被召回、复用的模型 / 数据 / 组件 / 应用 / 工作流知识 | 对应 `type=resource` skill 的 `assets/` | `resource_retrieval_result` |
+| A：原语化 | 可被召回、复用的模型 / 数据 / 组件 / 应用 / 工具 / 数据库 / 服务 / 工作流 / 契约知识 | 默认放入 `onescience-primitives` 的 `assets/`；除非有充分理由新增独立 resource skill | `resource_retrieval_result` |
 | B：执行技能化 | 有稳定入口、步骤固定、结果可验证的执行流程 | 新增或扩展 `type=executor` skill | `execution_result` |
 | C：专家化 | 有复杂判断规则，需要按任务动态规划和 fallback | 新增或扩展 `type=expert` skill | `planner_proposal` |
 
 判断规则：
 
-- 能被调用、需要复用的“能力或知识” → 接入点 A：资源技能化。
+- 能被调用、需要复用的“能力或知识” → 接入点 A：原语化。
 - 有稳定 CLI / API / 作业入口，产出可验证结果 → 接入点 B：执行技能化。
 - 需要根据任务特征做规划、取舍、回退 → 接入点 C：专家化。
-- 仍是轻量、未验证、暂不值得独立固化的经验 → 先沉淀到对应资源 skill 的规划知识资源中。
+- 仍是轻量、未验证、暂不值得独立固化的经验 → 先蒸馏为 primitive planning knowledge。
 
 ## 三、如何新增资源
 
-资源贡献的落点是“对应资源类型的 skill”，不是一个集中式公共 assets 目录。
+可复用资源贡献的默认落点是统一原语库 `skills/onescience-primitives/assets/`。只有当资源需要自己的检索规则、权限控制、provider 集成或存储生命周期时，才新增独立 resource skill。
 
-### 1. 资源 skill 结构
+### 1. Primitive 结构
 
-新增资源类型时，创建或扩展一个 `type=resource` skill，例如：
+新增 primitive 时，优先扩展 `onescience-primitives` 的三层目录结构：
 
 ```text
-skills/<resource-skill-name>/
-  SKILL.md
+skills/onescience-primitives/
   assets/
     <domain>/
       <category>/
-        <resource_name>/
+        <primitive_name>/
           metadata.json
           spec.md
           usage.md
           workflow_planning.md
-  references/
-    <retrieval_rules>.md
 ```
 
 说明：
 
-- `SKILL.md` 定义资源召回范围、输入输出契约、过滤规则和内容组织方式。
-- `assets/` 存放该资源 skill 私有管理的资源文件。
-- `references/` 存放该资源 skill 自己的检索规则、领域路由规则或 schema 说明。
+- `metadata.json` 必须足够支持召回，并应包含稳定身份、类型、provider、provenance、capabilities、requirements 和 tags。
+- `spec.md` 存放输入输出、依赖、架构、契约和实现风险。
+- `usage.md` 存放安装或调用方式、资源需求、常见失败和限制。
+- `workflow_planning.md` 存放 when to use、fallback、handoff notes 和规划决策规则。
 - 调用方只能通过 `resource_retrieval_request -> resource_retrieval_result` 获取资源内容，不能直接读取任何 resource skill 的 `assets/`。
 
-不要把新增资源直接放到：
+仅在以下情况下才新增独立 `type=resource` skill，而不是放入 `onescience-primitives`：
 
-```text
-skills/onescience-primitives/assets/
-```
+- 资源需要 live provider API、凭据注入或远程 catalog 查询，不适合放入通用 primitive registry。
+- 资源需要特殊领域检索算法，会让 `onescience-primitives` 变慢或变噪。
+- 资源有独立发布节奏、许可边界或访问策略。
+- 资源库由其他 plugin 维护，但仍暴露相同的 `resource_retrieval_result` 契约。
 
-### 2. Resource skill frontmatter
+### 2. 独立 Resource skill frontmatter
 
 ```yaml
 ---
@@ -84,7 +85,7 @@ type: resource
 
 | 文件 | 作用 | 服务对象 |
 | --- | --- | --- |
-| `metadata.json` | 基础识别信息，如 `name`、`type`、`domain`、`description`、`tags`、`version` | 资源召回、快速匹配 |
+| `metadata.json` | 基础识别信息，如 `name`、`primitive_id`、`type`、`domain`、`category`、`description`、`tags`、`version`、`provider_kind`、`provider_name`、`source` | 资源召回、快速匹配、来源追踪 |
 | `spec.md` | 规格知识，如架构、输入输出、依赖、源码锚点、实现风险 | coder / executor |
 | `usage.md` | 使用知识，如启动方式、接口、资源需求、限制、常见失败 | executor |
 | `workflow_planning.md` | 规划决策知识，如 when to use、procedure、constraints、fallback | expert / orchestrator |
@@ -136,8 +137,8 @@ resource_retrieval_result:
 
 不建议新增 skill 的情况：
 
-- 只是补充一个模型、数据集、组件、应用或模板知识；这应先做成资源 skill 的资源。
-- 只是把某次项目经验整理成说明；这应先沉淀为资源规划知识。
+- 只是补充一个模型、数据集、组件、应用、工具、服务或模板知识；这应先做成 primitive resource。
+- 只是把某次项目经验整理成说明；这应先沉淀为 primitive planning knowledge。
 - 只是换领域名复制一份 `coder/runtime/installer`。
 - 只是把 runtime 内部 `discover/preflight/execute/diagnose` 的某个阶段拆成公开 skill。
 - 只是把某个智能体偏好写成通用规则。
@@ -272,24 +273,24 @@ type: expert
 建议按下面路径沉淀能力：
 
 1. 隐式经验：临时 prompt、人工操作、一次性脚本。
-2. 资源化沉淀：写入对应 `type=resource` skill 的 `assets/`。
+2. 原语化沉淀：把可复用部分写入 `onescience-primitives/assets/`，或写入有明确理由独立存在的 `type=resource` skill。
 3. 反复验证：在真实任务中被多次召回，收集 observation 和失败条件。
 4. 技能化固化：流程稳定、边界清楚、产出可验证后，再判断固化为 `type=executor` 或 `type=expert`。
 5. 内核无感扩展：注册后由 orchestrator 召回或调度，不修改主控逻辑。
 
 落地判据：
 
-- 只是可复用知识、资源卡片、模型卡、数据卡、组件契约 → `type=resource`。
+- 只是可复用知识、资源卡片、模型卡、数据卡、工具卡、组件契约 → primitive resource。
 - 步骤稳定、依赖强、必须严格按顺序执行 → `type=executor`。
 - 需要根据任务特征做规划、资源取舍和 fallback → `type=expert`。
 
 ## 八、推荐提交流程
 
 1. 写清楚新增能力解决什么问题。
-2. 按接入点 A/B/C 判断应该做成 resource、executor 还是 expert。
-3. 优先做最小改动：能做资源 skill 就不新增执行 / 专家 skill。
+2. 按接入点 A/B/C 判断应该做成 primitive resource、executor 还是 expert。
+3. 优先做最小改动：能做 primitive 就不新增执行 / 专家 skill。
 4. 按契约补齐必要文件：
-   - resource：`SKILL.md`、`assets/` 下的资源文件、必要的检索规则
+   - primitive resource：`metadata.json`、`spec.md`、`usage.md`、`workflow_planning.md`、可选白名单 `execution_assets`
    - executor：`SKILL.md`、必要的 `references/`、`scripts/` 或 `assets/`
    - expert：`SKILL.md`、必要的规划协议或参考文档
 5. 检查与现有 skill 的职责边界是否重叠。
@@ -299,7 +300,7 @@ type: expert
 ## 九、PR 自查清单
 
 - 是否没有修改 `onescience-orchestrator` 的领域硬编码规则？
-- 新增资源是否放在对应 `type=resource` skill 的 `assets/` 下，而不是直接放入 `skills/onescience-primitives/assets/`？
+- 可复用能力是否已表达为 `onescience-primitives` 下的 primitive，或新增独立 resource skill 的理由是否充分？
 - resource skill 是否接收 `resource_retrieval_request` 并返回 `resource_retrieval_result`？
 - resource skill 是否明确禁止调用方直读自己的 `assets/`？
 - 如果新增资源，`metadata.json` 的 `description` 是否足够支持召回？
@@ -309,4 +310,4 @@ type: expert
 
 ## 十、一句话原则
 
-资源通过 `type=resource` skill 接入，执行通过 `type=executor` skill 落地，复杂决策通过 `type=expert` skill 规划；三者都遵守统一契约，由 orchestrator 统一召回、融合和调度。
+Primitive 是可复用科研能力的统一表示；资源通过 `type=resource` skill 接入，执行通过 `type=executor` skill 落地，复杂决策通过 `type=expert` skill 规划；三者都遵守统一契约，由 orchestrator 统一召回、融合和调度。

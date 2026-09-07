@@ -1,0 +1,45 @@
+{
+  "name": "scientific_visualization",
+  "primitive_id": "general.visualization.scientific_visualization",
+  "type": "visualization",
+  "domain": "general",
+  "category": "visualization",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/scientific-visualization",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "Scientific visualization is a cross-domain visualization primitive for truthful, accessible, publication-ready figures. Use it for figure design, multi-panel layouts, uncertainty and missing-data displays, color and contrast review, image metadata validation, and export planning.",
+  "tags": [
+    "scientific-visualization",
+    "figures",
+    "publication",
+    "accessibility",
+    "matplotlib",
+    "seaborn",
+    "plotly",
+    "export"
+  ],
+  "capabilities": [
+    "Choose visual encodings that preserve scientific meaning.",
+    "Plan uncertainty, missing data, transformations, and accessibility cues.",
+    "Specify Matplotlib, Seaborn, Plotly, raster, vector, and journal export constraints.",
+    "Require rendered-output inspection before delivery."
+  ],
+  "requirements": [
+    "Source data or image provenance and transformation notes.",
+    "Target medium and export requirements when known.",
+    "Appropriate plotting or export tooling for execution."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

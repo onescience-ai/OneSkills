@@ -1,0 +1,54 @@
+{
+  "plans": [
+    {
+      "skill": "qiskit",
+      "domain": "general",
+      "category": "tools",
+      "name": "qiskit",
+      "primitive_id": "general.tools.qiskit",
+      "type": "tool",
+      "description": "Qiskit primitive for quantum circuits, target-aware transpilation, V2 primitives, local or noisy simulation, IBM QPU execution, Runtime sessions, and error mitigation planning.",
+      "tags": ["qiskit", "quantum", "circuits", "transpilation", "runtime"]
+    },
+    {
+      "skill": "neurokit2",
+      "domain": "bio",
+      "category": "tools",
+      "name": "neurokit2",
+      "primitive_id": "bio.tools.neurokit2",
+      "type": "tool",
+      "description": "NeuroKit2 primitive for physiological time-series preprocessing, event and interval analysis, multimodal alignment, variability analysis, and complexity workflows.",
+      "tags": ["neurokit2", "biosignal", "physiology", "time-series", "analysis"]
+    },
+    {
+      "skill": "pylabrobot",
+      "domain": "general",
+      "category": "tools",
+      "name": "pylabrobot",
+      "primitive_id": "general.tools.pylabrobot",
+      "type": "tool",
+      "description": "PyLabRobot primitive for lab-automation resources, liquid-handling plans, offline simulation, resource trees, and supported-device integrations.",
+      "tags": ["pylabrobot", "lab-automation", "liquid-handling", "simulation", "resources"]
+    },
+    {
+      "skill": "opentrons-integration",
+      "domain": "general",
+      "category": "tools",
+      "name": "opentrons_integration",
+      "primitive_id": "general.tools.opentrons_integration",
+      "type": "tool",
+      "description": "Opentrons Integration primitive for Protocol API v2 workflows, robot-specific liquid handling, deck and labware setup, modules, runtime parameters, and simulation.",
+      "tags": ["opentrons", "protocol-api", "liquid-handling", "simulation", "robotics"]
+    },
+    {
+      "skill": "scikit-learn",
+      "domain": "general",
+      "category": "tools",
+      "name": "scikit_learn",
+      "primitive_id": "general.tools.scikit_learn",
+      "type": "tool",
+      "description": "scikit-learn primitive for supervised learning, clustering, dimensionality reduction, preprocessing, model evaluation, hyperparameter tuning, and pipeline construction.",
+      "tags": ["scikit-learn", "machine-learning", "pipelines", "clustering", "evaluation"]
+    }
+  ]
+}

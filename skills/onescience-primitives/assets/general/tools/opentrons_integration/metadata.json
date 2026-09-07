@@ -1,0 +1,112 @@
+{
+  "name": "opentrons_integration",
+  "primitive_id": "general.tools.opentrons_integration",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/opentrons-integration",
+    "distilled_from_version": "2.0",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 7,
+      "scripts": 6,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/api_reference.md",
+      "title": "Api Reference",
+      "purpose": "Extended source guidance for api reference.",
+      "source": "scientific-agent-skills/skills/opentrons-integration/references/api_reference.md",
+      "sha256": "e66497611a3dfc45124a1478c7184a22cd0abc26092c8a6d60d4b1569b58cab4",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/liquid_handling.md",
+      "title": "Liquid Handling",
+      "purpose": "Extended source guidance for liquid handling.",
+      "source": "scientific-agent-skills/skills/opentrons-integration/references/liquid_handling.md",
+      "sha256": "2d9e22a759098e15f295064e7221b34352f279ba1b82123763f0582a6a9e43e9",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/migration-api-2-19-to-2-29.md",
+      "title": "Migration Api 2 19 To 2 29",
+      "purpose": "Extended source guidance for migration api 2 19 to 2 29.",
+      "source": "scientific-agent-skills/skills/opentrons-integration/references/migration-api-2-19-to-2-29.md",
+      "sha256": "8b46e6026001761f9bba2b53baf76c896832b0b3e7733c95e715482166d9cdac",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/modules_and_deck.md",
+      "title": "Modules And Deck",
+      "purpose": "Extended source guidance for modules and deck.",
+      "source": "scientific-agent-skills/skills/opentrons-integration/references/modules_and_deck.md",
+      "sha256": "c9d0ff4d34797ac9fa93754d21d9fdbecedc019dcf646c584ff90a1456583848",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/protocol_authoring.md",
+      "title": "Protocol Authoring",
+      "purpose": "Extended source guidance for protocol authoring.",
+      "source": "scientific-agent-skills/skills/opentrons-integration/references/protocol_authoring.md",
+      "sha256": "0119683c2e2e3e0f4cae417804c85efb393a87d1aea4965629972c48a3940a97",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Sources",
+      "purpose": "Extended source guidance for sources.",
+      "source": "scientific-agent-skills/skills/opentrons-integration/references/sources.md",
+      "sha256": "eff3de73abc8550dfce6135aa93d176369c0e9ad2e4bc7204e55732fdc277e8f",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/validation_and_operations.md",
+      "title": "Validation And Operations",
+      "purpose": "Extended source guidance for validation and operations.",
+      "source": "scientific-agent-skills/skills/opentrons-integration/references/validation_and_operations.md",
+      "sha256": "1ba740f353a40f679325a183e80fac3ad03e2f4ada9d265d95052d9dca6ed73b",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Opentrons Integration primitive for Protocol API v2 workflows, robot-specific liquid handling, deck and labware setup, modules, runtime parameters, and simulation.",
+  "tags": [
+    "opentrons",
+    "protocol-api",
+    "liquid-handling",
+    "simulation",
+    "robotics"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for opentrons-integration.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "scanpy",
+  "primitive_id": "bio.tools.scanpy",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-08-31",
+  "updated_at": "2026-08-31",
+  "provider_kind": "third_party_open_source",
+  "provider_name": "scverse",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/scanpy",
+    "distilled_from_version": "1.5",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "Scanpy is a third-party Python toolkit primitive for exploratory single-cell RNA-seq analysis on AnnData objects. Use it for QC, normalization, highly variable gene selection, PCA, neighbor graph construction, UMAP or t-SNE visualization, Leiden clustering, exploratory marker discovery, cell type annotation, pseudotime exploration, pseudobulk preparation, and publication plotting. It is a tool primitive, not a OneSkills executor; executor steps must install or call Scanpy explicitly and validate outputs.",
+  "tags": [
+    "single-cell",
+    "scrna-seq",
+    "scanpy",
+    "anndata",
+    "qc",
+    "normalization",
+    "umap",
+    "leiden",
+    "markers",
+    "visualization",
+    "third-party-tool"
+  ],
+  "capabilities": [
+    "Load AnnData, 10x, CSV, loom, and matrix-style single-cell inputs through Scanpy-compatible readers.",
+    "Run standard exploratory scRNA-seq preprocessing and clustering workflows.",
+    "Generate exploratory marker tables, embeddings, and publication-oriented plots.",
+    "Prepare pseudobulk matrices for rigorous condition-level differential expression outside per-cell marker tests."
+  ],
+  "requirements": [
+    "Python environment with scanpy and anndata installed.",
+    "Optional Leiden clustering extras such as python-igraph and leidenalg.",
+    "Sufficient memory for the cell x gene matrix."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "scvelo",
+  "primitive_id": "bio.tools.scvelo",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "third_party_open_source",
+  "provider_name": "theislab",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/scvelo",
+    "distilled_from_version": "1.2",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "scVelo is a third-party RNA velocity tool primitive for inferring trajectory direction, latent time, and driver genes from spliced and unspliced single-cell counts. Use it after Scanpy preprocessing when a directional trajectory model is needed.",
+  "tags": [
+    "scvelo",
+    "rna-velocity",
+    "trajectory",
+    "latent-time",
+    "single-cell",
+    "spliced",
+    "unspliced"
+  ],
+  "capabilities": [
+    "Estimate RNA velocity from spliced and unspliced layers in AnnData.",
+    "Compute velocity graphs, latent time, and velocity confidence scores.",
+    "Expose stochastic and dynamical model paths for different analysis budgets.",
+    "Add directional trajectory evidence to Scanpy embeddings and cluster labels."
+  ],
+  "requirements": [
+    "Python environment with scvelo, scanpy, and anndata installed.",
+    "Spliced and unspliced layers in AnnData.",
+    "Neighbors or UMAP available for visualization; dynamical fits may be memory intensive."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

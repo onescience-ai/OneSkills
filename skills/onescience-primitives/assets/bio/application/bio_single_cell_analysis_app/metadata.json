@@ -5,8 +5,16 @@
   "version": "1.0.0",
   "visibility": "public",
   "created_at": "2026-07-02",
-  "updated_at": "2026-07-02",
+  "updated_at": "2026-09-03",
   "description": "面向单细胞 RNA-seq 与 AnnData/scVI 生态的数据准备、质量控制、模型训练、聚类嵌入、差异表达、标签迁移和数据整合应用卡，兼容旧资源中的 single-cell-toolkit-down 语义。该卡使用 bio_single_cell_tools 脚本；应用卡负责描述任务边界和脚本入口，coder 按脚本入口生成或调用命令，runtime 才负责实际执行。",
+  "primitive_dependencies": [
+    "bio.components.anndata",
+    "bio.datasets.cellxgene_census",
+    "bio.tools.scanpy",
+    "bio.tools.scvi_tools",
+    "bio.tools.scvelo",
+    "bio.tools.pydeseq2"
+  ],
   "tags": [
     "single-cell",
     "single-cell-toolkit-down",

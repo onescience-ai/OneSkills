@@ -1,0 +1,148 @@
+{
+  "name": "qiskit",
+  "primitive_id": "general.tools.qiskit",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/qiskit",
+    "distilled_from_version": "2.0",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 11,
+      "scripts": 3,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/algorithms.md",
+      "title": "Algorithms",
+      "purpose": "Extended source guidance for algorithms.",
+      "source": "scientific-agent-skills/skills/qiskit/references/algorithms.md",
+      "sha256": "f931da04a8f88683a3628ac5ad60b22ef6c5f6ca2f4fb4330eb732cb307f3445",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/backends.md",
+      "title": "Backends",
+      "purpose": "Extended source guidance for backends.",
+      "source": "scientific-agent-skills/skills/qiskit/references/backends.md",
+      "sha256": "037e7786d4c11b459060c39526935f1f0a0b41c6da2f2253fbb78047ba8e927b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/circuits.md",
+      "title": "Circuits",
+      "purpose": "Extended source guidance for circuits.",
+      "source": "scientific-agent-skills/skills/qiskit/references/circuits.md",
+      "sha256": "78fc58e941cd4971b162d10d87827ec27c8155415bbb4f9632ac89c6f7d8c4f8",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/migration.md",
+      "title": "Migration",
+      "purpose": "Extended source guidance for migration.",
+      "source": "scientific-agent-skills/skills/qiskit/references/migration.md",
+      "sha256": "974575cea4edf88f0cd6ab0e89cd0009e62fc99feb138f7e26987be8e2276266",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/patterns.md",
+      "title": "Patterns",
+      "purpose": "Extended source guidance for patterns.",
+      "source": "scientific-agent-skills/skills/qiskit/references/patterns.md",
+      "sha256": "e745439a97adcffdfc0f11dd1bf23199c8945b0833b30b30caf350416726960b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/primitives.md",
+      "title": "Primitives",
+      "purpose": "Extended source guidance for primitives.",
+      "source": "scientific-agent-skills/skills/qiskit/references/primitives.md",
+      "sha256": "479865427d4ff0b6dec87a91c8f608d0124a3875e16be7889fe1611cf0571a08",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/setup.md",
+      "title": "Setup",
+      "purpose": "Extended source guidance for setup.",
+      "source": "scientific-agent-skills/skills/qiskit/references/setup.md",
+      "sha256": "fe773e1d90d8712fcdd0c911d70b537e6996d67c88ce3886c519476592996874",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Sources",
+      "purpose": "Extended source guidance for sources.",
+      "source": "scientific-agent-skills/skills/qiskit/references/sources.md",
+      "sha256": "38d1ee960c58c44f5cf833e887579fff147f63921f5a472354111daac50daa19",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/testing.md",
+      "title": "Testing",
+      "purpose": "Extended source guidance for testing.",
+      "source": "scientific-agent-skills/skills/qiskit/references/testing.md",
+      "sha256": "0ea7bbc905efb5848509d680b089416be236be44cea3a8570ddf421e46a1a486",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/transpilation.md",
+      "title": "Transpilation",
+      "purpose": "Extended source guidance for transpilation.",
+      "source": "scientific-agent-skills/skills/qiskit/references/transpilation.md",
+      "sha256": "1491b9a8edf917e41f1863798a9e64f6dd5a657173d74670f155eae8490a0307",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/visualization.md",
+      "title": "Visualization",
+      "purpose": "Extended source guidance for visualization.",
+      "source": "scientific-agent-skills/skills/qiskit/references/visualization.md",
+      "sha256": "465b09397ad1c31921e0aa8d822714ac6771879a70f06e4c7cc7484439623d75",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Qiskit primitive for quantum circuits, target-aware transpilation, V2 primitives, local or noisy simulation, IBM QPU execution, Runtime sessions, and error mitigation planning.",
+  "tags": [
+    "qiskit",
+    "quantum",
+    "circuits",
+    "transpilation",
+    "runtime"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for qiskit.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

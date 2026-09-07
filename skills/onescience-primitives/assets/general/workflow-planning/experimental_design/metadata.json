@@ -1,0 +1,45 @@
+{
+  "name": "experimental_design",
+  "primitive_id": "general.workflow-planning.experimental_design",
+  "type": "workflow-planning",
+  "domain": "general",
+  "category": "workflow-planning",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/experimental-design",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "Experimental design is a cross-domain workflow-planning primitive for planning studies before data collection. Use it for randomization, blocking, stratification, controls, factorial and fractional-factorial designs, response-surface optimization, crossover or cluster designs, plate layouts, replication, and pseudoreplication risk checks.",
+  "tags": [
+    "experimental-design",
+    "doe",
+    "randomization",
+    "blocking",
+    "factorial-design",
+    "replication",
+    "pseudoreplication",
+    "study-planning"
+  ],
+  "capabilities": [
+    "Choose an experimental design from the question, treatment structure, unit of randomization, and nuisance factors.",
+    "Plan randomization, blocking, stratification, and run-order controls.",
+    "Separate true replication from repeated measurements to avoid pseudoreplication.",
+    "Hand off the selected design to statistical-power and statistical-analysis consumers."
+  ],
+  "requirements": [
+    "A stated research question, response variable, treatment factors, and independent experimental unit.",
+    "Known nuisance factors such as batch, day, site, plate, operator, or instrument.",
+    "Downstream sample-size or analysis primitive for quantitative power or model fitting."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

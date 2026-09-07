@@ -6,6 +6,18 @@ type: resource
 
 # OneScience Primitives Resource
 
+## Primitive Unification Scope
+
+This skill is the unified OneSkills primitive registry. A primitive is any reusable scientific capability that can be recalled, bound into a plan, handed to an executor, or used as planning evidence. Primitives may be first-party OneScience resources or third-party tools, packages, databases, services, datasets, workflow patterns, output formats, validation contracts, and execution templates.
+
+Third-party tools can be primitives. Record the source through `provider` / `provenance` metadata and expose only distilled content through `resource_retrieval_result`; do not require a permanent bridge skill unless the provider needs its own retrieval backend, credentials, lifecycle, or access policy.
+
+Use `onescience-primitive-distiller` when a new external scientific agent skill or third-party capability needs to be converted into primitive assets. This skill remains retrieval-only: it returns existing primitive content through the resource contract and does not perform distillation, migration, file creation, or script promotion itself.
+
+When an application or workflow primitive depends on a specific primitive such as `bio.tools.scanpy`, expose that relationship through `primitive_dependencies` in the consumer metadata and mention the `primitive_id` in the consumer spec or workflow notes.
+
+The preferred category set is open and includes `models`, `components`, `datapipes`, `datasets`, `tools`, `databases`, `services`, `application`, `visualization`, `workflow-planning`, `contracts`, and `output-format`. Preserve legacy category names when they already exist, and map aliases such as `workflow` to `workflow-planning` in retrieval output.
+
 你负责从 `skills/onescience-primitives/assets/` 中找到最相关的 OneScience 原语，通过范围判定、快速过滤和语义匹配进行召回。不生成实现方案、不改代码、不执行脚本。
 
 ## 强制协议
@@ -54,6 +66,7 @@ assets/
 - `cfd`
 - `climate`
 - `matchem`
+- `general`
 
 每个 domain 下的 category 目录可能不同，按**实际存在的目录**检索，不要求所有 domain 都具有同一套子目录。当前常见 category 包括：
 
@@ -64,6 +77,8 @@ assets/
 - `visualization`
 - `workflow-planning`
 - `contracts`
+- `databases`
+- `output-format`
 
 ## 召回流程
 
@@ -116,11 +131,11 @@ b. `filters.domain` 已明确指定（如 `bio`、`cfd`、`climate`、`matchem`�
    **判定 domain scope**：先判断调用方是否通过 `filters.domain` 显式提供 domain。
    - 若 `filters.domain` 明确给出，则**直接使用调用方提供的 domain**，只检索对应的 `skills/onescience-primitives/assets/<domain>/`，且**不要再读取** `skills/onescience-primitives/references/domain_profile.md` 做二次判断
    - 若 `filters.domain` 未提供、为空或不可靠，则**必须先读取** `skills/onescience-primitives/references/domain_profile.md`，再结合 `user_request` 与 `task_state_summary` 按其中定义的领域信号进行回退判定
-   - 回退判定结果若为 `climate | cfd | matchem | bio`，则只检索对应的 `skills/onescience-primitives/assets/<domain>/`
+   - 回退判定结果若为 `climate | cfd | matchem | bio | general`，则只检索对应的 `skills/onescience-primitives/assets/<domain>/`
    - 回退判定结果若为 `unknown`，说明无法稳定路由到单一领域；此时允许检索 `skills/onescience-primitives/assets/` 下全部 domain 目录，但输出中的 `detected_domain` 必须保持为 `unknown`
    - 当请求已路由到生信领域，且涉及生信工作流、模型/数据管线/应用选择或多候选资源取舍时，可读取`skills/onescience-primitives/references/bio_profile.md`文档作为召回提示；该文件只辅助候选排序和边界解释，不能替代 `metadata.json` 证据
 1. **判定 category scope**：根据 `user_request`、`content_request`、`filters.keyword`、`task_state_summary` 判断是否明确指定资源类别。
-   - 若明确指定模型、组件、数据管线、应用、可视化规范、工作流规划或契约类资源，则只检索对应 category
+   - 若明确指定模型、组件、数据管线、应用、可视化规范、工作流规划、输出格式、契约或数据库/服务类资源，则只检索对应 category
    - 若未明确指定，则检索当前 domain scope 下全部实际存在的 category 目录
    - **【强制】可视化信号识别**：当 `user_request` 或 `filters.keyword` 中出现以下任一信号时，必须将 `visualization` 纳入检索范畴：
      - 显式可视化词：`可视化`、`visualization`、`visualize`、`visual`、`render`、`rendering`
@@ -198,10 +213,10 @@ resource_retrieval_request:
 resource_retrieval_result:
   status: success | partial | failed
   query_summary: <需求摘要>
-  detected_domain: <climate | cfd | matchem | bio | unknown>
-  task_intent: <model | component | datapipe | application | visualization | workflow | contract | mixed>
+  detected_domain: <climate | cfd | matchem | bio | general | unknown>
+  task_intent: <model | component | datapipe | application | tool | database | output-format | visualization | workflow | contract | mixed>
   matched_resources:
-    - type: model_primitive | component_primitive | datapipe_primitive | application_primitive | visualization_primitive
+    - type: model_primitive | component_primitive | datapipe_primitive | application_primitive | tool_primitive | database_primitive | output_format_primitive | visualization_primitive | workflow_planning_primitive | contract_primitive
       path: assets/<domain>/<category>/<primitive_name>/
       name: <原语名称>
       why_matched: <匹配理由，1句话>
@@ -252,19 +267,20 @@ content:
 
 - **`domain scope` 判定**：先判断请求是否路由到单个 domain。
   - `filters.domain` 明确时优先使用，且一旦使用就不要再读取 `domain_profile.md` 进行二次判定
-  - `filters.domain` 缺失时，必须读取 `skills/onescience-primitives/references/domain_profile.md`，按其中标准化规则将请求映射到 `bio | cfd | climate | matchem | unknown`
-  - 目录路由值按当前 assets 顶层目录解释，如 `bio | cfd | climate | matchem`
+  - `filters.domain` 缺失时，必须读取 `skills/onescience-primitives/references/domain_profile.md`，按其中标准化规则将请求映射到 `bio | cfd | climate | matchem | general | unknown`
+  - 目录路由值按当前 assets 顶层目录解释，如 `bio | cfd | climate | matchem | general`
   - 若回退判定为 `unknown`，则不路由到单个目录，而是检索全部 domain 目录并保持 `detected_domain: unknown`
 - **`category scope` 判定**：按自然语言语义映射到 category 目录。
   - 模型 / `model` → `models`
   - 组件 / `module` / `block` / `encoder` / `decoder` → `components`
   - 数据管线 / `datapipe` / `dataset` / `loader` / `preprocessing` → `datapipes`
   - 应用 / `app` / `toolkit` / `template` → `application`
+  - 输出格式 / `docx` / `pdf` / `pptx` / `markdown` / `mermaid` / `report` / `slide` → `output-format`
   - 可视化 / `visualization` / `visualize` / `visual` / `render` / `rendering` / `3D` / `三维` / `结构展示` / `interactive` / `交互式` / `pLDDT` / `PAE` / `PyMOL` / `3Dmol` / `cartoon` / `ribbon` / `surface` / `stick` / `.pdb` / `.cif` / `.mmcif` → `visualization`
   - 工作流规划 / `planning` / `route` / `decision` → `workflow-planning`
   - 若请求未明确 category，则检索当前 domain scope 下全部实际存在的 category 目录
   - 当 `filters.keyword` 中包含明确的可视化信号但 `user_request` 未直接体现时，仍须将 `visualization` category 纳入检索范围
-- **`detected_domain`**：按标准化 domain 枚举输出 `climate | cfd | matchem | bio | unknown`。
+- **`detected_domain`**：按标准化 domain 枚举输出 `climate | cfd | matchem | bio | general | unknown`。
   - 若 `filters.domain` 已明确提供，则优先使用该值作为检索路由依据；输出时仍需与命中资源的 `metadata.json.domain` 保持一致性
   - 若 `filters.domain` 缺失，则以 `domain_profile.md` 回退判定结果作为领域判断基线
   - 若命中结果跨多个不兼容 domain、或回退判定本身为 `unknown`、或资源证据不足以支撑单一领域，则填 `unknown`
@@ -273,15 +289,22 @@ content:
   - `components` 下的 `component` 或普通 `module` → `component_primitive`
   - `datapipes` 下的 `datapipe` → `datapipe_primitive`
   - `application` 下的 `application` → `application_primitive`
+  - `output-format` 下的 `output-format` → `output_format_primitive`
   - `visualization` 下的 `visualization` → `visualization_primitive`
+  - `tools` 下的 `tool` → `tool_primitive`
+  - `databases` 下的 `database` → `database_primitive`
+  - `workflow-planning` 下的 `workflow-planning` 或 `workflow` → `workflow_planning_primitive`
+  - `contracts` 下的 `contract` → `contract_primitive`
   - 若 `metadata.json.type` 与目录语义冲突，优先采用更能反映资源用途的目录语义，并在 `limitations` 中说明
 - **`task_intent`**：根据 `user_request` 的主要意图判断。
   - 需要完整模型能力时填 `model`
   - 需要组件、模块、算子或内部结构时填 `component`
   - 需要数据准备、数据处理、数据接口时填 `datapipe`
   - 需要模板、脚本集合、分析工具或交付应用时填 `application`
+  - 需要文档、幻灯片或报告交付格式时填 `output-format`
   - 需要结构、数据或模型结果的视觉呈现规范时填 `visualization`
   - 需要契约、接口约束或对接规则时填 `contract`
+  - 需要数据库、公共 API 或知识库检索约定时填 `database`
   - 需要工作流规划、路由、决策知识时填 `workflow`
   - 多种意图并存且无法归一时填 `mixed`
 
@@ -294,7 +317,7 @@ content:
 - 先判定 domain scope，再判定 category scope；不要跳过范围判定直接做全局模糊搜索。
 - 调用方给出 `filters.domain` 时，必须直接使用该值路由，且不得再读取 `domain_profile.md` 做二次领域判断。
 - 调用方未给出 `filters.domain` 时，必须先读取 `skills/onescience-primitives/references/domain_profile.md` 做回退判定。
-- 回退判定为 `climate`、`cfd`、`matchem` 或 `bio` 时，只能搜索对应 domain 目录。
+- 回退判定为 `climate`、`cfd`、`matchem`、`bio` 或 `general` 时，只能搜索对应 domain 目录。
 - 回退判定为 `unknown` 时，才允许搜索全部 domain 目录。
 - 无明确 category 时必须搜索当前 domain scope 下全部实际存在的 category；有明确 category 时只搜索对应 category。
 - 当检索范围为全部 category 且用户请求中隐含多类型需求时，必须执行多类别覆盖保障规则，确保 `visualization`、`workflow-planning` 等非主力 category 中的高匹配资源不会被 model/component 类资源完全挤占截断位置。

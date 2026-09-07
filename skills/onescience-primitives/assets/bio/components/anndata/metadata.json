@@ -1,0 +1,44 @@
+{
+  "name": "anndata",
+  "primitive_id": "bio.components.anndata",
+  "type": "component",
+  "domain": "bio",
+  "category": "components",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "third_party_open_source",
+  "provider_name": "scverse",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/anndata",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "AnnData is a third-party annotated-matrix component primitive for single-cell and other high-dimensional biological data. Use it when creating, reading, writing, subsetting, concatenating, or validating .h5ad and .zarr objects that will be shared with Scanpy, scvi-tools, or related scverse tools.",
+  "tags": [
+    "anndata",
+    "h5ad",
+    "zarr",
+    "single-cell",
+    "annotated-matrix",
+    "scverse",
+    "container"
+  ],
+  "capabilities": [
+    "Create and inspect annotated matrices with X, obs, var, layers, obsm, varm, obsp, varp, uns, and raw.",
+    "Read and write native h5ad and zarr formats, plus common tabular and matrix-style inputs.",
+    "Concatenate, subset, and transform annotated data while preserving metadata alignment.",
+    "Provide the shared data container used by Scanpy and scvi-tools workflows."
+  ],
+  "requirements": [
+    "Python environment with anndata installed.",
+    "Optional scanpy for 10x Genomics and other non-native input readers.",
+    "Enough memory for the matrix size or backed storage when needed."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

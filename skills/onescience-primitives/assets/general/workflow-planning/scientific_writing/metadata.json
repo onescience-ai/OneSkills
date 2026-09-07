@@ -1,0 +1,24 @@
+{
+  "name": "scientific_writing",
+  "primitive_id": "general.workflow-planning.scientific_writing",
+  "type": "workflow-planning",
+  "domain": "general",
+  "category": "workflow-planning",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/scientific-writing",
+    "distilled_from_version": "2.0",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "Scientific writing is an evidence-bound manuscript and report workflow primitive. Use it for drafting, revising, auditing, reporting-guideline coverage, claim-to-evidence binding, consistency checks, authorship and disclosure records, and submission preparation without fabricating scientific facts.",
+  "tags": ["scientific-writing", "manuscript", "evidence", "reporting-guidelines", "authorship", "reproducibility", "research-integrity"],
+  "capabilities": ["Separate evidence verification, drafting, auditing, and human approval.", "Bind factual claims and numeric statements to verified evidence IDs.", "Track methods/results consistency, reporting guidance, authorship, declarations, and confidentiality boundaries.", "Hand off document and figure delivery to output-format and visualization primitives."],
+  "requirements": ["Document type, study design, audience, target venue, and reporting guideline.", "Verified source manifest, claim registry, methods/results records, and author approvals.", "Confidentiality and external-processing boundary."],
+  "contracts": {"resource_output": "resource_retrieval_result", "execution_asset_policy": "none"}
+}

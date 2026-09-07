@@ -1,0 +1,24 @@
+{
+  "name": "citation_management",
+  "primitive_id": "general.databases.citation_management",
+  "type": "database",
+  "domain": "general",
+  "category": "databases",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/citation-management",
+    "distilled_from_version": "2.0",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "Citation management is a scholarly metadata database primitive for discovering papers, resolving DOI/PMID/arXiv identifiers, enriching bibliographic records, formatting BibTeX, deduplicating entries, and validating references for scientific writing.",
+  "tags": ["citation-management", "openalex", "pubmed", "crossref", "bibtex", "doi", "metadata", "bibliography"],
+  "capabilities": ["Search documented scholarly metadata sources.", "Resolve identifiers into bibliographic records and BibTeX.", "Deduplicate, enrich, and validate citations before manuscript or review delivery."],
+  "requirements": ["Network access to the selected scholarly metadata APIs.", "DOI, PMID, arXiv ID, title, or other searchable identifier when available.", "Citation style and target venue when formatting is required."],
+  "contracts": {"resource_output": "resource_retrieval_result", "execution_asset_policy": "none"}
+}

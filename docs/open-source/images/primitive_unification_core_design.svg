@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 820" role="img" aria-labelledby="title desc">
+  <title id="title">OneSkills primitive-centered core design</title>
+  <desc id="desc">A system design diagram showing how external scientific agent skills and native OneScience resources are distilled into a unified primitive registry, then consumed through retrieval contracts by orchestrators, experts, executors, and full-process research workflows.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#335c81"/>
+    </marker>
+    <style>
+      .page { fill: #f6f8fb; }
+      .panel { fill: #ffffff; stroke: #d7dee8; stroke-width: 1.4; }
+      .panel-soft { fill: #eef6f4; stroke: #bad7d1; stroke-width: 1.2; }
+      .panel-warm { fill: #fff7ea; stroke: #ead1a4; stroke-width: 1.2; }
+      .panel-cool { fill: #eef3fb; stroke: #bed0ea; stroke-width: 1.2; }
+      .panel-neutral { fill: #f4f5f7; stroke: #d1d5dc; stroke-width: 1.2; }
+      .title { font-family: "Segoe UI", Arial, sans-serif; font-size: 30px; font-weight: 700; fill: #16202a; }
+      .subtitle { font-family: "Segoe UI", Arial, sans-serif; font-size: 15px; fill: #4b5563; }
+      .section { font-family: "Segoe UI", Arial, sans-serif; font-size: 17px; font-weight: 700; fill: #17212b; }
+      .label { font-family: "Segoe UI", Arial, sans-serif; font-size: 14px; font-weight: 600; fill: #243241; }
+      .small { font-family: "Segoe UI", Arial, sans-serif; font-size: 12.5px; fill: #4b5563; }
+      .tiny { font-family: "Segoe UI", Arial, sans-serif; font-size: 11px; fill: #5f6b7a; }
+      .code { font-family: Consolas, "Cascadia Mono", monospace; font-size: 12px; fill: #2d3748; }
+      .arrow { fill: none; stroke: #335c81; stroke-width: 2.2; marker-end: url(#arrow); }
+      .arrow-soft { fill: none; stroke: #6c7a89; stroke-width: 1.5; marker-end: url(#arrow); stroke-dasharray: 5 5; }
+      .divider { stroke: #d7dee8; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect class="page" width="1280" height="820"/>
+  <text class="title" x="640" y="44" text-anchor="middle">OneSkills Core Design: Primitive-Centered Research Support</text>
+  <text class="subtitle" x="640" y="70" text-anchor="middle">Integrate external scientific capabilities by distillation into a unified primitive registry, not by direct folder merging.</text>
+
+  <rect class="panel" x="36" y="96" width="270" height="612" rx="8"/>
+  <text class="section" x="60" y="128">Capability Sources</text>
+  <rect class="panel-cool" x="58" y="154" width="226" height="100" rx="8"/>
+  <text class="label" x="78" y="184">scientific-agent-skills</text>
+  <text class="small" x="78" y="209">Agent instructions, workflows,</text>
+  <text class="small" x="78" y="230">references, scripts, assets</text>
+
+  <rect class="panel-soft" x="58" y="282" width="226" height="92" rx="8"/>
+  <text class="label" x="78" y="312">OneScience native assets</text>
+  <text class="small" x="78" y="337">Models, components, datapipes,</text>
+  <text class="small" x="78" y="357">applications, workflows</text>
+
+  <rect class="panel-warm" x="58" y="402" width="226" height="118" rx="8"/>
+  <text class="label" x="78" y="432">Third-party capability</text>
+  <text class="small" x="78" y="457">Packages, CLI tools, SDKs,</text>
+  <text class="small" x="78" y="477">databases, services, datasets,</text>
+  <text class="small" x="78" y="497">output formats, contracts</text>
+
+  <rect class="panel-neutral" x="58" y="548" width="226" height="112" rx="8"/>
+  <text class="label" x="78" y="578">Migration compatibility</text>
+  <text class="small" x="78" y="603">Bridge is temporary support</text>
+  <text class="small" x="78" y="623">for legacy access, not the</text>
+  <text class="small" x="78" y="643">target architecture.</text>
+
+  <rect class="panel" x="348" y="96" width="242" height="612" rx="8"/>
+  <text class="section" x="372" y="128">Distillation Pipeline</text>
+  <rect class="panel-soft" x="374" y="158" width="190" height="56" rx="8"/>
+  <text class="label" x="469" y="183" text-anchor="middle">1. Inventory</text>
+  <text class="tiny" x="469" y="202" text-anchor="middle">Read source skill structure</text>
+
+  <rect class="panel-soft" x="374" y="252" width="190" height="56" rx="8"/>
+  <text class="label" x="469" y="277" text-anchor="middle">2. Classify</text>
+  <text class="tiny" x="469" y="296" text-anchor="middle">Primitive, expert, executor</text>
+
+  <rect class="panel-soft" x="374" y="346" width="190" height="56" rx="8"/>
+  <text class="label" x="469" y="371" text-anchor="middle">3. Distill</text>
+  <text class="tiny" x="469" y="390" text-anchor="middle">Extract capability contracts</text>
+
+  <rect class="panel-soft" x="374" y="440" width="190" height="56" rx="8"/>
+  <text class="label" x="469" y="465" text-anchor="middle">4. Normalize</text>
+  <text class="tiny" x="469" y="484" text-anchor="middle">IDs, domains, provenance</text>
+
+  <rect class="panel-soft" x="374" y="534" width="190" height="56" rx="8"/>
+  <text class="label" x="469" y="559" text-anchor="middle">5. Validate</text>
+  <text class="tiny" x="469" y="578" text-anchor="middle">Retrieval and handoff shape</text>
+
+  <rect class="panel-soft" x="374" y="628" width="190" height="56" rx="8"/>
+  <text class="label" x="469" y="653" text-anchor="middle">6. Promote</text>
+  <text class="tiny" x="469" y="672" text-anchor="middle">Only when execution is stable</text>
+
+  <path class="arrow-soft" d="M 469 214 L 469 246"/>
+  <path class="arrow-soft" d="M 469 308 L 469 340"/>
+  <path class="arrow-soft" d="M 469 402 L 469 434"/>
+  <path class="arrow-soft" d="M 469 496 L 469 528"/>
+  <path class="arrow-soft" d="M 469 590 L 469 622"/>
+
+  <rect class="panel" x="638" y="96" width="286" height="612" rx="8"/>
+  <text class="section" x="662" y="128">Unified Primitive Registry</text>
+  <text class="small" x="662" y="153">skills/onescience-primitives/assets/</text>
+
+  <rect class="panel-cool" x="662" y="180" width="238" height="330" rx="8"/>
+  <text class="label" x="684" y="210">Primitive package</text>
+  <line class="divider" x1="684" y1="225" x2="878" y2="225"/>
+  <text class="code" x="684" y="252">metadata.json</text>
+  <text class="tiny" x="684" y="271">primitive_id, type, category,</text>
+  <text class="tiny" x="684" y="289">provider, provenance, tags</text>
+  <text class="code" x="684" y="324">spec.md</text>
+  <text class="tiny" x="684" y="343">inputs, outputs, requirements,</text>
+  <text class="tiny" x="684" y="361">contracts, limits</text>
+  <text class="code" x="684" y="396">usage.md</text>
+  <text class="tiny" x="684" y="415">install notes, commands, failure</text>
+  <text class="tiny" x="684" y="433">patterns, operational guidance</text>
+  <text class="code" x="684" y="468">workflow_planning.md</text>
+  <text class="tiny" x="684" y="487">selection logic and fallback</text>
+
+  <rect class="panel-warm" x="662" y="536" width="238" height="124" rx="8"/>
+  <text class="label" x="684" y="566">Optional execution assets</text>
+  <text class="small" x="684" y="592">Only returned when explicitly</text>
+  <text class="small" x="684" y="613">requested and declared by hash</text>
+  <text class="small" x="684" y="634">whitelist in the primitive spec.</text>
+
+  <rect class="panel" x="972" y="96" width="270" height="612" rx="8"/>
+  <text class="section" x="996" y="128">Runtime Consumers</text>
+  <rect class="panel-cool" x="996" y="158" width="222" height="72" rx="8"/>
+  <text class="label" x="1018" y="188">Orchestrator</text>
+  <text class="small" x="1018" y="211">Plans with retrieved primitives</text>
+
+  <rect class="panel-soft" x="996" y="260" width="222" height="72" rx="8"/>
+  <text class="label" x="1018" y="290">Domain experts</text>
+  <text class="small" x="1018" y="313">Make choices and fallback plans</text>
+
+  <rect class="panel-warm" x="996" y="362" width="222" height="72" rx="8"/>
+  <text class="label" x="1018" y="392">Executors</text>
+  <text class="small" x="1018" y="415">Run controlled, explicit steps</text>
+
+  <rect class="panel-neutral" x="996" y="464" width="222" height="72" rx="8"/>
+  <text class="label" x="1018" y="494">Task state</text>
+  <text class="small" x="1018" y="517">Records evidence and provenance</text>
+
+  <rect class="panel-soft" x="996" y="566" width="222" height="94" rx="8"/>
+  <text class="label" x="1018" y="596">Full-process support</text>
+  <text class="small" x="1018" y="619">Data, code, execution, analysis,</text>
+  <text class="small" x="1018" y="639">reporting, publication artifacts</text>
+
+  <path class="arrow" d="M 306 206 L 348 206"/>
+  <path class="arrow" d="M 306 326 L 348 326"/>
+  <path class="arrow" d="M 306 462 L 348 462"/>
+  <path class="arrow" d="M 590 374 L 638 374"/>
+  <path class="arrow" d="M 924 374 L 972 194"/>
+  <path class="arrow" d="M 924 374 L 972 296"/>
+  <path class="arrow" d="M 924 374 L 972 398"/>
+  <path class="arrow" d="M 924 374 L 972 500"/>
+  <path class="arrow" d="M 1107 536 L 1107 560"/>
+
+  <rect class="panel" x="142" y="736" width="996" height="54" rx="8"/>
+  <text class="label" x="164" y="759">Boundary rule</text>
+  <text class="small" x="164" y="780">Consumers use resource_retrieval_request/result. They do not bypass the contract to read primitive files, and they do not inherit third-party scripts unless execution assets are explicitly whitelisted.</text>
+</svg>

@@ -1,0 +1,44 @@
+{
+  "name": "pydeseq2",
+  "primitive_id": "bio.tools.pydeseq2",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "third_party_open_source",
+  "provider_name": "scverse",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/pydeseq2",
+    "distilled_from_version": "1.3",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "PyDESeq2 is a third-party bulk RNA-seq differential-expression tool primitive for formula-based designs, Wald tests, FDR control, and optional LFC shrinkage. Use it for replicate-aware condition comparisons on raw count matrices rather than per-cell marker testing.",
+  "tags": [
+    "pydeseq2",
+    "bulk-rna-seq",
+    "differential-expression",
+    "design-matrix",
+    "wald-test",
+    "fdr",
+    "shrinkage"
+  ],
+  "capabilities": [
+    "Fit DESeq2-style models on bulk count matrices and sample metadata.",
+    "Evaluate formula-based designs, explicit contrasts, and multiple testing correction.",
+    "Support optional log fold-change shrinkage for ranking and plotting.",
+    "Export interpretable result tables for replicate-aware condition comparisons."
+  ],
+  "requirements": [
+    "Python environment with PyDESeq2-compatible dependencies.",
+    "Raw integer count matrix with samples as rows and genes as columns.",
+    "Sample metadata with an explicit design formula and contrast definition."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

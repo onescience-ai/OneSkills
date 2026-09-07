@@ -1,0 +1,44 @@
+{
+  "name": "cellxgene_census",
+  "primitive_id": "bio.datasets.cellxgene_census",
+  "type": "dataset",
+  "domain": "bio",
+  "category": "datasets",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "third_party_open_source",
+  "provider_name": "CZ CELLxGENE",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/cellxgene-census",
+    "distilled_from_version": "1.2",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "CELLxGENE Census is a versioned public single-cell and spatial transcriptomics dataset primitive. Use it when querying atlas-scale metadata, expression slices, embeddings, summary counts, or source H5AD URIs before handing results to AnnData, Scanpy, or scvi-tools workflows.",
+  "tags": [
+    "cellxgene-census",
+    "single-cell",
+    "spatial-transcriptomics",
+    "atlas",
+    "dataset",
+    "query",
+    "public"
+  ],
+  "capabilities": [
+    "Query versioned public Census releases by organism, tissue, disease, cell type, assay, and gene.",
+    "Return AnnData slices or metadata tables without downloading whole datasets first.",
+    "Support Scanpy and scvi-tools downstream analysis after query-time filtering.",
+    "Expose spatial and source-dataset discovery helpers."
+  ],
+  "requirements": [
+    "Python environment with cellxgene-census installed.",
+    "No authentication is required for public Census data.",
+    "Use a pinned Census version for reproducibility and enough memory for queried slices."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

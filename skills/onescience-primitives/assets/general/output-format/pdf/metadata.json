@@ -1,0 +1,24 @@
+{
+  "name": "pdf",
+  "primitive_id": "general.output-format.pdf",
+  "type": "output-format",
+  "domain": "general",
+  "category": "output-format",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "third_party_open_source",
+  "provider_name": "pypdf / PDF toolchain",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/pdf",
+    "distilled_from_version": "1.2",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "PDF is a fixed-layout scientific delivery primitive for reading, extracting, creating, merging, splitting, rotating, watermarking, OCR, and validating PDF documents. Use it for reports, supplementary materials, forms, print distribution, and archival handoff.",
+  "tags": ["pdf", "fixed-layout", "report", "ocr", "tables", "merge", "archive"],
+  "capabilities": ["Extract text, tables, images, and metadata from PDFs.", "Create, merge, split, rotate, watermark, encrypt, or OCR PDF outputs.", "Preserve page layout and inspect the delivered file."],
+  "requirements": ["PDF parser or generator such as pypdf, pdfplumber, or reportlab.", "Optional Poppler/qpdf/pdftk for command-line operations.", "OCR engine and rasterizer when processing scanned documents."],
+  "contracts": {"resource_output": "resource_retrieval_result", "execution_asset_policy": "none"}
+}

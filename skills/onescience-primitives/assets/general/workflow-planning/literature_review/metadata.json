@@ -1,0 +1,44 @@
+{
+  "name": "literature_review",
+  "primitive_id": "general.workflow-planning.literature_review",
+  "type": "workflow-planning",
+  "domain": "general",
+  "category": "workflow-planning",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/literature-review",
+    "distilled_from_version": "1.7",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false
+  },
+  "description": "Literature review is a cross-domain research-synthesis workflow primitive for systematic searches, screening, extraction, quality appraisal, citation verification, and review assembly. Use it for systematic reviews, scoping reviews, meta-analysis preparation, evidence synthesis, and research-gap mapping.",
+  "tags": [
+    "literature-review",
+    "systematic-review",
+    "evidence-synthesis",
+    "citation-verification",
+    "screening",
+    "prisma",
+    "research-synthesis"
+  ],
+  "capabilities": [
+    "Plan reproducible multi-database literature searches with recorded search strings and dates.",
+    "Define inclusion, exclusion, screening, extraction, and quality-appraisal steps.",
+    "Track citation verification and synthesis structure.",
+    "Hand off visual, citation, database, and document-generation needs to specialized primitives."
+  ],
+  "requirements": [
+    "Review question, scope, inclusion and exclusion criteria, and target output type.",
+    "Database selection and search-date provenance.",
+    "Citation verification and screening records for systematic work."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}
