@@ -14,11 +14,11 @@
     "source_skills_with_skill_md": 163,
     "source_skills_with_scripts": 105,
     "source_skills_with_assets": 34,
-    "target_primitive_metadata_files": 277,
+    "target_primitive_metadata_files": 275,
     "target_metadata_regex_fallback": 0,
-    "explicit_provenance_matches": 53,
+    "explicit_provenance_matches": 58,
     "heuristic_matches": 2,
-    "uncovered_source_skills": 108,
+    "uncovered_source_skills": 103,
     "code_recommendations": {
       "resource_only": 85,
       "resource_with_execution_assets": 58,
@@ -31,771 +31,6 @@
     }
   },
   "skills": [
-    {
-      "name": "clinical-reports",
-      "source_path": "skills/clinical-reports",
-      "frontmatter": {
-        "name": "clinical-reports",
-        "description": "Create safety-bounded draft structures and run local deterministic checks for clinical case, diagnostic, trial, safety, and aggregate research reports. Use only with synthetic, de-identified, or aggregate inputs and verified source-fact manifests; every output requires qualified review."
-      },
-      "source_files": {
-        "skill_md": {
-          "present": true,
-          "path": "SKILL.md",
-          "bytes": 13798,
-          "sha256": "f1da8ce1a00f77c9205f0763bb2be8d9bdc7a0c09f819290811578a9b9472849"
-        },
-        "references": {
-          "count": 11,
-          "bytes": 49688,
-          "extensions": {
-            ".md": 11
-          },
-          "files": [
-            {
-              "path": "references/case_report_guidelines.md",
-              "bytes": 3413,
-              "sha256": "dbd1c6fb510370fba97fe44f7fa59ce2f5ddb2aef0c43c374b4ac7a2ca4e6426"
-            },
-            {
-              "path": "references/clinical_trial_reporting.md",
-              "bytes": 5154,
-              "sha256": "111c17c04874a62fd7bf2e9f859651d811229d5cf6cdfbbc1603b864e3501571"
-            },
-            {
-              "path": "references/data_presentation.md",
-              "bytes": 3715,
-              "sha256": "798cec8530c5c3b38fe3c04417fe925259f336c3bb3ed4bc145006b8fde4657a"
-            },
-            {
-              "path": "references/diagnostic_reports_standards.md",
-              "bytes": 4047,
-              "sha256": "f7dcbfb28b0cbf5c8b956f48fb2b72ddb976ef35d43d60854ed5554aeb6bb971"
-            },
-            {
-              "path": "references/medical_terminology.md",
-              "bytes": 3589,
-              "sha256": "907cdc665e79364bfd29c853803e73a5411c3cf28a3f3ecaa4e29a082267ef27"
-            },
-            {
-              "path": "references/privacy_and_deidentification.md",
-              "bytes": 4635,
-              "sha256": "c5e67d8b404c6fc0593180f53f9cf9b73525809d74435d3a07032e95c63a8557"
-            },
-            {
-              "path": "references/professional_review.md",
-              "bytes": 3970,
-              "sha256": "0826f5e945eea72631c0324a4676b310783f903fdc4efdbc194947d38edda1aa"
-            },
-            {
-              "path": "references/README.md",
-              "bytes": 2179,
-              "sha256": "56b433d1fa032614f9d82a43333473d308b1ad629119a8eab955c4a9b9a85657"
-            },
-            {
-              "path": "references/report_type_routing.md",
-              "bytes": 4304,
-              "sha256": "e79553da8f3b7bb1b777892b9f11e2692a4dd4784a9cc5449cc7ea47b7c9e6d4"
-            },
-            {
-              "path": "references/safety_reporting.md",
-              "bytes": 6064,
-              "sha256": "f1d19ed253ab99ff52c43bffab817a5f2fac2f28beffd65ac32daea360586d2e"
-            },
-            {
-              "path": "references/sources.md",
-              "bytes": 8618,
-              "sha256": "9152a1c898b94feb55f02006c53d820e85666063eb8b16e9fd4ab939e3313f23"
-            }
-          ]
-        },
-        "scripts": {
-          "count": 9,
-          "bytes": 103186,
-          "extensions": {
-            ".py": 9
-          },
-          "files": [
-            {
-              "path": "scripts/_common.py",
-              "bytes": 9391,
-              "sha256": "d30e9e8461e81529bdb9ece9b9d34d87c59ec601bb164674d3fbf8721e5fdbbf"
-            },
-            {
-              "path": "scripts/check_deidentification.py",
-              "bytes": 10755,
-              "sha256": "5545ffd1eb6f79681d8e4fa654c18d30bb01dc2dc7cd6f91366695ed53eaa5e8"
-            },
-            {
-              "path": "scripts/consistency_checker.py",
-              "bytes": 13562,
-              "sha256": "5b1269fe6490c1875f711755a1b581d3a5b34840df1b599c6e4222be924a2afe"
-            },
-            {
-              "path": "scripts/format_adverse_events.py",
-              "bytes": 16080,
-              "sha256": "50580131de2a3a0777829b7aa983659bd09747b0cbe8ea2625266f90918a4691"
-            },
-            {
-              "path": "scripts/generate_report_template.py",
-              "bytes": 4005,
-              "sha256": "38adad4eeddd8651629f0c25e384e6e159d81dc251dc88e62f6f89e565eac9e1"
-            },
-            {
-              "path": "scripts/provenance_validator.py",
-              "bytes": 9296,
-              "sha256": "127ebf868afc25161ff8134b1a4173e7f8fd72150f0ce47018561a203d7c6896"
-            },
-            {
-              "path": "scripts/terminology_validator.py",
-              "bytes": 10255,
-              "sha256": "4496eace2c8b87bff8e6275c54c4e8601b6ce2d5f7c4f07c523f0486410b6ac5"
-            },
-            {
-              "path": "scripts/validate_case_report.py",
-              "bytes": 9592,
-              "sha256": "7a3ad939da4d3407f51b23ce208f3639d8ba51bcf1cf4ab895587f4825cb09ba"
-            },
-            {
-              "path": "scripts/validate_trial_report.py",
-              "bytes": 20250,
-              "sha256": "571d5e55619b6a52df7c9ff943f2c967edfa43da429f7cfe456784df7eaf83f8"
-            }
-          ]
-        },
-        "assets": {
-          "count": 15,
-          "bytes": 26606,
-          "extensions": {
-            ".csv": 1,
-            ".json": 14
-          },
-          "files": [
-            {
-              "path": "assets/adverse_event_aggregate_input_template.csv",
-              "bytes": 120,
-              "sha256": "d28e793502d20756858b86304cd664ea932f922fc2ce15e73d3fd38eea5d05a8"
-            },
-            {
-              "path": "assets/case_report_template.json",
-              "bytes": 2178,
-              "sha256": "b08c7084fb66a80033bd114fc7bd87e0853156f5e8a2eb02357c71654d26567c"
-            },
-            {
-              "path": "assets/clinical_trial_csr_template.json",
-              "bytes": 2713,
-              "sha256": "f025ada53650588f8cd66bb87b8b260805246ed66f599b64bcb262532d232be4"
-            },
-            {
-              "path": "assets/clinical_trial_results_template.json",
-              "bytes": 3873,
-              "sha256": "2342c7e489124ba9c6110946d62903919b0120b1b0d677db920cb2dae324f0e2"
-            },
-            {
-              "path": "assets/clinical_trial_safety_aggregate_template.json",
-              "bytes": 1481,
-              "sha256": "6403eff51668ff4274b5c1e337fc0e64ba0488ac276efda51c4cd28b420b7726"
-            },
-            {
-              "path": "assets/consistency_manifest_template.json",
-              "bytes": 531,
-              "sha256": "30bf445c794ee38d5a85d61f2290c7a546ceb504f151f15d58a273f2e33777c1"
-            },
-            {
-              "path": "assets/deidentification_process_checklist.json",
-              "bytes": 2130,
-              "sha256": "1d0223a18469528c6435665a91a4657dad2683fc78c4080d8d3ed99ced0a34cf"
-            },
-            {
-              "path": "assets/lab_report_template.json",
-              "bytes": 1700,
-              "sha256": "824772a0aaa82b5121ea1831ef8d30363385ee58dbaae2d941acbfd69a09588d"
-            },
-            {
-              "path": "assets/pathology_report_template.json",
-              "bytes": 1751,
-              "sha256": "d60cb27468ff92ae781ea43b32c15d0d9b6e827007a2809ac00d1c7a1bb30453"
-            },
-            {
-              "path": "assets/provenance_manifest_template.json",
-              "bytes": 560,
-              "sha256": "922c54f9537dc75f7a9135f50b3122c8d3ed04d1a040ca5ddcd5545992b99f85"
-            },
-            {
-              "path": "assets/quality_review_checklist.json",
-              "bytes": 1691,
-              "sha256": "d62be830245346550ce10e7e4a4e5c12d7fcb0e3aa5a21d262ebcfa490340527"
-            },
-            {
-              "path": "assets/radiology_report_template.json",
-              "bytes": 1585,
-              "sha256": "34f018e29022fe5bf486a6b3bc1de71eadd04e6e7342e15fb6b76c7d7856cf0e"
-            },
-            {
-              "path": "assets/research_summary_template.json",
-              "bytes": 1606,
-              "sha256": "bc9bace965fb886bd7e2a4077b5aa0f5b0902adf9983404371c595a1dbbd0ec2"
-            },
-            {
-              "path": "assets/terminology_manifest_template.json",
-              "bytes": 426,
-              "sha256": "d626a49f96216842516a9a41f94576a4dc77b7fcc350374904e298d01f2766e9"
-            },
-            {
-              "path": "assets/trial_protocol_reporting_checklist.json",
-              "bytes": 4261,
-              "sha256": "01a43c4b5ef47b39f1ac669b0acfd0a4a440a689b9f8569c68247c0d2a4413d5"
-            }
-          ]
-        }
-      },
-      "knowledge": {
-        "sections": [
-          "Purpose",
-          "Non-Negotiable Boundary",
-          "Input Gate",
-          "Route Before Drafting",
-          "Safe Drafting Workflow",
-          "1. Create a source-fact manifest",
-          "2. Generate the correct template",
-          "3. Populate verified fields only",
-          "4. Run deterministic checks",
-          "5. Apply the right review",
-          "Case Reports",
-          "Diagnostic Report Scaffolds",
-          "Trial, CSR, and Safety Reporting",
-          "Privacy",
-          "Assets",
-          "References",
-          "Final Handoff"
-        ],
-        "channels": [
-          "workflow",
-          "interface",
-          "validation_and_caveats",
-          "worked_examples",
-          "references"
-        ],
-        "text_file_count": 36
-      },
-      "code_migration": {
-        "candidate_file_count": 9,
-        "candidate_files": [
-          {
-            "path": "scripts/_common.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 9391,
-            "sha256": "d30e9e8461e81529bdb9ece9b9d34d87c59ec601bb164674d3fbf8721e5fdbbf",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/check_deidentification.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 10755,
-            "sha256": "5545ffd1eb6f79681d8e4fa654c18d30bb01dc2dc7cd6f91366695ed53eaa5e8",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/consistency_checker.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 13562,
-            "sha256": "5b1269fe6490c1875f711755a1b581d3a5b34840df1b599c6e4222be924a2afe",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/format_adverse_events.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 16080,
-            "sha256": "50580131de2a3a0777829b7aa983659bd09747b0cbe8ea2625266f90918a4691",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/generate_report_template.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 4005,
-            "sha256": "38adad4eeddd8651629f0c25e384e6e159d81dc251dc88e62f6f89e565eac9e1",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/provenance_validator.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 9296,
-            "sha256": "127ebf868afc25161ff8134b1a4173e7f8fd72150f0ce47018561a203d7c6896",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/terminology_validator.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 10255,
-            "sha256": "4496eace2c8b87bff8e6275c54c4e8601b6ce2d5f7c4f07c523f0486410b6ac5",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/validate_case_report.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 9592,
-            "sha256": "7a3ad939da4d3407f51b23ce208f3639d8ba51bcf1cf4ab895587f4825cb09ba",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/validate_trial_report.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 20250,
-            "sha256": "571d5e55619b6a52df7c9ff943f2c967edfa43da429f7cfe456784df7eaf83f8",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          }
-        ],
-        "risk_flags": [],
-        "interface_file_count": 9,
-        "has_documented_io_signals": true,
-        "has_test_or_fixture_signals": false,
-        "readiness_score": 85,
-        "recommendation": "resource_with_execution_assets"
-      },
-      "concern_families": [
-        "analysis_or_model",
-        "database_or_service",
-        "tool",
-        "visualization_or_output",
-        "workflow"
-      ],
-      "recommended_shape": "split_primitives",
-      "target_match": {
-        "status": "uncovered",
-        "records": []
-      },
-      "priority_score": 85
-    },
-    {
-      "name": "clinical-decision-support",
-      "source_path": "skills/clinical-decision-support",
-      "frontmatter": {
-        "name": "clinical-decision-support",
-        "description": "Prepare and validate research-only clinical decision-support evaluation, evidence-profile, cohort, survival, biomarker/model, privacy, and governance artifacts. Use for aggregate or synthetic research documentation and traceability\u2014not patient care or live clinical operation."
-      },
-      "source_files": {
-        "skill_md": {
-          "present": true,
-          "path": "SKILL.md",
-          "bytes": 12272,
-          "sha256": "b3c89edd706ba8d52705c40698df527698052ebc3ff175397fc5d3571003539e"
-        },
-        "references": {
-          "count": 12,
-          "bytes": 65075,
-          "extensions": {
-            ".md": 12
-          },
-          "files": [
-            {
-              "path": "references/cohort_evaluation.md",
-              "bytes": 5291,
-              "sha256": "c990eb56cdb49526d5121b6712d0c3128a066d9dda028569ad00e4ed06466460"
-            },
-            {
-              "path": "references/decision_logic_traceability.md",
-              "bytes": 3231,
-              "sha256": "494d534eb88025fd6b8d7960e04ede1696a2a6a91d4be169d16e2a4bd66d907d"
-            },
-            {
-              "path": "references/evidence_profiles.md",
-              "bytes": 5027,
-              "sha256": "4d275363212c37f9a4def05f16e75e0d34a9378c474c2af30e8eed7f6070083b"
-            },
-            {
-              "path": "references/model_biomarker_evaluation.md",
-              "bytes": 5813,
-              "sha256": "796f883ef83ac90aaf6bfadac2ed13ffbae465c02e31bb476875b97e20e6e2fe"
-            },
-            {
-              "path": "references/privacy_and_disclosure.md",
-              "bytes": 4763,
-              "sha256": "cf2d93ea964eed0ed5ebf976f8505dd990fa189562ea44050eaf35e4cb6e2854"
-            },
-            {
-              "path": "references/README.md",
-              "bytes": 3262,
-              "sha256": "e44d4df88bd491cc5983b4f7ed9cd671a4edfa923b535769b802351ebb4f271e"
-            },
-            {
-              "path": "references/regulatory_and_governance.md",
-              "bytes": 7159,
-              "sha256": "3bac4ed02d6324ae8b17921c25f5fe8319b7ff7fd8a51ed05b4ef8d077767e58"
-            },
-            {
-              "path": "references/safety_and_scope.md",
-              "bytes": 4634,
-              "sha256": "31292eaa2cf412f25965964f244d29c39735c4695b5782fce5b5c694714f6846"
-            },
-            {
-              "path": "references/security_validation.md",
-              "bytes": 3098,
-              "sha256": "6eba11b4794b35613185d4bc09f46f9aae73c4deb84f364c1864535bf96c1e11"
-            },
-            {
-              "path": "references/sources.md",
-              "bytes": 10678,
-              "sha256": "a46aa2decd2505ba9bbc0fe9aff64076dac7346a11a77d13ba52463b0450661d"
-            },
-            {
-              "path": "references/study_reporting.md",
-              "bytes": 6401,
-              "sha256": "78440436b43c73c39487fdba6c78d498768a25c61ae46bbc1646540f8c1de761"
-            },
-            {
-              "path": "references/survival_analysis.md",
-              "bytes": 5718,
-              "sha256": "7a056e09b16370544433b6ac1f94cd92082cd7fca8fe8a22a04e5978d357dc42"
-            }
-          ]
-        },
-        "scripts": {
-          "count": 8,
-          "bytes": 85293,
-          "extensions": {
-            ".py": 8
-          },
-          "files": [
-            {
-              "path": "scripts/_common.py",
-              "bytes": 7537,
-              "sha256": "a1ecaebf8ced707f2abb763a59e1702ceae05bd10e7fe72745ec5976ab7811a5"
-            },
-            {
-              "path": "scripts/cohort_table_generator.py",
-              "bytes": 11390,
-              "sha256": "56687bf5b93b182ac2eee57cb3aa259d930eb83ad084e4e5b2810cb53187bbbf"
-            },
-            {
-              "path": "scripts/decision_logic_traceability.py",
-              "bytes": 10929,
-              "sha256": "98ed831fbec12f220a051aa218e47822d638ac4230f5f9d85f8c1c5c2ec4d32c"
-            },
-            {
-              "path": "scripts/deidentification_checklist.py",
-              "bytes": 10034,
-              "sha256": "4e55ed478e05b8c2544c99bced0e40b311e780d803f71650f62591ad63664e31"
-            },
-            {
-              "path": "scripts/evidence_profile_check.py",
-              "bytes": 10534,
-              "sha256": "b86396f1ec4416d84e4c5ab33fa58f7264517ea579db81efb3bb0d29a6e8e0b4"
-            },
-            {
-              "path": "scripts/model_biomarker_evaluation.py",
-              "bytes": 13691,
-              "sha256": "a000f6d4e995a439fd1540be6179ae6d31f3cb5848542f1d977ef6732cea28eb"
-            },
-            {
-              "path": "scripts/survival_plan_validator.py",
-              "bytes": 11149,
-              "sha256": "425a24efa8d7851d695433d5aba29c4947a24b6cfc13dd97aacd46c5406be785"
-            },
-            {
-              "path": "scripts/validate_cds_artifact.py",
-              "bytes": 10029,
-              "sha256": "3df0cfba438b76dd86560c9392fb02544b9762c21ca819fec6f73097cdec74cd"
-            }
-          ]
-        },
-        "assets": {
-          "count": 7,
-          "bytes": 32426,
-          "extensions": {
-            ".json": 7
-          },
-          "files": [
-            {
-              "path": "assets/aggregate_cohort_table_template.json",
-              "bytes": 3140,
-              "sha256": "6553f12593aa45a466f7b265e63b870c9254019edf5bc550acf332f19b34bfda"
-            },
-            {
-              "path": "assets/aggregate_model_evaluation_template.json",
-              "bytes": 3677,
-              "sha256": "6dc41f4bc46ee061376dffb91b1993f591552781c6e8ebac7c180d8da2bf7694"
-            },
-            {
-              "path": "assets/artifact_intended_use_template.json",
-              "bytes": 3319,
-              "sha256": "d6e8e27f3ad9533921324975b7220acc2399e45bc81ba84a885a3b35ea6b0370"
-            },
-            {
-              "path": "assets/decision_logic_traceability_template.json",
-              "bytes": 4368,
-              "sha256": "b4f2d048ccd5f0fc9c297bfff6fcce9ab4ce2b8da05fbb13c3760d3acce33fd8"
-            },
-            {
-              "path": "assets/deidentification_checklist_template.json",
-              "bytes": 6156,
-              "sha256": "ec6f187a1f06aaede11af9bb78c096a583e43c1743f81188dbaee5613b7484e0"
-            },
-            {
-              "path": "assets/evidence_profile_template.json",
-              "bytes": 4485,
-              "sha256": "e4ac5d656b2468ba13052ca6d79bd8a52b721ffed9474511189c53093758092c"
-            },
-            {
-              "path": "assets/survival_analysis_plan_template.json",
-              "bytes": 7281,
-              "sha256": "f32b477d68c6e7c69a7111fc6f8d9c94d3d06f0d389da93d57c36e9224a639ae"
-            }
-          ]
-        }
-      },
-      "knowledge": {
-        "sections": [
-          "Hard Safety Boundary",
-          "In Scope",
-          "Data Gate",
-          "Required Artifact Header",
-          "Workflow",
-          "1. Frame the Research Question",
-          "2. Select the Artifact",
-          "3. Run Locally",
-          "4. Human Review",
-          "GRADE Evidence Profiles",
-          "Aggregate Model and Biomarker Evaluation",
-          "Cohort Tables",
-          "Survival Plans",
-          "Decision Logic",
-          "Privacy and De-identification",
-          "Reporting-Guideline Selection",
-          "Regulatory and Governance Context",
-          "Verification",
-          "Reference Map"
-        ],
-        "channels": [
-          "trigger_and_scope",
-          "workflow",
-          "interface",
-          "validation_and_caveats",
-          "worked_examples",
-          "references"
-        ],
-        "text_file_count": 28
-      },
-      "code_migration": {
-        "candidate_file_count": 8,
-        "candidate_files": [
-          {
-            "path": "scripts/_common.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 7537,
-            "sha256": "a1ecaebf8ced707f2abb763a59e1702ceae05bd10e7fe72745ec5976ab7811a5",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/cohort_table_generator.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 11390,
-            "sha256": "56687bf5b93b182ac2eee57cb3aa259d930eb83ad084e4e5b2810cb53187bbbf",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/decision_logic_traceability.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 10929,
-            "sha256": "98ed831fbec12f220a051aa218e47822d638ac4230f5f9d85f8c1c5c2ec4d32c",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/deidentification_checklist.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 10034,
-            "sha256": "4e55ed478e05b8c2544c99bced0e40b311e780d803f71650f62591ad63664e31",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/evidence_profile_check.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 10534,
-            "sha256": "b86396f1ec4416d84e4c5ab33fa58f7264517ea579db81efb3bb0d29a6e8e0b4",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/model_biomarker_evaluation.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 13691,
-            "sha256": "a000f6d4e995a439fd1540be6179ae6d31f3cb5848542f1d977ef6732cea28eb",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/survival_plan_validator.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 11149,
-            "sha256": "425a24efa8d7851d695433d5aba29c4947a24b6cfc13dd97aacd46c5406be785",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/validate_cds_artifact.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 10029,
-            "sha256": "3df0cfba438b76dd86560c9392fb02544b9762c21ca819fec6f73097cdec74cd",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          }
-        ],
-        "risk_flags": [],
-        "interface_file_count": 8,
-        "has_documented_io_signals": true,
-        "has_test_or_fixture_signals": false,
-        "readiness_score": 85,
-        "recommendation": "resource_with_execution_assets"
-      },
-      "concern_families": [
-        "analysis_or_model",
-        "database_or_service",
-        "tool",
-        "visualization_or_output",
-        "workflow"
-      ],
-      "recommended_shape": "split_primitives",
-      "target_match": {
-        "status": "uncovered",
-        "records": []
-      },
-      "priority_score": 84
-    },
     {
       "name": "exploratory-data-analysis",
       "source_path": "skills/exploratory-data-analysis",
@@ -1162,627 +397,6 @@
         ],
         "risk_flags": [],
         "interface_file_count": 10,
-        "has_documented_io_signals": true,
-        "has_test_or_fixture_signals": false,
-        "readiness_score": 85,
-        "recommendation": "resource_with_execution_assets"
-      },
-      "concern_families": [
-        "analysis_or_model",
-        "database_or_service",
-        "tool",
-        "visualization_or_output",
-        "workflow"
-      ],
-      "recommended_shape": "split_primitives",
-      "target_match": {
-        "status": "uncovered",
-        "records": []
-      },
-      "priority_score": 82
-    },
-    {
-      "name": "matlab",
-      "source_path": "skills/matlab",
-      "frontmatter": {
-        "name": "matlab",
-        "description": "Build, review, migrate, and safely plan MATLAB or GNU Octave numerical workflows, including arrays, tabular/time data, tests, projects, graphics, MAT files, and explicit Python interoperability."
-      },
-      "source_files": {
-        "skill_md": {
-          "present": true,
-          "path": "SKILL.md",
-          "bytes": 14308,
-          "sha256": "ae88f9ac2afb67281585872b729426dd2ea760844e385a0bffa489bd4f7b6067"
-        },
-        "references": {
-          "count": 8,
-          "bytes": 71254,
-          "extensions": {
-            ".md": 8
-          },
-          "files": [
-            {
-              "path": "references/data-import-export.md",
-              "bytes": 8784,
-              "sha256": "f5fceb633545564c9793ee217d9cd4ec0eb904ccd87c8b1ebf1c12ca6c363b42"
-            },
-            {
-              "path": "references/executing-scripts.md",
-              "bytes": 9863,
-              "sha256": "425cfa7b73b57467dba8a7891852bcacb85cf062ab858d7458b7ec8f21da4537"
-            },
-            {
-              "path": "references/graphics-visualization.md",
-              "bytes": 7381,
-              "sha256": "29e02d319b67bce4236288c9721a52f7e63be5aa1c2110a02056da98bd243262"
-            },
-            {
-              "path": "references/mathematics.md",
-              "bytes": 8272,
-              "sha256": "a4a8c058fc1730d4d0232c18e939204f6402b8b81b8bbb9a2e1cbb249a86fa9a"
-            },
-            {
-              "path": "references/matrices-arrays.md",
-              "bytes": 8128,
-              "sha256": "152839d9c2cea129058fda47e6fefcd4f635b8bc17e9ed0011337cfb7cb95225"
-            },
-            {
-              "path": "references/octave-compatibility.md",
-              "bytes": 8523,
-              "sha256": "99b14f913a25719ada832e0504d87950f015faee82f16de47467ec2ed2d89d96"
-            },
-            {
-              "path": "references/programming.md",
-              "bytes": 10365,
-              "sha256": "0ddc358400ee1234bf854deb7560f0edc613724ba45a36b1b60e4235e9f7a90d"
-            },
-            {
-              "path": "references/python-integration.md",
-              "bytes": 9938,
-              "sha256": "3935040ec53ea05005488e57127b79b6ff2e0cb10d934ee58d2c5cb21869a48e"
-            }
-          ]
-        },
-        "scripts": {
-          "count": 8,
-          "bytes": 75720,
-          "extensions": {
-            ".py": 8
-          },
-          "files": [
-            {
-              "path": "scripts/_common.py",
-              "bytes": 8703,
-              "sha256": "83b7c1123a582bd6d07dd828c88fa2b7f34c3cb69d0d641e9d4b3a6188fb9277"
-            },
-            {
-              "path": "scripts/generate_function_scaffold.py",
-              "bytes": 4955,
-              "sha256": "cbbe38eff9e4e6ce2695db478d6de45df3736b04c6ba74618434cf853539947f"
-            },
-            {
-              "path": "scripts/inventory_mat_file.py",
-              "bytes": 12357,
-              "sha256": "9dd9111d7727b847f2c25ef3bcee97bc16c3c75862e0acccc41ca6ea9e02bbe6"
-            },
-            {
-              "path": "scripts/plan_batch_command.py",
-              "bytes": 8967,
-              "sha256": "8134c0ab6a225ac4245a8a0feebce9aa338311d0a159f381ca46c0eb8d71d989"
-            },
-            {
-              "path": "scripts/plan_python_compatibility.py",
-              "bytes": 6566,
-              "sha256": "8da20d413fceae86f8f90db1b0925858aead825ce3aafc35bb2baeb7cece1da6"
-            },
-            {
-              "path": "scripts/reproducibility_report.py",
-              "bytes": 7966,
-              "sha256": "2784ffe6acee2a90f554cba73bb1578b2e8408935a34749353e5bd2ceac3bde8"
-            },
-            {
-              "path": "scripts/scan_m_code.py",
-              "bytes": 13951,
-              "sha256": "88b02dbf934db710d22a787b1fb45a0c0009dc6874dd379f5100fa0672f7b92b"
-            },
-            {
-              "path": "scripts/validate_project_manifest.py",
-              "bytes": 12255,
-              "sha256": "21cdead6d2c246e345f7fc702a202600787557f0f8da37ebd072998d6cd122f3"
-            }
-          ]
-        },
-        "assets": {
-          "count": 3,
-          "bytes": 2296,
-          "extensions": {
-            ".json": 3
-          },
-          "files": [
-            {
-              "path": "assets/project_manifest_template.json",
-              "bytes": 723,
-              "sha256": "3de6b01b3d463f5d170f19e3fd87d56477bbf65a64f98a7d237f40397026c225"
-            },
-            {
-              "path": "assets/python_compatibility_r2026a.json",
-              "bytes": 786,
-              "sha256": "082306fc3a5365d25a1a16bb26ed7bea2c96d064924e0845446379489525e631"
-            },
-            {
-              "path": "assets/reproducibility_manifest_template.json",
-              "bytes": 787,
-              "sha256": "7f0ad44a30e7d502d92642fa1617e73fc8fb0e252a4de94dd529453f5eac287e"
-            }
-          ]
-        }
-      },
-      "knowledge": {
-        "sections": [
-          "Product and license gate",
-          "Nonnegotiable safety boundary",
-          "Default workflow",
-          "Language and data checklist",
-          "Scripts, functions, and live scripts",
-          "Arrays, indexing, and numerics",
-          "Tables, timetables, and missing values",
-          "Graphics and export",
-          "MAT files and exchange",
-          "Projects, analysis, and tests",
-          "Python integration, pinned to R2026a",
-          "Local helper CLIs",
-          "References",
-          "Primary sources (verified 2026-07-23)"
-        ],
-        "channels": [
-          "workflow",
-          "interface",
-          "validation_and_caveats",
-          "worked_examples",
-          "references"
-        ],
-        "text_file_count": 20
-      },
-      "code_migration": {
-        "candidate_file_count": 8,
-        "candidate_files": [
-          {
-            "path": "scripts/_common.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 8703,
-            "sha256": "83b7c1123a582bd6d07dd828c88fa2b7f34c3cb69d0d641e9d4b3a6188fb9277",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/generate_function_scaffold.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 4955,
-            "sha256": "cbbe38eff9e4e6ce2695db478d6de45df3736b04c6ba74618434cf853539947f",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/inventory_mat_file.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 12357,
-            "sha256": "9dd9111d7727b847f2c25ef3bcee97bc16c3c75862e0acccc41ca6ea9e02bbe6",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/plan_batch_command.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 8967,
-            "sha256": "8134c0ab6a225ac4245a8a0feebce9aa338311d0a159f381ca46c0eb8d71d989",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/plan_python_compatibility.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 6566,
-            "sha256": "8da20d413fceae86f8f90db1b0925858aead825ce3aafc35bb2baeb7cece1da6",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/reproducibility_report.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 7966,
-            "sha256": "2784ffe6acee2a90f554cba73bb1578b2e8408935a34749353e5bd2ceac3bde8",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/scan_m_code.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 13951,
-            "sha256": "88b02dbf934db710d22a787b1fb45a0c0009dc6874dd379f5100fa0672f7b92b",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/validate_project_manifest.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 12255,
-            "sha256": "21cdead6d2c246e345f7fc702a202600787557f0f8da37ebd072998d6cd122f3",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          }
-        ],
-        "risk_flags": [],
-        "interface_file_count": 8,
-        "has_documented_io_signals": true,
-        "has_test_or_fixture_signals": false,
-        "readiness_score": 85,
-        "recommendation": "resource_with_execution_assets"
-      },
-      "concern_families": [
-        "analysis_or_model",
-        "database_or_service",
-        "tool",
-        "visualization_or_output",
-        "workflow"
-      ],
-      "recommended_shape": "split_primitives",
-      "target_match": {
-        "status": "uncovered",
-        "records": []
-      },
-      "priority_score": 82
-    },
-    {
-      "name": "treatment-plans",
-      "source_path": "skills/treatment-plans",
-      "frontmatter": {
-        "name": "treatment-plans",
-        "description": "Format and structurally validate local treatment-plan documentation after clinical decisions have already been supplied and verified by authorized licensed professionals. Use for source traceability, clinician-authored intervention records, goals and checkpoints, shared-decision records, reconciliation handoffs, and release gates\u2014not for clinical decision-making."
-      },
-      "source_files": {
-        "skill_md": {
-          "present": true,
-          "path": "SKILL.md",
-          "bytes": 9834,
-          "sha256": "5d70084a9b9b6c705b36d28f491136716eb33bf9144db5bedf78672e9ea07bdb"
-        },
-        "references": {
-          "count": 8,
-          "bytes": 42173,
-          "extensions": {
-            ".md": 8
-          },
-          "files": [
-            {
-              "path": "references/documentation_workflow.md",
-              "bytes": 6514,
-              "sha256": "0288d665b43378d61997cc3f22603d23394e5519dafe01c07257d8441f8779d1"
-            },
-            {
-              "path": "references/privacy_governance.md",
-              "bytes": 5721,
-              "sha256": "a6cbac0e3e9e14d360e22879b23e40781bc298c43ba4d46e318885569fad298c"
-            },
-            {
-              "path": "references/README.md",
-              "bytes": 1422,
-              "sha256": "4c8751f58d138e58d8bc648be3ec2e4da51b26403c09d30fafdc3a5a77b58f9a"
-            },
-            {
-              "path": "references/safety_scope.md",
-              "bytes": 5355,
-              "sha256": "ba1309a99cc174dc091bac9d7aefda0f697b50f4dba51f53e00694fcf00879a4"
-            },
-            {
-              "path": "references/security_validation.md",
-              "bytes": 3655,
-              "sha256": "eee525aa1ad205b2aabc67f7f9897bb11780f20ff07e738e00f98b4f20c2d15f"
-            },
-            {
-              "path": "references/shared_decision_handoff.md",
-              "bytes": 5407,
-              "sha256": "fc88503e380f67141700d8d53b49b91fcbb73181063012b188ff2f78d1bf2232"
-            },
-            {
-              "path": "references/source_boundaries.md",
-              "bytes": 6274,
-              "sha256": "1d9442d77e97cec6f3123616609cfa88697bf6e8cb97234f88780d7e0063f524"
-            },
-            {
-              "path": "references/source_ledger.md",
-              "bytes": 7825,
-              "sha256": "27999359bad81338910d8af1e4fa26a90b1c556554db3e8c280db3c3506939a5"
-            }
-          ]
-        },
-        "scripts": {
-          "count": 8,
-          "bytes": 96330,
-          "extensions": {
-            ".py": 8
-          },
-          "files": [
-            {
-              "path": "scripts/_common.py",
-              "bytes": 39558,
-              "sha256": "3551178b5c6269c349dc61b52fce20336f1582372e4037c86170945bb1c2504c"
-            },
-            {
-              "path": "scripts/check_completeness.py",
-              "bytes": 18545,
-              "sha256": "4998092dca9f2e2920d9e248dd1294a2575600da565887ebbb805f188cb68eb2"
-            },
-            {
-              "path": "scripts/check_consistency.py",
-              "bytes": 12614,
-              "sha256": "4081d37bf0f93655893dd719e8b295616ab8494bd5aeaeb63b735543d5e6c654"
-            },
-            {
-              "path": "scripts/generate_template.py",
-              "bytes": 3833,
-              "sha256": "8be3abd98ce67e0f20f5a0d57391563e458a28982a760ed4f1e2f9f14c08f850"
-            },
-            {
-              "path": "scripts/privacy_process_check.py",
-              "bytes": 6583,
-              "sha256": "ba357af0af81888aa44c4d93ac3da82a893ba2cc86aa5a20228e0805910641de"
-            },
-            {
-              "path": "scripts/timeline_generator.py",
-              "bytes": 8063,
-              "sha256": "df58c25ceeca10a7ebf06dc63f36d26648d5a3254068ccfc3142a3b8c518b368"
-            },
-            {
-              "path": "scripts/validate_traceability.py",
-              "bytes": 4596,
-              "sha256": "e904ae63454a3f29179f9a4e99118aa3dfd0d34d5fde830dfc1593d6b501b06a"
-            },
-            {
-              "path": "scripts/validate_treatment_plan.py",
-              "bytes": 2538,
-              "sha256": "89e591763a2367f0956131a60faec329952adaaa88796f82b5aacb829c9cf72a"
-            }
-          ]
-        },
-        "assets": {
-          "count": 6,
-          "bytes": 5491,
-          "extensions": {
-            ".json": 6
-          },
-          "files": [
-            {
-              "path": "assets/clinician_authored_intervention_template.json",
-              "bytes": 408,
-              "sha256": "92db1a36de0a23492ad5b14d23c019ac4867527d60ec7e7df8f10c927eaf06ce"
-            },
-            {
-              "path": "assets/goals_monitoring_checkpoint_template.json",
-              "bytes": 446,
-              "sha256": "a06e4be9a492a81b1617543bbdc22fc64a34d4279c87d65dde6bd291c3805bab"
-            },
-            {
-              "path": "assets/informed_preference_shared_decision_template.json",
-              "bytes": 408,
-              "sha256": "3ed4923cfc1e10d728b0ed93e303ad515af694d22a4283d36f71b93ab792e565"
-            },
-            {
-              "path": "assets/intended_use_handoff_template.json",
-              "bytes": 2968,
-              "sha256": "e06eb4d26e5228002029e3e7644eba4d77a2345001d2d74e0edf6b4a8b662e11"
-            },
-            {
-              "path": "assets/source_fact_manifest_template.json",
-              "bytes": 381,
-              "sha256": "9949b031a887071c60d3348ef1b5041a912c8e1733d36bb4d99be8be77885ceb"
-            },
-            {
-              "path": "assets/transition_reconciliation_template.json",
-              "bytes": 880,
-              "sha256": "1bc4edbed0c3fa620ed2f0a26e5adf2b07b1e441712556a2aac73af677438635"
-            }
-          ]
-        }
-      },
-      "knowledge": {
-        "sections": [
-          "Hard safety boundary",
-          "Required visible notice",
-          "Data gate",
-          "Allowed inputs",
-          "Workflow",
-          "1. Establish authority and intended use",
-          "2. Generate a generic package",
-          "3. Transcribe supplied decisions without inference",
-          "4. Run deterministic local checks",
-          "5. Human review and release",
-          "Source boundaries",
-          "Verification",
-          "Reference map"
-        ],
-        "channels": [
-          "trigger_and_scope",
-          "workflow",
-          "interface",
-          "validation_and_caveats",
-          "worked_examples",
-          "references"
-        ],
-        "text_file_count": 23
-      },
-      "code_migration": {
-        "candidate_file_count": 8,
-        "candidate_files": [
-          {
-            "path": "scripts/_common.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 39558,
-            "sha256": "3551178b5c6269c349dc61b52fce20336f1582372e4037c86170945bb1c2504c",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\boutput(?:s)?\\b"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/check_completeness.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 18545,
-            "sha256": "4998092dca9f2e2920d9e248dd1294a2575600da565887ebbb805f188cb68eb2",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/check_consistency.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 12614,
-            "sha256": "4081d37bf0f93655893dd719e8b295616ab8494bd5aeaeb63b735543d5e6c654",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/generate_template.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 3833,
-            "sha256": "8be3abd98ce67e0f20f5a0d57391563e458a28982a760ed4f1e2f9f14c08f850",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/privacy_process_check.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 6583,
-            "sha256": "ba357af0af81888aa44c4d93ac3da82a893ba2cc86aa5a20228e0805910641de",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/timeline_generator.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 8063,
-            "sha256": "df58c25ceeca10a7ebf06dc63f36d26648d5a3254068ccfc3142a3b8c518b368",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/validate_traceability.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 4596,
-            "sha256": "e904ae63454a3f29179f9a4e99118aa3dfd0d34d5fde830dfc1593d6b501b06a",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/validate_treatment_plan.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 2538,
-            "sha256": "89e591763a2367f0956131a60faec329952adaaa88796f82b5aacb829c9cf72a",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          }
-        ],
-        "risk_flags": [],
-        "interface_file_count": 8,
         "has_documented_io_signals": true,
         "has_test_or_fixture_signals": false,
         "readiness_score": 85,
@@ -2185,281 +799,6 @@
         "has_documented_io_signals": true,
         "has_test_or_fixture_signals": false,
         "readiness_score": 65,
-        "recommendation": "resource_with_execution_assets"
-      },
-      "concern_families": [
-        "analysis_or_model",
-        "database_or_service",
-        "tool",
-        "visualization_or_output",
-        "workflow"
-      ],
-      "recommended_shape": "split_primitives",
-      "target_match": {
-        "status": "uncovered",
-        "records": []
-      },
-      "priority_score": 81
-    },
-    {
-      "name": "simpy",
-      "source_path": "skills/simpy",
-      "frontmatter": {
-        "name": "simpy",
-        "description": "Build, inspect, test, and analyze bounded process-based discrete-event simulations with SimPy, including events, resources, interrupts, monitoring, replications, warm-up, and reproducible output analysis."
-      },
-      "source_files": {
-        "skill_md": {
-          "present": true,
-          "path": "SKILL.md",
-          "bytes": 12470,
-          "sha256": "08b84cdc5ceda5e7f199ab18c66ac888e3f3d4fa859c2ecace84cc245c65bcba"
-        },
-        "references": {
-          "count": 8,
-          "bytes": 66380,
-          "extensions": {
-            ".md": 8
-          },
-          "files": [
-            {
-              "path": "references/cli-guide.md",
-              "bytes": 7882,
-              "sha256": "648c73619ad2e52b0edf4cc34c99d499acf739eea01ae516b79d537ae46368fb"
-            },
-            {
-              "path": "references/events.md",
-              "bytes": 7294,
-              "sha256": "f4c0ff9b027718dcc81dff9fc912f5dc90ef52c58fedfcac63238390c5b622fd"
-            },
-            {
-              "path": "references/monitoring.md",
-              "bytes": 8344,
-              "sha256": "8bb3ed670ce153fcc873b15e6f1bd15760babd0241a42929e64672b7fe7a0bf5"
-            },
-            {
-              "path": "references/process-interaction.md",
-              "bytes": 7703,
-              "sha256": "463911ab1a26e2a743a943b7db1262c4ddb1901cbc14c9ce1a9c410338012f79"
-            },
-            {
-              "path": "references/real-time.md",
-              "bytes": 5159,
-              "sha256": "0ffd48a9199297339d17f21ad668c839e4531cf8f678da234f98b42ca684f36c"
-            },
-            {
-              "path": "references/resources.md",
-              "bytes": 8489,
-              "sha256": "a73f016673ae0afd9b8c7fd53cf70d5193d566d5c7372af95cfe61ab8e7d0bbf"
-            },
-            {
-              "path": "references/simulation-methodology.md",
-              "bytes": 11724,
-              "sha256": "48149207316ed6f3f248169d207dbc1770393486d7cc57fe27daf953cf1f4656"
-            },
-            {
-              "path": "references/sources.md",
-              "bytes": 9785,
-              "sha256": "09c4f7545968e88a56a98060d44f441fb88e59b83e5d1fa25709612ddfd3c182"
-            }
-          ]
-        },
-        "scripts": {
-          "count": 7,
-          "bytes": 68567,
-          "extensions": {
-            ".py": 7
-          },
-          "files": [
-            {
-              "path": "scripts/_common.py",
-              "bytes": 15134,
-              "sha256": "076d0d9a36f9bb58dd8b1e5058ef12008cb02fb281bffe1fa25c205cf1e6bf62"
-            },
-            {
-              "path": "scripts/basic_simulation_template.py",
-              "bytes": 13197,
-              "sha256": "5cb1ffb974a74669e0596dbaa54e392483e2f74ea8cb757ab181ae0b64f19e66"
-            },
-            {
-              "path": "scripts/bounded_queue_scenario.py",
-              "bytes": 3609,
-              "sha256": "8d8de80d5c241c8c677754810ce293d667498e618493a75418b35247e5613f0f"
-            },
-            {
-              "path": "scripts/event_trace_summary.py",
-              "bytes": 10769,
-              "sha256": "dc783180bf4f7e817aa0ce1249ae1ebe31dd318126839b93c9fd8b765cc64998"
-            },
-            {
-              "path": "scripts/replication_runner.py",
-              "bytes": 6234,
-              "sha256": "99f0d16710a0dd472e3bdbb903b2ed38578c5a1523a7a87781a1053c8a34c23e"
-            },
-            {
-              "path": "scripts/resource_monitor.py",
-              "bytes": 15945,
-              "sha256": "dc04b5b66c3734deb03b4408b8b241f7b483195a4704b1eae2e963b8df582db0"
-            },
-            {
-              "path": "scripts/validate_simulation_config.py",
-              "bytes": 3679,
-              "sha256": "2482b5a7d8f389ed892d0e4edfcce13cbd4144e64490513194791f8d1f0e555e"
-            }
-          ]
-        },
-        "assets": {
-          "count": 0,
-          "bytes": 0,
-          "extensions": {},
-          "files": []
-        }
-      },
-      "knowledge": {
-        "sections": [
-          "Scope",
-          "Current release and installation",
-          "Model workflow",
-          "Minimal bounded model",
-          "Core semantics",
-          "Environment and deterministic ordering",
-          "Event, Timeout, Process, and Condition",
-          "Interrupts",
-          "Shared resources",
-          "Monitoring and stepping",
-          "Real-time execution",
-          "Bundled safe CLIs",
-          "Testing",
-          "References"
-        ],
-        "channels": [
-          "trigger_and_scope",
-          "workflow",
-          "interface",
-          "validation_and_caveats",
-          "worked_examples",
-          "references"
-        ],
-        "text_file_count": 16
-      },
-      "code_migration": {
-        "candidate_file_count": 7,
-        "candidate_files": [
-          {
-            "path": "scripts/_common.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 15134,
-            "sha256": "076d0d9a36f9bb58dd8b1e5058ef12008cb02fb281bffe1fa25c205cf1e6bf62",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b"
-            ],
-            "install_signals": [
-              "pip\\s+install",
-              "uv\\s+(?:pip\\s+)?install"
-            ]
-          },
-          {
-            "path": "scripts/basic_simulation_template.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 13197,
-            "sha256": "5cb1ffb974a74669e0596dbaa54e392483e2f74ea8cb757ab181ae0b64f19e66",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/bounded_queue_scenario.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 3609,
-            "sha256": "8d8de80d5c241c8c677754810ce293d667498e618493a75418b35247e5613f0f",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/event_trace_summary.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 10769,
-            "sha256": "dc783180bf4f7e817aa0ce1249ae1ebe31dd318126839b93c9fd8b765cc64998",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/replication_runner.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 6234,
-            "sha256": "99f0d16710a0dd472e3bdbb903b2ed38578c5a1523a7a87781a1053c8a34c23e",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/resource_monitor.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 15945,
-            "sha256": "dc04b5b66c3734deb03b4408b8b241f7b483195a4704b1eae2e963b8df582db0",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          },
-          {
-            "path": "scripts/validate_simulation_config.py",
-            "kind": "code",
-            "extension": ".py",
-            "bytes": 3679,
-            "sha256": "2482b5a7d8f389ed892d0e4edfcce13cbd4144e64490513194791f8d1f0e555e",
-            "risk_flags": [],
-            "interface_signals": [
-              "\\bargparse\\b",
-              "\\bdef\\s+main\\s*\\(",
-              "\\binput(?:s)?\\b",
-              "\\boutput(?:s)?\\b",
-              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
-            ],
-            "install_signals": []
-          }
-        ],
-        "risk_flags": [],
-        "interface_file_count": 7,
-        "has_documented_io_signals": true,
-        "has_test_or_fixture_signals": false,
-        "readiness_score": 85,
         "recommendation": "resource_with_execution_assets"
       },
       "concern_families": [
@@ -20783,6 +19122,787 @@
       "priority_score": 47
     },
     {
+      "name": "clinical-reports",
+      "source_path": "skills/clinical-reports",
+      "frontmatter": {
+        "name": "clinical-reports",
+        "description": "Create safety-bounded draft structures and run local deterministic checks for clinical case, diagnostic, trial, safety, and aggregate research reports. Use only with synthetic, de-identified, or aggregate inputs and verified source-fact manifests; every output requires qualified review."
+      },
+      "source_files": {
+        "skill_md": {
+          "present": true,
+          "path": "SKILL.md",
+          "bytes": 13798,
+          "sha256": "f1da8ce1a00f77c9205f0763bb2be8d9bdc7a0c09f819290811578a9b9472849"
+        },
+        "references": {
+          "count": 11,
+          "bytes": 49688,
+          "extensions": {
+            ".md": 11
+          },
+          "files": [
+            {
+              "path": "references/case_report_guidelines.md",
+              "bytes": 3413,
+              "sha256": "dbd1c6fb510370fba97fe44f7fa59ce2f5ddb2aef0c43c374b4ac7a2ca4e6426"
+            },
+            {
+              "path": "references/clinical_trial_reporting.md",
+              "bytes": 5154,
+              "sha256": "111c17c04874a62fd7bf2e9f859651d811229d5cf6cdfbbc1603b864e3501571"
+            },
+            {
+              "path": "references/data_presentation.md",
+              "bytes": 3715,
+              "sha256": "798cec8530c5c3b38fe3c04417fe925259f336c3bb3ed4bc145006b8fde4657a"
+            },
+            {
+              "path": "references/diagnostic_reports_standards.md",
+              "bytes": 4047,
+              "sha256": "f7dcbfb28b0cbf5c8b956f48fb2b72ddb976ef35d43d60854ed5554aeb6bb971"
+            },
+            {
+              "path": "references/medical_terminology.md",
+              "bytes": 3589,
+              "sha256": "907cdc665e79364bfd29c853803e73a5411c3cf28a3f3ecaa4e29a082267ef27"
+            },
+            {
+              "path": "references/privacy_and_deidentification.md",
+              "bytes": 4635,
+              "sha256": "c5e67d8b404c6fc0593180f53f9cf9b73525809d74435d3a07032e95c63a8557"
+            },
+            {
+              "path": "references/professional_review.md",
+              "bytes": 3970,
+              "sha256": "0826f5e945eea72631c0324a4676b310783f903fdc4efdbc194947d38edda1aa"
+            },
+            {
+              "path": "references/README.md",
+              "bytes": 2179,
+              "sha256": "56b433d1fa032614f9d82a43333473d308b1ad629119a8eab955c4a9b9a85657"
+            },
+            {
+              "path": "references/report_type_routing.md",
+              "bytes": 4304,
+              "sha256": "e79553da8f3b7bb1b777892b9f11e2692a4dd4784a9cc5449cc7ea47b7c9e6d4"
+            },
+            {
+              "path": "references/safety_reporting.md",
+              "bytes": 6064,
+              "sha256": "f1d19ed253ab99ff52c43bffab817a5f2fac2f28beffd65ac32daea360586d2e"
+            },
+            {
+              "path": "references/sources.md",
+              "bytes": 8618,
+              "sha256": "9152a1c898b94feb55f02006c53d820e85666063eb8b16e9fd4ab939e3313f23"
+            }
+          ]
+        },
+        "scripts": {
+          "count": 9,
+          "bytes": 103186,
+          "extensions": {
+            ".py": 9
+          },
+          "files": [
+            {
+              "path": "scripts/_common.py",
+              "bytes": 9391,
+              "sha256": "d30e9e8461e81529bdb9ece9b9d34d87c59ec601bb164674d3fbf8721e5fdbbf"
+            },
+            {
+              "path": "scripts/check_deidentification.py",
+              "bytes": 10755,
+              "sha256": "5545ffd1eb6f79681d8e4fa654c18d30bb01dc2dc7cd6f91366695ed53eaa5e8"
+            },
+            {
+              "path": "scripts/consistency_checker.py",
+              "bytes": 13562,
+              "sha256": "5b1269fe6490c1875f711755a1b581d3a5b34840df1b599c6e4222be924a2afe"
+            },
+            {
+              "path": "scripts/format_adverse_events.py",
+              "bytes": 16080,
+              "sha256": "50580131de2a3a0777829b7aa983659bd09747b0cbe8ea2625266f90918a4691"
+            },
+            {
+              "path": "scripts/generate_report_template.py",
+              "bytes": 4005,
+              "sha256": "38adad4eeddd8651629f0c25e384e6e159d81dc251dc88e62f6f89e565eac9e1"
+            },
+            {
+              "path": "scripts/provenance_validator.py",
+              "bytes": 9296,
+              "sha256": "127ebf868afc25161ff8134b1a4173e7f8fd72150f0ce47018561a203d7c6896"
+            },
+            {
+              "path": "scripts/terminology_validator.py",
+              "bytes": 10255,
+              "sha256": "4496eace2c8b87bff8e6275c54c4e8601b6ce2d5f7c4f07c523f0486410b6ac5"
+            },
+            {
+              "path": "scripts/validate_case_report.py",
+              "bytes": 9592,
+              "sha256": "7a3ad939da4d3407f51b23ce208f3639d8ba51bcf1cf4ab895587f4825cb09ba"
+            },
+            {
+              "path": "scripts/validate_trial_report.py",
+              "bytes": 20250,
+              "sha256": "571d5e55619b6a52df7c9ff943f2c967edfa43da429f7cfe456784df7eaf83f8"
+            }
+          ]
+        },
+        "assets": {
+          "count": 15,
+          "bytes": 26606,
+          "extensions": {
+            ".csv": 1,
+            ".json": 14
+          },
+          "files": [
+            {
+              "path": "assets/adverse_event_aggregate_input_template.csv",
+              "bytes": 120,
+              "sha256": "d28e793502d20756858b86304cd664ea932f922fc2ce15e73d3fd38eea5d05a8"
+            },
+            {
+              "path": "assets/case_report_template.json",
+              "bytes": 2178,
+              "sha256": "b08c7084fb66a80033bd114fc7bd87e0853156f5e8a2eb02357c71654d26567c"
+            },
+            {
+              "path": "assets/clinical_trial_csr_template.json",
+              "bytes": 2713,
+              "sha256": "f025ada53650588f8cd66bb87b8b260805246ed66f599b64bcb262532d232be4"
+            },
+            {
+              "path": "assets/clinical_trial_results_template.json",
+              "bytes": 3873,
+              "sha256": "2342c7e489124ba9c6110946d62903919b0120b1b0d677db920cb2dae324f0e2"
+            },
+            {
+              "path": "assets/clinical_trial_safety_aggregate_template.json",
+              "bytes": 1481,
+              "sha256": "6403eff51668ff4274b5c1e337fc0e64ba0488ac276efda51c4cd28b420b7726"
+            },
+            {
+              "path": "assets/consistency_manifest_template.json",
+              "bytes": 531,
+              "sha256": "30bf445c794ee38d5a85d61f2290c7a546ceb504f151f15d58a273f2e33777c1"
+            },
+            {
+              "path": "assets/deidentification_process_checklist.json",
+              "bytes": 2130,
+              "sha256": "1d0223a18469528c6435665a91a4657dad2683fc78c4080d8d3ed99ced0a34cf"
+            },
+            {
+              "path": "assets/lab_report_template.json",
+              "bytes": 1700,
+              "sha256": "824772a0aaa82b5121ea1831ef8d30363385ee58dbaae2d941acbfd69a09588d"
+            },
+            {
+              "path": "assets/pathology_report_template.json",
+              "bytes": 1751,
+              "sha256": "d60cb27468ff92ae781ea43b32c15d0d9b6e827007a2809ac00d1c7a1bb30453"
+            },
+            {
+              "path": "assets/provenance_manifest_template.json",
+              "bytes": 560,
+              "sha256": "922c54f9537dc75f7a9135f50b3122c8d3ed04d1a040ca5ddcd5545992b99f85"
+            },
+            {
+              "path": "assets/quality_review_checklist.json",
+              "bytes": 1691,
+              "sha256": "d62be830245346550ce10e7e4a4e5c12d7fcb0e3aa5a21d262ebcfa490340527"
+            },
+            {
+              "path": "assets/radiology_report_template.json",
+              "bytes": 1585,
+              "sha256": "34f018e29022fe5bf486a6b3bc1de71eadd04e6e7342e15fb6b76c7d7856cf0e"
+            },
+            {
+              "path": "assets/research_summary_template.json",
+              "bytes": 1606,
+              "sha256": "bc9bace965fb886bd7e2a4077b5aa0f5b0902adf9983404371c595a1dbbd0ec2"
+            },
+            {
+              "path": "assets/terminology_manifest_template.json",
+              "bytes": 426,
+              "sha256": "d626a49f96216842516a9a41f94576a4dc77b7fcc350374904e298d01f2766e9"
+            },
+            {
+              "path": "assets/trial_protocol_reporting_checklist.json",
+              "bytes": 4261,
+              "sha256": "01a43c4b5ef47b39f1ac669b0acfd0a4a440a689b9f8569c68247c0d2a4413d5"
+            }
+          ]
+        }
+      },
+      "knowledge": {
+        "sections": [
+          "Purpose",
+          "Non-Negotiable Boundary",
+          "Input Gate",
+          "Route Before Drafting",
+          "Safe Drafting Workflow",
+          "1. Create a source-fact manifest",
+          "2. Generate the correct template",
+          "3. Populate verified fields only",
+          "4. Run deterministic checks",
+          "5. Apply the right review",
+          "Case Reports",
+          "Diagnostic Report Scaffolds",
+          "Trial, CSR, and Safety Reporting",
+          "Privacy",
+          "Assets",
+          "References",
+          "Final Handoff"
+        ],
+        "channels": [
+          "workflow",
+          "interface",
+          "validation_and_caveats",
+          "worked_examples",
+          "references"
+        ],
+        "text_file_count": 36
+      },
+      "code_migration": {
+        "candidate_file_count": 9,
+        "candidate_files": [
+          {
+            "path": "scripts/_common.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 9391,
+            "sha256": "d30e9e8461e81529bdb9ece9b9d34d87c59ec601bb164674d3fbf8721e5fdbbf",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/check_deidentification.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 10755,
+            "sha256": "5545ffd1eb6f79681d8e4fa654c18d30bb01dc2dc7cd6f91366695ed53eaa5e8",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/consistency_checker.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 13562,
+            "sha256": "5b1269fe6490c1875f711755a1b581d3a5b34840df1b599c6e4222be924a2afe",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/format_adverse_events.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 16080,
+            "sha256": "50580131de2a3a0777829b7aa983659bd09747b0cbe8ea2625266f90918a4691",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/generate_report_template.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 4005,
+            "sha256": "38adad4eeddd8651629f0c25e384e6e159d81dc251dc88e62f6f89e565eac9e1",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/provenance_validator.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 9296,
+            "sha256": "127ebf868afc25161ff8134b1a4173e7f8fd72150f0ce47018561a203d7c6896",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/terminology_validator.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 10255,
+            "sha256": "4496eace2c8b87bff8e6275c54c4e8601b6ce2d5f7c4f07c523f0486410b6ac5",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/validate_case_report.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 9592,
+            "sha256": "7a3ad939da4d3407f51b23ce208f3639d8ba51bcf1cf4ab895587f4825cb09ba",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/validate_trial_report.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 20250,
+            "sha256": "571d5e55619b6a52df7c9ff943f2c967edfa43da429f7cfe456784df7eaf83f8",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          }
+        ],
+        "risk_flags": [],
+        "interface_file_count": 9,
+        "has_documented_io_signals": true,
+        "has_test_or_fixture_signals": false,
+        "readiness_score": 85,
+        "recommendation": "resource_with_execution_assets"
+      },
+      "concern_families": [
+        "analysis_or_model",
+        "database_or_service",
+        "tool",
+        "visualization_or_output",
+        "workflow"
+      ],
+      "recommended_shape": "split_primitives",
+      "target_match": {
+        "status": "explicit_provenance",
+        "records": [
+          {
+            "path": "general/application/clinical_reports",
+            "name": "clinical_reports",
+            "primitive_id": "general.application.clinical_reports",
+            "parse_mode": "strict_json",
+            "distilled_from": "scientific-agent-skills/skills/clinical-reports"
+          }
+        ]
+      },
+      "priority_score": 40
+    },
+    {
+      "name": "clinical-decision-support",
+      "source_path": "skills/clinical-decision-support",
+      "frontmatter": {
+        "name": "clinical-decision-support",
+        "description": "Prepare and validate research-only clinical decision-support evaluation, evidence-profile, cohort, survival, biomarker/model, privacy, and governance artifacts. Use for aggregate or synthetic research documentation and traceability\u2014not patient care or live clinical operation."
+      },
+      "source_files": {
+        "skill_md": {
+          "present": true,
+          "path": "SKILL.md",
+          "bytes": 12272,
+          "sha256": "b3c89edd706ba8d52705c40698df527698052ebc3ff175397fc5d3571003539e"
+        },
+        "references": {
+          "count": 12,
+          "bytes": 65075,
+          "extensions": {
+            ".md": 12
+          },
+          "files": [
+            {
+              "path": "references/cohort_evaluation.md",
+              "bytes": 5291,
+              "sha256": "c990eb56cdb49526d5121b6712d0c3128a066d9dda028569ad00e4ed06466460"
+            },
+            {
+              "path": "references/decision_logic_traceability.md",
+              "bytes": 3231,
+              "sha256": "494d534eb88025fd6b8d7960e04ede1696a2a6a91d4be169d16e2a4bd66d907d"
+            },
+            {
+              "path": "references/evidence_profiles.md",
+              "bytes": 5027,
+              "sha256": "4d275363212c37f9a4def05f16e75e0d34a9378c474c2af30e8eed7f6070083b"
+            },
+            {
+              "path": "references/model_biomarker_evaluation.md",
+              "bytes": 5813,
+              "sha256": "796f883ef83ac90aaf6bfadac2ed13ffbae465c02e31bb476875b97e20e6e2fe"
+            },
+            {
+              "path": "references/privacy_and_disclosure.md",
+              "bytes": 4763,
+              "sha256": "cf2d93ea964eed0ed5ebf976f8505dd990fa189562ea44050eaf35e4cb6e2854"
+            },
+            {
+              "path": "references/README.md",
+              "bytes": 3262,
+              "sha256": "e44d4df88bd491cc5983b4f7ed9cd671a4edfa923b535769b802351ebb4f271e"
+            },
+            {
+              "path": "references/regulatory_and_governance.md",
+              "bytes": 7159,
+              "sha256": "3bac4ed02d6324ae8b17921c25f5fe8319b7ff7fd8a51ed05b4ef8d077767e58"
+            },
+            {
+              "path": "references/safety_and_scope.md",
+              "bytes": 4634,
+              "sha256": "31292eaa2cf412f25965964f244d29c39735c4695b5782fce5b5c694714f6846"
+            },
+            {
+              "path": "references/security_validation.md",
+              "bytes": 3098,
+              "sha256": "6eba11b4794b35613185d4bc09f46f9aae73c4deb84f364c1864535bf96c1e11"
+            },
+            {
+              "path": "references/sources.md",
+              "bytes": 10678,
+              "sha256": "a46aa2decd2505ba9bbc0fe9aff64076dac7346a11a77d13ba52463b0450661d"
+            },
+            {
+              "path": "references/study_reporting.md",
+              "bytes": 6401,
+              "sha256": "78440436b43c73c39487fdba6c78d498768a25c61ae46bbc1646540f8c1de761"
+            },
+            {
+              "path": "references/survival_analysis.md",
+              "bytes": 5718,
+              "sha256": "7a056e09b16370544433b6ac1f94cd92082cd7fca8fe8a22a04e5978d357dc42"
+            }
+          ]
+        },
+        "scripts": {
+          "count": 8,
+          "bytes": 85293,
+          "extensions": {
+            ".py": 8
+          },
+          "files": [
+            {
+              "path": "scripts/_common.py",
+              "bytes": 7537,
+              "sha256": "a1ecaebf8ced707f2abb763a59e1702ceae05bd10e7fe72745ec5976ab7811a5"
+            },
+            {
+              "path": "scripts/cohort_table_generator.py",
+              "bytes": 11390,
+              "sha256": "56687bf5b93b182ac2eee57cb3aa259d930eb83ad084e4e5b2810cb53187bbbf"
+            },
+            {
+              "path": "scripts/decision_logic_traceability.py",
+              "bytes": 10929,
+              "sha256": "98ed831fbec12f220a051aa218e47822d638ac4230f5f9d85f8c1c5c2ec4d32c"
+            },
+            {
+              "path": "scripts/deidentification_checklist.py",
+              "bytes": 10034,
+              "sha256": "4e55ed478e05b8c2544c99bced0e40b311e780d803f71650f62591ad63664e31"
+            },
+            {
+              "path": "scripts/evidence_profile_check.py",
+              "bytes": 10534,
+              "sha256": "b86396f1ec4416d84e4c5ab33fa58f7264517ea579db81efb3bb0d29a6e8e0b4"
+            },
+            {
+              "path": "scripts/model_biomarker_evaluation.py",
+              "bytes": 13691,
+              "sha256": "a000f6d4e995a439fd1540be6179ae6d31f3cb5848542f1d977ef6732cea28eb"
+            },
+            {
+              "path": "scripts/survival_plan_validator.py",
+              "bytes": 11149,
+              "sha256": "425a24efa8d7851d695433d5aba29c4947a24b6cfc13dd97aacd46c5406be785"
+            },
+            {
+              "path": "scripts/validate_cds_artifact.py",
+              "bytes": 10029,
+              "sha256": "3df0cfba438b76dd86560c9392fb02544b9762c21ca819fec6f73097cdec74cd"
+            }
+          ]
+        },
+        "assets": {
+          "count": 7,
+          "bytes": 32426,
+          "extensions": {
+            ".json": 7
+          },
+          "files": [
+            {
+              "path": "assets/aggregate_cohort_table_template.json",
+              "bytes": 3140,
+              "sha256": "6553f12593aa45a466f7b265e63b870c9254019edf5bc550acf332f19b34bfda"
+            },
+            {
+              "path": "assets/aggregate_model_evaluation_template.json",
+              "bytes": 3677,
+              "sha256": "6dc41f4bc46ee061376dffb91b1993f591552781c6e8ebac7c180d8da2bf7694"
+            },
+            {
+              "path": "assets/artifact_intended_use_template.json",
+              "bytes": 3319,
+              "sha256": "d6e8e27f3ad9533921324975b7220acc2399e45bc81ba84a885a3b35ea6b0370"
+            },
+            {
+              "path": "assets/decision_logic_traceability_template.json",
+              "bytes": 4368,
+              "sha256": "b4f2d048ccd5f0fc9c297bfff6fcce9ab4ce2b8da05fbb13c3760d3acce33fd8"
+            },
+            {
+              "path": "assets/deidentification_checklist_template.json",
+              "bytes": 6156,
+              "sha256": "ec6f187a1f06aaede11af9bb78c096a583e43c1743f81188dbaee5613b7484e0"
+            },
+            {
+              "path": "assets/evidence_profile_template.json",
+              "bytes": 4485,
+              "sha256": "e4ac5d656b2468ba13052ca6d79bd8a52b721ffed9474511189c53093758092c"
+            },
+            {
+              "path": "assets/survival_analysis_plan_template.json",
+              "bytes": 7281,
+              "sha256": "f32b477d68c6e7c69a7111fc6f8d9c94d3d06f0d389da93d57c36e9224a639ae"
+            }
+          ]
+        }
+      },
+      "knowledge": {
+        "sections": [
+          "Hard Safety Boundary",
+          "In Scope",
+          "Data Gate",
+          "Required Artifact Header",
+          "Workflow",
+          "1. Frame the Research Question",
+          "2. Select the Artifact",
+          "3. Run Locally",
+          "4. Human Review",
+          "GRADE Evidence Profiles",
+          "Aggregate Model and Biomarker Evaluation",
+          "Cohort Tables",
+          "Survival Plans",
+          "Decision Logic",
+          "Privacy and De-identification",
+          "Reporting-Guideline Selection",
+          "Regulatory and Governance Context",
+          "Verification",
+          "Reference Map"
+        ],
+        "channels": [
+          "trigger_and_scope",
+          "workflow",
+          "interface",
+          "validation_and_caveats",
+          "worked_examples",
+          "references"
+        ],
+        "text_file_count": 28
+      },
+      "code_migration": {
+        "candidate_file_count": 8,
+        "candidate_files": [
+          {
+            "path": "scripts/_common.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 7537,
+            "sha256": "a1ecaebf8ced707f2abb763a59e1702ceae05bd10e7fe72745ec5976ab7811a5",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/cohort_table_generator.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 11390,
+            "sha256": "56687bf5b93b182ac2eee57cb3aa259d930eb83ad084e4e5b2810cb53187bbbf",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/decision_logic_traceability.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 10929,
+            "sha256": "98ed831fbec12f220a051aa218e47822d638ac4230f5f9d85f8c1c5c2ec4d32c",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/deidentification_checklist.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 10034,
+            "sha256": "4e55ed478e05b8c2544c99bced0e40b311e780d803f71650f62591ad63664e31",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/evidence_profile_check.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 10534,
+            "sha256": "b86396f1ec4416d84e4c5ab33fa58f7264517ea579db81efb3bb0d29a6e8e0b4",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/model_biomarker_evaluation.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 13691,
+            "sha256": "a000f6d4e995a439fd1540be6179ae6d31f3cb5848542f1d977ef6732cea28eb",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/survival_plan_validator.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 11149,
+            "sha256": "425a24efa8d7851d695433d5aba29c4947a24b6cfc13dd97aacd46c5406be785",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/validate_cds_artifact.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 10029,
+            "sha256": "3df0cfba438b76dd86560c9392fb02544b9762c21ca819fec6f73097cdec74cd",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          }
+        ],
+        "risk_flags": [],
+        "interface_file_count": 8,
+        "has_documented_io_signals": true,
+        "has_test_or_fixture_signals": false,
+        "readiness_score": 85,
+        "recommendation": "resource_with_execution_assets"
+      },
+      "concern_families": [
+        "analysis_or_model",
+        "database_or_service",
+        "tool",
+        "visualization_or_output",
+        "workflow"
+      ],
+      "recommended_shape": "split_primitives",
+      "target_match": {
+        "status": "explicit_provenance",
+        "records": [
+          {
+            "path": "general/application/clinical_decision_support",
+            "name": "clinical_decision_support",
+            "primitive_id": "general.application.clinical_decision_support",
+            "parse_mode": "strict_json",
+            "distilled_from": "scientific-agent-skills/skills/clinical-decision-support"
+          }
+        ]
+      },
+      "priority_score": 39
+    },
+    {
       "name": "esm",
       "source_path": "skills/esm",
       "frontmatter": {
@@ -21426,6 +20546,643 @@
         ]
       },
       "priority_score": 38
+    },
+    {
+      "name": "matlab",
+      "source_path": "skills/matlab",
+      "frontmatter": {
+        "name": "matlab",
+        "description": "Build, review, migrate, and safely plan MATLAB or GNU Octave numerical workflows, including arrays, tabular/time data, tests, projects, graphics, MAT files, and explicit Python interoperability."
+      },
+      "source_files": {
+        "skill_md": {
+          "present": true,
+          "path": "SKILL.md",
+          "bytes": 14308,
+          "sha256": "ae88f9ac2afb67281585872b729426dd2ea760844e385a0bffa489bd4f7b6067"
+        },
+        "references": {
+          "count": 8,
+          "bytes": 71254,
+          "extensions": {
+            ".md": 8
+          },
+          "files": [
+            {
+              "path": "references/data-import-export.md",
+              "bytes": 8784,
+              "sha256": "f5fceb633545564c9793ee217d9cd4ec0eb904ccd87c8b1ebf1c12ca6c363b42"
+            },
+            {
+              "path": "references/executing-scripts.md",
+              "bytes": 9863,
+              "sha256": "425cfa7b73b57467dba8a7891852bcacb85cf062ab858d7458b7ec8f21da4537"
+            },
+            {
+              "path": "references/graphics-visualization.md",
+              "bytes": 7381,
+              "sha256": "29e02d319b67bce4236288c9721a52f7e63be5aa1c2110a02056da98bd243262"
+            },
+            {
+              "path": "references/mathematics.md",
+              "bytes": 8272,
+              "sha256": "a4a8c058fc1730d4d0232c18e939204f6402b8b81b8bbb9a2e1cbb249a86fa9a"
+            },
+            {
+              "path": "references/matrices-arrays.md",
+              "bytes": 8128,
+              "sha256": "152839d9c2cea129058fda47e6fefcd4f635b8bc17e9ed0011337cfb7cb95225"
+            },
+            {
+              "path": "references/octave-compatibility.md",
+              "bytes": 8523,
+              "sha256": "99b14f913a25719ada832e0504d87950f015faee82f16de47467ec2ed2d89d96"
+            },
+            {
+              "path": "references/programming.md",
+              "bytes": 10365,
+              "sha256": "0ddc358400ee1234bf854deb7560f0edc613724ba45a36b1b60e4235e9f7a90d"
+            },
+            {
+              "path": "references/python-integration.md",
+              "bytes": 9938,
+              "sha256": "3935040ec53ea05005488e57127b79b6ff2e0cb10d934ee58d2c5cb21869a48e"
+            }
+          ]
+        },
+        "scripts": {
+          "count": 8,
+          "bytes": 75720,
+          "extensions": {
+            ".py": 8
+          },
+          "files": [
+            {
+              "path": "scripts/_common.py",
+              "bytes": 8703,
+              "sha256": "83b7c1123a582bd6d07dd828c88fa2b7f34c3cb69d0d641e9d4b3a6188fb9277"
+            },
+            {
+              "path": "scripts/generate_function_scaffold.py",
+              "bytes": 4955,
+              "sha256": "cbbe38eff9e4e6ce2695db478d6de45df3736b04c6ba74618434cf853539947f"
+            },
+            {
+              "path": "scripts/inventory_mat_file.py",
+              "bytes": 12357,
+              "sha256": "9dd9111d7727b847f2c25ef3bcee97bc16c3c75862e0acccc41ca6ea9e02bbe6"
+            },
+            {
+              "path": "scripts/plan_batch_command.py",
+              "bytes": 8967,
+              "sha256": "8134c0ab6a225ac4245a8a0feebce9aa338311d0a159f381ca46c0eb8d71d989"
+            },
+            {
+              "path": "scripts/plan_python_compatibility.py",
+              "bytes": 6566,
+              "sha256": "8da20d413fceae86f8f90db1b0925858aead825ce3aafc35bb2baeb7cece1da6"
+            },
+            {
+              "path": "scripts/reproducibility_report.py",
+              "bytes": 7966,
+              "sha256": "2784ffe6acee2a90f554cba73bb1578b2e8408935a34749353e5bd2ceac3bde8"
+            },
+            {
+              "path": "scripts/scan_m_code.py",
+              "bytes": 13951,
+              "sha256": "88b02dbf934db710d22a787b1fb45a0c0009dc6874dd379f5100fa0672f7b92b"
+            },
+            {
+              "path": "scripts/validate_project_manifest.py",
+              "bytes": 12255,
+              "sha256": "21cdead6d2c246e345f7fc702a202600787557f0f8da37ebd072998d6cd122f3"
+            }
+          ]
+        },
+        "assets": {
+          "count": 3,
+          "bytes": 2296,
+          "extensions": {
+            ".json": 3
+          },
+          "files": [
+            {
+              "path": "assets/project_manifest_template.json",
+              "bytes": 723,
+              "sha256": "3de6b01b3d463f5d170f19e3fd87d56477bbf65a64f98a7d237f40397026c225"
+            },
+            {
+              "path": "assets/python_compatibility_r2026a.json",
+              "bytes": 786,
+              "sha256": "082306fc3a5365d25a1a16bb26ed7bea2c96d064924e0845446379489525e631"
+            },
+            {
+              "path": "assets/reproducibility_manifest_template.json",
+              "bytes": 787,
+              "sha256": "7f0ad44a30e7d502d92642fa1617e73fc8fb0e252a4de94dd529453f5eac287e"
+            }
+          ]
+        }
+      },
+      "knowledge": {
+        "sections": [
+          "Product and license gate",
+          "Nonnegotiable safety boundary",
+          "Default workflow",
+          "Language and data checklist",
+          "Scripts, functions, and live scripts",
+          "Arrays, indexing, and numerics",
+          "Tables, timetables, and missing values",
+          "Graphics and export",
+          "MAT files and exchange",
+          "Projects, analysis, and tests",
+          "Python integration, pinned to R2026a",
+          "Local helper CLIs",
+          "References",
+          "Primary sources (verified 2026-07-23)"
+        ],
+        "channels": [
+          "workflow",
+          "interface",
+          "validation_and_caveats",
+          "worked_examples",
+          "references"
+        ],
+        "text_file_count": 20
+      },
+      "code_migration": {
+        "candidate_file_count": 8,
+        "candidate_files": [
+          {
+            "path": "scripts/_common.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 8703,
+            "sha256": "83b7c1123a582bd6d07dd828c88fa2b7f34c3cb69d0d641e9d4b3a6188fb9277",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/generate_function_scaffold.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 4955,
+            "sha256": "cbbe38eff9e4e6ce2695db478d6de45df3736b04c6ba74618434cf853539947f",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/inventory_mat_file.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 12357,
+            "sha256": "9dd9111d7727b847f2c25ef3bcee97bc16c3c75862e0acccc41ca6ea9e02bbe6",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/plan_batch_command.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 8967,
+            "sha256": "8134c0ab6a225ac4245a8a0feebce9aa338311d0a159f381ca46c0eb8d71d989",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/plan_python_compatibility.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 6566,
+            "sha256": "8da20d413fceae86f8f90db1b0925858aead825ce3aafc35bb2baeb7cece1da6",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/reproducibility_report.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 7966,
+            "sha256": "2784ffe6acee2a90f554cba73bb1578b2e8408935a34749353e5bd2ceac3bde8",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/scan_m_code.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 13951,
+            "sha256": "88b02dbf934db710d22a787b1fb45a0c0009dc6874dd379f5100fa0672f7b92b",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/validate_project_manifest.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 12255,
+            "sha256": "21cdead6d2c246e345f7fc702a202600787557f0f8da37ebd072998d6cd122f3",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          }
+        ],
+        "risk_flags": [],
+        "interface_file_count": 8,
+        "has_documented_io_signals": true,
+        "has_test_or_fixture_signals": false,
+        "readiness_score": 85,
+        "recommendation": "resource_with_execution_assets"
+      },
+      "concern_families": [
+        "analysis_or_model",
+        "database_or_service",
+        "tool",
+        "visualization_or_output",
+        "workflow"
+      ],
+      "recommended_shape": "split_primitives",
+      "target_match": {
+        "status": "explicit_provenance",
+        "records": [
+          {
+            "path": "general/tools/matlab",
+            "name": "matlab",
+            "primitive_id": "general.tools.matlab",
+            "parse_mode": "strict_json",
+            "distilled_from": "scientific-agent-skills/skills/matlab"
+          }
+        ]
+      },
+      "priority_score": 37
+    },
+    {
+      "name": "treatment-plans",
+      "source_path": "skills/treatment-plans",
+      "frontmatter": {
+        "name": "treatment-plans",
+        "description": "Format and structurally validate local treatment-plan documentation after clinical decisions have already been supplied and verified by authorized licensed professionals. Use for source traceability, clinician-authored intervention records, goals and checkpoints, shared-decision records, reconciliation handoffs, and release gates\u2014not for clinical decision-making."
+      },
+      "source_files": {
+        "skill_md": {
+          "present": true,
+          "path": "SKILL.md",
+          "bytes": 9834,
+          "sha256": "5d70084a9b9b6c705b36d28f491136716eb33bf9144db5bedf78672e9ea07bdb"
+        },
+        "references": {
+          "count": 8,
+          "bytes": 42173,
+          "extensions": {
+            ".md": 8
+          },
+          "files": [
+            {
+              "path": "references/documentation_workflow.md",
+              "bytes": 6514,
+              "sha256": "0288d665b43378d61997cc3f22603d23394e5519dafe01c07257d8441f8779d1"
+            },
+            {
+              "path": "references/privacy_governance.md",
+              "bytes": 5721,
+              "sha256": "a6cbac0e3e9e14d360e22879b23e40781bc298c43ba4d46e318885569fad298c"
+            },
+            {
+              "path": "references/README.md",
+              "bytes": 1422,
+              "sha256": "4c8751f58d138e58d8bc648be3ec2e4da51b26403c09d30fafdc3a5a77b58f9a"
+            },
+            {
+              "path": "references/safety_scope.md",
+              "bytes": 5355,
+              "sha256": "ba1309a99cc174dc091bac9d7aefda0f697b50f4dba51f53e00694fcf00879a4"
+            },
+            {
+              "path": "references/security_validation.md",
+              "bytes": 3655,
+              "sha256": "eee525aa1ad205b2aabc67f7f9897bb11780f20ff07e738e00f98b4f20c2d15f"
+            },
+            {
+              "path": "references/shared_decision_handoff.md",
+              "bytes": 5407,
+              "sha256": "fc88503e380f67141700d8d53b49b91fcbb73181063012b188ff2f78d1bf2232"
+            },
+            {
+              "path": "references/source_boundaries.md",
+              "bytes": 6274,
+              "sha256": "1d9442d77e97cec6f3123616609cfa88697bf6e8cb97234f88780d7e0063f524"
+            },
+            {
+              "path": "references/source_ledger.md",
+              "bytes": 7825,
+              "sha256": "27999359bad81338910d8af1e4fa26a90b1c556554db3e8c280db3c3506939a5"
+            }
+          ]
+        },
+        "scripts": {
+          "count": 8,
+          "bytes": 96330,
+          "extensions": {
+            ".py": 8
+          },
+          "files": [
+            {
+              "path": "scripts/_common.py",
+              "bytes": 39558,
+              "sha256": "3551178b5c6269c349dc61b52fce20336f1582372e4037c86170945bb1c2504c"
+            },
+            {
+              "path": "scripts/check_completeness.py",
+              "bytes": 18545,
+              "sha256": "4998092dca9f2e2920d9e248dd1294a2575600da565887ebbb805f188cb68eb2"
+            },
+            {
+              "path": "scripts/check_consistency.py",
+              "bytes": 12614,
+              "sha256": "4081d37bf0f93655893dd719e8b295616ab8494bd5aeaeb63b735543d5e6c654"
+            },
+            {
+              "path": "scripts/generate_template.py",
+              "bytes": 3833,
+              "sha256": "8be3abd98ce67e0f20f5a0d57391563e458a28982a760ed4f1e2f9f14c08f850"
+            },
+            {
+              "path": "scripts/privacy_process_check.py",
+              "bytes": 6583,
+              "sha256": "ba357af0af81888aa44c4d93ac3da82a893ba2cc86aa5a20228e0805910641de"
+            },
+            {
+              "path": "scripts/timeline_generator.py",
+              "bytes": 8063,
+              "sha256": "df58c25ceeca10a7ebf06dc63f36d26648d5a3254068ccfc3142a3b8c518b368"
+            },
+            {
+              "path": "scripts/validate_traceability.py",
+              "bytes": 4596,
+              "sha256": "e904ae63454a3f29179f9a4e99118aa3dfd0d34d5fde830dfc1593d6b501b06a"
+            },
+            {
+              "path": "scripts/validate_treatment_plan.py",
+              "bytes": 2538,
+              "sha256": "89e591763a2367f0956131a60faec329952adaaa88796f82b5aacb829c9cf72a"
+            }
+          ]
+        },
+        "assets": {
+          "count": 6,
+          "bytes": 5491,
+          "extensions": {
+            ".json": 6
+          },
+          "files": [
+            {
+              "path": "assets/clinician_authored_intervention_template.json",
+              "bytes": 408,
+              "sha256": "92db1a36de0a23492ad5b14d23c019ac4867527d60ec7e7df8f10c927eaf06ce"
+            },
+            {
+              "path": "assets/goals_monitoring_checkpoint_template.json",
+              "bytes": 446,
+              "sha256": "a06e4be9a492a81b1617543bbdc22fc64a34d4279c87d65dde6bd291c3805bab"
+            },
+            {
+              "path": "assets/informed_preference_shared_decision_template.json",
+              "bytes": 408,
+              "sha256": "3ed4923cfc1e10d728b0ed93e303ad515af694d22a4283d36f71b93ab792e565"
+            },
+            {
+              "path": "assets/intended_use_handoff_template.json",
+              "bytes": 2968,
+              "sha256": "e06eb4d26e5228002029e3e7644eba4d77a2345001d2d74e0edf6b4a8b662e11"
+            },
+            {
+              "path": "assets/source_fact_manifest_template.json",
+              "bytes": 381,
+              "sha256": "9949b031a887071c60d3348ef1b5041a912c8e1733d36bb4d99be8be77885ceb"
+            },
+            {
+              "path": "assets/transition_reconciliation_template.json",
+              "bytes": 880,
+              "sha256": "1bc4edbed0c3fa620ed2f0a26e5adf2b07b1e441712556a2aac73af677438635"
+            }
+          ]
+        }
+      },
+      "knowledge": {
+        "sections": [
+          "Hard safety boundary",
+          "Required visible notice",
+          "Data gate",
+          "Allowed inputs",
+          "Workflow",
+          "1. Establish authority and intended use",
+          "2. Generate a generic package",
+          "3. Transcribe supplied decisions without inference",
+          "4. Run deterministic local checks",
+          "5. Human review and release",
+          "Source boundaries",
+          "Verification",
+          "Reference map"
+        ],
+        "channels": [
+          "trigger_and_scope",
+          "workflow",
+          "interface",
+          "validation_and_caveats",
+          "worked_examples",
+          "references"
+        ],
+        "text_file_count": 23
+      },
+      "code_migration": {
+        "candidate_file_count": 8,
+        "candidate_files": [
+          {
+            "path": "scripts/_common.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 39558,
+            "sha256": "3551178b5c6269c349dc61b52fce20336f1582372e4037c86170945bb1c2504c",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\boutput(?:s)?\\b"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/check_completeness.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 18545,
+            "sha256": "4998092dca9f2e2920d9e248dd1294a2575600da565887ebbb805f188cb68eb2",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/check_consistency.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 12614,
+            "sha256": "4081d37bf0f93655893dd719e8b295616ab8494bd5aeaeb63b735543d5e6c654",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/generate_template.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 3833,
+            "sha256": "8be3abd98ce67e0f20f5a0d57391563e458a28982a760ed4f1e2f9f14c08f850",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/privacy_process_check.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 6583,
+            "sha256": "ba357af0af81888aa44c4d93ac3da82a893ba2cc86aa5a20228e0805910641de",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/timeline_generator.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 8063,
+            "sha256": "df58c25ceeca10a7ebf06dc63f36d26648d5a3254068ccfc3142a3b8c518b368",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/validate_traceability.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 4596,
+            "sha256": "e904ae63454a3f29179f9a4e99118aa3dfd0d34d5fde830dfc1593d6b501b06a",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/validate_treatment_plan.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 2538,
+            "sha256": "89e591763a2367f0956131a60faec329952adaaa88796f82b5aacb829c9cf72a",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          }
+        ],
+        "risk_flags": [],
+        "interface_file_count": 8,
+        "has_documented_io_signals": true,
+        "has_test_or_fixture_signals": false,
+        "readiness_score": 85,
+        "recommendation": "resource_with_execution_assets"
+      },
+      "concern_families": [
+        "analysis_or_model",
+        "database_or_service",
+        "tool",
+        "visualization_or_output",
+        "workflow"
+      ],
+      "recommended_shape": "split_primitives",
+      "target_match": {
+        "status": "explicit_provenance",
+        "records": [
+          {
+            "path": "general/application/treatment_plans",
+            "name": "treatment_plans",
+            "primitive_id": "general.application.treatment_plans",
+            "parse_mode": "strict_json",
+            "distilled_from": "scientific-agent-skills/skills/treatment-plans"
+          }
+        ]
+      },
+      "priority_score": 37
     },
     {
       "name": "fluidsim",
@@ -22211,6 +21968,289 @@
             "primitive_id": "bio.tools.scanpy",
             "parse_mode": "strict_json",
             "distilled_from": "scientific-agent-skills/skills/scanpy"
+          }
+        ]
+      },
+      "priority_score": 36
+    },
+    {
+      "name": "simpy",
+      "source_path": "skills/simpy",
+      "frontmatter": {
+        "name": "simpy",
+        "description": "Build, inspect, test, and analyze bounded process-based discrete-event simulations with SimPy, including events, resources, interrupts, monitoring, replications, warm-up, and reproducible output analysis."
+      },
+      "source_files": {
+        "skill_md": {
+          "present": true,
+          "path": "SKILL.md",
+          "bytes": 12470,
+          "sha256": "08b84cdc5ceda5e7f199ab18c66ac888e3f3d4fa859c2ecace84cc245c65bcba"
+        },
+        "references": {
+          "count": 8,
+          "bytes": 66380,
+          "extensions": {
+            ".md": 8
+          },
+          "files": [
+            {
+              "path": "references/cli-guide.md",
+              "bytes": 7882,
+              "sha256": "648c73619ad2e52b0edf4cc34c99d499acf739eea01ae516b79d537ae46368fb"
+            },
+            {
+              "path": "references/events.md",
+              "bytes": 7294,
+              "sha256": "f4c0ff9b027718dcc81dff9fc912f5dc90ef52c58fedfcac63238390c5b622fd"
+            },
+            {
+              "path": "references/monitoring.md",
+              "bytes": 8344,
+              "sha256": "8bb3ed670ce153fcc873b15e6f1bd15760babd0241a42929e64672b7fe7a0bf5"
+            },
+            {
+              "path": "references/process-interaction.md",
+              "bytes": 7703,
+              "sha256": "463911ab1a26e2a743a943b7db1262c4ddb1901cbc14c9ce1a9c410338012f79"
+            },
+            {
+              "path": "references/real-time.md",
+              "bytes": 5159,
+              "sha256": "0ffd48a9199297339d17f21ad668c839e4531cf8f678da234f98b42ca684f36c"
+            },
+            {
+              "path": "references/resources.md",
+              "bytes": 8489,
+              "sha256": "a73f016673ae0afd9b8c7fd53cf70d5193d566d5c7372af95cfe61ab8e7d0bbf"
+            },
+            {
+              "path": "references/simulation-methodology.md",
+              "bytes": 11724,
+              "sha256": "48149207316ed6f3f248169d207dbc1770393486d7cc57fe27daf953cf1f4656"
+            },
+            {
+              "path": "references/sources.md",
+              "bytes": 9785,
+              "sha256": "09c4f7545968e88a56a98060d44f441fb88e59b83e5d1fa25709612ddfd3c182"
+            }
+          ]
+        },
+        "scripts": {
+          "count": 7,
+          "bytes": 68567,
+          "extensions": {
+            ".py": 7
+          },
+          "files": [
+            {
+              "path": "scripts/_common.py",
+              "bytes": 15134,
+              "sha256": "076d0d9a36f9bb58dd8b1e5058ef12008cb02fb281bffe1fa25c205cf1e6bf62"
+            },
+            {
+              "path": "scripts/basic_simulation_template.py",
+              "bytes": 13197,
+              "sha256": "5cb1ffb974a74669e0596dbaa54e392483e2f74ea8cb757ab181ae0b64f19e66"
+            },
+            {
+              "path": "scripts/bounded_queue_scenario.py",
+              "bytes": 3609,
+              "sha256": "8d8de80d5c241c8c677754810ce293d667498e618493a75418b35247e5613f0f"
+            },
+            {
+              "path": "scripts/event_trace_summary.py",
+              "bytes": 10769,
+              "sha256": "dc783180bf4f7e817aa0ce1249ae1ebe31dd318126839b93c9fd8b765cc64998"
+            },
+            {
+              "path": "scripts/replication_runner.py",
+              "bytes": 6234,
+              "sha256": "99f0d16710a0dd472e3bdbb903b2ed38578c5a1523a7a87781a1053c8a34c23e"
+            },
+            {
+              "path": "scripts/resource_monitor.py",
+              "bytes": 15945,
+              "sha256": "dc04b5b66c3734deb03b4408b8b241f7b483195a4704b1eae2e963b8df582db0"
+            },
+            {
+              "path": "scripts/validate_simulation_config.py",
+              "bytes": 3679,
+              "sha256": "2482b5a7d8f389ed892d0e4edfcce13cbd4144e64490513194791f8d1f0e555e"
+            }
+          ]
+        },
+        "assets": {
+          "count": 0,
+          "bytes": 0,
+          "extensions": {},
+          "files": []
+        }
+      },
+      "knowledge": {
+        "sections": [
+          "Scope",
+          "Current release and installation",
+          "Model workflow",
+          "Minimal bounded model",
+          "Core semantics",
+          "Environment and deterministic ordering",
+          "Event, Timeout, Process, and Condition",
+          "Interrupts",
+          "Shared resources",
+          "Monitoring and stepping",
+          "Real-time execution",
+          "Bundled safe CLIs",
+          "Testing",
+          "References"
+        ],
+        "channels": [
+          "trigger_and_scope",
+          "workflow",
+          "interface",
+          "validation_and_caveats",
+          "worked_examples",
+          "references"
+        ],
+        "text_file_count": 16
+      },
+      "code_migration": {
+        "candidate_file_count": 7,
+        "candidate_files": [
+          {
+            "path": "scripts/_common.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 15134,
+            "sha256": "076d0d9a36f9bb58dd8b1e5058ef12008cb02fb281bffe1fa25c205cf1e6bf62",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b"
+            ],
+            "install_signals": [
+              "pip\\s+install",
+              "uv\\s+(?:pip\\s+)?install"
+            ]
+          },
+          {
+            "path": "scripts/basic_simulation_template.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 13197,
+            "sha256": "5cb1ffb974a74669e0596dbaa54e392483e2f74ea8cb757ab181ae0b64f19e66",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/bounded_queue_scenario.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 3609,
+            "sha256": "8d8de80d5c241c8c677754810ce293d667498e618493a75418b35247e5613f0f",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/event_trace_summary.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 10769,
+            "sha256": "dc783180bf4f7e817aa0ce1249ae1ebe31dd318126839b93c9fd8b765cc64998",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/replication_runner.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 6234,
+            "sha256": "99f0d16710a0dd472e3bdbb903b2ed38578c5a1523a7a87781a1053c8a34c23e",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/resource_monitor.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 15945,
+            "sha256": "dc04b5b66c3734deb03b4408b8b241f7b483195a4704b1eae2e963b8df582db0",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          },
+          {
+            "path": "scripts/validate_simulation_config.py",
+            "kind": "code",
+            "extension": ".py",
+            "bytes": 3679,
+            "sha256": "2482b5a7d8f389ed892d0e4edfcce13cbd4144e64490513194791f8d1f0e555e",
+            "risk_flags": [],
+            "interface_signals": [
+              "\\bargparse\\b",
+              "\\bdef\\s+main\\s*\\(",
+              "\\binput(?:s)?\\b",
+              "\\boutput(?:s)?\\b",
+              "if\\s+__name__\\s*==\\s*[\\\"']__main__[\\\"']"
+            ],
+            "install_signals": []
+          }
+        ],
+        "risk_flags": [],
+        "interface_file_count": 7,
+        "has_documented_io_signals": true,
+        "has_test_or_fixture_signals": false,
+        "readiness_score": 85,
+        "recommendation": "resource_with_execution_assets"
+      },
+      "concern_families": [
+        "analysis_or_model",
+        "database_or_service",
+        "tool",
+        "visualization_or_output",
+        "workflow"
+      ],
+      "recommended_shape": "split_primitives",
+      "target_match": {
+        "status": "explicit_provenance",
+        "records": [
+          {
+            "path": "general/tools/simpy",
+            "name": "simpy",
+            "primitive_id": "general.tools.simpy",
+            "parse_mode": "strict_json",
+            "distilled_from": "scientific-agent-skills/skills/simpy"
           }
         ]
       },

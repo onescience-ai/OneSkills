@@ -7,23 +7,18 @@ This inventory is read-only. It does not execute or copy source code.
 ## Summary
 
 - Source skills with `SKILL.md`: 163
-- Target primitive metadata files: 277
-- Explicit provenance matches: 53
+- Target primitive metadata files: 275
+- Explicit provenance matches: 58
 - Heuristic matches: 2
-- Uncovered source skills: 108
+- Uncovered source skills: 103
 - Target metadata requiring regex fallback: 0
 
 ## Highest-Priority Candidates
 
 | Skill | Coverage | Shape | Code recommendation | Score |
 | --- | --- | --- | --- | ---: |
-| `clinical-reports` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 85 |
-| `clinical-decision-support` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 84 |
 | `exploratory-data-analysis` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 82 |
-| `matlab` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 82 |
-| `treatment-plans` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 82 |
 | `pkpd-modeling` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 81 |
-| `simpy` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 81 |
 | `iso-standards-readiness` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 80 |
 | `peer-review` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 80 |
 | `hypothesis-generation` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 79 |
@@ -47,6 +42,11 @@ This inventory is read-only. It does not execute or copy source code.
 | `protocolsio-integration` | `uncovered` | `split_primitives` | `resource_only` | 74 |
 | `scholar-evaluation` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 74 |
 | `uncertainty-and-units` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 74 |
+| `venue-templates` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 74 |
+| `autoskill` | `uncovered` | `single_primitive` | `resource_only` | 73 |
+| `bioservices` | `uncovered` | `single_primitive` | `resource_with_execution_assets` | 73 |
+| `etetoolkit` | `uncovered` | `primitive_plus_executor` | `propose_executor` | 73 |
+| `latex-posters` | `uncovered` | `split_primitives` | `resource_only` | 73 |
 
 ## Interpretation
 

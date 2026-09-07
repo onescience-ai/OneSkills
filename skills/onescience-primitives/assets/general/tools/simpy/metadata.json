@@ -1,0 +1,121 @@
+{
+  "name": "simpy",
+  "primitive_id": "general.tools.simpy",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/simpy",
+    "distilled_from_version": "1.2",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 8,
+      "scripts": 7,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/cli-guide.md",
+      "title": "Cli Guide",
+      "purpose": "Extended source guidance for cli guide.",
+      "source": "scientific-agent-skills/skills/simpy/references/cli-guide.md",
+      "sha256": "648c73619ad2e52b0edf4cc34c99d499acf739eea01ae516b79d537ae46368fb",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/events.md",
+      "title": "Events",
+      "purpose": "Extended source guidance for events.",
+      "source": "scientific-agent-skills/skills/simpy/references/events.md",
+      "sha256": "f4c0ff9b027718dcc81dff9fc912f5dc90ef52c58fedfcac63238390c5b622fd",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/monitoring.md",
+      "title": "Monitoring",
+      "purpose": "Extended source guidance for monitoring.",
+      "source": "scientific-agent-skills/skills/simpy/references/monitoring.md",
+      "sha256": "8bb3ed670ce153fcc873b15e6f1bd15760babd0241a42929e64672b7fe7a0bf5",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/process-interaction.md",
+      "title": "Process Interaction",
+      "purpose": "Extended source guidance for process interaction.",
+      "source": "scientific-agent-skills/skills/simpy/references/process-interaction.md",
+      "sha256": "463911ab1a26e2a743a943b7db1262c4ddb1901cbc14c9ce1a9c410338012f79",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/real-time.md",
+      "title": "Real Time",
+      "purpose": "Extended source guidance for real time.",
+      "source": "scientific-agent-skills/skills/simpy/references/real-time.md",
+      "sha256": "0ffd48a9199297339d17f21ad668c839e4531cf8f678da234f98b42ca684f36c",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/resources.md",
+      "title": "Resources",
+      "purpose": "Extended source guidance for resources.",
+      "source": "scientific-agent-skills/skills/simpy/references/resources.md",
+      "sha256": "a73f016673ae0afd9b8c7fd53cf70d5193d566d5c7372af95cfe61ab8e7d0bbf",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/simulation-methodology.md",
+      "title": "Simulation Methodology",
+      "purpose": "Extended source guidance for simulation methodology.",
+      "source": "scientific-agent-skills/skills/simpy/references/simulation-methodology.md",
+      "sha256": "48149207316ed6f3f248169d207dbc1770393486d7cc57fe27daf953cf1f4656",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Sources",
+      "purpose": "Extended source guidance for sources.",
+      "source": "scientific-agent-skills/skills/simpy/references/sources.md",
+      "sha256": "09c4f7545968e88a56a98060d44f441fb88e59b83e5d1fa25709612ddfd3c182",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "SimPy primitive for process-based discrete-event simulation models, resource contention, interrupts, monitoring, replications, and output-analysis workflows.",
+  "tags": [
+    "simpy",
+    "simulation",
+    "discrete-event",
+    "queues",
+    "replications"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for simpy.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

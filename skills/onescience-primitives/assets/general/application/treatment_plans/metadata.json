@@ -1,0 +1,121 @@
+{
+  "name": "treatment_plans",
+  "primitive_id": "general.application.treatment_plans",
+  "type": "application",
+  "domain": "general",
+  "category": "application",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/treatment-plans",
+    "distilled_from_version": "2.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 8,
+      "scripts": 8,
+      "assets": 6
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/documentation_workflow.md",
+      "title": "Documentation Workflow",
+      "purpose": "Extended source guidance for documentation workflow.",
+      "source": "scientific-agent-skills/skills/treatment-plans/references/documentation_workflow.md",
+      "sha256": "0288d665b43378d61997cc3f22603d23394e5519dafe01c07257d8441f8779d1",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/privacy_governance.md",
+      "title": "Privacy Governance",
+      "purpose": "Extended source guidance for privacy governance.",
+      "source": "scientific-agent-skills/skills/treatment-plans/references/privacy_governance.md",
+      "sha256": "a6cbac0e3e9e14d360e22879b23e40781bc298c43ba4d46e318885569fad298c",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/README.md",
+      "title": "Readme",
+      "purpose": "Extended source guidance for readme.",
+      "source": "scientific-agent-skills/skills/treatment-plans/references/README.md",
+      "sha256": "4c8751f58d138e58d8bc648be3ec2e4da51b26403c09d30fafdc3a5a77b58f9a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/safety_scope.md",
+      "title": "Safety Scope",
+      "purpose": "Extended source guidance for safety scope.",
+      "source": "scientific-agent-skills/skills/treatment-plans/references/safety_scope.md",
+      "sha256": "ba1309a99cc174dc091bac9d7aefda0f697b50f4dba51f53e00694fcf00879a4",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/security_validation.md",
+      "title": "Security Validation",
+      "purpose": "Extended source guidance for security validation.",
+      "source": "scientific-agent-skills/skills/treatment-plans/references/security_validation.md",
+      "sha256": "eee525aa1ad205b2aabc67f7f9897bb11780f20ff07e738e00f98b4f20c2d15f",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/shared_decision_handoff.md",
+      "title": "Shared Decision Handoff",
+      "purpose": "Extended source guidance for shared decision handoff.",
+      "source": "scientific-agent-skills/skills/treatment-plans/references/shared_decision_handoff.md",
+      "sha256": "fc88503e380f67141700d8d53b49b91fcbb73181063012b188ff2f78d1bf2232",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/source_boundaries.md",
+      "title": "Source Boundaries",
+      "purpose": "Extended source guidance for source boundaries.",
+      "source": "scientific-agent-skills/skills/treatment-plans/references/source_boundaries.md",
+      "sha256": "1d9442d77e97cec6f3123616609cfa88697bf6e8cb97234f88780d7e0063f524",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/source_ledger.md",
+      "title": "Source Ledger",
+      "purpose": "Extended source guidance for source ledger.",
+      "source": "scientific-agent-skills/skills/treatment-plans/references/source_ledger.md",
+      "sha256": "27999359bad81338910d8af1e4fa26a90b1c556554db3e8c280db3c3506939a5",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Treatment-plan primitive for research-only plan structures, source-fact manifests, consistency checks, and review-ready documentation assembly.",
+  "tags": [
+    "treatment",
+    "plans",
+    "manifests",
+    "consistency",
+    "documentation"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for treatment-plans.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

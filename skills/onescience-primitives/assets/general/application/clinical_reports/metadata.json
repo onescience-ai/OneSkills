@@ -1,0 +1,148 @@
+{
+  "name": "clinical_reports",
+  "primitive_id": "general.application.clinical_reports",
+  "type": "application",
+  "domain": "general",
+  "category": "application",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/clinical-reports",
+    "distilled_from_version": "2.0",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 11,
+      "scripts": 9,
+      "assets": 15
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/case_report_guidelines.md",
+      "title": "Case Report Guidelines",
+      "purpose": "Extended source guidance for case report guidelines.",
+      "source": "scientific-agent-skills/skills/clinical-reports/references/case_report_guidelines.md",
+      "sha256": "dbd1c6fb510370fba97fe44f7fa59ce2f5ddb2aef0c43c374b4ac7a2ca4e6426",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/clinical_trial_reporting.md",
+      "title": "Clinical Trial Reporting",
+      "purpose": "Extended source guidance for clinical trial reporting.",
+      "source": "scientific-agent-skills/skills/clinical-reports/references/clinical_trial_reporting.md",
+      "sha256": "111c17c04874a62fd7bf2e9f859651d811229d5cf6cdfbbc1603b864e3501571",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/data_presentation.md",
+      "title": "Data Presentation",
+      "purpose": "Extended source guidance for data presentation.",
+      "source": "scientific-agent-skills/skills/clinical-reports/references/data_presentation.md",
+      "sha256": "798cec8530c5c3b38fe3c04417fe925259f336c3bb3ed4bc145006b8fde4657a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/diagnostic_reports_standards.md",
+      "title": "Diagnostic Reports Standards",
+      "purpose": "Extended source guidance for diagnostic reports standards.",
+      "source": "scientific-agent-skills/skills/clinical-reports/references/diagnostic_reports_standards.md",
+      "sha256": "f7dcbfb28b0cbf5c8b956f48fb2b72ddb976ef35d43d60854ed5554aeb6bb971",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/medical_terminology.md",
+      "title": "Medical Terminology",
+      "purpose": "Extended source guidance for medical terminology.",
+      "source": "scientific-agent-skills/skills/clinical-reports/references/medical_terminology.md",
+      "sha256": "907cdc665e79364bfd29c853803e73a5411c3cf28a3f3ecaa4e29a082267ef27",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/privacy_and_deidentification.md",
+      "title": "Privacy And Deidentification",
+      "purpose": "Extended source guidance for privacy and deidentification.",
+      "source": "scientific-agent-skills/skills/clinical-reports/references/privacy_and_deidentification.md",
+      "sha256": "c5e67d8b404c6fc0593180f53f9cf9b73525809d74435d3a07032e95c63a8557",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/professional_review.md",
+      "title": "Professional Review",
+      "purpose": "Extended source guidance for professional review.",
+      "source": "scientific-agent-skills/skills/clinical-reports/references/professional_review.md",
+      "sha256": "0826f5e945eea72631c0324a4676b310783f903fdc4efdbc194947d38edda1aa",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/README.md",
+      "title": "Readme",
+      "purpose": "Extended source guidance for readme.",
+      "source": "scientific-agent-skills/skills/clinical-reports/references/README.md",
+      "sha256": "56b433d1fa032614f9d82a43333473d308b1ad629119a8eab955c4a9b9a85657",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/report_type_routing.md",
+      "title": "Report Type Routing",
+      "purpose": "Extended source guidance for report type routing.",
+      "source": "scientific-agent-skills/skills/clinical-reports/references/report_type_routing.md",
+      "sha256": "e79553da8f3b7bb1b777892b9f11e2692a4dd4784a9cc5449cc7ea47b7c9e6d4",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/safety_reporting.md",
+      "title": "Safety Reporting",
+      "purpose": "Extended source guidance for safety reporting.",
+      "source": "scientific-agent-skills/skills/clinical-reports/references/safety_reporting.md",
+      "sha256": "f1d19ed253ab99ff52c43bffab817a5f2fac2f28beffd65ac32daea360586d2e",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Sources",
+      "purpose": "Extended source guidance for sources.",
+      "source": "scientific-agent-skills/skills/clinical-reports/references/sources.md",
+      "sha256": "9152a1c898b94feb55f02006c53d820e85666063eb8b16e9fd4ab939e3313f23",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Clinical reporting primitive for draft report structures, aggregate tables, review manifests, provenance preservation, and deterministic structural checks on verified authorized facts.",
+  "tags": [
+    "clinical",
+    "reports",
+    "provenance",
+    "aggregation",
+    "structure"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for clinical-reports.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

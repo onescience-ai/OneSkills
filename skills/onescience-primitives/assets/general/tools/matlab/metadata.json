@@ -1,0 +1,121 @@
+{
+  "name": "matlab",
+  "primitive_id": "general.tools.matlab",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/matlab",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 8,
+      "scripts": 8,
+      "assets": 3
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/data-import-export.md",
+      "title": "Data Import Export",
+      "purpose": "Extended source guidance for data import export.",
+      "source": "scientific-agent-skills/skills/matlab/references/data-import-export.md",
+      "sha256": "f5fceb633545564c9793ee217d9cd4ec0eb904ccd87c8b1ebf1c12ca6c363b42",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/executing-scripts.md",
+      "title": "Executing Scripts",
+      "purpose": "Extended source guidance for executing scripts.",
+      "source": "scientific-agent-skills/skills/matlab/references/executing-scripts.md",
+      "sha256": "425cfa7b73b57467dba8a7891852bcacb85cf062ab858d7458b7ec8f21da4537",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/graphics-visualization.md",
+      "title": "Graphics Visualization",
+      "purpose": "Extended source guidance for graphics visualization.",
+      "source": "scientific-agent-skills/skills/matlab/references/graphics-visualization.md",
+      "sha256": "29e02d319b67bce4236288c9721a52f7e63be5aa1c2110a02056da98bd243262",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/mathematics.md",
+      "title": "Mathematics",
+      "purpose": "Extended source guidance for mathematics.",
+      "source": "scientific-agent-skills/skills/matlab/references/mathematics.md",
+      "sha256": "a4a8c058fc1730d4d0232c18e939204f6402b8b81b8bbb9a2e1cbb249a86fa9a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/matrices-arrays.md",
+      "title": "Matrices Arrays",
+      "purpose": "Extended source guidance for matrices arrays.",
+      "source": "scientific-agent-skills/skills/matlab/references/matrices-arrays.md",
+      "sha256": "152839d9c2cea129058fda47e6fefcd4f635b8bc17e9ed0011337cfb7cb95225",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/octave-compatibility.md",
+      "title": "Octave Compatibility",
+      "purpose": "Extended source guidance for octave compatibility.",
+      "source": "scientific-agent-skills/skills/matlab/references/octave-compatibility.md",
+      "sha256": "99b14f913a25719ada832e0504d87950f015faee82f16de47467ec2ed2d89d96",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/programming.md",
+      "title": "Programming",
+      "purpose": "Extended source guidance for programming.",
+      "source": "scientific-agent-skills/skills/matlab/references/programming.md",
+      "sha256": "0ddc358400ee1234bf854deb7560f0edc613724ba45a36b1b60e4235e9f7a90d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/python-integration.md",
+      "title": "Python Integration",
+      "purpose": "Extended source guidance for python integration.",
+      "source": "scientific-agent-skills/skills/matlab/references/python-integration.md",
+      "sha256": "3935040ec53ea05005488e57127b79b6ff2e0cb10d934ee58d2c5cb21869a48e",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "MATLAB and GNU Octave primitive for numerical workflows, arrays, tabular and time data, tests, projects, graphics, MAT files, and Python interoperability planning.",
+  "tags": [
+    "matlab",
+    "octave",
+    "numerical",
+    "mat-files",
+    "interoperability"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for matlab.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

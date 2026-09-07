@@ -1,0 +1,54 @@
+{
+  "plans": [
+    {
+      "skill": "clinical-reports",
+      "domain": "general",
+      "category": "application",
+      "name": "clinical_reports",
+      "primitive_id": "general.application.clinical_reports",
+      "type": "application",
+      "description": "Clinical reporting primitive for draft report structures, aggregate tables, review manifests, provenance preservation, and deterministic structural checks on verified authorized facts.",
+      "tags": ["clinical", "reports", "provenance", "aggregation", "structure"]
+    },
+    {
+      "skill": "clinical-decision-support",
+      "domain": "general",
+      "category": "application",
+      "name": "clinical_decision_support",
+      "primitive_id": "general.application.clinical_decision_support",
+      "type": "application",
+      "description": "Clinical decision-support research primitive for evaluation artifacts, evidence profiles, cohort and biomarker documentation, privacy review, and governance planning.",
+      "tags": ["clinical", "decision-support", "evaluation", "governance", "cohort"]
+    },
+    {
+      "skill": "treatment-plans",
+      "domain": "general",
+      "category": "application",
+      "name": "treatment_plans",
+      "primitive_id": "general.application.treatment_plans",
+      "type": "application",
+      "description": "Treatment-plan primitive for research-only plan structures, source-fact manifests, consistency checks, and review-ready documentation assembly.",
+      "tags": ["treatment", "plans", "manifests", "consistency", "documentation"]
+    },
+    {
+      "skill": "matlab",
+      "domain": "general",
+      "category": "tools",
+      "name": "matlab",
+      "primitive_id": "general.tools.matlab",
+      "type": "tool",
+      "description": "MATLAB and GNU Octave primitive for numerical workflows, arrays, tabular and time data, tests, projects, graphics, MAT files, and Python interoperability planning.",
+      "tags": ["matlab", "octave", "numerical", "mat-files", "interoperability"]
+    },
+    {
+      "skill": "simpy",
+      "domain": "general",
+      "category": "tools",
+      "name": "simpy",
+      "primitive_id": "general.tools.simpy",
+      "type": "tool",
+      "description": "SimPy primitive for process-based discrete-event simulation models, resource contention, interrupts, monitoring, replications, and output-analysis workflows.",
+      "tags": ["simpy", "simulation", "discrete-event", "queues", "replications"]
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "name": "clinical_decision_support",
+  "primitive_id": "general.application.clinical_decision_support",
+  "type": "application",
+  "domain": "general",
+  "category": "application",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/clinical-decision-support",
+    "distilled_from_version": "2.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 12,
+      "scripts": 8,
+      "assets": 7
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/cohort_evaluation.md",
+      "title": "Cohort Evaluation",
+      "purpose": "Extended source guidance for cohort evaluation.",
+      "source": "scientific-agent-skills/skills/clinical-decision-support/references/cohort_evaluation.md",
+      "sha256": "c990eb56cdb49526d5121b6712d0c3128a066d9dda028569ad00e4ed06466460",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/decision_logic_traceability.md",
+      "title": "Decision Logic Traceability",
+      "purpose": "Extended source guidance for decision logic traceability.",
+      "source": "scientific-agent-skills/skills/clinical-decision-support/references/decision_logic_traceability.md",
+      "sha256": "494d534eb88025fd6b8d7960e04ede1696a2a6a91d4be169d16e2a4bd66d907d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/evidence_profiles.md",
+      "title": "Evidence Profiles",
+      "purpose": "Extended source guidance for evidence profiles.",
+      "source": "scientific-agent-skills/skills/clinical-decision-support/references/evidence_profiles.md",
+      "sha256": "4d275363212c37f9a4def05f16e75e0d34a9378c474c2af30e8eed7f6070083b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/model_biomarker_evaluation.md",
+      "title": "Model Biomarker Evaluation",
+      "purpose": "Extended source guidance for model biomarker evaluation.",
+      "source": "scientific-agent-skills/skills/clinical-decision-support/references/model_biomarker_evaluation.md",
+      "sha256": "796f883ef83ac90aaf6bfadac2ed13ffbae465c02e31bb476875b97e20e6e2fe",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/privacy_and_disclosure.md",
+      "title": "Privacy And Disclosure",
+      "purpose": "Extended source guidance for privacy and disclosure.",
+      "source": "scientific-agent-skills/skills/clinical-decision-support/references/privacy_and_disclosure.md",
+      "sha256": "cf2d93ea964eed0ed5ebf976f8505dd990fa189562ea44050eaf35e4cb6e2854",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/README.md",
+      "title": "Readme",
+      "purpose": "Extended source guidance for readme.",
+      "source": "scientific-agent-skills/skills/clinical-decision-support/references/README.md",
+      "sha256": "e44d4df88bd491cc5983b4f7ed9cd671a4edfa923b535769b802351ebb4f271e",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/regulatory_and_governance.md",
+      "title": "Regulatory And Governance",
+      "purpose": "Extended source guidance for regulatory and governance.",
+      "source": "scientific-agent-skills/skills/clinical-decision-support/references/regulatory_and_governance.md",
+      "sha256": "3bac4ed02d6324ae8b17921c25f5fe8319b7ff7fd8a51ed05b4ef8d077767e58",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/safety_and_scope.md",
+      "title": "Safety And Scope",
+      "purpose": "Extended source guidance for safety and scope.",
+      "source": "scientific-agent-skills/skills/clinical-decision-support/references/safety_and_scope.md",
+      "sha256": "31292eaa2cf412f25965964f244d29c39735c4695b5782fce5b5c694714f6846",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/security_validation.md",
+      "title": "Security Validation",
+      "purpose": "Extended source guidance for security validation.",
+      "source": "scientific-agent-skills/skills/clinical-decision-support/references/security_validation.md",
+      "sha256": "6eba11b4794b35613185d4bc09f46f9aae73c4deb84f364c1864535bf96c1e11",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Sources",
+      "purpose": "Extended source guidance for sources.",
+      "source": "scientific-agent-skills/skills/clinical-decision-support/references/sources.md",
+      "sha256": "a46aa2decd2505ba9bbc0fe9aff64076dac7346a11a77d13ba52463b0450661d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/study_reporting.md",
+      "title": "Study Reporting",
+      "purpose": "Extended source guidance for study reporting.",
+      "source": "scientific-agent-skills/skills/clinical-decision-support/references/study_reporting.md",
+      "sha256": "78440436b43c73c39487fdba6c78d498768a25c61ae46bbc1646540f8c1de761",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/survival_analysis.md",
+      "title": "Survival Analysis",
+      "purpose": "Extended source guidance for survival analysis.",
+      "source": "scientific-agent-skills/skills/clinical-decision-support/references/survival_analysis.md",
+      "sha256": "7a056e09b16370544433b6ac1f94cd92082cd7fca8fe8a22a04e5978d357dc42",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Clinical decision-support research primitive for evaluation artifacts, evidence profiles, cohort and biomarker documentation, privacy review, and governance planning.",
+  "tags": [
+    "clinical",
+    "decision-support",
+    "evaluation",
+    "governance",
+    "cohort"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for clinical-decision-support.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}
