@@ -25,3 +25,7 @@ Use this primitive when planning an experiment, assigning units to groups, avoid
 # handoff_notes
 
 Include the design type, randomization unit, block/strata fields, factor levels, seed policy, and analysis model implications.
+
+# resource_retrieval_notes
+
+Retrieve the indexed reference guides when the design choice, allocation plan, factorial aliasing, or adaptive decision rule needs detailed support. Keep the design recommendation and its assumptions in the main result; do not treat a reference file as an executable allocation schedule.

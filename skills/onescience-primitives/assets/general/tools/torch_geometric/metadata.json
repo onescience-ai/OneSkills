@@ -1,0 +1,102 @@
+{
+  "name": "torch_geometric",
+  "primitive_id": "general.tools.torch_geometric",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-04",
+  "updated_at": "2026-09-04",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/torch-geometric",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 6,
+      "scripts": 0,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/custom_datasets.md",
+      "title": "Custom Datasets",
+      "purpose": "Extended source guidance for custom datasets.",
+      "source": "scientific-agent-skills/skills/torch-geometric/references/custom_datasets.md",
+      "sha256": "48700ef231c9d727f34d5ef4daf5b087fec1238c91e4a2051f51d85137a85f7b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/explainability.md",
+      "title": "Explainability",
+      "purpose": "Extended source guidance for explainability.",
+      "source": "scientific-agent-skills/skills/torch-geometric/references/explainability.md",
+      "sha256": "1e4dbbc1a6bd08503d04c6570be84f105bb2a3aae7b1a4d67b991d44f86c388b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/heterogeneous.md",
+      "title": "Heterogeneous",
+      "purpose": "Extended source guidance for heterogeneous.",
+      "source": "scientific-agent-skills/skills/torch-geometric/references/heterogeneous.md",
+      "sha256": "57d19d123de25fc93c4cf03483797089709efd233f9aa36e0c4a72e41eb0ce7a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/link_prediction.md",
+      "title": "Link Prediction",
+      "purpose": "Extended source guidance for link prediction.",
+      "source": "scientific-agent-skills/skills/torch-geometric/references/link_prediction.md",
+      "sha256": "c66a29c15cedcecf7615f691cab14a5871d474aec082ddbb22313d6d9848fcdc",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/message_passing.md",
+      "title": "Message Passing",
+      "purpose": "Extended source guidance for message passing.",
+      "source": "scientific-agent-skills/skills/torch-geometric/references/message_passing.md",
+      "sha256": "9a4fa90b74841dc531a576247caa32d158d862951c8a7199543eb180b0241954",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/scaling.md",
+      "title": "Scaling",
+      "purpose": "Extended source guidance for scaling.",
+      "source": "scientific-agent-skills/skills/torch-geometric/references/scaling.md",
+      "sha256": "990b4a8deb097cf028da17a55764e7ec0bd00f1d0db9bb9abd94b8fbda316e7c",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "PyTorch Geometric primitive for graph data, heterogeneous graphs, GNN layers, and graph-learning workflows.",
+  "tags": [
+    "torch-geometric",
+    "graph-neural-networks",
+    "graphs",
+    "heterogeneous-graphs",
+    "gnn"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for torch-geometric.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

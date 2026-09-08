@@ -25,3 +25,7 @@ Use this primitive when a task involves group comparison, hypothesis testing, re
 # handoff_notes
 
 Include variable names, design structure, planned test/model, assumption checks, correction policy, and output report format.
+
+# resource_retrieval_notes
+
+Retrieve the indexed guides before selecting a test or reporting result details. Separate source-backed method guidance from computed output, and record the package or executor used for any numeric result.

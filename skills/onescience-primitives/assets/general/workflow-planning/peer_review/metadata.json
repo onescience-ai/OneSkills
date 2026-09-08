@@ -1,0 +1,103 @@
+{
+  "name": "peer_review",
+  "primitive_id": "general.workflow-planning.peer_review",
+  "type": "workflow-planning",
+  "domain": "general",
+  "category": "workflow-planning",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/peer-review",
+    "distilled_from_version": "2.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 6,
+      "scripts": 8,
+      "assets": 9
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/common_issues.md",
+      "title": "Common Issues",
+      "purpose": "Extended source guidance for common issues.",
+      "source": "scientific-agent-skills/skills/peer-review/references/common_issues.md",
+      "sha256": "6a0979d6d64e07f769db8ee9ab82ad3190aebaca4294838f338f5c4b51b596f6",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/ethical_review_practice.md",
+      "title": "Ethical Review Practice",
+      "purpose": "Extended source guidance for ethical review practice.",
+      "source": "scientific-agent-skills/skills/peer-review/references/ethical_review_practice.md",
+      "sha256": "7a1b1cf1e02f85b9bf6f0e90d729d7fc4a2819922e1037b5e9543a7670236a24",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/reporting_standards.md",
+      "title": "Reporting Standards",
+      "purpose": "Extended source guidance for reporting standards.",
+      "source": "scientific-agent-skills/skills/peer-review/references/reporting_standards.md",
+      "sha256": "96ae056f803407671ff7f73d3a29719472698563b85db58e42f21f0c9eeb13f3",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/security_validation.md",
+      "title": "Security Validation",
+      "purpose": "Extended source guidance for security validation.",
+      "source": "scientific-agent-skills/skills/peer-review/references/security_validation.md",
+      "sha256": "43b0b64acd16544e25aae9b3ed37a78118decd5352975b2e5935704772910a27",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/statistical_reproducibility.md",
+      "title": "Statistical Reproducibility",
+      "purpose": "Extended source guidance for statistical reproducibility.",
+      "source": "scientific-agent-skills/skills/peer-review/references/statistical_reproducibility.md",
+      "sha256": "1075d96ade7fbcc21c216a22084d74bf497b93a08b7d5f06925594abc62fb5e7",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/tool_reference.md",
+      "title": "Tool Reference",
+      "purpose": "Extended source guidance for tool reference.",
+      "source": "scientific-agent-skills/skills/peer-review/references/tool_reference.md",
+      "sha256": "ea9490c4e0675702b9e118fe73ff524b84bb55aea5b9883e673969200b110e81",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Peer-review primitive for evidence-bounded manuscript assessment, claim-evidence checks, reporting-guideline selection, methods critique, reproducibility review, and revision-response planning.",
+  "tags": [
+    "peer-review",
+    "manuscript",
+    "claim-evidence",
+    "reproducibility",
+    "revision"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for peer-review.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

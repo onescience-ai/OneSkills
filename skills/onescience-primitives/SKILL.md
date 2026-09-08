@@ -57,6 +57,7 @@ assets/
         spec.md                  ← 规格知识（架构、参数、依赖）
         usage.md                 ← 使用知识（启动示例、接口、限制）
         workflow_planning.md     ← 规划决策知识（时机、流程、约束）
+        references/               ← 可按需读取的扩展知识；仅允许 metadata 声明的文件
         scripts/                 ← 可选受控执行资产；必须由 spec.md 的 # execution_assets 结构化白名单 白名单声明
 ```
 
@@ -161,7 +162,9 @@ b. `filters.domain` 已明确指定（如 `bio`、`cfd`、`climate`、`matchem`�
    - `"使用说明"`：读取 `usage.md`（若存在）
    - `"规格说明"`：读取 `spec.md`（若存在）
    - `"工作流规划知识"`：读取 `workflow_planning.md`（若存在）
-   - `"完整内容"`：只读取 `metadata.json`、`spec.md`、`usage.md`、`workflow_planning.md` 中实际存在的文件并组织为结构化内容；不得因为请求完整内容而自动返回任意脚本
+   - `"参考资料"` / `"扩展知识"`：只读取 `metadata.json` 中 `knowledge_assets` 声明的 `references/` 文件，并按主题组织返回
+   - `"完整内容"`：读取 `metadata.json`、`spec.md`、`usage.md`、`workflow_planning.md` 及 `knowledge_assets` 索引；不得因为请求完整内容而自动返回全部参考文件或任意脚本
+   - `"完整参考资料"`：在路径、大小和 SHA-256 校验通过后，读取 `knowledge_assets` 声明的参考文件；大文件按物化规则处理
    - 当且仅当 `include_execution_assets: true` 时，按以下子步骤物化受控执行资产：
    a. 读取命中资源的 spec.md，定位唯一的一级标题
    # execution_assets。
@@ -232,6 +235,16 @@ content:
   spec: <spec.md 内容>
   usage: <usage.md 内容>
   workflow_planning: <workflow_planning.md 内容>
+  knowledge_assets:
+    - path: <metadata.json 的 knowledge_assets 白名单中的相对路径>
+      title: <参考资料标题>
+      purpose: <该资料解决的问题>
+      source: <来源文件或上游文档>
+      sha256: <白名单声明的校验值>
+      status: <available | materialized | unavailable | failed>
+      content: <仅 status=available 且文件较小时填充原文>
+      materialized_path: <仅 status=materialized 时填充物化后的绝对路径>
+      content_size_bytes: <文件字节数>
   execution_assets:
     - path: < spec.md 的 `# execution_assets` 结构化白名单中声明的相对路径 >
       kind: <python_cli | template | javascript_runtime | license | other>
@@ -260,6 +273,15 @@ content:
 - 大文件处理：≤ 64 KiB 的文本文件直接内联到 `content` 字段；> 64 KiB 的文件（如 3Dmol.js ~150KB、HTML 模板 ~200KB）物化到工作区 `.onescience_assets/<primitive_name>/<version>/` 目录，`status` 设为 `materialized`，通过 `materialized_path` 传递绝对路径。
 - 状态汇总：必须同时返回 `execution_assets_summary`，便于调用方在不解析全部资产明细的前提下快速判断整体可用性。
 - 部分失败不阻塞全部：只要至少有一个核心资产（如 `render_complex_structure.py`）`available` 或 `materialized`，结果 `status` 可为 `partial` 而非 `failed`，让调用方自行降级决策。
+
+知识资产强制规则：
+
+- `references/` 只承载可阅读的领域知识、API 参考、方法说明、示例和来源材料，不承载默认可执行代码。
+- 每个参考文件必须在 `metadata.json` 的 `knowledge_assets` 白名单中声明 `path`、`title`、`purpose`、`source`、`sha256` 和 `media_type`。
+- 只允许相对于当前 primitive 目录的路径；拒绝绝对路径、`..`、未声明文件和路径穿越。
+- 默认摘要和完整内容只返回参考资料索引；只有 `content_request` 明确请求 `参考资料` 或 `完整参考资料` 时才读取其正文。
+- 参考资料返回前校验 SHA-256；失败时标记 `status: failed`，不得静默使用未校验内容。
+- 参考资料与执行资产分开统计、分开授权；读取参考资料不会授予执行权限。
 
 ## 字段取值规则
 

@@ -36,3 +36,12 @@ Expected outputs include a design recommendation, allocation or run-order plan, 
 # provenance
 
 Distilled from `scientific-agent-skills/skills/experimental-design` version `1.1`. Scripts were not copied.
+
+# knowledge_assets
+
+- `references/design_types.md`: design-family selection and estimand alignment.
+- `references/factorial_and_doe.md`: factorial, fractional-factorial, screening, and response-surface planning.
+- `references/randomization_and_blocking.md`: allocation, blocking, stratification, and run-order controls.
+- `references/sequential_and_adaptive.md`: interim decisions, stopping rules, and adaptive-design safeguards.
+
+These files are read-only knowledge assets. Their paths and SHA-256 values are declared in `metadata.json`; they do not grant permission to execute source scripts.

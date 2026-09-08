@@ -16,6 +16,53 @@
     "distillation_status": "resource_only",
     "copied_execution_assets": false
   },
+  "knowledge_assets": [
+    {
+      "path": "references/assumptions_and_diagnostics.md",
+      "title": "Assumptions and diagnostics",
+      "purpose": "Check distributional, variance, independence, and model diagnostics before interpreting inferential results.",
+      "source": "scientific-agent-skills/skills/statistical-analysis/references/assumptions_and_diagnostics.md",
+      "sha256": "b8fdccb2d2f160c78bd11415e30c50a0dea755f046e936b8c85b23333d1b47f8",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/bayesian_statistics.md",
+      "title": "Bayesian statistics",
+      "purpose": "Route analyses toward Bayesian estimands, priors, posterior summaries, and diagnostics when a Bayesian alternative is appropriate.",
+      "source": "scientific-agent-skills/skills/statistical-analysis/references/bayesian_statistics.md",
+      "sha256": "c6b994b512c38009f26aed3913884aa85fef2bdcefd8a9858b124deed3a05f70",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/effect_sizes_and_power.md",
+      "title": "Effect sizes and power",
+      "purpose": "Connect effect-size reporting, uncertainty, and sensitivity analysis to the selected statistical model.",
+      "source": "scientific-agent-skills/skills/statistical-analysis/references/effect_sizes_and_power.md",
+      "sha256": "6de003ff25fe3613322f5cfbd4d042327b17a381c034bc2dbbe068212ecce732",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/reporting_standards.md",
+      "title": "Statistical reporting standards",
+      "purpose": "Produce reproducible reporting with exact statistics, effect sizes, intervals, multiplicity handling, and limitations.",
+      "source": "scientific-agent-skills/skills/statistical-analysis/references/reporting_standards.md",
+      "sha256": "6854623fb5e8080e7d02b6c713ee44cb4a4cf03757d97840764118af54137a88",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/test_selection_guide.md",
+      "title": "Test selection guide",
+      "purpose": "Map outcome type, group structure, dependence, and design to defensible tests or models.",
+      "source": "scientific-agent-skills/skills/statistical-analysis/references/test_selection_guide.md",
+      "sha256": "64f5d93f87d83431b767a24d6b32c0ed82f2cbd32b1bd07476b49b5ac6a858a5",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
   "description": "Statistical analysis is a cross-domain analysis primitive for test selection, assumption checking, effect sizes, power sensitivity, Bayesian alternatives, and research reporting. Use it when comparing groups, testing hypotheses, analyzing experiments or surveys, checking diagnostics, or writing statistical results.",
   "tags": [
     "statistics",

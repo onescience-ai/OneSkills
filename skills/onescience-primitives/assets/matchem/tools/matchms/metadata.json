@@ -1,0 +1,102 @@
+{
+  "name": "matchms",
+  "primitive_id": "matchem.tools.matchms",
+  "type": "tool",
+  "domain": "matchem",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-04",
+  "updated_at": "2026-09-04",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/matchms",
+    "distilled_from_version": "unknown",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 6,
+      "scripts": 1,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/filtering.md",
+      "title": "Filtering",
+      "purpose": "Extended source guidance for filtering.",
+      "source": "scientific-agent-skills/skills/matchms/references/filtering.md",
+      "sha256": "5bcc43b43ac8c37fee340c2051057aa06fdbf33c75dd1673079aa0f2d51545d2",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/importing_exporting.md",
+      "title": "Importing Exporting",
+      "purpose": "Extended source guidance for importing exporting.",
+      "source": "scientific-agent-skills/skills/matchms/references/importing_exporting.md",
+      "sha256": "c3ec61ef51f94c9f639c91e3dd9816848c85faf0f6bc6b9fb028b99afc255957",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/migration.md",
+      "title": "Migration",
+      "purpose": "Extended source guidance for migration.",
+      "source": "scientific-agent-skills/skills/matchms/references/migration.md",
+      "sha256": "ca8dca18581b78bff8e5edae2353ec04aaa9a8c0220af531dbb64a1f37f3fcc7",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/similarity.md",
+      "title": "Similarity",
+      "purpose": "Extended source guidance for similarity.",
+      "source": "scientific-agent-skills/skills/matchms/references/similarity.md",
+      "sha256": "e7e3d85619dc6343e54581c0ce76ab59eeaad4739f5e4b767ea325c82a11a96a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Sources",
+      "purpose": "Extended source guidance for sources.",
+      "source": "scientific-agent-skills/skills/matchms/references/sources.md",
+      "sha256": "ec7b866e33db3fd700da4abadc41428c942690782aacca62f0134af74c7b31c5",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/workflows.md",
+      "title": "Workflows",
+      "purpose": "Extended source guidance for workflows.",
+      "source": "scientific-agent-skills/skills/matchms/references/workflows.md",
+      "sha256": "4721b454a95c7321ef56268a083b52618df0da9ec4ee27a30b6dad7a21fb1947",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "MatchMS primitive for mass-spectrometry spectrum processing, metadata cleaning, similarity scoring, and metabolomics library matching.",
+  "tags": [
+    "matchms",
+    "mass-spectrometry",
+    "metabolomics",
+    "spectra",
+    "similarity"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for matchms.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "name": "iso_standards_readiness",
+  "primitive_id": "general.application.iso_standards_readiness",
+  "type": "application",
+  "domain": "general",
+  "category": "application",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/iso-standards-readiness",
+    "distilled_from_version": "1.0",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 9,
+      "scripts": 10,
+      "assets": 12
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/assurance-lanes.md",
+      "title": "Assurance Lanes",
+      "purpose": "Extended source guidance for assurance lanes.",
+      "source": "scientific-agent-skills/skills/iso-standards-readiness/references/assurance-lanes.md",
+      "sha256": "e4f25d072ce024581b9a7df7f386af873fa682eaae9bb25d8c5b989ff75a3ddd",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/evidence-architecture.md",
+      "title": "Evidence Architecture",
+      "purpose": "Extended source guidance for evidence architecture.",
+      "source": "scientific-agent-skills/skills/iso-standards-readiness/references/evidence-architecture.md",
+      "sha256": "13d7e939a764d86e9b877f2e0df41169b78b35297b3df1cc5832ce294ef96d2b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/gap-analysis-checklist.md",
+      "title": "Gap Analysis Checklist",
+      "purpose": "Extended source guidance for gap analysis checklist.",
+      "source": "scientific-agent-skills/skills/iso-standards-readiness/references/gap-analysis-checklist.md",
+      "sha256": "ac66607ef06254c54efc0b82ab5c1b78fa99dcea8f959ecf0928c92f8df0a68b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/iso-13485.md",
+      "title": "Iso 13485",
+      "purpose": "Extended source guidance for iso 13485.",
+      "source": "scientific-agent-skills/skills/iso-standards-readiness/references/iso-13485.md",
+      "sha256": "1b19c7a57769bb9bf6f9d076d6a9b5f27523cbcbd25eb5906558cb23843299df",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/iso-14971.md",
+      "title": "Iso 14971",
+      "purpose": "Extended source guidance for iso 14971.",
+      "source": "scientific-agent-skills/skills/iso-standards-readiness/references/iso-14971.md",
+      "sha256": "ddd23218cf6dfff76d9edf15189df55068838eac78fb36dd71990c1bccc84e02",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/iso-15189.md",
+      "title": "Iso 15189",
+      "purpose": "Extended source guidance for iso 15189.",
+      "source": "scientific-agent-skills/skills/iso-standards-readiness/references/iso-15189.md",
+      "sha256": "b4a2cdc2c40bfc18b57ad4d73175567d10483aa8f1de914449a444f8a71693c7",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/iso-17025.md",
+      "title": "Iso 17025",
+      "purpose": "Extended source guidance for iso 17025.",
+      "source": "scientific-agent-skills/skills/iso-standards-readiness/references/iso-17025.md",
+      "sha256": "71ee17f5c3ad7d490e59c2888c0b83889ddf759ef1b1b790eea2e539277ef486",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/quality-manual-guide.md",
+      "title": "Quality Manual Guide",
+      "purpose": "Extended source guidance for quality manual guide.",
+      "source": "scientific-agent-skills/skills/iso-standards-readiness/references/quality-manual-guide.md",
+      "sha256": "b608197edc3acac8adb6b6df89173ff67938dfc0f0267c69689a1ea769629bb7",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/source-ledger.md",
+      "title": "Source Ledger",
+      "purpose": "Extended source guidance for source ledger.",
+      "source": "scientific-agent-skills/skills/iso-standards-readiness/references/source-ledger.md",
+      "sha256": "832df0e4d9d32ff0671328e1c64ee72ad41bf37abeaa4e57558664a9d718951b",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "ISO standards readiness primitive for organizing declared scope, controlled documents, traceability, CAPA, laboratory competence, evidence manifests, and review boundaries.",
+  "tags": [
+    "iso",
+    "readiness",
+    "evidence",
+    "traceability",
+    "quality-management"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for iso-standards-readiness.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

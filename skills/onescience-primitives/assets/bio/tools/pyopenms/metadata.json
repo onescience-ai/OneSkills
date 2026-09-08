@@ -1,0 +1,102 @@
+{
+  "name": "pyopenms",
+  "primitive_id": "bio.tools.pyopenms",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-04",
+  "updated_at": "2026-09-04",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/pyopenms",
+    "distilled_from_version": "2.0",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 6,
+      "scripts": 16,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/data_structures.md",
+      "title": "Data Structures",
+      "purpose": "Extended source guidance for data structures.",
+      "source": "scientific-agent-skills/skills/pyopenms/references/data_structures.md",
+      "sha256": "866e22358c2ce711cbc64daaf8784454a073c533299346232411570eb44cbe30",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/feature_detection.md",
+      "title": "Feature Detection",
+      "purpose": "Extended source guidance for feature detection.",
+      "source": "scientific-agent-skills/skills/pyopenms/references/feature_detection.md",
+      "sha256": "034daf12ef0bbd362c5c96edf2d17ab16e19e2796b426aa5c4c6404282b13213",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/file_io.md",
+      "title": "File Io",
+      "purpose": "Extended source guidance for file io.",
+      "source": "scientific-agent-skills/skills/pyopenms/references/file_io.md",
+      "sha256": "853cfcf416b4fb594aa6e38d7c9db1fa1f0632813057469f1d7ccae6aaa11cb2",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/identification.md",
+      "title": "Identification",
+      "purpose": "Extended source guidance for identification.",
+      "source": "scientific-agent-skills/skills/pyopenms/references/identification.md",
+      "sha256": "4e1e88b2d0be056484c3605368afe664b8fb3597063f1e4b664dbf3d79e420bf",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/metabolomics.md",
+      "title": "Metabolomics",
+      "purpose": "Extended source guidance for metabolomics.",
+      "source": "scientific-agent-skills/skills/pyopenms/references/metabolomics.md",
+      "sha256": "a86bc67ad7b36d5431c43c98b71cde2c9a68abf0d0347cb1d3339ef86e55a047",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/signal_processing.md",
+      "title": "Signal Processing",
+      "purpose": "Extended source guidance for signal processing.",
+      "source": "scientific-agent-skills/skills/pyopenms/references/signal_processing.md",
+      "sha256": "b9b41c1a00f4c12ab670a8547061d67ef04dbb10c3ecfac6ca2d9a253e574680",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "pyOpenMS mass-spectrometry primitive for feature finding, alignment, identification, quantification, and proteomics workflow planning.",
+  "tags": [
+    "pyopenms",
+    "mass-spectrometry",
+    "proteomics",
+    "feature-finding",
+    "quantification"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for pyopenms.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

@@ -25,3 +25,7 @@ Use this primitive when a task needs scientific figure design, plotting, export 
 # handoff_notes
 
 Include source data, figure purpose, target medium, size, formats, uncertainty definition, palette policy, and inspection criteria.
+
+# resource_retrieval_notes
+
+Retrieve palette and integrity guidance before choosing encodings, and retrieve journal requirements only after the exact journal and submission phase are known. Use the palette-audit execution asset for deterministic screening, then inspect the rendered figure in context.

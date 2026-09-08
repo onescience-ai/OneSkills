@@ -36,3 +36,11 @@ Expected outputs include required sample size, detectable effect, assumptions, a
 # provenance
 
 Distilled from `scientific-agent-skills/skills/statistical-power` version `1.1`. Scripts were not copied.
+
+# knowledge_assets
+
+- `references/effect_sizes.md`: effect-size definitions matched to estimands and planned tests.
+- `references/closed_form_recipes.md`: common analytical power and sample-size recipes.
+- `references/simulation_based_power.md`: simulation planning for clustered, repeated-measure, and nonstandard designs.
+
+The source `power.py` and `simulate_power.py` remain migration candidates because they expose worked Python modules rather than a stable bounded JSON CLI. Use an executor wrapper only after the design, dependency pins, seed policy, and output schema are specified.

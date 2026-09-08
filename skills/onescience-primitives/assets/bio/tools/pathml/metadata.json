@@ -1,0 +1,103 @@
+{
+  "name": "pathml",
+  "primitive_id": "bio.tools.pathml",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/pathml",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 6,
+      "scripts": 6,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/data_management.md",
+      "title": "Data Management",
+      "purpose": "Extended source guidance for data management.",
+      "source": "scientific-agent-skills/skills/pathml/references/data_management.md",
+      "sha256": "3f16f3b496c62502f0ba1241b198f06e751b82734867a27d1dc2854be6d41c06",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/graphs.md",
+      "title": "Graphs",
+      "purpose": "Extended source guidance for graphs.",
+      "source": "scientific-agent-skills/skills/pathml/references/graphs.md",
+      "sha256": "e9f14bc2ac31c391a8e1c41ece7645d1dd17f82a12f58e6f6b59f704e5a31cd6",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/image_loading.md",
+      "title": "Image Loading",
+      "purpose": "Extended source guidance for image loading.",
+      "source": "scientific-agent-skills/skills/pathml/references/image_loading.md",
+      "sha256": "e09ee5af7d2e98fea7b476a89dc44b23ab0a5a897c2f406f4709246f7d9cfa2b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/machine_learning.md",
+      "title": "Machine Learning",
+      "purpose": "Extended source guidance for machine learning.",
+      "source": "scientific-agent-skills/skills/pathml/references/machine_learning.md",
+      "sha256": "7ef15bb031e493ccb08a856c1b90a8c77c0148328578e72f38d0c902658b8c1f",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/multiparametric.md",
+      "title": "Multiparametric",
+      "purpose": "Extended source guidance for multiparametric.",
+      "source": "scientific-agent-skills/skills/pathml/references/multiparametric.md",
+      "sha256": "a07eb438bbe646da74136d3adac5eb45ee9753f18e4a7540733a1fefb1b00fca",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/preprocessing.md",
+      "title": "Preprocessing",
+      "purpose": "Extended source guidance for preprocessing.",
+      "source": "scientific-agent-skills/skills/pathml/references/preprocessing.md",
+      "sha256": "a033610e3235871b24c66d16e70609a5e69674d1efcb8c3b32e9fe432f8dc35f",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "PathML primitive for computational pathology workflows covering whole-slide image loading, preprocessing, tiling, graph construction, quality control, multiparametric data, and machine-learning planning.",
+  "tags": [
+    "pathml",
+    "digital-pathology",
+    "whole-slide-imaging",
+    "tiling",
+    "spatial-analysis"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for pathml.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

@@ -38,3 +38,13 @@ Expected outputs include selected test or model, assumption diagnostics, effect 
 # provenance
 
 Distilled from `scientific-agent-skills/skills/statistical-analysis` version `1.1`. Scripts were not copied.
+
+# knowledge_assets
+
+- `references/test_selection_guide.md`: map design and variable structure to tests or models.
+- `references/assumptions_and_diagnostics.md`: diagnostic checks and remedial choices.
+- `references/effect_sizes_and_power.md`: effect-size, interval, and sensitivity reporting.
+- `references/bayesian_statistics.md`: Bayesian alternatives, priors, posterior summaries, and diagnostics.
+- `references/reporting_standards.md`: reproducible statistical reporting requirements.
+
+The source `assumption_checks.py` remains a migration candidate because it is a library-style module with plotting side effects and no stable structured CLI contract. References are read-only and do not grant execution permission.

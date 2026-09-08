@@ -13,9 +13,92 @@
   "source": {
     "distilled_from": "scientific-agent-skills/skills/scientific-visualization",
     "distilled_from_version": "1.1",
-    "distillation_status": "resource_only",
-    "copied_execution_assets": false
+    "distillation_status": "resource_with_execution_assets",
+    "copied_execution_assets": true
   },
+  "knowledge_assets": [
+    {
+      "path": "references/publication_guidelines.md",
+      "title": "Publication figure integrity and accessibility",
+      "purpose": "Review deceptive encodings, missing-data handling, accessibility cues, and static or interactive delivery boundaries.",
+      "source": "scientific-agent-skills/skills/scientific-visualization/references/publication_guidelines.md",
+      "sha256": "abfd60dbf157dcf87d396e5859d100b8d98a25bfe8b802bfcc149b049300dc20",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/color_palettes.md",
+      "title": "Color, contrast, and palette selection",
+      "purpose": "Choose palettes by data semantics and audit contrast, grayscale separation, normalization, and redundant encodings.",
+      "source": "scientific-agent-skills/skills/scientific-visualization/references/color_palettes.md",
+      "sha256": "9b6e7d74922d64e333aff67fd41c0b53891736f5d37b01f11e96225d2dc1bfc1",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/journal_requirements.md",
+      "title": "Publisher and journal figure snapshots",
+      "purpose": "Plan figure dimensions, formats, resolution, fonts, and submission-stage checks using dated publisher snapshots.",
+      "source": "scientific-agent-skills/skills/scientific-visualization/references/journal_requirements.md",
+      "sha256": "17d36a91d5afc4975682038f36a3b13470e886f64d53b23100b3ea5688e07daa",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/matplotlib_examples.md",
+      "title": "Matplotlib, Seaborn, and Plotly examples",
+      "purpose": "Provide current plotting and export patterns for scoped styles, uncertainty, normalization, and static fallbacks.",
+      "source": "scientific-agent-skills/skills/scientific-visualization/references/matplotlib_examples.md",
+      "sha256": "0f603898a5ac91757fec3dccd62bb5ee2e24e254fdebfb97f8d2b3ecec167dd5",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Visualization source registry",
+      "purpose": "Track official URLs, access dates, versions, and research basis for visualization guidance.",
+      "source": "scientific-agent-skills/skills/scientific-visualization/references/sources.md",
+      "sha256": "186544985dba77fe948393483cd2c7fd2c4b543c04c1fc1bcc652190d0fb9cd0",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/assets/nature.mplstyle",
+      "title": "Nature-style starting point",
+      "purpose": "Use as a dated visual starting point only; it is not a journal-compliance certification.",
+      "source": "scientific-agent-skills/skills/scientific-visualization/assets/nature.mplstyle",
+      "sha256": "1c0c6bcb4d6add27247f43541d8e588aa562f21c4c88c7eaa673a2eac63dfb35",
+      "media_type": "text/plain",
+      "status": "available"
+    },
+    {
+      "path": "references/assets/presentation.mplstyle",
+      "title": "Presentation style starting point",
+      "purpose": "Provide larger projected-display defaults while keeping scientific semantics and explicit export settings under agent control.",
+      "source": "scientific-agent-skills/skills/scientific-visualization/assets/presentation.mplstyle",
+      "sha256": "db47ccdf7267a39407a959141b851d72295a66489f01c9a23ec8e963a02144c8",
+      "media_type": "text/plain",
+      "status": "available"
+    },
+    {
+      "path": "references/assets/publication.mplstyle",
+      "title": "Publication style starting point",
+      "purpose": "Provide a restrained print-oriented style baseline; final journal settings must still be checked live.",
+      "source": "scientific-agent-skills/skills/scientific-visualization/assets/publication.mplstyle",
+      "sha256": "45973599d92b27e5b156b4a23aa794795b5d83173633acb47e55658af304f999",
+      "media_type": "text/plain",
+      "status": "available"
+    },
+    {
+      "path": "references/assets/publisher_profiles.json",
+      "title": "Publisher planning profiles",
+      "purpose": "Supply machine-readable dated screening defaults for export planning without claiming compliance.",
+      "source": "scientific-agent-skills/skills/scientific-visualization/assets/publisher_profiles.json",
+      "sha256": "12633ca62d1b7539b40fa31c01aa5b266546a25734961a41fc79250a5b328b9b",
+      "media_type": "application/json",
+      "status": "available"
+    }
+  ],
   "description": "Scientific visualization is a cross-domain visualization primitive for truthful, accessible, publication-ready figures. Use it for figure design, multi-panel layouts, uncertainty and missing-data displays, color and contrast review, image metadata validation, and export planning.",
   "tags": [
     "scientific-visualization",
@@ -40,6 +123,6 @@
   ],
   "contracts": {
     "resource_output": "resource_retrieval_result",
-    "execution_asset_policy": "none"
+    "execution_asset_policy": "sha256_whitelist"
   }
 }

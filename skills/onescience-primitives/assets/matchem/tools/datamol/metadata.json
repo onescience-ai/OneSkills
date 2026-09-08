@@ -1,0 +1,120 @@
+{
+  "name": "datamol",
+  "primitive_id": "matchem.tools.datamol",
+  "type": "tool",
+  "domain": "matchem",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-04",
+  "updated_at": "2026-09-04",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/datamol",
+    "distilled_from_version": "unknown",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 8,
+      "scripts": 0,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/conformers_module.md",
+      "title": "Conformers Module",
+      "purpose": "Extended source guidance for conformers module.",
+      "source": "scientific-agent-skills/skills/datamol/references/conformers_module.md",
+      "sha256": "3735cad8894e1c8a592571d87230f8d39dea60d5e5d99383e7f556abffd4bea1",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/core_api.md",
+      "title": "Core Api",
+      "purpose": "Extended source guidance for core api.",
+      "source": "scientific-agent-skills/skills/datamol/references/core_api.md",
+      "sha256": "8ab67ec05e958f0aa90cd3990ac8e5a5e26828e769969ca9169e4df93c5c1ef8",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/core_workflows.md",
+      "title": "Core Workflows",
+      "purpose": "Extended source guidance for core workflows.",
+      "source": "scientific-agent-skills/skills/datamol/references/core_workflows.md",
+      "sha256": "9da350395b5d868dd9905dc108d39a4e2e21d361893c2d56ffef0821b455e9ff",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/descriptors_viz.md",
+      "title": "Descriptors Viz",
+      "purpose": "Extended source guidance for descriptors viz.",
+      "source": "scientific-agent-skills/skills/datamol/references/descriptors_viz.md",
+      "sha256": "e15a98657fe5b83c64b0de65d26aec840393be987045a854d8c582cdbf6424db",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/fragments_scaffolds.md",
+      "title": "Fragments Scaffolds",
+      "purpose": "Extended source guidance for fragments scaffolds.",
+      "source": "scientific-agent-skills/skills/datamol/references/fragments_scaffolds.md",
+      "sha256": "9e9c9e2db781792f117fb72d1d819d71b7ab476ca2d5572e7732f5f59a28828b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/io_module.md",
+      "title": "Io Module",
+      "purpose": "Extended source guidance for io module.",
+      "source": "scientific-agent-skills/skills/datamol/references/io_module.md",
+      "sha256": "68455850206e7de38731a59c2d88019971499006c0249833e33fa4cbd46df461",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/reactions_data.md",
+      "title": "Reactions Data",
+      "purpose": "Extended source guidance for reactions data.",
+      "source": "scientific-agent-skills/skills/datamol/references/reactions_data.md",
+      "sha256": "deb60ec2111eb31395f2f0a822c020d50d754a7d316f2451160e3a5456dfe5b4",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/workflow_patterns.md",
+      "title": "Workflow Patterns",
+      "purpose": "Extended source guidance for workflow patterns.",
+      "source": "scientific-agent-skills/skills/datamol/references/workflow_patterns.md",
+      "sha256": "5d083f499cd45aef8c4caad179186a8c0b959fd123d3c9d9a1500e7ec4ef184e",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Datamol cheminformatics utility primitive for molecule standardization, scaffold handling, descriptors, clustering, and dataset preparation.",
+  "tags": [
+    "datamol",
+    "cheminformatics",
+    "standardization",
+    "scaffolds",
+    "molecules"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for datamol.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

@@ -7,24 +7,16 @@ This inventory is read-only. It does not execute or copy source code.
 ## Summary
 
 - Source skills with `SKILL.md`: 163
-- Target primitive metadata files: 275
-- Explicit provenance matches: 58
+- Target primitive metadata files: 283
+- Explicit provenance matches: 66
 - Heuristic matches: 2
-- Uncovered source skills: 103
+- Uncovered source skills: 95
 - Target metadata requiring regex fallback: 0
 
 ## Highest-Priority Candidates
 
 | Skill | Coverage | Shape | Code recommendation | Score |
 | --- | --- | --- | --- | ---: |
-| `exploratory-data-analysis` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 82 |
-| `pkpd-modeling` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 81 |
-| `iso-standards-readiness` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 80 |
-| `peer-review` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 80 |
-| `hypothesis-generation` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 79 |
-| `pathml` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 78 |
-| `pptx-posters` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 78 |
-| `scientific-slides` | `uncovered` | `split_primitives` | `resource_only` | 78 |
 | `neuropixels-analysis` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 77 |
 | `latchbio-integration` | `uncovered` | `primitive_plus_executor` | `propose_executor` | 76 |
 | `market-research-reports` | `uncovered` | `split_primitives` | `resource_only` | 76 |
@@ -47,6 +39,14 @@ This inventory is read-only. It does not execute or copy source code.
 | `bioservices` | `uncovered` | `single_primitive` | `resource_with_execution_assets` | 73 |
 | `etetoolkit` | `uncovered` | `primitive_plus_executor` | `propose_executor` | 73 |
 | `latex-posters` | `uncovered` | `split_primitives` | `resource_only` | 73 |
+| `pymc` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 73 |
+| `relsa-severity-assessment` | `uncovered` | `split_primitives` | `resource_with_execution_assets` | 73 |
+| `stable-baselines3` | `uncovered` | `single_primitive` | `resource_with_execution_assets` | 73 |
+| `dnanexus-integration` | `uncovered` | `single_primitive` | `resource_only` | 72 |
+| `flowio` | `uncovered` | `primitive_plus_executor` | `propose_executor` | 72 |
+| `imaging-data-commons` | `uncovered` | `single_primitive` | `resource_with_execution_assets` | 72 |
+| `liteparse` | `uncovered` | `primitive_plus_executor` | `propose_executor` | 72 |
+| `matplotlib` | `uncovered` | `primitive_plus_executor` | `propose_executor` | 72 |
 
 ## Interpretation
 

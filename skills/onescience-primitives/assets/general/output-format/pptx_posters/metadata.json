@@ -1,0 +1,112 @@
+{
+  "name": "pptx_posters",
+  "primitive_id": "general.output-format.pptx_posters",
+  "type": "output-format",
+  "domain": "general",
+  "category": "output-format",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/pptx-posters",
+    "distilled_from_version": "2.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 7,
+      "scripts": 10,
+      "assets": 3
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/manifest_spec.md",
+      "title": "Manifest Spec",
+      "purpose": "Extended source guidance for manifest spec.",
+      "source": "scientific-agent-skills/skills/pptx-posters/references/manifest_spec.md",
+      "sha256": "2a825c09c3391a0e838918d88f7653fe6293fc136ac7d087c3bee681d3cc98f0",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/poster_content_guide.md",
+      "title": "Poster Content Guide",
+      "purpose": "Extended source guidance for poster content guide.",
+      "source": "scientific-agent-skills/skills/pptx-posters/references/poster_content_guide.md",
+      "sha256": "dea961f67f1da228da3deb873770f61780789108183450d84f93078d40884a63",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/poster_design_principles.md",
+      "title": "Poster Design Principles",
+      "purpose": "Extended source guidance for poster design principles.",
+      "source": "scientific-agent-skills/skills/pptx-posters/references/poster_design_principles.md",
+      "sha256": "7fac4022b656ad9dc529a7a9fc192b88818db7217798941fbb1a4ca3beb6ed4c",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/poster_layout_design.md",
+      "title": "Poster Layout Design",
+      "purpose": "Extended source guidance for poster layout design.",
+      "source": "scientific-agent-skills/skills/pptx-posters/references/poster_layout_design.md",
+      "sha256": "0ef48f1b9e34b2edb2e0faba4e8c1815a5b31ed3193371975fc7e395ec06aad3",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/pptx_security.md",
+      "title": "Pptx Security",
+      "purpose": "Extended source guidance for pptx security.",
+      "source": "scientific-agent-skills/skills/pptx-posters/references/pptx_security.md",
+      "sha256": "a349556e4be4db69153a3ca6a00a1cd8212b218e5d38b0861929cb2be9fd2fed",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/security_validation.md",
+      "title": "Security Validation",
+      "purpose": "Extended source guidance for security validation.",
+      "source": "scientific-agent-skills/skills/pptx-posters/references/security_validation.md",
+      "sha256": "3f958506b558788b320b196b275c1c48b160278d064ee19f78471a402b644baf",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/source_ledger.md",
+      "title": "Source Ledger",
+      "purpose": "Extended source guidance for source ledger.",
+      "source": "scientific-agent-skills/skills/pptx-posters/references/source_ledger.md",
+      "sha256": "e5a047a34f49ad09e96a4e205d8713ae31cc253f103c5ac3c1e2cf2b7338f65c",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "PPTX poster primitive for scientific poster planning, manifest-driven layout, PowerPoint generation, palette and layout checks, image inventory, source ledgers, and security validation.",
+  "tags": [
+    "pptx",
+    "poster",
+    "presentation",
+    "layout",
+    "quality-check"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for pptx-posters.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

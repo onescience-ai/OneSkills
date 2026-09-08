@@ -12,3 +12,9 @@
 - State whether the reported N is per group, total, or effective sample size.
 - Preserve the effect-size rationale and any pilot-data assumptions.
 - Recalculate when the design changes.
+
+# migrated_knowledge
+
+Use `content_request: "参考资料"` for the indexed effect-size, closed-form, and simulation-based power guides. Use `content_request: "完整参考资料"` for the source text needed to justify a nonstandard calculation.
+
+The source `power.py` and `simulate_power.py` are intentionally retained as migration candidates. A future executor should accept a declarative design, seed, and effect-size grid and return a bounded JSON sensitivity table rather than expose arbitrary Python execution.

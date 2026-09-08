@@ -1,0 +1,175 @@
+{
+  "name": "pkpd_modeling",
+  "primitive_id": "general.application.pkpd_modeling",
+  "type": "application",
+  "domain": "general",
+  "category": "application",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/pkpd-modeling",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 14,
+      "scripts": 11,
+      "assets": 2
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/antimicrobial-and-tdm.md",
+      "title": "Antimicrobial And Tdm",
+      "purpose": "Extended source guidance for antimicrobial and tdm.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/antimicrobial-and-tdm.md",
+      "sha256": "808ebca2be6df43f3021ccef1594a3d87870bea9458a6e632d0a08987bf2478b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/bioequivalence.md",
+      "title": "Bioequivalence",
+      "purpose": "Extended source guidance for bioequivalence.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/bioequivalence.md",
+      "sha256": "1c93189ba4bd90c4d4047e4f44fcb7d02614bfe26c740224204a2d51ad401825",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/dataset-standards.md",
+      "title": "Dataset Standards",
+      "purpose": "Extended source guidance for dataset standards.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/dataset-standards.md",
+      "sha256": "285dccd14535974c7c7ff6e1f273b4ceff24da5855c02096dbaf4d37e1fd76fa",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/ddi-and-qt.md",
+      "title": "Ddi And Qt",
+      "purpose": "Extended source guidance for ddi and qt.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/ddi-and-qt.md",
+      "sha256": "b72e64cd5171ded8ced539995c2769ede8e280f42197d9b4d3fd917114388b60",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/nca-conventions.md",
+      "title": "Nca Conventions",
+      "purpose": "Extended source guidance for nca conventions.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/nca-conventions.md",
+      "sha256": "2b670ad7444c1497974096eb15a822cb6d6df5f8f423de701a641185ce4bc646",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/pbpk.md",
+      "title": "Pbpk",
+      "purpose": "Extended source guidance for pbpk.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/pbpk.md",
+      "sha256": "5d3a1a41c38539d1a5e18b625e634f0d3f97c5ee47ebf5cf061932127a37ef7c",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/pd-and-exposure-response.md",
+      "title": "Pd And Exposure Response",
+      "purpose": "Extended source guidance for pd and exposure response.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/pd-and-exposure-response.md",
+      "sha256": "901ad64fc6c07d95341d24b9fb0bf525b78169cc73e39a3d1927f82d48ca16ab",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/population-pk.md",
+      "title": "Population Pk",
+      "purpose": "Extended source guidance for population pk.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/population-pk.md",
+      "sha256": "ecfa30ebfb5837aaa23f520f293c99dff69f962abd60a4a478af2974ae17266d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/regulatory-guidance.md",
+      "title": "Regulatory Guidance",
+      "purpose": "Extended source guidance for regulatory guidance.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/regulatory-guidance.md",
+      "sha256": "45e88a61d172479316fd207cbaaefb59ac02164e3c18e6ed76b4e4eca38311da",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/software-ecosystem.md",
+      "title": "Software Ecosystem",
+      "purpose": "Extended source guidance for software ecosystem.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/software-ecosystem.md",
+      "sha256": "85619c09e9ccb862340865aa7f329935c321be445db23b4ea23bad65e9424af2",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/source-ledger.md",
+      "title": "Source Ledger",
+      "purpose": "Extended source guidance for source ledger.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/source-ledger.md",
+      "sha256": "0c20ffd5dbfd0d9f25efbf175aeeb884678e489f9b94122da23ddf8e054ca1aa",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/special-populations.md",
+      "title": "Special Populations",
+      "purpose": "Extended source guidance for special populations.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/special-populations.md",
+      "sha256": "70651f5b18344f4c44c39d526f10d80472496f4df3327a3fe25e71a1d1d94d4f",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/structural-models.md",
+      "title": "Structural Models",
+      "purpose": "Extended source guidance for structural models.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/structural-models.md",
+      "sha256": "245b0fadb103e00c8e1d87c134b1ce7cded32e2f0735fe9c6dcbbd65fec3ac63",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/tmdd-and-biologics.md",
+      "title": "Tmdd And Biologics",
+      "purpose": "Extended source guidance for tmdd and biologics.",
+      "source": "scientific-agent-skills/skills/pkpd-modeling/references/tmdd-and-biologics.md",
+      "sha256": "69a16f39898e22705fd20ad9491acb6cf1c9ce436e4527c1a2d997506cee7e76",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "PK/PD modeling primitive for non-compartmental analysis, compartmental and population PK, exposure-response, bioequivalence, allometric scaling, DDI screening, and therapeutic drug monitoring planning.",
+  "tags": [
+    "pkpd",
+    "pharmacokinetics",
+    "pharmacodynamics",
+    "nca",
+    "exposure-response"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for pkpd-modeling.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

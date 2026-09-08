@@ -1,0 +1,44 @@
+{
+  "plans": [
+    {
+      "skill": "pkpd-modeling",
+      "domain": "general",
+      "category": "application",
+      "name": "pkpd_modeling",
+      "primitive_id": "general.application.pkpd_modeling",
+      "type": "application",
+      "description": "PK/PD modeling primitive for non-compartmental analysis, compartmental and population PK, exposure-response, bioequivalence, allometric scaling, DDI screening, and therapeutic drug monitoring planning.",
+      "tags": ["pkpd", "pharmacokinetics", "pharmacodynamics", "nca", "exposure-response"]
+    },
+    {
+      "skill": "iso-standards-readiness",
+      "domain": "general",
+      "category": "application",
+      "name": "iso_standards_readiness",
+      "primitive_id": "general.application.iso_standards_readiness",
+      "type": "application",
+      "description": "ISO standards readiness primitive for organizing declared scope, controlled documents, traceability, CAPA, laboratory competence, evidence manifests, and review boundaries.",
+      "tags": ["iso", "readiness", "evidence", "traceability", "quality-management"]
+    },
+    {
+      "skill": "hypothesis-generation",
+      "domain": "general",
+      "category": "workflow-planning",
+      "name": "hypothesis_generation",
+      "primitive_id": "general.workflow-planning.hypothesis_generation",
+      "type": "workflow-planning",
+      "description": "Hypothesis-generation primitive for evidence-bounded scientific questions, rival explanations, causal or associational claims, discriminating predictions, measurements, and preregistration-ready analysis plans.",
+      "tags": ["hypothesis", "research-design", "causal-claims", "measurements", "preregistration"]
+    },
+    {
+      "skill": "peer-review",
+      "domain": "general",
+      "category": "workflow-planning",
+      "name": "peer_review",
+      "primitive_id": "general.workflow-planning.peer_review",
+      "type": "workflow-planning",
+      "description": "Peer-review primitive for evidence-bounded manuscript assessment, claim-evidence checks, reporting-guideline selection, methods critique, reproducibility review, and revision-response planning.",
+      "tags": ["peer-review", "manuscript", "claim-evidence", "reproducibility", "revision"]
+    }
+  ]
+}

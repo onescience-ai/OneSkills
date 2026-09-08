@@ -1,0 +1,44 @@
+{
+  "plans": [
+    {
+      "skill": "exploratory-data-analysis",
+      "domain": "general",
+      "category": "workflow-planning",
+      "name": "exploratory_data_analysis",
+      "primitive_id": "general.workflow-planning.exploratory_data_analysis",
+      "type": "workflow-planning",
+      "description": "Exploratory data analysis primitive for table, sequence, image, and structured scientific datasets, including data profiling, missingness and leakage audits, distribution sensitivity checks, and report scaffolding.",
+      "tags": ["eda", "data-profiling", "missingness", "leakage", "data-quality"]
+    },
+    {
+      "skill": "pathml",
+      "domain": "bio",
+      "category": "tools",
+      "name": "pathml",
+      "primitive_id": "bio.tools.pathml",
+      "type": "tool",
+      "description": "PathML primitive for computational pathology workflows covering whole-slide image loading, preprocessing, tiling, graph construction, quality control, multiparametric data, and machine-learning planning.",
+      "tags": ["pathml", "digital-pathology", "whole-slide-imaging", "tiling", "spatial-analysis"]
+    },
+    {
+      "skill": "pptx-posters",
+      "domain": "general",
+      "category": "output-format",
+      "name": "pptx_posters",
+      "primitive_id": "general.output-format.pptx_posters",
+      "type": "output-format",
+      "description": "PPTX poster primitive for scientific poster planning, manifest-driven layout, PowerPoint generation, palette and layout checks, image inventory, source ledgers, and security validation.",
+      "tags": ["pptx", "poster", "presentation", "layout", "quality-check"]
+    },
+    {
+      "skill": "scientific-slides",
+      "domain": "general",
+      "category": "output-format",
+      "name": "scientific_slides",
+      "primitive_id": "general.output-format.scientific_slides",
+      "type": "output-format",
+      "description": "Scientific slides primitive for research talk structure, slide design, data visualization, Beamer and PowerPoint assets, visual review, image generation boundaries, and export workflows.",
+      "tags": ["slides", "presentation", "beamer", "pptx", "visual-review"]
+    }
+  ]
+}

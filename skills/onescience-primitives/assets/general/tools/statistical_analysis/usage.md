@@ -19,3 +19,9 @@ uv pip install "pymc>=5.0" "arviz>=1.0"
 - Correct for multiple comparisons when running test families.
 - Report non-significant results and sensitivity limits.
 - Keep the runnable analysis script or notebook with the result.
+
+# migrated_knowledge
+
+Use `content_request: "参考资料"` for the indexed test-selection, diagnostic, effect-size, Bayesian, and reporting guides. Use `content_request: "完整参考资料"` when the detailed guidance is required.
+
+The source `assumption_checks.py` is intentionally not executable in this primitive yet: it has plotting side effects, optional scientific dependencies, and no bounded JSON input/output contract. Use it as migration evidence while designing a domain-neutral diagnostics executor.

@@ -1,0 +1,111 @@
+{
+  "name": "biopython",
+  "primitive_id": "bio.tools.biopython",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-04",
+  "updated_at": "2026-09-04",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/biopython",
+    "distilled_from_version": "unknown",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 7,
+      "scripts": 0,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/advanced.md",
+      "title": "Advanced",
+      "purpose": "Extended source guidance for advanced.",
+      "source": "scientific-agent-skills/skills/biopython/references/advanced.md",
+      "sha256": "b7390943cf2dcbb35b28cbec55d7058e230564b2a1c00157e1ace08111c8fab3",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/alignment.md",
+      "title": "Alignment",
+      "purpose": "Extended source guidance for alignment.",
+      "source": "scientific-agent-skills/skills/biopython/references/alignment.md",
+      "sha256": "977c012dfffb7416428a520953d013ae72f5940fb035fff6d4160ce92e3a6886",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/blast.md",
+      "title": "Blast",
+      "purpose": "Extended source guidance for blast.",
+      "source": "scientific-agent-skills/skills/biopython/references/blast.md",
+      "sha256": "8f0e08f2289c30563f9dc7dabbd15ef90bac99aa8a34e35d20161609fd74885d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/databases.md",
+      "title": "Databases",
+      "purpose": "Extended source guidance for databases.",
+      "source": "scientific-agent-skills/skills/biopython/references/databases.md",
+      "sha256": "46b622b0ca455285607976a30ead64c42e7b960675c695052aba041f88452b67",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/phylogenetics.md",
+      "title": "Phylogenetics",
+      "purpose": "Extended source guidance for phylogenetics.",
+      "source": "scientific-agent-skills/skills/biopython/references/phylogenetics.md",
+      "sha256": "236b08a63dcbbeea3757dee8eaf337576149aec0abfcf93ac188bc909858f9d4",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sequence_io.md",
+      "title": "Sequence Io",
+      "purpose": "Extended source guidance for sequence io.",
+      "source": "scientific-agent-skills/skills/biopython/references/sequence_io.md",
+      "sha256": "90de64411ea6929794057fbabf4d6bb180e31a8cf188a97a2c1847d6772fb182",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/structure.md",
+      "title": "Structure",
+      "purpose": "Extended source guidance for structure.",
+      "source": "scientific-agent-skills/skills/biopython/references/structure.md",
+      "sha256": "873ebde4534bcef0cd47c185d03c1713a5e07690d9bcbece3c1aed06ee4a9079",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Biopython primitive for biological sequences, records, annotations, file formats, Entrez-style retrieval planning, and phylogenetic utilities.",
+  "tags": [
+    "biopython",
+    "sequence-analysis",
+    "fasta",
+    "genbank",
+    "phylogenetics"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for biopython.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

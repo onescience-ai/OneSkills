@@ -1,0 +1,84 @@
+{
+  "name": "deepchem",
+  "primitive_id": "matchem.tools.deepchem",
+  "type": "tool",
+  "domain": "matchem",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-04",
+  "updated_at": "2026-09-04",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/deepchem",
+    "distilled_from_version": "unknown",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 4,
+      "scripts": 3,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/api_reference.md",
+      "title": "Api Reference",
+      "purpose": "Extended source guidance for api reference.",
+      "source": "scientific-agent-skills/skills/deepchem/references/api_reference.md",
+      "sha256": "ba98f4677c200317789b540531f869dc2528d49cd7d08ee3be7592b339c61039",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/core_capabilities.md",
+      "title": "Core Capabilities",
+      "purpose": "Extended source guidance for core capabilities.",
+      "source": "scientific-agent-skills/skills/deepchem/references/core_capabilities.md",
+      "sha256": "379800aeaaef7608a595d2ebf5173823fdd4fb2d8ff64306ed2ed705023e82f8",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/typical_workflows.md",
+      "title": "Typical Workflows",
+      "purpose": "Extended source guidance for typical workflows.",
+      "source": "scientific-agent-skills/skills/deepchem/references/typical_workflows.md",
+      "sha256": "55200eec4ea79d9a378a9c1dab27bd18318c9895545adc90b595c32e7d43c02a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/workflows.md",
+      "title": "Workflows",
+      "purpose": "Extended source guidance for workflows.",
+      "source": "scientific-agent-skills/skills/deepchem/references/workflows.md",
+      "sha256": "668e88323211025a848470ae76d6337c5fdd4fb0e791333eaf8193322e0b522e",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "DeepChem primitive for molecular machine learning datasets, featurization, model training, evaluation, and uncertainty-aware chemical prediction.",
+  "tags": [
+    "deepchem",
+    "molecular-ml",
+    "featurization",
+    "toxicity",
+    "QSAR"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for deepchem.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

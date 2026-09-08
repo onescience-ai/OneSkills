@@ -1,0 +1,130 @@
+{
+  "name": "pysam",
+  "primitive_id": "bio.tools.pysam",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-04",
+  "updated_at": "2026-09-04",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/pysam",
+    "distilled_from_version": "unknown",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 9,
+      "scripts": 4,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/alignment_files.md",
+      "title": "Alignment Files",
+      "purpose": "Extended source guidance for alignment files.",
+      "source": "scientific-agent-skills/skills/pysam/references/alignment_files.md",
+      "sha256": "4f0932a611a24ad7bc1786bb314e5b59d54aca961f76528e6caf56b0bce3b6c3",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/api_reference.md",
+      "title": "Api Reference",
+      "purpose": "Extended source guidance for api reference.",
+      "source": "scientific-agent-skills/skills/pysam/references/api_reference.md",
+      "sha256": "057105eba015deee8bd6862d23939fd65edf923c639180201e1bdfc8d2f720ac",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/common_workflows.md",
+      "title": "Common Workflows",
+      "purpose": "Extended source guidance for common workflows.",
+      "source": "scientific-agent-skills/skills/pysam/references/common_workflows.md",
+      "sha256": "cbdf58b642f425e43fe8e97281119040926d90cd0987826dfeffbbb5c66b517a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/coordinates_and_indexing.md",
+      "title": "Coordinates And Indexing",
+      "purpose": "Extended source guidance for coordinates and indexing.",
+      "source": "scientific-agent-skills/skills/pysam/references/coordinates_and_indexing.md",
+      "sha256": "6448ad350029da40eedcbdd17bdd09a827c0ccb569190efa537c00bde60d50a5",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/cram_and_performance.md",
+      "title": "Cram And Performance",
+      "purpose": "Extended source guidance for cram and performance.",
+      "source": "scientific-agent-skills/skills/pysam/references/cram_and_performance.md",
+      "sha256": "3fb2ef57def53f4689ce9f3a76b1f8f728a75654c6b67f6959b1f4c9dbc31574",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/migration_to_0_24.md",
+      "title": "Migration To 0 24",
+      "purpose": "Extended source guidance for migration to 0 24.",
+      "source": "scientific-agent-skills/skills/pysam/references/migration_to_0_24.md",
+      "sha256": "7d130a02aba9fa92991281bb059d891763e3113490c882d806b4576185c96a75",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sequence_files.md",
+      "title": "Sequence Files",
+      "purpose": "Extended source guidance for sequence files.",
+      "source": "scientific-agent-skills/skills/pysam/references/sequence_files.md",
+      "sha256": "b39f7a227a34cb35174bf115e5f76748de4d3ccdd5c18052d27ba4123c085065",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Sources",
+      "purpose": "Extended source guidance for sources.",
+      "source": "scientific-agent-skills/skills/pysam/references/sources.md",
+      "sha256": "e1a15be3fd96142926a29c3ff992638c0fa7216f9052f5f570989afb0f13a5bc",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/variant_files.md",
+      "title": "Variant Files",
+      "purpose": "Extended source guidance for variant files.",
+      "source": "scientific-agent-skills/skills/pysam/references/variant_files.md",
+      "sha256": "d07fbdff55f263d3ba043ffaa9a946fac3771138d7c813e0af604ac7e1291c3b",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Pysam primitive for SAM/BAM/CRAM/VCF access, read filtering, pileups, coverage summaries, and genomic interval workflows.",
+  "tags": [
+    "pysam",
+    "sam",
+    "bam",
+    "cram",
+    "vcf",
+    "coverage"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for pysam.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

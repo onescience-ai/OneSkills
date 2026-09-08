@@ -1,0 +1,103 @@
+{
+  "name": "exploratory_data_analysis",
+  "primitive_id": "general.workflow-planning.exploratory_data_analysis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "category": "workflow-planning",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/exploratory-data-analysis",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 6,
+      "scripts": 13,
+      "assets": 1
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/bioinformatics_genomics_formats.md",
+      "title": "Bioinformatics Genomics Formats",
+      "purpose": "Extended source guidance for bioinformatics genomics formats.",
+      "source": "scientific-agent-skills/skills/exploratory-data-analysis/references/bioinformatics_genomics_formats.md",
+      "sha256": "e296b5e61204e4a4de0e3f4490d08e94438f65e63851d29445780d7150e6eddd",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/chemistry_molecular_formats.md",
+      "title": "Chemistry Molecular Formats",
+      "purpose": "Extended source guidance for chemistry molecular formats.",
+      "source": "scientific-agent-skills/skills/exploratory-data-analysis/references/chemistry_molecular_formats.md",
+      "sha256": "077a97025a52904730f2bb2b39f96106520efef1057d637d66dca8eeab13de26",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/general_scientific_formats.md",
+      "title": "General Scientific Formats",
+      "purpose": "Extended source guidance for general scientific formats.",
+      "source": "scientific-agent-skills/skills/exploratory-data-analysis/references/general_scientific_formats.md",
+      "sha256": "42727d3b5fb6577f8c7137e4ffa6d59fec433b4360ad114e334f8bd3b885b7fb",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/microscopy_imaging_formats.md",
+      "title": "Microscopy Imaging Formats",
+      "purpose": "Extended source guidance for microscopy imaging formats.",
+      "source": "scientific-agent-skills/skills/exploratory-data-analysis/references/microscopy_imaging_formats.md",
+      "sha256": "6d425e81bedcd12965f8b7626d42177651a860682e5a26049fb6eb8f96493e82",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/proteomics_metabolomics_formats.md",
+      "title": "Proteomics Metabolomics Formats",
+      "purpose": "Extended source guidance for proteomics metabolomics formats.",
+      "source": "scientific-agent-skills/skills/exploratory-data-analysis/references/proteomics_metabolomics_formats.md",
+      "sha256": "6225a355973ab9a296e152845cc5f8e6bf76f734c51dfbd55b0f944ffc1f07e3",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/spectroscopy_analytical_formats.md",
+      "title": "Spectroscopy Analytical Formats",
+      "purpose": "Extended source guidance for spectroscopy analytical formats.",
+      "source": "scientific-agent-skills/skills/exploratory-data-analysis/references/spectroscopy_analytical_formats.md",
+      "sha256": "297f124f69281f884c33addd658b90b66c88a7bebc8bed6dea12284fb6897466",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Exploratory data analysis primitive for table, sequence, image, and structured scientific datasets, including data profiling, missingness and leakage audits, distribution sensitivity checks, and report scaffolding.",
+  "tags": [
+    "eda",
+    "data-profiling",
+    "missingness",
+    "leakage",
+    "data-quality"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for exploratory-data-analysis.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

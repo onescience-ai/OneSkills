@@ -16,6 +16,44 @@
     "distillation_status": "resource_only",
     "copied_execution_assets": false
   },
+  "knowledge_assets": [
+    {
+      "path": "references/design_types.md",
+      "title": "Experimental design types",
+      "purpose": "Select a design family from the estimand, treatment structure, unit of randomization, and nuisance factors.",
+      "source": "scientific-agent-skills/skills/experimental-design/references/design_types.md",
+      "sha256": "8c00ac63142f91db9e010082d491b0af25019aba0f161c72497a5df2c6ff8c55",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/factorial_and_doe.md",
+      "title": "Factorial and design-of-experiments patterns",
+      "purpose": "Plan factorial, fractional-factorial, screening, and response-surface studies while exposing aliasing and resolution limits.",
+      "source": "scientific-agent-skills/skills/experimental-design/references/factorial_and_doe.md",
+      "sha256": "2db506065a0fd36b699ad70063ce6a099055b9e676efc36790e098ed43319e0e",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/randomization_and_blocking.md",
+      "title": "Randomization and blocking",
+      "purpose": "Define allocation, blocking, stratification, run-order control, and reproducibility requirements before data collection.",
+      "source": "scientific-agent-skills/skills/experimental-design/references/randomization_and_blocking.md",
+      "sha256": "b4298ef74a5c744fa986507e158fa48044f0c762c3b404c0a0b063a0dbac3dca",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sequential_and_adaptive.md",
+      "title": "Sequential and adaptive designs",
+      "purpose": "Plan interim decisions, adaptive changes, stopping rules, and the safeguards required to preserve valid inference.",
+      "source": "scientific-agent-skills/skills/experimental-design/references/sequential_and_adaptive.md",
+      "sha256": "bfffc806da8d84116535c4fd2f3b50f94e16e7addd38cca0b502c19df368b475",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
   "description": "Experimental design is a cross-domain workflow-planning primitive for planning studies before data collection. Use it for randomization, blocking, stratification, controls, factorial and fractional-factorial designs, response-surface optimization, crossover or cluster designs, plate layouts, replication, and pseudoreplication risk checks.",
   "tags": [
     "experimental-design",

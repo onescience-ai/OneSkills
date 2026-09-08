@@ -17,6 +17,13 @@ provenance:
   copied_execution_assets: <true | false>
 requirements:
   runtime: <python/package/system/service requirements, optional>
+knowledge_assets:
+  - path: <relative path under the primitive>
+    title: <reference title>
+    purpose: <what the reference is for>
+    source: <source file or upstream document>
+    sha256: <integrity hash>
+    media_type: <MIME type>
 contracts:
   resource_output: resource_retrieval_result
   execution_asset_policy: sha256_whitelist | none
@@ -24,7 +31,32 @@ contracts:
 
 Callers must treat these fields as metadata for planning and binding. They still consume resource substance only from `matched_resources[*].content`, and they still must not bypass a resource skill by directly reading `assets/`.
 
+Knowledge companions are requested separately from execution assets:
+
+- `content_request: "参考资料"` or `"扩展知识"` returns the declared knowledge-asset index and selected reference content.
+- `content_request: "完整内容"` returns the four core primitive documents plus the knowledge-asset index, but does not automatically return every reference file or any executable file.
+- `content_request: "完整参考资料"` returns declared reference files after path, size, and SHA-256 checks.
+- Knowledge assets never grant execution permission. Execution still requires `include_execution_assets: true` and the execution whitelist.
+
 Compatibility rule: legacy resource types such as `model_primitive`, `component_primitive`, `datapipe_primitive`, `application_primitive`, `tool_primitive`, and `visualization_primitive` remain valid. New categories should use `<category>_primitive` when a specific type is needed, or include `category` explicitly when preserving an older `type` value.
+
+When `knowledge_assets` are present, a full resource result may include:
+
+```yaml
+content:
+  metadata: <metadata.json content>
+  spec: <spec.md content>
+  usage: <usage.md content>
+  workflow_planning: <workflow_planning.md content>
+  knowledge_assets:
+    - path: <declared relative path>
+      title: <reference title>
+      purpose: <reference purpose>
+      source: <source locator>
+      sha256: <expected hash>
+      status: <available | materialized | unavailable | failed>
+      content: <checked reference text, when requested and small enough>
+```
 
 本文档定义所有技能调用 type=resource 技能时的统一输入输出格式。
 

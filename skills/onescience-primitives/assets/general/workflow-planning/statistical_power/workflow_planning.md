@@ -25,3 +25,7 @@ Use this primitive when a study needs sample-size planning, minimum detectable e
 # handoff_notes
 
 Include design type, estimand, effect-size source, alpha, target power, ratio, attrition, multiplicity, and whether N is per group or total.
+
+# resource_retrieval_notes
+
+Retrieve the effect-size and recipe references to justify the calculation family. For clustered, repeated-measure, or otherwise complex designs, retrieve the simulation guide and state the seed, data-generating assumptions, number of simulations, and Monte Carlo uncertainty.

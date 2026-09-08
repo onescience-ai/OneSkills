@@ -16,6 +16,35 @@
     "distillation_status": "resource_only",
     "copied_execution_assets": false
   },
+  "knowledge_assets": [
+    {
+      "path": "references/closed_form_recipes.md",
+      "title": "Closed-form power recipes",
+      "purpose": "Select and document common closed-form sample-size and detectable-effect calculations.",
+      "source": "scientific-agent-skills/skills/statistical-power/references/closed_form_recipes.md",
+      "sha256": "6194841e8477d027cae631c557a90826cd4d613d98e98749e6f40714a1da3b0b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/effect_sizes.md",
+      "title": "Effect-size definitions",
+      "purpose": "Choose an effect-size scale that matches the estimand, outcome, allocation, and planned analysis.",
+      "source": "scientific-agent-skills/skills/statistical-power/references/effect_sizes.md",
+      "sha256": "19f243ac6aeacfbbb7a83a1e621dc5a8248b98278499c4efd34db412d2c964db",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/simulation_based_power.md",
+      "title": "Simulation-based power",
+      "purpose": "Plan simulation sensitivity analyses for clustered, repeated-measure, nonstandard, or otherwise complex designs.",
+      "source": "scientific-agent-skills/skills/statistical-power/references/simulation_based_power.md",
+      "sha256": "5841de90e01a4e4617ce84c9ced9791f1ca3b3e0727c80f73f3ea5b9f339b469",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
   "description": "Statistical power is a pre-study planning primitive for sample-size calculation, detectable-effect sensitivity, attrition adjustment, and power analysis matched to experimental design. Use it after selecting a design and before data collection.",
   "tags": ["statistical-power", "sample-size", "power-analysis", "sensitivity", "study-planning", "effect-size"],
   "capabilities": ["Calculate or plan sample size for common study designs.", "Run sensitivity analyses for detectable effects without using misleading observed-power claims.", "Carry design structure, alpha, power, effect size, attrition, and multiplicity assumptions into an analysis handoff."],

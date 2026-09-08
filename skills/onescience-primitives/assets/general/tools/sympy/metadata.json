@@ -1,0 +1,102 @@
+{
+  "name": "sympy",
+  "primitive_id": "general.tools.sympy",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-04",
+  "updated_at": "2026-09-04",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/sympy",
+    "distilled_from_version": "unknown",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 6,
+      "scripts": 0,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/advanced-topics.md",
+      "title": "Advanced Topics",
+      "purpose": "Extended source guidance for advanced topics.",
+      "source": "scientific-agent-skills/skills/sympy/references/advanced-topics.md",
+      "sha256": "212b3d0c3b67a45160135a4ff8d9ae89e0064cf1c68adf408a6c2af5c0d82bb9",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/code-generation-printing.md",
+      "title": "Code Generation Printing",
+      "purpose": "Extended source guidance for code generation printing.",
+      "source": "scientific-agent-skills/skills/sympy/references/code-generation-printing.md",
+      "sha256": "046648801a3404b9e883110e24bd4d947381be930c2ef8589fd8ca3414ef81cb",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/core-capabilities.md",
+      "title": "Core Capabilities",
+      "purpose": "Extended source guidance for core capabilities.",
+      "source": "scientific-agent-skills/skills/sympy/references/core-capabilities.md",
+      "sha256": "9d7b7393e814ef833fdcbb6e63a8a6621f08c123afe39d43c2bd2e131c7782d9",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/core_capabilities.md",
+      "title": "Core Capabilities",
+      "purpose": "Extended source guidance for core capabilities.",
+      "source": "scientific-agent-skills/skills/sympy/references/core_capabilities.md",
+      "sha256": "0d342387502fe83f229564ee35c2e2e36d6f7107303b572766cd2587fab1e298",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/matrices-linear-algebra.md",
+      "title": "Matrices Linear Algebra",
+      "purpose": "Extended source guidance for matrices linear algebra.",
+      "source": "scientific-agent-skills/skills/sympy/references/matrices-linear-algebra.md",
+      "sha256": "f22d091d2a38957e0e820e859e172b2d535cc1eef4f98d32d4af02962bd9a73c",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/physics-mechanics.md",
+      "title": "Physics Mechanics",
+      "purpose": "Extended source guidance for physics mechanics.",
+      "source": "scientific-agent-skills/skills/sympy/references/physics-mechanics.md",
+      "sha256": "e5853aa09e9bddc37134afd7469bc86b952edcbd9dd6d8a6ef9c2c24a2e0fbf3",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "SymPy primitive for symbolic mathematics, algebra, calculus, equation solving, code generation, and exact analytical derivations.",
+  "tags": [
+    "sympy",
+    "symbolic-math",
+    "algebra",
+    "calculus",
+    "equations"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for sympy.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

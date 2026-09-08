@@ -1,0 +1,148 @@
+{
+  "name": "scientific_slides",
+  "primitive_id": "general.output-format.scientific_slides",
+  "type": "output-format",
+  "domain": "general",
+  "category": "output-format",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/scientific-slides",
+    "distilled_from_version": "1.7",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 11,
+      "scripts": 7,
+      "assets": 5
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/beamer_guide.md",
+      "title": "Beamer Guide",
+      "purpose": "Extended source guidance for beamer guide.",
+      "source": "scientific-agent-skills/skills/scientific-slides/references/beamer_guide.md",
+      "sha256": "cb8a3c500ab9a3841c0e8559ad5894a4dad80fa3193589f28f5ca91e46d1c97b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/common_pitfalls.md",
+      "title": "Common Pitfalls",
+      "purpose": "Extended source guidance for common pitfalls.",
+      "source": "scientific-agent-skills/skills/scientific-slides/references/common_pitfalls.md",
+      "sha256": "1624aa65d42d52469a06727e6a68c5ba66cce311020f107659de7ca80654888b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/data_visualization_slides.md",
+      "title": "Data Visualization Slides",
+      "purpose": "Extended source guidance for data visualization slides.",
+      "source": "scientific-agent-skills/skills/scientific-slides/references/data_visualization_slides.md",
+      "sha256": "c79d5d9552d2f132dd3be1beb230c5c0da4f3f27f1ac04f7f6e571204bbab9ba",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/presentation_structure.md",
+      "title": "Presentation Structure",
+      "purpose": "Extended source guidance for presentation structure.",
+      "source": "scientific-agent-skills/skills/scientific-slides/references/presentation_structure.md",
+      "sha256": "deafc171b8951a43c9a8ae081158cab72fdb8dc4abc1334257ad594f454665f2",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/presentation_workflow.md",
+      "title": "Presentation Workflow",
+      "purpose": "Extended source guidance for presentation workflow.",
+      "source": "scientific-agent-skills/skills/scientific-slides/references/presentation_workflow.md",
+      "sha256": "64e4e6f2b7483df1c7e629139df5dac605636ae3229f64d093f9a11aee5e4127",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/prompt_writing.md",
+      "title": "Prompt Writing",
+      "purpose": "Extended source guidance for prompt writing.",
+      "source": "scientific-agent-skills/skills/scientific-slides/references/prompt_writing.md",
+      "sha256": "a933302ac7afd1bb1b8f76d7f4c3f445a415029611c13b1af1a22535e0adcb4a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/script_reference.md",
+      "title": "Script Reference",
+      "purpose": "Extended source guidance for script reference.",
+      "source": "scientific-agent-skills/skills/scientific-slides/references/script_reference.md",
+      "sha256": "b2bbd551f298e20910699bb1f98d552e10babcc8dfa1988c4cd71c7896a42d92",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/slide_capabilities.md",
+      "title": "Slide Capabilities",
+      "purpose": "Extended source guidance for slide capabilities.",
+      "source": "scientific-agent-skills/skills/scientific-slides/references/slide_capabilities.md",
+      "sha256": "ed059ec294acec7f179ff39c3143f5cfa92589ba9d6cdeaeec8aa3cb0499803f",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/slide_design_principles.md",
+      "title": "Slide Design Principles",
+      "purpose": "Extended source guidance for slide design principles.",
+      "source": "scientific-agent-skills/skills/scientific-slides/references/slide_design_principles.md",
+      "sha256": "ee2d8f1b3ae0a849ee49e3e4d334c64ee3a1a79aee5ca28dbf43bbec822d98fa",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/talk_types_guide.md",
+      "title": "Talk Types Guide",
+      "purpose": "Extended source guidance for talk types guide.",
+      "source": "scientific-agent-skills/skills/scientific-slides/references/talk_types_guide.md",
+      "sha256": "60f374e4e8d361e36a4c738c1e9e56b80470927e28f59e5c9f715343d7da6f6d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/visual_review_workflow.md",
+      "title": "Visual Review Workflow",
+      "purpose": "Extended source guidance for visual review workflow.",
+      "source": "scientific-agent-skills/skills/scientific-slides/references/visual_review_workflow.md",
+      "sha256": "6d636d52fd3c6db84008fca1b96a39905539a12f28256337d6534a575c0b4632",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Scientific slides primitive for research talk structure, slide design, data visualization, Beamer and PowerPoint assets, visual review, image generation boundaries, and export workflows.",
+  "tags": [
+    "slides",
+    "presentation",
+    "beamer",
+    "pptx",
+    "visual-review"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for scientific-slides.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

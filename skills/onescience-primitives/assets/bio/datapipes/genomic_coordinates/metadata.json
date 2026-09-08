@@ -1,0 +1,84 @@
+{
+  "name": "genomic_coordinates",
+  "primitive_id": "bio.datapipes.genomic_coordinates",
+  "type": "datapipe",
+  "domain": "bio",
+  "category": "datapipes",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-04",
+  "updated_at": "2026-09-04",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/genomic-coordinates",
+    "distilled_from_version": "unknown",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 4,
+      "scripts": 5,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/format-conventions.md",
+      "title": "Format Conventions",
+      "purpose": "Extended source guidance for format conventions.",
+      "source": "scientific-agent-skills/skills/genomic-coordinates/references/format-conventions.md",
+      "sha256": "bc501b01e57a03591e735d2592d38e2815a63a6079a1144b0baa4afc0bc0bba2",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/reference-builds.md",
+      "title": "Reference Builds",
+      "purpose": "Extended source guidance for reference builds.",
+      "source": "scientific-agent-skills/skills/genomic-coordinates/references/reference-builds.md",
+      "sha256": "27eee0f7050941a3ebf33373d0c84098b6220c6df2fe44e6b926521910c3b8cc",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/transcript-coordinates.md",
+      "title": "Transcript Coordinates",
+      "purpose": "Extended source guidance for transcript coordinates.",
+      "source": "scientific-agent-skills/skills/genomic-coordinates/references/transcript-coordinates.md",
+      "sha256": "400ee336e6f0c78187b0e77522187b150e8d8a2601539e07eaf4edad0c7f20b8",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/variant-representation.md",
+      "title": "Variant Representation",
+      "purpose": "Extended source guidance for variant representation.",
+      "source": "scientific-agent-skills/skills/genomic-coordinates/references/variant-representation.md",
+      "sha256": "633f496a63d6a3d432fcf4999f7049ee9947c545087490df96ca35b976042c29",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Genomic coordinate primitive for intervals, genome builds, BED-like data, coordinate validation, liftover planning, and overlap semantics.",
+  "tags": [
+    "genomic-coordinates",
+    "bed",
+    "intervals",
+    "genome-build",
+    "liftover"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for genomic-coordinates.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

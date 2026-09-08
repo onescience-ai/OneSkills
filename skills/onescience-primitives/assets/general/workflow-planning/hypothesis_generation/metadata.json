@@ -1,0 +1,139 @@
+{
+  "name": "hypothesis_generation",
+  "primitive_id": "general.workflow-planning.hypothesis_generation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "category": "workflow-planning",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-07",
+  "updated_at": "2026-09-07",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/hypothesis-generation",
+    "distilled_from_version": "2.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 10,
+      "scripts": 8,
+      "assets": 8
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/causal_inference_and_claims.md",
+      "title": "Causal Inference And Claims",
+      "purpose": "Extended source guidance for causal inference and claims.",
+      "source": "scientific-agent-skills/skills/hypothesis-generation/references/causal_inference_and_claims.md",
+      "sha256": "37fba9d9d72414fcb342faa231944b4dbc5ce3255f552482ea8298cf0909b0a4",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/concepts_and_workflow.md",
+      "title": "Concepts And Workflow",
+      "purpose": "Extended source guidance for concepts and workflow.",
+      "source": "scientific-agent-skills/skills/hypothesis-generation/references/concepts_and_workflow.md",
+      "sha256": "a86a8f464fb555212e79bf13e307f3c129e9c853069856eb3c93c3c8a60bb7fc",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/ethics_safety_and_ai.md",
+      "title": "Ethics Safety And Ai",
+      "purpose": "Extended source guidance for ethics safety and ai.",
+      "source": "scientific-agent-skills/skills/hypothesis-generation/references/ethics_safety_and_ai.md",
+      "sha256": "f89c8c85cab8a84b0ac0c0e402942e596bbd66f293ebb7597217e1514cdffbe9",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/experimental_design_patterns.md",
+      "title": "Experimental Design Patterns",
+      "purpose": "Extended source guidance for experimental design patterns.",
+      "source": "scientific-agent-skills/skills/hypothesis-generation/references/experimental_design_patterns.md",
+      "sha256": "83c0c75c7b1edadc92e4ae23607624277c19955fc6a71ee0313b6efc51e4e939",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/hypothesis_quality_criteria.md",
+      "title": "Hypothesis Quality Criteria",
+      "purpose": "Extended source guidance for hypothesis quality criteria.",
+      "source": "scientific-agent-skills/skills/hypothesis-generation/references/hypothesis_quality_criteria.md",
+      "sha256": "12698b549f77a6ee64807b959093f39628fe3d47aa9a00a9b235681bf0b09269",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/literature_search_strategies.md",
+      "title": "Literature Search Strategies",
+      "purpose": "Extended source guidance for literature search strategies.",
+      "source": "scientific-agent-skills/skills/hypothesis-generation/references/literature_search_strategies.md",
+      "sha256": "2a34fa0645f854093aea2d867059bae563c795f1935ba4b9c6d494bdc389fdcb",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/preregistration_and_open_science.md",
+      "title": "Preregistration And Open Science",
+      "purpose": "Extended source guidance for preregistration and open science.",
+      "source": "scientific-agent-skills/skills/hypothesis-generation/references/preregistration_and_open_science.md",
+      "sha256": "fd4f7ffe03d419bfd8b1b104637f508b9dad5ae868afc5c9307bb868f3920b16",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/security_validation.md",
+      "title": "Security Validation",
+      "purpose": "Extended source guidance for security validation.",
+      "source": "scientific-agent-skills/skills/hypothesis-generation/references/security_validation.md",
+      "sha256": "39dffd9c0878e8da5fe2511678b4f69fab95143c17a4915f56033cb111c35572",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/source_ledger.md",
+      "title": "Source Ledger",
+      "purpose": "Extended source guidance for source ledger.",
+      "source": "scientific-agent-skills/skills/hypothesis-generation/references/source_ledger.md",
+      "sha256": "ff41a6f5e1d365eafdf6be130cf40733653587b6ec51be19ce0294df44d93919",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/tool_reference.md",
+      "title": "Tool Reference",
+      "purpose": "Extended source guidance for tool reference.",
+      "source": "scientific-agent-skills/skills/hypothesis-generation/references/tool_reference.md",
+      "sha256": "db305bec51a46a67c5d21baa47e2854110f0a3901f525ec7c9a7fe120b9d9c8b",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Hypothesis-generation primitive for evidence-bounded scientific questions, rival explanations, causal or associational claims, discriminating predictions, measurements, and preregistration-ready analysis plans.",
+  "tags": [
+    "hypothesis",
+    "research-design",
+    "causal-claims",
+    "measurements",
+    "preregistration"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for hypothesis-generation.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

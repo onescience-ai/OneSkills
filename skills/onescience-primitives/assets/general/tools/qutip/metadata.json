@@ -1,0 +1,93 @@
+{
+  "name": "qutip",
+  "primitive_id": "general.tools.qutip",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-04",
+  "updated_at": "2026-09-04",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/qutip",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 5,
+      "scripts": 7,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/advanced.md",
+      "title": "Advanced",
+      "purpose": "Extended source guidance for advanced.",
+      "source": "scientific-agent-skills/skills/qutip/references/advanced.md",
+      "sha256": "880b2236f1ee3abb014e6644fdb67486e2fe9b86718a981f1f2625abb2afd5dd",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/analysis.md",
+      "title": "Analysis",
+      "purpose": "Extended source guidance for analysis.",
+      "source": "scientific-agent-skills/skills/qutip/references/analysis.md",
+      "sha256": "d33cd8548db07adc3ffce52a9bf65de30767e4b811e24798a8bae7f6b8498f38",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/core_concepts.md",
+      "title": "Core Concepts",
+      "purpose": "Extended source guidance for core concepts.",
+      "source": "scientific-agent-skills/skills/qutip/references/core_concepts.md",
+      "sha256": "907b9f55e43ccee13c9c9d2e2252d63df529b48d8f08318b05359dc06a535e43",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/time_evolution.md",
+      "title": "Time Evolution",
+      "purpose": "Extended source guidance for time evolution.",
+      "source": "scientific-agent-skills/skills/qutip/references/time_evolution.md",
+      "sha256": "f0698d03c390fc325a0bebc5c254884031da478ef6625019f354430a42b2bf1c",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/visualization.md",
+      "title": "Visualization",
+      "purpose": "Extended source guidance for visualization.",
+      "source": "scientific-agent-skills/skills/qutip/references/visualization.md",
+      "sha256": "70d6a642ed95ece96e67caa2776633e2292fbbcfb8b63bc2bd81a885972c193d",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "QuTiP primitive for quantum object construction, open-system dynamics, steady states, spectra, and solver planning.",
+  "tags": [
+    "qutip",
+    "quantum",
+    "dynamics",
+    "solver",
+    "open-systems"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for qutip.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

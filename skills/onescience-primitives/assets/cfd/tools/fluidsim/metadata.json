@@ -1,0 +1,102 @@
+{
+  "name": "fluidsim",
+  "primitive_id": "cfd.tools.fluidsim",
+  "type": "tool",
+  "domain": "cfd",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-04",
+  "updated_at": "2026-09-04",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/fluidsim",
+    "distilled_from_version": "unknown",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 6,
+      "scripts": 9,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/advanced_features.md",
+      "title": "Advanced Features",
+      "purpose": "Extended source guidance for advanced features.",
+      "source": "scientific-agent-skills/skills/fluidsim/references/advanced_features.md",
+      "sha256": "31301c75c39b622f1bbd7f06ed9d80d79b65bdeb90287130042d0123e044a84a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/installation.md",
+      "title": "Installation",
+      "purpose": "Extended source guidance for installation.",
+      "source": "scientific-agent-skills/skills/fluidsim/references/installation.md",
+      "sha256": "3c5a5d8462cb8dc7584d767057a9be1ff01e3e013213c3f09776d5a8005df7b9",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/output_analysis.md",
+      "title": "Output Analysis",
+      "purpose": "Extended source guidance for output analysis.",
+      "source": "scientific-agent-skills/skills/fluidsim/references/output_analysis.md",
+      "sha256": "2725ed5f7e6bead7fe1cb3d859ba9a8a7327cca1c5e2f4e06d4cb3fe05fd85ae",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/parameters.md",
+      "title": "Parameters",
+      "purpose": "Extended source guidance for parameters.",
+      "source": "scientific-agent-skills/skills/fluidsim/references/parameters.md",
+      "sha256": "f464352a4832b85d0185ae3403aaab5709843448fa83fc72aa60d650c13431ff",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/simulation_workflow.md",
+      "title": "Simulation Workflow",
+      "purpose": "Extended source guidance for simulation workflow.",
+      "source": "scientific-agent-skills/skills/fluidsim/references/simulation_workflow.md",
+      "sha256": "028e565f3a17f082bf759961dbe569e67743077a411689e74ceb9777a8046ffa",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/solvers.md",
+      "title": "Solvers",
+      "purpose": "Extended source guidance for solvers.",
+      "source": "scientific-agent-skills/skills/fluidsim/references/solvers.md",
+      "sha256": "36c9699b6d4f14c561223e063c72de2df11ac5d2e8534f17777dbf02568e4e15",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "FluidSim primitive for fluid simulation setup, solver selection, parameter planning, diagnostics, and reproducible run organization.",
+  "tags": [
+    "fluidsim",
+    "cfd",
+    "fluid-simulation",
+    "solver",
+    "diagnostics"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for fluidsim.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

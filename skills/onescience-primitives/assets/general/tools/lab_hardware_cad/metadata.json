@@ -1,0 +1,111 @@
+{
+  "name": "lab_hardware_cad",
+  "primitive_id": "general.tools.lab_hardware_cad",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-04",
+  "updated_at": "2026-09-04",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/lab-hardware-cad",
+    "distilled_from_version": "1.2",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 7,
+      "scripts": 4,
+      "assets": 1
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/behavior-rigs.md",
+      "title": "Behavior Rigs",
+      "purpose": "Extended source guidance for behavior rigs.",
+      "source": "scientific-agent-skills/skills/lab-hardware-cad/references/behavior-rigs.md",
+      "sha256": "4e1500f623067571244f361c97f0f13ae530055ad7daa88df06709474e1a6d41",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/build123d-patterns.md",
+      "title": "Build123D Patterns",
+      "purpose": "Extended source guidance for build123d patterns.",
+      "source": "scientific-agent-skills/skills/lab-hardware-cad/references/build123d-patterns.md",
+      "sha256": "2d536d09771772c9140653e7ef86df35351d33ad4fa6c45d4954a8fd5290b256",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/fabrication-limits.md",
+      "title": "Fabrication Limits",
+      "purpose": "Extended source guidance for fabrication limits.",
+      "source": "scientific-agent-skills/skills/lab-hardware-cad/references/fabrication-limits.md",
+      "sha256": "a4d87f56bb95db8bb7ffd267f38c4337841b7735198527fecaf0ac6d2bcaedb9",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/labware-adapters.md",
+      "title": "Labware Adapters",
+      "purpose": "Extended source guidance for labware adapters.",
+      "source": "scientific-agent-skills/skills/lab-hardware-cad/references/labware-adapters.md",
+      "sha256": "6e54cabb0ad4eea78411599d146ab1a66b9378b3407cfcb76fb7e7d3d00ab71e",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/microfluidics.md",
+      "title": "Microfluidics",
+      "purpose": "Extended source guidance for microfluidics.",
+      "source": "scientific-agent-skills/skills/lab-hardware-cad/references/microfluidics.md",
+      "sha256": "6b1554443e94690389b560127620c3c459635e0eadb4418ef770eecb5d257496",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/optomechanics.md",
+      "title": "Optomechanics",
+      "purpose": "Extended source guidance for optomechanics.",
+      "source": "scientific-agent-skills/skills/lab-hardware-cad/references/optomechanics.md",
+      "sha256": "89774b6645fc61fdb7700e563191552d9f2b3a934193216bbbb7ada61b31f217",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/validation.md",
+      "title": "Validation",
+      "purpose": "Extended source guidance for validation.",
+      "source": "scientific-agent-skills/skills/lab-hardware-cad/references/validation.md",
+      "sha256": "ca1fa6e45247cbd01e042a555c8b2c393eda8fdf9710a6bc3160b4d8bd0d2751",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Lab hardware CAD primitive for fixture design, fabrication planning, parameterized geometry, and inspection-driven iteration.",
+  "tags": [
+    "lab-hardware-cad",
+    "cad",
+    "lab-hardware",
+    "fabrication",
+    "geometry"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for lab-hardware-cad.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

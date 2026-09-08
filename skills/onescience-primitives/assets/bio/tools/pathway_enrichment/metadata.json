@@ -1,0 +1,75 @@
+{
+  "name": "pathway_enrichment",
+  "primitive_id": "bio.tools.pathway_enrichment",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-04",
+  "updated_at": "2026-09-04",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/pathway-enrichment",
+    "distilled_from_version": "unknown",
+    "distillation_status": "resource_only",
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 3,
+      "scripts": 1,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/databases-and-gene-sets.md",
+      "title": "Databases And Gene Sets",
+      "purpose": "Extended source guidance for databases and gene sets.",
+      "source": "scientific-agent-skills/skills/pathway-enrichment/references/databases-and-gene-sets.md",
+      "sha256": "cae6bf506df2e111c02f5c4b2edc53d4414e2556604799d1b8981d21147c1cad",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/gseapy.md",
+      "title": "Gseapy",
+      "purpose": "Extended source guidance for gseapy.",
+      "source": "scientific-agent-skills/skills/pathway-enrichment/references/gseapy.md",
+      "sha256": "bcbc6c42facaae9d8e5230a889cf7307b8d919b128a0d6b36e6ba1cc60f10da5",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/interpretation.md",
+      "title": "Interpretation",
+      "purpose": "Extended source guidance for interpretation.",
+      "source": "scientific-agent-skills/skills/pathway-enrichment/references/interpretation.md",
+      "sha256": "b991dbcf2e1858817475131ebeeac6fca6478e91c27a071b07566ecb82473722",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Pathway enrichment primitive for gene-set selection, ID mapping, over-representation, rank-based enrichment, and interpretation caveats.",
+  "tags": [
+    "pathway-enrichment",
+    "gene-sets",
+    "gsea",
+    "ora",
+    "id-mapping"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for pathway-enrichment.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}
