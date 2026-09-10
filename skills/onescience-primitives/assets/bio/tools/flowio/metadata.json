@@ -1,0 +1,110 @@
+{
+  "name": "flowio",
+  "primitive_id": "bio.tools.flowio",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/flowio",
+    "distilled_from_version": "2.0",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 5,
+      "scripts": 1,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/api_reference.md",
+      "title": "Api Reference",
+      "purpose": "Extended source guidance for api reference.",
+      "source": "scientific-agent-skills/skills/flowio/references/api_reference.md",
+      "sha256": "7327ec209bdaf9472989beb9beafcf74ddb459ed7fd4e2f036b34d40169c015c",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/fcs_semantics.md",
+      "title": "Fcs Semantics",
+      "purpose": "Extended source guidance for fcs semantics.",
+      "source": "scientific-agent-skills/skills/flowio/references/fcs_semantics.md",
+      "sha256": "77f276e082f003f072c610fc6c04a0935d561ad8622ed4cf07218c6974835f81",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Sources",
+      "purpose": "Extended source guidance for sources.",
+      "source": "scientific-agent-skills/skills/flowio/references/sources.md",
+      "sha256": "774658123b07300922548b3d518db3dfe0240565cc2ba65ca3a1a312515c7ee3",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/troubleshooting.md",
+      "title": "Troubleshooting",
+      "purpose": "Extended source guidance for troubleshooting.",
+      "source": "scientific-agent-skills/skills/flowio/references/troubleshooting.md",
+      "sha256": "d57e542594d4c280f191792a5cb923c54f0e117a193e502c71360df2ed38d8b4",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/workflows.md",
+      "title": "Workflows",
+      "purpose": "Extended source guidance for workflows.",
+      "source": "scientific-agent-skills/skills/flowio/references/workflows.md",
+      "sha256": "8a304848a31913a9408683b99669289f57f244f9a6910ee27d9e74c31ea9410a",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/inspect_fcs.py",
+      "kind": "source_script",
+      "title": "Inspect Fcs",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/flowio/scripts/inspect_fcs.py",
+      "sha256": "118a9af5374437d72020de1dfbf0aafc39aaa62d65cb92ef3821d2f5782ce22d",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "FlowIO primitive for FCS metadata inspection, event extraction, file parsing and writing, and preprocessing-aware flow cytometry I/O.",
+  "tags": [
+    "flowio",
+    "flow-cytometry",
+    "FCS",
+    "event-extraction",
+    "metadata"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for flowio.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

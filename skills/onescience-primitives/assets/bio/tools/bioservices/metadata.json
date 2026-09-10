@@ -1,0 +1,125 @@
+{
+  "name": "bioservices",
+  "primitive_id": "bio.tools.bioservices",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/bioservices",
+    "distilled_from_version": "1.3",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 3,
+      "scripts": 4,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/identifier_mapping.md",
+      "title": "Identifier Mapping",
+      "purpose": "Extended source guidance for identifier mapping.",
+      "source": "scientific-agent-skills/skills/bioservices/references/identifier_mapping.md",
+      "sha256": "02fe1d022d767379e718f717c47d79c23dbfb2e5dd7c84e1abe678d6924b9ba5",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/services_reference.md",
+      "title": "Services Reference",
+      "purpose": "Extended source guidance for services reference.",
+      "source": "scientific-agent-skills/skills/bioservices/references/services_reference.md",
+      "sha256": "7aeaa8092373c9a0ae9cd940ea48f4f408bd9edc3f3d72534cc0fb42d2374dea",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/workflow_patterns.md",
+      "title": "Workflow Patterns",
+      "purpose": "Extended source guidance for workflow patterns.",
+      "source": "scientific-agent-skills/skills/bioservices/references/workflow_patterns.md",
+      "sha256": "8590ed6566006753607e745eb1604b995223b0822ca76bc3caf114459918fed2",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/batch_id_converter.py",
+      "kind": "source_script",
+      "title": "Batch Id Converter",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/bioservices/scripts/batch_id_converter.py",
+      "sha256": "488b3b95a7b43e5cd97ebd8ccead0be81364efadde7b535bb387ccf28d9cfe4f",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/compound_cross_reference.py",
+      "kind": "source_script",
+      "title": "Compound Cross Reference",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/bioservices/scripts/compound_cross_reference.py",
+      "sha256": "73654c4838d136d88b189718f67e08b30a72249ee779b4e57bd62a6cab316f32",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/pathway_analysis.py",
+      "kind": "source_script",
+      "title": "Pathway Analysis",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/bioservices/scripts/pathway_analysis.py",
+      "sha256": "59ed88cbddc01a3c1fab7c1caf04349482c338b0b71d537bae189149a4e50b36",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/protein_analysis_workflow.py",
+      "kind": "source_script",
+      "title": "Protein Analysis Workflow",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/bioservices/scripts/protein_analysis_workflow.py",
+      "sha256": "820ca720822b79397949d6a53cf989c69c9dacb09a983be40dd16a0317228dd5",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "bioservices primitive for unified querying of multiple bioinformatics web services including UniProt, KEGG, ChEMBL, and Reactome with consistent API handling.",
+  "tags": [
+    "bioservices",
+    "web-api",
+    "uniprot",
+    "kegg",
+    "reactome"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for bioservices.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

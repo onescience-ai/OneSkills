@@ -45,6 +45,12 @@ def parse_args() -> argparse.Namespace:
         default=True,
         help="copy source references into primitive knowledge_assets during materialization",
     )
+    parser.add_argument(
+        "--copy-source-payloads",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="copy source scripts/assets into inert primitive source_payload records during materialization",
+    )
     return parser.parse_args()
 
 
@@ -100,6 +106,7 @@ def main() -> int:
         if args.force:
             command.append("--force")
         command.append("--copy-knowledge-references" if args.copy_knowledge_references else "--no-copy-knowledge-references")
+        command.append("--copy-source-payloads" if args.copy_source_payloads else "--no-copy-source-payloads")
         run_step(command)
 
     print(json.dumps(summary, ensure_ascii=False, indent=2))

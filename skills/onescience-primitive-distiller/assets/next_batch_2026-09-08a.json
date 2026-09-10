@@ -1,0 +1,44 @@
+{
+  "plans": [
+    {
+      "skill": "neuropixels-analysis",
+      "domain": "bio",
+      "category": "workflow-planning",
+      "name": "neuropixels_analysis",
+      "primitive_id": "bio.workflow-planning.neuropixels_analysis",
+      "type": "workflow-planning",
+      "description": "Neuropixels analysis primitive for loading SpikeGLX, Open Ephys, or NWB recordings, preprocessing, motion correction, spike sorting, quality metrics, and unit curation.",
+      "tags": ["neuropixels", "spike-sorting", "extracellular-electrophysiology", "motion-correction", "quality-metrics"]
+    },
+    {
+      "skill": "analytical-method-validation",
+      "domain": "general",
+      "category": "workflow-planning",
+      "name": "analytical_method_validation",
+      "primitive_id": "general.workflow-planning.analytical_method_validation",
+      "type": "workflow-planning",
+      "description": "Analytical method validation primitive for planning, executing, and documenting validation, verification, transfer, and comparison of assays under ICH Q2(R2), Q14, USP, ICH M10, CLSI EP, and ISO/IEC 17025.",
+      "tags": ["method-validation", "validation-protocol", "accuracy-precision", "detection-limit", "traceability"]
+    },
+    {
+      "skill": "gget",
+      "domain": "bio",
+      "category": "tools",
+      "name": "gget",
+      "primitive_id": "bio.tools.gget",
+      "type": "tool",
+      "description": "gget primitive for fast bioinformatics database lookups including gene information, BLAST or BLAT, viral sequence downloads, AlphaFold structures, enrichment analysis, and OpenTargets queries.",
+      "tags": ["gget", "gene-query", "enrichment", "alphafold", "blast"]
+    },
+    {
+      "skill": "pytorch-lightning",
+      "domain": "general",
+      "category": "tools",
+      "name": "pytorch_lightning",
+      "primitive_id": "general.tools.pytorch_lightning",
+      "type": "tool",
+      "description": "PyTorch Lightning primitive for organizing training code into LightningModules, configuring Trainers, data modules, callbacks, logging, and distributed training for scalable scientific deep learning.",
+      "tags": ["pytorch-lightning", "training", "distributed-training", "logging", "callbacks"]
+    }
+  ]
+}

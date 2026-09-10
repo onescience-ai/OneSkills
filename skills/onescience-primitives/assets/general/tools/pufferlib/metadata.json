@@ -1,0 +1,198 @@
+{
+  "name": "pufferlib",
+  "primitive_id": "general.tools.pufferlib",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/pufferlib",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 5,
+      "scripts": 9,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/environments.md",
+      "title": "Environments",
+      "purpose": "Extended source guidance for environments.",
+      "source": "scientific-agent-skills/skills/pufferlib/references/environments.md",
+      "sha256": "92d9a9a886be49330cfc3eb8506ecd1e424205706a5e1383b19e19ea47c8d327",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/integration.md",
+      "title": "Integration",
+      "purpose": "Extended source guidance for integration.",
+      "source": "scientific-agent-skills/skills/pufferlib/references/integration.md",
+      "sha256": "82a361ab89017f8c9dca8fee22a50bc5314d9073f66dad89ec4ce40b2f74c16c",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/policies.md",
+      "title": "Policies",
+      "purpose": "Extended source guidance for policies.",
+      "source": "scientific-agent-skills/skills/pufferlib/references/policies.md",
+      "sha256": "5106be821c5fcb5a773c0a1b530e3f150236b8bb15c95d3cbbf704533a890be1",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/training.md",
+      "title": "Training",
+      "purpose": "Extended source guidance for training.",
+      "source": "scientific-agent-skills/skills/pufferlib/references/training.md",
+      "sha256": "8fa076cb2e72d761f3b57c67cc293cd3638cda7f86166b91089ce2d703ef22b0",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/vectorization.md",
+      "title": "Vectorization",
+      "purpose": "Extended source guidance for vectorization.",
+      "source": "scientific-agent-skills/skills/pufferlib/references/vectorization.md",
+      "sha256": "bf17effaa95ca43a99924ce3c5c7b4a75b9793a9f99e6d353854ae5f31222ab9",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/__init__.py",
+      "kind": "source_script",
+      "title": "  Init  ",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pufferlib/scripts/__init__.py",
+      "sha256": "5e2a587bf7e4f8fb11154872238594d6ba21805716d7f3b974675ebe54e52bfb",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/_common.py",
+      "kind": "source_script",
+      "title": " Common",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pufferlib/scripts/_common.py",
+      "sha256": "8f3f610237c6035f4fcb379ec16198f9e2a93c7770ba93e9d222530e5512f85f",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/benchmark_vectorization.py",
+      "kind": "source_script",
+      "title": "Benchmark Vectorization",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pufferlib/scripts/benchmark_vectorization.py",
+      "sha256": "4601b83d9493dd4fd1c21b84afb2bd17fcedb0674d2bf526e62e770a59b16d6b",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/env_contract_validator.py",
+      "kind": "source_script",
+      "title": "Env Contract Validator",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pufferlib/scripts/env_contract_validator.py",
+      "sha256": "2308a4f0076f6e5cba7a1a8328fa8764ba2f21828c252d0bd0bb0689321abade",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/env_template.py",
+      "kind": "source_script",
+      "title": "Env Template",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pufferlib/scripts/env_template.py",
+      "sha256": "058f479e510d8f02d8bbba517c96d7a9f8fe6dfc5e32f01f333b22651204df70",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/inspect_checkpoint.py",
+      "kind": "source_script",
+      "title": "Inspect Checkpoint",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pufferlib/scripts/inspect_checkpoint.py",
+      "sha256": "ecc0f229309b634618c7bcec65063d3e1aac3b747f04af53013b3215f5fba1fa",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/repro_plan.py",
+      "kind": "source_script",
+      "title": "Repro Plan",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pufferlib/scripts/repro_plan.py",
+      "sha256": "f3af13a6b15ff4af08c689d90396147d0bf8dc0481f2d945f1bae5a0cb63801d",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/train_template.py",
+      "kind": "source_script",
+      "title": "Train Template",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pufferlib/scripts/train_template.py",
+      "sha256": "1c1844c7c07e649894347c648031b6c3656c896f126a3f8d24f1e052278f66ab",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/validate_plan.py",
+      "kind": "source_script",
+      "title": "Validate Plan",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pufferlib/scripts/validate_plan.py",
+      "sha256": "d0cc93404fa3ae6bb0a933cccdfea77e233a9cb7807cea663a2c1529245a8b59",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "PufferLib primitive for reinforcement-learning environments, vectorization, policy training, evaluation planning, and safe checkpoint review across published source lines.",
+  "tags": [
+    "pufferlib",
+    "reinforcement-learning",
+    "vectorization",
+    "checkpoints",
+    "evaluation"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for pufferlib.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

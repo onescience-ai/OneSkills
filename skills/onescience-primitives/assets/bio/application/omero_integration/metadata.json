@@ -1,0 +1,190 @@
+{
+  "name": "omero_integration",
+  "primitive_id": "bio.application.omero_integration",
+  "type": "application",
+  "domain": "bio",
+  "category": "application",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/omero-integration",
+    "distilled_from_version": "1.3",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 9,
+      "scripts": 5,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/advanced.md",
+      "title": "Advanced",
+      "purpose": "Extended source guidance for advanced.",
+      "source": "scientific-agent-skills/skills/omero-integration/references/advanced.md",
+      "sha256": "97d678e47423eddfb6581a7606289248b033eada49e9ec69194463b891b1fcb7",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/connection.md",
+      "title": "Connection",
+      "purpose": "Extended source guidance for connection.",
+      "source": "scientific-agent-skills/skills/omero-integration/references/connection.md",
+      "sha256": "f3cd5172c04514b16d40776c0938174732a5b55b3a7253a5130f20796905a0ef",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/data_access.md",
+      "title": "Data Access",
+      "purpose": "Extended source guidance for data access.",
+      "source": "scientific-agent-skills/skills/omero-integration/references/data_access.md",
+      "sha256": "41e2556f3840a9be6bd673ebe153e91115288c059cf71d40df437fce4bd58e3a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/image_processing.md",
+      "title": "Image Processing",
+      "purpose": "Extended source guidance for image processing.",
+      "source": "scientific-agent-skills/skills/omero-integration/references/image_processing.md",
+      "sha256": "21d9da1f484135a1be8af3699de412121a40df30abbbff315a5dccdfce351367",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/metadata.md",
+      "title": "Metadata",
+      "purpose": "Extended source guidance for metadata.",
+      "source": "scientific-agent-skills/skills/omero-integration/references/metadata.md",
+      "sha256": "e6d88a9b06a284d227ae29ad6e76db0e83892022022131183e5488412cedbd98",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/rois.md",
+      "title": "Rois",
+      "purpose": "Extended source guidance for rois.",
+      "source": "scientific-agent-skills/skills/omero-integration/references/rois.md",
+      "sha256": "180c7b0695539e5831978e61bbfb87ea0ed7f636e857173e88454341f171a5e1",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/scripts.md",
+      "title": "Scripts",
+      "purpose": "Extended source guidance for scripts.",
+      "source": "scientific-agent-skills/skills/omero-integration/references/scripts.md",
+      "sha256": "6a77e24f5e5d77ee0a4450ab9e7e08c478114f9d13017e299f24d7fdb6afff6d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Sources",
+      "purpose": "Extended source guidance for sources.",
+      "source": "scientific-agent-skills/skills/omero-integration/references/sources.md",
+      "sha256": "00a023d97d298417a2a43370db419cff3505d57dc1565b250819baf15df14090",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/tables.md",
+      "title": "Tables",
+      "purpose": "Extended source guidance for tables.",
+      "source": "scientific-agent-skills/skills/omero-integration/references/tables.md",
+      "sha256": "235f1864232b6d659fa114ecd5d5fa6a269d0a9c8307e29988279357b990934a",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/export_image_metadata.py",
+      "kind": "source_script",
+      "title": "Export Image Metadata",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/omero-integration/scripts/export_image_metadata.py",
+      "sha256": "f0aeb2cf18c606e022d8c01219b8f08332a4a206b60bf50aa1bb873acd45e5cd",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/inventory.py",
+      "kind": "source_script",
+      "title": "Inventory",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/omero-integration/scripts/inventory.py",
+      "sha256": "7f8986ecee7e8933b1f422b26bf19c494447d594708ec927eb1248fb7143f7b7",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/omero_common.py",
+      "kind": "source_script",
+      "title": "Omero Common",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/omero-integration/scripts/omero_common.py",
+      "sha256": "d7571a3263cc2fbde3233332cd3fd5081d3346907362ab71a1587b613479a992",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/plan_transfer.py",
+      "kind": "source_script",
+      "title": "Plan Transfer",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/omero-integration/scripts/plan_transfer.py",
+      "sha256": "7c5fd35ba567f785039aa6587774cc02d92bba106252ea69a40b8bea1ab22217",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/validate_config.py",
+      "kind": "source_script",
+      "title": "Validate Config",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/omero-integration/scripts/validate_config.py",
+      "sha256": "6aa84d202401a684cb2dd12acf7104a76a75fa362be0c8a838c5e551333e54f3",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "OMERO integration primitive for microscopy inventory, metadata export, annotations, ROIs, rendering, and reviewed write workflows against OMERO.server and OMERO.web APIs.",
+  "tags": [
+    "omero",
+    "microscopy",
+    "image-management",
+    "annotations",
+    "roi"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for omero-integration.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

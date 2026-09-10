@@ -1,0 +1,121 @@
+{
+  "name": "etetoolkit",
+  "primitive_id": "bio.tools.etetoolkit",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/etetoolkit",
+    "distilled_from_version": "2.0",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 5,
+      "scripts": 2,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/api_reference.md",
+      "title": "Api Reference",
+      "purpose": "Extended source guidance for api reference.",
+      "source": "scientific-agent-skills/skills/etetoolkit/references/api_reference.md",
+      "sha256": "d269745b05668ba3f99758f0dfe88f9cb04fd5ed4e5bac87c62db8e8b84df1b6",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/migration-ete3-to-ete4.md",
+      "title": "Migration Ete3 To Ete4",
+      "purpose": "Extended source guidance for migration ete3 to ete4.",
+      "source": "scientific-agent-skills/skills/etetoolkit/references/migration-ete3-to-ete4.md",
+      "sha256": "54a5336026594827cdfb600accddd8a250589fc0be0ace7ce986436040c704e6",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/taxonomy.md",
+      "title": "Taxonomy",
+      "purpose": "Extended source guidance for taxonomy.",
+      "source": "scientific-agent-skills/skills/etetoolkit/references/taxonomy.md",
+      "sha256": "e75a018938b928d995da821a0500741d390295e778d11fb5ada883851d070b2e",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/visualization.md",
+      "title": "Visualization",
+      "purpose": "Extended source guidance for visualization.",
+      "source": "scientific-agent-skills/skills/etetoolkit/references/visualization.md",
+      "sha256": "ded811491fb1dd274671cc9055f7c5c4864078d1ab468b5e7547078c64632a7e",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/workflows.md",
+      "title": "Workflows",
+      "purpose": "Extended source guidance for workflows.",
+      "source": "scientific-agent-skills/skills/etetoolkit/references/workflows.md",
+      "sha256": "bd91cd86a28f4551a76d5624b079c773c192b107ecc69d1c06c18f1f65f7c12f",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/quick_visualize.py",
+      "kind": "source_script",
+      "title": "Quick Visualize",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/etetoolkit/scripts/quick_visualize.py",
+      "sha256": "2142ffd468d988d6f4ea20e018b3a05139b9002a30b630359dea3c0b7bc9ea99",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/tree_operations.py",
+      "kind": "source_script",
+      "title": "Tree Operations",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/etetoolkit/scripts/tree_operations.py",
+      "sha256": "36fc5cfc1d7d6d3c672444594634ea454054c71785942d6b650a857a1e805227",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "ETE toolkit primitive for tree I/O, topology manipulation, subtree comparison, taxonomy workflows, SmartView exploration, and tree rendering.",
+  "tags": [
+    "etetoolkit",
+    "phylogenetics",
+    "tree-manipulation",
+    "taxonomy",
+    "rendering"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for etetoolkit.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

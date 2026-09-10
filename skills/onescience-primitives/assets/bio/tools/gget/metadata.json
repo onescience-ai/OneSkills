@@ -1,0 +1,94 @@
+{
+  "name": "gget",
+  "primitive_id": "bio.tools.gget",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/gget",
+    "distilled_from_version": "1.4",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 5,
+      "scripts": 3,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/common_workflows.md",
+      "title": "Common Workflows",
+      "purpose": "Extended source guidance for common workflows.",
+      "source": "scientific-agent-skills/skills/gget/references/common_workflows.md",
+      "sha256": "24d2efbdea3870a317367e4509318ddc4d0ceb2e993a71a923f1fce8e1026db1",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/database_info.md",
+      "title": "Database Info",
+      "purpose": "Extended source guidance for database info.",
+      "source": "scientific-agent-skills/skills/gget/references/database_info.md",
+      "sha256": "672848b2933630441b283d5eb04a8e3ca5c9d157d95ebf7c80a2f99c0e30e802",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/module_catalog.md",
+      "title": "Module Catalog",
+      "purpose": "Extended source guidance for module catalog.",
+      "source": "scientific-agent-skills/skills/gget/references/module_catalog.md",
+      "sha256": "ec8de36d7a473d5075350852331e770b20dfdfc7d1ae124f311cff3d1db9895a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/module_reference.md",
+      "title": "Module Reference",
+      "purpose": "Extended source guidance for module reference.",
+      "source": "scientific-agent-skills/skills/gget/references/module_reference.md",
+      "sha256": "09280da096c6d3dea86e0688feb3aa09f3a2de0ae6de15fd42dd45c1f66ad43e",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/workflows.md",
+      "title": "Workflows",
+      "purpose": "Extended source guidance for workflows.",
+      "source": "scientific-agent-skills/skills/gget/references/workflows.md",
+      "sha256": "d146f1a1422c73d430df92dec0bc39e65b2cca2bd2664459fc55b4c45971d79c",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "gget primitive for fast bioinformatics database lookups including gene information, BLAST or BLAT, viral sequence downloads, AlphaFold structures, enrichment analysis, and OpenTargets queries.",
+  "tags": [
+    "gget",
+    "gene-query",
+    "enrichment",
+    "alphafold",
+    "blast"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for gget.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

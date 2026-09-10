@@ -1,0 +1,148 @@
+{
+  "name": "venue_templates",
+  "primitive_id": "general.output-format.venue_templates",
+  "type": "output-format",
+  "domain": "general",
+  "category": "output-format",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/venue-templates",
+    "distilled_from_version": "1.2",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 11,
+      "scripts": 3,
+      "assets": 16
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/cell_press_style.md",
+      "title": "Cell Press Style",
+      "purpose": "Extended source guidance for cell press style.",
+      "source": "scientific-agent-skills/skills/venue-templates/references/cell_press_style.md",
+      "sha256": "a57fe4c6a62d94a5ab498fc8d644a28b4dda2b97ae3cea65f4ad197e894d3341",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/conferences_formatting.md",
+      "title": "Conferences Formatting",
+      "purpose": "Extended source guidance for conferences formatting.",
+      "source": "scientific-agent-skills/skills/venue-templates/references/conferences_formatting.md",
+      "sha256": "7b813160918c6282ea5893af25bd638e607808b10524b7426f956f0f3f87a5fb",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/cs_conference_style.md",
+      "title": "Cs Conference Style",
+      "purpose": "Extended source guidance for cs conference style.",
+      "source": "scientific-agent-skills/skills/venue-templates/references/cs_conference_style.md",
+      "sha256": "34ed58ff19c0ad689ab100acb0c01a34e9dd3949c6965037435070da0df24a6a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/grants_requirements.md",
+      "title": "Grants Requirements",
+      "purpose": "Extended source guidance for grants requirements.",
+      "source": "scientific-agent-skills/skills/venue-templates/references/grants_requirements.md",
+      "sha256": "09ab9e66ee2ba0dee336fe0469da4bfce18f4087df1acc7e51ea54eb9b13fe15",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/journals_formatting.md",
+      "title": "Journals Formatting",
+      "purpose": "Extended source guidance for journals formatting.",
+      "source": "scientific-agent-skills/skills/venue-templates/references/journals_formatting.md",
+      "sha256": "353ecd938499c30fa4ee4616aa18de0107fa06bd409df1eee671f57a8ccbeda8",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/medical_journal_styles.md",
+      "title": "Medical Journal Styles",
+      "purpose": "Extended source guidance for medical journal styles.",
+      "source": "scientific-agent-skills/skills/venue-templates/references/medical_journal_styles.md",
+      "sha256": "efb9f60eb0641ca959e098d4b89ad120bb8c2a28467b69f146c79646bed9cb93",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/ml_conference_style.md",
+      "title": "Ml Conference Style",
+      "purpose": "Extended source guidance for ml conference style.",
+      "source": "scientific-agent-skills/skills/venue-templates/references/ml_conference_style.md",
+      "sha256": "43d69a06ddaf1f2027a1e72210429330cecd9c732805121333d337b04386f54d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/nature_science_style.md",
+      "title": "Nature Science Style",
+      "purpose": "Extended source guidance for nature science style.",
+      "source": "scientific-agent-skills/skills/venue-templates/references/nature_science_style.md",
+      "sha256": "f983bc747203f4c7ed1d063a59a6a0cb5d83071db6bc60ea3da0740bc9404a8c",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/posters_guidelines.md",
+      "title": "Posters Guidelines",
+      "purpose": "Extended source guidance for posters guidelines.",
+      "source": "scientific-agent-skills/skills/venue-templates/references/posters_guidelines.md",
+      "sha256": "f6d7aa2afa729d3ff1dadcc71ccba9c7f88e08ef02e0bcc0a777878b8530936b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/reviewer_expectations.md",
+      "title": "Reviewer Expectations",
+      "purpose": "Extended source guidance for reviewer expectations.",
+      "source": "scientific-agent-skills/skills/venue-templates/references/reviewer_expectations.md",
+      "sha256": "104e341007afeec6b9f138c0b8b371a9a633c3264f148334196818e057e1fb0b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/venue_writing_styles.md",
+      "title": "Venue Writing Styles",
+      "purpose": "Extended source guidance for venue writing styles.",
+      "source": "scientific-agent-skills/skills/venue-templates/references/venue_writing_styles.md",
+      "sha256": "e260b1badf97f31c0862e922455528366dd35ef3b1d2e96bed4bca99a1334049",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Venue-templates primitive for journal manuscripts, conference papers, research posters, and grant documents using venue-specific formatting guidance and bundled LaTeX scaffolds.",
+  "tags": [
+    "venue-template",
+    "latex",
+    "journal",
+    "conference",
+    "grant"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for venue-templates.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

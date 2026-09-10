@@ -253,7 +253,6 @@ def section_names(text: str) -> list[str]:
 
 
 def knowledge_channels(skill_text: str, reference_files: list[Path]) -> list[str]:
-    lower = skill_text.lower()
     channels: list[str] = []
     checks = {
         "trigger_and_scope": ("when to use", "use when", "trigger", "scope"),
@@ -263,7 +262,7 @@ def knowledge_channels(skill_text: str, reference_files: list[Path]) -> list[str
         "worked_examples": ("example", "```"),
     }
     for channel, signals in checks.items():
-        if any(signal in lower for signal in signals):
+        if any(re.search(re.escape(signal), skill_text, re.IGNORECASE) for signal in signals):
             channels.append(channel)
     if reference_files:
         channels.append("references")
@@ -271,8 +270,7 @@ def knowledge_channels(skill_text: str, reference_files: list[Path]) -> list[str
 
 
 def match_flags(text: str, patterns: Iterable[str]) -> list[str]:
-    lower = text.lower()
-    return [pattern for pattern in patterns if re.search(pattern, lower, re.IGNORECASE)]
+    return [pattern for pattern in patterns if re.search(pattern, text, re.IGNORECASE)]
 
 
 def code_file_record(path: Path, skill_root: Path) -> dict[str, Any]:
@@ -353,11 +351,10 @@ def code_assessment(
 
 
 def concern_families(text: str) -> list[str]:
-    lower = text.lower()
     return sorted(
         family
         for family, pattern_group in CONCERN_PATTERNS.items()
-        if any(re.search(pattern, lower, re.IGNORECASE) for pattern in pattern_group)
+        if any(re.search(pattern, text, re.IGNORECASE) for pattern in pattern_group)
     )
 
 
@@ -368,12 +365,12 @@ def recommended_shape(
     asset_count: int,
     code_recommendation: str,
 ) -> str:
-    lower = skill_text.lower()
-    has_workflow = bool(re.search(r"\b(workflow|pipeline|stage|handoff)\b", lower))
+    has_workflow = bool(re.search(r"\b(workflow|pipeline|stage|handoff)\b", skill_text, re.IGNORECASE))
     has_secondary_concern = bool(
         re.search(
             r"\b(api|database|dataset|model|visualization|report|output|service|package)\b",
-            lower,
+            skill_text,
+            re.IGNORECASE,
         )
     )
     has_multiple_artifact_kinds = script_count > 0 and asset_count > 0 and reference_count > 0

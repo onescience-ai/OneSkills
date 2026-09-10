@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Materialize selected scientific-agent-skills as OneScience primitives.
 
-This helper is intentionally conservative: it copies read-only knowledge files
-and writes primitive metadata/contracts. It never executes source skill code and
-does not promote scripts into execution assets.
+This helper is intentionally conservative: it copies read-only knowledge files,
+optionally preserves source scripts/templates as inert payloads, and writes
+primitive metadata/contracts. It never executes source skill code and does not
+promote scripts into execution assets.
 """
 
 from __future__ import annotations
@@ -438,6 +439,43 @@ def copy_references(skill_root: Path, primitive_root: Path) -> list[dict[str, An
     return records
 
 
+def copy_source_payloads(skill_root: Path, primitive_root: Path) -> list[dict[str, Any]]:
+    payload_root = primitive_root / "source_payload"
+    records: list[dict[str, Any]] = []
+    for folder in ("scripts", "assets"):
+        source_base = skill_root / folder
+        if not source_base.exists():
+            continue
+        target_base = payload_root / folder
+        target_base.mkdir(parents=True, exist_ok=True)
+        for source in sorted(path for path in source_base.rglob("*") if path.is_file()):
+            relative_source = source.relative_to(source_base)
+            if source.is_symlink() or any(part.startswith(".") for part in relative_source.parts):
+                continue
+            target = target_base / relative_source
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, target)
+            relative_target = target.relative_to(primitive_root).as_posix()
+            records.append(
+                {
+                    "path": relative_target,
+                    "kind": "source_script" if folder == "scripts" else "source_asset",
+                    "title": clean_title(source),
+                    "purpose": (
+                        "Preserved source script for later contract review and possible executor promotion."
+                        if folder == "scripts"
+                        else "Preserved source asset or template for later primitive binding review."
+                    ),
+                    "source": f"scientific-agent-skills/skills/{skill_root.name}/{folder}/{relative_source.as_posix()}",
+                    "sha256": sha256_file(target),
+                    "media_type": media_type_for(target),
+                    "status": "preserved",
+                    "execution_status": "not_whitelisted",
+                }
+            )
+    return records
+
+
 def media_type_for(path: Path) -> str:
     suffix = path.suffix.lower()
     return {
@@ -449,6 +487,10 @@ def media_type_for(path: Path) -> str:
         ".csv": "text/csv",
         ".tsv": "text/tab-separated-values",
         ".py": "text/x-python",
+        ".sh": "text/x-shellscript",
+        ".tex": "application/x-tex",
+        ".bst": "application/x-bibtex-style",
+        ".html": "text/html",
     }.get(suffix, "application/octet-stream")
 
 
@@ -485,9 +527,11 @@ def build_metadata(
     plan: PrimitivePlan,
     source_frontmatter: dict[str, Any],
     knowledge_assets: list[dict[str, Any]],
+    source_payloads: list[dict[str, Any]],
     counts: dict[str, int],
     *,
     copied_knowledge_references: bool,
+    copied_source_payloads: bool,
 ) -> dict[str, Any]:
     version = "1.0.0"
     source_version = extract_source_version(source_frontmatter.get("_frontmatter_text"))
@@ -509,15 +553,18 @@ def build_metadata(
             "distilled_from_version": source_version,
             "distillation_status": "resource_only",
             "copied_knowledge_references": copied_knowledge_references,
+            "copied_source_payloads": copied_source_payloads,
             "copied_execution_assets": False,
             "source_file_counts": counts,
         },
         "knowledge_assets": knowledge_assets,
+        "source_payloads": source_payloads,
         "description": description,
         "tags": list(plan.tags),
         "capabilities": [
             f"Recall source-grounded workflow and API guidance for {plan.skill}.",
             "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+            "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
             "Route execution to a reviewed domain executor or future execution asset when computation is required.",
         ],
         "requirements": [
@@ -527,6 +574,7 @@ def build_metadata(
         ],
         "contracts": {
             "resource_output": "resource_retrieval_result",
+            "source_payload_policy": "metadata_indexed_inert_copy",
             "execution_asset_policy": "none",
         },
     }
@@ -537,6 +585,7 @@ def build_spec(
     source_frontmatter: dict[str, Any],
     body: str,
     knowledge_assets: list[dict[str, Any]],
+    source_payloads: list[dict[str, Any]],
     counts: dict[str, int],
 ) -> str:
     headings = extract_headings(body)
@@ -546,11 +595,15 @@ def build_spec(
     asset_lines = "\n".join(
         f"- `{asset['path']}`: {asset['title']}" for asset in knowledge_assets
     ) or "- No reference files were bundled in the source skill."
+    payload_lines = "\n".join(
+        f"- `{payload['path']}` ({payload['kind']}): {payload['title']}"
+        for payload in source_payloads
+    ) or "- No source scripts or non-reference assets were copied in this batch."
     return f"""# architecture_overview
 
 {description}
 
-This primitive is distilled from the source Agent Skill `{plan.skill}`. It is a planning and retrieval primitive, not a direct copy of the source skill runtime.
+This primitive is distilled from the source Agent Skill `{plan.skill}`. It is a planning and retrieval primitive. Preserved source payloads, if present, are inert copies for review and later binding; they are not executable runtime.
 
 # input_schema
 
@@ -574,9 +627,15 @@ Expected outputs include source-grounded workflow guidance, relevant parameters 
 
 All listed references are read-only knowledge assets indexed in `metadata.json` with SHA-256 values.
 
+# source_payloads
+
+{payload_lines}
+
+Source payloads are indexed in `metadata.json.source_payloads` with SHA-256 values. They preserve source scripts, templates, and static files for later migration review, but they do not grant execution permission.
+
 # execution_policy
 
-No source scripts were promoted in this batch. Source-side file counts were: references={counts['references']}, scripts={counts['scripts']}, assets={counts['assets']}. Scripts and non-reference assets remain migration candidates until an explicit input/output contract, dependency policy, side-effect boundary, and execution-asset allowlist are added.
+No source scripts were promoted as execution assets in this batch. Source-side file counts were: references={counts['references']}, scripts={counts['scripts']}, assets={counts['assets']}. Preserved source payloads remain migration candidates until an explicit input/output contract, dependency policy, side-effect boundary, and execution-asset allowlist are added.
 
 # implementation_risks
 
@@ -610,6 +669,8 @@ def build_usage(plan: PrimitivePlan, body: str) -> str:
 Use `content_request: "参考资料"` to retrieve the indexed source references. Use `content_request: "完整参考资料"` only when detailed source text is needed.
 
 This primitive does not expose execution assets yet. Source scripts remain candidates and must pass allowlist, hash, dependency, and side-effect review before promotion.
+
+If `metadata.json.source_payloads` is present, treat those files as preserved migration material only. They can inform future executor design, but they must not be run or imported until promoted through an explicit execution-asset whitelist.
 """
 
 
@@ -645,6 +706,7 @@ def materialize(
     *,
     force: bool,
     copy_knowledge_references: bool,
+    copy_source_payloads_enabled: bool,
 ) -> dict[str, Any]:
     skill_root = source_root / "skills" / plan.skill
     skill_md = skill_root / "SKILL.md"
@@ -660,6 +722,7 @@ def materialize(
 
     frontmatter, body = parse_frontmatter(skill_md)
     knowledge_assets = copy_references(skill_root, primitive_root) if copy_knowledge_references else []
+    source_payloads = copy_source_payloads(skill_root, primitive_root) if copy_source_payloads_enabled else []
     counts = source_file_counts(skill_root)
 
     write_json(
@@ -668,11 +731,13 @@ def materialize(
             plan,
             frontmatter,
             knowledge_assets,
+            source_payloads,
             counts,
             copied_knowledge_references=copy_knowledge_references,
+            copied_source_payloads=copy_source_payloads_enabled,
         ),
     )
-    write_text(primitive_root / "spec.md", build_spec(plan, frontmatter, body, knowledge_assets, counts))
+    write_text(primitive_root / "spec.md", build_spec(plan, frontmatter, body, knowledge_assets, source_payloads, counts))
     write_text(primitive_root / "usage.md", build_usage(plan, body))
     write_text(primitive_root / "workflow_planning.md", build_workflow(plan))
 
@@ -681,7 +746,9 @@ def materialize(
         "primitive_id": plan.primitive_id,
         "path": str(primitive_root.relative_to(assets_root).as_posix()),
         "knowledge_assets": len(knowledge_assets),
+        "source_payloads": len(source_payloads),
         "copied_knowledge_references": copy_knowledge_references,
+        "copied_source_payloads": copy_source_payloads_enabled,
         "source_file_counts": counts,
     }
 
@@ -765,6 +832,12 @@ def main() -> int:
         default=True,
         help="copy source references into primitive knowledge_assets",
     )
+    parser.add_argument(
+        "--copy-source-payloads",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="copy source scripts/assets into inert source_payload records",
+    )
     parser.add_argument("--force", action="store_true", help="overwrite primitive metadata/docs and copied references")
     parser.add_argument("--dry-run", action="store_true", help="print selected plans without writing")
     args = parser.parse_args()
@@ -784,6 +857,7 @@ def main() -> int:
             assets_root,
             force=args.force,
             copy_knowledge_references=args.copy_knowledge_references,
+            copy_source_payloads_enabled=args.copy_source_payloads,
         )
         for plan in plans
     ]

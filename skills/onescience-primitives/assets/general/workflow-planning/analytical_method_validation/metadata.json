@@ -1,0 +1,103 @@
+{
+  "name": "analytical_method_validation",
+  "primitive_id": "general.workflow-planning.analytical_method_validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "category": "workflow-planning",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/analytical-method-validation",
+    "distilled_from_version": "1.0",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 6,
+      "scripts": 8,
+      "assets": 2
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/compendial-and-clsi.md",
+      "title": "Compendial And Clsi",
+      "purpose": "Extended source guidance for compendial and clsi.",
+      "source": "scientific-agent-skills/skills/analytical-method-validation/references/compendial-and-clsi.md",
+      "sha256": "8825d6390cc96fe28437c83548811a1ae0dddbdc534c263d5d20e92951c7108d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/framework-selection.md",
+      "title": "Framework Selection",
+      "purpose": "Extended source guidance for framework selection.",
+      "source": "scientific-agent-skills/skills/analytical-method-validation/references/framework-selection.md",
+      "sha256": "05b07ce6206bdddee9225fa410d333232b7618bfaf99cf237d80ae3dffcd9564",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/ich-m10-bioanalytical.md",
+      "title": "Ich M10 Bioanalytical",
+      "purpose": "Extended source guidance for ich m10 bioanalytical.",
+      "source": "scientific-agent-skills/skills/analytical-method-validation/references/ich-m10-bioanalytical.md",
+      "sha256": "bb25701919290249ac63674dbf07a9f14b8dee7d8f3fcc266abd5b34325548ce",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/ich-q2r2.md",
+      "title": "Ich Q2R2",
+      "purpose": "Extended source guidance for ich q2r2.",
+      "source": "scientific-agent-skills/skills/analytical-method-validation/references/ich-q2r2.md",
+      "sha256": "255797c9cd0326250f3f20b59b827d71f174d89253359226b2e5917d160ef94d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/source-ledger.md",
+      "title": "Source Ledger",
+      "purpose": "Extended source guidance for source ledger.",
+      "source": "scientific-agent-skills/skills/analytical-method-validation/references/source-ledger.md",
+      "sha256": "79b326dc761642a7d4312cd92b70fca908039db43c58209d0d44514f38137a9b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/statistics.md",
+      "title": "Statistics",
+      "purpose": "Extended source guidance for statistics.",
+      "source": "scientific-agent-skills/skills/analytical-method-validation/references/statistics.md",
+      "sha256": "973a3eb2eef2ceda3024f0afcccfd160b8d8ee923288521421a533bc262b2c7b",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Analytical method validation primitive for planning, executing, and documenting validation, verification, transfer, and comparison of assays under ICH Q2(R2), Q14, USP, ICH M10, CLSI EP, and ISO/IEC 17025.",
+  "tags": [
+    "method-validation",
+    "validation-protocol",
+    "accuracy-precision",
+    "detection-limit",
+    "traceability"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for analytical-method-validation.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

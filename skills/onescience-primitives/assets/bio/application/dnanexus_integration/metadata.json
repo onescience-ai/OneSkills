@@ -1,0 +1,157 @@
+{
+  "name": "dnanexus_integration",
+  "primitive_id": "bio.application.dnanexus_integration",
+  "type": "application",
+  "domain": "bio",
+  "category": "application",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/dnanexus-integration",
+    "distilled_from_version": "2.0",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 9,
+      "scripts": 2,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/app-development.md",
+      "title": "App Development",
+      "purpose": "Extended source guidance for app development.",
+      "source": "scientific-agent-skills/skills/dnanexus-integration/references/app-development.md",
+      "sha256": "abf7e59400d98ccdcd1114465c51ae3a87714c2bcd05e3b7739a045c59c34b35",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/authentication.md",
+      "title": "Authentication",
+      "purpose": "Extended source guidance for authentication.",
+      "source": "scientific-agent-skills/skills/dnanexus-integration/references/authentication.md",
+      "sha256": "28a5ea3914680ee61d50b01ce2c25edd444d8f85cf6861805f4ebaf8d4825206",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/configuration.md",
+      "title": "Configuration",
+      "purpose": "Extended source guidance for configuration.",
+      "source": "scientific-agent-skills/skills/dnanexus-integration/references/configuration.md",
+      "sha256": "a1a70752e4860d25b68d611063bf49dc4e5af85d66e33a4c3b33831c78301bab",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/data-operations.md",
+      "title": "Data Operations",
+      "purpose": "Extended source guidance for data operations.",
+      "source": "scientific-agent-skills/skills/dnanexus-integration/references/data-operations.md",
+      "sha256": "a7668a1ee812b63bab95a058c2b04085644aae0261b27a0786540a4916fe8893",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/job-execution.md",
+      "title": "Job Execution",
+      "purpose": "Extended source guidance for job execution.",
+      "source": "scientific-agent-skills/skills/dnanexus-integration/references/job-execution.md",
+      "sha256": "d195fc223113362f3b996c11ce325dec155699d9fa0c35f9da1be6c061487a77",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/operations-and-troubleshooting.md",
+      "title": "Operations And Troubleshooting",
+      "purpose": "Extended source guidance for operations and troubleshooting.",
+      "source": "scientific-agent-skills/skills/dnanexus-integration/references/operations-and-troubleshooting.md",
+      "sha256": "43b1c93975533a61e76d7e1a57693dcc4bc76eb7ba6bd684dabb6acf1081cc93",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/python-sdk.md",
+      "title": "Python Sdk",
+      "purpose": "Extended source guidance for python sdk.",
+      "source": "scientific-agent-skills/skills/dnanexus-integration/references/python-sdk.md",
+      "sha256": "041e7adc5578b3405f05bb5b752545a40a1beda989962892560d78a4fe9bb0b4",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Sources",
+      "purpose": "Extended source guidance for sources.",
+      "source": "scientific-agent-skills/skills/dnanexus-integration/references/sources.md",
+      "sha256": "956445e0e47c4b258d6a99eccdf4c1744661b5d80bbd6f7c856207a877f9d4ef",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/workflow-languages.md",
+      "title": "Workflow Languages",
+      "purpose": "Extended source guidance for workflow languages.",
+      "source": "scientific-agent-skills/skills/dnanexus-integration/references/workflow-languages.md",
+      "sha256": "c96923a3a037532695bcf40e4a27555d3041d1839ad4ef0f6334f2eab2fdeed9",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/inspect_dxpy.py",
+      "kind": "source_script",
+      "title": "Inspect Dxpy",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/dnanexus-integration/scripts/inspect_dxpy.py",
+      "sha256": "f8dbd2a62ec7dfa647c067f5e95efd62744f30f2bef1fb3896f16c6f5df4c68a",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/validate_dxapp.py",
+      "kind": "source_script",
+      "title": "Validate Dxapp",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/dnanexus-integration/scripts/validate_dxapp.py",
+      "sha256": "4b0a326cc8bd12276a3b00ee6f7cfaf818bbb70d5e00467569396e51d1e35f29",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "DNAnexus integration primitive for dx CLI and dxpy automation, project and file management, app and workflow execution, and Nextflow import.",
+  "tags": [
+    "dnanexus",
+    "dx",
+    "dxpy",
+    "workflow-execution",
+    "genomics-platform"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for dnanexus-integration.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

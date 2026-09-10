@@ -1,0 +1,139 @@
+{
+  "name": "neuropixels_analysis",
+  "primitive_id": "bio.workflow-planning.neuropixels_analysis",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "category": "workflow-planning",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/neuropixels-analysis",
+    "distilled_from_version": "2.3",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 10,
+      "scripts": 6,
+      "assets": 1
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/AI_CURATION.md",
+      "title": "Ai Curation",
+      "purpose": "Extended source guidance for ai curation.",
+      "source": "scientific-agent-skills/skills/neuropixels-analysis/references/AI_CURATION.md",
+      "sha256": "65759e06f73d9f349143d33ae71292f5de8e800caddbe189398e989787d1db3f",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/ANALYSIS.md",
+      "title": "Analysis",
+      "purpose": "Extended source guidance for analysis.",
+      "source": "scientific-agent-skills/skills/neuropixels-analysis/references/ANALYSIS.md",
+      "sha256": "c1160e554477af40d2a6f5c6eb5d4ad3436a6a52830870114df42304e2df84b0",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/api_reference.md",
+      "title": "Api Reference",
+      "purpose": "Extended source guidance for api reference.",
+      "source": "scientific-agent-skills/skills/neuropixels-analysis/references/api_reference.md",
+      "sha256": "24fdd4a99b6b1dd5b4c6fb49a7d6fec522c86c6c9652d33dcba2b9da1d7a5994",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/AUTOMATED_CURATION.md",
+      "title": "Automated Curation",
+      "purpose": "Extended source guidance for automated curation.",
+      "source": "scientific-agent-skills/skills/neuropixels-analysis/references/AUTOMATED_CURATION.md",
+      "sha256": "c620c4a696d6d59d59ec9aedeab2cb8b82af4477f7778e47906d56a3d42520e5",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/MOTION_CORRECTION.md",
+      "title": "Motion Correction",
+      "purpose": "Extended source guidance for motion correction.",
+      "source": "scientific-agent-skills/skills/neuropixels-analysis/references/MOTION_CORRECTION.md",
+      "sha256": "02237d378c95ff5f2ecd01924383bd65c17e0752592af3a27afaaf5f6748fd31",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/plotting_guide.md",
+      "title": "Plotting Guide",
+      "purpose": "Extended source guidance for plotting guide.",
+      "source": "scientific-agent-skills/skills/neuropixels-analysis/references/plotting_guide.md",
+      "sha256": "82f5b39f5be85964a58c6ceeb2bd322cb359c6b352af0aaa01dbeb8b999f7d96",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/PREPROCESSING.md",
+      "title": "Preprocessing",
+      "purpose": "Extended source guidance for preprocessing.",
+      "source": "scientific-agent-skills/skills/neuropixels-analysis/references/PREPROCESSING.md",
+      "sha256": "6dc3c174da3d9433d401bbd6aeab214e82a380f4566f767de24cf02ca0eb984f",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/QUALITY_METRICS.md",
+      "title": "Quality Metrics",
+      "purpose": "Extended source guidance for quality metrics.",
+      "source": "scientific-agent-skills/skills/neuropixels-analysis/references/QUALITY_METRICS.md",
+      "sha256": "4a7d35ebddf63ba44fea91a7caaa8bc320d5093d2f450098155ea6d31da48189",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/SPIKE_SORTING.md",
+      "title": "Spike Sorting",
+      "purpose": "Extended source guidance for spike sorting.",
+      "source": "scientific-agent-skills/skills/neuropixels-analysis/references/SPIKE_SORTING.md",
+      "sha256": "d4d43ebaa8154d596dc75feceba082f41abc23159d9a541aa48f652d258e94b6",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/standard_workflow.md",
+      "title": "Standard Workflow",
+      "purpose": "Extended source guidance for standard workflow.",
+      "source": "scientific-agent-skills/skills/neuropixels-analysis/references/standard_workflow.md",
+      "sha256": "62aa11667c5c596542d5cdac07ab1ea8710f201250c3b31b6ad00de3b888beca",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Neuropixels analysis primitive for loading SpikeGLX, Open Ephys, or NWB recordings, preprocessing, motion correction, spike sorting, quality metrics, and unit curation.",
+  "tags": [
+    "neuropixels",
+    "spike-sorting",
+    "extracellular-electrophysiology",
+    "motion-correction",
+    "quality-metrics"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for neuropixels-analysis.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

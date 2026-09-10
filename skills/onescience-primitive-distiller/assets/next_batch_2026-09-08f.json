@@ -1,0 +1,44 @@
+{
+  "plans": [
+    {
+      "skill": "dnanexus-integration",
+      "domain": "bio",
+      "category": "application",
+      "name": "dnanexus_integration",
+      "primitive_id": "bio.application.dnanexus_integration",
+      "type": "application",
+      "description": "DNAnexus integration primitive for dx CLI and dxpy automation, project and file management, app and workflow execution, and Nextflow import.",
+      "tags": ["dnanexus", "dx", "dxpy", "workflow-execution", "genomics-platform"]
+    },
+    {
+      "skill": "markitdown",
+      "domain": "general",
+      "category": "output-format",
+      "name": "markitdown",
+      "primitive_id": "general.output-format.markitdown",
+      "type": "output-format",
+      "description": "MarkItDown output-format primitive for trusted local document-to-Markdown conversion, stream conversion, plugin workflows, OCR extraction, and batch ingestion.",
+      "tags": ["markitdown", "markdown", "document-conversion", "ocr", "ingestion"]
+    },
+    {
+      "skill": "arboreto",
+      "domain": "bio",
+      "category": "tools",
+      "name": "arboreto",
+      "primitive_id": "bio.tools.arboreto",
+      "type": "tool",
+      "description": "Arboreto primitive for gene regulatory network inference with GRNBoost2 and GENIE3, scalable Dask execution, and transcriptomics workflows.",
+      "tags": ["arboreto", "grn", "gene-regulatory-network", "dask", "transcriptomics"]
+    },
+    {
+      "skill": "timesfm-forecasting",
+      "domain": "general",
+      "category": "tools",
+      "name": "timesfm_forecasting",
+      "primitive_id": "general.tools.timesfm_forecasting",
+      "type": "tool",
+      "description": "TimesFM forecasting primitive for zero-shot univariate time-series forecasting, preflight system checks, interval outputs, and batch prediction.",
+      "tags": ["timesfm", "forecasting", "time-series", "preflight", "prediction-intervals"]
+    }
+  ]
+}

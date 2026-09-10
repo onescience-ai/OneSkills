@@ -1,0 +1,44 @@
+{
+  "plans": [
+    {
+      "skill": "latchbio-integration",
+      "domain": "bio",
+      "category": "application",
+      "name": "latchbio_integration",
+      "primitive_id": "bio.application.latchbio_integration",
+      "type": "application",
+      "description": "LatchBio integration primitive for Python workflow authoring, data staging, registry operations, launch metadata, remote registration, and run monitoring.",
+      "tags": ["latch", "workflow-registration", "latch-data", "nextflow", "snakemake"]
+    },
+    {
+      "skill": "shap",
+      "domain": "general",
+      "category": "tools",
+      "name": "shap",
+      "primitive_id": "general.tools.shap",
+      "type": "tool",
+      "description": "SHAP primitive for model explanation, masker selection, additivity checks, multi-output attributions, and local or global attribution plots.",
+      "tags": ["shap", "model-explainability", "feature-attribution", "maskers", "plots"]
+    },
+    {
+      "skill": "etetoolkit",
+      "domain": "bio",
+      "category": "tools",
+      "name": "etetoolkit",
+      "primitive_id": "bio.tools.etetoolkit",
+      "type": "tool",
+      "description": "ETE toolkit primitive for tree I/O, topology manipulation, subtree comparison, taxonomy workflows, SmartView exploration, and tree rendering.",
+      "tags": ["etetoolkit", "phylogenetics", "tree-manipulation", "taxonomy", "rendering"]
+    },
+    {
+      "skill": "flowio",
+      "domain": "bio",
+      "category": "tools",
+      "name": "flowio",
+      "primitive_id": "bio.tools.flowio",
+      "type": "tool",
+      "description": "FlowIO primitive for FCS metadata inspection, event extraction, file parsing and writing, and preprocessing-aware flow cytometry I/O.",
+      "tags": ["flowio", "flow-cytometry", "FCS", "event-extraction", "metadata"]
+    }
+  ]
+}

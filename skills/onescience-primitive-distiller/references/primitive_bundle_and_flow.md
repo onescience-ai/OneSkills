@@ -38,7 +38,15 @@ Every copied reference should be registered in `metadata.json.knowledge_assets` 
 
 They may only be promoted when the source path, license, dependency surface, side effects, and hashes are reviewed and the primitive explicitly declares an execution asset policy.
 
-### 4. Consumer dependency layer
+### 4. Source payload layer
+
+`source_payload/` is an optional preservation layer for scripts, templates, and static files copied from a source skill.
+
+These files are indexed in `metadata.json.source_payloads` with relative path, source locator, SHA-256, media type, and `execution_status: not_whitelisted`. They preserve migration material for future executor work, but they are inert by default and must not be run, imported, or returned as `execution_assets`.
+
+Promoting any source payload into `scripts/` or an execution whitelist requires a separate review of inputs, outputs, dependencies, side effects, and validation checks.
+
+### 5. Consumer dependency layer
 
 When another primitive depends on the distilled capability, record it through:
 
@@ -56,8 +64,9 @@ That keeps integration auditable without creating a permanent bridge skill.
 3. Distill the source knowledge into the core bundle.
 4. Normalize `primitive_id`, provider metadata, and provenance.
 5. Decide whether references or execution assets should be copied.
-6. Connect consumers that already depend on the capability.
-7. Return a result that records what was created, what was withheld, and what still needs review.
+6. Optionally preserve source scripts/templates as inert `source_payloads` when the next migration step needs them.
+7. Connect consumers that already depend on the capability.
+8. Return a result that records what was created, what was withheld, and what still needs review.
 
 ## Decision Rules
 
@@ -84,6 +93,7 @@ skills/onescience-primitives/assets/<domain>/<category>/<primitive_name>/
   usage.md
   workflow_planning.md
   references/          # optional
+  source_payload/      # optional, inert source scripts/templates for review
   scripts/             # optional, only after review
 ```
 

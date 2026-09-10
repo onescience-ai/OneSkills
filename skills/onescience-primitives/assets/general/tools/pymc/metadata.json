@@ -1,0 +1,143 @@
+{
+  "name": "pymc",
+  "primitive_id": "general.tools.pymc",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/pymc",
+    "distilled_from_version": "1.3",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 5,
+      "scripts": 2,
+      "assets": 2
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/distributions.md",
+      "title": "Distributions",
+      "purpose": "Extended source guidance for distributions.",
+      "source": "scientific-agent-skills/skills/pymc/references/distributions.md",
+      "sha256": "f10dd0af8779ca4860293647feb01fa02219b6aec7383644814be891b74fb05a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/model_patterns.md",
+      "title": "Model Patterns",
+      "purpose": "Extended source guidance for model patterns.",
+      "source": "scientific-agent-skills/skills/pymc/references/model_patterns.md",
+      "sha256": "606522f8805fdf6c9b5eea4993dd48ef27c2d635a84112355043f6e3dad1c48c",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sampling_inference.md",
+      "title": "Sampling Inference",
+      "purpose": "Extended source guidance for sampling inference.",
+      "source": "scientific-agent-skills/skills/pymc/references/sampling_inference.md",
+      "sha256": "089d13246f2e48444b1be62c25aa1da91a6a18049cc3024a4f763be9960cb8ed",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/standard_workflow.md",
+      "title": "Standard Workflow",
+      "purpose": "Extended source guidance for standard workflow.",
+      "source": "scientific-agent-skills/skills/pymc/references/standard_workflow.md",
+      "sha256": "60d0874b060c798e36162553dee9b09233c9b1522ecc1230bd46c23a5ddc6422",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/workflows.md",
+      "title": "Workflows",
+      "purpose": "Extended source guidance for workflows.",
+      "source": "scientific-agent-skills/skills/pymc/references/workflows.md",
+      "sha256": "2f1322b3e193e7d67dfccf233176f9c1fa10160e5ccbeac998f7ff8b4fdfcaec",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/model_comparison.py",
+      "kind": "source_script",
+      "title": "Model Comparison",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pymc/scripts/model_comparison.py",
+      "sha256": "b0160e058654df48cf08ebfd96426c44a6cd8a5f34cefcb0f4331f6d610ac6df",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/model_diagnostics.py",
+      "kind": "source_script",
+      "title": "Model Diagnostics",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pymc/scripts/model_diagnostics.py",
+      "sha256": "95dca9203c1cde89412e0a9feaf749c5d2d5193056bdcd50569d44709748550a",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/assets/hierarchical_model_template.py",
+      "kind": "source_asset",
+      "title": "Hierarchical Model Template",
+      "purpose": "Preserved source asset or template for later primitive binding review.",
+      "source": "scientific-agent-skills/skills/pymc/assets/hierarchical_model_template.py",
+      "sha256": "487a6f47f78cdb7daea115e57d9c886d356a0f8a76e944d4c8f702ebade57b5e",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/assets/linear_regression_template.py",
+      "kind": "source_asset",
+      "title": "Linear Regression Template",
+      "purpose": "Preserved source asset or template for later primitive binding review.",
+      "source": "scientific-agent-skills/skills/pymc/assets/linear_regression_template.py",
+      "sha256": "843dda9b920c3a4ffcc57ea3ae58b9e3d6238dd55edbdbb898108c4aa07749be",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "PyMC primitive for Bayesian modeling, hierarchical models, MCMC, variational inference, model comparison, posterior checks, and probabilistic programming workflows.",
+  "tags": [
+    "pymc",
+    "bayesian-modeling",
+    "mcmc",
+    "variational-inference",
+    "posterior-checks"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for pymc.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

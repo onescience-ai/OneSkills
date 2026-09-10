@@ -1,0 +1,54 @@
+{
+  "plans": [
+    {
+      "skill": "scientific-brainstorming",
+      "domain": "general",
+      "category": "workflow-planning",
+      "name": "scientific_brainstorming",
+      "primitive_id": "general.workflow-planning.scientific_brainstorming",
+      "type": "workflow-planning",
+      "description": "Scientific brainstorming primitive for evidence-aware ideation, independent generation, structured discussion, explicit assumptions, adversarial review, and decision logs.",
+      "tags": ["brainstorming", "ideation", "decision-log", "evidence-review", "research-direction"]
+    },
+    {
+      "skill": "market-research-reports",
+      "domain": "general",
+      "category": "application",
+      "name": "market_research_reports",
+      "primitive_id": "general.application.market_research_reports",
+      "type": "application",
+      "description": "Market research reports primitive for evidence-traceable report scaffolds, market sizing, forecast sensitivity, competitor matrices, claims ledgers, and source-backed narrative assembly.",
+      "tags": ["market-research", "reports", "market-sizing", "forecasting", "evidence-ledger"]
+    },
+    {
+      "skill": "pufferlib",
+      "domain": "general",
+      "category": "tools",
+      "name": "pufferlib",
+      "primitive_id": "general.tools.pufferlib",
+      "type": "tool",
+      "description": "PufferLib primitive for reinforcement-learning environments, vectorization, policy training, evaluation planning, and safe checkpoint review across published source lines.",
+      "tags": ["pufferlib", "reinforcement-learning", "vectorization", "checkpoints", "evaluation"]
+    },
+    {
+      "skill": "pymc",
+      "domain": "general",
+      "category": "tools",
+      "name": "pymc",
+      "primitive_id": "general.tools.pymc",
+      "type": "tool",
+      "description": "PyMC primitive for Bayesian modeling, hierarchical models, MCMC, variational inference, model comparison, posterior checks, and probabilistic programming workflows.",
+      "tags": ["pymc", "bayesian-modeling", "mcmc", "variational-inference", "posterior-checks"]
+    },
+    {
+      "skill": "stable-baselines3",
+      "domain": "general",
+      "category": "tools",
+      "name": "stable_baselines3",
+      "primitive_id": "general.tools.stable_baselines3",
+      "type": "tool",
+      "description": "Stable-Baselines3 primitive for standard reinforcement-learning algorithms, Gymnasium environments, and reproducible single-agent training workflows.",
+      "tags": ["stable-baselines3", "reinforcement-learning", "gymnasium", "training", "ppo"]
+    }
+  ]
+}

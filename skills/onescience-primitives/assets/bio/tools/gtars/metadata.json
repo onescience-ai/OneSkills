@@ -1,0 +1,196 @@
+{
+  "name": "gtars",
+  "primitive_id": "bio.tools.gtars",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/gtars",
+    "distilled_from_version": "1.2",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 6,
+      "scripts": 8,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/cli.md",
+      "title": "Cli",
+      "purpose": "Extended source guidance for cli.",
+      "source": "scientific-agent-skills/skills/gtars/references/cli.md",
+      "sha256": "997e9157a1fff63fd731432e452a2a3d4bce8e3b64b22fd3c4f430d3676f65de",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/coverage.md",
+      "title": "Coverage",
+      "purpose": "Extended source guidance for coverage.",
+      "source": "scientific-agent-skills/skills/gtars/references/coverage.md",
+      "sha256": "95256712e04bb5f4be657044081fdb0925494156bba37a6ae9caca4389ea7317",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/overlap.md",
+      "title": "Overlap",
+      "purpose": "Extended source guidance for overlap.",
+      "source": "scientific-agent-skills/skills/gtars/references/overlap.md",
+      "sha256": "669af0b0a355fbd7463df990e140bff1535a0f08e2e30199e30b2b3e5bc6cfe4",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/python-api.md",
+      "title": "Python Api",
+      "purpose": "Extended source guidance for python api.",
+      "source": "scientific-agent-skills/skills/gtars/references/python-api.md",
+      "sha256": "f8a0de9e8bcb9b30ef2c69f2e712650c0afe4cf5b9fbf62c81d87a460393b96e",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/refget.md",
+      "title": "Refget",
+      "purpose": "Extended source guidance for refget.",
+      "source": "scientific-agent-skills/skills/gtars/references/refget.md",
+      "sha256": "6138a746ce372e4c94658565e78eb93c09d865fb03a6c31bf1df8d6ff84a8e63",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/tokenizers.md",
+      "title": "Tokenizers",
+      "purpose": "Extended source guidance for tokenizers.",
+      "source": "scientific-agent-skills/skills/gtars/references/tokenizers.md",
+      "sha256": "7967314a038531f0ac1e5b916cddc2cad4933416ce573511862a29d32baa5429",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/__init__.py",
+      "kind": "source_script",
+      "title": "  Init  ",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/gtars/scripts/__init__.py",
+      "sha256": "ad3f0f0e13877aa22ac08ee94dca3c1a353a0c43b9a6e516a653698881e6970d",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/_common.py",
+      "kind": "source_script",
+      "title": " Common",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/gtars/scripts/_common.py",
+      "sha256": "9c12a0951f7006ee1ad959a0933e3b5ac8a53de121ca125e96f60d71ec0769f2",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/artifact_inspector.py",
+      "kind": "source_script",
+      "title": "Artifact Inspector",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/gtars/scripts/artifact_inspector.py",
+      "sha256": "ac7d631fac18addee45732e148654e8a84cd439c2a5b834c98834fc9bc70ccfc",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/bed_validator.py",
+      "kind": "source_script",
+      "title": "Bed Validator",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/gtars/scripts/bed_validator.py",
+      "sha256": "1ab6f216a7a3047a8b0612990e7485dfe147c96a14d7c54153bde0f7ee47e791",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/coverage_preflight.py",
+      "kind": "source_script",
+      "title": "Coverage Preflight",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/gtars/scripts/coverage_preflight.py",
+      "sha256": "7462afe4b85c4b71cdc23c38f0f098e2e25f5899f2d361bc12437deb6926a417",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/execution_plan.py",
+      "kind": "source_script",
+      "title": "Execution Plan",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/gtars/scripts/execution_plan.py",
+      "sha256": "4ef4bd4dbfb6ad15dbcc76d3ca111d5152f2e4c7c4e440fcead13d1e0d9b2496",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/refget_digest_plan.py",
+      "kind": "source_script",
+      "title": "Refget Digest Plan",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/gtars/scripts/refget_digest_plan.py",
+      "sha256": "c804bfa7796c6b8a39a73928a9dde274df6073ccce4d7c2aab7f57725d3dd299",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/tokenizer_manifest.py",
+      "kind": "source_script",
+      "title": "Tokenizer Manifest",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/gtars/scripts/tokenizer_manifest.py",
+      "sha256": "b756121edd2bc9652edb6c4242a33bdef33de3550183cf6cf8d23733817b896a",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "Gtars primitive for genomic interval models, set algebra, overlaps and counts, consensus and coverage, tokenization, fragment processing, and refget/BEDbase planning.",
+  "tags": [
+    "gtars",
+    "genomic-intervals",
+    "set-algebra",
+    "coverage",
+    "refget"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for gtars.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

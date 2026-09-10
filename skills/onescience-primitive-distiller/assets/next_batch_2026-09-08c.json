@@ -1,0 +1,54 @@
+{
+  "plans": [
+    {
+      "skill": "paper-lookup",
+      "domain": "general",
+      "category": "databases",
+      "name": "public_database_lookup",
+      "primitive_id": "general.databases.public_database_lookup",
+      "type": "database",
+      "description": "Public database lookup primitive for scholarly literature search, citation discovery, DOI and PMID resolution, open-access retrieval, and provenance-traceable result aggregation across academic APIs.",
+      "tags": ["papers", "literature-search", "citations", "doi", "open-access"]
+    },
+    {
+      "skill": "pytdc",
+      "domain": "bio",
+      "category": "tools",
+      "name": "pytdc",
+      "primitive_id": "bio.tools.pytdc",
+      "type": "tool",
+      "description": "PyTDC primitive for therapeutic data commons registry discovery, benchmark access, approved dataset splits, evaluator metrics, and bounded molecular-oracle workflows.",
+      "tags": ["pytdc", "benchmark", "therapeutics-data-commons", "dataset-splits", "metrics"]
+    },
+    {
+      "skill": "gtars",
+      "domain": "bio",
+      "category": "tools",
+      "name": "gtars",
+      "primitive_id": "bio.tools.gtars",
+      "type": "tool",
+      "description": "Gtars primitive for genomic interval models, set algebra, overlaps and counts, consensus and coverage, tokenization, fragment processing, and refget/BEDbase planning.",
+      "tags": ["gtars", "genomic-intervals", "set-algebra", "coverage", "refget"]
+    },
+    {
+      "skill": "bioservices",
+      "domain": "bio",
+      "category": "tools",
+      "name": "bioservices",
+      "primitive_id": "bio.tools.bioservices",
+      "type": "tool",
+      "description": "bioservices primitive for unified querying of multiple bioinformatics web services including UniProt, KEGG, ChEMBL, and Reactome with consistent API handling.",
+      "tags": ["bioservices", "web-api", "uniprot", "kegg", "reactome"]
+    },
+    {
+      "skill": "omero-integration",
+      "domain": "bio",
+      "category": "application",
+      "name": "omero_integration",
+      "primitive_id": "bio.application.omero_integration",
+      "type": "application",
+      "description": "OMERO integration primitive for microscopy inventory, metadata export, annotations, ROIs, rendering, and reviewed write workflows against OMERO.server and OMERO.web APIs.",
+      "tags": ["omero", "microscopy", "image-management", "annotations", "roi"]
+    }
+  ]
+}

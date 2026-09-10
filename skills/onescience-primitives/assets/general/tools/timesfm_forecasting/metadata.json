@@ -1,0 +1,139 @@
+{
+  "name": "timesfm_forecasting",
+  "primitive_id": "general.tools.timesfm_forecasting",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/timesfm-forecasting",
+    "distilled_from_version": "1.2",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 7,
+      "scripts": 2,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/api_reference.md",
+      "title": "Api Reference",
+      "purpose": "Extended source guidance for api reference.",
+      "source": "scientific-agent-skills/skills/timesfm-forecasting/references/api_reference.md",
+      "sha256": "69942b90d4b9979746955087cde76e3e6403f2a36e7680e4fca96ce37a3c0faf",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/data_preparation.md",
+      "title": "Data Preparation",
+      "purpose": "Extended source guidance for data preparation.",
+      "source": "scientific-agent-skills/skills/timesfm-forecasting/references/data_preparation.md",
+      "sha256": "d7f1209ff1134b71e8f65d3627461a9e81f7daabd3addd93b229fb2f8813526c",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/examples_and_validation.md",
+      "title": "Examples And Validation",
+      "purpose": "Extended source guidance for examples and validation.",
+      "source": "scientific-agent-skills/skills/timesfm-forecasting/references/examples_and_validation.md",
+      "sha256": "17bb0ade20f4edfb1b2a95c944df1f8bff203b2f0d5b7472d4c8876a3f603a62",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/output_and_config.md",
+      "title": "Output And Config",
+      "purpose": "Extended source guidance for output and config.",
+      "source": "scientific-agent-skills/skills/timesfm-forecasting/references/output_and_config.md",
+      "sha256": "04c82850a31e095b5aa4673c4a79eb60945a963ade741b6a47be795b6b4497b8",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/performance_tuning.md",
+      "title": "Performance Tuning",
+      "purpose": "Extended source guidance for performance tuning.",
+      "source": "scientific-agent-skills/skills/timesfm-forecasting/references/performance_tuning.md",
+      "sha256": "ea64143ae97a90263bdddb70eb7f0d73e244b9f4399fcfda4540d96702324b6d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/system_requirements.md",
+      "title": "System Requirements",
+      "purpose": "Extended source guidance for system requirements.",
+      "source": "scientific-agent-skills/skills/timesfm-forecasting/references/system_requirements.md",
+      "sha256": "a299f03a37e408a9ef461290394f4475cb661be0739db1df6bc9bfaf8771998a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/workflows.md",
+      "title": "Workflows",
+      "purpose": "Extended source guidance for workflows.",
+      "source": "scientific-agent-skills/skills/timesfm-forecasting/references/workflows.md",
+      "sha256": "166e59df894e8df90296f7719e73f3bbe9097c36da136fbe3f507af9270e8542",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/check_system.py",
+      "kind": "source_script",
+      "title": "Check System",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/timesfm-forecasting/scripts/check_system.py",
+      "sha256": "1ddc967b105522390e706a5ab83c6de9f173e276d11a96382cf954011031284a",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/forecast_csv.py",
+      "kind": "source_script",
+      "title": "Forecast Csv",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/timesfm-forecasting/scripts/forecast_csv.py",
+      "sha256": "b72119e1e43ed514e83e86064a73f11ffb9b39475f620f222b5fd2842ac273ad",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "TimesFM forecasting primitive for zero-shot univariate time-series forecasting, preflight system checks, interval outputs, and batch prediction.",
+  "tags": [
+    "timesfm",
+    "forecasting",
+    "time-series",
+    "preflight",
+    "prediction-intervals"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for timesfm-forecasting.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "name": "scholar_evaluation",
+  "primitive_id": "general.workflow-planning.scholar_evaluation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "category": "workflow-planning",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/scholar-evaluation",
+    "distilled_from_version": "2.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 5,
+      "scripts": 8,
+      "assets": 5
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/evaluation_framework.md",
+      "title": "Evaluation Framework",
+      "purpose": "Extended source guidance for evaluation framework.",
+      "source": "scientific-agent-skills/skills/scholar-evaluation/references/evaluation_framework.md",
+      "sha256": "b1d2a381f60bbdaad0ec85e909a77fbcf5d31594bb2261ca7630f1533726c506",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/local_tooling.md",
+      "title": "Local Tooling",
+      "purpose": "Extended source guidance for local tooling.",
+      "source": "scientific-agent-skills/skills/scholar-evaluation/references/local_tooling.md",
+      "sha256": "3490ea8227bc83644856779518524f6ad82d63b9c509619be2a7e5a3e84b1969",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/responsible_assessment.md",
+      "title": "Responsible Assessment",
+      "purpose": "Extended source guidance for responsible assessment.",
+      "source": "scientific-agent-skills/skills/scholar-evaluation/references/responsible_assessment.md",
+      "sha256": "f87e3da8624475bb8e0e8a697affcf9b872bc412c10aa14cbda0aa894bc38e1c",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/security_validation.md",
+      "title": "Security Validation",
+      "purpose": "Extended source guidance for security validation.",
+      "source": "scientific-agent-skills/skills/scholar-evaluation/references/security_validation.md",
+      "sha256": "ffbe10c98411a2a769e448f656d7d09210f468ad63b2775e1044ea1389b12115",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/source_ledger.md",
+      "title": "Source Ledger",
+      "purpose": "Extended source guidance for source ledger.",
+      "source": "scientific-agent-skills/skills/scholar-evaluation/references/source_ledger.md",
+      "sha256": "400dfa4999fba55d143b6d357c8f7f03396c54f7da629871743260ac7a69f592",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Scholar-evaluation primitive for qualitative-first, evidence-traceable developmental review of scholarly works and low-stakes research-assessment rubrics with optional local quality controls.",
+  "tags": [
+    "scholar-evaluation",
+    "rubric",
+    "evidence-traceability",
+    "review",
+    "assessment"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for scholar-evaluation.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "name": "pytorch_lightning",
+  "primitive_id": "general.tools.pytorch_lightning",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/pytorch-lightning",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 7,
+      "scripts": 3,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/best_practices.md",
+      "title": "Best Practices",
+      "purpose": "Extended source guidance for best practices.",
+      "source": "scientific-agent-skills/skills/pytorch-lightning/references/best_practices.md",
+      "sha256": "3172921ba31cd2e59d0d84b533210b852a4f8d651f06f74e2f907d28e11933ef",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/callbacks.md",
+      "title": "Callbacks",
+      "purpose": "Extended source guidance for callbacks.",
+      "source": "scientific-agent-skills/skills/pytorch-lightning/references/callbacks.md",
+      "sha256": "aa2140e7b684dfe8e3f47752dc4d9b14220a8d4c126f3f38cbbc1b6698466395",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/data_module.md",
+      "title": "Data Module",
+      "purpose": "Extended source guidance for data module.",
+      "source": "scientific-agent-skills/skills/pytorch-lightning/references/data_module.md",
+      "sha256": "a94cb2aeb0ac6e04d07d05cd8a3f96bb64d0623cfb310dfcc6d2c255b03d86f9",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/distributed_training.md",
+      "title": "Distributed Training",
+      "purpose": "Extended source guidance for distributed training.",
+      "source": "scientific-agent-skills/skills/pytorch-lightning/references/distributed_training.md",
+      "sha256": "7a555a90d4257fb12e5bc063a64e6373242d29a02d8337d22a5d4cd59350acfc",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/lightning_module.md",
+      "title": "Lightning Module",
+      "purpose": "Extended source guidance for lightning module.",
+      "source": "scientific-agent-skills/skills/pytorch-lightning/references/lightning_module.md",
+      "sha256": "952354340eb7fa6d09fa235392ccd4eb31e023422c45068e8c780f6523363a90",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/logging.md",
+      "title": "Logging",
+      "purpose": "Extended source guidance for logging.",
+      "source": "scientific-agent-skills/skills/pytorch-lightning/references/logging.md",
+      "sha256": "097cd018cdd0d4880dd861bd9405e68df7c392498bb28ad63afbeb9869ae8db1",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/trainer.md",
+      "title": "Trainer",
+      "purpose": "Extended source guidance for trainer.",
+      "source": "scientific-agent-skills/skills/pytorch-lightning/references/trainer.md",
+      "sha256": "d7761218deb392bfac4f373d4238c0595b5094115bd1645ae00bff0940b54887",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "PyTorch Lightning primitive for organizing training code into LightningModules, configuring Trainers, data modules, callbacks, logging, and distributed training for scalable scientific deep learning.",
+  "tags": [
+    "pytorch-lightning",
+    "training",
+    "distributed-training",
+    "logging",
+    "callbacks"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for pytorch-lightning.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

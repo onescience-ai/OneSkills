@@ -1,0 +1,137 @@
+{
+  "name": "shap",
+  "primitive_id": "general.tools.shap",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/shap",
+    "distilled_from_version": "2.0",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 8,
+      "scripts": 1,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/data-maskers.md",
+      "title": "Data Maskers",
+      "purpose": "Extended source guidance for data maskers.",
+      "source": "scientific-agent-skills/skills/shap/references/data-maskers.md",
+      "sha256": "78e17ba406456e8011d8679274bef37b7776f4e3df666b25e64b1749b43d7982",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/explainers.md",
+      "title": "Explainers",
+      "purpose": "Extended source guidance for explainers.",
+      "source": "scientific-agent-skills/skills/shap/references/explainers.md",
+      "sha256": "08894d631c9c57f55a50c08fc87d9146b6cc309e6fad463e69041b642ba5c070",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/migration.md",
+      "title": "Migration",
+      "purpose": "Extended source guidance for migration.",
+      "source": "scientific-agent-skills/skills/shap/references/migration.md",
+      "sha256": "95dff2096d3d263f0fcb0ac6b6ebf9f668f626ee7ab4ef0b7897edfd4b9ad305",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/modalities.md",
+      "title": "Modalities",
+      "purpose": "Extended source guidance for modalities.",
+      "source": "scientific-agent-skills/skills/shap/references/modalities.md",
+      "sha256": "4c9dbd964cf03d45396767ccac4851c2a96dabca0ebb50a3f88cc300260b9044",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/plots.md",
+      "title": "Plots",
+      "purpose": "Extended source guidance for plots.",
+      "source": "scientific-agent-skills/skills/shap/references/plots.md",
+      "sha256": "a0fac565709d5becf560a9c4f998ef949471a9dda02fe375340b9643638af395",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/theory.md",
+      "title": "Theory",
+      "purpose": "Extended source guidance for theory.",
+      "source": "scientific-agent-skills/skills/shap/references/theory.md",
+      "sha256": "bbe0067c7f1e864aa70990ec3089606509e50d1a87152aaaffc72f3b109b94a7",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/troubleshooting.md",
+      "title": "Troubleshooting",
+      "purpose": "Extended source guidance for troubleshooting.",
+      "source": "scientific-agent-skills/skills/shap/references/troubleshooting.md",
+      "sha256": "045d0bbedb98c227ce76675a225d4b7628b5b7d511ce437b95a707a8ff53f587",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/workflows.md",
+      "title": "Workflows",
+      "purpose": "Extended source guidance for workflows.",
+      "source": "scientific-agent-skills/skills/shap/references/workflows.md",
+      "sha256": "8406a3a92cd8dd5fd07f7abd87b6554aef2b796917b1bd0d5a61d3f72a39e388",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/tabular_report.py",
+      "kind": "source_script",
+      "title": "Tabular Report",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/shap/scripts/tabular_report.py",
+      "sha256": "1faf1c554207d8cb0561dc7ea96cd143df6ce5ddfc2322af89f25f38e3bad8a2",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "SHAP primitive for model explanation, masker selection, additivity checks, multi-output attributions, and local or global attribution plots.",
+  "tags": [
+    "shap",
+    "model-explainability",
+    "feature-attribution",
+    "maskers",
+    "plots"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for shap.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

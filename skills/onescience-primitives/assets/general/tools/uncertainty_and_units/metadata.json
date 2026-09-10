@@ -1,0 +1,103 @@
+{
+  "name": "uncertainty_and_units",
+  "primitive_id": "general.tools.uncertainty_and_units",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/uncertainty-and-units",
+    "distilled_from_version": "1.0",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 6,
+      "scripts": 7,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/domain-conversions.md",
+      "title": "Domain Conversions",
+      "purpose": "Extended source guidance for domain conversions.",
+      "source": "scientific-agent-skills/skills/uncertainty-and-units/references/domain-conversions.md",
+      "sha256": "5dfbb82624a22cb52a2f13cb033c1ec4a3ceeb9b46294990f2aae0dcd642acbe",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/gum-methodology.md",
+      "title": "Gum Methodology",
+      "purpose": "Extended source guidance for gum methodology.",
+      "source": "scientific-agent-skills/skills/uncertainty-and-units/references/gum-methodology.md",
+      "sha256": "9f7d22d21cbc7d7dded150f04372189c08b8d37c995b583f24cd8cf8935eed49",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/pint-recipes.md",
+      "title": "Pint Recipes",
+      "purpose": "Extended source guidance for pint recipes.",
+      "source": "scientific-agent-skills/skills/uncertainty-and-units/references/pint-recipes.md",
+      "sha256": "4ea48155f005c6211e238edb024baf39cc4d58794a400c15b939950e9f64fe7b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/plausibility-scales.md",
+      "title": "Plausibility Scales",
+      "purpose": "Extended source guidance for plausibility scales.",
+      "source": "scientific-agent-skills/skills/uncertainty-and-units/references/plausibility-scales.md",
+      "sha256": "bf5d0f118581155912d91388713beb8a3496858405bad7286fb588beea02c20a",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/reporting-rules.md",
+      "title": "Reporting Rules",
+      "purpose": "Extended source guidance for reporting rules.",
+      "source": "scientific-agent-skills/skills/uncertainty-and-units/references/reporting-rules.md",
+      "sha256": "2b3c160df4259f9f33b01099f472d193035baa9f251d165da34423f553c2c8f5",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/uncertainties-recipes.md",
+      "title": "Uncertainties Recipes",
+      "purpose": "Extended source guidance for uncertainties recipes.",
+      "source": "scientific-agent-skills/skills/uncertainty-and-units/references/uncertainties-recipes.md",
+      "sha256": "d0c9e283c674c3485fae5d8919fabe4fccb77290d71da73f887c698a9bb5ad3e",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "Uncertainty-and-units primitive for unit conversion, dimensional checking, uncertainty propagation, GUM budgets, coverage factors, and plausibility auditing of scientific calculations.",
+  "tags": [
+    "units",
+    "uncertainty",
+    "pint",
+    "gum",
+    "plausibility"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for uncertainty-and-units.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

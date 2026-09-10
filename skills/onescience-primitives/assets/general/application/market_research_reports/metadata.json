@@ -1,0 +1,315 @@
+{
+  "name": "market_research_reports",
+  "primitive_id": "general.application.market_research_reports",
+  "type": "application",
+  "domain": "general",
+  "category": "application",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/market-research-reports",
+    "distilled_from_version": "1.2",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 7,
+      "scripts": 8,
+      "assets": 10
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/data_analysis_patterns.md",
+      "title": "Data Analysis Patterns",
+      "purpose": "Extended source guidance for data analysis patterns.",
+      "source": "scientific-agent-skills/skills/market-research-reports/references/data_analysis_patterns.md",
+      "sha256": "8f56d6d744c9947a1d00413f754b35868be150b77f461e6750082894beac74e3",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/evidence_model.md",
+      "title": "Evidence Model",
+      "purpose": "Extended source guidance for evidence model.",
+      "source": "scientific-agent-skills/skills/market-research-reports/references/evidence_model.md",
+      "sha256": "180631d70e9602c995f4e001ed9305d928d10441a6dc396df924a88f7c03d2a1",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/methods_and_ethics.md",
+      "title": "Methods And Ethics",
+      "purpose": "Extended source guidance for methods and ethics.",
+      "source": "scientific-agent-skills/skills/market-research-reports/references/methods_and_ethics.md",
+      "sha256": "98303bb3bb6b4d594d6c2fee3b7ed07a1a658a8ccc23b28c1089b6b1113345c5",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/official_data_sources.md",
+      "title": "Official Data Sources",
+      "purpose": "Extended source guidance for official data sources.",
+      "source": "scientific-agent-skills/skills/market-research-reports/references/official_data_sources.md",
+      "sha256": "eb6155f90d6e7aa8ec6c8d173c614a1d1390ddbe0a8b4bcddc564e3f34a779df",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/report_structure_guide.md",
+      "title": "Report Structure Guide",
+      "purpose": "Extended source guidance for report structure guide.",
+      "source": "scientific-agent-skills/skills/market-research-reports/references/report_structure_guide.md",
+      "sha256": "0b8d3dd6821b9cafa35f6a9739e31e46f965ba4994077a205f1bfa7c8fd9417d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Sources",
+      "purpose": "Extended source guidance for sources.",
+      "source": "scientific-agent-skills/skills/market-research-reports/references/sources.md",
+      "sha256": "eaa7972f598dbc2075cd33fcd3b5cc5ec20bb4de89a623cc19a2742874ca4a8d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/visual_generation_guide.md",
+      "title": "Visual Generation Guide",
+      "purpose": "Extended source guidance for visual generation guide.",
+      "source": "scientific-agent-skills/skills/market-research-reports/references/visual_generation_guide.md",
+      "sha256": "45315257e787ae313fa263984e5ec923811568306e6f08fc9fbf5ee5ac9c9b31",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/_common.py",
+      "kind": "source_script",
+      "title": " Common",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/market-research-reports/scripts/_common.py",
+      "sha256": "4108e81fc50df920c417468daff3626de1238c72e69aa107a3f3ba5132b79cb8",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/audit_claim_citations.py",
+      "kind": "source_script",
+      "title": "Audit Claim Citations",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/market-research-reports/scripts/audit_claim_citations.py",
+      "sha256": "4a6a8f254838aaefe6d14bf38e0bdb2b03bafb9e1ca93afec873527bf0c2b054",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/calculate_market_sizing.py",
+      "kind": "source_script",
+      "title": "Calculate Market Sizing",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/market-research-reports/scripts/calculate_market_sizing.py",
+      "sha256": "aa6daa9b80707099572cdf513d519fa15836c0bd6c72ba7123d83282b4949c0f",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/check_unit_consistency.py",
+      "kind": "source_script",
+      "title": "Check Unit Consistency",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/market-research-reports/scripts/check_unit_consistency.py",
+      "sha256": "2025ca4fa71a6544dec8edb10a581c80bf6dbd6162a4016ac64dc81b595b24f3",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/forecast_sensitivity.py",
+      "kind": "source_script",
+      "title": "Forecast Sensitivity",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/market-research-reports/scripts/forecast_sensitivity.py",
+      "sha256": "a8580d913613fb4432329d8cf49b92072e168420db3b23a35ce64ee0274b00f6",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/generate_report_scaffold.py",
+      "kind": "source_script",
+      "title": "Generate Report Scaffold",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/market-research-reports/scripts/generate_report_scaffold.py",
+      "sha256": "dc710fd2cd9848795ffa84607b1d1b988b463bfa558509292b1501509636528a",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/validate_competitor_matrix.py",
+      "kind": "source_script",
+      "title": "Validate Competitor Matrix",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/market-research-reports/scripts/validate_competitor_matrix.py",
+      "sha256": "ff5359654e66a6a291aa62deb54322ccc8082311c8a3a15fec2e9c6b6bbb440a",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/validate_evidence_ledger.py",
+      "kind": "source_script",
+      "title": "Validate Evidence Ledger",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/market-research-reports/scripts/validate_evidence_ledger.py",
+      "sha256": "c1176271a8a9d3b41363f187dbec55a60c481e39bba8356e4ecde30ec32cc3d5",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/assets/claims_ledger_template.csv",
+      "kind": "source_asset",
+      "title": "Claims Ledger Template",
+      "purpose": "Preserved source asset or template for later primitive binding review.",
+      "source": "scientific-agent-skills/skills/market-research-reports/assets/claims_ledger_template.csv",
+      "sha256": "ff8daf6e418713a51a1a13c6ccff88e3f5716b2cc098b9a4c4385653bb731348",
+      "media_type": "text/csv",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/assets/competitor_feature_matrix_template.csv",
+      "kind": "source_asset",
+      "title": "Competitor Feature Matrix Template",
+      "purpose": "Preserved source asset or template for later primitive binding review.",
+      "source": "scientific-agent-skills/skills/market-research-reports/assets/competitor_feature_matrix_template.csv",
+      "sha256": "721fbe2dee19ab4e611ae10899cb0492773b74a7a8e32fb0e9eaef9cfd56a690",
+      "media_type": "text/csv",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/assets/consistency_check_template.csv",
+      "kind": "source_asset",
+      "title": "Consistency Check Template",
+      "purpose": "Preserved source asset or template for later primitive binding review.",
+      "source": "scientific-agent-skills/skills/market-research-reports/assets/consistency_check_template.csv",
+      "sha256": "8bd009d185eb415640f14ffc1a0dc3a123a724390a729b6f4a3979db6c9329f4",
+      "media_type": "text/csv",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/assets/forecast_sensitivity_template.json",
+      "kind": "source_asset",
+      "title": "Forecast Sensitivity Template",
+      "purpose": "Preserved source asset or template for later primitive binding review.",
+      "source": "scientific-agent-skills/skills/market-research-reports/assets/forecast_sensitivity_template.json",
+      "sha256": "8daf9a2f9471ecbf936b86fbc6f90e0dbb27643b7a944099d6d31abf35bfcc44",
+      "media_type": "application/json",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/assets/FORMATTING_GUIDE.md",
+      "kind": "source_asset",
+      "title": "Formatting Guide",
+      "purpose": "Preserved source asset or template for later primitive binding review.",
+      "source": "scientific-agent-skills/skills/market-research-reports/assets/FORMATTING_GUIDE.md",
+      "sha256": "f4ca76ddc4057291de0758462bd1fba67f5a85241a7bc8f75366c2fb933d0cdf",
+      "media_type": "text/markdown",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/assets/market_report_template.tex",
+      "kind": "source_asset",
+      "title": "Market Report Template",
+      "purpose": "Preserved source asset or template for later primitive binding review.",
+      "source": "scientific-agent-skills/skills/market-research-reports/assets/market_report_template.tex",
+      "sha256": "d6c3ddf06e05bfdb78a9c24a539ae513e1ad0d72e551408371395ed63f738b8f",
+      "media_type": "application/x-tex",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/assets/market_research.sty",
+      "kind": "source_asset",
+      "title": "Market Research",
+      "purpose": "Preserved source asset or template for later primitive binding review.",
+      "source": "scientific-agent-skills/skills/market-research-reports/assets/market_research.sty",
+      "sha256": "cc499e817a8d6faffa2eb831479fec736f7c9a8e6e78fe8dd12e6415d5b34c40",
+      "media_type": "application/octet-stream",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/assets/market_sizing_scenarios_template.json",
+      "kind": "source_asset",
+      "title": "Market Sizing Scenarios Template",
+      "purpose": "Preserved source asset or template for later primitive binding review.",
+      "source": "scientific-agent-skills/skills/market-research-reports/assets/market_sizing_scenarios_template.json",
+      "sha256": "58722edb120d11273e3b121a8a1d2fa122c33c21d242c3efae7d6094e8f25817",
+      "media_type": "application/json",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/assets/report_manifest_template.json",
+      "kind": "source_asset",
+      "title": "Report Manifest Template",
+      "purpose": "Preserved source asset or template for later primitive binding review.",
+      "source": "scientific-agent-skills/skills/market-research-reports/assets/report_manifest_template.json",
+      "sha256": "6d06ce899066bce3ea14e0a6bfc8b352d0d43591f9ca3672bd54c42e12ad1ca4",
+      "media_type": "application/json",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/assets/source_ledger_template.csv",
+      "kind": "source_asset",
+      "title": "Source Ledger Template",
+      "purpose": "Preserved source asset or template for later primitive binding review.",
+      "source": "scientific-agent-skills/skills/market-research-reports/assets/source_ledger_template.csv",
+      "sha256": "a2e10d3ab743a6e879b43efb47c3069104d45f68898b1ab71ac2ca1f161f8ad7",
+      "media_type": "text/csv",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "Market research reports primitive for evidence-traceable report scaffolds, market sizing, forecast sensitivity, competitor matrices, claims ledgers, and source-backed narrative assembly.",
+  "tags": [
+    "market-research",
+    "reports",
+    "market-sizing",
+    "forecasting",
+    "evidence-ledger"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for market-research-reports.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

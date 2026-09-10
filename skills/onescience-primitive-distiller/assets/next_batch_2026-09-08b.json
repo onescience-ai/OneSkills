@@ -1,0 +1,44 @@
+{
+  "plans": [
+    {
+      "skill": "scholar-evaluation",
+      "domain": "general",
+      "category": "workflow-planning",
+      "name": "scholar_evaluation",
+      "primitive_id": "general.workflow-planning.scholar_evaluation",
+      "type": "workflow-planning",
+      "description": "Scholar-evaluation primitive for qualitative-first, evidence-traceable developmental review of scholarly works and low-stakes research-assessment rubrics with optional local quality controls.",
+      "tags": ["scholar-evaluation", "rubric", "evidence-traceability", "review", "assessment"]
+    },
+    {
+      "skill": "uncertainty-and-units",
+      "domain": "general",
+      "category": "tools",
+      "name": "uncertainty_and_units",
+      "primitive_id": "general.tools.uncertainty_and_units",
+      "type": "tool",
+      "description": "Uncertainty-and-units primitive for unit conversion, dimensional checking, uncertainty propagation, GUM budgets, coverage factors, and plausibility auditing of scientific calculations.",
+      "tags": ["units", "uncertainty", "pint", "gum", "plausibility"]
+    },
+    {
+      "skill": "venue-templates",
+      "domain": "general",
+      "category": "output-format",
+      "name": "venue_templates",
+      "primitive_id": "general.output-format.venue_templates",
+      "type": "output-format",
+      "description": "Venue-templates primitive for journal manuscripts, conference papers, research posters, and grant documents using venue-specific formatting guidance and bundled LaTeX scaffolds.",
+      "tags": ["venue-template", "latex", "journal", "conference", "grant"]
+    },
+    {
+      "skill": "latex-posters",
+      "domain": "general",
+      "category": "output-format",
+      "name": "latex_posters",
+      "primitive_id": "general.output-format.latex_posters",
+      "type": "output-format",
+      "description": "LaTeX posters primitive for professional research posters using beamerposter, tikzposter, or baposter, including layout design, color schemes, multi-column formats, figure integration, and poster-specific communication guidance.",
+      "tags": ["latex", "poster", "beamerposter", "tikzposter", "baposter"]
+    }
+  ]
+}

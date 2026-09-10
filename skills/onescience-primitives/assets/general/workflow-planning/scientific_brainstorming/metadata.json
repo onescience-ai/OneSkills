@@ -1,0 +1,143 @@
+{
+  "name": "scientific_brainstorming",
+  "primitive_id": "general.workflow-planning.scientific_brainstorming",
+  "type": "workflow-planning",
+  "domain": "general",
+  "category": "workflow-planning",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/scientific-brainstorming",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 5,
+      "scripts": 4,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/brainstorming_methods.md",
+      "title": "Brainstorming Methods",
+      "purpose": "Extended source guidance for brainstorming methods.",
+      "source": "scientific-agent-skills/skills/scientific-brainstorming/references/brainstorming_methods.md",
+      "sha256": "a2dc4e248b43b257af8b3359c26ec973527e212064f5f4a0c1f5161fa7f27013",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/facilitation_workflows.md",
+      "title": "Facilitation Workflows",
+      "purpose": "Extended source guidance for facilitation workflows.",
+      "source": "scientific-agent-skills/skills/scientific-brainstorming/references/facilitation_workflows.md",
+      "sha256": "bfb2acc43472f4649b10f2c3db02180fa9c86636f375f82d8bc36b28075a5ccc",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/idea_evaluation.md",
+      "title": "Idea Evaluation",
+      "purpose": "Extended source guidance for idea evaluation.",
+      "source": "scientific-agent-skills/skills/scientific-brainstorming/references/idea_evaluation.md",
+      "sha256": "415089ce7fb4234c2836c0a1652ca7407d5822c3b645564530ffb76bd594d110",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/responsible_ai.md",
+      "title": "Responsible Ai",
+      "purpose": "Extended source guidance for responsible ai.",
+      "source": "scientific-agent-skills/skills/scientific-brainstorming/references/responsible_ai.md",
+      "sha256": "7465647aaf261ce84124683bbebaafa2f57db0491c34b7ef1a650b05431b9cb1",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Sources",
+      "purpose": "Extended source guidance for sources.",
+      "source": "scientific-agent-skills/skills/scientific-brainstorming/references/sources.md",
+      "sha256": "ab93a7b744c0fb2a026f6485eac5f54fbd3479e7349a6a1502287f1704a48d88",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/_common.py",
+      "kind": "source_script",
+      "title": " Common",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/scientific-brainstorming/scripts/_common.py",
+      "sha256": "a78ef369fe2613871e8026420b9c78a368f61aeab670947482517fd49711060d",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/evaluate_matrix.py",
+      "kind": "source_script",
+      "title": "Evaluate Matrix",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/scientific-brainstorming/scripts/evaluate_matrix.py",
+      "sha256": "9056a5356c72d638277cc24f8e02f043c6bdb35d2b50e13fca3ac6ef860a1014",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/session_scaffold.py",
+      "kind": "source_script",
+      "title": "Session Scaffold",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/scientific-brainstorming/scripts/session_scaffold.py",
+      "sha256": "0af7b297a8f92f1c7456b7e14c717a017315b4a71b603ca5402434dee98db5ba",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/validate_register.py",
+      "kind": "source_script",
+      "title": "Validate Register",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/scientific-brainstorming/scripts/validate_register.py",
+      "sha256": "9a28c5abc16c48babdf6e5f3ded1672eb272d2569283c53a3e1f09beed43197a",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "Scientific brainstorming primitive for evidence-aware ideation, independent generation, structured discussion, explicit assumptions, adversarial review, and decision logs.",
+  "tags": [
+    "brainstorming",
+    "ideation",
+    "decision-log",
+    "evidence-review",
+    "research-direction"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for scientific-brainstorming.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

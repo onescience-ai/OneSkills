@@ -1,0 +1,130 @@
+{
+  "name": "latex_posters",
+  "primitive_id": "general.output-format.latex_posters",
+  "type": "output-format",
+  "domain": "general",
+  "category": "output-format",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/latex-posters",
+    "distilled_from_version": "1.6",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 9,
+      "scripts": 3,
+      "assets": 4
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/ai_graphics_for_posters.md",
+      "title": "Ai Graphics For Posters",
+      "purpose": "Extended source guidance for ai graphics for posters.",
+      "source": "scientific-agent-skills/skills/latex-posters/references/ai_graphics_for_posters.md",
+      "sha256": "cc5c4319e28511e58be236de1a8041cc0471eddd3cdd4f1e661695a6879f7fe7",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/compilation_and_quality_control.md",
+      "title": "Compilation And Quality Control",
+      "purpose": "Extended source guidance for compilation and quality control.",
+      "source": "scientific-agent-skills/skills/latex-posters/references/compilation_and_quality_control.md",
+      "sha256": "b059bb5bbe041ca7229bd2d3909904a0e19865f50f9c79763c13225ccf7bad5f",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/latex_poster_packages.md",
+      "title": "Latex Poster Packages",
+      "purpose": "Extended source guidance for latex poster packages.",
+      "source": "scientific-agent-skills/skills/latex-posters/references/latex_poster_packages.md",
+      "sha256": "75a1be24675df874f17cbea891bcfd3fc16f17e29275dd3c62d79eb9a1e1f87b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/latex_poster_reference.md",
+      "title": "Latex Poster Reference",
+      "purpose": "Extended source guidance for latex poster reference.",
+      "source": "scientific-agent-skills/skills/latex-posters/references/latex_poster_reference.md",
+      "sha256": "cb5c034726d3f2a479ebf16eb830394df55085cb0f12446be5832f1e9153ea4f",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/poster_content_guide.md",
+      "title": "Poster Content Guide",
+      "purpose": "Extended source guidance for poster content guide.",
+      "source": "scientific-agent-skills/skills/latex-posters/references/poster_content_guide.md",
+      "sha256": "2af1cbfa45878041de15459ccbac49f85f810d045ed5231a011bee5f54641b26",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/poster_design_principles.md",
+      "title": "Poster Design Principles",
+      "purpose": "Extended source guidance for poster design principles.",
+      "source": "scientific-agent-skills/skills/latex-posters/references/poster_design_principles.md",
+      "sha256": "6c3618133764687a19f30f563805bbf13996f818ba267cfbd5bbc908b9f7102b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/poster_layout_design.md",
+      "title": "Poster Layout Design",
+      "purpose": "Extended source guidance for poster layout design.",
+      "source": "scientific-agent-skills/skills/latex-posters/references/poster_layout_design.md",
+      "sha256": "f674c0fe352321b9bc0eb2be09d95379714a6b77624689ba100da4898c4f20df",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/poster_patterns_and_presentation.md",
+      "title": "Poster Patterns And Presentation",
+      "purpose": "Extended source guidance for poster patterns and presentation.",
+      "source": "scientific-agent-skills/skills/latex-posters/references/poster_patterns_and_presentation.md",
+      "sha256": "8b42305d892c1c4cb80f9c183d44922b1a6f3a0dd0b8536a3ec7860aa2d0eae4",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/README.md",
+      "title": "Readme",
+      "purpose": "Extended source guidance for readme.",
+      "source": "scientific-agent-skills/skills/latex-posters/references/README.md",
+      "sha256": "90f2c05757aa87043e59bfd057b1b685b0cfa1f63f89be42c920eae6ede33936",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "description": "LaTeX posters primitive for professional research posters using beamerposter, tikzposter, or baposter, including layout design, color schemes, multi-column formats, figure integration, and poster-specific communication guidance.",
+  "tags": [
+    "latex",
+    "poster",
+    "beamerposter",
+    "tikzposter",
+    "baposter"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for latex-posters.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "execution_asset_policy": "none"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "name": "stable_baselines3",
+  "primitive_id": "general.tools.stable_baselines3",
+  "type": "tool",
+  "domain": "general",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/stable-baselines3",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 4,
+      "scripts": 3,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/algorithms.md",
+      "title": "Algorithms",
+      "purpose": "Extended source guidance for algorithms.",
+      "source": "scientific-agent-skills/skills/stable-baselines3/references/algorithms.md",
+      "sha256": "364effdb558ed7104dcf94b7c4407ca1c34e6b3d7bc36e2b0ea0591f09e73cae",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/callbacks.md",
+      "title": "Callbacks",
+      "purpose": "Extended source guidance for callbacks.",
+      "source": "scientific-agent-skills/skills/stable-baselines3/references/callbacks.md",
+      "sha256": "54b8253ac089f949d4d1da7d19a06bf6e0819415e5f03f7c95294e718c1c1e48",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/custom_environments.md",
+      "title": "Custom Environments",
+      "purpose": "Extended source guidance for custom environments.",
+      "source": "scientific-agent-skills/skills/stable-baselines3/references/custom_environments.md",
+      "sha256": "24a30a48fbdbaf7cf226fcd0916bf4ae8c3ec25d1fbeb500c13ccfb78fb5325c",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/vectorized_envs.md",
+      "title": "Vectorized Envs",
+      "purpose": "Extended source guidance for vectorized envs.",
+      "source": "scientific-agent-skills/skills/stable-baselines3/references/vectorized_envs.md",
+      "sha256": "be23ef237442efb1b9ac68f196652beb962bc6c7d2ee94059751cdc65746ab73",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/custom_env_template.py",
+      "kind": "source_script",
+      "title": "Custom Env Template",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/stable-baselines3/scripts/custom_env_template.py",
+      "sha256": "10d4d2f55fef72b091d65faa409746484fa8ef9472578c6f96de551f2b37512d",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/evaluate_agent.py",
+      "kind": "source_script",
+      "title": "Evaluate Agent",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/stable-baselines3/scripts/evaluate_agent.py",
+      "sha256": "16024c0322e4c70b82dae620fa7481da08a1ea6e10fd36ec203c2c32fa0da464",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/train_rl_agent.py",
+      "kind": "source_script",
+      "title": "Train Rl Agent",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/stable-baselines3/scripts/train_rl_agent.py",
+      "sha256": "a233523c6ee778c8931bdf3ae093f1ee8865db63be40f3365328e0e6ec024892",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "Stable-Baselines3 primitive for standard reinforcement-learning algorithms, Gymnasium environments, and reproducible single-agent training workflows.",
+  "tags": [
+    "stable-baselines3",
+    "reinforcement-learning",
+    "gymnasium",
+    "training",
+    "ppo"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for stable-baselines3.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

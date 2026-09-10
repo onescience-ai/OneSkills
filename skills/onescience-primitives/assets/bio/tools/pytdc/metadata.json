@@ -1,0 +1,156 @@
+{
+  "name": "pytdc",
+  "primitive_id": "bio.tools.pytdc",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/pytdc",
+    "distilled_from_version": "1.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 4,
+      "scripts": 6,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/datasets.md",
+      "title": "Datasets",
+      "purpose": "Extended source guidance for datasets.",
+      "source": "scientific-agent-skills/skills/pytdc/references/datasets.md",
+      "sha256": "cb67857a93b853fac773fc6fb6a643177a32e025e6262804155f0688ae1d1325",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/oracles.md",
+      "title": "Oracles",
+      "purpose": "Extended source guidance for oracles.",
+      "source": "scientific-agent-skills/skills/pytdc/references/oracles.md",
+      "sha256": "62fcdc3e38394c0e5f6cb94dac73b75c866976c9181424d154e6151628cc6b83",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/sources.md",
+      "title": "Sources",
+      "purpose": "Extended source guidance for sources.",
+      "source": "scientific-agent-skills/skills/pytdc/references/sources.md",
+      "sha256": "7cea42434ea8888b112f50c8352b43ad7e7a0fd304826c7f7202a6101af393ed",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/utilities.md",
+      "title": "Utilities",
+      "purpose": "Extended source guidance for utilities.",
+      "source": "scientific-agent-skills/skills/pytdc/references/utilities.md",
+      "sha256": "dd4d852b7ac017d405b3e27e15a31ecda7c28e2b35477d3aff21b10938a3d677",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/_common.py",
+      "kind": "source_script",
+      "title": " Common",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pytdc/scripts/_common.py",
+      "sha256": "5400062833084d7dfbe6fa603901d2d931689c1d2ad587c9ae67052f50b98791",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/benchmark_evaluation.py",
+      "kind": "source_script",
+      "title": "Benchmark Evaluation",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pytdc/scripts/benchmark_evaluation.py",
+      "sha256": "fd2f6918f53ff9674c761860e8cb426e313f565b0736ae1a94a63b37e79675ee",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/cache_audit.py",
+      "kind": "source_script",
+      "title": "Cache Audit",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pytdc/scripts/cache_audit.py",
+      "sha256": "fa95d89be81da8341f5134cba7e48ba65ef66f0f19d44738e6eebc8cd257f234",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/discover_metadata.py",
+      "kind": "source_script",
+      "title": "Discover Metadata",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pytdc/scripts/discover_metadata.py",
+      "sha256": "e761eb71b2c7c131db661920e252d88ef72402004e3445055487a344dace1e0f",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/load_and_split_data.py",
+      "kind": "source_script",
+      "title": "Load And Split Data",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pytdc/scripts/load_and_split_data.py",
+      "sha256": "c1f16b9cd0ec4a1578b2e701a753c2a71bbc57606a9ce12da6f5ca3e20cb64f6",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/molecular_generation.py",
+      "kind": "source_script",
+      "title": "Molecular Generation",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/pytdc/scripts/molecular_generation.py",
+      "sha256": "b72943eefdf33e9cbd8ab74e50b2793e95b57840c44f58ccc6dd7969e8b1ef89",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "PyTDC primitive for therapeutic data commons registry discovery, benchmark access, approved dataset splits, evaluator metrics, and bounded molecular-oracle workflows.",
+  "tags": [
+    "pytdc",
+    "benchmark",
+    "therapeutics-data-commons",
+    "dataset-splits",
+    "metrics"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for pytdc.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

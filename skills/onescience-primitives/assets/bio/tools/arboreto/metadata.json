@@ -1,0 +1,92 @@
+{
+  "name": "arboreto",
+  "primitive_id": "bio.tools.arboreto",
+  "type": "tool",
+  "domain": "bio",
+  "category": "tools",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/arboreto",
+    "distilled_from_version": "1.0",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 3,
+      "scripts": 1,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/algorithms.md",
+      "title": "Algorithms",
+      "purpose": "Extended source guidance for algorithms.",
+      "source": "scientific-agent-skills/skills/arboreto/references/algorithms.md",
+      "sha256": "5facef4b0cf558eded6455f0154f48ba91e76567e27c10c87df9674d2ea89549",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/basic_inference.md",
+      "title": "Basic Inference",
+      "purpose": "Extended source guidance for basic inference.",
+      "source": "scientific-agent-skills/skills/arboreto/references/basic_inference.md",
+      "sha256": "0a7500fa1a20c376fd732b9bc78c3f4de5505b3e920398e591f9f057bb180007",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/distributed_computing.md",
+      "title": "Distributed Computing",
+      "purpose": "Extended source guidance for distributed computing.",
+      "source": "scientific-agent-skills/skills/arboreto/references/distributed_computing.md",
+      "sha256": "9ce12f1c0279dd783ce3ecf240bff0fc02e1e44a32471cc44d361b40a0d4c683",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/basic_grn_inference.py",
+      "kind": "source_script",
+      "title": "Basic Grn Inference",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/arboreto/scripts/basic_grn_inference.py",
+      "sha256": "4e184a0411ec6a81719591092db29dd51beb43b9b0639eae669d565cdb6d3ddb",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "Arboreto primitive for gene regulatory network inference with GRNBoost2 and GENIE3, scalable Dask execution, and transcriptomics workflows.",
+  "tags": [
+    "arboreto",
+    "grn",
+    "gene-regulatory-network",
+    "dask",
+    "transcriptomics"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for arboreto.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

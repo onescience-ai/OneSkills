@@ -1,0 +1,150 @@
+{
+  "name": "markitdown",
+  "primitive_id": "general.output-format.markitdown",
+  "type": "output-format",
+  "domain": "general",
+  "category": "output-format",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "provider_kind": "distilled_agent_skill",
+  "provider_name": "scientific-agent-skills",
+  "source": {
+    "distilled_from": "scientific-agent-skills/skills/markitdown",
+    "distilled_from_version": "2.1",
+    "distillation_status": "resource_only",
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 7,
+      "scripts": 3,
+      "assets": 0
+    }
+  },
+  "knowledge_assets": [
+    {
+      "path": "references/api_reference.md",
+      "title": "Api Reference",
+      "purpose": "Extended source guidance for api reference.",
+      "source": "scientific-agent-skills/skills/markitdown/references/api_reference.md",
+      "sha256": "dde39fac60db56df1d6864e532883d36fa472648243299695cc0e6bb195a2ff9",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/cloud_and_ocr.md",
+      "title": "Cloud And Ocr",
+      "purpose": "Extended source guidance for cloud and ocr.",
+      "source": "scientific-agent-skills/skills/markitdown/references/cloud_and_ocr.md",
+      "sha256": "9ef87a18f18aabe9e2ed1d6d3cf87c440614ab9ae60e5ca42513ac8a4fca5e49",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/file_formats.md",
+      "title": "File Formats",
+      "purpose": "Extended source guidance for file formats.",
+      "source": "scientific-agent-skills/skills/markitdown/references/file_formats.md",
+      "sha256": "1fc769efa7f35737e8ecc6e50c7c20fddb20de4753002821c12bf9a9de61f623",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/mcp_and_plugins.md",
+      "title": "Mcp And Plugins",
+      "purpose": "Extended source guidance for mcp and plugins.",
+      "source": "scientific-agent-skills/skills/markitdown/references/mcp_and_plugins.md",
+      "sha256": "13ee15d399b8ad02df799ecbf0591c75b5d6ab89bce62d4a5856f4308bb88192",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/migration.md",
+      "title": "Migration",
+      "purpose": "Extended source guidance for migration.",
+      "source": "scientific-agent-skills/skills/markitdown/references/migration.md",
+      "sha256": "fc73b21a5b73bc61f5eafa32d16eb8b3620c38602c59aedc9bbf593d80a441ef",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/security.md",
+      "title": "Security",
+      "purpose": "Extended source guidance for security.",
+      "source": "scientific-agent-skills/skills/markitdown/references/security.md",
+      "sha256": "cdec8dcb138870b28645780709a4c5f19224ba80981ecf8dbe4e98bac9504383",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/workflows.md",
+      "title": "Workflows",
+      "purpose": "Extended source guidance for workflows.",
+      "source": "scientific-agent-skills/skills/markitdown/references/workflows.md",
+      "sha256": "6598e6729379fe4860d392009f5343f0afca4ae9c30ba15a9332340b1e95fbfe",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/batch_convert.py",
+      "kind": "source_script",
+      "title": "Batch Convert",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/markitdown/scripts/batch_convert.py",
+      "sha256": "4250166fc476be8793149e1ef778b619719ea87557b5287e48db5e6b53d3fd62",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/convert_literature.py",
+      "kind": "source_script",
+      "title": "Convert Literature",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/markitdown/scripts/convert_literature.py",
+      "sha256": "6c28a9b005a252bcfbab4e1a637129f7be30f9f154bb7bb5adb67cf5361b0aed",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/inspect_installation.py",
+      "kind": "source_script",
+      "title": "Inspect Installation",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/markitdown/scripts/inspect_installation.py",
+      "sha256": "7821524bcf1b148f5932268ba54394831172cdecc730bbdefa6f6d07eafa4d08",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "MarkItDown output-format primitive for trusted local document-to-Markdown conversion, stream conversion, plugin workflows, OCR extraction, and batch ingestion.",
+  "tags": [
+    "markitdown",
+    "markdown",
+    "document-conversion",
+    "ocr",
+    "ingestion"
+  ],
+  "capabilities": [
+    "Recall source-grounded workflow and API guidance for markitdown.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
+  ],
+  "requirements": [
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
+  ],
+  "contracts": {
+    "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
+    "execution_asset_policy": "none"
+  }
+}

@@ -6,39 +6,203 @@
   "category": "databases",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-03",
-  "updated_at": "2026-09-03",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
   "provider_kind": "distilled_agent_skill",
   "provider_name": "scientific-agent-skills",
   "source": {
-    "distilled_from": "scientific-agent-skills/skills/database-lookup",
-    "distilled_from_version": "1.3",
+    "distilled_from": "scientific-agent-skills/skills/paper-lookup",
+    "distilled_from_version": "2.0",
     "distillation_status": "resource_only",
-    "copied_execution_assets": false
+    "copied_knowledge_references": true,
+    "copied_source_payloads": true,
+    "copied_execution_assets": false,
+    "source_file_counts": {
+      "references": 11,
+      "scripts": 5,
+      "assets": 0
+    }
   },
-  "description": "Public database lookup is a cross-domain database primitive for reproducible retrieval from documented public APIs. Use it when a scientific, regulatory, financial, social, or other database-backed fact must be retrieved from named sources with explicit endpoints, filters, pagination, counts, and provenance.",
+  "knowledge_assets": [
+    {
+      "path": "references/arxiv.md",
+      "title": "Arxiv",
+      "purpose": "Extended source guidance for arxiv.",
+      "source": "scientific-agent-skills/skills/paper-lookup/references/arxiv.md",
+      "sha256": "ebb9ed199687255963eb1f983e015b031851b2175b30196df4d14986435d066b",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/biorxiv.md",
+      "title": "Biorxiv",
+      "purpose": "Extended source guidance for biorxiv.",
+      "source": "scientific-agent-skills/skills/paper-lookup/references/biorxiv.md",
+      "sha256": "c2a034ffcf8b37656af8422aea5df19f5fe52d17997619693af0d091891efc12",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/core.md",
+      "title": "Core",
+      "purpose": "Extended source guidance for core.",
+      "source": "scientific-agent-skills/skills/paper-lookup/references/core.md",
+      "sha256": "f1dcb49a99431393efacd2a80b17092561be1e3054fe173aa387c1b6009c1402",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/crossref.md",
+      "title": "Crossref",
+      "purpose": "Extended source guidance for crossref.",
+      "source": "scientific-agent-skills/skills/paper-lookup/references/crossref.md",
+      "sha256": "036a6419086426a97ada3360b1ee2a4c8fa3051d98320a8881fbabf3fe65ec68",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/europepmc.md",
+      "title": "Europepmc",
+      "purpose": "Extended source guidance for europepmc.",
+      "source": "scientific-agent-skills/skills/paper-lookup/references/europepmc.md",
+      "sha256": "225cbbbd391de8b28548e4dff2081eda6b743c333bc4c5083c920258d46a5c10",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/medrxiv.md",
+      "title": "Medrxiv",
+      "purpose": "Extended source guidance for medrxiv.",
+      "source": "scientific-agent-skills/skills/paper-lookup/references/medrxiv.md",
+      "sha256": "f8175230eaf2772cfcd3ccd5fcce8bef7fc225b0c749dc1441c0df47a3ecb0c9",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/openalex.md",
+      "title": "Openalex",
+      "purpose": "Extended source guidance for openalex.",
+      "source": "scientific-agent-skills/skills/paper-lookup/references/openalex.md",
+      "sha256": "df4a8b86174c37e07a3691f5fa627f8cb61cd60587ce1723a6608058547bda08",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/pmc.md",
+      "title": "Pmc",
+      "purpose": "Extended source guidance for pmc.",
+      "source": "scientific-agent-skills/skills/paper-lookup/references/pmc.md",
+      "sha256": "77f31c9362acf40c50ebd32bedcd58fe80aa9a72a56db430bdd6bcba26d40bff",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/pubmed.md",
+      "title": "Pubmed",
+      "purpose": "Extended source guidance for pubmed.",
+      "source": "scientific-agent-skills/skills/paper-lookup/references/pubmed.md",
+      "sha256": "7f8650a8c47a435a83e346c147d166f31f3574c4696050d64a03cea790d7fc6f",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/semantic-scholar.md",
+      "title": "Semantic Scholar",
+      "purpose": "Extended source guidance for semantic scholar.",
+      "source": "scientific-agent-skills/skills/paper-lookup/references/semantic-scholar.md",
+      "sha256": "61a92ed728d3a0421ddf0e7430b025bfe3764816b1fff71bb77b8860d670936d",
+      "media_type": "text/markdown",
+      "status": "available"
+    },
+    {
+      "path": "references/unpaywall.md",
+      "title": "Unpaywall",
+      "purpose": "Extended source guidance for unpaywall.",
+      "source": "scientific-agent-skills/skills/paper-lookup/references/unpaywall.md",
+      "sha256": "97d95863b2a73837070f48e1bf93ea3c2e920b1564eb7e5ac4ab4167ae77d4f1",
+      "media_type": "text/markdown",
+      "status": "available"
+    }
+  ],
+  "source_payloads": [
+    {
+      "path": "source_payload/scripts/_common.py",
+      "kind": "source_script",
+      "title": " Common",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/paper-lookup/scripts/_common.py",
+      "sha256": "4c6962ddbcb8cb89adc6c6ac02199835310f04b2ab93ffab9855adef38efd369",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/arxiv_atom.py",
+      "kind": "source_script",
+      "title": "Arxiv Atom",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/paper-lookup/scripts/arxiv_atom.py",
+      "sha256": "ef8014d59380864973b5784bc76a954152eed81cb5e139755f050284d111cc89",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/jats_to_text.py",
+      "kind": "source_script",
+      "title": "Jats To Text",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/paper-lookup/scripts/jats_to_text.py",
+      "sha256": "4c0cad352a4ab8642bb32929adf2d91386c45c1f2f8b19955b1ef504754449d0",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/openalex_abstract.py",
+      "kind": "source_script",
+      "title": "Openalex Abstract",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/paper-lookup/scripts/openalex_abstract.py",
+      "sha256": "ad1092c887ea61be4cefa7f94d261c84b50be7e1bbf076b53c6569b5955edb27",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    },
+    {
+      "path": "source_payload/scripts/paginate.py",
+      "kind": "source_script",
+      "title": "Paginate",
+      "purpose": "Preserved source script for later contract review and possible executor promotion.",
+      "source": "scientific-agent-skills/skills/paper-lookup/scripts/paginate.py",
+      "sha256": "98bd6ead5a1ae5ce52dec5159f7e48701d05adeadabefae4bb275c1e9b526989",
+      "media_type": "text/x-python",
+      "status": "preserved",
+      "execution_status": "not_whitelisted"
+    }
+  ],
+  "description": "Public database lookup primitive for scholarly literature search, citation discovery, DOI and PMID resolution, open-access retrieval, and provenance-traceable result aggregation across academic APIs.",
   "tags": [
-    "database-lookup",
-    "public-api",
-    "retrieval",
-    "provenance",
-    "pagination",
-    "identifier-resolution",
-    "cross-domain"
+    "papers",
+    "literature-search",
+    "citations",
+    "doi",
+    "open-access"
   ],
   "capabilities": [
-    "Select authoritative public databases for a retrieval contract.",
-    "Plan endpoints, filters, pagination, and local filtering.",
-    "Track identifier conversions, access dates, count reconciliation, and source limitations.",
-    "Treat API responses as untrusted data and avoid executing returned text."
+    "Recall source-grounded workflow and API guidance for paper-lookup.",
+    "Expose detailed reference material through knowledge_assets with SHA-256 verification.",
+    "Preserve source scripts and templates as non-executable payloads when requested by the distillation plan.",
+    "Route execution to a reviewed domain executor or future execution asset when computation is required."
   ],
   "requirements": [
-    "Named entity, identifier, domain constraints, accepted filters, and expected output fields.",
-    "Network access and optional database-specific credentials when required.",
-    "A bounded retrieval plan for broad or exhaustive queries."
+    "Task-specific scientific inputs, data paths, target environment, and version constraints.",
+    "Domain package installation and credentials only when a downstream executor actually runs code.",
+    "Manual review of scientific assumptions, provenance, and output validity."
   ],
   "contracts": {
     "resource_output": "resource_retrieval_result",
+    "source_payload_policy": "metadata_indexed_inert_copy",
     "execution_asset_policy": "none"
   }
 }

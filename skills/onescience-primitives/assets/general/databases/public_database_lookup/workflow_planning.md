@@ -1,27 +1,21 @@
 # when_to_use
 
-Use this primitive when the task asks for reproducible facts or datasets from named public databases and APIs.
+Use this primitive when the task explicitly involves `paper-lookup`, its scientific workflow, or its associated artifacts and data structures.
 
 # when_not_to_use
 
-- Use web search only for exploratory discovery, not reproducible database-backed retrieval.
-- Use a domain-specific database primitive when one exists for the selected database.
-- Use local file analysis primitives when the data are already available locally.
+- Use a more specific existing OneScience primitive when the task is already routed to a narrower model, component, dataset, or visualization primitive.
+- Use an executor only when actual computation is required and the runtime dependencies are available.
+- Do not use this primitive to bypass domain validation, credentials, or package installation requirements.
 
 # planning_steps
 
-1. Define target entity, identifiers, fields, scope, and completeness need.
-2. Select authoritative source and endpoint family.
-3. Plan identifier conversions, filters, rate limits, and pagination.
-4. Retrieve in bounded batches and reconcile counts.
-5. Report provenance and limitations with the result.
-
-# fallback
-
-- If a database requires credentials, use anonymous or free alternatives when acceptable.
-- If an identifier fails, try documented conversion routes.
-- If counts disagree, stop and report incompleteness before drawing conclusions.
+1. Identify the scientific object, data type, package version, and intended result.
+2. Retrieve the most relevant migrated reference files.
+3. Extract required inputs, assumptions, parameters, and validation checks.
+4. Decide whether the task can be answered as planning guidance or needs execution.
+5. Record provenance, limitations, and downstream resource dependencies.
 
 # handoff_notes
 
-Include source database, endpoint, parameters, identifier conversions, access date, pagination state, local filters, and warnings.
+Pass `primitive_id: general.databases.public_database_lookup`, source references used, package/version assumptions, input artifacts, output expectations, and unresolved validation risks to the next workflow step.
