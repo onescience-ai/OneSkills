@@ -1,0 +1,36 @@
+{
+  "name": "generative-shape-flowfield-joint-inverse-design",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "生成模型气动外形与流场联合逆向设计。面向翼型几何流场性能联合数据完成生成模型气动外形与流场联合逆向设计。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "accessible",
+    "aerodynamic",
+    "airfoil",
+    "applications",
+    "complex",
+    "computational_fluid_dynamics",
+    "data-assisted",
+    "design",
+    "design_",
+    "diffusion",
+    "driven",
+    "dynamical",
+    "encoding",
+    "events",
+    "exploration"
+  ],
+  "scenario_id": "CFD_S094",
+  "source_papers": [
+    "sha256:4e22ec2900af1f0ddb5c33a2130bbe5381d5dcd48908852013999ae98bd958de",
+    "sha256:3cfb5c6516be0bf8a8643532a4ce4da438061fc117b64bbf9c6d50e5e632d902",
+    "sha256:03e203595620b4968523b9f90b1e05661779ca6f23aa53ddca5a731f84badf66",
+    "sha256:06f91dd2a0f6e94861fa651cabe6e1dd77fffb6fa22848f96ae745d29bb101b4",
+    "sha256:132a132f567914728b8669fb06cf78ab610f403c41e5173205609b6c966d57de",
+    "sha256:ce3e55f2c06869e2eb86d088b7b39fff4d9edf76d5d3cdf287417bcf375682ca"
+  ]
+}

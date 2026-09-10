@@ -1,0 +1,34 @@
+{
+  "name": "supervised-turbulence-single-snapshot-super-resolution",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "监督学习湍流场单快照超分辨率重建。面向成对低高分辨率DNS快照完成监督学习湍流场单快照超分辨率重建。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "behavior",
+    "benchmarking",
+    "blastnet",
+    "computational_fluid_dynamics",
+    "convection",
+    "extending",
+    "flows",
+    "focus_",
+    "learning",
+    "machine",
+    "network",
+    "physics-informed",
+    "rayleigh-bénard",
+    "reconstruction",
+    "scaling"
+  ],
+  "scenario_id": "CFD_S098",
+  "source_papers": [
+    "sha256:bc7c38a621cf058202b1cb9fa4d1ae2d70c894b7b41aee52a9bf361b68604dfe",
+    "sha256:4011f030e4c316dfa67878259d6a666255778270108d1993efbcf649222615eb",
+    "sha256:c1558ddc2ad6e366d1c1dbd8c3186ea33c8eb7642847a3ee9741e929be55d7fd",
+    "sha256:b5cb1cc9db2abef4987a6e84bcd8fcdd8548ef5aec4e5d1bb75fb6fb4f1a0cc2"
+  ]
+}

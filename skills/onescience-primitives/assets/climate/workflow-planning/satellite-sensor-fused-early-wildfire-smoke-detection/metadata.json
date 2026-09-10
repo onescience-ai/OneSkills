@@ -1,0 +1,34 @@
+{
+  "name": "satellite-sensor-fused-early-wildfire-smoke-detection",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「卫星影像与地面传感器融合的早期火情烟羽检测」工作流。从新到达影像和地面传感器流中识别火焰、热点或烟羽并定位疑似火情；输出检测，不预测后续蔓延。覆盖从致灾因子和事件标签及任务边界预检到按时延误报漏报评估的完整管线。得到可复现、可审计的火情类别、位置、置信度与告警、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "combining",
+    "convolutional",
+    "detection",
+    "early",
+    "earth",
+    "forest",
+    "forgetting",
+    "framework",
+    "learning",
+    "learning-based",
+    "model",
+    "monitoring",
+    "network",
+    "networks",
+    "neural"
+  ],
+  "scenario_id": "E22",
+  "source_papers": [
+    "sha256:06e85fc5ef659fdee4a16e41dd057b6f0d9bd44b4688b9edf01bd65909c88ca7",
+    "sha256:173c1969679c7af76bfb008ceeb5d2bdc1eadbf9c81b7ffb6da633e3b83f70b2",
+    "sha256:5862f3e8dcb45335633aa76d0344eb2d7421e706ae6e6b308f711246b309f816",
+    "sha256:23167e7553805d2091d55690bb155964caaebaa7ec8b860ab1a36b0a808f12c2"
+  ]
+}

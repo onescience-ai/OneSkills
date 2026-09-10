@@ -1,0 +1,41 @@
+{
+  "name": "aeroelastic-unsteady-load-reduced-order-response",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "气动弹性与非定常载荷降阶响应预测。面向非定常气动力与耦合响应时序完成气动弹性与非定常载荷降阶响应预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "aerodynamic",
+    "aerodynamics",
+    "aeroelastic-flight",
+    "ai-driven",
+    "aircraft",
+    "amortized",
+    "applied",
+    "approach",
+    "arnold",
+    "attractor_",
+    "based",
+    "comparison",
+    "computational_fluid_dynamics",
+    "convolutional",
+    "coupled"
+  ],
+  "scenario_id": "CFD_S089",
+  "source_papers": [
+    "sha256:70dc850b91c5c4cf7f992bbdf51cb04925daa5bc854d6e670ea8cac0e7203085",
+    "sha256:f0e0e03d47d2a80086de90a5645f7a40e081f66608eb4f37718d9a5ab3184c16",
+    "sha256:bb2b6c594a2560b578899a7958fbef6a59a6fad85a97144bc86307e1b794f5fb",
+    "sha256:67e0a251ab022814fba33de4c3328bcabc27be0f6d8af31b6bd704a0d1c98995",
+    "sha256:0b9925bed11004ca4b92b6658a7c4d3630f9908f4ff113d5323450746171bd1e",
+    "sha256:c488dfcde1a46821b77d4589810e657d23eb5de9cac5589c9c8d8d1967c2110c",
+    "sha256:1804c04948160b58f9fcc1f365779298586b38fe25010e074e9131fb3d2942de",
+    "sha256:5016e827777365fbed651adcc8cbd30047caaa71a126102c985cf5fea20a22fd",
+    "sha256:4608d166f210ec3b3a8768938f7e2fffe76126f7dd5a0fe524becdd36a78eaba",
+    "sha256:55cd20efe6d7f15fc907954cf9cd366311d2e55acc7b46ce521eeaac13625cf7",
+    "sha256:13fca741f8df32ecd497caa19a0bd00b83c05113237a79c9bcec37c631206074"
+  ]
+}

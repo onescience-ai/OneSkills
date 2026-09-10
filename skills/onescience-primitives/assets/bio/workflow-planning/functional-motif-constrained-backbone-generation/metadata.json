@@ -1,0 +1,32 @@
+{
+  "name": "functional-motif-constrained-backbone-generation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 RFdiffusion 的「功能位点约束的蛋白骨架生成」工作流。研究对象为受约束的蛋白骨架、序列、肽或酶设计任务。本场景研究受约束的蛋白骨架、序列、肽或酶设计任务，希望解决围绕给定功能基序生成可设计蛋白骨架，适用于酶活性位点和结合蛋白支架构建。覆盖从设计目标与约束定义到回折叠与设计筛选的完整管线。核心指标包括基序RMSD。得到与输入和任务约束一致、可追溯、可复核的功能位点约束的蛋白骨架生成结果，包括经格式和约束检查的设计目标、固定区域掩码、候选结构/序列及结构自洽报告、独立评估、基序RMSD统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "bio",
+    "design",
+    "function",
+    "learning-based",
+    "motif_5tpn",
+    "protein",
+    "proteinmpnn",
+    "pymol",
+    "rfdiffusion",
+    "rmsd",
+    "rmsd结果",
+    "robust",
+    "sequence",
+    "structure",
+    "using"
+  ],
+  "scenario_id": "B11",
+  "source_papers": [
+    "10.1038/s41586-023-06415-8",
+    "10.1126/science.add2187"
+  ]
+}

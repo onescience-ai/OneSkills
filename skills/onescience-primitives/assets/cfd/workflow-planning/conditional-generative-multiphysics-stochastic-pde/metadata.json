@@ -1,0 +1,38 @@
+{
+  "name": "conditional-generative-multiphysics-stochastic-pde",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "条件生成模型多物理与随机PDE模拟。面向多物理多功能或随机PDE数据完成条件生成模型多物理与随机PDE模拟。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "arbitrarily-conditioned",
+    "attention",
+    "based",
+    "basis",
+    "compositional",
+    "computational_fluid_dynamics",
+    "conditional-generative-model",
+    "deterministic",
+    "differential",
+    "diffusion",
+    "dynamics",
+    "emulation",
+    "equations",
+    "fields",
+    "fluid"
+  ],
+  "scenario_id": "CFD_S095",
+  "source_papers": [
+    "sha256:a4f88bea26264d455edda25a7896b28f3f6d32f7d1a44a6f7f34a67a9f76f48a",
+    "sha256:fff21dfac5348d0446cb4757a47255f0c7d6689d3afebc5322cc208e78254aca",
+    "sha256:9b5819d53d04b241229710a3fd2a8736c9d4b08bb1d8a618f62b219bb7acdd31",
+    "sha256:698fdde1ca487c7cc614bf14c198518d0951f0f3e6d33bb736b5f22113d1f788",
+    "sha256:1e2b508cf8dae4788a624ddc445bfde7fc057fc5a11652b7dbd9e4776abfcbae",
+    "sha256:dbd4153b733734201d557110a73c61036b837b35238dc598d6e4b2da234e0c8c",
+    "sha256:435299cc42b75f9ad43d9aa246c96d3d7bdcc3297aa57f419bdc571b9c25137c",
+    "sha256:77cea1a06159bb9bccb39e6f492dbcb315fba8ed79cc744e14cebaa053af992f"
+  ]
+}

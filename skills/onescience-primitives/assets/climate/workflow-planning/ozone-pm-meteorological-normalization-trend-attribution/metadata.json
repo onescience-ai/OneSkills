@@ -1,0 +1,33 @@
+{
+  "name": "ozone-pm-meteorological-normalization-trend-attribution",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「臭氧与颗粒物历史序列的气象归一化和趋势归因」工作流。剔除天气年际波动对历史污染序列的影响，估计排放治理相关趋势并识别主要气象驱动因素。覆盖从观测强迫样本及任务边界预检到用重采样区间检验趋势稳健性的完整管线。得到可复现、可审计的气象归一化浓度、趋势分解和特征贡献、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "action",
+    "approach",
+    "assessing",
+    "beijing",
+    "china",
+    "clean",
+    "drivers",
+    "earth",
+    "explainable",
+    "impact",
+    "learning",
+    "machine",
+    "meteorological",
+    "meteorology-driven",
+    "ozone"
+  ],
+  "scenario_id": "E45",
+  "source_papers": [
+    "sha256:6034f3390b25e2c8ab8360710b497f8591726b4fa3a987e8bb369038c6116805",
+    "sha256:cc5416a9cc2f4f593605337a200e25019d8b9e8939a39aad3f56ecefedd0f1aa",
+    "sha256:83306643b55d01eaaddb190df32810421ab7a7b50abcc29f738b59f2dbb9a824"
+  ]
+}

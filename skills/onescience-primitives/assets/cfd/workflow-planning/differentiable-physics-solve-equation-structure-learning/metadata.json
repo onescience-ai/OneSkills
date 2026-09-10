@@ -1,0 +1,37 @@
+{
+  "name": "differentiable-physics-solve-equation-structure-learning",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "可微分物理求解与方程结构学习。面向可微数值轨迹与算子数据完成可微分物理求解与方程结构学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "accelerating",
+    "action",
+    "amortization",
+    "approximation",
+    "arbitrary",
+    "benchmark",
+    "computational_fluid_dynamics",
+    "derivative",
+    "differentiable",
+    "differentiable-simulator",
+    "differential",
+    "discovery",
+    "efficient",
+    "equations",
+    "estimator_"
+  ],
+  "scenario_id": "CFD_S071",
+  "source_papers": [
+    "sha256:75c348ae9451de78145131ea805d949e8ef441cdedda724b8146a2d89dbfd78a",
+    "sha256:0308fc8a0f34d4859ecd0c39eb2189ac421611012a7eacb5c8e61c421f71358a",
+    "sha256:e17f6c6cc459b72a2dda79114446bf9b71830f8f494b04f2af2ad0c3e77b4d9c",
+    "sha256:6e7e2a52a0ed8ca472d14d895c2544b6981b7658fe2ed03762d82333756810a0",
+    "sha256:90f0d95fbdac654f3402e9f7f49a1a07c9a955afc4fc3e9fab5252e2c6513d0c",
+    "sha256:a3e9c33b6bc0e210acac169f0fa29e66e3036f3904c86f57ef1d546097f4e8ba",
+    "sha256:ab33b52113a4b653b7caebaed4a4c75ff44217d092517ea3270d8f035b4bddfe"
+  ]
+}

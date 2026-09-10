@@ -1,0 +1,26 @@
+{
+  "name": "tsunami-geodetic-driven-rapid-inundation-extent-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「海啸与大地测量观测驱动的快速淹没范围预报」工作流。利用海啸波形和大地测量观测，在事件早期快速估计沿岸淹没深度与范围；不适用于气象风暴潮。覆盖从致灾因子和事件标签及任务边界预检到按未见事件及到时验证的完整管线。得到可复现、可审计的沿岸最大水深和淹没范围、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "convolutional",
+    "early",
+    "earth",
+    "forecasting",
+    "geodetic",
+    "inundation",
+    "networks",
+    "neural",
+    "observation",
+    "tsunami"
+  ],
+  "scenario_id": "E90",
+  "source_papers": [
+    "sha256:259a206632605d209a59b6bb19fa47188109f7bfb3b99d255530e3dca2cc9812"
+  ]
+}

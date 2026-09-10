@@ -1,0 +1,34 @@
+{
+  "name": "forecast-driven-streamflow-flood-peak-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「气象预报驱动的小时至十日河流流量与洪峰预报」工作流。融合起报前水文状态和未来气象强迫，预报小时至十日流量过程、洪峰及峰时；严格禁止使用起报后的实测资料。覆盖从水文强迫和流域资料及任务边界预检到独立检验与交付判定的完整管线。得到可复现、可审计的多时效流量、洪峰与峰时、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "artificial",
+    "boost",
+    "conceptual",
+    "continental",
+    "earth",
+    "enhancing",
+    "extracting",
+    "flood",
+    "forecast",
+    "forecasting",
+    "forecasts",
+    "hydrological",
+    "improving",
+    "information",
+    "insights"
+  ],
+  "scenario_id": "E6",
+  "source_papers": [
+    "sha256:0f9aecfa32dfaee133fe0a19ce8318e9491653083fe8d4f5cefe1076e19de3c7",
+    "sha256:29f928ea8b458c68712402c09f7595f8dd4f693d457d6165f7dcfb1c119f61c8",
+    "sha256:33576a2defacbbf7552cfd7688b3b50787ee6bc4c1253815f212d1fbb9d14071",
+    "sha256:30bbaf5e0db7a1472a24b08bbac04deb6edb5df3abd3f6bfb3d2d08330dc2206"
+  ]
+}

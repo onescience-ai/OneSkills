@@ -1,0 +1,32 @@
+{
+  "name": "antibody-antigen-paratope-epitope-prediction",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 CAME-AB 的「抗体抗原结合位点联合预测」工作流。研究对象为抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据。本场景研究抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据，希望解决融合序列和结构模态联合定位互补位与表位，适用于抗体机制解释和界面约束生成。覆盖从免疫对象与任务定义到特异性与可开发性质控的完整管线。核心指标包括界面AUPRC。得到与输入和任务约束一致、可追溯、可复核的抗体抗原结合位点联合预测结果，包括标准抗体/TCR编号、链-表位映射、输入结构/序列质控和界面实体清单、独立评估、界面AUPRC统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "anarci",
+    "antibody",
+    "antibody_antigen",
+    "antigen",
+    "aplsuite",
+    "attention",
+    "auprc",
+    "auprc结果",
+    "binding",
+    "bio",
+    "came-ab",
+    "cross-modality",
+    "epitope",
+    "fasta",
+    "integrated"
+  ],
+  "scenario_id": "B25",
+  "source_papers": [
+    "2509.06465",
+    "2606.02462"
+  ]
+}

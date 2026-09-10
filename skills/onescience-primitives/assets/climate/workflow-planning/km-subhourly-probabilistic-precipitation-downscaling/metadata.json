@@ -1,0 +1,33 @@
+{
+  "name": "km-subhourly-probabilistic-precipitation-downscaling",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「粗分辨率降水到公里—亚小时尺度的概率降尺度」工作流。将同期粗分辨率小时降水细化为公里级亚小时降水集合，恢复雨带位置、强度和时间连续性。覆盖从粗细分辨率资料及任务边界预检到检验FSS、频率分布和极值尾部的完整管线。得到可复现、可审计的公里级亚小时降水成员、雨强分布和累积量、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "correction",
+    "customized",
+    "deconvolution",
+    "downscaling",
+    "earth",
+    "generative",
+    "global",
+    "learning",
+    "method",
+    "network",
+    "neural",
+    "orography",
+    "precipitation",
+    "scale",
+    "spatio-temporal"
+  ],
+  "scenario_id": "E15",
+  "source_papers": [
+    "sha256:cd24c6a92b8e702910e68f002e48281990aa59d5cd9d0d6fc5f7938d260290df",
+    "sha256:6374e6eaa58f12cdd3da7fa78beb2c5bc82645ea79a417b28c070dfaf160576d",
+    "sha256:650856d7eed5c5d1484c5661d7d1bd761abb8f52b5cfc6434db7f05877e087fa"
+  ]
+}

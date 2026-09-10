@@ -1,0 +1,39 @@
+{
+  "name": "time-parallel-multiscale-neural-pde-integration",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "时间并行与多时间尺度神经PDE推进。面向长时间多尺度PDE轨迹完成时间并行与多时间尺度神经PDE推进。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "advection",
+    "agile",
+    "anamnesic",
+    "augmented",
+    "care_",
+    "computational_fluid_dynamics",
+    "continuous",
+    "convolutional",
+    "differential",
+    "domain",
+    "dynamics",
+    "enables",
+    "environmental",
+    "equations",
+    "flight"
+  ],
+  "scenario_id": "CFD_S023",
+  "source_papers": [
+    "sha256:87c61fcb814c133a9e9b408af1d86474b431ad7c3f362b619c3e103d1433c468",
+    "sha256:0b996b2da5031b4b52a94847a809f1bede3eba04a27ff0c92a30e877095bedc1",
+    "sha256:e771e9fdf0f5d851962de56af054183c13f0d83043c84d844679c5192c40de28",
+    "sha256:0e61ec6513e74cd688bca9db74a9e18c57c3458dfd9b690ed7b0eda80f6eda12",
+    "sha256:6702c15dd0ecf8f0809bdcb0f09d294d9b25d146d03d166a51a800e374a25be1",
+    "sha256:c0ddf1ea4ca36065a5c03e5ee6e5f0b9af9786a7d66fed07b69d864b9bf31919",
+    "sha256:35dd0cd692f23c3dd9fe3ade0394e3c276c44b8275398c5e52f5fede9b8071e8",
+    "sha256:061b1b92f372cbd618fa1dae994710ecd3db7c8533d937499a82f127db8f9550",
+    "sha256:5d99d80e648b47f1b9b92dd1228d23982c86be30c58dc8951d34df74c5977d88"
+  ]
+}

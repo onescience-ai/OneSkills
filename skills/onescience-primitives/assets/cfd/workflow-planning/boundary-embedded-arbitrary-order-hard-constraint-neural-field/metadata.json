@@ -1,0 +1,35 @@
+{
+  "name": "boundary-embedded-arbitrary-order-hard-constraint-neural-field",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "边界嵌入与任意阶硬约束神经场求解。面向混合边界与复杂域PDE数据完成边界嵌入与任意阶硬约束神经场求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "arbitrary",
+    "automatically",
+    "beno_",
+    "boundary",
+    "boundary-embedded",
+    "boundary-embedded-neural-operator",
+    "computational_fluid_dynamics",
+    "conditions",
+    "conservation",
+    "constraints",
+    "differential",
+    "encoded",
+    "fields",
+    "graph",
+    "hard-constraint-neural-field"
+  ],
+  "scenario_id": "CFD_S064",
+  "source_papers": [
+    "sha256:2f16ac99f635b49e0b16955fbc7121be6052056f62b3da0f44ef2db3b2a091d6",
+    "sha256:4f5803b75ebea3da0fc2db8e940424cec1447fecac88bf7fe9ef91c829992a4c",
+    "sha256:5bef4389868b35d17f0eb843502a38ff6b1334c9bb7d3f18b030c95fe2542a53",
+    "sha256:360bdbd1081687400d4d0bb6a631cf6bc6ccd5b233c2051cca23417a8516444b",
+    "sha256:c7a80d3f13bbc7721e6aeba1e4f33060c84a40ca2b355d05af8d8087f69bf632"
+  ]
+}

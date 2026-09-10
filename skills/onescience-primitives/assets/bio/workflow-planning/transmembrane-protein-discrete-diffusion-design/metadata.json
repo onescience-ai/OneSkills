@@ -1,0 +1,27 @@
+{
+  "name": "transmembrane-protein-discrete-diffusion-design",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 Token-Guided Diffusion 的「跨膜蛋白序列离散扩散设计」工作流。研究对象为受约束的蛋白骨架、序列、肽或酶设计任务。本场景研究受约束的蛋白骨架、序列、肽或酶设计任务，希望解决在膜拓扑和骨架约束下生成跨膜蛋白序列，适用于受体与通道蛋白设计。覆盖从设计目标与约束定义到回折叠与设计筛选的完整管线。核心指标包括膜区恢复率。得到与输入和任务约束一致、可追溯、可复核的跨膜蛋白序列离散扩散设计结果，包括经格式和约束检查的设计目标、固定区域掩码、候选结构/序列及结构自洽报告、独立评估、膜区恢复率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "bio",
+    "design",
+    "diffusion",
+    "discrete",
+    "guided",
+    "membrane",
+    "membrane_backbone",
+    "protein",
+    "token-guided",
+    "token-guided-diffusion",
+    "token-level"
+  ],
+  "scenario_id": "B19",
+  "source_papers": [
+    "2410.16735"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "name": "bio-saffron-crocin-biosynthesis-gene-reasoning",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09T21:45:00Z",
+  "updated_at": "2026-09-09T21:45:00Z",
+  "description": "藏红花（Crocus sativus）藏红花素（crocin）生物合成通路基因推理工作流：从染色体级基因组和柱头转录组数据推断类胡萝卜素裂解双加氧酶（CCD）和糖基转移酶（UGT/GLT）家族关键基因，解析 zeaxanthin → crocetin → crocin 的酶促级联及转录调控网络。适用于需要理解藏红花素/藏红花酸生物合成机制、鉴定关键酶基因、构建基因-酶-产物对应关系的研究场景。核心方法包括：基因组共线性分析（WGT 事件溯源）、WGCNA 共表达网络（hub TF 识别）、AlphaFold2 结构预测与分子对接（关键氨基酸鉴定）、RT-qPCR 验证。输出为 CsCCD2/CsGLT2/CsUGT73D1 等关键基因的功能注释、调控 TF 清单和通路示意图。",
+  "tags": [
+    "saffron",
+    "Crocus sativus",
+    "crocin",
+    "crocetin",
+    "apocarotenoid",
+    "carotenoid",
+    "biosynthesis",
+    "CCD2",
+    "CsCCD2",
+    "UGT",
+    "GLT2",
+    "UGT73D1",
+    "glycosyltransferase",
+    "zeaxanthin",
+    "WGCNA",
+    "co-expression",
+    "transcription factor",
+    "MADS",
+    "MYB",
+    "bHLH",
+    "WRKY",
+    "gene family",
+    "whole genome triplication",
+    "WGT",
+    "AlphaFold2",
+    "molecular docking",
+    "stigma",
+    "metabolic pathway",
+    "gene derivative reasoning"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "缺少藏红花基因衍生推理的知识",
+  "evidence_papers": [
+    {
+      "title": "Crocus genome reveals the evolutionary origin of crocin biosynthesis",
+      "doi": "10.1016/j.apsb.2023.12.013",
+      "year": 2024,
+      "venue": "Acta Pharmaceutica Sinica B",
+      "authors": ["Zhichao Xu", "Shanshan Chen", "Yalin Wang", "Ya Tian", "Xiaotong Wang", "Tianyi Xin", "Zishan Li", "Xin Hua", "Shengnan Tan", "Wei Sun", "Xiangdong Pu", "Hui Yao", "Ranran Gao", "Jingyuan Song"],
+      "pmcid": "PMC10985130"
+    },
+    {
+      "title": "Co-regulatory network analysis of the main secondary metabolite (SM) biosynthesis in Crocus sativus L.",
+      "doi": "10.1038/s41598-024-65870-z",
+      "year": 2024,
+      "venue": "Scientific Reports",
+      "authors": ["Mahsa Eshaghi", "Sajad Rashidi-Monfared"],
+      "pmcid": "PMC11233700"
+    }
+  ]
+}

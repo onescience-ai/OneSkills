@@ -1,0 +1,37 @@
+{
+  "name": "learned-mesh-movement-adaptive-remeshing",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "学习型网格移动与自适应重网格。面向网格误差指标与移动目标数据完成学习型网格移动与自适应重网格。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "automatic",
+    "better",
+    "coarsening",
+    "computational_fluid_dynamics",
+    "data-free",
+    "differentiation",
+    "gaussian",
+    "generalizable",
+    "graph",
+    "learning",
+    "m-uniform",
+    "machine",
+    "mesh-based",
+    "mesh-movement-network",
+    "method"
+  ],
+  "scenario_id": "CFD_S068",
+  "source_papers": [
+    "sha256:e37da6f84e1ea35a6d93e2b61b214280c5ed203b860f730756116ec9ed6d104d",
+    "sha256:6df469b3a952dd4dc5aa7c315e23875bbed0206d0025221c96407ab14cd16d7f",
+    "sha256:ad27668e843626fad73c608bbf7ce0f9dd552a8d0d2983c160e7f43e8cc62b39",
+    "sha256:147326d729f021398fa7e553476329fe749e2dd39950bc72f5a7c56173054844",
+    "sha256:317ccd05238cadfb970f7e62a982e800e273b7b314eff85a79835ea5e6b450a4",
+    "sha256:34819089821302b9380ee47ed3b2a0e76cbd8d87792b41c6604158d97e006e80",
+    "sha256:d5a9e09b4b8d559121bc67cbaa020fe61326cc8296637cb4dab4dc86d495f625"
+  ]
+}

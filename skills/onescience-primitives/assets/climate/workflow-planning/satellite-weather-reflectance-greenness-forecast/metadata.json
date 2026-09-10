@@ -1,0 +1,33 @@
+{
+  "name": "satellite-weather-reflectance-greenness-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「卫星—天气驱动地表反射率与植被绿度短期预报」工作流。根据历史卫星影像、近期天气和地形预测未来数周地表反射率及植被绿度，适用于生态状态预报；不用于土地覆盖分类。覆盖从起报资料及任务边界预检到与持续性、季节气候态按时空块验证的完整管线。得到可复现、可审计的未来反射率、NDVI或植被状态序列、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "challenge",
+    "dataset",
+    "drought",
+    "earth",
+    "earthnet2021-",
+    "enhanced",
+    "extreme",
+    "forecasting",
+    "forecasting-",
+    "guided",
+    "health",
+    "kenya",
+    "large-scale",
+    "learning",
+    "ndvi或植被状态序列"
+  ],
+  "scenario_id": "E39",
+  "source_papers": [
+    "sha256:037d653587a0788c5a3677dd9073fb2a37061e36899d26abb44979b8de34fa59",
+    "sha256:03d3006b772c75ec26f1a0726e4f2c67230fdb0fca9309bb726ccab67e0d63a3",
+    "sha256:7d618f6864ef1583d24553d2f6c95bf100155899a97ab4a8efde5a573a4bff93"
+  ]
+}

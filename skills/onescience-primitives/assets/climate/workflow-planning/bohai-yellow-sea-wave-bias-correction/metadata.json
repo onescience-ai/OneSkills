@@ -1,0 +1,29 @@
+{
+  "name": "bohai-yellow-sea-wave-bias-correction",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 渤黄海海浪智能订正模型 的「渤黄海海浪智能订正模型」工作流。在不执行完整海浪物理求解的情况下，利用观测与历史数据校正现有业务海浪预报偏差。覆盖从模型输入与运行条件预检到独立评估与交付判定的完整管线。得到可部署的海浪偏差订正模型、权重、同契约订正产品和1—2个月独立试运行证据。",
+  "tags": [
+    "ai-based",
+    "correction",
+    "earth",
+    "forecasting",
+    "forecasts",
+    "gfs产品和观测能否按起报",
+    "gwsm4c",
+    "learning-based",
+    "method",
+    "model",
+    "northwest",
+    "ocean",
+    "pacific",
+    "predicting",
+    "surface"
+  ],
+  "scenario_id": "E105",
+  "source_papers": []
+}

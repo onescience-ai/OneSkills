@@ -1,0 +1,31 @@
+{
+  "name": "multi-source-regional-3-12h-quantitative-precipitation-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「多源观测驱动的区域3—12小时定量降水预报」工作流。融合雷达、卫星、站点和区域分析状态，生成未来3—12小时高分辨率降水率、累积量及概率。覆盖从临近观测及任务边界预检到按时效检验FSS、CSI和Brier分数的完整管线。得到可复现、可审计的3—12小时降水率场、累积降水和概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "available",
+    "csi和brier分数",
+    "earth",
+    "forecasts",
+    "google",
+    "learning",
+    "metnet-3_",
+    "model",
+    "neural",
+    "precipitation",
+    "products",
+    "state-of-the-art",
+    "twelve",
+    "weather"
+  ],
+  "scenario_id": "E8",
+  "source_papers": [
+    "sha256:680584f984b6e332e29519d7c8e591bac55b43f45fc2986fb293b9800e2d401c",
+    "sha256:88687a0a4f6c664640966667b1a18cd33bbf18200d85bf4a6d9d828206ba6766"
+  ]
+}

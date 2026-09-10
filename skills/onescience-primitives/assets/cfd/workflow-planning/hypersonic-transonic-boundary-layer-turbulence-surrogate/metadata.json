@@ -1,0 +1,38 @@
+{
+  "name": "hypersonic-transonic-boundary-layer-turbulence-surrogate",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "高超声速与跨声速边界层湍流代理。面向高超声速冷壁与跨声速机翼CFD数据完成高超声速与跨声速边界层湍流代理。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "aerodynamic",
+    "aeroelastic",
+    "aeroelasticity",
+    "airfoil",
+    "applied",
+    "approach",
+    "boundary",
+    "buffet",
+    "buffeting",
+    "cfd耦合",
+    "cold-wall",
+    "compact",
+    "comprehensive",
+    "computational_fluid_dynamics",
+    "currents"
+  ],
+  "scenario_id": "CFD_S074",
+  "source_papers": [
+    "sha256:b65b8711361cca68a30ce4518c1acd1c17f283cd6056e3fa8d8d865d643beab3",
+    "sha256:61c9e4e219b45607602ed7013f5b238fcbdfe8984433b8b6c1b0db4cc6743156",
+    "sha256:8e9a0330258c5af1e123884381ceab5b132bdd8ab60d7d8411ab4d642e135a0a",
+    "sha256:8806ddf6d331cffa573e1ab17b82797765d44665fa69d180df6750e2b3029b04",
+    "sha256:602a53955fa4cbd075bdaa0cd6db4888fa4145ff723c270a3be8a7d99dbeee1d",
+    "sha256:921a1d0d48171d2d066f2bfc4c432b6021e7ae81dc6de200e075a9f7b56b4668",
+    "sha256:0406fbe8d6397b36218fa375d896ace921ec973ef500e499380a738916f03b34",
+    "sha256:344c0bfa3129c0f6f6b88b551714ace8a21a17f931f4bf704a077d60bd87c288"
+  ]
+}

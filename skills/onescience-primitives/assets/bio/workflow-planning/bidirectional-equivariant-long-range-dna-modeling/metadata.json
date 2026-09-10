@@ -1,0 +1,32 @@
+{
+  "name": "bidirectional-equivariant-long-range-dna-modeling",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 Caduceus 的「双向等变长程DNA序列建模」工作流。研究对象为基因组DNA区间、变异、调控轨迹和细胞/组织上下文。本场景研究基因组DNA区间、变异、调控轨迹和细胞/组织上下文，希望解决利用反向互补等变和双向长程建模学习DNA表征，适用于长序列功能预测。覆盖从基因组输入与坐标规范化到轨迹与效应质量评估的完整管线。核心指标包括平均精度。得到与输入和任务约束一致、可追溯、可复核的双向等变长程DNA序列建模结果，包括参考组装、坐标、链方向、序列窗口和轨迹/变异输入的规范化报告、独立评估、平均精度统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "benchmark",
+    "bi-directional",
+    "bio",
+    "caduceus",
+    "dnabert-2",
+    "dna区间",
+    "dna序列建模的输出",
+    "dna表征",
+    "efficient",
+    "equivariant",
+    "fasta",
+    "foundation",
+    "genome",
+    "long-range",
+    "long_dna_windows"
+  ],
+  "scenario_id": "B64",
+  "source_papers": [
+    "2403.03234",
+    "2306.15006"
+  ]
+}

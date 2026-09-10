@@ -1,0 +1,41 @@
+{
+  "name": "dynamic-graph-adaptive-mesh-physics-simulation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "动态图网络与自适应网格物理时序模拟。面向动态图与拉格朗日粒子时序数据完成动态图网络与自适应网格物理时序模拟。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "acmp_",
+    "adaptive",
+    "adaptive-mesh-gnn",
+    "allen-cahn",
+    "animation",
+    "attention",
+    "attractive",
+    "barrier",
+    "breaking",
+    "channel",
+    "cloth",
+    "computational_fluid_dynamics",
+    "constraints",
+    "continuous",
+    "cotes"
+  ],
+  "scenario_id": "CFD_S020",
+  "source_papers": [
+    "sha256:c7f7020909f8214be27b0aa674ab70d3313cb6c6861749783996c6243db4f3fb",
+    "sha256:a26bc17e2770defd782c3aa526b07b0475d7e32077539160ec0acf0cb7a8b0c0",
+    "sha256:1690c34726dd2a5432831b9896516e422e521c0b46da9c062af53719fccbd3b5",
+    "sha256:5aac175e76cee6ad7ffadeea0721df1ec3f6d539bb93cfe587b9725d458df54d",
+    "sha256:9a79697f2b46e88ad56e20126b920c354f6641c1e29e18edd6dd5a3ef2b2cf6a",
+    "sha256:4e27d824982ba80a87f634728a4d7ea840a631078e937d680f2a7f6b673cb32d",
+    "sha256:d0c0ac179a76464071942f592b118fd1e156fb707ecb9e771b6d4e389e0c1262",
+    "sha256:f19ab5724f526cc4fa09ea911cde97c3d05beb88531f068373acfb7ce2998054",
+    "sha256:078236afa8dc67ffb3a9948d79f007e63d01334d65ad4ef68c0a77c6fd92a02a",
+    "sha256:a866b286438b016ed996fe643185b6fda3d3130ca47a152d5c44cf08ad0568f6",
+    "sha256:ba8b573eb50a17284b61d78e04466f5594094ed0a43988f94dbaf9bf7c1f5cae"
+  ]
+}

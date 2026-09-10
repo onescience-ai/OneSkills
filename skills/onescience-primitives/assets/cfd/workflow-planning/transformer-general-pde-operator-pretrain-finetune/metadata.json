@@ -1,0 +1,40 @@
+{
+  "name": "transformer-general-pde-operator-pretrain-finetune",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "Transformer通用PDE算子预训练与微调。面向多方程多网格预训练数据完成Transformer通用PDE算子预训练与微调。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "attention",
+    "auto-regressive",
+    "choose",
+    "computational_fluid_dynamics",
+    "curvature-aware",
+    "denoising",
+    "dpot_",
+    "efficient",
+    "efficiently",
+    "estimation",
+    "fourier",
+    "framework",
+    "fuse_",
+    "galerkin",
+    "graph"
+  ],
+  "scenario_id": "CFD_S052",
+  "source_papers": [
+    "sha256:198f7e4ebaec896fe2260684f3312a17f1225c74b82f98f489babed78e5331ef",
+    "sha256:285c51e9614b183524230231a6f7d9d792e3df8e4650a71afab0ededf14c23f0",
+    "sha256:acf3c2aa5e237b876cf232db21e47889eb728603869c396f7e400980055f9521",
+    "sha256:2aa6074d8177471cc6b0434befaf7721a5383eb482ad5e4951961b471ab928a5",
+    "sha256:f1537438b2e2090d4724ee171ca242f0d63ba1a014f0dd419abf72f7cc781604",
+    "sha256:1e5f5e04a9482c2db308d182f83f56da2d6541e2255e9b196d74feb582b30c0d",
+    "sha256:f15846cc8dd216ea03df1e231a6d7edaa2fcbc82f769d49248a348baa48a08e7",
+    "sha256:042b680f1d9abb6897804ed9845343b5a027c41e48dc7220a2103817e49edd3a",
+    "sha256:78c05adbfbb4ca20212bc109abed195a70a66e8a20389c94243bdf41913a1f1c",
+    "sha256:47739439cbd5fdb40f265dbb4a8a2edb20e8df4adcd543d114bd7448a4087b34"
+  ]
+}

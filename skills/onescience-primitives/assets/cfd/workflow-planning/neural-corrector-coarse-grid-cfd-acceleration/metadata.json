@@ -1,0 +1,36 @@
+{
+  "name": "neural-corrector-coarse-grid-cfd-acceleration",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "神经校正器耦合粗网格CFD加速。面向粗细网格CFD成对轨迹完成神经校正器耦合粗网格CFD加速。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "accelerated",
+    "accelerating",
+    "approximations",
+    "auto-regressive",
+    "beyond",
+    "coarse",
+    "computational_fluid_dynamics",
+    "correction",
+    "corrector",
+    "dynamics",
+    "efficient",
+    "gradient-based",
+    "hybrid",
+    "hybrid-pde-solver",
+    "indirect"
+  ],
+  "scenario_id": "CFD_S067",
+  "source_papers": [
+    "sha256:238e39181318fcb8b0b8dbeaac2c4e9cbc1114fc2c2b0f18f0d2067101fb6a80",
+    "sha256:901b7822a002740338eda713955c8a46c3f352043a573ef5524cffc93da61515",
+    "sha256:da4451a2580c4666a798327c998ee68b52d178f1cb9165a6df998a2aba575527",
+    "sha256:a66ce5ca13bf9fd99c602d757e9dbb1b9dd368c2c4bde966ecda81ce9348e319",
+    "sha256:f52afc640a693abbec139f671e9ad096d9e80f2e25076cde637f34c8da722355",
+    "sha256:8b22c58612c1b9ba804d37d884ac0af453ec3fa1c86278a44d499ae9d1a01cae"
+  ]
+}

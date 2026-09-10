@@ -1,0 +1,33 @@
+{
+  "name": "lightweight-multimolecule-complex-prediction",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 Protenix 的「轻量化多分子复合物结构预测」工作流。研究对象为蛋白质序列、复合物实体或构象集合。本场景研究蛋白质序列、复合物实体或构象集合，希望解决用紧凑结构模型预测多链及配体复合物，在控制计算成本时评估界面与全原子几何。覆盖从输入与任务定义到结构质控与汇总的完整管线。核心指标包括DockQ。得到与输入和任务约束一致、可追溯、可复核的轻量化多分子复合物结构预测结果，包括标准化的序列/实体清单、预测结构或构象集合，以及链和几何完整性报告、独立评估、DockQ统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "accurate",
+    "affinity",
+    "architecture",
+    "binding",
+    "bio",
+    "boltz-2",
+    "compact",
+    "diffusion",
+    "dockq",
+    "dockq结果",
+    "efficient",
+    "few-step",
+    "json",
+    "pdbeccdutils",
+    "prediction"
+  ],
+  "scenario_id": "B06",
+  "source_papers": [
+    "2507.11839",
+    "10.1101/2025.06.14.659707",
+    "Protenix-Technical-Report"
+  ]
+}

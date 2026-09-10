@@ -1,0 +1,30 @@
+{
+  "name": "high-pressure-crystal-structure-deep-learning-search",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 mace、mattergen、mattersim、nequip、uma 的「高压晶体结构深度学习搜索」工作流。研究对象为高压晶体结构深度学习搜索。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从成分与结构搜索空间定义到结构验证与输出的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "tags": [
+    "ambient",
+    "crystal",
+    "framework",
+    "learning",
+    "mace",
+    "matchem",
+    "mattergen",
+    "mattersim",
+    "nequip",
+    "opencsp",
+    "prediction",
+    "pressure",
+    "structure",
+    "uma"
+  ],
+  "scenario_id": "高压晶体结构深度学习搜索",
+  "source_papers": [
+    "doi_10_1038_s41524_026_02180_0"
+  ]
+}

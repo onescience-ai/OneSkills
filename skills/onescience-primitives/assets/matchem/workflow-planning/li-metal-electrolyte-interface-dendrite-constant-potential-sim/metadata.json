@@ -1,0 +1,28 @@
+{
+  "name": "li-metal-electrolyte-interface-dendrite-constant-potential-sim",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 NULL 的「锂金属电解液界面枝晶恒电势模拟」工作流。研究对象为锂金属电解液界面枝晶恒电势模拟。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从材料与工况建模到方案排序与独立复核的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "tags": [
+    "constant",
+    "dendrite",
+    "enhanced",
+    "formation",
+    "framework",
+    "interface",
+    "machine-learning",
+    "matchem",
+    "metal-electrolyte",
+    "null",
+    "observation",
+    "potential"
+  ],
+  "scenario_id": "锂金属电解液界面枝晶恒电势模拟",
+  "source_papers": [
+    "doi_10_1038_s41467_025_62824_5"
+  ]
+}

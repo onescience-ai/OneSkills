@@ -1,0 +1,29 @@
+{
+  "name": "subseasonal-soil-moisture-drought-probabilistic-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「次季节土壤湿度干旱概率预报」工作流。由当前土壤湿度状态及未来气象强迫预测数周尺度土壤湿度异常和干旱概率；与仅基于降水的气象干旱分开。覆盖从水文强迫和流域资料及任务边界预检到验证可靠度与干旱命中的完整管线。得到可复现、可审计的土壤湿度异常、分位数与干旱概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "comprehensive",
+    "drought",
+    "earth",
+    "forecasts",
+    "learning",
+    "learning-dynamic",
+    "models",
+    "moisture",
+    "prediction",
+    "skillful",
+    "study",
+    "subseasonal"
+  ],
+  "scenario_id": "E46",
+  "source_papers": [
+    "sha256:7598d460e1d8c072bb6467dc9f1ba561d0bc11187ce1ad72d0434a8b328ef6b9",
+    "sha256:8198eba6c306e18218f052fe9c8614da2461dd028be3053ef0e87f6507450471"
+  ]
+}

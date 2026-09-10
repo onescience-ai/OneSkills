@@ -1,0 +1,32 @@
+{
+  "name": "protein-conformation-ensemble-generation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 Chai-1、Conformation-State Model 的「蛋白质多构象状态空间生成与筛选」工作流。研究对象为蛋白质序列、复合物实体或构象集合。本场景研究蛋白质序列、复合物实体或构象集合，希望解决从同一序列生成并筛选多个功能构象状态，适用于变构机制和开放闭合状态研究。覆盖从输入与任务定义到结构质控与汇总的完整管线。核心指标包括构象覆盖率。得到与输入和任务约束一致、可追溯、可复核的蛋白质多构象状态空间生成与筛选结果，包括标准化的序列/实体清单、预测结构或构象集合，以及链和几何完整性报告、独立评估、构象覆盖率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "bio",
+    "chai-1",
+    "conformation-state",
+    "conformation-state-model",
+    "conformational",
+    "decoding",
+    "expanding",
+    "fasta",
+    "gpcr_states",
+    "interactions",
+    "model",
+    "molecular",
+    "prediction",
+    "protein",
+    "space"
+  ],
+  "scenario_id": "B07",
+  "source_papers": [
+    "2608.02866",
+    "10.1101/2024.10.10.615955"
+  ]
+}

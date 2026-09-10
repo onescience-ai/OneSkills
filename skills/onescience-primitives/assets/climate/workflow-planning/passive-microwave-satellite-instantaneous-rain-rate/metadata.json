@@ -1,0 +1,33 @@
+{
+  "name": "passive-microwave-satellite-instantaneous-rain-rate",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「被动微波卫星瞬时降水率反演」工作流。将被动微波亮温转换为卫星过境时刻的地表降水类别和雨雪率，适用于海陆同期反演；不属于未来降水预报。覆盖从遥感观测标签及任务边界预检到按海陆、强度、天气型和传感器独立验证的完整管线。得到可复现、可审计的瞬时降水类别及地表降水率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "africa",
+    "algorithm",
+    "architecture",
+    "cloudsat",
+    "cross-track",
+    "deepprecip-",
+    "description",
+    "earth",
+    "europe",
+    "learning",
+    "microwave",
+    "network",
+    "neural",
+    "passive",
+    "precipitation"
+  ],
+  "scenario_id": "E12",
+  "source_papers": [
+    "sha256:7ffe98f0d564a450a299bb2745294570518f8487cf9c4de9addc87cb3ec925e8",
+    "sha256:06f0c20ee0915002fa0923564954cde6d5ae7ca49cb86955dc153d2bb85b3f98",
+    "sha256:797c0fc0c6f2ecaff4207f95cc26310ef581c25905bcd284622f0bc19c3f4183"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "ensemble-solar-irradiance-postprocessing",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「集合数值预报的日内至日前太阳辐照度概率后处理」工作流。对集合数值预报中的太阳辐射实施偏差订正和概率校准，输出日内至日前分位数；不生成天气初始预报。覆盖从预报实况样本及任务边界预检到验证CRPS覆盖率和可靠度的完整管线。得到可复现、可审计的校准辐照度分布、分位数和区间、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "approaches",
+    "chain",
+    "chile",
+    "comparison",
+    "crps覆盖率和可靠度",
+    "earth",
+    "energy",
+    "ensembles",
+    "forecasting",
+    "forecasts",
+    "improving",
+    "irradiance",
+    "learning",
+    "machine",
+    "machine-learning-based"
+  ],
+  "scenario_id": "E24",
+  "source_papers": [
+    "sha256:a68ca150622dfebdfebb9fe94def6bd16d354cc9ddf8099ede101a02cc1a20d3",
+    "sha256:23ca1df89c59bc9da1eacf6e3841997f49546c3591c2917cb334cc8f403e0e9f",
+    "sha256:617227e4bd3204d21f528c76b837198c6f6ce3ccf0cafd852753463bcd73e7a3",
+    "sha256:eb0338b3df4cde96c47fff7ef6f15f8594a2856f8d268871c8582e30a57614c4"
+  ]
+}

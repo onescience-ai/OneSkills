@@ -1,0 +1,36 @@
+{
+  "name": "physics-informed-diffusion-flow-field-generation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "物理信息扩散模型流场分布生成。面向条件流场与物理残差数据完成物理信息扩散模型流场分布生成。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "broadband",
+    "complex",
+    "computational_fluid_dynamics",
+    "condition",
+    "diffusion",
+    "distributions",
+    "dynamics",
+    "fluid",
+    "formula",
+    "gaussian",
+    "graph",
+    "ground",
+    "improved",
+    "lagrangian-tracer",
+    "learn"
+  ],
+  "scenario_id": "CFD_S091",
+  "source_papers": [
+    "sha256:79c2a394079256d242e9105bf94eba77841f310225850cc37ec29a1fc9d7a87a",
+    "sha256:a3a48ee0679272a0ea01018a13fa9c308bf1aa99240e86e6e53d26c09ae3309e",
+    "sha256:34d36683e21cd85796344dda727b75d95dd55b8f0501369d73b541e474302a3a",
+    "sha256:178080a859aa4e4b22aad5fa22bc7381de7e484a714261eaa69d1bc9d81df67c",
+    "sha256:ca822b2de52487bf33bce262e296ddc38b44095635e7e07e86ed88d7372ffd80",
+    "sha256:99386b547344ca74b598afc935413d07200a01886f143298eca7904e89b3ba56"
+  ]
+}

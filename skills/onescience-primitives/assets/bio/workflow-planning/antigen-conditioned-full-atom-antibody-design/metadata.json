@@ -1,0 +1,32 @@
+{
+  "name": "antigen-conditioned-full-atom-antibody-design",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 AbFlow 的「抗原条件的全原子抗体从头设计」工作流。研究对象为抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据。本场景研究抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据，希望解决以抗原表面为条件端到端生成全原子抗体，重点优化互补决定区和结合界面。覆盖从免疫对象与任务定义到特异性与可开发性质控的完整管线。核心指标包括界面RMSD。得到与输入和任务约束一致、可追溯、可复核的抗原条件的全原子抗体从头设计结果，包括标准抗体/TCR编号、链-表位映射、输入结构/序列质控和界面实体清单、独立评估、界面RMSD统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "abflow",
+    "abode",
+    "anarci",
+    "antibody",
+    "antigen_7sn1",
+    "bio",
+    "conjoined",
+    "design",
+    "end-to-end",
+    "enhanced",
+    "initio",
+    "interaction",
+    "matching",
+    "paratope-centric",
+    "rmsd"
+  ],
+  "scenario_id": "B21",
+  "source_papers": [
+    "2602.07084",
+    "2306.01005"
+  ]
+}

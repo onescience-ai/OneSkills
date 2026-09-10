@@ -1,0 +1,40 @@
+{
+  "name": "pod-modal-decomposition-flow-reduced-order-model",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "POD与模态分解流动降阶建模。面向CFD快照矩阵与参数标签完成POD与模态分解流动降阶建模。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "aerodynamic",
+    "analysis",
+    "applications",
+    "assessment",
+    "causal",
+    "characterisation",
+    "computational_fluid_dynamics",
+    "convolutional",
+    "data-driven",
+    "decomposition",
+    "differentiable",
+    "dynamic-mode-decomposition",
+    "dynamics",
+    "encoding",
+    "federated"
+  ],
+  "scenario_id": "CFD_S086",
+  "source_papers": [
+    "sha256:d822f3ff6c1fba0d839971f5bb29484455b2cbe1e6f3390893ebc5731ac4ec8b",
+    "sha256:2f62d89300005f044dd71b15d32c9b267362b349ebe48558f170d8709b0c06bd",
+    "sha256:0196ddaa1faf5173c2fdac63a88f711226a8cf8f0facdb6d1345e78f9ed595c5",
+    "sha256:17949b918da48edcc407d4edc589f59a8f7f29d2ea6275bfa7dbc30bf616c35b",
+    "sha256:4047be38d655ac4dcd23cdf227640ed7368c77bd5e635b691b99969b17e0b88f",
+    "sha256:10b6ce39b958cf97dab58d52d6bbb3e96636f7044677d4590a5ef5b5e6e0fb53",
+    "sha256:306b0dce3531f08b5b15b20f65ae008a2fa0ce015b9f1312f2c48379942bfa02",
+    "sha256:10378160fdb3f8af40e35d0eb3766688dda4fbcc8f209bb2ef3cd123966b1fa9",
+    "sha256:6ff0cf95e0616258863fcec3569fd2a60f52137ee1271ec5199246ec9cd243a4",
+    "sha256:2de431dea4c77e7070bffc865e53d1c960223c103eeac6457f30f355c59e794b"
+  ]
+}

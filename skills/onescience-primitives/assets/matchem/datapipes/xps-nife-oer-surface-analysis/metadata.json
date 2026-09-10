@@ -1,0 +1,21 @@
+{
+  "name": "xps-nife-oer-surface-analysis",
+  "type": "datapipe",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-08",
+  "updated_at": "2026-09-08",
+  "description": "NiFe 基（LDH/氧化物/羟基氧化物）OER 电极的 XPS 数据处理原语：覆盖测试前后对比分析的完整链路——以 adventitious carbon（C 1s 284.8 eV）做荷电校正并核查其适用前提；对 C 1s、Ni 2p、Fe 2p 高分辨谱扣本底后做约束峰拟合（自旋轨道分裂 ΔBE、2p1/2:2p3/2 面积比 ≈0.5、卫星峰独立组分）；价态定量（Ni2+/Ni3+、Fe2+/Fe3+）与相对灵敏度因子（RSF）法表面 Ni/Fe 原子比计算；KOH 电解液残盐干扰识别（K 2p3/2 293.2–293.5 / K 2p1/2 295.8–296.2 双峰面积比 2:1，位于 C 1s 窗口内，严禁拟合成污染碳）；稳定性测试后表面演化机理判别——表面重构（NiOOH 类）、Fe 选择性溶出、残盐覆盖三种假设的证据链组合；与 ICP（电解液 Fe/Ni 溶出）、Raman、XAFS、Ar+ 刻蚀深度剖面等多源证据融合，并按探测深度（XPS 表面 5–10 nm vs ICP 体相）调和表面/体相表观矛盾。适用于碱性 OER 电催化剂稳定性失效分析与表面化学态演化研究。",
+  "tags": [
+    "xps",
+    "ni-fe",
+    "oer",
+    "surface-reconstruction",
+    "charge-correction",
+    "peak-fitting",
+    "valence-quantification",
+    "koh-residue",
+    "icp-fusion"
+  ]
+}

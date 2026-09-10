@@ -1,0 +1,25 @@
+{
+  "name": "enzyme-classification-reaction-retrieval-benchmark",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 CARE 的「酶分类与反应检索基准评测」工作流。研究对象为蛋白序列、突变、结构域、酶底物或功能标签数据。本场景研究蛋白序列、突变、结构域、酶底物或功能标签数据，希望解决统一评测酶分类和酶反应检索模型，适用于比较表征质量与跨家族泛化。覆盖从蛋白样本与目标定义到评测与解释汇总的完整管线。核心指标包括检索召回率。得到与输入和任务约束一致、可追溯、可复核的酶分类与反应检索基准评测结果，包括规范化序列、突变/底物表示、标签本体、去重和数据质量报告、独立评估、检索召回率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "benchmark",
+    "bio",
+    "care",
+    "care_benchmark",
+    "classification",
+    "enzymes",
+    "foldseek",
+    "retrieval",
+    "suite"
+  ],
+  "scenario_id": "B40",
+  "source_papers": [
+    "2406.15669"
+  ]
+}

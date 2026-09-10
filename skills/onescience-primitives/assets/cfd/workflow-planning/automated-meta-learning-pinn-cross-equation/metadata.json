@@ -1,0 +1,38 @@
+{
+  "name": "automated-meta-learning-pinn-cross-equation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "自动化与元学习PINN跨方程求解。面向PDEBench与PINNacle多方程基准完成自动化与元学习PINN跨方程求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "automated",
+    "benchmark",
+    "comprehensive",
+    "computational_fluid_dynamics",
+    "dats_",
+    "difficulty-aware",
+    "extensive",
+    "framework",
+    "hypernetwork-based",
+    "hyperpinns",
+    "hypino_",
+    "language",
+    "large",
+    "learning",
+    "low-rank"
+  ],
+  "scenario_id": "CFD_S047",
+  "source_papers": [
+    "sha256:69de485e67c6e85b12057300a06004edfd7b0b0ed3bc05550a0bf266af99cf6b",
+    "sha256:0499f8befc9323a7efdc1eb61a84d3dbc365d50803d950ece0178718d170382c",
+    "sha256:adc9b43bae761c95350d396d275636158e6b89c440cde46a9cb660a7b2196242",
+    "sha256:00371f809edbc3467ed683f918fd8ec7762e11b160f1d283164dd968c14c9fb7",
+    "sha256:1ac1f49630f46abc500ee1e15f5b9f5bdd3d9a7f10701a12b16e0034c850552b",
+    "sha256:144d5b06cce64c722f8de817c71bf9f32995ebfd763c1e28f026bda9387bff0c",
+    "sha256:41367b3d2267c121440ea17702b11c83d469cc052402eb5c430a92316a74f905",
+    "sha256:059ab07520aa2ee221e7582f766b16479cbb179751680e064872c26165da2727"
+  ]
+}

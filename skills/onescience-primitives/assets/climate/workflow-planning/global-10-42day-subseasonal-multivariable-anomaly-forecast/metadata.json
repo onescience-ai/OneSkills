@@ -1,0 +1,33 @@
+{
+  "name": "global-10-42day-subseasonal-multivariable-anomaly-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「全球10—42天次季节多变量异常预报」工作流。从全球再分析初态预测第2—6周温度、降水和环流异常及阈值概率，支持周尺度延伸期研判。覆盖从起报资料及任务边界预检到检验ACC、CRPS和概率可靠度的完整管线。得到可复现、可审计的周平均异常场、集合概率和气候模态诊断、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "aifs-subs-",
+    "atmosphere",
+    "conventional",
+    "crps和概率可靠度",
+    "data-driven",
+    "earth",
+    "extending",
+    "fengwu-w2s_",
+    "forecast",
+    "forecasting",
+    "global",
+    "learning",
+    "machine",
+    "model",
+    "models"
+  ],
+  "scenario_id": "E7",
+  "source_papers": [
+    "sha256:75e11404936709ad95d0f5420de4a762355e0502dd319ace9c87dcf8d66257ed",
+    "sha256:a6e488578ad51ac2b0d6fa5b85eec2563ca02149534e284c579d375402161fa6",
+    "sha256:d37697b6b289df06332d183481256c7b30a9ce7625ee507e4d2934bb4ca3c835"
+  ]
+}

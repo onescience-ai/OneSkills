@@ -1,0 +1,33 @@
+{
+  "name": "regional-sst-1-7day-daily-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「区域海表温度1—7日逐日预报」工作流。利用起报日前连续海表温度及可选海气强迫，一次生成区域未来1—7日逐日海温场；不用于月季节尺度异常预测。覆盖从海洋状态和强迫资料及任务边界预检到按提前期与分析场、浮标及基线比较的完整管线。得到可复现、可审计的未来1—7日区域海表温度场、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "convolution",
+    "dconv-lstm",
+    "dynamic",
+    "earth",
+    "forecasting",
+    "graph",
+    "knowledge-enhanced",
+    "learnable",
+    "model",
+    "network",
+    "neural",
+    "personalized",
+    "physical",
+    "prediction",
+    "seven-day"
+  ],
+  "scenario_id": "E27",
+  "source_papers": [
+    "sha256:4c9b429c1ddb3c99e60a5ee701a8f66a66a11635dcb3d8d54821f48057c9d552",
+    "sha256:143e42155c46e8b8b9271f9a4d889316e501851716e120ce2990fd7496295145",
+    "sha256:f0910487017124b15f3a3b9c124f06ee7f4a78514af47866986e97e660c6ffd6"
+  ]
+}

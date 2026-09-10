@@ -1,0 +1,35 @@
+{
+  "name": "stochastic-probabilistic-coarse-grained-turbulence-closure",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "随机微分与概率粗粒化湍流闭合。面向多尺度湍流粗细状态轨迹完成随机微分与概率粗粒化湍流闭合。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "cfd耦合",
+    "closures",
+    "coarse-graining",
+    "computational_fluid_dynamics",
+    "convection",
+    "differential",
+    "energy-preserving",
+    "equations",
+    "flows",
+    "fluid",
+    "framework",
+    "high-dimensional",
+    "ideal",
+    "inertial",
+    "large"
+  ],
+  "scenario_id": "CFD_S079",
+  "source_papers": [
+    "sha256:c0c097db576f873bee6449ca4bf785cb7aedfd354a80d3b8c346d52feeedb079",
+    "sha256:9f63401bd844481bbad5309f43bd3797527e3549028fb2469b442499bbf6a89d",
+    "sha256:f164b0f083c5efdc9bceb70cef28369d6b74a1c25b432487c88fefdb4f4a962d",
+    "sha256:faf3c9138e2ab046be096fbe5508f9c806eed3be969fd87198bb20568b57e601",
+    "sha256:40324ee9bc4804d38ec8af85e77d587281aa87143cd544ef25b9031a16d52044"
+  ]
+}

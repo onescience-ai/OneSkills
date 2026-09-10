@@ -1,0 +1,31 @@
+{
+  "name": "learned-mesh-movement-adaptive-fem-optimization",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "学习型网格移动与自适应有限元优化。面向自适应有限元网格误差数据完成学习型网格移动与自适应有限元优化。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "computational_fluid_dynamics",
+    "element",
+    "finite",
+    "g-adaptivity_",
+    "graph-based",
+    "graph-mesh-optimizer",
+    "mesh-movement-network",
+    "methods",
+    "movement",
+    "networks",
+    "optimised",
+    "relocation",
+    "towards",
+    "universal"
+  ],
+  "scenario_id": "CFD_S030",
+  "source_papers": [
+    "sha256:8e7f390f57647857137750d418f6a9082787b9a7b20a12d7841c4c6b675f5864",
+    "sha256:4c978419bd809759f69a53e117027af78aa83279be18f8e2bf20728dd689c896"
+  ]
+}

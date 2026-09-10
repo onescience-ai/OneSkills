@@ -1,0 +1,31 @@
+{
+  "name": "sars-cov-2-antibody-binding-affinity-prediction",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 AbAffinity 的「新冠病毒抗体结合亲和力预测」工作流。研究对象为抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据。本场景研究抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据，希望解决从抗体序列和病毒抗原信息预测结合亲和力，适用于候选中和抗体排序。覆盖从免疫对象与任务定义到特异性与可开发性质控的完整管线。核心指标包括Spearman相关。得到与输入和任务约束一致、可追溯、可复核的新冠病毒抗体结合亲和力预测结果，包括标准抗体/TCR编号、链-表位映射、输入结构/序列质控和界面实体清单、独立评估、Spearman相关统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "abaffinity",
+    "affinity",
+    "against",
+    "anarci",
+    "antibody",
+    "binding",
+    "bio",
+    "language",
+    "large",
+    "model",
+    "predicting",
+    "sars-cov-2",
+    "sars_cov2_antibodies",
+    "spearman相关",
+    "spearman相关结果"
+  ],
+  "scenario_id": "B29",
+  "source_papers": [
+    "2603.04480"
+  ]
+}

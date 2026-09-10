@@ -1,0 +1,36 @@
+{
+  "name": "transferable-parametric-rom-real-time-monitoring",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "可迁移参数化ROM与实时状态监测。面向跨几何参数CFD与稀疏监测数据完成可迁移参数化ROM与实时状态监测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "based",
+    "channel-porous",
+    "computational_fluid_dynamics",
+    "correction",
+    "coupled",
+    "decoders",
+    "different",
+    "differential",
+    "efficient",
+    "equations",
+    "families",
+    "flows",
+    "fluid",
+    "generalized",
+    "geometries"
+  ],
+  "scenario_id": "CFD_S090",
+  "source_papers": [
+    "sha256:55ff1bda9e99791808e5d1c54d8b3d3c43a4b84db04950a0f3bff92f38d95bcb",
+    "sha256:472167bf2da6f4ee5d15a3e3814d43a97c50fd0dbb20efa7f9bfee5740e586db",
+    "sha256:aa711b095777c4c8945359fca16820f1582b37be1ae816e38412295dfeea6234",
+    "sha256:a55994a68e7c2c2de0d72567536e44e48c3986ab181f19178e1a46f755af8ecd",
+    "sha256:11852c6c10da986a198119711cd297e6c15ca1c6f0c0cf8a99415374bc16d998",
+    "sha256:dceb7adefb3daafe9e67f0fe5a8c87632b0475793bf3eb6f260f469038bdbd4a"
+  ]
+}

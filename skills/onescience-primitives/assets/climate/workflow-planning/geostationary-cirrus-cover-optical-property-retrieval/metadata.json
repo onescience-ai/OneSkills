@@ -1,0 +1,30 @@
+{
+  "name": "geostationary-cirrus-cover-optical-property-retrieval",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「静止卫星卷云覆盖与光学属性反演」工作流。由MSG-SEVIRI多光谱观测反演卷云覆盖、光学厚度及相关属性，适用于同期大范围监测；不预测卷云演变。覆盖从遥感观测标签及任务边界预检到按云型、角度、地表和季节分层验证的完整管线。得到可复现、可审计的卷云掩膜及光学属性、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "artificial",
+    "characterisation",
+    "cirrus",
+    "cloud",
+    "earth",
+    "msg-seviri",
+    "network",
+    "networks",
+    "neural",
+    "remote",
+    "retrieval",
+    "sensing",
+    "using"
+  ],
+  "scenario_id": "E54",
+  "source_papers": [
+    "sha256:a8632d6a7ea1035fddba126aa7d0ca20115c1556123ea7ce5dfb77355b12bc60",
+    "sha256:a2d5ec078265fbcec36963860a205e76f3293a11e6848eb28588634e4b08fe1b"
+  ]
+}

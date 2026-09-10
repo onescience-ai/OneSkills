@@ -1,0 +1,27 @@
+{
+  "name": "multi-source-antarctic-ice-shelf-surface-melt-detection",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「多源遥感南极冰架表面融化识别」工作流。融合多传感器遥感序列识别南极冰架表面融化发生、持续时间和空间范围；适用于历史监测，不预测未来融化。覆盖从遥感观测标签及任务边界预检到与现场或既有产品分区分年验证的完整管线。得到可复现、可审计的逐日融化状态、持续时间和年度范围、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "antarctic",
+    "earth",
+    "high-resolution",
+    "learning",
+    "multi-source",
+    "record",
+    "remote",
+    "sensing",
+    "shelves",
+    "surface",
+    "using"
+  ],
+  "scenario_id": "E75",
+  "source_papers": [
+    "sha256:14a2afe4c1b66cc8af24ce16da0fd9c6c6160fec07f91dde3176a953f6113b01"
+  ]
+}

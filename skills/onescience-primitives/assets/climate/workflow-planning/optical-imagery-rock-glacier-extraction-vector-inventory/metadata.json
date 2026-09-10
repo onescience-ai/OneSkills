@@ -1,0 +1,25 @@
+{
+  "name": "optical-imagery-rock-glacier-extraction-vector-inventory",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「光学影像岩石冰川目标提取与矢量清查」工作流。由高分辨率光学影像和地形信息提取岩石冰川概率与矢量边界，适用于区域清查；不判断活动性或未来演变。覆盖从遥感观测标签及任务边界预检到与独立人工清查比较面积和分类精度的完整管线。得到可复现、可审计的岩石冰川概率图及矢量多边形、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "analysis",
+    "automated",
+    "detection",
+    "earth",
+    "glaciers",
+    "image",
+    "learning",
+    "object-based",
+    "using"
+  ],
+  "scenario_id": "E77",
+  "source_papers": [
+    "sha256:18c903241e9b335da234af88da1a093ff0d6c79c33a9de7327b14f5c61ea346e"
+  ]
+}

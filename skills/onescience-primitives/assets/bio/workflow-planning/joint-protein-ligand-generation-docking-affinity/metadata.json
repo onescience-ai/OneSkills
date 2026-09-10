@@ -1,0 +1,32 @@
+{
+  "name": "joint-protein-ligand-generation-docking-affinity",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 FlowDock 的「蛋白配体联合生成对接与亲和力预测」工作流。研究对象为受体结构、配体化学结构、候选口袋和对接姿态。本场景研究受体结构、配体化学结构、候选口袋和对接姿态，希望解决以流匹配联合生成复合物姿态并估计亲和力，适用于结构与打分一体化筛选。覆盖从受体配体输入预检到物理几何质控与排序的完整管线。核心指标包括PoseBusters通过率。得到与输入和任务约束一致、可追溯、可复核的蛋白配体联合生成对接与亲和力预测结果，包括受体/配体标准化记录、口袋坐标、质子化和立体化学检查报告、独立评估、PoseBusters通过率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "accurate",
+    "affinity",
+    "bio",
+    "deltadock",
+    "docking",
+    "efficient",
+    "flowdock",
+    "framework",
+    "generative",
+    "geometric",
+    "matching",
+    "molecular",
+    "pdbbind_targets",
+    "physically",
+    "posebusters"
+  ],
+  "scenario_id": "B43",
+  "source_papers": [
+    "2412.10966",
+    "2410.11224"
+  ]
+}

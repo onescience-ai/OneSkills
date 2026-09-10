@@ -1,0 +1,32 @@
+{
+  "name": "grace-gap-global-terrestrial-water-storage-reconstruction",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「GRACE缺测期全球陆地水储量异常重建」工作流。利用气候、陆面和可用重力卫星资料填补GRACE空档并重建长期水储量异常；不直接等同于地下水储量。覆盖从目标序列及缺口及任务边界预检到交叉验证空间和年代泛化的完整管线。得到可复现、可审计的连续陆地水储量异常及不确定性、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "algorithms",
+    "anomalies",
+    "assimilation",
+    "earth",
+    "global",
+    "grace缺测期全球陆地水储量异常重建",
+    "gtws-mlrec-",
+    "high-resolution",
+    "learning",
+    "machine",
+    "present",
+    "reconstruction",
+    "self-supervised",
+    "storage",
+    "terrestrial"
+  ],
+  "scenario_id": "E49",
+  "source_papers": [
+    "sha256:84b1a2bd1751630973b5190947f42bf8081f889fefe34cbadac9f03ad17ffd6c",
+    "sha256:016ed066372876134d53130085a396f7f1cfc29ae69de09b6f2e68b7fd298b62"
+  ]
+}

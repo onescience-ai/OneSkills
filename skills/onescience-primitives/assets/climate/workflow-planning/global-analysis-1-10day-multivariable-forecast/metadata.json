@@ -1,0 +1,35 @@
+{
+  "name": "global-analysis-1-10day-multivariable-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「全球分析场驱动的1—10天多变量确定性天气预报」工作流。从全球分析场起报，以6小时步长生成未来1—10天多层大气与地面变量，适用于全球确定性天气预报；不包含原始观测同化、集合概率预报、公里级强对流或气候模拟。覆盖从起报范围与分析场预检到同协议检验与交付判定的完整管线。得到可复现、可审计的全球多层多变量确定性预报场、经明确配置的派生产品、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "accurate",
+    "adaptive",
+    "beyond",
+    "data-driven",
+    "earth",
+    "ecmwf",
+    "fengwu",
+    "forecast",
+    "forecasting",
+    "fourcastnet",
+    "fourier",
+    "global",
+    "high-resolution",
+    "learning",
+    "medium-range"
+  ],
+  "scenario_id": "E1",
+  "source_papers": [
+    "sha256:360f798223ced4091586d0207c6ff2c965a8846a8b1738bdf368dca8f9e71820",
+    "sha256:422b426e563423310a0eb98723aa8c3ffe7d1b1827f8420521628ca293bc666f",
+    "sha256:cee61c60a35e9533f59dcebb8c621faa6e2f9b1bddfa0e7048d809b38d42e1d8",
+    "sha256:e169c12304de5d3e7c7843b1da9bd5c6a9077b4e8d51a2bbf0e13c8e68757d5c",
+    "sha256:b6dcfc943598adf8b80e9553fe806492d4b35feca913e3aa808984d3d12c95e5"
+  ]
+}

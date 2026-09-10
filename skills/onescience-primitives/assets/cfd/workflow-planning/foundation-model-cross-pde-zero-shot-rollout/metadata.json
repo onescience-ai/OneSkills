@@ -1,0 +1,36 @@
+{
+  "name": "foundation-model-cross-pde-zero-shot-rollout",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基础模型跨PDE零样本时序预测。面向多物理预训练PDE时序数据完成基础模型跨PDE零样本时序预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "alignment",
+    "auto-regressive",
+    "chaotic",
+    "computational",
+    "computational_fluid_dynamics",
+    "dynamics",
+    "fluid",
+    "fluid-llm_",
+    "forecasting",
+    "foundation",
+    "generative",
+    "improving",
+    "in-context",
+    "in-context-learner",
+    "language"
+  ],
+  "scenario_id": "CFD_S022",
+  "source_papers": [
+    "sha256:23aac715c15a412fb59016b5c283a3233a9f3f131ce5bd48f7d224cb3658fb18",
+    "sha256:f2696bf4c79c52a014e7f9051224670c128f7dc024d909006781c938df23405c",
+    "sha256:f9d0475069d7ca038747471ccab0e7f352caee2fc5abed442766143adf2eaa45",
+    "sha256:47661de04057b8bfd18e716afe3af062131bae139b45571881ee6cad3a033623",
+    "sha256:9fd731eab12eaf7c991148d9d969bd196c160f51079d9a23bb92ba21f23fecce",
+    "sha256:59ce4fdea6d50af118ef9d30e46677d8080f03e037f6863b511f6895d0ba6b93"
+  ]
+}

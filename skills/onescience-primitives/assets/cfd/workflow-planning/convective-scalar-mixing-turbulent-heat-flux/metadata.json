@@ -1,0 +1,33 @@
+{
+  "name": "convective-scalar-mixing-turbulent-heat-flux",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "对流与标量混合湍流热通量预测。面向Rayleigh-Benard对流与标量混合数据完成对流与标量混合湍流热通量预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "bénard",
+    "cnn",
+    "computational_fluid_dynamics",
+    "computing",
+    "convection",
+    "data-driven",
+    "direct",
+    "forecast",
+    "learning",
+    "local",
+    "mixing",
+    "model",
+    "rayleigh",
+    "reservoir",
+    "reservoir-computer"
+  ],
+  "scenario_id": "CFD_S026",
+  "source_papers": [
+    "sha256:40922c1e48b0aba37d3f08c8ef896e9010715af0d6f6c0b22152319c85a03a55",
+    "sha256:3f648f18ff486ba5221655ef68783e6ef63c2c7bdc77986c70b7f94ff0f8cd57",
+    "sha256:2070578e7dd3dd8ced4582e8c4bc9c0d61ae2696046dacd0e5318f895f66c6b0"
+  ]
+}

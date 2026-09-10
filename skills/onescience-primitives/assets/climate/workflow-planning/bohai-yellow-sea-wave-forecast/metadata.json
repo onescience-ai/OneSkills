@@ -1,0 +1,23 @@
+{
+  "name": "bohai-yellow-sea-wave-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 渤黄海海浪智能预报模型 的「渤黄海海浪智能预报模型」工作流。任务需要兼顾近岸浅水效应、风浪物理联系和开放边界连续性的快速海浪预报能力。覆盖从模型输入与运行条件预检到独立评估与交付判定的完整管线。得到覆盖渤黄海、可局地加密、逐小时输出不少于72小时的海浪模型和产品，并在试运行中用独立资料证明性能。",
+  "tags": [
+    "alternative",
+    "conventional",
+    "earth",
+    "forecasting",
+    "learning",
+    "models",
+    "m风场和外边界是否能在统一网格",
+    "ocean",
+    "渤黄海海浪智能预报模型"
+  ],
+  "scenario_id": "E106",
+  "source_papers": []
+}

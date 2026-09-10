@@ -1,0 +1,31 @@
+{
+  "name": "clinical-reward-aligned-chest-xray-reporting",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 DobicVLM 的「临床奖励对齐的胸部X线报告生成」工作流。研究对象为医学影像、文本报告、患者/时间点元数据和临床问题。本场景研究医学影像、文本报告、患者/时间点元数据和临床问题，希望解决以临床事实奖励对齐胸部X线报告生成，减少遗漏、矛盾和无依据异常描述。覆盖从医学数据与任务定义到临床质量与安全复核的完整管线。核心指标包括RadGraph-F1。得到与输入和任务约束一致、可追溯、可复核的临床奖励对齐的胸部X线报告生成结果，包括影像/文本格式、去标识化、患者-时间点配对、视野和质量检查报告、独立评估、RadGraph-F1统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "aligning",
+    "bio",
+    "chest",
+    "clinically-grounded",
+    "dobicvlm",
+    "generation",
+    "group",
+    "mimic_cxr_sample",
+    "optimization",
+    "policy",
+    "programmatic",
+    "radgraph-f1",
+    "radgraph-f1结果",
+    "relative",
+    "report"
+  ],
+  "scenario_id": "B99",
+  "source_papers": [
+    "2607.18988"
+  ]
+}

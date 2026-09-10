@@ -1,0 +1,36 @@
+{
+  "name": "kernel-generative-airfoil-multi-condition-prediction",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "核方法与生成模型翼型跨工况场预测。面向参数化翼型多工况与多保真数据完成核方法与生成模型翼型跨工况场预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "aerodynamic",
+    "aerojepa_",
+    "afbench_",
+    "airfoil",
+    "airfoilgen_",
+    "benchmark",
+    "computational_fluid_dynamics",
+    "criteria",
+    "design",
+    "design-by-morphing",
+    "design-space",
+    "diffusion",
+    "diffusion-model",
+    "dimensionality",
+    "droplet"
+  ],
+  "scenario_id": "CFD_S003",
+  "source_papers": [
+    "sha256:22118718343d53967da9e8ea17a5ef2ad98df5c0bcb73da0a436ea8fd33217c6",
+    "sha256:40d6556a4b6b6f2636893626d57c8cf93e3c4299f5aa60e76ef88b7240b4d063",
+    "sha256:f1725aab933842a842f04330a5e2d0917950aee99d7f2b2b2cfb5a7e73287da7",
+    "sha256:f9977205feec5dfdcf18e4434316a8418b6fd33c4ab7f99de34f5f7be19c991e",
+    "sha256:6c21b594a293bbad8c99fe9929c1a3318c558d7aa6ad72ca35d0a95dad973898",
+    "sha256:25bab3d3c4375ba56dbdc6c488ce6b6050069c8cf10db7d194bfd14fd3fc15a0"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "high-ionic-conductivity-electrolyte-foundation-model-formulation",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 NULL 的「高离子电导电解液基础模型配方设计」工作流。研究对象为高离子电导电解液基础模型配方设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从材料与工况建模到方案排序与独立复核的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "tags": [
+    "author",
+    "chemical",
+    "conductivity",
+    "correction",
+    "design",
+    "electrolyte",
+    "formulations",
+    "foundation",
+    "ionic",
+    "matchem",
+    "model-guided",
+    "null"
+  ],
+  "scenario_id": "高离子电导电解液基础模型配方设计",
+  "source_papers": [
+    "doi_10_1038_s41524_025_01774_4",
+    "doi_10_1038_s41524_025_01804_1"
+  ]
+}

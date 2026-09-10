@@ -1,0 +1,37 @@
+{
+  "name": "conservative-graph-network-finite-volume-pde",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "守恒图网络有限体积PDE推进。面向控制体网格与守恒通量数据完成守恒图网络有限体积PDE推进。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "architectures",
+    "beyond",
+    "computational_fluid_dynamics",
+    "conservation",
+    "conservative",
+    "conservative-graph-neural-network",
+    "differential",
+    "divergence-free",
+    "dynamics",
+    "equations",
+    "euclidean",
+    "flows",
+    "fluid",
+    "gradient",
+    "graph"
+  ],
+  "scenario_id": "CFD_S061",
+  "source_papers": [
+    "sha256:6aa6978be763ca169d2a982b2784b163760cf0a5bf5d1e50d1b193c0618e167b",
+    "sha256:5905079de1809219b9d89fd19af29196ec5115679a14b8c48aa5b43b4150ea81",
+    "sha256:9e2b7b097ae7850412a192c1010d30cbe6d80962499f3b82bbce2f63dfe0349a",
+    "sha256:23708be4076beafd1d44c1409ed7f1ba475980128cbfa217866b1fcf3faf11fa",
+    "sha256:2b034346d5e344440fce33c4c8a904e9cbc8f166b2660111c5b9382826e6f4de",
+    "sha256:3efae1095901be64194e669df9e52c9114b84498008cd8d9ec7b6e96f792cf80",
+    "sha256:f4173fb84cf938beebcf75305eb53c83c81bdc8d4e9afbc70bc034d94376b99f"
+  ]
+}

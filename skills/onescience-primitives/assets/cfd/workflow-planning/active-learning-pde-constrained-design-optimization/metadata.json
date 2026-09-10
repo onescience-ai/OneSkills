@@ -1,0 +1,35 @@
+{
+  "name": "active-learning-pde-constrained-design-optimization",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "主动学习驱动的PDE约束设计优化。面向有限标注预算的PDE设计数据完成主动学习驱动的PDE约束设计优化。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "accelerating",
+    "acquisition",
+    "active",
+    "active-learning-surrogate",
+    "arbitrary",
+    "based",
+    "bi-level",
+    "broyden",
+    "christoffel",
+    "computational_fluid_dynamics",
+    "constrained",
+    "cs4ml_",
+    "derivative",
+    "differentiable-neural-operator",
+    "framework"
+  ],
+  "scenario_id": "CFD_S029",
+  "source_papers": [
+    "sha256:4c995c45d8d1bcd68d961699fcc62028d256d432ebf2561d206bf33b6e2421b6",
+    "sha256:ccc789d50b42f216db39e4e95a2ad309984eb5a52289f891df216810bbc314f3",
+    "sha256:c004df140671630e5795f25bbe46b2d0d24af7adecb62ddc74941dd4071f19bb",
+    "sha256:f1ff1fc8a8e3dd445aa190f5ce763bb2596928b7b557cc5362f3c0dbf8d57180",
+    "sha256:89d11854ad28a89312150d3959ba0ef1253c400541f3fe76519d197802e2f5a6"
+  ]
+}

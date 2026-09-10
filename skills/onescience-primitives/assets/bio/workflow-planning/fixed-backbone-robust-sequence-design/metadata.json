@@ -1,0 +1,28 @@
+{
+  "name": "fixed-backbone-robust-sequence-design",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 ProteinMPNN 的「给定蛋白骨架的稳健序列设计」工作流。研究对象为受约束的蛋白骨架、序列、肽或酶设计任务。本场景研究受约束的蛋白骨架、序列、肽或酶设计任务，希望解决在固定或部分固定骨架上设计可折叠氨基酸序列，支持多链界面及位点约束。覆盖从设计目标与约束定义到回折叠与设计筛选的完整管线。核心指标包括序列恢复率。得到与输入和任务约束一致、可追溯、可复核的给定蛋白骨架的稳健序列设计结果，包括经格式和约束检查的设计目标、固定区域掩码、候选结构/序列及结构自洽报告、独立评估、序列恢复率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "bio",
+    "design",
+    "function",
+    "learning-based",
+    "protein",
+    "proteinmpnn",
+    "rfdiffusion",
+    "robust",
+    "sequence",
+    "structure",
+    "using"
+  ],
+  "scenario_id": "B12",
+  "source_papers": [
+    "10.1126/science.add2187",
+    "10.1038/s41586-023-06415-8"
+  ]
+}

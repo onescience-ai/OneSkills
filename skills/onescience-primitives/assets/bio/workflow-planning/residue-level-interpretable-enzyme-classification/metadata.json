@@ -1,0 +1,28 @@
+{
+  "name": "residue-level-interpretable-enzyme-classification",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 Residue-Level Enzyme Predictor 的「残基层可解释的酶功能分类」工作流。研究对象为蛋白序列、突变、结构域、酶底物或功能标签数据。本场景研究蛋白序列、突变、结构域、酶底物或功能标签数据，希望解决预测酶功能类别并定位关键催化残基，适用于酶注释和机理假设生成。覆盖从蛋白样本与目标定义到评测与解释汇总的完整管线。核心指标包括宏平均F1。得到与输入和任务约束一致、可追溯、可复核的残基层可解释的酶功能分类结果，包括规范化序列、突变/底物表示、标签本体、去重和数据质量报告、独立评估、宏平均F1统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "bio",
+    "detection",
+    "enzyme",
+    "enzyme_sequences",
+    "f1结果",
+    "fasta",
+    "function",
+    "interpretable",
+    "prediction",
+    "predictor",
+    "residue-level",
+    "residue-level-enzyme-predictor"
+  ],
+  "scenario_id": "B37",
+  "source_papers": [
+    "2501.05644"
+  ]
+}

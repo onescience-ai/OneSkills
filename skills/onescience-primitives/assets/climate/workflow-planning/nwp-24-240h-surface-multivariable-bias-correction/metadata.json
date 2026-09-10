@@ -1,0 +1,28 @@
+{
+  "name": "nwp-24-240h-surface-multivariable-bias-correction",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「NWP 24—240小时近地面多变量偏差订正」工作流。利用历史模式—分析或观测配对，订正24—240小时温度、湿度、风速和风向的系统性格点误差。覆盖从粗细分辨率资料及任务边界预检到与原始NWP及气候订正基线比较的完整管线。得到可复现、可审计的同网格多时效近地面变量订正场、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "accuracy",
+    "correction",
+    "earth",
+    "ecmwf",
+    "forecasts",
+    "improvement",
+    "learning",
+    "method",
+    "nwp及气候订正基线比较",
+    "prediction",
+    "short-term"
+  ],
+  "scenario_id": "E53",
+  "source_papers": [
+    "sha256:d738c8f138288d1b88ed4e5073f2d214ac461d4d1f6326aebb5a97e204bea96f",
+    "sha256:ceb9f336fb7a1604d4ab94f84df9d6a6919e1e1a21fa7bda7f58469786c8485a"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "pinn-incompressible-navier-stokes-forward-solve",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "PINN不可压Navier-Stokes正问题求解。面向不可压层流Navier-Stokes配置与配点完成PINN不可压Navier-Stokes正问题求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "across",
+    "balanced",
+    "complementary",
+    "computational_fluid_dynamics",
+    "cumulative_",
+    "data-free",
+    "effects",
+    "equations",
+    "flows",
+    "incompressible",
+    "interaction",
+    "laminar",
+    "learning",
+    "navier",
+    "navier-stokes"
+  ],
+  "scenario_id": "CFD_S036",
+  "source_papers": [
+    "sha256:dda79e70937a72a49fdb4ed78ff901dc1fb74bc9c3e578998e120ff57e94710a",
+    "sha256:90e03aa845958478207b0287ab6082f77c1b5332aa972f24e3eb104cca15ca26",
+    "sha256:317a29dec1b14c712d4639d3a9defa3038f55f4e1387d7f4992b2bb7703ec1ca",
+    "sha256:077527360c3cb70c7da03cb5935dd065ba335a69e1cf6df9d1d1ce90da17cb3d",
+    "sha256:a8de78631291eeb3163da2096f0b2368716dbfb268610c1d6cc49954b07ca410"
+  ]
+}

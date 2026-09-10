@@ -1,0 +1,30 @@
+{
+  "name": "longitudinal-chest-ct-change-reporting",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 ALTER 的「纵向胸部CT变化检测与报告生成」工作流。研究对象为医学影像、文本报告、患者/时间点元数据和临床问题。本场景研究医学影像、文本报告、患者/时间点元数据和临床问题，希望解决比较同一患者不同时点胸部CT并生成变化报告，适用于病灶进展和疗效随访。覆盖从医学数据与任务定义到临床质量与安全复核的完整管线。核心指标包括变化F1。得到与输入和任务约束一致、可追溯、可复核的纵向胸部CT变化检测与报告生成结果，包括影像/文本格式、去标识化、患者-时间点配对、视野和质量检查报告、独立评估、变化F1统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "alter",
+    "bio",
+    "changes",
+    "ct变化检测与报告生成的输出",
+    "ct并生成变化报告",
+    "differencing",
+    "f1结果",
+    "generation",
+    "json",
+    "longitudinal",
+    "modeling",
+    "paired_chest_ct",
+    "regional",
+    "report"
+  ],
+  "scenario_id": "B100",
+  "source_papers": [
+    "2608.05615"
+  ]
+}

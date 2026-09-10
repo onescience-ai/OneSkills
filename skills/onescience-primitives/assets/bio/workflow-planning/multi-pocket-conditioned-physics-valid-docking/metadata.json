@@ -1,0 +1,31 @@
+{
+  "name": "multi-pocket-conditioned-physics-valid-docking",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 PocketVina 的「多口袋条件的物理有效对接」工作流。研究对象为受体结构、配体化学结构、候选口袋和对接姿态。本场景研究受体结构、配体化学结构、候选口袋和对接姿态，希望解决对多个候选口袋联合条件化构象生成，提升未知位点对接的覆盖率和物理有效性。覆盖从受体配体输入预检到物理几何质控与排序的完整管线。核心指标包括PoseBusters通过率。得到与输入和任务约束一致、可追溯、可复核的多口袋条件的物理有效对接结果，包括受体/配体标准化记录、口袋坐标、质子化和立体化学检查报告、独立评估、PoseBusters通过率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "accurate",
+    "bio",
+    "conditioning",
+    "docking",
+    "enables",
+    "highly",
+    "json",
+    "multi-pocket",
+    "multi_pocket_targets",
+    "physically",
+    "pocketvina",
+    "posebusters",
+    "posebusters通过率",
+    "posebusters通过率结果",
+    "rdkit"
+  ],
+  "scenario_id": "B50",
+  "source_papers": [
+    "2506.20043"
+  ]
+}

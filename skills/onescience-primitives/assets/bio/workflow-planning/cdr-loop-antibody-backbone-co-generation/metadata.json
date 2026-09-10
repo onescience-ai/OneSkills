@@ -1,0 +1,32 @@
+{
+  "name": "cdr-loop-antibody-backbone-co-generation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 AbODE 的「CDR环与抗体骨架联合生成」工作流。研究对象为抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据。本场景研究抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据，希望解决联合常微分方程生成抗体骨架、序列和CDR构象，适用于从头抗体候选构建。覆盖从免疫对象与任务定义到特异性与可开发性质控的完整管线。核心指标包括CDR-RMSD。得到与输入和任务约束一致、可追溯、可复核的CDR环与抗体骨架联合生成结果，包括标准抗体/TCR编号、链-表位映射、输入结构/序列质控和界面实体清单、独立评估、CDR-RMSD统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "abflow",
+    "abode",
+    "anarci",
+    "antibody",
+    "antigen_cdr",
+    "bio",
+    "cdr-rmsd",
+    "cdr-rmsd结果",
+    "cdr构象",
+    "cdr环与抗体骨架联合生成的输出",
+    "conjoined",
+    "design",
+    "end-to-end",
+    "enhanced",
+    "initio"
+  ],
+  "scenario_id": "B22",
+  "source_papers": [
+    "2306.01005",
+    "2602.07084"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "diffusion-stochastic-spatiotemporal-field-probability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "扩散与随机过程时空场概率预测。面向随机或混沌PDE时空数据完成扩散与随机过程时空场概率预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "computational_fluid_dynamics",
+    "decomposition",
+    "diffusion",
+    "diffusion-based",
+    "diffusion-model",
+    "diffusion-reaction",
+    "dyffusion_",
+    "dynamic",
+    "dynamical",
+    "dynamics",
+    "dynamics-informed",
+    "efficient",
+    "energy",
+    "forecasting",
+    "functional"
+  ],
+  "scenario_id": "CFD_S021",
+  "source_papers": [
+    "sha256:eb87872c3ef157c48e16773f1e0de36271f86af51f9d7d6ea31385512471ac80",
+    "sha256:47a4f418814614b27d33889659c464526512d0ac7a20951aaff9f5f3b6297c93",
+    "sha256:255d1c935704a33db4f66e41bf070b78cf8ea3e29420a371a3bfd088f7a24043",
+    "sha256:c83c5df91c2cb1a0a78ae2dda1a7290bafb1748ab23f2fc47b0aa7064dbfb0c1",
+    "sha256:aa84b33892d566939e06ddbb11d893add9baba23b23c3b97afab5a1e50948520",
+    "sha256:c81c1037e4ad0534934da74cc95788c4a7f57da9a8a24ccd81c78e55a1705c45",
+    "sha256:fd6bd0a46031caeb31c9ecdf1d5e80bb7889fe2e8aef7150971970f9bf3ad4a7",
+    "sha256:2a0a8074a9b069ca1f6c960f484ec257995704da67c375c736e5f36cb40b9e72",
+    "sha256:428604421e85911d6504dd7c7c63af9e293487d5c6d009a4359100e0fc90093d"
+  ]
+}

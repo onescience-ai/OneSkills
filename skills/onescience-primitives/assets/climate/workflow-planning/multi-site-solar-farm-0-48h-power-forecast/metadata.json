@@ -1,0 +1,34 @@
+{
+  "name": "multi-site-solar-farm-0-48h-power-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「多站光伏电站0—48小时功率联合预报」工作流。融合站点历史功率、天气预报和电站属性，联合预测未来0—48小时多站光伏功率；输出功率而非辐照度。覆盖从天气能源运行资料及任务边界预检到按站点与爬坡事件验证的完整管线。得到可复现、可审计的逐站多时效光伏功率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "based",
+    "earth",
+    "forecast",
+    "forecasting",
+    "ga-bp",
+    "generation",
+    "graph",
+    "irradiance",
+    "learning",
+    "machine",
+    "model",
+    "multi-site",
+    "multiple",
+    "networks",
+    "neural"
+  ],
+  "scenario_id": "E25",
+  "source_papers": [
+    "sha256:9032b5ceab0025a7c9579db95f443f585fbba9c00fd00125bca87e283b899089",
+    "sha256:6290e57199f4a1d514ecae4e57a40c8dd91b76e04f3208b744b27c7bc012c822",
+    "sha256:83b65b843933395d1bcde77f58451264fa17d13d304bbe0921ad6597ee22985b",
+    "sha256:5cd863addc9b9e6f666894e59e7ec566005be5b0b9cce9390fdf89e600eaade8"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "3d-aircraft-target-aero-response-inverse-design",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "三维航空器目标气动响应逆向设计。面向三维机翼与融合翼身气动数据完成三维航空器目标气动响应逆向设计。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "3d-inverse-design-network",
+    "aerodynamics",
+    "aircraft",
+    "benchmark",
+    "blended",
+    "blendednet",
+    "computational_fluid_dynamics",
+    "dataset",
+    "design",
+    "direct",
+    "experimental",
+    "field-resolved",
+    "fluid-structure",
+    "graph",
+    "interactions"
+  ],
+  "scenario_id": "CFD_S035",
+  "source_papers": [
+    "sha256:8a927979e99fb29d7ff93d8323d2d53835591b2d0b58394899628c4f1d8bbd2b",
+    "sha256:fc6c686f752a427a1b0e28ec8ad38e9ce6e7cea72b7c504e9385a61a480958ef",
+    "sha256:1afacb9ee9a4575a5650541645f984ffcd9182ace0a777a22bfabad150707868",
+    "sha256:0609d76cbf8626761390ca7508f4d53fb666166686e393cdbcf090434c03f514"
+  ]
+}

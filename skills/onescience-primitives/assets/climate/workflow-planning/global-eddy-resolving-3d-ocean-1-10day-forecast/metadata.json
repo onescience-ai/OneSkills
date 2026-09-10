@@ -1,0 +1,32 @@
+{
+  "name": "global-eddy-resolving-3d-ocean-1-10day-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「全球涡旋分辨率三维海洋1—10日预报」工作流。从最新海洋分析场生成未来1—10日温度、盐度、流速和海表高度，适用于全球短期海况预报；不负责原始观测同化。覆盖从海洋状态和强迫资料及任务边界预检到检验原位误差、环流、涡旋、频谱和漂移的完整管线。得到可复现、可审计的多时效温盐流及海表高度场、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "data-driven",
+    "earth",
+    "eddy-resolving",
+    "eddying",
+    "end-to-end",
+    "forecasting",
+    "global",
+    "glonet_",
+    "mercator",
+    "model",
+    "network",
+    "neural",
+    "ocean",
+    "system"
+  ],
+  "scenario_id": "E5",
+  "source_papers": [
+    "sha256:a7d1c25ed007983fb496ab174dcedb0bb85180f9fb0967fe499bc455e2198114",
+    "sha256:bc9627304aefb8c29b1eb069a3362996c1b240940e7f7411585987445ad7b76f",
+    "sha256:9dd4f646b32336d8a4083ae96ee2596adf4444b0eb85e18f993fee419d4498ec"
+  ]
+}

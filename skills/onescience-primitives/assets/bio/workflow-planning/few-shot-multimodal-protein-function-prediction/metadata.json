@@ -1,0 +1,31 @@
+{
+  "name": "few-shot-multimodal-protein-function-prediction",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 Multi-modal Protein Model 的「低样本多模态蛋白功能预测」工作流。研究对象为蛋白序列、突变、结构域、酶底物或功能标签数据。本场景研究蛋白序列、突变、结构域、酶底物或功能标签数据，希望解决融合蛋白序列、结构和功能文本，在少量标签下完成多标签功能预测。覆盖从蛋白样本与目标定义到评测与解释汇总的完整管线。核心指标包括宏平均F1。得到与输入和任务约束一致、可追溯、可复核的低样本多模态蛋白功能预测结果，包括规范化序列、突变/底物表示、标签本体、去重和数据质量报告、独立评估、宏平均F1统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "accurate",
+    "bio",
+    "enables",
+    "f1结果",
+    "fewshot_functions",
+    "function",
+    "learning",
+    "low-data",
+    "model",
+    "multi-modal",
+    "multi-modal-protein-model",
+    "prediction",
+    "protein",
+    "representation",
+    "setting"
+  ],
+  "scenario_id": "B39",
+  "source_papers": [
+    "2412.08649"
+  ]
+}

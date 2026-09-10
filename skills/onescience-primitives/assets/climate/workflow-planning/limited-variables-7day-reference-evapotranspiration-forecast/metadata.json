@@ -1,0 +1,31 @@
+{
+  "name": "limited-variables-7day-reference-evapotranspiration-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「有限气象变量驱动的未来7天参考蒸散发预报」工作流。利用近期观测和未来天气预报估计未来7天参考蒸散发，服务灌溉需水计算；不反演实际作物蒸散。覆盖从水文强迫和流域资料及任务边界预检到与经验公式及站点观测比较的完整管线。得到可复现、可审计的未来7天参考蒸散发序列、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "approach",
+    "climatic",
+    "earth",
+    "evapotranspiration",
+    "forecasting",
+    "hybrid",
+    "learning",
+    "limited",
+    "modeling",
+    "network",
+    "neural",
+    "reference",
+    "regions",
+    "week-ahead"
+  ],
+  "scenario_id": "E66",
+  "source_papers": [
+    "sha256:4a6c0e4b91530fa3794c4e1fa41d8872405bf0c7fcf3c86e3bbd153223bb600e",
+    "sha256:251c994e918eb93a58633256a2d87d625fbf099f64e2c1e45036ced1fe27ac62"
+  ]
+}

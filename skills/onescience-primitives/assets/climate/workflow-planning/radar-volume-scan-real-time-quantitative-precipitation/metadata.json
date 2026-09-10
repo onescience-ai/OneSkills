@@ -1,0 +1,33 @@
+{
+  "name": "radar-volume-scan-real-time-quantitative-precipitation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「天气雷达体扫驱动的实时定量降水估计」工作流。将当前雷达反射率体扫转换为地面瞬时雨强或时段累积降水，并利用雨量计完成偏差校准。覆盖从源观测和参考资料及任务边界预检到检验RMSE、相关性和强降水误差的完整管线。得到可复现、可审计的当前雨强格点、站点降水与质量掩膜、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "additive",
+    "algorithm",
+    "approach",
+    "based",
+    "convective",
+    "earth",
+    "estimation",
+    "explanations",
+    "forest",
+    "integration",
+    "learning",
+    "mesoscale",
+    "model",
+    "precipitation",
+    "quantitative"
+  ],
+  "scenario_id": "E34",
+  "source_papers": [
+    "sha256:14952dc279a2d9bdd98504d1f63c4d7e04cf3404fb449a6e2200126ce78b62c5",
+    "sha256:d702eb7f16a0f1fd56249050ce60118c2eb7dc9d88dfa92f69600da386c97a7a",
+    "sha256:1e4810cc47508cd5911b62c6db663f1bd333888d0642e1601265066854662ce6"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "differentiable-physics-fsi-inverse-design",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "可微物理流固耦合逆向设计。面向流固耦合轨迹与目标响应数据完成可微物理流固耦合逆向设计。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "averaged",
+    "computational_fluid_dynamics",
+    "differentiable",
+    "differentiable-physics",
+    "emulation",
+    "graph-simulator",
+    "inverse",
+    "linearizations",
+    "petal_",
+    "physics",
+    "prdp_",
+    "problems",
+    "progressively",
+    "refined",
+    "solving"
+  ],
+  "scenario_id": "CFD_S034",
+  "source_papers": [
+    "sha256:ee85bb83bb89ed56ae8b1096767fef851dd901a32497d481ae535616e22a0445",
+    "sha256:327f9568e67acea3720ce1351666e46f52f8e518f03a4f392d0750799e8e5b88"
+  ]
+}

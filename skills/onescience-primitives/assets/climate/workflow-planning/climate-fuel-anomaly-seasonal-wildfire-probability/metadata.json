@@ -1,0 +1,23 @@
+{
+  "name": "climate-fuel-anomaly-seasonal-wildfire-probability",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「气候与燃料异常驱动的季节野火发生概率预测」工作流。利用季节气候异常和燃料状态预测未来火季的区域野火发生概率；不用于次日火险预警或单次火情定位。覆盖从致灾因子和事件标签及任务边界预检到检验可靠度、区分度与跨年份稳定性的完整管线。得到可复现、可审计的未来火季区域发生概率、发生概率等级或季节火险等级、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "earth",
+    "networks",
+    "neural",
+    "prediction",
+    "seasonal",
+    "spatio-temporal",
+    "using"
+  ],
+  "scenario_id": "E70",
+  "source_papers": [
+    "sha256:8512bcae330d9e0d0d2df8777037f4dffd4f5f25a202d4d1866ad1e4a188f540"
+  ]
+}

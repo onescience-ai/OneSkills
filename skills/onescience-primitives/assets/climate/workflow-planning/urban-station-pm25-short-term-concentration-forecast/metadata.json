@@ -1,0 +1,33 @@
+{
+  "name": "urban-station-pm25-short-term-concentration-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「城市站点PM2.5短期浓度预报」工作流。融合目标站和邻站污染历史、气象预报及空间距离，预测未来数小时至一天PM2.5浓度和超标风险。覆盖从污染气象资料及任务边界预检到检验MAE、峰值误差和超标命中率的完整管线。得到可复现、可审计的逐时或逐日PM2.5浓度和超标概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "based",
+    "concentration",
+    "daily",
+    "decomposition",
+    "dynamically",
+    "earth",
+    "environmental",
+    "forecasting",
+    "improved",
+    "learning",
+    "method",
+    "model",
+    "monitoring",
+    "networks",
+    "neural"
+  ],
+  "scenario_id": "E42",
+  "source_papers": [
+    "sha256:d651f2a5b0649ebc63edfc804f71dd18aeb5a24ebfc0ab5e2b1f80d018f1253b",
+    "sha256:34c33896c3b72c8c51dac7038ae016681b5dde792839882d7c42a6ddf6b9e816",
+    "sha256:6cf58e4ef8306fa618bafe132ca721d1a83b044752f771c6f646c7a9571da93c"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "target-specific-full-atom-peptide-design",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 PepFlow 的「靶标特异性全原子肽类设计」工作流。研究对象为受约束的蛋白骨架、序列、肽或酶设计任务。本场景研究受约束的蛋白骨架、序列、肽或酶设计任务，希望解决针对蛋白靶标联合生成肽序列与全原子构象，适用于短肽结合剂和抑制剂设计。覆盖从设计目标与约束定义到回折叠与设计筛选的完整管线。核心指标包括界面置信度。得到与输入和任务约束一致、可追溯、可复核的靶标特异性全原子肽类设计结果，包括经格式和约束检查的设计目标、固定区域掩码、候选结构/序列及结构自洽报告、独立评估、界面置信度统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "based",
+    "bio",
+    "design",
+    "full-atom",
+    "matching",
+    "multi-modal",
+    "pepflow",
+    "peptide",
+    "target_interface"
+  ],
+  "scenario_id": "B17",
+  "source_papers": [
+    "2406.00735"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "coastal-bathymetry-reconstruction-morphological-evolution",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「海岸浴深重建与形态演变预报」工作流。利用历次浴深、波浪、潮流和泥沙条件重建缺测海床并预测短中期地形演变；仅适用于训练海岸形态域。覆盖从海洋状态和强迫资料及任务边界预检到按独立测次和高变化区评价误差的完整管线。得到可复现、可审计的完整浴深场及未来海床高程变化、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "advancing",
+    "bathymetric",
+    "earth",
+    "forecasting",
+    "learning",
+    "reconstruction",
+    "using"
+  ],
+  "scenario_id": "E74",
+  "source_papers": [
+    "sha256:79199c9796f52fba6530dd3dfee5a930bb867818700ee00f1ecee172cb3ff989"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "arctic-sea-ice-1-6month-probabilistic-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「北极海冰1—6月概率预报」工作流。从起报前海冰和海气状态预测未来1—6个月海冰浓度类别、出现概率和冰缘；不输出日尺度漂移、冰厚或航线风险。覆盖从海洋状态和强迫资料及任务边界预检到评价空间技巧、范围误差和概率可靠度的完整管线。得到可复现、可审计的月尺度海冰概率场、冰缘和范围、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "advancing",
+    "arctic",
+    "capabilities",
+    "climate",
+    "convolutional",
+    "coupled",
+    "earth",
+    "extended",
+    "forecast",
+    "forecasting",
+    "fully",
+    "global",
+    "integrated",
+    "learning",
+    "long-short"
+  ],
+  "scenario_id": "E17",
+  "source_papers": [
+    "sha256:54a7c310ea43aa593319068f7bd929d098ced3368e57b6c88fd2504c0d54e57b",
+    "sha256:f848aa052526e136b73a6b2951db86e678d320ec3d1a01b0e6283eaca6d33abb",
+    "sha256:ad606db288c6a58750244a145585c03a9455214c34180229fd2bbe981f9f892a"
+  ]
+}

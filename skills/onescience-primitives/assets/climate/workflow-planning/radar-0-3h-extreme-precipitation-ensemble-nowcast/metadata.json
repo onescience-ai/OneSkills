@@ -1,0 +1,34 @@
+{
+  "name": "radar-0-3h-extreme-precipitation-ensemble-nowcast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「雷达驱动的0—3小时极端降水集合临近预报」工作流。利用连续雷达降水率场生成未来0—3小时多时次高分辨率雨强场及集合，适用于强对流短临研判；不包含同期定量降水估计、卫星或NWP融合、洪水模拟及3小时以上预报。覆盖从起报范围与雷达序列预检到分时效多阈值检验与交付判定的完整管线。得到可复现、可审计的降水率集合成员或集合统计、逐阈值逐时效超阈概率、概率校准记录或未校准标识、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "approach",
+    "convolutional",
+    "earth",
+    "extreme",
+    "generative",
+    "learning",
+    "machine",
+    "models",
+    "network",
+    "neural",
+    "nowcasting",
+    "nowcastnet",
+    "precipitation",
+    "radar",
+    "radar-based"
+  ],
+  "scenario_id": "E2",
+  "source_papers": [
+    "sha256:5a7b9aebe0fcaed87d0e749581fbefc8ea75f26274cb17ea9d88f41e59dd0d30",
+    "sha256:ca5f10f9deb516da9672272e277cee3b2a729ddf60513942afa574380c48a44b",
+    "sha256:6b83643820fa049a9cdf30621385bd5d33c67408d348a93edb6c59ed247986ef",
+    "sha256:d0c724a113628b384d6463ca83e9cecf7c9a607865e9e96b423b00bdbc6bc53a"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "cnn-airfoil-steady-flow-surrogate",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "规则网格CNN翼型稳态流场代理预测。面向DeepCFD规则网格翼型RANS数据完成规则网格CNN翼型稳态流场代理预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "aerodynamic",
+    "airfoil",
+    "approach",
+    "approximation",
+    "based",
+    "cnn",
+    "cnn-cheby-kan",
+    "composable",
+    "computational_fluid_dynamics",
+    "convolutional",
+    "damage",
+    "deepcfd_",
+    "detection",
+    "distribution",
+    "efficient"
+  ],
+  "scenario_id": "CFD_S001",
+  "source_papers": [
+    "sha256:bf64107f3c33a4d4e4a094a1290542da63ee15dd717a88698bd620e6bd8573a4",
+    "sha256:0cb4f3ed1495f689eef563e0ca249934f1d0889986a8f2ef857de73999e92258",
+    "sha256:aa78ad939656a9c2ea9b2e29b2f99a583bc45f5bbdcec6a11d79f13c96ad2e3b",
+    "sha256:5751b311a98603660066b00935d5fbc78914d79a4f8577abd8ebe0b989003c9f"
+  ]
+}

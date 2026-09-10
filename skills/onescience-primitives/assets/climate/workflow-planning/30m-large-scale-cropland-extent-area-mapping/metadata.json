@@ -1,0 +1,32 @@
+{
+  "name": "30m-large-scale-cropland-extent-area-mapping",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「30米大范围农田范围与面积制图」工作流。利用多时相Landsat和物候特征生成30米农田—非农田图并汇总面积；适用于静态农田清查，不预测产量。覆盖从遥感观测标签及任务边界预检到用混淆矩阵及统计资料检验空间和面积的完整管线。得到可复现、可审计的30米农田范围图及区域面积、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "agricultural",
+    "algorithm",
+    "algorithms",
+    "areas",
+    "australia",
+    "big-data",
+    "china",
+    "cloud",
+    "computing",
+    "cropland",
+    "derived",
+    "earth",
+    "engine",
+    "extent",
+    "forest"
+  ],
+  "scenario_id": "E56",
+  "source_papers": [
+    "sha256:d8f6e93975205c5a798d060be80d4e3d6697427117926aaa3cef7aaffb7eb10e",
+    "sha256:8c5d6dff962d1b6ec54b3b9d79df3b7f1e2be5a4be801a659619174cf4a41e29"
+  ]
+}

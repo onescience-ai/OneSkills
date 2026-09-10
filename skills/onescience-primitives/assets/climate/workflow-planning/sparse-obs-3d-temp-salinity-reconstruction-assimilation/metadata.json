@@ -1,0 +1,29 @@
+{
+  "name": "sparse-obs-3d-temp-salinity-reconstruction-assimilation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「稀疏观测三维温盐场快速重建与同化初始化」工作流。融合稀疏剖面、卫星和低分辨率背景场，重建同期三维温盐状态并供同化初始化；不直接生成未来海洋预报。覆盖从观测和背景场及任务边界预检到用留出剖面及同化试验检验初始化价值的完整管线。得到可复现、可审计的规则网格三维温盐分析场、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "application",
+    "assimilation",
+    "based",
+    "earth",
+    "fields",
+    "learning",
+    "machine",
+    "rapid",
+    "reconstruction",
+    "salinity",
+    "super-resolution",
+    "temperature"
+  ],
+  "scenario_id": "E48",
+  "source_papers": [
+    "sha256:76ac4eadc1e6a70fa56cbe6fc4240e3f6ec24d6e1e4b0bc8b903bed928c96dee",
+    "sha256:c268c4cdbca7631e343a7986c0fac9302b8bd2bb757fcb3bb2c93b4b10c4cff4"
+  ]
+}

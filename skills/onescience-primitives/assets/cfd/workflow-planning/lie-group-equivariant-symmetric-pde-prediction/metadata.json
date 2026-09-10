@@ -1,0 +1,39 @@
+{
+  "name": "lie-group-equivariant-symmetric-pde-prediction",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "Lie群等变网络对称PDE预测。面向具有旋转平移群对称的PDE数据完成Lie群等变网络对称PDE预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "algebra",
+    "approximately",
+    "arbitrary",
+    "attentive",
+    "based",
+    "canonicalization_",
+    "computational_fluid_dynamics",
+    "continuous",
+    "convolutions",
+    "differential",
+    "dynamics",
+    "equations",
+    "equivariant",
+    "fields",
+    "forecasting"
+  ],
+  "scenario_id": "CFD_S063",
+  "source_papers": [
+    "sha256:b77b3b1279718c4105189133f4aae470cc23980c4a07b701a56a45c9c5f82caf",
+    "sha256:e4f3322c650945202dc176649c50a880681c97aa1a59d7c9efb463d029b7f47c",
+    "sha256:19d74c8923517d22d7e735083fcc548737126bc09fd75cff0dea94bfb251b164",
+    "sha256:25554a04be17230b768be129d17f4beda15367303ee3f3f5ea606981ac31ddf4",
+    "sha256:8a16dcf39f64a2ef169c83b88854ee047e31b0783a073b0429f9dff2a8464105",
+    "sha256:a79accec95e5dd9538b6330c48d482a4e3374cb2b22b711ba2fc50a57eeaab91",
+    "sha256:d79060513daa3f2d0486cde0e6079ade047acbd3d193168ee4f1059ca4ab3979",
+    "sha256:4a9f9f4b3e497650078843d190855c39af5fe810af6b9e9bca751410ef326c92",
+    "sha256:a1183d491b5209df64f97eef781ddc2212db6847ef4280dc44f943f2d4b936f5"
+  ]
+}

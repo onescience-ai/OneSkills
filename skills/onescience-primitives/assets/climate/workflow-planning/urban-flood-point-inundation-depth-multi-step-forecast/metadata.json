@@ -1,0 +1,32 @@
+{
+  "name": "urban-flood-point-inundation-depth-multi-step-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「城市积水点未来数小时淹没深度多步预报」工作流。由实时雨量、水位和排水状态连续预测城市积水点未来数小时水深；不输出遥感同期洪水范围。覆盖从水文强迫和流域资料及任务边界预检到按事件峰深和峰时验证的完整管线。得到可复现、可审计的积水点多时效水深和超阈时刻、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "advanced",
+    "alert",
+    "algorithms",
+    "depth",
+    "early",
+    "earth",
+    "flood",
+    "forecasting",
+    "forecasts",
+    "intelligent",
+    "inundation",
+    "learning",
+    "leveraging",
+    "machine",
+    "multistep-ahead"
+  ],
+  "scenario_id": "E64",
+  "source_papers": [
+    "sha256:4b539889b7b8d1affdf6be6ba67b1da48512cd5c9a572c0f7eecbc261be8871d",
+    "sha256:25def72d720db9d4645efc3c2e27b24ff384ddf83ff6f1c1a4569dabd16560a8"
+  ]
+}

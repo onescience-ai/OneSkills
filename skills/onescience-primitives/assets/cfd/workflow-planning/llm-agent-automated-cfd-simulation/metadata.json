@@ -1,0 +1,35 @@
+{
+  "name": "llm-agent-automated-cfd-simulation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "LLM智能体自动配置与执行CFD仿真。面向OpenFOAM与FEM案例及运行日志完成LLM智能体自动配置与执行CFD仿真。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "agent",
+    "agentic",
+    "all-fem_",
+    "automating",
+    "cfd-llm-agent",
+    "chain",
+    "computational",
+    "computational_fluid_dynamics",
+    "driven",
+    "dynamics",
+    "element",
+    "fine-tuned",
+    "fine-tuning",
+    "finite",
+    "fluid"
+  ],
+  "scenario_id": "CFD_S070",
+  "source_papers": [
+    "sha256:83049b8df1d4275e4a8ce64421f27f1387e7ec76a3ca77fba3cca3fd7a37067d",
+    "sha256:785956b3f5b55797e2dbb27e50ef28037a413a8ab54bb6f0dfef5106086bb6e5",
+    "sha256:dd51edadd96c184d71bb080eee80e7b905c17e2e49dded5709215e3a1f709414",
+    "sha256:55590881441e1aee2240cfe3df7b598d1296fe727780c37bd8e3baeb114d50ed",
+    "sha256:0a5901aba728c696658ebafe2c762a6b0027f5d87f6cda74e49e699e955b7323"
+  ]
+}

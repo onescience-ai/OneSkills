@@ -1,0 +1,37 @@
+{
+  "name": "e3-equivariant-particle-network-lagrangian-fluid",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "E3等变粒子网络拉格朗日流体模拟。面向拉格朗日粒子轨迹数据完成E3等变粒子网络拉格朗日流体模拟。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "basis",
+    "benchmarking",
+    "computational_fluid_dynamics",
+    "conservation",
+    "convolutions",
+    "discrete",
+    "dynamics",
+    "e3-equivariant-gnn",
+    "element",
+    "equivariant",
+    "fluid",
+    "gauge",
+    "generalization",
+    "graph",
+    "improved"
+  ],
+  "scenario_id": "CFD_S062",
+  "source_papers": [
+    "sha256:50d0e267ba5e452f3f2521c406cd11ce3c04bbe4a608d7a3b3ac5406baaed15d",
+    "sha256:06f3331276f4530f5a3ff3b7be8d00c21c4c3b5669b36c3a6475782c6802c6eb",
+    "sha256:fb74b0e66548e9f323e7f468917a847737e2c9b6e6eccae39289eb41c4eb6d23",
+    "sha256:55ea805c95c5c4bf2a1f15e6dd6579a5be0ebf4615d001d00136758b28c2ba6a",
+    "sha256:47292e73b33f156fa86cfb7d92c5b09ee9ffb7c5d64b352e953aee7f662d16ac",
+    "sha256:faaa5081925facf9d747b7865377bdd673c1b3150545a63115c0f7c79e3c8612",
+    "sha256:23299e31f91cf8d84454df2af1b46eb4bda629ad0c53c34dc63f4620ba4b3da1"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "hyperspectral-methane-plume-pixel-level-detection",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「高光谱卫星甲烷羽流像素级检测」工作流。从高光谱影像分割点源甲烷羽流并输出置信度，适用于过境时刻排放异常筛查；不直接给出连续排放率。覆盖从遥感观测标签及任务边界预检到按羽流强度、地表和跨区域泛化验证的完整管线。得到可复现、可审计的甲烷羽流像素掩膜、概率及候选源区、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "earth",
+    "hyperspectral",
+    "learning",
+    "machine",
+    "methane",
+    "models",
+    "plumes",
+    "segmentation",
+    "semantic"
+  ],
+  "scenario_id": "E81",
+  "source_papers": [
+    "sha256:791d6dfdbb767673c04f92f24e0442fc0b158d909cfa0c3705bcb78f9c4528f0"
+  ]
+}

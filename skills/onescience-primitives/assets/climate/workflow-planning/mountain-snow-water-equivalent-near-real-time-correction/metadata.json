@@ -1,0 +1,33 @@
+{
+  "name": "mountain-snow-water-equivalent-near-real-time-correction",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「山区近实时雪水当量估计与网格订正」工作流。融合雪盖、被动微波、地形和气候信息估计当前山区雪水当量并订正网格产品；不是未来融雪或径流预报。覆盖从粗细分辨率资料及任务边界预检到用雪站和留出年份验证偏差及水量一致性的完整管线。得到可复现、可审计的当前SWE格点场、流域雪储量及质量标志、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "afghanistan",
+    "application",
+    "british",
+    "canada",
+    "canada-",
+    "columbia",
+    "correction",
+    "earth",
+    "equivalent",
+    "estimates",
+    "fusion",
+    "gridded",
+    "improving",
+    "learning",
+    "machine"
+  ],
+  "scenario_id": "E40",
+  "source_papers": [
+    "sha256:9409ff819e2e58c2a840497b602f7f21e7e30dc455f46077268c078969409e67",
+    "sha256:e9c7cbdc5be5b06014b8f942faf8f2098a1a3755245f7514797ba41a1ad5864e",
+    "sha256:fe8d21a2be6eebe9053925ba522dbd2578b6fcb697158732205c35ffd7182663"
+  ]
+}

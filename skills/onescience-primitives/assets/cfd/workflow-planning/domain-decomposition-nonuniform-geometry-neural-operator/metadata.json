@@ -1,0 +1,38 @@
+{
+  "name": "domain-decomposition-nonuniform-geometry-neural-operator",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "域分解与非均匀几何神经算子学习。面向非均匀采样与变形几何PDE数据完成域分解与非均匀几何神经算子学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "across",
+    "aerodynamic",
+    "airfoil",
+    "anisotropic",
+    "boundary",
+    "cheap",
+    "computational_fluid_dynamics",
+    "correction",
+    "dd-rno_",
+    "decomposition",
+    "deformations",
+    "dependence",
+    "domain",
+    "domain-decomposed",
+    "domain-decomposed-neural-operator"
+  ],
+  "scenario_id": "CFD_S058",
+  "source_papers": [
+    "sha256:0e433dc06e67b47319027e248d1dd2ae15a10c0a67d22a7fb3c1fe866298bfcb",
+    "sha256:151a58b589db5e42e6f9e3e6cb4d5993d77139aa72976a19af4043123f11feb0",
+    "sha256:2167c027c3fbc1d3d513d6f7ecaf889f40e6f71fca4c1315b11588e0af0ebc0a",
+    "sha256:45df66021ba09655d9e61ed97aef96c4d5ac30d2d3106abcb83a363ded1df3e0",
+    "sha256:295ef6f71a58c4a72070da2cb8ce60d2d9d3fcb63c511647883654abc60ee526",
+    "sha256:2ed0231a10ab43e2bf96c3ffe732c9adc6f1554f4ed42d245e0e0f0d50b5b08d",
+    "sha256:a1b50626ca4b792bf7b7cd895802fec21b3f7f4d39c5a9c2015a81cd40fbf1f7",
+    "sha256:35e86a9979118bad1131c4d3bb6e3c5da8b5abe762843c6463c0140134e6a586"
+  ]
+}

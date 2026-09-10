@@ -1,0 +1,34 @@
+{
+  "name": "enso-index-6-24month-probabilistic-prediction",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「ENSO指数6—24个月概率预测」工作流。利用历史海温、上层海洋和风场状态，预测未来6—24个月Niño3.4指数轨迹、事件类别及概率。覆盖从起报资料及任务边界预检到按提前量检验相关、RMSE和可靠度的完整管线。得到可复现、可审计的Niño3.4指数集合、厄尔尼诺和拉尼娜概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "advance",
+    "combined",
+    "convolutional",
+    "datasets",
+    "dynamical-deep",
+    "earth",
+    "efficient",
+    "enso指数6",
+    "forecasts",
+    "generative",
+    "inference",
+    "large",
+    "learning",
+    "long-lead",
+    "model"
+  ],
+  "scenario_id": "E9",
+  "source_papers": [
+    "sha256:c7213636a1cae89e42dda7e5898de06ed00b35baed0a4ea472fd157c9f624ba9",
+    "sha256:ef6d7e35c9ad388b77e305e1b6dda62f1ce2534754953aa18e0b8279f42a7020",
+    "sha256:7f6bcae5091b19bc497817ff8a62dd0f5095036e314d47fd18e3d2bb51b0330e",
+    "sha256:83eab1f92cace7202f6a65cfc18c42b70d3ee4951bc232ff24ee8a6732005c75"
+  ]
+}

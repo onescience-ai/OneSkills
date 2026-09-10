@@ -1,0 +1,28 @@
+{
+  "name": "mof-pre-combustion-co2-capture-genetic-algorithm-screening",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 NULL 的「MOF燃烧前CO2捕集遗传算法筛选」工作流。研究对象为MOF燃烧前CO2捕集遗传算法筛选。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从结构与分离目标定义到材料或工艺窗口输出的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "tags": [
+    "algorithm",
+    "capture",
+    "discovery",
+    "frameworks",
+    "genetic",
+    "matchem",
+    "metal-organic",
+    "mof燃烧前co2捕集遗传算法筛选",
+    "null",
+    "precombustion",
+    "silico",
+    "using"
+  ],
+  "scenario_id": "MOF燃烧前CO2捕集遗传算法筛选",
+  "source_papers": [
+    "doi_10_1126_sciadv_1600909"
+  ]
+}

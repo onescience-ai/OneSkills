@@ -1,0 +1,42 @@
+{
+  "name": "physics-network-stochastic-high-dimensional-pde",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "物理网络随机与高维PDE求解。面向随机微分方程与高维PDE样本完成物理网络随机与高维PDE求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "adaptive",
+    "aerodynamic",
+    "architectures",
+    "backward",
+    "coefficients",
+    "computational_fluid_dynamics",
+    "constant",
+    "differential",
+    "dynamic",
+    "enhance",
+    "equations",
+    "fluid",
+    "fokker-planck",
+    "force",
+    "foundation"
+  ],
+  "scenario_id": "CFD_S046",
+  "source_papers": [
+    "sha256:f912ec0f95daf9629977a8b0460acc5f23f1bfbe5615d76787e6e4ec999f5077",
+    "sha256:4dae5e1768c19bd5cfb9a44fd5abd5c51e7597ded5428670b4c14858d2553cb9",
+    "sha256:ea150502f8d515136a359ad71945b91f2fb14474ad853fb3c495dc8a84b90bc3",
+    "sha256:c183a7368aed3dc88a2b8c70299594775bd893dafb73690e25a4dd556b2e3059",
+    "sha256:af18f6bd50e9150c5c31f64fbb93f7bacd948b493fbc8193cb556bb580776c38",
+    "sha256:8d4568c110b3c99f303c7efe84d56b1e9006671cba8b6402c83e6fb62594759b",
+    "sha256:17dd59203237ba5963ca67afa1f191d47c16a2ab669ff47b91caafaa74a4a9e5",
+    "sha256:88320b4b918c6456712d92a8bbd1e16f0c77ca419e311fa1248ac667cccc9123",
+    "sha256:0d5f1e439b72bec352245722a2faba5f3463f2f2a3ca8d9ab097c0deb0ee22a4",
+    "sha256:67cfcc205ea4312be9cd5c7d91d938055c3c3ccdb2d707ba8fd8fb5db82b862c",
+    "sha256:142b25c80d82927db2e04d3be017f1297151e6e88fa9e5f18f61626d69d6258f",
+    "sha256:2e395e01afb657c056ca0491bdf0d928fc8488331417bf9065107d7b99224930"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "cyclegan-unpaired-les-dns-super-resolution",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "CycleGAN无配对LES到DNS超分辨率重建。面向非配对LES与DNS湍流数据完成CycleGAN无配对LES到DNS超分辨率重建。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "approach",
+    "blind",
+    "computational_fluid_dynamics",
+    "cyclegan",
+    "deconvolution",
+    "flows",
+    "learning",
+    "network",
+    "neural",
+    "reconstruction",
+    "super-resolution",
+    "turbulence",
+    "turbulent",
+    "unsupervised"
+  ],
+  "scenario_id": "CFD_S099",
+  "source_papers": [
+    "sha256:3c8cd311e4cdd6112148d0c220e9e5196e49f35eb4af73cfb7d3a5d534467a43",
+    "sha256:92ee9bc6830b8ee1835671b6807e937dcf82966689c8a0d699989dd2597d1847"
+  ]
+}

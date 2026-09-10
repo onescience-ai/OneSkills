@@ -54,12 +54,15 @@ assets/
     <category>/
       <resource_name>/
         metadata.json            ← 基础信息（name, type, domain, description, tags, version）
+        knowledge.md             ← 灵活单文档形态的完整正文（与下方三文件形态二选一）
         spec.md                  ← 规格知识（架构、参数、依赖）
         usage.md                 ← 使用知识（启动示例、接口、限制）
         workflow_planning.md     ← 规划决策知识（时机、流程、约束）
         references/               ← 可按需读取的扩展知识；仅允许 metadata 声明的文件
         scripts/                 ← 可选受控执行资产；必须由 spec.md 的 # execution_assets 结构化白名单 白名单声明
 ```
+
+> **卡片双形态说明**：资源目录支持两种形态——(A) 传统四文件形态（`metadata.json` + `spec.md` + `usage.md` + `workflow_planning.md`）和 (B) 灵活单文档形态（`metadata.json` + `knowledge.md`）。当目录中仅有 `metadata.json` 和 `knowledge.md` 时，`knowledge.md` 即为完整正文，必须读取。
 
 当前 `assets/` 顶层按 domain 组织，实际目录以仓库中的现状为准；当前可见的顶层 domain 包括：
 
@@ -159,11 +162,12 @@ b. `filters.domain` 已明确指定（如 `bio`、`cfd`、`climate`、`matchem`�
    - **说明**：此规则确保当查询信号隐含多类别需求（如"分析蛋白质结构预测结果并可视化"），`visualization` 类资源不会因 model/component 类资源在纯语义排序中得分略高而被截断丢弃。
 7. **逐个组织内容**：对每个命中的资源，按 `content_request` 分别读取并填充该资源的 `content` 字段：
    - 留空或 `"摘要"`：优先只读取 `metadata.json`，生成简短摘要，`description` 字段的关键信息不进行过度压缩
-   - `"使用说明"`：读取 `usage.md`（若存在）
-   - `"规格说明"`：读取 `spec.md`（若存在）
-   - `"工作流规划知识"`：读取 `workflow_planning.md`（若存在）
+   - `"使用说明"`：读取 `usage.md`（若存在）；若不存在且存在 `knowledge.md`，则读取 `knowledge.md`
+   - `"规格说明"`：读取 `spec.md`（若存在）；若不存在且存在 `knowledge.md`，则读取 `knowledge.md`
+   - `"工作流规划知识"`：读取 `workflow_planning.md`（若存在）；若不存在且存在 `knowledge.md`，则读取 `knowledge.md`
+   - `"完整知识正文"`：读取 `knowledge.md`（若存在）；这是灵活单文档形态卡片的完整正文
    - `"参考资料"` / `"扩展知识"`：只读取 `metadata.json` 中 `knowledge_assets` 声明的 `references/` 文件，并按主题组织返回
-   - `"完整内容"`：读取 `metadata.json`、`spec.md`、`usage.md`、`workflow_planning.md` 及 `knowledge_assets` 索引；不得因为请求完整内容而自动返回全部参考文件或任意脚本
+   - `"完整内容"`：读取 `metadata.json`、`spec.md`、`usage.md`、`workflow_planning.md` 及 `knowledge.md`（若存在）和 `knowledge_assets` 索引；不得因为请求完整内容而自动返回全部参考文件或任意脚本。当目录中仅有 `metadata.json` + `knowledge.md` 时，`knowledge.md` 即完整正文，必须读取
    - `"完整参考资料"`：在路径、大小和 SHA-256 校验通过后，读取 `knowledge_assets` 声明的参考文件；大文件按物化规则处理
    - 当且仅当 `include_execution_assets: true` 时，按以下子步骤物化受控执行资产：
    a. 读取命中资源的 spec.md，定位唯一的一级标题

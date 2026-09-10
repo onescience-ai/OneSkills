@@ -1,0 +1,16 @@
+{
+  "name": "coastal-inundation-rapid-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 近岸漫滩快速预报模型 的「近岸漫滩快速预报模型」工作流。将沿岸潮位预测快速转换为可用于沿海风险判断的空间淹没产品。覆盖从模型输入与运行条件预检到独立评估与交付判定的完整管线。得到可在少于5分钟内生成淹没分布和行政区划清单的快速预报模型、产品及可核验运行证据。",
+  "tags": [
+    "earth",
+    "近岸漫滩快速预报模型"
+  ],
+  "scenario_id": "E109",
+  "source_papers": []
+}

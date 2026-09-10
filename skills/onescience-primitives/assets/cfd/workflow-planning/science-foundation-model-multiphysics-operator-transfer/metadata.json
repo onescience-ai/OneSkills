@@ -1,0 +1,39 @@
+{
+  "name": "science-foundation-model-multiphysics-operator-transfer",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "科学基础模型多物理算子迁移。面向多物理多分辨率大规模预训练数据完成科学基础模型多物理算子迁移。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "attention",
+    "building",
+    "codomain",
+    "computational_fluid_dynamics",
+    "computing",
+    "data-efficient",
+    "dgnet_",
+    "differentiable",
+    "discrete",
+    "efficient",
+    "foundation",
+    "fundamental",
+    "generalizable",
+    "green",
+    "in-context"
+  ],
+  "scenario_id": "CFD_S056",
+  "source_papers": [
+    "sha256:1d8ad2cbe0124f97c891a16d6be8a1cb6c425ce7180d526a06bf356ae261583d",
+    "sha256:a42c3a60c9027e2ae9c0e2cfe382c97356b20109fef2b98353f516b04b659dea",
+    "sha256:f564665ff575e0ce481f844b836632f299ef61f8e117124979d2bfe2484d06b9",
+    "sha256:b0970e493a19e4ac06a961b3fb875b4d9139ff34f61c01d5703063c7db87c941",
+    "sha256:d98bf2138f8afb2876a5d9b5fc87e7b8e53b413ef265178cb74fc679c107b7dd",
+    "sha256:125cc3960a1d01c7d5d7b524a59628897d26705792137ce88bd7eeb5d07080d2",
+    "sha256:f3c8b79ca2ef5072de65ebb892f98f1c8754a5e65acdb30241011b477ae04778",
+    "sha256:54b371b04b0ce65071922498aac4e2c3b71b2fd2ac46557f0d89f8abdca214b5",
+    "sha256:a9b01480879ff80ff8368e446acf6c80b1969f65c3a8003845f576a5fbfc58bd"
+  ]
+}

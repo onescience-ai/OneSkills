@@ -1,0 +1,35 @@
+{
+  "name": "stability-constrained-neural-ode-dynamics-learning",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "稳定性约束神经微分方程动力学学习。面向显式约束动力系统时序数据完成稳定性约束神经微分方程动力学学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "aerodynamics",
+    "airfoil",
+    "augmented",
+    "axial",
+    "computational_fluid_dynamics",
+    "constrained-neural-process",
+    "constraints",
+    "controls",
+    "decomposition",
+    "differential",
+    "dimension-free",
+    "dynamical",
+    "dynamics",
+    "equations",
+    "exogenous"
+  ],
+  "scenario_id": "CFD_S065",
+  "source_papers": [
+    "sha256:173d3a6fa7190254cececc45fffd10fe965a4bdc022afa92d2f031d18014efcb",
+    "sha256:ba35ae1521fa9b6aa91ba3c509cab2f82307e8bd9ecacc7890d8a2a3cd974df9",
+    "sha256:a0fde0f1083442395a40db558b83ef573d1d78b8da4b443f744e8097fae3353e",
+    "sha256:3f8029229878482b5c0a451a2675a373d05f3c99347a3fe4711b277dafc1c76a",
+    "sha256:d74179a147d74c9af218e6ada73b61e5ae098f3dcb01b3d9cf7583de121129fb"
+  ]
+}

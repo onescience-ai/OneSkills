@@ -1,0 +1,26 @@
+{
+  "name": "climate-scenario-groundwater-level-long-term-projection",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「气候情景驱动的地下水位长期投影」工作流。由历史井水位和气候情景投影至本世纪末地下水位变化，适用于长期风险评估；不能替代抽水方案模拟。覆盖从水文强迫和流域资料及任务边界预检到检查外推和水量边界的完整管线。得到可复现、可审计的未来地下水位分布与趋势、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "change",
+    "climate",
+    "declining",
+    "earth",
+    "germany",
+    "groundwater",
+    "learning",
+    "levels",
+    "shows",
+    "until"
+  ],
+  "scenario_id": "E87",
+  "source_papers": [
+    "sha256:04c54c80b5f5adc8e2ddbbbf9b3dd49d7c4dfaf4b2603964f0ae8d524f703e6c"
+  ]
+}

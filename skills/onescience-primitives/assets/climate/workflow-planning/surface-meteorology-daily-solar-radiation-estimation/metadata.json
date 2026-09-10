@@ -1,0 +1,33 @@
+{
+  "name": "surface-meteorology-daily-solar-radiation-estimation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「地面气象要素驱动的日总太阳辐射估算」工作流。利用日平均温度、湿度和风速等常规气象量，估算缺少辐射仪站点的同期日总太阳辐射。覆盖从源观测和参考资料及任务边界预检到以跨年份和跨站样本验证的完整管线。得到可复现、可审计的同期日总太阳辐射及误差区间、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "algorithms",
+    "artificial",
+    "backpropagation",
+    "climate",
+    "different",
+    "earth",
+    "events",
+    "extreme",
+    "global",
+    "implications",
+    "learning",
+    "machine",
+    "meteorological",
+    "model",
+    "models"
+  ],
+  "scenario_id": "E63",
+  "source_papers": [
+    "sha256:1a9f16acc2b0ccae5b9d6d1eb56b715168454acd0005d79334b0e63bea302a48",
+    "sha256:c122b0baf21a138eaceb9fe09096b6fb121b8803cf267f3cc06cee728d6a69df",
+    "sha256:bfc24e0a65434a5c9f728240442dc8c3558efb2a3dc5b9949686e4455327876a"
+  ]
+}

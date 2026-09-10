@@ -1,0 +1,27 @@
+{
+  "name": "metal-n-doped-carbon-co2-reduction-selectivity-design",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 NULL 的「金属氮掺杂碳CO2电还原选择性设计」工作流。研究对象为金属氮掺杂碳CO2电还原选择性设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从活性位与反应网络定义到候选筛选与验证设计的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "tags": [
+    "activity",
+    "carbon",
+    "catalysts",
+    "co2电还原选择性设计",
+    "electrochemical",
+    "matchem",
+    "metal-nitrogen-doped",
+    "null",
+    "reduction",
+    "selectivity",
+    "understanding"
+  ],
+  "scenario_id": "金属氮掺杂碳CO2电还原选择性设计",
+  "source_papers": [
+    "doi_https_doi_org_10_1038_s41467_017_01035_z"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "simplex-flow-matching-regulatory-dna-design",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 Dirichlet Flow Matching 的「单纯形流匹配的调控DNA序列设计」工作流。研究对象为基因组DNA区间、变异、调控轨迹和细胞/组织上下文。本场景研究基因组DNA区间、变异、调控轨迹和细胞/组织上下文，希望解决在离散单纯形上生成满足目标活性的调控DNA，适用于增强子和启动子设计。覆盖从基因组输入与坐标规范化到轨迹与效应质量评估的完整管线。核心指标包括目标活性达成率。得到与输入和任务约束一致、可追溯、可复核的单纯形流匹配的调控DNA序列设计结果，包括参考组装、坐标、链方向、序列窗口和轨迹/变异输入的规范化报告、独立评估、目标活性达成率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "applications",
+    "bio",
+    "design",
+    "dirichlet",
+    "dirichlet-flow-matching",
+    "dna区间",
+    "dna序列设计的输出",
+    "enhancer_activity",
+    "flow",
+    "matching",
+    "sequence"
+  ],
+  "scenario_id": "B70",
+  "source_papers": [
+    "2402.05841"
+  ]
+}

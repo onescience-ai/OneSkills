@@ -1,0 +1,33 @@
+{
+  "name": "airport-fog-low-visibility-probabilistic-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「机场雾和低能见度事件短时概率预报」工作流。融合机场站观测和数值预报，预测未来数小时雾发生概率及跑道能见度等级，服务航空运行。覆盖从临近观测及任务边界预检到检验CSI、AUC、MAE和可靠度的完整管线。得到可复现、可审计的雾概率、能见度值与等级、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "accurate",
+    "classification",
+    "earth",
+    "enhancing",
+    "ensembles",
+    "events",
+    "fog-related",
+    "forecasting",
+    "forecasts",
+    "learning",
+    "low-visibility",
+    "machine",
+    "mae和可靠度",
+    "methods",
+    "multivariate"
+  ],
+  "scenario_id": "E33",
+  "source_papers": [
+    "sha256:943eb9939eed2b620a1540bf984eec440513001394d5460b2ac2bff90a626e7c",
+    "sha256:8756d2e40b110985ff5e9e7e4ad61e151da38b93dedf341ce294531c62bafe17",
+    "sha256:56373171ad6438513ab486fc72fb15db06057a5b145afe3bbec3a35cf5e363ec"
+  ]
+}

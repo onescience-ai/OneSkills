@@ -1,0 +1,34 @@
+{
+  "name": "skycam-satellite-solar-irradiance-nowcast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「天空相机与卫星云图驱动的分钟至小时太阳辐照度临近预报」工作流。利用天空图像或卫星辐照度图预测未来分钟至数小时地表太阳辐照度；不直接输出光伏电站功率。覆盖从天气能源运行资料及任务边界预检到按云况和时效验证的完整管线。得到可复现、可审计的多时效辐照度场或站点序列、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "adversarial",
+    "approach",
+    "earth",
+    "forecast",
+    "forecasting",
+    "generative",
+    "imager-based",
+    "irradiance",
+    "irradiancenet-",
+    "learning",
+    "machine",
+    "model",
+    "networks",
+    "regional",
+    "satellite-derived"
+  ],
+  "scenario_id": "E23",
+  "source_papers": [
+    "sha256:a911424ff8057d67e5a32bb7569a60b45d536b20ad67a8770d1c4821b20b811e",
+    "sha256:731f454781c0cc3c7cc1f6f7089f73d20fdbb3b493667adcc99e5049b029c27e",
+    "sha256:bf343e851a7d74d9496f5641f1aca4c675ffe144086e2cfd23373d9e83488aab",
+    "sha256:bb38cc75700e207184f8382101db782bf4c80aa7f134509a0e9601cea5b16121"
+  ]
+}

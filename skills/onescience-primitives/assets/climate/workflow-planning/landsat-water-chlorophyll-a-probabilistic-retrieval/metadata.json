@@ -1,0 +1,26 @@
+{
+  "name": "landsat-water-chlorophyll-a-probabilistic-retrieval",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「Landsat水体叶绿素a概率反演」工作流。把Landsat水色反射率反演为过境时刻叶绿素a浓度及条件分布，适用于内陆和沿海水体；不预测藻华未来发展。覆盖从遥感观测标签及任务边界预检到按水体、浓度区间和留站样本验证的完整管线。得到可复现、可审计的叶绿素a浓度、分位数及质量掩膜、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "algorithm",
+    "a条件分布或点估计",
+    "based",
+    "chlorophyll-a",
+    "density",
+    "earth",
+    "landsat-8",
+    "landsat水体叶绿素a概率反演",
+    "mixture",
+    "networks"
+  ],
+  "scenario_id": "E73",
+  "source_papers": [
+    "sha256:35244d43a01e48068ea1cba6ca2e6dd7ff712287b35d9f59a938ecebf6d4dadd"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "linico-high-ni-cathode-doping-strain-risk-optimization",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 NULL 的「Li[Ni0.91Co0.09]O2 高镍层状正极的掺杂结构优化与应变风险分析」工作流。研究对象为Li[Ni0.91Co0.09]O2 高镍层状正极的掺杂结构优化与应变风险分析。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从母体结构检查与掺杂候选建模到候选排序与实验/文献交叉验证的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "tags": [
+    "additive",
+    "automotive",
+    "batteries",
+    "cathode",
+    "cathodes",
+    "degradation",
+    "durable",
+    "engineering",
+    "high-ni",
+    "high-nickel",
+    "interphases",
+    "layered",
+    "li-ion",
+    "li-rich",
+    "lithium-based"
+  ],
+  "scenario_id": "LiNiCo_高镍层状正极掺杂结构优化与应变风险分析",
+  "source_papers": [
+    "doi_https_doi_org_10_1038_s41467_021_26815_6",
+    "doi_10_1038_s41560_022_01020_x",
+    "doi_https_doi_org_10_1038_s41560_019_0513_0",
+    "doi_https_doi_org_10_1038_s41586_022_04689_y"
+  ]
+}

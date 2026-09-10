@@ -1,0 +1,42 @@
+{
+  "name": "fno-structured-grid-parametric-pde-operator",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "FNO规则网格参数化PDE算子学习。面向Darcy与Navier-Stokes规则网格数据完成FNO规则网格参数化PDE算子学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "accurate",
+    "aerodynamical",
+    "agnostic",
+    "approximation",
+    "arbitrary",
+    "architectures",
+    "beyond",
+    "computational_fluid_dynamics",
+    "coupled",
+    "deep-learning",
+    "differential",
+    "domain",
+    "domains",
+    "enhanced",
+    "equations"
+  ],
+  "scenario_id": "CFD_S048",
+  "source_papers": [
+    "sha256:b6cc6bc0766552c036dbbde470ef427775c1d5648232008f5b1ef86be3366e03",
+    "sha256:6cd2645d4a50d1a61a261529b33747c674d78851bdbe6993b0961f81a17dc6f2",
+    "sha256:3c2b0d0ea005c031417e32d1659cfc0ad71898927b71a8218572d99169b3aee8",
+    "sha256:63af33b452ba0eacb241ff70d87f30923dbbd8d9ba616f09ae0d48d4825fe753",
+    "sha256:86a63eb8517e37ff6662f68801beedfa2d0bc51a1c6502f6528b3359193054b1",
+    "sha256:8cf365ae93e7215616815556371ddc46c812cb3475280e53384371f1f5bcff3c",
+    "sha256:15ff729c7a902f1049166b32763c052c32c157f2f2fe6bb12741558bfbf396f8",
+    "sha256:3ac2875f51a30b644213275ad380a929415ef85401049d889e22c7131869755e",
+    "sha256:7531aeed4df008ae7cd5eddaa0b74c0913b05f388b42adf64c7f0e0c7cf0dc6b",
+    "sha256:225a98abd2481bdc75b9ed075173a88383d190ce252cd7e773ec43e0e4cc3794",
+    "sha256:24b234b94baa4ac8cd3e1bc159a9c46d2b5d4a971c3bfdf293c2f8aea3a7cae3",
+    "sha256:9764585ef34a6cb07c94921df9974b411fbb9f8eb0d24f534838b831435bcdca"
+  ]
+}

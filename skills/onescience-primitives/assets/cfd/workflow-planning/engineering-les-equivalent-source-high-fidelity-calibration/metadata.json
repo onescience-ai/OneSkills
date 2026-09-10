@@ -1,0 +1,35 @@
+{
+  "name": "engineering-les-equivalent-source-high-fidelity-calibration",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "工程LES等效源项与高保真校准。面向叶轮高升力与工程LES及DNS数据完成工程LES等效源项与高保真校准。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "aerodynamic",
+    "aerodynamics",
+    "aircraft",
+    "bayesian",
+    "cfd耦合",
+    "computational",
+    "computational_fluid_dynamics",
+    "data-driven",
+    "data-driven-les-source-model",
+    "dataset",
+    "dimples",
+    "drag-reducing",
+    "dynamics",
+    "efficient",
+    "estimate"
+  ],
+  "scenario_id": "CFD_S080",
+  "source_papers": [
+    "sha256:5c494606e1a30548b2017f93dcbc96f267be72a3a8e6a2b9620c57b5ff1e9a26",
+    "sha256:73fae85b2b9f30b6f8322397535ecb1993b0807ad490b1c89259761368d2fb7f",
+    "sha256:6bf7fe7b6da054874323b63a73a82ce83cd0d45d19c0983260107029daa81005",
+    "sha256:9c7a49fbc5a2155d6cc540be2f5c6b1f5355fc894ab5a00115e3b4f70b6f20fe",
+    "sha256:bd87638212505fadd5a95b7a9d8e838ebd3621f5a3a51921b0392ca92b8cd590"
+  ]
+}

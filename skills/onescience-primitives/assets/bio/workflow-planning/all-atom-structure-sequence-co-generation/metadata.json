@@ -1,0 +1,32 @@
+{
+  "name": "all-atom-structure-sequence-co-generation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 La-Proteina 的「全原子蛋白结构与序列联合生成」工作流。研究对象为受约束的蛋白骨架、序列、肽或酶设计任务。本场景研究受约束的蛋白骨架、序列、肽或酶设计任务，希望解决以全原子表示联合生成蛋白序列和结构，适用于新折叠探索与候选多样性采样。覆盖从设计目标与约束定义到回折叠与设计筛选的完整管线。核心指标包括设计成功率。得到与输入和任务约束一致、可追溯、可复核的全原子蛋白结构与序列联合生成结果，包括经格式和约束检查的设计目标、固定区域掩码、候选结构/序列及结构自洽报告、独立评估、设计成功率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "atomistic",
+    "bio",
+    "consistent",
+    "design",
+    "diversity",
+    "fully",
+    "generation",
+    "la-proteina",
+    "latent",
+    "matching",
+    "partially",
+    "protein",
+    "protein_lengths",
+    "sequences",
+    "structural"
+  ],
+  "scenario_id": "B13",
+  "source_papers": [
+    "2507.09466",
+    "2512.01976"
+  ]
+}

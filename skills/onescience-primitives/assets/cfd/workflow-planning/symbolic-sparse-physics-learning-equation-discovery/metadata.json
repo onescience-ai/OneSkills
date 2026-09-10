@@ -1,0 +1,41 @@
+{
+  "name": "symbolic-sparse-physics-learning-equation-discovery",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "符号与稀疏物理学习控制方程发现。面向稀疏状态轨迹与导数观测完成符号与稀疏物理学习控制方程发现。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "accurate",
+    "affine",
+    "carlo",
+    "closed-form",
+    "competitive",
+    "computational_fluid_dynamics",
+    "constitutive",
+    "d-cipher_",
+    "data-driven",
+    "differential",
+    "dimensions",
+    "discovering",
+    "discovery",
+    "dynamics",
+    "empirical"
+  ],
+  "scenario_id": "CFD_S045",
+  "source_papers": [
+    "sha256:4f7c520ee02fd977b8c01cc695d5f20f5b25d9f5c4bb74812decc6134f135021",
+    "sha256:d2099407eadad713b8dedb317c7df67913370c5ce1eb1e956b1af07784cbd5c2",
+    "sha256:18067a34551e2dcbd8aa81215f6ac36cb2aafee2bde43dd1f41e6f555ceb777a",
+    "sha256:7137daf4278f3f65cd64090ec29d5e07df63161dc2c4a10cd4f0ad6a2f31da90",
+    "sha256:6ad84192162afcbc132cdd8d8b217a3a4f7c5b1c19a284f81b57b93b1e569dfe",
+    "sha256:3134aa8f7ae1406841370092d9bafe6ef29fecbfe87c55821f09410cc94307b0",
+    "sha256:b9d97caff894bebdf91e5700687f11d2630f4dfe18a98eb8f7eb27e5f7d8a4ef",
+    "sha256:be518004b6418c35c90d6a4a7fd1aed6d6544125ce52d10779fdedba5b21cc47",
+    "sha256:e0c57192707b3b7d6e4d4ea596a73277bfe75e8d948a61021242a444ccfe4078",
+    "sha256:73c65a0ec962552a43edff04f6043bb56fe2d8699e673e9e4d75d98cc455c049",
+    "sha256:23d76b592ff4ee7b44d2ae402a6dea058301d6f36bd855763a721346c69b25a7"
+  ]
+}

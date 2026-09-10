@@ -1,0 +1,33 @@
+{
+  "name": "protoken-latent-structure-sequence-design",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 PT-DiT 的「ProToken潜空间蛋白结构序列协同设计」工作流。研究对象为受约束的蛋白骨架、序列、肽或酶设计任务。本场景研究受约束的蛋白骨架、序列、肽或酶设计任务，希望解决在ProToken潜空间协同扩散蛋白结构与序列，适用于定长从头设计和局部重绘。覆盖从设计目标与约束定义到回折叠与设计筛选的完整管线。核心指标包括自洽TM-score。得到与输入和任务约束一致、可追溯、可复核的ProToken潜空间蛋白结构序列协同设计结果，包括经格式和约束检查的设计目标、固定区域掩码、候选结构/序列及结构自洽报告、独立评估、自洽TM-score统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "atomistic",
+    "balancing",
+    "bio",
+    "consistent",
+    "design",
+    "design_256",
+    "diversity",
+    "fully",
+    "generation",
+    "json",
+    "la-proteina",
+    "latent",
+    "locality",
+    "matching",
+    "partially"
+  ],
+  "scenario_id": "B14",
+  "source_papers": [
+    "2512.01976",
+    "2507.09466",
+    "10.1101/2024.12.02.626366"
+  ]
+}

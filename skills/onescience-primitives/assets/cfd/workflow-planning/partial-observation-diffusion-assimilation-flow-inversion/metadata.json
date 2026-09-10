@@ -1,0 +1,35 @@
+{
+  "name": "partial-observation-diffusion-assimilation-flow-inversion",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "部分观测扩散同化与连续流场反演。面向缺测PDE状态视频或双帧观测完成部分观测扩散同化与连续流场反演。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "assimilation",
+    "computational_fluid_dynamics",
+    "continuous",
+    "diffusion-pde-model",
+    "diffusionpde_",
+    "dual-frame",
+    "estimation",
+    "fields",
+    "fluid",
+    "generative",
+    "hybrid",
+    "inferring",
+    "latent",
+    "learning",
+    "motion"
+  ],
+  "scenario_id": "CFD_S097",
+  "source_papers": [
+    "sha256:faaa1875067c02fe018765de822f7c1a7add44b42550676d9b5aa07619da57a3",
+    "sha256:6e59196853cd273bc801b6e1016dc5242755c75793d22121d5cbc0ec0e3a2d1b",
+    "sha256:064ae2a3bc3f0c82d1373467d5e9b7012bdde657ed1e62a541b755cbd95192b6",
+    "sha256:aff5b2246c82444cb40903299ccd2182d1361987418510d9d2971e83e4656d3d",
+    "sha256:afbb9859789377dc491385ce0024647fd066a6abc43a9682cefcbdc97b7e37e8"
+  ]
+}

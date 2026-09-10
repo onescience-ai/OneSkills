@@ -1,0 +1,26 @@
+{
+  "name": "china-005deg-lai-history-scenario-spatial-refinement",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「中国0.05°历史—情景叶面积指数空间细化」工作流。将粗分辨率历史和未来情景LAI细化到中国0.05°网格，形成1983—2100连续产品；不表示短期植被预报。覆盖从粗细分辨率资料及任务边界预检到检查长期趋势、季节循环和物理范围的完整管线。得到可复现、可审计的0.05°历史及情景LAI序列、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "based",
+    "china",
+    "dataset",
+    "degree",
+    "during",
+    "earth",
+    "index",
+    "lai序列",
+    "learning",
+    "network"
+  ],
+  "scenario_id": "E93",
+  "source_papers": [
+    "sha256:abba971f83c3ffe7f1a955bfec43a6c379a40a75ba35d3fd61e95c539e7ae47d"
+  ]
+}

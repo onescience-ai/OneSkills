@@ -1,0 +1,40 @@
+{
+  "name": "autoencoder-latent-flow-rom-rollout",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "自编码器潜空间流动降阶时序预测。面向高维流场快照时序数据完成自编码器潜空间流动降阶时序预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "advection-dominated",
+    "assessment",
+    "autoencoder-based",
+    "autoencoders",
+    "closure",
+    "complex",
+    "computational_fluid_dynamics",
+    "consistently_",
+    "convolutional",
+    "convolutional-autoencoder",
+    "dimensional",
+    "dynamics",
+    "evolve",
+    "evolving",
+    "features"
+  ],
+  "scenario_id": "CFD_S087",
+  "source_papers": [
+    "sha256:9bf3a240322cd2c94415cdd5531f0d6c4e2680a2681dc8f3499179ac7df642ac",
+    "sha256:46b7ea5554c112de8dbc11e8d24bb52d07e83df202a875b57c5d0cdeb4e82ba7",
+    "sha256:a3abe7cb5defbbe0a64dc8a6d751d98e511234a9b78834dce35f93ed433070ff",
+    "sha256:638c253639fd56163410b273c1fd2d0e85e67d1b1220b0ed6e8a4e66cc0feacf",
+    "sha256:6fde662eccb6fe3f09cee9e31afa8ced61d509d938e3f59a6012bf6b87356b4e",
+    "sha256:23b27e1264205884f0056ffb3c862a9945fe69eeaaaba9c7e6fb43f1704c4ed5",
+    "sha256:48df4f8e7ac7fae5d6c35ec49f1796d54c188b316a875067e45187afc2ea3075",
+    "sha256:5ae735406a54715906baaa8b88eaa851bf72ec7003953795d3095ca53b70bdf4",
+    "sha256:c623246bad3a4287d30308230af397968c52b3d59641b2111bf5659aa0f1d3f6",
+    "sha256:4e8f324d1e9440dba40a826a166e9247e0438876054b2ed25ab2285bc40373c7"
+  ]
+}

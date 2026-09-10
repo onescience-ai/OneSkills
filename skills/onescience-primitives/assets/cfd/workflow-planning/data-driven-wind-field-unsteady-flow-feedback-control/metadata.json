@@ -1,0 +1,33 @@
+{
+  "name": "data-driven-wind-field-unsteady-flow-feedback-control",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "数据驱动风场与非定常流反馈控制。面向风场尾迹状态与反馈控制数据完成数据驱动风场与非定常流反馈控制。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "computational_fluid_dynamics",
+    "control",
+    "data-driven",
+    "dynamical",
+    "feedback",
+    "flows",
+    "fluid",
+    "integration",
+    "interactive",
+    "interface",
+    "mid-fidelity",
+    "modeling",
+    "modelling",
+    "neural-mpc",
+    "reduced-order-controller"
+  ],
+  "scenario_id": "CFD_S084",
+  "source_papers": [
+    "sha256:2896d672042f900247c18e2e61de69381fe3c935a9e8d28d41eb04a989641d93",
+    "sha256:3f4dfa10f13de8fe2408639d0dc39aa6c5bd4733b840692c89b2e1a408eca299",
+    "sha256:f9d8efa666c9d6f3968050e28a9ca25f3294ab02ad40b9d70d9ace31f0a692be"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "tropical-cyclone-24-120h-track-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「已识别热带气旋24—120小时路径预报」工作流。根据已识别气旋的历史位置及环境环流，预测未来24—120小时中心轨迹和登陆位置不确定性。覆盖从起报资料及任务边界预检到检验沿轨与横轨误差的完整管线。得到可复现、可审计的多时效中心经纬度、路径和登陆概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "aligned",
+    "based",
+    "cyclone",
+    "deep-learning",
+    "dual-branched",
+    "earth",
+    "forecast",
+    "forecasting",
+    "fused",
+    "fusion",
+    "learning",
+    "model",
+    "multihorizon",
+    "network",
+    "northwestern"
+  ],
+  "scenario_id": "E30",
+  "source_papers": [
+    "sha256:844aab6732993b52e6f277b30143f0bd7e96c56915e6d33eddd8c701231a9886",
+    "sha256:fa3c4186ac1a30c547e04d90efd29a73d2ebd7b1d322622e06bd0218a8cca045",
+    "sha256:1d088c8854f7ef5429b2753829b98a1521fafd118aef81549ed18a44406665f5"
+  ]
+}

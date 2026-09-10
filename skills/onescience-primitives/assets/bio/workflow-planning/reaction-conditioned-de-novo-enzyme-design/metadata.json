@@ -1,0 +1,22 @@
+{
+  "name": "reaction-conditioned-de-novo-enzyme-design",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 GENzyme 的「反应条件驱动的从头酶设计」工作流。研究对象为受约束的蛋白骨架、序列、肽或酶设计任务。本场景研究受约束的蛋白骨架、序列、肽或酶设计任务，希望解决以反应物、产物和催化几何为条件生成酶结构，适用于新反应的生物催化剂探索。覆盖从设计目标与约束定义到回折叠与设计筛选的完整管线。核心指标包括催化几何通过率。得到与输入和任务约束一致、可追溯、可复核的反应条件驱动的从头酶设计结果，包括经格式和约束检查的设计目标、固定区域掩码、候选结构/序列及结构自洽报告、独立评估、催化几何通过率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "bio",
+    "design",
+    "enzyme",
+    "genzyme",
+    "reaction-conditioned",
+    "reaction_smiles"
+  ],
+  "scenario_id": "B20",
+  "source_papers": [
+    "2411.16694"
+  ]
+}

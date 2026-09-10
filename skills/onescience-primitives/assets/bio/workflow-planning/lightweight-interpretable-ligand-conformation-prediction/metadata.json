@@ -1,0 +1,27 @@
+{
+  "name": "lightweight-interpretable-ligand-conformation-prediction",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 QuickBind 的「轻量可解释的蛋白配体构象预测」工作流。研究对象为受体结构、配体化学结构、候选口袋和对接姿态。本场景研究受体结构、配体化学结构、候选口袋和对接姿态，希望解决以轻量网络快速预测蛋白配体构象并输出可解释接触，适用于高通量初筛。覆盖从受体配体输入预检到物理几何质控与排序的完整管线。核心指标包括RMSD通过率。得到与输入和任务约束一致、可追溯、可复核的轻量可解释的蛋白配体构象预测结果，包括受体/配体标准化记录、口袋坐标、质子化和立体化学检查报告、独立评估、RMSD通过率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "bio",
+    "docking",
+    "interpretable",
+    "light-weight",
+    "model",
+    "molecular",
+    "quickbind",
+    "quickbind_pairs",
+    "rdkit",
+    "rmsd通过率",
+    "rmsd通过率结果"
+  ],
+  "scenario_id": "B48",
+  "source_papers": [
+    "2410.16474"
+  ]
+}

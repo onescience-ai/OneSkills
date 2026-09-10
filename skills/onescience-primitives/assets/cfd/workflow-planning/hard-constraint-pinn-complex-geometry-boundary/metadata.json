@@ -1,0 +1,36 @@
+{
+  "name": "hard-constraint-pinn-complex-geometry-boundary",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "硬约束PINN复杂几何边界求解。面向复杂几何边界与无网格配点完成硬约束PINN复杂几何边界求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "analysis",
+    "approximating",
+    "boundary",
+    "boundary-pinn",
+    "complex",
+    "computational_fluid_dynamics",
+    "conditions",
+    "constrained",
+    "differential",
+    "equations",
+    "error",
+    "framework",
+    "geometrically",
+    "geometry",
+    "hard-constraint"
+  ],
+  "scenario_id": "CFD_S040",
+  "source_papers": [
+    "sha256:c5392d174f0bdbb50c674f7da57f4667dc9dcd63d6a95f384fb6d8e8c2ed3ce1",
+    "sha256:c207e6a46b10b0ff8640c7685b4b6483e8b58df41cff88e5d47e167588661538",
+    "sha256:810a3c3fcf2187d7fe0bcb83cd16bd87b886185bbef298f0dda532a88c1e6028",
+    "sha256:f94ec2bbab8705159385647a949eb2e42f9ec4bd2b7f4992df29a95f283c929b",
+    "sha256:a86af3c766f369e5a70397f98ed209d441d3230641128a6d6763bbe2e4fc2cb1",
+    "sha256:84623dd390b9fbc64a540e63ec518a798434bed4802d105ab848ba3670e0317f"
+  ]
+}

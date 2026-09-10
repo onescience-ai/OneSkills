@@ -1,0 +1,32 @@
+{
+  "name": "surface-meteorology-0-30min-lightning-nowcast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「地面气象要素驱动的0—30分钟雷电临近预报」工作流。利用站点温湿压风等常规观测，预测周边区域未来0—30分钟是否发生云地闪电并给出概率。覆盖从临近观测及任务边界预检到检验命中率、虚警率和可靠度的完整管线。得到可复现、可审计的分时间窗雷电发生概率和告警、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "algorithms",
+    "among",
+    "available",
+    "cloud-to-ground",
+    "commonly",
+    "comparison",
+    "earth",
+    "forest",
+    "horizontal",
+    "learning",
+    "lightning",
+    "machine",
+    "meteorological",
+    "nowcast",
+    "nowcasting"
+  ],
+  "scenario_id": "E52",
+  "source_papers": [
+    "sha256:213a92951409d6c7b6cd3f8e4d695facd3814913bc293342df07a38c0fe16e9d",
+    "sha256:886ba2ab174501dacf6ec248e2083f69485c9b2f291d7819f02c7e1d8a3252cc"
+  ]
+}

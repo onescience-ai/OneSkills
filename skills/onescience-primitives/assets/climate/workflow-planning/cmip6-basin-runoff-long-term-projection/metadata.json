@@ -1,0 +1,33 @@
+{
+  "name": "cmip6-basin-runoff-long-term-projection",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「CMIP6气候情景驱动的流域径流长期投影」工作流。将偏差订正的气候情景转化为未来流域径流分布及极端变化，适用于气候影响评估，不用于实时调度。覆盖从水文强迫和流域资料及任务边界预检到检验物理一致性的完整管线。得到可复现、可审计的未来径流序列、变化率与极端统计、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "analysis",
+    "assessment",
+    "catchment",
+    "change",
+    "change-",
+    "climate",
+    "cmip6",
+    "cmip6气候情景驱动的流域径流长期投影",
+    "constraints",
+    "deep-learning-based",
+    "differentiable",
+    "earth",
+    "evapotranspiration",
+    "future",
+    "hilly"
+  ],
+  "scenario_id": "E28",
+  "source_papers": [
+    "sha256:743bb92e298017ad93536fcf0aec2964b195e8f1135d52592434f469aa587f37",
+    "sha256:5de1877a9670880bffdb5b00c4b9a856c7e604aae168395aaa1707151a541fbe",
+    "sha256:1994df162c35dae0f5bae63cfa081a9f14e5eb961b911bee7fbee95ca3834e07"
+  ]
+}

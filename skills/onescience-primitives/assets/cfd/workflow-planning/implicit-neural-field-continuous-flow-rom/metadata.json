@@ -1,0 +1,34 @@
+{
+  "name": "implicit-neural-field-continuous-flow-rom",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "隐式神经场连续流动降阶建模。面向连续坐标采样的PDE快照完成隐式神经场连续流动降阶建模。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "adaptation",
+    "colora_",
+    "computational_fluid_dynamics",
+    "conditional",
+    "continuous",
+    "continuous-rom",
+    "crom_",
+    "differentia",
+    "differential",
+    "dynamics",
+    "equations",
+    "gas-surface",
+    "hypersonic",
+    "implicit",
+    "implicit-neural-representation"
+  ],
+  "scenario_id": "CFD_S088",
+  "source_papers": [
+    "sha256:3c6340275f286f4be2ca4b9f0af678c554e82421355807e29c62a7bf1dde19b9",
+    "sha256:926069419ed99a1d07a58dd9485eee06a10f372cad4cff1648dc273480d2a518",
+    "sha256:1cb1839be0b031cfd5760ea70d1e2be1f87a4824531166cc31057e7109e1b73a",
+    "sha256:bbadc6e46d2bed91d518bd7e1a68ace8606b80db5e385e91346cca4164ab72c8"
+  ]
+}

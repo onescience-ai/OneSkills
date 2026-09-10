@@ -1,0 +1,28 @@
+{
+  "name": "mesh-transformer-3d-flow-prediction",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "大规模网格Transformer三维流场预测。面向百万节点通用三维PDE网格数据完成大规模网格Transformer三维流场预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "accurate",
+    "computational_fluid_dynamics",
+    "general",
+    "geometries",
+    "mesh-transformer",
+    "million-scale",
+    "neural",
+    "solver",
+    "transformer",
+    "transolver",
+    "transolver_"
+  ],
+  "scenario_id": "CFD_S006",
+  "source_papers": [
+    "sha256:7284600b4666e35c53d649ad5ec8f13153ef5737b316f9f1c6348f51e93161c5",
+    "sha256:6fdfe8deb4dd9a28cd0817735c9dba415a1ee6cc097bcad22e7b9eca78488db2"
+  ]
+}

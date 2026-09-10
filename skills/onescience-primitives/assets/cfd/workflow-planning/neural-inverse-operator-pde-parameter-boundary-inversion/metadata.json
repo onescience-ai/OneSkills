@@ -1,0 +1,36 @@
+{
+  "name": "neural-inverse-operator-pde-parameter-boundary-inversion",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "神经逆算子PDE参数与边界反演。面向PDE观测与参数配对数据完成神经逆算子PDE参数与边界反演。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "approach",
+    "boundary",
+    "computational_fluid_dynamics",
+    "correcting",
+    "decomposition",
+    "deeponets",
+    "drift-diffusion",
+    "estimation",
+    "graphs_",
+    "identification",
+    "inn-td",
+    "interpolating",
+    "interpretable",
+    "inverse",
+    "inverse-deeponet"
+  ],
+  "scenario_id": "CFD_S033",
+  "source_papers": [
+    "sha256:5ffa9f43fb9c23fc5b099bd4254cb0a6f9d446d9517d89a09e83e5a5bf5dff28",
+    "sha256:f97884961c026969bc4842d4007cee199fa93e9e1fe6cd7a4b1e6db4a8abfcf4",
+    "sha256:3e0c635d88c4ba3745b03a58e1ce5e66b75b940a75326aaaac4c48ca6f1afdd0",
+    "sha256:5fb1807e2e8db178f3d637f0b90d4497b93bff6b176dd1f4a1396b112162ef63",
+    "sha256:483dbb97e18be44f25ba8ca0d1fde5adbe747502b862500cc2990e023322ddd9",
+    "sha256:76d5fb7efc48a4e3d8ca3663bf78437ad0ed224d6f2920eee920c1a9dc5cd5e8"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "gan-normalizing-flow-turbulence-rom-generation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "GAN与正规化流湍流降阶生成。面向湍流快照与低维潜变量数据完成GAN与正规化流湍流降阶生成。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "adversarial",
+    "aerodynamic",
+    "based",
+    "chaotic",
+    "computational_fluid_dynamics",
+    "constraints",
+    "dynamical",
+    "enforcing",
+    "flow-based",
+    "gan",
+    "generation",
+    "generative",
+    "geometry",
+    "ig-gan_",
+    "intrinsic"
+  ],
+  "scenario_id": "CFD_S093",
+  "source_papers": [
+    "sha256:e3e6c739610899a9a639e12ac8507fdaa531f7489df83143a6e2a35ddd06594d",
+    "sha256:4854e41f4a73d1a89225afb4f09811665200c0ff05015910c332d2e5a496b6c6",
+    "sha256:9a46fc4c2a9fb25796483ffaf48f01c1c863d11bf78036fba38e12c98add81a1",
+    "sha256:f98b4a220fe949f6b34dadfa0c0d4e02b1700d852887b73b3d95c040d820f68e",
+    "sha256:185c735cbcbbac7ab8e2a832ed4fbc06436880c4e6c6c0373d87c42ba5f64d70"
+  ]
+}

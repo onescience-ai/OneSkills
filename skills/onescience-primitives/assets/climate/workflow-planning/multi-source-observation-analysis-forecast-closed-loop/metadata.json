@@ -1,0 +1,33 @@
+{
+  "name": "multi-source-observation-analysis-forecast-closed-loop",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「多源原始观测驱动的全球分析—预报闭环」工作流。融合卫星辐射、掩星等异构观测，循环估计全球三维大气初态并直接滚动中期天气预报。覆盖从观测和背景场及任务边界预检到分别验证分析误差与预报技巧的完整管线。得到可复现、可审计的全球分析场与后续多变量天气预报、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "data-driven",
+    "data-to-forecast",
+    "directly",
+    "earth",
+    "end-to-end",
+    "forecasts",
+    "global",
+    "graphdop_",
+    "initialised",
+    "learning",
+    "learnt",
+    "machine",
+    "medium-range",
+    "observations",
+    "prediction"
+  ],
+  "scenario_id": "E4",
+  "source_papers": [
+    "sha256:6704521646be2ebb87feec2f7da3b1b21b9b30786e41b80d96220ed6c83bf30f",
+    "sha256:3bcb57ecfbd716fe359fcc0aa80a96422f5452c30a3910c3cef29177cb36fd6e",
+    "sha256:3add7893cb96c0fbe3b09d781d27c442d04714156fea11334f0606071cfa452b"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "substrate-pocket-constrained-enzyme-scaffold",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 EnzyPGM 的「底物口袋约束的酶骨架设计」工作流。研究对象为受约束的蛋白骨架、序列、肽或酶设计任务。本场景研究受约束的蛋白骨架、序列、肽或酶设计任务，希望解决依据底物形状和化学环境生成酶骨架，适用于底物特异性酶候选的结构设计。覆盖从设计目标与约束定义到回折叠与设计筛选的完整管线。核心指标包括口袋互补度。得到与输入和任务约束一致、可追溯、可复核的底物口袋约束的酶骨架设计结果，包括经格式和约束检查的设计目标、固定区域掩码、候选结构/序列及结构自洽报告、独立评估、口袋互补度统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "anchor",
+    "bio",
+    "design",
+    "diffusion",
+    "enzyme",
+    "enzypgm",
+    "floating",
+    "generative",
+    "model",
+    "multi-motif",
+    "pocket-conditioned",
+    "scaffolding",
+    "substrate-specific",
+    "substrate_pocket"
+  ],
+  "scenario_id": "B16",
+  "source_papers": [
+    "2601.19205",
+    "2406.03141"
+  ]
+}

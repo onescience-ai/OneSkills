@@ -1,0 +1,27 @@
+{
+  "name": "thermal-metamaterial-visible-ir-camouflage-inverse-design",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 NULL 的「热超材料可见红外兼容伪装逆向设计」工作流。研究对象为热超材料可见红外兼容伪装逆向设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从数据与目标定义到独立验证与结论的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "tags": [
+    "camouflage",
+    "design",
+    "informatics",
+    "inverse",
+    "matchem",
+    "material",
+    "metamaterials",
+    "null",
+    "thermal",
+    "ultrahigh-efficient",
+    "visible-infrared-compatible"
+  ],
+  "scenario_id": "热超材料可见红外兼容伪装逆向设计",
+  "source_papers": [
+    "doi_10_1038_s41467_023_40350_6"
+  ]
+}

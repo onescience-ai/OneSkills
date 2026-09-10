@@ -1,0 +1,28 @@
+{
+  "name": "antigen-specific-multimodal-antibody-design",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 Antigen-Specific Antibody Foundation Model 的「抗原特异性多模态抗体功能设计」工作流。研究对象为抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据。本场景研究抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据，希望解决融合抗原序列、结构和抗体信息生成功能候选，适用于特异性与可开发性联合优化。覆盖从免疫对象与任务定义到特异性与可开发性质控的完整管线。核心指标包括功能成功率。得到与输入和任务约束一致、可追溯、可复核的抗原特异性多模态抗体功能设计结果，包括标准抗体/TCR编号、链-表位映射、输入结构/序列质控和界面实体清单、独立评估、功能成功率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "anarci",
+    "antibody",
+    "antigen-specific",
+    "antigen-specific-antibody-foundation-model",
+    "antigen_antibody_set",
+    "bio",
+    "design",
+    "foundation",
+    "functional",
+    "json",
+    "model",
+    "multi-modal"
+  ],
+  "scenario_id": "B30",
+  "source_papers": [
+    "2607.20057"
+  ]
+}

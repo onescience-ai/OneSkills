@@ -1,0 +1,33 @@
+{
+  "name": "global-1-15day-ensemble-probabilistic-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「全球1—15天集合概率天气预报」工作流。从全球分析初场生成未来1—15天多变量集合成员与概率分布，用于天气不确定性和极端风险评估。覆盖从起报资料及任务边界预检到检验CRPS、可靠度与集合离散度的完整管线。得到可复现、可审计的多变量集合预报场、分位数与超阈概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "crps",
+    "diffusion",
+    "earth",
+    "ensemble",
+    "forecasting",
+    "fuxi-ens-",
+    "gencast_",
+    "ladcast-",
+    "latent",
+    "learning",
+    "machine",
+    "medium-range",
+    "model",
+    "skillful",
+    "weather"
+  ],
+  "scenario_id": "E3",
+  "source_papers": [
+    "sha256:2af6b1493f3f357b68d5195bcae8d3c9578b8daed7dec02c1bb101c5f8eaedb7",
+    "sha256:2f9717523c1cfa4b6f3cbea6fe1ed6a97d507b446113c6c879e657c0c925e492",
+    "sha256:b1033756c87b3ff02def660a4ea58badd66240fdf04219a61b167790496ae83e"
+  ]
+}

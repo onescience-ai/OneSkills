@@ -1,0 +1,22 @@
+{
+  "name": "medical-text-image-multimodal-qa-reporting",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 MedGemma 的「医学文本与影像多模态问答及报告辅助」工作流。研究对象为医学影像、文本报告、患者/时间点元数据和临床问题。本场景研究医学影像、文本报告、患者/时间点元数据和临床问题，希望解决联合医学影像和文本提示完成问答与报告草拟，适用于临床辅助且必须由医生复核。覆盖从医学数据与任务定义到临床质量与安全复核的完整管线。核心指标包括临床正确率。得到与输入和任务约束一致、可追溯、可复核的医学文本与影像多模态问答及报告辅助结果，包括影像/文本格式、去标识化、患者-时间点配对、视野和质量检查报告、独立评估、临床正确率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "bio",
+    "chest_case",
+    "medgemma",
+    "pydicom",
+    "report",
+    "technical"
+  ],
+  "scenario_id": "B98",
+  "source_papers": [
+    "2507.05201"
+  ]
+}

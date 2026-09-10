@@ -1,0 +1,36 @@
+{
+  "name": "deeponet-neural-greens-function-operator-learning",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "DeepONet与神经Green函数算子学习。面向函数输入到解函数配对数据完成DeepONet与神经Green函数算子学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "approximation",
+    "based",
+    "closed-form",
+    "computational_fluid_dynamics",
+    "deeponet",
+    "differential",
+    "dynamics",
+    "equations",
+    "fluid",
+    "functional",
+    "functions",
+    "green",
+    "helmfluid_",
+    "helmholtz",
+    "hilbert"
+  ],
+  "scenario_id": "CFD_S050",
+  "source_papers": [
+    "sha256:d03e3288f4dc0f84966555390086b3e3924127ccec7fe34e6b0d22558fed1c1b",
+    "sha256:4b0bea3d69cbcb044b4e6b754de87ad3dc6efe7e5f2606cb090bca0e00bbad4a",
+    "sha256:4d561a8fa3dd8e948be50dfa1930f6b97bd964464426348eee9a5fea54d38e9f",
+    "sha256:0751ec528eb62ce1e399d52a6dd86545abea0e6f13beb691061ff407daf855cd",
+    "sha256:3b914193bf7838a5004337b9cbf046276773b04dc098ec5eb1c9d2c30e60d290",
+    "sha256:de401ede5efb9ab72ec34b6665245d9fefbe4ff066358a0a10fb55d51ff73ef8"
+  ]
+}

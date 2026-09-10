@@ -1,0 +1,33 @@
+{
+  "name": "global-ocean-pco2-sparse-observation-mapping",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「全球海洋pCO2稀疏观测时空扩展」工作流。将船测等稀疏海气pCO2观测扩展为月尺度连续格点场并量化不确定性；适用于碳汇估算，不用于未来浓度预报。覆盖从目标序列及缺口及任务边界预检到评估留船、留区误差及碳通量敏感性的完整管线。得到可复现、可审计的连续pCO2格点场及不确定性、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "air-sea",
+    "assessment",
+    "climatology",
+    "coastal",
+    "comparative",
+    "csir-ml6",
+    "derived",
+    "earth",
+    "ensemble",
+    "estimates",
+    "global",
+    "high-resolution",
+    "interpolation",
+    "learning",
+    "machine-learning"
+  ],
+  "scenario_id": "E13",
+  "source_papers": [
+    "sha256:02246e02030a0f2f9d1f2ac9ba94a283e812bb11051f642eae100b2d684f702e",
+    "sha256:a66575d3c7218ef3f7d0e76ff1bceeb785c26937ab2b1d50f9e1932d6b7a95fe",
+    "sha256:06e0c5bd57761f2fad672a34dca64f5991d9209f166955f218fa517bfedc9faa"
+  ]
+}

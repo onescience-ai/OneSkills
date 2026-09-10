@@ -1,0 +1,24 @@
+{
+  "name": "multi-source-dust-event-early-warning",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「多源观测与天气预报驱动的沙尘事件提前预警」工作流。融合站点、卫星、气溶胶背景和天气预报，预测未来数小时至数日沙尘发生、强度及影响区。覆盖从致灾因子和事件标签及任务边界预检到按事件和空间邻域验证的完整管线。得到可复现、可审计的沙尘概率、浓度等级和影响区、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "early",
+    "earth",
+    "events",
+    "implemented",
+    "learning",
+    "middle",
+    "multi-task",
+    "warnings"
+  ],
+  "scenario_id": "E92",
+  "source_papers": [
+    "sha256:93f7054280b564840983a34764a34fffdc45b826893bdf3699b1cdef9f4664cb"
+  ]
+}

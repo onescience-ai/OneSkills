@@ -1,0 +1,25 @@
+{
+  "name": "multi-field-analysis-weather-front-detection-vectorization",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「多要素分析场驱动的天气锋面检测与矢量化」工作流。融合同时刻温度、湿度、气压和风场，识别冷锋、暖锋等概率格点并转换为连续锋面折线。覆盖从源观测和参考资料及任务边界预检到检验位置距离和类别命中率的完整管线。得到可复现、可审计的锋面类别概率格点与矢量折线、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "automated",
+    "detection",
+    "earth",
+    "fronts",
+    "learning",
+    "network",
+    "neural",
+    "using",
+    "weather"
+  ],
+  "scenario_id": "E97",
+  "source_papers": [
+    "sha256:1af78df0cb018111f079661ec7b0577743e028cbeedea90d6d5a06761c22f947"
+  ]
+}

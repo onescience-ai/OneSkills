@@ -1,0 +1,32 @@
+{
+  "name": "megabase-genome-context-modeling-sequence-design",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 Evo2 的「百万碱基上下文基因组建模与序列设计」工作流。研究对象为基因组DNA区间、变异、调控轨迹和细胞/组织上下文。本场景研究基因组DNA区间、变异、调控轨迹和细胞/组织上下文，希望解决在百万碱基上下文中评估变异并生成基因组序列，适用于跨物种功能建模与设计。覆盖从基因组输入与坐标规范化到轨迹与效应质量评估的完整管线。核心指标包括序列似然。得到与输入和任务约束一致、可追溯、可复核的百万碱基上下文基因组建模与序列设计结果，包括参考组装、坐标、链方向、序列窗口和轨迹/变异输入的规范化报告、独立评估、序列似然统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "across",
+    "advancing",
+    "alphagenome",
+    "bio",
+    "brca1_region",
+    "design",
+    "dna区间",
+    "domains",
+    "effect",
+    "evo2",
+    "fasta",
+    "genome",
+    "model",
+    "modeling",
+    "prediction"
+  ],
+  "scenario_id": "B62",
+  "source_papers": [
+    "10.1101/2025.02.18.638918",
+    "10.1101/2025.06.25.661532"
+  ]
+}

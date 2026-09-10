@@ -1,0 +1,33 @@
+{
+  "name": "graph-neural-operator-arbitrary-geometry-pde",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "图神经算子任意几何PDE学习。面向非结构网格与任意域PDE数据完成图神经算子任意几何PDE学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "computational_fluid_dynamics",
+    "differential",
+    "equations",
+    "graph",
+    "graph-neural-operator",
+    "hamlet_",
+    "message",
+    "multipole",
+    "network",
+    "neural",
+    "operator",
+    "parametric",
+    "partial",
+    "passing",
+    "phympgn_"
+  ],
+  "scenario_id": "CFD_S051",
+  "source_papers": [
+    "sha256:bb9b164d605563ca1b3182df706e6a0df89abed01a499623610c39b52c091719",
+    "sha256:744180745f430e22e4cf84b3d20e698a8d4ef5c1cceabad65b85f95b474e576c",
+    "sha256:aac43ee6640118d7abbeff6be874e26351103176ed49491d9cd5fc645aebfbb8"
+  ]
+}

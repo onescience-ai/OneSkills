@@ -1,0 +1,33 @@
+{
+  "name": "nearshore-wave-height-period-direction-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「近岸有效波高—周期—波向短期预报」工作流。利用当前海浪状态、未来风场和边界波谱生成近岸小时至数日波高、周期和波向；不承担多年波浪气候投影。覆盖从海洋状态和强迫资料及任务边界预检到检验逐时效误差、风暴峰值及概率校准的完整管线。得到可复现、可审计的多时效波高、周期及波向、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "approaches",
+    "between",
+    "characteristics",
+    "comparison",
+    "conditions",
+    "earth",
+    "forecast",
+    "forecastfor",
+    "framework",
+    "learning",
+    "machine",
+    "model",
+    "prediction",
+    "semi-empirical",
+    "spatial"
+  ],
+  "scenario_id": "E31",
+  "source_papers": [
+    "sha256:8bd48865e09174bd8dfbddac08c2b08dcc4a2565d73b1df456186dfef25c15c2",
+    "sha256:16d9e5c0944de1a8e918be53ccc29972d2d175a7b2988419bf5196c0b4132f8d",
+    "sha256:7c31e9cb210554887100fc1209f89dd7e0d9c308e6dcf1d6f025582ce0f485e5"
+  ]
+}

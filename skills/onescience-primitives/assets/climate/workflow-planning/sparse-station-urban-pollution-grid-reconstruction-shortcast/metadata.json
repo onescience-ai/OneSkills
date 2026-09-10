@@ -1,0 +1,32 @@
+{
+  "name": "sparse-station-urban-pollution-grid-reconstruction-shortcast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「稀疏监测站驱动的城市污染浓度网格重建与短时预测」工作流。从稀疏空气质量站和城市环境特征重建未监测位置污染浓度，并外推未来短时城市连续格点场。覆盖从污染气象资料及任务边界预检到以留站和未来时段双重验证的完整管线。得到可复现、可审计的城市连续污染格点、短时预测及不确定性、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "citywide",
+    "convolutional",
+    "earth",
+    "interpolated",
+    "interpolation",
+    "learning",
+    "model",
+    "models",
+    "network",
+    "neural",
+    "pollution",
+    "prediction",
+    "real-time",
+    "spatiotemporal",
+    "using"
+  ],
+  "scenario_id": "E60",
+  "source_papers": [
+    "sha256:846507953ae5de0e8fd4f7433264b270978b8787495a398bec77762ebd75a47c",
+    "sha256:f5c31bcfb4413b62c93535a88b88d185581c2a9d9965b8389eb5b764b2f934bd"
+  ]
+}

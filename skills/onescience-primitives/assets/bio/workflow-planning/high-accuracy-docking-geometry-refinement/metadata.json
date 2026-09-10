@@ -1,0 +1,32 @@
+{
+  "name": "high-accuracy-docking-geometry-refinement",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 DeltaDock 的「高精度蛋白配体对接与几何修正」工作流。研究对象为受体结构、配体化学结构、候选口袋和对接姿态。本场景研究受体结构、配体化学结构、候选口袋和对接姿态，希望解决预测结合口袋和配体姿态后执行几何修正，适用于高精度候选对接。覆盖从受体配体输入预检到物理几何质控与排序的完整管线。核心指标包括RMSD通过率。得到与输入和任务约束一致、可追溯、可复核的高精度蛋白配体对接与几何修正结果，包括受体/配体标准化记录、口袋坐标、质子化和立体化学检查报告、独立评估、RMSD通过率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "accurate",
+    "affinity",
+    "bio",
+    "crossdocked_test",
+    "deltadock",
+    "docking",
+    "efficient",
+    "flowdock",
+    "framework",
+    "generative",
+    "geometric",
+    "matching",
+    "molecular",
+    "physically",
+    "prediction"
+  ],
+  "scenario_id": "B44",
+  "source_papers": [
+    "2410.11224",
+    "2412.10966"
+  ]
+}

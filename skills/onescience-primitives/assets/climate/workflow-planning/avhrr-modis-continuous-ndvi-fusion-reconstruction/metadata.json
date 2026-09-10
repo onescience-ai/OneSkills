@@ -1,0 +1,27 @@
+{
+  "name": "avhrr-modis-continuous-ndvi-fusion-reconstruction",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「AVHRR—MODIS连续NDVI历史序列融合重建」工作流。学习AVHRR与MODIS观测关系，生成跨传感器一致的长期连续NDVI记录；适用于历史植被变化分析，不预测未来NDVI。覆盖从目标序列及缺口及任务边界预检到检验重叠期偏差、趋势与突变保持的完整管线。得到可复现、可审计的校准后的连续长期NDVI序列、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "avhrr",
+    "constructing",
+    "continuous",
+    "earth",
+    "modis",
+    "modis连续ndvi历史序列融合重建",
+    "ndvi并填补传感器断点",
+    "ndvi序列",
+    "networks",
+    "neural",
+    "series"
+  ],
+  "scenario_id": "E91",
+  "source_papers": [
+    "sha256:353aed04ca9654e2a726b6fb3812fa5f9993bfe8410162af5af88b36400346eb"
+  ]
+}

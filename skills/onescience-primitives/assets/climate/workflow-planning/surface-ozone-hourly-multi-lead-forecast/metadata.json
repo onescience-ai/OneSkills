@@ -1,0 +1,33 @@
+{
+  "name": "surface-ozone-hourly-multi-lead-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「近地面臭氧小时级多时效预报」工作流。结合臭氧历史、气象和化学模式输出，预测未来数小时至14天地面臭氧浓度及超标概率。覆盖从污染气象资料及任务边界预检到检验RMSE、峰值和事件命中率的完整管线。得到可复现、可审计的小时臭氧浓度、MDA8和超标概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "advance",
+    "approach",
+    "cmaq-cnn",
+    "concentrations",
+    "earth",
+    "forecast",
+    "germany",
+    "hourly",
+    "hybrid",
+    "intellio3-ts",
+    "mda8和超标概率",
+    "mda8并校准超标概率",
+    "model",
+    "near-surface",
+    "network"
+  ],
+  "scenario_id": "E44",
+  "source_papers": [
+    "sha256:666ff675eb80ea281406a6dbb1a7531d0cbe75649181242bb4742ead90b3d251",
+    "sha256:992b3c8bb28a29bb01aa1392627c7758ff8ea16d021355942a63873a93a6fedb",
+    "sha256:5a5bbd6fa8bc8d2cb8cf49446546262cf28af8b516b5e11404f851341c588459"
+  ]
+}

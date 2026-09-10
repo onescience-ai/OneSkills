@@ -1,0 +1,34 @@
+{
+  "name": "typhoon-driven-coastal-storm-surge-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「台风与气压风场驱动的沿海风暴增水短期预报」工作流。由未来风压场、潮位和海岸地形生成沿海站点或网格风暴增水过程；不包含降雨内涝和波浪爬高。覆盖从致灾因子和事件标签及任务边界预检到按站点与强风暴专项验证的完整管线。得到可复现、可审计的增水时序、峰值及到时、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "approach",
+    "areas",
+    "capabilities",
+    "coastal",
+    "data-driven",
+    "earth",
+    "efficient",
+    "emulation",
+    "exploring",
+    "fields",
+    "global",
+    "learning",
+    "limited-area",
+    "model",
+    "modeling"
+  ],
+  "scenario_id": "E11",
+  "source_papers": [
+    "sha256:025be561db0662167bd6819f5a5d24e2cf0948ac7185c911146ee1ff5d8c8247",
+    "sha256:de63bc864c06e04ac5e504711f4ae651355415b02eee3d04e3b3e4784610e90e",
+    "sha256:95f37dfdc0f81b2af5ab425a4eb64dca3051f074f0b896241525a87b5d5b6513",
+    "sha256:ffaac451def2484f8f88ec7293aa531d0dfd554a0fd6b8bc254cb73264b256b3"
+  ]
+}

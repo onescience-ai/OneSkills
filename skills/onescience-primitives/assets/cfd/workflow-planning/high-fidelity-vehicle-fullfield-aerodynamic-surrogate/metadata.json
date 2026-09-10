@@ -1,0 +1,34 @@
+{
+  "name": "high-fidelity-vehicle-fullfield-aerodynamic-surrogate",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "高保真汽车数据集全场与气动力联合代理。面向WindsorML与DrivAerStar与CarBench汽车CFD数据完成高保真汽车数据集全场与气动力联合代理。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "aerodynamic",
+    "aerodynamics",
+    "automotive",
+    "benchmark",
+    "carbench_",
+    "comprehensive",
+    "computational",
+    "computational_fluid_dynamics",
+    "data-driven",
+    "dataset",
+    "drivaerstar_",
+    "dynamics",
+    "extreme",
+    "fluid",
+    "high-fidelity"
+  ],
+  "scenario_id": "CFD_S011",
+  "source_papers": [
+    "sha256:f0f590a3d63ba4e4357ab61f45efdc5d29b5f2f2d8bb4bf1243fa3d902c9151e",
+    "sha256:653bf51e34585036ffee19733c52ec4b5f5e356af5f0698ed1fef2fb46b1cad5",
+    "sha256:5815a35dd5f2f019cc2f93550df4ebee2b098b4e24153c267aaae43d1c0b978b",
+    "sha256:5edafc9413cf0f80f372df6075ca826b3a089fbd513ae1e20359b195d84f8678"
+  ]
+}

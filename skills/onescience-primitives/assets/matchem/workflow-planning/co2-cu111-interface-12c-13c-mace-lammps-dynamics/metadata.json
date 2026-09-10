@@ -1,0 +1,16 @@
+{
+  "name": "co2-cu111-interface-12c-13c-mace-lammps-dynamics",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 mace 的「CO2/Cu(111)/水/K 界面 12C/13C 短时动力学验证」工作流。研究对象为周期性 CO2/Cu(111)/水/K 电化学界面，分别以 12C 与 13C 作为碳同位素条件。。研究 CO2 在 Cu(111)/水/K 周期性界面中的局域结构与热运动，并在除碳同位素质量外保持关键条件一致的前提下，为后续比较 12C 与 13C 的动力学和结构统计建立可信的机器学习势与动力学采样基础。覆盖从核验结构与可用资料到形成验证结论与后续建议的完整管线。得到可加载且经独立验证的势能模型或明确的不可用结论，得到 C12/C13 的 3×3 面内扩胞 2 ps 动力学可用性证据，并提供固定 Cu 映射、晶胞/元素映射、温度能量轨迹、续算能力、异常诊断和后续长时采样建议。",
+  "tags": [
+    "mace",
+    "matchem"
+  ],
+  "scenario_id": "CO2_Cu111_12C13C_MACE_LAMMPS动力学验证",
+  "source_papers": []
+}

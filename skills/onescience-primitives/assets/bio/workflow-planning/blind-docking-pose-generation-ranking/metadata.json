@@ -1,0 +1,32 @@
+{
+  "name": "blind-docking-pose-generation-ranking",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 DiffDock 的「全局盲对接构象生成与置信度排序」工作流。研究对象为受体结构、配体化学结构、候选口袋和对接姿态。本场景研究受体结构、配体化学结构、候选口袋和对接姿态，希望解决在未知口袋条件下生成蛋白配体结合构象并按置信度排序，适用于盲对接。覆盖从受体配体输入预检到物理几何质控与排序的完整管线。核心指标包括RMSD通过率。得到与输入和任务约束一致、可追溯、可复核的全局盲对接构象生成与置信度排序结果，包括受体/配体标准化记录、口袋坐标、质子化和立体化学检查报告、独立评估、RMSD通过率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "a46_complex",
+    "agentic",
+    "agenticposesranker",
+    "bio",
+    "diffdock",
+    "diffusion",
+    "docking",
+    "framework",
+    "grounded",
+    "molecular",
+    "physically",
+    "poses",
+    "protein-ligand",
+    "ranking",
+    "rdkit"
+  ],
+  "scenario_id": "B41",
+  "source_papers": [
+    "2210.01776",
+    "2605.03707"
+  ]
+}

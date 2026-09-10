@@ -1,0 +1,32 @@
+{
+  "name": "coarse-grid-to-km-concurrent-probabilistic-downscaling",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「粗网格大气场到公里尺度的同期概率降尺度」工作流。把同一有效时刻的粗分辨率温度、风和湿度场重建为公里尺度细场，并恢复未解析局地变率。覆盖从粗细分辨率资料及任务边界预检到检验谱结构、极值和集合覆盖率的完整管线。得到可复现、可审计的公里尺度多变量确定性场或集合细场、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "approach",
+    "atmospheric",
+    "corrective",
+    "diffusion",
+    "downscaling",
+    "earth",
+    "forecasts",
+    "improving",
+    "km-scale",
+    "learning",
+    "modeling",
+    "numerical",
+    "prediction",
+    "residual",
+    "resolution"
+  ],
+  "scenario_id": "E55",
+  "source_papers": [
+    "sha256:22622a777f2c78d8a9a645a22ffd1bd2d19a224ebb0eabeb7556300325d7dfc5",
+    "sha256:fafc366ffe6713e7a73282add8bcc2e0b44c75f937ffaca7c3da354166042394"
+  ]
+}

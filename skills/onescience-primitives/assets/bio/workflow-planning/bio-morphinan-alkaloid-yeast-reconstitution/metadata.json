@@ -1,0 +1,66 @@
+{
+  "name": "bio-morphinan-alkaloid-yeast-reconstitution",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-10T09:00:00Z",
+  "updated_at": "2026-09-10T09:00:00Z",
+  "description": "吗啡类生物碱（morphinan alkaloid）在酿酒酵母（Saccharomyces cerevisiae）中的异源重构与发酵生产工作流：从去甲鸟药碱/去甲乌药碱前体经去甲乌药碱三甲基化到 (S)-reticuline、再经蒂巴因到可待因/吗啡的微生物合成。适用于需要规划酵母底盘代谢工程、理解为何酵母优于大肠杆菌承载植物 P450、评估 (S)-reticuline/(S)-norcoclaurine 滴度、以及规避 neopine 等副产物的研究场景。核心内容涵盖酵母平台达到的 4.6 g/L (S)-reticuline 高滴度、2026 年改走 norlaudanosoline 路线的选择性提升、以及 0.5% 级吗啡末端转化率瓶颈。输出为酵母重构流程、滴度参数表、宿主代谢工程改造点、与大肠杆菌路线对比。",
+  "tags": [
+    "Saccharomyces cerevisiae",
+    "yeast",
+    "morphinan",
+    "morphine",
+    "codeine",
+    "thebaine",
+    "benzylisoquinoline alkaloid",
+    "reticuline",
+    "norlaudanosoline",
+    "metabolic engineering",
+    "fermentation",
+    "fed-batch",
+    "titer",
+    "cytochrome P450",
+    "biosensor",
+    "biosynthesis",
+    "microbial cell factory",
+    "reconstitution",
+    "hydrocodone"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "罂粟中吗啡类生物碱的基因通路及其在酵母中的重构",
+  "evidence_papers": [
+    {
+      "title": "A yeast platform for high-level synthesis of tetrahydroisoquinoline alkaloids",
+      "doi": "10.1038/s41467-020-17172-x",
+      "year": 2020,
+      "venue": "Nature Communications"
+    },
+    {
+      "title": "Benzylisoquinoline Alkaloid Production in Yeast via Norlaudanosoline Improves Titer, Selectivity, and Yield",
+      "doi": "10.1021/acssynbio.5c00897",
+      "year": 2026,
+      "venue": "ACS Synthetic Biology"
+    },
+    {
+      "title": "Synthesis of Morphinan Alkaloids in Saccharomyces cerevisiae",
+      "doi": "10.1371/journal.pone.0124459",
+      "year": 2015,
+      "venue": "PLoS ONE"
+    },
+    {
+      "title": "Total biosynthesis of opiates by stepwise fermentation using engineered Escherichia coli",
+      "doi": "10.1038/ncomms10390",
+      "year": 2016,
+      "venue": "Nature Communications"
+    },
+    {
+      "title": "High-Efficiency Biocatalytic Conversion of Thebaine to Codeine",
+      "doi": "10.1021/acsomega.0c00282",
+      "year": 2020,
+      "venue": "ACS Omega"
+    }
+  ]
+}

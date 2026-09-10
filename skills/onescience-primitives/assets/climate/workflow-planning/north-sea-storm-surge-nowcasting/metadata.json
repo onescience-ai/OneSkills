@@ -1,0 +1,17 @@
+{
+  "name": "north-sea-storm-surge-nowcasting",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 北海区风暴潮临近预报模型 的「北海区风暴潮临近预报模型」工作流。在定时业务预报之后利用最新实时观测快速更新北海区风暴潮风险信息。覆盖从模型输入与运行条件预检到独立评估与交付判定的完整管线。得到北海区300 m、可随时运行且单次用时小于1分钟的未来3天风暴潮临近预报模型和产品。",
+  "tags": [
+    "earth",
+    "lstm神经网络模型的风暴潮临近预报",
+    "北海区风暴潮临近预报模型"
+  ],
+  "scenario_id": "E101",
+  "source_papers": []
+}

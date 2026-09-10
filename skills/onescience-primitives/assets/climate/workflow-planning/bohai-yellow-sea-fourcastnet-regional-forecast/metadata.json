@@ -1,0 +1,18 @@
+{
+  "name": "bohai-yellow-sea-fourcastnet-regional-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 渤黄海FourCastNet区域大气智能预报模型 的「渤黄海FourCastNet区域大气智能预报模型」工作流。利用数据驱动区域大气模型提高渤黄海多要素快速预报能力，同时保留类似数值模式嵌套的外边界约束。覆盖从模型输入与运行条件预检到独立评估与交付判定的完整管线。得到可在目标环境部署、可移植和可二次调优的区域FourCastNet模型、逐小时区域预报产品、独立验证证据和完整技术文档。",
+  "tags": [
+    "earth",
+    "fourcastnet的变量",
+    "fourcastnet迁移训练与预报生成",
+    "渤黄海fourcastnet区域大气智能预报模型"
+  ],
+  "scenario_id": "E107",
+  "source_papers": []
+}

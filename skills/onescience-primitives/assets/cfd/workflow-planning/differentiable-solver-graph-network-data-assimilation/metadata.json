@@ -1,0 +1,32 @@
+{
+  "name": "differentiable-solver-graph-network-data-assimilation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "可微PDE求解器与图网络混合数据同化。面向数值求解器状态与观测融合数据完成可微PDE求解器与图网络混合数据同化。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "combined",
+    "combining",
+    "computational_fluid_dynamics",
+    "data-assimilation",
+    "data-driven",
+    "differentiable",
+    "differentiable-pde-gnn",
+    "fluid",
+    "graph",
+    "identification",
+    "methods",
+    "networks",
+    "neural",
+    "physical",
+    "physics-aware-data-assimilation"
+  ],
+  "scenario_id": "CFD_S066",
+  "source_papers": [
+    "sha256:6b3abe4070931139093be7938f80b309e101df8f497233fd87d32eb2021d5e29",
+    "sha256:81e3659d8f8e4dad14692ed7a0182715b2f548d3b4aece888831a6c15683a3db"
+  ]
+}

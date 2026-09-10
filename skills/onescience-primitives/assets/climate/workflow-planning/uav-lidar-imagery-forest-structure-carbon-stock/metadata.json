@@ -1,0 +1,31 @@
+{
+  "name": "uav-lidar-imagery-forest-structure-carbon-stock",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「无人机激光雷达—影像森林结构与碳储量估计」工作流。由无人机LiDAR或RGB影像估计样地树高、冠幅、胸径及碳储量；适用于同期森林清查，不推演未来碳汇。覆盖从遥感观测标签及任务边界预检到按样地、林型和空间块独立验证的完整管线。得到可复现、可审计的森林结构参数及碳储量图、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "carbon",
+    "cloud",
+    "drones",
+    "earth",
+    "estimating",
+    "forest",
+    "learning",
+    "lidar",
+    "machine",
+    "point",
+    "storage",
+    "structure",
+    "uav-mounted",
+    "using"
+  ],
+  "scenario_id": "E59",
+  "source_papers": [
+    "sha256:7161ced249b8cf35efa5ff2d4bc815eff5ec36b6ee3d23629ad63c1ba5a692c7",
+    "sha256:b79a96490b0052258bee27d8686c68e253d2b4034e9a53a99917e26487da0e34"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "daily-precipitation-anthropogenic-climate-fingerprint-detection",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「日降水场中的人为气候变化指纹检测」工作流。从观测或再分析日降水空间场提取人为增暖一致的统计指纹，并估计指纹随时间的出现强度。覆盖从观测强迫样本及任务边界预检到检验跨模式跨产品稳健性的完整管线。得到可复现、可审计的人为指纹得分、空间贡献和检测时间序列、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "anthropogenic",
+    "daily",
+    "earth",
+    "fingerprints",
+    "learning",
+    "precipitation",
+    "revealed"
+  ],
+  "scenario_id": "E94",
+  "source_papers": [
+    "sha256:13cba8ec5b789270d44309352357c108ec429c4627742408146af6bfcfac1742"
+  ]
+}

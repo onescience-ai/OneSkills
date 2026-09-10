@@ -1,0 +1,27 @@
+{
+  "name": "multi-task-target-aware-3d-molecule-generation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 MODA 的「多任务靶点感知的三维分子生成」工作流。研究对象为靶点口袋、参考配体、分子约束和候选小分子库。本场景研究靶点口袋、参考配体、分子约束和候选小分子库，希望解决统一执行从头生成、片段生长和先导优化等靶点感知任务，支持多约束药物设计。覆盖从分子设计目标定义到性质过滤与候选排序的完整管线。核心指标包括任务成功率。得到与输入和任务约束一致、可追溯、可复核的多任务靶点感知的三维分子生成结果，包括标准化口袋/参考配体和候选分子的化学合法性、立体化学与去重报告、独立评估、任务成功率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "bio",
+    "diffusion",
+    "framework",
+    "generation",
+    "json",
+    "moda",
+    "molecular",
+    "multi-task",
+    "target-aware",
+    "target_constraints",
+    "unified"
+  ],
+  "scenario_id": "B60",
+  "source_papers": [
+    "2507.07201"
+  ]
+}

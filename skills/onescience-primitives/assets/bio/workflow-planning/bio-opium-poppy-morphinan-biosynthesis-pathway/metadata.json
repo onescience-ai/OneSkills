@@ -1,0 +1,67 @@
+{
+  "name": "bio-opium-poppy-morphinan-biosynthesis-pathway",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-10T09:00:00Z",
+  "updated_at": "2026-09-10T09:00:00Z",
+  "description": "罂粟（Papaver somniferum）吗啡类生物碱（morphinan）合成通路的基因-酶-产物完整解析知识：从 L-酪氨酸经公共苄基异喹啉核心到 (S)-reticuline 分支枢纽，再到吗啡烷特异通路 (R)-reticuline、蒂巴因、可待因、吗啡。适用于需要理解罂粟大基因组（约 3.37 Gb、79,668 基因）中 BIA 通路基因簇/拷贝数变异组织、STORR 融合蛋白演化、以及基因到产物对应关系的研究场景。核心内容涵盖 NCS/6OMT/CNMT/CYP80B1/4′OMT 公共通路、STORR((S)→(R) 异构化)、SALSYN/SALR/SALAT/自发重排、T6ODM/NISO/COR/CODM 晚步骤及副产物控制。输出为吗啡烷通路示意链、关键酶参数表、基因簇与演化时间线。",
+  "tags": [
+    "Papaver somniferum",
+    "opium poppy",
+    "morphinan",
+    "morphine",
+    "codeine",
+    "thebaine",
+    "benzylisoquinoline alkaloid",
+    "BIA",
+    "STORR",
+    "salutaridine",
+    "reticuline",
+    "biosynthesis",
+    "metabolic pathway",
+    "cytochrome P450",
+    "T6ODM",
+    "CODM",
+    "gene cluster",
+    "copy number variation",
+    "genome",
+    "gene derivative reasoning"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "罂粟中吗啡类生物碱的基因通路及其在酵母中的重构",
+  "evidence_papers": [
+    {
+      "title": "A yeast platform for high-level synthesis of tetrahydroisoquinoline alkaloids",
+      "doi": "10.1038/s41467-020-17172-x",
+      "year": 2020,
+      "venue": "Nature Communications"
+    },
+    {
+      "title": "Benzylisoquinoline alkaloid biosynthesis in opium poppy",
+      "doi": "10.1007/s00425-014-2056-8",
+      "year": 2014,
+      "venue": "Planta"
+    },
+    {
+      "title": "Over 100 Million Years of Enzyme Evolution Underpinning the Production of Morphine in the Papaveraceae Family of Flowering Plants",
+      "doi": "10.1016/j.xplc.2020.100029",
+      "year": 2020,
+      "venue": "Plant Communications"
+    },
+    {
+      "title": "Gene clustering and copy number variation in alkaloid metabolic pathways of opium poppy",
+      "doi": "10.1038/s41467-020-15040-2",
+      "year": 2020,
+      "venue": "Nature Communications"
+    },
+    {
+      "title": "Dioxygenases Catalyze O-Demethylation and O,O-Demethylenation with Widespread Roles in Benzylisoquinoline Alkaloid Metabolism in Opium Poppy",
+      "doi": "10.1074/jbc.m113.488585",
+      "year": 2013,
+      "venue": "Journal of Biological Chemistry"
+    }
+  ]
+}

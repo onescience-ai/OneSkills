@@ -1,0 +1,34 @@
+{
+  "name": "complex-terrain-wind-farm-hub-height-wind-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「复杂地形风电场轮毂高度短期风速预报」工作流。把近地面观测和公里级天气预报转换为风机轮毂高度短期风速场，服务风电评估；不直接输出功率。覆盖从天气能源运行资料及任务边界预检到按站点留一法验证的完整管线。得到可复现、可审计的轮毂高度风速风向及误差范围、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "algorithm-",
+    "applications-",
+    "assessing",
+    "assessment",
+    "based",
+    "earth",
+    "energy",
+    "estimating",
+    "extrapolation",
+    "fields",
+    "forecasts",
+    "hub-height",
+    "implications",
+    "importance",
+    "kilometer-scale"
+  ],
+  "scenario_id": "E26",
+  "source_papers": [
+    "sha256:7279504ad9d21ed2ae32d1821646632e0da44ff756907242eafc49fcd12aaa0c",
+    "sha256:d35fc83d35161b4c724c60473b54a004a906d5f5ad125e9507edb07727f5ff9d",
+    "sha256:3fc5ccffb4fd0f2515fed2b98d40ac63bc5f30b492854a4011e6b84af5f7b7ff",
+    "sha256:e7a8f2ca62e5cef7a2511c62960b7c3587f43af14b07bfb3245716d881e19f42"
+  ]
+}

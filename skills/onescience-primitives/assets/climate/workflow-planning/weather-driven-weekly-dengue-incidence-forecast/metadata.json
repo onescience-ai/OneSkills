@@ -1,0 +1,33 @@
+{
+  "name": "weather-driven-weekly-dengue-incidence-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「气象驱动的周尺度登革热发病量预报」工作流。融合温湿降水、历史病例和季节信息，预报未来数周登革热病例量或超阈概率；不推断个体感染风险。覆盖从天气暴露和目标观测及任务边界预检到按疫情峰值和地区验证的完整管线。得到可复现、可审计的周病例数、风险等级与概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "artificial",
+    "based",
+    "burden",
+    "climate",
+    "colombia",
+    "comparing",
+    "dengue",
+    "earth",
+    "factors",
+    "fever",
+    "forecasting",
+    "forecasting-",
+    "forests",
+    "incidence",
+    "learning"
+  ],
+  "scenario_id": "E43",
+  "source_papers": [
+    "sha256:6553b5442275750af4e202df801278e4e1369af3493624c24ecc3392457d6cf6",
+    "sha256:5c67be945396abcff0e4b07c25f321de55581dc3a6bf4251b8a296faf56c2023",
+    "sha256:94b5a08b4945bbb463ea9692a6126c2a2d5bf28df16e4626f56f365d45c7b76a"
+  ]
+}

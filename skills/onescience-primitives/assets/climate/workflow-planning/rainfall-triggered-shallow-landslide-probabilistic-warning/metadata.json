@@ -1,0 +1,28 @@
+{
+  "name": "rainfall-triggered-shallow-landslide-probabilistic-warning",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「多时间窗降雨驱动的区域浅层滑坡概率临近预警」工作流。由前期累积雨量、临近触发雨量和易发性掩膜滚动判断未来数小时浅层滑坡概率；不定位单一坡体。覆盖从致灾因子和事件标签及任务边界预检到独立检验与交付判定的完整管线。得到可复现、可审计的区域滑坡概率与告警、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "data-driven",
+    "earth",
+    "forecast",
+    "global",
+    "landslide",
+    "landslides",
+    "learning",
+    "nowcasting",
+    "rainfall-induced",
+    "scale",
+    "shallow"
+  ],
+  "scenario_id": "E51",
+  "source_papers": [
+    "sha256:85b9c0e0b3d36f7cb001487db4a42babf3d326f08cc82f658a2a1e6385dac3bd",
+    "sha256:2f52c256cde4d491ab63026b8f338a58f7bc76be36aa858ffad21c906f525d16"
+  ]
+}

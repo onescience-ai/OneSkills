@@ -1,0 +1,32 @@
+{
+  "name": "equivariant-mutation-stability-prediction",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 HERMES 的「等变结构网络的突变稳定性预测」工作流。研究对象为蛋白序列、突变、结构域、酶底物或功能标签数据。本场景研究蛋白序列、突变、结构域、酶底物或功能标签数据，希望解决结合局部三维环境预测单点突变稳定性变化，适用于蛋白工程候选筛选。覆盖从蛋白样本与目标定义到评测与解释汇总的完整管线。核心指标包括RMSE。得到与输入和任务约束一致、可追溯、可复核的等变结构网络的突变稳定性预测结果，包括规范化序列、突变/底物表示、标签本体、去重和数据质量报告、独立评估、RMSE统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "bio",
+    "constants",
+    "contrastive",
+    "cross-attention",
+    "effect",
+    "encoder",
+    "enzyclip",
+    "enzyme",
+    "equivariant",
+    "framework",
+    "hermes",
+    "holographic",
+    "kinetic",
+    "learning",
+    "model"
+  ],
+  "scenario_id": "B34",
+  "source_papers": [
+    "2407.06703",
+    "2512.00379"
+  ]
+}

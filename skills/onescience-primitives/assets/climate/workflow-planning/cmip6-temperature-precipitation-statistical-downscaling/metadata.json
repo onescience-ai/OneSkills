@@ -1,0 +1,33 @@
+{
+  "name": "cmip6-temperature-precipitation-statistical-downscaling",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「CMIP6温度—降水区域气候统计降尺度」工作流。把CMIP6全球模式历史与未来情景输出降尺度到区域高分辨率温度和降水，并保留长期变化信号。覆盖从粗细分辨率资料及任务边界预检到检验历史期技巧和外推稳定性的完整管线。得到可复现、可审计的区域高分辨率温度降水投影、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "based",
+    "change",
+    "climate",
+    "cmip6",
+    "cmip6温度",
+    "continental-wide",
+    "convolutional",
+    "downscaling",
+    "earth",
+    "future",
+    "global",
+    "hatay",
+    "high-resolution",
+    "iberia",
+    "learning"
+  ],
+  "scenario_id": "E38",
+  "source_papers": [
+    "sha256:58614b28941d8b18efe6e4ff07ce72b1c59834eab5f2226d4dfac77ec1362c47",
+    "sha256:9ded8e0b89ba7625cab5cb0fc68da09e61d87673ac4674ad027e2ddb44838e96",
+    "sha256:ca6ac535ce4735e06e5c44114aa0db1dc56be495ec52c0d898e219d20b8519ee"
+  ]
+}

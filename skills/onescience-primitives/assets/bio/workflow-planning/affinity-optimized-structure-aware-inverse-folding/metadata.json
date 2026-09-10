@@ -1,0 +1,28 @@
+{
+  "name": "affinity-optimized-structure-aware-inverse-folding",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 Affinity-Optimized Inverse Folding 的「亲和力优化的结构感知抗体反向折叠」工作流。研究对象为抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据。本场景研究抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据，希望解决在抗体骨架和抗原界面条件下设计序列，并以亲和力目标优化CDR候选。覆盖从免疫对象与任务定义到特异性与可开发性质控的完整管线。核心指标包括结合分数。得到与输入和任务约束一致、可追溯、可复核的亲和力优化的结构感知抗体反向折叠结果，包括标准抗体/TCR编号、链-表位映射、输入结构/序列质控和界面实体清单、独立评估、结合分数统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "affinity-optimized",
+    "affinity-optimized-inverse-folding",
+    "anarci",
+    "antibody",
+    "antibody_complex",
+    "bio",
+    "cdr候选",
+    "cdr候选能否得到可复核的结合分数结果",
+    "design",
+    "folding",
+    "inverse",
+    "structure-aware"
+  ],
+  "scenario_id": "B28",
+  "source_papers": [
+    "2512.17815"
+  ]
+}

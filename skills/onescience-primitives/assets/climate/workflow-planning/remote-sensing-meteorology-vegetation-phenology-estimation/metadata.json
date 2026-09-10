@@ -1,0 +1,32 @@
+{
+  "name": "remote-sensing-meteorology-vegetation-phenology-estimation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「遥感—气象耦合植被物候日期估计」工作流。融合卫星植被指数、累计温度、降水和雪盖，估计返青、开花等物候日期；用于同期重建时不等同于未来预报。覆盖从遥感观测标签及任务边界预检到按年份、站点和生态区设置留出验证的完整管线。得到可复现、可审计的各物候阶段年积日及置信区间、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "based",
+    "coupling",
+    "dataset",
+    "earth",
+    "gridded",
+    "learning",
+    "literature",
+    "machine",
+    "meteorological",
+    "modeling",
+    "phenological",
+    "phenology",
+    "plant",
+    "research-",
+    "review"
+  ],
+  "scenario_id": "E67",
+  "source_papers": [
+    "sha256:22f4d4afebc36440b524b084079afd1ef06ef59781a8e6940369bc7b22aa5e27",
+    "sha256:fe4469ef4d5bdbd08696df7518df7753dc0c633e676ff96aa33324f09a1a12c1"
+  ]
+}

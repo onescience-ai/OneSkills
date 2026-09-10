@@ -1,0 +1,28 @@
+{
+  "name": "indian-ocean-dipole-multi-season-index-prediction",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「印度洋偶极子多季节指数预测」工作流。利用印度洋海温、上层热含量、表面风和太平洋前兆，预测未来多个季节IOD指数及事件概率。覆盖从起报资料及任务边界预检到按季节和提前量检验技巧的完整管线。得到可复现、可审计的IOD指数轨迹、正负事件类别和概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "dipole",
+    "earth",
+    "improves",
+    "indian",
+    "iod指数和发展阶段",
+    "iod指数轨迹",
+    "learning",
+    "machine",
+    "multi-seasonal",
+    "multi-task",
+    "ocean",
+    "prediction"
+  ],
+  "scenario_id": "E78",
+  "source_papers": [
+    "sha256:cb1c99d13e670a90bfe185f6bd0deff8c3ee04779db65be599208f3086c6c378"
+  ]
+}

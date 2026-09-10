@@ -1,0 +1,27 @@
+{
+  "name": "iasi-near-real-time-ammonia-column-retrieval",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「IASI近实时大气氨柱浓度反演」工作流。由IASI红外光谱反演卫星过境时刻大气NH3柱浓度并形成近实时产品；不预测未来氨浓度或地面暴露。覆盖从遥感观测标签及任务边界预检到按季节、区域和浓度范围独立验证的完整管线。得到可复现、可审计的NH3总柱浓度、误差及质量标志、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "algorithm-",
+    "datasets",
+    "earth",
+    "iasi近实时大气氨柱浓度反演",
+    "near-real-time",
+    "network",
+    "neural",
+    "nh3总柱浓度",
+    "reanalysed",
+    "retrieval",
+    "version"
+  ],
+  "scenario_id": "E79",
+  "source_papers": [
+    "sha256:f176f837b23ebd2a940f0dddff00b454521f7a559da82938bee98442ba8cb6ca"
+  ]
+}

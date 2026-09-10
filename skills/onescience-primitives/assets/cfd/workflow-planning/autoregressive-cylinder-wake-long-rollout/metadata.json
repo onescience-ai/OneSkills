@@ -1,0 +1,33 @@
+{
+  "name": "autoregressive-cylinder-wake-long-rollout",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "自回归网络圆柱尾迹长时滚动预测。面向圆柱绕流非定常时序数据完成自回归网络圆柱尾迹长时滚动预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "accurate",
+    "achieving",
+    "antn_",
+    "autoregressive",
+    "autoregressive-cnn",
+    "bridging",
+    "circular",
+    "computational_fluid_dynamics",
+    "cylinder",
+    "data-driven",
+    "learning",
+    "many-body",
+    "networks",
+    "neural",
+    "pde-refiner"
+  ],
+  "scenario_id": "CFD_S018",
+  "source_papers": [
+    "sha256:ec1270ff09efd0c1c096a86fdf07aa63bedae55cb37b76ba6058155599bda216",
+    "sha256:5e7ab9dc77f4cb75343fd2278c0b78d8f5dfd8b7caec1f3e7c9a86999a49f400",
+    "sha256:5616c57ab05b32db0c06783e385c8034f2ad1b087a7a09f80ddf4d6354fd55dc"
+  ]
+}

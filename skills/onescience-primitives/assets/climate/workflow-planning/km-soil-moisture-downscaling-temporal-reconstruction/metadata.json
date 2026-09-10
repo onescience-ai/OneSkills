@@ -1,0 +1,33 @@
+{
+  "name": "km-soil-moisture-downscaling-temporal-reconstruction",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「遥感土壤湿度公里级空间降尺度与时序重建」工作流。融合粗分辨率卫星土壤湿度、地表和地形因子，重建公里级连续土壤湿度场；不预测未来状态。覆盖从水文强迫和流域资料及任务边界预检到执行站点与空间外验证的完整管线。得到可复现、可审计的高分辨率土壤湿度与质量标志、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "daily",
+    "dataset",
+    "derived",
+    "downscaling",
+    "earth",
+    "global",
+    "in-situ",
+    "informed",
+    "learning",
+    "machine",
+    "measurements",
+    "moisture",
+    "networks",
+    "neural",
+    "physics"
+  ],
+  "scenario_id": "E16",
+  "source_papers": [
+    "sha256:7cc110a3254d4db58c381b167759e463fb3f8e744833b3ed201443d9e6a2e758",
+    "sha256:90f15470c5040b9e23399c17e1c2cc791f2a9806c06bedcd084db979fd3aabf3",
+    "sha256:a64236e60803d979dbf2b4a76c9445733078a4d0d32e7418300c94404ffcaea2"
+  ]
+}

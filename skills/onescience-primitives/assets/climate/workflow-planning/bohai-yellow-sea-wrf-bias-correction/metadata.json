@@ -1,0 +1,18 @@
+{
+  "name": "bohai-yellow-sea-wrf-bias-correction",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 渤黄海WRF数值预报智能订正模型 的「渤黄海WRF数值预报智能订正模型」工作流。WRF业务预报存在系统性偏差，可利用历史预报与再分析配对样本学习偏差规律，提高区域预报产品精度。覆盖从模型输入与运行条件预检到独立评估与交付判定的完整管线。得到可在目标GPU集群运行的WRF智能订正模型、权重、订正产品、独立评估、源代码和使用手册。",
+  "tags": [
+    "earth",
+    "wrf偏差订正模型训练与产品生成",
+    "wrf预报与wrf-era5参考是否能按起报",
+    "渤黄海wrf数值预报智能订正模型"
+  ],
+  "scenario_id": "E108",
+  "source_papers": []
+}

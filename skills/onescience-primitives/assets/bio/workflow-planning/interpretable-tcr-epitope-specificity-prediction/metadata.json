@@ -1,0 +1,29 @@
+{
+  "name": "interpretable-tcr-epitope-specificity-prediction",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 Structure-Regularized TCR Predictor 的「可解释TCR表位特异性预测」工作流。研究对象为抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据。本场景研究抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据，希望解决利用结构正则和序列表示预测TCR与表位特异性，并输出关键残基解释。覆盖从免疫对象与任务定义到特异性与可开发性质控的完整管线。核心指标包括AUROC。得到与输入和任务约束一致、可追溯、可复核的可解释TCR表位特异性预测结果，包括标准抗体/TCR编号、链-表位映射、输入结构/序列质控和界面实体清单、独立评估、AUROC统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "anarci",
+    "auroc",
+    "auroc结果",
+    "bio",
+    "interpretable",
+    "prediction",
+    "predictor",
+    "structure-regularized",
+    "structure-regularized-tcr-predictor",
+    "tcr-epitope",
+    "tcr_epitope_pairs",
+    "tcr与表位特异性",
+    "tcr表位特异性预测的输出"
+  ],
+  "scenario_id": "B27",
+  "source_papers": [
+    "2606.30902"
+  ]
+}

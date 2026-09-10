@@ -1,0 +1,34 @@
+{
+  "name": "multifidelity-surrogate-airfoil-shape-optimization",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "多保真代理辅助翼型外形优化。面向多工况翼型几何与气动力数据完成多保真代理辅助翼型外形优化。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "active",
+    "aerodynamic",
+    "airfoil",
+    "bayesian",
+    "bayesian-optimizer",
+    "benchmark",
+    "computational_fluid_dynamics",
+    "diagnostic",
+    "dynamics",
+    "evaluation",
+    "flows",
+    "gas-kinetic",
+    "implicit",
+    "learning",
+    "model"
+  ],
+  "scenario_id": "CFD_S031",
+  "source_papers": [
+    "sha256:2e8571620a68afb401cb49605dbec5b9b9ff5e0fe865ea192086337d88c86d60",
+    "sha256:318870b0859ccb2525484bdc555963911d723d70d45365f117ba4054439fab62",
+    "sha256:31835b8a2beae57ba22d1e2f708159b3ffa4ec62662b68a76e9dbbfeac9c7fff",
+    "sha256:027423716c1a4e34157b8636522bdbc03b43e4496be1bb7543dbf58fcf4eca88"
+  ]
+}

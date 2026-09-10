@@ -1,0 +1,22 @@
+{
+  "name": "multi-state-compatible-sequence-design",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 DynamicMPNN 的「多构象状态兼容的蛋白序列设计」工作流。研究对象为受约束的蛋白骨架、序列、肽或酶设计任务。本场景研究受约束的蛋白骨架、序列、肽或酶设计任务，希望解决为多个目标构象设计同一蛋白序列，适用于构象切换、变构和条件响应蛋白。覆盖从设计目标与约束定义到回折叠与设计筛选的完整管线。核心指标包括多态成功率。得到与输入和任务约束一致、可追溯、可复核的多构象状态兼容的蛋白序列设计结果，包括经格式和约束检查的设计目标、固定区域掩码、候选结构/序列及结构自洽报告、独立评估、多态成功率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "bio",
+    "design",
+    "dynamicmpnn",
+    "multi-state",
+    "protein",
+    "state_pair"
+  ],
+  "scenario_id": "B18",
+  "source_papers": [
+    "2507.21938"
+  ]
+}

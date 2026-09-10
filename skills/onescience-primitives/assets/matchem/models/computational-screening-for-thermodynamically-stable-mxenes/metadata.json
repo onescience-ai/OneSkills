@@ -1,0 +1,35 @@
+{
+  "name": "computational-screening-for-thermodynamically-stable-mxenes",
+  "type": "model",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-03",
+  "updated_at": "2026-09-03",
+  "description": "本知识卡描述一种基于密度泛函理论(DFT)与能量凸包分析的高通量计算筛选方法，用于预测二维MXene材料的热力学稳定性。该方法以“能量高于凸包的距离（energy above hull）”为稳定性描述符，系统遍历29种过渡金属与11种表面官能团组成的候选化学空间，并在输出端给出998个被预测为（亚）稳定的MXene组成及表面终止化学规律。使用场景包括：在实验合成前预筛新MXene组成、考察不同表面终止（如-O、-OH、-F等）对稳定性的影响、分析表面官能团化学与金属类型的匹配关系，也可迁移至其他二维层状碳化物/氮化物或MAX相衍生物的稳定性筛查。卡片提供规格（spec）、运行（usage）与工作流规划（workflow）三层文档，便于在实际集群上复现并延伸至下游材料设计。",
+  "tags": [
+    "mxene",
+    "thermodynamic-stability",
+    "dft",
+    "convex-hull",
+    "high-throughput-screening",
+    "surface-termination",
+    "2d-materials",
+    "computational-materials"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.9,
+  "accuracy": 92.5,
+  "authority": 80.7,
+  "generalization": 87.8,
+  "source_paper": {
+    "title": "Pivotal Role of Surface Terminations in MXene Thermodynamic Stability",
+    "doi": "10.1021/acs.chemmater.4c02274",
+    "source": "openalex",
+    "external_id": "10.1021/acs.chemmater.4c02274",
+    "venue": "Chemistry of Materials",
+    "cited_by_count": 73,
+    "objective_score": 72.4
+  }
+}

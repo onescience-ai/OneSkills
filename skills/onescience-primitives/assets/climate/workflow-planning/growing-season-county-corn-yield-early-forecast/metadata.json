@@ -1,0 +1,31 @@
+{
+  "name": "growing-season-county-corn-yield-early-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「生长季县域玉米产量提前预报」工作流。在明确签发日下，融合当季已知天气、土壤、管理和历史产量预测县域玉米单产；不把未知未来天气当成实况。覆盖从天气暴露和目标观测及任务边界预检到按年份和地区评价误差及提前量技巧的完整管线。得到可复现、可审计的县域玉米单产及不确定性、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "artificial",
+    "china",
+    "earth",
+    "ensembles",
+    "forecasting",
+    "jilin",
+    "learning",
+    "linear",
+    "machine",
+    "maize",
+    "networks",
+    "neural",
+    "regression",
+    "yield"
+  ],
+  "scenario_id": "E58",
+  "source_papers": [
+    "sha256:4edc3b5c0e940fd146940c943e6f5d6c1e7fb8b0909d3a508be0d25a428c8b7e",
+    "sha256:e6cbe497fdc7510257d50db710b40c02ef4ab64e20128b7a87157db4158c408a"
+  ]
+}

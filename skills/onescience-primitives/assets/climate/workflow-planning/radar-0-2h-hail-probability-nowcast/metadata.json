@@ -1,0 +1,26 @@
+{
+  "name": "radar-0-2h-hail-probability-nowcast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「天气雷达驱动的0—2小时冰雹概率临近预报」工作流。利用雷达回波演变和环境场，生成未来0—2小时高分辨率冰雹发生概率和风险区域。覆盖从临近观测及任务边界预检到检验CSI、FSS和概率可靠度的完整管线。得到可复现、可审计的分时效冰雹概率格点与风险对象、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "diffusion",
+    "earth",
+    "extrapolation",
+    "fss和概率可靠度",
+    "model",
+    "nowcasting",
+    "probabilistic",
+    "radar",
+    "reliable",
+    "spatial-temporal"
+  ],
+  "scenario_id": "E83",
+  "source_papers": [
+    "sha256:dfe19e7f6691020a89faad9a03927415823d30993059aa49ee1739d5ec12584e"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "multi-species-dna-representation-classification",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 DNABERT-2 的「多物种DNA序列表征与下游分类」工作流。研究对象为基因组DNA区间、变异、调控轨迹和细胞/组织上下文。本场景研究基因组DNA区间、变异、调控轨迹和细胞/组织上下文，希望解决学习多物种DNA通用表征并微调启动子、增强子和物种分类等下游任务。覆盖从基因组输入与坐标规范化到轨迹与效应质量评估的完整管线。核心指标包括宏平均F1。得到与输入和任务约束一致、可追溯、可复核的多物种DNA序列表征与下游分类结果，包括参考组装、坐标、链方向、序列窗口和轨迹/变异输入的规范化报告、独立评估、宏平均F1统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "benchmark",
+    "bi-directional",
+    "bio",
+    "caduceus",
+    "dnabert-2",
+    "dna区间",
+    "dna序列表征与下游分类的输出",
+    "dna通用表征并微调启动子",
+    "efficient",
+    "equivariant",
+    "f1结果",
+    "foundation",
+    "genome",
+    "gue_benchmark",
+    "long-range"
+  ],
+  "scenario_id": "B63",
+  "source_papers": [
+    "2306.15006",
+    "2403.03234"
+  ]
+}

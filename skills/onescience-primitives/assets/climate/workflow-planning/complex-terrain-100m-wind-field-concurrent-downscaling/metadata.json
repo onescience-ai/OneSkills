@@ -1,0 +1,26 @@
+{
+  "name": "complex-terrain-100m-wind-field-concurrent-downscaling",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「复杂地形区域100米风场同期空间降尺度」工作流。结合粗网格风和高分辨率地形，将同一有效时刻风场重建到细网格100米高度水平风矢量。覆盖从粗细分辨率资料及任务边界预检到检验MAE及跨区域迁移误差的完整管线。得到可复现、可审计的高分辨率100米风速与风向格点、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "comparative",
+    "convolutional",
+    "downscaling",
+    "earth",
+    "field",
+    "mae及跨区域迁移误差",
+    "models",
+    "network",
+    "neural",
+    "study"
+  ],
+  "scenario_id": "E89",
+  "source_papers": [
+    "sha256:82eb21e04017e7805487f53c2ce05009a9a43717296e34918efcb2dbf4f6bec9"
+  ]
+}

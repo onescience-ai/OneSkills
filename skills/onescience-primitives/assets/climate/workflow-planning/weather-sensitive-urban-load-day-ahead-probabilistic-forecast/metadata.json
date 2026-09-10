@@ -1,0 +1,34 @@
+{
+  "name": "weather-sensitive-urban-load-day-ahead-probabilistic-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「天气敏感型城市电力负荷日前概率预报」工作流。融合历史负荷、天气预报、日历和用户层级信息，生成城市或配电区域日前负荷分布；不预测发电功率。覆盖从天气能源运行资料及任务边界预检到按极端温度及峰荷验证的完整管线。得到可复现、可审计的日前负荷点值、分位数和区间、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "approach",
+    "boosting",
+    "charging",
+    "competition",
+    "consumption-production",
+    "demand",
+    "driven",
+    "earth",
+    "electric",
+    "electricity",
+    "energy",
+    "forecasting",
+    "forecasts",
+    "fusion-based",
+    "gradient"
+  ],
+  "scenario_id": "E20",
+  "source_papers": [
+    "sha256:1c791ecfe9e9bf0a1eb8d3307b5f0338f340ecdc5c8f557247095c30c44627a3",
+    "sha256:9cbecddd707580e51d74d17067cd900453cc2bd9fec70ed7f8e554f4ac1fc179",
+    "sha256:ce435b4539c3a242527eff7b98f854c9d6c1b4f249b474055f2c7a691996f1dd",
+    "sha256:b2adfbab1cb0e2681f2ab0b1d05bbf81ffbcc2ca01c32387b942ff8ef37731a1"
+  ]
+}

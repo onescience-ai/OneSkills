@@ -1,0 +1,33 @@
+{
+  "name": "boundary-forced-global-climate-large-ensemble-generation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「给定边界强迫的全球气候大集合生成」工作流。在固定或时变外部强迫下生成大量长期气候成员，用于估计内部变率和低概率温度降水极端。覆盖从情景外强迫及任务边界预检到检验稳定性、离散度与尾部分布的完整管线。得到可复现、可审计的长期气候集合、分布统计和极端重现期、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "based",
+    "climate",
+    "consistency",
+    "dyffusion",
+    "earth",
+    "emulation",
+    "emulator",
+    "emulators",
+    "ensembles",
+    "extreme",
+    "generated",
+    "global",
+    "learning",
+    "lightweight",
+    "long-term"
+  ],
+  "scenario_id": "E36",
+  "source_papers": [
+    "sha256:c699b884350d294e870900fc01bb447d8b509902e4e6ecf311ef038ac16a188e",
+    "sha256:7c5caa283fd75ce4bae3e999fceecfd4ccf7d7c87924cca08896bd19da295898",
+    "sha256:1c4473399d9599e23982b7206e8fdb0e5cafa1491da214faeeb8095f21ffe9e9"
+  ]
+}

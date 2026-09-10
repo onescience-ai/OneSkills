@@ -1,0 +1,35 @@
+{
+  "name": "bayesian-multifidelity-aero-surrogate-active-sampling",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "贝叶斯多保真气动代理与主动选样。面向低高保真配对气动数据完成贝叶斯多保真气动代理与主动选样。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "active",
+    "aerodynamic",
+    "application",
+    "approximation",
+    "bayesian",
+    "bayesian-surrogate",
+    "composite",
+    "computational_fluid_dynamics",
+    "data_",
+    "dataset",
+    "disentangled",
+    "double-delta",
+    "empirical",
+    "field",
+    "framework"
+  ],
+  "scenario_id": "CFD_S015",
+  "source_papers": [
+    "sha256:46d6641b0bd446e4bf77da01c1b953bd899749150b148b110102682d15a0a84f",
+    "sha256:22e6457fa0c782ddd89fe4c626bb4361b1cc17a2f40af6748002f2fed648e460",
+    "sha256:57a308cebf92e39cb6282aca6541c52a226ff7c6349e976bf8bcef2fe3ddc492",
+    "sha256:aa4f7097183fe092966b99094d07f441012c5bb523ac679cef244a7f0ff6f997",
+    "sha256:f60edde919bbd747bb418ad8c95665a99d5a6726fea409ef6e4d81b4d5104954"
+  ]
+}

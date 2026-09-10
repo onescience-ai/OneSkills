@@ -1,0 +1,30 @@
+{
+  "name": "fluid-structure-moving-mesh-vibration-prediction",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "流固耦合移动网格振动时序预测。面向涡激振动与流固耦合轨迹数据完成流固耦合移动网格振动时序预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "ale-neural-network",
+    "arbitrary",
+    "computational_fluid_dynamics",
+    "fluid-solid",
+    "graph-simulator",
+    "grids",
+    "interaction",
+    "lagrangian-eulerian",
+    "latent",
+    "learning",
+    "neural",
+    "vibrations",
+    "vortex-induced"
+  ],
+  "scenario_id": "CFD_S028",
+  "source_papers": [
+    "sha256:934c0ac430579c3717e3891429c9f592a8c615b3fe8e33a6217db9ab9b867348",
+    "sha256:2f9cfd53fe4d6cf4c6f268131e8ba56ff2c46055f24b3cce9021aa62f882d955"
+  ]
+}

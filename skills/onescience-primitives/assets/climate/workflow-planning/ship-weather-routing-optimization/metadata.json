@@ -1,0 +1,24 @@
+{
+  "name": "ship-weather-routing-optimization",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「海洋天气与航行约束驱动的船舶气象航线优化」工作流。依据风浪流预报、船舶性能和禁航约束搜索低风险低耗航线；区别于仅预测船舶轨迹或天气本身。覆盖从航次资料和航行约束及任务边界预检到与基准航线回放比较的完整管线。得到可复现、可审计的优化航线、航时、能耗和风险、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "data-driven",
+    "earth",
+    "framework",
+    "heuristic",
+    "novel",
+    "routing",
+    "vessel",
+    "weather"
+  ],
+  "scenario_id": "E100",
+  "source_papers": [
+    "sha256:99b0264d3253a5a626d181fe67d878cc83332d502775d9dc5238a546af74ead5"
+  ]
+}

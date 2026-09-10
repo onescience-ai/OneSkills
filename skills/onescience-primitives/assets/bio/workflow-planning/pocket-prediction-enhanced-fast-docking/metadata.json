@@ -1,0 +1,32 @@
+{
+  "name": "pocket-prediction-enhanced-fast-docking",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 FABind+ 的「口袋预测增强的蛋白配体快速对接」工作流。研究对象为受体结构、配体化学结构、候选口袋和对接姿态。本场景研究受体结构、配体化学结构、候选口袋和对接姿态，希望解决先定位结合口袋再生成配体姿态，提高快速对接在未见靶标上的鲁棒性。覆盖从受体配体输入预检到物理几何质控与排序的完整管线。核心指标包括Top1成功率。得到与输入和任务约束一致、可追溯、可复核的口袋预测增强的蛋白配体快速对接结果，包括受体/配体标准化记录、口袋坐标、质子化和立体化学检查报告、独立评估、Top1成功率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "accurate",
+    "benchmark_complexes",
+    "binding-site-agnostic",
+    "bio",
+    "docking",
+    "enhancing",
+    "fabind",
+    "fabind+",
+    "generation",
+    "identification",
+    "improved",
+    "molecular",
+    "pocket",
+    "prediction",
+    "rapid-net"
+  ],
+  "scenario_id": "B45",
+  "source_papers": [
+    "2403.20261",
+    "2502.02371"
+  ]
+}

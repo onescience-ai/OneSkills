@@ -1,0 +1,32 @@
+{
+  "name": "lidar-radiosonde-fused-boundary-layer-height-retrieval",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「激光雷达—探空融合的边界层高度反演」工作流。融合气溶胶激光雷达剖面、探空和地面气象，估计当前边界层顶高度并给出质量标识。覆盖从源观测和参考资料及任务边界预检到按稳定度和昼夜条件验证误差的完整管线。得到可复现、可审计的边界层高度时间序列和置信度、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "adabl",
+    "aerosol",
+    "algorithms",
+    "approach",
+    "boundary",
+    "deriving",
+    "earth",
+    "estimation",
+    "height",
+    "heights-",
+    "layer",
+    "learning",
+    "learning-",
+    "lidar",
+    "machine"
+  ],
+  "scenario_id": "E61",
+  "source_papers": [
+    "sha256:1979bc1e31486d0ab81452182d09dcf1cdde737a304077482eeb4e47486e7c5e",
+    "sha256:4b1d23bceeeb09fcddfc4a4984e74a18a92df4e75e4ed1a61b486df4497e991e"
+  ]
+}

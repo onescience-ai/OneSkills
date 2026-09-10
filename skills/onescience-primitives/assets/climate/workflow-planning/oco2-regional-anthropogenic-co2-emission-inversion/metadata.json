@@ -1,0 +1,30 @@
+{
+  "name": "oco2-regional-anthropogenic-co2-emission-inversion",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「OCO-2驱动区域人为二氧化碳排放反演」工作流。融合OCO-2柱浓度、气象和社会经济特征估计区域人为CO2排放；适用于历史同期制图，不构成未来排放预测。覆盖从遥感观测标签及任务边界预检到与清单及留区样本比较总量和格局的完整管线。得到可复现、可审计的区域人为CO2排放量及空间分布、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "anthropogenic",
+    "carbon",
+    "co2排放量及空间分布",
+    "dataset",
+    "earth",
+    "emissions",
+    "estimation",
+    "neural-network-based",
+    "observatory-2",
+    "oco-2",
+    "oco-2驱动区域人为二氧化碳排放反演",
+    "orbiting",
+    "regional-scale",
+    "using"
+  ],
+  "scenario_id": "E84",
+  "source_papers": [
+    "sha256:31ef39f6b312d71c1b9927bdef63412f4bed0433d3db7051d6e867949250d8f3"
+  ]
+}

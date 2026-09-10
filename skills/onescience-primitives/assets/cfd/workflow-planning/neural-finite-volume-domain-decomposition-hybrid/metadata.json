@@ -1,0 +1,39 @@
+{
+  "name": "neural-finite-volume-domain-decomposition-hybrid",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "神经有限体积与域分解混合求解。面向有限体积离散与子域界面数据完成神经有限体积与域分解混合求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "accelerating",
+    "accelerators",
+    "analysis",
+    "based",
+    "computational_fluid_dynamics",
+    "conditions",
+    "continuous",
+    "convolutional",
+    "decomposition",
+    "discretiz",
+    "discretization",
+    "discretizationnet_",
+    "domain",
+    "domain-decomposition-network",
+    "equations"
+  ],
+  "scenario_id": "CFD_S072",
+  "source_papers": [
+    "sha256:f7391fa2b8cd35936719bc10d124128abe40404be7790bd78e1c96858eb6b126",
+    "sha256:073e1551aade1d9c2e7ce9e205d145162bc8c6d83dc03a44df8f4f419561d595",
+    "sha256:732a6e6b474de3785541fa0deaeffbb8b6ac39b99c785d14d1757d3eef1cf94e",
+    "sha256:33a27be358fcda3809b220c5a792290b5498474da93b65ea8a874977b6bf9bc0",
+    "sha256:410062a0b213f56bf38b96660a9c1175fe788ffc83a0dff7c75ad6fc803e21fe",
+    "sha256:4943ed716a946c42a6df31082e9381c329b6ee23b857b9e9e5b722b9ac5aa624",
+    "sha256:f61302d9c43c7483f4f5e6aa7e874804cd27ca13f94bb36ee31046468af7f740",
+    "sha256:fefdfa38bb35348c9b10d6a0c4dd622ad2b5652673a2a1f52d323d2278d8c3c5",
+    "sha256:ff416118cfb607f98bb17b62c94fdf36503a244cecf223800c125f8e0c3466cf"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "spatial-transcriptomics-proteomics-foundation-representation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 HEIST 的「空间转录组与蛋白组图基础表征」工作流。研究对象为单细胞表达、染色质、空间或多组学矩阵及细胞元数据。本场景研究单细胞表达、染色质、空间或多组学矩阵及细胞元数据，希望解决联合学习空间转录组和蛋白组图表征，支持区域聚类、标签迁移与跨模态检索。覆盖从单细胞数据与任务定义到生物一致性与泛化评估的完整管线。核心指标包括跨模态检索率。得到与输入和任务约束一致、可追溯、可复核的空间转录组与蛋白组图基础表征结果，包括矩阵稀疏性、基因/峰标识、元数据、空间坐标和预处理血缘报告、独立评估、跨模态检索率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "bio",
+    "foundation",
+    "graph",
+    "h5ad",
+    "heist",
+    "model",
+    "proteomics",
+    "spatial",
+    "spatial_multiomics",
+    "transcriptomics"
+  ],
+  "scenario_id": "B80",
+  "source_papers": [
+    "2506.11152"
+  ]
+}

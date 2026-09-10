@@ -1,0 +1,32 @@
+{
+  "name": "tropical-cyclone-12-72h-intensity-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「已识别热带气旋12—72小时强度预报」工作流。结合气旋当前风压、历史演变、海温和环境场，预测未来12—72小时最大风速与最低中心气压。覆盖从起报资料及任务边界预检到检验MAE和快速增强命中情况的完整管线。得到可复现、可审计的多时效最大持续风速、最低气压与强度等级、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "benchmark",
+    "cyclone",
+    "dataset",
+    "earth",
+    "forecasting",
+    "global",
+    "intensity",
+    "learning",
+    "mae和快速增强命中情况",
+    "method",
+    "model",
+    "network",
+    "neural",
+    "predicting",
+    "tropical"
+  ],
+  "scenario_id": "E50",
+  "source_papers": [
+    "sha256:f1fcc83c57ebcfc5c61a14c50ded24b9e0d9709aea365d0dbf63d9422fb41d89",
+    "sha256:6738275c854bd79f2c27ede50f362b3d9f5077118fd912db9c937bec7770728b"
+  ]
+}

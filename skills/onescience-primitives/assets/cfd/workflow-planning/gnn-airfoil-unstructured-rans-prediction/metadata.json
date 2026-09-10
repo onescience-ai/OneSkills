@@ -1,0 +1,32 @@
+{
+  "name": "gnn-airfoil-unstructured-rans-prediction",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "图网络翼型非结构网格RANS场预测。面向AirfRANS非结构网格数据完成图网络翼型非结构网格RANS场预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "airfoils",
+    "airfrans",
+    "approximating",
+    "computational",
+    "computational_fluid_dynamics",
+    "dataset",
+    "datasets",
+    "dynamics",
+    "fidelity",
+    "field",
+    "fluid",
+    "graph-neural-network",
+    "navier",
+    "prediction",
+    "reuse"
+  ],
+  "scenario_id": "CFD_S002",
+  "source_papers": [
+    "sha256:7dd37d3b6793a54aca19e9c1799d9b5eaae67654cd5f17cd51763b667f719d92",
+    "sha256:cf6c001cef1144d29a49571118b912b11d1c97b5ddbea195d466f38436429122"
+  ]
+}

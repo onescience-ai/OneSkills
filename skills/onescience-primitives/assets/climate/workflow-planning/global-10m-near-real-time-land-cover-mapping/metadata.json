@@ -1,0 +1,23 @@
+{
+  "name": "global-10m-near-real-time-land-cover-mapping",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「全球10米近实时土地覆盖制图」工作流。将近期多时相卫星影像转换为10米土地覆盖类别和概率，适用于持续更新地表制图；不直接确认长期变化原因。覆盖从遥感观测标签及任务边界预检到按类别、区域和边界像元独立验证的完整管线。得到可复现、可审计的10米土地覆盖类别概率图、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "cover",
+    "dynamic",
+    "earth",
+    "global",
+    "mapping",
+    "real-time",
+    "world"
+  ],
+  "scenario_id": "E71",
+  "source_papers": [
+    "sha256:df1ee43f9cfd9a29e431103f86d32f8e8560827ea66be5eecaeb9853d2db337a"
+  ]
+}

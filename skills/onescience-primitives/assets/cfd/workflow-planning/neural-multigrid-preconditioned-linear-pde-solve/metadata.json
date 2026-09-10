@@ -1,0 +1,36 @@
+{
+  "name": "neural-multigrid-preconditioned-linear-pde-solve",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "神经多重网格与预条件线性PDE求解。面向Poisson及稀疏线性系统数据完成神经多重网格与预条件线性PDE求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "accurate",
+    "boundary",
+    "computational_fluid_dynamics",
+    "conditions",
+    "conjugate",
+    "differentiable",
+    "direction",
+    "dirichlet",
+    "efficient-and-rigorous",
+    "gradient",
+    "involution_",
+    "iteratively",
+    "learned-preconditioner",
+    "learning",
+    "lightspeed"
+  ],
+  "scenario_id": "CFD_S069",
+  "source_papers": [
+    "sha256:119b45f3fc19ea6d5635ca601ace516da70aa0cce3dad99381399d8d05c08213",
+    "sha256:8f727c9b85d26b51f173870fdcfd1129ca3195a0bd2cf9c0f88023183c5f28db",
+    "sha256:2172c4873aa8f93fb3c4eb745b484f4d5d81d299434bc4da1fdc87fa178ea0c8",
+    "sha256:9bb280bd16810f4277bfaf71ed7a03398d657e3c4fc932a2e37d51c9550855ac",
+    "sha256:8c1deadb38ba39da3af8e0c2f4938652348121e10439efa368afa7ccee2e69ab",
+    "sha256:a096ad534dbdc7c631c8144c35fa5cf86fe9e889a46d86b8090508eb2af04e4f"
+  ]
+}

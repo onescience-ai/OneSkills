@@ -1,0 +1,33 @@
+{
+  "name": "multi-site-temp-humidity-wind-24-72h-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「多站点温湿风24—72小时联合时序预报」工作流。利用多个站点近期温度、湿度和风速序列，联合生成未来24—72小时逐时多变量站点预报。覆盖从起报资料及任务边界预检到按站点变量和时效检验误差的完整管线。得到可复现、可审计的各站未来逐时温度、湿度和风速序列、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "earth",
+    "forecast",
+    "forecasting",
+    "geographic-enhanced",
+    "global",
+    "hierarchical",
+    "memory",
+    "model",
+    "networks",
+    "neural",
+    "recurrent",
+    "scalable",
+    "sequence",
+    "short-term",
+    "state-space"
+  ],
+  "scenario_id": "E41",
+  "source_papers": [
+    "sha256:d498b7771e2f567d3c19d11524037396eb81d56a649e89193c543845468eec45",
+    "sha256:58af898363849faf3c5bfeb84a60de9f75648fd07a3c6ecb24bb67f98fe46abc",
+    "sha256:11e7f83de94fd5f1a611739da5cebb565d7fd5438fb260c07a34812e192b500f"
+  ]
+}

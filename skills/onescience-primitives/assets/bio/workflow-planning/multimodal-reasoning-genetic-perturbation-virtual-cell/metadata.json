@@ -1,0 +1,32 @@
+{
+  "name": "multimodal-reasoning-genetic-perturbation-virtual-cell",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 AROMA 的「多模态推理增强的遗传扰动虚拟细胞预测」工作流。研究对象为单细胞表达、染色质、空间或多组学矩阵及细胞元数据。本场景研究单细胞表达、染色质、空间或多组学矩阵及细胞元数据，希望解决融合表达、多组学和生物知识推理预测遗传扰动后的细胞状态与通路变化。覆盖从单细胞数据与任务定义到生物一致性与泛化评估的完整管线。核心指标包括扰动方向准确率。得到与输入和任务约束一致、可追溯、可复核的多模态推理增强的遗传扰动虚拟细胞预测结果，包括矩阵稀疏性、基因/峰标识、元数据、空间坐标和预处理血缘报告、独立评估、扰动方向准确率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "architecture",
+    "aroma",
+    "augmented",
+    "benchmarking",
+    "bio",
+    "genetic",
+    "h5ad",
+    "in-the-wild",
+    "modeling",
+    "models",
+    "multimodal",
+    "perturb_multiomics",
+    "perturbation",
+    "reasoning",
+    "response"
+  ],
+  "scenario_id": "B74",
+  "source_papers": [
+    "2604.20263",
+    "2604.27646"
+  ]
+}

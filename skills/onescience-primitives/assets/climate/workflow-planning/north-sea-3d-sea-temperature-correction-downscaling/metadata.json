@@ -1,0 +1,17 @@
+{
+  "name": "north-sea-3d-sea-temperature-correction-downscaling",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 北海区三维海温智能订正与降尺度模型 的「北海区三维海温智能订正与降尺度模型」工作流。将现有海温数值预报改进为更高空间分辨率、更高精度的未来7天三维海温业务产品。覆盖从模型输入与运行条件预检到独立评估与交付判定的完整管线。得到可部署的海温订正与降尺度模型、1 km逐小时未来7天三维海温产品，以及改善不低于30%的独立证据。",
+  "tags": [
+    "earth",
+    "km降尺度能否增加受独立高分辨率资料支持的空间信息",
+    "北海区三维海温智能订正与降尺度模型"
+  ],
+  "scenario_id": "E103",
+  "source_papers": []
+}

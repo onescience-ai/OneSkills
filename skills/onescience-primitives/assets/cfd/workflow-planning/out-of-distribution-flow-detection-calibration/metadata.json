@@ -1,0 +1,33 @@
+{
+  "name": "out-of-distribution-flow-detection-calibration",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "分布外流动代理检测与校准预测。面向跨雷诺数跨几何OOD流动数据完成分布外流动代理检测与校准预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "characterize",
+    "computational_fluid_dynamics",
+    "conformal-predictor",
+    "disentangled",
+    "dynamics",
+    "evolution",
+    "fluid",
+    "graph",
+    "graph-ode",
+    "improve",
+    "learning",
+    "modeling",
+    "out-of-distribution",
+    "out-of-domain",
+    "prometheus_"
+  ],
+  "scenario_id": "CFD_S017",
+  "source_papers": [
+    "sha256:61eb3adf7369a97590e9486dde568ba3434342d1d5817f2c9e64b41ebe50a521",
+    "sha256:21c9ffdb77a75deb7af150badda48aa4c696ab4a48f76620fd6c4a6f74aab506",
+    "sha256:1a0d891225d62d8b40e195e0472dbd2172c1058993cd24df54db4ddc9c2cf02d"
+  ]
+}

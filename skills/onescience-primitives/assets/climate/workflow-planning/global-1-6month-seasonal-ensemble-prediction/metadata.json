@@ -1,0 +1,32 @@
+{
+  "name": "global-1-6month-seasonal-ensemble-prediction",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "「全球1—6个月季节集合天气—气候预测」工作流。从观测或再分析初态生成未来1—6个月全球集合轨迹，预测月季尺度温度、降水及大尺度环流异常。覆盖从起报资料及任务边界预检到检验ACC、CRPS及遥相关技巧的完整管线。得到可复现、可审计的月季尺度集合异常场与概率分布、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "tags": [
+    "crps及遥相关技巧",
+    "earth",
+    "forecasting",
+    "gencast",
+    "global",
+    "learning",
+    "machine",
+    "model",
+    "predictions",
+    "probabilistic",
+    "reanalysis",
+    "seasonal",
+    "skilful",
+    "trained",
+    "using"
+  ],
+  "scenario_id": "E47",
+  "source_papers": [
+    "sha256:dff686d8a70ee7792ca5fcd4c5678c3846876b2d770c1ce1cc764feb442b5a0a",
+    "sha256:816306e43d221af4f1dce0d71f3d434aa13c896b8301e3f72f2062557f81e46e"
+  ]
+}

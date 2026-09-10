@@ -1,0 +1,32 @@
+{
+  "name": "point-cloud-meshfree-complex-geometry-flow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "点云与无网格网络复杂几何流场预测。面向复杂几何点云与表面采样数据完成点云与无网格网络复杂几何流场预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "agnostic",
+    "computational_fluid_dynamics",
+    "fields",
+    "fluid",
+    "framework",
+    "geometries",
+    "irregular",
+    "learning",
+    "magnet_",
+    "mesh-free-neural-surrogate",
+    "neural",
+    "point-cloud",
+    "point-cloud-network",
+    "prediction",
+    "solver"
+  ],
+  "scenario_id": "CFD_S008",
+  "source_papers": [
+    "sha256:f6676095ac9760d864335a22144bee49297fdda71fac26e7bbc1a037be4d3c81",
+    "sha256:bfae397eacbda8a37397d08b5e72b63c8a36e98b9889609cd068eeb61c95a803"
+  ]
+}

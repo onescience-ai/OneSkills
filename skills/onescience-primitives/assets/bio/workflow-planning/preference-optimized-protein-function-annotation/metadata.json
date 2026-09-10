@@ -1,0 +1,32 @@
+{
+  "name": "preference-optimized-protein-function-annotation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 AnnoDPO 的「偏好优化驱动的蛋白功能注释」工作流。研究对象为蛋白序列、突变、结构域、酶底物或功能标签数据。本场景研究蛋白序列、突变、结构域、酶底物或功能标签数据，希望解决利用优选与拒绝注释对训练蛋白功能模型，减少无依据标签并提升多标签注释质量。覆盖从蛋白样本与目标定义到评测与解释汇总的完整管线。核心指标包括宏平均F1。得到与输入和任务约束一致、可追溯、可复核的偏好优化驱动的蛋白功能注释结果，包括规范化序列、突变/底物表示、标签本体、去重和数据质量报告、独立评估、宏平均F1统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "tags": [
+    "annodpo",
+    "annotation",
+    "bio",
+    "direct",
+    "effect",
+    "f1结果",
+    "fine-tuning",
+    "functional",
+    "improves",
+    "language",
+    "learning",
+    "models",
+    "mutational",
+    "optimization",
+    "prediction"
+  ],
+  "scenario_id": "B32",
+  "source_papers": [
+    "2506.07035",
+    "2405.06729"
+  ]
+}

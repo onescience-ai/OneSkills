@@ -1,0 +1,25 @@
+{
+  "name": "north-sea-3d-temp-salinity-current-forecast",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "基于 北海区三维温盐流智能预报模型 的「北海区三维温盐流智能预报模型」工作流。提供快速、联合且物理一致的三维温盐流预报，以支撑北海区海洋环境业务。覆盖从模型输入与运行条件预检到独立评估与交付判定的完整管线。得到不低于1/36°、不少于30层、逐小时输出的三维温盐流模型与产品，并证明7天海温RMSE小于0.6℃。",
+  "tags": [
+    "earth",
+    "forecasting",
+    "global",
+    "langya",
+    "large",
+    "model",
+    "ocean",
+    "rmse能否在独立样本上小于0",
+    "北海区三维温盐流智能预报模型"
+  ],
+  "scenario_id": "E104",
+  "source_papers": [
+    "10.1016/j.scib.2026.08.001"
+  ]
+}

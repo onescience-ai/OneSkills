@@ -1,0 +1,42 @@
+{
+  "name": "physics-boundary-invariant-constrained-neural-operator",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-09",
+  "updated_at": "2026-09-09",
+  "description": "物理边界与不变量约束神经算子学习。面向带守恒边界和无量纲约束PDE数据完成物理边界与不变量约束神经算子学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": [
+    "adversarial",
+    "approximation",
+    "attention",
+    "attractors",
+    "backdoors",
+    "boundary",
+    "bounds",
+    "buckingham",
+    "chaotic",
+    "computational_fluid_dynamics",
+    "constraints",
+    "continuous",
+    "differential",
+    "discovery",
+    "dynamics"
+  ],
+  "scenario_id": "CFD_S059",
+  "source_papers": [
+    "sha256:6c62d031966b8b481906bed8d39865c018ea10600735cd3c6b8924dba64c895d",
+    "sha256:1b9ed40c90451ec4133370890aec33f9a7a754345f9d6eaeb04568a5703e6790",
+    "sha256:bcfb19e02bea0e446ddff6acda6170a536abc49ecc457c7994f25bb0cea8df53",
+    "sha256:32ec88a75d06a926cf10125274e7ffd55b062867fd405a604bc26efd2ad76896",
+    "sha256:057908770784033f21f4260b8f7ea8b1bd5c3d2a69c82b1fdb4c75e373709e83",
+    "sha256:e59913aea8e8df36adab5eae2473291287111c97bc2b820cb7059f9179b9ca3f",
+    "sha256:da6751e6b634d98407847d421de241788c8a9ba50f3c0e10a12e84fed929e182",
+    "sha256:52fdd5646f266544e611d73bc7bc2d8cfcb7c8ad10e85ed48e854e2db651992e",
+    "sha256:c6f9099e0dd1d07e07cd3d3b3b34ffd4313f4c668d8b34bfd2756c978c68d8b3",
+    "sha256:ff60a10c9ea880d0cb38cb955396c80bfddc7b09b9059014b2ec361bc3935bc4",
+    "sha256:a31dcf027830936d2f2221a96ca4b85e95b8cd6c94371855f0c33d61f61bb4a8",
+    "sha256:785e859f67f7b0447e06f9b271c0f27e58732a31c268d05e48359d1c480faa5a"
+  ]
+}
