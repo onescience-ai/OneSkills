@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「天气雷达驱动的0—2小时冰雹概率临近预报」工作流。利用雷达回波演变和环境场，生成未来0—2小时高分辨率冰雹发生概率和风险区域。覆盖从临近观测及任务边界预检到检验CSI、FSS和概率可靠度的完整管线。得到可复现、可审计的分时效冰雹概率格点与风险对象、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「天气雷达驱动的0—2小时冰雹概率临近预报」工作流。利用雷达回波演变和环境场，生成未来0—2小时高分辨率冰雹发生概率和风险区域。覆盖从临近观测及任务边界预检到检验CSI、FSS和概率可靠度的完整管线。得到可复现、可审计的分时效冰雹概率格点与风险对象、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 天气雷达驱动的0—2小时冰雹概率临近预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "diffusion",
     "earth",
@@ -17,10 +17,32 @@
     "probabilistic",
     "radar",
     "reliable",
-    "spatial-temporal"
+    "spatial-temporal",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e83"
   ],
   "scenario_id": "E83",
   "source_papers": [
     "sha256:dfe19e7f6691020a89faad9a03927415823d30993059aa49ee1739d5ec12584e"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "天气雷达驱动的0—2小时冰雹概率临近预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E83",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E83"
+  ],
+  "batch": "2026-09-14"
 }

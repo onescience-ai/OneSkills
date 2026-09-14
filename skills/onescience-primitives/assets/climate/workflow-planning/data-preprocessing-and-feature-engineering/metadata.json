@@ -1,0 +1,33 @@
+{
+  "name": "data-preprocessing-and-feature-engineering",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "为机器学习模型准备输入数据的一系列数据处理步骤。首先对原始自动气象站数据进行预处理（过滤错误、插值缺失），然后从预处理后的数据和 SNOWPACK 模拟的雪盖剖面中提取气象、雪盖和雪不稳定性相关特征。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。",
+  "tags": [
+    "data-preprocessing-and-feature-engineering",
+    "datapipe",
+    "fallback"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 62.7,
+  "accuracy": 60.0,
+  "authority": 51.0,
+  "generalization": 74.2,
+  "source_paper": {
+    "title": "Data-driven automated predictions of the avalanche danger level for dry-snow conditions in Switzerland",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:b3d1293c0a2feeeb4aa6cdd9ce3c239afd3fcb209f658bb82330ce6af916754e",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E32",
+  "grounded_ratio": 1.0
+}

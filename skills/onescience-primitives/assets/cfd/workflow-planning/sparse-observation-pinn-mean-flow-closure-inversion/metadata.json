@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "稀疏观测PINN均值流与闭合联合反演。面向稀疏实验观测与RANS方程数据完成稀疏观测PINN均值流与闭合联合反演。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "稀疏观测PINN均值流与闭合联合反演。面向稀疏实验观测与RANS方程数据完成稀疏观测PINN均值流与闭合联合反演。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 稀疏观测PINN均值流与闭合联合反演 的端到端可复用工作流：5 个节点，核心模型 Turbulence PINN。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "around",
     "blade_wake",
@@ -22,12 +22,35 @@
     "inference",
     "navier",
     "physics-inf",
-    "pinns"
+    "pinns",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s075",
+    "turbulence-pinn"
   ],
   "scenario_id": "CFD_S075",
   "source_papers": [
     "sha256:c716c8d143ddb8371a5235ede6d62b82f2e2fffa1354404074a58f74ad8fc34a",
     "sha256:6e7fe3b4d110e665e95d0ab85d1d3d9d0e8e4669da47931cf021acf8270bddf9",
     "sha256:35fbe72aa0b1084f4eb851f67fad40abf3cb81bd668a859164470cc5d800d8bb"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "稀疏观测PINN均值流与闭合联合反演（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S075",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S075"
+  ],
+  "batch": "2026-09-14"
 }

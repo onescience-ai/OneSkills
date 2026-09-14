@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "LLM智能体自动配置与执行CFD仿真。面向OpenFOAM与FEM案例及运行日志完成LLM智能体自动配置与执行CFD仿真。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "LLM智能体自动配置与执行CFD仿真。面向OpenFOAM与FEM案例及运行日志完成LLM智能体自动配置与执行CFD仿真。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 LLM智能体自动配置与执行CFD仿真 的端到端可复用工作流：5 个节点，核心模型 CFD LLM agent。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "agent",
     "agentic",
@@ -22,7 +22,11 @@
     "fine-tuned",
     "fine-tuning",
     "finite",
-    "fluid"
+    "fluid",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s070"
   ],
   "scenario_id": "CFD_S070",
   "source_papers": [
@@ -31,5 +35,23 @@
     "sha256:dd51edadd96c184d71bb080eee80e7b905c17e2e49dded5709215e3a1f709414",
     "sha256:55590881441e1aee2240cfe3df7b598d1296fe727780c37bd8e3baeb114d50ed",
     "sha256:0a5901aba728c696658ebafe2c762a6b0027f5d87f6cda74e49e699e955b7323"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "LLM智能体自动配置与执行CFD仿真（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S070",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S070"
+  ],
+  "batch": "2026-09-14"
 }

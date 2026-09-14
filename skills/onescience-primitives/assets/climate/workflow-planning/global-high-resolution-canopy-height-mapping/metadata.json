@@ -4,18 +4,58 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「全球高分辨率树冠高度制图」工作流。融合卫星影像与空间激光测高样本生成全球高分辨率树冠高度图；适用于同期森林结构制图，不估算未来生长。覆盖从遥感观测标签及任务边界预检到按高度、林型和地理区独立验证的完整管线。得到可复现、可审计的连续树冠高度栅格及质量图层、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向基于深度学习的全球冠层高度制图任务，选择或设计训练参考数据时，需整合源自星载激光雷达的稀疏足迹级测量值。本知识卡描述了GEDI（全球生态系统动力学调查）足迹数据作为训练监督信号的标准使用方式。该数据集提供了经筛选的、空间分布广泛但稀疏的冠层高度（通常为相对高度98%分位数，RH98）参考值，可用于训练从光学卫星影像（如Sentinel-2）到连续冠层高度产品的回归模型。其关键优势在于提供了全球尺度、物理测量的参考基准，主要局限则包括高纬度地区无覆盖、足迹点固有的空间不确定性以及数据稀疏性，使用者需在模型设计与评估中予以考量。 面向全球尺度的植被结构参数化需求，选择或设计满足10米地面采样距离（GSD）分辨率要求的全球冠层顶部高度图产品。该数据集基于2020年Sentinel-2 L2A图像存档，通过深度学习模型生成，提供全球陆地（不含南极洲）范围内的冠层高度预测及其像素级不确定性估计。数据以3°×3°地理经纬度瓦片形式分发，适用于生物量估算、森林生态学、生物多样性建模、全球碳循环研究及灾害评估等需要精细植被垂直结构信息的场景。其核心价值在于以近乎全球无缝覆盖的高空间分辨率，提供了对地表森林、灌木等植被高度的量化描述与伴随的不确定性量化。 全球高分辨率树冠高度制图 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "canopy",
     "earth",
     "height",
     "high-resolution",
-    "model"
+    "model",
+    "canopy-height",
+    "lidar-reference-data",
+    "gedi",
+    "remote-sensing",
+    "machine-learning",
+    "global-mapping",
+    "sentinel-2",
+    "training-dataset",
+    "rh98",
+    "global-map",
+    "deep-learning",
+    "forest-biomass",
+    "vegetation-structure",
+    "10-meter-resolution",
+    "uncertainty-estimation",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e86"
   ],
   "scenario_id": "E86",
   "source_papers": [
     "sha256:b4d103e6ab0664d96c31a00a0ee4d99e9fbc54a9f1a8eeea500716843d4eabce"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 67.5,
+  "authority": 51.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "全球高分辨率树冠高度制图（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E86",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E86"
+  ],
+  "batch": "2026-09-14"
 }

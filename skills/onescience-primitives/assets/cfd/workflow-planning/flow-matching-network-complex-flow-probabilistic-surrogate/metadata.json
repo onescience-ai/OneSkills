@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "流匹配网络复杂流动概率代理。面向参数条件与流场分布样本完成流匹配网络复杂流动概率代理。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "流匹配网络复杂流动概率代理。面向参数条件与流场分布样本完成流匹配网络复杂流动概率代理。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 面向参数化稀疏（克努森数、马赫数等）高维流场的高效预测与生成，设计并实施一个端到端的框架，该框架将神经场表示、低维潜在传输与物理一致性修正解耦为独立模块。核心思路是：首先利用神经场自解码器为每个训练条件学习独立的潜在编码，通过PCA构建紧凑的潜在图表；然后在图表上训练条件生成模型（流匹配或扩散）以学习不同条件间的潜在映射；最终通过冻结的物理适配器进行后处理修正。该方法将高维场表示与条件生成分离，使得在参数空间内插值或外推新条件下的流场预测成为可能，并已在二维驱动空腔和高超声速圆柱绕流等基准问题上验证。 流匹配网络复杂流动概率代理 的端到端可复用工作流：5 个节点，核心模型 Flow matching model。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "aerodynamic",
     "auto-decoders_",
@@ -22,7 +22,22 @@
     "enhancing",
     "flow-matching-model",
     "flows",
-    "framework"
+    "framework",
+    "conditional-generative-model",
+    "neural-field",
+    "rarefied-flow",
+    "latent-space-transport",
+    "physics-informed",
+    "flow-matching",
+    "diffusion-model",
+    "pca-chart",
+    "parameterized-flow",
+    "cavity-flow",
+    "cylinder-flow",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s092"
   ],
   "scenario_id": "CFD_S092",
   "source_papers": [
@@ -31,5 +46,26 @@
     "sha256:b42dfb37c7168d68749148a2267e6efc6dadcbea4785066c6bfe427cec6d8f00",
     "sha256:27a572e6ded6d390c20d270917eb58470fd5cf3d74757f2656e1bd915a7f690b",
     "sha256:fad98ee0538efcca76a6e911b77cf4d9619edd79b2271dcd833d850c91949e61"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 100.0,
+  "authority": 52.0,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "流匹配网络复杂流动概率代理（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S092",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S092"
+  ],
+  "batch": "2026-09-14"
 }

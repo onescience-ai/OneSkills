@@ -1,0 +1,40 @@
+{
+  "name": "climate4r-framework-and-downscaler-keras-package",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向气候变量（如降水、温度）从粗分辨率全球或区域气候模式输出到高分辨率逐格点预报的统计降尺度需求，选择或设计满足可复现、可扩展要求的深度学习工作流。climate4R 是一个开源 R 框架生态系统，统一了气候数据的远程访问、预处理、统计降尺度和验证流程；其子包 downscaleR.keras 将 Keras 深度学习库封装为可直接调用的气候降尺度接口，支持构建卷积神经网络（CNN）进行多变量输入、逐格点输出的监督学习降尺度。该工具适用于 CMIP5/6 模式输出、再分析资料（ERA-Interim/ERA5）和观测格点数据（E-OBS）等常见气候数据集，提供从数据获取到模型评估的一站式解决方案。",
+  "tags": [
+    "climate4r",
+    "downscale",
+    "cnn",
+    "keras",
+    "r",
+    "statistical-downscaling",
+    "cmip5",
+    "era-interim",
+    "e-obs",
+    "deep-learning"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 60.9,
+  "accuracy": 60.0,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "On the suitability of deep convolutional neural networks for continental-wide downscaling of climate change projections",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:ca6ac535ce4735e06e5c44114aa0db1dc56be495ec52c0d898e219d20b8519ee",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E38",
+  "grounded_ratio": 0.5
+}

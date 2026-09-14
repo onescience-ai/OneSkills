@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "多孔与复杂输运流动场数据驱动预测。面向多孔介质微流动与输运CFD数据完成多孔与复杂输运流动场数据驱动预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "多孔与复杂输运流动场数据驱动预测。面向多孔介质微流动与输运CFD数据完成多孔与复杂输运流动场数据驱动预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 多孔与复杂输运流动场数据驱动预测 的端到端可复用工作流：5 个节点，核心模型 CNN surrogate、Neural differential equation。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "advances",
     "cfd耦合",
@@ -22,7 +22,12 @@
     "fluid",
     "fluids",
     "gate-driven",
-    "learning"
+    "learning",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s077",
+    "neural-differential-equation"
   ],
   "scenario_id": "CFD_S077",
   "source_papers": [
@@ -30,5 +35,23 @@
     "sha256:a51cb26e72c0434865adf4c649d1d8022b327093e8a02e154dc875aa86b69727",
     "sha256:676b35cd9b7e95297ffe45a90aaa9841573b3660bc7b47007ad6dda6c479435f",
     "sha256:c6db3a95540f2fbcf08fb764810e428375010f758649ba9efadbecfb6cfdc95c"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "多孔与复杂输运流动场数据驱动预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S077",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S077"
+  ],
+  "batch": "2026-09-14"
 }

@@ -1,0 +1,39 @@
+{
+  "name": "rainnet",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向基于多普勒雷达外推的降水临近预报（nowcasting）任务，选择或设计满足时空模式学习与低延迟推理要求的深度卷积神经网络模型及训练评估流程。RainNet 是一种专为该任务设计的编码器-解码器架构，通过学习历史雷达图像序列来预测未来短时（如 5 分钟）的降水场。该系统包含从数据预处理、模型前向计算、损失优化到多维度预报技能评估的完整工作流，适用于构建和验证基于深度学习的雷达降水预报原型。",
+  "tags": [
+    "precipitation nowcasting",
+    "radar-based forecasting",
+    "deep-learning",
+    "convolutional-neural-network",
+    "rainnet",
+    "dwd-ry-product",
+    "encoder-decoder",
+    "verification-metrics",
+    "geospatial-forecasting"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 82.0,
+  "accuracy": 75.0,
+  "authority": 76.5,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "RainNet v1.0: a convolutional neural network for radar-based precipitation nowcasting",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:d0c724a113628b384d6463ca83e9cecf7c9a607865e9e96b423b00bdbc6bc53a",
+    "venue": "Geoscientific model development",
+    "cited_by_count": 324,
+    "objective_score": 66.4
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E2",
+  "grounded_ratio": 0.625
+}

@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "随机微分与概率粗粒化湍流闭合。面向多尺度湍流粗细状态轨迹完成随机微分与概率粗粒化湍流闭合。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "随机微分与概率粗粒化湍流闭合。面向多尺度湍流粗细状态轨迹完成随机微分与概率粗粒化湍流闭合。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 随机微分与概率粗粒化湍流闭合 的端到端可复用工作流：5 个节点，核心模型 Neural SDE closure、Probabilistic coarse-graining model。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "cfd耦合",
     "closures",
@@ -22,7 +22,13 @@
     "high-dimensional",
     "ideal",
     "inertial",
-    "large"
+    "large",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s079",
+    "neural-sde-closure",
+    "probabilistic-coarse-graining-model"
   ],
   "scenario_id": "CFD_S079",
   "source_papers": [
@@ -31,5 +37,23 @@
     "sha256:f164b0f083c5efdc9bceb70cef28369d6b74a1c25b432487c88fefdb4f4a962d",
     "sha256:faf3c9138e2ab046be096fbe5508f9c806eed3be969fd87198bb20568b57e601",
     "sha256:40324ee9bc4804d38ec8af85e77d587281aa87143cd544ef25b9031a16d52044"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "随机微分与概率粗粒化湍流闭合（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S079",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S079"
+  ],
+  "batch": "2026-09-14"
 }

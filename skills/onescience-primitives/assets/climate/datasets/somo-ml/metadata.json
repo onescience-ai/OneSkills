@@ -1,0 +1,39 @@
+{
+  "name": "somo-ml",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向水文气象、生态和农业建模等需要高时空分辨率连续土壤湿度场的研究场景，SoMo.ml 提供了一个基于原位观测训练、机器学习驱动生成的全球网格化数据集。该数据集覆盖 2000–2019 年，提供 0–10 cm、10–30 cm 和 30–50 cm 三个土壤层的日尺度数据，空间分辨率为 0.25°。其核心价值在于填补了卫星遥感（如 SMAP、AMSR-E）在数据时间覆盖、垂直分层和数据连续性上的不足，同时比传统再分析产品（如 ERA5-Land）更贴近地表实测状态。数据以 NetCDF 格式存储，便于在气候、水文、生态模型中作为强迫场、验证基准或分析数据直接使用。校准数值来自 ISMN 与 CEMADEN 等原位观测网络，在极端干旱区的表现需结合观测稀疏性考量。",
+  "tags": [
+    "soil-moisture",
+    "global-grid",
+    "machine-learning",
+    "lstm",
+    "netcdf",
+    "hydrology",
+    "reanalysis-comparison",
+    "in-situ-data",
+    "0-25-degree"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 68.0,
+  "accuracy": 67.5,
+  "authority": 75.5,
+  "generalization": 63.2,
+  "source_paper": {
+    "title": "Global soil moisture data derived through machine learning trained with in-situ measurements",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:a64236e60803d979dbf2b4a76c9445733078a4d0d32e7418300c94404ffcaea2",
+    "venue": "Scientific Data",
+    "cited_by_count": 251,
+    "objective_score": 65.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E16",
+  "grounded_ratio": 0.5
+}

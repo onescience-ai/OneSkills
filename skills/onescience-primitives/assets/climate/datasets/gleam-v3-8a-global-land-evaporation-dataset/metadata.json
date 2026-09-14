@@ -1,0 +1,38 @@
+{
+  "name": "gleam-v3-8a-global-land-evaporation-dataset",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向陆面过程建模、水文预报和气候变化研究，需要获取全球尺度、高时间分辨率的土壤湿度真值数据。GLEAM v3.8a 是一套基于卫星观测和数据同化的全球陆地蒸散发与土壤湿度估算产品，提供0.25°分辨率的日尺度数据，常被用作机器学习模型训练和预报评估的参考基准。该数据集整合了SMOS、ESA CCI等卫星的表层土壤湿度观测，并与Noah GLDAS再分析数据进行同化，输出包括表层（0-10cm）和根区（10-100cm）土壤湿度、蒸散发及水力通量等变量。",
+  "tags": [
+    "gleam",
+    "soil-moisture",
+    "global-dataset",
+    "remote-sensing",
+    "evapotranspiration",
+    "drought-forecast",
+    "land-surface-model",
+    "data-assimilation"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 70.6,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "Skillful subseasonal soil moisture drought forecasts with deep learning-dynamic models",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:7598d460e1d8c072bb6467dc9f1ba561d0bc11187ce1ad72d0434a8b328ef6b9",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E46",
+  "grounded_ratio": 0.5
+}

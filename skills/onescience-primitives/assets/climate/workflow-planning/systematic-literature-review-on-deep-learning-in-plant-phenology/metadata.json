@@ -1,0 +1,38 @@
+{
+  "name": "systematic-literature-review-on-deep-learning-in-plant-phenology",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向科研领域中特定交叉方向（如深度学习与传统学科的融合）研究现状的系统性评估，设计或执行一个可复现、结构化的文献综述协议。该协议确保检索过程全面、筛选标准透明、数据提取与分析方法一致，旨在生成一份关于该领域研究进展、趋势、缺口和未来方向的可靠证据基础。流程涵盖从问题定义、多数据库检索、两轮筛选到数据提取与分析的完整闭环。校准数值与实例来自植物物候与深度学习的交叉研究领域，但协议框架可迁移到任何需要进行系统性文献映射的科研课题。",
+  "tags": [
+    "systematic-review",
+    "deep-learning",
+    "plant-phenology",
+    "literature-search",
+    "protocol",
+    "agriculture",
+    "remote-sensing",
+    "PRISMA"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 85.7,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 94.2,
+  "source_paper": {
+    "title": "Deep Learning in Plant Phenological Research- A Systematic Literature Review",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:fe4469ef4d5bdbd08696df7518df7753dc0c633e676ff96aa33324f09a1a12c1",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E67",
+  "grounded_ratio": 0.5
+}

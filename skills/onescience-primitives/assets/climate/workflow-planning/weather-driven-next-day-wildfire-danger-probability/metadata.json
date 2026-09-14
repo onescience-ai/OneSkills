@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「天气驱动次日大面积野火危险概率预报」工作流。结合过去天气、土壤湿度、植被、地形和人类活动预测次日大面积野火概率；不等同于点火检测或火场蔓延模拟。覆盖从致灾因子和事件标签及任务边界预检到按年份检验区分度、校准度和可解释性的完整管线。得到可复现、可审计的次日大火概率及危险等级图、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「天气驱动次日大面积野火危险概率预报」工作流。结合过去天气、土壤湿度、植被、地形和人类活动预测次日大面积野火概率；不等同于点火检测或火场蔓延模拟。覆盖从致灾因子和事件标签及任务边界预检到按年份检验区分度、校准度和可解释性的完整管线。得到可复现、可审计的次日大火概率及危险等级图、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向网格化时空火灾预测任务，选择或设计满足不同空间与时间依赖强度要求的深度学习架构。本文档系统梳理了 CNN、LSTM、CNN-LSTM 与 ConvLSTM 四类模型的核心机制、适用判据、典型性能差异及失效模式，帮助研究者在区域火灾预警场景中快速匹配最优模型族并规避常见陷阱。 天气驱动次日大面积野火危险概率预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "algorithms",
     "danger",
@@ -22,12 +22,45 @@
     "southeast",
     "understanding",
     "using",
-    "wildfire"
+    "wildfire",
+    "fire-prediction",
+    "deep-learning",
+    "cnn",
+    "lstm",
+    "spatiotemporal",
+    "convlstm",
+    "time-series",
+    "remote-sensing",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e37"
   ],
   "scenario_id": "E37",
   "source_papers": [
     "sha256:89fc7326253f23385c661d51b7b3f8a2d211b3256c768b0e816a966cd9e9584a",
     "sha256:bbc45e5dfedb4d6ab18ddb9558663540e0e6b33c7d5ca8ff52970f2e7f210269",
     "sha256:ccb0165d7bfb52ace591a553e8474a077154694c1e2b17d66d8fbb03a7de6a33"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "天气驱动次日大面积野火危险概率预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E37",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E37"
+  ],
+  "batch": "2026-09-14"
 }

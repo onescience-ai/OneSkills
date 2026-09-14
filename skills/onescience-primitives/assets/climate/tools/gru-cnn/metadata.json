@@ -1,0 +1,33 @@
+{
+  "name": "gru-cnn",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "一种结合了门控循环单元（GRU）和卷积神经网络（CNN）的深度学习模型，用于融合处理历史轨迹序列数据和三维气象环境场数据，以预测未来6-72小时的热带气旋路径。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。",
+  "tags": [
+    "gru-cnn",
+    "tool",
+    "fallback"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 66.9,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Forecasting tropical cyclone tracks in the northwestern Pacific based on a deep-learning model",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:1d088c8854f7ef5429b2753829b98a1521fafd118aef81549ed18a44406665f5",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E30",
+  "grounded_ratio": 1.0
+}

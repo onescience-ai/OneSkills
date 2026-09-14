@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「全球分析场驱动的1—10天多变量确定性天气预报」工作流。从全球分析场起报，以6小时步长生成未来1—10天多层大气与地面变量，适用于全球确定性天气预报；不包含原始观测同化、集合概率预报、公里级强对流或气候模拟。覆盖从起报范围与分析场预检到同协议检验与交付判定的完整管线。得到可复现、可审计的全球多层多变量确定性预报场、经明确配置的派生产品、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「全球分析场驱动的1—10天多变量确定性天气预报」工作流。从全球分析场起报，以6小时步长生成未来1—10天多层大气与地面变量，适用于全球确定性天气预报；不包含原始观测同化、集合概率预报、公里级强对流或气候模拟。覆盖从起报范围与分析场预检到同协议检验与交付判定的完整管线。得到可复现、可审计的全球多层多变量确定性预报场、经明确配置的派生产品、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向数值天气预报集合数据的获取与公平评估需求，选择TIGGE Archive作为标准化数据源，该归档系统提供包括ECMWF ENS控制预报在内的多中心业务预报数据，适用于预报技巧对比、模型验证与后处理研究。数据通过Copernicus Climate Data Store (CDS) 或 ECMWF 官方渠道获取，格式涵盖GRIB等气象标准格式，是连接实时业务预报与离线研究分析的关键桥梁。 面向中期全球天气预报需求，选择或设计满足精度与效率要求的深度学习预报系统。一个基于3D Earth-Specific Transformer（3DEST）的端到端全球天气预报系统，采用分层时间聚合策略，利用大规模历史再分析数据训练一系列具有不同预报时效的基础模型，在确定性预报指标上可超越传统数值天气预报业务系统。系统通过引入地球先验的三维卷积编码器-解码器结构处理全球网格化气象场，并通过贪心组合短时效模型实现中长期（如7-10天）的高效、低累积误差预报。 面向全球中期数值天气预报（特别是超越10天的预报），选择或设计一个能够处理多模态高维气象变量（如不同大气层和地面因子）、并有效抑制长提前期预报误差累积的深度学习框架。该系统采用多模态Transformer进行跨因子特征融合，通过不确定性损失自适应加权多任务学习，并引入重放缓冲机制模拟自回归推理误差，从而在ERA5再分析数据集上实现了对未来14天全球状态的可靠预测。其训练与推理流程构成一个完整的端到端工作流，可供气象预报、气候模拟或相关AI地球系统建模项目参考。 面向全球高分辨率（0.25°）天气预报任务，选择并应用基于自适应傅里叶神经算子（AFNO）的数据驱动模型。该模型能够从大气再分析数据中学习时空演化规律，生成短期至中期的全球大气状态预报，其核心优势在于生成速度比传统数值天气预报模型快数个数量级，同时在多个变量上达到与业务化模型相当的预报技巧。典型应用包括快速生成集合预报、分析极端天气事件、以及作为研究大气动力学和模式后处理的新工具。校准数值来自ERA5再分析数据集训练配置。 全球分析场驱动的1—10天多变量确定性天气预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accurate",
     "adaptive",
@@ -22,7 +22,36 @@
     "global",
     "high-resolution",
     "learning",
-    "medium-range"
+    "medium-range",
+    "tigge-archive",
+    "numerical-weather-prediction",
+    "ecmwf-ens",
+    "forecast-evaluation",
+    "ensemble-data",
+    "weather-model-comparison",
+    "copernicus-climate-data",
+    "tropical-cyclone-tracking",
+    "ai-weather-forecasting",
+    "deep-learning",
+    "transformer",
+    "era5",
+    "global-weather",
+    "deterministic-forecast",
+    "hierarchical-temporal-aggregation",
+    "weather-forecast",
+    "medium-range-prediction",
+    "multimodal-transformer",
+    "data-driven-nwp",
+    "ai-weather-model",
+    "self-recursive-inference",
+    "weather-forecasting",
+    "adaptive-fourier-neural-operator",
+    "ensemble-forecast",
+    "atmospheric-prediction",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e1"
   ],
   "scenario_id": "E1",
   "source_papers": [
@@ -31,5 +60,26 @@
     "sha256:cee61c60a35e9533f59dcebb8c621faa6e2f9b1bddfa0e7048d809b38d42e1d8",
     "sha256:e169c12304de5d3e7c7843b1da9bd5c6a9077b4e8d51a2bbf0e13c8e68757d5c",
     "sha256:b6dcfc943598adf8b80e9553fe806492d4b35feca913e3aa808984d3d12c95e5"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 100.0,
+  "authority": 79.6,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "全球分析场驱动的1—10天多变量确定性天气预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E1",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E1"
+  ],
+  "batch": "2026-09-14"
 }

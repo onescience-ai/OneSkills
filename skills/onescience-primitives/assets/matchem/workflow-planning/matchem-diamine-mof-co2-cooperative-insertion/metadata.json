@@ -1,0 +1,20 @@
+{
+  "name": "matchem-diamine-mof-co2-cooperative-insertion",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-10",
+  "updated_at": "2026-09-10",
+  "description": "二胺接枝MOF（M2(dobpdc)系列，M=Mg/Mn/Fe/Co/Ni/Zn）协同CO2捕集机制与术语原语：用于识别和解释二胺接枝金属有机框架的协同插入（cooperative insertion）机制。适用于术语同义词消歧（diamine-appended MOF、M2(dobpdc)、dobpdc配体、mmen、ammonium carbamate chain、step-shaped isotherm、Hill coefficient）与机制推理。核心内容：CO2在金属依赖阈值压力以上插入M-N键、胺重排为有序氨基甲酸铵链，产生阶跃型等温线；Hill系数反映协同性。输出为术语映射表、机制流程与关键参数（阈值压力、Hill系数、阶梯位置顺序）。",
+  "tags": ["diamine-appended MOF", "diamine-grafted MOF", "M2(dobpdc)", "dobpdc", "mmen", "cooperative insertion", "cooperative CO2 adsorption", "ammonium carbamate", "step-shaped isotherm", "S-shaped isotherm", "Hill coefficient", "CO2 capture", "metal-organic framework", "Mg2(dobpdc)", "chemisorption"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "二胺接枝MOF（M2(dobpdc)，M=Mg/Mn/Fe/Co/Ni/Zn）协同CO2捕集的领域原语：术语同义词与协同插入机制",
+  "evidence_papers": [
+    {"title": "Cooperative insertion of CO2 in diamine-appended metal-organic frameworks", "doi": "10.1038/nature14327", "year": 2015, "venue": "Nature", "authors": ["McDonald TM", "Mason JA", "Long JR"], "oa_url": "https://escholarship.org/content/qt2vs0h0wg/qt2vs0h0wg.pdf"},
+    {"title": "High-Capacity, Cooperative CO2 Capture in a Diamine-Appended Metal-Organic Framework through a Combined Chemisorptive and Physisorptive Mechanism", "doi": "10.1021/jacs.3c13381", "year": 2024, "venue": "Journal of the American Chemical Society", "authors": ["Zhang Z", "Tieu H", "Long JR"], "oa_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10921408/fullTextXML"},
+    {"title": "Amine-Functionalized Triazolate-Based Metal-Organic Frameworks for Enhanced Diluted CO2 Capture Performance", "doi": "10.1002/anie.202424747", "year": 2025, "venue": "Angewandte Chemie International Edition", "authors": [], "oa_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11966689/fullTextXML"},
+    {"title": "Hysteresis curves reveal the microscopic origin of cooperative CO2 adsorption in diamine-appended metal-organic frameworks", "doi": "10.1063/5.0054794", "year": 2021, "venue": "The Journal of Chemical Physics", "authors": [], "oa_url": ""}
+  ]
+}

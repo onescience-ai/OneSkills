@@ -1,0 +1,39 @@
+{
+  "name": "fuxi-weather",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向全球中期天气预报任务，构建一套完全基于机器学习的端到端同化与预报流水线，能够以低于传统数值天气预报系统的数据量和算力，持续生成0.25°分辨率、10天时效的全球预报产品。该系统整合多源极轨卫星辐射观测与GNSS无线电掩星数据，通过循环数据同化模块FuXi-DA将观测与背景场融合为分析场，再由FuXi预报模型链式输出0-10天预报，并将结果反馈为下一循环的背景场。适用于需要低成本、高分辨率、自主运行的全球天气预报场景，如区域性气象服务、卫星遥感数据快速同化、以及探索机器学习替代传统NWP的科研与业务化部署。",
+  "tags": [
+    "global-weather-forecast",
+    "machine-learning-nwp",
+    "data-assimilation",
+    "satellite-radiance",
+    "gnss-roy",
+    "cycling-forecast",
+    "fuxi-da",
+    "polar-orbiting-satellite",
+    "0.25-degree-grid"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 85.7,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "A data-to-forecast machine learning system for global weather",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:6704521646be2ebb87feec2f7da3b1b21b9b30786e41b80d96220ed6c83bf30f",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E4",
+  "grounded_ratio": 1.0
+}

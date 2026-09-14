@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「粗网格大气场到公里尺度的同期概率降尺度」工作流。把同一有效时刻的粗分辨率温度、风和湿度场重建为公里尺度细场，并恢复未解析局地变率。覆盖从粗细分辨率资料及任务边界预检到检验谱结构、极值和集合覆盖率的完整管线。得到可复现、可审计的公里尺度多变量确定性场或集合细场、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「粗网格大气场到公里尺度的同期概率降尺度」工作流。把同一有效时刻的粗分辨率温度、风和湿度场重建为公里尺度细场，并恢复未解析局地变率。覆盖从粗细分辨率资料及任务边界预检到检验谱结构、极值和集合覆盖率的完整管线。得到可复现、可审计的公里尺度多变量确定性场或集合细场、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向数值天气预报（NWP）风场模型的地面验证需求，选择或设计满足时空对齐要求的机场自动观测站（ASOS）实测风速风向数据作为地面真值，建立模型预报与观测之间的系统性对比评估框架。该框架覆盖数据获取、时空匹配、指标计算与诊断分析全流程，适用于 STF-T、GFS 等不同分辨率风场预报模型的性能基准测试与横向比较，校准数值来自 LPMA 机场体系供量级参考。 粗网格大气场到公里尺度的同期概率降尺度 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "approach",
     "atmospheric",
@@ -22,11 +22,46 @@
     "numerical",
     "prediction",
     "residual",
-    "resolution"
+    "resolution",
+    "wind-forecast-validation",
+    "asos-metar",
+    "airport-observation",
+    "nwp-verification",
+    "lpma",
+    "surface-wind",
+    "model-evaluation",
+    "iem-data",
+    "spatiotemporal-resolution",
+    "ground-truth",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e55"
   ],
   "scenario_id": "E55",
   "source_papers": [
     "sha256:22622a777f2c78d8a9a645a22ffd1bd2d19a224ebb0eabeb7556300325d7dfc5",
     "sha256:fafc366ffe6713e7a73282add8bcc2e0b44c75f937ffaca7c3da354166042394"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 60.0,
+  "authority": 51.0,
+  "generalization": 70.5,
+  "source_paper": {
+    "title": "粗网格大气场到公里尺度的同期概率降尺度（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E55",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E55"
+  ],
+  "batch": "2026-09-14"
 }

@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "动态图网络与自适应网格物理时序模拟。面向动态图与拉格朗日粒子时序数据完成动态图网络与自适应网格物理时序模拟。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "动态图网络与自适应网格物理时序模拟。面向动态图与拉格朗日粒子时序数据完成动态图网络与自适应网格物理时序模拟。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 动态图网络与自适应网格物理时序模拟 的端到端可复用工作流：5 个节点，核心模型 Message-passing neural PDE solver、Adaptive mesh GNN。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "acmp_",
     "adaptive",
@@ -22,7 +22,12 @@
     "computational_fluid_dynamics",
     "constraints",
     "continuous",
-    "cotes"
+    "cotes",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s020",
+    "message-passing-neural-pde-solver"
   ],
   "scenario_id": "CFD_S020",
   "source_papers": [
@@ -37,5 +42,23 @@
     "sha256:078236afa8dc67ffb3a9948d79f007e63d01334d65ad4ef68c0a77c6fd92a02a",
     "sha256:a866b286438b016ed996fe643185b6fda3d3130ca47a152d5c44cf08ad0568f6",
     "sha256:ba8b573eb50a17284b61d78e04466f5594094ed0a43988f94dbaf9bf7c1f5cae"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "动态图网络与自适应网格物理时序模拟（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S020",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S020"
+  ],
+  "batch": "2026-09-14"
 }

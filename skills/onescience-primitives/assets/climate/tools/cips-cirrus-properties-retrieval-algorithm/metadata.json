@@ -1,0 +1,39 @@
+{
+  "name": "cips-cirrus-properties-retrieval-algorithm",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向卫星遥感云反演任务，选择或设计能够从静止气象卫星多通道热红外图像中自动检测卷云并反演其物理特性的算法。CiPS 算法基于人工神经网络，利用 MSG-SEVIRI 六个红外通道亮温、地表温度及辅助参数，逐像素输出卷云检测标志、不透明性分类、云顶高度、冰光学厚度和冰水路径。该算法以 CALIOP 主动激光雷达数据为训练参考，适用于地球同步轨道平台的实时业务化卷云遥感。",
+  "tags": [
+    "cirrus-cloud-detection",
+    "seviri",
+    "neural-network",
+    "ice-optical-thickness",
+    "cloud-top-height",
+    "satellite-remote-sensing",
+    "caliop",
+    "meteosat-second-generation",
+    "infrared-channels"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 66.9,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Characterisation of the artificial neural network CiPS for cirrus cloud remote sensing with MSG-SEVIRI",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:a8632d6a7ea1035fddba126aa7d0ca20115c1556123ea7ce5dfb77355b12bc60",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E54",
+  "grounded_ratio": 0.625
+}

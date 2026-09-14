@@ -1,0 +1,39 @@
+{
+  "name": "seadas-processing-chain-for-oli",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向水色遥感研究与应用中 Landsat-8 OLI 数据的大气校正需求，使用 SeaDAS 处理链将 Level-1T 级别影像转换为水体遥感反射率（Rrs）或瑞利校正反射率（ρs）产品的标准方案。该方案是 NASA 海洋水色传感器的标准遗产处理算法，经严格时空匹配验证，适用于开阔大洋及清洁水体，可为后续叶绿素-a、悬浮物等水色参数反演提供标准化输入。校准数值与匹配标准来源于对 SeaWiFS 标准的继承。",
+  "tags": [
+    "landsat-8",
+    "oli",
+    "seadas",
+    "atmospheric-correction",
+    "water-color",
+    "remote-sensing",
+    "ocean-color",
+    "rrs",
+    "oceanographic"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 67.9,
+  "accuracy": 77.5,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "A Chlorophyll-a Algorithm for Landsat-8 Based on Mixture Density Networks",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:35244d43a01e48068ea1cba6ca2e6dd7ff712287b35d9f59a938ecebf6d4dadd",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E73",
+  "grounded_ratio": 0.5
+}

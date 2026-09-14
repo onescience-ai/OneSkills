@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「印度洋偶极子多季节指数预测」工作流。利用印度洋海温、上层热含量、表面风和太平洋前兆，预测未来多个季节IOD指数及事件概率。覆盖从起报资料及任务边界预检到按季节和提前量检验技巧的完整管线。得到可复现、可审计的IOD指数轨迹、正负事件类别和概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「印度洋偶极子多季节指数预测」工作流。利用印度洋海温、上层热含量、表面风和太平洋前兆，预测未来多个季节IOD指数及事件概率。覆盖从起报资料及任务边界预检到按季节和提前量检验技巧的完整管线。得到可复现、可审计的IOD指数轨迹、正负事件类别和概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向印度洋偶极子（IOD）季节到跨季节预测，采用多任务深度学习框架同时预测偶极子模态指数（DMI）、东西印度洋海温指数及Nino3.4指数，以捕捉印度洋与太平洋的海气相互作用信号。该框架基于共享特征网络提取全球海温、海洋热含量和风场的时空特征，利用卷积与循环网络混合架构和注意力机制实现可解释预测，在7个月以上前导时间的预测技能提升方面有明确经验支撑。校准数值来自全球气候再分析数据集的IOD回算试验。 印度洋偶极子多季节指数预测 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "dipole",
     "earth",
@@ -19,10 +19,44 @@
     "multi-seasonal",
     "multi-task",
     "ocean",
-    "prediction"
+    "prediction",
+    "iod-prediction",
+    "multi-task-learning",
+    "deep-learning",
+    "climate-forecasting",
+    "sst-anomaly",
+    "indian-ocean-dipole",
+    "dmi",
+    "seasonal-prediction",
+    "attention-mechanism",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e78"
   ],
   "scenario_id": "E78",
   "source_papers": [
     "sha256:cb1c99d13e670a90bfe185f6bd0deff8c3ee04779db65be599208f3086c6c378"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "印度洋偶极子多季节指数预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E78",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E78"
+  ],
+  "batch": "2026-09-14"
 }

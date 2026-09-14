@@ -1,0 +1,39 @@
+{
+  "name": "quantile-regression-forest-qrf-methods",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向概率性天气预报校准与不确定性量化，选择或设计一种无需预设目标变量分布形式、能同时捕捉多模态与偏态特征的非参数条件分位数估计方法。分位数回归森林（Quantile Regression Forest, QRF）通过自助采样构建多棵回归树，在每片叶子节点上聚合训练观测值形成条件累积分布函数，从而输出完整的预测分布。该方法族包含基础QRF（用于一般性校准）、QRF EGP TAIL（在叶子节点拟合扩展Pareto分布以改善极端值尾部建模）和异常值QRF（以观测与预报均值之差为训练目标，适用于冷热浪等温度异常预测）三个变体。",
+  "tags": [
+    "quantile-regression-forest",
+    "probabilistic-forecasting",
+    "ensemble-post-processing",
+    "weather-calibration",
+    "conditional-distribution",
+    "extreme-precipitation",
+    "temperature-anomaly",
+    "nonparametric-regression",
+    "ensemble-calibration"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 91.7,
+  "accuracy": 100.0,
+  "authority": 69.9,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "From research to applications – examples of operational ensemble post-processing in France using machine learning",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:b8d9e5c49b56efe6d7754c3a09d26ea12383e6ff8ef12764eb605f15b612803e",
+    "venue": "Nonlinear processes in geophysics",
+    "cited_by_count": 63,
+    "objective_score": 57.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E14",
+  "grounded_ratio": 0.714
+}

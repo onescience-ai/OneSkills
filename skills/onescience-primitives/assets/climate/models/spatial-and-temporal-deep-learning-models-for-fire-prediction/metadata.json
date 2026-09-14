@@ -1,0 +1,39 @@
+{
+  "name": "spatial-and-temporal-deep-learning-models-for-fire-prediction",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向网格化时空火灾预测任务，选择或设计满足不同空间与时间依赖强度要求的深度学习架构。本文档系统梳理了 CNN、LSTM、CNN-LSTM 与 ConvLSTM 四类模型的核心机制、适用判据、典型性能差异及失效模式，帮助研究者在区域火灾预警场景中快速匹配最优模型族并规避常见陷阱。",
+  "tags": [
+    "fire-prediction",
+    "deep-learning",
+    "cnn",
+    "lstm",
+    "spatiotemporal",
+    "convlstm",
+    "time-series",
+    "remote-sensing",
+    "wildfire"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Evaluation of machine learning and deep learning algorithms for fire prediction in Southeast Asia",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:bbc45e5dfedb4d6ab18ddb9558663540e0e6b33c7d5ca8ff52970f2e7f210269",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E37",
+  "grounded_ratio": 0.75
+}

@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "物理网络可压缩高速绕流求解与激波识别。面向亚声速至超声速可压缩绕流数据完成物理网络可压缩高速绕流求解与激波识别。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "物理网络可压缩高速绕流求解与激波识别。面向亚声速至超声速可压缩绕流数据完成物理网络可压缩高速绕流求解与激波识别。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 物理网络可压缩高速绕流求解与激波识别 的端到端可复用工作流：5 个节点，核心模型 Physics-informed neural network、Shock classifier。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "compressible",
     "computational_fluid_dynamics",
@@ -22,12 +22,35 @@
     "neural",
     "nonlinear",
     "physics-informed-neural-network",
-    "rotating"
+    "rotating",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s005",
+    "shock-classifier"
   ],
   "scenario_id": "CFD_S005",
   "source_papers": [
     "sha256:c95e55d5c33138ef0aa29c5d57830035579f08c82fb8c1a7bccad3e0f8c131f4",
     "sha256:0e4d4bd489b6bdec29c3d4a487b5d7e775f6289dbe6f3e337b38e72a2996f0c0",
     "sha256:15b6be3df8b3d7b238933265eef26079d4c8cd48afdbdfc628f5023d1d7b4adc"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "物理网络可压缩高速绕流求解与激波识别（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S005",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S005"
+  ],
+  "batch": "2026-09-14"
 }

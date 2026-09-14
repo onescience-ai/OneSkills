@@ -1,0 +1,39 @@
+{
+  "name": "anomaly-numerical-correction-with-observations-ano",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向数值天气预报后处理中的系统性偏差校正任务，ANO（Anomaly Numerical Correction with Observations）是一种基于气候态异常积分的传统统计降尺度方法。该方法通过计算预报场与模型气候平均值的偏差，并用历史观测气候平均值进行替换和积分，来订正预报。它常作为基准方法，用于评估深度学习等新方法的性能。其校正效果在不同气象变量间存在显著差异，主要适用于温度和湿度等标量场，对风场等矢量变量的校正能力有限。",
+  "tags": [
+    "bias-correction",
+    "numerical-weather-prediction",
+    "post-processing",
+    "anomaly-correction",
+    "forecast-evaluation",
+    "ecmwf-ifs",
+    "cu-net",
+    "2m-temperature",
+    "relative-humidity"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 78.2,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 72.8,
+  "source_paper": {
+    "title": "A Deep Learning Method for Bias Correction of ECMWF 24–240 h Forecasts",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:d738c8f138288d1b88ed4e5073f2d214ac461d4d1f6326aebb5a97e204bea96f",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E53",
+  "grounded_ratio": 0.5
+}

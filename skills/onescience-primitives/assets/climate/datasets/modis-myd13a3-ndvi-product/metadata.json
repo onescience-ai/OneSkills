@@ -1,0 +1,38 @@
+{
+  "name": "modis-myd13a3-ndvi-product",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向植被空间异质性量化与地表参数空间模式提取的需求，选择或设计满足全球尺度、月时间序列要求的植被指数数据时，MODIS MYD13A3 是广泛采用的标准化产品。它提供经过大气校正和质量标记的全球月均归一化差异植被指数（NDVI），空间分辨率为1公里。该产品常用于生态、水文及遥感降尺度模型中，作为刻画地表植被覆盖度、生长状态及空间分异的关键辅助变量，其质量标记和全球一致性使其成为多源数据融合与长时间序列分析的可靠输入。",
+  "tags": [
+    "modis",
+    "ndvi",
+    "myd13a3",
+    "remote-sensing",
+    "vegetation-index",
+    "spatial-heterogeneity",
+    "soil-moisture-downscaling",
+    "global-dataset"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 67.1,
+  "accuracy": 60.0,
+  "authority": 84.0,
+  "generalization": 63.2,
+  "source_paper": {
+    "title": "Global downscaling of remotely sensed soil moisture using neural networks",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:7cc110a3254d4db58c381b167759e463fb3f8e744833b3ed201443d9e6a2e758",
+    "venue": "Hydrology and earth system sciences",
+    "cited_by_count": 92,
+    "objective_score": 77.2
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E16",
+  "grounded_ratio": 0.625
+}

@@ -4,9 +4,9 @@
   "domain": "matchem",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 NULL 的「Ru单原子NiFe层状双氢氧化物水分解优化」工作流。研究对象为Ru单原子NiFe层状双氢氧化物水分解优化。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从活性位与反应网络定义到候选筛选与验证设计的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 NULL 的「Ru单原子NiFe层状双氢氧化物水分解优化」工作流。研究对象为Ru单原子NiFe层状双氢氧化物水分解优化。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从活性位与反应网络定义到候选筛选与验证设计的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 面向碱性介质中电催化析氢（HER）、析氧（OER）及全分解水催化剂的性能评估，采用标准三电极或两电极体系进行系统化电化学测试。该方法涵盖从极化曲线获取、动力学参数分析、电化学活性面积表征到长期稳定性验证的完整流程，旨在提供客观、可复现的基准性能数据。关键性能指标如过电位、Tafel斜率和双层电容的测定，依赖于规范化的实验设置与数据处理，是筛选与优化电催化剂的通用手段。校准数值（如10 mA cm⁻²对应的过电位）通常基于1 M KOH等标准电解液体系，其他体系需重新锚定。 Ru单原子NiFe层状双氢氧化物水分解优化 的端到端可复用工作流：4 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "catalytic",
     "defective",
@@ -22,10 +22,41 @@
     "ru单原子nife层状双氢氧化物水分解优化",
     "single-atomic",
     "sites",
-    "splitting"
+    "splitting",
+    "electrocatalysis",
+    "water-splitting",
+    "lsvar",
+    "tafel-analysis",
+    "electrochemical-impedance-spectroscopy",
+    "double-layer-capacitance",
+    "three-electrode-system",
+    "alkaline-electrolyte",
+    "workflow",
+    "workflow-planning"
   ],
   "scenario_id": "Ru单原子NiFe层状双氢氧化物水分解优化",
   "source_papers": [
     "doi_https_doi_org_10_1038_s41467_021_24828_9"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 60.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Ru单原子NiFe层状双氢氧化物水分解优化（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "Ru单原子NiFe层状双氢氧化物水分解优化",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "Ru单原子NiFe层状双氢氧化物水分解优化"
+  ],
+  "batch": "2026-09-14"
 }

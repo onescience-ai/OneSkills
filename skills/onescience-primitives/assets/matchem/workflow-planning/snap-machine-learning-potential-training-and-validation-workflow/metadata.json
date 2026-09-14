@@ -1,0 +1,39 @@
+{
+  "name": "snap-machine-learning-potential-training-and-validation-workflow",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向金属有机框架等复杂晶体材料，构建和验证高精度 SNAP 机器学习势函数（MLP）的通用工作流程。该流程利用主动学习算法高效构建多样化训练集，通过第一性原理计算生成参考数据，并经过严格的超参数优化与性能验证，确保势函数在分子动力学模拟中能准确再现材料的结构、能量和力学性质。流程整合了构型生成、多样化采样、量子力学计算、模型训练与模拟验证的完整闭环，为缺乏高通量实验数据的复杂体系提供了一条系统化的势函数开发路径。",
+  "tags": [
+    "machine-learning-potential",
+    "snap",
+    "metal-organic-frameworks",
+    "active-learning",
+    "cbad",
+    "cp2k",
+    "lammps",
+    "molecular-dynamics",
+    "ridge-regression"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 77.8,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Quantum-accurate machine learning potentials for metal-organic frameworks using temperature driven active learning",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_10_1038_s41524_024_01427_y",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "MOF量子精度机器学习势温度主动学习",
+  "grounded_ratio": 1.0
+}

@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "GAN与正规化流湍流降阶生成。面向湍流快照与低维潜变量数据完成GAN与正规化流湍流降阶生成。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "GAN与正规化流湍流降阶生成。面向湍流快照与低维潜变量数据完成GAN与正规化流湍流降阶生成。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 GAN与正规化流湍流降阶生成 的端到端可复用工作流：5 个节点，核心模型 GAN、Normalizing flow。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "adversarial",
     "aerodynamic",
@@ -22,7 +22,12 @@
     "generative",
     "geometry",
     "ig-gan_",
-    "intrinsic"
+    "intrinsic",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s093",
+    "normalizing-flow"
   ],
   "scenario_id": "CFD_S093",
   "source_papers": [
@@ -31,5 +36,23 @@
     "sha256:9a46fc4c2a9fb25796483ffaf48f01c1c863d11bf78036fba38e12c98add81a1",
     "sha256:f98b4a220fe949f6b34dadfa0c0d4e02b1700d852887b73b3d95c040d820f68e",
     "sha256:185c735cbcbbac7ab8e2a832ed4fbc06436880c4e6c6c0373d87c42ba5f64d70"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "GAN与正规化流湍流降阶生成（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S093",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S093"
+  ],
+  "batch": "2026-09-14"
 }

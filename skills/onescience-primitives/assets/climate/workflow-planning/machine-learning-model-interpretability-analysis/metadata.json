@@ -1,0 +1,33 @@
+{
+  "name": "machine-learning-model-interpretability-analysis",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "应用SHAP（SHapley Additive exPlanations）等可解释性方法，解释机器学习模型（如随机森林）的输出。通过计算Shapley值量化每个特征对预测的贡献，支持全局特征重要性排序、局部交互分析、特征与样本聚类，以理解模型行为、进行特征选择和模型调试。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。",
+  "tags": [
+    "machine-learning-model-interpretability-analysis",
+    "datapipe",
+    "fallback"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 77.8,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Integration of shapley additive explanations with random forest model for quantitative precipitation estimation of mesoscale convective systems",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:d702eb7f16a0f1fd56249050ce60118c2eb7dc9d88dfa92f69600da386c97a7a",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E34",
+  "grounded_ratio": 1.0
+}

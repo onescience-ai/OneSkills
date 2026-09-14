@@ -1,0 +1,40 @@
+{
+  "name": "arcgis-pro-gis-software",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向环境灾害易发性评价、土地利用分析等需要大规模空间数据处理与地形因子提取的科研场景，选择或设计满足多源矢量/栅格数据集成、地形指数批量计算和空间建模要求的地理信息系统工具链。ArcGIS Pro 是 Esri 公司推出的专业 GIS 平台，其 Spatial Analyst 扩展模块提供欧几里得距离、地形分析（TRI、TWI、SPI、坡度、曲率）、地统计插值（IDW）及随机点生成等核心功能，可完成从 DEM 衍生变量计算到最终专题制图的完整流程；相关校准数值来自洪水易发性制图体系，供量级参考。",
+  "tags": [
+    "arcgis-pro",
+    "gis",
+    "terrain-analysis",
+    "dem",
+    "euclidean-distance",
+    "idw-interpolation",
+    "spatial-analyst",
+    "flood-susceptibility",
+    "geospatial-modeling",
+    "remote-sensing"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 66.9,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Investigating the Role of the Key Conditioning Factors in Flood Susceptibility Mapping Through Machine Learning Approaches",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:1240eae1c3dbfdecaad2b2b4f3d0e2beb0b43c20031b21f5d3f5a5543454a5b7",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E76",
+  "grounded_ratio": 1.0
+}

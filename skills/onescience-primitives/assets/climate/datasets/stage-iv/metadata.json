@@ -1,0 +1,39 @@
+{
+  "name": "stage-iv",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向降水产品精度评估与深度学习降尺度训练任务，选择满足美国本土4公里/逐小时时空分辨率要求的地面参考真值数据集。Stage IV由NCEP生成，融合约140部雷达与约5500个雨量计观测，覆盖2002年至今，广泛用作降水偏差校正、卫星产品验证与水文驱动的基准数据。其局限在于山区与雷达稀疏区域覆盖有限，且可能包含雷达传感器导致的伪大值。获取途径为NCAR数据门户。",
+  "tags": [
+    "stage-iv",
+    "precipitation",
+    "radar-gauge-merge",
+    "ncep",
+    "conus",
+    "precipitation-evaluation",
+    "reference-dataset",
+    "deep-learning-labels",
+    "hourly-precipitation"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 78.3,
+  "accuracy": 100.0,
+  "authority": 71.9,
+  "generalization": 58.2,
+  "source_paper": {
+    "title": "Customized deep learning for precipitation bias correction and downscaling",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:650856d7eed5c5d1484c5661d7d1bd761abb8f52b5cfc6434db7f05877e087fa",
+    "venue": "Geoscientific model development",
+    "cited_by_count": 60,
+    "objective_score": 59.9
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E15",
+  "grounded_ratio": 0.6
+}

@@ -1,0 +1,33 @@
+{
+  "name": "gencast-global-probabilistic-weather-forecasting-model",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "一种基于条件扩散模型和图神经网络的全球概率天气预报模型，通过迭代去噪过程生成15天、0.25°分辨率的全球集合预报。其技巧和速度优于欧洲中期天气预报中心（ECMWF）的业务集合预报系统ENS。模型训练使用ERA5再分析数据，采用两阶段训练策略（先1°分辨率预训练，后0.25°分辨率微调），并利用条件扩散采样协议从噪声中恢复天气状态。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。",
+  "tags": [
+    "gencast-global-probabilistic-weather-forecasting-model",
+    "tool",
+    "fallback"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 75.7,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "GenCast_ learning skillful ensemble forecasting of medium-range weather",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:2af6b1493f3f357b68d5195bcae8d3c9578b8daed7dec02c1bb101c5f8eaedb7",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E3",
+  "grounded_ratio": 1.0
+}

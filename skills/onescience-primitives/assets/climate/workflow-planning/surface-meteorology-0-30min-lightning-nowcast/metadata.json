@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「地面气象要素驱动的0—30分钟雷电临近预报」工作流。利用站点温湿压风等常规观测，预测周边区域未来0—30分钟是否发生云地闪电并给出概率。覆盖从临近观测及任务边界预检到检验命中率、虚警率和可靠度的完整管线。得到可复现、可审计的分时间窗雷电发生概率和告警、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「地面气象要素驱动的0—30分钟雷电临近预报」工作流。利用站点温湿压风等常规观测，预测周边区域未来0—30分钟是否发生云地闪电并给出概率。覆盖从临近观测及任务边界预检到检验命中率、虚警率和可靠度的完整管线。得到可复现、可审计的分时间窗雷电发生概率和告警、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向单站气象观测的临近闪电活动风险预报，利用机器学习模型基于常见的地表气象参数（气压、温度、相对湿度、风速）在未来0-30分钟内预测指定半径（如30公里）范围内是否发生闪电。该方法通过自动机器学习（如TPOT）进行模型选择与超参数调优，并采用专门针对不平衡稀有事件的验证流程进行评估，可为航空气象、户外活动安全等场景提供决策支持。 地面气象要素驱动的0—30分钟雷电临近预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "algorithms",
     "among",
@@ -22,11 +22,45 @@
     "machine",
     "meteorological",
     "nowcast",
-    "nowcasting"
+    "nowcasting",
+    "lightning-nowcasting",
+    "xgboost",
+    "tpot",
+    "surface-meteorological-parameters",
+    "binary-classification",
+    "imbalanced-data",
+    "ensemble-learning",
+    "machine-learning-weather",
+    "single-station-prediction",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e52"
   ],
   "scenario_id": "E52",
   "source_papers": [
     "sha256:213a92951409d6c7b6cd3f8e4d695facd3814913bc293342df07a38c0fe16e9d",
     "sha256:886ba2ab174501dacf6ec248e2083f69485c9b2f291d7819f02c7e1d8a3252cc"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "地面气象要素驱动的0—30分钟雷电临近预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E52",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E52"
+  ],
+  "batch": "2026-09-14"
 }

@@ -1,0 +1,39 @@
+{
+  "name": "tio2-cspbbr3-s-scheme-heterojunction-preparation-via-electrostatic-self-assembly",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向光催化材料设计中构建异质结以增强电荷分离效率的需求，选择或设计一种基于静电自组装的温和、快速、可调控负载比的制备方法。该方法将预先合成的金属氧化物纳米结构（如TiO₂纳米纤维）与钙钛矿量子点（如CsPbBr₃）在非极性溶剂中通过表面静电吸引直接组装，形成具有紧密接触界面的S-scheme异质结复合材料。该流程涵盖了从组分分散、组装到产物回收的完整步骤，适用于制备一系列不同负载比的纳米复合材料，其核心是利用材料表面电荷差异实现温和条件下的自发组装，避免了复杂的化学键合步骤。",
+  "tags": [
+    "static-self-assembly",
+    "s-scheme-heterojunction",
+    "tio2",
+    "perovskite-qds",
+    "photocatalysis",
+    "co2-reduction",
+    "nanocomposite",
+    "electrospinning",
+    "hot-injection"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 81.5,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 99.2,
+  "source_paper": {
+    "title": "Unique S-scheme heterojunctions in self-assembled TiO2/CsPbBr3 hybrids for CO2 photoreduction",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_10_1038_s41467_020_18350_7",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "TiO2CsPbBr3异质结CO2光还原设计",
+  "grounded_ratio": 1.0
+}

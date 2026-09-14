@@ -1,0 +1,39 @@
+{
+  "name": "kling-gupta-efficiency-kge-metric",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向水文模型或预报模型的性能评估，需要选择或设计一个能同时捕捉相关性、偏差和变异性误差的综合效率指标。Kling-Gupta效率（KGE）将均方根误差分解为相关系数、均值偏差比和标准差变异性比三个独立分量，以几何距离的方式度量预测序列与观测序列的吻合度，其值越接近1表示模拟性能越好。该指标为校准或评估水文、气象、水资源领域的模型预测提供了比单一误差指标更丰富的诊断信息，例如可以识别模型是整体偏湿、偏干还是波动幅度失真。本文档详述了其通用计算流程、各分量含义、适用场景、与常用指标（如NSE）的对比边界以及典型使用中的质量检查要点。",
+  "tags": [
+    "hydrology",
+    "streamflow",
+    "model-evaluation",
+    "efficiency-metric",
+    "kling-gupta-efficiency",
+    "forecast-verification",
+    "performance-diagnosis",
+    "bias-variability",
+    "nse-comparison"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 74.4,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 70.5,
+  "source_paper": {
+    "title": "Using a long short-term memory (LSTM) neural network to boost river streamflow forecasts over the western United States",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:30bbaf5e0db7a1472a24b08bbac04deb6edb5df3abd3f6bfb3d2d08330dc2206",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E6",
+  "grounded_ratio": 0.5
+}

@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「雷达—卫星—雨量计多模态同期定量降水估计」工作流。融合雷达、红外卫星和雨量计，估计同一时段的地面降水率或累积量；用于QPE产品，不生成未来降水。覆盖从源观测和参考资料及任务边界预检到按站点、强度和天气系统留出验证的完整管线。得到可复现、可审计的同期格点降水率或累积降水、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「雷达—卫星—雨量计多模态同期定量降水估计」工作流。融合雷达、红外卫星和雨量计，估计同一时段的地面降水率或累积量；用于QPE产品，不生成未来降水。覆盖从源观测和参考资料及任务边界预检到按站点、强度和天气系统留出验证的完整管线。得到可复现、可审计的同期格点降水率或累积降水、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 雷达—卫星—雨量计多模态同期定量降水估计 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "algorithm",
     "approaches",
@@ -22,7 +22,11 @@
     "learning",
     "meteorological",
     "method",
-    "multimodal"
+    "multimodal",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e21"
   ],
   "scenario_id": "E21",
   "source_papers": [
@@ -30,5 +34,23 @@
     "sha256:b6af9e7d2de326d3524d8cab932299b3e2138b2690e62b0e35adc99a4445cf2e",
     "sha256:1e4810cc47508cd5911b62c6db663f1bd333888d0642e1601265066854662ce6",
     "sha256:7c3b05cc0fff38dcccb821df5b0512dae05fa3b3ab8f447913460a143eccc6cd"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "雷达—卫星—雨量计多模态同期定量降水估计（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E21",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E21"
+  ],
+  "batch": "2026-09-14"
 }

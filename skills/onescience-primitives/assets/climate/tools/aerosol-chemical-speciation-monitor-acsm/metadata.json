@@ -1,0 +1,39 @@
+{
+  "name": "aerosol-chemical-speciation-monitor-acsm",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向大气环境中亚微米气溶胶化学组分的在线连续监测，选择或设计满足近实时、非折射性组分同步测量要求的仪器部署与数据获取方案。Aerosol Chemical Speciation Monitor (ACSM) 是一款能够在线、近实时测量环境气溶胶中有机物、铵、硫酸盐、硝酸盐、氯化物等主要非折射性化学组分质量浓度的标准化监测工具，广泛部署于大气观测站（如 SIRTA），在 ACTRIS 等国际监测网络框架下运行。该仪器为气溶胶来源解析、空气质量模型评估和污染事件追踪提供基础化学指纹数据，常与黑碳测量仪器联用以构建完整的 PM1 化学质量平衡。",
+  "tags": [
+    "acsm",
+    "aerosol-chemical-speciation-monitor",
+    "submicron-aerosol",
+    "non-refractory-components",
+    "online-monitoring",
+    "pm1",
+    "sirta",
+    "actris",
+    "air-quality"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 67.9,
+  "accuracy": 77.5,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Meteorology-driven variability of air pollution (PM1) revealed with explainable machine learning",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:83306643b55d01eaaddb190df32810421ab7a7b50abcc29f738b59f2dbb9a824",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E45",
+  "grounded_ratio": 1.0
+}

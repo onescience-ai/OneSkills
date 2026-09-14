@@ -1,0 +1,39 @@
+{
+  "name": "dust-event-forecasting-with-multi-task-deep-learning",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向提前预警沙尘等气溶胶污染事件的气象与环境监测场景，可构建融合多源再分析数据与地面观测的多任务深度学习预测模型。该方法通过联合训练一个空间重建辅助任务与一个局地事件检测主任务，以提升对未来12至72小时地面PM10浓度及相关沙尘事件的预测能力，尤其适用于大范围、长时间序列的气象驱动型污染预报。校准数值来自以色列地区18年的ERA5、CAMS和地面监测数据。",
+  "tags": [
+    "dust-event-forecasting",
+    "deep-learning",
+    "multi-task-learning",
+    "pm10",
+    "era5",
+    "cams",
+    "air-quality-prediction",
+    "ordinal-regression",
+    "time-series"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 77.0,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Deep multi-task learning for early warnings of dust events implemented for the Middle East",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:93f7054280b564840983a34764a34fffdc45b826893bdf3699b1cdef9f4664cb",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E92",
+  "grounded_ratio": 1.0
+}

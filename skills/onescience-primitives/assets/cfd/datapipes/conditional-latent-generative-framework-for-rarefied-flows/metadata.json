@@ -1,0 +1,41 @@
+{
+  "name": "conditional-latent-generative-framework-for-rarefied-flows",
+  "type": "datapipe",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向参数化稀疏（克努森数、马赫数等）高维流场的高效预测与生成，设计并实施一个端到端的框架，该框架将神经场表示、低维潜在传输与物理一致性修正解耦为独立模块。核心思路是：首先利用神经场自解码器为每个训练条件学习独立的潜在编码，通过PCA构建紧凑的潜在图表；然后在图表上训练条件生成模型（流匹配或扩散）以学习不同条件间的潜在映射；最终通过冻结的物理适配器进行后处理修正。该方法将高维场表示与条件生成分离，使得在参数空间内插值或外推新条件下的流场预测成为可能，并已在二维驱动空腔和高超声速圆柱绕流等基准问题上验证。",
+  "tags": [
+    "conditional-generative-model",
+    "neural-field",
+    "rarefied-flow",
+    "latent-space-transport",
+    "physics-informed",
+    "flow-matching",
+    "diffusion-model",
+    "pca-chart",
+    "parameterized-flow",
+    "cavity-flow",
+    "cylinder-flow"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 85.9,
+  "accuracy": 100.0,
+  "authority": 52.0,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "Physics-Guided Generative Surrogates for Parametric Rarefied Flows with Neural-Field Auto-Decoders_ A Pipeline-Level Study of Flow Matching and Diffusion",
+    "doi": "",
+    "source": "arxiv",
+    "external_id": "sha256:fad98ee0538efcca76a6e911b77cf4d9619edd79b2271dcd833d850c91949e61",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 31.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "CFD_S092",
+  "grounded_ratio": 0.5
+}

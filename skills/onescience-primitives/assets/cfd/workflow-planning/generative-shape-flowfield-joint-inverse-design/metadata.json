@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "生成模型气动外形与流场联合逆向设计。面向翼型几何流场性能联合数据完成生成模型气动外形与流场联合逆向设计。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "生成模型气动外形与流场联合逆向设计。面向翼型几何流场性能联合数据完成生成模型气动外形与流场联合逆向设计。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 生成模型气动外形与流场联合逆向设计 的端到端可复用工作流：5 个节点，核心模型 Latent diffusion model、Generative design model。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accessible",
     "aerodynamic",
@@ -22,7 +22,13 @@
     "dynamical",
     "encoding",
     "events",
-    "exploration"
+    "exploration",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s094",
+    "latent-diffusion-model",
+    "generative-design-model"
   ],
   "scenario_id": "CFD_S094",
   "source_papers": [
@@ -32,5 +38,23 @@
     "sha256:06f91dd2a0f6e94861fa651cabe6e1dd77fffb6fa22848f96ae745d29bb101b4",
     "sha256:132a132f567914728b8669fb06cf78ab610f403c41e5173205609b6c966d57de",
     "sha256:ce3e55f2c06869e2eb86d088b7b39fff4d9edf76d5d3cdf287417bcf375682ca"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "生成模型气动外形与流场联合逆向设计（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S094",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S094"
+  ],
+  "batch": "2026-09-14"
 }

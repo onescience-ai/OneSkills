@@ -1,0 +1,38 @@
+{
+  "name": "data-efficient-machine-learning-potentials-modeling-catalytic",
+  "type": "model",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向在反应机制不完全知晓的条件下，高效发现反应路径并构建精确势能面的需求，设计一种整合在线概率增强采样（OPES）与不确定性感知机器学习势能面的模拟方案。该方法通过外部偏差势驱动系统自发探索反应事件，同时利用机器学习模型预测的局部环境不确定性，在模拟过程中动态触发从头算校正，从而在极少预设知识的情况下，迭代式地发现反应路径集合并收集用于构建高精度势能面的原子构型。该方法特别适用于催化剂表面反应、复杂相变及生物分子构象转变等存在能垒跨越事件的计算研究。",
+  "tags": [
+    "enhanced-sampling",
+    "uncertainty-aware-md",
+    "active-learning",
+    "opes",
+    "machine-learning-potential",
+    "reaction-pathway-discovery",
+    "free-energy-surface",
+    "plumed"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 71.0,
+  "accuracy": 60.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Data efficient machine learning potentials for modeling catalytic reactivity via active learning and enhanced sampling",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_10_1038_s41524_024_01481_6",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "催化反应机器学习势主动学习与增强采样",
+  "grounded_ratio": 0.571
+}

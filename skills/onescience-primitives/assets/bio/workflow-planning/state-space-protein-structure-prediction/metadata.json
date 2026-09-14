@@ -1,0 +1,39 @@
+{
+  "name": "state-space-protein-structure-prediction",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向蛋白质构象异质性表征任务，将传统单一结构预测扩展为状态空间推断的计算流程。目标是从蛋白质序列出发，结合生物学背景条件（配体、pH、翻译后修饰、结合伙伴等），推断可访问的构象状态集合、它们的相对群体、能量景观、连接路径及对扰动的响应。该流程适用于蛋白质功能依赖于快速动力学过程、变构机制、折叠切换或低占位激发态等场景，由深度学习构象生成、物理能量建模和实验约束整合三个核心阶段构成迭代框架。",
+  "tags": [
+    "conformational-ensemble",
+    "protein-dynamics",
+    "state-space-inference",
+    "free-energy-landscape",
+    "allosteric-mechanism",
+    "molecular-dynamics",
+    "deer-spectroscopy",
+    "deeplearning-protein",
+    "conformational-switching"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 90.1,
+  "accuracy": 100.0,
+  "authority": 60.5,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Expanding Protein Structure Prediction into Conformational State Space",
+    "doi": "",
+    "source": "arxiv",
+    "external_id": "2608.02866",
+    "venue": "arXiv (Cornell University)",
+    "cited_by_count": 0,
+    "objective_score": 43.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "B07",
+  "grounded_ratio": 1.0
+}

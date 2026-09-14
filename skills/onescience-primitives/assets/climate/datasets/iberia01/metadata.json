@@ -1,0 +1,38 @@
+{
+  "name": "iberia01",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向伊比利亚半岛高分辨率气候变量的深度学习降尺度校准与评估任务，选择或设计满足日分辨率、0.1°×0.1°网格化、包含温度与降水多变量要求的观测基准数据集。Iberia01 数据集基于 275 个温度站和 3486 个降水站构建，覆盖 1979–2014 年连续逐日平均气温、最高气温、最低气温和累积降水量，是该区域最高分辨率的常规网格化地面观测产品，广泛用于训练、校准和评估区域气候降尺度模型（如基于 CNN 的方法），也可作为再分析数据（如 ERA5）质量验证的独立真值参考。",
+  "tags": [
+    "iberia01",
+    "downscaling-dataset",
+    "climate-observations",
+    "daily-temperature",
+    "daily-precipitation",
+    "deep-learning-calibration",
+    "high-resolution-gridded",
+    "iberian-peninsula"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 68.4,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 53.2,
+  "source_paper": {
+    "title": "High-resolution downscaling of CMIP6 Earth system and global climate models using deep learning for Iberia",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:58614b28941d8b18efe6e4ff07ce72b1c59834eab5f2226d4dfac77ec1362c47",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E38",
+  "grounded_ratio": 0.5
+}

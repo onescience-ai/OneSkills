@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 渤黄海海浪智能预报模型 的「渤黄海海浪智能预报模型」工作流。任务需要兼顾近岸浅水效应、风浪物理联系和开放边界连续性的快速海浪预报能力。覆盖从模型输入与运行条件预检到独立评估与交付判定的完整管线。得到覆盖渤黄海、可局地加密、逐小时输出不少于72小时的海浪模型和产品，并在试运行中用独立资料证明性能。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 渤黄海海浪智能预报模型 的「渤黄海海浪智能预报模型」工作流。任务需要兼顾近岸浅水效应、风浪物理联系和开放边界连续性的快速海浪预报能力。覆盖从模型输入与运行条件预检到独立评估与交付判定的完整管线。得到覆盖渤黄海、可局地加密、逐小时输出不少于72小时的海浪模型和产品，并在试运行中用独立资料证明性能。 渤黄海海浪智能预报模型 的端到端可复用工作流：6 个节点，核心模型 渤黄海海浪智能预报模型。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "alternative",
     "conventional",
@@ -16,8 +16,30 @@
     "models",
     "m风场和外边界是否能在统一网格",
     "ocean",
-    "渤黄海海浪智能预报模型"
+    "渤黄海海浪智能预报模型",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e106"
   ],
   "scenario_id": "E106",
-  "source_papers": []
+  "source_papers": [],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "渤黄海海浪智能预报模型（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E106",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E106"
+  ],
+  "batch": "2026-09-14"
 }

@@ -1,0 +1,40 @@
+{
+  "name": "genetic-management-and-cryopreservation-of-captive-populations",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向人工增殖放流体系中塘养种群的遗传保真需求，选择或设计能最小化圈养与野生种群遗传分歧的管理方案与种质保存技术流程。核心涵盖进化显著单元鉴定、有效种群大小维持、精子超低温冷冻保存及细胞系建立等环节，适用于濒危特有鱼类的保护性繁育与增殖放流项目中种质资源的长期保存与遗传管理。",
+  "tags": [
+    "genetic-management",
+    "cryopreservation",
+    "captive-population",
+    "freshwater-fish",
+    "conservation-aquaculture",
+    "broodstock",
+    "sperm-freezing",
+    "cell-culture",
+    "endangered-species",
+    "population-genetics"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 74.3,
+  "accuracy": 75.0,
+  "authority": 67.4,
+  "generalization": 78.5,
+  "source_paper": {
+    "title": "[Overview of the artificial enhancement and release of endemic freshwater fish in China].",
+    "doi": "10.11813/j.issn.0254-5853.2013.4.0267",
+    "source": "openalex",
+    "external_id": "10.11813/j.issn.0254-5853.2013.4.0267",
+    "venue": "PubMed",
+    "cited_by_count": 33,
+    "objective_score": 53.4
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E109",
+  "grounded_ratio": 0.5
+}

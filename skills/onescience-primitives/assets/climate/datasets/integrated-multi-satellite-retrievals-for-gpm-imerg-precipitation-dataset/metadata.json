@@ -1,0 +1,39 @@
+{
+  "name": "integrated-multi-satellite-retrievals-for-gpm-imerg-precipitation-dataset",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向全球滑坡实时预报与历史降雨-滑坡关系分析，选择并使用融合多卫星观测的高分辨率降水数据产品。IMERG 作为全球降水测量（GPM）任务的核心产出，通过整合多颗卫星的被动微波与红外辐射数据，提供近实时（Early）、延迟（Late）与校正后（Final）三种延迟等级的全球降水估计。在降雨触发滑坡的建模与预报中，Early 产品因低延迟特性适用于实时预警场景，Final 产品则用于历史数据回溯、气候校正因子计算与模型训练。",
+  "tags": [
+    "imerg",
+    "precipitation-dataset",
+    "gpm",
+    "satellite-rainfall",
+    "landslide-nowcasting",
+    "global-scale",
+    "early-latency",
+    "rainfall-trigger",
+    "remote-sensing"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 63.6,
+  "accuracy": 67.5,
+  "authority": 51.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "Data-Driven Landslide Nowcasting at the Global Scale",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:2f52c256cde4d491ab63026b8f338a58f7bc76be36aa858ffad21c906f525d16",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E51",
+  "grounded_ratio": 0.5
+}

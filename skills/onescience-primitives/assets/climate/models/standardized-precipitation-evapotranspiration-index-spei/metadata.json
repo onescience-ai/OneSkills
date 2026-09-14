@@ -1,0 +1,38 @@
+{
+  "name": "standardized-precipitation-evapotranspiration-index-spei",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向量化区域气象干旱程度的任务，选择或设计一个同时考虑水分收入（降水）与支出（潜在蒸散发）的综合指数，以获得比仅依赖降水的指数更准确的干旱状态表征。标准化降水-蒸散发指数（SPEI）通过计算标准化的月度水分亏缺（降水减潜在蒸散发）来实现这一目标，其输出值（如负值表示干旱）可直接用于干旱监测、预警和相关气候分析。该方法广泛应用于区域气候研究与水资源管理场景，例如结合全球干旱监测（GDM）数据进行干旱预测。",
+  "tags": [
+    "drought-index",
+    "spei",
+    "meteorological-drought",
+    "precipitation-deficit",
+    "potential-evapotranspiration",
+    "climate-data",
+    "drought-monitoring",
+    "water-balance"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 74.3,
+  "accuracy": 85.0,
+  "authority": 59.4,
+  "generalization": 72.8,
+  "source_paper": {
+    "title": "Regional drought forecasting in data-scarce regions through a novel cluster-based liquid neural network",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:98962b1eac2405fc16c2f2e2c4a4e0bc1bdb02bbdb8b6bd5e5587a2307d59dc2",
+    "venue": "Scientific Reports",
+    "cited_by_count": 0,
+    "objective_score": 42.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E18",
+  "grounded_ratio": 0.5
+}

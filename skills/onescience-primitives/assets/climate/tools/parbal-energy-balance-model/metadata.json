@@ -1,0 +1,39 @@
+{
+  "name": "parbal-energy-balance-model",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向山区及高海拔流域的积雪当量（SWE）定量估算与重建任务，需要一个能够逐小时、逐像元计算融化能量收支的分布式物理模型。ParBal（Parallel Energy Balance）是一个全能量平衡的雪和冰融化模型，以小时为时间步长，通过分别计算潜在融雪量与积雪覆盖面积来估算实际融化量，是 SWE 反向重建方法链的核心计算引擎。模型接受降尺度后的气象辐射强迫、遥感积雪产品和高分辨率地形参数，输出每个像元的逐时融雪量；不直接使用降水输入，从而回避了山区降水估计的最大不确定性源。该工具适用于使用 MODIS 尺度遥感驱动、需要高时空分辨率融化估算的流域水文与水资源管理场景。",
+  "tags": [
+    "parbal",
+    "energy-balance",
+    "snow-melt",
+    "swe-reconstruction",
+    "remote-sensing",
+    "glacial-hydrology",
+    "distributed-melt-model",
+    "hourly-melt",
+    "modis-resolution"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 76.9,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Using machine learning for real-time estimates of snow water equivalent in the watersheds of Afghanistan",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:9409ff819e2e58c2a840497b602f7f21e7e30dc455f46077268c078969409e67",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E40",
+  "grounded_ratio": 0.625
+}

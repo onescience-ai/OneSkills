@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「GRACE缺测期全球陆地水储量异常重建」工作流。利用气候、陆面和可用重力卫星资料填补GRACE空档并重建长期水储量异常；不直接等同于地下水储量。覆盖从目标序列及缺口及任务边界预检到交叉验证空间和年代泛化的完整管线。得到可复现、可审计的连续陆地水储量异常及不确定性、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向长时序全球陆地储水量异常重建任务，整合气候、水文、土地利用与植被指标等多源驱动数据，通过多方案输入、滑动窗口变量选择、多模型训练与测试、以及基于性能的方案集成工作流，生成基于不同GRACE/GRACE-FO解算方案（JPL, CSR, GSFC）的重建数据集。该工作流产出1940-2022年0.25°分辨率的月度TWS异常时间序列、去趋势去季节化版本以及全球平均TWS时间序列，适用于全球与区域水储量变化趋势分析、水文干旱监测及水循环研究。 GRACE缺测期全球陆地水储量异常重建 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "algorithms",
     "anomalies",
@@ -22,11 +22,44 @@
     "reconstruction",
     "self-supervised",
     "storage",
-    "terrestrial"
+    "terrestrial",
+    "terrestrial-water-storage",
+    "machine-learning",
+    "grace",
+    "global-hydrology",
+    "time-series",
+    "era5",
+    "random-forest",
+    "water-storage-anomaly",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e49"
   ],
   "scenario_id": "E49",
   "source_papers": [
     "sha256:84b1a2bd1751630973b5190947f42bf8081f889fefe34cbadac9f03ad17ffd6c",
     "sha256:016ed066372876134d53130085a396f7f1cfc29ae69de09b6f2e68b7fd298b62"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 93.2,
+  "source_paper": {
+    "title": "GRACE缺测期全球陆地水储量异常重建（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E49",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E49"
+  ],
+  "batch": "2026-09-14"
 }

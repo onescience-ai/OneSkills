@@ -1,0 +1,39 @@
+{
+  "name": "drone-based-forest-carbon-estimation-workflow",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向快速、大范围的森林活生物量碳储量估算，设计或执行从无人机影像采集到结构参数提取、生物量建模与验证的完整多步骤工作流。该流程通过无人机搭载RGB或LiDAR传感器获取高分辨率森林影像，自动或半自动提取冠幅、树高、胸径等关键结构参数，进而结合异速生长方程或机器学习模型进行地上生物量与碳储量的定量估算。流程强调与破坏性采样等地面数据的交叉验证以保障精度，适用于森林资源清查、碳汇项目监测、生态系统服务评估等场景，为林业管理和气候变化应对提供数据驱动的决策支持工具。",
+  "tags": [
+    "drone-remote-sensing",
+    "forest-carbon-stock",
+    "lidar-point-cloud",
+    "rgb-orthomosaic",
+    "allometric-equation",
+    "machine-learning-biomass",
+    "structural-parameter-extraction",
+    "forest-inventory",
+    "carbon-estimation"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.8,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Drones and machine learning for estimating forest carbon storage",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:b79a96490b0052258bee27d8686c68e253d2b4034e9a53a99917e26487da0e34",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E59",
+  "grounded_ratio": 0.571
+}

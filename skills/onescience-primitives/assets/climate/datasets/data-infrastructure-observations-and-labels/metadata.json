@@ -1,0 +1,33 @@
+{
+  "name": "data-infrastructure-observations-and-labels",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "雪崩危险等级预测系统所依赖的核心数据基础。包括来自瑞士州际测量和信息系统（IMIS）自动气象站网络超过20年的气象观测和雪盖模拟数据集（IMIS dataset），以及用于训练机器学习模型的地面真值标签数据集（Dforecast dataset），该标签数据集源自瑞士国家雪崩预警服务发布的公共雪崩预报。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。",
+  "tags": [
+    "data-infrastructure-observations-and-labels",
+    "dataset",
+    "fallback"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 60.6,
+  "accuracy": 60.0,
+  "authority": 51.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "Data-driven automated predictions of the avalanche danger level for dry-snow conditions in Switzerland",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:b3d1293c0a2feeeb4aa6cdd9ce3c239afd3fcb209f658bb82330ce6af916754e",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E32",
+  "grounded_ratio": 1.0
+}

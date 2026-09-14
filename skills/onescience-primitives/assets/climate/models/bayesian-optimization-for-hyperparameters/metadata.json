@@ -1,0 +1,39 @@
+{
+  "name": "bayesian-optimization-for-hyperparameters",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向机器学习模型训练中的超参数选择问题，贝叶斯优化（Bayesian Optimization）是一种高效的序列化智能搜索策略。它通过构建一个代理模型来近似未知的模型性能目标函数（如验证集准确率），并利用采集函数（Acquisition Function）在每次迭代中权衡“探索”与“利用”，从而以远低于网格搜索或随机搜索的评估成本，找到使目标函数最大化的超参数组合。该方法特别适用于超参数空间维度较高、单次模型评估耗时（如深度神经网络训练）的场景。",
+  "tags": [
+    "bayesian-optimization",
+    "hyperparameter-tuning",
+    "machine-learning",
+    "model-selection",
+    "sequential-optimization",
+    "black-box-optimization",
+    "deep-learning",
+    "grid-search",
+    "random-search"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 71.0,
+  "accuracy": 60.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Forest fire and smoke detection using deep learning-based learning without forgetting",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:173c1969679c7af76bfb008ceeb5d2bdc1eadbf9c81b7ffb6da633e3b83f70b2",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E22",
+  "grounded_ratio": 1.0
+}

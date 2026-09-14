@@ -1,0 +1,40 @@
+{
+  "name": "exploring-deep-learning-capabilities-surge-predictions-coastal",
+  "type": "datapipe",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向沿海站点小时级风暴潮概率预测，利用深度学习集合模型从大气再分析数据直接预测风暴潮信号。该方法涵盖从全球海平面观测（如GESLA-2）和ERA5再分析数据中提取预测变量、利用多种神经网络（ANN、LSTM、CNN、ConvLSTM）构建集成预报，并以连续概率评分（CRPS）进行技能评估的完整数据管道与建模流程。核心是通过超参数优化确定通用架构，并在每个站点训练模型集合以量化预测不确定性。该流程适用于全球具有足够长期观测数据的潮汐站，可为防灾减灾提供预报基础。",
+  "tags": [
+    "storm-surge-prediction",
+    "deep-learning",
+    "era5",
+    "gesla",
+    "ensemble-forecasting",
+    "crps-evaluation",
+    "lstm",
+    "convlstm",
+    "tide-gauge",
+    "coastal-hazard"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 80.8,
+  "accuracy": 75.0,
+  "authority": 71.7,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "Exploring deep learning capabilities for surge predictions in coastal areas",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:de63bc864c06e04ac5e504711f4ae651355415b02eee3d04e3b3e4784610e90e",
+    "venue": "Scientific Reports",
+    "cited_by_count": 98,
+    "objective_score": 59.6
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E11",
+  "grounded_ratio": 1.0
+}

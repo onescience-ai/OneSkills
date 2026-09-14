@@ -1,0 +1,39 @@
+{
+  "name": "dft",
+  "type": "model",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向电催化反应的理论研究需求，选择或设计满足机理阐明、限速步骤识别与催化剂活性比较要求的密度泛函理论（DFT）计算方法。该方法通过构建催化剂活性位点模型，系统探索反应路径并计算各中间体的吸附自由能，进而绘制自由能图、计算极限电位，以从理论上解释实验观测的催化性能差异。该流程适用于硝酸盐还原、二氧化碳还原等涉及多电子转移与质子耦合的电催化体系机理研究，具体参数校准数值来自Fe单原子催化剂模型，供量级参考；其他体系需以自身模型与计算条件重新设定。",
+  "tags": [
+    "density-functional-theory",
+    "electrocatalysis",
+    "nitrate-reduction",
+    "single-atom-catalyst",
+    "reaction-mechanism",
+    "free-energy-diagram",
+    "limiting-potential",
+    "computational-electrochemistry",
+    "fe-n4"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 84.0,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Electrochemical ammonia synthesis via nitrate reduction on Fe single atom catalyst",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_10_1038_s41467_021_23115_x",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "Fe单原子催化硝酸盐还原制氨",
+  "grounded_ratio": 0.571
+}

@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "物理边界与不变量约束神经算子学习。面向带守恒边界和无量纲约束PDE数据完成物理边界与不变量约束神经算子学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "物理边界与不变量约束神经算子学习。面向带守恒边界和无量纲约束PDE数据完成物理边界与不变量约束神经算子学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 物理边界与不变量约束神经算子学习 的端到端可复用工作流：5 个节点，核心模型 Physics-constrained neural operator。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "adversarial",
     "approximation",
@@ -22,7 +22,12 @@
     "continuous",
     "differential",
     "discovery",
-    "dynamics"
+    "dynamics",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s059",
+    "physics-constrained-neural-operator"
   ],
   "scenario_id": "CFD_S059",
   "source_papers": [
@@ -38,5 +43,23 @@
     "sha256:ff60a10c9ea880d0cb38cb955396c80bfddc7b09b9059014b2ec361bc3935bc4",
     "sha256:a31dcf027830936d2f2221a96ca4b85e95b8cd6c94371855f0c33d61f61bb4a8",
     "sha256:785e859f67f7b0447e06f9b271c0f27e58732a31c268d05e48359d1c480faa5a"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "物理边界与不变量约束神经算子学习（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S059",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S059"
+  ],
+  "batch": "2026-09-14"
 }

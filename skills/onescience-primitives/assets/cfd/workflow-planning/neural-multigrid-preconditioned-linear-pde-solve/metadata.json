@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "神经多重网格与预条件线性PDE求解。面向Poisson及稀疏线性系统数据完成神经多重网格与预条件线性PDE求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "神经多重网格与预条件线性PDE求解。面向Poisson及稀疏线性系统数据完成神经多重网格与预条件线性PDE求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 神经多重网格与预条件线性PDE求解 的端到端可复用工作流：5 个节点，核心模型 Neural multigrid、Learned preconditioner。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accurate",
     "boundary",
@@ -22,7 +22,12 @@
     "iteratively",
     "learned-preconditioner",
     "learning",
-    "lightspeed"
+    "lightspeed",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s069",
+    "neural-multigrid"
   ],
   "scenario_id": "CFD_S069",
   "source_papers": [
@@ -32,5 +37,23 @@
     "sha256:9bb280bd16810f4277bfaf71ed7a03398d657e3c4fc932a2e37d51c9550855ac",
     "sha256:8c1deadb38ba39da3af8e0c2f4938652348121e10439efa368afa7ccee2e69ab",
     "sha256:a096ad534dbdc7c631c8144c35fa5cf86fe9e889a46d86b8090508eb2af04e4f"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "神经多重网格与预条件线性PDE求解（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S069",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S069"
+  ],
+  "batch": "2026-09-14"
 }

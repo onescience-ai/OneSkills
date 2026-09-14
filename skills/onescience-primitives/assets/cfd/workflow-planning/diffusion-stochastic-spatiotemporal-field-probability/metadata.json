@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "扩散与随机过程时空场概率预测。面向随机或混沌PDE时空数据完成扩散与随机过程时空场概率预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "扩散与随机过程时空场概率预测。面向随机或混沌PDE时空数据完成扩散与随机过程时空场概率预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 扩散与随机过程时空场概率预测 的端到端可复用工作流：5 个节点，核心模型 Diffusion model、Stochastic process model。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "computational_fluid_dynamics",
     "decomposition",
@@ -22,7 +22,12 @@
     "efficient",
     "energy",
     "forecasting",
-    "functional"
+    "functional",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s021",
+    "stochastic-process-model"
   ],
   "scenario_id": "CFD_S021",
   "source_papers": [
@@ -35,5 +40,23 @@
     "sha256:fd6bd0a46031caeb31c9ecdf1d5e80bb7889fe2e8aef7150971970f9bf3ad4a7",
     "sha256:2a0a8074a9b069ca1f6c960f484ec257995704da67c375c736e5f36cb40b9e72",
     "sha256:428604421e85911d6504dd7c7c63af9e293487d5c6d009a4359100e0fc90093d"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "扩散与随机过程时空场概率预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S021",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S021"
+  ],
+  "batch": "2026-09-14"
 }

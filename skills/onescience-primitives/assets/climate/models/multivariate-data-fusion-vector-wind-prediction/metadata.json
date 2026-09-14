@@ -1,0 +1,39 @@
+{
+  "name": "multivariate-data-fusion-vector-wind-prediction",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向精细网格矢量风速（含风速大小与方向）的短期预测任务，构建一个融合风速、位势、温度、海拔等多变量气象数据的深度学习网络（MFWPN）。该方法采用空间与时间双融合模块，利用注意力机制与LSTM式门控提取时空先验知识，通过复合损失函数训练，并结合纬度加权评估指标体系进行验证。适用于需要高精度、高分辨率风场预报的气象服务与可再生能源调度场景。",
+  "tags": [
+    "wind-speed-prediction",
+    "deep-learning",
+    "data-fusion",
+    "cnn-transformer",
+    "numerical-weather-prediction",
+    "vector-wind",
+    "spatio-temporal-modeling",
+    "era5-data",
+    "wind-direction-accuracy"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 77.0,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "A machine learning model for hub-height short-term wind speed prediction",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:7279504ad9d21ed2ae32d1821646632e0da44ff756907242eafc49fcd12aaa0c",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E26",
+  "grounded_ratio": 0.5
+}

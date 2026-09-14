@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「高光谱卫星甲烷羽流像素级检测」工作流。从高光谱影像分割点源甲烷羽流并输出置信度，适用于过境时刻排放异常筛查；不直接给出连续排放率。覆盖从遥感观测标签及任务边界预检到按羽流强度、地表和跨区域泛化验证的完整管线。得到可复现、可审计的甲烷羽流像素掩膜、概率及候选源区、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「高光谱卫星甲烷羽流像素级检测」工作流。从高光谱影像分割点源甲烷羽流并输出置信度，适用于过境时刻排放异常筛查；不直接给出连续排放率。覆盖从遥感观测标签及任务边界预检到按羽流强度、地表和跨区域泛化验证的完整管线。得到可复现、可审计的甲烷羽流像素掩膜、概率及候选源区、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向甲烷排放遥感监测与机器学习模型开发，提供一个经过质量控制的标注数据集，该数据集包含高光谱（AVIRIS-NG）与模拟的多光谱（如WorldView-3）图像切片，涵盖羽流与非羽流区域，用于训练、验证和基准测试甲烷羽流语义分割算法。数据集标签经手动扩展与检查，正负样本平衡，并明确了测试集的划分日期（如10月18、21、25日获取的影像）。 面向利用高光谱或多光谱卫星数据进行甲烷羽流排放点自动检测的任务，选择或设计满足高召回率、低假阳性率要求的语义分割模型。STARCOP 是一个基于传感器不可知架构的模型家族，通过融合经典甲烷增强产品（如匹配滤波或比率特征）与深度学习，实现像素级的羽流识别与分割。该模型的核心优势在于能够显著降低误报，适用于从航空到卫星平台的不同观测场景，为大规模、自动化甲烷排放监控提供关键的前置检测工具。 高光谱卫星甲烷羽流像素级检测 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "earth",
     "hyperspectral",
@@ -16,10 +16,49 @@
     "models",
     "plumes",
     "segmentation",
-    "semantic"
+    "semantic",
+    "methane-detection",
+    "hyperspectral-imagery",
+    "semantic-segmentation",
+    "aviris-ng",
+    "dataset",
+    "machine-learning",
+    "remote-sensing",
+    "plume-segmentation",
+    "deep-learning",
+    "plume-mapping",
+    "emissions-monitoring",
+    "unet",
+    "mag1c",
+    "varon-ratio",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e81"
   ],
   "scenario_id": "E81",
   "source_papers": [
     "sha256:791d6dfdbb767673c04f92f24e0442fc0b158d909cfa0c3705bcb78f9c4528f0"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "高光谱卫星甲烷羽流像素级检测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E81",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E81"
+  ],
+  "batch": "2026-09-14"
 }

@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "可迁移参数化ROM与实时状态监测。面向跨几何参数CFD与稀疏监测数据完成可迁移参数化ROM与实时状态监测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "可迁移参数化ROM与实时状态监测。面向跨几何参数CFD与稀疏监测数据完成可迁移参数化ROM与实时状态监测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 可迁移参数化ROM与实时状态监测 的端到端可复用工作流：5 个节点，核心模型 Transferable ROM、Shallow recurrent decoder。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "based",
     "channel-porous",
@@ -22,7 +22,13 @@
     "flows",
     "fluid",
     "generalized",
-    "geometries"
+    "geometries",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s090",
+    "transferable-rom",
+    "shallow-recurrent-decoder"
   ],
   "scenario_id": "CFD_S090",
   "source_papers": [
@@ -32,5 +38,23 @@
     "sha256:a55994a68e7c2c2de0d72567536e44e48c3986ab181f19178e1a46f755af8ecd",
     "sha256:11852c6c10da986a198119711cd297e6c15ca1c6f0c0cf8a99415374bc16d998",
     "sha256:dceb7adefb3daafe9e67f0fe5a8c87632b0475793bf3eb6f260f469038bdbd4a"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "可迁移参数化ROM与实时状态监测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S090",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S090"
+  ],
+  "batch": "2026-09-14"
 }

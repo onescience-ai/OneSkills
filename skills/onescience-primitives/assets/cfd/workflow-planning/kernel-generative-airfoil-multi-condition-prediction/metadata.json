@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "核方法与生成模型翼型跨工况场预测。面向参数化翼型多工况与多保真数据完成核方法与生成模型翼型跨工况场预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "核方法与生成模型翼型跨工况场预测。面向参数化翼型多工况与多保真数据完成核方法与生成模型翼型跨工况场预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 核方法与生成模型翼型跨工况场预测 的端到端可复用工作流：5 个节点，核心模型 Kernel surrogate、Diffusion model。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "aerodynamic",
     "aerojepa_",
@@ -22,7 +22,12 @@
     "diffusion",
     "diffusion-model",
     "dimensionality",
-    "droplet"
+    "droplet",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s003",
+    "kernel-surrogate"
   ],
   "scenario_id": "CFD_S003",
   "source_papers": [
@@ -32,5 +37,23 @@
     "sha256:f9977205feec5dfdcf18e4434316a8418b6fd33c4ab7f99de34f5f7be19c991e",
     "sha256:6c21b594a293bbad8c99fe9929c1a3318c558d7aa6ad72ca35d0a95dad973898",
     "sha256:25bab3d3c4375ba56dbdc6c488ce6b6050069c8cf10db7d194bfd14fd3fc15a0"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "核方法与生成模型翼型跨工况场预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S003",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S003"
+  ],
+  "batch": "2026-09-14"
 }

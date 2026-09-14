@@ -1,0 +1,40 @@
+{
+  "name": "intellio3-ts",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向利用机器学习进行近地面臭氧浓度预报的场景，选择或设计一个能够处理多变量时间序列、融合气象与化学观测数据的神经网络模型，并建立可复现的训练、验证、评估与变量重要性分析流程。本文档描述了一套基于卷积神经网络（含 inception 块）的臭氧预测方案，涵盖从 TOAR 数据库与 COSMO-ERA6 再分析数据的获取与预处理，到模型构建（输入过去6天9个变量，输出未来1-4天日最大8小时平均臭氧浓度）、训练超参数设定（batch size 512, Adam 优化器, 初始学习率 10⁻⁴, 300 epochs）、基于时间划分的独立测试集评估，以及利用自助法进行输入变量重要性归因的完整技术路径，并附带与 OLS 回归、气候学、持续性等基线模型的比较框架。",
+  "tags": [
+    "ozone-forecast",
+    "cnn-inception",
+    "time-series-prediction",
+    "air-quality",
+    "neural-network",
+    "toar-database",
+    "meteorological-reanalysis",
+    "bootstrapping",
+    "variable-importance",
+    "dma8eu"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 85.7,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "IntelliO3-ts v1.0- a neural network approach to predict near-surface ozone concentrations in Germany",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:992b3c8bb28a29bb01aa1392627c7758ff8ea16d021355942a63873a93a6fedb",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E44",
+  "grounded_ratio": 0.5
+}

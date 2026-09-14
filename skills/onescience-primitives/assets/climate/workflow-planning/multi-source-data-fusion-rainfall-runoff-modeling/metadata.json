@@ -1,0 +1,39 @@
+{
+  "name": "multi-source-data-fusion-rainfall-runoff-modeling",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向水文预报与水资源管理，利用单一深度学习模型动态整合多个异质气象强迫数据产品（如不同来源的降水、温度数据），以缓解单一数据源的不确定性并提升流域径流模拟精度。该方法流程涵盖从多源数据预处理、模型训练（通常采用LSTM）、独立测试评估到模型可解释性分析的全链条，关键在于通过特征消融与归因分析揭示模型对不同数据源的动态组合机制。典型校准数值来自CAMELS数据集体系，其他流域需重新锚定。",
+  "tags": [
+    "rainfall-runoff-modeling",
+    "deep-learning",
+    "lstm",
+    "multi-source-data-fusion",
+    "data-harmonization",
+    "hydrological-signatures",
+    "model-interpretability",
+    "integrated-gradients",
+    "camels-dataset"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 96.5,
+  "accuracy": 100.0,
+  "authority": 85.8,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "A note on leveraging synergy in multiple meteorological data sets with deep learning for rainfall–runoff modeling",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:adbfecd3b3ac44294e18244450a888cf3633ec2416a4ac16ecd3217d9a82630f",
+    "venue": "Hydrology and earth system sciences",
+    "cited_by_count": 142,
+    "objective_score": 79.7
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E10",
+  "grounded_ratio": 1.0
+}

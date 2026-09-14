@@ -4,9 +4,9 @@
   "domain": "matchem",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 NULL 的「HfO2非晶液相机器学习势主动学习」工作流。研究对象为HfO2非晶液相机器学习势主动学习。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从参考数据审计与覆盖定义到分子动力学或结构探索验证的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 NULL 的「HfO2非晶液相机器学习势主动学习」工作流。研究对象为HfO2非晶液相机器学习势主动学习。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从参考数据审计与覆盖定义到分子动力学或结构探索验证的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 面向高精度原子间势开发，设计一种通过主动学习（Active Learning）从第一性原理分子动力学（AIMD）轨迹中自动采样最具信息量构型，以最少数据训练出满足指定能量拟合容差的高斯近似势（GAP）模型的自动化工作流。该工作流集成了无监督聚类（HDBSCAN）与贝叶斯优化（BO），旨在高效解决传统手动采样效率低、构型代表性不足的问题，确保最终势能模型在目标体系（如Hafnium dioxide等氧化物）的构型空间上具备可靠的预测能力。 HfO2非晶液相机器学习势主动学习 的端到端可复用工作流：4 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "active",
     "amorphous",
@@ -19,10 +19,41 @@
     "machine-learned",
     "matchem",
     "null",
-    "potentials"
+    "potentials",
+    "active-learning",
+    "gap-potential",
+    "interatomic-potential",
+    "molecular-dynamics",
+    "configuration-sampling",
+    "bayesian-optimization",
+    "hdbscan-clustering",
+    "amorphous-materials",
+    "workflow",
+    "workflow-planning"
   ],
   "scenario_id": "HfO2非晶液相机器学习势主动学习",
   "source_papers": [
     "doi_10_1038_s41524_020_00367_7"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "HfO2非晶液相机器学习势主动学习（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "HfO2非晶液相机器学习势主动学习",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "HfO2非晶液相机器学习势主动学习"
+  ],
+  "batch": "2026-09-14"
 }

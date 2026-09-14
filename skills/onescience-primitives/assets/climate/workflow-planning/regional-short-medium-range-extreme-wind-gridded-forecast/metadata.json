@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「区域短中期极端风速格点预报」工作流。从近期区域气象场预测未来短中期极端风速格点，重点改善稀有强风事件的幅度和空间命中。覆盖从起报资料及任务边界预检到检验峰值误差、CSI和FSS的完整管线。得到可复现、可审计的多时效风速格点和超阈概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「区域短中期极端风速格点预报」工作流。从近期区域气象场预测未来短中期极端风速格点，重点改善稀有强风事件的幅度和空间命中。覆盖从起报资料及任务边界预检到检验峰值误差、CSI和FSS的完整管线。得到可复现、可审计的多时效风速格点和超阈概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 区域短中期极端风速格点预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "adapting",
     "convolutional",
@@ -22,10 +22,32 @@
     "range",
     "regression",
     "short",
-    "spatio-temporal"
+    "spatio-temporal",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e95"
   ],
   "scenario_id": "E95",
   "source_papers": [
     "sha256:5e9c7b05a2be66b1a780749d1cbb8af5ad002118fda1f8642c96c45edced3364"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "区域短中期极端风速格点预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E95",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E95"
+  ],
+  "batch": "2026-09-14"
 }

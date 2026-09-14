@@ -1,0 +1,38 @@
+{
+  "name": "machine-learning-modeling-plant-phenology-coupling-satellite",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.2",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向卫星遥感或格点气象驱动的物候期预测模型构建与验证任务，需要一份提供地面真值的观测数据集，该数据集记录特定物种物候期在特定地点与日期的实际发生。此数据集的核心特征是遵循国际通用的BBCH表型编码标准，确保观测事件的可比性与客观性，作为因变量用于监督学习模型的训练与独立验证。以波兰国家物候观测网络数据为典型实例，该数据集涵盖了2007年至2014年期间10个物种、13个物候期、52个站点的观测记录。使用者在构建或验证区域乃至全球物候模型时，应以此类地面验证集为精度评估基准，并注意处理其固有的空间匹配误差与时间不连续性问题。",
+  "tags": [
+    "phenology-observational-network",
+    "bbch-standard",
+    "ground-truth",
+    "model-validation",
+    "phenological-observations",
+    "site-specific-data",
+    "validation-dataset",
+    "data-quality-control"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 60.6,
+  "accuracy": 60.0,
+  "authority": 51.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "Machine learning modeling of plant phenology based on coupling satellite and gridded meteorological dataset",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:22f4d4afebc36440b524b084079afd1ef06ef59781a8e6940369bc7b22aa5e27",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E67",
+  "grounded_ratio": 0.625
+}

@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "POD与模态分解流动降阶建模。面向CFD快照矩阵与参数标签完成POD与模态分解流动降阶建模。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "POD与模态分解流动降阶建模。面向CFD快照矩阵与参数标签完成POD与模态分解流动降阶建模。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 POD与模态分解流动降阶建模 的端到端可复用工作流：5 个节点，核心模型 POD、Dynamic mode decomposition。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "aerodynamic",
     "analysis",
@@ -22,7 +22,12 @@
     "dynamic-mode-decomposition",
     "dynamics",
     "encoding",
-    "federated"
+    "federated",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s086",
+    "pod"
   ],
   "scenario_id": "CFD_S086",
   "source_papers": [
@@ -36,5 +41,23 @@
     "sha256:10378160fdb3f8af40e35d0eb3766688dda4fbcc8f209bb2ef3cd123966b1fa9",
     "sha256:6ff0cf95e0616258863fcec3569fd2a60f52137ee1271ec5199246ec9cd243a4",
     "sha256:2de431dea4c77e7070bffc865e53d1c960223c103eeac6457f30f355c59e794b"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "POD与模态分解流动降阶建模（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S086",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S086"
+  ],
+  "batch": "2026-09-14"
 }

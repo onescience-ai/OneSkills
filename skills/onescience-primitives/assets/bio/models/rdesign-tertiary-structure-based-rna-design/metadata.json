@@ -1,0 +1,39 @@
+{
+  "name": "rdesign-tertiary-structure-based-rna-design",
+  "type": "model",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向给定的三维RNA结构，目标是设计能折叠成该结构的核苷酸序列。RDesign是一种基于三级结构的计算设计框架，它通过将结构建模为空间邻近性属性图，并利用层次化图神经网络学习数据高效的表示，最终结合二级结构约束来预测和优化序列。该方法特别适用于从头设计或重设计具有明确三维坐标的RNA分子，其核心在于将结构拓扑和微观性质编码为可解码的序列信息。",
+  "tags": [
+    "rna-tertiary-structure",
+    "rna-design",
+    "graph-neural-network",
+    "representation-learning",
+    "tertiary-structure-graph",
+    "hierarchical-learning",
+    "secondary-structure-constraint",
+    "computational-rna-design",
+    "structure-to-sequence"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.2,
+  "accuracy": 100.0,
+  "authority": 52.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "RDesign: Hierarchical Data-efficient Representation Learning for Tertiary Structure-based RNA Design",
+    "doi": "",
+    "source": "arxiv",
+    "external_id": "2301.10774",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 31.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "B90",
+  "grounded_ratio": 0.5
+}

@@ -1,0 +1,39 @@
+{
+  "name": "gedi-footprint-canopy-height-data",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向基于深度学习的全球冠层高度制图任务，选择或设计训练参考数据时，需整合源自星载激光雷达的稀疏足迹级测量值。本知识卡描述了GEDI（全球生态系统动力学调查）足迹数据作为训练监督信号的标准使用方式。该数据集提供了经筛选的、空间分布广泛但稀疏的冠层高度（通常为相对高度98%分位数，RH98）参考值，可用于训练从光学卫星影像（如Sentinel-2）到连续冠层高度产品的回归模型。其关键优势在于提供了全球尺度、物理测量的参考基准，主要局限则包括高纬度地区无覆盖、足迹点固有的空间不确定性以及数据稀疏性，使用者需在模型设计与评估中予以考量。",
+  "tags": [
+    "canopy-height",
+    "lidar-reference-data",
+    "gedi",
+    "remote-sensing",
+    "machine-learning",
+    "global-mapping",
+    "sentinel-2",
+    "training-dataset",
+    "rh98"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 70.6,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "A high-resolution canopy height model of the Earth",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:b4d103e6ab0664d96c31a00a0ee4d99e9fbc54a9f1a8eeea500716843d4eabce",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E86",
+  "grounded_ratio": 0.625
+}

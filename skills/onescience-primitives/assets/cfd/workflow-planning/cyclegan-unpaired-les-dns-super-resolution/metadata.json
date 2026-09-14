@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "CycleGAN无配对LES到DNS超分辨率重建。面向非配对LES与DNS湍流数据完成CycleGAN无配对LES到DNS超分辨率重建。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "CycleGAN无配对LES到DNS超分辨率重建。面向非配对LES与DNS湍流数据完成CycleGAN无配对LES到DNS超分辨率重建。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 CycleGAN无配对LES到DNS超分辨率重建 的端到端可复用工作流：5 个节点，核心模型 CycleGAN。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "approach",
     "blind",
@@ -21,11 +21,33 @@
     "super-resolution",
     "turbulence",
     "turbulent",
-    "unsupervised"
+    "unsupervised",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s099"
   ],
   "scenario_id": "CFD_S099",
   "source_papers": [
     "sha256:3c8cd311e4cdd6112148d0c220e9e5196e49f35eb4af73cfb7d3a5d534467a43",
     "sha256:92ee9bc6830b8ee1835671b6807e937dcf82966689c8a0d699989dd2597d1847"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "CycleGAN无配对LES到DNS超分辨率重建（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S099",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S099"
+  ],
+  "batch": "2026-09-14"
 }

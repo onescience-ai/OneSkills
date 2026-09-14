@@ -1,0 +1,39 @@
+{
+  "name": "deep-learning-precipitation-retrieval-model-and-evaluation",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向从地基雷达与大气再分析数据反演高精度地面降水累积的任务，选择或设计满足泛化性与准确性要求的深度学习降水检索工具。该工具基于一维卷积神经网络（1D-CNN），输入多达115维的大气状态协变量向量（涵盖雷达反射率、多普勒速度、谱宽以及再分析温度、垂直风等），通过卷积特征提取与全连接回归输出20分钟平均降水累积。经与传统功率律公式及随机森林模型的对比，该方法均方误差平均降低约160%，展现出深度学习在降水反演中的优势。模型在多个站点进行留一站点交叉验证，训练/测试集按90/10比例划分。",
+  "tags": [
+    "precipitation-retrieval",
+    "1d-cnn",
+    "microwave-radar",
+    "mrr",
+    "era5-reanalysis",
+    "deep-learning",
+    "atmospheric-science",
+    "remote-sensing",
+    "weather-prediction"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 78.9,
+  "accuracy": 75.0,
+  "authority": 64.2,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "DeepPrecip- a deep neural network for precipitation retrievals",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:06f0c20ee0915002fa0923564954cde6d5ae7ca49cb86955dc153d2bb85b3f98",
+    "venue": "Atmospheric measurement techniques",
+    "cited_by_count": 9,
+    "objective_score": 48.8
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E12",
+  "grounded_ratio": 0.625
+}

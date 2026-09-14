@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "可微PDE求解器与图网络混合数据同化。面向数值求解器状态与观测融合数据完成可微PDE求解器与图网络混合数据同化。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "可微PDE求解器与图网络混合数据同化。面向数值求解器状态与观测融合数据完成可微PDE求解器与图网络混合数据同化。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 可微PDE求解器与图网络混合数据同化 的端到端可复用工作流：5 个节点，核心模型 Differentiable PDE-GNN、Physics-aware data assimilation。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "combined",
     "combining",
@@ -22,11 +22,33 @@
     "networks",
     "neural",
     "physical",
-    "physics-aware-data-assimilation"
+    "physics-aware-data-assimilation",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s066"
   ],
   "scenario_id": "CFD_S066",
   "source_papers": [
     "sha256:6b3abe4070931139093be7938f80b309e101df8f497233fd87d32eb2021d5e29",
     "sha256:81e3659d8f8e4dad14692ed7a0182715b2f548d3b4aece888831a6c15683a3db"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "可微PDE求解器与图网络混合数据同化（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S066",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S066"
+  ],
+  "batch": "2026-09-14"
 }

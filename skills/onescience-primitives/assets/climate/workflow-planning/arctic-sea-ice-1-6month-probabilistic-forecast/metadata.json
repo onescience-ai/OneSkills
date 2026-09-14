@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「北极海冰1—6月概率预报」工作流。从起报前海冰和海气状态预测未来1—6个月海冰浓度类别、出现概率和冰缘；不输出日尺度漂移、冰厚或航线风险。覆盖从海洋状态和强迫资料及任务边界预检到评价空间技巧、范围误差和概率可靠度的完整管线。得到可复现、可审计的月尺度海冰概率场、冰缘和范围、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「北极海冰1—6月概率预报」工作流。从起报前海冰和海气状态预测未来1—6个月海冰浓度类别、出现概率和冰缘；不输出日尺度漂移、冰厚或航线风险。覆盖从海洋状态和强迫资料及任务边界预检到评价空间技巧、范围误差和概率可靠度的完整管线。得到可复现、可审计的月尺度海冰概率场、冰缘和范围、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向海洋气候分析、海洋热力学状态估计及长期海洋变量研究需求，选择ORAS4海洋再分析系统作为提供自1958年以来的全球海洋三维状态估计的标准化数据集。该系统基于同化方案产出海洋温度、盐度、流速及热含量等变量，适用于驱动海洋模式、评估气候变化趋势及校准海洋观测数据。其数据需通过ECMWF数据门户获取，常与其他再分析产品如ERA-Interim衔接用于多变量联合分析。具体校准数值（如热含量阈值）需根据目标区域和季节重新锚定。 面向北极巴伦支海等区域海冰浓度（SIC）的周至次季节预测，选择或设计满足时空物理一致性、能整合多变量（如气温、气压、海洋热含量）遥相关关系的深度学习方法。ConvLSTM（卷积长短期记忆网络）通过堆叠卷积层与LSTM单元，同时捕捉气象-海洋场的空间依赖与时间记忆，并提供约束预测（评估理论可预报性上限）和业务化递归预测（基于历史观测初始化与迭代）两种模式。经SVD（奇异值分解）验证，其预测场能保持变量间的线性耦合模态。典型实现使用PyTorch构建，超参数如网络深度（3层）、滤波器尺寸（3×3×3）和训练周期（1500 epochs）需根据具体区域数据调优。 北极海冰1—6月概率预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "advancing",
     "arctic",
@@ -22,12 +22,53 @@
     "global",
     "integrated",
     "learning",
-    "long-short"
+    "long-short",
+    "ocean-reanalysis",
+    "ecmwf-oras4",
+    "marine-variables",
+    "climate-analysis",
+    "ocean-heat-content",
+    "reanalysis-dataset",
+    "sea-ice-study",
+    "long-term-trends",
+    "arctic-sea-ice",
+    "sea-ice-concentration",
+    "convolutional-lstm",
+    "deeplearning",
+    "subseasonal-prediction",
+    "weather-forecasting",
+    "physical-consistency",
+    "pytorch",
+    "barents-sea",
+    "workflow",
+    "workflow-planning",
+    "e17"
   ],
   "scenario_id": "E17",
   "source_papers": [
     "sha256:54a7c310ea43aa593319068f7bd929d098ced3368e57b6c88fd2504c0d54e57b",
     "sha256:f848aa052526e136b73a6b2951db86e678d320ec3d1a01b0e6283eaca6d33abb",
     "sha256:ad606db288c6a58750244a145585c03a9455214c34180229fd2bbe981f9f892a"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 100.0,
+  "authority": 66.9,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "北极海冰1—6月概率预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E17",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E17"
+  ],
+  "batch": "2026-09-14"
 }

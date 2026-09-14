@@ -1,0 +1,39 @@
+{
+  "name": "weighted-long-short-term-memory-neural-network-extended-model-for-pm2-5-forecasting",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向区域空气质量预报场景，选择或设计一种能够兼顾监测站点空间异质性与风场动态影响的深度学习时序预测方案。该方案采用三段式混合架构：首先通过多层感知机（MLP）融合地理距离、风场条件与邻居站点浓度观测，生成对空间关联加权的PM2.5时间序列；随后利用长短期记忆网络（LSTM）同时捕获时间依赖与空间特征；最终由另一个MLP将时空特征与目标站点气象预报整合，输出次日PM2.5浓度预测值。校准数值来自京津冀90个监测站点体系，适用于站点分布不均匀的区域空气质量预报任务。",
+  "tags": [
+    "pm25-forecasting",
+    "wlstme",
+    "lstm",
+    "spatiotemporal-prediction",
+    "air-quality",
+    "neural-network",
+    "jingjinji",
+    "weighted-lstm",
+    "meteorological-data"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 78.2,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 72.8,
+  "source_paper": {
+    "title": "An improved deep learning model for predicting daily PM2.5 concentration",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:d651f2a5b0649ebc63edfc804f71dd18aeb5a24ebfc0ab5e2b1f80d018f1253b",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E42",
+  "grounded_ratio": 0.5
+}

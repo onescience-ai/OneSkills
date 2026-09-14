@@ -1,0 +1,33 @@
+{
+  "name": "normalweatherr-r-package",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "一个R语言软件包，用于实现基于随机森林模型的气象归一化方法，是执行空气质量数据气象归一化分析的核心工具。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。",
+  "tags": [
+    "normalweatherr-r-package",
+    "tool",
+    "fallback"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 73.9,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Assessing the impact of clean air action on air quality trends in Beijing using a machine learning technique",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:cc5416a9cc2f4f593605337a200e25019d8b9e8939a39aad3f56ecefedd0f1aa",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E45",
+  "grounded_ratio": 1.0
+}

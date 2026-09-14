@@ -1,0 +1,40 @@
+{
+  "name": "wenhai-global-ocean-forecast-system",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向中尺度涡旋分辨的全球海洋短期预报任务，选择或设计满足海气耦合物理约束与高计算效率要求的深度神经网络系统。WenHai 是一个基于 Swin-Transformer V2 架构的数据驱动全球海洋预报系统，以 1/12° 分辨率运行，可预报未来 1 至 10 天的三维海洋状态。其核心设计在于将海气通量公式（bulk formulae）作为可微模块嵌入网络，显式表征大气强迫对海洋的驱动作用，并采用预报次日增量而非次日绝对值的策略以更好地保留中尺度涡旋变率。该系统输出海面高度、海面温度、上层 643 米温盐流场等多变量日均预测序列，适用于海洋环境预报、灾害预警和海洋数值模式对比评估。",
+  "tags": [
+    "ocean-forecast",
+    "deep-learning",
+    "swin-transformer",
+    "mesoscale-eddy",
+    "eddy-resolving",
+    "global-ocean",
+    "neural-network",
+    "sea-surface-height",
+    "temperature-salinity",
+    "bulk-formulae"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 76.9,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Forecasting the eddying ocean with a deep neural network",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:9dd4f646b32336d8a4083ae96ee2596adf4444b0eb85e18f993fee419d4498ec",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E5",
+  "grounded_ratio": 0.625
+}

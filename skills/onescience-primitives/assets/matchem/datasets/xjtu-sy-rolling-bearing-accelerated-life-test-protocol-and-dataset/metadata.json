@@ -1,0 +1,39 @@
+{
+  "name": "xjtu-sy-rolling-bearing-accelerated-life-test-protocol-and-dataset",
+  "type": "dataset",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向机械装备预测与健康管理（PHM）研究中对高质量全寿命周期数据的需求，提供一份独立的滚动轴承加速寿命试验协议与公开数据集说明。该数据集包含15个滚动轴承在三种工况下从正常到完全失效的全过程振动信号，具有采样频率高、数据量大、失效类型丰富的特点，是支撑轴承故障诊断、退化建模与剩余使用寿命预测算法开发与基准测试的通用数据资源。数据集本身通过一套标准化的试验流程生成，其工况设置、采样参数及失效判定准则均为公开信息，便于使用者理解数据特性与复现试验条件。",
+  "tags": [
+    "rolling-bearing",
+    "bearing-dataset",
+    "accelerated-life-test",
+    "prognostics-and-health-management",
+    "fault-diagnosis",
+    "remaining-useful-life",
+    "vibration-signal",
+    "run-to-failure",
+    "xjtu-sy"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 90.7,
+  "accuracy": 100.0,
+  "authority": 72.3,
+  "generalization": 93.2,
+  "source_paper": {
+    "title": "XJTU-SY Rolling Element Bearing Accelerated Life Test Datasets: A Tutorial",
+    "doi": "10.3901/jme.2019.16.001",
+    "source": "openalex",
+    "external_id": "10.3901/jme.2019.16.001",
+    "venue": "Journal of Mechanical Engineering",
+    "cited_by_count": 254,
+    "objective_score": 60.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E107",
+  "grounded_ratio": 1.0
+}

@@ -4,9 +4,9 @@
   "domain": "matchem",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 NULL 的「MoS2CoSe2异质结构析氢催化设计」工作流。研究对象为MoS2CoSe2异质结构析氢催化设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从活性位与反应网络定义到候选筛选与验证设计的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 NULL 的「MoS2CoSe2异质结构析氢催化设计」工作流。研究对象为MoS2CoSe2异质结构析氢催化设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从活性位与反应网络定义到候选筛选与验证设计的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 面向酸性介质析氢反应（HER）电催化剂的活性与稳定性评估，选择或设计满足三电极体系和旋转圆盘电极（RDE）测试要求的电化学测试协议。该协议定义了从电解液准备、极化曲线（LSV）采集到塔菲尔动力学分析、再到计时电流法（CA）长期稳定性验证的完整流程。关键参数包括0.5 M H₂SO₄电解液、2 mV/s扫速、1600 rpm转速以及针对SCE参比电极的电位校正公式。经该流程标准化评估，已有催化剂体系（如MoS₂/CoSe₂复合材料）在-0.7 V vs SCE电位下展现出超过24小时的运行稳定性。 MoS2CoSe2异质结构析氢催化设计 的端到端可复用工作流：4 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "catalyst",
     "cobalt",
@@ -20,10 +20,42 @@
     "matchem",
     "molybdenum",
     "mos2cose2异质结构析氢催化设计",
-    "null"
+    "null",
+    "electrochemical-her",
+    "lsv-polarization-curve",
+    "tafel-slope",
+    "chronoamperometry",
+    "stability-test",
+    "three-electrode-system",
+    "rhe-calibration",
+    "rotating-disk-electrode",
+    "acidic-electrolyte",
+    "workflow",
+    "workflow-planning"
   ],
   "scenario_id": "MoS2CoSe2异质结构析氢催化设计",
   "source_papers": [
     "doi_10_1038_ncomms6982"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 99.2,
+  "source_paper": {
+    "title": "MoS2CoSe2异质结构析氢催化设计（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "MoS2CoSe2异质结构析氢催化设计",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "MoS2CoSe2异质结构析氢催化设计"
+  ],
+  "batch": "2026-09-14"
 }

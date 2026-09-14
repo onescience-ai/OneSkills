@@ -2,11 +2,11 @@
   "name": "fe-single-atom-orr-fuel-cell-catalyst-design",
   "type": "workflow-planning",
   "domain": "matchem",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 NULL 的「Fe单原子氧还原燃料电池催化剂设计」工作流。研究对象为Fe单原子氧还原燃料电池催化剂设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从活性位与反应网络定义到候选筛选与验证设计的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 NULL 的「Fe单原子氧还原燃料电池催化剂设计」工作流。研究对象为Fe单原子氧还原燃料电池催化剂设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从活性位与反应网络定义到候选筛选与验证设计的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 Fe单原子氧还原燃料电池催化剂设计 的端到端可复用工作流：4 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "battery",
     "catalysts",
@@ -18,10 +18,30 @@
     "oxygen",
     "reduction",
     "single-atomic-site",
-    "zinc-air"
+    "zinc-air",
+    "workflow",
+    "workflow-planning"
   ],
   "scenario_id": "Fe单原子氧还原燃料电池催化剂设计",
   "source_papers": [
     "doi_10_1038_s41467_018_07850_2"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "Fe单原子氧还原燃料电池催化剂设计（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "Fe单原子氧还原燃料电池催化剂设计",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "Fe单原子氧还原燃料电池催化剂设计"
+  ],
+  "batch": "2026-09-14"
 }

@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「多站光伏电站0—48小时功率联合预报」工作流。融合站点历史功率、天气预报和电站属性，联合预测未来0—48小时多站光伏功率；输出功率而非辐照度。覆盖从天气能源运行资料及任务边界预检到按站点与爬坡事件验证的完整管线。得到可复现、可审计的逐站多时效光伏功率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「多站光伏电站0—48小时功率联合预报」工作流。融合站点历史功率、天气预报和电站属性，联合预测未来0—48小时多站光伏功率；输出功率而非辐照度。覆盖从天气能源运行资料及任务边界预检到按站点与爬坡事件验证的完整管线。得到可复现、可审计的逐站多时效光伏功率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向光伏发电功率的短期预测需求，选择或设计一种结合物理模型与数据驱动的混合预测流程。该流程以历史气象数据为输入，通过多个前馈神经网络集成预测关键辐照度指标，再经由一系列光伏物理模型逐步转换为模块吸收辐照度、工作温度，最终利用五参数单二极管模型计算直流功率输出。此方法旨在为智能电网的调度、能源管理及光伏系统维护提供可靠的发电量预报。 多站光伏电站0—48小时功率联合预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "based",
     "earth",
@@ -22,7 +22,19 @@
     "multi-site",
     "multiple",
     "networks",
-    "neural"
+    "neural",
+    "photovoltaic",
+    "yield-prediction",
+    "neural-network",
+    "irradiance-forecast",
+    "power-modeling",
+    "short-term-forecast",
+    "smart-grid",
+    "physical-model",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e25"
   ],
   "scenario_id": "E25",
   "source_papers": [
@@ -30,5 +42,26 @@
     "sha256:6290e57199f4a1d514ecae4e57a40c8dd91b76e04f3208b744b27c7bc012c822",
     "sha256:83b65b843933395d1bcde77f58451264fa17d13d304bbe0921ad6597ee22985b",
     "sha256:5cd863addc9b9e6f666894e59e7ec566005be5b0b9cce9390fdf89e600eaade8"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "多站光伏电站0—48小时功率联合预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E25",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E25"
+  ],
+  "batch": "2026-09-14"
 }

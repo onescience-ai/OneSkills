@@ -1,0 +1,38 @@
+{
+  "name": "urban-hydrological-hydraulic-model-chain-for-inundation-simulation",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向城市暴雨内涝模拟与预报任务，需要整合产汇流、管网水流和二维地表淹没过程时，可选用或构建由水文模型（如 HEC-1）、管网水力模型（如 SWMM）和二维浅水方程模型链接而成的复合模型链。该模型链能够提供高时空分辨率的淹没深度与范围模拟结果，以及各关键站点的水文历时曲线，是进行城市内涝风险评估与工程设计的基础工具。其核心挑战在于高分辨率模拟带来的高计算成本与数据需求，当面临实时预报需求时，常需结合数据驱动方法构建代理模型以加速计算。",
+  "tags": [
+    "urban-flooding",
+    "inundation-simulation",
+    "hydraulic-modeling",
+    "swmm",
+    "hec-1",
+    "surface-runoff",
+    "real-time-forecasting",
+    "data-driven-model"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 60.9,
+  "accuracy": 60.0,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Online multistep-ahead inundation depth forecasts by recurrent NARX networks",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:4b539889b7b8d1affdf6be6ba67b1da48512cd5c9a572c0f7eecbc261be8871d",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E64",
+  "grounded_ratio": 0.625
+}

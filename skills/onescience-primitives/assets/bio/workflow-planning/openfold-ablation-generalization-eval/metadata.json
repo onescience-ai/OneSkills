@@ -4,9 +4,9 @@
   "domain": "bio",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 OpenFold 的「OpenFold组件消融与结构泛化评测」工作流。研究对象为蛋白质序列、复合物实体或构象集合。本场景研究蛋白质序列、复合物实体或构象集合，希望解决复现并消融OpenFold特征、回收和损失组件，比较其在未见折叠上的结构泛化能力。覆盖从输入与任务定义到结构质控与汇总的完整管线。核心指标包括TM-score。得到与输入和任务约束一致、可追溯、可复核的OpenFold组件消融与结构泛化评测结果，包括标准化的序列/实体清单、预测结构或构象集合，以及链和几何完整性报告、独立评估、TM-score统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 OpenFold 的「OpenFold组件消融与结构泛化评测」工作流。研究对象为蛋白质序列、复合物实体或构象集合。本场景研究蛋白质序列、复合物实体或构象集合，希望解决复现并消融OpenFold特征、回收和损失组件，比较其在未见折叠上的结构泛化能力。覆盖从输入与任务定义到结构质控与汇总的完整管线。核心指标包括TM-score。得到与输入和任务约束一致、可追溯、可复核的OpenFold组件消融与结构泛化评测结果，包括标准化的序列/实体清单、预测结构或构象集合，以及链和几何完整性报告、独立评估、TM-score统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。 面向蛋白质结构预测模型的准确性量化评估，选择或设计满足标准化比对要求的 TM-score 评测方案。该方案通过将预测三维结构与实验测定的天然结构进行全局拓扑比对，输出 0–1 区间的相似性得分，并可计算不同模型配置间的性能差值（ΔTM），用于判断模型组件变更是否带来显著改善。校准数值来自 OpenFold 体系，供量级参考；其他体系需以自身证据重新锚定。 面向从氨基酸序列预测蛋白质三维结构的任务，选择或设计满足原子精度要求的基于深度学习的预测工具。AlphaFold是一个集成了多序列比对、Evoformer神经网络和结构模块的端到端系统，能直接输出高质量的三维坐标及相应的置信度评估。该系统在蛋白质结构预测领域建立了新的准确性基准，尤其适用于缺乏实验结构模板、但存在同源序列信息的蛋白质。 面向从氨基酸序列预测蛋白质三维结构的任务，选择或设计满足开源、可复现、可修改要求的预测框架时，OpenFold提供了一个经过验证的选择。OpenFold是AlphaFold2的开源复现，其核心Evoformer模块集成了多种注意力机制与更新操作，能够直接输出蛋白质的三维坐标。本文档梳理了其通用输入（序列与可选的MSA）、典型输出（预测结构与中间表示）、必要的运行前提（计算资源与权重文件），并提供了从环境准备到获取预测结果的标准操作流程。针对序列过长导致内存溢出、MSA信息缺失影响精度等常见失效模式，给出了具体的检查与回退建议。校准数值来自小于700残基的蛋白质体系，供量级参考；其他体系需以自身证据重新锚定。 OpenFold组件消融与结构泛化评测 的端到端可复用工作流：4 个节点，核心模型 OpenFold。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accurate",
     "alphafold",
@@ -22,12 +22,53 @@
     "learning",
     "mechanisms",
     "openfold",
-    "openfold特征"
+    "openfold特征",
+    "tm-score",
+    "protein-structure-prediction",
+    "structure-evaluation",
+    "structural-alignment",
+    "us-align",
+    "tm-align",
+    "pdb",
+    "benchmark",
+    "model-accuracy",
+    "evoformer",
+    "msa",
+    "deep-learning",
+    "structural-bioinformatics",
+    "plddt",
+    "3d-structure",
+    "structure-model",
+    "bioinformatics-tool",
+    "workflow",
+    "workflow-planning",
+    "b02"
   ],
   "scenario_id": "B02",
   "source_papers": [
     "2511.14781",
     "10.1038/s41586-021-03819-2",
     "2022.11.20.517210"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 60.0,
+  "authority": 63.2,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "OpenFold组件消融与结构泛化评测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "B02",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "B02"
+  ],
+  "batch": "2026-09-14"
 }

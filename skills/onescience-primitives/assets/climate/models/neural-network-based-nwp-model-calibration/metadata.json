@@ -1,0 +1,38 @@
+{
+  "name": "neural-network-based-nwp-model-calibration",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向短中期（1-3天）近地面气温与累积降水预报精度提升，利用反向传播神经网络作为后处理器，结合全球数值天气预报模型原始输出与小尺度辅助参数（如空气质量指数、城市绿色基础设施指标）进行系统性校准的混合方法。该方法适用于拥有全球NWP预报源、区域模型参考及站点实测数据的研究或业务场景，核心通过数据驱动方式修正模型系统性偏差，在降水预报上可获得显著改进。",
+  "tags": [
+    "nwp-postprocessing",
+    "neural-network-calibration",
+    "ecmwf-bias-correction",
+    "short-term-weather-forecast",
+    "temperature-prediction",
+    "precipitation-prediction",
+    "numerical-weather-prediction",
+    "machine-learning-meteorology"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "ECMWF short-term prediction accuracy improvement by deep learning",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:ceb9f336fb7a1604d4ab94f84df9d6a6919e1e1a21fa7bda7f58469786c8485a",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E53",
+  "grounded_ratio": 0.571
+}

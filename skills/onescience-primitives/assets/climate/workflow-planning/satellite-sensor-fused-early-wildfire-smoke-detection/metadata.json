@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「卫星影像与地面传感器融合的早期火情烟羽检测」工作流。从新到达影像和地面传感器流中识别火焰、热点或烟羽并定位疑似火情；输出检测，不预测后续蔓延。覆盖从致灾因子和事件标签及任务边界预检到按时延误报漏报评估的完整管线。得到可复现、可审计的火情类别、位置、置信度与告警、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向机器学习模型训练中的超参数选择问题，贝叶斯优化（Bayesian Optimization）是一种高效的序列化智能搜索策略。它通过构建一个代理模型来近似未知的模型性能目标函数（如验证集准确率），并利用采集函数（Acquisition Function）在每次迭代中权衡“探索”与“利用”，从而以远低于网格搜索或随机搜索的评估成本，找到使目标函数最大化的超参数组合。该方法特别适用于超参数空间维度较高、单次模型评估耗时（如深度神经网络训练）的场景。 面向预训练视觉模型在连续多任务学习中遭遇灾难性遗忘的问题，选择或设计一种使模型在学习新任务分类能力的同时保留其原始任务性能的知识迁移方法。该方法的典型实现流程为：冻结或保留原始模型的参数，在新任务数据上运行前向传播生成旧任务类别的概率分布（软目标），随后为新任务扩展输出层并初始化新参数，通过最小化由旧任务软目标与新任务真实标签共同构成的组合损失函数来同时更新所有参数。此策略可有效缓解因微调新任务导致的原始任务性能下降，适用于森林火灾/烟雾检测、图像增量分类等场景，其中校准数值可参考BoWFire数据集上的实验设置。 卫星影像与地面传感器融合的早期火情烟羽检测 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "combining",
     "convolutional",
@@ -22,7 +22,28 @@
     "monitoring",
     "network",
     "networks",
-    "neural"
+    "neural",
+    "bayesian-optimization",
+    "hyperparameter-tuning",
+    "machine-learning",
+    "model-selection",
+    "sequential-optimization",
+    "black-box-optimization",
+    "deep-learning",
+    "grid-search",
+    "random-search",
+    "learning-without-forgetting",
+    "continual-learning",
+    "knowledge-distillation",
+    "catastrophic-forgetting",
+    "cnn",
+    "incremental-learning",
+    "transfer-learning",
+    "knowledge-retain",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e22"
   ],
   "scenario_id": "E22",
   "source_papers": [
@@ -30,5 +51,26 @@
     "sha256:173c1969679c7af76bfb008ceeb5d2bdc1eadbf9c81b7ffb6da633e3b83f70b2",
     "sha256:5862f3e8dcb45335633aa76d0344eb2d7421e706ae6e6b308f711246b309f816",
     "sha256:23167e7553805d2091d55690bb155964caaebaa7ec8b860ab1a36b0a808f12c2"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "卫星影像与地面传感器融合的早期火情烟羽检测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E22",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E22"
+  ],
+  "batch": "2026-09-14"
 }

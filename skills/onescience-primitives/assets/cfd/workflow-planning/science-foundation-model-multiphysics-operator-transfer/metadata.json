@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "科学基础模型多物理算子迁移。面向多物理多分辨率大规模预训练数据完成科学基础模型多物理算子迁移。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "科学基础模型多物理算子迁移。面向多物理多分辨率大规模预训练数据完成科学基础模型多物理算子迁移。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 科学基础模型多物理算子迁移 的端到端可复用工作流：5 个节点，核心模型 PDE foundation model、Pretrained neural operator。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "attention",
     "building",
@@ -22,7 +22,13 @@
     "fundamental",
     "generalizable",
     "green",
-    "in-context"
+    "in-context",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s056",
+    "pde-foundation-model",
+    "pretrained-neural-operator"
   ],
   "scenario_id": "CFD_S056",
   "source_papers": [
@@ -35,5 +41,23 @@
     "sha256:f3c8b79ca2ef5072de65ebb892f98f1c8754a5e65acdb30241011b477ae04778",
     "sha256:54b371b04b0ce65071922498aac4e2c3b71b2fd2ac46557f0d89f8abdca214b5",
     "sha256:a9b01480879ff80ff8368e446acf6c80b1969f65c3a8003845f576a5fbfc58bd"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "科学基础模型多物理算子迁移（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S056",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S056"
+  ],
+  "batch": "2026-09-14"
 }

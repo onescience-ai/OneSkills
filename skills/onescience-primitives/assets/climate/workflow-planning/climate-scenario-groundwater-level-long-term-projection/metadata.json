@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「气候情景驱动的地下水位长期投影」工作流。由历史井水位和气候情景投影至本世纪末地下水位变化，适用于长期风险评估；不能替代抽水方案模拟。覆盖从水文强迫和流域资料及任务边界预检到检查外推和水量边界的完整管线。得到可复现、可审计的未来地下水位分布与趋势、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向气候变化情景下区域中长期地下水位预测，设计或选择满足高精度、可解释性和泛化性要求的基于一维卷积神经网络（1D-CNN）的数据驱动模型。该方法以站点级地下水位周时间序列为训练目标，仅使用网格化降水与温度作为驱动输入，通过优化的模型架构与集成学习策略实现稳健预测，并利用SHAP值验证模型是否捕获了合理的水文物理关系。模型训练通常依赖高质量的历史气象与水文观测数据集，预测则应用于经过偏差校正的未来气候情景数据，最终输出地下水位变化趋势与不确定性范围。 气候情景驱动的地下水位长期投影 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "change",
     "climate",
@@ -17,10 +17,43 @@
     "learning",
     "levels",
     "shows",
-    "until"
+    "until",
+    "groundwater-level-prediction",
+    "deep-learning",
+    "1d-cnn",
+    "climate-change-impact",
+    "shap-explainability",
+    "hydrometeorological-forecasting",
+    "time-series-regression",
+    "bayesian-optimization",
+    "ensemble-learning",
+    "workflow",
+    "workflow-planning",
+    "e87"
   ],
   "scenario_id": "E87",
   "source_papers": [
     "sha256:04c54c80b5f5adc8e2ddbbbf9b3dd49d7c4dfaf4b2603964f0ae8d524f703e6c"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "气候情景驱动的地下水位长期投影（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E87",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E87"
+  ],
+  "batch": "2026-09-14"
 }

@@ -4,9 +4,9 @@
   "domain": "matchem",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 NULL 的「亲水响应膜油水分离设计」工作流。研究对象为亲水响应膜油水分离设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从结构与分离目标定义到材料或工艺窗口输出的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 NULL 的「亲水响应膜油水分离设计」工作流。研究对象为亲水响应膜油水分离设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从结构与分离目标定义到材料或工艺窗口输出的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 面向油水混合物（乳化或非乳化）的高效分离需求，选择或设计满足重力驱动、高能效、抗污自修复要求的毛细力分离方法。该方法利用一种经过表面化学改性的亲水响应膜，其表面可在空气/水环境中切换润湿状态，从而通过重力实现水相渗透、油相截留。该方法核心是通过浸渍或旋涂将氟化笼型倍半硅氧烷与亲水聚合物共混物涂覆于多孔基材，经紫外光交联制备功能膜，并利用重力驱动完成分离。已有体系（如PEGDA/fluorodecyl POSS/不锈钢网）的校准参数（如溶液浓度100 mg/ml、交联时间5分钟）可供参考，但其他体系需以自身证据重新锚定关键工艺参数与突破高度。",
   "tags": [
     "effective",
     "hygro-responsive",
@@ -14,10 +14,39 @@
     "membranes",
     "null",
     "separation",
-    "water"
+    "water",
+    "oil-water-separation",
+    "gravity-driven",
+    "membrane",
+    "capillary-force",
+    "fluorodecyl-poss",
+    "pegda",
+    "dip-coating",
+    "emulsion-separation"
   ],
   "scenario_id": "亲水响应膜油水分离设计",
   "source_papers": [
     "doi_https_doi_org_10_1038_ncomms2027"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 77.8,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Hygro-responsive membranes for effective oil–water separation",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_https_doi_org_10_1038_ncomms2027",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 0.5,
+  "scenario_ids": [
+    "亲水响应膜油水分离设计"
+  ],
+  "batch": "2026-09-14"
 }

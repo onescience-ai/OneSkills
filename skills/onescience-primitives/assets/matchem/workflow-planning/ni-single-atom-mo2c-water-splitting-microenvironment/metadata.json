@@ -4,9 +4,9 @@
   "domain": "matchem",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 NULL 的「Ni单原子Mo2C水分解微环境优化」工作流。研究对象为Ni单原子Mo2C水分解微环境优化。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从活性位与反应网络定义到候选筛选与验证设计的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 NULL 的「Ni单原子Mo2C水分解微环境优化」工作流。研究对象为Ni单原子Mo2C水分解微环境优化。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从活性位与反应网络定义到候选筛选与验证设计的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 Ni单原子Mo2C水分解微环境优化 的端到端可复用工作流：4 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。 面向碱性电解质体系中电催化水分解（OER/HER）催化剂的活性与稳定性定量评估，设计并实施标准电化学测试流程。本协议涵盖从催化剂墨水制备、工作电极构建，到三电极体系下的极化曲线测量、动力学分析、阻抗谱测试及稳定性验证，并延伸至双电极电解槽组装与全解水性能考核。目标是提供一套可重复、可对比的标准化操作方案，以获取过电位、塔菲尔斜率、电荷转移电阻、双电层电容、长期稳定性及电池电压等核心性能参数。协议中的校准参数，如催化剂载量（0.7 mg/cm²）与稳定性测试时长（半反应16小时，全解水120小时），来自特定镍单原子催化剂体系，供量级参考，其他体系需以自身证据重新锚定。",
   "tags": [
     "active",
     "atoms",
@@ -19,10 +19,42 @@
     "reconstitution",
     "single",
     "splitting",
-    "water"
+    "water",
+    "workflow",
+    "workflow-planning",
+    "electrochemical water splitting",
+    "oer",
+    "her",
+    "three-electrode system",
+    "polarization curve",
+    "tafel slope",
+    "electrochemical stability",
+    "overall water splitting",
+    "electrocatalyst evaluation"
   ],
   "scenario_id": "Ni单原子Mo2C水分解微环境优化",
   "source_papers": [
     "doi_10_1038_s41467_024_45533_3"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 77.5,
+  "source_paper": {
+    "title": "Microenvironment reconstitution of highly active Ni single atoms on oxygen-incorporated Mo2C for water splitting",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_10_1038_s41467_024_45533_3",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 0.5,
+  "scenario_ids": [
+    "Ni单原子Mo2C水分解微环境优化"
+  ],
+  "batch": "2026-09-14",
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 99.2
 }

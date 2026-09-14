@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「天气与人口变化驱动的城市月日用水需求预测」工作流。融合历史用水、天气、日历和人口增长，预测短期或长期城市用水需求；不预测原水来量和供水水质。覆盖从天气暴露和目标观测及任务边界预检到按热浪节假日和年代验证的完整管线。得到可复现、可审计的城市用水需求及峰值、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「天气与人口变化驱动的城市月日用水需求预测」工作流。融合历史用水、天气、日历和人口增长，预测短期或长期城市用水需求；不预测原水来量和供水水质。覆盖从天气暴露和目标观测及任务边界预检到按热浪节假日和年代验证的完整管线。得到可复现、可审计的城市用水需求及峰值、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 天气与人口变化驱动的城市月日用水需求预测 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "change",
     "climate",
@@ -22,12 +22,33 @@
     "municipal",
     "population",
     "predicting",
-    "prediction"
+    "prediction",
+    "workflow",
+    "workflow-planning",
+    "e62"
   ],
   "scenario_id": "E62",
   "source_papers": [
     "sha256:9e1d1c4c354f321533821627da4c9908476ad90554d4ccbfb0bc387d0812fc73",
     "sha256:1ba55310568a8532415c332f8131f060e0d969cadc028d1d1e1ebf56bdb54b6c",
     "sha256:a70e4cd5cf91042882265d5efaaf259273f27b8c24bf8282a1ad9b80dd54ee0b"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "天气与人口变化驱动的城市月日用水需求预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E62",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E62"
+  ],
+  "batch": "2026-09-14"
 }

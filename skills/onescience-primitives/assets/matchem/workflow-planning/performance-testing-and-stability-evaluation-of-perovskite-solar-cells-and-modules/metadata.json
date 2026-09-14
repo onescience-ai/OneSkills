@@ -1,0 +1,38 @@
+{
+  "name": "performance-testing-and-stability-evaluation-of-perovskite-solar-cells-and-modules",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向钙钛矿太阳能电池与组件的标准化光电性能表征与长期运行稳定性评估，需在符合行业标准的条件下获取可比数据。该流程涵盖从单结电池的电流密度-电压（J-V）特性曲线测量到封装组件的持续光照老化测试，旨在精确量化光电转换效率、开路电压、短路电流、填充因子等核心性能参数，并监控其在加速老化条件下的衰减趋势。校准数值与设备规格参考了典型的研究级测试平台设置。流程适用于实验室研发阶段对器件性能的基准评估以及面向应用的模块可靠性验证。",
+  "tags": [
+    "perovskite-solar-cell",
+    "performance-testing",
+    "stability-evaluation",
+    "j-v-curve",
+    "solar-simulator",
+    "isos-standard",
+    "module-reliability",
+    "accelerated-aging"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 84.5,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 99.2,
+  "source_paper": {
+    "title": "One-Year stable perovskite solar cells by 2D/3D interface engineering",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_https_doi_org_10_1038_ncomms15684",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "二维三维钙钛矿界面长期稳定设计",
+  "grounded_ratio": 0.5
+}

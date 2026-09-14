@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「台风与气压风场驱动的沿海风暴增水短期预报」工作流。由未来风压场、潮位和海岸地形生成沿海站点或网格风暴增水过程；不包含降雨内涝和波浪爬高。覆盖从致灾因子和事件标签及任务边界预检到按站点与强风暴专项验证的完整管线。得到可复现、可审计的增水时序、峰值及到时、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向沿海站点小时级风暴潮概率预测，利用深度学习集合模型从大气再分析数据直接预测风暴潮信号。该方法涵盖从全球海平面观测（如GESLA-2）和ERA5再分析数据中提取预测变量、利用多种神经网络（ANN、LSTM、CNN、ConvLSTM）构建集成预报，并以连续概率评分（CRPS）进行技能评估的完整数据管道与建模流程。核心是通过超参数优化确定通用架构，并在每个站点训练模型集合以量化预测不确定性。该流程适用于全球具有足够长期观测数据的潮汐站，可为防灾减灾提供预报基础。 面向全球海岸线风暴潮的快速估算与预测任务，当传统水动力学模型计算成本过高或需要大批量情景模拟时，可采用数据驱动统计模型作为替代或补充方案。该方法利用气象海洋再分析/遥感数据（风速、海平面气压、海表温度、降水等）作为预测变量，结合验潮站观测海平面数据，经谐波分析提取风暴潮信号、PCA降维消除多重共线性后，以逐步线性回归或随机森林训练逐站预测模型，并通过10折交叉验证选择最优配置。典型校准数值来自全球验潮站验证实验（温带/亚热带平均相关系数0.79、RMSE 7.5 cm；热带0.45、5.3 cm），其他区域需以自身数据重新锚定。 台风与气压风场驱动的沿海风暴增水短期预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "approach",
     "areas",
@@ -22,7 +22,28 @@
     "learning",
     "limited-area",
     "model",
-    "modeling"
+    "modeling",
+    "storm-surge-prediction",
+    "deep-learning",
+    "era5",
+    "gesla",
+    "ensemble-forecasting",
+    "crps-evaluation",
+    "lstm",
+    "convlstm",
+    "tide-gauge",
+    "coastal-hazard",
+    "storm-surge",
+    "data-driven-modeling",
+    "random-forest",
+    "linear-regression",
+    "pca",
+    "tidal-harmonic-analysis",
+    "gtsr",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e11"
   ],
   "scenario_id": "E11",
   "source_papers": [
@@ -30,5 +51,26 @@
     "sha256:de63bc864c06e04ac5e504711f4ae651355415b02eee3d04e3b3e4784610e90e",
     "sha256:95f37dfdc0f81b2af5ab425a4eb64dca3051f074f0b896241525a87b5d5b6513",
     "sha256:ffaac451def2484f8f88ec7293aa531d0dfd554a0fd6b8bc254cb73264b256b3"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 100.0,
+  "authority": 84.9,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "台风与气压风场驱动的沿海风暴增水短期预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E11",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E11"
+  ],
+  "batch": "2026-09-14"
 }

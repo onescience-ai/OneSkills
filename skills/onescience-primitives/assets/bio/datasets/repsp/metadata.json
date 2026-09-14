@@ -1,0 +1,39 @@
+{
+  "name": "repsp",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向结构预测导向的蛋白质表示学习模型的系统性评估，提供标准化基准框架。REPSP 通过同源二聚体共折叠、残基级结合属性预测、表示对齐单体结构预测三项互补任务，从几何互补性、残基级局部信息、折叠加速能力三个维度检验表示质量。基准基于 AlphaFold 蛋白质结构数据库（AFDB）发布的约 180 万同源二聚体复合物构建，配套修改后的 SimpleFold 共折叠模型进行端到端评估。适用于预训练蛋白质语言模型（如 ESM2）、结构感知预训练方法（如 TRIPROREP）以及任何新提出的蛋白质表示方案在结构预测任务上的受控比较。",
+  "tags": [
+    "protein-representation-learning",
+    "structure-prediction-benchmark",
+    "homodimer-cofolding",
+    "residue-level-binding",
+    "representation-aligned-folding",
+    "afdb",
+    "esm2",
+    "simplefold",
+    "protein-language-model"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 69.8,
+  "accuracy": 75.0,
+  "authority": 60.5,
+  "generalization": 70.5,
+  "source_paper": {
+    "title": "Atom-level Protein Representation Learning Improves Protein Structure Prediction",
+    "doi": "",
+    "source": "arxiv",
+    "external_id": "2605.22133",
+    "venue": "arXiv (Cornell University)",
+    "cited_by_count": 0,
+    "objective_score": 43.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "B08",
+  "grounded_ratio": 1.0
+}

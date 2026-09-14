@@ -4,13 +4,48 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 近岸漫滩快速预报模型 的「近岸漫滩快速预报模型」工作流。将沿岸潮位预测快速转换为可用于沿海风险判断的空间淹没产品。覆盖从模型输入与运行条件预检到独立评估与交付判定的完整管线。得到可在少于5分钟内生成淹没分布和行政区划清单的快速预报模型、产品及可核验运行证据。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 近岸漫滩快速预报模型 的「近岸漫滩快速预报模型」工作流。将沿岸潮位预测快速转换为可用于沿海风险判断的空间淹没产品。覆盖从模型输入与运行条件预检到独立评估与交付判定的完整管线。得到可在少于5分钟内生成淹没分布和行政区划清单的快速预报模型、产品及可核验运行证据。 面向人工增殖放流体系中塘养种群的遗传保真需求，选择或设计能最小化圈养与野生种群遗传分歧的管理方案与种质保存技术流程。核心涵盖进化显著单元鉴定、有效种群大小维持、精子超低温冷冻保存及细胞系建立等环节，适用于濒危特有鱼类的保护性繁育与增殖放流项目中种质资源的长期保存与遗传管理。 近岸漫滩快速预报模型 的端到端可复用工作流：6 个节点，核心模型 近岸漫滩快速预报模型。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "earth",
-    "近岸漫滩快速预报模型"
+    "近岸漫滩快速预报模型",
+    "genetic-management",
+    "cryopreservation",
+    "captive-population",
+    "freshwater-fish",
+    "conservation-aquaculture",
+    "broodstock",
+    "sperm-freezing",
+    "cell-culture",
+    "endangered-species",
+    "population-genetics",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e109"
   ],
   "scenario_id": "E109",
-  "source_papers": []
+  "source_papers": [],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 75.0,
+  "authority": 67.4,
+  "generalization": 78.5,
+  "source_paper": {
+    "title": "近岸漫滩快速预报模型（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E109",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E109"
+  ],
+  "batch": "2026-09-14"
 }

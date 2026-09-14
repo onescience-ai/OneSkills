@@ -1,0 +1,38 @@
+{
+  "name": "spatiotemporal-sequence-forecasting-for-precipitation-nowcasting",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向降水临近预报（precipitation nowcasting），将短时雷达回波预测形式化为时空序列预测问题——根据历史二维雷达回波图序列预测未来若干时刻的回波图。核心思路是设计端到端深度学习模型（如 ConvLSTM 编码-预测架构）同时捕捉空间结构与时间演化规律，并在合成与真实雷达数据集上以 CSI、FAR、POD 等指标评估性能。该任务涉及问题形式化、模型构建训练、多指标评估与基线比较三个关键步骤，适用于城市级 1-6 小时短时预报场景。",
+  "tags": [
+    "precipitation-nowcasting",
+    "spatiotemporal-forecasting",
+    "convlstm",
+    "radar-echo",
+    "sequence-prediction",
+    "deep-learning",
+    "weather-prediction",
+    "encoder-predictor"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 95.5,
+  "accuracy": 100.0,
+  "authority": 82.2,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:6b83643820fa049a9cdf30621385bd5d33c67408d348a93edb6c59ed247986ef",
+    "venue": "arXiv (Cornell University)",
+    "cited_by_count": 6655,
+    "objective_score": 74.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E2",
+  "grounded_ratio": 0.625
+}

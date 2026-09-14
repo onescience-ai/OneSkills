@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「干雪雪崩危险等级日尺度预报」工作流。融合积雪剖面、近期天气和地形信息，预报次日干雪雪崩危险等级及空间分布；不用于湿雪雪崩或单次路径模拟。覆盖从致灾因子和事件标签及任务边界预检到按年份和区域独立验证的完整管线。得到可复现、可审计的次日雪崩危险等级和置信度、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「干雪雪崩危险等级日尺度预报」工作流。融合积雪剖面、近期天气和地形信息，预报次日干雪雪崩危险等级及空间分布；不用于湿雪雪崩或单次路径模拟。覆盖从致灾因子和事件标签及任务边界预检到按年份和区域独立验证的完整管线。得到可复现、可审计的次日雪崩危险等级和置信度、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 雪崩危险等级预测系统所依赖的核心数据基础。包括来自瑞士州际测量和信息系统（IMIS）自动气象站网络超过20年的气象观测和雪盖模拟数据集（IMIS dataset），以及用于训练机器学习模型的地面真值标签数据集（Dforecast dataset），该标签数据集源自瑞士国家雪崩预警服务发布的公共雪崩预报。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。 一个完整的端到端预测任务，旨在为瑞士阿尔卑斯山区的干雪条件开发一个全自动数据驱动方法，以评估区域雪崩危险等级。该任务整合了数据获取、特征工程、模型训练与评估的全流程，并利用随机森林等机器学习方法，基于历史气象、雪盖数据和官方预报标签进行训练和验证。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。 为机器学习模型准备输入数据的一系列数据处理步骤。首先对原始自动气象站数据进行预处理（过滤错误、插值缺失），然后从预处理后的数据和 SNOWPACK 模拟的雪盖剖面中提取气象、雪盖和雪不稳定性相关特征。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。 干雪雪崩危险等级日尺度预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。 一个完整的雪盖模拟工作流，包括使用 MeteoIO 库预处理自动气象站数据，然后用 SNOWPACK 模型进行一维物理模拟，输出雪层剖面和不稳定参数。该工作流可使用 COSMO-1 数值天气预报模型的输出进行预报驱动。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。",
   "tags": [
     "applying",
     "automated",
@@ -22,12 +22,44 @@
     "machine",
     "machines",
     "methods",
-    "predictions"
+    "predictions",
+    "data-infrastructure-observations-and-labels",
+    "dataset",
+    "fallback",
+    "avalanche-danger-level-prediction-task",
+    "datapipe",
+    "data-preprocessing-and-feature-engineering",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e32",
+    "snow-cover-simulation-workflow-and-toolchain"
   ],
   "scenario_id": "E32",
   "source_papers": [
     "sha256:86393aad736e04a07dbb6d0c96c2eebdc3079e77cd05acdcf8af67443b095ab0",
     "sha256:b3d1293c0a2feeeb4aa6cdd9ce3c239afd3fcb209f658bb82330ce6af916754e",
     "sha256:3da0608c9d4c0b74ed4b56372aad52edcc313a5013f2ce67385a8d059a267de7"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 63.9,
+  "accuracy": 67.5,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Data-driven automated predictions of the avalanche danger level for dry-snow conditions in Switzerland",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:b3d1293c0a2feeeb4aa6cdd9ce3c239afd3fcb209f658bb82330ce6af916754e",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E32"
+  ],
+  "batch": "2026-09-14"
 }

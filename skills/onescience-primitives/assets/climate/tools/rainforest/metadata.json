@@ -1,0 +1,33 @@
+{
+  "name": "rainforest",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于随机森林的定量降水估计算法，用于瑞士复杂地形，直接从雷达和地面观测数据学习降水估计模型。涵盖定量降水估计任务、随机森林回归方法的应用、超参数优化过程以及与RZC方法的基准比较。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。",
+  "tags": [
+    "rainforest",
+    "tool",
+    "fallback"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 80.6,
+  "accuracy": 75.0,
+  "authority": 70.7,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "RainForest- a random forest algorithm for quantitative precipitation estimation over Switzerland",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:1e4810cc47508cd5911b62c6db663f1bd333888d0642e1601265066854662ce6",
+    "venue": "Atmospheric measurement techniques",
+    "cited_by_count": 76,
+    "objective_score": 58.1
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E34",
+  "grounded_ratio": 1.0
+}

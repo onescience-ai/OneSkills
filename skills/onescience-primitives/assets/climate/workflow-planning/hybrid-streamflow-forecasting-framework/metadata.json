@@ -1,0 +1,38 @@
+{
+  "name": "hybrid-streamflow-forecasting-framework",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向提升径流预报精度的需求，设计一种结合物理水文模型与数据驱动方法的混合预报框架。该框架通过物理模型生成基础预报，并利用机器学习（如LSTM）或统计方法（如偏差校正）对其进行后处理，以补偿单一方法在精度和物理一致性上的局限。典型应用包括对全球或区域水文模型（如GloFas）预报的订正，适用于多种气候区，能提供更具技巧性的洪水预警和水资源管理依据。",
+  "tags": [
+    "hybrid streamflow forecasting",
+    "lstm",
+    "glofas",
+    "hydrology",
+    "time-series",
+    "bias correction",
+    "kling-gupta efficiency",
+    "data-driven correction"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.8,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Using a long short-term memory (LSTM) neural network to boost river streamflow forecasts over the western United States",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:30bbaf5e0db7a1472a24b08bbac04deb6edb5df3abd3f6bfb3d2d08330dc2206",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E6",
+  "grounded_ratio": 0.5
+}

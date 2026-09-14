@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "工程LES等效源项与高保真校准。面向叶轮高升力与工程LES及DNS数据完成工程LES等效源项与高保真校准。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "工程LES等效源项与高保真校准。面向叶轮高升力与工程LES及DNS数据完成工程LES等效源项与高保真校准。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 工程LES等效源项与高保真校准 的端到端可复用工作流：5 个节点，核心模型 Data-driven LES source model。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "aerodynamic",
     "aerodynamics",
@@ -22,7 +22,11 @@
     "drag-reducing",
     "dynamics",
     "efficient",
-    "estimate"
+    "estimate",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s080"
   ],
   "scenario_id": "CFD_S080",
   "source_papers": [
@@ -31,5 +35,23 @@
     "sha256:6bf7fe7b6da054874323b63a73a82ce83cd0d45d19c0983260107029daa81005",
     "sha256:9c7a49fbc5a2155d6cc540be2f5c6b1f5355fc894ab5a00115e3b4f70b6f20fe",
     "sha256:bd87638212505fadd5a95b7a9d8e838ebd3621f5a3a51921b0392ca92b8cd590"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "工程LES等效源项与高保真校准（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S080",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S080"
+  ],
+  "batch": "2026-09-14"
 }

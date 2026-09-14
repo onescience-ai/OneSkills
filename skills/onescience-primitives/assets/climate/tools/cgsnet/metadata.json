@@ -1,0 +1,39 @@
+{
+  "name": "cgsnet",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向高分辨率对流风阵风（CGs）的0-2小时定量临近预报需求，CGsNet提供了一种融合平均地面风速（ASWS）与雷达反射率（RMOS）观测的深度学习物理约束预报方案。该模型基于PhyDNet架构并引入注意力机制，通过处理过去60分钟的多源时序输入，外推生成未来每6分钟一个时间步的风场与反射率预报场，空间分辨率达0.01°×0.01°。训练采用加权MAE损失与自适应学习率策略，以应对风速数据的不平衡问题。模型已验证在多个风速阈值下的预报性能，适用于气象业务中对流风的快速预警。",
+  "tags": [
+    "convective-gust-nowcasting",
+    "radar-reflectivity",
+    "average-surface-wind-speed",
+    "deep-learning",
+    "physical-constraint",
+    "PhyDNet",
+    "nowcasting-model",
+    "weather-forecasting",
+    "aws-data"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 76.9,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Convective-gust nowcasting based on radar reflectivity and a deep learning algorithm",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:d2f76ed0ab739e698fafc8678f8c795a7149c33ca0e7b594f6025a25b2a8a0a9",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E85",
+  "grounded_ratio": 0.75
+}

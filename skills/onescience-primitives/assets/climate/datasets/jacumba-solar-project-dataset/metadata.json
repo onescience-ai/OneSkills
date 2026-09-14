@@ -1,0 +1,38 @@
+{
+  "name": "jacumba-solar-project-dataset",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向光伏功率预测模型的后处理评估与基准测试，需要一个整合多源气象数据和电站功率模拟的小时级数据集。该数据集覆盖美国加州南部Jacumba太阳能电站（ID: 60947）2017年至2020年的数据，包括卫星反演全球水平辐照度（GHI）、系统顾问模型（SAM）模拟的PV功率输出以及可能的天气预测数据。数据集提供了标准化的时间序列，适用于训练和验证后处理模型，以提升预测精度和不确定性量化能力。",
+  "tags": [
+    "solar-energy-dataset",
+    "pv-power-forecasting",
+    "ghi-data",
+    "solar-radiation",
+    "benchmark-dataset",
+    "time-series-data",
+    "post-processing",
+    "solar-plant-data"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 76.6,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "Improving Model Chain Approaches for Probabilistic Solar Energy Forecasting through Post-processing and Machine Learning",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:a68ca150622dfebdfebb9fe94def6bd16d354cc9ddf8099ede101a02cc1a20d3",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E24",
+  "grounded_ratio": 0.556
+}

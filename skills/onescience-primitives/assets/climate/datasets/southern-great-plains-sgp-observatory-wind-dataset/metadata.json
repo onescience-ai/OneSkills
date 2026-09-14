@@ -1,0 +1,39 @@
+{
+  "name": "southern-great-plains-sgp-observatory-wind-dataset",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向风速垂直外推模型的开发与验证，选择满足长时间序列、多站点、多高度层观测要求的公开气象基准数据集。该数据集源自美国能源部大气辐射测量（ARM）计划南部大平原（SGP）观测站，涵盖4个站点共20个月的激光雷达与声学风速计30分钟平均数据，包括5个高度层（65–169 m a.g.l.）的水平风速以及近地面温湿度、通量等变量，累计超过29000个时间戳，适用于机器学习或物理方法的风速廓线外推研究。",
+  "tags": [
+    "wind-speed",
+    "vertical-extrapolation",
+    "sgp-observatory",
+    "arm-data",
+    "lidar",
+    "sonic-anemometer",
+    "meteorological-dataset",
+    "wind-profile",
+    "boundary-layer"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 60.1,
+  "accuracy": 67.5,
+  "authority": 51.0,
+  "generalization": 58.2,
+  "source_paper": {
+    "title": "The importance of round-robin validation when assessing machine-learning-based vertical extrapolation of wind speeds",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:e7a8f2ca62e5cef7a2511c62960b7c3587f43af14b07bfb3245716d881e19f42",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E26",
+  "grounded_ratio": 0.5
+}

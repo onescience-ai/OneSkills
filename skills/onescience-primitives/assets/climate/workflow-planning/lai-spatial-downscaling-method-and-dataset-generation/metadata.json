@@ -1,0 +1,38 @@
+{
+  "name": "lai-spatial-downscaling-method-and-dataset-generation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向气候生态学与植被模拟研究，需要将粗分辨率（如1°）气候模式预测的叶面积指数（LAI）降尺度到高空间分辨率（如0.05°）以满足区域精细分析需求，采用基于残差网络与像素重排的深度学习方法，通过训练阶段学习低分辨率气候-地形数据与高分辨率参考LAI的映射关系，并在应用阶段对预测数据进行偏置校正后生成高分辨率LAI时序数据集。该方法适用于需要高时空分辨率植被参数输入的陆面过程模拟、碳循环评估、生态系统变化检测等研究场景。",
+  "tags": [
+    "lai-downscaling",
+    "deep-learning",
+    "cmip6",
+    "climate-data",
+    "vegetation-monitoring",
+    "spatial-resolution",
+    "0.05-degree",
+    "pytorch"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.8,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "A dataset of 0.05-degree leaf area index in China during 1983–2100 based on deep learning network",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:abba971f83c3ffe7f1a955bfec43a6c379a40a75ba35d3fd61e95c539e7ae47d",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E93",
+  "grounded_ratio": 0.5
+}

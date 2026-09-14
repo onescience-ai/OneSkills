@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「激光雷达—探空融合的边界层高度反演」工作流。融合气溶胶激光雷达剖面、探空和地面气象，估计当前边界层顶高度并给出质量标识。覆盖从源观测和参考资料及任务边界预检到按稳定度和昼夜条件验证误差的完整管线。得到可复现、可审计的边界层高度时间序列和置信度、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「激光雷达—探空融合的边界层高度反演」工作流。融合气溶胶激光雷达剖面、探空和地面气象，估计当前边界层顶高度并给出质量标识。覆盖从源观测和参考资料及任务边界预检到按稳定度和昼夜条件验证误差的完整管线。得到可复现、可审计的边界层高度时间序列和置信度、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向行星边界层高度估算与验证任务，需要一个综合多源仪器观测的多年数据集，以支持算法开发、模型训练和气象分析。该数据集基于美国能源部大气辐射测量计划南方大平原中心设施的长期观测，提供无线电探空仪、多普勒激光雷达和地表气象参数，校准数值来自SGP站点，供量级参考；其他体系需以自身证据重新锚定。 面向多普勒激光雷达（Doppler lidar）观测的行星边界层高度估算需求，选择或设计一种基于垂直速度方差廓线的固定阈值判别方法（Tucker thresholding）。该方法的核心逻辑是将湍流垂直速度方差的特定数值（如0.04 m² s⁻²）作为边界层顶的指示，适用于白天对流边界层结构较为清晰的观测场景。其优势在于概念简单、计算直接，但估算结果对阈值选取敏感，且在稳定边界层或低信噪比条件下存在局限。校准数值来自SGP站点C1激光雷达数据体系，供量级参考。 激光雷达—探空融合的边界层高度反演 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "adabl",
     "aerosol",
@@ -22,11 +22,49 @@
     "learning",
     "learning-",
     "lidar",
-    "machine"
+    "machine",
+    "boundary-layer-height",
+    "dataset",
+    "arm-sgp",
+    "radiosonde",
+    "meteorology",
+    "remote-sensing",
+    "machine-learning",
+    "weather-analysis",
+    "doppler-lidar",
+    "variance-threshold",
+    "tucker-thresholding",
+    "turbulence",
+    "profiling",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e61"
   ],
   "scenario_id": "E61",
   "source_papers": [
     "sha256:1979bc1e31486d0ab81452182d09dcf1cdde737a304077482eeb4e47486e7c5e",
     "sha256:4b1d23bceeeb09fcddfc4a4984e74a18a92df4e75e4ed1a61b486df4497e991e"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 77.5,
+  "authority": 51.0,
+  "generalization": 72.8,
+  "source_paper": {
+    "title": "激光雷达—探空融合的边界层高度反演（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E61",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E61"
+  ],
+  "batch": "2026-09-14"
 }

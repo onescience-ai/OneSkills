@@ -1,0 +1,40 @@
+{
+  "name": "neural-network-overfitting-prevention-techniques",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向使用反向传播算法训练神经网络的场景，选择并组合偏置-方差权衡、早停与贝叶斯正则化等关键技术，以抑制模型在训练集上的过拟合、提升对未见数据的泛化能力。该方案适用于从单隐层到多隐层（数十神经元）的前馈网络训练，提供模型复杂度控制、训练监控与权重正则化的统一框架。校准数值来自气象预报深度学习实践，供量级参考；其他体系需以自身证据重新锚定。",
+  "tags": [
+    "neural-network",
+    "overfitting",
+    "regularization",
+    "early-stopping",
+    "bayesian-regularization",
+    "bias-variance-tradeoff",
+    "generalization",
+    "deep-learning",
+    "model-training",
+    "model-complexity-control"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 72.5,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 73.5,
+  "source_paper": {
+    "title": "ECMWF short-term prediction accuracy improvement by deep learning",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:ceb9f336fb7a1604d4ab94f84df9d6a6919e1e1a21fa7bda7f58469786c8485a",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E53",
+  "grounded_ratio": 0.571
+}

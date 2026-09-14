@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "监督学习湍流场单快照超分辨率重建。面向成对低高分辨率DNS快照完成监督学习湍流场单快照超分辨率重建。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "监督学习湍流场单快照超分辨率重建。面向成对低高分辨率DNS快照完成监督学习湍流场单快照超分辨率重建。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 监督学习湍流场单快照超分辨率重建 的端到端可复用工作流：5 个节点，核心模型 Super-resolution CNN。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "behavior",
     "benchmarking",
@@ -22,7 +22,12 @@
     "physics-informed",
     "rayleigh-bénard",
     "reconstruction",
-    "scaling"
+    "scaling",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s098",
+    "super-resolution-cnn"
   ],
   "scenario_id": "CFD_S098",
   "source_papers": [
@@ -30,5 +35,23 @@
     "sha256:4011f030e4c316dfa67878259d6a666255778270108d1993efbcf649222615eb",
     "sha256:c1558ddc2ad6e366d1c1dbd8c3186ea33c8eb7642847a3ee9741e929be55d7fd",
     "sha256:b5cb1cc9db2abef4987a6e84bcd8fcdd8548ef5aec4e5d1bb75fb6fb4f1a0cc2"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "监督学习湍流场单快照超分辨率重建（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S098",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S098"
+  ],
+  "batch": "2026-09-14"
 }

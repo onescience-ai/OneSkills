@@ -1,0 +1,39 @@
+{
+  "name": "dynamicmpnn",
+  "type": "tool",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向需要设计能在不同功能状态间切换或同时兼容多种构象的蛋白质序列（如构象变化驱动的转运蛋白、变构酶、铰链运动域等）的任务，选择或设计满足联合多构象结构约束的序列生成方案时，DynamicMPNN提供了一种基于几何深度学习的专用反向折叠框架。该模型通过独立编码目标构象集合的结构特征，将其融合到一个共享的潜在空间中，并直接学习生成序列的联合条件概率分布 p(Y | X₁, ..., Xₘ)，从而一次性产生与所有指定构象相容的氨基酸序列。其配套流程包括从CoDNaS构建高质量多构象训练数据集的方法，以及基于AlphaFold 3模板引导预测的定量评估协议，为设计序列的多状态可重折叠性提供了标准化验证。",
+  "tags": [
+    "multi-state-protein-design",
+    "inverse-folding",
+    "conformational-ensemble",
+    "deep-learning",
+    "protein-mpnn",
+    "alphafold-3",
+    "sequence-generation",
+    "structural-bioinformatics",
+    "codnas"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 88.0,
+  "accuracy": 100.0,
+  "authority": 60.5,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "Multi-state Protein Design with DynamicMPNN",
+    "doi": "",
+    "source": "arxiv",
+    "external_id": "2507.21938",
+    "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+    "cited_by_count": 0,
+    "objective_score": 43.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "B18",
+  "grounded_ratio": 0.667
+}

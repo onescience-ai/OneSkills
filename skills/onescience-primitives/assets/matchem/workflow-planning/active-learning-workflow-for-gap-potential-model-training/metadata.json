@@ -1,0 +1,38 @@
+{
+  "name": "active-learning-workflow-for-gap-potential-model-training",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向高精度原子间势开发，设计一种通过主动学习（Active Learning）从第一性原理分子动力学（AIMD）轨迹中自动采样最具信息量构型，以最少数据训练出满足指定能量拟合容差的高斯近似势（GAP）模型的自动化工作流。该工作流集成了无监督聚类（HDBSCAN）与贝叶斯优化（BO），旨在高效解决传统手动采样效率低、构型代表性不足的问题，确保最终势能模型在目标体系（如Hafnium dioxide等氧化物）的构型空间上具备可靠的预测能力。",
+  "tags": [
+    "active-learning",
+    "gap-potential",
+    "interatomic-potential",
+    "molecular-dynamics",
+    "configuration-sampling",
+    "bayesian-optimization",
+    "hdbscan-clustering",
+    "amorphous-materials"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 77.8,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Machine-learned interatomic potentials by active learning: amorphous and liquid hafnium dioxide",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_10_1038_s41524_020_00367_7",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "HfO2非晶液相机器学习势主动学习",
+  "grounded_ratio": 0.5
+}

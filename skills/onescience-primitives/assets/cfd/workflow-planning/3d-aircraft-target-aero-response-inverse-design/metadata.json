@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "三维航空器目标气动响应逆向设计。面向三维机翼与融合翼身气动数据完成三维航空器目标气动响应逆向设计。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "三维航空器目标气动响应逆向设计。面向三维机翼与融合翼身气动数据完成三维航空器目标气动响应逆向设计。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 三维航空器目标气动响应逆向设计 的端到端可复用工作流：5 个节点，核心模型 3D inverse design network、Physics-aware optimizer。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "3d-inverse-design-network",
     "aerodynamics",
@@ -22,7 +22,12 @@
     "field-resolved",
     "fluid-structure",
     "graph",
-    "interactions"
+    "interactions",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s035",
+    "physics-aware-optimizer"
   ],
   "scenario_id": "CFD_S035",
   "source_papers": [
@@ -30,5 +35,23 @@
     "sha256:fc6c686f752a427a1b0e28ec8ad38e9ce6e7cea72b7c504e9385a61a480958ef",
     "sha256:1afacb9ee9a4575a5650541645f984ffcd9182ace0a777a22bfabad150707868",
     "sha256:0609d76cbf8626761390ca7508f4d53fb666166686e393cdbcf090434c03f514"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "三维航空器目标气动响应逆向设计（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S035",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S035"
+  ],
+  "batch": "2026-09-14"
 }

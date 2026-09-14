@@ -1,0 +1,40 @@
+{
+  "name": "snodas-swe-data-product",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向区域雪水当量（SWE）估算与偏差校正任务，选择或设计满足1公里格网化、每日更新、覆盖北美大部分地区要求的数据产品。SNODAS是通过数据同化融合数值天气预报（NWP）模式输出与多源雪观测生成的标准化SWE数据集，是进行气候、水文、积雪监测等研究和业务应用的基础输入。其系统性偏差（如原位观测稀疏区的正偏差）需通过后续校正处理，校准数值来自安大略省2011-2018年原位观测体系，供量级参考。",
+  "tags": [
+    "snodas",
+    "snow-water-equivalent",
+    "swe",
+    "data-assimilation",
+    "remote-sensing",
+    "hydrology",
+    "bias-correction",
+    "gridded-dataset",
+    "ontario",
+    "canada"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 76.6,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "Application of machine learning techniques for regional bias correction of snow water equivalent estimates in Ontario, Canada",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:e9c7cbdc5be5b06014b8f942faf8f2098a1a3755245f7514797ba41a1ad5864e",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E40",
+  "grounded_ratio": 0.625
+}

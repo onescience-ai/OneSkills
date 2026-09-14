@@ -1,0 +1,38 @@
+{
+  "name": "traditional-numerical-weather-prediction-pipeline",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向从原始大气观测到最终本地预报产品的完整数值天气预报（NWP）流程规划，涵盖数据获取、数据同化、预报生成与下游后处理四个核心阶段。该流程基于物理模型驱动，通过链式组合多个数值模型完成从全球观测融合到区域高分辨率预报的全链路处理。适用于气象业务预报、气候研究及灾害预警等需要确定性天气预报输出的场景。流程依赖多源观测数据和上一次预报的初始猜测，各阶段由专用数值模型串行执行，对算力有较高要求。",
+  "tags": [
+    "numerical-weather-prediction",
+    "data-assimilation",
+    "forecast-pipeline",
+    "data-acquisition",
+    "forecast-postprocessing",
+    "physics-based-modeling",
+    "atmospheric-modeling",
+    "regional-downscaling"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 65.7,
+  "accuracy": 67.5,
+  "authority": 51.0,
+  "generalization": 74.0,
+  "source_paper": {
+    "title": "End-to-end data-driven weather prediction",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:3bcb57ecfbd716fe359fcc0aa80a96422f5452c30a3910c3cef29177cb36fd6e",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E4",
+  "grounded_ratio": 0.5
+}

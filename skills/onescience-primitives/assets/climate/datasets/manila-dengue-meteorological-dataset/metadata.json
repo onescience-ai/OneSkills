@@ -1,0 +1,38 @@
+{
+  "name": "manila-dengue-meteorological-dataset",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向登革热发病率预测建模任务，选择并准备包含时间对齐气象协变量的结构化时间序列数据集。该数据集覆盖菲律宾马尼拉大都会区2009-2013年共260周观测，包含每周登革热发病率及每日气象变量（聚合至周），并已按时间顺序划分为训练集（2009-2012年，208周）与测试集（2013年，52周）。适用于评估气象因素驱动的传染病预测模型（如机器学习回归、时间序列分析），需关注类别型气象变量的插补限制与数据缺失处理。",
+  "tags": [
+    "dengue-incidence-prediction",
+    "manila-meteorological-dataset",
+    "time-series-disease-forecasting",
+    "weekly-aggregation",
+    "training-test-split",
+    "tropical-infectious-disease",
+    "machine-learning-regression",
+    "public-health-surveillance"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 60.1,
+  "accuracy": 67.5,
+  "authority": 51.0,
+  "generalization": 58.2,
+  "source_paper": {
+    "title": "Machine learning methods reveal the temporal pattern of dengue incidence using meteorological factors in metropolitan Manila, Philippines",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:94b5a08b4945bbb463ea9692a6126c2a2d5bf28df16e4626f56f365d45c7b76a",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E43",
+  "grounded_ratio": 0.5
+}

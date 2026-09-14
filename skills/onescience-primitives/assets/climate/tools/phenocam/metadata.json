@@ -1,0 +1,38 @@
+{
+  "name": "phenocam",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向景观尺度植被物候的长期、连续视觉监测任务，选择或设计满足高时间分辨率、低成本、易部署要求的近地表图像采集工具时，PhenoCam 是一种标准化的数字相机系统。它通过在树冠上方或冠层附近固定安装，按固定频率（通常每30分钟）采集 RGB 图像，为物候研究提供丰富的视觉时间序列。该工具的核心优势在于能以极低的门槛获取连续的生态过程数据，但其空间分辨率通常仅能反映冠层或群落的整体动态，无法解析单个植物的精细结构。典型校准数值来自北美通量网等网络的站点部署，具体参数需根据本地环境与研究目标重新锚定。",
+  "tags": [
+    "phenocam",
+    "rgb-imagery",
+    "phenology-monitoring",
+    "near-surface-remote-sensing",
+    "ecosystem-scale",
+    "landscape-scale",
+    "vegetation-dynamics",
+    "time-series-data"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 69.2,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 64.0,
+  "source_paper": {
+    "title": "Deep Learning in Plant Phenological Research- A Systematic Literature Review",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:fe4469ef4d5bdbd08696df7518df7753dc0c633e676ff96aa33324f09a1a12c1",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E67",
+  "grounded_ratio": 1.0
+}

@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "多保真代理辅助翼型外形优化。面向多工况翼型几何与气动力数据完成多保真代理辅助翼型外形优化。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "多保真代理辅助翼型外形优化。面向多工况翼型几何与气动力数据完成多保真代理辅助翼型外形优化。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 多保真代理辅助翼型外形优化 的端到端可复用工作流：5 个节点，核心模型 Multi-fidelity surrogate、Bayesian optimizer。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "active",
     "aerodynamic",
@@ -22,7 +22,12 @@
     "gas-kinetic",
     "implicit",
     "learning",
-    "model"
+    "model",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s031",
+    "multi-fidelity-surrogate"
   ],
   "scenario_id": "CFD_S031",
   "source_papers": [
@@ -30,5 +35,23 @@
     "sha256:318870b0859ccb2525484bdc555963911d723d70d45365f117ba4054439fab62",
     "sha256:31835b8a2beae57ba22d1e2f708159b3ffa4ec62662b68a76e9dbbfeac9c7fff",
     "sha256:027423716c1a4e34157b8636522bdbc03b43e4496be1bb7543dbf58fcf4eca88"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "多保真代理辅助翼型外形优化（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S031",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S031"
+  ],
+  "batch": "2026-09-14"
 }

@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「多要素分析场驱动的天气锋面检测与矢量化」工作流。融合同时刻温度、湿度、气压和风场，识别冷锋、暖锋等概率格点并转换为连续锋面折线。覆盖从源观测和参考资料及任务边界预检到检验位置距离和类别命中率的完整管线。得到可复现、可审计的锋面类别概率格点与矢量折线、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「多要素分析场驱动的天气锋面检测与矢量化」工作流。融合同时刻温度、湿度、气压和风场，识别冷锋、暖锋等概率格点并转换为连续锋面折线。覆盖从源观测和参考资料及任务边界预检到检验位置距离和类别命中率的完整管线。得到可复现、可审计的锋面类别概率格点与矢量折线、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向自动化天气系统监测与气候分析任务，需要从多源网格化大气变量场中直接、客观地识别锋面系统的空间位置与类型。本流程描述了利用二维卷积神经网络（如DL-FRONT）进行监督学习，实现冷锋、暖锋、准静止锋、锢囚锋自动检测与折线提取的完整方法。核心涵盖从构建带类别标签的训练网格、设计并训练CNN模型、后处理概率场提取锋面折线，到最终计算气候态穿越率的端到端流程，适用于长时间序列气象数据的批量处理。 多要素分析场驱动的天气锋面检测与矢量化 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "automated",
     "detection",
@@ -16,10 +16,43 @@
     "network",
     "neural",
     "using",
-    "weather"
+    "weather",
+    "weather-front",
+    "deep-learning",
+    "convolutional-neural-network",
+    "meteorological-data",
+    "supervised-learning",
+    "image-segmentation",
+    "front-extraction",
+    "climate-analysis",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e97"
   ],
   "scenario_id": "E97",
   "source_papers": [
     "sha256:1af78df0cb018111f079661ec7b0577743e028cbeedea90d6d5a06761c22f947"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "多要素分析场驱动的天气锋面检测与矢量化（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E97",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E97"
+  ],
+  "batch": "2026-09-14"
 }

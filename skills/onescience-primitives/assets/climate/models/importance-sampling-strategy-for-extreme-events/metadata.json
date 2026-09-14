@@ -1,0 +1,38 @@
+{
+  "name": "importance-sampling-strategy-for-extreme-events",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向构建偏向极端降水事件的训练/测试数据集，通过在时空切片采样时赋予高降水强度样本更高权重，解决标准均匀采样导致极端事件在数据集中比例偏低、模型学习不充分的问题。该策略通过计算接受概率与切片内雷达场总和成正比，优先筛选强降水序列，从而在有限数据容量下提升模型对极端事件的敏感度。校准数值来自特定降水临近预报模型训练体系，其他应用需重新锚定概率函数参数。",
+  "tags": [
+    "importance-sampling",
+    "extreme-precipitation",
+    "radar-echo",
+    "dataset-construction",
+    "nowcasting",
+    "temporal-spatial-crop",
+    "data-augmentation",
+    "imbalanced-data"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 79.0,
+  "accuracy": 60.0,
+  "authority": 90.1,
+  "generalization": 92.8,
+  "source_paper": {
+    "title": "Skilful nowcasting of extreme precipitation with NowcastNet",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:5a7b9aebe0fcaed87d0e749581fbefc8ea75f26274cb17ea9d88f41e59dd0d30",
+    "venue": "Nature",
+    "cited_by_count": 447,
+    "objective_score": 85.9
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E2",
+  "grounded_ratio": 0.875
+}

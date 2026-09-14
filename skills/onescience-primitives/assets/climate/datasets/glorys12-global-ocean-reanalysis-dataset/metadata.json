@@ -1,0 +1,38 @@
+{
+  "name": "glorys12-global-ocean-reanalysis-dataset",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向中尺度涡旋海洋预报模型（如物理信息神经网络）的训练与验证，选择或设计满足时空连续性与物理场一致性要求的全球海洋再分析基准数据集。GLORYS12 是由 Mercator Océan 开发、基于 NEMO 模式和 ERA-Interim 大气再分析驱动的全球 1/12° 海洋与海冰再分析产品，时间覆盖 1993 年至今，水平网格 1/12°，含 50 个垂直层，提供逐日的海面高度、温盐、海流及海冰变量，适用于海洋状态估计、模型初始化、长期气候态分析以及数据驱动海洋预报模型的训练集构建。该数据集通过同化卫星和现场观测数据提升了对现实海洋状态的代表性，但在沿海、极地等复杂海域需注意其模型物理过程的局限性。",
+  "tags": [
+    "glorys12",
+    "ocean-reanalysis",
+    "nemo-model",
+    "era-interim",
+    "1-12-degree",
+    "eddy-forecasting",
+    "sea-surface-height",
+    "training-dataset"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 70.6,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "Forecasting the eddying ocean with a deep neural network",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:9dd4f646b32336d8a4083ae96ee2596adf4444b0eb85e18f993fee419d4498ec",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E5",
+  "grounded_ratio": 1.0
+}

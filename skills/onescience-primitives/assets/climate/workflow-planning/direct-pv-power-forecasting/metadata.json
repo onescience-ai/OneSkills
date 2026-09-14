@@ -1,0 +1,38 @@
+{
+  "name": "direct-pv-power-forecasting",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向从天气预报到光伏电站功率输出的概率预测任务，设计或应用一种绕过传统“天气→辐射→功率”模型链、直接使用神经网络进行端到端映射的预测方法。该方法通过从历史预测-观测数据对中学习，自动建立天气特征到功率输出的非线性关系，其核心优势在于无需复杂的电站物理模型与参数标定，适用于数据丰富但物理机理知识有限的场景，预测输出为包含不确定性的概率分布。",
+  "tags": [
+    "photovoltaic-power-forecasting",
+    "direct-forecasting",
+    "neural-network",
+    "probabilistic-prediction",
+    "weather-input",
+    "solar-energy",
+    "machine-learning",
+    "data-driven-model"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 84.8,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Improving Model Chain Approaches for Probabilistic Solar Energy Forecasting through Post-processing and Machine Learning",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:a68ca150622dfebdfebb9fe94def6bd16d354cc9ddf8099ede101a02cc1a20d3",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E24",
+  "grounded_ratio": 0.571
+}

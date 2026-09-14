@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "流固耦合移动网格振动时序预测。面向涡激振动与流固耦合轨迹数据完成流固耦合移动网格振动时序预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "流固耦合移动网格振动时序预测。面向涡激振动与流固耦合轨迹数据完成流固耦合移动网格振动时序预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 流固耦合移动网格振动时序预测 的端到端可复用工作流：5 个节点，核心模型 ALE neural network、Graph simulator。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "ale-neural-network",
     "arbitrary",
@@ -20,11 +20,33 @@
     "learning",
     "neural",
     "vibrations",
-    "vortex-induced"
+    "vortex-induced",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s028"
   ],
   "scenario_id": "CFD_S028",
   "source_papers": [
     "sha256:934c0ac430579c3717e3891429c9f592a8c615b3fe8e33a6217db9ab9b867348",
     "sha256:2f9cfd53fe4d6cf4c6f268131e8ba56ff2c46055f24b3cce9021aa62f882d955"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "流固耦合移动网格振动时序预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S028",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S028"
+  ],
+  "batch": "2026-09-14"
 }

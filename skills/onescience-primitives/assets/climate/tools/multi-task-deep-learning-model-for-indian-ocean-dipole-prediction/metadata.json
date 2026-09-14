@@ -1,0 +1,39 @@
+{
+  "name": "multi-task-deep-learning-model-for-indian-ocean-dipole-prediction",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向印度洋偶极子（IOD）季节到跨季节预测，采用多任务深度学习框架同时预测偶极子模态指数（DMI）、东西印度洋海温指数及Nino3.4指数，以捕捉印度洋与太平洋的海气相互作用信号。该框架基于共享特征网络提取全球海温、海洋热含量和风场的时空特征，利用卷积与循环网络混合架构和注意力机制实现可解释预测，在7个月以上前导时间的预测技能提升方面有明确经验支撑。校准数值来自全球气候再分析数据集的IOD回算试验。",
+  "tags": [
+    "iod-prediction",
+    "multi-task-learning",
+    "deep-learning",
+    "climate-forecasting",
+    "sst-anomaly",
+    "indian-ocean-dipole",
+    "dmi",
+    "seasonal-prediction",
+    "attention-mechanism"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 85.7,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "Multi-task machine learning improves multi-seasonal prediction of the Indian Ocean Dipole",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:cb1c99d13e670a90bfe185f6bd0deff8c3ee04779db65be599208f3086c6c378",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E78",
+  "grounded_ratio": 0.5
+}

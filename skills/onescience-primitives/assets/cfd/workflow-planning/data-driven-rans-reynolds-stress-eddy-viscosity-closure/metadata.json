@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "数据驱动RANS雷诺应力与涡黏闭合。面向DNS与RANS配对湍流闭合数据完成数据驱动RANS雷诺应力与涡黏闭合。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "数据驱动RANS雷诺应力与涡黏闭合。面向DNS与RANS配对湍流闭合数据完成数据驱动RANS雷诺应力与涡黏闭合。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 数据驱动RANS雷诺应力与涡黏闭合 的端到端可复用工作流：5 个节点，核心模型 Tensor-basis neural network、Symbolic closure model。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "aerofoil",
     "airfoil",
@@ -22,7 +22,13 @@
     "bypass",
     "cascades",
     "cfd-driven",
-    "cfd耦合"
+    "cfd耦合",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s073",
+    "tensor-basis-neural-network",
+    "symbolic-closure-model"
   ],
   "scenario_id": "CFD_S073",
   "source_papers": [
@@ -44,5 +50,23 @@
     "sha256:ab1e5cff883bb93d515f3df2ac64d5236e61ad9c72428c1c37430136b0fb021c",
     "sha256:6d1e1be04f1de2743adce3f2d096f9efdfc3251c760fde3d15654accce08773c",
     "sha256:d13b43034c7a912dfe75637e2283531ef4fee9d3c7c9931829c72e5987fda41f"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "数据驱动RANS雷诺应力与涡黏闭合（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S073",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S073"
+  ],
+  "batch": "2026-09-14"
 }

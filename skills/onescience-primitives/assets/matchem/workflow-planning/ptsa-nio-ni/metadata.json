@@ -1,0 +1,38 @@
+{
+  "name": "ptsa-nio-ni",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向碱性介质中的高效氢析出反应（HER），开发高活性、高稳定性的非铂基或低铂电催化剂是关键挑战。本协议提供了一种多步电化学合成方案，用于制备单原子铂锚定的NiO/Ni异质结构纳米片，并将其负载于银纳米线柔性导电网络上，形成自支撑的柔性电极。该协议通过顺序电沉积技术，首先在导电网络上构建高活性的异质结构基底，随后通过温和的电化学还原将贵金属单原子锚定于特定界面，旨在最大化原子利用效率并实现活性位点的精准构筑。校准的电化学参数来自特定的NiO/Ni体系，供量级参考。",
+  "tags": [
+    "single-atom-catalyst",
+    "electrochemical-deposition",
+    "nickel-oxide",
+    "heterostructure",
+    "hydrogen-evolution-reaction",
+    "flexible-electrode",
+    "silver-nanowire",
+    "alkaline-electrolyte"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 77.5,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 99.2,
+  "source_paper": {
+    "title": "Platinum single-atom catalyst coupled with transition metal/metal oxide heterostructure for accelerating alkaline hydrogen evolution reaction",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_https_doi_org_10_1038_s41467_021_24079_8",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "Pt单原子异质结构碱性析氢优化",
+  "grounded_ratio": 0.625
+}

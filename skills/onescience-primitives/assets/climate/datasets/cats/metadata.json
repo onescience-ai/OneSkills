@@ -1,0 +1,38 @@
+{
+  "name": "cats",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向时间序列预测模型的标准化性能评估，CATS基准提供了一个包含5000个观测值的人造序列，其中预设了100个缺失值（分为5组，每组20个连续值）供模型预测。该基准通过统一的误差准则E1对模型的预测精度进行量化评分，常用于深度信念网络、循环神经网络等序列建模方法的基准测试与横向比较，是时间序列预测领域的一个经典评测协议。",
+  "tags": [
+    "catss-benchmark",
+    "time-series-prediction",
+    "artificial-sequence",
+    "missing-value-imputation",
+    "deep-belief-network",
+    "recurrent-neural-network",
+    "model-evaluation",
+    "forecasting-benchmark"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 66.7,
+  "accuracy": 77.5,
+  "authority": 51.0,
+  "generalization": 65.5,
+  "source_paper": {
+    "title": "Dynamically pre-trained deep recurrent neural networks using environmental monitoring data for predicting PM2.5",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:34c33896c3b72c8c51dac7038ae016681b5dde792839882d7c42a6ddf6b9e816",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E42",
+  "grounded_ratio": 0.667
+}

@@ -4,9 +4,9 @@
   "domain": "matchem",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 NULL 的「LiMn富锂层状正极电流密度退化分析」工作流。研究对象为LiMn富锂层状正极电流密度退化分析。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从材料与工况建模到方案排序与独立复核的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 NULL 的「LiMn富锂层状正极电流密度退化分析」工作流。研究对象为LiMn富锂层状正极电流密度退化分析。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从材料与工况建模到方案排序与独立复核的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 LiMn富锂层状正极电流密度退化分析 的端到端可复用工作流：4 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "chemical",
     "current",
@@ -19,10 +19,30 @@
     "matchem",
     "mn-rich",
     "null",
-    "structural"
+    "structural",
+    "workflow",
+    "workflow-planning"
   ],
   "scenario_id": "LiMn富锂层状正极电流密度退化分析",
   "source_papers": [
     "doi_10_1039_d2ee01229d"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "LiMn富锂层状正极电流密度退化分析（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "LiMn富锂层状正极电流密度退化分析",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "LiMn富锂层状正极电流密度退化分析"
+  ],
+  "batch": "2026-09-14"
 }

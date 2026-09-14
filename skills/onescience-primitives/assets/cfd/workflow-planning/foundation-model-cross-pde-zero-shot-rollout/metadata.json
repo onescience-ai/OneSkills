@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基础模型跨PDE零样本时序预测。面向多物理预训练PDE时序数据完成基础模型跨PDE零样本时序预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基础模型跨PDE零样本时序预测。面向多物理预训练PDE时序数据完成基础模型跨PDE零样本时序预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 基础模型跨PDE零样本时序预测 的端到端可复用工作流：5 个节点，核心模型 PDE foundation model、In-context learner。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "alignment",
     "auto-regressive",
@@ -22,7 +22,12 @@
     "improving",
     "in-context",
     "in-context-learner",
-    "language"
+    "language",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s022",
+    "pde-foundation-model"
   ],
   "scenario_id": "CFD_S022",
   "source_papers": [
@@ -32,5 +37,23 @@
     "sha256:47661de04057b8bfd18e716afe3af062131bae139b45571881ee6cad3a033623",
     "sha256:9fd731eab12eaf7c991148d9d969bd196c160f51079d9a23bb92ba21f23fecce",
     "sha256:59ce4fdea6d50af118ef9d30e46677d8080f03e037f6863b511f6895d0ba6b93"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "基础模型跨PDE零样本时序预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S022",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S022"
+  ],
+  "batch": "2026-09-14"
 }

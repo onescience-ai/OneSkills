@@ -1,0 +1,38 @@
+{
+  "name": "photovoltaic-yield-prediction",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向光伏发电功率的短期预测需求，选择或设计一种结合物理模型与数据驱动的混合预测流程。该流程以历史气象数据为输入，通过多个前馈神经网络集成预测关键辐照度指标，再经由一系列光伏物理模型逐步转换为模块吸收辐照度、工作温度，最终利用五参数单二极管模型计算直流功率输出。此方法旨在为智能电网的调度、能源管理及光伏系统维护提供可靠的发电量预报。",
+  "tags": [
+    "photovoltaic",
+    "yield-prediction",
+    "neural-network",
+    "irradiance-forecast",
+    "power-modeling",
+    "short-term-forecast",
+    "smart-grid",
+    "physical-model"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 77.0,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Photovoltaic yield prediction using an irradiance forecast model based on multiple neural networks",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:6290e57199f4a1d514ecae4e57a40c8dd91b76e04f3208b744b27c7bc012c822",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E25",
+  "grounded_ratio": 1.0
+}

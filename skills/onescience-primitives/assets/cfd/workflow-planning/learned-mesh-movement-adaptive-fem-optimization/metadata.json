@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "学习型网格移动与自适应有限元优化。面向自适应有限元网格误差数据完成学习型网格移动与自适应有限元优化。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "学习型网格移动与自适应有限元优化。面向自适应有限元网格误差数据完成学习型网格移动与自适应有限元优化。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 学习型网格移动与自适应有限元优化 的端到端可复用工作流：5 个节点，核心模型 Mesh movement network、Graph mesh optimizer。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "computational_fluid_dynamics",
     "element",
@@ -21,11 +21,33 @@
     "optimised",
     "relocation",
     "towards",
-    "universal"
+    "universal",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s030"
   ],
   "scenario_id": "CFD_S030",
   "source_papers": [
     "sha256:8e7f390f57647857137750d418f6a9082787b9a7b20a12d7841c4c6b675f5864",
     "sha256:4c978419bd809759f69a53e117027af78aa83279be18f8e2bf20728dd689c896"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "学习型网格移动与自适应有限元优化（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S030",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S030"
+  ],
+  "batch": "2026-09-14"
 }

@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "FNO规则网格参数化PDE算子学习。面向Darcy与Navier-Stokes规则网格数据完成FNO规则网格参数化PDE算子学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "FNO规则网格参数化PDE算子学习。面向Darcy与Navier-Stokes规则网格数据完成FNO规则网格参数化PDE算子学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 FNO规则网格参数化PDE算子学习 的端到端可复用工作流：5 个节点，核心模型 Fourier Neural Operator。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accurate",
     "aerodynamical",
@@ -22,7 +22,12 @@
     "domain",
     "domains",
     "enhanced",
-    "equations"
+    "equations",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s048",
+    "fourier-neural-operator"
   ],
   "scenario_id": "CFD_S048",
   "source_papers": [
@@ -38,5 +43,23 @@
     "sha256:225a98abd2481bdc75b9ed075173a88383d190ce252cd7e773ec43e0e4cc3794",
     "sha256:24b234b94baa4ac8cd3e1bc159a9c46d2b5d4a971c3bfdf293c2f8aea3a7cae3",
     "sha256:9764585ef34a6cb07c94921df9974b411fbb9f8eb0d24f534838b831435bcdca"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "FNO规则网格参数化PDE算子学习（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S048",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S048"
+  ],
+  "batch": "2026-09-14"
 }

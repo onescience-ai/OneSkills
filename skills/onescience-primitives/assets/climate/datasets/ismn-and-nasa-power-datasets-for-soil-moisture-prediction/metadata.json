@@ -1,0 +1,39 @@
+{
+  "name": "ismn-and-nasa-power-datasets-for-soil-moisture-prediction",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向基于机器学习或深度学习的土壤湿度预测任务，选择或整合满足多站点、多深度、时空覆盖要求的原位观测与气象驱动数据。本知识介绍由国际土壤湿度网络（ISMN）原位土壤湿度/温度观测与 NASA POWER 全球气象变量构成的组合数据集，涵盖从数据获取、站点筛选、时间对齐到质量控制的完整准备流程。该组合为数据驱动的土壤湿度建模提供标准输入格式与典型变量清单，适用于不同土壤类型与气候区的多站点泛化评估场景。",
+  "tags": [
+    "soil-moisture-prediction",
+    "ismn",
+    "nasa-power",
+    "in-situ-observation",
+    "meteorological-variables",
+    "time-series-dataset",
+    "deep-learning",
+    "data-preprocessing",
+    "multi-site-evaluation"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 73.6,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "A comprehensive study of deep learning for soil moisture prediction",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:8198eba6c306e18218f052fe9c8614da2461dd028be3053ef0e87f6507450471",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E46",
+  "grounded_ratio": 0.5
+}

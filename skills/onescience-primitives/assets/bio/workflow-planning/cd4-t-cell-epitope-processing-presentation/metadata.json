@@ -4,9 +4,9 @@
   "domain": "bio",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 APLSuite 的「CD4 T细胞表位加工与呈递预测」工作流。研究对象为抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据。本场景研究抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据，希望解决联合预测抗原加工、MHC-II呈递和CD4表位，适用于疫苗候选表位的优先级排序。覆盖从免疫对象与任务定义到特异性与可开发性质控的完整管线。核心指标包括表位AUPRC。得到与输入和任务约束一致、可追溯、可复核的CD4 T细胞表位加工与呈递预测结果，包括标准抗体/TCR编号、链-表位映射、输入结构/序列质控和界面实体清单、独立评估、表位AUPRC统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 APLSuite 的「CD4 T细胞表位加工与呈递预测」工作流。研究对象为抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据。本场景研究抗原、抗体/TCR 序列结构、CDR、表位和免疫配对数据，希望解决联合预测抗原加工、MHC-II呈递和CD4表位，适用于疫苗候选表位的优先级排序。覆盖从免疫对象与任务定义到特异性与可开发性质控的完整管线。核心指标包括表位AUPRC。得到与输入和任务约束一致、可追溯、可复核的CD4 T细胞表位加工与呈递预测结果，包括标准抗体/TCR编号、链-表位映射、输入结构/序列质控和界面实体清单、独立评估、表位AUPRC统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。 面向抗体结合位点预测任务，设计并训练一个端到端多模态深度融合模型的方法流程。该方法聚焦抗体重链可变区（VH）的CDR区域，通过整合独热编码、BLOSUM替换矩阵、蛋白质语言模型（如ESMC）上下文嵌入、结构感知嵌入以及基于图卷积网络（GCN）的物化描述符图嵌入等五种生物模态特征，经自适应模态融合（AMF）、Transformer序列建模与混合专家（MoE）特征专业化，结合监督对比学习与焦点损失完成结合位点二分类。该流程涵盖从数据去冗余划分、多模态特征工程、模型架构设计、训练优化策略到综合评估的完整端到端方案，适用于需要高精度预测抗体-抗原结合残基的场景，校准数值来自免疫球蛋白重链可变区体系。 CD4 T细胞表位加工与呈递预测 的端到端可复用工作流：4 个节点，核心模型 APLSuite。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "antibody",
     "antigen",
@@ -22,11 +22,45 @@
     "fasta",
     "integrated",
     "likelihood",
-    "mhc-ii呈递和cd4表位"
+    "mhc-ii呈递和cd4表位",
+    "antibody-binding-site-prediction",
+    "multi-modal-fusion",
+    "transformer",
+    "mixture-of-experts",
+    "esmc",
+    "graph-convolutional-network",
+    "contrastive-learning",
+    "sequence-encoding",
+    "pytorch",
+    "cdr-region",
+    "workflow",
+    "workflow-planning",
+    "b26"
   ],
   "scenario_id": "B26",
   "source_papers": [
     "2606.02462",
     "2509.06465"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 100.0,
+  "authority": 60.5,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "CD4 T细胞表位加工与呈递预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "B26",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "B26"
+  ],
+  "batch": "2026-09-14"
 }

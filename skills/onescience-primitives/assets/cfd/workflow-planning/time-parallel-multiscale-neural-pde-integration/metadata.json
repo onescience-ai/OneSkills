@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "时间并行与多时间尺度神经PDE推进。面向长时间多尺度PDE轨迹完成时间并行与多时间尺度神经PDE推进。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "时间并行与多时间尺度神经PDE推进。面向长时间多尺度PDE轨迹完成时间并行与多时间尺度神经PDE推进。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 时间并行与多时间尺度神经PDE推进 的端到端可复用工作流：5 个节点，核心模型 Parareal neural solver、Temporal neural operator。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "advection",
     "agile",
@@ -22,7 +22,13 @@
     "enables",
     "environmental",
     "equations",
-    "flight"
+    "flight",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s023",
+    "parareal-neural-solver",
+    "temporal-neural-operator"
   ],
   "scenario_id": "CFD_S023",
   "source_papers": [
@@ -35,5 +41,23 @@
     "sha256:35dd0cd692f23c3dd9fe3ade0394e3c276c44b8275398c5e52f5fede9b8071e8",
     "sha256:061b1b92f372cbd618fa1dae994710ecd3db7c8533d937499a82f127db8f9550",
     "sha256:5d99d80e648b47f1b9b92dd1228d23982c86be30c58dc8951d34df74c5977d88"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "时间并行与多时间尺度神经PDE推进（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S023",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S023"
+  ],
+  "batch": "2026-09-14"
 }

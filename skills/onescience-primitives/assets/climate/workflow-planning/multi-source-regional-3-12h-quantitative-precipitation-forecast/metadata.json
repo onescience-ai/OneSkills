@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「多源观测驱动的区域3—12小时定量降水预报」工作流。融合雷达、卫星、站点和区域分析状态，生成未来3—12小时高分辨率降水率、累积量及概率。覆盖从临近观测及任务边界预检到按时效检验FSS、CSI和Brier分数的完整管线。得到可复现、可审计的3—12小时降水率场、累积降水和概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「多源观测驱动的区域3—12小时定量降水预报」工作流。融合雷达、卫星、站点和区域分析状态，生成未来3—12小时高分辨率降水率、累积量及概率。覆盖从临近观测及任务边界预检到按时效检验FSS、CSI和Brier分数的完整管线。得到可复现、可审计的3—12小时降水率场、累积降水和概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向构建适用于深度学习气象预报模型的高质量训练数据集，需要一种标准化的数据创建和划分协议，以确保训练、验证和测试数据在时间序列和空间采样上保持独立，避免数据泄露。该协议从连续的气象观测数据中，采用无重叠的时间段划分和随机空间补丁采样，生成训练集、验证集和多个测试集。校准数值来自CONUS（美国本土）区域，供量级参考；其他气象区域需根据本地数据重新锚定。核心目标是为降水短临预报等任务提供可复现、无偏倚的数据管道。 多源观测驱动的区域3—12小时定量降水预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "available",
     "csi和brier分数",
@@ -21,11 +21,45 @@
     "products",
     "state-of-the-art",
     "twelve",
-    "weather"
+    "weather",
+    "deep-learning",
+    "weather-forecasting",
+    "dataset-creation",
+    "data-splitting",
+    "spatial-sampling",
+    "radar-data",
+    "satellite-data",
+    "time-series-data",
+    "meteorological-data",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e8"
   ],
   "scenario_id": "E8",
   "source_papers": [
     "sha256:680584f984b6e332e29519d7c8e591bac55b43f45fc2986fb293b9800e2d401c",
     "sha256:88687a0a4f6c664640966667b1a18cd33bbf18200d85bf4a6d9d828206ba6766"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 77.5,
+  "authority": 51.0,
+  "generalization": 74.2,
+  "source_paper": {
+    "title": "多源观测驱动的区域3—12小时定量降水预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E8",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E8"
+  ],
+  "batch": "2026-09-14"
 }

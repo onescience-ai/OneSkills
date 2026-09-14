@@ -1,0 +1,39 @@
+{
+  "name": "in-situ-and-satellite-matchup-dataset-for-chlorophyll-a-retrieval",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向内陆水体及近岸海域叶绿素a浓度遥感反演算法的训练、验证与基准评估，构建或选用包含原位辐射测量与近同步卫星影像配对的匹配数据集。该类数据集由两类数据构成：Type A（共定位原位辐射光谱与生物地球化学参数，用于模型训练与内部测试）和 Type B（近同步卫星影像与原位测量配对，用于评估算法在实际噪声条件下的泛化性能）。数据来源涵盖全球范围内的湖泊、海湾、河口、海岸线与河流等不同营养状态水体。校准数值来自 Landsat-8 OLI 体系下的叶绿素a反演数据集（Type A 共 4,354 组配对，Type B 共 3,371 组配对），供量级参考；其他传感器或区域体系需以自身证据重新锚定。",
+  "tags": [
+    "chlorophyll-a retrieval",
+    "matchup dataset",
+    "in-situ radiometry",
+    "landsat-8 oli",
+    "remote sensing",
+    "water quality",
+    "algorithm validation",
+    "machine learning training data",
+    "lake monitoring"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 76.6,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "A Chlorophyll-a Algorithm for Landsat-8 Based on Mixture Density Networks",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:35244d43a01e48068ea1cba6ca2e6dd7ff712287b35d9f59a938ecebf6d4dadd",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E73",
+  "grounded_ratio": 0.5
+}

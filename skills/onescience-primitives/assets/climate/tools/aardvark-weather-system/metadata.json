@@ -1,0 +1,39 @@
+{
+  "name": "aardvark-weather-system",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向直接从异构观测数据生成全球网格与本地站点气象预报的需求，选择或设计一个端到端数据驱动系统——Aardvark Weather，它绕过传统数值天气预报（NWP）的数据同化与模式积分环节，通过编码器-处理器-解码器三模块神经过程架构，将原位站点观测与卫星遥感数据映射为多变量网格场和单站预报。该系统在校准数值来自ERA5再分析数据的条件下，以1.50°水平分辨率、5层垂直层级运行，单次全球预报在4块NVIDIA A100 GPU上约1秒完成，适合作为快速集合预报、数据同化诊断或NWP缺失场景的替代/补充方案。",
+  "tags": [
+    "aardvark-weather",
+    "data-driven-forecasting",
+    "neural-process",
+    "vision-transformer",
+    "global-gridded-forecast",
+    "station-forecast",
+    "era5",
+    "nwp-alternative",
+    "observational-data"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 66.9,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "End-to-end data-driven weather prediction",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:3bcb57ecfbd716fe359fcc0aa80a96422f5452c30a3910c3cef29177cb36fd6e",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E4",
+  "grounded_ratio": 0.5
+}

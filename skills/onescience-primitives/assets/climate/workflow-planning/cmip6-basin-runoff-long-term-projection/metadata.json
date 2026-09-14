@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「CMIP6气候情景驱动的流域径流长期投影」工作流。将偏差订正的气候情景转化为未来流域径流分布及极端变化，适用于气候影响评估，不用于实时调度。覆盖从水文强迫和流域资料及任务边界预检到检验物理一致性的完整管线。得到可复现、可审计的未来径流序列、变化率与极端统计、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「CMIP6气候情景驱动的流域径流长期投影」工作流。将偏差订正的气候情景转化为未来流域径流分布及极端变化，适用于气候影响评估，不用于实时调度。覆盖从水文强迫和流域资料及任务边界预检到检验物理一致性的完整管线。得到可复现、可审计的未来径流序列、变化率与极端统计、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向评估水文模型在未训练空间位置的预测能力，设计满足插值与外推性能验证需求的基准框架。该框架通过流域随机分组交叉验证（PUB）评估模型对空间未见流域的插值能力，以及通过区域划分外推测试（PUR）评估其对新地理区域的泛化能力，并量化径流模拟精度与长期趋势预测的可靠性。校准数值来自CAMELS数据集与美国本土划分。 面向从众多候选全球气候模型（GCMs）中筛选出对目标区域特定气候变量模拟最稳健模型的需求，提供使用泰勒图（Taylor diagram）进行综合评估的标准化方法。该图以几何方式同时呈现皮尔逊相关系数（r）、中心均方根误差（CRMSE）与标准差比值，将多维性能评估简化为二维平面上的距离判断，直观排序模型表现。校准数值来自山地小流域案例的降水与气温变量评估，供量级参考；其他区域与变量需基于自身数据重新计算。 CMIP6气候情景驱动的流域径流长期投影 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "analysis",
     "assessment",
@@ -22,12 +22,52 @@
     "earth",
     "evapotranspiration",
     "future",
-    "hilly"
+    "hilly",
+    "hydrologic-models",
+    "spatial-generalization",
+    "benchmark",
+    "camels",
+    "pub",
+    "pur",
+    "ungauged-basins",
+    "kfold-cross-validation",
+    "taylor-diagram",
+    "gcm-evaluation",
+    "climate-model-selection",
+    "downscaling",
+    "hydrological-modelling",
+    "performance-metrics",
+    "precipitation",
+    "temperature",
+    "workflow",
+    "workflow-planning",
+    "e28"
   ],
   "scenario_id": "E28",
   "source_papers": [
     "sha256:743bb92e298017ad93536fcf0aec2964b195e8f1135d52592434f469aa587f37",
     "sha256:5de1877a9670880bffdb5b00c4b9a856c7e604aae168395aaa1707151a541fbe",
     "sha256:1994df162c35dae0f5bae63cfa081a9f14e5eb961b911bee7fbee95ca3834e07"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 77.5,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "CMIP6气候情景驱动的流域径流长期投影（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E28",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E28"
+  ],
+  "batch": "2026-09-14"
 }

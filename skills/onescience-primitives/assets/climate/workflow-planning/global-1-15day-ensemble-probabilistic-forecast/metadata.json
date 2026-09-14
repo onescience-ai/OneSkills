@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「全球1—15天集合概率天气预报」工作流。从全球分析初场生成未来1—15天多变量集合成员与概率分布，用于天气不确定性和极端风险评估。覆盖从起报资料及任务边界预检到检验CRPS、可靠度与集合离散度的完整管线。得到可复现、可审计的多变量集合预报场、分位数与超阈概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「全球1—15天集合概率天气预报」工作流。从全球分析初场生成未来1—15天多变量集合成员与概率分布，用于天气不确定性和极端风险评估。覆盖从起报资料及任务边界预检到检验CRPS、可靠度与集合离散度的完整管线。得到可复现、可审计的多变量集合预报场、分位数与超阈概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 一种基于条件扩散模型和图神经网络的全球概率天气预报模型，通过迭代去噪过程生成15天、0.25°分辨率的全球集合预报。其技巧和速度优于欧洲中期天气预报中心（ECMWF）的业务集合预报系统ENS。模型训练使用ERA5再分析数据，采用两阶段训练策略（先1°分辨率预训练，后0.25°分辨率微调），并利用条件扩散采样协议从噪声中恢复天气状态。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。 面向先进概率天气预报系统（如AI集合预报模型）与传统业务集合预报系统的综合技能评估与科学比较，设计一套多维度、可复现的验证协议。该协议从边际预报分布技能、概率校准度、极端事件预测、空间依赖结构完整性到特定天气系统（如热带气旋）轨迹概率等多个维度，量化评估预报系统的综合表现，并采用基于Bootstrap的配对差异显著性检验确保结论的统计可靠性。核心评分指标包括连续排名概率分数（CRPS）和相对经济价值（REV），同时借助气象领域通用工具（如TempestExtremes）进行诊断。此协议为验证新一代概率预报系统的业务可用性与科研价值提供了标准化的参考框架。 全球1—15天集合概率天气预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "crps",
     "diffusion",
@@ -22,12 +22,48 @@
     "medium-range",
     "model",
     "skillful",
-    "weather"
+    "weather",
+    "gencast-global-probabilistic-weather-forecasting-model",
+    "tool",
+    "fallback",
+    "probabilistic-ensemble-forecast",
+    "model-evaluation",
+    "meteorological-verification",
+    "rev-curves",
+    "ensemble-calibration",
+    "tropical-cyclone",
+    "extreme-events",
+    "significance-testing",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e3"
   ],
   "scenario_id": "E3",
   "source_papers": [
     "sha256:2af6b1493f3f357b68d5195bcae8d3c9578b8daed7dec02c1bb101c5f8eaedb7",
     "sha256:2f9717523c1cfa4b6f3cbea6fe1ed6a97d507b446113c6c879e657c0c925e492",
     "sha256:b1033756c87b3ff02def660a4ea58badd66240fdf04219a61b167790496ae83e"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 99.2,
+  "source_paper": {
+    "title": "全球1—15天集合概率天气预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E3",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E3"
+  ],
+  "batch": "2026-09-14"
 }

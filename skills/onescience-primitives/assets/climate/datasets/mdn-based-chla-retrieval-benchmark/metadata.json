@@ -1,0 +1,37 @@
+{
+  "name": "mdn-based-chla-retrieval-benchmark",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向卫星水色遥感模型评估，设计或执行一套标准化基准测试流程，以量化不同机器学习或半分析算法在从遥感反射率反演水体叶绿素a浓度时的性能、精度及其对大气校正不确定性的敏感度。该流程整合了原位实测与卫星匹配两套数据，通过对比误差（MSA）和偏差（SSBP）等指标，系统评估模型在理想与实际条件下的表现，为算法选择、改进与部署提供量化依据。",
+  "tags": [
+    "remote-sensing",
+    "chlorophyll-a-retrieval",
+    "machine-learning-benchmark",
+    "landsat-8",
+    "atmospheric-correction",
+    "model-evaluation",
+    "water-quality-monitoring"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 83.2,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 95.5,
+  "source_paper": {
+    "title": "A Chlorophyll-a Algorithm for Landsat-8 Based on Mixture Density Networks",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:35244d43a01e48068ea1cba6ca2e6dd7ff712287b35d9f59a938ecebf6d4dadd",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E73",
+  "grounded_ratio": 0.5
+}

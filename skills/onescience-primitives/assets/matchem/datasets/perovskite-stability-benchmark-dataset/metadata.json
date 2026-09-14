@@ -1,0 +1,38 @@
+{
+  "name": "perovskite-stability-benchmark-dataset",
+  "type": "dataset",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向钙钛矿光电材料筛选与机器学习建模场景，提供一份包含分子修饰与水稳定性能关联的标准化基准数据集。该数据集涵盖96种分子组合修饰的CH3NH3PbI3钙钛矿薄膜，在不同水浸泡时间下的水相光电流测量值，共计384个数据点。其核心价值在于为开发、验证和比较用于预测钙钛矿环境稳定性的机器学习模型提供了一个公开、结构化的数据基础。数据集与相应的代码、模型已开源，可直接用于材料信息学工作流。",
+  "tags": [
+    "perovskite-stability",
+    "photocurrent-dataset",
+    "water-resistance",
+    "machine-learning",
+    "materials-informatics",
+    "benchmark-dataset",
+    "ch3nh3pbi3",
+    "open-data"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 67.1,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 58.2,
+  "source_paper": {
+    "title": "Data-driven optimization and machine learning analysis of compatible molecules for halide perovskite material",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_10_1038_s41524_024_01297_4",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "卤化物钙钛矿兼容分子数据驱动优化",
+  "grounded_ratio": 0.667
+}

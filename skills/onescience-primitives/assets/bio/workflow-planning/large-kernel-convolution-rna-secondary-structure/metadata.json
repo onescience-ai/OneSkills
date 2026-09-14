@@ -4,9 +4,9 @@
   "domain": "bio",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 Kirigami 的「大卷积核RNA二级结构预测」工作流。研究对象为RNA序列、二级/三级结构、配对关系和设计约束。本场景研究RNA序列、二级/三级结构、配对关系和设计约束，希望解决利用大卷积核捕获远距离碱基配对，预测RNA二级结构并评估家族外泛化。覆盖从RNA输入与任务定义到RNA结构与功能质控的完整管线。核心指标包括F1。得到与输入和任务约束一致、可追溯、可复核的大卷积核RNA二级结构预测结果，包括规范化RNA序列、结构约束、链方向、伪结/修饰处理和输入质量报告、独立评估、F1统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 Kirigami 的「大卷积核RNA二级结构预测」工作流。研究对象为RNA序列、二级/三级结构、配对关系和设计约束。本场景研究RNA序列、二级/三级结构、配对关系和设计约束，希望解决利用大卷积核捕获远距离碱基配对，预测RNA二级结构并评估家族外泛化。覆盖从RNA输入与任务定义到RNA结构与功能质控的完整管线。核心指标包括F1。得到与输入和任务约束一致、可追溯、可复核的大卷积核RNA二级结构预测结果，包括规范化RNA序列、结构约束、链方向、伪结/修饰处理和输入质量报告、独立评估、F1统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。 大卷积核RNA二级结构预测 的端到端可复用工作流：4 个节点，核心模型 Kirigami。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "archiveii",
     "bio",
@@ -22,11 +22,32 @@
     "large",
     "learning",
     "learning-based",
-    "prediction"
+    "prediction",
+    "workflow",
+    "workflow-planning",
+    "b86"
   ],
   "scenario_id": "B86",
   "source_papers": [
     "2406.02381",
     "2305.14749"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "大卷积核RNA二级结构预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "B86",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "B86"
+  ],
+  "batch": "2026-09-14"
 }

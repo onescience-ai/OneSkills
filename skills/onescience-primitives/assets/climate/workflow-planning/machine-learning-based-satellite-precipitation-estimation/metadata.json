@@ -1,0 +1,33 @@
+{
+  "name": "machine-learning-based-satellite-precipitation-estimation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "一种利用机器学习算法（如随机森林），融合卫星遥感、再分析和地面观测数据，建立中尺度对流云系统降水量估计模型的方法。该流程包括数据融合匹配、模型训练与调优、独立验证评估，并可通过可解释性工具（如SHAP）分析模型行为。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。",
+  "tags": [
+    "machine-learning-based-satellite-precipitation-estimation",
+    "datapipe",
+    "fallback"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 77.8,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Integration of shapley additive explanations with random forest model for quantitative precipitation estimation of mesoscale convective systems",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:d702eb7f16a0f1fd56249050ce60118c2eb7dc9d88dfa92f69600da386c97a7a",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E34",
+  "grounded_ratio": 1.0
+}

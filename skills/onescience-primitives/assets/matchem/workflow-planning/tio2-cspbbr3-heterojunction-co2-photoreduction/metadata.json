@@ -4,9 +4,9 @@
   "domain": "matchem",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 NULL 的「TiO2CsPbBr3异质结CO2光还原设计」工作流。研究对象为TiO2CsPbBr3异质结CO2光还原设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从器件堆叠与失效边界定义到优化方案与复核的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 NULL 的「TiO2CsPbBr3异质结CO2光还原设计」工作流。研究对象为TiO2CsPbBr3异质结CO2光还原设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从器件堆叠与失效边界定义到优化方案与复核的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 面向光催化材料设计中构建异质结以增强电荷分离效率的需求，选择或设计一种基于静电自组装的温和、快速、可调控负载比的制备方法。该方法将预先合成的金属氧化物纳米结构（如TiO₂纳米纤维）与钙钛矿量子点（如CsPbBr₃）在非极性溶剂中通过表面静电吸引直接组装，形成具有紧密接触界面的S-scheme异质结复合材料。该流程涵盖了从组分分散、组装到产物回收的完整步骤，适用于制备一系列不同负载比的纳米复合材料，其核心是利用材料表面电荷差异实现温和条件下的自发组装，避免了复杂的化学键合步骤。 TiO2CsPbBr3异质结CO2光还原设计 的端到端可复用工作流：4 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "cspbbr3",
     "heterojunctions",
@@ -17,10 +17,42 @@
     "s-scheme",
     "self-assembled",
     "tio2cspbbr3异质结co2光还原设计",
-    "unique"
+    "unique",
+    "static-self-assembly",
+    "s-scheme-heterojunction",
+    "tio2",
+    "perovskite-qds",
+    "photocatalysis",
+    "co2-reduction",
+    "nanocomposite",
+    "electrospinning",
+    "hot-injection",
+    "workflow",
+    "workflow-planning"
   ],
   "scenario_id": "TiO2CsPbBr3异质结CO2光还原设计",
   "source_papers": [
     "doi_10_1038_s41467_020_18350_7"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 99.2,
+  "source_paper": {
+    "title": "TiO2CsPbBr3异质结CO2光还原设计（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "TiO2CsPbBr3异质结CO2光还原设计",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "TiO2CsPbBr3异质结CO2光还原设计"
+  ],
+  "batch": "2026-09-14"
 }

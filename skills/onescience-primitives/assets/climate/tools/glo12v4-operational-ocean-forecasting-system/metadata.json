@@ -1,0 +1,40 @@
+{
+  "name": "glo12v4-operational-ocean-forecasting-system",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向全球海洋业务化分析与预报任务，部署与评估 NEMO-LIM3 数值模式驱动的全球海洋预报系统。该系统采用 1/12° 水平分辨率与 50 层垂直分层，通过简化阶卡尔曼滤波器（基于 SEEK 滤波器的 3-D 多变量模态分解）融合卫星与现场观测数据，提供未来 1–10 天的海面高度、温度、盐度和海流预报。适用于需要业务化海洋状态估计、高分辨率预报基准建立或与 AI 海洋预报模型进行系统级对比的场景。",
+  "tags": [
+    "global-ocean-forecasting",
+    "nemo",
+    "data-assimilation",
+    "operational-oceanography",
+    "12th-degree-resolution",
+    "seek-filter",
+    "mergator-ocean",
+    "sea-surface-height",
+    "ocean-temperature",
+    "forecast-evaluation"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 73.9,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Forecasting the eddying ocean with a deep neural network",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:9dd4f646b32336d8a4083ae96ee2596adf4444b0eb85e18f993fee419d4498ec",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E5",
+  "grounded_ratio": 0.625
+}

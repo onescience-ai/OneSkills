@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "生成模型与智能体工程外形协同设计。面向车辆或软体结构生成设计数据完成生成模型与智能体工程外形协同设计。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "生成模型与智能体工程外形协同设计。面向车辆或软体结构生成设计数据完成生成模型与智能体工程外形协同设计。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 生成模型与智能体工程外形协同设计 的端到端可复用工作流：5 个节点，核心模型 Diffusion design model、Engineering agent。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "aerodynamic",
     "aesthetic",
@@ -22,7 +22,12 @@
     "diffusion",
     "diffusion-design-model",
     "electromagnetic",
-    "engineering"
+    "engineering",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s032",
+    "engineering-agent"
   ],
   "scenario_id": "CFD_S032",
   "source_papers": [
@@ -30,5 +35,23 @@
     "sha256:3653d7fe39eec68cc2aaf1bed81c2db753651272e9f72804ad35dee37e8b7483",
     "sha256:dd26e740768cd669d504712aa4ab315de3ef6fc89a0af6864e501bef1e6bb25a",
     "sha256:f22f2a9653e0ba86a9993d2785d389843de2423775b7f7e1291d4e193de1dfed"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "生成模型与智能体工程外形协同设计（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S032",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S032"
+  ],
+  "batch": "2026-09-14"
 }

@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "边界嵌入与任意阶硬约束神经场求解。面向混合边界与复杂域PDE数据完成边界嵌入与任意阶硬约束神经场求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "边界嵌入与任意阶硬约束神经场求解。面向混合边界与复杂域PDE数据完成边界嵌入与任意阶硬约束神经场求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 边界嵌入与任意阶硬约束神经场求解 的端到端可复用工作流：5 个节点，核心模型 Boundary-embedded neural operator、Hard-constraint neural field。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "arbitrary",
     "automatically",
@@ -22,7 +22,11 @@
     "encoded",
     "fields",
     "graph",
-    "hard-constraint-neural-field"
+    "hard-constraint-neural-field",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s064"
   ],
   "scenario_id": "CFD_S064",
   "source_papers": [
@@ -31,5 +35,23 @@
     "sha256:5bef4389868b35d17f0eb843502a38ff6b1334c9bb7d3f18b030c95fe2542a53",
     "sha256:360bdbd1081687400d4d0bb6a631cf6bc6ccd5b233c2051cca23417a8516444b",
     "sha256:c7a80d3f13bbc7721e6aeba1e4f33060c84a40ca2b355d05af8d8087f69bf632"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "边界嵌入与任意阶硬约束神经场求解（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S064",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S064"
+  ],
+  "batch": "2026-09-14"
 }

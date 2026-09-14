@@ -1,0 +1,38 @@
+{
+  "name": "uk-radar-composite-dataset",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向训练和评估高分辨率、近实时的降水临近预报模型，特别是深度生成模型，需要一个覆盖范围广、时间序列连续的雷达复合数据集。该数据集由英国气象局雷达网生成，提供全英国范围的地表降水率时间序列，具有标准化的空间网格和固定的时间步长，适用于卷积神经网络等图像到图像的预报模型训练。校准数值来自英国本土雷达观测体系，其他区域研究者使用时需评估其降水气候特征的适用性。",
+  "tags": [
+    "precipitation-nowcasting",
+    "radar-dataset",
+    "deep-learning",
+    "met-office",
+    "uk-radar",
+    "rain-rate",
+    "time-series",
+    "imbalanced-data"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 79.5,
+  "accuracy": 100.0,
+  "authority": 90.5,
+  "generalization": 48.2,
+  "source_paper": {
+    "title": "Skilful precipitation nowcasting using deep generative models of radar",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:ca5f10f9deb516da9672272e277cee3b2a729ddf60513942afa574380c48a44b",
+    "venue": "Nature",
+    "cited_by_count": 983,
+    "objective_score": 86.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E2",
+  "grounded_ratio": 0.571
+}

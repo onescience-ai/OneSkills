@@ -1,0 +1,39 @@
+{
+  "name": "deep-learning-for-phenological-stage-classification",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向植物物候学研究中自动化识别物候阶段（如开花、展叶、结果、衰老）的需求，选择或设计基于卷积神经网络（CNN）的图像分类方法，将来自固定相机（PhenoCam）、无人机、卫星或标本的图像自动转化为离散的物候阶段标签。该方法将物候判读从传统的人工目视或植被指数阈值法，提升为基于像素特征的深度学习分类，适用于需要高通量、客观、连续监测植物生命周期变化的研究场景。其核心流程包括标注数据构建、CNN模型训练与推理、性能评估，校准数值来自具体物种或生态系统的研究体系，其他体系需以自身证据重新锚定。",
+  "tags": [
+    "deep-learning",
+    "phenology",
+    "image-classification",
+    "cnn",
+    "plant-phenology",
+    "remote-sensing",
+    "phenocam",
+    "uav",
+    "computer-vision"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 81.8,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Deep Learning in Plant Phenological Research- A Systematic Literature Review",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:fe4469ef4d5bdbd08696df7518df7753dc0c633e676ff96aa33324f09a1a12c1",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E67",
+  "grounded_ratio": 0.5
+}

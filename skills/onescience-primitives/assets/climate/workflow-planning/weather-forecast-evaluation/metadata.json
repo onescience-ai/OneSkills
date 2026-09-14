@@ -1,0 +1,39 @@
+{
+  "name": "weather-forecast-evaluation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向确定性天气预报的性能评估，设计标准化的误差分解与活动度量化方案，以RMSE、ACC为核心指标，结合MBE和STDERROR进行误差成分解析，并用活动度指标诊断预报平滑化趋势。该方法适用于全球数值天气预报模型（如FuXi、ECMWF HRES）与再分析基准（如ERA5）的对比验证，要求输入预报场与对应时刻的基准场，输出评估指标表、误差分解结果和平滑度诊断。",
+  "tags": [
+    "weather-forecast-evaluation",
+    "deterministic-forecast",
+    "rmse",
+    "acc",
+    "error-decomposition",
+    "forecast-smoothness",
+    "era5",
+    "numerical-weather-prediction",
+    "model-comparison"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 67.5,
+  "accuracy": 67.5,
+  "authority": 51.0,
+  "generalization": 79.2,
+  "source_paper": {
+    "title": "A data-to-forecast machine learning system for global weather",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:6704521646be2ebb87feec2f7da3b1b21b9b30786e41b80d96220ed6c83bf30f",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E4",
+  "grounded_ratio": 1.0
+}

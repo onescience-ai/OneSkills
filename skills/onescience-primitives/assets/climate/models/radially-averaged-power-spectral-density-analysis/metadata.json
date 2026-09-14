@@ -1,0 +1,38 @@
+{
+  "name": "radially-averaged-power-spectral-density-analysis",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向评估数值预报或雷达外推模型输出的降水场是否丢失了真实观测的空间细节与变率结构，选择并应用径向平均功率谱密度（PSD）分析方法进行诊断。该方法通过对预报场和观测场计算二维傅里叶变换，得到其在不同空间频率（波数）上的能量分布，再进行径向平均得到一维PSD曲线。通过对比两者的PSD曲线，尤其是高频（小尺度）部分的差异，可以定量判断预报是否随预见期增加而变得“平滑”或“模糊”，从而评估模型的有效分辨率。校准数值可来自DGMR、PySTEPS等模型的对比分析。",
+  "tags": [
+    "radially-averaged-psd",
+    "precipitation-nowcasting",
+    "spectral-analysis",
+    "model-evaluation",
+    "spatial-variability",
+    "forecast-resolution",
+    "radar-precipitation",
+    "blur-assessment"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 89.1,
+  "accuracy": 85.0,
+  "authority": 90.5,
+  "generalization": 92.8,
+  "source_paper": {
+    "title": "Skilful precipitation nowcasting using deep generative models of radar",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:ca5f10f9deb516da9672272e277cee3b2a729ddf60513942afa574380c48a44b",
+    "venue": "Nature",
+    "cited_by_count": 983,
+    "objective_score": 86.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E2",
+  "grounded_ratio": 0.625
+}

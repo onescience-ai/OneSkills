@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "神经校正器耦合粗网格CFD加速。面向粗细网格CFD成对轨迹完成神经校正器耦合粗网格CFD加速。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "神经校正器耦合粗网格CFD加速 的端到端可复用工作流：5 个节点，核心模型 Neural corrector、Hybrid PDE solver。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accelerated",
     "accelerating",
@@ -22,7 +22,12 @@
     "gradient-based",
     "hybrid",
     "hybrid-pde-solver",
-    "indirect"
+    "indirect",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s067",
+    "neural-corrector"
   ],
   "scenario_id": "CFD_S067",
   "source_papers": [
@@ -32,5 +37,23 @@
     "sha256:a66ce5ca13bf9fd99c602d757e9dbb1b9dd368c2c4bde966ecda81ce9348e319",
     "sha256:f52afc640a693abbec139f671e9ad096d9e80f2e25076cde637f34c8da722355",
     "sha256:8b22c58612c1b9ba804d37d884ac0af453ec3fa1c86278a44d499ae9d1a01cae"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "神经校正器耦合粗网格CFD加速（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S067",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S067"
+  ],
+  "batch": "2026-09-14"
 }

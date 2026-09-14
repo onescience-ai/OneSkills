@@ -1,0 +1,38 @@
+{
+  "name": "cnn-based-tsunami-early-warning-method",
+  "type": "model",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向海啸灾害早期预警，提供一种基于一维卷积神经网络（CNN）快速、准确预报特定岸上地点淹没波形的通用方法。该方法通过学习大量合成海啸情景中观测数据（如海底压力波形）与目标淹没波形的映射关系来构建预测模型，其核心优势在于计算效率高，可在单个CPU节点上运行，满足预警的时间紧迫性要求。模型训练基于历史地震参数生成的大规模合成数据集，典型配置采用15层网络结构，以预测波形与真实波形之间的均方误差为损失函数。校准数值来自日本仙台平原地区的测试案例，表明在获得约25分钟观测数据后，模型预测的最大海啸波幅平均绝对误差可控制在0.5米以内，到达时间误差在1分钟以内。该技术适用于具有分布式海底和陆地观测网络的近海区域，作为传统数值模拟方法的快速补充或替代预警工具。",
+  "tags": [
+    "tsunami-forecasting",
+    "convolutional-neural-network",
+    "early-warning-system",
+    "deep-learning",
+    "natural-hazards",
+    "geophysics",
+    "sendai-plain",
+    "shallow-water-equations"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Early forecasting of tsunami inundation from tsunami and geodetic observation data with convolutional neural networks",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:259a206632605d209a59b6bb19fa47188109f7bfb3b99d255530e3dca2cc9812",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E90",
+  "grounded_ratio": 1.0
+}

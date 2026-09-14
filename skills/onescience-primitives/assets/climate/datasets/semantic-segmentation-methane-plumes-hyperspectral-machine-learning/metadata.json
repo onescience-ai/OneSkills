@@ -1,0 +1,38 @@
+{
+  "name": "semantic-segmentation-methane-plumes-hyperspectral-machine-learning",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向甲烷排放遥感监测与机器学习模型开发，提供一个经过质量控制的标注数据集，该数据集包含高光谱（AVIRIS-NG）与模拟的多光谱（如WorldView-3）图像切片，涵盖羽流与非羽流区域，用于训练、验证和基准测试甲烷羽流语义分割算法。数据集标签经手动扩展与检查，正负样本平衡，并明确了测试集的划分日期（如10月18、21、25日获取的影像）。",
+  "tags": [
+    "methane-detection",
+    "hyperspectral-imagery",
+    "semantic-segmentation",
+    "aviris-ng",
+    "dataset",
+    "machine-learning",
+    "remote-sensing",
+    "plume-segmentation"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 63.6,
+  "accuracy": 67.5,
+  "authority": 51.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "Semantic segmentation of methane plumes with hyperspectral machine learning models",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:791d6dfdbb767673c04f92f24e0442fc0b158d909cfa0c3705bcb78f9c4528f0",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E81",
+  "grounded_ratio": 0.556
+}

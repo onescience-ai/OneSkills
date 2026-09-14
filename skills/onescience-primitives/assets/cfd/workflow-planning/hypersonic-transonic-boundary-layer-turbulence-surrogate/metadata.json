@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "高超声速与跨声速边界层湍流代理。面向高超声速冷壁与跨声速机翼CFD数据完成高超声速与跨声速边界层湍流代理。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "高超声速与跨声速边界层湍流代理。面向高超声速冷壁与跨声速机翼CFD数据完成高超声速与跨声速边界层湍流代理。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 高超声速与跨声速边界层湍流代理 的端到端可复用工作流：5 个节点，核心模型 Transformer aerodynamic surrogate、Neural turbulence model。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "aerodynamic",
     "aeroelastic",
@@ -22,7 +22,13 @@
     "compact",
     "comprehensive",
     "computational_fluid_dynamics",
-    "currents"
+    "currents",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s074",
+    "transformer-aerodynamic-surrogate",
+    "neural-turbulence-model"
   ],
   "scenario_id": "CFD_S074",
   "source_papers": [
@@ -34,5 +40,23 @@
     "sha256:921a1d0d48171d2d066f2bfc4c432b6021e7ae81dc6de200e075a9f7b56b4668",
     "sha256:0406fbe8d6397b36218fa375d896ace921ec973ef500e499380a738916f03b34",
     "sha256:344c0bfa3129c0f6f6b88b551714ace8a21a17f931f4bf704a077d60bd87c288"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "高超声速与跨声速边界层湍流代理（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S074",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S074"
+  ],
+  "batch": "2026-09-14"
 }

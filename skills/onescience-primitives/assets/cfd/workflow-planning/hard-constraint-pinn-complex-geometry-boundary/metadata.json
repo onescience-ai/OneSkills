@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "硬约束PINN复杂几何边界求解。面向复杂几何边界与无网格配点完成硬约束PINN复杂几何边界求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "硬约束PINN复杂几何边界求解。面向复杂几何边界与无网格配点完成硬约束PINN复杂几何边界求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 硬约束PINN复杂几何边界求解 的端到端可复用工作流：5 个节点，核心模型 Hard-constraint PINN、Boundary PINN。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "analysis",
     "approximating",
@@ -22,7 +22,12 @@
     "framework",
     "geometrically",
     "geometry",
-    "hard-constraint"
+    "hard-constraint",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s040",
+    "hard-constraint-pinn"
   ],
   "scenario_id": "CFD_S040",
   "source_papers": [
@@ -32,5 +37,23 @@
     "sha256:f94ec2bbab8705159385647a949eb2e42f9ec4bd2b7f4992df29a95f283c929b",
     "sha256:a86af3c766f369e5a70397f98ed209d441d3230641128a6d6763bbe2e4fc2cb1",
     "sha256:84623dd390b9fbc64a540e63ec518a798434bed4802d105ab848ba3670e0317f"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "硬约束PINN复杂几何边界求解（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S040",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S040"
+  ],
+  "batch": "2026-09-14"
 }

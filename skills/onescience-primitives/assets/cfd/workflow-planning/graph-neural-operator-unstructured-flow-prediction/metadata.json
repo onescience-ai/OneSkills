@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "图神经算子任意域非结构网格流场预测。面向任意几何非结构网格CFD数据完成图神经算子任意域非结构网格流场预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "图神经算子任意域非结构网格流场预测。面向任意几何非结构网格CFD数据完成图神经算子任意域非结构网格流场预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 图神经算子任意域非结构网格流场预测 的端到端可复用工作流：5 个节点，核心模型 Graph Neural Operator、MeshGraphNet。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accurate",
     "arbitrary",
@@ -22,7 +22,12 @@
     "graph",
     "graph-based",
     "graph-neural-operator",
-    "interactions"
+    "interactions",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s007",
+    "meshgraphnet"
   ],
   "scenario_id": "CFD_S007",
   "source_papers": [
@@ -30,5 +35,23 @@
     "sha256:248a0ce6c1fceeb494ee6d44ca85f9cde0ca3c6092c21fcca5e2e6545a5eafcf",
     "sha256:4cbb78a5988ddb3f7a73358a765c5878b5e0ff58c603b37cccc8057a7962ddbe",
     "sha256:17368e363f02dcb1945361e79608ed7868e16fed7963d17b69f286472159a219"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "图神经算子任意域非结构网格流场预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S007",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S007"
+  ],
+  "batch": "2026-09-14"
 }

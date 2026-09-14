@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「无人机激光雷达—影像森林结构与碳储量估计」工作流。由无人机LiDAR或RGB影像估计样地树高、冠幅、胸径及碳储量；适用于同期森林清查，不推演未来碳汇。覆盖从遥感观测标签及任务边界预检到按样地、林型和空间块独立验证的完整管线。得到可复现、可审计的森林结构参数及碳储量图、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向快速、大范围的森林活生物量碳储量估算，设计或执行从无人机影像采集到结构参数提取、生物量建模与验证的完整多步骤工作流。该流程通过无人机搭载RGB或LiDAR传感器获取高分辨率森林影像，自动或半自动提取冠幅、树高、胸径等关键结构参数，进而结合异速生长方程或机器学习模型进行地上生物量与碳储量的定量估算。流程强调与破坏性采样等地面数据的交叉验证以保障精度，适用于森林资源清查、碳汇项目监测、生态系统服务评估等场景，为林业管理和气候变化应对提供数据驱动的决策支持工具。 无人机激光雷达—影像森林结构与碳储量估计 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "carbon",
     "cloud",
@@ -21,11 +21,45 @@
     "storage",
     "structure",
     "uav-mounted",
-    "using"
+    "using",
+    "drone-remote-sensing",
+    "forest-carbon-stock",
+    "lidar-point-cloud",
+    "rgb-orthomosaic",
+    "allometric-equation",
+    "machine-learning-biomass",
+    "structural-parameter-extraction",
+    "forest-inventory",
+    "carbon-estimation",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e59"
   ],
   "scenario_id": "E59",
   "source_papers": [
     "sha256:7161ced249b8cf35efa5ff2d4bc815eff5ec36b6ee3d23629ad63c1ba5a692c7",
     "sha256:b79a96490b0052258bee27d8686c68e253d2b4034e9a53a99917e26487da0e34"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "无人机激光雷达—影像森林结构与碳储量估计（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E59",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E59"
+  ],
+  "batch": "2026-09-14"
 }

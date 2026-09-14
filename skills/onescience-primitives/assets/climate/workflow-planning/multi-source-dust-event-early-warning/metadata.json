@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「多源观测与天气预报驱动的沙尘事件提前预警」工作流。融合站点、卫星、气溶胶背景和天气预报，预测未来数小时至数日沙尘发生、强度及影响区。覆盖从致灾因子和事件标签及任务边界预检到按事件和空间邻域验证的完整管线。得到可复现、可审计的沙尘概率、浓度等级和影响区、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「多源观测与天气预报驱动的沙尘事件提前预警」工作流。融合站点、卫星、气溶胶背景和天气预报，预测未来数小时至数日沙尘发生、强度及影响区。覆盖从致灾因子和事件标签及任务边界预检到按事件和空间邻域验证的完整管线。得到可复现、可审计的沙尘概率、浓度等级和影响区、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向提前预警沙尘等气溶胶污染事件的气象与环境监测场景，可构建融合多源再分析数据与地面观测的多任务深度学习预测模型。该方法通过联合训练一个空间重建辅助任务与一个局地事件检测主任务，以提升对未来12至72小时地面PM10浓度及相关沙尘事件的预测能力，尤其适用于大范围、长时间序列的气象驱动型污染预报。校准数值来自以色列地区18年的ERA5、CAMS和地面监测数据。 多源观测与天气预报驱动的沙尘事件提前预警 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "early",
     "earth",
@@ -15,10 +15,44 @@
     "learning",
     "middle",
     "multi-task",
-    "warnings"
+    "warnings",
+    "dust-event-forecasting",
+    "deep-learning",
+    "multi-task-learning",
+    "pm10",
+    "era5",
+    "cams",
+    "air-quality-prediction",
+    "ordinal-regression",
+    "time-series",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e92"
   ],
   "scenario_id": "E92",
   "source_papers": [
     "sha256:93f7054280b564840983a34764a34fffdc45b826893bdf3699b1cdef9f4664cb"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "多源观测与天气预报驱动的沙尘事件提前预警（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E92",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E92"
+  ],
+  "batch": "2026-09-14"
 }

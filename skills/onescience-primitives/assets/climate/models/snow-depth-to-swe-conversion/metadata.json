@@ -1,0 +1,40 @@
+{
+  "name": "snow-depth-to-swe-conversion",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向缺乏直接SWE原位测量的区域，利用站点雪深与配套气象数据（气温、降水、风速），通过雪气候分类与对应密度模型，将点尺度的雪深观测系统性地转换为雪水当量（SWE）。该方法适用于高山、海洋性及草原三大雪气候带，核心流程为：先基于十一月至三月的累积冷却度月（CDM）、平均降水与风速经分类树判定雪气候类型，再套用 Sturm 密度模型公式计算雪层体密度并转换为 SWE。所得日尺度 SWE 值主要用于为遥感反演或机器学习重建模型提供地面验证数据，是缺乏雪枕等直接测量设备的山地与干旱区水文研究中的关键替代方案。",
+  "tags": [
+    "snow-water-equivalent",
+    "snow-depth",
+    "swe-conversion",
+    "snow-climate-classification",
+    "density-model",
+    "ground-truth",
+    "sturm-classification",
+    "cdm",
+    "snowpack-density",
+    "remote-sensing-validation"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 84.0,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Using machine learning for real-time estimates of snow water equivalent in the watersheds of Afghanistan",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:9409ff819e2e58c2a840497b602f7f21e7e30dc455f46077268c078969409e67",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E40",
+  "grounded_ratio": 0.625
+}

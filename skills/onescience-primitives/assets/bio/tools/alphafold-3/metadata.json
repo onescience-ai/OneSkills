@@ -1,0 +1,39 @@
+{
+  "name": "alphafold-3",
+  "type": "tool",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向蛋白质-核酸-小分子-离子等多组分生物分子复合物的三维结构预测任务，选择或设计满足跨分子类型统一预测精度要求的深度学习工具。AlphaFold 3 通过 pairformer 模块与扩散模块的架构组合，将蛋白质、核酸、配体、修饰残基和离子的结构预测整合至单一模型，输入聚合物序列与配体 SMILES 即可输出复合物原子坐标及置信度指标，适用于药物设计先导化合物筛选、蛋白-核酸相互作用建模、复合物构象假设生成等场景。该工具提供非商业服务器访问，校准数值来自 PoseBusters 和 CASP15 等基准体系，供量级参考。",
+  "tags": [
+    "alphafold-3",
+    "protein-structure-prediction",
+    "biomolecular-complex",
+    "molecular-docking",
+    "structure-prediction",
+    "protein-ligand-interaction",
+    "rna-structure",
+    "deep-learning",
+    "drug-discovery"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.8,
+  "accuracy": 100.0,
+  "authority": 94.8,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Accurate structure prediction of biomolecular interactions with AlphaFold 3",
+    "doi": "10.1038/s41586-024-07487-w",
+    "source": "openalex",
+    "external_id": "10.1038/s41586-024-07487-w",
+    "venue": "Nature",
+    "cited_by_count": 15609,
+    "objective_score": 92.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "B04",
+  "grounded_ratio": 0.5
+}

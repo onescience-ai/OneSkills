@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「全球1—6个月季节集合天气—气候预测」工作流。从观测或再分析初态生成未来1—6个月全球集合轨迹，预测月季尺度温度、降水及大尺度环流异常。覆盖从起报资料及任务边界预检到检验ACC、CRPS及遥相关技巧的完整管线。得到可复现、可审计的月季尺度集合异常场与概率分布、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「全球1—6个月季节集合天气—气候预测」工作流。从观测或再分析初态生成未来1—6个月全球集合轨迹，预测月季尺度温度、降水及大尺度环流异常。覆盖从起报资料及任务边界预检到检验ACC、CRPS及遥相关技巧的完整管线。得到可复现、可审计的月季尺度集合异常场与概率分布、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 全球1—6个月季节集合天气—气候预测 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。 面向季节尺度气候预测的技巧评估，需要定义关键气候模态指数、生成预测集合、计算技巧指标并诊断信噪比误差，以判断模型是否具备真实可预测性。该评估流程以北涛动（NAO）指数为例，但同样适用于其他大尺度遥相关指数（如AO、PNA）的季节预测评估。流程包括：基于海平面气压场定义区域平均差值指数，利用集合预测模型生成多成员预报，统计集合均值与观测值的相关系数和RMSE，并通过可预测成分比率（RPC）量化信噪比误差。校准数值来自 ACE2 与 GloSea 体系，供量级参考；其他模型体系需以自身证据重新锚定。",
   "tags": [
     "crps及遥相关技巧",
     "earth",
@@ -22,11 +22,46 @@
     "seasonal",
     "skilful",
     "trained",
-    "using"
+    "using",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e47",
+    "seasonal-prediction",
+    "skill-assessment",
+    "nao-index",
+    "signal-to-noise-paradox",
+    "rpc",
+    "ensemble-forecast",
+    "climate-variability",
+    "ace2",
+    "glosea",
+    "reanalysis-evaluation"
   ],
   "scenario_id": "E47",
   "source_papers": [
     "sha256:dff686d8a70ee7792ca5fcd4c5678c3846876b2d770c1ce1cc764feb442b5a0a",
     "sha256:816306e43d221af4f1dce0d71f3d434aa13c896b8301e3f72f2062557f81e46e"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 70.8,
+  "source_paper": {
+    "title": "Skilful global seasonal predictions from a machine learning weather model trained on reanalysis data",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:dff686d8a70ee7792ca5fcd4c5678c3846876b2d770c1ce1cc764feb442b5a0a",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E47"
+  ],
+  "batch": "2026-09-14",
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 80.0
 }

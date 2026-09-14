@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "数据驱动风场与非定常流反馈控制。面向风场尾迹状态与反馈控制数据完成数据驱动风场与非定常流反馈控制。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "数据驱动风场与非定常流反馈控制。面向风场尾迹状态与反馈控制数据完成数据驱动风场与非定常流反馈控制。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 数据驱动风场与非定常流反馈控制 的端到端可复用工作流：5 个节点，核心模型 Reduced-order controller、Neural MPC。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "computational_fluid_dynamics",
     "control",
@@ -22,12 +22,34 @@
     "modeling",
     "modelling",
     "neural-mpc",
-    "reduced-order-controller"
+    "reduced-order-controller",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s084"
   ],
   "scenario_id": "CFD_S084",
   "source_papers": [
     "sha256:2896d672042f900247c18e2e61de69381fe3c935a9e8d28d41eb04a989641d93",
     "sha256:3f4dfa10f13de8fe2408639d0dc39aa6c5bd4733b840692c89b2e1a408eca299",
     "sha256:f9d8efa666c9d6f3968050e28a9ca25f3294ab02ad40b9d70d9ace31f0a692be"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "数据驱动风场与非定常流反馈控制（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S084",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S084"
+  ],
+  "batch": "2026-09-14"
 }

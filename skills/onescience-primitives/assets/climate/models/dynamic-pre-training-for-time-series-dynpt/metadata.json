@@ -1,0 +1,40 @@
+{
+  "name": "dynamic-pre-training-for-time-series-dynpt",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向时间序列预测任务中自编码器预训练表示学习不足的问题，采用一种基于时间顺序的动态权重更新机制，通过分阶段、逐步引入数据中不同时间片段的教师信号，使网络权重平滑适应时序结构。该方法适用于需要从环境监测、气象、空气质量等连续监测数据中提取有预测力的低维表示，以改善下游回归或分类模型初始化质量的场景。校准数值来自 PM2.5 预测体系，其他时序预测体系需以自身证据重新锚定。",
+  "tags": [
+    "dynamic-pretraining",
+    "autoencoder",
+    "time-series-representation",
+    "sequence-splitting",
+    "weighted-reconstruction",
+    "pm2.5-prediction",
+    "environmental-monitoring",
+    "deep-learning",
+    "unsupervised-learning",
+    "feature-learning"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 84.0,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Dynamically pre-trained deep recurrent neural networks using environmental monitoring data for predicting PM2.5",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:34c33896c3b72c8c51dac7038ae016681b5dde792839882d7c42a6ddf6b9e816",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E42",
+  "grounded_ratio": 0.5
+}

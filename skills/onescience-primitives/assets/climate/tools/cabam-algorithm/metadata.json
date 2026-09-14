@@ -1,0 +1,38 @@
+{
+  "name": "cabam-algorithm",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向从自动激光雷达/测云仪（ALC）原始信号中自动反演大气边界层混合层高度（MLH）并分类云层的需求，选择或设计满足自动化、可复现要求的CABAM算法。该算法基于Vaisala CL31等型号测云仪的后向散射信号，通过特征提取与阈值判断，在复杂气象条件下仍能提供小时级的MLH时间序列与云分类信息，为大气污染研究、数值模式验证和气象预报提供关键的垂直结构参数。",
+  "tags": [
+    "atmospheric-boundary-layer",
+    "mixing-layer-height",
+    "ceilometer",
+    "automatic-lidar",
+    "cloud-classification",
+    "vaisal-cl31",
+    "cabam",
+    "meteorological-data"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 67.9,
+  "accuracy": 77.5,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Meteorology-driven variability of air pollution (PM1) revealed with explainable machine learning",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:83306643b55d01eaaddb190df32810421ab7a7b50abcc29f738b59f2dbb9a824",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E45",
+  "grounded_ratio": 1.0
+}

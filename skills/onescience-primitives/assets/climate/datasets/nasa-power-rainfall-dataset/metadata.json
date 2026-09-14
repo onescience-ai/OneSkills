@@ -1,0 +1,39 @@
+{
+  "name": "nasa-power-rainfall-dataset",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向气象干旱监测与预测任务，选择满足长时间序列、月度分辨率要求的公开降雨数据来源时，NASA Power 数据集提供了一种全球覆盖、易于获取的选项。该数据集从 NASA Prediction Of World Energy Resources 平台提供月度降水量观测值（单位 mm），典型时间跨度可达数十年，可用于计算标准化降水指数（SPI）、构建干旱预测模型或进行气候趋势分析。获取过程通过在线数据访问查看器完成，用户需指定地理坐标、时间范围及参数类型，系统返回对应数值文件。使用时需注意数据完整性、单位一致性及与其他数据源的交叉验证，若平台不可用可转向替代气象数据库。",
+  "tags": [
+    "nasa-power",
+    "rainfall-dataset",
+    "precipitation-data",
+    "drought-analysis",
+    "spi-calculation",
+    "monthly-data",
+    "open-access",
+    "meteorological-data",
+    "climate-dataset"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 73.6,
+  "accuracy": 85.0,
+  "authority": 84.0,
+  "generalization": 53.2,
+  "source_paper": {
+    "title": "Forecasting of meteorological drought using ensemble and machine learning models",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:6679e7a9b40879a57d2961353b5187f28d1bfabcfed3afdb8f92c3188612b8c5",
+    "venue": "Environmental Sciences Europe",
+    "cited_by_count": 28,
+    "objective_score": 77.2
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E18",
+  "grounded_ratio": 0.5
+}

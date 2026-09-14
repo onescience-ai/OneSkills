@@ -1,0 +1,38 @@
+{
+  "name": "stable-active-co2-reduction-formate-redox-modulated",
+  "type": "dataset",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向CO2电化学还原制甲酸的催化剂筛选与性能评估，需要一套标准化的量化基准来客观衡量催化剂的工业应用潜力。本知识卡定义了评估CO2还原制甲酸电催化剂性能的核心指标体系，包括法拉第效率、电池能量效率、工作电位、长期稳定性和产物浓度。这些指标为催化剂材料的横向比较、优化方向确定及技术经济性初步判断提供了通用的量化标尺。具体性能阈值（如稳定性>1000小时，FE>95%）可作为实验室研究向中试或工业应用推进时的初步参考门槛。",
+  "tags": [
+    "co2-reduction",
+    "formate",
+    "faradaic-efficiency",
+    "energy-efficiency",
+    "stability",
+    "electrocatalysis",
+    "benchmark",
+    "performance-evaluation"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 69.2,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 55.5,
+  "source_paper": {
+    "title": "Stable, active CO2 reduction to formate via redox-modulated stabilization of active sites",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_10_1038_s41467_021_25573_9",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "SnBi合金CO2到甲酸盐稳定电催化设计",
+  "grounded_ratio": 0.857
+}

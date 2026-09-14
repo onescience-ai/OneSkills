@@ -1,0 +1,38 @@
+{
+  "name": "large-ensemble-testbed",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向海洋碳循环研究中的pCO2（海水二氧化碳分压）时空重建方法评估，需要一个多模型、密集的基准数据集来测试算法性能与外推能力。Large Ensemble Testbed是一个综合测试框架，提供来自四个独立地球系统模型的25个集合成员的模拟数据，覆盖1982-2017年月度pCO2分布（1°×1°分辨率，受RCP8.5排放情景驱动），适用于模型预训练、验证和不确定性分析，支持从稀疏观测到全场重建的迁移学习流程。",
+  "tags": [
+    "air-sea-pco2",
+    "ensemble-testbed",
+    "earth-system-model",
+    "climate-data",
+    "carbon-cycle",
+    "pco2-reconstruction",
+    "machine-learning-benchmark",
+    "climate-simulation"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 60.5,
+  "accuracy": 60.0,
+  "authority": 64.4,
+  "generalization": 58.2,
+  "source_paper": {
+    "title": "Spatiotemporal upscaling of sparse air-sea pCO2 data via physics-informed transfer learning",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:06e0c5bd57761f2fad672a34dca64f5991d9209f166955f218fa517bfedc9faa",
+    "venue": "Scientific Data",
+    "cited_by_count": 4,
+    "objective_score": 49.2
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E13",
+  "grounded_ratio": 0.625
+}

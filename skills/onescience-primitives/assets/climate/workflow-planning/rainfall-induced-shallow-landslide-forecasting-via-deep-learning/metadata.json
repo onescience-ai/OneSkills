@@ -1,0 +1,40 @@
+{
+  "name": "rainfall-induced-shallow-landslide-forecasting-via-deep-learning",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向大区域降雨诱发浅层滑坡的实时预测，设计一种仅依赖小时降雨测量、基于深度学习的监督二分类工作流。该流程从历史降雨与滑坡目录出发，利用CTRL-T工具客观重建海量独立降雨事件，随后将每个事件拆解为前驱期与触发期，并以滞后参数化触发窗口来捕获降雨动态。建模阶段采用由全连接神经网络组成的bagging集成，通过投票聚合输出滑坡发生概率及不确定性度量。该方法适用于雨量计网络密集、历史滑坡目录完整、且目标区域以降雨驱动的浅层滑坡为主的场景，可用于运营级滑坡预警系统的前置判别模块。校准数值来自意大利全国二十年雨量计与滑坡目录体系，供量级参考；其他区域需以本地证据重新锚定。",
+  "tags": [
+    "rainfall-induced-landslide",
+    "deep-learning-forecast",
+    "shallow-landslide",
+    "bagging-ensemble",
+    "binary-classification",
+    "rainfall-threshold",
+    "landslide-early-warning",
+    "hourly-rainfall",
+    "CTRL-T",
+    "uncertainty-quantification"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.8,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Deep learning forecast of rainfall-induced shallow landslides",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:85b9c0e0b3d36f7cb001487db4a42babf3d326f08cc82f658a2a1e6385dac3bd",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E51",
+  "grounded_ratio": 0.571
+}

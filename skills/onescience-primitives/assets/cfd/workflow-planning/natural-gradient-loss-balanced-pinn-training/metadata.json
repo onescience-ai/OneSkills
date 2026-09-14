@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "自然梯度与损失平衡PINN稳定训练。面向PINN基准方程与训练诊断数据完成自然梯度与损失平衡PINN稳定训练。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "自然梯度与损失平衡PINN稳定训练。面向PINN基准方程与训练诊断数据完成自然梯度与损失平衡PINN稳定训练。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 自然梯度与损失平衡PINN稳定训练 的端到端可复用工作流：5 个节点，核心模型 PINN、Natural-gradient optimizer。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accelerated",
     "accuracy",
@@ -22,7 +22,13 @@
     "config_",
     "conflict-free",
     "convergence",
-    "descent"
+    "descent",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s043",
+    "pinn",
+    "natural-gradient-optimizer"
   ],
   "scenario_id": "CFD_S043",
   "source_papers": [
@@ -42,5 +48,23 @@
     "sha256:72348d1ce051400b37e2af8adb4d6136bae5c950cc90bf8a2caa6ad5767db8b6",
     "sha256:ee5a46cdc22ef686132b956cc573e0b9fd969544c1c1f179b8889b07c7517ac7",
     "sha256:1a15dde7dc6d2cdff8d90cfc74ab461d9ae65ae9f810cbc5e6b583f648a4a4dd"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "自然梯度与损失平衡PINN稳定训练（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S043",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S043"
+  ],
+  "batch": "2026-09-14"
 }

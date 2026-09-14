@@ -1,0 +1,38 @@
+{
+  "name": "cesm2-large-ensemble",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向气候变化检测与归因、极端天气模式分析或长期气候预测等任务，需要大量具有物理一致性的全球高分辨率气候模拟数据以训练统计或深度学习模型。CESM2 Large Ensemble（大集合）是一个社区地球系统模型的多成员集合模拟数据集，提供从19世纪中叶到21世纪末（1850-2100年）每日尺度的全球气候场，其核心价值在于通过80个独立模拟成员，在统一强迫情景下提供丰富的内部气候变率样本。该数据集涵盖历史观测强迫与SSP3-7.0排放情景，输出变量包括日降水量与年均全球平均2米气温（AGMT），是构建与评估气候模式数据驱动模型的高质量数据源。",
+  "tags": [
+    "large-ensemble",
+    "cesm2",
+    "climate-simulation",
+    "precipitation",
+    "ssp3-7-0",
+    "deep-learning-training",
+    "attribution",
+    "internal-variability"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 67.1,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 58.2,
+  "source_paper": {
+    "title": "Anthropogenic fingerprints in daily precipitation revealed by deep learning",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:13cba8ec5b789270d44309352357c108ec429c4627742408146af6bfcfac1742",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E94",
+  "grounded_ratio": 1.0
+}

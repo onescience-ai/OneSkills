@@ -1,0 +1,40 @@
+{
+  "name": "lpma-airport-wind-observation-validation",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向数值天气预报（NWP）风场模型的地面验证需求，选择或设计满足时空对齐要求的机场自动观测站（ASOS）实测风速风向数据作为地面真值，建立模型预报与观测之间的系统性对比评估框架。该框架覆盖数据获取、时空匹配、指标计算与诊断分析全流程，适用于 STF-T、GFS 等不同分辨率风场预报模型的性能基准测试与横向比较，校准数值来自 LPMA 机场体系供量级参考。",
+  "tags": [
+    "wind-forecast-validation",
+    "asos-metar",
+    "airport-observation",
+    "nwp-verification",
+    "lpma",
+    "surface-wind",
+    "model-evaluation",
+    "iem-data",
+    "spatiotemporal-resolution",
+    "ground-truth"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 61.4,
+  "accuracy": 60.0,
+  "authority": 51.0,
+  "generalization": 70.5,
+  "source_paper": {
+    "title": "A deep learning approach for improving spatiotemporal resolution of numerical weather prediction forecasts",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:fafc366ffe6713e7a73282add8bcc2e0b44c75f937ffaca7c3da354166042394",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E55",
+  "grounded_ratio": 0.5
+}

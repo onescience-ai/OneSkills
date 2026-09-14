@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「IASI近实时大气氨柱浓度反演」工作流。由IASI红外光谱反演卫星过境时刻大气NH3柱浓度并形成近实时产品；不预测未来氨浓度或地面暴露。覆盖从遥感观测标签及任务边界预检到按季节、区域和浓度范围独立验证的完整管线。得到可复现、可审计的NH3总柱浓度、误差及质量标志、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「IASI近实时大气氨柱浓度反演」工作流。由IASI红外光谱反演卫星过境时刻大气NH3柱浓度并形成近实时产品；不预测未来氨浓度或地面暴露。覆盖从遥感观测标签及任务边界预检到按季节、区域和浓度范围独立验证的完整管线。得到可复现、可审计的NH3总柱浓度、误差及质量标志、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向需要高时空覆盖、长期一致大气氨浓度数据的研究场景，提供一套基于神经网络从IASI卫星观测中快速反演氨柱浓度的方法。该算法专为处理海量红外高光谱数据设计，通过优化网络结构与训练策略，在保证精度的同时大幅提升处理效率，适用于全球范围内大气氨排放源监测、传输过程分析及长期趋势评估。核心校准数值来自全球训练集与ERA-Interim再分析体系。 IASI近实时大气氨柱浓度反演 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "algorithm-",
     "datasets",
@@ -18,10 +18,43 @@
     "nh3总柱浓度",
     "reanalysed",
     "retrieval",
-    "version"
+    "version",
+    "iasi",
+    "ammonia-retrieval",
+    "neural-network",
+    "atmospheric-chemistry",
+    "satellite-remote-sensing",
+    "nh3-column",
+    "era-interim",
+    "reanalysis-dataset",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e79"
   ],
   "scenario_id": "E79",
   "source_papers": [
     "sha256:f176f837b23ebd2a940f0dddff00b454521f7a559da82938bee98442ba8cb6ca"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "IASI近实时大气氨柱浓度反演（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E79",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E79"
+  ],
+  "batch": "2026-09-14"
 }

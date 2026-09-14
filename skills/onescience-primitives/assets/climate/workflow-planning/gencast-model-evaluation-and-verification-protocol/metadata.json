@@ -1,0 +1,39 @@
+{
+  "name": "gencast-model-evaluation-and-verification-protocol",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向先进概率天气预报系统（如AI集合预报模型）与传统业务集合预报系统的综合技能评估与科学比较，设计一套多维度、可复现的验证协议。该协议从边际预报分布技能、概率校准度、极端事件预测、空间依赖结构完整性到特定天气系统（如热带气旋）轨迹概率等多个维度，量化评估预报系统的综合表现，并采用基于Bootstrap的配对差异显著性检验确保结论的统计可靠性。核心评分指标包括连续排名概率分数（CRPS）和相对经济价值（REV），同时借助气象领域通用工具（如TempestExtremes）进行诊断。此协议为验证新一代概率预报系统的业务可用性与科研价值提供了标准化的参考框架。",
+  "tags": [
+    "probabilistic-ensemble-forecast",
+    "model-evaluation",
+    "meteorological-verification",
+    "crps",
+    "rev-curves",
+    "ensemble-calibration",
+    "tropical-cyclone",
+    "extreme-events",
+    "significance-testing"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.5,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 99.2,
+  "source_paper": {
+    "title": "GenCast_ learning skillful ensemble forecasting of medium-range weather",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:2af6b1493f3f357b68d5195bcae8d3c9578b8daed7dec02c1bb101c5f8eaedb7",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E3",
+  "grounded_ratio": 1.0
+}

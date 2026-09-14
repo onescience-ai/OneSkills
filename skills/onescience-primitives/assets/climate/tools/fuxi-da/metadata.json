@@ -1,0 +1,39 @@
+{
+  "name": "fuxi-da",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向全球数值天气预报系统，将多样化原始卫星观测与背景场预报融合生成高质量分析场的数据同化工具。FuXi-DA 采用变量与仪器专用编码器处理极轨卫星亮温数据，结合改进的 PointPillars 方法应对稀疏观测，并通过基于重放的增量学习策略实现月度更新以适应数据质量与可用性的演变。该工具支持有背景场与无背景场两种同化模式，是有循环分析预报能力的端到端天气预报系统的核心组件。",
+  "tags": [
+    "data-assimilation",
+    "satellite-observation",
+    "machine-learning",
+    "weather-forecasting",
+    "pointpillars",
+    "background-field",
+    "analysis-field",
+    "polar-orbiting-satellite",
+    "incremental-learning"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 73.9,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "A data-to-forecast machine learning system for global weather",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:6704521646be2ebb87feec2f7da3b1b21b9b30786e41b80d96220ed6c83bf30f",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E4",
+  "grounded_ratio": 0.625
+}

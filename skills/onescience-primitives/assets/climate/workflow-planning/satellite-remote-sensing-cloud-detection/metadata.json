@@ -1,0 +1,39 @@
+{
+  "name": "satellite-remote-sensing-cloud-detection",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向从卫星遥感影像中自动化提取云覆盖信息的需求，选择或设计满足精度、效率与场景适应性要求的云检测方案。云检测是多数遥感应用（如地表参数反演、变化检测）的关键预处理步骤，其核心是将影像中的云、云影及可能混淆的雪冰等目标与晴空地表进行区分。该流程涵盖从数据获取、特征提取到模型应用与后处理的完整链路，支持阈值法、经典机器学习及深度学习等多种技术路线，最终输出云掩膜、概率图或云参数。方案的选择需权衡数据可用性、场景复杂性与精度要求，并通过后处理与验证保障结果可靠性。",
+  "tags": [
+    "satellite-image",
+    "cloud-detection",
+    "remote-sensing",
+    "threshold-method",
+    "machine-learning",
+    "deep-learning",
+    "cloud-mask",
+    "image-preprocessing",
+    "accuracy-assessment"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 77.8,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Cloud detection methodologies- variants and development—a review",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:48a7e63af8dd1afe78e93954e810aa7094a809907b84283d1f79c907dfead205",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E35",
+  "grounded_ratio": 0.625
+}

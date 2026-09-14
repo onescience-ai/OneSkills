@@ -1,0 +1,39 @@
+{
+  "name": "merra2",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向需要全球大气再分析数据进行模型训练、偏差校正或降尺度研究的场景，选择并使用MERRA2再分析数据集时，理解其数据结构、获取方式、典型应用及已知局限。MERRA2（Modern-Era Retrospective analysis for Research and Applications Version 2）是NASA发布的全球再分析产品，提供包含降水在内的多种大气变量，空间分辨率约50公里，时间分辨率为逐小时。其数据特性（如系统性偏差和粗分辨率）决定了它常作为深度学习模型的输入，与高分辨率观测（如Stage IV雷达数据）配对，用于降水字段的偏差校正与降尺度研究。",
+  "tags": [
+    "merra2",
+    "reanalysis-dataset",
+    "precipitation-data",
+    "bias-correction",
+    "downscaling",
+    "nasa-gmao",
+    "ges-disc",
+    "global-climate-data",
+    "atmospheric-variables"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 78.3,
+  "accuracy": 100.0,
+  "authority": 71.9,
+  "generalization": 58.2,
+  "source_paper": {
+    "title": "Customized deep learning for precipitation bias correction and downscaling",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:650856d7eed5c5d1484c5661d7d1bd761abb8f52b5cfc6434db7f05877e087fa",
+    "venue": "Geoscientific model development",
+    "cited_by_count": 60,
+    "objective_score": 59.9
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E15",
+  "grounded_ratio": 0.667
+}

@@ -1,0 +1,38 @@
+{
+  "name": "spatial-generalization-benchmarks-for-hydrologic-models",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向评估水文模型在未训练空间位置的预测能力，设计满足插值与外推性能验证需求的基准框架。该框架通过流域随机分组交叉验证（PUB）评估模型对空间未见流域的插值能力，以及通过区域划分外推测试（PUR）评估其对新地理区域的泛化能力，并量化径流模拟精度与长期趋势预测的可靠性。校准数值来自CAMELS数据集与美国本土划分。",
+  "tags": [
+    "hydrologic-models",
+    "spatial-generalization",
+    "benchmark",
+    "camels",
+    "pub",
+    "pur",
+    "ungauged-basins",
+    "kfold-cross-validation"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 80.2,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 95.5,
+  "source_paper": {
+    "title": "The suitability of differentiable, physics-informed machine learning hydrologic models for ungauged regions and climate change impact assessment",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:1994df162c35dae0f5bae63cfa081a9f14e5eb961b911bee7fbee95ca3834e07",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E28",
+  "grounded_ratio": 0.5
+}

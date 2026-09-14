@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "物理网络随机与高维PDE求解。面向随机微分方程与高维PDE样本完成物理网络随机与高维PDE求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "物理网络随机与高维PDE求解。面向随机微分方程与高维PDE样本完成物理网络随机与高维PDE求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 物理网络随机与高维PDE求解 的端到端可复用工作流：5 个节点，核心模型 Physics-informed stochastic solver、Gaussian process。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "adaptive",
     "aerodynamic",
@@ -22,7 +22,13 @@
     "fluid",
     "fokker-planck",
     "force",
-    "foundation"
+    "foundation",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s046",
+    "physics-informed-stochastic-solver",
+    "gaussian-process"
   ],
   "scenario_id": "CFD_S046",
   "source_papers": [
@@ -38,5 +44,23 @@
     "sha256:67cfcc205ea4312be9cd5c7d91d938055c3c3ccdb2d707ba8fd8fb5db82b862c",
     "sha256:142b25c80d82927db2e04d3be017f1297151e6e88fa9e5f18f61626d69d6258f",
     "sha256:2e395e01afb657c056ca0491bdf0d928fc8488331417bf9065107d7b99224930"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "物理网络随机与高维PDE求解（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S046",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S046"
+  ],
+  "batch": "2026-09-14"
 }

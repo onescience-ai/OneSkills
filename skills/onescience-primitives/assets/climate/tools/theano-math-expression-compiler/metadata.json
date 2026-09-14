@@ -1,0 +1,37 @@
+{
+  "name": "theano-math-expression-compiler",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向深度学习模型定义和高效数值计算的需求，选择或设计满足CPU与GPU双端编译、符号表达式优化的数学表达式编译器。Theano-math-expression-compiler是一款用于定义、优化和计算数学表达式的CPU和GPU编译器，常用于实现卷积长短期记忆网络等深度学习模型。它允许用户通过Python定义数学表达式，自动生成优化的底层代码，以在多种硬件上高效运行。该工具特别适用于需要符号微分、图优化和自动并行计算的研究场景。例如，在气候预测中，它被用于构建ConvLSTM模型。其他体系需以自身证据重新锚定具体参数。",
+  "tags": [
+    "theano",
+    "math-expression-compiler",
+    "cpu-gpu-compilation",
+    "deep-learning-framework",
+    "convolutional-lstm",
+    "python-machine-learning",
+    "symbolic-computation"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 66.9,
+  "accuracy": 60.0,
+  "authority": 82.2,
+  "generalization": 64.0,
+  "source_paper": {
+    "title": "Convolutional LSTM Network: A Machine Learning Approach for Precipitation Nowcasting",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:6b83643820fa049a9cdf30621385bd5d33c67408d348a93edb6c59ed247986ef",
+    "venue": "arXiv (Cornell University)",
+    "cited_by_count": 6655,
+    "objective_score": 74.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E2",
+  "grounded_ratio": 0.714
+}

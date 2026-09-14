@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「稀疏监测站驱动的城市污染浓度网格重建与短时预测」工作流。从稀疏空气质量站和城市环境特征重建未监测位置污染浓度，并外推未来短时城市连续格点场。覆盖从污染气象资料及任务边界预检到以留站和未来时段双重验证的完整管线。得到可复现、可审计的城市连续污染格点、短时预测及不确定性、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「稀疏监测站驱动的城市污染浓度网格重建与短时预测」工作流。从稀疏空气质量站和城市环境特征重建未监测位置污染浓度，并外推未来短时城市连续格点场。覆盖从污染气象资料及任务边界预检到以留站和未来时段双重验证的完整管线。得到可复现、可审计的城市连续污染格点、短时预测及不确定性、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向建立城市或区域空气质量时空预测模型，需要获取多站点、长时间序列、融合污染物与气象观测数据的场景。本指南描述了源自韩国环境公社（空气质量）与韩国气象厅（气象）的小时级监测数据集的特性、获取方式、质量控制要点及典型处理流程，为开展类似的跨域、多源环境数据建模任务提供可复用的数据准备框架。 稀疏监测站驱动的城市污染浓度网格重建与短时预测 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "citywide",
     "convolutional",
@@ -22,11 +22,44 @@
     "prediction",
     "real-time",
     "spatiotemporal",
-    "using"
+    "using",
+    "air-quality-dataset",
+    "pm25-prediction",
+    "meteorological-data",
+    "south-korea",
+    "time-series-analysis",
+    "environmental-monitoring",
+    "spatial-interpolation",
+    "missing-data-handling",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e60"
   ],
   "scenario_id": "E60",
   "source_papers": [
     "sha256:846507953ae5de0e8fd4f7433264b270978b8787495a398bec77762ebd75a47c",
     "sha256:f5c31bcfb4413b62c93535a88b88d185581c2a9d9965b8389eb5b764b2f934bd"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 58.2,
+  "source_paper": {
+    "title": "稀疏监测站驱动的城市污染浓度网格重建与短时预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E60",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E60"
+  ],
+  "batch": "2026-09-14"
 }

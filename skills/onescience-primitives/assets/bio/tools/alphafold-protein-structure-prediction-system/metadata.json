@@ -1,0 +1,38 @@
+{
+  "name": "alphafold-protein-structure-prediction-system",
+  "type": "tool",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向从氨基酸序列预测蛋白质三维结构的任务，选择或设计满足原子精度要求的基于深度学习的预测工具。AlphaFold是一个集成了多序列比对、Evoformer神经网络和结构模块的端到端系统，能直接输出高质量的三维坐标及相应的置信度评估。该系统在蛋白质结构预测领域建立了新的准确性基准，尤其适用于缺乏实验结构模板、但存在同源序列信息的蛋白质。",
+  "tags": [
+    "protein-structure-prediction",
+    "alphafold",
+    "evoformer",
+    "msa",
+    "deep-learning",
+    "structural-bioinformatics",
+    "plddt",
+    "3d-structure"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 95.5,
+  "accuracy": 100.0,
+  "authority": 90.5,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "Highly accurate protein structure prediction with AlphaFold",
+    "doi": "10.1038/s41586-021-03819-2",
+    "source": "openalex",
+    "external_id": "10.1038/s41586-021-03819-2",
+    "venue": "Nature",
+    "cited_by_count": 47191,
+    "objective_score": 86.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "B02",
+  "grounded_ratio": 0.5
+}

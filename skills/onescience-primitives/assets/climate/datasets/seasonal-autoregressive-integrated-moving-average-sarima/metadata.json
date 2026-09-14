@@ -1,0 +1,39 @@
+{
+  "name": "seasonal-autoregressive-integrated-moving-average-sarima",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向单变量时间序列的预测任务，选择或设计一个能同时捕捉趋势、季节性和自相关性的基准模型时，季节性自回归积分滑动平均模型（SARIMA）是最经典且广泛使用的统计方法。它通过显式建模非季节性和季节性成分，为模型的比较和评估提供了一个稳健的统计基线。SARIMA模型特别适用于具有固定周期性模式（如年周期）的时间序列，例如月度或季度气象、水文或经济数据。该模型为预测任务提供了明确的概率框架，其参数可通过信息准则进行优化选择，确保在拟合优度与模型复杂度之间取得平衡。SARIMA作为基准，其性能为新提出的预测方法（如神经网络）提供了量化的比较尺度，其校准数值通常来自标准气象或水文数据集（如标准化降水蒸散指数SPEI）。",
+  "tags": [
+    "sarima",
+    "time-series-forecasting",
+    "seasonal-patterns",
+    "baseline-model",
+    "benchmark",
+    "hydrology",
+    "drought-forecasting",
+    "univariate-prediction",
+    "statistical-model"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 63.5,
+  "accuracy": 60.0,
+  "authority": 59.4,
+  "generalization": 70.5,
+  "source_paper": {
+    "title": "Regional drought forecasting in data-scarce regions through a novel cluster-based liquid neural network",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:98962b1eac2405fc16c2f2e2c4a4e0bc1bdb02bbdb8b6bd5e5587a2307d59dc2",
+    "venue": "Scientific Reports",
+    "cited_by_count": 0,
+    "objective_score": 42.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E18",
+  "grounded_ratio": 0.5
+}

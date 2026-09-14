@@ -4,19 +4,52 @@
   "domain": "bio",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 DynamicMPNN 的「多构象状态兼容的蛋白序列设计」工作流。研究对象为受约束的蛋白骨架、序列、肽或酶设计任务。本场景研究受约束的蛋白骨架、序列、肽或酶设计任务，希望解决为多个目标构象设计同一蛋白序列，适用于构象切换、变构和条件响应蛋白。覆盖从设计目标与约束定义到回折叠与设计筛选的完整管线。核心指标包括多态成功率。得到与输入和任务约束一致、可追溯、可复核的多构象状态兼容的蛋白序列设计结果，包括经格式和约束检查的设计目标、固定区域掩码、候选结构/序列及结构自洽报告、独立评估、多态成功率统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向需要设计能在不同功能状态间切换或同时兼容多种构象的蛋白质序列（如构象变化驱动的转运蛋白、变构酶、铰链运动域等）的任务，选择或设计满足联合多构象结构约束的序列生成方案时，DynamicMPNN提供了一种基于几何深度学习的专用反向折叠框架。该模型通过独立编码目标构象集合的结构特征，将其融合到一个共享的潜在空间中，并直接学习生成序列的联合条件概率分布 p(Y | X₁, ..., Xₘ)，从而一次性产生与所有指定构象相容的氨基酸序列。其配套流程包括从CoDNaS构建高质量多构象训练数据集的方法，以及基于AlphaFold 3模板引导预测的定量评估协议，为设计序列的多状态可重折叠性提供了标准化验证。 多构象状态兼容的蛋白序列设计 的端到端可复用工作流：4 个节点，核心模型 DynamicMPNN。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "bio",
     "design",
     "dynamicmpnn",
     "multi-state",
     "protein",
-    "state_pair"
+    "state_pair",
+    "multi-state-protein-design",
+    "inverse-folding",
+    "conformational-ensemble",
+    "deep-learning",
+    "protein-mpnn",
+    "alphafold-3",
+    "sequence-generation",
+    "structural-bioinformatics",
+    "codnas",
+    "workflow",
+    "workflow-planning",
+    "b18"
   ],
   "scenario_id": "B18",
   "source_papers": [
     "2507.21938"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 100.0,
+  "authority": 60.5,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "多构象状态兼容的蛋白序列设计（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "B18",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "B18"
+  ],
+  "batch": "2026-09-14"
 }

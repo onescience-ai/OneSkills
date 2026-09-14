@@ -1,0 +1,39 @@
+{
+  "name": "radar-based-precipitation-retrieval-workflow",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向从近地面雷达（如微雨雷达MRR）观测估计表面降水累积量或降水率的任务，设计并实施一套标准化的数据预处理、特征工程与深度学习建模工作流。该流程涵盖从原始雷达回波与协变量数据到训练出可泛化降水反演模型的全链路，核心在于通过严格的时序对齐、标准化与聚类分组构建强预测特征，并利用自动化超参数搜索与交叉验证框架优化深度神经网络（如1D-CNN），以超越传统经验关系的精度。校准数值来自MRR与Pluvio2共位观测体系，其他雷达系统需依据自身数据特性重新锚定参数。",
+  "tags": [
+    "radar-precipitation-retrieval",
+    "micro-rain-radar",
+    "deep-learning",
+    "time-series",
+    "hyperparameter-optimization",
+    "mrr-data-processing",
+    "improtoo",
+    "supervised-learning",
+    "cross-validation"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 75.9,
+  "accuracy": 67.5,
+  "authority": 64.2,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "DeepPrecip- a deep neural network for precipitation retrievals",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:06f0c20ee0915002fa0923564954cde6d5ae7ca49cb86955dc153d2bb85b3f98",
+    "venue": "Atmospheric measurement techniques",
+    "cited_by_count": 9,
+    "objective_score": 48.8
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E12",
+  "grounded_ratio": 0.5
+}

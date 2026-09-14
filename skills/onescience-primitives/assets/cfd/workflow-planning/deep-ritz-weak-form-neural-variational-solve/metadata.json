@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "Deep Ritz与弱形式神经变分求解。面向椭圆与演化方程变分积分数据完成Deep Ritz与弱形式神经变分求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "Deep Ritz与弱形式神经变分求解。面向椭圆与演化方程变分积分数据完成Deep Ritz与弱形式神经变分求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 Deep Ritz与弱形式神经变分求解 的端到端可复用工作流：5 个节点，核心模型 Deep Ritz network、Weak-form neural solver。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accelerate",
     "activation",
@@ -22,7 +22,13 @@
     "composing",
     "computational",
     "computational_fluid_dynamics",
-    "convergence"
+    "convergence",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s044",
+    "deep-ritz-network",
+    "weak-form-neural-solver"
   ],
   "scenario_id": "CFD_S044",
   "source_papers": [
@@ -45,5 +51,23 @@
     "sha256:d1463f4dedf0b04718a0bd7b330c7db7fda0bb7040cefd8de00fe96c2f537a34",
     "sha256:f36bad7df839c52ca3b4589ee2cfe8768309298059b22ad2c3e6261d8bf21962",
     "sha256:b5b81901212c8e87380d84841fd3b4a4cc64cd5a4e9fb321f8ed2e0f21b3734e"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "Deep Ritz与弱形式神经变分求解（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S044",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S044"
+  ],
+  "batch": "2026-09-14"
 }

@@ -1,0 +1,40 @@
+{
+  "name": "tm-score-evaluation",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向蛋白质结构预测模型的准确性量化评估，选择或设计满足标准化比对要求的 TM-score 评测方案。该方案通过将预测三维结构与实验测定的天然结构进行全局拓扑比对，输出 0–1 区间的相似性得分，并可计算不同模型配置间的性能差值（ΔTM），用于判断模型组件变更是否带来显著改善。校准数值来自 OpenFold 体系，供量级参考；其他体系需以自身证据重新锚定。",
+  "tags": [
+    "tm-score",
+    "protein-structure-prediction",
+    "structure-evaluation",
+    "structural-alignment",
+    "us-align",
+    "tm-align",
+    "openfold",
+    "pdb",
+    "benchmark",
+    "model-accuracy"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 74.5,
+  "accuracy": 85.0,
+  "authority": 63.2,
+  "generalization": 70.5,
+  "source_paper": {
+    "title": "Quantifying the Role of OpenFold Components in Protein Structure Prediction",
+    "doi": "",
+    "source": "arxiv",
+    "external_id": "2511.14781",
+    "venue": "arXiv (Cornell University)",
+    "cited_by_count": 1,
+    "objective_score": 47.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "B02",
+  "grounded_ratio": 0.5
+}

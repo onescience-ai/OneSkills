@@ -1,0 +1,40 @@
+{
+  "name": "spei",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向基于标准化降水蒸散发指数（SPEI）的多时间尺度干旱预测任务，选择或设计满足精度和区域适应性要求的机器学习预测框架。该协议提供了一套从气象数据处理、关键驱动因子识别、多模型训练评估到区域特异性干旱特征分析的完整可复用流程。核心是整合潜在蒸散发（PET）计算与多时间尺度（如1、3、6、12个月）SPEI指数生成，并应用Boruta等特征选择方法与包括Ranger随机森林在内的多种机器学习算法，通过交叉验证构建稳健的区域干旱预测模型。最终产出可用于干旱风险预警、季节性水资源规划和气候变化影响评估。校准数值部分案例基于孟加拉国35个气象站40年的气候数据集得出，其他区域需以本地数据重新验证。",
+  "tags": [
+    "spei",
+    "drought-prediction",
+    "machine-learning",
+    "feature-selection",
+    "ranger",
+    "pet",
+    "multi-timescale",
+    "boruta",
+    "rainfall",
+    "temperature"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 92.8,
+  "accuracy": 100.0,
+  "authority": 72.3,
+  "generalization": 99.2,
+  "source_paper": {
+    "title": "Identification of influential weather parameters and seasonal drought prediction in Bangladesh using machine learning algorithm",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:55fed05c05d697585408389651b68679257f0ab977fa65b8ad52c91ef3c50909",
+    "venue": "Scientific Reports",
+    "cited_by_count": 46,
+    "objective_score": 60.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E18",
+  "grounded_ratio": 0.875
+}

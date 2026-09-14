@@ -1,0 +1,37 @@
+{
+  "name": "pnpr-v2-passive-microwave-precipitation-retrieval-algorithm",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向基于星载被动微波辐射计观测数据估算地表瞬时降水率的任务，设计并训练一个通用的、基于神经网络的反演模型。该模型以辐射计多通道亮温及其与辅助地理气象参数的派生变量作为输入，通过一个由云解析模型模拟数据库训练的多层前馈网络，输出高时空分辨率的降水率估算值、降水相态及质量指数。典型校准数值来自欧洲与非洲地区的应用验证。",
+  "tags": [
+    "passive-microwave",
+    "precipitation-retrieval",
+    "neural-network",
+    "atms",
+    "rain-rate",
+    "cloud-resolving-model",
+    "remote-sensing"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "The new Passive microwave Neural network Precipitation Retrieval (PNPR) algorithm for the cross-track scanning ATMS radiometer- description and verification study over Europe and Africa using GPM and TRMM spaceborne rada",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:797c0fc0c6f2ecaff4207f95cc26310ef581c25905bcd284622f0bc19c3f4183",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E12",
+  "grounded_ratio": 1.0
+}

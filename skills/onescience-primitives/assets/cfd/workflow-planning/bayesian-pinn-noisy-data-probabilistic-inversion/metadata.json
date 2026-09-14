@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "贝叶斯PINN噪声数据概率反演。面向含噪观测与PDE先验数据完成贝叶斯PINN噪声数据概率反演。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "贝叶斯PINN噪声数据概率反演。面向含噪观测与PDE先验数据完成贝叶斯PINN噪声数据概率反演。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 贝叶斯PINN噪声数据概率反演 的端到端可复用工作流：5 个节点，核心模型 Bayesian PINN。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "adversarial",
     "b-pinns_",
@@ -22,7 +22,11 @@
     "machine",
     "networks",
     "neural",
-    "noisy"
+    "noisy",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s039"
   ],
   "scenario_id": "CFD_S039",
   "source_papers": [
@@ -30,5 +34,23 @@
     "sha256:817c02edda1742622168a7cd289b6b29dffee21e047d65d8a8c31d87397e51dd",
     "sha256:1b26978e9e3164703e632f8369291c7dcf7f09327fa088a24e4bf09df943b43b",
     "sha256:2fff639fe754584d06c8ccceb910935a55acf66dc19682c1d8a121199efe0f97"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "贝叶斯PINN噪声数据概率反演（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S039",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S039"
+  ],
+  "batch": "2026-09-14"
 }

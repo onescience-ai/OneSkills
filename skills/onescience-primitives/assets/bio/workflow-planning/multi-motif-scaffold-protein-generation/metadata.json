@@ -4,9 +4,9 @@
   "domain": "bio",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 Floating Anchor Diffusion 的「多功能基序支架蛋白生成」工作流。研究对象为受约束的蛋白骨架、序列、肽或酶设计任务。本场景研究受约束的蛋白骨架、序列、肽或酶设计任务，希望解决在未知相对取向下同时支架化多个功能基序，适用于多位点催化和复合表位设计。覆盖从设计目标与约束定义到回折叠与设计筛选的完整管线。核心指标包括基序RMSD。得到与输入和任务约束一致、可追溯、可复核的多功能基序支架蛋白生成结果，包括经格式和约束检查的设计目标、固定区域掩码、候选结构/序列及结构自洽报告、独立评估、基序RMSD统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 Floating Anchor Diffusion 的「多功能基序支架蛋白生成」工作流。研究对象为受约束的蛋白骨架、序列、肽或酶设计任务。本场景研究受约束的蛋白骨架、序列、肽或酶设计任务，希望解决在未知相对取向下同时支架化多个功能基序，适用于多位点催化和复合表位设计。覆盖从设计目标与约束定义到回折叠与设计筛选的完整管线。核心指标包括基序RMSD。得到与输入和任务约束一致、可追溯、可复核的多功能基序支架蛋白生成结果，包括经格式和约束检查的设计目标、固定区域掩码、候选结构/序列及结构自洽报告、独立评估、基序RMSD统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。 多功能基序支架蛋白生成 的端到端可复用工作流：4 个节点，核心模型 Floating Anchor Diffusion。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "anchor",
     "bio",
@@ -22,11 +22,32 @@
     "multi_motif",
     "pocket-conditioned",
     "rmsd",
-    "rmsd结果"
+    "rmsd结果",
+    "workflow",
+    "workflow-planning",
+    "b15"
   ],
   "scenario_id": "B15",
   "source_papers": [
     "2406.03141",
     "2601.19205"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "多功能基序支架蛋白生成（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "B15",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "B15"
+  ],
+  "batch": "2026-09-14"
 }

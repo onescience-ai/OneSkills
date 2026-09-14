@@ -1,0 +1,39 @@
+{
+  "name": "machine-learning-swe-prediction",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向高山区雪季水资源实时估计，选取或设计将地形特征与卫星遥感时序融合的机器学习回归框架，以重建历史雪水当量为训练目标，在3.125 km统一网格上预测逐日或时段累积SWE空间分布。适用于缺乏现场实测但可获取微波亮温、积雪面积分数与气象再分析的流域；典型精度为偏差0–14%、均方根误差46–48 mm、纳什效率系数约0.68。",
+  "tags": [
+    "snow-water-equivalent",
+    "machine-learning",
+    "remote-sensing",
+    "snowmelt-season",
+    "bagged-regression-tree",
+    "feed-forward-neural-network",
+    "microwave-brightness-temperature",
+    "snow-covered-area",
+    "water-resources"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.8,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Using machine learning for real-time estimates of snow water equivalent in the watersheds of Afghanistan",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:9409ff819e2e58c2a840497b602f7f21e7e30dc455f46077268c078969409e67",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E40",
+  "grounded_ratio": 0.625
+}

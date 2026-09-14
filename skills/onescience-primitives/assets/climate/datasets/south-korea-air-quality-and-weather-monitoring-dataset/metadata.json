@@ -1,0 +1,38 @@
+{
+  "name": "south-korea-air-quality-and-weather-monitoring-dataset",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向建立城市或区域空气质量时空预测模型，需要获取多站点、长时间序列、融合污染物与气象观测数据的场景。本指南描述了源自韩国环境公社（空气质量）与韩国气象厅（气象）的小时级监测数据集的特性、获取方式、质量控制要点及典型处理流程，为开展类似的跨域、多源环境数据建模任务提供可复用的数据准备框架。",
+  "tags": [
+    "air-quality-dataset",
+    "pm25-prediction",
+    "meteorological-data",
+    "south-korea",
+    "time-series-analysis",
+    "environmental-monitoring",
+    "spatial-interpolation",
+    "missing-data-handling"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 70.1,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 58.2,
+  "source_paper": {
+    "title": "PM10 and PM2.5 real-time prediction models using an interpolated convolutional neural network",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:f5c31bcfb4413b62c93535a88b88d185581c2a9d9965b8389eb5b764b2f934bd",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E60",
+  "grounded_ratio": 1.0
+}

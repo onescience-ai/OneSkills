@@ -1,0 +1,39 @@
+{
+  "name": "paired-permutation-test-for-nowcast-verification",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向评估两个降水临近预报模型性能差异的统计显著性问题，采用基于独立时间单元的配对置换检验方法，以周为单位配对数据并通过随机置换标签构建零假设分布，从而得出可靠P值的通用验证协议。该方法适用于任何需要对配对时间序列性能指标（如CSI、CRPS）进行严格比较的场景，确保结论不受时间自相关污染。",
+  "tags": [
+    "paired-permutation-test",
+    "precipitation-nowcasting",
+    "statistical-significance",
+    "model-verification",
+    "radar-forecast",
+    "independent-unit",
+    "verification-metrics",
+    "dmc",
+    "dgmr"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 89.6,
+  "accuracy": 85.0,
+  "authority": 90.5,
+  "generalization": 94.2,
+  "source_paper": {
+    "title": "Skilful precipitation nowcasting using deep generative models of radar",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:ca5f10f9deb516da9672272e277cee3b2a729ddf60513942afa574380c48a44b",
+    "venue": "Nature",
+    "cited_by_count": 983,
+    "objective_score": 86.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E2",
+  "grounded_ratio": 0.667
+}

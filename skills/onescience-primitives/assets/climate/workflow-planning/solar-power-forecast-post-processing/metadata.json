@@ -1,0 +1,39 @@
+{
+  "name": "solar-power-forecast-post-processing",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向提高数值天气预报模型链产出的光伏发电功率概率预测的准确性与可靠性，选择或设计满足校准性与锐度要求的统计或机器学习校正方法。本知识系统阐述了对光伏功率集合预测进行后处理的通用流程，涵盖参数化（如EMOS）与非参数化（如神经网络）两类方法的建模、训练与评估，适用于需要将原始确定性或集合预测转化为更可靠的概率预测的应用场景。",
+  "tags": [
+    "solar-power-forecast",
+    "post-processing",
+    "ensemble-model-output-statistics",
+    "probabilistic-forecast",
+    "neural-network",
+    "crps",
+    "forecast-calibration",
+    "model-chain",
+    "pv-power-forecasting"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.8,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Improving Model Chain Approaches for Probabilistic Solar Energy Forecasting through Post-processing and Machine Learning",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:a68ca150622dfebdfebb9fe94def6bd16d354cc9ddf8099ede101a02cc1a20d3",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E24",
+  "grounded_ratio": 0.5
+}

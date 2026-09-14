@@ -1,0 +1,38 @@
+{
+  "name": "pv-power-model-chain-conversion",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向将数值天气预报（NWP）输出的全球水平辐照度（GHI）集合预测转化为光伏（PV）电站功率输出预测的任务，选择或设计满足物理可解释性与可扩展性要求的模型链转换方法。该方法通过一系列基于物理的组件模型（例如辐照度分解、大气质量、太阳位置计算等模块），将GHI预测逐步解耦并转换为PV阵列的直流或交流功率估计。其核心优势在于模块化、透明，并能自然地处理集合预报的不确定性传播，但性能受限于各组件模型的准确性及辅助气象变量（如温度、风速）的预测质量。典型应用包括光伏电站的发电量预测、电力市场调度及电网稳定性评估。",
+  "tags": [
+    "solar-power",
+    "power-forecasting",
+    "model-chain",
+    "ghi-to-pv",
+    "ensemble-forecast",
+    "photovoltaic",
+    "numerical-weather-prediction",
+    "physical-model"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 74.8,
+  "accuracy": 67.5,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Improving Model Chain Approaches for Probabilistic Solar Energy Forecasting through Post-processing and Machine Learning",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:a68ca150622dfebdfebb9fe94def6bd16d354cc9ddf8099ede101a02cc1a20d3",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E24",
+  "grounded_ratio": 0.5
+}

@@ -1,0 +1,38 @@
+{
+  "name": "simplefold-protein-structure-prediction-model-and-pipeline",
+  "type": "tool",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向蛋白质序列到全原子三维结构的自动预测任务，选择或设计满足端到端、单步推理要求的生成式模型。SimpleFold 是一类基于流匹配与通用 Transformer 架构的预测工具，其核心流程为：利用预训练蛋白语言模型对输入序列进行嵌入，通过流积分将高斯噪声转化为三维坐标，并由独立的 pLDDT 模块评估每个残基的预测置信度。该模型适用于从头预测中等长度蛋白质的单体结构，并提供置信度度量以支持结果筛选。",
+  "tags": [
+    "protein-structure-prediction",
+    "flow-matching",
+    "transformer",
+    "esm2",
+    "plddt",
+    "generative-model",
+    "full-atom",
+    "inference-pipeline"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 70.7,
+  "accuracy": 75.0,
+  "authority": 66.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "SimpleFold: Folding Proteins is Simpler than You Think",
+    "doi": "",
+    "source": "arxiv",
+    "external_id": "2509.18480",
+    "venue": "arXiv (Cornell University)",
+    "cited_by_count": 3,
+    "objective_score": 51.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "B04",
+  "grounded_ratio": 0.625
+}

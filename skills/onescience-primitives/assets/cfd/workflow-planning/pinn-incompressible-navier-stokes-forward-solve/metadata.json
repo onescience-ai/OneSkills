@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "PINN不可压Navier-Stokes正问题求解。面向不可压层流Navier-Stokes配置与配点完成PINN不可压Navier-Stokes正问题求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "PINN不可压Navier-Stokes正问题求解。面向不可压层流Navier-Stokes配置与配点完成PINN不可压Navier-Stokes正问题求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 PINN不可压Navier-Stokes正问题求解 的端到端可复用工作流：5 个节点，核心模型 PINN、NSFnet。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "across",
     "balanced",
@@ -22,7 +22,13 @@
     "laminar",
     "learning",
     "navier",
-    "navier-stokes"
+    "navier-stokes",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s036",
+    "pinn",
+    "nsfnet"
   ],
   "scenario_id": "CFD_S036",
   "source_papers": [
@@ -31,5 +37,23 @@
     "sha256:317a29dec1b14c712d4639d3a9defa3038f55f4e1387d7f4992b2bb7703ec1ca",
     "sha256:077527360c3cb70c7da03cb5935dd065ba335a69e1cf6df9d1d1ce90da17cb3d",
     "sha256:a8de78631291eeb3163da2096f0b2368716dbfb268610c1d6cc49954b07ca410"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "PINN不可压Navier-Stokes正问题求解（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S036",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S036"
+  ],
+  "batch": "2026-09-14"
 }

@@ -1,0 +1,38 @@
+{
+  "name": "transformer-block-pruning-for-structure-prediction-models",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向降低蛋白质/分子结构预测模型（如基于扩散或Pairformer架构的模型）的计算成本与参数规模，通过分析并移除对最终结构预测贡献可忽略不计的Transformer块（如Pairformer或Diffusion Transformer中的冗余块），来构建参数更少、推理更快的轻量级模型。该方法通过块级消融实验识别冗余位置，剪枝后进行微调以恢复性能，适用于需要在精度与效率间权衡的部署场景。典型校准数值来自Protenix架构体系的评估，其他体系需以自身证据重新锚定。",
+  "tags": [
+    "transformer-block-pruning",
+    "structure-prediction",
+    "model-compression",
+    "pairformer",
+    "diffusion-transformer",
+    "model-finetuning",
+    "protein-structure",
+    "model-optimization"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.7,
+  "accuracy": 100.0,
+  "authority": 52.0,
+  "generalization": 99.2,
+  "source_paper": {
+    "title": "Protenix-Mini: Efficient Structure Predictor via Compact Architecture, Few-Step Diffusion and Switchable pLM",
+    "doi": "",
+    "source": "arxiv",
+    "external_id": "2507.11839",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 31.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "B06",
+  "grounded_ratio": 0.625
+}

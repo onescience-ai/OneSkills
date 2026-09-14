@@ -1,0 +1,39 @@
+{
+  "name": "operando-ct-image-analysis-for-lithium-metal-batteries",
+  "type": "model",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向电化学能量存储系统的无损、动态三维表征需求，建立从 operando X 射线微计算机断层扫描（µCT）原始数据到可定量分析结果的完整计算工作流。该流程涵盖基于 TomoPy 的图像重建、多时间点配准、感兴趣区域（ROI）选取，以及核心的基于迭代残差 U-Net（如 batteryNET 架构）的多类别语义分割。其设计旨在从低对比度的三维体数据中，自动识别并量化锂相关微观结构（如枝晶、孔洞、沉积物）的演化过程，为理解电池退化机制提供关键的空间分布与定量数据。校准数值来自锂金属电池体系，供量级参考。",
+  "tags": [
+    "operando-imaging",
+    "x-ray-microct",
+    "lithium-metal-battery",
+    "semantic-segmentation",
+    "u-net",
+    "batterynet",
+    "electrochemistry",
+    "image-analysis",
+    "dynamic-evolution"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Detecting lithium plating dynamics in a solid-state battery with operando X-ray computed tomography using machine learning",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_10_1038_s41524_023_01039_y",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "固态电池锂沉积原位CT机器学习检测",
+  "grounded_ratio": 0.571
+}

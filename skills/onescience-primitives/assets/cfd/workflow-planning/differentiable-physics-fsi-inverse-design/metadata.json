@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "可微物理流固耦合逆向设计。面向流固耦合轨迹与目标响应数据完成可微物理流固耦合逆向设计。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "可微物理流固耦合逆向设计。面向流固耦合轨迹与目标响应数据完成可微物理流固耦合逆向设计。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 可微物理流固耦合逆向设计 的端到端可复用工作流：5 个节点，核心模型 Differentiable physics、Graph simulator。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "averaged",
     "computational_fluid_dynamics",
@@ -22,11 +22,33 @@
     "problems",
     "progressively",
     "refined",
-    "solving"
+    "solving",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s034"
   ],
   "scenario_id": "CFD_S034",
   "source_papers": [
     "sha256:ee85bb83bb89ed56ae8b1096767fef851dd901a32497d481ae535616e22a0445",
     "sha256:327f9568e67acea3720ce1351666e46f52f8e518f03a4f392d0750799e8e5b88"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "可微物理流固耦合逆向设计（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S034",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S034"
+  ],
+  "batch": "2026-09-14"
 }

@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「日降水场中的人为气候变化指纹检测」工作流。从观测或再分析日降水空间场提取人为增暖一致的统计指纹，并估计指纹随时间的出现强度。覆盖从观测强迫样本及任务边界预检到检验跨模式跨产品稳健性的完整管线。得到可复现、可审计的人为指纹得分、空间贡献和检测时间序列、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向气候变化检测与归因、极端天气模式分析或长期气候预测等任务，需要大量具有物理一致性的全球高分辨率气候模拟数据以训练统计或深度学习模型。CESM2 Large Ensemble（大集合）是一个社区地球系统模型的多成员集合模拟数据集，提供从19世纪中叶到21世纪末（1850-2100年）每日尺度的全球气候场，其核心价值在于通过80个独立模拟成员，在统一强迫情景下提供丰富的内部气候变率样本。该数据集涵盖历史观测强迫与SSP3-7.0排放情景，输出变量包括日降水量与年均全球平均2米气温（AGMT），是构建与评估气候模式数据驱动模型的高质量数据源。 日降水场中的人为气候变化指纹检测 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "anthropogenic",
     "daily",
@@ -14,10 +14,42 @@
     "fingerprints",
     "learning",
     "precipitation",
-    "revealed"
+    "revealed",
+    "large-ensemble",
+    "cesm2",
+    "climate-simulation",
+    "ssp3-7-0",
+    "deep-learning-training",
+    "attribution",
+    "internal-variability",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e94"
   ],
   "scenario_id": "E94",
   "source_papers": [
     "sha256:13cba8ec5b789270d44309352357c108ec429c4627742408146af6bfcfac1742"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 58.2,
+  "source_paper": {
+    "title": "日降水场中的人为气候变化指纹检测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E94",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E94"
+  ],
+  "batch": "2026-09-14"
 }

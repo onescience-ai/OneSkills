@@ -1,0 +1,20 @@
+{
+  "name": "matchem-diamine-mof-co2-metal-variant-screening",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-10",
+  "updated_at": "2026-09-10",
+  "description": "二胺接枝MOF（M2(dobpdc)）金属变体筛选与工况匹配原语：用于在Mg/Mn/Fe/Co/Ni/Zn六种金属变体及不同二胺间做候选排序。适用于DAC（~400 ppm CO2）、燃煤烟气（~0.15 bar）、天然气烟气（~0.05 bar）、沼气提纯（40-60% CO2）等场景的P_step与工况分压匹配。本卡持有容量与工况参数（工作容量Mg>13 wt%、Mn>10 wt%、容量-分压窗口、对比材料容量）；机制参数（阶梯位置顺序、Hill系数、Ni例外）单一源在matchem-diamine-mof-co2-cooperative-insertion，稳定性与能耗参数（Qst、再生能耗、循环、模拟烟气）单一源在matchem-diamine-mof-co2-stability-validation-contract，本卡以指针引用，排序任务须配套召回。输出为候选金属变体-工况匹配表与筛选排序。",
+  "tags": ["M2(dobpdc)", "metal variant", "Mg2(dobpdc)", "Mn2(dobpdc)", "diamine-appended MOF", "CO2 capacity", "step pressure", "working capacity", "direct air capture", "DAC", "flue gas", "landfill gas", "biogas", "P_step", "screening", "regeneration energy"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "二胺接枝MOF（M2(dobpdc)，M=Mg/Mn/Fe/Co/Ni/Zn）候选结构变量（容量/P_step/水稳定性/合成难度）与DAC/燃煤烟气/沼气工况匹配",
+  "evidence_papers": [
+    {"title": "Cooperative insertion of CO2 in diamine-appended metal-organic frameworks", "doi": "10.1038/nature14327", "year": 2015, "venue": "Nature", "authors": ["McDonald TM", "Mason JA", "Long JR"], "oa_url": "https://escholarship.org/content/qt2vs0h0wg/qt2vs0h0wg.pdf"},
+    {"title": "High-Capacity, Cooperative CO2 Capture in a Diamine-Appended Metal-Organic Framework through a Combined Chemisorptive and Physisorptive Mechanism", "doi": "10.1021/jacs.3c13381", "year": 2024, "venue": "Journal of the American Chemical Society", "authors": ["Zhang Z", "Tieu H", "Long JR"], "oa_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10921408/fullTextXML"},
+    {"title": "Amine-Functionalized Triazolate-Based Metal-Organic Frameworks for Enhanced Diluted CO2 Capture Performance", "doi": "10.1002/anie.202424747", "year": 2025, "venue": "Angewandte Chemie International Edition", "authors": [], "oa_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11966689/fullTextXML"},
+    {"title": "Data-driven design of metal-organic frameworks for wet flue gas CO2 capture", "doi": "10.1038/s41586-019-1798-7", "year": 2019, "venue": "Nature", "authors": [], "oa_url": ""}
+  ]
+}

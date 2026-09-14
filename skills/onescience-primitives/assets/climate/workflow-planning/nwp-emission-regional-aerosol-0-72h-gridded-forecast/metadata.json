@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「NWP与排放驱动的区域气溶胶0—72小时格点预报」工作流。融合历史污染监测、数值天气预报和排放清单，生成未来0—72小时区域气溶胶浓度格点。覆盖从污染气象资料及任务边界预检到检验RMSE、相关性和污染事件技巧的完整管线。得到可复现、可审计的分时效PM2.5或气溶胶浓度格点与高污染区域、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「NWP与排放驱动的区域气溶胶0—72小时格点预报」工作流。融合历史污染监测、数值天气预报和排放清单，生成未来0—72小时区域气溶胶浓度格点。覆盖从污染气象资料及任务边界预检到检验RMSE、相关性和污染事件技巧的完整管线。得到可复现、可审计的分时效PM2.5或气溶胶浓度格点与高污染区域、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 NWP与排放驱动的区域气溶胶0—72小时格点预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "aerosol",
     "based",
@@ -18,10 +18,32 @@
     "prediction",
     "regional",
     "rmse",
-    "weather"
+    "weather",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e99"
   ],
   "scenario_id": "E99",
   "source_papers": [
     "sha256:98607740046c8e27a38506df1f720ebdb92e5d7d0e66639fdde63cec0309bad8"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "NWP与排放驱动的区域气溶胶0—72小时格点预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E99",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E99"
+  ],
+  "batch": "2026-09-14"
 }

@@ -1,0 +1,39 @@
+{
+  "name": "cnn-based-statistical-downscaling-for-climate-change",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向大尺度全球气候模型（GCM）输出向区域/本地尺度高分辨率气候信息的降尺度任务，评估并实施基于深度卷积神经网络（CNN）的统计降尺度方法。该方法特别针对未来气候变化情景（如RCP8.5），旨在生成与原始GCM气候变化信号一致、模式合理的本地降水与温度预估。流程涵盖历史数据标准化、月平均偏差调整、CNN模型训练与应用、气候变化信号（delta变化）计算及与原始GCM信号的对比评估。",
+  "tags": [
+    "cnn-downscaling",
+    "climate-change-projection",
+    "gcm-downscaling",
+    "statistical-downscaling",
+    "precipitation-forecast",
+    "temperature-forecast",
+    "deep-learning",
+    "bias-adjustment",
+    "value-experiment"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 77.8,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "On the suitability of deep convolutional neural networks for continental-wide downscaling of climate change projections",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:ca6ac535ce4735e06e5c44114aa0db1dc56be495ec52c0d898e219d20b8519ee",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E38",
+  "grounded_ratio": 0.5
+}

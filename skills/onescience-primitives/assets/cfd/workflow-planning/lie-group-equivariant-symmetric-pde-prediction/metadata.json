@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "Lie群等变网络对称PDE预测。面向具有旋转平移群对称的PDE数据完成Lie群等变网络对称PDE预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "Lie群等变网络对称PDE预测。面向具有旋转平移群对称的PDE数据完成Lie群等变网络对称PDE预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 Lie群等变网络对称PDE预测 的端到端可复用工作流：5 个节点，核心模型 Lie-equivariant neural network、PDO convolution。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "algebra",
     "approximately",
@@ -22,7 +22,13 @@
     "equations",
     "equivariant",
     "fields",
-    "forecasting"
+    "forecasting",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s063",
+    "lie-equivariant-neural-network",
+    "pdo-convolution"
   ],
   "scenario_id": "CFD_S063",
   "source_papers": [
@@ -35,5 +41,23 @@
     "sha256:d79060513daa3f2d0486cde0e6079ade047acbd3d193168ee4f1059ca4ab3979",
     "sha256:4a9f9f4b3e497650078843d190855c39af5fe810af6b9e9bca751410ef326c92",
     "sha256:a1183d491b5209df64f97eef781ddc2212db6847ef4280dc44f943f2d4b936f5"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "Lie群等变网络对称PDE预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S063",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S063"
+  ],
+  "batch": "2026-09-14"
 }

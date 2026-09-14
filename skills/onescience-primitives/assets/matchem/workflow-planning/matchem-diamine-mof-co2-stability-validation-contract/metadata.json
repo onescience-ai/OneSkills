@@ -1,0 +1,22 @@
+{
+  "name": "matchem-diamine-mof-co2-stability-validation-contract",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-10",
+  "updated_at": "2026-09-10",
+  "description": "二胺接枝MOF协同CO2捕集的已知局限与验证契约原语：用于评估湿度、SO2/NOx杂质、循环稳定性、再生能耗风险，并规划DFT/GCMC/breakthrough/循环实验的分工。适用于材料性能验证方案设计与风险审查。核心内容：水竞争吸附与羧基甲酸盐/碳酸氢盐机制、再生能耗（TSA/湿度/压力swing）、DFT（VASP/QE参数）与GCMC适用范围、breakthrough与循环实验契约。输出为验证分工表、局限清单与质量门禁。",
+  "tags": ["diamine-appended MOF", "M2(dobpdc)", "stability", "humidity", "water competition", "SO2 poisoning", "regeneration energy", "cycle stability", "DFT", "VASP", "Quantum ESPRESSO", "GCMC", "breakthrough", "IAST", "validation contract", "CO2 capture"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "二胺接枝MOF协同CO2捕集的已知局限（湿度/SO2/NOx/循环/再生能耗）与验证契约（DFT/GCMC/breakthrough/循环实验分工）",
+  "evidence_papers": [
+    {"title": "Cooperative insertion of CO2 in diamine-appended metal-organic frameworks", "doi": "10.1038/nature14327", "year": 2015, "venue": "Nature", "authors": ["McDonald TM", "Mason JA", "Long JR"], "oa_url": "https://escholarship.org/content/qt2vs0h0wg/qt2vs0h0wg.pdf"},
+    {"title": "High-Capacity, Cooperative CO2 Capture in a Diamine-Appended Metal-Organic Framework through a Combined Chemisorptive and Physisorptive Mechanism", "doi": "10.1021/jacs.3c13381", "year": 2024, "venue": "Journal of the American Chemical Society", "authors": ["Zhang Z", "Tieu H", "Long JR"], "oa_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10921408/fullTextXML"},
+    {"title": "Amine-Functionalized Triazolate-Based Metal-Organic Frameworks for Enhanced Diluted CO2 Capture Performance", "doi": "10.1002/anie.202424747", "year": 2025, "venue": "Angewandte Chemie International Edition", "authors": [], "oa_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11966689/fullTextXML"},
+    {"title": "Water Enables Efficient CO2 Capture from Natural Gas Flue Emissions in an Oxidation-Resistant Diamine-Appended Metal-Organic Framework", "doi": "10.1021/jacs.9b05567", "year": 2019, "venue": "Journal of the American Chemical Society", "authors": [], "oa_url": ""},
+    {"title": "Effect of SO2 on the CO2 Capture Performance of Self-Supported Branched Poly(ethyleneimine) Scaffold", "doi": "10.1021/acs.energyfuels.2c03846", "year": 2023, "venue": "Energy & Fuels", "authors": [], "oa_url": ""},
+    {"title": "Inhibitory Effects on the Degradation Behavior of Amine-Functionalized MOF-Based Adsorbents for CO2", "doi": "10.1021/acs.iecr.6c01030", "year": 2026, "venue": "Industrial & Engineering Chemistry Research", "authors": [], "oa_url": ""}
+  ]
+}

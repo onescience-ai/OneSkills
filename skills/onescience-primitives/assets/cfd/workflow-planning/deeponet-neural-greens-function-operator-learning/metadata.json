@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "DeepONet与神经Green函数算子学习。面向函数输入到解函数配对数据完成DeepONet与神经Green函数算子学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "DeepONet与神经Green函数算子学习。面向函数输入到解函数配对数据完成DeepONet与神经Green函数算子学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 DeepONet与神经Green函数算子学习 的端到端可复用工作流：5 个节点，核心模型 DeepONet、Neural Green function。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "approximation",
     "based",
@@ -22,7 +22,12 @@
     "green",
     "helmfluid_",
     "helmholtz",
-    "hilbert"
+    "hilbert",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s050",
+    "neural-green-function"
   ],
   "scenario_id": "CFD_S050",
   "source_papers": [
@@ -32,5 +37,23 @@
     "sha256:0751ec528eb62ce1e399d52a6dd86545abea0e6f13beb691061ff407daf855cd",
     "sha256:3b914193bf7838a5004337b9cbf046276773b04dc098ec5eb1c9d2c30e60d290",
     "sha256:de401ede5efb9ab72ec34b6665245d9fefbe4ff066358a0a10fb55d51ff73ef8"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "DeepONet与神经Green函数算子学习（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S050",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S050"
+  ],
+  "batch": "2026-09-14"
 }

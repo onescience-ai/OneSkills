@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "可微分物理求解与方程结构学习。面向可微数值轨迹与算子数据完成可微分物理求解与方程结构学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "可微分物理求解与方程结构学习。面向可微数值轨迹与算子数据完成可微分物理求解与方程结构学习。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 可微分物理求解与方程结构学习 的端到端可复用工作流：5 个节点，核心模型 Differentiable simulator、Mechanistic PDE network。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accelerating",
     "action",
@@ -22,7 +22,12 @@
     "discovery",
     "efficient",
     "equations",
-    "estimator_"
+    "estimator_",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s071",
+    "mechanistic-pde-network"
   ],
   "scenario_id": "CFD_S071",
   "source_papers": [
@@ -33,5 +38,23 @@
     "sha256:90f0d95fbdac654f3402e9f7f49a1a07c9a955afc4fc3e9fab5252e2c6513d0c",
     "sha256:a3e9c33b6bc0e210acac169f0fa29e66e3036f3904c86f57ef1d546097f4e8ba",
     "sha256:ab33b52113a4b653b7caebaed4a4c75ff44217d092517ea3270d8f035b4bddfe"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "可微分物理求解与方程结构学习（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S071",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S071"
+  ],
+  "batch": "2026-09-14"
 }

@@ -1,0 +1,38 @@
+{
+  "name": "international-soil-moisture-network-ismn",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "为验证遥感土壤湿度反演或降尺度算法的准确性，研究者需要与卫星观测时空匹配的原位观测数据。国际土壤湿度网络（ISMN）整合了多个全球地面监测网络的标准土壤湿度观测数据，为独立评估卫星产品精度提供了关键基准。该数据集覆盖了多种气候与土壤类型，但用户在使用时需注意网络覆盖密度差异、数据时间同步性及探测深度的一致性。本文档旨在提供如何有效获取、筛选和使用 ISMN 数据进行算法验证的通用指南。",
+  "tags": [
+    "soil-moisture",
+    "in-situ-validation",
+    "remote-sensing",
+    "dataset",
+    "ground-truth",
+    "smap",
+    "data-assimilation",
+    "earth-observation"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 78.9,
+  "accuracy": 85.0,
+  "authority": 84.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "Global downscaling of remotely sensed soil moisture using neural networks",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:7cc110a3254d4db58c381b167759e463fb3f8e744833b3ed201443d9e6a2e758",
+    "venue": "Hydrology and earth system sciences",
+    "cited_by_count": 92,
+    "objective_score": 77.2
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E16",
+  "grounded_ratio": 0.571
+}

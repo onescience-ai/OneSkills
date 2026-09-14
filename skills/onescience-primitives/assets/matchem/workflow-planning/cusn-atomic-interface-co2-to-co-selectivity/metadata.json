@@ -4,9 +4,9 @@
   "domain": "matchem",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 NULL 的「CuSn原子界面CO2到CO选择性优化」工作流。研究对象为CuSn原子界面CO2到CO选择性优化。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从活性位与反应网络定义到候选筛选与验证设计的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 NULL 的「CuSn原子界面CO2到CO选择性优化」工作流。研究对象为CuSn原子界面CO2到CO选择性优化。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从活性位与反应网络定义到候选筛选与验证设计的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 面向材料科学中纳米尺度三维成分与结构表征的需求，选择或设计满足原子级分辨率与三维空间成像要求的 Atom Probe Tomography (APT) 技术方案。APT 是一种能够同时获取材料三维空间内化学成分与结构信息的高级表征手段，其核心在于利用强电场诱导原子场蒸发与飞行时间质谱分析，结合位置灵敏探测器重建原子级三维图像。典型实现使用 CAMECA LEAP 系统，在超高真空与低温（如 50 K）下，通过飞秒或皮秒脉冲激光（能量如 20 pJ）辅助触发蒸发，检测率约 0.5%，脉冲频率 200 kHz。该技术特别适用于分析材料中的界面偏析、纳米析出物、核壳结构等复杂成分分布，为理解电催化、合金设计等过程中的微观机制提供直接证据。 面向准确评估 CO₂ 还原反应催化剂的选择性、活性与稳定性，需要采用从实验室 H 型电解池到工业相关流动电解池的标准化电化学测试与产物分析协议。该协议定义了从催化剂电极制备、表面预处理、标准条件下的电化学测试与产物定量，到高电流密度工业条件评估的全流程。其核心在于通过可控的步骤消除表面氧化物等干扰，并借助气相色谱与核磁共振对气液产物进行准确定量，从而获得可比较的法拉第效率与部分电流密度数据。该协议适用于以 Cu 基合金等为代表的金属催化剂体系在 0.5 M KHCO₃ 中性电解液中的标准性能评价。 面向构筑高效 CO2 还原电催化剂的需求，设计并合成具有可调表面结构的 Cu–Sn 双金属纳米颗粒，需要一种可靠、快速且组分可控的制备方法。本知识卡描述的一步还原法，通过精确控制前驱体比例和还原条件，实现了从表面单原子合金到表面富集合金等多种结构的合成。该方法以水相 CuCl2、SnCl2 和 NaBH4 为原料，在冰浴条件下快速还原，通过调节 Sn/Cu 摩尔比（0 至约 0.43）即可调控产物结构与性能，适用于快速制备系列组分的铜锡双金属纳米材料。 CuSn原子界面CO2到CO选择性优化 的端到端可复用工作流：4 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "atomic",
     "conversion",
@@ -17,10 +17,58 @@
     "isolated",
     "matchem",
     "null",
-    "tuning"
+    "tuning",
+    "atom-probe-tomography",
+    "apt",
+    "3d-composition-mapping",
+    "atomic-resolution",
+    "field-evaporation",
+    "focused-ion-beb",
+    "nanoscale-characterization",
+    "interface-analysis",
+    "material-science",
+    "co2 reduction",
+    "electrocatalysis",
+    "catalyst evaluation",
+    "faradaic efficiency",
+    "gas diffusion electrode",
+    "flow cell",
+    "copper-tin",
+    "linear sweep voltammetry",
+    "product analysis",
+    "copper-tin nanoparticles",
+    "one-step reduction",
+    "co2-reduction",
+    "nanoparticle-synthesis",
+    "galvanic-displacement",
+    "surface-alloy",
+    "noble-metal-catalyst-alternative",
+    "workflow",
+    "workflow-planning"
   ],
   "scenario_id": "CuSn原子界面CO2到CO选择性优化",
   "source_papers": [
     "doi_10_1038_s41467_021_21750_y"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 67.5,
+  "authority": 51.0,
+  "generalization": 99.2,
+  "source_paper": {
+    "title": "CuSn原子界面CO2到CO选择性优化（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CuSn原子界面CO2到CO选择性优化",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CuSn原子界面CO2到CO选择性优化"
+  ],
+  "batch": "2026-09-14"
 }

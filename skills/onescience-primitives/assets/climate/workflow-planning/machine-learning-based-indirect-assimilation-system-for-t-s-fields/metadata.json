@@ -1,0 +1,39 @@
+{
+  "name": "machine-learning-based-indirect-assimilation-system-for-t-s-fields",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向海洋数值模拟中水下温盐结构数据稀疏的问题，设计一种基于机器学习（FOAGRNN）将卫星海表观测（SST, SLA, SSS）转化为三维温盐剖面，并通过变分同化（I4D-Var）注入海洋模式（如ROMS）的间接同化方法。该方法首先利用历史卫星数据与原位剖面数据训练重建模型，然后实时生成合成剖面并同化，以显著改善模式水下温盐场的模拟精度。典型校准数值来自FOAGRNN重建与ROMS同化系统。",
+  "tags": [
+    "machine-learning",
+    "data-assimilation",
+    "ocean-temperature-salinity",
+    "satellite-oceanography",
+    "roms",
+    "i4d-var",
+    "foagrnn",
+    "3d-profile-reconstruction",
+    "indirect-assimilation"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 81.8,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Rapid reconstruction of temperature and salinity fields based on machine learning and the assimilation application",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:76ac4eadc1e6a70fa56cbe6fc4240e3f6ec24d6e1e4b0bc8b903bed928c96dee",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E48",
+  "grounded_ratio": 1.0
+}

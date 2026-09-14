@@ -1,0 +1,39 @@
+{
+  "name": "co2-photocathode-computational-screening-and-discovery-workflow",
+  "type": "model",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向从大型材料数据库中系统性发现兼具热力学稳定、光吸收匹配和电化学稳定催化候选的高通量计算筛选场景，采用一种基于材料固有性质的分层漏斗式筛选方法。该方法整合了凸包能量、带隙范围、Pourbaix稳定性等多层次判据，从数万初始候选中逐步缩窄范围，并结合高精度杂化泛函计算进行最终验证，为光催化材料的理性设计提供了可复用的计算工作流。流程的核心判据参数（如ΔEhull ≤ 80 meV.atom⁻¹、PBE带隙1.0–2.5 eV）可供同类固态无机材料筛选任务参考。",
+  "tags": [
+    "co2-reduction",
+    "photocatalyst",
+    "high-throughput-screening",
+    "materials-discovery",
+    "density-functional-theory",
+    "convex-hull",
+    "pourbaix",
+    "bandgap",
+    "hse06"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Robust and synthesizable photocatalysts for CO2 reduction: a data-driven materials discovery",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_10_1038_s41467_019_08356_1",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "CO2光催化剂数据驱动可合成性筛选",
+  "grounded_ratio": 0.571
+}

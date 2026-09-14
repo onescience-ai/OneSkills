@@ -4,9 +4,9 @@
   "domain": "matchem",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 NULL 的「Cu-NxBy 单原子位点的 CO2→CH4 选择性优化」工作流。研究对象为Cu-NxBy 单原子位点的 CO2→CH4 选择性优化。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从Cu-N4 基底与局域配位构型生成到位点稳定性与选择性排序的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 NULL 的「Cu-NxBy 单原子位点的 CO2→CH4 选择性优化」工作流。研究对象为Cu-NxBy 单原子位点的 CO2→CH4 选择性优化。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从Cu-N4 基底与局域配位构型生成到位点稳定性与选择性排序的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 Cu-NxBy 单原子位点的 CO2→CH4 选择性优化 的端到端可复用工作流：4 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。 面向研究电催化二氧化碳还原反应（CO2RR）活性位点与表面结构关联的场景，提供一套从Cu2O前驱体出发，经氢还原制备氧化物衍生铜（OD-Cu）催化剂，并通过后续氮气退火系统调控表面缺陷浓度的标准化制备协议。该协议旨在为研究者提供结构可控、表面性质可调的模型催化剂样品，用于实验验证活性位点（如台阶、晶界、空位）与催化性能（如C2+产物选择性）之间的构效关系。协议核心包括基于化学还原的Cu2O八面体合成、H2气氛还原、以及不同温度（450-650 K）的后退火处理，通过退火温度梯度实现缺陷浓度的连续调控。",
   "tags": [
     "active",
     "atomic",
@@ -22,12 +22,45 @@
     "dioxide",
     "efficient",
     "electrocatalytic",
-    "electroreduction"
+    "electroreduction",
+    "workflow",
+    "workflow-planning",
+    "matchem",
+    "cu-nxby_单原子位点co2到ch4选择性优化",
+    "od-cu",
+    "catalyst-preparation",
+    "defect-engineering",
+    "nanostructure",
+    "annealing",
+    "copper-oxide",
+    "precursor-synthesis",
+    "surface-modification"
   ],
   "scenario_id": "Cu-NxBy_单原子位点CO2到CH4选择性优化",
   "source_papers": [
     "doi_10_1038_s41467_023_39048_6",
     "doi_10_1038_s41467_020_20615_0",
     "doi_10_1038_s41467_021_21750_y"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 78.5,
+  "source_paper": {
+    "title": "The nature of active sites for carbon dioxide electroreduction over oxide-derived copper catalysts",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_10_1038_s41467_020_20615_0",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 0.5,
+  "scenario_ids": [
+    "Cu-NxBy_单原子位点CO2到CH4选择性优化"
+  ],
+  "batch": "2026-09-14",
+  "accuracy": 77.5,
+  "authority": 51.0,
+  "generalization": 99.2
 }

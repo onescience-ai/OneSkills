@@ -1,0 +1,39 @@
+{
+  "name": "metnet-2-training-dataset-creation-and-splits",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向构建适用于深度学习气象预报模型的高质量训练数据集，需要一种标准化的数据创建和划分协议，以确保训练、验证和测试数据在时间序列和空间采样上保持独立，避免数据泄露。该协议从连续的气象观测数据中，采用无重叠的时间段划分和随机空间补丁采样，生成训练集、验证集和多个测试集。校准数值来自CONUS（美国本土）区域，供量级参考；其他气象区域需根据本地数据重新锚定。核心目标是为降水短临预报等任务提供可复现、无偏倚的数据管道。",
+  "tags": [
+    "deep-learning",
+    "weather-forecasting",
+    "dataset-creation",
+    "data-splitting",
+    "spatial-sampling",
+    "radar-data",
+    "satellite-data",
+    "time-series-data",
+    "meteorological-data"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 69.7,
+  "accuracy": 77.5,
+  "authority": 51.0,
+  "generalization": 74.2,
+  "source_paper": {
+    "title": "Deep learning for twelve hour precipitation forecasts",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:680584f984b6e332e29519d7c8e591bac55b43f45fc2986fb293b9800e2d401c",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E8",
+  "grounded_ratio": 0.5
+}

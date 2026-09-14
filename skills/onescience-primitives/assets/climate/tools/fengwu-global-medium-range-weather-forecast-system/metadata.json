@@ -1,0 +1,38 @@
+{
+  "name": "fengwu-global-medium-range-weather-forecast-system",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向全球中期数值天气预报（特别是超越10天的预报），选择或设计一个能够处理多模态高维气象变量（如不同大气层和地面因子）、并有效抑制长提前期预报误差累积的深度学习框架。该系统采用多模态Transformer进行跨因子特征融合，通过不确定性损失自适应加权多任务学习，并引入重放缓冲机制模拟自回归推理误差，从而在ERA5再分析数据集上实现了对未来14天全球状态的可靠预测。其训练与推理流程构成一个完整的端到端工作流，可供气象预报、气候模拟或相关AI地球系统建模项目参考。",
+  "tags": [
+    "weather-forecast",
+    "medium-range-prediction",
+    "deep-learning",
+    "multimodal-transformer",
+    "era5",
+    "data-driven-nwp",
+    "ai-weather-model",
+    "self-recursive-inference"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 92.1,
+  "accuracy": 100.0,
+  "authority": 76.7,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "FengWu: Pushing the Skillful Global Medium-range Weather Forecast beyond 10 Days Lead",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:e169c12304de5d3e7c7843b1da9bd5c6a9077b4e8d51a2bbf0e13c8e68757d5c",
+    "venue": "arXiv (Cornell University)",
+    "cited_by_count": 141,
+    "objective_score": 66.7
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E1",
+  "grounded_ratio": 0.75
+}

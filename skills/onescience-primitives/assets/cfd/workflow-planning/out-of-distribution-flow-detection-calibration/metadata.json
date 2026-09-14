@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "分布外流动代理检测与校准预测。面向跨雷诺数跨几何OOD流动数据完成分布外流动代理检测与校准预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "分布外流动代理检测与校准预测。面向跨雷诺数跨几何OOD流动数据完成分布外流动代理检测与校准预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 分布外流动代理检测与校准预测 的端到端可复用工作流：5 个节点，核心模型 Graph ODE、Conformal predictor。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "characterize",
     "computational_fluid_dynamics",
@@ -22,12 +22,34 @@
     "modeling",
     "out-of-distribution",
     "out-of-domain",
-    "prometheus_"
+    "prometheus_",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s017"
   ],
   "scenario_id": "CFD_S017",
   "source_papers": [
     "sha256:61eb3adf7369a97590e9486dde568ba3434342d1d5817f2c9e64b41ebe50a521",
     "sha256:21c9ffdb77a75deb7af150badda48aa4c696ab4a48f76620fd6c4a6f74aab506",
     "sha256:1a0d891225d62d8b40e195e0472dbd2172c1058993cd24df54db4ddc9c2cf02d"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "分布外流动代理检测与校准预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S017",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S017"
+  ],
+  "batch": "2026-09-14"
 }

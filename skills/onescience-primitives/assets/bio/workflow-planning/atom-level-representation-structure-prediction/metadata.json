@@ -4,9 +4,9 @@
   "domain": "bio",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 Atom-level Protein Representation Model 的「原子级蛋白表征驱动的结构预测」工作流。研究对象为蛋白质序列、复合物实体或构象集合。本场景研究蛋白质序列、复合物实体或构象集合，希望解决学习原子级序列与局部环境表征并用于结构预测，适用于精细几何和侧链环境建模。覆盖从输入与任务定义到结构质控与汇总的完整管线。核心指标包括GDT-TS。得到与输入和任务约束一致、可追溯、可复核的原子级蛋白表征驱动的结构预测结果，包括标准化的序列/实体清单、预测结构或构象集合，以及链和几何完整性报告、独立评估、GDT-TS统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 Atom-level Protein Representation Model 的「原子级蛋白表征驱动的结构预测」工作流。研究对象为蛋白质序列、复合物实体或构象集合。本场景研究蛋白质序列、复合物实体或构象集合，希望解决学习原子级序列与局部环境表征并用于结构预测，适用于精细几何和侧链环境建模。覆盖从输入与任务定义到结构质控与汇总的完整管线。核心指标包括GDT-TS。得到与输入和任务约束一致、可追溯、可复核的原子级蛋白表征驱动的结构预测结果，包括标准化的序列/实体清单、预测结构或构象集合，以及链和几何完整性报告、独立评估、GDT-TS统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。 面向结构预测导向的蛋白质表示学习模型的系统性评估，提供标准化基准框架。REPSP 通过同源二聚体共折叠、残基级结合属性预测、表示对齐单体结构预测三项互补任务，从几何互补性、残基级局部信息、折叠加速能力三个维度检验表示质量。基准基于 AlphaFold 蛋白质结构数据库（AFDB）发布的约 180 万同源二聚体复合物构建，配套修改后的 SimpleFold 共折叠模型进行端到端评估。适用于预训练蛋白质语言模型（如 ESM2）、结构感知预训练方法（如 TRIPROREP）以及任何新提出的蛋白质表示方案在结构预测任务上的受控比较。 原子级蛋白表征驱动的结构预测 的端到端可复用工作流：4 个节点，核心模型 Atom-level Protein Representation Model。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "atom-level",
     "atom-level-protein-representation-model",
@@ -21,10 +21,43 @@
     "protein",
     "representation",
     "structure",
-    "t1024"
+    "t1024",
+    "protein-representation-learning",
+    "structure-prediction-benchmark",
+    "homodimer-cofolding",
+    "residue-level-binding",
+    "representation-aligned-folding",
+    "afdb",
+    "esm2",
+    "simplefold",
+    "protein-language-model",
+    "workflow",
+    "workflow-planning",
+    "b08"
   ],
   "scenario_id": "B08",
   "source_papers": [
     "2605.22133"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 75.0,
+  "authority": 60.5,
+  "generalization": 70.5,
+  "source_paper": {
+    "title": "原子级蛋白表征驱动的结构预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "B08",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "B08"
+  ],
+  "batch": "2026-09-14"
 }

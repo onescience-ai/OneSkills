@@ -1,0 +1,40 @@
+{
+  "name": "global-data-driven-storm-surge-simulation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向全球海岸线风暴潮的快速估算与预测任务，当传统水动力学模型计算成本过高或需要大批量情景模拟时，可采用数据驱动统计模型作为替代或补充方案。该方法利用气象海洋再分析/遥感数据（风速、海平面气压、海表温度、降水等）作为预测变量，结合验潮站观测海平面数据，经谐波分析提取风暴潮信号、PCA降维消除多重共线性后，以逐步线性回归或随机森林训练逐站预测模型，并通过10折交叉验证选择最优配置。典型校准数值来自全球验潮站验证实验（温带/亚热带平均相关系数0.79、RMSE 7.5 cm；热带0.45、5.3 cm），其他区域需以自身数据重新锚定。",
+  "tags": [
+    "storm-surge",
+    "data-driven-modeling",
+    "random-forest",
+    "linear-regression",
+    "pca",
+    "tidal-harmonic-analysis",
+    "tide-gauge",
+    "gesla",
+    "gtsr",
+    "coastal-hazard"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 96.2,
+  "accuracy": 100.0,
+  "authority": 84.9,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Data-Driven Modeling of Global Storm Surges",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:025be561db0662167bd6819f5a5d24e2cf0948ac7185c911146ee1ff5d8c8247",
+    "venue": "Frontiers in Marine Science",
+    "cited_by_count": 113,
+    "objective_score": 78.4
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E11",
+  "grounded_ratio": 0.75
+}

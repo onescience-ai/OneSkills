@@ -1,0 +1,38 @@
+{
+  "name": "bias-correction-protocol-for-hydrological-forecasts",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向改进全球或区域水文模型（如GloFAS）径流预报的系统性偏差，本协议提供了一种分三步实施的统计后处理流程。核心方法是在训练期建立分位数映射函数以校正逐网格点的系统性偏差，随后通过优化的线性组合将多个网格点的校正值合并为单个站点预报，最后在操作预报阶段引入松弛和偏移调整以提升预报的稳定性和实用性。该流程通过融合物理模型预报与历史观测信息，旨在生成具有更高技能评分（如KGE、NSE）的校正后径流预报。",
+  "tags": [
+    "hydrological-forecasting",
+    "bias-correction",
+    "quantile-mapping",
+    "glofas",
+    "post-processing",
+    "streamflow",
+    "kge",
+    "nse"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 81.5,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 99.2,
+  "source_paper": {
+    "title": "Using a long short-term memory (LSTM) neural network to boost river streamflow forecasts over the western United States",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:30bbaf5e0db7a1472a24b08bbac04deb6edb5df3abd3f6bfb3d2d08330dc2206",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E6",
+  "grounded_ratio": 1.0
+}

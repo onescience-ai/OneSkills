@@ -1,0 +1,38 @@
+{
+  "name": "ostia-sst-data",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向海表温度（SST）的预测、气候分析、海洋学建模等任务，选择或设计满足高分辨率与全球覆盖要求的基础数据源时，可采用由英国气象局（Met Office）运营的OSTIA SST数据集。该产品提供每日、0.05°网格分辨率的全球基础SST数据，可作为训练和测试温度预测模型（如3DConv-LSTM等）的核心数据集。其数据需从哥白尼海洋环境监测服务（CMEMS）获取，并经过区域裁剪与预处理。典型应用包括SST异常值（SSTA）分析和建立SST时间序列。",
+  "tags": [
+    "ostia-sst",
+    "sea-surface-temperature",
+    "remote-sensing-data",
+    "cmems",
+    "met-office",
+    "sst-prediction",
+    "ocean-data",
+    "time-series"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 71.9,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 63.2,
+  "source_paper": {
+    "title": "Seven-day sea surface temperature prediction using a 3DConv-LSTM model",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:4c9b429c1ddb3c99e60a5ee701a8f66a66a11635dcb3d8d54821f48057c9d552",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E27",
+  "grounded_ratio": 0.625
+}

@@ -4,9 +4,9 @@
   "domain": "matchem",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 NULL 的「SnBi合金CO2到甲酸盐稳定电催化设计」工作流。研究对象为SnBi合金CO2到甲酸盐稳定电催化设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从活性位与反应网络定义到候选筛选与验证设计的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 NULL 的「SnBi合金CO2到甲酸盐稳定电催化设计」工作流。研究对象为SnBi合金CO2到甲酸盐稳定电催化设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从活性位与反应网络定义到候选筛选与验证设计的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 面向CO2电化学还原制甲酸的催化剂筛选与性能评估，需要一套标准化的量化基准来客观衡量催化剂的工业应用潜力。本知识卡定义了评估CO2还原制甲酸电催化剂性能的核心指标体系，包括法拉第效率、电池能量效率、工作电位、长期稳定性和产物浓度。这些指标为催化剂材料的横向比较、优化方向确定及技术经济性初步判断提供了通用的量化标尺。具体性能阈值（如稳定性>1000小时，FE>95%）可作为实验室研究向中试或工业应用推进时的初步参考门槛。 面向在多孔气体扩散层基底上制备成分均匀、导电的多金属合金薄膜的需求，采用可控的多源共蒸发物理气相沉积技术，通过精确调节各金属源的蒸发速率实现合金化学计量比的可编程控制。该方法通过在高真空环境下同步蒸发多种金属源，使其在基底表面均匀混合、沉积并形成致密合金膜层。工艺核心在于将蒸发速率作为独立控制变量，以匹配目标合金配比（如Bi与Sn的原子比），从而直接获得具有催化活性的合金化电极前驱体。校准数值来自BixSn体系，其他多组分合金体系需以自身证据重新锚定工艺窗口。 SnBi合金CO2到甲酸盐稳定电催化设计 的端到端可复用工作流：4 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。 面向电催化CO₂还原（CO₂RR）制甲酸盐/甲酸盐的性能评估与稳定性验证，本工作流提供从流动池三电极体系筛选到膜电极组件（MEA）中试放大测试的完整电化学测试方案。它涵盖了电解质配制、伏安特性扫描、恒电流电解、产物定量分析、能量效率计算以及长期稳定性运行与事后表征等关键环节，适用于Bi基、Sn基等阴极催化剂在KHCO₃/KOH等电解质体系中的系统评价。该流程明确了流动池与MEA两种主流测试平台的搭建、操作规范与质量门控，可指导研究者从实验室级活性筛选平稳过渡到面向实际应用的稳定性与效率评估。",
   "tags": [
     "active",
     "formate",
@@ -17,10 +17,53 @@
     "sites",
     "snbi合金co2到甲酸盐稳定电催化设计",
     "stabilization",
-    "stable"
+    "stable",
+    "co2-reduction",
+    "faradaic-efficiency",
+    "energy-efficiency",
+    "stability",
+    "electrocatalysis",
+    "benchmark",
+    "performance-evaluation",
+    "thermal-evaporation",
+    "bixsn-catalyst",
+    "gas-diffusion-electrode",
+    "vacuum-deposition",
+    "alloy-film",
+    "electrocatalyst-preparation",
+    "co-evaporation",
+    "thin-film-fabrication",
+    "workflow",
+    "workflow-planning",
+    "flow-cell",
+    "membrane-electrode-assembly",
+    "long-term-stability",
+    "electrochemical-testing",
+    "post-mortem-analysis"
   ],
   "scenario_id": "SnBi合金CO2到甲酸盐稳定电催化设计",
   "source_papers": [
     "doi_10_1038_s41467_021_25573_9"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 75.7,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "Stable, active CO2 reduction to formate via redox-modulated stabilization of active sites",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_10_1038_s41467_021_25573_9",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 0.5,
+  "scenario_ids": [
+    "SnBi合金CO2到甲酸盐稳定电催化设计"
+  ],
+  "batch": "2026-09-14"
 }

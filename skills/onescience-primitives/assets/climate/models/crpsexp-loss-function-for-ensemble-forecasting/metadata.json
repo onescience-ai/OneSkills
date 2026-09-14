@@ -1,0 +1,39 @@
+{
+  "name": "crpsexp-loss-function-for-ensemble-forecasting",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向集合预报深度学习模型的训练目标设计，采用实验性连续排名概率评分（CRPSexp）损失函数，同时优化集合均值误差与集合离散度，使模型生成的集合预测兼具准确性与合理的随机性。该损失函数通过在批次内划分集合成员组、计算平均绝对误差与组内标准差的加权差来指导权重更新，适用于需要输出多个集合成员以表征预测不确定性的场景，例如次季节尺度的土壤湿度干旱预报。",
+  "tags": [
+    "crpsexp-loss",
+    "ensemble-forecasting",
+    "deep-learning",
+    "loss-function",
+    "spread-skill",
+    "uncertainty-quantification",
+    "soil-moisture",
+    "subseasonal-prediction",
+    "drought-forecasting"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 84.0,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Skillful subseasonal soil moisture drought forecasts with deep learning-dynamic models",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:7598d460e1d8c072bb6467dc9f1ba561d0bc11187ce1ad72d0434a8b328ef6b9",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E46",
+  "grounded_ratio": 0.5
+}

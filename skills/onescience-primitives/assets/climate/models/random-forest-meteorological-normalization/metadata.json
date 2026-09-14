@@ -1,0 +1,40 @@
+{
+  "name": "random-forest-meteorological-normalization",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向从环境空气质量观测数据中解耦气象影响、量化评估减排政策真实效果的需求，选择基于随机森林的气象归一化方法。该方法构建污染物浓度与时间变量及气象参数的随机森林回归模型，通过对目标时刻前后四周相同时段的气象条件进行千次重采样并重新预测，计算消除气象波动后的归一化浓度序列，从而将排放趋势从天气干扰中剥离。校准数值来自北京多年小时监测体系，供量级参考。",
+  "tags": [
+    "random-forest",
+    "meteorological-normalization",
+    "air-quality",
+    "emission-control",
+    "policy-evaluation",
+    "pollutant-concentration",
+    "hourly-data",
+    "beijing",
+    "machine-learning",
+    "long-term-trend"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Assessing the impact of clean air action on air quality trends in Beijing using a machine learning technique",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:cc5416a9cc2f4f593605337a200e25019d8b9e8939a39aad3f56ecefedd0f1aa",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E45",
+  "grounded_ratio": 1.0
+}

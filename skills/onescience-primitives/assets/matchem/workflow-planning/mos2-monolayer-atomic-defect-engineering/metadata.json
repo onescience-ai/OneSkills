@@ -4,9 +4,9 @@
   "domain": "matchem",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 NULL 的「MoS2单层原子缺陷工程」工作流。研究对象为MoS2单层原子缺陷工程。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从缺陷模型与对照定义到验证与输出的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 NULL 的「MoS2单层原子缺陷工程」工作流。研究对象为MoS2单层原子缺陷工程。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从缺陷模型与对照定义到验证与输出的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 面向计算材料学，评估特定点缺陷在给定热力学条件下能否稳定存在及其浓度，采用密度泛函理论（DFT）计算缺陷形成能。该方法通过构建超胞、对比含缺陷与完美体系的总能量，并结合化学势范围分析，将抽象的能量差转化为可直接与实验生长条件（如温度、气氛）关联的稳定性判据。流程涵盖从结构建模、自洽计算到能量后处理的完整路径，适用于二维材料、表面、界面体系，也常拓展至体相材料的点缺陷研究。",
   "tags": [
     "atomic",
     "defects",
@@ -16,10 +16,40 @@
     "molybdenum",
     "monolayers",
     "mos2单层原子缺陷工程",
-    "null"
+    "null",
+    "dft",
+    "defect-formation-energy",
+    "point-defect",
+    "vasp",
+    "castep",
+    "supercell",
+    "thermodynamic-stability",
+    "two-dimensional-materials",
+    "molybdenum-disulfide"
   ],
   "scenario_id": "MoS2单层原子缺陷工程",
   "source_papers": [
     "doi_10_1038_ncomms7293"
-  ]
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 87.0,
+  "accuracy": 100.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Exploring atomic defects in molybdenum disulphide monolayers",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "doi_10_1038_ncomms7293",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 0.5,
+  "scenario_ids": [
+    "MoS2单层原子缺陷工程"
+  ],
+  "batch": "2026-09-14"
 }

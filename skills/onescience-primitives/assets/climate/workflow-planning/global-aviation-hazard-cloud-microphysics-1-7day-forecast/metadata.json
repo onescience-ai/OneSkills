@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「全球航空危险云微物理要素1—7天预报」工作流。从全球大气初态预测未来1—7天航空关键云水、云冰、雨水和雪等水成物场及危险区域。覆盖从起报资料及任务边界预检到检验各水成物误差和危险事件命中率的完整管线。得到可复现、可审计的多类水成物浓度场和航空危险云区、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「全球航空危险云微物理要素1—7天预报」工作流。从全球大气初态预测未来1—7天航空关键云水、云冰、雨水和雪等水成物场及危险区域。覆盖从起报资料及任务边界预检到检验各水成物误差和危险事件命中率的完整管线。得到可复现、可审计的多类水成物浓度场和航空危险云区、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 全球航空危险云微物理要素1—7天预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "aviasafe-",
     "aviation",
@@ -16,10 +16,32 @@
     "forecasts",
     "model",
     "physics-informed",
-    "safety-critical"
+    "safety-critical",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e88"
   ],
   "scenario_id": "E88",
   "source_papers": [
     "sha256:9394d9ff8b2ec7b8c2ec79c7900a5790f1f71d162560195a41f4b24a3009ac79"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "全球航空危险云微物理要素1—7天预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E88",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E88"
+  ],
+  "batch": "2026-09-14"
 }

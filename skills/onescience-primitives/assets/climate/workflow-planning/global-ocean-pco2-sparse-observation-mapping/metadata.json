@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「全球海洋pCO2稀疏观测时空扩展」工作流。将船测等稀疏海气pCO2观测扩展为月尺度连续格点场并量化不确定性；适用于碳汇估算，不用于未来浓度预报。覆盖从目标序列及缺口及任务边界预检到评估留船、留区误差及碳通量敏感性的完整管线。得到可复现、可审计的连续pCO2格点场及不确定性、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「全球海洋pCO2稀疏观测时空扩展」工作流。将船测等稀疏海气pCO2观测扩展为月尺度连续格点场并量化不确定性；适用于碳汇估算，不用于未来浓度预报。覆盖从目标序列及缺口及任务边界预检到评估留船、留区误差及碳通量敏感性的完整管线。得到可复现、可审计的连续pCO2格点场及不确定性、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向海洋碳循环研究中的pCO2（海水二氧化碳分压）时空重建方法评估，需要一个多模型、密集的基准数据集来测试算法性能与外推能力。Large Ensemble Testbed是一个综合测试框架，提供来自四个独立地球系统模型的25个集合成员的模拟数据，覆盖1982-2017年月度pCO2分布（1°×1°分辨率，受RCP8.5排放情景驱动），适用于模型预训练、验证和不确定性分析，支持从稀疏观测到全场重建的迁移学习流程。 面向海洋碳循环与气候变化监测，选择或设计满足全球尺度、长时间序列、多平台观测需求的表面海洋二氧化碳分压数据集，SOCAT是国际海洋碳研究社区协作编制的高质量控制观测数据集。它汇编了来自船舶、浮标、自主表面平台和锚系等多平台的表面海洋fCO2测量值，为评估海洋碳汇强度、量化海洋酸化趋势以及校准生物地球化学模型提供核心观测基准。该数据集是支撑全球海洋碳通量估算、模型验证与偏差分析的关键数据资产。 全球海洋pCO2稀疏观测时空扩展 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "air-sea",
     "assessment",
@@ -22,12 +22,52 @@
     "high-resolution",
     "interpolation",
     "learning",
-    "machine-learning"
+    "machine-learning",
+    "air-sea-pco2",
+    "ensemble-testbed",
+    "earth-system-model",
+    "climate-data",
+    "carbon-cycle",
+    "pco2-reconstruction",
+    "machine-learning-benchmark",
+    "climate-simulation",
+    "socat",
+    "surface-ocean-co2",
+    "fco2",
+    "ocean-carbon",
+    "climate-monitoring",
+    "in-situ-observations",
+    "data-atlas",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e13"
   ],
   "scenario_id": "E13",
   "source_papers": [
     "sha256:02246e02030a0f2f9d1f2ac9ba94a283e812bb11051f642eae100b2d684f702e",
     "sha256:a66575d3c7218ef3f7d0e76ff1bceeb785c26937ab2b1d50f9e1932d6b7a95fe",
     "sha256:06e0c5bd57761f2fad672a34dca64f5991d9209f166955f218fa517bfedc9faa"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 60.0,
+  "authority": 64.4,
+  "generalization": 58.2,
+  "source_paper": {
+    "title": "全球海洋pCO2稀疏观测时空扩展（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E13",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E13"
+  ],
+  "batch": "2026-09-14"
 }

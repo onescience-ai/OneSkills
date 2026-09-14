@@ -1,0 +1,33 @@
+{
+  "name": "snow-cover-simulation-workflow-and-toolchain",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "一个完整的雪盖模拟工作流，包括使用 MeteoIO 库预处理自动气象站数据，然后用 SNOWPACK 模型进行一维物理模拟，输出雪层剖面和不稳定参数。该工作流可使用 COSMO-1 数值天气预报模型的输出进行预报驱动。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。",
+  "tags": [
+    "snow-cover-simulation-workflow-and-toolchain",
+    "datapipe",
+    "fallback"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 63.9,
+  "accuracy": 67.5,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Data-driven automated predictions of the avalanche danger level for dry-snow conditions in Switzerland",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:b3d1293c0a2feeeb4aa6cdd9ce3c239afd3fcb209f658bb82330ce6af916754e",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E32",
+  "grounded_ratio": 1.0
+}

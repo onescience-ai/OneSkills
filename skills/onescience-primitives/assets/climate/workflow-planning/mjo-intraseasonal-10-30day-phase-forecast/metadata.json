@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「MJO与季节内振荡10—30天位相预报」工作流。从热带环流和对流异常预测未来10—30天MJO或季节内振荡的位相、振幅与传播路径。覆盖从起报资料及任务边界预检到检验双变量相关和有效预报天数的完整管线。得到可复现、可审计的MJO或ISO指数、位相振幅及空间异常、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「MJO与季节内振荡10—30天位相预报」工作流。从热带环流和对流异常预测未来10—30天MJO或季节内振荡的位相、振幅与传播路径。覆盖从起报资料及任务边界预检到检验双变量相关和有效预报天数的完整管线。得到可复现、可审计的MJO或ISO指数、位相振幅及空间异常、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向次季节至季节气候预报评估，选择或设计满足基准比较需求的预报数据集时，需确保数据覆盖较长的提前期范围并具备业务化预报能力。CFSv2预报数据集由气候预报系统第二版生成，提供次季节至季节尺度的预报数据，常用于评估预报模型的性能。该数据集涵盖多种变量和全球覆盖，但具体参数需根据实际研究问题调整，例如校准数值来自特定实验设置。 MJO与季节内振荡10—30天位相预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "context",
     "correction",
@@ -22,7 +22,19 @@
     "model",
     "models",
     "modified",
-    "moisture"
+    "moisture",
+    "cfs2",
+    "climate-forecast",
+    "dataset",
+    "seasonal-prediction",
+    "evaluation-benchmark",
+    "intra-seasonal-oscillation",
+    "nomads",
+    "forecast-comparison",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e19"
   ],
   "scenario_id": "E19",
   "source_papers": [
@@ -30,5 +42,26 @@
     "sha256:5120da48cb525daf15d6eba18bfb457a85ce289bfaa3040baa202ccd84a95a30",
     "sha256:2d709ea64338493f2434fc0e6a1fdb0faf4ac841db3529d967eb38b936d94845",
     "sha256:c46c953147cef877282fdee1c3acc3b4bc4556362bd692d0d4bfe024e94ecf2a"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 52.5,
+  "authority": 78.2,
+  "generalization": 63.2,
+  "source_paper": {
+    "title": "MJO与季节内振荡10—30天位相预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E19",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E19"
+  ],
+  "batch": "2026-09-14"
 }

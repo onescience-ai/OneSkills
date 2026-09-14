@@ -1,0 +1,38 @@
+{
+  "name": "learning-without-forgetting",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向预训练视觉模型在连续多任务学习中遭遇灾难性遗忘的问题，选择或设计一种使模型在学习新任务分类能力的同时保留其原始任务性能的知识迁移方法。该方法的典型实现流程为：冻结或保留原始模型的参数，在新任务数据上运行前向传播生成旧任务类别的概率分布（软目标），随后为新任务扩展输出层并初始化新参数，通过最小化由旧任务软目标与新任务真实标签共同构成的组合损失函数来同时更新所有参数。此策略可有效缓解因微调新任务导致的原始任务性能下降，适用于森林火灾/烟雾检测、图像增量分类等场景，其中校准数值可参考BoWFire数据集上的实验设置。",
+  "tags": [
+    "learning-without-forgetting",
+    "continual-learning",
+    "knowledge-distillation",
+    "catastrophic-forgetting",
+    "cnn",
+    "incremental-learning",
+    "transfer-learning",
+    "knowledge-retain"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 81.0,
+  "accuracy": 85.0,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "Forest fire and smoke detection using deep learning-based learning without forgetting",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:173c1969679c7af76bfb008ceeb5d2bdc1eadbf9c81b7ffb6da633e3b83f70b2",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E22",
+  "grounded_ratio": 0.625
+}

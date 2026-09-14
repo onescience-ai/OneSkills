@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「可见光影像云掩膜与云不透明度分类」工作流。从卫星或全天空可见光影像识别晴空、薄云和厚云，生成逐像元云掩膜；不反演云顶高度或未来云量。覆盖从遥感观测标签及任务边界预检到独立检验与交付判定的完整管线。得到可复现、可审计的云概率、类别及质量掩膜、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向从卫星遥感影像中自动化提取云覆盖信息的需求，选择或设计满足精度、效率与场景适应性要求的云检测方案。云检测是多数遥感应用（如地表参数反演、变化检测）的关键预处理步骤，其核心是将影像中的云、云影及可能混淆的雪冰等目标与晴空地表进行区分。该流程涵盖从数据获取、特征提取到模型应用与后处理的完整链路，支持阈值法、经典机器学习及深度学习等多种技术路线，最终输出云掩膜、概率图或云参数。方案的选择需权衡数据可用性、场景复杂性与精度要求，并通过后处理与验证保障结果可靠性。 可见光影像云掩膜与云不透明度分类 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "based",
     "classification",
@@ -22,12 +22,46 @@
     "networks",
     "neural",
     "opacity",
-    "optimizing"
+    "optimizing",
+    "satellite-image",
+    "cloud-detection",
+    "remote-sensing",
+    "threshold-method",
+    "machine-learning",
+    "deep-learning",
+    "cloud-mask",
+    "image-preprocessing",
+    "accuracy-assessment",
+    "workflow",
+    "workflow-planning",
+    "climate",
+    "e35"
   ],
   "scenario_id": "E35",
   "source_papers": [
     "sha256:f7dfcdd5c843d45015e0b4c29624c1b8ed3d4fb6418976be9c2862cd54c828fe",
     "sha256:0133b44300f2dfd0533be98147ef9945aceca9246ec097ea2b34cbcafd6e350e",
     "sha256:48a7e63af8dd1afe78e93954e810aa7094a809907b84283d1f79c907dfead205"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "可见光影像云掩膜与云不透明度分类（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E35",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E35"
+  ],
+  "batch": "2026-09-14"
 }

@@ -1,0 +1,38 @@
+{
+  "name": "ai-global-medium-range-weather-forecasting-system-pangu-weather",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向中期全球天气预报需求，选择或设计满足精度与效率要求的深度学习预报系统。一个基于3D Earth-Specific Transformer（3DEST）的端到端全球天气预报系统，采用分层时间聚合策略，利用大规模历史再分析数据训练一系列具有不同预报时效的基础模型，在确定性预报指标上可超越传统数值天气预报业务系统。系统通过引入地球先验的三维卷积编码器-解码器结构处理全球网格化气象场，并通过贪心组合短时效模型实现中长期（如7-10天）的高效、低累积误差预报。",
+  "tags": [
+    "ai-weather-forecasting",
+    "deep-learning",
+    "numerical-weather-prediction",
+    "transformer",
+    "era5",
+    "global-weather",
+    "deterministic-forecast",
+    "hierarchical-temporal-aggregation"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 96.2,
+  "accuracy": 100.0,
+  "authority": 93.4,
+  "generalization": 94.0,
+  "source_paper": {
+    "title": "Accurate medium-range global weather forecasting with 3D neural networks",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:422b426e563423310a0eb98723aa8c3ffe7d1b1827f8420521628ca293bc666f",
+    "venue": "Nature",
+    "cited_by_count": 1589,
+    "objective_score": 90.6
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E1",
+  "grounded_ratio": 1.0
+}

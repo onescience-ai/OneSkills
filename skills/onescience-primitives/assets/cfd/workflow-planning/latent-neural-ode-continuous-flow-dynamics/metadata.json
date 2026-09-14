@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "潜空间神经ODE连续流动动力学预测。面向连续时间PDE状态序列完成潜空间神经ODE连续流动动力学预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "潜空间神经ODE连续流动动力学预测。面向连续时间PDE状态序列完成潜空间神经ODE连续流动动力学预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 潜空间神经ODE连续流动动力学预测 的端到端可复用工作流：5 个节点，核心模型 Neural ODE、Latent neural field。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accelerate",
     "across",
@@ -22,7 +22,13 @@
     "convolutional",
     "convolutions",
     "coupled",
-    "differential"
+    "differential",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s019",
+    "neural-ode",
+    "latent-neural-field"
   ],
   "scenario_id": "CFD_S019",
   "source_papers": [
@@ -40,5 +46,23 @@
     "sha256:025cae39b1c3a3c6d2481710486c3c57896148a1aac3ebe867760fcf71fb1e93",
     "sha256:335c89f95cbedcd9057e4b5aea1be02c10be7caab4706c377150948c0ae0226a",
     "sha256:000fe97742a06d1e73b968af13a7de5f0cf3045b3b21c4d45de640644d7bbb63"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "潜空间神经ODE连续流动动力学预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S019",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S019"
+  ],
+  "batch": "2026-09-14"
 }

@@ -1,0 +1,38 @@
+{
+  "name": "precipitation-nowcasting-workflow",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向天气依赖型行业（如航空、能源、应急响应）的决策支持需求，构建从雷达观测到高分辨率、概率性0-2小时降水预报的完整工作流。该工作流整合了数据预处理、深度生成模型训练、集合预报生成、统计后处理与多维度验证，旨在产出具有空间细节和不确定性的预报产品，以支持在现有数值天气预报技巧不足的短提前量时段内的可靠决策。核心流程以雷达反射率时间序列为输入，通过学习历史数据中的时空演变模式，输出未来降水场的概率集合。",
+  "tags": [
+    "precipitation-nowcasting",
+    "deep-learning",
+    "radar-data",
+    "generative-model",
+    "ensemble-forecast",
+    "short-term-weather",
+    "decision-support",
+    "probabilistic-forecasting"
+  ],
+  "harvested": true,
+  "tier": "high",
+  "score": 84.6,
+  "accuracy": 67.5,
+  "authority": 90.5,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Skilful precipitation nowcasting using deep generative models of radar",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:ca5f10f9deb516da9672272e277cee3b2a729ddf60513942afa574380c48a44b",
+    "venue": "Nature",
+    "cited_by_count": 983,
+    "objective_score": 86.5
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E2",
+  "grounded_ratio": 0.5
+}

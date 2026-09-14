@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "符号与稀疏物理学习控制方程发现。面向稀疏状态轨迹与导数观测完成符号与稀疏物理学习控制方程发现。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "符号与稀疏物理学习控制方程发现。面向稀疏状态轨迹与导数观测完成符号与稀疏物理学习控制方程发现。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 符号与稀疏物理学习控制方程发现 的端到端可复用工作流：5 个节点，核心模型 Symbolic physics learner、Sparse PDE discovery。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accurate",
     "affine",
@@ -22,7 +22,13 @@
     "discovering",
     "discovery",
     "dynamics",
-    "empirical"
+    "empirical",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s045",
+    "symbolic-physics-learner",
+    "sparse-pde-discovery"
   ],
   "scenario_id": "CFD_S045",
   "source_papers": [
@@ -37,5 +43,23 @@
     "sha256:e0c57192707b3b7d6e4d4ea596a73277bfe75e8d948a61021242a444ccfe4078",
     "sha256:73c65a0ec962552a43edff04f6043bb56fe2d8699e673e9e4d75d98cc455c049",
     "sha256:23d76b592ff4ee7b44d2ae402a6dea058301d6f36bd855763a721346c69b25a7"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "符号与稀疏物理学习控制方程发现（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S045",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S045"
+  ],
+  "batch": "2026-09-14"
 }

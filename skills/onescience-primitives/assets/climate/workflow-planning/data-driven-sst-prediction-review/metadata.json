@@ -1,0 +1,38 @@
+{
+  "name": "data-driven-sst-prediction-review",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向海洋与气候预测、渔业资源管理等场景，选择或设计满足精度与效率要求的海表温度预测方案，需要对数据驱动方法进行系统性评估。本知识系统梳理了从统计模型、机器学习到深度学习（含海洋大模型）的技术演进脉络，总结了LSTM、GRU、TCN、ConvLSTM、视觉变换器等典型模型的原理、优势与局限，并对比了它们在不同预测任务和数据条件下的适配性。文档重点剖析了模型可解释性不足、多源数据尺度不匹配等核心挑战，并给出了物理信息融合、可解释架构设计等应对思路，为构建和评估数据驱动SST预测方案提供全面的参考框架。",
+  "tags": [
+    "sea-surface-temperature",
+    "data-driven-prediction",
+    "machine-learning",
+    "deep-learning",
+    "model-comparison",
+    "review",
+    "ocean-science",
+    "geophysical-forecasting"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 68.1,
+  "accuracy": 67.5,
+  "authority": 59.4,
+  "generalization": 75.0,
+  "source_paper": {
+    "title": "数据驱动的海表面温度预测方法综述",
+    "doi": "10.11834/jig.250496",
+    "source": "openalex",
+    "external_id": "10.11834/jig.250496",
+    "venue": "Journal of Image and Graphics",
+    "cited_by_count": 0,
+    "objective_score": 42.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E107",
+  "grounded_ratio": 0.875
+}

@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "大规模网格Transformer三维流场预测。面向百万节点通用三维PDE网格数据完成大规模网格Transformer三维流场预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "大规模网格Transformer三维流场预测。面向百万节点通用三维PDE网格数据完成大规模网格Transformer三维流场预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 大规模网格Transformer三维流场预测 的端到端可复用工作流：5 个节点，核心模型 Transolver、Mesh Transformer。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accurate",
     "computational_fluid_dynamics",
@@ -18,11 +18,33 @@
     "solver",
     "transformer",
     "transolver",
-    "transolver_"
+    "transolver_",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s006"
   ],
   "scenario_id": "CFD_S006",
   "source_papers": [
     "sha256:7284600b4666e35c53d649ad5ec8f13153ef5737b316f9f1c6348f51e93161c5",
     "sha256:6fdfe8deb4dd9a28cd0817735c9dba415a1ee6cc097bcad22e7b9eca78488db2"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "大规模网格Transformer三维流场预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S006",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S006"
+  ],
+  "batch": "2026-09-14"
 }

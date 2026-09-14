@@ -1,0 +1,38 @@
+{
+  "name": "drnn-pm2-5",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向大气污染物浓度短期预测任务，选择或设计满足多源环境监测时间序列输入要求的深度学习模型架构。该模型通过堆叠自动编码器与循环神经网络的混合结构，结合动态预训练策略，实现对未来数小时PM2.5浓度的预测。模型通常使用5层结构，每层约300个节点，输入长度为48小时历史数据，预测未来12小时。校准数值来自特定环境监测网络体系，其他体系需根据自身数据特征重新调整网络参数与训练超参数。",
+  "tags": [
+    "pm25-prediction",
+    "recurrent-neural-network",
+    "time-series-forecasting",
+    "deep-learning",
+    "autoencoder",
+    "environmental-monitoring",
+    "air-quality",
+    "dynamic-pretraining"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 73.9,
+  "accuracy": 92.5,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "Dynamically pre-trained deep recurrent neural networks using environmental monitoring data for predicting PM2.5",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:34c33896c3b72c8c51dac7038ae016681b5dde792839882d7c42a6ddf6b9e816",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E42",
+  "grounded_ratio": 0.571
+}

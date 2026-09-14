@@ -4,9 +4,9 @@
   "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "「气象驱动的周尺度登革热发病量预报」工作流。融合温湿降水、历史病例和季节信息，预报未来数周登革热病例量或超阈概率；不推断个体感染风险。覆盖从天气暴露和目标观测及任务边界预检到按疫情峰值和地区验证的完整管线。得到可复现、可审计的周病例数、风险等级与概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "「气象驱动的周尺度登革热发病量预报」工作流。融合温湿降水、历史病例和季节信息，预报未来数周登革热病例量或超阈概率；不推断个体感染风险。覆盖从天气暴露和目标观测及任务边界预检到按疫情峰值和地区验证的完整管线。得到可复现、可审计的周病例数、风险等级与概率、质量标志与不确定性信息、产品元数据与文件清单，同时提供数据血缘、质量标志、不确定性、独立验证、适用边界和结论；若数据或证据不足，必须明确哪些结果不能验收以及原因。 面向登革热发病率预测建模任务，选择并准备包含时间对齐气象协变量的结构化时间序列数据集。该数据集覆盖菲律宾马尼拉大都会区2009-2013年共260周观测，包含每周登革热发病率及每日气象变量（聚合至周），并已按时间顺序划分为训练集（2009-2012年，208周）与测试集（2013年，52周）。适用于评估气象因素驱动的传染病预测模型（如机器学习回归、时间序列分析），需关注类别型气象变量的插补限制与数据缺失处理。 面向利用气象因子预测登革热等虫媒传染病发病率时间模式的任务，整合目标区域的病例时间序列与气象变量（温度、降水、相对湿度、南方涛动指数等），通过比较随机森林、梯度提升、广义可加模型与SARIMAX等统计和机器学习模型的预测性能，识别关键驱动因子及其滞后效应。该方法适用于周/月粒度的传染病时间序列预测、气象驱动因子分析及多模型基准比较场景，为公共卫生预警与资源调配提供数据支撑。 气象驱动的周尺度登革热发病量预报 的端到端可复用工作流：6 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "artificial",
     "based",
@@ -22,12 +22,52 @@
     "forecasting-",
     "forests",
     "incidence",
-    "learning"
+    "learning",
+    "dengue-incidence-prediction",
+    "manila-meteorological-dataset",
+    "time-series-disease-forecasting",
+    "weekly-aggregation",
+    "training-test-split",
+    "tropical-infectious-disease",
+    "machine-learning-regression",
+    "public-health-surveillance",
+    "time-series-forecasting",
+    "meteorological-factors",
+    "random-forest",
+    "gradient-boosting",
+    "sarimax",
+    "epidemiological-modeling",
+    "lag-effects",
+    "model-comparison",
+    "workflow",
+    "workflow-planning",
+    "e43"
   ],
   "scenario_id": "E43",
   "source_papers": [
     "sha256:6553b5442275750af4e202df801278e4e1369af3493624c24ecc3392457d6cf6",
     "sha256:5c67be945396abcff0e4b07c25f321de55581dc3a6bf4251b8a296faf56c2023",
     "sha256:94b5a08b4945bbb463ea9692a6126c2a2d5bf28df16e4626f56f365d45c7b76a"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "气象驱动的周尺度登革热发病量预报（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E43",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E43"
+  ],
+  "batch": "2026-09-14"
 }

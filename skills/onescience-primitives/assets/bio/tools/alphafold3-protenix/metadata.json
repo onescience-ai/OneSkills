@@ -1,0 +1,38 @@
+{
+  "name": "alphafold3-protenix",
+  "type": "tool",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向蛋白质结构预测任务，需要从序列生成高精度全原子三维结构的场景，选择或设计满足端到端建模与原子级精度要求的生成式预测工具。AlphaFold3是其代表架构，其开源实现Protenix支持从蛋白质序列及可选的多序列比对（MSA）出发，通过编码模块与全原子扩散模块迭代精炼原子坐标，直接输出蛋白质的三维原子坐标。该方法的核心优势在于不依赖粗粒化的骨架框架和扭转角参数化，而是直接对原子位置进行建模，因此能够更好地捕捉局部的构象细节与微小变化，适用于对结构精度要求较高的预测与分析任务。校准数值来自Protenix发布的预训练权重体系，其他体系需根据具体蛋白质特性重新评估预测置信度。",
+  "tags": [
+    "protein-structure-prediction",
+    "alpha-fold3",
+    "protenix",
+    "atomic-coordinates",
+    "diffusion-model",
+    "structure-generation",
+    "msa",
+    "conformational-details"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 63.4,
+  "accuracy": 67.5,
+  "authority": 62.8,
+  "generalization": 59.0,
+  "source_paper": {
+    "title": "Aligning Protein Conformation Ensemble Generation with Physical Feedback",
+    "doi": "",
+    "source": "arxiv",
+    "external_id": "2505.24203",
+    "venue": "arXiv (Cornell University)",
+    "cited_by_count": 1,
+    "objective_score": 46.9
+  },
+  "lifecycle": "probation",
+  "scenario_id": "B10",
+  "grounded_ratio": 0.5
+}

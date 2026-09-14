@@ -1,0 +1,39 @@
+{
+  "name": "gtws-mlrec-machine-learning-based-global-terrestrial-water-storage-anomaly-reconstruction-dataset-and-workflow",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向长时序全球陆地储水量异常重建任务，整合气候、水文、土地利用与植被指标等多源驱动数据，通过多方案输入、滑动窗口变量选择、多模型训练与测试、以及基于性能的方案集成工作流，生成基于不同GRACE/GRACE-FO解算方案（JPL, CSR, GSFC）的重建数据集。该工作流产出1940-2022年0.25°分辨率的月度TWS异常时间序列、去趋势去季节化版本以及全球平均TWS时间序列，适用于全球与区域水储量变化趋势分析、水文干旱监测及水循环研究。",
+  "tags": [
+    "terrestrial-water-storage",
+    "machine-learning",
+    "reconstruction",
+    "grace",
+    "global-hydrology",
+    "time-series",
+    "era5",
+    "random-forest",
+    "water-storage-anomaly"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 75.4,
+  "accuracy": 75.0,
+  "authority": 51.0,
+  "generalization": 93.2,
+  "source_paper": {
+    "title": "GTWS-MLrec- global terrestrial water storage reconstruction by machine learning from 1940 to present",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:84b1a2bd1751630973b5190947f42bf8081f889fefe34cbadac9f03ad17ffd6c",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E49",
+  "grounded_ratio": 1.0
+}

@@ -1,0 +1,39 @@
+{
+  "name": "topographic-wetness-index-ti",
+  "type": "dataset",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向需要量化地形如何驱动地表水汇聚与土壤含水量空间格局的研究，Topographic Wetness Index (TI) 提供了一种基于地形形态的物理代理指标。TI 通过计算上游汇水面积与局部坡度的比值（通常取自然对数），来刻画景观单元在重力驱动下的水分汇聚潜力和土壤饱和倾向。该指数是连接数字高程模型（DEM）与水文、生态、遥感反演模型的重要桥梁，常作为关键辅助变量输入至土壤湿度降尺度、生态水文建模及滑坡敏感性分析等流程中。",
+  "tags": [
+    "topographic-wetness-index",
+    "digital-elevation-model",
+    "hydrology",
+    "remote-sensing",
+    "soil-moisture",
+    "downscaling",
+    "gis",
+    "terrain-analysis",
+    "landscape-hydrology"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 68.9,
+  "accuracy": 60.0,
+  "authority": 84.0,
+  "generalization": 68.2,
+  "source_paper": {
+    "title": "Global downscaling of remotely sensed soil moisture using neural networks",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:7cc110a3254d4db58c381b167759e463fb3f8e744833b3ed201443d9e6a2e758",
+    "venue": "Hydrology and earth system sciences",
+    "cited_by_count": 92,
+    "objective_score": 77.2
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E16",
+  "grounded_ratio": 1.0
+}

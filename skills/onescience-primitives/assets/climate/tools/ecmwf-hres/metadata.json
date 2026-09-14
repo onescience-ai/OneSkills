@@ -1,0 +1,39 @@
+{
+  "name": "ecmwf-hres",
+  "type": "tool",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向全球中期数值天气预报（NWP）基准评估场景，选择或设计满足观测数据同化、超级计算部署与确定性预报输出要求的ECMWF HRES系统。该系统作为数值天气预报领域公认的最高精度基准（Benchmark），用于衡量新型预报方法（如机器学习天气预报模型）的性能。其运行依赖于全球观测网络的海量数据、复杂的数据同化系统（DAS）以及超级计算资源，并产出全球确定性高分辨率预报产品。校准数值来自ECMWF全球预报系统，供量级参考；其他预报系统需以自身证据重新锚定。",
+  "tags": [
+    "ecmwf-hres",
+    "numerical-weather-prediction",
+    "benchmark",
+    "global-forecast",
+    "data-assimilation",
+    "weather-prediction",
+    "deterministic-forecast",
+    "high-resolution",
+    "machine-learning-weather"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 67.9,
+  "accuracy": 77.5,
+  "authority": 51.0,
+  "generalization": 69.0,
+  "source_paper": {
+    "title": "A data-to-forecast machine learning system for global weather",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:6704521646be2ebb87feec2f7da3b1b21b9b30786e41b80d96220ed6c83bf30f",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E4",
+  "grounded_ratio": 0.571
+}

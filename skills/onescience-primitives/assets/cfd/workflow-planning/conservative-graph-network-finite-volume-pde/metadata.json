@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "守恒图网络有限体积PDE推进。面向控制体网格与守恒通量数据完成守恒图网络有限体积PDE推进。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "守恒图网络有限体积PDE推进。面向控制体网格与守恒通量数据完成守恒图网络有限体积PDE推进。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 守恒图网络有限体积PDE推进 的端到端可复用工作流：5 个节点，核心模型 Conservative Graph Neural Network。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "architectures",
     "beyond",
@@ -22,7 +22,11 @@
     "flows",
     "fluid",
     "gradient",
-    "graph"
+    "graph",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s061"
   ],
   "scenario_id": "CFD_S061",
   "source_papers": [
@@ -33,5 +37,23 @@
     "sha256:2b034346d5e344440fce33c4c8a904e9cbc8f166b2660111c5b9382826e6f4de",
     "sha256:3efae1095901be64194e669df9e52c9114b84498008cd8d9ec7b6e96f792cf80",
     "sha256:f4173fb84cf938beebcf75305eb53c83c81bdc8d4e9afbc70bc034d94376b99f"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "守恒图网络有限体积PDE推进（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S061",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S061"
+  ],
+  "batch": "2026-09-14"
 }

@@ -1,0 +1,38 @@
+{
+  "name": "matern-gaussian-process-regression",
+  "type": "model",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "面向具有内在相关性的连续空间或时间序列数据的预测建模任务，选择或设计能够量化预测不确定性的非参数回归模型时，马特恩高斯过程回归（Matern Gaussian Process Regression）是一个稳健的选择。该方法使用马特恩（Matern）族协方差函数对数据的底层随机过程进行建模，通过长度尺度与平滑度两个超参数灵活控制函数空间的结构。其核心优势在于贝叶斯框架下的不确定性量化能力，预测结果天然附带置信区间，这对决策支持至关重要。该模型在具有中等平滑性特征的环境变量预测（如干旱指数SPI）中表现突出，但其计算复杂度随训练样本量立方增长，因此更适用于中小规模数据集。",
+  "tags": [
+    "gaussian-process-regression",
+    "matern-kernel",
+    "uncertainty-quantification",
+    "time-series-forecasting",
+    "continuous-spatial-modeling",
+    "non-parametric-regression",
+    "environmental-modeling",
+    "spi-prediction"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 71.7,
+  "accuracy": 67.5,
+  "authority": 84.0,
+  "generalization": 67.8,
+  "source_paper": {
+    "title": "Forecasting of meteorological drought using ensemble and machine learning models",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:6679e7a9b40879a57d2961353b5187f28d1bfabcfed3afdb8f92c3188612b8c5",
+    "venue": "Environmental Sciences Europe",
+    "cited_by_count": 28,
+    "objective_score": 77.2
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E18",
+  "grounded_ratio": 0.75
+}

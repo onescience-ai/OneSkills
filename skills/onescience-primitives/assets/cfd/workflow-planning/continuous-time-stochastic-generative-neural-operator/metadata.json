@@ -4,9 +4,9 @@
   "domain": "cfd",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "连续时间与随机生成神经算子预测。面向随机或连续时间PDE分布数据完成连续时间与随机生成神经算子预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "连续时间与随机生成神经算子预测。面向随机或连续时间PDE分布数据完成连续时间与随机生成神经算子预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 连续时间与随机生成神经算子预测 的端到端可复用工作流：5 个节点，核心模型 Continuous-time neural operator、Stochastic neural operator。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "accurate",
     "adaptive",
@@ -22,7 +22,12 @@
     "continuous-time",
     "continuous-time-neural-operator",
     "convolutional",
-    "differential"
+    "differential",
+    "workflow",
+    "workflow-planning",
+    "cfd",
+    "cfd_s060",
+    "stochastic-neural-operator"
   ],
   "scenario_id": "CFD_S060",
   "source_papers": [
@@ -40,5 +45,23 @@
     "sha256:0327d40b252ad58868f7a1fd044a0835165f27cbf8f9341b1e751f25fa40557a",
     "sha256:6f5b6327b7a6d57af72e5833824db5597d0506d7775840394b9dc794bc9d2d61",
     "sha256:d0837cf0c1dc841d69119b28d90bc02c7c8ba1fa3d0a0d489929bd316693e5d5"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "连续时间与随机生成神经算子预测（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "CFD_S060",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "CFD_S060"
+  ],
+  "batch": "2026-09-14"
 }

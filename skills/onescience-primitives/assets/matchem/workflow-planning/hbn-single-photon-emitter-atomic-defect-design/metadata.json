@@ -4,9 +4,9 @@
   "domain": "matchem",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
-  "description": "基于 NULL 的「hBN单光子发射原子缺陷设计」工作流。研究对象为hBN单光子发射原子缺陷设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从缺陷模型与对照定义到验证与输出的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "基于 NULL 的「hBN单光子发射原子缺陷设计」工作流。研究对象为hBN单光子发射原子缺陷设计。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从缺陷模型与对照定义到验证与输出的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 面向固态量子光学与量子信息技术，实现对宽禁带半导体（如六方氮化硼hBN）中固有缺陷或杂质产生单光子发射器发射波长（零声子线）的精确、可逆调控。该方法通过将样品转移到柔性基板并施加可控机械应变，利用应变场直接调制发射中心的电子能级结构，从而实现发射能量的连续调谐。其核心优势在于室温操作、调谐范围较宽且与器件工艺兼容，为构建可定制波长的单光子源提供了通用工具。该方法的典型调谐系数（校准数值来自特定hBN量子发射器体系）为-3至6 meV/%，具体数值取决于缺陷类型与晶格取向。 hBN单光子发射原子缺陷设计 的端到端可复用工作流：4 个节点。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "atomic",
     "boron",
@@ -20,10 +20,41 @@
     "null",
     "single-photon",
     "temperature",
-    "tunable"
+    "tunable",
+    "hbn",
+    "quantum-emitter",
+    "single-photon-source",
+    "strain-tuning",
+    "zero-phonon-line",
+    "room-temperature",
+    "polycarbonate-substrate",
+    "wavelength-tuning",
+    "workflow",
+    "workflow-planning"
   ],
   "scenario_id": "hBN单光子发射原子缺陷设计",
   "source_papers": [
     "doi_10_1038_s41467_017_00810_2"
-  ]
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "accuracy": 52.5,
+  "authority": 51.0,
+  "generalization": 97.8,
+  "source_paper": {
+    "title": "hBN单光子发射原子缺陷设计（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "hBN单光子发射原子缺陷设计",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "hBN单光子发射原子缺陷设计"
+  ],
+  "batch": "2026-09-14"
 }

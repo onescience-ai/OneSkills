@@ -1,0 +1,33 @@
+{
+  "name": "avalanche-danger-level-prediction-task",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-12",
+  "updated_at": "2026-09-12",
+  "description": "一个完整的端到端预测任务，旨在为瑞士阿尔卑斯山区的干雪条件开发一个全自动数据驱动方法，以评估区域雪崩危险等级。该任务整合了数据获取、特征工程、模型训练与评估的全流程，并利用随机森林等机器学习方法，基于历史气象、雪盖数据和官方预报标签进行训练和验证。 本条目为流水线在撰写模型不可用时依据结构化字段自动兜底生成。",
+  "tags": [
+    "avalanche-danger-level-prediction-task",
+    "datapipe",
+    "fallback"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 71.8,
+  "accuracy": 60.0,
+  "authority": 51.0,
+  "generalization": 100.0,
+  "source_paper": {
+    "title": "Data-driven automated predictions of the avalanche danger level for dry-snow conditions in Switzerland",
+    "doi": "",
+    "source": "openalex",
+    "external_id": "sha256:b3d1293c0a2feeeb4aa6cdd9ce3c239afd3fcb209f658bb82330ce6af916754e",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 30.0
+  },
+  "lifecycle": "probation",
+  "scenario_id": "E32",
+  "grounded_ratio": 1.0
+}
