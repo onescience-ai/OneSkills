@@ -1,0 +1,29 @@
+{
+  "name": "uniprot-database-access",
+  "type": "tool",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-14",
+  "updated_at": "2026-09-14",
+  "description": "UniProt 蛋白知识库访问工具卡（bio 语义域）。提供 UniProtKB/UniParc/UniRef 的检索、单条获取、批量流式拉取、计数、SPARQL 图查询与跨库 ID 映射能力，关键实体为 accession、UPI 与查询字段；连接关系：为 protein-sequence-homology-analysis 任务提供命中功能注释回查，是 bio 域序列类任务的身份解析枢纽。",
+  "tags": [
+    "uniprot",
+    "uniprotkb",
+    "uniparc",
+    "uniref",
+    "id-mapping",
+    "sparql",
+    "protein-annotation",
+    "runnable",
+    "edge:operation:count-before-fetch",
+    "edge:operation:stream-bulk",
+    "edge:operation:map-ids",
+    "edge:validation:field-specific-query",
+    "src:skill:uniprot_database",
+    "src:skill_repo:google-deepmind/science-skills",
+    "src:commit:28b8482603a420708c8896f6fe5e06c276d9933d",
+    "src:license:Apache-2.0",
+    "src:accessed:2026-09-14"
+  ]
+}

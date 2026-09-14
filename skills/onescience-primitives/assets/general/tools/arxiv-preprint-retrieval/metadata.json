@@ -1,0 +1,27 @@
+{
+  "name": "arxiv-preprint-retrieval",
+  "type": "tool",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-14",
+  "updated_at": "2026-09-14",
+  "description": "arXiv 预印本检索与全文获取工具卡（general 语义域）。提供预印本元数据搜索、PDF/HTML 全文下载与 LaTeX 源码获取；关键实体为 arXiv ID 与查询前缀语法；连接关系：作为 multi-source-literature-evidence-retrieval 任务的预印本全文资源。",
+  "tags": [
+    "arxiv",
+    "preprint",
+    "fulltext-pdf",
+    "latex-source",
+    "literature-retrieval",
+    "runnable",
+    "edge:operation:search-metadata",
+    "edge:operation:download-fulltext",
+    "edge:operation:download-source-safe-extract",
+    "edge:validation:rate-limit-3s",
+    "src:skill:literature_search_arxiv",
+    "src:skill_repo:google-deepmind/science-skills",
+    "src:commit:28b8482603a420708c8896f6fe5e06c276d9933d",
+    "src:license:Apache-2.0",
+    "src:accessed:2026-09-14"
+  ]
+}

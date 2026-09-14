@@ -1,0 +1,28 @@
+{
+  "name": "openalex-literature-search-access",
+  "type": "tool",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-14",
+  "updated_at": "2026-09-14",
+  "description": "OpenAlex 学术图谱访问工具卡（general 语义域）。提供 works/authors/sources/institutions 等 19 类实体的解析、过滤、聚合与开放获取 PDF 下载能力；关键实体为实体 ID、过滤表达式与计量字段；连接关系：作为 multi-source-literature-evidence-retrieval 任务的主索引资源。",
+  "tags": [
+    "openalex",
+    "scholarly-graph",
+    "doi-resolution",
+    "bibliometrics",
+    "cited-by-count",
+    "open-access-pdf",
+    "runnable",
+    "edge:operation:resolve-then-filter",
+    "edge:operation:group-by-aggregate",
+    "edge:operation:download-pdf",
+    "edge:validation:select-and-throttle",
+    "src:skill:literature_search_openalex",
+    "src:skill_repo:google-deepmind/science-skills",
+    "src:commit:28b8482603a420708c8896f6fe5e06c276d9933d",
+    "src:license:Apache-2.0",
+    "src:accessed:2026-09-14"
+  ]
+}

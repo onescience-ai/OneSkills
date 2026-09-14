@@ -1,0 +1,27 @@
+{
+  "name": "foldseek-structural-search-access",
+  "type": "tool",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-14",
+  "updated_at": "2026-09-14",
+  "description": "Foldseek 蛋白结构相似性搜索访问工具卡（bio 语义域）。以物理三维坐标文件为唯一输入，对 PDB、AlphaFold、CATH、MGnify 等库做 3D 结构搜索；关键实体为坐标文件与库白名单；连接关系：结构文件缺失时回连预测结构获取任务或 PDB 工具卡先行取结构。",
+  "tags": [
+    "foldseek",
+    "structure-similarity-search",
+    "3d-search",
+    "cif",
+    "structural-homologue",
+    "runnable",
+    "edge:operation:validate-coordinate-input",
+    "edge:operation:structural-search",
+    "edge:validation:database-allowlist",
+    "edge:validation:probability-coverage",
+    "src:skill:foldseek_structural_search",
+    "src:skill_repo:google-deepmind/science-skills",
+    "src:commit:28b8482603a420708c8896f6fe5e06c276d9933d",
+    "src:license:Apache-2.0",
+    "src:accessed:2026-09-14"
+  ]
+}

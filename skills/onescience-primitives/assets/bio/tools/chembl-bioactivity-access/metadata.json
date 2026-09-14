@@ -1,0 +1,29 @@
+{
+  "name": "chembl-bioactivity-access",
+  "type": "tool",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-14",
+  "updated_at": "2026-09-14",
+  "description": "ChEMBL 生物活性分子与活性数据访问工具卡（bio 语义域）。提供化合物/靶点/活性（IC50、Ki、EC50）/批准药物/作用机制/适应证查询与服务端相似性、子结构搜索；关键实体为 ChEMBL ID、SMILES 与活性单位；连接关系：经 target_components accession 与 UniProt 互参，支撑化合物-靶点-活性证据链。",
+  "tags": [
+    "chembl",
+    "bioactivity",
+    "ic50",
+    "drug-target",
+    "similarity-search",
+    "substructure-search",
+    "mechanism-of-action",
+    "runnable",
+    "edge:operation:normalize-units",
+    "edge:operation:server-side-structure-search",
+    "edge:operation:crossref-uniprot",
+    "edge:validation:unit-consistency",
+    "src:skill:chembl_database",
+    "src:skill_repo:google-deepmind/science-skills",
+    "src:commit:28b8482603a420708c8896f6fe5e06c276d9933d",
+    "src:license:Apache-2.0",
+    "src:accessed:2026-09-14"
+  ]
+}
