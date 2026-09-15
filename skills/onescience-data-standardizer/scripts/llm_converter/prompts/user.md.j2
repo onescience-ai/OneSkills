@@ -1,0 +1,75 @@
+# Tier2 Converter Synthesis — User Prompt
+
+Generate a Python converter script for the following dataset.
+
+## Dataset identity
+
+- **name**: `{{ dataset_name }}`
+- **domain**: `{{ domain }}`
+- **tier**: 2 (LLM-synthesized; no pre-built adapter exists)
+- **few-shot reference adapter domain**: `{{ few_shot_domain }}` / `{{ few_shot_dataset }}`
+
+## Target contract (from onescience-primitives)
+
+### spec.md
+
+```markdown
+{{ spec_md_full }}
+```
+
+### usage.md
+
+```markdown
+{{ usage_md_full }}
+```
+
+## Raw data probe report
+
+```json
+{{ raw_probe_report_json }}
+```
+
+## AI-Ready output contract (must be satisfied)
+
+```markdown
+{{ ai_ready_contract_md }}
+```
+
+## Few-shot reference: an existing Tier1 adapter for a sibling dataset
+
+Study its structure, argparse contract, dataset_card writing pattern, and
+error handling. Your output must follow the same conventions but adapt to
+the target spec and raw layout above.
+
+```python
+{{ few_shot_adapter_source }}
+```
+
+## Your task
+
+Produce **one** Python file that:
+
+1. Reads raw data from `--source-dir` (formats listed in the probe report).
+2. Writes AI-Ready output to `--target-dir` following the spec.md target
+   schema and the AI-Ready output contract.
+3. Writes `<target_dir>/dataset_card.json` with all mandatory fields
+   populated (name, domain, handler=`llm_synth:v1`, source.dir, target.dir,
+   target.created_at, target_schema.spec_source, quality_checks.format_valid).
+4. Writes `<target_dir>/README.md` with a loading example.
+5. Prints a single JSON summary line to stdout on success.
+6. Uses only the dependencies declared in its `# requirements:` header.
+7. Handles every file format present in the probe report; raises
+   `RuntimeError` on genuinely unhandleable inputs.
+
+## Reminder of hard constraints
+
+- No hardcoded absolute paths.
+- No `os.environ.get` for path resolution.
+- No network access.
+- No modification of `--source-dir`.
+- Deterministic given `--seed` (default 42).
+- Idempotent: rerunning overwrites cleanly.
+- Output is **only** the Python source; no prose, no Markdown fences.
+
+Begin your output with `#!/usr/bin/env python3` and end with the final line
+of the script. Nothing else.
