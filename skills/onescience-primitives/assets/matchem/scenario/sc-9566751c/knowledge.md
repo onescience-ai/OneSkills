@@ -1,0 +1,35 @@
+# 场景：Cu-NxBy_单原子位点CO2到CH4选择性优化
+
+- domain: matchem
+- type: paper_scenario
+- 算力: ['VASP'] (is_one_hpc=[True])
+- 模型: ['NULL']
+- 工具: []
+
+## 研究意图（agent_task_prompt）
+你是材料化学研究负责人。请围绕“Cu-NxBy 单原子位点的 CO2→CH4 选择性优化”完成一项可复现、可审计的研究任务。场景需求如下：针对 Cu-N4 基单原子位点，用 B 替换第一配位层构造 Cu-NxBy，比较 CO2RR 中 *CO、*CHO 吸附和 CH4/HER 竞争路径，筛选兼顾 CH4 选择性与位点稳定性的局域配位；论文未涉及 OneModels 模型，模型按 NULL 处理。。请先核对用户提供的研究对象、边界条件、已有资料、可用资源和交付位置，明确哪些信息已经具备、哪些仍需确认；再自主提出合理的理论或实验计算路线、模型与软件选择、数据来源、验证方法、资源估算、质量门禁、风险和替代方案。不得将关联论文、历史案例、默认参数或未验证结果视为本次任务的结果；涉及科学范围、预算、关键约束或验收标准的选择须先请求确认。执行后应保留可追溯证据链，交付结果、数据来源、不确定度、适用性限制、复现材料及未完成项；每项交付均以 PASS、PARTIAL、REJECT 或 BLOCKED 标记。
+
+## 客户端请求
+- task_title: Cu-NxBy 单原子位点的 CO2→CH4 选择性优化
+- request: 针对 Cu-N4 基单原子位点，用 B 替换第一配位层构造 Cu-NxBy，比较 CO2RR 中 *CO、*CHO 吸附和 CH4/HER 竞争路径，筛选兼顾 CH4 选择性与位点稳定性的局域配位；论文未涉及 OneModels 模型，模型按 NULL 处理。
+- scientific_context: 本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。
+- desired_outcome: 获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。
+- executor_role: 执行者应具备材料化学研究、数据分析和计算任务设计能力，能够将需求转化为经确认的可执行方案，并主动识别缺失信息和风险。
+
+## 问题与适用性
+本对象是提交给材料化学执行者的完整需求书，只规定研究目标、约束、预期结果和验收口径；执行者自主设计实施方案并在开工前说明风险。
+
+## 工作流步骤（→workflow/→tasks）
+- s01 Cu-N4 基底与局域配位构型生成
+- s02 吸附构型搜索与 VASP 弛豫
+- s03 CO2→CH4 与 HER 竞争路径自由能分析
+- s04 位点稳定性与选择性排序
+
+## 关联论文
+- Manipulating local coordination of copper single atom catalyst enables efficient CO2-to-CH4 conversion | doi:
+- The nature of active sites for carbon dioxide electroreduction over oxide-derived copper catalysts | doi:
+- Isolated copper–tin atomic interfaces tuning electrocatalytic CO2 conversion | doi:
+
+## 验收与缺失信息策略
+- acceptance_decision: （源场景未提供）
+- missing_information_policy: （源场景未提供）

@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s003",
-    "kernel-surrogate"
+    "kernel-surrogate",
+    "edge:scenario:sc-33189952",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S003",
   "source_papers": [

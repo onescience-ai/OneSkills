@@ -1,0 +1,19 @@
+{
+  "name": "tk-climate-e5a0185c",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：海浪模型训练与多要素谱预报生成。被 1 个场景复用；含 1 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-climate-2c83134b",
+    "edge:next:tk-climate-f0a6028c",
+    "slot:TRIAL_PERIOD:试运行时段",
+    "slot:FORECAST_HORIZON:预报时效",
+    "slot:OUTPUT_INTERVAL:输出时间间隔",
+    "slot:OUTPUT_DIRECTORY:结果输出目录",
+    "edge:instance:it-c5fbd8a1"
+  ]
+}

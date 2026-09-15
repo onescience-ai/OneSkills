@@ -16,7 +16,9 @@
     "flow cell",
     "copper-tin",
     "linear sweep voltammetry",
-    "product analysis"
+    "product analysis",
+    "edge:scenario:sc-449525cd",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "harvested": true,
   "tier": "high",

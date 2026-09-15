@@ -15,7 +15,9 @@
     "protocol",
     "agriculture",
     "remote-sensing",
-    "PRISMA"
+    "PRISMA",
+    "edge:scenario:sc-b5341da3",
+    "edge:workflow:wf-climate-48fe2bf3"
   ],
   "harvested": true,
   "tier": "high",

@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s077",
-    "neural-differential-equation"
+    "neural-differential-equation",
+    "edge:scenario:sc-ad48c314",
+    "edge:workflow:wf-cfd-17883fa9"
   ],
   "scenario_id": "CFD_S077",
   "source_papers": [

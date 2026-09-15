@@ -20,7 +20,9 @@
     "modeling",
     "null",
     "parameters",
-    "physical"
+    "physical",
+    "edge:scenario:sc-b6efc47d",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "锂离子电池衰减参数物理数据融合反演",
   "source_papers": [

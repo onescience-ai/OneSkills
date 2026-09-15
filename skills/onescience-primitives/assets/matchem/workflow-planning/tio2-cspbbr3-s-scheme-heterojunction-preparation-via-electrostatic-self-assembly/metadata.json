@@ -16,7 +16,9 @@
     "co2-reduction",
     "nanocomposite",
     "electrospinning",
-    "hot-injection"
+    "hot-injection",
+    "edge:scenario:sc-523bf3bd",
+    "edge:workflow:wf-matchem-87e6b0f5"
   ],
   "harvested": true,
   "tier": "high",

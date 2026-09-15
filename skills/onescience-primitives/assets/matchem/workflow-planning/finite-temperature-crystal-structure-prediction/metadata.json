@@ -16,7 +16,9 @@
     "prediction",
     "publisher",
     "structure",
-    "temperatures"
+    "temperatures",
+    "edge:scenario:sc-b7e5107b",
+    "edge:workflow:wf-matchem-30dd7b2f"
   ],
   "scenario_id": "有限温度晶体结构预测",
   "source_papers": [

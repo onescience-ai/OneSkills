@@ -23,7 +23,9 @@
     "tcr表位特异性预测的输出",
     "workflow",
     "workflow-planning",
-    "b27"
+    "b27",
+    "edge:scenario:sc-f375dd56",
+    "edge:workflow:wf-bio-c6a05f8d"
   ],
   "scenario_id": "B27",
   "source_papers": [

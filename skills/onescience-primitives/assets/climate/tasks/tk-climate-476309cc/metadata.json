@@ -1,0 +1,17 @@
+{
+  "name": "tk-climate-476309cc",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：0—3小时集合降水生成。被 1 个场景复用；含 1 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-climate-0b6cb480",
+    "edge:next:tk-climate-13b985d0",
+    "slot:OUTPUT_INTERVAL_MINUTES:输出时间间隔",
+    "slot:SAVE_MEMBER_FIELDS:保存成员格点场",
+    "edge:instance:it-dc345367"
+  ]
+}

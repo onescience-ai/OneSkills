@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s052",
     "pde-transformer",
-    "universal-physics-transformer"
+    "universal-physics-transformer",
+    "edge:scenario:sc-ae96e6d8",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S052",
   "source_papers": [

@@ -15,7 +15,9 @@
     "ensemble-empirical-mode-decomposition",
     "temporal-convolutional-network",
     "nonlinear-prediction",
-    "multi-step-forecasting"
+    "multi-step-forecasting",
+    "edge:scenario:sc-bd948540",
+    "edge:workflow:wf-climate-5303e892"
   ],
   "harvested": true,
   "tier": "medium",

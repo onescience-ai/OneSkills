@@ -17,7 +17,9 @@
     "multi-timescale",
     "boruta",
     "rainfall",
-    "temperature"
+    "temperature",
+    "edge:scenario:sc-a3ca2537",
+    "edge:workflow:wf-climate-ab1dd074"
   ],
   "harvested": true,
   "tier": "high",

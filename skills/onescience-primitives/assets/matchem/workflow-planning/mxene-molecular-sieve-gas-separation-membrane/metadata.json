@@ -19,7 +19,9 @@
     "separation",
     "sieving",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-c57df921",
+    "edge:workflow:wf-matchem-2c158827"
   ],
   "scenario_id": "MXene分子筛气体分离膜设计",
   "source_papers": [

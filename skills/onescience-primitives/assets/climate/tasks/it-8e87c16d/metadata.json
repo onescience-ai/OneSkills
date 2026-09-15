@@ -1,0 +1,18 @@
+{
+  "name": "it-8e87c16d",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「数据对齐、样本构建与最小干运行」在场景「E105」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-2c83134b",
+    "edge:scenario:sc-7a206965",
+    "slot:WAVE_VARIABLE_CONTRACT:海浪变量契约",
+    "slot:FORECAST_TRUTH_MATCHING:预报观测配对规则",
+    "slot:DATA_ALIGNMENT_SPEC:数据对齐规格",
+    "slot:SAMPLE_SPLIT_SPEC:样本划分规格"
+  ]
+}

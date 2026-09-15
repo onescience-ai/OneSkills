@@ -42,7 +42,9 @@
     "bioinformatics-tool",
     "workflow",
     "workflow-planning",
-    "b02"
+    "b02",
+    "edge:scenario:sc-36dea452",
+    "edge:workflow:wf-bio-5aaefe7e"
   ],
   "scenario_id": "B02",
   "source_papers": [

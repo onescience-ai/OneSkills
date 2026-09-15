@@ -20,7 +20,9 @@
     "rdkit",
     "workflow",
     "workflow-planning",
-    "b57"
+    "b57",
+    "edge:scenario:sc-694a6169",
+    "edge:workflow:wf-bio-856a5702"
   ],
   "scenario_id": "B57",
   "source_papers": [

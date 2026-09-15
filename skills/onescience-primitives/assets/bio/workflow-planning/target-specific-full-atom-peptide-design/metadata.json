@@ -19,7 +19,9 @@
     "target_interface",
     "workflow",
     "workflow-planning",
-    "b17"
+    "b17",
+    "edge:scenario:sc-5938cb88",
+    "edge:workflow:wf-bio-42419238"
   ],
   "scenario_id": "B17",
   "source_papers": [

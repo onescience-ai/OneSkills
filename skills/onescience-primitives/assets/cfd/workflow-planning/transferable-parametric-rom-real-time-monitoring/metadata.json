@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s090",
     "transferable-rom",
-    "shallow-recurrent-decoder"
+    "shallow-recurrent-decoder",
+    "edge:scenario:sc-52b62d65",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S090",
   "source_papers": [

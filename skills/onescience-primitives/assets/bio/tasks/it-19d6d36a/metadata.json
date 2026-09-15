@@ -1,0 +1,17 @@
+{
+  "name": "it-19d6d36a",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「基因组预测或序列生成」在场景「B61」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-bio-641b5fc6",
+    "edge:scenario:sc-310f8a31",
+    "slot:BATCH_SIZE:批次大小",
+    "slot:CELL_CONTEXTS:细胞上下文",
+    "slot:SEED:随机种子"
+  ]
+}

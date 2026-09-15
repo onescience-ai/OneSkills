@@ -71,7 +71,9 @@
     "machine-learning",
     "gcm-output",
     "random-forest",
-    "support-vector-regression"
+    "support-vector-regression",
+    "edge:scenario:sc-bbedbf34",
+    "edge:workflow:wf-climate-47e1e56a"
   ],
   "scenario_id": "E38",
   "source_papers": [

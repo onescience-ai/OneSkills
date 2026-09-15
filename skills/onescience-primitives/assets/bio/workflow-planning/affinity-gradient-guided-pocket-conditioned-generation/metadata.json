@@ -23,7 +23,9 @@
     "target-specific",
     "workflow",
     "workflow-planning",
-    "b54"
+    "b54",
+    "edge:scenario:sc-52e5942b",
+    "edge:workflow:wf-bio-856a5702"
   ],
   "scenario_id": "B54",
   "source_papers": [

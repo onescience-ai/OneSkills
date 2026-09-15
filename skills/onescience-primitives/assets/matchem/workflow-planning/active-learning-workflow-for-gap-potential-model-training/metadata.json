@@ -15,7 +15,9 @@
     "configuration-sampling",
     "bayesian-optimization",
     "hdbscan-clustering",
-    "amorphous-materials"
+    "amorphous-materials",
+    "edge:scenario:sc-9310ff3e",
+    "edge:workflow:wf-matchem-ec013e02"
   ],
   "harvested": true,
   "tier": "medium",

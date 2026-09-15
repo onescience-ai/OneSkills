@@ -1,0 +1,26 @@
+{
+  "name": "wf-bio-78f31941",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（bio）：4 步骨架 [蛋白样本与目标定义 > 表征与参考数据准备 > 功能或效应推理 > 评测与解释汇总]，被 10 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-bio-f74cea1d",
+    "edge:task:tk-bio-a4a8bb08",
+    "edge:task:tk-bio-6346602f",
+    "edge:task:tk-bio-0dc2d6a7",
+    "edge:scenario:sc-8f227164",
+    "edge:scenario:sc-d4d3e267",
+    "edge:scenario:sc-8e7ef538",
+    "edge:scenario:sc-6e8684e3",
+    "edge:scenario:sc-3e7ac522",
+    "edge:scenario:sc-ceecec72",
+    "edge:scenario:sc-5615b656",
+    "edge:scenario:sc-ec58063b",
+    "edge:scenario:sc-cbd4feb1",
+    "edge:scenario:sc-2f2a837d"
+  ]
+}

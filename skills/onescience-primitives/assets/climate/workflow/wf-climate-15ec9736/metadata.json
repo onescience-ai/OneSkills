@@ -1,0 +1,19 @@
+{
+  "name": "wf-climate-15ec9736",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [致灾因子和事件标签及任务边界预检 > 致灾因子和事件标签时空对齐与样本构造 > 方法配置与输入输出契约验证 > 融合多源置信度 > 去重并生成疑似火点 > 按时延误报漏报评估]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-climate-227e3d3b",
+    "edge:task:tk-climate-f091d868",
+    "edge:task:tk-climate-2d09b01b",
+    "edge:task:tk-climate-2902639a",
+    "edge:task:tk-climate-518256c4",
+    "edge:task:tk-climate-54e82804",
+    "edge:scenario:sc-b815245c"
+  ]
+}

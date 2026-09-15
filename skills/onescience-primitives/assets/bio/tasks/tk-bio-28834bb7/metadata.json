@@ -1,0 +1,26 @@
+{
+  "name": "tk-bio-28834bb7",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：分子设计目标定义。被 10 个场景复用；含 10 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:next:tk-bio-352f4229",
+    "slot:MOLECULE_INPUT:分子设计输入",
+    "slot:MODEL_NAME:分子模型",
+    "slot:GENERATION_MODE:生成模式",
+    "edge:instance:it-4dc3c67c",
+    "edge:instance:it-6995d86d",
+    "edge:instance:it-94358d4e",
+    "edge:instance:it-5fb9187e",
+    "edge:instance:it-b9814324",
+    "edge:instance:it-ef25defa",
+    "edge:instance:it-0216b211",
+    "edge:instance:it-ba0b7db3",
+    "edge:instance:it-5058c460",
+    "edge:instance:it-6cc32e7f"
+  ]
+}

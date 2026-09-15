@@ -1,0 +1,19 @@
+{
+  "name": "wf-climate-8adaf389",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [观测和背景场及任务边界预检 > 观测和背景场时空对齐与样本构造 > 方法配置与输入输出契约验证 > 重建三维温盐场并融合多尺度背景信息 > 输出分析场、不确定性和观测增量 > 用留出剖面及同化试验检验初始化价值]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-climate-65d4822e",
+    "edge:task:tk-climate-11037b61",
+    "edge:task:tk-climate-2d09b01b",
+    "edge:task:tk-climate-0ab59d34",
+    "edge:task:tk-climate-005593eb",
+    "edge:task:tk-climate-9678dc77",
+    "edge:scenario:sc-8d796207"
+  ]
+}

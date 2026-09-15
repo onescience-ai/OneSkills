@@ -121,6 +121,23 @@ resource_retrieval_result:
       content: <完整的结构化内容或文本>
 ```
 
+### 在线兜底证据扩展（online_evidence，A 层门禁锚点）
+
+当 resource 技能（如 `onescience-primitives`）检测到 `knowledge_gap=true` 并触发在线检索兜底（`onescience-live-literature`）时，`resource_retrieval_result` 必须追加 `online_evidence` 扩展段，供 orchestrator 做 A 层 domain_match 门禁：
+
+```yaml
+resource_retrieval_result:
+  knowledge_gap: <true|false>
+  online_evidence:
+    citations: [ "[n] 标题 | venue | year | doi | domain_match=<exact|adjacent|cross_domain> | evidence_level=<full-text|abstract-only>" ]
+    grounded_facts: [ "事实陈述（标注 [n] 出处 + 该文献 domain_match）" ]
+    domain_match_summary: { exact: <int>, adjacent: <int>, cross_domain: <int> }
+```
+
+- 每条 `citations` 必须带 `domain_match ∈ {exact, adjacent, cross_domain}`；orchestrator 消费 `online_evidence` 时，`domain_match=cross_domain` 的文献只能作方法学参考，不得作为本次任务的参数/阈值/几何/工况来源。
+- `domain_match_summary.exact=0` 时，orchestrator 必须要求 resource 技能触发第二轮更精准的场景锚词检索，仍为 0 则记 `gate_hit=domain_mismatch` 到 `gaps.jsonl`，并将依赖该证据的参数降级为 `literature_candidate` 或 `pending_user_confirmation`（见 planner_contract.md B 层门禁）。
+- 字段级定义以 `onescience-primitives` / `onescience-live-literature` 各自 SKILL.md 为准；本段仅为 orchestrator 侧消费锚点。
+
 ### 字段说明
 
 - `status`：召回状态（success/partial/failed）

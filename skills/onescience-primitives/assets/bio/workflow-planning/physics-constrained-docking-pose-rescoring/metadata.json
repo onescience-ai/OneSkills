@@ -25,7 +25,9 @@
     "plip",
     "workflow",
     "workflow-planning",
-    "b42"
+    "b42",
+    "edge:scenario:sc-5d896c59",
+    "edge:workflow:wf-bio-9fe7f508"
   ],
   "scenario_id": "B42",
   "source_papers": [

@@ -19,7 +19,9 @@
     "multimodal",
     "null",
     "synthesis",
-    "using"
+    "using",
+    "edge:scenario:sc-b2e7696a",
+    "edge:workflow:wf-matchem-128b457b"
   ],
   "scenario_id": "MOF合成应用多模态机器学习关联",
   "source_papers": [

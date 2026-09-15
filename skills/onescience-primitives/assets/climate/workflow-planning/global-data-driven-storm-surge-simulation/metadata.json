@@ -17,7 +17,9 @@
     "tide-gauge",
     "gesla",
     "gtsr",
-    "coastal-hazard"
+    "coastal-hazard",
+    "edge:scenario:sc-54bb1fb4",
+    "edge:workflow:wf-climate-583d5922"
   ],
   "harvested": true,
   "tier": "high",

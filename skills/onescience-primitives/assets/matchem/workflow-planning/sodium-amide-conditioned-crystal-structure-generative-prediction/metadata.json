@@ -18,7 +18,9 @@
     "null",
     "prediction",
     "sodium",
-    "structure"
+    "structure",
+    "edge:scenario:sc-fa726a56",
+    "edge:workflow:wf-matchem-30dd7b2f"
   ],
   "scenario_id": "钠酰胺条件晶体结构深度生成预测",
   "source_papers": [

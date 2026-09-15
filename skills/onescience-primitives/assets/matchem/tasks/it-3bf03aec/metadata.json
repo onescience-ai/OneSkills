@@ -1,0 +1,16 @@
+{
+  "name": "it-3bf03aec",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「材料与对照方案定义」在场景「激光粉末床熔融钥孔波动与孔隙形成分析」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-matchem-aa2bf571",
+    "edge:scenario:sc-859e63f2",
+    "slot:MATERIAL_AND_PROCESS:材料与工艺参数",
+    "slot:LOAD_OR_REACTION_CONDITION:载荷或反应条件"
+  ]
+}

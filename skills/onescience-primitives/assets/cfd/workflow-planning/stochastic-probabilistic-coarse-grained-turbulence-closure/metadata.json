@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s079",
     "neural-sde-closure",
-    "probabilistic-coarse-graining-model"
+    "probabilistic-coarse-graining-model",
+    "edge:scenario:sc-0c3968af",
+    "edge:workflow:wf-cfd-17883fa9"
   ],
   "scenario_id": "CFD_S079",
   "source_papers": [

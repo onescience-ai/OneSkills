@@ -71,7 +71,9 @@
     "acc",
     "error-decomposition",
     "forecast-smoothness",
-    "model-comparison"
+    "model-comparison",
+    "edge:scenario:sc-84809286",
+    "edge:workflow:wf-climate-a3c4e65c"
   ],
   "scenario_id": "E4",
   "source_papers": [

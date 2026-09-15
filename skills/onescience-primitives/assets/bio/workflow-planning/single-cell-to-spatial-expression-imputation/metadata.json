@@ -21,7 +21,9 @@
     "spatial_slice",
     "workflow",
     "workflow-planning",
-    "b77"
+    "b77",
+    "edge:scenario:sc-250ae6d0",
+    "edge:workflow:wf-bio-cdb48c05"
   ],
   "scenario_id": "B77",
   "source_papers": [

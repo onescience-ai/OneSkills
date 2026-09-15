@@ -16,7 +16,9 @@
     "hydrological-signatures",
     "model-interpretability",
     "integrated-gradients",
-    "camels-dataset"
+    "camels-dataset",
+    "edge:scenario:sc-3938a6f7",
+    "edge:workflow:wf-climate-dc11d42a"
   ],
   "harvested": true,
   "tier": "high",

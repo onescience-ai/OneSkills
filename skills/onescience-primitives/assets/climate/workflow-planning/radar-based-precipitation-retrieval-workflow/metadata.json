@@ -16,7 +16,9 @@
     "mrr-data-processing",
     "improtoo",
     "supervised-learning",
-    "cross-validation"
+    "cross-validation",
+    "edge:scenario:sc-21812d19",
+    "edge:workflow:wf-climate-4e875ce6"
   ],
   "harvested": true,
   "tier": "medium",

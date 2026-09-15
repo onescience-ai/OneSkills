@@ -21,7 +21,9 @@
     "token-level",
     "workflow",
     "workflow-planning",
-    "b19"
+    "b19",
+    "edge:scenario:sc-33ef2b11",
+    "edge:workflow:wf-bio-42419238"
   ],
   "scenario_id": "B19",
   "source_papers": [

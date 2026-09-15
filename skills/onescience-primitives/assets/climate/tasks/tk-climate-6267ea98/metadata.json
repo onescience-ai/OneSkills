@@ -1,0 +1,27 @@
+{
+  "name": "tk-climate-6267ea98",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：目标序列及缺口及任务边界预检。被 4 个场景复用；含 4 个实例任务；资源引用 ['datasets/CMEMS']。",
+  "tags": [
+    "edge:resource:datasets/CMEMS",
+    "edge:next:tk-climate-2cf4606d",
+    "slot:INCOMPLETE_TARGET_DATA:不完整目标序列",
+    "slot:AUXILIARY_DATA:辅助驱动资料",
+    "slot:GAP_MASK:时间空间缺口",
+    "slot:TARGET_REGION_TIME:目标区域时段",
+    "slot:DATA_CUTOFF_TIME:资料截止时间",
+    "slot:GRACE_TWSA_SERIES:GRACE水储量序列",
+    "slot:CLIMATE_LAND_DRIVERS:气候陆面驱动",
+    "slot:REFERENCE_PERIOD:异常基准期",
+    "slot:TARGET_GRID:目标网格",
+    "edge:instance:it-b45c3ffd",
+    "edge:instance:it-a2ef7c5c",
+    "edge:instance:it-ceaa1c8c",
+    "edge:instance:it-2da670bf"
+  ]
+}

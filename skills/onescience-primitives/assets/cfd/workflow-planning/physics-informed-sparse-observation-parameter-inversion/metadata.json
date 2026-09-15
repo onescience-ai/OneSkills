@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s038",
     "inverse-pinn",
-    "physics-informed-data-assimilation"
+    "physics-informed-data-assimilation",
+    "edge:scenario:sc-85108da0",
+    "edge:workflow:wf-cfd-fe460ea5"
   ],
   "scenario_id": "CFD_S038",
   "source_papers": [

@@ -27,7 +27,9 @@
     "machine-learning-potential",
     "reaction-pathway-discovery",
     "free-energy-surface",
-    "plumed"
+    "plumed",
+    "edge:scenario:sc-71bffb4f",
+    "edge:workflow:wf-matchem-ec013e02"
   ],
   "scenario_id": "催化反应机器学习势主动学习与增强采样",
   "source_papers": [

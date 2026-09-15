@@ -19,7 +19,9 @@
     "null",
     "precombustion",
     "silico",
-    "using"
+    "using",
+    "edge:scenario:sc-d9f04a1d",
+    "edge:workflow:wf-matchem-2c158827"
   ],
   "scenario_id": "MOF燃烧前CO2捕集遗传算法筛选",
   "source_papers": [

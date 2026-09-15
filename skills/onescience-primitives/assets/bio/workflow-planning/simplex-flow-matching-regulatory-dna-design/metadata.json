@@ -21,7 +21,9 @@
     "sequence",
     "workflow",
     "workflow-planning",
-    "b70"
+    "b70",
+    "edge:scenario:sc-a42a7aa2",
+    "edge:workflow:wf-bio-afe9f9ae"
   ],
   "scenario_id": "B70",
   "source_papers": [

@@ -1,0 +1,27 @@
+{
+  "name": "tk-climate-2bdb8d13",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：粗细分辨率资料时空对齐与样本构造。被 7 个场景复用；含 7 个实例任务；资源引用 ['datasets/ERA5']。",
+  "tags": [
+    "edge:resource:datasets/ERA5",
+    "edge:prev:tk-climate-721f3e3f",
+    "edge:next:tk-climate-2d09b01b",
+    "slot:PAIRING_CONFIG:粗细样本配对",
+    "slot:SPLIT_PROTOCOL:数据划分协议",
+    "slot:PREPROCESS_CONFIG:预处理配置",
+    "slot:ACCUMULATION_POLICY:累计量转换规则",
+    "slot:VARIABLE_LEVEL_MAPPING:变量层次映射",
+    "edge:instance:it-e97774c7",
+    "edge:instance:it-de8ac596",
+    "edge:instance:it-c8d81770",
+    "edge:instance:it-13c7f7ad",
+    "edge:instance:it-1bb1168d",
+    "edge:instance:it-e6aedb32",
+    "edge:instance:it-4165cff6"
+  ]
+}

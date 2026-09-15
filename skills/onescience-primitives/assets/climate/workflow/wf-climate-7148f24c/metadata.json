@@ -1,0 +1,19 @@
+{
+  "name": "wf-climate-7148f24c",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [致灾因子和事件标签及任务边界预检 > 致灾因子和事件标签时空对齐与样本构造 > 方法配置与输入输出契约验证 > 生成未来火季发生概率场 > 按冻结阈值形成区域风险分级 > 检验可靠度、区分度与跨年份稳定性]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-climate-227e3d3b",
+    "edge:task:tk-climate-f091d868",
+    "edge:task:tk-climate-2d09b01b",
+    "edge:task:tk-climate-85c011e9",
+    "edge:task:tk-climate-20a90736",
+    "edge:task:tk-climate-69237579",
+    "edge:scenario:sc-7448f8a7"
+  ]
+}

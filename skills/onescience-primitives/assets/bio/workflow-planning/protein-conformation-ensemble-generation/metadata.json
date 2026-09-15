@@ -34,7 +34,9 @@
     "molecular-dynamics",
     "deer-spectroscopy",
     "deeplearning-protein",
-    "conformational-switching"
+    "conformational-switching",
+    "edge:scenario:sc-edd9ba1e",
+    "edge:workflow:wf-bio-5aaefe7e"
   ],
   "scenario_id": "B07",
   "source_papers": [

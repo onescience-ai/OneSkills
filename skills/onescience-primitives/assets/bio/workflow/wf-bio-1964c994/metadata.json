@@ -1,0 +1,26 @@
+{
+  "name": "wf-bio-1964c994",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（bio）：4 步骨架 [RNA输入与任务定义 > 结构约束与模型准备 > 结构预测或序列采样 > RNA结构与功能质控]，被 10 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-bio-c3b69dac",
+    "edge:task:tk-bio-97c29895",
+    "edge:task:tk-bio-273fa79a",
+    "edge:task:tk-bio-94e026f3",
+    "edge:scenario:sc-bba0612f",
+    "edge:scenario:sc-dffda14d",
+    "edge:scenario:sc-32f26123",
+    "edge:scenario:sc-347495e9",
+    "edge:scenario:sc-8c79aa2f",
+    "edge:scenario:sc-97654ccd",
+    "edge:scenario:sc-c76078ba",
+    "edge:scenario:sc-415e7e3d",
+    "edge:scenario:sc-634ff596",
+    "edge:scenario:sc-e51af581"
+  ]
+}

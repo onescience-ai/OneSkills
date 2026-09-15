@@ -1,0 +1,20 @@
+{
+  "name": "tk-climate-0b6cb480",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：预测组件与参数兼容性验证。被 1 个场景复用；含 1 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-climate-5fcc84ba",
+    "edge:next:tk-climate-476309cc",
+    "slot:MODEL_CHECKPOINT:预测组件参数路径",
+    "slot:MODEL_CONFIG:预测组件配置路径",
+    "slot:CHECKPOINT_SHA256:权重SHA-256",
+    "slot:ENSEMBLE_SIZE:集合成员数",
+    "slot:RANDOM_SEED:随机种子",
+    "edge:instance:it-e424cf51"
+  ]
+}

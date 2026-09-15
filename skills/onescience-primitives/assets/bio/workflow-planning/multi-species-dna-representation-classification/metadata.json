@@ -25,7 +25,9 @@
     "long-range",
     "workflow",
     "workflow-planning",
-    "b63"
+    "b63",
+    "edge:scenario:sc-a88a7437",
+    "edge:workflow:wf-bio-afe9f9ae"
   ],
   "scenario_id": "B63",
   "source_papers": [

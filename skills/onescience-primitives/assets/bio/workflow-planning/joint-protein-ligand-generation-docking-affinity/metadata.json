@@ -25,7 +25,9 @@
     "posebusters",
     "workflow",
     "workflow-planning",
-    "b43"
+    "b43",
+    "edge:scenario:sc-fe5c3f01",
+    "edge:workflow:wf-bio-9fe7f508"
   ],
   "scenario_id": "B43",
   "source_papers": [

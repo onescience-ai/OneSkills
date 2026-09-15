@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s020",
-    "message-passing-neural-pde-solver"
+    "message-passing-neural-pde-solver",
+    "edge:scenario:sc-06d4c2be",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S020",
   "source_papers": [

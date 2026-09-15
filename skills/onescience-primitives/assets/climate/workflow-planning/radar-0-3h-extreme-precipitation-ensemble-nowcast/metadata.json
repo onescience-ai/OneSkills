@@ -86,7 +86,9 @@
     "convlstm",
     "sequence-prediction",
     "weather-prediction",
-    "encoder-predictor"
+    "encoder-predictor",
+    "edge:scenario:sc-16d509a7",
+    "edge:workflow:wf-climate-850e80fd"
   ],
   "scenario_id": "E2",
   "source_papers": [

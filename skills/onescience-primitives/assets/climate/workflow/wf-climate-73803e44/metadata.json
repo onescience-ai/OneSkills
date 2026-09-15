@@ -1,0 +1,19 @@
+{
+  "name": "wf-climate-73803e44",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [源观测和参考资料及任务边界预检 > 源观测和参考资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 反演瞬时雨强并累积到目标时段 > 应用雨量计校准并生成雨强产品 > 检验RMSE、相关性和强降水误差]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-climate-9558a47e",
+    "edge:task:tk-climate-558ec5a0",
+    "edge:task:tk-climate-2d09b01b",
+    "edge:task:tk-climate-1802bad5",
+    "edge:task:tk-climate-1a76adfc",
+    "edge:task:tk-climate-26997ad4",
+    "edge:scenario:sc-2a31eae0"
+  ]
+}

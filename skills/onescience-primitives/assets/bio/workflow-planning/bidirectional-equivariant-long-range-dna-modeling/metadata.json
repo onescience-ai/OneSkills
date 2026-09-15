@@ -25,7 +25,9 @@
     "long_dna_windows",
     "workflow",
     "workflow-planning",
-    "b64"
+    "b64",
+    "edge:scenario:sc-9c3a83c8",
+    "edge:workflow:wf-bio-afe9f9ae"
   ],
   "scenario_id": "B64",
   "source_papers": [

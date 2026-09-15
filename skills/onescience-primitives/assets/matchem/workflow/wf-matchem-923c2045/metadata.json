@@ -1,0 +1,17 @@
+{
+  "name": "wf-matchem-923c2045",
+  "type": "workflow",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（matchem）：4 步骨架 [Cu-N4 基底与局域配位构型生成 > 吸附构型搜索与 VASP 弛豫 > CO2→CH4 与 HER 竞争路径自由能分析 > 位点稳定性与选择性排序]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-matchem-df4123d6",
+    "edge:task:tk-matchem-0c043f0d",
+    "edge:task:tk-matchem-b00fbef2",
+    "edge:task:tk-matchem-3f89bcb1",
+    "edge:scenario:sc-9566751c"
+  ]
+}

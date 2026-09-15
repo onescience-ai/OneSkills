@@ -34,7 +34,9 @@
     "workflow",
     "workflow-planning",
     "climate",
-    "e59"
+    "e59",
+    "edge:scenario:sc-46ea9d0e",
+    "edge:workflow:wf-climate-bcf0ac0b"
   ],
   "scenario_id": "E59",
   "source_papers": [

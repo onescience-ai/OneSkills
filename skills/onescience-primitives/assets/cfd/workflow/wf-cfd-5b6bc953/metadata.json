@@ -1,0 +1,22 @@
+{
+  "name": "wf-cfd-5b6bc953",
+  "type": "workflow",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（cfd）：5 步骨架 [数据接入与契约核验 > 预处理与数据切分 > 模型配置与训练 > 条件采样与物理一致性筛选 > 任务验收与适用域判定]，被 5 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-cfd-54dc529a",
+    "edge:task:tk-cfd-446c2dc0",
+    "edge:task:tk-cfd-18078463",
+    "edge:task:tk-cfd-78110674",
+    "edge:task:tk-cfd-3fb1a5d6",
+    "edge:scenario:sc-506b9cc2",
+    "edge:scenario:sc-66583cbe",
+    "edge:scenario:sc-12288948",
+    "edge:scenario:sc-a1b8b80d",
+    "edge:scenario:sc-d9464c5e"
+  ]
+}

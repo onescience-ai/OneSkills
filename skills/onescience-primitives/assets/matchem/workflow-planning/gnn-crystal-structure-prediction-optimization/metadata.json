@@ -17,7 +17,9 @@
     "null",
     "optimization",
     "prediction",
-    "structure"
+    "structure",
+    "edge:scenario:sc-d6eba2e8",
+    "edge:workflow:wf-matchem-30dd7b2f"
   ],
   "scenario_id": "图神经网络晶体结构预测与优化",
   "source_papers": [

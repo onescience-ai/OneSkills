@@ -25,7 +25,9 @@
     "rna复合物结合亲和力预测的输出",
     "workflow",
     "workflow-planning",
-    "b89"
+    "b89",
+    "edge:scenario:sc-634ff596",
+    "edge:workflow:wf-bio-1964c994"
   ],
   "scenario_id": "B89",
   "source_papers": [

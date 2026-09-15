@@ -1,0 +1,18 @@
+{
+  "name": "it-cc14531b",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「用独立样地检验生物量并诊断气候响应」在场景「E96」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-ee9f5a50",
+    "edge:scenario:sc-f8e671ed",
+    "slot:INDEPENDENT_PLOT_DATA:独立样地资料",
+    "slot:CLIMATE_RESPONSE_VARIABLES:气候响应变量",
+    "slot:RESPONSE_DIAGNOSTICS:响应诊断配置",
+    "slot:ACCEPTANCE_CRITERIA:验收门限"
+  ]
+}

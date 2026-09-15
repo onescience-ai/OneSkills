@@ -26,7 +26,9 @@
     "workflow",
     "workflow-planning",
     "b56",
-    "smiles-mamba"
+    "smiles-mamba",
+    "edge:scenario:sc-e3bbd709",
+    "edge:workflow:wf-bio-856a5702"
   ],
   "scenario_id": "B56",
   "source_papers": [

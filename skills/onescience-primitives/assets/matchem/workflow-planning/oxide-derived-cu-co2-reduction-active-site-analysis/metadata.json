@@ -19,7 +19,9 @@
     "nature",
     "null",
     "oxide-derived",
-    "sites"
+    "sites",
+    "edge:scenario:sc-250ef1e5",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "氧化衍生铜CO2电还原活性位分析",
   "source_papers": [

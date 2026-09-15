@@ -18,7 +18,9 @@
     "null",
     "organic-inorganic",
     "perovskites",
-    "stable"
+    "stable",
+    "edge:scenario:sc-d5554800",
+    "edge:workflow:wf-matchem-128b457b"
   ],
   "scenario_id": "无铅杂化钙钛矿稳定性机器学习筛选",
   "source_papers": [

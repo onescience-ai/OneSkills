@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s032",
-    "engineering-agent"
+    "engineering-agent",
+    "edge:scenario:sc-e9c594b2",
+    "edge:workflow:wf-cfd-8b1af9da"
   ],
   "scenario_id": "CFD_S032",
   "source_papers": [

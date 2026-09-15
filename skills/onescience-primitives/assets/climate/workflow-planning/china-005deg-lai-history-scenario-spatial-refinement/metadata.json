@@ -29,7 +29,9 @@
     "vegetation-monitoring",
     "spatial-resolution",
     "0.05-degree",
-    "pytorch"
+    "pytorch",
+    "edge:scenario:sc-b5aa7609",
+    "edge:workflow:wf-climate-ddf53247"
   ],
   "scenario_id": "E93",
   "source_papers": [

@@ -26,7 +26,9 @@
     "workflow",
     "workflow-planning",
     "b72",
-    "scgpt"
+    "scgpt",
+    "edge:scenario:sc-e37a188b",
+    "edge:workflow:wf-bio-cdb48c05"
   ],
   "scenario_id": "B72",
   "source_papers": [

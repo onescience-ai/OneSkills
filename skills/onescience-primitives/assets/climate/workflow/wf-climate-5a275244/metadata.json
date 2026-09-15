@@ -1,0 +1,19 @@
+{
+  "name": "wf-climate-5a275244",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [海洋状态和强迫资料及任务边界预检 > 海洋状态和强迫资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 生成格点海冰类别概率和集合分布 > 校准概率并提取冰缘、范围及置信带 > 评价空间技巧、范围误差和概率可靠度]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-climate-2239ace0",
+    "edge:task:tk-climate-d1516b9a",
+    "edge:task:tk-climate-2d09b01b",
+    "edge:task:tk-climate-8dcb3051",
+    "edge:task:tk-climate-63e95933",
+    "edge:task:tk-climate-11036500",
+    "edge:scenario:sc-dc726c81"
+  ]
+}

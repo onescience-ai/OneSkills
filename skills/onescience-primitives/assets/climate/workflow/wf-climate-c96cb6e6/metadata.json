@@ -1,0 +1,19 @@
+{
+  "name": "wf-climate-c96cb6e6",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [污染气象资料及任务边界预检 > 污染气象资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 重建当前污染格点并滚动生成短时预测 > 输出当前与未来污染格点产品 > 以留站和未来时段双重验证]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-climate-04b7173e",
+    "edge:task:tk-climate-55edfa14",
+    "edge:task:tk-climate-2d09b01b",
+    "edge:task:tk-climate-73545674",
+    "edge:task:tk-climate-d2cd1096",
+    "edge:task:tk-climate-ec57ed78",
+    "edge:scenario:sc-f4bb308a"
+  ]
+}

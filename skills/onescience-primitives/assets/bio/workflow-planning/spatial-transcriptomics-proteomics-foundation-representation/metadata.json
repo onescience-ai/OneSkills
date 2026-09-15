@@ -20,7 +20,9 @@
     "transcriptomics",
     "workflow",
     "workflow-planning",
-    "b80"
+    "b80",
+    "edge:scenario:sc-7377b7f8",
+    "edge:workflow:wf-bio-cdb48c05"
   ],
   "scenario_id": "B80",
   "source_papers": [

@@ -14,7 +14,9 @@
     "learning",
     "machine",
     "matchem",
-    "null"
+    "null",
+    "edge:scenario:sc-557d2d47",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "锂离子电池日历老化预测",
   "source_papers": [

@@ -1,0 +1,27 @@
+{
+  "name": "tk-bio-97c29895",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：结构约束与模型准备。被 10 个场景复用；含 10 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-bio-c3b69dac",
+    "edge:next:tk-bio-273fa79a",
+    "slot:CHECKPOINT:模型权重",
+    "slot:MAX_LENGTH:RNA长度上限",
+    "slot:ALLOW_PSEUDOKNOT:允许假结",
+    "edge:instance:it-bba414d4",
+    "edge:instance:it-373e4797",
+    "edge:instance:it-cd15e33b",
+    "edge:instance:it-4c2df879",
+    "edge:instance:it-833c18e5",
+    "edge:instance:it-bc975e51",
+    "edge:instance:it-d8f09c20",
+    "edge:instance:it-7fa7f48f",
+    "edge:instance:it-2220128d",
+    "edge:instance:it-664ee1c5"
+  ]
+}

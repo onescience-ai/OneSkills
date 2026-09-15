@@ -1,0 +1,17 @@
+{
+  "name": "it-e2b275b6",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「递推生成多步水深」在场景「E64」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-24978c0c",
+    "edge:scenario:sc-187cdfeb",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:INITIAL_STATE:初始水文状态",
+    "slot:ENSEMBLE_SIZE:集合成员数"
+  ]
+}

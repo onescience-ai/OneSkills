@@ -17,7 +17,9 @@
     "null",
     "phosphor",
     "robust",
-    "thermally"
+    "thermally",
+    "edge:scenario:sc-913c7698",
+    "edge:workflow:wf-matchem-128b457b"
   ],
   "scenario_id": "热稳定无机荧光粉主晶格机器学习筛选",
   "source_papers": [

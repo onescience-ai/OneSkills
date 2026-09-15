@@ -20,7 +20,9 @@
     "top5成功率结果",
     "workflow",
     "workflow-planning",
-    "b49"
+    "b49",
+    "edge:scenario:sc-892ed8b3",
+    "edge:workflow:wf-bio-9fe7f508"
   ],
   "scenario_id": "B49",
   "source_papers": [

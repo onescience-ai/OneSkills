@@ -59,7 +59,9 @@
     "sst",
     "sla",
     "probabilistic verification",
-    "pss"
+    "pss",
+    "edge:scenario:sc-9a86054e",
+    "edge:workflow:wf-climate-26aaf414"
   ],
   "scenario_id": "E5",
   "source_papers": [

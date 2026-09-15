@@ -8,7 +8,7 @@
 {
   "task_id": "string",
   "user_goal": "string",
-  "current_phase": "intake|planning|execution|observation|repair|tier_check|tier_escalate|step_timeout|validation|complete|blocked|partial",
+  "current_phase": "intake|planning|execution|observation|repair|tier_check|tier_escalate|step_timeout|validation|complete|complete_with_caveats|blocked|partial",
   "planning_mode": "direct_step|expert_proposal_synthesis|null",
   "domain_hints": ["string"],
   "task_family": "string|null",
@@ -86,7 +86,8 @@
     "execution_skill": "string",
     "detail_bundle_id": "string|null",
     "detail_bundle": {},
-    "status": "pending|running|done|failed|blocked",
+    "status": "pending|running|done|failed|blocked|demo_pass|unverified",
+    "result_identity": "research_result|engineering_demo|smoke_test|not_a_result|null",
     "step_wallclock_budget_seconds": 3600,
     "step_started_at": "ISO8601|null"
   },
@@ -115,6 +116,7 @@
       "source_skill": "string",
       "status": "success|failed|blocked|partial|step_timeout",
       "failure_category": "transient|environment|dependency|data|code|scientific|platform|unknown|null",
+      "result_identity": "research_result|engineering_demo|smoke_test|not_a_result|null",
       "summary": "string",
       "missing": ["string"],
       "next_recommendation": "string|null"
@@ -126,7 +128,7 @@
       "timestamp": "ISO8601",
       "step_id": "string",
       "attempt": 1,
-      "event_type": "step_started|step_completed|step_failed|step_timed_out|repair_attempted|retry_started|diagnosis_completed|tier_escalated|tier_fallback|plan_revised|decision_auto_made|observation_recorded|blocked",
+      "event_type": "step_started|step_completed|step_failed|step_timed_out|repair_attempted|retry_started|diagnosis_completed|tier_escalated|tier_fallback|plan_revised|decision_auto_made|observation_recorded|blocked|validation_rollback|user_confirmation|gate_hit",
       "source_skill": "string",
       "description": "string",
       "evidence": {}
@@ -193,7 +195,11 @@ tier_check -> tier_escalate   (若当前 tier 通过且需要进入更高 tier)
 tier_check -> complete        (若 deliverable tier 已通过且不需 escalation)
 tier_check -> partial         (若 deliverable tier 部分通过且有回退产物)
 observation -> validation
-validation -> complete
+validation -> complete               (仅当所有 step result_identity=research_result + 所有验证 step PASS + 无未解除 blocked_missing)
+validation -> validation_rollback    (D 层：任一验证 step 判 FAIL/PARTIAL，回退上游已标 PASS 的 step 为 UNVERIFIED/PARTIAL，写 validation_rollback event)
+validation_rollback -> complete_with_caveats   (回退后仍有可交付的方法演示/脚手架产物，但无科研结论)
+validation_rollback -> partial
+validation -> complete_with_caveats  (验证未全 PASS 或存在 engineering_demo/smoke_test 身份 step，但仍可交付)
 any -> blocked
 ```
 
@@ -201,6 +207,10 @@ any -> blocked
 - `tier_check`：每步 observation 完成后，orchestrator 检查 `tiered_completion_contract` 中当前 active_tier 的各项 check 状态，更新 tier status，并判定是否需要 escalation 或可宣告完成。
 - `tier_escalate`：当前 tier 通过 → 若 `tier_config` 级联规则要求进入下一 tier（如 Tier 1 通过 + user_goal 含"全量"），自动激活下一 tier，写入 `active_tier`，进入 planning → execution。
 - `partial`：任务未完全达成但仍可交付——通常发生在 Tier 2 失败/超时后回退 Tier 1 产物的场景。此时 `deliverable_tier` 指向实际交付的 tier。
+- `validation_rollback`：D 层级联回退中间态。当验证类 step（网格独立性/能量守恒/可复现审计/指标对标等）判 FAIL/PARTIAL 时，orchestrator 自动把其上游所有已标 PASS 且被该验证覆盖的 step 降级为 `unverified`/`partial`，并写 `event_type=validation_rollback`。回退完成后按剩余可交付产物迁移到 `complete_with_caveats` 或 `partial`，**禁止**回退后再迁回 `complete`。
+- `complete_with_caveats`：D 层门禁终态之一。任务已产出可交付物，但至少一个 step 的 `result_identity ∈ {engineering_demo, smoke_test, not_a_result}`、或存在未全 PASS 的验证 step、或存在已解除但曾 blocked_missing 的关键输入。此状态下最终输出第一行必须前置「⚠ 本次未产生科研结论，以下均为方法演示/脚手架，需正式输入与验证后方可作为结论」；`status=complete` 与此状态互斥，不得同时声明。
+- `active_step.status=demo_pass`：C 层门禁态。step 产物自述或运行证据表明其为工程演示/冒烟（含 smoke、demo、simplified、toy、not suitable for production 等关键词），运行链路走通但**不构成科研结果**；`result_identity` 必须为 `engineering_demo`/`smoke_test`/`not_a_result`，禁止标 `done`+PASS，下游依赖其产物的 step 自动继承该身份。
+- `active_step.status=unverified`：D 层回退态。step 曾判 PASS/done，但其下游验证 step 判 FAIL/PARTIAL，被级联回退；产物保留但结论待正式验证，禁止进入最终报告「关键发现/科研结论」段。
 
 ## 更新规则
 

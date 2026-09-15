@@ -34,7 +34,9 @@
     "hybrid-kernel-svm",
     "hyperparameter-optimization",
     "hydrological-modeling",
-    "climate-indices"
+    "climate-indices",
+    "edge:scenario:sc-edddeefe",
+    "edge:workflow:wf-climate-b07f16db"
   ],
   "scenario_id": "E65",
   "source_papers": [

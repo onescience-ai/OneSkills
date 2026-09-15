@@ -1,0 +1,16 @@
+{
+  "name": "it-1d3da90a",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「生态与分类质量评估」在场景「B97」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-bio-0299abd1",
+    "edge:scenario:sc-aa2a08ba",
+    "slot:MIN_CONFIDENCE:置信度下限",
+    "slot:REPORT_UNKNOWN:报告未知类别"
+  ]
+}

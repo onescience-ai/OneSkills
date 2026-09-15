@@ -17,7 +17,9 @@
     "products",
     "reduction",
     "tailoring",
-    "towards"
+    "towards",
+    "edge:scenario:sc-76a241a4",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "铜纳米晶CO2到C2产物选择性设计",
   "source_papers": [

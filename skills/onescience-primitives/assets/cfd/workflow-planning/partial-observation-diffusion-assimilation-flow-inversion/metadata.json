@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s097",
     "score-based-data-assimilation",
-    "neural-fluid-field"
+    "neural-fluid-field",
+    "edge:scenario:sc-b98eb0df",
+    "edge:workflow:wf-cfd-29af55b0"
   ],
   "scenario_id": "CFD_S097",
   "source_papers": [

@@ -1,0 +1,26 @@
+{
+  "name": "tk-bio-89ea162c",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：生物一致性与泛化评估。被 10 个场景复用；含 10 个实例任务；资源引用 ['tools/pydeseq2']。",
+  "tags": [
+    "edge:resource:tools/pydeseq2",
+    "edge:prev:tk-bio-27a0715c",
+    "slot:MIN_CORRELATION:相关性下限",
+    "slot:LABEL_KEY:评测标签字段",
+    "edge:instance:it-3ec888e0",
+    "edge:instance:it-faf6e17d",
+    "edge:instance:it-1d2f8995",
+    "edge:instance:it-e5afde22",
+    "edge:instance:it-8f314933",
+    "edge:instance:it-afc10836",
+    "edge:instance:it-43868957",
+    "edge:instance:it-20ed080c",
+    "edge:instance:it-8d0db938",
+    "edge:instance:it-60f40c7c"
+  ]
+}

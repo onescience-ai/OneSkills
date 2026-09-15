@@ -25,7 +25,9 @@
     "rmsd结果",
     "workflow",
     "workflow-planning",
-    "b15"
+    "b15",
+    "edge:scenario:sc-c6c38246",
+    "edge:workflow:wf-bio-42419238"
   ],
   "scenario_id": "B15",
   "source_papers": [

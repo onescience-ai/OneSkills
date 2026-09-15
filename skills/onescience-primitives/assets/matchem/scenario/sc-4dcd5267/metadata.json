@@ -1,0 +1,21 @@
+{
+  "name": "sc-4dcd5267",
+  "type": "scenario",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：MOF量子精度机器学习势温度主动学习（matchem）。工作流 4 步，经 edge:workflow 指向 wf-matchem-ec013e02，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "src:scenario_id:MOF量子精度机器学习势温度主动学习",
+    "edge:workflow:wf-matchem-ec013e02",
+    "edge:task:tk-matchem-8c781538",
+    "edge:task:tk-matchem-106766cc",
+    "edge:task:tk-matchem-03396a62",
+    "edge:task:tk-matchem-22341fb8",
+    "slot:REFERENCE_DATA:参考量子化学或第一性原理数据",
+    "slot:POTENTIAL_CONFIG:势函数根源模型配置",
+    "slot:MD_CONFIG:分子动力学验证配置"
+  ]
+}

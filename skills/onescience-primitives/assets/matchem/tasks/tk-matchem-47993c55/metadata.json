@@ -1,0 +1,25 @@
+{
+  "name": "tk-matchem-47993c55",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：材料或工艺窗口输出。被 12 个场景复用；含 12 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-matchem-edbfdf30",
+    "edge:instance:it-ed02eb75",
+    "edge:instance:it-9bf0d46f",
+    "edge:instance:it-1218c5c8",
+    "edge:instance:it-60d2dcbc",
+    "edge:instance:it-4ae77374",
+    "edge:instance:it-e76be1d4",
+    "edge:instance:it-8a63939a",
+    "edge:instance:it-fea492b9",
+    "edge:instance:it-d9c3cf36",
+    "edge:instance:it-283a4fe2",
+    "edge:instance:it-8c6b9ff6",
+    "edge:instance:it-cc056881"
+  ]
+}

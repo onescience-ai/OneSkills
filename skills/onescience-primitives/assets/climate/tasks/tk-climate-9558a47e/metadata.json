@@ -1,0 +1,30 @@
+{
+  "name": "tk-climate-9558a47e",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：源观测和参考资料及任务边界预检。被 6 个场景复用；含 6 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:next:tk-climate-558ec5a0",
+    "slot:SOURCE_OBSERVATIONS:源观测资料",
+    "slot:AUXILIARY_DATA:辅助资料",
+    "slot:TARGET_REGION_TIME:目标区域时段",
+    "slot:TARGET_VARIABLE:目标诊断量",
+    "slot:DATA_CUTOFF_TIME:资料截止时间",
+    "slot:RADAR_VOLUME:雷达体扫资料",
+    "slot:RAIN_GAUGE_DATA:雨量计资料",
+    "slot:RADAR_SCAN_TIME:雷达扫描时刻",
+    "slot:TARGET_REGION:目标区域",
+    "slot:SATELLITE_OBSERVATIONS:卫星观测资料",
+    "slot:TARGET_PERIOD:目标估计时段",
+    "edge:instance:it-6ed02fbe",
+    "edge:instance:it-058e4023",
+    "edge:instance:it-f224351a",
+    "edge:instance:it-d320bee9",
+    "edge:instance:it-5a9948be",
+    "edge:instance:it-fe2c050d"
+  ]
+}

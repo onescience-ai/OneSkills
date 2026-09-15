@@ -1,0 +1,19 @@
+{
+  "name": "it-b8ac0b37",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「区域FourCastNet迁移训练与预报生成」在场景「E107」中的实例化；资源引用 ['models/fourcastnet']。",
+  "tags": [
+    "edge:skeleton:tk-climate-cfea5a68",
+    "edge:scenario:sc-6771277f",
+    "edge:resource:models/fourcastnet",
+    "slot:FORECAST_START_TIME:起报时间",
+    "slot:FORECAST_HORIZON:预报时效",
+    "slot:OUTPUT_INTERVAL:输出时间间隔",
+    "slot:OUTPUT_DIRECTORY:结果输出目录"
+  ]
+}

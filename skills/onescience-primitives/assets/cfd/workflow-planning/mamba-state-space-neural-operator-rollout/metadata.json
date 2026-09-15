@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s053",
     "mamba-neural-operator",
-    "state-space-operator"
+    "state-space-operator",
+    "edge:scenario:sc-151b4062",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S053",
   "source_papers": [

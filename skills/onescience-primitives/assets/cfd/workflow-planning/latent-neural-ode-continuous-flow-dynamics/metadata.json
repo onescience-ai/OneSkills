@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s019",
     "neural-ode",
-    "latent-neural-field"
+    "latent-neural-field",
+    "edge:scenario:sc-2fe8f43a",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S019",
   "source_papers": [

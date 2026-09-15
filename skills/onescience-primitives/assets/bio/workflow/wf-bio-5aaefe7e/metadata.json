@@ -1,0 +1,26 @@
+{
+  "name": "wf-bio-5aaefe7e",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（bio）：4 步骨架 [输入与任务定义 > 特征与模型准备 > 结构推理与采样 > 结构质控与汇总]，被 10 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-bio-05591214",
+    "edge:task:tk-bio-564bba1d",
+    "edge:task:tk-bio-0fe9bed3",
+    "edge:task:tk-bio-f2a9ed46",
+    "edge:scenario:sc-36dea452",
+    "edge:scenario:sc-c0091dea",
+    "edge:scenario:sc-7c5d11a4",
+    "edge:scenario:sc-add4127a",
+    "edge:scenario:sc-0e25362c",
+    "edge:scenario:sc-5c0900cc",
+    "edge:scenario:sc-edd9ba1e",
+    "edge:scenario:sc-ee59b16f",
+    "edge:scenario:sc-f26b7c44",
+    "edge:scenario:sc-078cac5b"
+  ]
+}

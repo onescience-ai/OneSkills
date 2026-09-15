@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s087",
-    "latent-dynamics-model"
+    "latent-dynamics-model",
+    "edge:scenario:sc-46ac5b2d",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S087",
   "source_papers": [

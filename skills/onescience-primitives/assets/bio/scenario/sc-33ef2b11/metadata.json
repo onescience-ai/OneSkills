@@ -1,0 +1,29 @@
+{
+  "name": "sc-33ef2b11",
+  "type": "scenario",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：B19（bio）。工作流 4 步，经 edge:workflow 指向 wf-bio-42419238，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "src:scenario_id:B19",
+    "edge:workflow:wf-bio-42419238",
+    "edge:task:tk-bio-d3c81df0",
+    "edge:task:tk-bio-a60218f1",
+    "edge:task:tk-bio-aa163c7e",
+    "edge:task:tk-bio-bae1be11",
+    "slot:DESIGN_INPUT:设计输入",
+    "slot:MODEL_NAME:设计模型",
+    "slot:TARGET_LENGTH:目标长度",
+    "slot:CHECKPOINT:模型权重",
+    "slot:FIXED_POSITIONS:固定残基位点",
+    "slot:SYMMETRY:对称群",
+    "slot:NUM_DESIGNS:设计数量",
+    "slot:TEMPERATURE:采样温度",
+    "slot:SEED:随机种子",
+    "slot:METRIC_THRESHOLD:筛选阈值",
+    "slot:KEEP_DIVERSE:保留多样候选"
+  ]
+}

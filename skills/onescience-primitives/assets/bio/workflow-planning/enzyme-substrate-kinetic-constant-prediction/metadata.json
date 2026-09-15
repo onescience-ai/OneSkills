@@ -25,7 +25,9 @@
     "kinetic",
     "workflow",
     "workflow-planning",
-    "b33"
+    "b33",
+    "edge:scenario:sc-2f2a837d",
+    "edge:workflow:wf-bio-78f31941"
   ],
   "scenario_id": "B33",
   "source_papers": [

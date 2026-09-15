@@ -15,7 +15,9 @@
     "alloy-film",
     "electrocatalyst-preparation",
     "co-evaporation",
-    "thin-film-fabrication"
+    "thin-film-fabrication",
+    "edge:scenario:sc-fa258194",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "harvested": true,
   "tier": "medium",

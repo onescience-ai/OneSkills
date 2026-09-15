@@ -29,7 +29,9 @@
     "molecular-dynamics",
     "equivariant-gnn",
     "jax",
-    "materials-science"
+    "materials-science",
+    "edge:scenario:sc-c776f8d6",
+    "edge:workflow:wf-matchem-ec013e02"
   ],
   "scenario_id": "可极化长程相互作用基础机器学习势",
   "source_papers": [

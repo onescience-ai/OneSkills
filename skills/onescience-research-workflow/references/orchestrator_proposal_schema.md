@@ -61,6 +61,14 @@ planner_proposal:
       why_needed: <为什么需要>
       can_continue_without_it: <true | false>
   
+  # 参数四态标签（B 层门禁机读凭证，强制；禁止裸数字进入执行）
+  parameter_labels:
+    - name: <参数名>
+      value: <数值+单位>
+      label: <confirmed_input | literature_candidate | pending_user_confirmation | blocked_missing>
+      source: <user_confirmation事件 | [n]+domain_match | 推荐项+理由 | 不可推断原因>
+      applicability: <literature_candidate 必填：文献研究对象 vs 本任务研究对象一致性>
+  
   # 假设和风险
   assumptions:
     - <假设条件>
@@ -85,6 +93,7 @@ planner_proposal:
 - 保持输出简洁，完整资源内容用于内部规划依据
 - 不得只写“使用 XX 应用/模型/技能/方法”；必须在 `workflow_nodes[].action`、`inputs`、`outputs`、`checks`、`risks` 和 `fallback_options` 中写清输入、输出、参数、环境、实现或运行要求、验证证据和 fallback
 - 如果资源只是“匹配”但缺少具体使用或决策知识，必须先补充资源召回；仍缺时写入 `missing_inputs`
+- **参数四态标签（B 层门禁，强制）**：`workflow_nodes[].inputs/outputs/checks/action`、`assumptions` 及随 proposal 产出的 research_plan 类文档中，每个具体数字/参数/阈值/几何/工况/验收判据必须在 `parameter_labels` 中有对应条目并带四态标签（`confirmed_input` / `literature_candidate`+[n]+domain_match+适用性 / `pending_user_confirmation` / `blocked_missing`）；存在未打标裸数字时该 proposal 判 REJECT，orchestrator 不得将其融合进 Global Plan、对应 planning 步骤不得标 completed。默认值/示例值/推荐值一律不是 `confirmed_input`；用户选择「使用默认示例」只解除输入门禁，不改变参数的候选/假设身份。`literature_candidate` 的来源文献 `domain_match=cross_domain` 时自动降级为 `pending_user_confirmation`（跨域文献只能作方法学参考，不得作本次参数来源）。
 
 ## 节点字段说明
 

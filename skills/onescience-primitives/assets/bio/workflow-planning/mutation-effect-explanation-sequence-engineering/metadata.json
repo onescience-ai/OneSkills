@@ -23,7 +23,9 @@
     "protein",
     "workflow",
     "workflow-planning",
-    "b35"
+    "b35",
+    "edge:scenario:sc-5615b656",
+    "edge:workflow:wf-bio-78f31941"
   ],
   "scenario_id": "B35",
   "source_papers": [

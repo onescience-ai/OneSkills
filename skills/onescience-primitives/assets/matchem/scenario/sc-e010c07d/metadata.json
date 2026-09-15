@@ -1,0 +1,21 @@
+{
+  "name": "sc-e010c07d",
+  "type": "scenario",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：二维钙钛矿实验室机器学习合成（matchem）。工作流 4 步，经 edge:workflow 指向 wf-matchem-87e6b0f5，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "src:scenario_id:二维钙钛矿实验室机器学习合成",
+    "edge:workflow:wf-matchem-87e6b0f5",
+    "edge:task:tk-matchem-33ff5801",
+    "edge:task:tk-matchem-67fb00d4",
+    "edge:task:tk-matchem-80f319c7",
+    "edge:task:tk-matchem-aeb64c07",
+    "slot:DEVICE_STACK:器件与材料堆叠",
+    "slot:STRESS_CONDITION:运行与老化条件",
+    "slot:CHARACTERIZATION_DATA:表征或器件数据"
+  ]
+}

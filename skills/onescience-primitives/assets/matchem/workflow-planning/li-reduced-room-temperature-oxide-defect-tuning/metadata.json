@@ -15,7 +15,9 @@
     "oxides",
     "reduction",
     "temperature",
-    "tuning"
+    "tuning",
+    "edge:scenario:sc-c5d0df7d",
+    "edge:workflow:wf-matchem-e0e8489b"
   ],
   "scenario_id": "锂还原室温氧化物缺陷调控",
   "source_papers": [

@@ -27,7 +27,9 @@
     "materials-informatics",
     "benchmark-dataset",
     "ch3nh3pbi3",
-    "open-data"
+    "open-data",
+    "edge:scenario:sc-5bd05055",
+    "edge:workflow:wf-matchem-128b457b"
   ],
   "scenario_id": "卤化物钙钛矿兼容分子数据驱动优化",
   "source_papers": [

@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s005",
-    "shock-classifier"
+    "shock-classifier",
+    "edge:scenario:sc-07139712",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S005",
   "source_papers": [

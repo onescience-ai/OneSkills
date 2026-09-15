@@ -1,0 +1,19 @@
+{
+  "name": "wf-climate-f2838b40",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [粗细分辨率资料及任务边界预检 > 粗细分辨率资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 对新预报生成残差订正 > 结果恢复与场景产品生成 > 与原始NWP及气候订正基线比较]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-climate-721f3e3f",
+    "edge:task:tk-climate-2bdb8d13",
+    "edge:task:tk-climate-2d09b01b",
+    "edge:task:tk-climate-fadd0ae4",
+    "edge:task:tk-climate-601887ff",
+    "edge:task:tk-climate-09c9bc62",
+    "edge:scenario:sc-a5021c3d"
+  ]
+}

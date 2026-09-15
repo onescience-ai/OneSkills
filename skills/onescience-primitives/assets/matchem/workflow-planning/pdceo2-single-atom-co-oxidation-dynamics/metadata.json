@@ -18,7 +18,9 @@
     "pdceo2单原子催化剂co氧化动态分析",
     "single-atom",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-013a98f4",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "PdCeO2单原子催化剂CO氧化动态分析",
   "source_papers": [

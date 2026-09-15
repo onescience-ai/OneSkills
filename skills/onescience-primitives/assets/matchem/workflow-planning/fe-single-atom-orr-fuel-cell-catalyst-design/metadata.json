@@ -20,7 +20,9 @@
     "single-atomic-site",
     "zinc-air",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-42e2fa68",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "Fe单原子氧还原燃料电池催化剂设计",
   "source_papers": [

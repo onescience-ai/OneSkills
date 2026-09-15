@@ -1,0 +1,17 @@
+{
+  "name": "tk-matchem-3e7f63af",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：准备超胞与动力学测试。被 1 个场景复用；含 1 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-matchem-9bb78545",
+    "edge:next:tk-matchem-b34abd27",
+    "slot:SUPERCELL:面内扩胞倍数",
+    "slot:FIXED_CU_PER_CELL:原胞固定铜数",
+    "edge:instance:it-4f013a4e"
+  ]
+}

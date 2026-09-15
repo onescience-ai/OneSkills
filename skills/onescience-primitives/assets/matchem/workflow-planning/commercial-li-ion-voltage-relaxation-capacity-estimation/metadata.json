@@ -17,7 +17,9 @@
     "matchem",
     "null",
     "relaxation",
-    "voltage"
+    "voltage",
+    "edge:scenario:sc-e4726f15",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "商用锂离子电池电压松弛容量估计",
   "source_papers": [

@@ -33,7 +33,9 @@
     "workflow-planning",
     "climate",
     "e32",
-    "snow-cover-simulation-workflow-and-toolchain"
+    "snow-cover-simulation-workflow-and-toolchain",
+    "edge:scenario:sc-5e8e849b",
+    "edge:workflow:wf-climate-c63d363f"
   ],
   "scenario_id": "E32",
   "source_papers": [

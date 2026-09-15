@@ -1,0 +1,30 @@
+{
+  "name": "prediction-metric-calculator",
+  "type": "tool",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-14",
+  "updated_at": "2026-09-14",
+  "description": "预测精度核算工具卡（materials 语义域）。封装一个仅依赖 Python 标准库的命令行脚本 script/calc_metrics.py，对「预测值 vs 参考值」配对数据核算 MAE、RMSE、R²、最大绝对误差与样本数，支持内置可复现 demo 数据与外部 CSV 输入，支持按分组列做分箱核算以暴露子集失效，输出统一 JSON 报告并按显式阈值给出通过判定。该卡是 prediction-accuracy-evaluation 任务 run-metric-script 操作的执行落点，本机离线可跑通，无需 GPU、无需联网、无第三方依赖。阈值必须由调用方显式给定，未给定时只报指标不下结论。",
+  "tags": [
+    "materials",
+    "metrics",
+    "mae",
+    "rmse",
+    "r2",
+    "model-evaluation",
+    "python-cli",
+    "runnable",
+    "runnable:script",
+    "edge:task:prediction-accuracy-evaluation",
+    "edge:task:result-validation",
+    "edge:operation:run-metric-script",
+    "edge:operation:load-prediction-pairs",
+    "edge:operation:parse-metric-report",
+    "edge:method:global-metric-evaluation",
+    "edge:method:binned-metric-evaluation",
+    "slot:target_property:adsorption_energy",
+    "slot:target_property:formation_energy"
+  ]
+}

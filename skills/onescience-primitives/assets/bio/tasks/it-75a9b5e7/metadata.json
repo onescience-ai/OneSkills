@@ -1,0 +1,17 @@
+{
+  "name": "it-75a9b5e7",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「免疫对象与任务定义」在场景「B25」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-bio-6c6601c7",
+    "edge:scenario:sc-1f440561",
+    "slot:IMMUNE_INPUT:免疫输入数据",
+    "slot:MODEL_NAME:免疫模型",
+    "slot:TASK_MODE:任务模式"
+  ]
+}

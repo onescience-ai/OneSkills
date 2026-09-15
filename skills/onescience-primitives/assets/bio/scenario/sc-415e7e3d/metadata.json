@@ -1,0 +1,29 @@
+{
+  "name": "sc-415e7e3d",
+  "type": "scenario",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：B84（bio）。工作流 4 步，经 edge:workflow 指向 wf-bio-1964c994，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "src:scenario_id:B84",
+    "edge:workflow:wf-bio-1964c994",
+    "edge:task:tk-bio-c3b69dac",
+    "edge:task:tk-bio-97c29895",
+    "edge:task:tk-bio-273fa79a",
+    "edge:task:tk-bio-94e026f3",
+    "slot:RNA_INPUT:RNA输入",
+    "slot:MODEL_NAME:RNA模型",
+    "slot:TASK_MODE:RNA任务模式",
+    "slot:CHECKPOINT:模型权重",
+    "slot:MAX_LENGTH:RNA长度上限",
+    "slot:ALLOW_PSEUDOKNOT:允许假结",
+    "slot:NUM_CANDIDATES:候选数量",
+    "slot:TEMPERATURE:采样温度",
+    "slot:SEED:随机种子",
+    "slot:SCORE_THRESHOLD:结果阈值",
+    "slot:OUTPUT_FORMAT:输出格式"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "wf-climate-b23789c9",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [海洋状态和强迫资料及任务边界预检 > 海洋状态和强迫资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 生成多提前期海温异常场和可选集合 > 派生区域海温指数并校准概率 > 与持续性、气候态和动力集合逐月比较]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-climate-2239ace0",
+    "edge:task:tk-climate-d1516b9a",
+    "edge:task:tk-climate-2d09b01b",
+    "edge:task:tk-climate-645a0e96",
+    "edge:task:tk-climate-3c241b76",
+    "edge:task:tk-climate-6cab4c64",
+    "edge:scenario:sc-dfcf58f9"
+  ]
+}

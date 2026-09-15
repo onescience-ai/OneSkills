@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s067",
-    "neural-corrector"
+    "neural-corrector",
+    "edge:scenario:sc-dc35cc6c",
+    "edge:workflow:wf-cfd-f43b987c"
   ],
   "scenario_id": "CFD_S067",
   "source_papers": [

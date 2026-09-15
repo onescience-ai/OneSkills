@@ -29,7 +29,9 @@
     "ensemble-learning",
     "workflow",
     "workflow-planning",
-    "e87"
+    "e87",
+    "edge:scenario:sc-1871bae1",
+    "edge:workflow:wf-climate-408e5350"
   ],
   "scenario_id": "E87",
   "source_papers": [

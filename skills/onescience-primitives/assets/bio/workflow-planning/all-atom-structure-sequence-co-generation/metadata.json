@@ -25,7 +25,9 @@
     "structural",
     "workflow",
     "workflow-planning",
-    "b13"
+    "b13",
+    "edge:scenario:sc-783047a7",
+    "edge:workflow:wf-bio-42419238"
   ],
   "scenario_id": "B13",
   "source_papers": [

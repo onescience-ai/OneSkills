@@ -15,7 +15,9 @@
     "ensemble-forecast",
     "photovoltaic",
     "numerical-weather-prediction",
-    "physical-model"
+    "physical-model",
+    "edge:scenario:sc-fe3c0d54",
+    "edge:workflow:wf-climate-d7e0511b"
   ],
   "harvested": true,
   "tier": "medium",

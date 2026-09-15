@@ -1,0 +1,27 @@
+{
+  "name": "tk-bio-6346602f",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：功能或效应推理。被 10 个场景复用；含 10 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-bio-a4a8bb08",
+    "edge:next:tk-bio-0dc2d6a7",
+    "slot:BATCH_SIZE:批次大小",
+    "slot:DECISION_THRESHOLD:判定阈值",
+    "slot:SEED:随机种子",
+    "edge:instance:it-996c1e31",
+    "edge:instance:it-6cff96e8",
+    "edge:instance:it-a0319176",
+    "edge:instance:it-79a0640d",
+    "edge:instance:it-793c794f",
+    "edge:instance:it-161ac2a7",
+    "edge:instance:it-33573bd6",
+    "edge:instance:it-9f97f4ff",
+    "edge:instance:it-5085fb4d",
+    "edge:instance:it-b0a7adf2"
+  ]
+}

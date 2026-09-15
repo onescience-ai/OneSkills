@@ -18,7 +18,9 @@
     "matchem",
     "null",
     "potential",
-    "surfaces"
+    "surfaces",
+    "edge:scenario:sc-e5b3557e",
+    "edge:workflow:wf-matchem-ec013e02"
   ],
   "scenario_id": "缺陷势能面机器学习势探索",
   "source_papers": [

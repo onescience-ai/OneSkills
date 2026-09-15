@@ -1,0 +1,18 @@
+{
+  "name": "it-26ddb7f8",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「发布分情景数据、质量图层及版本说明」在场景「E93」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-528bd0d6",
+    "edge:scenario:sc-b5aa7609",
+    "slot:OUTPUT_FORMAT:输出格式",
+    "slot:OUTPUT_DIRECTORY:结果保存路径",
+    "slot:POSTPROCESS_CONFIG:后处理配置",
+    "slot:DERIVED_PRODUCTS:派生产品"
+  ]
+}

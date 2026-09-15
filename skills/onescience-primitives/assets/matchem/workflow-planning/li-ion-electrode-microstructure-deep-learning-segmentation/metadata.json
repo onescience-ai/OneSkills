@@ -18,7 +18,9 @@
     "matchem",
     "microstructures",
     "null",
-    "segmentation"
+    "segmentation",
+    "edge:scenario:sc-dc9713aa",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "锂离子电池电极微结构深度学习分割",
   "source_papers": [

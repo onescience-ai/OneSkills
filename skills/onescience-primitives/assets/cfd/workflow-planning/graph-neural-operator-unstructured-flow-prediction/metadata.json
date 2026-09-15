@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s007",
-    "meshgraphnet"
+    "meshgraphnet",
+    "edge:scenario:sc-a7b832f4",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S007",
   "source_papers": [

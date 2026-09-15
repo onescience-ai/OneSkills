@@ -11,7 +11,7 @@ skills/onescience-primitives/assets/<domain>/workflow-planning/<card-name>/
 ```
 
 - `<domain>`：bio | matchem | climate | cfd | general
-- `<card-name>`：kebab-case，格式 `<domain>-<topic>-<method>`，长度 ≤ 80 字符
+- `<card-name>`：kebab-case，长度 ≤ 80 字符；通用类卡格式 `<domain>-<问题类>-<方案/交付物>`（不得含实例专名），实例级卡格式 `<domain>-<topic>-<method>`（可含实体名），见下方"命名规则"
 
 ## metadata.json 规范
 
@@ -36,7 +36,12 @@ skills/onescience-primitives/assets/<domain>/workflow-planning/<card-name>/
 | harvested | boolean | 固定为 true，标识自动采集来源 |
 | harvest_source | string | 固定为 "onescience-knowledge-harvester" |
 | harvest_query | string | 原始知识缺口描述 |
+| aliases | array | 可选，实例别名（纯字符串），仅供召回，不参与身份面表达 |
 | evidence_papers | array | 证据论文列表 |
+| evidence_docs | array | 可选，开源权威文档证据列表（见下） |
+| evidence_user | array | 可选，用户自有数据证据列表（见下） |
+| merged_batches | array | 可选，每次 modify/merge 追加一条批次标识 |
+| conflicts | array | 可选，补充证据与论文证据的待裁决冲突描述 |
 
 ### evidence_papers 格式
 
@@ -51,6 +56,35 @@ skills/onescience-primitives/assets/<domain>/workflow-planning/<card-name>/
 }
 ```
 
+### evidence_docs 格式（开源权威文档）
+
+```json
+{
+  "title": "文档标题",
+  "url": "https://...",
+  "publisher": "发布机构（官方/标准组织/公共机构/大学/官方 GitHub 组织）",
+  "version": "版本号或发布日期（缺失视为低置信）",
+  "accessed_at": "2026-09-10"
+}
+```
+
+### evidence_user 格式（用户自有数据）
+
+```json
+{
+  "provider": "user",
+  "provided_at": "2026-09-10",
+  "location": "会话附件或用户指定路径/描述",
+  "attestation": "用户在会话中显式确认入库（true/false）"
+}
+```
+
+### version 与 merge 约定
+
+- new：version 从 1.0.0 起。
+- modify / merge：version 升 minor（1.0.0 → 1.1.0），updated_at 更新，merged_batches 追加一条批次标识（建议格式 `harvest-<ISO日期>`）。
+- 冲突不覆盖：补充证据与论文证据冲突时写入 conflicts，正文新旧值并存标注，待人工裁决。
+
 ### description 撰写规则
 
 description 是 onescience-primitives 语义匹配的核心字段，必须信息密集：
@@ -64,6 +98,13 @@ description 是 onescience-primitives 语义匹配的核心字段，必须信息
 ```
 藏红花基因衍生推理工作流：从基因组数据推断藏红花（Crocus sativus）活性成分合成通路的关键基因。适用于需要理解藏红花素（crocin）、藏红花酸（crocetin）等类胡萝卜素衍生物生物合成机制的研究场景。核心方法包括：转录组测序（RNA-seq）差异表达分析、基因家族鉴定（CYP450/UGT）、共表达网络构建。输出为基因-酶-产物对应关系表和通路示意图。
 ```
+
+**通用类卡的 description 附加规则**（卡片身份 = 通用问题类时）：
+
+1. 首句必须以需求级通用主语开头："面向目标X，选择或设计满足Y要求的Z……"，不得以具体实例场景开头。
+2. 实例分子/材料专名不得饱和填充 description：至多在"校准数值来自 X 体系，其他体系需重新锚定证据"这类从句中出现一次。
+3. 实例召回词一律进 tags/aliases，不进身份面（name/description 主语）。
+4. 禁用脚手架词："具体场景""上层需求""本卡解决""槽位""迁移矩阵""复用协议""抽象层级""升维"。
 
 ### tags 撰写规则
 
@@ -95,6 +136,8 @@ tags 用于快速过滤，必须覆盖多个维度：
 | 质量检查 | 验证点、阈值、失败处理 | 可选 |
 | 回退策略 | 失败时的替代方案 | 可选 |
 | 资源召回建议 | 何时应召回本卡片、配套资源 | 可选 |
+| 补充证据 | 开源文档 [Dn] / 用户自有 [Un] 引用列表 | 可选（有补充通道证据时写） |
+| 批次补充 | merge 产生的追加节，标题为 `## 批次补充 <日期>（<来源>）` | 可选（merge 时产生） |
 | 证据来源 | 论文引用列表（连续编号） | 必需 |
 
 ### 章节撰写规则
@@ -174,6 +217,28 @@ tags 用于快速过滤，必须覆盖多个维度：
 [4] "WGCNA analysis of saffron stigma development", Author et al., Frontiers in Plant Science, 2023, DOI: 10.xxxx/xxxxx
 ```
 
+#### 补充证据（可选）
+
+```markdown
+## 补充证据
+
+[D1] "DESeq2 Official Manual", Bioconductor 官方站, version 3.18, URL: https://...（accessed 2026-09-10，交叉验证）
+[U1] 用户提供的实验滴度记录, 2026-09-10（用户自有, 未经公开源验证）
+```
+
+**证据编号约定**：论文 `[1]..[n]`、开源文档 `[D1]..[Dn]`、用户自有 `[U1]..[Un]`，三套编号独立不混排；关键参数表"来源"列须带编号与层级（如 `[D1]`、`[U1, 经[2]佐证]`）。
+
+## 通用类卡正文规范（硬门禁）
+
+卡片身份为通用问题类时，knowledge.md 必须满足（与 SKILL.md Step 4 规范一致）：
+
+1. "适用范围"以自然散文开场陈述问题类，不以实例场景开场。
+2. 脚手架禁词零出现（词表见 description 附加规则第 4 条）。
+3. 具体体系只出现在四个自然位置：流程例句（"以 X 体系为例"）、校准数值表引语、术语表举例引语、metadata aliases/tags。
+4. 通用论断主句通用，证据用引用编号挂靠句尾；不得把实例塞进前提清单括号。
+5. "关键参数"分两表：通用判据（方法层，逐条带证据编号）与校准数值（体系专属，引语写明其他体系需重新锚定）。
+6. "边界与分流"写明每条关键前提不成立时的改道方案族。
+
 ## 质量门禁
 
 生成的卡片必须通过以下检查：
@@ -184,19 +249,21 @@ tags 用于快速过滤，必须覆盖多个维度：
 4. **description 质量**：description ≥ 100 字符，含核心能力、适用场景、关键方法
 5. **tags 覆盖**：tags ≥ 5 个，覆盖物种/方法/目标/领域/应用维度
 6. **knowledge.md 章节**：含推荐章节中的至少 5 个
-7. **证据标注**：关键参数表中的"来源"列引用了证据编号
-8. **证据来源**：knowledge.md 末尾含"证据来源"章节，列出 ≥ 1 篇论文
+7. **证据标注**：关键参数表中的"来源"列引用了证据编号（论文 [n]、文档 [Dn]、用户 [Un]）
+8. **证据来源**：knowledge.md 末尾含"证据来源"章节，列出 ≥ 1 篇论文；确无论文证据时仅当 evidence_user 非空且用户在会话中显式确认才允许入库，并须在 description 与 observation.quality_notes 标注"论文证据缺失"
+9. **单调性校验（modify/merge）**：旧标题集合 ⊆ 新标题集合、新字符数 ≥ 旧字符数、旧 tags ⊆ 新 tags、旧 evidence 条目只增不删
+10. **补充证据溯源**：evidence_docs 每条含 url/publisher/accessed_at；evidence_user 每条含 provided_at/location；权威黑名单来源不得出现
+11. **脚手架禁词零命中**（通用类卡）：对 knowledge.md 与 metadata.json 执行禁词检查，命中即不合格
+12. **变体召回自测**（通用类卡）：≥2 条"同需求换体系"变体查询仍能命中本卡；不命中则回重写身份面，而非追加实例词
 
 ## 命名规则
 
 ### 卡片目录名
 
-- 格式：`<domain>-<topic>-<method>`
-- 示例：
-  - `bio-saffron-gene-derivative-reasoning`
-  - `matchem-mxene-electronic-structure-calculation`
-  - `climate-weather-forecast-model-evaluation`
-  - `cfd-turbulence-simulation-mesh-generation`
+- **通用类卡**：`<domain>-<问题类>-<方案/交付物>`，不得含实例分子/材料/模型专名（如 co2、saffron、mxene）
+  - 示例：`matchem-gas-capture-material-design-validation`
+- **实例级卡**：`<domain>-<topic>-<method>`，可含实体名
+  - 示例：`bio-saffron-gene-derivative-reasoning`、`matchem-mxene-electronic-structure-calculation`、`climate-weather-forecast-model-evaluation`、`cfd-turbulence-simulation-mesh-generation`
 
 ### 命名约束
 
@@ -268,3 +335,5 @@ onescience-primitives 通过以下机制发现卡片：
 ### knowledge.md
 
 见上方各章节示例。
+
+> 上方 metadata 示例为 new 入库的最小集；可选字段（evidence_docs / evidence_user / merged_batches / conflicts）按本文档规范按需写入。

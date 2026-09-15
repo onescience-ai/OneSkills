@@ -1,0 +1,32 @@
+{
+  "name": "structure-validation",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-14",
+  "updated_at": "2026-09-14",
+  "description": "结构核验任务卡（materials 语义域）。目标是在性质预测前确认候选结构的几何与化学合理性：完成几何优化收敛、对称性与空间群核验、键长配位数检查、原子重叠与虚频排查，输出通过/不通过判定与证据。方法路线可替换：基于力场或 MLIP 的快速几何优化与基于 DFT 的严格弛豫。资源引用 tools/pymatgen 与 models/mace；前置任务为 candidate-generation，后继任务为 material-property-prediction。未通过核验的结构不得进入性质预测。",
+  "tags": [
+    "materials",
+    "structure-validation",
+    "geometry-optimization",
+    "symmetry-check",
+    "edge:resource:tools/pymatgen",
+    "edge:resource:models/mace",
+    "edge:method:geometry-optimization",
+    "edge:method:symmetry-analysis",
+    "edge:operation:optimize-geometry",
+    "edge:operation:check-symmetry",
+    "edge:operation:check-bonding",
+    "edge:validation:geometric-plausibility",
+    "edge:validation:convergence-check",
+    "edge:fallback_method:geometry-optimization",
+    "edge:prev:candidate-generation",
+    "edge:next:material-property-prediction",
+    "slot:material_family:MOF",
+    "slot:material_family:zeolite",
+    "slot:material_family:perovskite",
+    "slot:material_family:alloy"
+  ]
+}

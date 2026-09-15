@@ -1,0 +1,29 @@
+{
+  "name": "sc-f26b7c44",
+  "type": "scenario",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：B05（bio）。工作流 4 步，经 edge:workflow 指向 wf-bio-5aaefe7e，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "src:scenario_id:B05",
+    "edge:workflow:wf-bio-5aaefe7e",
+    "edge:task:tk-bio-05591214",
+    "edge:task:tk-bio-564bba1d",
+    "edge:task:tk-bio-0fe9bed3",
+    "edge:task:tk-bio-f2a9ed46",
+    "slot:INPUT_DATA:序列或结构输入",
+    "slot:MODEL_NAME:结构模型",
+    "slot:CHAIN_MODE:链处理模式",
+    "slot:CHECKPOINT:模型权重",
+    "slot:MSA_MODE:MSA模式",
+    "slot:MAX_TEMPLATES:模板上限",
+    "slot:NUM_SAMPLES:候选数量",
+    "slot:NUM_RECYCLES:回收次数",
+    "slot:SEED:随机种子",
+    "slot:QUALITY_THRESHOLD:质量阈值",
+    "slot:OUTPUT_FORMAT:结构格式"
+  ]
+}

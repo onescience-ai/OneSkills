@@ -1,0 +1,22 @@
+{
+  "name": "tk-cfd-78110674",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（cfd）：条件采样与物理一致性筛选。被 5 个场景复用；含 5 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-cfd-18078463",
+    "edge:next:tk-cfd-3fb1a5d6",
+    "slot:CHECKPOINT:模型权重",
+    "slot:DEVICE:计算设备",
+    "slot:BATCH_SIZE:推理批大小",
+    "edge:instance:it-42b6f976",
+    "edge:instance:it-b60cef64",
+    "edge:instance:it-9e16503c",
+    "edge:instance:it-52d3db2e",
+    "edge:instance:it-f312d846"
+  ]
+}

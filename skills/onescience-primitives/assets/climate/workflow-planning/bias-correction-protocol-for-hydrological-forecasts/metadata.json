@@ -15,7 +15,9 @@
     "post-processing",
     "streamflow",
     "kge",
-    "nse"
+    "nse",
+    "edge:scenario:sc-2b699093",
+    "edge:workflow:wf-climate-40df56bf"
   ],
   "harvested": true,
   "tier": "high",

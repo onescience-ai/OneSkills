@@ -21,7 +21,9 @@
     "rmsd通过率结果",
     "workflow",
     "workflow-planning",
-    "b48"
+    "b48",
+    "edge:scenario:sc-f3f3db2d",
+    "edge:workflow:wf-bio-9fe7f508"
   ],
   "scenario_id": "B48",
   "source_papers": [

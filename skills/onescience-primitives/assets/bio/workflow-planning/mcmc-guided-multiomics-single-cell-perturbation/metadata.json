@@ -25,7 +25,9 @@
     "perturbation",
     "workflow",
     "workflow-planning",
-    "b75"
+    "b75",
+    "edge:scenario:sc-0a96b591",
+    "edge:workflow:wf-bio-cdb48c05"
   ],
   "scenario_id": "B75",
   "source_papers": [

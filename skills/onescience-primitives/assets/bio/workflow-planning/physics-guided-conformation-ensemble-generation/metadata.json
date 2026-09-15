@@ -32,7 +32,9 @@
     "conformational-details",
     "workflow",
     "workflow-planning",
-    "b10"
+    "b10",
+    "edge:scenario:sc-add4127a",
+    "edge:workflow:wf-bio-5aaefe7e"
   ],
   "scenario_id": "B10",
   "source_papers": [

@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s060",
-    "stochastic-neural-operator"
+    "stochastic-neural-operator",
+    "edge:scenario:sc-f239ff4b",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S060",
   "source_papers": [

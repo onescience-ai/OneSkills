@@ -18,7 +18,9 @@
     "porous",
     "scalable",
     "silicon",
-    "synthesis"
+    "synthesis",
+    "edge:scenario:sc-f386d7eb",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "多孔硅锂离子电池负极结构设计",
   "source_papers": [

@@ -16,7 +16,9 @@
     "imbalanced-data",
     "ensemble-learning",
     "machine-learning-weather",
-    "single-station-prediction"
+    "single-station-prediction",
+    "edge:scenario:sc-acdba65e",
+    "edge:workflow:wf-climate-588cef74"
   ],
   "harvested": true,
   "tier": "high",

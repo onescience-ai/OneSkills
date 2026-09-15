@@ -15,7 +15,9 @@
     "supervised-learning",
     "image-segmentation",
     "front-extraction",
-    "climate-analysis"
+    "climate-analysis",
+    "edge:scenario:sc-dd530fdf",
+    "edge:workflow:wf-climate-70f9ee3f"
   ],
   "harvested": true,
   "tier": "medium",

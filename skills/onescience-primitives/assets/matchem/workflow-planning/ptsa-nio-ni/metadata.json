@@ -15,7 +15,9 @@
     "hydrogen-evolution-reaction",
     "flexible-electrode",
     "silver-nanowire",
-    "alkaline-electrolyte"
+    "alkaline-electrolyte",
+    "edge:scenario:sc-458b671b",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "harvested": true,
   "tier": "medium",

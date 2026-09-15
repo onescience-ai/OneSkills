@@ -25,7 +25,9 @@
     "target_pocket",
     "workflow",
     "workflow-planning",
-    "b53"
+    "b53",
+    "edge:scenario:sc-9335eb1f",
+    "edge:workflow:wf-bio-856a5702"
   ],
   "scenario_id": "B53",
   "source_papers": [

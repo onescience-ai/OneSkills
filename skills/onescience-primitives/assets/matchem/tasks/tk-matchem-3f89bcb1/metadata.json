@@ -1,0 +1,17 @@
+{
+  "name": "tk-matchem-3f89bcb1",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：位点稳定性与选择性排序。被 1 个场景复用；含 1 个实例任务；资源引用 ['datapipes/xps-nife-oer-surface-analysis']。",
+  "tags": [
+    "edge:resource:datapipes/xps-nife-oer-surface-analysis",
+    "edge:prev:tk-matchem-b00fbef2",
+    "slot:REACTION_ANALYSIS:反应分析结果",
+    "slot:VALIDATION_DATA:验证数据",
+    "edge:instance:it-74f6d045"
+  ]
+}

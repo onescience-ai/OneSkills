@@ -1,0 +1,17 @@
+{
+  "name": "it-f1717883",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（cfd）：骨架「任务验收与适用域判定」在场景「CFD_S052」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-cfd-3fb1a5d6",
+    "edge:scenario:sc-ae96e6d8",
+    "slot:METRICS:验收指标",
+    "slot:MAX_RELATIVE_L2:相对误差门限",
+    "slot:RUN_OOD_TEST:是否外推测试"
+  ]
+}

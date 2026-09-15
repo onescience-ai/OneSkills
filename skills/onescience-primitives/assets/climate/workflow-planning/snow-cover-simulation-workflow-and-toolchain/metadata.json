@@ -10,7 +10,9 @@
   "tags": [
     "snow-cover-simulation-workflow-and-toolchain",
     "datapipe",
-    "fallback"
+    "fallback",
+    "edge:scenario:sc-5e8e849b",
+    "edge:workflow:wf-climate-c63d363f"
   ],
   "harvested": true,
   "tier": "medium",

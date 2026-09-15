@@ -26,7 +26,9 @@
     "workflow",
     "workflow-planning",
     "b46",
-    "rapid-net"
+    "rapid-net",
+    "edge:scenario:sc-def9b8b1",
+    "edge:workflow:wf-bio-9fe7f508"
   ],
   "scenario_id": "B46",
   "source_papers": [

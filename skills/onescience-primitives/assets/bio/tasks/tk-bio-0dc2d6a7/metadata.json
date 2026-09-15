@@ -1,0 +1,25 @@
+{
+  "name": "tk-bio-0dc2d6a7",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：评测与解释汇总。被 10 个场景复用；含 10 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-bio-6346602f",
+    "slot:MIN_METRIC:指标下限",
+    "slot:EXPORT_EXPLANATION:导出解释",
+    "edge:instance:it-634e3379",
+    "edge:instance:it-ec654490",
+    "edge:instance:it-61ed64ee",
+    "edge:instance:it-ed856c21",
+    "edge:instance:it-5ea81487",
+    "edge:instance:it-4e8a349b",
+    "edge:instance:it-47a3479c",
+    "edge:instance:it-b3f8afc3",
+    "edge:instance:it-cf0e618c",
+    "edge:instance:it-aaaac170"
+  ]
+}

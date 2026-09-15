@@ -25,7 +25,9 @@
     "rna_backbone",
     "workflow",
     "workflow-planning",
-    "b85"
+    "b85",
+    "edge:scenario:sc-32f26123",
+    "edge:workflow:wf-bio-1964c994"
   ],
   "scenario_id": "B85",
   "source_papers": [

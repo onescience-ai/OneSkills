@@ -16,7 +16,9 @@
     "feed-forward-neural-network",
     "microwave-brightness-temperature",
     "snow-covered-area",
-    "water-resources"
+    "water-resources",
+    "edge:scenario:sc-0d1ae6e7",
+    "edge:workflow:wf-climate-480f62b2"
   ],
   "harvested": true,
   "tier": "high",

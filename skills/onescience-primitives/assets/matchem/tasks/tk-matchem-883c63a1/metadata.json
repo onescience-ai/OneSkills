@@ -1,0 +1,18 @@
+{
+  "name": "tk-matchem-883c63a1",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：母体结构检查与掺杂候选建模。被 1 个场景复用；含 1 个实例任务；资源引用 ['tools/pymatgen']。",
+  "tags": [
+    "edge:resource:tools/pymatgen",
+    "edge:next:tk-matchem-7a3de929",
+    "slot:PARENT_STRUCTURE:母体结构文件",
+    "slot:DOPANT_SET:掺杂集合",
+    "slot:DOPANT_RATIO:掺杂比例",
+    "edge:instance:it-e1f1cb0b"
+  ]
+}

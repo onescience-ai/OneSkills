@@ -1,0 +1,21 @@
+{
+  "name": "tk-matchem-244aa1a4",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：候选结构生成与去重。被 6 个场景复用；含 6 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-matchem-85bf1af1",
+    "edge:next:tk-matchem-856f4df0",
+    "slot:STRUCTURE_CONSTRAINTS:结构约束",
+    "edge:instance:it-14b0f8f4",
+    "edge:instance:it-17826c45",
+    "edge:instance:it-04fde227",
+    "edge:instance:it-2e18b12a",
+    "edge:instance:it-5fee03be",
+    "edge:instance:it-43a6025d"
+  ]
+}

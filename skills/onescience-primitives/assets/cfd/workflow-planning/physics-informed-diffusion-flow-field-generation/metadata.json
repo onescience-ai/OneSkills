@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s091",
-    "physics-informed-diffusion-model"
+    "physics-informed-diffusion-model",
+    "edge:scenario:sc-506b9cc2",
+    "edge:workflow:wf-cfd-5b6bc953"
   ],
   "scenario_id": "CFD_S091",
   "source_papers": [

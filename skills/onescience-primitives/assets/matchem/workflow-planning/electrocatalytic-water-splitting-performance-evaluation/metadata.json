@@ -15,7 +15,9 @@
     "electrochemical-impedance-spectroscopy",
     "double-layer-capacitance",
     "three-electrode-system",
-    "alkaline-electrolyte"
+    "alkaline-electrolyte",
+    "edge:scenario:sc-29387a61",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "harvested": true,
   "tier": "medium",

@@ -33,7 +33,9 @@
     "protein-language-model",
     "workflow",
     "workflow-planning",
-    "b08"
+    "b08",
+    "edge:scenario:sc-c0091dea",
+    "edge:workflow:wf-bio-5aaefe7e"
   ],
   "scenario_id": "B08",
   "source_papers": [

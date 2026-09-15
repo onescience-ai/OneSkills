@@ -1,0 +1,19 @@
+{
+  "name": "it-ceaa1c8c",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「目标序列及缺口及任务边界预检」在场景「E69」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-6267ea98",
+    "edge:scenario:sc-dabbba00",
+    "slot:INCOMPLETE_TARGET_DATA:不完整目标序列",
+    "slot:AUXILIARY_DATA:辅助驱动资料",
+    "slot:GAP_MASK:时间空间缺口",
+    "slot:TARGET_REGION_TIME:目标区域时段",
+    "slot:DATA_CUTOFF_TIME:资料截止时间"
+  ]
+}

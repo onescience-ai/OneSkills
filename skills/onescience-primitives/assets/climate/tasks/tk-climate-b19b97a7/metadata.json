@@ -1,0 +1,33 @@
+{
+  "name": "tk-climate-b19b97a7",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：独立评估与交付判定。被 9 个场景复用；含 9 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-climate-f0a6028c",
+    "slot:INDEPENDENT_VALIDATION_DATA:独立验证资料",
+    "slot:BASELINE_PRODUCTS:同协议基线产品",
+    "slot:ACCEPTANCE_PROTOCOL:验收协议",
+    "slot:IMPROVEMENT_PROTOCOL:海温改善协议",
+    "slot:OCEAN_METRIC_PROTOCOL:温盐流评估协议",
+    "slot:REPLAY_PERIOD:独立回放时段",
+    "slot:RMSE_REDUCTION_PROTOCOL:RMSE改善协议",
+    "slot:WIND_ERROR_PROTOCOL:风速误差协议",
+    "slot:IMPROVEMENT_METRIC:精度改善指标",
+    "slot:EC_GFS_PRODUCTS:同期EC与GFS产品",
+    "slot:INUNDATION_METRIC:淹没评估指标",
+    "edge:instance:it-1a6d98e4",
+    "edge:instance:it-a1ce95ef",
+    "edge:instance:it-017d2c3a",
+    "edge:instance:it-72895094",
+    "edge:instance:it-d4913e19",
+    "edge:instance:it-0a4f3311",
+    "edge:instance:it-6797e85d",
+    "edge:instance:it-62e33bcc",
+    "edge:instance:it-d9221b16"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "it-51cbb5d7",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「成分与结构搜索空间定义」在场景「有限温度晶体结构预测」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-matchem-85bf1af1",
+    "edge:scenario:sc-b7e5107b",
+    "slot:COMPOSITION:成分与化学计量",
+    "slot:STRUCTURE_CONSTRAINTS:结构约束"
+  ]
+}

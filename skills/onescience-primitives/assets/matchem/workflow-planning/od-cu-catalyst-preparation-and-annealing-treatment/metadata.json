@@ -16,7 +16,9 @@
     "annealing",
     "copper-oxide",
     "precursor-synthesis",
-    "surface-modification"
+    "surface-modification",
+    "edge:scenario:sc-9566751c",
+    "edge:workflow:wf-matchem-923c2045"
   ],
   "harvested": true,
   "tier": "medium",

@@ -17,7 +17,11 @@
     "null",
     "relations",
     "stability",
-    "structure-mechanical"
+    "structure-mechanical",
+    "edge:scenario:sc-1844e750",
+    "edge:scenario:mof-mechanical-stability-ml-prediction",
+    "edge:workflow:wf-matchem-128b457b",
+    "edge:workflow:materials-generic-4step-screening"
   ],
   "scenario_id": "MOF结构力学稳定性机器学习预测",
   "source_papers": [

@@ -16,7 +16,9 @@
     "tafel slope",
     "electrochemical stability",
     "overall water splitting",
-    "electrocatalyst evaluation"
+    "electrocatalyst evaluation",
+    "edge:scenario:sc-4e931bfb",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "harvested": true,
   "tier": "medium",

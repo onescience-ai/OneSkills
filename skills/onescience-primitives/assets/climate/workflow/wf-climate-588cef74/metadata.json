@@ -1,0 +1,19 @@
+{
+  "name": "wf-climate-588cef74",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [临近观测及任务边界预检 > 临近观测时空对齐与样本构造 > 方法配置与输入输出契约验证 > 输出各10分钟窗发生概率 > 按阈值生成分级告警 > 检验命中率、虚警率和可靠度]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-climate-72ad7c82",
+    "edge:task:tk-climate-a26f4799",
+    "edge:task:tk-climate-2d09b01b",
+    "edge:task:tk-climate-14b7635f",
+    "edge:task:tk-climate-fa8a752c",
+    "edge:task:tk-climate-e240a1e6",
+    "edge:scenario:sc-acdba65e"
+  ]
+}

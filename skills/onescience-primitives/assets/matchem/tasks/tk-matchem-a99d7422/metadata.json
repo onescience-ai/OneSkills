@@ -1,0 +1,15 @@
+{
+  "name": "tk-matchem-a99d7422",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：形成验证结论与后续建议。被 1 个场景复用；含 1 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-matchem-b34abd27",
+    "slot:LONG_RUN_GOAL:长时目标",
+    "edge:instance:it-8b71e160"
+  ]
+}

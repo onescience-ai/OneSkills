@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s095",
-    "neural-sde"
+    "neural-sde",
+    "edge:scenario:sc-d9464c5e",
+    "edge:workflow:wf-cfd-5b6bc953"
   ],
   "scenario_id": "CFD_S095",
   "source_papers": [

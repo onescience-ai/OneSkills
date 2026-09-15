@@ -22,7 +22,9 @@
     "multi-modal",
     "workflow",
     "workflow-planning",
-    "b30"
+    "b30",
+    "edge:scenario:sc-da53fb54",
+    "edge:workflow:wf-bio-c6a05f8d"
   ],
   "scenario_id": "B30",
   "source_papers": [

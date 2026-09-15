@@ -34,7 +34,9 @@
     "annealing",
     "copper-oxide",
     "precursor-synthesis",
-    "surface-modification"
+    "surface-modification",
+    "edge:scenario:sc-9566751c",
+    "edge:workflow:wf-matchem-923c2045"
   ],
   "scenario_id": "Cu-NxBy_单原子位点CO2到CH4选择性优化",
   "source_papers": [

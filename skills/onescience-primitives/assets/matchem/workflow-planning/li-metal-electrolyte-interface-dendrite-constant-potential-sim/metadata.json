@@ -19,7 +19,9 @@
     "metal-electrolyte",
     "null",
     "observation",
-    "potential"
+    "potential",
+    "edge:scenario:sc-f014485c",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "锂金属电解液界面枝晶恒电势模拟",
   "source_papers": [

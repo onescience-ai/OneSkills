@@ -25,7 +25,9 @@
     "long-term",
     "workflow",
     "workflow-planning",
-    "e36"
+    "e36",
+    "edge:scenario:sc-4c30c94e",
+    "edge:workflow:wf-climate-c44eb178"
   ],
   "scenario_id": "E36",
   "source_papers": [

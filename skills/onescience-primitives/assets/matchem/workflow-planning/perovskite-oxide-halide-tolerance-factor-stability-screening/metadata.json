@@ -16,7 +16,9 @@
     "perovskite",
     "predict",
     "stability",
-    "tolerance"
+    "tolerance",
+    "edge:scenario:sc-89a7da1c",
+    "edge:workflow:wf-matchem-30dd7b2f"
   ],
   "scenario_id": "钙钛矿氧化物与卤化物容忍因子稳定性筛选",
   "source_papers": [

@@ -25,7 +25,9 @@
     "codnas",
     "workflow",
     "workflow-planning",
-    "b18"
+    "b18",
+    "edge:scenario:sc-f1675b8c",
+    "edge:workflow:wf-bio-42419238"
   ],
   "scenario_id": "B18",
   "source_papers": [

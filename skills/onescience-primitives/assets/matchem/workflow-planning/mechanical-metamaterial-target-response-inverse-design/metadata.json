@@ -29,7 +29,9 @@
     "strut-based",
     "mechanical-behavior",
     "parametric-modeling",
-    "architectural-materials"
+    "architectural-materials",
+    "edge:scenario:sc-0b145c35",
+    "edge:workflow:wf-matchem-128b457b"
   ],
   "scenario_id": "力学超材料目标响应逆向设计",
   "source_papers": [

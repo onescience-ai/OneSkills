@@ -1,0 +1,31 @@
+{
+  "name": "tk-climate-85ec4115",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：天气暴露和目标观测及任务边界预检。被 4 个场景复用；含 4 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:next:tk-climate-ebe69297",
+    "slot:MULTISITE_YIELD_TRIALS:多点产量试验",
+    "slot:GENOTYPE_DATA:品种基因型资料",
+    "slot:HISTORICAL_WEATHER:地点历史天气",
+    "slot:TARGET_LOCATIONS:目标种植地点",
+    "slot:ANALYSIS_PERIOD:分析预测时段",
+    "slot:WEATHER_EXPOSURE:天气暴露资料",
+    "slot:TARGET_OBSERVATIONS:目标观测资料",
+    "slot:CONTEXT_FEATURES:背景协变量",
+    "slot:DATA_CUTOFF_TIME:资料截止时间",
+    "slot:COUNTY_YIELD_HISTORY:县域历史产量",
+    "slot:KNOWN_WEATHER_TO_ISSUE:签发日前天气",
+    "slot:SOIL_MANAGEMENT_DATA:土壤管理资料",
+    "slot:ISSUE_DATE:预测签发日",
+    "slot:TARGET_HARVEST_YEAR:目标收获年份",
+    "edge:instance:it-8c259df8",
+    "edge:instance:it-4c85a178",
+    "edge:instance:it-e067a9f4",
+    "edge:instance:it-b9b14ed9"
+  ]
+}

@@ -25,7 +25,9 @@
     "recurrent",
     "workflow",
     "workflow-planning",
-    "b88"
+    "b88",
+    "edge:scenario:sc-97654ccd",
+    "edge:workflow:wf-bio-1964c994"
   ],
   "scenario_id": "B88",
   "source_papers": [

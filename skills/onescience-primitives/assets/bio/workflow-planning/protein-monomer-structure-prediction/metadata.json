@@ -23,7 +23,9 @@
     "structure",
     "workflow",
     "workflow-planning",
-    "b01"
+    "b01",
+    "edge:scenario:sc-0e25362c",
+    "edge:workflow:wf-bio-5aaefe7e"
   ],
   "scenario_id": "B01",
   "source_papers": [

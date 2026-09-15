@@ -16,7 +16,9 @@
     "radar-data",
     "satellite-data",
     "time-series-data",
-    "meteorological-data"
+    "meteorological-data",
+    "edge:scenario:sc-2b0ee5ac",
+    "edge:workflow:wf-climate-0ab0fb76"
   ],
   "harvested": true,
   "tier": "medium",

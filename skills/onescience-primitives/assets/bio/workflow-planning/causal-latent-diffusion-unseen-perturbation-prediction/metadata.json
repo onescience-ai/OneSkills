@@ -21,7 +21,9 @@
     "single-cell",
     "workflow",
     "workflow-planning",
-    "b79"
+    "b79",
+    "edge:scenario:sc-c519e406",
+    "edge:workflow:wf-bio-cdb48c05"
   ],
   "scenario_id": "B79",
   "source_papers": [

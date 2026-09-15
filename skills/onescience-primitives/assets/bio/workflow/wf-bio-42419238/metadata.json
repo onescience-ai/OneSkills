@@ -1,0 +1,26 @@
+{
+  "name": "wf-bio-42419238",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（bio）：4 步骨架 [设计目标与约束定义 > 模型与条件特征准备 > 候选生成与序列采样 > 回折叠与设计筛选]，被 10 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-bio-d3c81df0",
+    "edge:task:tk-bio-a60218f1",
+    "edge:task:tk-bio-aa163c7e",
+    "edge:task:tk-bio-bae1be11",
+    "edge:scenario:sc-c68f868e",
+    "edge:scenario:sc-783047a7",
+    "edge:scenario:sc-18c8a2d3",
+    "edge:scenario:sc-912bc268",
+    "edge:scenario:sc-c6c38246",
+    "edge:scenario:sc-f1675b8c",
+    "edge:scenario:sc-8dda9f65",
+    "edge:scenario:sc-e776d2e8",
+    "edge:scenario:sc-33ef2b11",
+    "edge:scenario:sc-5938cb88"
+  ]
+}

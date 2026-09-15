@@ -1,0 +1,25 @@
+{
+  "name": "tk-bio-78af6937",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：特异性与可开发性质控。被 10 个场景复用；含 10 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-bio-ff8556fa",
+    "slot:SCORE_THRESHOLD:得分阈值",
+    "slot:TOP_K:保留数量",
+    "edge:instance:it-7c74effc",
+    "edge:instance:it-56986364",
+    "edge:instance:it-3db71655",
+    "edge:instance:it-1f972414",
+    "edge:instance:it-0d52e564",
+    "edge:instance:it-a417d274",
+    "edge:instance:it-7bbb4b85",
+    "edge:instance:it-1a848167",
+    "edge:instance:it-c376ac73",
+    "edge:instance:it-13632fd2"
+  ]
+}

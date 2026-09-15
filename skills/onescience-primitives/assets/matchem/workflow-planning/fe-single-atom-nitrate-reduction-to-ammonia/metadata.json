@@ -26,7 +26,9 @@
     "free-energy-diagram",
     "limiting-potential",
     "computational-electrochemistry",
-    "fe-n4"
+    "fe-n4",
+    "edge:scenario:sc-d54bccea",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "Fe单原子催化硝酸盐还原制氨",
   "source_papers": [

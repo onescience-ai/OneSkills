@@ -25,7 +25,9 @@
     "prediction",
     "workflow",
     "workflow-planning",
-    "e62"
+    "e62",
+    "edge:scenario:sc-9e48fcca",
+    "edge:workflow:wf-climate-3f1d27b1"
   ],
   "scenario_id": "E62",
   "source_papers": [

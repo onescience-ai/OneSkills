@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s093",
-    "normalizing-flow"
+    "normalizing-flow",
+    "edge:scenario:sc-12288948",
+    "edge:workflow:wf-cfd-5b6bc953"
   ],
   "scenario_id": "CFD_S093",
   "source_papers": [

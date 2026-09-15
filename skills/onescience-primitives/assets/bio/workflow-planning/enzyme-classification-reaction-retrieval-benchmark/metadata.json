@@ -19,7 +19,9 @@
     "suite",
     "workflow",
     "workflow-planning",
-    "b40"
+    "b40",
+    "edge:scenario:sc-cbd4feb1",
+    "edge:workflow:wf-bio-78f31941"
   ],
   "scenario_id": "B40",
   "source_papers": [

@@ -1,0 +1,15 @@
+{
+  "name": "it-439f94bb",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「独立验证与结论」在场景「CO2光催化剂数据驱动可合成性筛选」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-matchem-74528141",
+    "edge:scenario:sc-10a5135f",
+    "slot:VALIDATION_DATA:独立验证数据"
+  ]
+}

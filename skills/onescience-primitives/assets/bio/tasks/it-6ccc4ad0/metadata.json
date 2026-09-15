@@ -1,0 +1,17 @@
+{
+  "name": "it-6ccc4ad0",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「序列过滤与模型准备」在场景「B93」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-bio-b1732810",
+    "edge:scenario:sc-d32093c7",
+    "slot:CHECKPOINT:模型权重",
+    "slot:MIN_CONTIG_LENGTH:最短序列长度",
+    "slot:REFERENCE_DB:参考数据库"
+  ]
+}

@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s089",
     "neural-aerodynamic-rom",
-    "neural-ode"
+    "neural-ode",
+    "edge:scenario:sc-82ffc8d6",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S089",
   "source_papers": [

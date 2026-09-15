@@ -1,0 +1,33 @@
+{
+  "name": "tk-climate-71af4802",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：遥感观测标签时空对齐与样本构造。被 16 个场景复用；含 16 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-climate-c9ed671b",
+    "edge:next:tk-climate-2d09b01b",
+    "slot:CALIBRATION_CONFIG:辐射定标配置",
+    "slot:COREGISTRATION_CONFIG:几何配准配置",
+    "slot:TILE_CONFIG:切片配置",
+    "edge:instance:it-ac293664",
+    "edge:instance:it-1c55b6c7",
+    "edge:instance:it-790bf190",
+    "edge:instance:it-996068e2",
+    "edge:instance:it-b475e5e0",
+    "edge:instance:it-bcd4b8ac",
+    "edge:instance:it-0981d7a8",
+    "edge:instance:it-24da696f",
+    "edge:instance:it-bed010f0",
+    "edge:instance:it-295a5d65",
+    "edge:instance:it-efc12fca",
+    "edge:instance:it-27bf959a",
+    "edge:instance:it-77ce64e2",
+    "edge:instance:it-326f13dd",
+    "edge:instance:it-fea52706",
+    "edge:instance:it-f8a6a117"
+  ]
+}

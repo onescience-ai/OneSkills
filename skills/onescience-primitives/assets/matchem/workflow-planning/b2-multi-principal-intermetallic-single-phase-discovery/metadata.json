@@ -22,7 +22,9 @@
     "physics-informed",
     "single-phase",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-cb6c8169",
+    "edge:workflow:wf-matchem-128b457b"
   ],
   "scenario_id": "B2多主元金属间化合物单相发现",
   "source_papers": [

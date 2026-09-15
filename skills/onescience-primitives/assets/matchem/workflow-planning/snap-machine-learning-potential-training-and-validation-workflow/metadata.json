@@ -16,7 +16,9 @@
     "cp2k",
     "lammps",
     "molecular-dynamics",
-    "ridge-regression"
+    "ridge-regression",
+    "edge:scenario:sc-4dcd5267",
+    "edge:workflow:wf-matchem-ec013e02"
   ],
   "harvested": true,
   "tier": "medium",

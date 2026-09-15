@@ -1,0 +1,15 @@
+{
+  "name": "it-bb9b4dd6",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「传质或吸附性能获取」在场景「亲水响应膜油水分离设计」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-matchem-b70feeee",
+    "edge:scenario:sc-63b1c390",
+    "slot:EVALUATION_CONFIG:评价方法"
+  ]
+}

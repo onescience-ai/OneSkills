@@ -22,7 +22,9 @@
     "structure-aware",
     "workflow",
     "workflow-planning",
-    "b28"
+    "b28",
+    "edge:scenario:sc-47735a9a",
+    "edge:workflow:wf-bio-c6a05f8d"
   ],
   "scenario_id": "B28",
   "source_papers": [

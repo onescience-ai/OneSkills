@@ -19,7 +19,9 @@
     "matchem",
     "mechanisms",
     "null",
-    "powder"
+    "powder",
+    "edge:scenario:sc-859e63f2",
+    "edge:workflow:wf-matchem-4097efc6"
   ],
   "scenario_id": "激光粉末床熔融钥孔波动与孔隙形成分析",
   "source_papers": [

@@ -16,7 +16,9 @@
     "matchem",
     "nickel",
     "null",
-    "understanding"
+    "understanding",
+    "edge:scenario:sc-a317a1a3",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "镍催化剂CO2活化与碳碳偶联分析",
   "source_papers": [

@@ -61,7 +61,9 @@
     "literature-search",
     "protocol",
     "agriculture",
-    "PRISMA"
+    "PRISMA",
+    "edge:scenario:sc-b5341da3",
+    "edge:workflow:wf-climate-48fe2bf3"
   ],
   "scenario_id": "E67",
   "source_papers": [

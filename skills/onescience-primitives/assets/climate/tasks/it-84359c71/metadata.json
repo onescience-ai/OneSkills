@@ -1,0 +1,19 @@
+{
+  "name": "it-84359c71",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「模型输入与运行条件预检」在场景「E101」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-62e157be",
+    "edge:scenario:sc-925071b9",
+    "slot:SCHEDULED_SURGE_FORECAST:定时风暴潮预报",
+    "slot:REALTIME_TIDE_DATA:实时逐小时潮位",
+    "slot:REALTIME_WEATHER_DATA:实时逐小时气象",
+    "slot:RUN_TIME:模型运行时刻",
+    "slot:DATA_CUTOFF_TIME:资料截止时间"
+  ]
+}

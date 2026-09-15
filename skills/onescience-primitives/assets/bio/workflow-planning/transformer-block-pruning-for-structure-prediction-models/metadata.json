@@ -15,7 +15,9 @@
     "diffusion-transformer",
     "model-finetuning",
     "protein-structure",
-    "model-optimization"
+    "model-optimization",
+    "edge:scenario:sc-078cac5b",
+    "edge:workflow:wf-bio-5aaefe7e"
   ],
   "harvested": true,
   "tier": "high",

@@ -29,7 +29,9 @@
     "hdbscan-clustering",
     "amorphous-materials",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-9310ff3e",
+    "edge:workflow:wf-matchem-ec013e02"
   ],
   "scenario_id": "HfO2非晶液相机器学习势主动学习",
   "source_papers": [

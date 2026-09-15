@@ -25,7 +25,9 @@
     "model",
     "workflow",
     "workflow-planning",
-    "b66"
+    "b66",
+    "edge:scenario:sc-03d4dbbc",
+    "edge:workflow:wf-bio-afe9f9ae"
   ],
   "scenario_id": "B66",
   "source_papers": [

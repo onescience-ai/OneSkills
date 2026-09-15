@@ -1,0 +1,18 @@
+{
+  "name": "wf-matchem-9d782366",
+  "type": "workflow",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（matchem）：5 步骨架 [母体结构检查与掺杂候选建模 > 不同脱锂状态下的 VASP 结构弛豫 > Li/Ni 混排与结构稳定性计算 > 弹性与开裂风险代理指标分析 > 候选排序与实验/文献交叉验证]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-matchem-883c63a1",
+    "edge:task:tk-matchem-7a3de929",
+    "edge:task:tk-matchem-89afddd7",
+    "edge:task:tk-matchem-1dc2f35c",
+    "edge:task:tk-matchem-7fb78252",
+    "edge:scenario:sc-f94cf8ec"
+  ]
+}

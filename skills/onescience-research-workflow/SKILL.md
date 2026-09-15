@@ -1,6 +1,6 @@
 ---
 name: onescience-research-workflow
-description: OneScience 科研工作流规划专家技能（type=expert）。为 orchestrator 提供气象、生信、材料、流体等科研领域的工作流编排计划，基于资源和领域知识生成 planner proposal，包含工作流节点、资源绑定、依赖关系和执行建议。
+description: OneScience 科研工作流规划专家技能（type=expert）。为 orchestrator 提供气象、生信、材料、流体等科研领域的工作流编排计划，支持 Task-Centric 规划模式（以 Task 为核心节点编排工作流）和传统资源驱动模式，基于资源和领域知识生成 planner proposal，包含工作流节点、资源绑定、依赖关系和执行建议。
 type: expert
 ---
 
@@ -31,14 +31,87 @@ type: expert
 
 ```text
 接收 orchestrator 规划请求
--> 先检查当前规划所需资源知识是否已经获取且足够支撑决策
--> 如资源知识不足，再按职责调用 type=resource 技能（默认 content_request: "工作流规划知识"）
--> 仅对已 shortlist 的个别候选在必要时升级获取 "完整内容"
--> 仅基于 resource_retrieval_result.matched_resources[*].content 理解领域编排知识
--> 将资源知识转写为执行级 workflow_nodes、checks、risks 和 fallback_options
+-> 判断是否适用 Task-Centric 规划模式
+-> [Task-Centric 模式] 检索 Scenario -> Task Graph -> 为每个 Task 选择 Method/Resource
+-> [传统模式] 检查资源知识是否充足 -> 补充召回 -> 编排工作流节点
+-> 将知识转写为执行级 workflow_nodes、checks、risks 和 fallback_options
 -> 选择资源并说明理由
 -> 返回 planner_proposal
 ```
+
+## Task-Centric 规划模式
+
+> **新增**：本技能支持 Task-Centric 规划模式。当用户请求涉及科研任务编排时，优先使用此模式。
+
+### 触发条件
+
+当规划请求满足以下任一条件时，进入 Task-Centric 模式：
+- 用户请求中包含明确的科研目标（如“筛选材料”“预测性质”“分析稳定性”）
+- planning_request 中包含 `intent: task_centric` 或 `scenario_ref`
+- 已有 Workflow 可以匹配当前科研目标
+
+### Task-Centric 规划流程
+
+1. **Scenario 识别**：根据用户请求识别对应的科研场景（Scenario）。通过 `type=resource` 技能以 `intent: scenario` 检索匹配的 Scenario。
+
+2. **Task Graph 构建**：
+   - 若已有匹配的 Workflow，直接使用其 Task Graph
+   - 若无完全匹配的 Workflow，根据 Scenario 的 `candidate_tasks` 和 Task 的 `relations`（can_follow/can_precede）动态组合 Task Graph
+
+3. **Task Instance 生成**：为 Task Graph 中的每个 Task 生成 Task Instance：
+   - 根据约束条件（精度、规模、速度、资源）为每个 Task 选择 Method
+   - 根据 Method 的 `resource_candidates` 选择具体 Resource
+   - 展开 Operation 列表
+   - 绑定 Validation 要求
+
+4. **执行级规划**：将 Task Instance 转化为执行级 workflow_nodes
+
+### Task-Centric 规划输出格式
+
+```yaml
+task_centric_proposal:
+  scenario_ref: <匹配的 Scenario ID>
+  workflow_ref: <使用的 Workflow ID 或 "dynamic_composition">
+  task_graph:
+    - task_ref: <Task ID>
+      task_instance:
+        selected_method: <选定的 Method ID>
+        selected_resources: [<选定的 Resource ID 列表>]
+        constraints: { scale: ..., accuracy: ..., speed: ... }
+      depends_on: [<前置 Task ID>]
+      operations: [<Operation ID 列表>]
+      validations: [<Validation ID 列表>]
+  reuse_summary:
+    total_tasks: <Task 总数>
+    reused_tasks: <被多个 Workflow 复用的 Task 数>
+```
+
+### 核心原则
+
+- **Task 是 Workflow 的节点，不是 Method 或 Resource**：Workflow 编排的是 Task，Method 和 Resource 是 Task 内部的属性
+- **同一 Task 可选不同 Method**：根据约束条件动态选择，不硬编码
+- **Task 可跨 Workflow 复用**：`material-property-prediction` 同时服务于筛选和稳定性分析
+- **动态组合优先于硬编码**：没有完全匹配的 Workflow 时，通过 Task 的 relations 动态组合
+
+## 参数接地与四态标签（B 层门禁，强制）
+
+> 修「规则层写得对、执行层把候选参数直接写成本次研究参数」病灶（ws07：research_plan 里 42U/200 W/0.5 L/min/25 ℃/2500 W/热点=均温+10 ℃/压降<50 kPa/残差<1e-5 等绝大多数无来源；ws06 同样写死 600×1000×2000/y+≈1/500-1000 万网格无来源）。本门禁对老架构与新架构一视同仁。
+
+`planner_proposal` 中**每个具体数字/参数/阈值/几何/工况/验收判据**（无论出现在 `workflow_nodes[].inputs/outputs/checks/action`、`assumptions` 还是随 proposal 产出的 research_plan 类文档）必须带四态标签之一，禁止裸数字：
+
+| 标签 | 含义 | 附带要求 |
+|---|---|---|
+| `confirmed_input` | 用户本轮明确提供 | 须能指认用户确认记录（orchestrator task_state 的 `user_confirmation` 事件） |
+| `literature_candidate` | 在线兜底/本地卡文献支持的候选值 | 必须附：来源 `[n]` + 该文献 `domain_match`（exact/adjacent/cross_domain）+ 与本任务研究对象的适用性判断；cross_domain 来源**不得**用本标签（只能降级为 pending_user_confirmation） |
+| `pending_user_confirmation` | agent 提出的候选，待用户确认 | 必须附推荐项与理由，并列入 `missing_inputs`；用户确认前不得进入执行 |
+| `blocked_missing` | 不可推断且无文献支持 | 必须列入 `missing_inputs` 且 `can_continue_without_it: false`，该节点标 BLOCKED |
+
+**硬规则**：
+- **REJECT 门禁**：proposal 中存在未打四态标签的裸数字 → 该 proposal 不得输出，orchestrator 侧对应 planning 步骤判 REJECT（不得标 completed、不得进入执行）。输出前必须逐数字自检。
+- **默认值/示例值不是 confirmed_input**：agent 依据常识或模板填的「示例工况」「典型参数」「推荐值」一律是 `pending_user_confirmation`（或 `literature_candidate` 若有文献），即使用户后续选择「使用默认示例」，也只解除输入门禁，参数标签须如实记录为「用户授权的假设算例输入」，不得改写成有文献依据的本次研究对象。
+- **升格须留痕**：`literature_candidate`/`pending_user_confirmation` → `confirmed_input` 的升格只能由用户本轮明确确认触发，不得由 agent 静默完成。
+- **验收判据同源约束**：`checks` 里的验收阈值（网格无关性 <2 %、残差 <1e-5、压降 <50 kPa、热点定义等）同样必须四态打标；无 user_provided/literature[n] 来源的阈值只能标 `pending_user_confirmation`，不得自设后自判 PASS。
+- 在 `planner_proposal` 中新增 `parameter_labels` 字段集中列出全部关键参数及其标签（格式见下），作为 orchestrator B 层门禁的机读凭证。
 
 ## 规划前置重点
 
@@ -242,6 +315,12 @@ planner_proposal:
     - field: <缺失字段>
       why_needed: <原因>
       can_continue_without_it: <true | false>
+  parameter_labels:            # B 层门禁机读凭证：全部关键参数/阈值/几何/工况/验收判据逐条打标，禁止裸数字
+    - name: <参数名，如 inlet_velocity>
+      value: <数值+单位>
+      label: <confirmed_input | literature_candidate | pending_user_confirmation | blocked_missing>
+      source: <user_confirmation事件 | [n]+domain_match | 推荐项+理由 | 不可推断原因>
+      applicability: <literature_candidate 必填：文献研究对象 vs 本任务研究对象的一致性判断>
   risks:
     - risk: <风险>
       mitigation: <缓解措施>

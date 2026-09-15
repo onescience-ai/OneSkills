@@ -32,7 +32,9 @@
     "three-electrode-system",
     "alkaline-electrolyte",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-29387a61",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "Ru单原子NiFe层状双氢氧化物水分解优化",
   "source_papers": [

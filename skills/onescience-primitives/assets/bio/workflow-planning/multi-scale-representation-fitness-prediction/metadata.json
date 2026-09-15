@@ -22,7 +22,9 @@
     "spearman相关结果",
     "workflow",
     "workflow-planning",
-    "b38"
+    "b38",
+    "edge:scenario:sc-8e7ef538",
+    "edge:workflow:wf-bio-78f31941"
   ],
   "scenario_id": "B38",
   "source_papers": [

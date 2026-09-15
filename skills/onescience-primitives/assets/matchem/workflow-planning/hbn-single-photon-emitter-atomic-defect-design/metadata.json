@@ -30,7 +30,9 @@
     "polycarbonate-substrate",
     "wavelength-tuning",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-5dc20736",
+    "edge:workflow:wf-matchem-e0e8489b"
   ],
   "scenario_id": "hBN单光子发射原子缺陷设计",
   "source_papers": [

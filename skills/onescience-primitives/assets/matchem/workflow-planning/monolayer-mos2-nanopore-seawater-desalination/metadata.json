@@ -17,7 +17,9 @@
     "water",
     "workflow",
     "workflow-planning",
-    "单层mos2纳米孔海水淡化设计"
+    "单层mos2纳米孔海水淡化设计",
+    "edge:scenario:sc-82867bfd",
+    "edge:workflow:wf-matchem-2c158827"
   ],
   "scenario_id": "单层MoS2纳米孔海水淡化设计",
   "source_papers": [

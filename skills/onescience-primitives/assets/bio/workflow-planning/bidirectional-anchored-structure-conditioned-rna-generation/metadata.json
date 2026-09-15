@@ -25,7 +25,9 @@
     "rna序列",
     "workflow",
     "workflow-planning",
-    "b82"
+    "b82",
+    "edge:scenario:sc-347495e9",
+    "edge:workflow:wf-bio-1964c994"
   ],
   "scenario_id": "B82",
   "source_papers": [

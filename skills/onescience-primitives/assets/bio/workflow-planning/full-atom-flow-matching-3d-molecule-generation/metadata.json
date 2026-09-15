@@ -18,7 +18,9 @@
     "small-molecule",
     "workflow",
     "workflow-planning",
-    "b59"
+    "b59",
+    "edge:scenario:sc-676e46e8",
+    "edge:workflow:wf-bio-856a5702"
   ],
   "scenario_id": "B59",
   "source_papers": [

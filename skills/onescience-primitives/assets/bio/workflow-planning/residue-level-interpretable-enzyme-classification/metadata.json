@@ -22,7 +22,9 @@
     "residue-level-enzyme-predictor",
     "workflow",
     "workflow-planning",
-    "b37"
+    "b37",
+    "edge:scenario:sc-6e8684e3",
+    "edge:workflow:wf-bio-78f31941"
   ],
   "scenario_id": "B37",
   "source_papers": [

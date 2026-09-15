@@ -1,0 +1,26 @@
+{
+  "name": "wf-bio-afe9f9ae",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（bio）：4 步骨架 [基因组输入与坐标规范化 > 序列窗口与模型准备 > 基因组预测或序列生成 > 轨迹与效应质量评估]，被 10 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-bio-7dcdc00a",
+    "edge:task:tk-bio-69ee987b",
+    "edge:task:tk-bio-641b5fc6",
+    "edge:task:tk-bio-90e52a24",
+    "edge:scenario:sc-7f15dbcc",
+    "edge:scenario:sc-a42a7aa2",
+    "edge:scenario:sc-9c3a83c8",
+    "edge:scenario:sc-03d4dbbc",
+    "edge:scenario:sc-a88a7437",
+    "edge:scenario:sc-6cfd5eea",
+    "edge:scenario:sc-1bd2ea76",
+    "edge:scenario:sc-d1af9cf0",
+    "edge:scenario:sc-7797ff36",
+    "edge:scenario:sc-310f8a31"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "tk-climate-5e6eb541",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：网格对齐与输入标准化。被 1 个场景复用；含 1 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-climate-549d8a5a",
+    "edge:next:tk-climate-63e2d57a",
+    "slot:MODEL_INPUT_SPEC:模型输入规格",
+    "slot:PREPROCESS_CONFIG:预处理配置",
+    "slot:MISSING_VALUE_POLICY:缺测处理策略",
+    "edge:instance:it-2688ea39"
+  ]
+}

@@ -17,7 +17,9 @@
     "mof电催化co2还原活性位设计",
     "null",
     "organic",
-    "reduction"
+    "reduction",
+    "edge:scenario:sc-ef3cb1fd",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "MOF电催化CO2还原活性位设计",
   "source_papers": [

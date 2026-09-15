@@ -20,7 +20,9 @@
     "metal",
     "null",
     "polymer",
-    "publisher"
+    "publisher",
+    "edge:scenario:sc-6ff58780",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "离子聚合物电解质机器学习配方发现",
   "source_papers": [

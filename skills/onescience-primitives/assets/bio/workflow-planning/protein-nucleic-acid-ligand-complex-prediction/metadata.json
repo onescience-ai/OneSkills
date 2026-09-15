@@ -41,7 +41,9 @@
     "inference-pipeline",
     "workflow",
     "workflow-planning",
-    "b04"
+    "b04",
+    "edge:scenario:sc-ee59b16f",
+    "edge:workflow:wf-bio-5aaefe7e"
   ],
   "scenario_id": "B04",
   "source_papers": [

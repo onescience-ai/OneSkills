@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s073",
     "tensor-basis-neural-network",
-    "symbolic-closure-model"
+    "symbolic-closure-model",
+    "edge:scenario:sc-e7605c6c",
+    "edge:workflow:wf-cfd-17883fa9"
   ],
   "scenario_id": "CFD_S073",
   "source_papers": [

@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s009",
     "non-cartesian-cnn",
-    "surface-neural-simulator"
+    "surface-neural-simulator",
+    "edge:scenario:sc-fd141be0",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S009",
   "source_papers": [

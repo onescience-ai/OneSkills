@@ -19,7 +19,9 @@
     "ionic",
     "matchem",
     "model-guided",
-    "null"
+    "null",
+    "edge:scenario:sc-8c5a7048",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "高离子电导电解液基础模型配方设计",
   "source_papers": [

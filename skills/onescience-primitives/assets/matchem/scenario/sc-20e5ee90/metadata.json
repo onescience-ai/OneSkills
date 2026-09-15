@@ -1,0 +1,22 @@
+{
+  "name": "sc-20e5ee90",
+  "type": "scenario",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：振动稳定材料机器学习筛选（matchem）。工作流 4 步，经 edge:workflow 指向 wf-matchem-128b457b，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "src:scenario_id:振动稳定材料机器学习筛选",
+    "edge:workflow:wf-matchem-128b457b",
+    "edge:task:tk-matchem-7b297389",
+    "edge:task:tk-matchem-61a3bb1e",
+    "edge:task:tk-matchem-0ab57b24",
+    "edge:task:tk-matchem-74528141",
+    "slot:DATASET:训练与验证数据",
+    "slot:TARGET:优化目标",
+    "slot:MODEL_CONFIG:模型配置",
+    "slot:VALIDATION_DATA:独立验证数据"
+  ]
+}

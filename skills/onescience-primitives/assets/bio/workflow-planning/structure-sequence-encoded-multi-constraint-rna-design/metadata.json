@@ -25,7 +25,9 @@
     "rna家族",
     "workflow",
     "workflow-planning",
-    "b84"
+    "b84",
+    "edge:scenario:sc-415e7e3d",
+    "edge:workflow:wf-bio-1964c994"
   ],
   "scenario_id": "B84",
   "source_papers": [

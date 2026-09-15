@@ -1,0 +1,23 @@
+{
+  "name": "tk-bio-b32faa7e",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：宏基因组输入与任务定义。被 7 个场景复用；含 7 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:next:tk-bio-b1732810",
+    "slot:METAGENOME_INPUT:宏基因组输入",
+    "slot:MODEL_NAME:宏基因组模型",
+    "slot:SEQUENCE_TYPE:序列类型",
+    "edge:instance:it-ea05c289",
+    "edge:instance:it-25bfaee2",
+    "edge:instance:it-e0ea66c4",
+    "edge:instance:it-69d6eb48",
+    "edge:instance:it-bca3e3a1",
+    "edge:instance:it-8d955438",
+    "edge:instance:it-3a39b64d"
+  ]
+}

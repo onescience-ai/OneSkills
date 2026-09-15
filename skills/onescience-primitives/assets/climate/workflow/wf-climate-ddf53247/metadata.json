@@ -1,0 +1,19 @@
+{
+  "name": "wf-climate-ddf53247",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [粗细分辨率资料及任务边界预检 > 粗细分辨率资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 学习尺度映射并批量生成细化LAI > 发布分情景数据、质量图层及版本说明 > 检查长期趋势、季节循环和物理范围]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-climate-721f3e3f",
+    "edge:task:tk-climate-2bdb8d13",
+    "edge:task:tk-climate-2d09b01b",
+    "edge:task:tk-climate-e3f500ab",
+    "edge:task:tk-climate-528bd0d6",
+    "edge:task:tk-climate-eaa5cfa4",
+    "edge:scenario:sc-b5aa7609"
+  ]
+}

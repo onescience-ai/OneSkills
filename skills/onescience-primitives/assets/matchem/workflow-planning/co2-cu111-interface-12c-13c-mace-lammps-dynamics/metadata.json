@@ -12,7 +12,9 @@
     "matchem",
     "workflow",
     "workflow-planning",
-    "co2_cu111_12c13c_mace_lammps动力学验证"
+    "co2_cu111_12c13c_mace_lammps动力学验证",
+    "edge:scenario:sc-a5425d92",
+    "edge:workflow:wf-matchem-1070083a"
   ],
   "scenario_id": "CO2_Cu111_12C13C_MACE_LAMMPS动力学验证",
   "source_papers": [],

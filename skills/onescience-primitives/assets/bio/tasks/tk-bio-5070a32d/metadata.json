@@ -1,0 +1,27 @@
+{
+  "name": "tk-bio-5070a32d",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：编号与界面特征准备。被 10 个场景复用；含 10 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-bio-6c6601c7",
+    "edge:next:tk-bio-ff8556fa",
+    "slot:CHECKPOINT:模型权重",
+    "slot:CDR_REGIONS:设计CDR区域",
+    "slot:MAX_CDR_LENGTH:CDR长度上限",
+    "edge:instance:it-bb52d2b1",
+    "edge:instance:it-649122ef",
+    "edge:instance:it-e3136562",
+    "edge:instance:it-50dc20cb",
+    "edge:instance:it-cf82de0a",
+    "edge:instance:it-f1e0fa49",
+    "edge:instance:it-2077781a",
+    "edge:instance:it-488f3f0f",
+    "edge:instance:it-b84c3482",
+    "edge:instance:it-84295af8"
+  ]
+}

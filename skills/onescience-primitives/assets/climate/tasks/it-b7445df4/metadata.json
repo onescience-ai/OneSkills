@@ -1,0 +1,19 @@
+{
+  "name": "it-b7445df4",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「观测和背景场及任务边界预检」在场景「E48」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-65d4822e",
+    "edge:scenario:sc-8d796207",
+    "slot:OBSERVATION_DATA:原始观测资料",
+    "slot:BACKGROUND_STATE:背景状态",
+    "slot:ANALYSIS_TIME:分析时刻",
+    "slot:ASSIMILATION_WINDOW:同化时间窗",
+    "slot:DATA_CUTOFF_TIME:资料截止时间"
+  ]
+}

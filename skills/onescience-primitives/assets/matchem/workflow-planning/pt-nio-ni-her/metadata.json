@@ -15,7 +15,9 @@
     "oxygen vacancy",
     "water dissociation",
     "electronic structure tuning",
-    "electrocatalysis"
+    "electrocatalysis",
+    "edge:scenario:sc-458b671b",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "harvested": true,
   "tier": "medium",

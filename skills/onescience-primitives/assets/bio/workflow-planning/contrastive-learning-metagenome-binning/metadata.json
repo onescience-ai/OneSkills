@@ -25,7 +25,9 @@
     "learning",
     "workflow",
     "workflow-planning",
-    "b92"
+    "b92",
+    "edge:scenario:sc-53d3256a",
+    "edge:workflow:wf-bio-8c56a4bc"
   ],
   "scenario_id": "B92",
   "source_papers": [

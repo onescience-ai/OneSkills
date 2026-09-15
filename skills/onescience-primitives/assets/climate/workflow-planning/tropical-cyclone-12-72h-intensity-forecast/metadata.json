@@ -44,7 +44,9 @@
     "disaster-warning",
     "global-ocean-basins",
     "pytorch",
-    "data-pipeline"
+    "data-pipeline",
+    "edge:scenario:sc-6c7103f2",
+    "edge:workflow:wf-climate-c34a5d07"
   ],
   "scenario_id": "E50",
   "source_papers": [

@@ -28,7 +28,9 @@
     "electrospinning",
     "hot-injection",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-523bf3bd",
+    "edge:workflow:wf-matchem-87e6b0f5"
   ],
   "scenario_id": "TiO2CsPbBr3异质结CO2光还原设计",
   "source_papers": [

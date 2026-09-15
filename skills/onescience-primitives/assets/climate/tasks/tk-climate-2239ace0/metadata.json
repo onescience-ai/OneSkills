@@ -1,0 +1,26 @@
+{
+  "name": "tk-climate-2239ace0",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：海洋状态和强迫资料及任务边界预检。被 6 个场景复用；含 6 个实例任务；资源引用 ['datasets/CMEMS']。",
+  "tags": [
+    "edge:resource:datasets/CMEMS",
+    "edge:next:tk-climate-d1516b9a",
+    "slot:OCEAN_STATE:海洋状态资料",
+    "slot:SURFACE_FORCING:海表强迫资料",
+    "slot:STATIC_OCEAN_DATA:静态海洋资料",
+    "slot:START_TIME:起始时刻",
+    "slot:TARGET_HORIZON:目标时效",
+    "slot:DATA_CUTOFF_TIME:资料截止时间",
+    "edge:instance:it-ffe50890",
+    "edge:instance:it-064d3238",
+    "edge:instance:it-8b91a4df",
+    "edge:instance:it-df8eb792",
+    "edge:instance:it-df275048",
+    "edge:instance:it-d7fbe703"
+  ]
+}

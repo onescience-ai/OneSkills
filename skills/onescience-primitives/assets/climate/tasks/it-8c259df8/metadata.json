@@ -1,0 +1,19 @@
+{
+  "name": "it-8c259df8",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「天气暴露和目标观测及任务边界预检」在场景「E98」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-85ec4115",
+    "edge:scenario:sc-c76b434f",
+    "slot:MULTISITE_YIELD_TRIALS:多点产量试验",
+    "slot:GENOTYPE_DATA:品种基因型资料",
+    "slot:HISTORICAL_WEATHER:地点历史天气",
+    "slot:TARGET_LOCATIONS:目标种植地点",
+    "slot:ANALYSIS_PERIOD:试验分析时段"
+  ]
+}

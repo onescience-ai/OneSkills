@@ -17,7 +17,9 @@
     "matchem",
     "null",
     "particle-carbon",
-    "statistics"
+    "statistics",
+    "edge:scenario:sc-dd4c1b02",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "电池颗粒碳粘结剂脱粘机器学习统计",
   "source_papers": [

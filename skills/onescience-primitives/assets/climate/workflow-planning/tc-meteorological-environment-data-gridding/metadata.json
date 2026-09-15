@@ -10,7 +10,9 @@
   "tags": [
     "tc-meteorological-environment-data-gridding",
     "datapipe",
-    "fallback"
+    "fallback",
+    "edge:scenario:sc-43f4af27",
+    "edge:workflow:wf-climate-9455cb08"
   ],
   "harvested": true,
   "tier": "medium",

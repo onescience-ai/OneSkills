@@ -17,7 +17,9 @@
     "unsupervised",
     "workflow",
     "workflow-planning",
-    "固态锂离子导体无监督发现"
+    "固态锂离子导体无监督发现",
+    "edge:scenario:sc-ca4afb9e",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "固态锂离子导体无监督发现",
   "source_papers": [

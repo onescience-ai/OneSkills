@@ -34,7 +34,9 @@
     "structure-to-sequence",
     "workflow",
     "workflow-planning",
-    "b90"
+    "b90",
+    "edge:scenario:sc-dffda14d",
+    "edge:workflow:wf-bio-1964c994"
   ],
   "scenario_id": "B90",
   "source_papers": [

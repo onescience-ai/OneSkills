@@ -25,7 +25,9 @@
     "tree",
     "workflow",
     "workflow-planning",
-    "b67"
+    "b67",
+    "edge:scenario:sc-7797ff36",
+    "edge:workflow:wf-bio-afe9f9ae"
   ],
   "scenario_id": "B67",
   "source_papers": [

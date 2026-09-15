@@ -25,7 +25,9 @@
     "prediction",
     "workflow",
     "workflow-planning",
-    "b86"
+    "b86",
+    "edge:scenario:sc-8c79aa2f",
+    "edge:workflow:wf-bio-1964c994"
   ],
   "scenario_id": "B86",
   "source_papers": [

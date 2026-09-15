@@ -1,0 +1,17 @@
+{
+  "name": "it-0e083170",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「三维分子生成与采样」在场景「B57」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-bio-820519e6",
+    "edge:scenario:sc-694a6169",
+    "slot:NUM_MOLECULES:生成分子数",
+    "slot:TEMPERATURE:采样温度",
+    "slot:SEED:随机种子"
+  ]
+}

@@ -25,7 +25,9 @@
     "report",
     "workflow",
     "workflow-planning",
-    "b99"
+    "b99",
+    "edge:scenario:sc-44c95825",
+    "edge:workflow:wf-bio-468b46a3"
   ],
   "scenario_id": "B99",
   "source_papers": [

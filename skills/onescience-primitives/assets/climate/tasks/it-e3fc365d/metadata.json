@@ -1,0 +1,17 @@
+{
+  "name": "it-e3fc365d",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「生成连续高分辨率场」在场景「E16」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-c9b1bdf3",
+    "edge:scenario:sc-822fbfb4",
+    "slot:DOWNSCALING_CONFIG:降尺度配置",
+    "slot:TEMPORAL_FILL_POLICY:时序重建规则",
+    "slot:UNCERTAINTY_CONFIG:不确定性配置"
+  ]
+}

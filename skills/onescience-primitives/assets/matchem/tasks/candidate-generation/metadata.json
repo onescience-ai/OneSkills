@@ -1,0 +1,33 @@
+{
+  "name": "candidate-generation",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-14",
+  "updated_at": "2026-09-14",
+  "description": "候选材料生成任务卡（materials 语义域）。目标是在给定材料族与性能意图下产出结构合法、去重、可追溯来源的候选材料集合，作为下游结构核验与性质预测的输入。方法路线可替换：基于已知结构的取代/装饰扩展（substitution/decoration）与从头生成（de-novo generation，含活性/性质引导的三维生成）。资源引用 tools/pymatgen 与 tools/rdkit；后继任务为 structure-validation。生成结果不得表述为已验证材料，必须保留无效与重复候选及其原因。",
+  "tags": [
+    "materials",
+    "candidate-generation",
+    "de-novo-design",
+    "structure-enumeration",
+    "edge:resource:tools/pymatgen",
+    "edge:resource:tools/rdkit",
+    "edge:method:structure-substitution",
+    "edge:method:de-novo-generation",
+    "edge:operation:enumerate-candidates",
+    "edge:operation:sanitize-structures",
+    "edge:operation:deduplicate",
+    "edge:validation:chemical-validity",
+    "edge:validation:novelty-check",
+    "edge:fallback_method:structure-substitution",
+    "edge:next:structure-validation",
+    "slot:material_family:MOF",
+    "slot:material_family:zeolite",
+    "slot:material_family:perovskite",
+    "slot:material_family:alloy",
+    "slot:target_property:adsorption_energy",
+    "slot:target_property:band_gap"
+  ]
+}

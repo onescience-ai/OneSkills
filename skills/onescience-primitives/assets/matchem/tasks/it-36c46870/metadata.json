@@ -1,0 +1,14 @@
+{
+  "name": "it-36c46870",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「候选筛选与验证设计」在场景「LaMn掺杂钴尖晶石酸性析氧催化设计」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-matchem-87b565a9",
+    "edge:scenario:sc-24db8104"
+  ]
+}

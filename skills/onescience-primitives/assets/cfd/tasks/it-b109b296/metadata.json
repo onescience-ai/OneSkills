@@ -1,0 +1,17 @@
+{
+  "name": "it-b109b296",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（cfd）：骨架「方程求解与物理残差恢复」在场景「CFD_S040」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-cfd-ebecc632",
+    "edge:scenario:sc-52b885af",
+    "slot:CHECKPOINT:模型权重",
+    "slot:DEVICE:计算设备",
+    "slot:BATCH_SIZE:推理批大小"
+  ]
+}

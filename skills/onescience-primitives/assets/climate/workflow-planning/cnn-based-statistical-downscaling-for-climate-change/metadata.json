@@ -16,7 +16,9 @@
     "temperature-forecast",
     "deep-learning",
     "bias-adjustment",
-    "value-experiment"
+    "value-experiment",
+    "edge:scenario:sc-bbedbf34",
+    "edge:workflow:wf-climate-47e1e56a"
   ],
   "harvested": true,
   "tier": "medium",

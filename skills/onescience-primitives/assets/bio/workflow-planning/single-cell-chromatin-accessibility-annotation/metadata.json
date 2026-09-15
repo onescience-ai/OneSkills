@@ -25,7 +25,9 @@
     "scatac信号学习通用细胞表征",
     "workflow",
     "workflow-planning",
-    "b76"
+    "b76",
+    "edge:scenario:sc-e1cdfde0",
+    "edge:workflow:wf-bio-cdb48c05"
   ],
   "scenario_id": "B76",
   "source_papers": [

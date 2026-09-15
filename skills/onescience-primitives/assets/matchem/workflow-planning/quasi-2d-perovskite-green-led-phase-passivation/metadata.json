@@ -25,7 +25,9 @@
     "surface",
     "workflow",
     "workflow-planning",
-    "准二维钙钛矿绿光led相组分钝化优化"
+    "准二维钙钛矿绿光led相组分钝化优化",
+    "edge:scenario:sc-be7d60e9",
+    "edge:workflow:wf-matchem-87e6b0f5"
   ],
   "scenario_id": "准二维钙钛矿绿光LED相组分钝化优化",
   "source_papers": [

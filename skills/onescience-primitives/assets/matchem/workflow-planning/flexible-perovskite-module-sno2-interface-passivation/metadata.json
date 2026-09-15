@@ -21,7 +21,9 @@
     "sno2界面钝化设计",
     "solar",
     "strategy",
-    "universal"
+    "universal",
+    "edge:scenario:sc-5df31d82",
+    "edge:workflow:wf-matchem-87e6b0f5"
   ],
   "scenario_id": "柔性钙钛矿组件SnO2界面钝化设计",
   "source_papers": [

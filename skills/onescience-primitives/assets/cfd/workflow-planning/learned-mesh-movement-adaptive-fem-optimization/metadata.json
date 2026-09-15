@@ -25,7 +25,9 @@
     "workflow",
     "workflow-planning",
     "cfd",
-    "cfd_s030"
+    "cfd_s030",
+    "edge:scenario:sc-872969b0",
+    "edge:workflow:wf-cfd-8b1af9da"
   ],
   "scenario_id": "CFD_S030",
   "source_papers": [

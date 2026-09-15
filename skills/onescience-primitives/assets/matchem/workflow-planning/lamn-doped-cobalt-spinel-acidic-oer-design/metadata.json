@@ -22,7 +22,9 @@
     "proton",
     "spinel",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-24db8104",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "LaMn掺杂钴尖晶石酸性析氧催化设计",
   "source_papers": [

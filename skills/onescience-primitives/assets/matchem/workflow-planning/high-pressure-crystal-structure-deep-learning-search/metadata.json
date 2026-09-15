@@ -21,7 +21,9 @@
     "prediction",
     "pressure",
     "structure",
-    "uma"
+    "uma",
+    "edge:scenario:sc-167e59e3",
+    "edge:workflow:wf-matchem-30dd7b2f"
   ],
   "scenario_id": "高压晶体结构深度学习搜索",
   "source_papers": [

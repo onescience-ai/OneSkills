@@ -16,7 +16,9 @@
     "phenology-retrieval",
     "neural-network",
     "crop-monitoring",
-    "deciduous-forest"
+    "deciduous-forest",
+    "edge:scenario:sc-b5341da3",
+    "edge:workflow:wf-climate-48fe2bf3"
   ],
   "harvested": true,
   "tier": "high",

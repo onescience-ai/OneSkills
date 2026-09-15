@@ -16,7 +16,9 @@
     "bayesian-modeling",
     "wheat-yield",
     "field-trials",
-    "finlay-wilkinson-regression"
+    "finlay-wilkinson-regression",
+    "edge:scenario:sc-c76b434f",
+    "edge:workflow:wf-climate-7a37168c"
   ],
   "harvested": true,
   "tier": "high",

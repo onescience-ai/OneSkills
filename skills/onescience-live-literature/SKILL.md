@@ -1,6 +1,6 @@
 ---
 name: onescience-live-literature
-description: OneScience 实时文献两级检索推理技能（对齐 Biomni 的 LiteratureSearch/Fetch 工具链），领域无关的通用流程。第一级按相关性实时检索 OpenAlex 拿论文摘要、建全局编号引用池并迭代精炼检索词；第二级对选中的开放获取论文经 Europe PMC/PMC 结构化 API 取全文细节；最终输出分层深度推理答案，References 按正文出现顺序连续编号。触发：任何需要跨论文实时综合推理并带引用列表的问题（物种×性状、通路机制、基因家族、材料体系、药物靶点等）。只产出会话级证据与 harvest 种子清单，不写卡片库。
+description: OneScience 实时文献两级检索推理技能（对齐 Biomni 的 LiteratureSearch/Fetch 工具链），领域无关的通用流程。第一级按相关性实时检索 OpenAlex 拿论文摘要、建全局编号引用池并迭代精炼检索词；第二级对选中的开放获取论文经 Europe PMC/PMC 结构化 API 取全文细节；最终输出分层深度推理答案，References 按正文出现顺序连续编号。触发：任何需要跨论文实时综合推理并带引用列表的问题（物种×性状、通路机制、基因家族、材料体系、药物靶点等）。只产出会话级证据与 harvest 种子清单，不写卡片库。亦可作为 onescience-primitives 本地检索降级到 none/task_only（命中不到可用 Task 知识）时的在线兜底通道被调用；更作为 orchestrator 在步骤 3.6 判定 knowledge_gap=true（本地原语没查到领域实质知识，含空召回 / 仅命中泛化 workflow-planning 流程卡 / domain 不符）时【硬路由兜底】强制调用的在线检索 executor，为无法用本地知识回答的需求补齐带引用的准确完整答案，严禁编造模拟检索结果或模拟数据。
 type: executor
 ---
 
@@ -45,6 +45,8 @@ python lit_search.py "<query>" <max_papers> <year_from> <pool_json路径>
 
 **新颖性扫描（每会话强制至少两组词面；实测教训）**：相关性排序会系统性埋没刚发表、引用少的新论文——青蒿素 A/B 实测中，决定胜负的两篇（2024 CYP71AV1 演化研究、2025 替代路线新酶 NatComm）全文通道均可达，却因新颖性盲点没进池。因此必须至少跑一轮 `year_from = 当年-1` 的命令块 A。辣椒 A/B 实测又证明**单组词面不够**：两轮扫描分别为 ① 核心实体词 + alternative/new/evolution；② 综述/盘点词面（review / QTL / mapping / genome assembly / metabolic engineering）——当年新综述常被第②组才捞到。任一组零命中时换词再跑一次才允许放弃。
 
+**场景锚词精炼（每会话强制；修「兜底形式成功、实质全噪声」病灶）**：迭代与缺口补搜完成后，必须对池内条目逐条打 `domain_match ∈ {exact, adjacent, cross_domain}` 标签（判定口径见 Step 5），并统计 `exact` 数。**`exact=0` 时不得直接进入 Step 4/5**：必须构造第二轮精炼 query——强制包含「目标域锚词 + 具体研究对象锚词」（如数据中心浸没液冷任务用 `"immersion cooling" "data center"`、`"server rack" "liquid cooling"`，而不是宽泛的 thermal management / cooling），再跑命令块 A；精炼后仍 `exact=0`，才允许带着「实质未命中目标域」标注进入 Step 5，且此时**禁止**用 adjacent/cross_domain 文献硬凑本次任务的参数/阈值/几何/工况，只能作方法学参考。宽泛 query 捞回大量跨域噪声（电池热管理、PCM、铸造、氢能等）而 exact=0 却不精炼，视为协议违规。
+
 ### Step 4 第二级全文取细节（命令块 B，整篇落盘 + 分段精读）
 
 1. 从池中挑 **4~8 篇**与推理链最相关的论文（优先 Step 3 缺口补搜找到的权威一次文献）。
@@ -79,8 +81,12 @@ python lit_search.py "<query>" <max_papers> <year_from> <pool_json路径>
 
 **References 格式：**
 
-- 文末 `References` = 正文实际引用的论文（连续编号），每条含：编号、标题、venue、year、作者前 3 位 et al、doi、证据层级（**full-text** / abstract-only）。所有字段必须取自 pool.json 对应条目；缺失字段写 `(池内无)`，**禁止 doi:10.xxxx 之类占位符**。
+- 文末 `References` = 正文实际引用的论文（连续编号），每条含：编号、标题、venue、year、作者前 3 位 et al、doi、证据层级（**full-text** / abstract-only）、**domain_match**（**exact** / adjacent / cross_domain）。所有字段必须取自 pool.json 对应条目；缺失字段写 `(池内无)`，**禁止 doi:10.xxxx 之类占位符**。
+- **domain_match 判定口径（A 层门禁，逐条必打）**：以**本任务的目标域 + 具体研究对象**为基准——`exact`=文献研究对象与之直接一致（如任务问「数据中心浸没式液冷机柜流动-传热耦合」，文献即研究 immersion cooling of data center / server rack）；`adjacent`=同目标域但不同子场景或不同冷却方式（如 data center 但 air-cooled、液冷但对象是电池包而非机柜）；`cross_domain`=不同应用领域（电池热管理、PCM 储能、铸造、氢能、光伏散热等）。**判定依据是文献的实际研究对象，不是标题里出现了某个泛词**；拿不准时就低不就高（宁可标 adjacent/cross_domain，不得虚标 exact）。
+- **cross_domain 使用限制（硬规则）**：cross_domain 文献**只能作为方法学参考**（如验证思路、网格无关性方法、湍流模型候选、实验对标方式），**不得作为本次任务参数/阈值/几何/工况/研究对象的来源**；正文引用 cross_domain 文献支撑方法学时必须显式写「(方法学参考，跨域: <该文献实际对象> → <本任务对象>，适用性未验证)」。adjacent 文献作参数来源时必须显式写「(近域迁移: <差异点>，适用性未验证，proposed_candidate)」。把 cross_domain/adjacent 文献数值直接写成本次任务确定参数，视为协议违规。
+- 答案顶部必须给出 `domain_match` 三档计数（exact/adjacent/cross_domain 各几篇）；`exact=0` 时必须显式标注「⚠ 在线兜底形式成功、实质未命中目标域（exact=0，已做场景锚词精炼仍无）」，并声明本次答案的方法学参考性质。
 - 两轮检索后池仍为空 → 声明证据不足，拒出引用列表，只给模型先验回答并显著标注。
+- **离线降级（不可中断上层任务）**：若命令块 A 打印 `[OFFLINE]`（OpenAlex/Europe PMC 均不可达），说明当前环境无网络——此时**不得报错、不得崩溃、不得让上层任务停摆**：如实标注「⚠ 本地知识缺口 + 当前离线，在线兜底不可用」，给出基于本地知识与模型先验的尽力回答（显式标注「离线·证据受限·未经在线文献核实」），并把「在线兜底不可用(offline)」信号交回上层，由上层继续执行任务其余部分。严禁因离线而编造模拟检索结果/模拟数据，也严禁以离线为由直接终止整个任务。
 
 ### Step 6 harvest 交接（把会话证据沉淀进离线库存）
 
@@ -105,8 +111,38 @@ url = ("https://api.openalex.org/works?search=" + quote(q)
        + f"&filter=is_paratext:false,type:article,from_publication_date:{year}-01-01"
        + "&select=id,title,doi,publication_date,open_access,primary_location,"
          "authorships,cited_by_count,abstract_inverted_index")
-req = Request(url, headers={"User-Agent": "OneSkills-live-lit/0.1 (mailto:onetools@example.com)"})
-data = json.loads(urlopen(req, timeout=30).read())
+UA = "OneSkills-live-lit/0.1 (mailto:onetools@example.com)"
+url += "&mailto=onetools@example.com"  # OpenAlex polite pool：提高限流额度、降低 429 概率
+req = Request(url, headers={"User-Agent": UA})
+data = None
+last = None
+for attempt in range(3):
+    try:
+        data = json.loads(urlopen(req, timeout=30).read())
+        break
+    except Exception as e:
+        last = e
+        if attempt < 2:
+            __import__("time").sleep(2 * (2 ** attempt))  # 429/5xx 瞬时限流：指数退避重试
+if data is None:
+    # 单点限流/不可达时换备用端点（Europe PMC search），仅取题录级字段兜底
+    try:
+        eu = ("https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=" + quote(q)
+              + f"&format=json&pageSize={n}")
+        ed = json.loads(urlopen(Request(eu, headers={"User-Agent": UA}), timeout=30).read())
+        data = {"results": [
+            {"title": h.get("title"), "doi": h.get("doi"), "publication_date": h.get("pubYear"),
+             "open_access": {}, "primary_location": {}, "authorships": [],
+             "cited_by_count": h.get("citedCount") or 0, "abstract_inverted_index": {}}
+            for h in (ed.get("resultList") or {}).get("result", [])]}
+    except Exception as e2:
+        last = e2
+if data is None:
+    # 离线/网络不可达友好降级：不抛栈、不崩溃、不以非零码退出。
+    # 如实报告后正常退出，让上层任务继续跑完其余部分；调用方据此把该缺口标注为「在线兜底不可用(offline)」，严禁编造检索结果充数。
+    print(f"[OFFLINE] 无法连接 OpenAlex/Europe PMC 检索端点：{type(last).__name__}: {last}")
+    print("[OFFLINE] 在线兜底不可用；本轮不追加论文，池保持原状。请上层如实标注离线缺口并继续执行任务其余部分。")
+    sys.exit(0)
 
 pool = json.load(open(out, encoding="utf-8")) if __import__("os").path.exists(out) else []
 seen = {(p.get("doi") or p["title"].lower()) for p in pool}
@@ -252,3 +288,5 @@ for doi in argv:
 6. 全文抓取成功的论文，必须用读文件工具实际分段读取其 dump 文件后再写答案；只看控制台预览写作视为协议违规。
 7. 深度规格不达标（数值配额、表格、通路示意、体量任一缺失）视为协议违规，输出前必须自检补齐。
 8. 不修改工作区外的任何库文件；harvest 只写 seeds.json。
+9. **离线友好降级（不报错、不中断）**：联网检索前先默认网络可能不可用；命令块 A/B 必须捕获网络异常（URLError/timeout/HTTPError）而非抛栈崩溃。确认离线时如实报告「在线兜底不可用(offline)」、产出显式标注的尽力回答，并让上层任务继续跑完其余步骤——离线不是终止整个任务的理由，更不是编造模拟数据的借口。
+10. **domain_match 逐条标注与跨域降级（A 层门禁）**：池内每篇论文必须打 `domain_match ∈ {exact, adjacent, cross_domain}` 标签，判定依据是文献的**实际研究对象**而非标题泛词，拿不准时就低不就高。`exact=0` 时必须先做场景锚词精炼检索（Step 3）再进入综合；cross_domain 文献只能作方法学参考、adjacent 文献作参数来源必须标 `proposed_candidate(近域迁移，适用性未验证)`，**均不得直接生成本次任务的确定参数/阈值/几何/工况**。答案顶部必须给出三档计数，`exact=0` 时显式标注「实质未命中目标域」。把跨域/近域文献数值写成本次确定参数，与编造数据同罪。

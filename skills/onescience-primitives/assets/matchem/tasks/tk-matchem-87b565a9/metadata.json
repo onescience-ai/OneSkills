@@ -1,0 +1,32 @@
+{
+  "name": "tk-matchem-87b565a9",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：候选筛选与验证设计。被 19 个场景复用；含 19 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-matchem-33569753",
+    "edge:instance:it-37f8bd47",
+    "edge:instance:it-77bd3cf6",
+    "edge:instance:it-63c6187e",
+    "edge:instance:it-e59914da",
+    "edge:instance:it-36c46870",
+    "edge:instance:it-4cfd2008",
+    "edge:instance:it-a19cbf27",
+    "edge:instance:it-43f7d345",
+    "edge:instance:it-10f6d3af",
+    "edge:instance:it-96f48193",
+    "edge:instance:it-deb1fba2",
+    "edge:instance:it-f1449317",
+    "edge:instance:it-50f614db",
+    "edge:instance:it-cbaa950e",
+    "edge:instance:it-cfdedfb7",
+    "edge:instance:it-f42dd129",
+    "edge:instance:it-b65d6be4",
+    "edge:instance:it-f6b0652c",
+    "edge:instance:it-66211c47"
+  ]
+}

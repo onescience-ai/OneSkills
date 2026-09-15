@@ -1,0 +1,31 @@
+{
+  "name": "tk-climate-8a3f6bde",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：水文强迫和流域资料时空对齐与样本构造。被 11 个场景复用；含 11 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-climate-14a78ebe",
+    "edge:next:tk-climate-2d09b01b",
+    "slot:TIME_RESOLUTION:时间分辨率",
+    "slot:SPATIAL_MAPPING:空间映射配置",
+    "slot:WARMUP_POLICY:预热期规则",
+    "slot:MISSING_VALUE_POLICY:缺测处理规则",
+    "slot:TIME_ALIGNMENT_CONFIG:时间对齐配置",
+    "slot:REFERENCE_ET_DEFINITION:参考蒸散发定义",
+    "edge:instance:it-23a4bc12",
+    "edge:instance:it-02cfaa1a",
+    "edge:instance:it-6a4011f4",
+    "edge:instance:it-139f1efd",
+    "edge:instance:it-4745ec01",
+    "edge:instance:it-20c0982e",
+    "edge:instance:it-1998dafb",
+    "edge:instance:it-532613d3",
+    "edge:instance:it-97f0f6a9",
+    "edge:instance:it-bc023a61",
+    "edge:instance:it-d5361225"
+  ]
+}

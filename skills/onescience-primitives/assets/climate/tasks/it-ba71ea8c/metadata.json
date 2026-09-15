@@ -1,0 +1,19 @@
+{
+  "name": "it-ba71ea8c",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「模型输入与运行条件预检」在场景「E103」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-62e157be",
+    "edge:scenario:sc-e681786f",
+    "slot:OCEAN_TEMPERATURE_FORECAST:海温数值预报",
+    "slot:FUSED_SST_OBSERVATION:融合海表温度观测",
+    "slot:ATMOSPHERIC_FORCING_FORECAST:气象强迫预报",
+    "slot:TARGET_REGION:目标区域",
+    "slot:DATA_CUTOFF_TIME:资料截止时间"
+  ]
+}

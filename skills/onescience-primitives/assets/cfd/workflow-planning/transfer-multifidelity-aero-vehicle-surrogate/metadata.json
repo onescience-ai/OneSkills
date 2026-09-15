@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s076",
     "transfer-learning-surrogate",
-    "gaussian-functional-regressor"
+    "gaussian-functional-regressor",
+    "edge:scenario:sc-b597ff44",
+    "edge:workflow:wf-cfd-17883fa9"
   ],
   "scenario_id": "CFD_S076",
   "source_papers": [

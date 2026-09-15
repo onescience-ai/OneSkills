@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s057",
     "equivariant-neural-operator",
-    "spherical-fno"
+    "spherical-fno",
+    "edge:scenario:sc-27b63ea3",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S057",
   "source_papers": [

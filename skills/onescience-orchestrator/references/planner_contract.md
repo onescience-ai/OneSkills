@@ -90,7 +90,15 @@ orchestrator 还必须维护一份仅供内部校验的 executor inventory 状�
       },
       "risk_notes": [],
       "fallback_detail": [],
-      "acceptance_evidence": []
+      "acceptance_evidence": [],
+      "parameter_labels": [
+        {
+          "param": "<参数/阈值/几何/工况/验收判据名称>",
+          "value": "<数值或取值；未定时为 null>",
+          "label": "confirmed_input|literature_candidate|pending_user_confirmation|blocked_missing",
+          "source": "<用户输入 | 文献[n]+domain_match | 待确认 | 缺失>"
+        }
+      ]
     }
   ],
   "resource_preferences": [],
@@ -99,6 +107,8 @@ orchestrator 还必须维护一份仅供内部校验的 executor inventory 状�
   "blocked_reason": null
 }
 ```
+
+**参数四态标签（B 层门禁，强制）**：`plan_fragment[*].parameter_labels` 是专家 proposal 的强制字段。proposal 中出现的每一个具体数字/参数/阈值/几何/工况/验收判据，都必须在 `parameter_labels` 中带 `confirmed_input`（用户已明确给出）/`literature_candidate`（来自文献候选，须附 `[n]` 出处与该文献 `domain_match`）/`pending_user_confirmation`（涉及科学范围/预算/关键约束/验收标准，须先请求用户确认）/`blocked_missing`（关键输入缺失，须 BLOCKED）四态标签之一。存在未打标签的裸数字时，该 proposal 直接判 REJECT，不得进入 `global_plan` 融合；此门禁不因「计划最终停在 BLOCKED」而豁免。`literature_candidate` 且来源文献 `domain_match=cross_domain` 的参数，只能作方法学参考，不得升格为本次任务的确定输入。
 
 ## 计划融合规则
 

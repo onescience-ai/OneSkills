@@ -18,7 +18,9 @@
     "null",
     "workflow",
     "workflow-planning",
-    "二胺接枝mof协同co2捕集设计"
+    "二胺接枝mof协同co2捕集设计",
+    "edge:scenario:sc-cff6d1f3",
+    "edge:workflow:wf-matchem-2c158827"
   ],
   "scenario_id": "二胺接枝MOF协同CO2捕集设计",
   "source_papers": [

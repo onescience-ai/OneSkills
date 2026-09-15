@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s056",
     "pde-foundation-model",
-    "pretrained-neural-operator"
+    "pretrained-neural-operator",
+    "edge:scenario:sc-61983584",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S056",
   "source_papers": [

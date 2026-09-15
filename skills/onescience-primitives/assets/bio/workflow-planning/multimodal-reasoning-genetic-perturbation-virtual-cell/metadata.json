@@ -25,7 +25,9 @@
     "response",
     "workflow",
     "workflow-planning",
-    "b74"
+    "b74",
+    "edge:scenario:sc-dbff59ac",
+    "edge:workflow:wf-bio-cdb48c05"
   ],
   "scenario_id": "B74",
   "source_papers": [

@@ -20,7 +20,9 @@
     "null",
     "sluggish",
     "stable",
-    "thermally"
+    "thermally",
+    "edge:scenario:sc-f9bd9b8a",
+    "edge:workflow:wf-matchem-4097efc6"
   ],
   "scenario_id": "复杂合金热稳定纳米颗粒扩散调控",
   "source_papers": [

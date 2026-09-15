@@ -18,7 +18,9 @@
     "planar",
     "solar",
     "solution-processed",
-    "stable"
+    "stable",
+    "edge:scenario:sc-5017cf9a",
+    "edge:workflow:wf-matchem-87e6b0f5"
   ],
   "scenario_id": "平面钙钛矿太阳能电池接触钝化优化",
   "source_papers": [

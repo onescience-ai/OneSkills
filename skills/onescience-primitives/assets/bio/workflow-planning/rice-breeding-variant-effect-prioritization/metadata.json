@@ -22,7 +22,9 @@
     "variant",
     "workflow",
     "workflow-planning",
-    "b69"
+    "b69",
+    "edge:scenario:sc-6cfd5eea",
+    "edge:workflow:wf-bio-afe9f9ae"
   ],
   "scenario_id": "B69",
   "source_papers": [

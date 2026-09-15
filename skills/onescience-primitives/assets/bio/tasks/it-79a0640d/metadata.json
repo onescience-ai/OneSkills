@@ -1,0 +1,17 @@
+{
+  "name": "it-79a0640d",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「功能或效应推理」在场景「B37」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-bio-6346602f",
+    "edge:scenario:sc-6e8684e3",
+    "slot:BATCH_SIZE:批次大小",
+    "slot:DECISION_THRESHOLD:判定阈值",
+    "slot:SEED:随机种子"
+  ]
+}

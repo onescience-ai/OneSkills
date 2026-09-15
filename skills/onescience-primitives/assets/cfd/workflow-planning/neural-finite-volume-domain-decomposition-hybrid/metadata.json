@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s072",
-    "neural-finite-volume-solver"
+    "neural-finite-volume-solver",
+    "edge:scenario:sc-b9b7f429",
+    "edge:workflow:wf-cfd-f43b987c"
   ],
   "scenario_id": "CFD_S072",
   "source_papers": [

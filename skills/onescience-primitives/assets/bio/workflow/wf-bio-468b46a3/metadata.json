@@ -1,0 +1,19 @@
+{
+  "name": "wf-bio-468b46a3",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（bio）：4 步骨架 [医学数据与任务定义 > 影像预处理与提示构建 > 医学推理与一致性校订 > 临床质量与安全复核]，被 3 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-bio-1b25f1ca",
+    "edge:task:tk-bio-08c30606",
+    "edge:task:tk-bio-b2b908cc",
+    "edge:task:tk-bio-d96112ac",
+    "edge:scenario:sc-44c95825",
+    "edge:scenario:sc-dd5688e7",
+    "edge:scenario:sc-e4455cb5"
+  ]
+}

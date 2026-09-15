@@ -1,0 +1,18 @@
+{
+  "name": "tk-matchem-7fb78252",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：候选排序与实验/文献交叉验证。被 1 个场景复用；含 1 个实例任务；资源引用 ['datapipes/xps-nife-oer-surface-analysis', 'tools/pymatgen']。",
+  "tags": [
+    "edge:resource:datapipes/xps-nife-oer-surface-analysis",
+    "edge:resource:tools/pymatgen",
+    "edge:prev:tk-matchem-1dc2f35c",
+    "slot:ANALYSIS_TABLES:分析结果表",
+    "slot:VALIDATION_DATA:验证数据",
+    "edge:instance:it-d2fdc49b"
+  ]
+}

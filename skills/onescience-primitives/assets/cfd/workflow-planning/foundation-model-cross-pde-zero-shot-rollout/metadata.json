@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s022",
-    "pde-foundation-model"
+    "pde-foundation-model",
+    "edge:scenario:sc-52588fb1",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S022",
   "source_papers": [

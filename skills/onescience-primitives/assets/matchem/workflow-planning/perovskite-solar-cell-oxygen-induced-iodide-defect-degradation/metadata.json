@@ -19,7 +19,9 @@
     "oxygen",
     "oxygen-induced",
     "perovskite",
-    "solar"
+    "solar",
+    "edge:scenario:sc-cc0a1b9b",
+    "edge:workflow:wf-matchem-87e6b0f5"
   ],
   "scenario_id": "钙钛矿太阳能电池氧诱导碘缺陷退化分析",
   "source_papers": [

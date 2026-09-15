@@ -1,0 +1,28 @@
+{
+  "name": "tk-bio-ff8556fa",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：免疫预测或候选生成。被 10 个场景复用；含 10 个实例任务；资源引用 ['models/proteinmpnn']。",
+  "tags": [
+    "edge:resource:models/proteinmpnn",
+    "edge:prev:tk-bio-5070a32d",
+    "edge:next:tk-bio-78af6937",
+    "slot:NUM_CANDIDATES:候选数量",
+    "slot:TEMPERATURE:采样温度",
+    "slot:SEED:随机种子",
+    "edge:instance:it-fb04c860",
+    "edge:instance:it-ee7c0378",
+    "edge:instance:it-7911c1a0",
+    "edge:instance:it-0ed5cd8a",
+    "edge:instance:it-ce28ad82",
+    "edge:instance:it-6321bfd7",
+    "edge:instance:it-bd4d54d7",
+    "edge:instance:it-95317b36",
+    "edge:instance:it-ffcb89cf",
+    "edge:instance:it-48da641d"
+  ]
+}

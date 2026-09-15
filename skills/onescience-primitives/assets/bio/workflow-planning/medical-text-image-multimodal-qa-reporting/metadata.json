@@ -16,7 +16,9 @@
     "technical",
     "workflow",
     "workflow-planning",
-    "b98"
+    "b98",
+    "edge:scenario:sc-dd5688e7",
+    "edge:workflow:wf-bio-468b46a3"
   ],
   "scenario_id": "B98",
   "source_papers": [

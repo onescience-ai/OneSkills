@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s021",
-    "stochastic-process-model"
+    "stochastic-process-model",
+    "edge:scenario:sc-a3525e0b",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S021",
   "source_papers": [

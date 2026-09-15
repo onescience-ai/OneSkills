@@ -1,0 +1,29 @@
+{
+  "name": "tk-bio-d3c81df0",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：设计目标与约束定义。被 10 个场景复用；含 10 个实例任务；资源引用 ['models/proteinmpnn', 'models/protoken', 'models/rfdiffusion']。",
+  "tags": [
+    "edge:resource:models/proteinmpnn",
+    "edge:resource:models/protoken",
+    "edge:resource:models/rfdiffusion",
+    "edge:next:tk-bio-a60218f1",
+    "slot:DESIGN_INPUT:设计输入",
+    "slot:MODEL_NAME:设计模型",
+    "slot:TARGET_LENGTH:目标长度",
+    "edge:instance:it-6a78fb77",
+    "edge:instance:it-e5eece42",
+    "edge:instance:it-84e192bc",
+    "edge:instance:it-2beb27de",
+    "edge:instance:it-c26d1513",
+    "edge:instance:it-a816f71c",
+    "edge:instance:it-601f15a3",
+    "edge:instance:it-d7c1b8bc",
+    "edge:instance:it-cb3ead0e",
+    "edge:instance:it-bd99e94f"
+  ]
+}

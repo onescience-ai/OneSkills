@@ -1,0 +1,16 @@
+{
+  "name": "it-238d82d6",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「器件堆叠与失效边界定义」在场景「平面钙钛矿太阳能电池接触钝化优化」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-matchem-33ff5801",
+    "edge:scenario:sc-5017cf9a",
+    "slot:DEVICE_STACK:器件与材料堆叠",
+    "slot:STRESS_CONDITION:运行与老化条件"
+  ]
+}

@@ -16,7 +16,9 @@
     "null",
     "origin",
     "oxide",
-    "structural"
+    "structural",
+    "edge:scenario:sc-964a67a7",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "富锂层状正极结构退化与氧释放分析",
   "source_papers": [

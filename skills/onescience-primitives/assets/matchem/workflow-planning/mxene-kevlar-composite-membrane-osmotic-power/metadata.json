@@ -24,7 +24,9 @@
     "power",
     "strong",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-93f48893",
+    "edge:workflow:wf-matchem-2c158827"
   ],
   "scenario_id": "MXeneKevlar复合膜渗透压发电设计",
   "source_papers": [

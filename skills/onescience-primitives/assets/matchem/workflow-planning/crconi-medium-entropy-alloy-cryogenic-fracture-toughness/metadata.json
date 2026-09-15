@@ -20,7 +20,9 @@
     "null",
     "toughness",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-8daa397c",
+    "edge:workflow:wf-matchem-4097efc6"
   ],
   "scenario_id": "CrCoNi中高熵合金低温断裂韧性分析",
   "source_papers": [

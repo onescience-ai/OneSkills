@@ -39,7 +39,9 @@
     "membrane-electrode-assembly",
     "long-term-stability",
     "electrochemical-testing",
-    "post-mortem-analysis"
+    "post-mortem-analysis",
+    "edge:scenario:sc-fa258194",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "SnBi合金CO2到甲酸盐稳定电催化设计",
   "source_papers": [

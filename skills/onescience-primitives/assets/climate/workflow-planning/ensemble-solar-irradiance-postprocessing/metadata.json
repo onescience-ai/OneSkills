@@ -55,7 +55,9 @@
     "ensemble-model-output-statistics",
     "probabilistic-forecast",
     "crps",
-    "forecast-calibration"
+    "forecast-calibration",
+    "edge:scenario:sc-fe3c0d54",
+    "edge:workflow:wf-climate-d7e0511b"
   ],
   "scenario_id": "E24",
   "source_papers": [

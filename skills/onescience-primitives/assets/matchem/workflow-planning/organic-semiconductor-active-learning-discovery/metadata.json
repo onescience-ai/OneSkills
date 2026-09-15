@@ -13,7 +13,9 @@
     "matchem",
     "null",
     "organic",
-    "semiconductors"
+    "semiconductors",
+    "edge:scenario:sc-7f832325",
+    "edge:workflow:wf-matchem-128b457b"
   ],
   "scenario_id": "有机半导体主动学习发现",
   "source_papers": [

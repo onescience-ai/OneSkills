@@ -45,9 +45,7 @@ When OneSkills prompts request actions, substitute OpenCode equivalents:
 - Fetch a URL → \`webfetch\``;
 
   const routingGuide = `**Default OneSkills routing:**
-- If the user says “使用 / 启动 / 打开 / 进入 onescience” or “使用 / 启动 / 打开 / 进入 oneskills”, start with \`onescience-workflow\` and ask for the concrete research goal before entering execution.
-- Then use \`onescience-role\` to identify the responsible role and handoff.
-- Then use \`onescience-skill\` to choose the smallest execution chain.
+- If the user says “使用 / 启动 / 打开 / 进入 onescience” or “使用 / 启动 / 打开 / 进入 oneskills”, start with \`onescience-orchestrator\` and ask for the concrete research goal before entering execution.
 - Use \`onescience-coder\` for code generation or code modification.
 - Use \`onescience-runtime\` only for run / submit / poll / diagnose tasks.
 - Use \`onescience-installer\` only for install / repair / verify tasks.

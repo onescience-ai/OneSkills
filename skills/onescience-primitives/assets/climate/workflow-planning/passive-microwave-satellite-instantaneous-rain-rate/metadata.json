@@ -48,7 +48,9 @@
     "mrr-data-processing",
     "improtoo",
     "supervised-learning",
-    "cross-validation"
+    "cross-validation",
+    "edge:scenario:sc-21812d19",
+    "edge:workflow:wf-climate-4e875ce6"
   ],
   "scenario_id": "E12",
   "source_papers": [

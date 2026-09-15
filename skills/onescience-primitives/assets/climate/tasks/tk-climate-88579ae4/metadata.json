@@ -1,0 +1,20 @@
+{
+  "name": "tk-climate-88579ae4",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：航次资料和航行约束及任务边界预检。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/CMEMS']。",
+  "tags": [
+    "edge:resource:datasets/CMEMS",
+    "edge:next:tk-climate-27a52ea7",
+    "slot:WEATHER_FORECAST:海洋天气预报",
+    "slot:VESSEL_PERFORMANCE:船舶性能参数",
+    "slot:VOYAGE_ENDPOINTS:航次起终点",
+    "slot:NAVIGATION_CONSTRAINTS:航行约束",
+    "slot:FORECAST_ISSUE_TIME:预报签发时间",
+    "edge:instance:it-6ef79863"
+  ]
+}

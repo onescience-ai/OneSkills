@@ -22,7 +22,9 @@
     "virtual",
     "workflow",
     "workflow-planning",
-    "b47"
+    "b47",
+    "edge:scenario:sc-c897917c",
+    "edge:workflow:wf-bio-9fe7f508"
   ],
   "scenario_id": "B47",
   "source_papers": [

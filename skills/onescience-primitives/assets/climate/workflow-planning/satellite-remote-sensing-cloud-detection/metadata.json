@@ -16,7 +16,9 @@
     "deep-learning",
     "cloud-mask",
     "image-preprocessing",
-    "accuracy-assessment"
+    "accuracy-assessment",
+    "edge:scenario:sc-2d7262ea",
+    "edge:workflow:wf-climate-435ef2a9"
   ],
   "harvested": true,
   "tier": "medium",

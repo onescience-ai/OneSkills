@@ -1,0 +1,19 @@
+{
+  "name": "tk-bio-1b25f1ca",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：医学数据与任务定义。被 3 个场景复用；含 3 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:next:tk-bio-08c30606",
+    "slot:MEDICAL_INPUT:医学输入",
+    "slot:MODEL_NAME:医学模型",
+    "slot:MODALITY:影像模态",
+    "edge:instance:it-98fdd59c",
+    "edge:instance:it-adb735f5",
+    "edge:instance:it-0886e946"
+  ]
+}

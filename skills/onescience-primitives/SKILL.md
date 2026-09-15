@@ -1,6 +1,6 @@
 ---
 name: onescience-primitives
-description: OneScience 原语资源召回技能。根据自然语言需求检索相关原语资源（模型、组件、数据管线、应用、可视化规范、工作流规划、契约等），通过范围判定、快速过滤和语义匹配召回，按内容需求返回相应知识；不做科研规划与代码实现。
+description: OneScience 原语资源召回技能。根据自然语言需求检索相关原语资源（模型、组件、数据管线、应用、可视化规范、工作流规划、契约等）以及 Task-Centric 科研知识（Task、Method、Operation、Validation、Scenario、Workflow），通过范围判定、快速过滤和语义匹配召回，按内容需求返回相应知识；不做科研规划与代码实现。
 type: resource
 ---
 
@@ -10,13 +10,22 @@ type: resource
 
 This skill is the unified OneSkills primitive registry. A primitive is any reusable scientific capability that can be recalled, bound into a plan, handed to an executor, or used as planning evidence. Primitives may be first-party OneScience resources or third-party tools, packages, databases, services, datasets, workflow patterns, output formats, validation contracts, and execution templates.
 
+**Task-Centric Knowledge Layer**: TC 知识对象与传统资源原语**同构同址**——一律是 `assets/<domain>/<category>/<primitive>/` 下的 `metadata.json` + `knowledge.md` 文档组，**不新增 metadata 字段、不改字段名**，因此 `catalog_search` 逻辑不变。对象类型由 `type` 区分：
+- **Task**（`type: task`，category `tasks/`）：科研能力单元（如 material-property-prediction），含目标、输入输出契约、方法路线、操作序列、验证契约、实体槽
+- **Workflow**（`type: workflow`，category `workflow/`）：以 Task 为节点的编排（如 material-screening-workflow）
+- **Scenario**（`type: scenario`，category `scenario/`）：需求绑定与验收口径（如 material-candidate-screening）
+- **Resource**（`type: model | tool | dataset | ...`，各资源 category）：被 Task 引用的资源，含带可运行脚本的资源卡
+- **Method / Operation / Validation**：不单独建卡，作为 Task 卡 `knowledge.md` 的章节 + `tags` 词表边存在
+
+知识图的**全部连接关系编码在 `tags`** 里（命名空间前缀 `edge:` / `slot:` / `atom:`），字段契约见 `references/tc/card_contract.md`。
+
 Third-party tools can be primitives. Record the source through `provider` / `provenance` metadata and expose only distilled content through `resource_retrieval_result`; do not require a permanent bridge skill unless the provider needs its own retrieval backend, credentials, lifecycle, or access policy.
 
 Use `onescience-primitive-distiller` when a new external scientific agent skill or third-party capability needs to be converted into primitive assets. This skill remains retrieval-only: it returns existing primitive content through the resource contract and does not perform distillation, migration, file creation, or script promotion itself.
 
 When an application or workflow primitive depends on a specific primitive such as `bio.tools.scanpy`, expose that relationship through `primitive_dependencies` in the consumer metadata and mention the `primitive_id` in the consumer spec or workflow notes.
 
-The preferred category set is open and includes `models`, `components`, `datapipes`, `datasets`, `tools`, `databases`, `services`, `application`, `visualization`, `workflow-planning`, `contracts`, and `output-format`. Preserve legacy category names when they already exist, and map aliases such as `workflow` to `workflow-planning` in retrieval output.
+The preferred category set is open and includes `models`, `components`, `datapipes`, `datasets`, `tools`, `databases`, `services`, `application`, `visualization`, `workflow-planning`, `contracts`, and `output-format`, plus the Task-Centric categories `tasks`, `workflow`, and `scenario`. Preserve legacy category names when they already exist. TC 的 Workflow / Scenario 卡各自独占 `workflow/` 与 `scenario/` category，与 legacy 实例卡所在的 `workflow-planning/` 物理隔离，不再做 `workflow`→`workflow-planning` 的别名归并。
 
 你负责从 `skills/onescience-primitives/assets/` 中找到最相关的 OneScience 原语，通过范围判定、快速过滤和语义匹配进行召回。不生成实现方案、不改代码、不执行脚本。
 
@@ -60,6 +69,29 @@ assets/
         workflow_planning.md     ← 规划决策知识（时机、流程、约束）
         references/               ← 可按需读取的扩展知识；仅允许 metadata 声明的文件
         scripts/                 ← 可选受控执行资产；必须由 spec.md 的 # execution_assets 结构化白名单 白名单声明
+
+    scenario/                    ← Task-Centric Scenario 层（type=scenario）：需求绑定与验收口径，由 scenario_catalogs 场景 JSON 转换而来
+      <scenario_name>/
+        metadata.json            ← type=scenario；edge:workflow 指向 Workflow 卡；src:scenario_id 溯源
+        knowledge.md
+    workflow/                    ← Task-Centric Workflow 层（type=workflow）：以 Task 为节点的编排骨架
+      <workflow_name>/
+        metadata.json            ← type=workflow；edge:task / edge:step 展开到各 Task；src:scenarios_count 记归并场景数
+        knowledge.md
+    tasks/                       ← Task-Centric Task 层（type=task，与其他 category **平级**，不嵌套 resources）
+      <task_name>/
+        metadata.json            ← type=task；tags 承载 edge:/slot:/atom: 全部图边
+        knowledge.md             ← 任务正文（目标、实体槽、输入输出契约、方法路线、操作序列、验证契约、资源引用、Task Graph、缺口与降级）
+    workflow-planning/           ← 既有实例卡（legacy，type=workflow-planning）；不再存放 TC 的 scenario/workflow 卡
+    models/ tools/ datasets/ datapipes/ components/
+    application/ visualization/ databases/ output-format/ contracts/
+                                 ← Resource 层：既有 category，与 scenario/workflow/tasks 平级；可运行资源在卡内 script/ 或 scripts/ 下
+
+skills/onescience-primitives/references/tc/   ← TC 辅助索引（skill 内，**不进 assets 域树**）
+  card_contract.md               ← 9 字段 + tags 边契约（替代原 schemas/*.yaml）
+  atoms.jsonl                    ← 原子事实（数值级召回），靠 atom:<id> tag 回链卡片
+    gaps.jsonl                     ← 缺口记录（retrieval_level != full 时追加）
+  knowledge_evolution_log.jsonl  ← 知识演进日志（预留双向反馈闭环）
 ```
 
 > **卡片双形态说明**：资源目录支持两种形态——(A) 传统四文件形态（`metadata.json` + `spec.md` + `usage.md` + `workflow_planning.md`）和 (B) 灵活单文档形态（`metadata.json` + `knowledge.md`）。当目录中仅有 `metadata.json` 和 `knowledge.md` 时，`knowledge.md` 即为完整正文，必须读取。
@@ -74,15 +106,115 @@ assets/
 
 每个 domain 下的 category 目录可能不同，按**实际存在的目录**检索，不要求所有 domain 都具有同一套子目录。当前常见 category 包括：
 
+- `scenario`                   ← Task-Centric Scenario 卡（type=scenario）
+- `workflow`                   ← Task-Centric Workflow 卡（type=workflow）
+- `tasks`                      ← Task-Centric Task 卡（bio / cfd / climate / general / matchem 五个 domain 均已建）
 - `components`
 - `models`
 - `datapipes`
 - `application`
 - `visualization`
-- `workflow-planning`
+- `workflow-planning`          ← legacy 实例卡（type=workflow-planning）
 - `contracts`
 - `databases`
 - `output-format`
+
+## Task-Centric 知识检索路径
+
+> **【重要】** 当调用方的请求涉及科研任务规划、科研能力查询、工作流编排时，应优先使用 Task-Centric 知识检索路径，而不是传统的资源原语检索。
+
+### 触发条件
+
+当 `resource_retrieval_request` 中满足以下任一条件时，进入 Task-Centric 知识检索：
+- `intent` 字段为 `task`、`workflow`、`scenario` 之一
+- `filters.task_id` 或 `filters.scenario_id` 已指定
+- `user_request` 中包含科研目标关键词（如“筛选”“预测”“验证”“排序”“性质计算”等）
+- `user_request` 中包含方法选择需求（如“用什么方法”“哪种技术路线”）
+- `user_request` 中包含工作流编排需求（如“流程是什么”“步骤有哪些”）
+
+### Task-Centric 检索步骤
+
+0. **读契约**（首次或边约定不确定时）：Read `skills/onescience-primitives/references/tc/card_contract.md`，明确 9 字段约定与 `tags` 边命名空间（`edge:` / `slot:` / `atom:` / `runnable:` / `src:`）及解析规则。
+
+0b. **查确定性索引（TC 检索的第一动作，不可跳过）**：Read `skills/onescience-primitives/references/tc/scenario_task_index.json`，按 `domain` + `scenario_title`（中文场景名）定位条目。条目的 `entry_points` 列出该场景**全部**入口卡（图谱 `sc-*` / 语义 / legacy `workflow-planning`），`lineages` 列出每条谱系的 workflow→tasks→resources 完整展开。命中条目时，**必须把条目列出的每一层卡片 Read 原文并全部纳入召回结果**，不得只取其中一张；`exists=false` 或 `dangling_resources` 非空的项按悬空边降级并记缺口，不得编造。仅当索引无命中（新场景、跨域、口语化描述）时才降级到下方关键词检索步骤。
+
+1. **识别科研目标与 domain，并按 category 目录锁定 TC 层**：从 `user_request` 判断科研目标与 domain。TC 三层各自独占一个 category 目录，**先按目录锁层、再用 `metadata.json` 的 `type` 复核**（目录与 type 必须一致）：
+   - **Scenario 层**（需求绑定与验收口径）→ `assets/<domain>/scenario/`，卡 `type=scenario`
+   - **Workflow 层**（以 Task 为节点的编排）→ `assets/<domain>/workflow/`，卡 `type=workflow`
+   - **Task 层** → `assets/<domain>/tasks/`，卡 `type=task`
+   - **既有实例卡（legacy）** → `assets/<domain>/workflow-planning/`，卡 `type=workflow-planning`，不是 TC 编排层
+
+   定位方式：Glob `assets/<domain>/scenario/*/metadata.json`、`assets/<domain>/workflow/*/metadata.json`、`assets/<domain>/tasks/*/metadata.json`。TC 层已与 legacy 的 `workflow-planning/` 物理隔离，无需再靠 Grep type 从上百张 legacy 卡里筛，误召回风险从结构上消除。
+
+   **硬规则**：legacy 实例卡（`workflow-planning/`）仅当 TC Scenario / Workflow 无命中时才能作为补充证据返回，且必须标注 `legacy_instance: true`；**不得用 legacy 实例卡替代 TC 链的任一层**，也不得因此跳过 Scenario→Workflow→Task 的逐层展开。
+
+   **场景溯源**：Scenario 卡通常由仓库外的 `scenario_catalogs/<域>/*.json` 场景需求书转换而来，原 `scenario_id` 记在 `src:scenario_id` tag 里（卡 `name` 用 kebab-case 英文或 `sc-*` 哈希，不等于 `scenario_id`）。请求里给的是中文场景名时，用 Grep `src:scenario_id` 定位，不要用 Grep `name`。
+
+   **入口不是终点（硬规则）**：同一场景可能存在三类入口卡——语义 Scenario 卡、图谱 `sc-*` Scenario 卡、legacy `workflow-planning` 卡。legacy 卡已通过 `edge:scenario:<卡名>` / `edge:workflow:<卡名>` 接线，两类 Scenario 卡之间有 `edge:alias:<卡名>` 互指。无论从哪张卡进入（包括关键词 Grep 只命中一张 Task 卡或 legacy 卡的情况），都**必须**提取场景身份（顶层 `scenario_id` 字段、`src:scenario_id` tag、description 中的场景名、或 `edge:scenario:*` 边），反查定位 Scenario 卡，然后执行步骤 6 的完整展开；**命中任何单张卡即停止检索、直接进入提问或规划，属协议违规**。
+
+2. **Task 检索（catalog 优先）**：
+   - 优先 `catalog_search`（kind=primitive, domain=<domain>, q=<目标关键词>），命中 `type=task` 的卡
+   - **catalog 是发布时快照**：新建的 TC 卡可能尚未进 catalog，无结果属正常，此时必须走文件系统降级路径，不得就此判定「无命中」
+   - `catalog_search` 无结果时降级：Glob `assets/<domain>/tasks/*/metadata.json` → Read 各 `metadata.json`，按 `description` / `tags` 语义匹配
+   - `filters.task_id` 已指定时命名直查：Glob 目录名 → Read `metadata.json`
+
+3. **实体槽精确匹配**：从请求抽取实体（如 CO₂ / MOF / band_gap），与 Task 卡 `slot:*` tags 求交集。**无交集时不得硬套该 Task**：改道（见步骤 8）或降级并记缺口。
+
+4. **读 Task 正文**：Read 命中 Task 的 `knowledge.md`，取方法路线、操作序列、验证契约、输入输出契约与已知缺口。（仅有 `metadata.json` + `knowledge.md` 时，`knowledge.md` 即完整正文，必读。）
+
+5. **Resource 关联（沿 tags 边）**：解析 `edge:resource:<category>/<name>` → 同 domain 的 `assets/<domain>/<category>/<name>/`，Read 其 `metadata.json`（必要时 `knowledge.md` 或四文件形态）。**解析不到目录 = 悬空边**：该资源判缺失，不得编造其能力，计入降级与缺口。
+
+6. **Task Graph 完整展开**：解析 Scenario 的 `edge:workflow:*` → Workflow 的**全部** `edge:task:*`（不得只取一个 Task），再对每个 Task 解析其 `edge:resource:*`；并用 `edge:prev:*` / `edge:next:*` 校验顺序一致性。输出必须给出「场景 → 工作流 → 各 Task → 各资源」的**逐层卡片路径凭证**；某一 Task 的资源边悬空时，只降级该 Task，不得连带丢弃整条链。
+
+   **检索纪律（硬规则）**：
+   - ① Grep / Glob / catalog 输出中出现截断提示（`truncated`、结果数达上限等）时，**必须**缩小检索范围（按 category 目录、更精确的关键词）重查直至无截断，**禁止基于截断输出下「无命中 / 只有 N 个」的结论**。
+   - ② 检索结果中出现同一场景的多张卡（语义 Scenario 卡、`sc-*` 图谱卡、legacy 卡、多张 `tk-*` / `it-*` 任务卡）是 Task Graph 存在的信号：必须把它们聚合成同一条链后按本步骤展开，**不得只挑其中一张读完就停**。
+   - ③ 在向用户提问、宣布 BLOCKED、或输出任何规划之前，必须先给出本步骤要求的逐层路径凭证表（含每一层的卡片相对路径与命中方式）；凭证不完整即视为检索未完成，禁止进入下一环节。
+
+6b. **泛化与复用判定**（上层需求是「一个场景能不能复用已有 Task」时必做）：
+   - 读 Workflow 骨架卡的 `src:scenarios_count` 与 `src:scenario_family`，得到这张骨架归并了多少个场景；泛化率 = `src:scenarios_count` : 该 Workflow 的 `edge:task:*` 数量。
+   - Workflow 的 `edge:step:<step_id>:<task>` 给出源场景步骤到 Task 卡的映射，用它说明「源 workflow 的第几步落在哪张卡」。
+   - 判定某张 Task 是新建还是复用：Grep 该 Task 的 `name` 于 `assets/<domain>/`，看它被多少张**其他**卡引用（被 2 条以上 Workflow 或其他 Task 的 `edge:prev/next` 引用 = 已复用骨架），并把 Grep 模式与命中数作为凭证输出。
+   - 请求的场景在 `src:scenario_id` 中无精确命中、但其骨架族匹配时：仍可用该 Workflow + Task 骨架，把场景差异落到 `slot:*` 取值上，并在输出里标注「骨架匹配、场景未建卡」，不计为悬空边。
+
+7. **Atom 检索（数值级，可选）**：请求涉及具体数值或判据（如“精度多少”“形成能阈值”）时，先取 Task 卡的 `atom:<id>` tags，再 Read `skills/onescience-primitives/references/tc/atoms.jsonl` 按 `atom_id` 定位；无 tag 时按 `statement` 关键词匹配。
+
+8. **前提核验与改道**：核对方法路线前提（势函数覆盖范围、算力与求解器可用性、阈值/权重是否可审计）。前提不满足 → 按 `edge:fallback_method:*` 改道，并在输出中写明改道原因与精度/成本影响。
+
+9. **分层降级判定**：确定 `retrieval_level`（task_centric 路径产出）：
+   - **full**：Task 卡命中 + 全部 `edge:resource:*` 解析成功 + 至少一个操作有可执行或可规划落点
+   - **partial**：Task 命中，但部分资源悬空/缺失（≥1 个资源解析成功）
+   - **task_only**：仅命中 Task 卡（返回目标与输入输出契约作为方法框架，显式声明缺口）
+   - **none**：无 Task 命中
+
+9b. **跨路径实质命中判定（决定 `knowledge_gap`——在线兜底触发的唯一依据，必做、不可跳过）**：`retrieval_level` 只在 task_centric 路径产生；当请求走 traditional_resource 路径、或 TC 层无卡而回退到 legacy `workflow-planning/` 平铺卡时，`retrieval_level` 不足以反映「到底查没查到领域知识」。因此**无论走哪条路径**，都必须再判定一次 `knowledge_gap`：
+   - **领域实质命中（`knowledge_gap=false`，本地可答）**：命中了与 `user_request` 的目标 domain + 具体研究对象/属性/方法**直接相关**的可执行 Task 卡，或领域专属资源卡（`model / tool / dataset / datapipe / component / database / contract / scenario / workflow` 等），足以支撑对该具体科学问题的准确回答。`full` 与 `partial` 均属实质命中。
+   - **没查到领域知识（`knowledge_gap=true`，触发在线兜底）**，满足任一即是：
+     a. task_centric 路径 `retrieval_level ∈ {none, task_only}`；
+     b. traditional_resource 路径 `matched_resources` 为空；
+     c. `matched_resources` **仅**由泛化规划/流程卡构成——即全部条目都是 `workflow_planning_primitive`（或标注 `legacy_instance: true` 的通用「文献综述 / 通用分析 / 通用建模流程 / 通用四步筛选」类卡），而无任何与目标 domain 具体研究对象直接相关的领域专属资源或 Task；
+     d. 命中资源的 domain 与请求目标 domain 不一致（如问 `cfd` 却只命中 `general` 域通用流程卡），且无该 domain 的实质资源。
+   - **铁律**：泛化 `workflow-planning` 卡只描述「怎么做研究」的通用流程，**不构成对具体科学问题的领域知识回答**。仅命中此类卡一律等同「没查到」，必须置 `knowledge_gap=true`，不得当成「有资源可用」继续往下走。
+
+10. **缺口记录**：`retrieval_level != full` **或** `knowledge_gap=true` 时，向 `skills/onescience-primitives/references/tc/gaps.jsonl` **追加**一行 JSON：`{ts, domain, task, retrieval_level, knowledge_gap, request_slots{}, missing_resources[], dangling_edges[], suggested_fill, domain_match_summary{exact, adjacent, cross_domain}, gate_hit, gate_layer}`。只追加、不删改历史记录。
+    - `domain_match_summary`：在线兜底完成后按 step 11 的 domain_match 标签统计三档数量；未触发兜底时三档均填 0。
+    - `gate_hit`：∈ {`domain_mismatch`, `bare_number_reject`, `result_identity_lock`, `validation_rollback`, `complete_downgrade`, null}。本技能只在 A 层门禁命中时填 `domain_mismatch`（cross_domain 文献被当参数来源、或兜底后 exact=0）；B/C/D 层由 orchestrator 命中后追加各自 gate_hit 行（同一 gaps.jsonl，四层共用，便于 A/B 归因统计）。
+    - `gate_layer`：∈ {`A_knowledge`, `B_planning`, `C_execution`, `D_acceptance`}，与 gate_hit 配套。
+
+11. **在线兜底检索（`knowledge_gap=true` 时强制触发——即 step 9b 判定「本地没查到领域实质知识」，涵盖 none / task_only / 空召回 / 仅命中泛化 workflow-planning 卡 / domain 不符 五种情形）**：本地资产已无法产出准确完整的回答 → **调用 `onescience-live-literature` 技能联网兜底**：把上层需求转成该技能 Step 1 的查询分解，走两级在线检索（OpenAlex 摘要层迭代精炼 + Europe PMC/PMC 全文层取细节），产出带连续编号引用 `[n]` 的分层综合答案作为兜底。兜底硬约束：① 答案顶部显式标注「⚠ 本地知识缺口（knowledge_gap=true, retrieval_level=<none|task_only|empty|generic_only>），以下为在线文献兜底结果」；② 全程遵守 live-literature 的纪律铁律（只引池内论文、数值/极性有出处、abstract-only 降权标注、失败通道显式报告）；③ 在 step 10 已写入的 gaps.jsonl 缺口行 `suggested_fill` 末尾追加「已触发在线兜底」；④ 兜底答案是**补充而非替代**——若仍有任意本地 Task/资源命中，须一并列出本地凭证；⑤ **严禁编造**：`knowledge_gap=true` 时不得用泛化 workflow-planning 剧本假装完成、不得返回「模拟检索结果 / 模拟数据 / 默认参数 / 历史案例」充数；联网通道不可用（离线）时**不得报错、不得中断整个任务**：如实标注「本地知识缺口 + 当前离线，在线兜底不可用」，把该缺口作为已知限制交回上层，由上层继续执行任务其余部分（离线不构成 blocked，更不是编造模拟数据的理由）。⑥ **单一集中通道 + 证据并回召回结果**：本 step 11 是在线兜底的**唯一集中执行点**；兜底产出的带编号引用与接地事实必须以 `online_evidence` 字段**并入本技能召回结果**（见输出格式），作为上层规划/执行消费文献证据的唯一来源；orchestrator 见到 `online_evidence` 非空时**不得重复触发**检索（单次集中通道，防限流/防双跑）。⑦ **召回阶段证据边界（严禁自造）**：召回结果中不得填入任何未经「用户提供 / 本地卡 / 在线引文[n]」支持的参数、阈值、数据集或研究对象；无法支持的项只能标 `proposed_candidate(待确认)` 或留空，绝不伪造。⑧ **domain_match 标签与跨域降级（A 层门禁，修 ws07 文献场景错配）**：兜底产出的 `online_evidence.citations[]` 每条必须带 `domain_match ∈ {exact, adjacent, cross_domain}` 标签——`exact`=文献研究对象与本任务目标域及具体研究对象直接一致（如本任务问数据中心浸没液冷，文献即研究 immersion cooling of data center/server rack）；`adjacent`=同目标域但不同冷却方式/子场景（如 data center 但 air-cooled、liquid-cooled battery 但非机柜级）；`cross_domain`=不同应用领域（如电池热管理、PCM 储能、铸造、氢能）。**cross_domain 文献只能作为方法学参考**（验证思路、网格无关性方法、湍流模型候选），不得作为本次参数/阈值/几何/工况来源；违反时该参数降级为 `proposed_candidate(待确认)` 并向 gaps.jsonl 追加 `gate_hit=domain_mismatch, gate_layer=A_knowledge`。兜底完成后若池内 `exact` 数为 0：必须要求 live-literature 触发第二轮场景锚词精炼检索（锚词=目标域+具体研究对象，如「immersion cooling」+「data center」）；仍为 0 则在 `online_evidence` 顶部如实标注「在线兜底形式成功、实质未命中目标域（exact=0）」，相关科学结论保持 BLOCKED/诚实 PARTIAL，不得用 adjacent/cross_domain 文献硬凑本次参数。`knowledge_gap=false`（full / partial / 命中领域专属资源）**不触发**兜底，仍走本地链，仅在缺口处按 step 10 记录。
+
+12. **可执行落点识别**：若 Task 的 `edge:operation:*` 在某资源卡上有对应实现，且该卡带 `runnable:script` tag，则该操作**本机可执行**：输出中给出脚本相对路径与可直接运行的命令；否则标注「无可执行落点，仅规划」。
+
+13. **组织输出**：按下方输出格式返回。
+
+### Task 检索与传统资源检索的桥接
+
+- Task 卡的 `edge:resource:<category>/<name>` 指向的就是传统原语目录（如 `edge:resource:models/mace` → `assets/matchem/models/mace/`），解析成功后按传统路径 Read 其 `metadata.json` + `knowledge.md`（或 `spec.md` / `usage.md` / `workflow_planning.md`）。
+- **悬空边**（无对应目录）视为资源缺失：不得编造资源能力，计入 `partial` 降级并写 `gaps.jsonl`。
+- **反向边**：资源卡可用 `edge:task:<name>` 声明被哪些 Task 引用（如 `prediction-metric-calculator` → `prediction-accuracy-evaluation`），便于从资源侧回查任务。
+- Task / Workflow / Scenario 卡与传统资源卡**共用同一套检索基础设施**（catalog_search 优先 + 文件系统降级），无需第二套索引文件。
+
+---
 
 ## 召回流程
 
@@ -198,6 +330,10 @@ b. `filters.domain` 已明确指定（如 `bio`、`cfd`、`climate`、`matchem`�
    - 若某个依赖组件在 `components` 中不存在，在 `limitations` 中说明缺失的组件
    - **此步骤不可跳过**：即使 `content_request` 为 `"摘要"`，也必须检索依赖组件并至少返回其基本信息（name、description）
 9. **填充输出字段**：按下方「字段取值规则」推导 `detected_domain`、`task_intent`、每个资源的 `type`，并按「质量要求」生成 `why_matched`、摘要形式的 `content`、`limitations`。
+   - **【强制·跨路径兜底闸门，不可跳过】** 填充输出后，本 traditional_resource 路径**同样必须**执行上文「Task-Centric 检索步骤」中的 step 9b（跨路径实质命中判定）、step 10（缺口记录）、step 11（在线兜底检索）——这三步**不因走常规召回管道而豁免**（否则 off-shape 场景如 CFD 会因回退到本路径命中泛化卡而绕过兜底）。具体地：
+     - 按 step 9b 计算 `knowledge_gap`：若 `matched_resources` 为空、或**仅**命中泛化 `workflow_planning_primitive`（如「文献综述 / 通用分析 / 通用建模流程 / 通用四步筛选」类 legacy 卡）而无任何与目标 domain 具体研究对象直接相关的领域专属资源、或命中 domain 与请求 domain 不符，一律置 `knowledge_gap=true`，`retrieval_level` 折算为 `none`。
+     - `knowledge_gap=true` 时按 step 10 追加 gaps.jsonl，并按 step 11 强制调用 `onescience-live-literature` 联网兜底，`online_fallback` 置 `live_literature`；**严禁**把泛化 workflow-planning 卡当作领域知识回答返回，更严禁编造「模拟检索结果 / 模拟数据 / 默认参数 / 历史案例」充数。
+     - `knowledge_gap=false`（命中领域专属资源）时 `online_fallback` 置 `not_triggered`，正常返回。
 
 ## 输入格式
 
@@ -207,10 +343,20 @@ resource_retrieval_request:
   task_state_summary: <当前任务状态摘要，可选>
   content_request: <内容需求，可选>
   include_execution_assets: <true | false，可选，默认 false>
+  intent: <resource | task | workflow | scenario，可选，默认 resource>
   filters:
     domain: <领域过滤，可选>
     keyword: <关键词过滤，可选>
+    task_id: <Task ID 过滤，可选，用于 Task-Centric 检索>
+    scenario_id: <Scenario ID 过滤，可选，用于 Task-Centric 检索>
+    method_id: <Method ID 过滤，可选，用于 Task-Centric 检索>
 ```
+
+> **intent 字段说明**：
+> - `resource`（默认）：走传统原语资源检索路径
+> - `task`：走 Task-Centric 知识检索路径，返回 Task 定义及其关联的 Method/Resource/Operation/Validation
+> - `workflow`：走 Task-Centric 知识检索路径，返回 Workflow 的 Task Graph 及各 Task 定义
+> - `scenario`：走 Task-Centric 知识检索路径，返回 Scenario 及关联的 Workflow 和 Task
 
 ## 输出格式
 
@@ -221,15 +367,50 @@ resource_retrieval_result:
   status: success | partial | failed
   query_summary: <需求摘要>
   detected_domain: <climate | cfd | matchem | bio | general | unknown>
-  task_intent: <model | component | datapipe | application | tool | database | output-format | visualization | workflow | contract | mixed>
+  task_intent: <model | component | datapipe | application | tool | database | output-format | visualization | workflow | contract | mixed | task | scenario>
+  retrieval_path: <traditional_resource | task_centric>   # 标识使用了哪条检索路径
+  retrieval_level: <full | partial | task_only | none>     # 分层降级级别（task_centric 路径产出；traditional_resource 路径按 step 9b 折算：领域专属资源命中=partial/full，空或仅泛化卡=none）
+  knowledge_gap: <true | false>                            # step 9b 跨路径实质命中判定，在线兜底触发的唯一依据；true=本地没查到领域实质知识（含 none/task_only/空召回/仅命中泛化 workflow-planning 卡/domain 不符）
+  online_fallback: <not_triggered | live_literature>        # knowledge_gap=true 时置 live_literature，否则 not_triggered
+  online_fallback_status: <online | offline | not_applicable>  # 兜底通道实际状态；offline=联网失败/限流已优雅降级（不报错不停摆）
+  online_evidence:                                            # 在线兜底真实检索到的文献证据（单一集中通道产出；orchestrator 见非空不得重复检索）
+    citations: [ "[n] 标题 | venue | year | doi | domain_match=<exact|adjacent|cross_domain> | evidence_level=<full-text|abstract-only>" ]  # 仅池内真实论文，连续编号；domain_match 必填（A 层门禁）
+    grounded_facts: [ "事实陈述（标注 [n] 出处 + 该文献 domain_match）" ]   # 可供规划/执行直接 grounding 参数与结论的文献接地事实；cross_domain 文献的事实只能作方法学参考，不得作本次参数来源
+    domain_match_summary: { exact: <int>, adjacent: <int>, cross_domain: <int> }  # 三档计数；exact=0 时必须已触发第二轮场景锚词精炼检索，仍为 0 则顶部标注「实质未命中目标域」
+    # 为空（offline 或未触发）时上层必须进入证据边界模式：不得自造参数/数据/阈值充当本次结果
   matched_resources:
-    - type: model_primitive | component_primitive | datapipe_primitive | application_primitive | tool_primitive | database_primitive | output_format_primitive | visualization_primitive | workflow_planning_primitive | contract_primitive
-      path: assets/<domain>/<category>/<primitive_name>/
+    - type: model_primitive | component_primitive | datapipe_primitive | application_primitive | tool_primitive | database_primitive | output_format_primitive | visualization_primitive | workflow_planning_primitive | contract_primitive | task_primitive | method_primitive | operation_primitive | validation_primitive | scenario_primitive | workflow_task_graph_primitive | atom_primitive
+      path: assets/<domain>/<category>/<primitive_name>/   # TC 卡与传统资源卡共用同一三层路径
       name: <原语名称>
       why_matched: <匹配理由，1句话>
       limitations: <使用限制，1-2句话>
       content: <根据 content_request 组织的内容>
+  gap_record:                                              # 仅 retrieval_level != full 时存在，与 gaps.jsonl 追加行同构
+    gap_id: <string>
+    missing_layer: <task | resource | operation | validation | atom | executable>
+    dangling_edges: [<tags 中解析失败的 edge:* 值>]
+    suggested_harvest: <string>
 ```
+
+> **Task-Centric 检索结果说明**：
+> 当 `retrieval_path` 为 `task_centric` 时，`matched_resources` 中的条目可能包含：
+> - `task_primitive`：Task 卡，content 包含 `knowledge.md` 正文（目标、实体槽、输入输出契约、方法路线、操作序列、验证契约）与沿 `edge:*` 展开的资源信息；若操作有可执行落点，附带脚本相对路径与可运行命令
+> - `scenario_primitive` / `workflow_task_graph_primitive`：Scenario 需求绑定与 Workflow 的 Task Graph（阶段链 + 各阶段门槛）
+> - `tool_primitive` / `model_primitive` 等：沿 `edge:resource:*` 解析到的传统资源卡（含带 `runnable:script` 的可执行资源）
+> - `atom_primitive`：原子事实，content 包含 statement、value、unit、evidence（来自 `references/tc/atoms.jsonl`）
+>
+> Method / Operation / Validation **不单独成条**，而是作为 `task_primitive` content 内的章节与 `edge:method:*` / `edge:operation:*` / `edge:validation:*` 词表边返回。
+>
+> **retrieval_level 说明**：
+> - `full`：Task 卡命中 + 全部 `edge:resource:*` 解析成功 + 至少一个操作有可执行或可规划落点
+> - `partial`：Task 命中，但部分资源边悬空/缺失（≥1 个资源解析成功）
+> - `task_only`：仅命中 Task 卡，返回目标与输入输出契约作为方法框架并声明缺口
+> - `none`：无 Task 命中
+>
+> **knowledge_gap 说明（跨两条检索路径，在线兜底触发的唯一依据，见 step 9b）**：
+> - `false`：命中领域专属 Task 或资源（full / partial / traditional_resource 路径命中领域专属资源），本地足以作答。
+> - `true`：本地没查到领域实质知识——`retrieval_level ∈ {none, task_only}`、或 `matched_resources` 为空、或仅命中泛化 `workflow-planning` 流程卡（如「文献综述工作流」）而无领域专属资源、或命中 domain 与请求 domain 不符。**泛化流程卡只讲「怎么做研究」，不等于对具体科学问题的领域回答，仅命中它一律 `knowledge_gap=true`。**
+> - **在线兜底**：`knowledge_gap=true` 时按检索协议 step 11 强制触发 `onescience-live-literature` 联网兜底，产出带连续编号引用的分层综合答案并显式标注「本地知识缺口」；`knowledge_gap=false`（full / partial / 领域专属资源命中）不触发兜底。
 
 `content` 完整格式（仅当 `content_request` 为 `"完整内容"` 时）：
 
@@ -319,7 +500,9 @@ content:
   - `visualization` 下的 `visualization` → `visualization_primitive`
   - `tools` 下的 `tool` → `tool_primitive`
   - `databases` 下的 `database` → `database_primitive`
-  - `workflow-planning` 下的 `workflow-planning` 或 `workflow` → `workflow_planning_primitive`
+  - `workflow-planning` 下的 `workflow-planning` → `workflow_planning_primitive`（legacy 实例卡）
+  - `scenario` 下的 `scenario` → `scenario_primitive`
+  - `workflow` 下的 `workflow` → `workflow_task_graph_primitive`
   - `contracts` 下的 `contract` → `contract_primitive`
   - 若 `metadata.json.type` 与目录语义冲突，优先采用更能反映资源用途的目录语义，并在 `limitations` 中说明
 - **`task_intent`**：根据 `user_request` 的主要意图判断。
@@ -354,3 +537,4 @@ content:
 - `limitations` 优先从 `spec.md` 或 `workflow_planning.md` 的约束部分提炼；若相关文件缺失，可根据 `metadata.json` 已知边界简要说明。
 - 某些资源可能缺少 `usage.md`、`spec.md` 或 `workflow_planning.md`；若请求内容部分存在、部分缺失，可返回 `status: partial`，并在 `limitations` 中说明缺失项。
 - 没有匹配资源时返回空 `matched_resources: []`，不编造资源。
+- **禁止泛化卡冒充领域命中**：仅命中通用 `workflow-planning` 流程卡（文献综述 / 通用分析 / 通用筛选等）时，必须置 `knowledge_gap=true` 并按 step 11 触发在线兜底，不得把泛化流程卡当作领域知识回答返回、更不得据此编造「模拟检索结果 / 模拟数据 / 默认参数」充数。本地无领域知识时的唯一合法出路是联网兜底或如实报告缺口（`knowledge_gap=true` + `online_fallback` 交回上层）。

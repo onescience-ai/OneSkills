@@ -14,7 +14,9 @@
     "learning",
     "machine",
     "matchem",
-    "null"
+    "null",
+    "edge:scenario:sc-1af7ad1f",
+    "edge:workflow:wf-matchem-128b457b"
   ],
   "scenario_id": "高熵陶瓷机器学习发现",
   "source_papers": [

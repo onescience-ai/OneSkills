@@ -1,0 +1,24 @@
+{
+  "name": "tk-cfd-6d2108f0",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（cfd）：候选生成与约束优化。被 7 个场景复用；含 7 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-cfd-18078463",
+    "edge:next:tk-cfd-3fb1a5d6",
+    "slot:CHECKPOINT:模型权重",
+    "slot:DEVICE:计算设备",
+    "slot:BATCH_SIZE:推理批大小",
+    "edge:instance:it-fe45c2c4",
+    "edge:instance:it-ecd442f9",
+    "edge:instance:it-1a6c2ab1",
+    "edge:instance:it-1612e0d1",
+    "edge:instance:it-53d1f3cf",
+    "edge:instance:it-b5364c16",
+    "edge:instance:it-908e35e9"
+  ]
+}

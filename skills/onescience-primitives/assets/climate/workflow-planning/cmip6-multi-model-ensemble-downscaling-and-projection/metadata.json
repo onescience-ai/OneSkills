@@ -15,7 +15,9 @@
     "climate-projection",
     "future-climate-change",
     "statistical-downscaling",
-    "uncertainty-quantification"
+    "uncertainty-quantification",
+    "edge:scenario:sc-bbedbf34",
+    "edge:workflow:wf-climate-47e1e56a"
   ],
   "harvested": true,
   "tier": "medium",

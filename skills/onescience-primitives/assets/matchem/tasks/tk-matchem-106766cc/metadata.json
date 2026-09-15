@@ -1,0 +1,23 @@
+{
+  "name": "tk-matchem-106766cc",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：根源势函数训练。被 7 个场景复用；含 7 个实例任务；资源引用 ['models/mace']。",
+  "tags": [
+    "edge:resource:models/mace",
+    "edge:prev:tk-matchem-8c781538",
+    "edge:next:tk-matchem-03396a62",
+    "slot:POTENTIAL_CONFIG:势函数根源模型配置",
+    "edge:instance:it-98891d79",
+    "edge:instance:it-b23583d0",
+    "edge:instance:it-a5cf5b54",
+    "edge:instance:it-1e04d9e3",
+    "edge:instance:it-1141680f",
+    "edge:instance:it-080df366",
+    "edge:instance:it-6c805e1b"
+  ]
+}

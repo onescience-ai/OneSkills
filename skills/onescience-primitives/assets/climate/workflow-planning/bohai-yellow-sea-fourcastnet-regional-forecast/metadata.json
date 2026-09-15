@@ -32,7 +32,9 @@
     "remaining-useful-life",
     "vibration-signal",
     "run-to-failure",
-    "xjtu-sy"
+    "xjtu-sy",
+    "edge:scenario:sc-6771277f",
+    "edge:workflow:wf-climate-0064db67"
   ],
   "scenario_id": "E107",
   "source_papers": [],

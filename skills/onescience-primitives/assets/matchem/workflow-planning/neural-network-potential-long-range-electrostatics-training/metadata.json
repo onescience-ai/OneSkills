@@ -16,7 +16,9 @@
     "neural",
     "null",
     "potentials",
-    "self-consistent"
+    "self-consistent",
+    "edge:scenario:sc-95d6aae9",
+    "edge:workflow:wf-matchem-ec013e02"
   ],
   "scenario_id": "神经网络势长程静电自洽训练",
   "source_papers": [

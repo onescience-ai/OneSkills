@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s016",
-    "physics-informed-gan"
+    "physics-informed-gan",
+    "edge:scenario:sc-6e6159a2",
+    "edge:workflow:wf-cfd-e7748c02"
   ],
   "scenario_id": "CFD_S016",
   "source_papers": [

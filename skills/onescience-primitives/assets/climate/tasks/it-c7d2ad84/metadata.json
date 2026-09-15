@@ -1,0 +1,18 @@
+{
+  "name": "it-c7d2ad84",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「生成格点pCO2、误差和外推质量标志」在场景「E13」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-f0566094",
+    "edge:scenario:sc-697ebcbc",
+    "slot:OUTPUT_FORMAT:输出格式",
+    "slot:OUTPUT_DIRECTORY:结果保存路径",
+    "slot:POSTPROCESS_CONFIG:后处理配置",
+    "slot:DERIVED_PRODUCTS:派生产品"
+  ]
+}

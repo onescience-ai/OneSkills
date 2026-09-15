@@ -17,7 +17,9 @@
     "climate-variability",
     "ace2",
     "glosea",
-    "reanalysis-evaluation"
+    "reanalysis-evaluation",
+    "edge:scenario:sc-43bddc37",
+    "edge:workflow:wf-climate-2b5e3703"
   ],
   "harvested": true,
   "tier": "medium",

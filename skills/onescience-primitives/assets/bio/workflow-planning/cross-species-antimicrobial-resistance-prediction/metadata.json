@@ -25,7 +25,9 @@
     "reads",
     "workflow",
     "workflow-planning",
-    "b97"
+    "b97",
+    "edge:scenario:sc-aa2a08ba",
+    "edge:workflow:wf-bio-8c56a4bc"
   ],
   "scenario_id": "B97",
   "source_papers": [

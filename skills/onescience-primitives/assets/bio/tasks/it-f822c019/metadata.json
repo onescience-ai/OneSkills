@@ -1,0 +1,17 @@
+{
+  "name": "it-f822c019",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「微生物预测与聚合」在场景「B91」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-bio-aa67870c",
+    "edge:scenario:sc-30edf759",
+    "slot:BATCH_SIZE:批次大小",
+    "slot:DECISION_THRESHOLD:判定阈值",
+    "slot:SEED:随机种子"
+  ]
+}

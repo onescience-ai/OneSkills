@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s098",
-    "super-resolution-cnn"
+    "super-resolution-cnn",
+    "edge:scenario:sc-76507c95",
+    "edge:workflow:wf-cfd-29af55b0"
   ],
   "scenario_id": "CFD_S098",
   "source_papers": [

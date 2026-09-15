@@ -1,0 +1,22 @@
+{
+  "name": "tk-bio-0299abd1",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：生态与分类质量评估。被 7 个场景复用；含 7 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-bio-aa67870c",
+    "slot:MIN_CONFIDENCE:置信度下限",
+    "slot:REPORT_UNKNOWN:报告未知类别",
+    "edge:instance:it-708cc525",
+    "edge:instance:it-8c291b0e",
+    "edge:instance:it-40f4a08d",
+    "edge:instance:it-2c15ee93",
+    "edge:instance:it-82feda7e",
+    "edge:instance:it-82ea5118",
+    "edge:instance:it-1d3da90a"
+  ]
+}

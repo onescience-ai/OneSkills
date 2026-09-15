@@ -18,7 +18,9 @@
     "null",
     "thermal",
     "ultrahigh-efficient",
-    "visible-infrared-compatible"
+    "visible-infrared-compatible",
+    "edge:scenario:sc-25756aca",
+    "edge:workflow:wf-matchem-128b457b"
   ],
   "scenario_id": "热超材料可见红外兼容伪装逆向设计",
   "source_papers": [

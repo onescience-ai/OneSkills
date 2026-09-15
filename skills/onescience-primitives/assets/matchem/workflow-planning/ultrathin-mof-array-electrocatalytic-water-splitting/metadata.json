@@ -18,7 +18,9 @@
     "null",
     "splitting",
     "ultrathin",
-    "water"
+    "water",
+    "edge:scenario:sc-c0976de7",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "超薄MOF阵列电催化水分解设计",
   "source_papers": [

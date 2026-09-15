@@ -25,7 +25,9 @@
     "predictor",
     "workflow",
     "workflow-planning",
-    "b05"
+    "b05",
+    "edge:scenario:sc-f26b7c44",
+    "edge:workflow:wf-bio-5aaefe7e"
   ],
   "scenario_id": "B05",
   "source_papers": [

@@ -15,7 +15,9 @@
     "forecast-postprocessing",
     "physics-based-modeling",
     "atmospheric-modeling",
-    "regional-downscaling"
+    "regional-downscaling",
+    "edge:scenario:sc-84809286",
+    "edge:workflow:wf-climate-a3c4e65c"
   ],
   "harvested": true,
   "tier": "medium",

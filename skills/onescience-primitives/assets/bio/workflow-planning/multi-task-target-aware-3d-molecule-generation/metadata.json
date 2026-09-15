@@ -21,7 +21,9 @@
     "unified",
     "workflow",
     "workflow-planning",
-    "b60"
+    "b60",
+    "edge:scenario:sc-5a458785",
+    "edge:workflow:wf-bio-856a5702"
   ],
   "scenario_id": "B60",
   "source_papers": [

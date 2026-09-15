@@ -17,7 +17,9 @@
     "landslide-early-warning",
     "hourly-rainfall",
     "CTRL-T",
-    "uncertainty-quantification"
+    "uncertainty-quantification",
+    "edge:scenario:sc-fb225651",
+    "edge:workflow:wf-climate-1e8afd55"
   ],
   "harvested": true,
   "tier": "high",

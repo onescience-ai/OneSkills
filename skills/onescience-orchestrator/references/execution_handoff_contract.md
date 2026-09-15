@@ -34,6 +34,8 @@ execution_result:
   attempt: <当前尝试次数>
   status: <success | partial | failed | blocked | step_timeout>
   failure_category: <transient | environment | dependency | data | code | scientific | platform | unknown | null>
+  result_identity: <research_result | engineering_demo | smoke_test | not_a_result>   # C 层门禁强制字段
+  result_identity_basis: <申报依据；产物自述含 smoke/demo/simplified/toy/not suitable for production 等关键词时 orchestrator 自动锁 not_a_result，executor 不得申报更高身份>
   artifacts:
     <产物清单>
   observation:
@@ -47,6 +49,13 @@ execution_result:
       timestamp: <ISO8601>
       description: <事件描述>
 ```
+
+**result_identity 与状态判定约束（C/D 层门禁）**：
+
+- `result_identity ∈ {engineering_demo, smoke_test, not_a_result}` 的 step：状态只能标 `DEMO_PASS` / `PARTIAL` / `BLOCKED`，**禁止标 PASS**；其输出禁止进入最终报告「关键发现/科研结论」段，只能进入「方法演示/脚手架」段并前置「以下为演示输出，不构成本次科研结论」；下游依赖其产物的 step 自动继承 `not_a_result` 身份。
+- **输入门禁 ≠ 结果身份门禁**：用户确认「使用默认示例/典型参数/推荐值」只解除 input_gate（允许用默认值继续执行），不解除 result_identity_gate——默认值跑出的产物仍是 `engineering_demo`，不得申报 `research_result`。
+- 验证类 step（网格独立性/能量守恒/可复现审计/指标对标等）判 FAIL/PARTIAL 时，orchestrator 自动回退其上游已标 PASS 的 step 为 `UNVERIFIED`/`PARTIAL`（D 层级联回退，写 `validation_rollback` event）；executor 不得在验证失败后仍申报上游产物 PASS。
+- `status=complete` 前提：所有 step `result_identity=research_result` + 所有验证 step PASS + 无未解除 `blocked_missing`；否则终态只能是 `complete_with_caveats` / `partial` / `blocked`。
 
 ## Step Owner 与下游委托规则
 

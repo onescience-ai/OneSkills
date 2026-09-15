@@ -19,7 +19,9 @@
     "nearly",
     "null",
     "screening",
-    "storage"
+    "storage",
+    "edge:scenario:sc-9c1c1ccc",
+    "edge:workflow:wf-matchem-2c158827"
   ],
   "scenario_id": "MOF高通量储氢筛选",
   "source_papers": [

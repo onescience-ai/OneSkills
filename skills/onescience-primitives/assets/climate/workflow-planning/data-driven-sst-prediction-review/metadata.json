@@ -15,7 +15,9 @@
     "model-comparison",
     "review",
     "ocean-science",
-    "geophysical-forecasting"
+    "geophysical-forecasting",
+    "edge:scenario:sc-6771277f",
+    "edge:workflow:wf-climate-0064db67"
   ],
   "harvested": true,
   "tier": "medium",

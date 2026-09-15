@@ -41,7 +41,9 @@
     "temperature",
     "workflow",
     "workflow-planning",
-    "e28"
+    "e28",
+    "edge:scenario:sc-cb8828e9",
+    "edge:workflow:wf-climate-a08049c7"
   ],
   "scenario_id": "E28",
   "source_papers": [

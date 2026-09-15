@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s055",
     "wavelet-neural-operator",
-    "localized-kernel-operator"
+    "localized-kernel-operator",
+    "edge:scenario:sc-fe576333",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S055",
   "source_papers": [

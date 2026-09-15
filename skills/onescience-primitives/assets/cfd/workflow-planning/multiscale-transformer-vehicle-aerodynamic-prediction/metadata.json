@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s012",
     "transformer-surrogate",
-    "triplane-network"
+    "triplane-network",
+    "edge:scenario:sc-536df40b",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S012",
   "source_papers": [

@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s015",
-    "gaussian-process"
+    "gaussian-process",
+    "edge:scenario:sc-fd32e13d",
+    "edge:workflow:wf-cfd-e7748c02"
   ],
   "scenario_id": "CFD_S015",
   "source_papers": [

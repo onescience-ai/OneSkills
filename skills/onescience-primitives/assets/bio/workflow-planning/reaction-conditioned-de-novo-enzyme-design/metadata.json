@@ -16,7 +16,9 @@
     "reaction_smiles",
     "workflow",
     "workflow-planning",
-    "b20"
+    "b20",
+    "edge:scenario:sc-912bc268",
+    "edge:workflow:wf-bio-42419238"
   ],
   "scenario_id": "B20",
   "source_papers": [

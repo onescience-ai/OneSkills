@@ -16,7 +16,9 @@
     "sarimax",
     "epidemiological-modeling",
     "lag-effects",
-    "model-comparison"
+    "model-comparison",
+    "edge:scenario:sc-7d1fa1a7",
+    "edge:workflow:wf-climate-a2b88c9a"
   ],
   "harvested": true,
   "tier": "medium",

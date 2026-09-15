@@ -21,7 +21,9 @@
     "null",
     "structural",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-56a267f2",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "LiMn富锂层状正极电流密度退化分析",
   "source_papers": [

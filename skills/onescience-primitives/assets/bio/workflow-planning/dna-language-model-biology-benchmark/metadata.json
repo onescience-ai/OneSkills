@@ -25,7 +25,9 @@
     "genomic",
     "workflow",
     "workflow-planning",
-    "b65"
+    "b65",
+    "edge:scenario:sc-7f15dbcc",
+    "edge:workflow:wf-bio-afe9f9ae"
   ],
   "scenario_id": "B65",
   "source_papers": [

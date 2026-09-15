@@ -1,0 +1,28 @@
+{
+  "name": "sc-9566751c",
+  "type": "scenario",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：Cu-NxBy_单原子位点CO2到CH4选择性优化（matchem）。工作流 4 步，经 edge:workflow 指向 wf-matchem-923c2045，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "src:scenario_id:Cu-NxBy_单原子位点CO2到CH4选择性优化",
+    "edge:workflow:wf-matchem-923c2045",
+    "edge:task:tk-matchem-df4123d6",
+    "edge:task:tk-matchem-0c043f0d",
+    "edge:task:tk-matchem-b00fbef2",
+    "edge:task:tk-matchem-3f89bcb1",
+    "slot:CATALYST_STRUCTURE:基底结构",
+    "slot:COORDINATION_SET:配位候选",
+    "slot:COORDINATION_STRUCTURES:配位结构集合",
+    "slot:INTERMEDIATE_SET:中间体集合",
+    "slot:DFT_CONFIG:DFT 设置",
+    "slot:ADSORPTION_RESULTS:吸附结果",
+    "slot:ELECTROCHEMICAL_POTENTIAL:电位",
+    "slot:BARRIER_METHOD:能垒方法",
+    "slot:REACTION_ANALYSIS:反应分析结果",
+    "slot:VALIDATION_DATA:验证数据"
+  ]
+}

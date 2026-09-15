@@ -16,7 +16,9 @@
     "three-electrode-system",
     "rhe-calibration",
     "rotating-disk-electrode",
-    "acidic-electrolyte"
+    "acidic-electrolyte",
+    "edge:scenario:sc-864efe88",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "harvested": true,
   "tier": "medium",

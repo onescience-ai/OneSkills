@@ -1,0 +1,29 @@
+{
+  "name": "sc-dd5688e7",
+  "type": "scenario",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：B98（bio）。工作流 4 步，经 edge:workflow 指向 wf-bio-468b46a3，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "src:scenario_id:B98",
+    "edge:workflow:wf-bio-468b46a3",
+    "edge:task:tk-bio-1b25f1ca",
+    "edge:task:tk-bio-08c30606",
+    "edge:task:tk-bio-b2b908cc",
+    "edge:task:tk-bio-d96112ac",
+    "slot:MEDICAL_INPUT:医学输入",
+    "slot:MODEL_NAME:医学模型",
+    "slot:MODALITY:影像模态",
+    "slot:CHECKPOINT:模型权重",
+    "slot:CLINICAL_PROMPT:临床提示",
+    "slot:MAX_TOKENS:最大输出词元",
+    "slot:TEMPERATURE:生成温度",
+    "slot:SEED:随机种子",
+    "slot:REVISION_PASS:启用二次校订",
+    "slot:MIN_CLINICAL_SCORE:临床得分下限",
+    "slot:REQUIRE_REVIEW:要求医生复核"
+  ]
+}

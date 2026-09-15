@@ -1,0 +1,16 @@
+{
+  "name": "it-209020a2",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「沿岸潮位驱动的快速淹没产品生成」在场景「E109」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-c5ce9f36",
+    "edge:scenario:sc-2c4fca50",
+    "slot:TARGET_WATER_LEVEL_CYCLE:目标潮位批次",
+    "slot:OUTPUT_DIRECTORY:结果输出目录"
+  ]
+}

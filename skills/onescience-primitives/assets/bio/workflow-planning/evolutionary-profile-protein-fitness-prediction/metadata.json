@@ -25,7 +25,9 @@
     "profile",
     "workflow",
     "workflow-planning",
-    "b36"
+    "b36",
+    "edge:scenario:sc-ec58063b",
+    "edge:workflow:wf-bio-78f31941"
   ],
   "scenario_id": "B36",
   "source_papers": [

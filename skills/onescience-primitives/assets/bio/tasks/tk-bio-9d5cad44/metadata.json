@@ -1,0 +1,26 @@
+{
+  "name": "tk-bio-9d5cad44",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：性质过滤与候选排序。被 10 个场景复用；含 10 个实例任务；资源引用 ['models/diffdock']。",
+  "tags": [
+    "edge:resource:models/diffdock",
+    "edge:prev:tk-bio-820519e6",
+    "slot:PROPERTY_LIMITS:性质阈值",
+    "slot:TOP_K:保留分子数",
+    "edge:instance:it-ed604947",
+    "edge:instance:it-177913fa",
+    "edge:instance:it-025a6c1d",
+    "edge:instance:it-e9851504",
+    "edge:instance:it-c7f1976c",
+    "edge:instance:it-bd486e31",
+    "edge:instance:it-66299eea",
+    "edge:instance:it-ce5eb076",
+    "edge:instance:it-ddb86d72",
+    "edge:instance:it-46c11873"
+  ]
+}

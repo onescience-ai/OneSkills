@@ -20,7 +20,9 @@
     "null",
     "oxides",
     "sulfur",
-    "surface"
+    "surface",
+    "edge:scenario:sc-b11d308f",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "锂硫电池多硫化物吸附扩散协同设计",
   "source_papers": [

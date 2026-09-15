@@ -1,0 +1,17 @@
+{
+  "name": "it-9a65c5a6",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「序列窗口与模型准备」在场景「B64」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-bio-69ee987b",
+    "edge:scenario:sc-9c3a83c8",
+    "slot:CHECKPOINT:模型权重",
+    "slot:CONTEXT_LENGTH:上下文长度",
+    "slot:REVERSE_COMPLEMENT:反向互补增强"
+  ]
+}

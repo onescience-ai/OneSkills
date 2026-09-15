@@ -1,0 +1,21 @@
+{
+  "name": "tk-climate-2cf4606d",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：目标序列及缺口时空对齐与样本构造。被 4 个场景复用；含 4 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-climate-6267ea98",
+    "edge:next:tk-climate-2d09b01b",
+    "slot:ALIGNMENT_CONFIG:时空对齐配置",
+    "slot:QUALITY_CONTROL:质量控制配置",
+    "slot:HOLDOUT_MASK_POLICY:伪缺口划分规则",
+    "edge:instance:it-344f799b",
+    "edge:instance:it-5382d3c7",
+    "edge:instance:it-ad369de6",
+    "edge:instance:it-449d9837"
+  ]
+}

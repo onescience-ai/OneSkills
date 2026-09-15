@@ -18,7 +18,9 @@
     "mof分子扩散增强co2捕集性能评估",
     "molecular",
     "null",
-    "performance"
+    "performance",
+    "edge:scenario:sc-1ac80f69",
+    "edge:workflow:wf-matchem-2c158827"
   ],
   "scenario_id": "MOF分子扩散增强CO2捕集性能评估",
   "source_papers": [

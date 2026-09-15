@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s054",
     "latent-neural-operator",
-    "neural-field-operator"
+    "neural-field-operator",
+    "edge:scenario:sc-03b46de0",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S054",
   "source_papers": [

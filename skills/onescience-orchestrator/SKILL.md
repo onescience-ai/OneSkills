@@ -36,6 +36,7 @@ type: orchestrator
 用户目标
 -> [阶段1] 先按 `type=resource` 技能的 description 与当前职责做匹配，再调用匹配的 resource 技能获取 matched_resources（摘要模式）
 -> [阶段1] 基于已召回资源的 matched_resources 识别 intent_profile
+-> [阶段1] 领域知识缺口检测（步骤3.6）：读 resource_retrieval_result.knowledge_gap；knowledge_gap=true 时强制走步骤7在线兜底硬路由，不得用泛化剧本假装完成或编造模拟数据
 -> [阶段2] 根据 intent_aspects 执行 type=expert 专家召回
 -> [阶段2] 记录专家召回结果（可能命中 0 个专家）
 -> [阶段2] 若命中专家则收集 planner_proposal，未命中则以空召回结果进入 direct_step 判定
@@ -394,6 +395,16 @@ tiered_completion_contract:
    c. 补召返回的资源在 `why_matched` 中备注 `orchestrator_remedial_lookup`。
    d. **此步骤不可跳过**：不能因为步骤 2 未返回 visualization 就认为不需要可视化。`visualization_needed=true` 时必须在交给 executor 之前确保 visualization 原语已就位。
 
+3.6 **【强制】领域知识缺口检测（在线兜底闸门，不可跳过）**：资源召回（步骤 2/3.5）返回后，必须读取 `resource_retrieval_result.knowledge_gap` 字段，判定本地是否真正查到了能回答该具体科学问题的领域知识。判定标准（`knowledge_gap=true` 的任一情形）：
+   a. `matched_resources` 为空；
+   b. `retrieval_level ∈ {none, task_only}`；
+   c. `matched_resources` 仅由泛化 `workflow_planning_primitive`（或 `legacy_instance: true` 的「文献综述 / 通用分析 / 通用建模流程」类卡）构成，无任何与目标 domain 具体研究对象直接相关的领域专属资源或 Task；
+   d. 命中资源 domain 与请求目标 domain 不一致，且无该 domain 实质资源。
+   - 若 `knowledge_gap=true`：设置 `Task State.execution_flags.online_fallback_required=true`，记录 `knowledge_gap_detected` event（含判定情形 a/b/c/d 与命中的泛化卡名），并**强制**在步骤 7 触发【硬路由兜底】——把领域问题交给 `onescience-live-literature` 联网检索补齐带引用的答案。同时读取 `resource_retrieval_result.online_evidence`：非空=文献证据已就绪（规划/执行必须以其中引文[n]与接地事实 grounding 参数与结论）；为空=证据洞未填（进入步骤 7 单次兜底或证据边界模式）。
+   - **铁律**：泛化 workflow-planning 卡只讲「怎么做研究」的通用流程，**不构成对具体科学问题的领域回答**。仅命中此类卡时，禁止把它当成「有资源可用」直接进入 direct_step 或专家融合用通用剧本假装完成，也禁止编造「模拟检索结果 / 模拟数据 / 默认参数 / 历史案例」充数。
+   - 若 `knowledge_gap=false`（full / partial / 命中领域专属资源）：正常进入阶段二，不触发在线兜底。
+   - **此步骤不可跳过**：`knowledge_gap` 是跨 task_centric / traditional_resource 两条路径的统一闸门，是 orchestrator 侧在线兜底触发的唯一依据。orchestrator 须按本闸门复核 primitives 召回结果并读取 `online_evidence`：**若 `online_evidence` 非空（primitives step 11 已完成检索）则直接消费、不得重复落检索 executor_step（单次集中通道，防限流/双跑）**；仅当 `knowledge_gap=true` 且 `online_evidence` 为空（未触发或 offline）时，才在步骤 7 落一个在线兜底 executor_step。
+
 ### 阶段二：专家召回与计划融合
 
 4. 根据 `intent_profile.intent_aspects` 严格执行专家召回：
@@ -448,6 +459,7 @@ tiered_completion_contract:
    - 设置 `planning_mode=direct_step`
    - 视为通用任务、单步任务或专家体系尚未覆盖的任务
    - 该分支只在“阶段一资源召回完成 + 阶段二专家召回已执行且记录为空结果”之后进入
+   - **前置闸门**：进入本分支前必须已通过步骤 3.6 的领域知识缺口检测；若 `knowledge_gap=true`，direct_step 不得用泛化剧本假装完成，必须在步骤 7 按【硬路由兜底】先落一个 `onescience-live-literature` 在线检索 executor_step，再由其真实检索结果驱动后续步骤，禁止编造模拟数据充数
    - 查询可用 executor 技能能力：必须列举当前所有可用的 `type=executor` 技能，并逐个完整读取对应 `SKILL.md`，形成完整的 executor 能力视图台账
    - 同时维护内部 inventory 校验结果：记录 `all_executor_skills`、`read_executor_skills`、`missing_executor_skills`，并计算 `executor_inventory_complete`
    - 若 `set(all_executor_skills) != set(read_executor_skills)`，则立即停止 direct_step 规划，输出缺失技能名单到内部状态，并仅以简短摘要向用户报告 inventory 未完成
@@ -505,6 +517,63 @@ tiered_completion_contract:
 
    此硬路由规则仅在同时满足条件 a、b、c 时触发。若仅有可视化信号但未召回 visualization_primitive，仍按步骤 3.5 的补召逻辑处理。
 
+   **【硬路由兜底】领域知识缺口强制定向到 `onescience-live-literature`**：
+
+   当步骤 3.6 判定 `knowledge_gap=true`（本地原语没查到能回答该具体科学问题的领域知识）时，按**单一集中通道**原则处理：若 primitives 召回结果已带非空 `online_evidence`，orchestrator **直接消费**该证据（规划/执行以其中引文[n]与接地事实 grounding 参数与结论），**不再重复触发检索**；仅当 `online_evidence` 为空时，才在 Global Plan 中创建一个 `executor_step`，其 `execution_skill` 必须为 `onescience-live-literature`，联网检索补齐带连续编号引用的分层综合答案并回写 `online_evidence`。此规则是 direct_step 分支与专家融合分支的**共同前置强制动作**，不得降级为 `orchestrator_step`，不得用泛化 workflow-planning 剧本替代。强制约束：
+
+   - 即使步骤 4-6 的 executor 能力台账查询中未能把该领域问题匹配到 `onescience-live-literature`，也必须强制执行本条规则；不能因为“能力台账未列出 live-literature 负责该 domain”、“没有找到合适的专家”或“这是通用/单步任务”而跳过在线兜底。
+   - **严禁编造**：`knowledge_gap=true` 时不得用泛化剧本假装完成，不得返回「模拟检索结果 / 模拟数据 / 默认参数 / 历史案例」充数；必须由 live-literature 真实联网检索（OpenAlex 摘要层迭代精炼 + Europe PMC/PMC 全文层取细节）产出带出处的答案，并在答案顶部显式标注「⚠ 本地知识缺口，以下为在线文献兜底结果」。
+   - 兜底答案是**补充而非替代**：若仍有任意本地 Task/资源命中，须在 Global Plan 中一并保留其凭证。
+   - **离线友好降级（不得报错、不得停摆，但不得伪造科学结果）**：若 live-literature 探测到当前环境无法联网（返回 `online_status: offline` 或命令块打印 `[OFFLINE]`），orchestrator 记录 `online_fallback_unavailable` event（**不是 blocked**），把该在线兜底步骤标注为「离线降级·缺口未填」，并**继续执行 Global Plan 中非科学结论类步骤（脚手架/案例目录/脚本/规划/如实报告）直至任务跑完**；但**不得为跑完而产出无证据的科学结果**——科学结论类交付在证据未接地时保持 BLOCKED 或诚实 PARTIAL（见下方【证据边界契约】）；最终结果里如实标注「本地知识缺口 + 当前离线，在线兜底不可用，相关结论为证据受限的尽力回答」。严禁因离线而中断整个任务、报错退出，或用本地脚本伪造检索结果/编造模拟数据补做。
+
+   此硬路由规则仅在 `knowledge_gap=true` 时触发；`knowledge_gap=false`（full / partial / 命中领域专属资源）仍走本地链，不触发在线兜底。
+
+   **【证据边界契约】（对所有 executor_step 与最终状态判定强制生效——修「为跑完而伪造」病灶）**：
+
+   - **证据 tagging**：每个进入结论/交付的参数、阈值、数据集、研究对象、指标必须标注来源 ∈ {user_provided, literature[n], local_card, executed_log, proposed_candidate(待确认)}；`fabricated`（无来源自造）**禁止**作为本次结果。
+   - **禁止合成/演示数据充当结果**：不得生成 synthetic/demo/模拟样本用于训练或评估并把它当本次研究数据/结果；缺真实数据时该科学步骤回报 BLOCKED 或诚实 PARTIAL。
+   - **禁止替代模型顶替**：不得用简化/玩具模型（如以稳态热传导顶替流动-传热耦合 CFD、以 2D 顶替 3D）的输出充当用户要求的模拟结果；可作为「方法演示/脚手架」交付但必须显式标注 `not-a-result`，且不得据此判 PASS。
+   - **禁止自设验收阈值判 PASS**：验收阈值/稳定性判据必须 user_provided 或 literature[n]；agent 只能提 proposed_candidate 请用户确认，不得自定阈值后自判 PASS/COMPLETE。
+   - **验收阈值溯源门禁**：任何进入最终报告的验收/PASS 判定必须引用来源 ∈ {user_provided, literature[n]}；无来源则该判定必须标注 `engineering_threshold(smoke)` 且科研 PASS 必须 BLOCKED。**自证闭环禁止**：不得（生成模拟结果 → 自设验收阈值 → 让模拟结果通过自设阈值 → 宣布科研 PASS/签收）。
+   - **状态判定门禁（单一事实源）**：宣告任何步骤或整体 PASS/COMPLETE 前，逐条核对所报数值与执行日志/引文一致；出现汇总与日志不一致（如报告 MAE≠运行 MAE）即不得 PASS，须回修或降为 PARTIAL/BLOCKED。
+   - **propose-vs-block（修过度 BLOCKED）**：对任务委托给 agent 的选择（模型/软件/方法选型），不得以「用户未提供」为由 BLOCKED 索要；应基于文献/本地卡提出 2-3 个有证据候选+推荐项+请用户确认该关键选择；仅对**用户私有/不可推断**输入（自有数据集路径、自有集群配置等）才 BLOCKED。
+   - **不得 blanket-BLOCKED + 领域准确性**：模型/软件/超参选型是 agent 委托项，agent 必须提 2-3 个有证据候选+推荐+理由，只对影响科学范围或验收标准的部分请求确认，不得以「用户没告诉我超参」全部甩回 BLOCKED；fallback/候选数据集或方法例子必须领域正确（如 QM9 不是 MOF 数据集），候选必须引用正确领域来源。
+   - **证据洞下的总姿态**：科学结论=BLOCKED 或诚实 PARTIAL（写明「未产生本次结果」）；工程脚手架可交付为 PARTIAL 并标注 not-a-result；严禁以「继续跑完」为由伪造证据或虚报状态。
+
+   **【四层证据门禁补强】（修 ws07 planning-time 参数越界 + ws09 execution/acceptance-time 身份抬高与验证 FAIL 后仍 complete 两个病灶；与上文证据边界契约配套生效，对老架构与新架构一视同仁）**：
+
+   **A. 知识层门禁（domain_match，修文献跨域迁移当本次参数）**：
+   - `resource_retrieval_result.online_evidence.citations[]` 每条必须带 `domain_match ∈ {exact, adjacent, cross_domain}` 标签（由 primitives step 11 / live-literature Step 5 产出；orchestrator 消费时复核）。
+   - `domain_match=cross_domain` 的文献**只能作为方法学参考**（验证思路、网格无关性方法、湍流模型候选等），**不得作为本次任务的参数/阈值/几何/工况来源**；若被引为参数来源，该参数自动降级为 `pending_user_confirmation`，并向 gaps.jsonl 追加 `gate_hit=domain_mismatch` 缺口行。
+   - 兜底检索完成后池内 `domain_match=exact` 数为 0 时：必须触发第二轮更精准 query（query 强制包含场景锚词，如「immersion cooling」「data center」），仍为 0 则如实标注「在线兜底形式成功、实质未命中目标域」，相关科学结论保持 BLOCKED 或诚实 PARTIAL，不得用 adjacent/cross_domain 文献硬凑本次参数。
+
+   **B. 计划层门禁（参数四态标签，修 planning-time 把候选写成本次研究参数）**：
+   - `planner_proposal`、`Global Plan`、`research_plan.md` 中**每个具体数字/参数/阈值/几何/工况/验收判据**必须带四态标签之一：
+     * `confirmed_input`：用户本轮明确提供（须有 task_state.events 的 `user_confirmation` 事件佐证）
+     * `literature_candidate`：附来源 `[n]` + 该文献 `domain_match` + 与本任务研究对象的适用性判断（同域/近域/跨域）
+     * `pending_user_confirmation`：agent 提出的候选，用户确认后才允许进入执行
+     * `blocked_missing`：不可推断且无文献支持，必须 BLOCKED
+   - **REJECT 门禁**：planning 产物中只要存在**未打四态标签的裸数字**，该 planning 步骤直接判 REJECT，不得标 completed、不得进入执行阶段，并向 gaps.jsonl 追加 `gate_hit=bare_number_reject`。
+   - `literature_candidate` / `pending_user_confirmation` 参数**不得**在执行阶段被静默升格为 `confirmed_input`；升格必须有用户本轮明确确认记录（`user_confirmation` 事件）。
+   - 本门禁**不因「最后停在 BLOCKED」而豁免**：ws06 式「planning 里写死 600×1000×2000 mm、y+≈1、500-1000 万网格但无来源」同样 REJECT。
+
+   **C. 执行层门禁（result_identity，修 smoke/demo 输出被抬成科研结果）**：
+   - 每个 executor_step 的 `execution_result` 必须声明 `result_identity ∈ {research_result, engineering_demo, smoke_test, not_a_result}`。
+   - **关键词自动锁**：executor 产出的脚本/日志/报告自述中出现 `smoke`、`demo`、`simplified`、`toy`、`not suitable for production`、`demonstration only`、`engineering_validation(smoke` 等任一关键词时，orchestrator **自动锁定**该 step 的 `result_identity=not_a_result`，executor 不得自行申报更高身份；锁定动作向 gaps.jsonl 追加 `gate_hit=result_identity_lock`。
+   - `result_identity ∈ {engineering_demo, smoke_test, not_a_result}` 的 step：
+     * 状态只能标 `DEMO_PASS` / `PARTIAL` / `BLOCKED`，**禁止标 PASS**；
+     * 其输出**禁止**进入最终报告的「关键发现 / 科研结论」段，只能进入「方法演示 / 脚手架」段，且前置标注「以下为演示输出，不构成本次科研结论」；
+     * 下游依赖该 step 产物的 step 自动继承 `not_a_result` 身份，不得被抬高。
+   - **输入门禁 ≠ 结果身份门禁**：用户确认「使用默认示例/典型参数/推荐值」只解除 `input_gate`（允许用默认值继续执行），**不解除** `result_identity_gate`（默认值跑出来的产物仍是 `engineering_demo`，不是 `research_result`）。orchestrator 必须在 `user_confirmation` 事件里显式记录本次解除的是哪道门，不得把前者当后者的授权。
+
+   **D. 验收层门禁（验证 FAIL 级联回退 + complete_with_caveats，修验证失败后仍判 PASS/complete）**：
+   - **级联回退**：验证类 step（网格独立性/能量守恒/可复现审计/指标对标等）判 FAIL 时，orchestrator 必须**自动回退**其上游所有已标 PASS 的 step：PASS → `UNVERIFIED`（产物被失败验证覆盖）或 `PARTIAL`；回退动作写入 `validation_rollback` event 并向 gaps.jsonl 追加 `gate_hit=validation_rollback`，不得静默。
+   - **complete 门禁**：`task_state.status=complete` 的前提是**同时满足**：① 所有 step 的 `result_identity=research_result`；② 所有验证类 step PASS；③ 无未解除的 `blocked_missing` 参数。任一不满足时 status 只能是 `complete_with_caveats`（工程链跑通但存在 not_a_result/DEMO_PASS 或验证 PARTIAL）、`partial`（验证 FAIL 且无可交付回退产物）或 `blocked`；降级动作向 gaps.jsonl 追加 `gate_hit=complete_downgrade`。
+   - **结论前置标注**：`complete_with_caveats` / `partial` 状态下，最终输出**第一行必须**前置：「⚠ 本次未产生科研结论，以下为方法演示/工程脚手架输出，验证状态：<FAIL/PARTIAL 明细>」；禁止把演示数值（如「最大温升 1.03 K」「换热系数 35249 W/(m²·K)」「无热点」）写进「关键发现」段。
+   - **禁止无条件完成自述**：存在验证 FAIL 或任一 `not_a_result` step 时，禁止输出「任务已完成，所有步骤均有可追溯证据链」这类无条件完成自述；必须改为「工程链已跑通，但科研验证未通过（明细），本次不产生科研结论」。
+
+   **门禁可观测性（A/B 归因用）**：A/B/C/D 任一门禁被触发（REJECT / 自动锁 / 级联回退 / status 降级 / domain 降级）时，orchestrator 必须向 `skills/onescience-primitives/references/tc/gaps.jsonl` 追加一行，含 `gate_hit ∈ {domain_mismatch, bare_number_reject, result_identity_lock, validation_rollback, complete_downgrade}` 与 `gate_layer ∈ {A_knowledge, B_planning, C_execution, D_acceptance}` 字段，便于下一轮 A/B 直接统计「哪层门禁真的生效、哪层还在被绕过」，不再靠人读 session 日志归因。
+
 ### 阶段三：执行与状态更新
 
 8. 绑定资源到 Task State：从 `matched_resources` 中选择当前步骤需要的资源，记录 `path` 和 `type` 到 `Task State.resource_bindings`；这里的 `path` 仅用于标识和交接，不授权 orchestrator 或下游直接读取对应资源文件。
@@ -547,15 +616,18 @@ tiered_completion_contract:
     - 分析 `observation.status`（success/partial/failed/blocked/step_timeout）和 `failure_category`（若 failed）
     - 如果 `success`：
       - 标记当前步骤完成，写入 `step_completed` event
+      - **【强制 result_identity 复核】**：按证据边界契约 C 层门禁，扫描本 step 产物自述关键词；命中 smoke/demo/simplified/toy/not suitable for production 时自动锁 `result_identity=not_a_result`，状态改记 `DEMO_PASS`（不得记 PASS），并追加 gaps.jsonl `gate_hit=result_identity_lock`
       - **【强制 tier_check】若 `tiered_completion_contract` 已初始化**，执行 tier_check 子流程（见下方 11.1），再根据 tier 判定结果决定后续动作
-      - 若 tier contract 不存在：若全部 `completion_criteria` 已满足，则输出最终结果并结束；否则必须基于更新后的 `Task State`、`artifacts`、`observations` 和 `Global Plan` 重新选择下一个 `Next Step Spec`（若 plan 结构性修改则递增 `global_plan_version`）
+      - 若 tier contract 不存在：若全部 `completion_criteria` 已满足，则**先过 D 层 complete 门禁**（所有 step `result_identity=research_result` + 所有验证 step PASS + 无未解除 `blocked_missing`）再决定终态——全部满足才 `status: complete`；任一不满足按契约降级为 `complete_with_caveats` / `partial`，追加 gaps.jsonl `gate_hit=complete_downgrade`，并在最终输出第一行前置「⚠ 本次未产生科研结论」标注；否则必须基于更新后的 `Task State`、`artifacts`、`observations` 和 `Global Plan` 重新选择下一个 `Next Step Spec`（若 plan 结构性修改则递增 `global_plan_version`）
     - 如果 `partial`：
       - 记录已完成部分、缺失项、残余风险和 `next_recommendation`
       - 写入 `step_partial` event
+      - **【强制 D 层级联回退】**：若本 step 是验证类步骤（网格独立性/能量守恒/可复现审计/指标对标/守恒律检查等）且 partial 原因含任一子项 FAIL，必须自动回退其上游所有已标 PASS 的 step：PASS → `UNVERIFIED`（产物被失败验证覆盖）或 `PARTIAL`；写入 `validation_rollback` event（含被回退 step 清单与 FAIL 明细），追加 gaps.jsonl `gate_hit=validation_rollback`；回退后**禁止**在最终报告里保留被回退 step 的 PASS 判定与正面结论（如「温度控制良好」「无热点」「换热效率高」）
       - 回到规划阶段，对当前步骤做细化、拆分或补充前置步骤
       - 选出新的 `Next Step Spec` 后，在同一 skill 循环中继续执行
     - 如果 `failed`：
       - 记录失败证据与失败摘要，写入 `step_failed` event
+      - **【强制 D 层级联回退】**：若本 step 是验证类步骤且判 FAIL，同样按上条执行上游 PASS 回退与 `validation_rollback` event；验证 FAIL 属 `scientific` 类别时不得自动重试掩盖，直接进入 blocked 或诚实 partial
       - 根据 `failure_category` 执行分策略处理（参见"7a. 失败分类策略"表）：
         - `transient` → `retry_with_backoff`：递增 `attempt`，写入 `retry_started` event 后重试
         - `code` → `delegate_to_coder`：委托 coder 修复，写入 `repair_attempted` event
@@ -767,6 +839,7 @@ planner proposals -> global plan synthesis
 - 环境安装、修复、依赖补齐或 conda 写回
 - 运行通道选择后的任务提交、日志拉取、执行诊断、SLURM / SCnet / SSH 运行治理
 - 已在当前轮次 `Global Plan` 中被标记为 `executor_step` 的任何业务动作
+- 在 `knowledge_gap=true`（本地没查到领域知识）时编造「模拟检索结果 / 模拟科学数据 / 默认参数 / 历史案例」冒充领域回答（必须由步骤 7 的在线兜底硬路由交给 `onescience-live-literature` 真实联网检索）
 
 orchestrator 执行这些步骤后，仍需生成 `execution_result` 包含 `artifacts` 和 `observation`，并更新 `Task State`。
 
@@ -795,11 +868,13 @@ orchestrator 执行这些步骤后，仍需生成 `execution_result` 包含 `art
 
 如果任务已完成，输出：
 
-1. `final_status`
-2. `completed_steps`
+1. `final_status`：∈ {complete, complete_with_caveats, partial, blocked}；非 `complete` 时**第一行必须**前置「⚠ 本次未产生科研结论，以下为方法演示/工程脚手架输出，验证状态：<明细>」
+2. `completed_steps`：每步附 `result_identity`（research_result / engineering_demo / smoke_test / not_a_result）与最终判定（PASS / DEMO_PASS / PARTIAL / UNVERIFIED / BLOCKED）；存在验证 FAIL 时必须附 `validation_rollback` 明细（哪些上游 PASS 被回退）
 3. `artifacts`
-4. `verification_status`
+4. `verification_status`：逐项验证结果（PASS/FAIL/PARTIAL + 具体数值），禁止只写总结性「验证通过」
 5. `remaining_risks`
+6. `gate_hits`：本次任务触发的四层门禁清单（A domain_mismatch / B bare_number_reject / C result_identity_lock / D validation_rollback / D complete_downgrade），与 gaps.jsonl 追加行一致；为空时显式写「无门禁触发」
+7. `parameter_labels`：进入本次执行的关键参数四态清单（confirmed_input / literature_candidate+[n]+domain_match / pending_user_confirmation / blocked_missing），证明无裸数字进入执行
 
 ## 按需读取
 

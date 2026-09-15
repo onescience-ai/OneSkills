@@ -1,0 +1,28 @@
+{
+  "name": "wf-matchem-2c158827",
+  "type": "workflow",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（matchem）：4 步骨架 [结构与分离目标定义 > 传质或吸附性能获取 > 选择性稳定性与能耗分析 > 材料或工艺窗口输出]，被 12 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-matchem-33e5dc32",
+    "edge:task:tk-matchem-b70feeee",
+    "edge:task:tk-matchem-edbfdf30",
+    "edge:task:tk-matchem-47993c55",
+    "edge:scenario:sc-1ac80f69",
+    "edge:scenario:sc-8d6b09d1",
+    "edge:scenario:sc-d9f04a1d",
+    "edge:scenario:sc-415a3980",
+    "edge:scenario:sc-9c1c1ccc",
+    "edge:scenario:sc-93f48893",
+    "edge:scenario:sc-c57df921",
+    "edge:scenario:sc-cff6d1f3",
+    "edge:scenario:sc-63b1c390",
+    "edge:scenario:sc-82867bfd",
+    "edge:scenario:sc-1ebc7058",
+    "edge:scenario:sc-355b4bda"
+  ]
+}

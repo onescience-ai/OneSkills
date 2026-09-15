@@ -17,7 +17,9 @@
     "null",
     "perovskite",
     "select",
-    "suppress"
+    "suppress",
+    "edge:scenario:sc-aa98e9f1",
+    "edge:workflow:wf-matchem-128b457b"
   ],
   "scenario_id": "钙钛矿封装层降解抑制机器学习筛选",
   "source_papers": [

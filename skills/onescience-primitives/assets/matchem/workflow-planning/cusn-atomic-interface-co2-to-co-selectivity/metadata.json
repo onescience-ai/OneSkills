@@ -44,7 +44,9 @@
     "surface-alloy",
     "noble-metal-catalyst-alternative",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-449525cd",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "CuSn原子界面CO2到CO选择性优化",
   "source_papers": [

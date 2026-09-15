@@ -17,7 +17,9 @@
     "materials",
     "potentials",
     "transferable",
-    "verifiable"
+    "verifiable",
+    "edge:scenario:sc-49cbde90",
+    "edge:workflow:wf-matchem-ec013e02"
   ],
   "scenario_id": "层状材料可迁移机器学习原子势验证",
   "source_papers": [

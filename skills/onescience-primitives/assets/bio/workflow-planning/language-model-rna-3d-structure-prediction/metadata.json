@@ -25,7 +25,9 @@
     "rmsd",
     "workflow",
     "workflow-planning",
-    "b81"
+    "b81",
+    "edge:scenario:sc-e51af581",
+    "edge:workflow:wf-bio-1964c994"
   ],
   "scenario_id": "B81",
   "source_papers": [

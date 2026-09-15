@@ -41,7 +41,9 @@
     "model-comparison",
     "workflow",
     "workflow-planning",
-    "e43"
+    "e43",
+    "edge:scenario:sc-7d1fa1a7",
+    "edge:workflow:wf-climate-a2b88c9a"
   ],
   "scenario_id": "E43",
   "source_papers": [

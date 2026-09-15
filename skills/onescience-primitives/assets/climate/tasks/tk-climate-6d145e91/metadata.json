@@ -1,0 +1,19 @@
+{
+  "name": "tk-climate-6d145e91",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：情景外强迫时空对齐与样本构造。被 2 个场景复用；含 2 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-climate-a40fd40a",
+    "edge:next:tk-climate-2d09b01b",
+    "slot:CALENDAR_AND_GRID:日历与网格",
+    "slot:PREPROCESS_CONFIG:预处理配置",
+    "slot:SPLIT_PROTOCOL:回报划分协议",
+    "edge:instance:it-2e3dc383",
+    "edge:instance:it-52de802e"
+  ]
+}

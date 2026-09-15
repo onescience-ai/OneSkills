@@ -17,7 +17,9 @@
     "metallic",
     "multi-functional",
     "nanoparticles",
-    "null"
+    "null",
+    "edge:scenario:sc-82ca1efc",
+    "edge:workflow:wf-matchem-4097efc6"
   ],
   "scenario_id": "高熵金属玻璃纳米颗粒电合成与电催化设计",
   "source_papers": [

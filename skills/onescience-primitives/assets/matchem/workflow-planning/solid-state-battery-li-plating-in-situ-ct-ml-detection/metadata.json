@@ -34,7 +34,9 @@
     "dynamic-evolution",
     "workflow",
     "workflow-planning",
-    "固态电池锂沉积原位ct机器学习检测"
+    "固态电池锂沉积原位ct机器学习检测",
+    "edge:scenario:sc-a2ef07e1",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "固态电池锂沉积原位CT机器学习检测",
   "source_papers": [

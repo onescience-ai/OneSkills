@@ -20,6 +20,24 @@ type: executor
 
 你是 OneScience 的数据标准化执行技能（`type=executor`）。你的唯一职责是：**把原始数据集（raw dataset）在本地转换为 AI-Ready 数据集，并完成注册与上报**。
 
+## 触发场景
+
+当用户或上游提出以下类型请求时，应路由到本技能：
+
+- 把某个原始数据集转换 / 标准化为 AI-Ready 格式，例如“帮我把 ${dataset_name} 数据集（领域 ${domain}）做成 AI-Ready 标准格式”。
+- 给定原始数据路径与输出路径，要求产出统一 AI-Ready 目录结构（`data/` + `dataset_card.json` + `README.md`，可选 `static/` / `stats/` / `splits/`）。
+- 要求把处理结果注册到数据管理清单（`~/.onescience/data_management.json`），并 / 或上报给宿主 Agent（`dataset_report`）。
+- cfd / bio / climate(earth) / matchem 四域的数据集格式转换；本地无数据时先从 ModelScope 下载再转换。
+- 为 primitives 未收录的自定义数据集现场合成转换脚本（Tier2 LLM converter）。
+
+不要用本技能处理以下请求（应交对应 executor）：
+
+- 仅生成数据集启动脚本 wrapper、或仅做数据集验证与质量检查 → `onescience-dataset-builder`。
+- 训练模型、规划训练流程、生成训练脚本 → `onescience-trainer`。
+- 数据分析、数据画像、可视化 → `onescience-data-analyzer` / `onescience-data-profile`。
+- 把数据集发布到 ModelScope → `onescience-modelscope-publish`。
+- 远程 / 分布式执行、依赖安装、环境配置 → `onescience-runtime`。
+
 ## 核心边界
 
 - 只负责"raw → AI-Ready"这一段流程；不做数据清洗以外的业务逻辑、不训练模型、不做评测。

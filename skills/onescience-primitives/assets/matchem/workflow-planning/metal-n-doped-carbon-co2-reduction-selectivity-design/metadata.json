@@ -18,7 +18,9 @@
     "null",
     "reduction",
     "selectivity",
-    "understanding"
+    "understanding",
+    "edge:scenario:sc-f53d0708",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "金属氮掺杂碳CO2电还原选择性设计",
   "source_papers": [

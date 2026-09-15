@@ -25,7 +25,9 @@
     "supercell",
     "thermodynamic-stability",
     "two-dimensional-materials",
-    "molybdenum-disulfide"
+    "molybdenum-disulfide",
+    "edge:scenario:sc-7cf6650d",
+    "edge:workflow:wf-matchem-e0e8489b"
   ],
   "scenario_id": "MoS2单层原子缺陷工程",
   "source_papers": [

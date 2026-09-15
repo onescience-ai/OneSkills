@@ -1,0 +1,17 @@
+{
+  "name": "it-ff7ff932",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「拟合基因型、环境及互作响应模型」在场景「E98」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-5e878c22",
+    "edge:scenario:sc-c76b434f",
+    "slot:RESPONSE_CONFIG:互作响应配置",
+    "slot:WEATHER_SAMPLING_CONFIG:天气抽样配置",
+    "slot:UNCERTAINTY_CONFIG:不确定性配置"
+  ]
+}

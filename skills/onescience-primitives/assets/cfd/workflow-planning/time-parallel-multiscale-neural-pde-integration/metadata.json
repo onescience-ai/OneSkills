@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s023",
     "parareal-neural-solver",
-    "temporal-neural-operator"
+    "temporal-neural-operator",
+    "edge:scenario:sc-0c2a070f",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S023",
   "source_papers": [

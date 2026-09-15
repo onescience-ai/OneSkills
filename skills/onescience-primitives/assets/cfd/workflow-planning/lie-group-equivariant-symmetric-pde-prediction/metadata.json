@@ -28,7 +28,9 @@
     "cfd",
     "cfd_s063",
     "lie-equivariant-neural-network",
-    "pdo-convolution"
+    "pdo-convolution",
+    "edge:scenario:sc-5691ed69",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S063",
   "source_papers": [

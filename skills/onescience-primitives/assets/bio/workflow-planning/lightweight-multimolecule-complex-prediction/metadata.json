@@ -40,7 +40,9 @@
     "pairformer",
     "diffusion-transformer",
     "model-finetuning",
-    "model-optimization"
+    "model-optimization",
+    "edge:scenario:sc-078cac5b",
+    "edge:workflow:wf-bio-5aaefe7e"
   ],
   "scenario_id": "B06",
   "source_papers": [

@@ -1,0 +1,15 @@
+{
+  "name": "it-7a054bad",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「光电性能与老化响应评估」在场景「二维三维钙钛矿界面长期稳定设计」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-matchem-80f319c7",
+    "edge:scenario:sc-81ccd8cb",
+    "slot:CHARACTERIZATION_DATA:表征或器件数据"
+  ]
+}

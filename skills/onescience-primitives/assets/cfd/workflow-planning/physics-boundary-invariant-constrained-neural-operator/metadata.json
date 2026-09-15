@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s059",
-    "physics-constrained-neural-operator"
+    "physics-constrained-neural-operator",
+    "edge:scenario:sc-13bf824c",
+    "edge:workflow:wf-cfd-32ebb7bb"
   ],
   "scenario_id": "CFD_S059",
   "source_papers": [

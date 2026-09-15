@@ -10,7 +10,9 @@
   "tags": [
     "machine-learning-based-satellite-precipitation-estimation",
     "datapipe",
-    "fallback"
+    "fallback",
+    "edge:scenario:sc-2a31eae0",
+    "edge:workflow:wf-climate-73803e44"
   ],
   "harvested": true,
   "tier": "medium",

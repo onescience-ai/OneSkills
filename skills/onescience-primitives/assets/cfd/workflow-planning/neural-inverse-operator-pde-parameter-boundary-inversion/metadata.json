@@ -27,7 +27,9 @@
     "workflow-planning",
     "cfd",
     "cfd_s033",
-    "neural-inverse-operator"
+    "neural-inverse-operator",
+    "edge:scenario:sc-e445d443",
+    "edge:workflow:wf-cfd-8b1af9da"
   ],
   "scenario_id": "CFD_S033",
   "source_papers": [

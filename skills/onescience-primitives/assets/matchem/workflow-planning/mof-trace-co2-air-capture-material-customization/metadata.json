@@ -26,7 +26,9 @@
     "trace-gas-removal",
     "pore-engineering",
     "fluoride-pillared",
-    "adsorption-selectivity"
+    "adsorption-selectivity",
+    "edge:scenario:sc-415a3980",
+    "edge:workflow:wf-matchem-2c158827"
   ],
   "scenario_id": "MOF痕量CO2空气捕集材料定制",
   "source_papers": [

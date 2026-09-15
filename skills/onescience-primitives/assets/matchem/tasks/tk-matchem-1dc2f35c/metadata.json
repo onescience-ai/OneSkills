@@ -1,0 +1,19 @@
+{
+  "name": "tk-matchem-1dc2f35c",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：弹性与开裂风险代理指标分析。被 1 个场景复用；含 1 个实例任务；资源引用 ['models/computational-screening-for-thermodynamically-stable-mxenes', 'tools/pymatgen']。",
+  "tags": [
+    "edge:resource:models/computational-screening-for-thermodynamically-stable-mxenes",
+    "edge:resource:tools/pymatgen",
+    "edge:prev:tk-matchem-89afddd7",
+    "edge:next:tk-matchem-7fb78252",
+    "slot:STABLE_CANDIDATES:稳定候选集合",
+    "slot:MECHANICAL_METHOD:力学分析方法",
+    "edge:instance:it-736e490e"
+  ]
+}

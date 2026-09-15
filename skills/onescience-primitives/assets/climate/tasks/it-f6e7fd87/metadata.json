@@ -1,0 +1,18 @@
+{
+  "name": "it-f6e7fd87",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「海洋状态和强迫资料时空对齐与样本构造」在场景「E5」中的实例化；资源引用 ['datasets/CMEMS']。",
+  "tags": [
+    "edge:skeleton:tk-climate-d1516b9a",
+    "edge:scenario:sc-9a86054e",
+    "edge:resource:datasets/CMEMS",
+    "slot:OCEAN_GRID:海洋网格",
+    "slot:COAST_MASK_POLICY:岸线掩膜规则",
+    "slot:PREPROCESS_CONFIG:预处理配置"
+  ]
+}

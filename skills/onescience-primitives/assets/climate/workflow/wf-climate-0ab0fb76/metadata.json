@@ -1,0 +1,19 @@
+{
+  "name": "wf-climate-0ab0fb76",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [临近观测及任务边界预检 > 临近观测时空对齐与样本构造 > 方法配置与输入输出契约验证 > 直接推理多个目标提前量 > 生成累积量和超阈概率 > 按时效检验FSS、CSI和Brier分数]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-climate-72ad7c82",
+    "edge:task:tk-climate-a26f4799",
+    "edge:task:tk-climate-2d09b01b",
+    "edge:task:tk-climate-8c5563f2",
+    "edge:task:tk-climate-718b997a",
+    "edge:task:tk-climate-f74bebc8",
+    "edge:scenario:sc-2b0ee5ac"
+  ]
+}

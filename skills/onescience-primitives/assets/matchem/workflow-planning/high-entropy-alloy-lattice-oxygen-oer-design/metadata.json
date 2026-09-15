@@ -21,7 +21,9 @@
     "multi-path",
     "null",
     "oxygen",
-    "synergism"
+    "synergism",
+    "edge:scenario:sc-01627529",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "高熵合金晶格氧活化析氧催化设计",
   "source_papers": [

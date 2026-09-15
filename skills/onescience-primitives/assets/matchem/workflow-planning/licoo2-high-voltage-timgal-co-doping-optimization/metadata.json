@@ -21,7 +21,9 @@
     "stable",
     "trace",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-dea620c9",
+    "edge:workflow:wf-matchem-c41fa878"
   ],
   "scenario_id": "LiCoO2高电压TiMgAl协同掺杂优化",
   "source_papers": [

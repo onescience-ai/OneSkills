@@ -1,0 +1,20 @@
+{
+  "name": "it-e89df128",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「起报范围与雷达序列预检」在场景「E2」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:tk-climate-e165161b",
+    "edge:scenario:sc-16d509a7",
+    "slot:RADAR_HISTORY:连续雷达历史序列",
+    "slot:FORECAST_START_TIME:起报时间",
+    "slot:HISTORY_FRAMES:历史帧数",
+    "slot:FRAME_INTERVAL_MINUTES:雷达帧间隔",
+    "slot:FORECAST_HORIZON_MINUTES:预报时长",
+    "slot:DATA_CUTOFF_TIME:资料截止时间"
+  ]
+}

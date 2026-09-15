@@ -15,7 +15,9 @@
     "ensemble-forecast",
     "short-term-weather",
     "decision-support",
-    "probabilistic-forecasting"
+    "probabilistic-forecasting",
+    "edge:scenario:sc-16d509a7",
+    "edge:workflow:wf-climate-850e80fd"
   ],
   "harvested": true,
   "tier": "high",

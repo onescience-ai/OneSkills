@@ -19,7 +19,9 @@
     "passivation",
     "perovskite",
     "solar",
-    "stable"
+    "stable",
+    "edge:scenario:sc-5e441f98",
+    "edge:workflow:wf-matchem-87e6b0f5"
   ],
   "scenario_id": "全无机无铅钙钛矿原生氧化物钝化",
   "source_papers": [

@@ -17,7 +17,9 @@
     "crps",
     "probabilistic-forecasting",
     "temperature",
-    "precipitation"
+    "precipitation",
+    "edge:scenario:sc-e61aa5dd",
+    "edge:workflow:wf-climate-58a81cc1"
   ],
   "harvested": true,
   "tier": "high",

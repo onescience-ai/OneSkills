@@ -19,7 +19,9 @@
     "matchem",
     "metallic",
     "null",
-    "through"
+    "through",
+    "edge:scenario:sc-28b3d891",
+    "edge:workflow:wf-matchem-128b457b"
   ],
   "scenario_id": "金属玻璃机器学习成分筛选",
   "source_papers": [

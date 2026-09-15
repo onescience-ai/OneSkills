@@ -25,7 +25,9 @@
     "pre-trained",
     "workflow",
     "workflow-planning",
-    "b94"
+    "b94",
+    "edge:scenario:sc-9eefd1d2",
+    "edge:workflow:wf-bio-8c56a4bc"
   ],
   "scenario_id": "B94",
   "source_papers": [

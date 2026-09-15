@@ -17,7 +17,9 @@
     "generalization",
     "deep-learning",
     "model-training",
-    "model-complexity-control"
+    "model-complexity-control",
+    "edge:scenario:sc-a5021c3d",
+    "edge:workflow:wf-climate-f2838b40"
   ],
   "harvested": true,
   "tier": "medium",

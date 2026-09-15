@@ -1,0 +1,19 @@
+{
+  "name": "wf-climate-e9c7317c",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [目标序列及缺口及任务边界预检 > 目标序列及缺口时空对齐与样本构造 > 方法配置与输入输出契约验证 > 回推历史NDVI并填补传感器断点 > 输出连续序列和观测来源标志 > 检验重叠期偏差、趋势与突变保持]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:tk-climate-6267ea98",
+    "edge:task:tk-climate-2cf4606d",
+    "edge:task:tk-climate-2d09b01b",
+    "edge:task:tk-climate-0ae65f8b",
+    "edge:task:tk-climate-7f9a2990",
+    "edge:task:tk-climate-15485a48",
+    "edge:scenario:sc-64ff4a75"
+  ]
+}

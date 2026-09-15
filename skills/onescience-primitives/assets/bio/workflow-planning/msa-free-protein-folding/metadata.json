@@ -25,7 +25,9 @@
     "think",
     "workflow",
     "workflow-planning",
-    "b03"
+    "b03",
+    "edge:scenario:sc-7c5d11a4",
+    "edge:workflow:wf-bio-5aaefe7e"
   ],
   "scenario_id": "B03",
   "source_papers": [

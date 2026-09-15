@@ -16,7 +16,9 @@
     "machine-learning-biomass",
     "structural-parameter-extraction",
     "forest-inventory",
-    "carbon-estimation"
+    "carbon-estimation",
+    "edge:scenario:sc-46ea9d0e",
+    "edge:workflow:wf-climate-bcf0ac0b"
   ],
   "harvested": true,
   "tier": "high",

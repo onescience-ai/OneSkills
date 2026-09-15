@@ -25,7 +25,9 @@
     "rna结构与功能质控",
     "workflow",
     "workflow-planning",
-    "b87"
+    "b87",
+    "edge:scenario:sc-c76078ba",
+    "edge:workflow:wf-bio-1964c994"
   ],
   "scenario_id": "B87",
   "source_papers": [

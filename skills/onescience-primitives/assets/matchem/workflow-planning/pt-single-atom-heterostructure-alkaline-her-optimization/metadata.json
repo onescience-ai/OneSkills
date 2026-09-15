@@ -39,7 +39,9 @@
     "hydrogen-evolution-reaction",
     "flexible-electrode",
     "silver-nanowire",
-    "alkaline-electrolyte"
+    "alkaline-electrolyte",
+    "edge:scenario:sc-458b671b",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "Pt单原子异质结构碱性析氢优化",
   "source_papers": [

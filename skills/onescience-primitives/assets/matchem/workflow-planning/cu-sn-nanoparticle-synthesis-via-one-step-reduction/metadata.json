@@ -15,7 +15,9 @@
     "nanoparticle-synthesis",
     "galvanic-displacement",
     "surface-alloy",
-    "noble-metal-catalyst-alternative"
+    "noble-metal-catalyst-alternative",
+    "edge:scenario:sc-449525cd",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "harvested": true,
   "tier": "medium",

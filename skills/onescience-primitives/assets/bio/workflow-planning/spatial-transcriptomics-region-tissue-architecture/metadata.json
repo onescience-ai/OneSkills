@@ -25,7 +25,9 @@
     "spatial",
     "workflow",
     "workflow-planning",
-    "b78"
+    "b78",
+    "edge:scenario:sc-cf10b7e9",
+    "edge:workflow:wf-bio-cdb48c05"
   ],
   "scenario_id": "B78",
   "source_papers": [

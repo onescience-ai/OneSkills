@@ -16,7 +16,9 @@
     "materials",
     "null",
     "point",
-    "two-dimensional"
+    "two-dimensional",
+    "edge:scenario:sc-578b061d",
+    "edge:workflow:wf-matchem-30dd7b2f"
   ],
   "scenario_id": "高居里温度二维铁磁材料高通量筛选",
   "source_papers": [

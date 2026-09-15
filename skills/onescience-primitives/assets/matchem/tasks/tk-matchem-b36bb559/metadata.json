@@ -1,0 +1,19 @@
+{
+  "name": "tk-matchem-b36bb559",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：结构验证与输出。被 6 个场景复用；含 6 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-matchem-856f4df0",
+    "edge:instance:it-c5178d2e",
+    "edge:instance:it-5a9a1240",
+    "edge:instance:it-aac5937b",
+    "edge:instance:it-33a016f1",
+    "edge:instance:it-4774b159",
+    "edge:instance:it-91d879c8"
+  ]
+}

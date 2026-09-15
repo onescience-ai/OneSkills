@@ -21,7 +21,9 @@
     "proton",
     "sites",
     "workflow",
-    "workflow-planning"
+    "workflow-planning",
+    "edge:scenario:sc-ba4511c2",
+    "edge:workflow:wf-matchem-023e41f2"
   ],
   "scenario_id": "FeNx位点耐久性质子交换膜燃料电池分析",
   "source_papers": [

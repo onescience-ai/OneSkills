@@ -1,0 +1,28 @@
+{
+  "name": "tk-bio-95416ce9",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：单细胞数据与任务定义。被 10 个场景复用；含 10 个实例任务；资源引用 ['components/anndata', 'tools/scanpy']。",
+  "tags": [
+    "edge:resource:components/anndata",
+    "edge:resource:tools/scanpy",
+    "edge:next:tk-bio-beaf7d41",
+    "slot:CELL_DATA:单细胞数据",
+    "slot:MODEL_NAME:单细胞模型",
+    "slot:DATA_LAYER:表达数据层",
+    "edge:instance:it-c1677eca",
+    "edge:instance:it-d48d45da",
+    "edge:instance:it-5ea42b9f",
+    "edge:instance:it-3d26fad2",
+    "edge:instance:it-228b3231",
+    "edge:instance:it-26e3aad7",
+    "edge:instance:it-9538dedb",
+    "edge:instance:it-b29214fa",
+    "edge:instance:it-df4aacd6",
+    "edge:instance:it-c943a0c1"
+  ]
+}

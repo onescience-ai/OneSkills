@@ -1,0 +1,18 @@
+{
+  "name": "tk-climate-9b451aae",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：分时效多阈值检验与交付判定。被 1 个场景复用；含 1 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:tk-climate-13b985d0",
+    "slot:VERIFICATION_RADAR:未来验证雷达资料",
+    "slot:BASELINE_NOWCASTS:基线临近预报",
+    "slot:METRICS:检验指标",
+    "slot:VALIDATION_PROTOCOL:验证与验收协议",
+    "edge:instance:it-dc935d0a"
+  ]
+}

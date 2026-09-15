@@ -25,7 +25,9 @@
     "monitoring",
     "workflow",
     "workflow-planning",
-    "b93"
+    "b93",
+    "edge:scenario:sc-d32093c7",
+    "edge:workflow:wf-bio-8c56a4bc"
   ],
   "scenario_id": "B93",
   "source_papers": [
