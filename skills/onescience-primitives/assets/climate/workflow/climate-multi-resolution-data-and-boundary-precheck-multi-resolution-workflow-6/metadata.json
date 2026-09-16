@@ -1,0 +1,19 @@
+{
+  "name": "climate-multi-resolution-data-and-boundary-precheck-multi-resolution-workflow-6",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [粗细分辨率资料及任务边界预检 > 粗细分辨率资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 随机生成时空连续细雨场 > 结果恢复与场景产品生成 > 检验FSS、频率分布和极值尾部]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-multi-resolution-data-and-boundary-precheck-task",
+    "edge:task:climate-multi-resolution-data-alignment-and-sample-construction-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-random-generate-spatiotemporal-continuous-drizzle-field-task",
+    "edge:task:climate-result-recovery-and-scenario-product-generation-task",
+    "edge:task:climate-fss-frequency-extreme-tail-task",
+    "edge:scenario:climate-coarse-resolution-precipitation-to-kilometer-subhourly-scenario"
+  ]
+}

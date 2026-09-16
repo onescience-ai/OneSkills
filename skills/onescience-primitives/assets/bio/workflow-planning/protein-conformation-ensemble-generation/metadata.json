@@ -35,8 +35,8 @@
     "deer-spectroscopy",
     "deeplearning-protein",
     "conformational-switching",
-    "edge:scenario:sc-edd9ba1e",
-    "edge:workflow:wf-bio-5aaefe7e"
+    "edge:scenario:bio-protein-multi-conformational-state-space-generation-and-scenario",
+    "edge:workflow:bio-input-and-task-definition-feature-model-preparation-structure-workflow"
   ],
   "scenario_id": "B07",
   "source_papers": [

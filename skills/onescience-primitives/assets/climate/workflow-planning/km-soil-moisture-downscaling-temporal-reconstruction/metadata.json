@@ -61,8 +61,8 @@
     "workflow-planning",
     "climate",
     "e16",
-    "edge:scenario:sc-822fbfb4",
-    "edge:workflow:wf-climate-d597f960"
+    "edge:scenario:climate-remote-sensing-soil-moisture-kilometer-scale-spatial-scenario",
+    "edge:workflow:climate-hydro-forcing-basin-data-boundary-precheck-hydro-forcing-basin-workflow-10"
   ],
   "scenario_id": "E16",
   "source_papers": [

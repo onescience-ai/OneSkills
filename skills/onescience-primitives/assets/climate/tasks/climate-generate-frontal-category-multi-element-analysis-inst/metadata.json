@@ -1,0 +1,19 @@
+{
+  "name": "climate-generate-frontal-category-multi-element-analysis-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「生成锋面类别概率格点并阈值化连接折线」在场景「E97」中的实例化；资源引用 ['models/ensemble-model-output-statistics-emos-post-processing', 'tools/ecmwf-hres']。",
+  "tags": [
+    "edge:skeleton:climate-generate-frontal-category-probability-grid-and-threshold-lines-task",
+    "edge:scenario:climate-multi-element-analysis-field-driven-weather-front-detection-and-scenario",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:tools/ecmwf-hres",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:OUTPUT_RESOLUTION:输出分辨率",
+    "slot:DECISION_THRESHOLD:诊断阈值"
+  ]
+}

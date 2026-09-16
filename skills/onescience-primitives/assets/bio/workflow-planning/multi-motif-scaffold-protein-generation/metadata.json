@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b15",
-    "edge:scenario:sc-c6c38246",
-    "edge:workflow:wf-bio-42419238"
+    "edge:scenario:bio-multi-functional-motif-scaffold-protein-generation-scenario",
+    "edge:workflow:bio-design-objective-and-constraint-definition-model-condition-workflow"
   ],
   "scenario_id": "B15",
   "source_papers": [

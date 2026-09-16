@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b85",
-    "edge:scenario:sc-32f26123",
-    "edge:workflow:wf-bio-1964c994"
+    "edge:scenario:bio-geometric-deep-learning-driven-rna-3d-inverse-design-scenario",
+    "edge:workflow:bio-rna-input-task-definition-structure-constraint-and-model-workflow"
   ],
   "scenario_id": "B85",
   "source_papers": [

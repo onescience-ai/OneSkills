@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s002",
-    "edge:scenario:sc-5a18fe9d",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-graph-network-airfoil-unstructured-mesh-rans-field-prediction-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S002",
   "source_papers": [

@@ -16,8 +16,8 @@
     "bayesian-optimization",
     "hdbscan-clustering",
     "amorphous-materials",
-    "edge:scenario:sc-9310ff3e",
-    "edge:workflow:wf-matchem-ec013e02"
+    "edge:scenario:matchem-hfo2-amorphous-liquid-ml-potential-active-learning-scenario",
+    "edge:workflow:matchem-reference-data-audit-coverage-definition-root-cause-potential-workflow"
   ],
   "harvested": true,
   "tier": "medium",

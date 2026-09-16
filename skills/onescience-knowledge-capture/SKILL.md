@@ -49,6 +49,7 @@ skills/onescience-knowledge-capture/contributions/<domain>/<contribution_id>/
   contribution.md       # 人工审查和后续知识迁移的主文档
   contribution.json     # 机器可读元数据、证据索引和集成候选
   issue_payload.json     # issue_mode != none 时生成
+  submission_card.md     # 由 render_issue_payload.py 生成，供人工在 Gitee 网页端复制提交
 ```
 
 `<domain>` 使用 `bio`、`cfd`、`climate`、`matchem`、`general` 或 `unknown`。`contribution_id` 使用日期加稳定短名，例如 `2026-09-07_scanpy_qc_fallback`。如果同名目录已存在，不覆盖原文件，应追加 `-v2`、`-v3` 等后缀。
@@ -155,9 +156,9 @@ step_handoff:
 
 每个结论尽量绑定到 `E1`、`E2` 等证据编号。证据只写摘要，不复制大段日志或上游文档。
 
-### 5. 生成 Issue payload
+### 5. 生成 Issue payload 与提交卡片
 
-当 `issue_mode` 为 `payload_only` 或 `submit` 时，生成 `issue_payload.json`：
+当 `issue_mode` 为 `payload_only` 或 `submit` 时，先生成 `issue_payload.json`：
 
 - `title`：`[Knowledge Contribution][<domain>] <短标题>`。
 - `body`：贡献摘要、目标路径、复用价值、证据状态、集成建议、验证状态和隐私说明。
@@ -165,26 +166,44 @@ step_handoff:
 - `milestone`、assignee 等字段只有调用方明确提供时才写入。
 - Issue body 必须引用仓库内相对贡献路径，不写本机绝对路径、密钥、用户目录或未经授权的远程 URL。
 
+生成 `issue_payload.json` 后，**必须由本技能自动渲染提交卡片**：把 payload 转成人类可直接复制的「标题 / 标签 / 正文」三块，落盘到同一贡献目录的 `submission_card.md`，不再要求贡献作者手动敲命令（这一步与生成 payload 合并为一个技能动作）。渲染调用如下——脚本只读本地文件、不联网、不需要 token、且幂等，payload 不变则重跑结果一致，因此卡片可随时从 `issue_payload.json` 重新生成而无需重跑整个技能：
+
+```bash
+python skills/onescience-knowledge-capture/scripts/render_issue_payload.py \
+  --payload <contribution-directory>/issue_payload.json \
+  --repo <目标仓库 owner/name>
+```
+
+`issue_mode: payload_only` 完成后，贡献目录应同时含 `issue_payload.json` 与 `submission_card.md`。
+
 ### 6. 提交 Issue
 
-只有同时满足以下条件才允许实际提交：
+**平台现状（重要）**：gitee.com 的建 Issue API 只服务付费企业版空间；对个人仓库和组织 group 仓库（如 `onescience-ai/oneskills-dev`）调用 `POST /repos/{owner}/{repo}/issues` 一律返回 `404 project or enterprise`，脚本无法自动提交。因此**默认使用 `issue_mode: payload_only`**，由人工在 Gitee 网页端创建 Issue。
+
+#### 6.1 默认路径：payload_only + 人工网页提交
+
+提交卡片已在第 5 步由技能自动生成为 `submission_card.md`，贡献作者或领域同事**无需再运行任何命令行**，直接打开该卡片、按 SOP 在 Gitee 网页端复制创建 Issue 即可。完整网页操作步骤与自检清单见 `references/manual_issue_submission.md`。提交成功后，由提交人把 Issue 编号回填到 `contribution.json.submission`（`status` 改为 `submitted`）。
+
+> 兜底：若卡片缺失或 payload 被手工改过，可用同一脚本单独重生成 `python skills/onescience-knowledge-capture/scripts/render_issue_payload.py --payload <...>/issue_payload.json --repo <owner/name> --stdout`。
+
+#### 6.2 可选路径：submit（仅限企业版空间）
+
+仅当目标仓库位于 **Gitee 企业版空间** 时，`issue_mode: submit` 才可能成功，且必须同时满足：
 
 - `capture.issue_mode == submit`。
-- 用户明确授权创建 Issue。
+- 用户已明确授权创建 Issue。
 - `GITEE_TOKEN` 或 `GITEE_ACCESS_TOKEN` 已通过环境变量提供，不能从对话正文读取或写入文件。
-- `issue_payload.json` 已通过本技能校验。
+- `issue_payload.json` 已通过本技能校验，且产物递归敏感信息扫描无命中。
 - 本地贡献文件已成功写入并保留。
-
-实际提交使用：
 
 ```bash
 python skills/onescience-knowledge-capture/scripts/submit_gitee_issue.py \
   --payload <contribution-directory>/issue_payload.json \
-  --repo onescience-ai/oneskills-dev \
+  --repo <企业空间内的仓库 owner/name> \
   --submit
 ```
 
-默认命令只校验并打印请求摘要；只有显式带 `--submit` 才发起网络请求。提交成功后，把返回的 Issue 编号和页面引用写入 `contribution.json.submission`，不把 access token 写入任何产物。
+默认命令只校验并打印请求摘要；只有显式带 `--submit` 才发起网络请求。若返回 `404 project or enterprise`，说明目标不是企业版空间，**立即回退到 6.1 的人工路径**，保留本地贡献与 payload，返回 `partial` 并在结果中说明原因，不重复尝试自动提交。提交成功后，把返回的 Issue 编号和页面引用写入 `contribution.json.submission`，不把 access token 写入任何产物。
 
 ## 输出契约
 
@@ -200,6 +219,7 @@ execution_result:
       - contribution.md
       - contribution.json
       - issue_payload.json
+      - submission_card.md   # issue_mode != none 时由第 5 步自动渲染
     issue_submission:
       mode: none | payload_only | submit
       status: skipped | generated | submitted | failed

@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b45",
-    "edge:scenario:sc-d043311e",
-    "edge:workflow:wf-bio-9fe7f508"
+    "edge:scenario:bio-pocket-prediction-enhanced-protein-ligand-rapid-docking-scenario",
+    "edge:workflow:bio-receptor-ligand-input-precheck-pocket-model-feature-preparation-workflow"
   ],
   "scenario_id": "B45",
   "source_papers": [

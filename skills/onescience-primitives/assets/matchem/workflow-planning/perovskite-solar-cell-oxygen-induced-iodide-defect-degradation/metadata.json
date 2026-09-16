@@ -20,8 +20,8 @@
     "oxygen-induced",
     "perovskite",
     "solar",
-    "edge:scenario:sc-cc0a1b9b",
-    "edge:workflow:wf-matchem-87e6b0f5"
+    "edge:scenario:matchem-perovskite-solar-cell-oxygen-induced-iodide-defect-degradation-scenario",
+    "edge:workflow:matchem-device-stacking-failure-boundary-definition-interface-or-defect-workflow"
   ],
   "scenario_id": "钙钛矿太阳能电池氧诱导碘缺陷退化分析",
   "source_papers": [

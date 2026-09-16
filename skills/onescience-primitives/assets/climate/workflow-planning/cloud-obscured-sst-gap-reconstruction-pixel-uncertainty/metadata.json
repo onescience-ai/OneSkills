@@ -24,8 +24,8 @@
     "workflow-planning",
     "climate",
     "e69",
-    "edge:scenario:sc-dabbba00",
-    "edge:workflow:wf-climate-e1659455"
+    "edge:scenario:climate-cloud-covered-satellite-sst-reconstruction-pixel-uncertainty-scenario",
+    "edge:workflow:climate-target-sequence-gap-and-boundary-precheck-target-sequence-gap-workflow-3"
   ],
   "scenario_id": "E69",
   "source_papers": [

@@ -35,8 +35,8 @@
     "workflow-planning",
     "climate",
     "e19",
-    "edge:scenario:sc-69cdbd58",
-    "edge:workflow:wf-climate-332d84c1"
+    "edge:scenario:climate-mjo-intraseasonal-oscillation-10-30-day-phase-forecast-scenario",
+    "edge:workflow:climate-forecast-data-and-boundary-precheck-forecast-data-alignment-and-workflow-2"
   ],
   "scenario_id": "E19",
   "source_papers": [

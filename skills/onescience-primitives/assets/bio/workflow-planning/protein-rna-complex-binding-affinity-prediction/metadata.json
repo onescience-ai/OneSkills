@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b89",
-    "edge:scenario:sc-634ff596",
-    "edge:workflow:wf-bio-1964c994"
+    "edge:scenario:bio-protein-rna-complex-binding-affinity-prediction-scenario",
+    "edge:workflow:bio-rna-input-task-definition-structure-constraint-and-model-workflow"
   ],
   "scenario_id": "B89",
   "source_papers": [

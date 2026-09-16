@@ -20,8 +20,8 @@
     "workflow",
     "workflow-planning",
     "b40",
-    "edge:scenario:sc-cbd4feb1",
-    "edge:workflow:wf-bio-78f31941"
+    "edge:scenario:bio-enzyme-classification-and-reaction-retrieval-benchmark-scenario",
+    "edge:workflow:bio-protein-sample-and-target-definition-characterization-and-workflow"
   ],
   "scenario_id": "B40",
   "source_papers": [

@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s100",
-    "edge:scenario:sc-7f84dfb6",
-    "edge:workflow:wf-cfd-29af55b0"
+    "edge:scenario:cfd-implicit-representation-and-diffusion-bridge-cfd-missing-region-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-9"
   ],
   "scenario_id": "CFD_S100",
   "source_papers": [

@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s005",
     "shock-classifier",
-    "edge:scenario:sc-07139712",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-physical-network-compressible-flow-solver-shock-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S005",
   "source_papers": [

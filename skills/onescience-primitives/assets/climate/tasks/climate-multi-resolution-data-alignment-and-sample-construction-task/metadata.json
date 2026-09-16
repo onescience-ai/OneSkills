@@ -1,0 +1,31 @@
+{
+  "name": "climate-multi-resolution-data-alignment-and-sample-construction-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：粗细分辨率资料时空对齐与样本构造。被 7 个场景复用；含 7 个实例任务；资源引用 ['datasets/ERA5', 'datasets/smap-level-3-passive-soil-moisture-products', 'models/1d-cnn-based-groundwater-level-prediction', 'models/matern-gaussian-process-regression', 'tools/multi-level-b-spline-analysis-mba']。",
+  "tags": [
+    "edge:resource:datasets/ERA5",
+    "edge:resource:datasets/smap-level-3-passive-soil-moisture-products",
+    "edge:resource:models/1d-cnn-based-groundwater-level-prediction",
+    "edge:resource:models/matern-gaussian-process-regression",
+    "edge:resource:tools/multi-level-b-spline-analysis-mba",
+    "edge:prev:climate-multi-resolution-data-and-boundary-precheck-task",
+    "edge:next:climate-method-configuration-input-output-contract-validation-task",
+    "slot:PAIRING_CONFIG:粗细样本配对",
+    "slot:SPLIT_PROTOCOL:数据划分协议",
+    "slot:PREPROCESS_CONFIG:预处理配置",
+    "slot:ACCUMULATION_POLICY:累计量转换规则",
+    "slot:VARIABLE_LEVEL_MAPPING:变量层次映射",
+    "edge:instance:climate-multi-resolution-data-cmip6-temperature-precipitat-inst",
+    "edge:instance:climate-multi-resolution-data-nwp-24-240h-near-surface-inst",
+    "edge:instance:climate-multi-resolution-data-china-0-05-historical-inst",
+    "edge:instance:climate-multi-resolution-data-complex-terrain-region-100m-inst",
+    "edge:instance:climate-multi-resolution-data-mountain-snow-water-equivale-inst",
+    "edge:instance:climate-multi-resolution-data-coarse-resolution-precipitat-inst",
+    "edge:instance:climate-multi-resolution-data-coarse-grid-atmospheric-inst"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "matchem-elasticity-cracking-risk-proxy-indicator-analysis-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：弹性与开裂风险代理指标分析。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/stable-active-co2-reduction-formate-redox-modulated', 'models/computational-screening-for-thermodynamically-stable-mxenes', 'models/strain-tuning-method-for-hbn-quantum-emitters', 'tools/pymatgen', 'tools/rapid-inverse-design-metamaterials-prescribed-mechanical-behavior']。",
+  "tags": [
+    "edge:resource:datasets/stable-active-co2-reduction-formate-redox-modulated",
+    "edge:resource:models/computational-screening-for-thermodynamically-stable-mxenes",
+    "edge:resource:models/strain-tuning-method-for-hbn-quantum-emitters",
+    "edge:resource:tools/pymatgen",
+    "edge:resource:tools/rapid-inverse-design-metamaterials-prescribed-mechanical-behavior",
+    "edge:prev:matchem-li-ni-mixing-structural-stability-calculation-task",
+    "edge:next:matchem-candidate-ranking-experiment-literature-cross-validation-task",
+    "slot:STABLE_CANDIDATES:稳定候选集合",
+    "slot:MECHANICAL_METHOD:力学分析方法",
+    "edge:instance:matchem-elasticity-cracking-risk-lini091co09o2-high-ni-inst"
+  ]
+}

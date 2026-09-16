@@ -1,0 +1,19 @@
+{
+  "name": "climate-reconstruct-time-gap-historica-grace-gap-terrestrial-water-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「重建时间缺口和历史序列」在场景「E49」中的实例化；资源引用 ['datasets/gtws-mlrec-machine-learning-based-global-terrestrial-water-storage-anomaly-reconstruction-dataset-and-workflow', 'models/swe-reconstruction-using-energy-balance-model']。",
+  "tags": [
+    "edge:skeleton:climate-reconstruct-time-gap-historical-sequence-task",
+    "edge:scenario:climate-grace-gap-terrestrial-water-storage-anomaly-reconstruction-scenario",
+    "edge:resource:datasets/gtws-mlrec-machine-learning-based-global-terrestrial-water-storage-anomaly-reconstruction-dataset-and-workflow",
+    "edge:resource:models/swe-reconstruction-using-energy-balance-model",
+    "slot:RECONSTRUCTION_CONFIG:水储量重建配置",
+    "slot:OBSERVED_VALUE_POLICY:观测值保持规则",
+    "slot:UNCERTAINTY_CONFIG:不确定性配置"
+  ]
+}

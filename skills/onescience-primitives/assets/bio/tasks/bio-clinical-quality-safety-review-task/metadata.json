@@ -1,0 +1,19 @@
+{
+  "name": "bio-clinical-quality-safety-review-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：临床质量与安全复核。被 3 个场景复用；含 3 个实例任务；资源引用 ['datasets/tm-score-evaluation']。",
+  "tags": [
+    "edge:resource:datasets/tm-score-evaluation",
+    "edge:prev:bio-medical-reasoning-consistency-review-task",
+    "slot:MIN_CLINICAL_SCORE:临床得分下限",
+    "slot:REQUIRE_REVIEW:要求医生复核",
+    "edge:instance:bio-clinical-quality-safety-review-clinical-reward-aligned-inst",
+    "edge:instance:bio-clinical-quality-safety-review-medical-text-and-image-inst",
+    "edge:instance:bio-clinical-quality-safety-review-longitudinal-chest-ct-inst"
+  ]
+}

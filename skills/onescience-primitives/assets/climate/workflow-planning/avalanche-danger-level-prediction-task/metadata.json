@@ -11,8 +11,8 @@
     "avalanche-danger-level-prediction-task",
     "datapipe",
     "fallback",
-    "edge:scenario:sc-5e8e849b",
-    "edge:workflow:wf-climate-c63d363f"
+    "edge:scenario:climate-dry-snow-avalanche-danger-daily-scale-forecast-scenario",
+    "edge:workflow:climate-hazard-factor-event-label-and-boundary-precheck-hazard-factor-workflow-7"
   ],
   "harvested": true,
   "tier": "medium",

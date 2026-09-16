@@ -27,8 +27,8 @@
     "workflow-planning",
     "b56",
     "smiles-mamba",
-    "edge:scenario:sc-e3bbd709",
-    "edge:workflow:wf-bio-856a5702"
+    "edge:scenario:bio-smiles-foundation-model-adm-property-prediction-scenario",
+    "edge:workflow:bio-molecular-design-objective-definition-model-property-condition-workflow"
   ],
   "scenario_id": "B56",
   "source_papers": [

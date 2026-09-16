@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s088",
-    "edge:scenario:sc-887b3887",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-implicit-neural-field-continuous-flow-reduced-order-modeling-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S088",
   "source_papers": [

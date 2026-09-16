@@ -1,0 +1,29 @@
+{
+  "name": "bio-protein-sample-and-target-definition-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：蛋白样本与目标定义。被 10 个场景复用；含 10 个实例任务；资源引用 ['tools/alphafold-protein-structure-prediction-system', 'tools/pdb-structure-data-access', 'tools/simplefold-protein-structure-prediction-model-and-pipeline']。",
+  "tags": [
+    "edge:resource:tools/alphafold-protein-structure-prediction-system",
+    "edge:resource:tools/pdb-structure-data-access",
+    "edge:resource:tools/simplefold-protein-structure-prediction-model-and-pipeline",
+    "edge:next:bio-characterization-and-reference-data-preparation-task",
+    "slot:PROTEIN_DATA:蛋白任务数据",
+    "slot:MODEL_NAME:功能模型",
+    "slot:TARGET_TYPE:预测目标",
+    "edge:instance:bio-protein-sample-and-target-few-shot-multimodal-protein-inst",
+    "edge:instance:bio-protein-sample-and-target-preference-optimization-inst",
+    "edge:instance:bio-protein-sample-and-target-multi-scale-representation-inst",
+    "edge:instance:bio-protein-sample-and-target-residual-based-interpretable-inst",
+    "edge:instance:bio-protein-sample-and-target-deep-mutational-scanning-inst",
+    "edge:instance:bio-protein-sample-and-target-equivariant-structural-inst",
+    "edge:instance:bio-protein-sample-and-target-protein-mutation-effect-inst",
+    "edge:instance:bio-protein-sample-and-target-evolutionary-spectrum-inst",
+    "edge:instance:bio-protein-sample-and-target-enzyme-classification-and-inst",
+    "edge:instance:bio-protein-sample-and-target-enzyme-sequence-and-substrat-inst"
+  ]
+}

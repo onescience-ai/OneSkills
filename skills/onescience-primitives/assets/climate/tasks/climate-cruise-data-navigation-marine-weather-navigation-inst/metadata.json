@@ -1,0 +1,30 @@
+{
+  "name": "climate-cruise-data-navigation-marine-weather-navigation-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「航次资料和航行约束及任务边界预检」在场景「E100」中的实例化；资源引用 ['datasets/CMEMS', 'datasets/forecasting-model-performance-evaluation', 'datasets/random-forest-model-performance-evaluation', 'datasets/south-korea-air-quality-and-weather-monitoring-dataset', 'models/dynamic-pre-training-for-time-series-dynpt', 'tools/aardvark-weather-system', 'tools/ai-global-medium-range-weather-forecasting-system-pangu-weather', 'tools/fengwu-global-medium-range-weather-forecast-system', 'tools/fuxi-weather', 'tools/gencast-global-probabilistic-weather-forecasting-model', 'tools/wenhai-global-ocean-forecast-system']。",
+  "tags": [
+    "edge:skeleton:climate-cruise-data-navigation-constraint-and-boundary-precheck-task",
+    "edge:scenario:climate-marine-weather-navigation-constraint-ship-route-optimization-scenario",
+    "edge:resource:datasets/CMEMS",
+    "edge:resource:datasets/forecasting-model-performance-evaluation",
+    "edge:resource:datasets/random-forest-model-performance-evaluation",
+    "edge:resource:datasets/south-korea-air-quality-and-weather-monitoring-dataset",
+    "edge:resource:models/dynamic-pre-training-for-time-series-dynpt",
+    "edge:resource:tools/aardvark-weather-system",
+    "edge:resource:tools/ai-global-medium-range-weather-forecasting-system-pangu-weather",
+    "edge:resource:tools/fengwu-global-medium-range-weather-forecast-system",
+    "edge:resource:tools/fuxi-weather",
+    "edge:resource:tools/gencast-global-probabilistic-weather-forecasting-model",
+    "edge:resource:tools/wenhai-global-ocean-forecast-system",
+    "slot:WEATHER_FORECAST:海洋天气预报",
+    "slot:VESSEL_PERFORMANCE:船舶性能参数",
+    "slot:VOYAGE_ENDPOINTS:航次起终点",
+    "slot:NAVIGATION_CONSTRAINTS:航行约束",
+    "slot:FORECAST_ISSUE_TIME:预报签发时间"
+  ]
+}

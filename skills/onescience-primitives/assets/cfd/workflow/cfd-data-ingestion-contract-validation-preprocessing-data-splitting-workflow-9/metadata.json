@@ -1,0 +1,22 @@
+{
+  "name": "cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-9",
+  "type": "workflow",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（cfd）：5 步骨架 [数据接入与契约核验 > 预处理与数据切分 > 模型配置与训练 > 低分辨或部分观测流场重构 > 任务验收与适用域判定]，被 5 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:cfd-data-ingestion-contract-validation-task",
+    "edge:task:cfd-preprocessing-data-splitting-task",
+    "edge:task:cfd-model-configuration-training-task",
+    "edge:task:cfd-low-resolution-partial-observation-flow-reconstruction-task",
+    "edge:task:cfd-task-acceptance-domain-determination-task",
+    "edge:scenario:cfd-sparse-wall-sensor-3d-turbulence-full-field-reconstruction-scenario",
+    "edge:scenario:cfd-partial-observation-diffusion-assimilation-and-continuous-flow-scenario",
+    "edge:scenario:cfd-supervised-learning-turbulence-field-single-snapshot-super-scenario",
+    "edge:scenario:cfd-cyclegan-unpaired-les-to-dns-super-resolution-reconstruction-scenario",
+    "edge:scenario:cfd-implicit-representation-and-diffusion-bridge-cfd-missing-region-scenario"
+  ]
+}

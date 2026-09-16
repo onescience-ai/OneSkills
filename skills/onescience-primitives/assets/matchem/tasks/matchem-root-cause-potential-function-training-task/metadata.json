@@ -1,0 +1,24 @@
+{
+  "name": "matchem-root-cause-potential-function-training-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：根源势函数训练。被 7 个场景复用；含 7 个实例任务；资源引用 ['models/mace', 'tools/reaxnet-polarizable-long-range-neural-network-potential']。",
+  "tags": [
+    "edge:resource:models/mace",
+    "edge:resource:tools/reaxnet-polarizable-long-range-neural-network-potential",
+    "edge:prev:matchem-reference-data-audit-coverage-definition-task",
+    "edge:next:matchem-energy-force-stress-and-extrapolation-validation-task",
+    "slot:POTENTIAL_CONFIG:势函数根源模型配置",
+    "edge:instance:matchem-root-cause-potential-function-hfo2-amorphous-liquid-ml-inst",
+    "edge:instance:matchem-root-cause-potential-function-mof-quantum-ml-potential-inst",
+    "edge:instance:matchem-root-cause-potential-function-catalytic-reaction-ml-inst",
+    "edge:instance:matchem-root-cause-potential-function-polarizable-long-range-inst",
+    "edge:instance:matchem-root-cause-potential-function-layered-material-transferabl-inst",
+    "edge:instance:matchem-root-cause-potential-function-neural-network-potential-inst",
+    "edge:instance:matchem-root-cause-potential-function-defective-potential-energy-inst"
+  ]
+}

@@ -16,8 +16,8 @@
     "reduction",
     "temperature",
     "tuning",
-    "edge:scenario:sc-c5d0df7d",
-    "edge:workflow:wf-matchem-e0e8489b"
+    "edge:scenario:matchem-lithium-reduction-room-temperature-oxide-defect-modulation-scenario",
+    "edge:workflow:matchem-defect-model-and-control-definition-structure-electronic-or-workflow"
   ],
   "scenario_id": "锂还原室温氧化物缺陷调控",
   "source_papers": [

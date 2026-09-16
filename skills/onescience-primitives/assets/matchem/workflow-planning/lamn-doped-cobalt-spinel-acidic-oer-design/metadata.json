@@ -23,8 +23,8 @@
     "spinel",
     "workflow",
     "workflow-planning",
-    "edge:scenario:sc-24db8104",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-lamn-doped-cobalt-spinel-acidic-oxygen-evolution-catalyst-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "scenario_id": "LaMn掺杂钴尖晶石酸性析氧催化设计",
   "source_papers": [

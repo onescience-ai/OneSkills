@@ -1,0 +1,24 @@
+{
+  "name": "cfd-candidate-generation-constrained-optimization-task",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（cfd）：候选生成与约束优化。被 7 个场景复用；含 7 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:cfd-model-configuration-training-task",
+    "edge:next:cfd-task-acceptance-domain-determination-task",
+    "slot:CHECKPOINT:模型权重",
+    "slot:DEVICE:计算设备",
+    "slot:BATCH_SIZE:推理批大小",
+    "edge:instance:cfd-candidate-generation-constrain-active-learning-driven-pde-inst",
+    "edge:instance:cfd-candidate-generation-constrain-learned-mesh-movement-inst",
+    "edge:instance:cfd-candidate-generation-constrain-multi-fidelity-surrogate-inst",
+    "edge:instance:cfd-candidate-generation-constrain-generative-model-agent-inst",
+    "edge:instance:cfd-candidate-generation-constrain-neural-inverse-operator-pde-inst",
+    "edge:instance:cfd-candidate-generation-constrain-differentiable-physics-inst",
+    "edge:instance:cfd-candidate-generation-constrain-3d-aircraft-aerodynamic-inst"
+  ]
+}

@@ -19,8 +19,8 @@
     "microstructures",
     "null",
     "segmentation",
-    "edge:scenario:sc-dc9713aa",
-    "edge:workflow:wf-matchem-c41fa878"
+    "edge:scenario:matchem-lithium-ion-battery-electrode-microstructure-deep-learning-scenario",
+    "edge:workflow:matchem-material-condition-modeling-structure-or-electrochemical-workflow"
   ],
   "scenario_id": "锂离子电池电极微结构深度学习分割",
   "source_papers": [

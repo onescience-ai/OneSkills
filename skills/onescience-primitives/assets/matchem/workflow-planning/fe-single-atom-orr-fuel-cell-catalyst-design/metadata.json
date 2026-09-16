@@ -21,8 +21,8 @@
     "zinc-air",
     "workflow",
     "workflow-planning",
-    "edge:scenario:sc-42e2fa68",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-fe-single-atom-orr-fuel-cell-catalyst-design-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "scenario_id": "Fe单原子氧还原燃料电池催化剂设计",
   "source_papers": [

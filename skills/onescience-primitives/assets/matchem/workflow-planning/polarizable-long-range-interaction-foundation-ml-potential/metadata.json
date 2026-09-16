@@ -30,8 +30,8 @@
     "equivariant-gnn",
     "jax",
     "materials-science",
-    "edge:scenario:sc-c776f8d6",
-    "edge:workflow:wf-matchem-ec013e02"
+    "edge:scenario:matchem-polarizable-long-range-interaction-foundation-ml-potential-scenario",
+    "edge:workflow:matchem-reference-data-audit-coverage-definition-root-cause-potential-workflow"
   ],
   "scenario_id": "可极化长程相互作用基础机器学习势",
   "source_papers": [

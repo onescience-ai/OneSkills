@@ -52,8 +52,8 @@
     "workflow-planning",
     "climate",
     "e1",
-    "edge:scenario:sc-07460df1",
-    "edge:workflow:wf-climate-6eed2cdc"
+    "edge:scenario:climate-global-analysis-driven-1-10-day-multivariate-deterministic-scenario",
+    "edge:workflow:climate-forecast-range-and-analysis-field-precheck-grid-alignment-and-workflow"
   ],
   "scenario_id": "E1",
   "source_papers": [

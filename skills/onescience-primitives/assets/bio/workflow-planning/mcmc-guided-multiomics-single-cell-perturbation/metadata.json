@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b75",
-    "edge:scenario:sc-0a96b591",
-    "edge:workflow:wf-bio-cdb48c05"
+    "edge:scenario:bio-mcmc-guided-multi-omics-single-cell-perturbation-prediction-scenario",
+    "edge:workflow:bio-single-cell-data-task-definition-preprocessing-model-workflow"
   ],
   "scenario_id": "B75",
   "source_papers": [

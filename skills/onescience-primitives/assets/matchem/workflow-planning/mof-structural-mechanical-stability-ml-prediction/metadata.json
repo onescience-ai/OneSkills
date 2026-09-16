@@ -18,9 +18,9 @@
     "relations",
     "stability",
     "structure-mechanical",
-    "edge:scenario:sc-1844e750",
+    "edge:scenario:matchem-mof-mechanical-stability-machine-learning-prediction-scenario",
     "edge:scenario:mof-mechanical-stability-ml-prediction",
-    "edge:workflow:wf-matchem-128b457b",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow",
     "edge:workflow:materials-generic-4step-screening"
   ],
   "scenario_id": "MOF结构力学稳定性机器学习预测",

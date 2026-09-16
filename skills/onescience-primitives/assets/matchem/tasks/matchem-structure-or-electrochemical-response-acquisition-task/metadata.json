@@ -1,0 +1,31 @@
+{
+  "name": "matchem-structure-or-electrochemical-response-acquisition-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：结构或电化学响应获取。被 15 个场景复用；含 15 个实例任务；资源引用 ['datasets/xjtu-sy-rolling-bearing-accelerated-life-test-protocol-and-dataset']。",
+  "tags": [
+    "edge:resource:datasets/xjtu-sy-rolling-bearing-accelerated-life-test-protocol-and-dataset",
+    "edge:prev:matchem-material-condition-modeling-task",
+    "edge:next:matchem-degradation-mechanism-and-performance-analysis-task",
+    "slot:COMPUTE_OR_TEST_CONFIG:计算或测试配置",
+    "edge:instance:matchem-structure-or-electrochemical-licoo2-high-voltage-timgal-inst",
+    "edge:instance:matchem-structure-or-electrochemical-limn-li-rich-layered-cathode-inst",
+    "edge:instance:matchem-structure-or-electrochemical-commercial-li-ion-battery-inst",
+    "edge:instance:matchem-structure-or-electrochemical-solid-state-battery-lithium-inst",
+    "edge:instance:matchem-structure-or-electrochemical-solid-state-lithium-ion-inst",
+    "edge:instance:matchem-structure-or-electrochemical-porous-silicon-li-ion-inst",
+    "edge:instance:matchem-structure-or-electrochemical-li-rich-layered-cathode-inst",
+    "edge:instance:matchem-structure-or-electrochemical-battery-particle-carbon-inst",
+    "edge:instance:matchem-structure-or-electrochemical-ionomer-electrolyte-machine-inst",
+    "edge:instance:matchem-structure-or-electrochemical-lithium-sulfur-battery-inst",
+    "edge:instance:matchem-structure-or-electrochemical-lithium-ion-battery-calendar-inst",
+    "edge:instance:matchem-structure-or-electrochemical-lithium-ion-battery-electrod-inst",
+    "edge:instance:matchem-structure-or-electrochemical-lithium-ion-battery-degradat-inst",
+    "edge:instance:matchem-structure-or-electrochemical-lithium-metal-electrolyte-inst",
+    "edge:instance:matchem-structure-or-electrochemical-high-ionic-conductivity-inst"
+  ]
+}

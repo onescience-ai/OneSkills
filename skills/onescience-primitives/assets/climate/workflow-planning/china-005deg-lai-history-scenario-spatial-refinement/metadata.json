@@ -30,8 +30,8 @@
     "spatial-resolution",
     "0.05-degree",
     "pytorch",
-    "edge:scenario:sc-b5aa7609",
-    "edge:workflow:wf-climate-ddf53247"
+    "edge:scenario:climate-china-0-05-historical-scenario-lai-spatial-downscaling-scenario",
+    "edge:workflow:climate-multi-resolution-data-and-boundary-precheck-multi-resolution-workflow-3"
   ],
   "scenario_id": "E93",
   "source_papers": [

@@ -18,8 +18,8 @@
     "ace2",
     "glosea",
     "reanalysis-evaluation",
-    "edge:scenario:sc-43bddc37",
-    "edge:workflow:wf-climate-2b5e3703"
+    "edge:scenario:climate-global-1-6-month-seasonal-ensemble-weather-climate-forecast-scenario",
+    "edge:workflow:climate-forecast-data-and-boundary-precheck-forecast-data-alignment-and-workflow-5"
   ],
   "harvested": true,
   "tier": "medium",

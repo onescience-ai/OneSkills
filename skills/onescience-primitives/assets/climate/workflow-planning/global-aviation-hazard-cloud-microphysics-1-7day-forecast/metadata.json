@@ -21,8 +21,8 @@
     "workflow-planning",
     "climate",
     "e88",
-    "edge:scenario:sc-e30afc7f",
-    "edge:workflow:wf-climate-fc942d86"
+    "edge:scenario:climate-global-aviation-hazardous-cloud-microphysics-1to7day-forecast-scenario",
+    "edge:workflow:climate-forecast-data-and-boundary-precheck-forecast-data-alignment-and-workflow-6"
   ],
   "scenario_id": "E88",
   "source_papers": [

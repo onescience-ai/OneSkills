@@ -21,8 +21,8 @@
     "workflow-planning",
     "climate",
     "e106",
-    "edge:scenario:sc-6f465cf1",
-    "edge:workflow:wf-climate-22c90ac6"
+    "edge:scenario:climate-bohai-yellow-sea-wave-intelligent-forecast-scenario",
+    "edge:workflow:climate-model-input-run-condition-precheck-executing-scheme-design-task-workflow-8"
   ],
   "scenario_id": "E106",
   "source_papers": [],

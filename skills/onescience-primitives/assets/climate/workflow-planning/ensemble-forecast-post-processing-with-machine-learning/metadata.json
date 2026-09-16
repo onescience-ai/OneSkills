@@ -18,8 +18,8 @@
     "probabilistic-forecasting",
     "temperature",
     "precipitation",
-    "edge:scenario:sc-e61aa5dd",
-    "edge:workflow:wf-climate-58a81cc1"
+    "edge:scenario:climate-station-temperature-ensemble-forecast-probability-calibration-scenario",
+    "edge:workflow:climate-forecast-actual-samples-task-boundary-precheck-forecast-actual-workflow"
   ],
   "harvested": true,
   "tier": "high",

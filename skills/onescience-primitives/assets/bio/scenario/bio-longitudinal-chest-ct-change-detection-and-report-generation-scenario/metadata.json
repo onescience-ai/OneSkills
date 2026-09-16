@@ -1,0 +1,28 @@
+{
+  "name": "bio-longitudinal-chest-ct-change-detection-and-report-generation-scenario",
+  "type": "scenario",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：B100（bio）。工作流 4 步，经 edge:workflow 指向 bio-medical-data-task-definition-image-preprocessing-prompt-workflow，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "edge:workflow:bio-medical-data-task-definition-image-preprocessing-prompt-workflow",
+    "edge:task:bio-medical-data-task-definition-task",
+    "edge:task:bio-image-preprocessing-prompt-construction-task",
+    "edge:task:bio-medical-reasoning-consistency-review-task",
+    "edge:task:bio-clinical-quality-safety-review-task",
+    "slot:MEDICAL_INPUT:医学输入",
+    "slot:MODEL_NAME:医学模型",
+    "slot:MODALITY:影像模态",
+    "slot:CHECKPOINT:模型权重",
+    "slot:CLINICAL_PROMPT:临床提示",
+    "slot:MAX_TOKENS:最大输出词元",
+    "slot:TEMPERATURE:生成温度",
+    "slot:SEED:随机种子",
+    "slot:REVISION_PASS:启用二次校订",
+    "slot:MIN_CLINICAL_SCORE:临床得分下限",
+    "slot:REQUIRE_REVIEW:要求医生复核"
+  ]
+}

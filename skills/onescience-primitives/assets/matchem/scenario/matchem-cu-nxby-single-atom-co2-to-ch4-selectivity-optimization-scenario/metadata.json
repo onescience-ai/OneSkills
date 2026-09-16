@@ -1,0 +1,27 @@
+{
+  "name": "matchem-cu-nxby-single-atom-co2-to-ch4-selectivity-optimization-scenario",
+  "type": "scenario",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：Cu-NxBy_单原子位点CO2到CH4选择性优化（matchem）。工作流 4 步，经 edge:workflow 指向 matchem-cu-n4-substrate-local-coordination-geometry-generation-workflow，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "edge:workflow:matchem-cu-n4-substrate-local-coordination-geometry-generation-workflow",
+    "edge:task:matchem-cu-n4-substrate-local-coordination-geometry-generation-task",
+    "edge:task:matchem-adsorption-configuration-search-vasp-relaxation-task",
+    "edge:task:matchem-co2-to-ch4-her-competing-pathway-free-energy-analysis-task",
+    "edge:task:matchem-site-stability-selectivity-ranking-task",
+    "slot:CATALYST_STRUCTURE:基底结构",
+    "slot:COORDINATION_SET:配位候选",
+    "slot:COORDINATION_STRUCTURES:配位结构集合",
+    "slot:INTERMEDIATE_SET:中间体集合",
+    "slot:DFT_CONFIG:DFT 设置",
+    "slot:ADSORPTION_RESULTS:吸附结果",
+    "slot:ELECTROCHEMICAL_POTENTIAL:电位",
+    "slot:BARRIER_METHOD:能垒方法",
+    "slot:REACTION_ANALYSIS:反应分析结果",
+    "slot:VALIDATION_DATA:验证数据"
+  ]
+}

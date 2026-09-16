@@ -1,0 +1,29 @@
+{
+  "name": "cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-4",
+  "type": "workflow",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（cfd）：5 步骨架 [数据接入与契约核验 > 预处理与数据切分 > 模型配置与训练 > 方程求解与物理残差恢复 > 任务验收与适用域判定]，被 12 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:cfd-data-ingestion-contract-validation-task",
+    "edge:task:cfd-preprocessing-data-splitting-task",
+    "edge:task:cfd-model-configuration-training-task",
+    "edge:task:cfd-equation-solving-physics-residual-restoration-task",
+    "edge:task:cfd-task-acceptance-domain-determination-task",
+    "edge:scenario:cfd-pinn-incompressible-navier-stokes-forward-solver-scenario",
+    "edge:scenario:cfd-pinn-turbulence-rans-mean-flow-closure-scenario",
+    "edge:scenario:cfd-physics-informed-network-sparse-observation-parameter-inversion-scenario",
+    "edge:scenario:cfd-bayesian-pinn-noisy-data-probabilistic-inversion-scenario",
+    "edge:scenario:cfd-hard-constrained-pinn-complex-geometry-boundary-solver-scenario",
+    "edge:scenario:cfd-domain-decomposition-parallel-pinn-large-domain-solver-scenario",
+    "edge:scenario:cfd-spectral-enhanced-pinn-high-frequency-multi-scale-pde-solving-scenario",
+    "edge:scenario:cfd-natural-gradient-and-loss-balanced-pinn-stable-training-scenario",
+    "edge:scenario:cfd-deep-ritz-weak-form-neural-variational-solver-scenario",
+    "edge:scenario:cfd-symbolic-and-sparse-physics-learning-governing-equation-scenario",
+    "edge:scenario:cfd-physical-network-stochastic-high-dimensional-pde-solver-scenario",
+    "edge:scenario:cfd-automation-and-meta-learning-pinn-cross-equation-solving-scenario"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "climate-hydro-forcing-basin-data-boundary-precheck-hydro-forcing-basin-workflow-11",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [水文强迫和流域资料及任务边界预检 > 水文强迫和流域资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 预测溢流概率与体量 > 形成设施级告警 > 按事件漏报和体量误差验证]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-hydro-forcing-basin-data-boundary-precheck-task",
+    "edge:task:climate-hydro-forcing-basin-stalign-sample-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-predict-overflow-probability-volume-task",
+    "edge:task:climate-forming-facility-level-alerts-task",
+    "edge:task:climate-validation-by-event-missed-detection-volume-error-task",
+    "edge:scenario:climate-rainfall-and-pipe-network-state-driven-combined-sewer-overflow-scenario"
+  ]
+}

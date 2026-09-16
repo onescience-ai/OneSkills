@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s091",
     "physics-informed-diffusion-model",
-    "edge:scenario:sc-506b9cc2",
-    "edge:workflow:wf-cfd-5b6bc953"
+    "edge:scenario:cfd-physics-informed-diffusion-model-flow-field-distribution-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-8"
   ],
   "scenario_id": "CFD_S091",
   "source_papers": [

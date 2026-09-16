@@ -17,8 +17,8 @@
     "forecast-calibration",
     "model-chain",
     "pv-power-forecasting",
-    "edge:scenario:sc-fe3c0d54",
-    "edge:workflow:wf-climate-d7e0511b"
+    "edge:scenario:climate-ensemble-forecast-intraday-to-days-ahead-solar-irradiance-scenario",
+    "edge:workflow:climate-forecast-actual-samples-task-boundary-precheck-forecast-actual-workflow-2"
   ],
   "harvested": true,
   "tier": "high",

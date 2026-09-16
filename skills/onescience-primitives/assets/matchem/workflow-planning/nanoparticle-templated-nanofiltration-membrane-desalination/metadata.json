@@ -16,8 +16,8 @@
     "null",
     "performance",
     "ultrahigh",
-    "edge:scenario:sc-1ebc7058",
-    "edge:workflow:wf-matchem-2c158827"
+    "edge:scenario:matchem-nanoparticle-template-nanofiltration-membrane-seawater-scenario",
+    "edge:workflow:matchem-structure-and-separation-target-definition-mass-transfer-workflow"
   ],
   "scenario_id": "纳米颗粒模板纳滤膜海水淡化设计",
   "source_papers": [

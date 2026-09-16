@@ -36,8 +36,8 @@
     "model-interpretability",
     "integrated-gradients",
     "camels-dataset",
-    "edge:scenario:sc-3938a6f7",
-    "edge:workflow:wf-climate-dc11d42a"
+    "edge:scenario:climate-multi-source-meteorological-forcing-driven-multi-basin-daily-scenario",
+    "edge:workflow:climate-hydro-forcing-basin-data-boundary-precheck-hydro-forcing-basin-workflow-3"
   ],
   "scenario_id": "E10",
   "source_papers": [

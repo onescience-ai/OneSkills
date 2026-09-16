@@ -1,0 +1,22 @@
+{
+  "name": "climate-predict-regional-concentration-field-3hourly-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：逐3小时预测区域浓度场。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/spatial-generalization-benchmarks-for-hydrologic-models', 'models/spatial-and-temporal-deep-learning-models-for-fire-prediction', 'tools/fengwu-global-medium-range-weather-forecast-system', 'tools/wenhai-global-ocean-forecast-system']。",
+  "tags": [
+    "edge:resource:datasets/spatial-generalization-benchmarks-for-hydrologic-models",
+    "edge:resource:models/spatial-and-temporal-deep-learning-models-for-fire-prediction",
+    "edge:resource:tools/fengwu-global-medium-range-weather-forecast-system",
+    "edge:resource:tools/wenhai-global-ocean-forecast-system",
+    "edge:prev:climate-method-configuration-input-output-contract-validation-task",
+    "edge:next:climate-result-recovery-and-scenario-product-generation-task",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:FORECAST_HORIZON:预测时效",
+    "slot:SPATIAL_GRID:输出网格",
+    "edge:instance:climate-predict-regional-concentration-nwp-emission-driven-regional-inst"
+  ]
+}

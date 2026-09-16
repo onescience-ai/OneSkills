@@ -75,8 +75,8 @@
     "workflow-planning",
     "climate",
     "e45",
-    "edge:scenario:sc-a2a7aaba",
-    "edge:workflow:wf-climate-04fd00ab"
+    "edge:scenario:climate-ozone-and-particulate-matter-historical-series-meteorological-scenario",
+    "edge:workflow:climate-observation-forced-sample-and-boundary-precheck-observation-workflow-2"
   ],
   "scenario_id": "E45",
   "source_papers": [

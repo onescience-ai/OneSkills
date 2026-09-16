@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s048",
     "fourier-neural-operator",
-    "edge:scenario:sc-e5411074",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-fno-regular-grid-parameterized-pde-operator-learning-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S048",
   "source_papers": [

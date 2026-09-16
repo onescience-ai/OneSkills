@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s082",
-    "edge:scenario:sc-18816287",
-    "edge:workflow:wf-cfd-94ab0c83"
+    "edge:scenario:cfd-differentiable-and-generative-pde-optimal-control-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-7"
   ],
   "scenario_id": "CFD_S082",
   "source_papers": [

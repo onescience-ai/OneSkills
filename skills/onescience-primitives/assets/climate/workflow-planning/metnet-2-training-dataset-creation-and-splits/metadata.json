@@ -17,8 +17,8 @@
     "satellite-data",
     "time-series-data",
     "meteorological-data",
-    "edge:scenario:sc-2b0ee5ac",
-    "edge:workflow:wf-climate-0ab0fb76"
+    "edge:scenario:climate-multi-source-observation-driven-regional-3to12h-quantitative-scenario",
+    "edge:workflow:climate-near-observation-task-boundary-precheck-near-observation-space-workflow-2"
   ],
   "harvested": true,
   "tier": "medium",

@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s059",
     "physics-constrained-neural-operator",
-    "edge:scenario:sc-13bf824c",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-physical-boundary-invariant-constrained-neural-operator-learning-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S059",
   "source_papers": [

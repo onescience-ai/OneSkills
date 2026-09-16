@@ -16,8 +16,8 @@
     "null",
     "stable",
     "vibrationally",
-    "edge:scenario:sc-20e5ee90",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-vibration-stable-material-ml-screening-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "振动稳定材料机器学习筛选",
   "source_papers": [

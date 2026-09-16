@@ -61,8 +61,8 @@
     "workflow-planning",
     "climate",
     "e46",
-    "edge:scenario:sc-9013f97f",
-    "edge:workflow:wf-climate-cc9bd7e1"
+    "edge:scenario:climate-subseasonal-soil-moisture-drought-probability-forecast-scenario",
+    "edge:workflow:climate-hydro-forcing-basin-data-boundary-precheck-hydro-forcing-basin-workflow-5"
   ],
   "scenario_id": "E46",
   "source_papers": [

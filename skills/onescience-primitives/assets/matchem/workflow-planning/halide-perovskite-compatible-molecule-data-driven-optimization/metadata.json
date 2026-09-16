@@ -28,8 +28,8 @@
     "benchmark-dataset",
     "ch3nh3pbi3",
     "open-data",
-    "edge:scenario:sc-5bd05055",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-halide-perovskite-compatible-molecule-data-driven-optimization-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "卤化物钙钛矿兼容分子数据驱动优化",
   "source_papers": [

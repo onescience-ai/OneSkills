@@ -1,0 +1,26 @@
+{
+  "name": "bio-molecular-design-objective-definition-model-property-condition-workflow",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（bio）：4 步骨架 [分子设计目标定义 > 模型与性质条件准备 > 三维分子生成与采样 > 性质过滤与候选排序]，被 10 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:bio-molecular-design-objective-definition-task",
+    "edge:task:bio-model-property-condition-preparation-task",
+    "edge:task:bio-3d-molecular-generation-sampling-task",
+    "edge:task:bio-property-filtering-candidate-ranking-task",
+    "edge:scenario:bio-best-of-k-aligned-target-specific-3d-molecule-generation-scenario",
+    "edge:scenario:bio-smiles-foundation-model-adm-property-prediction-scenario",
+    "edge:scenario:bio-1d-language-3d-diffusion-molecular-generation-scenario",
+    "edge:scenario:bio-affinity-gradient-guided-pocket-conditional-molecule-generation-scenario",
+    "edge:scenario:bio-all-atom-flow-matching-3d-small-molecule-generation-scenario",
+    "edge:scenario:bio-molecular-latent-space-diffusion-evolution-and-multi-site-scenario",
+    "edge:scenario:bio-synthesis-route-constrained-gflownet-molecule-generation-scenario",
+    "edge:scenario:bio-multi-task-target-aware-3d-molecule-generation-scenario",
+    "edge:scenario:bio-shape-electrostatic-pharmacophore-bioisostere-design-scenario",
+    "edge:scenario:bio-positive-negative-activity-guided-targeted-small-molecule-scenario"
+  ]
+}

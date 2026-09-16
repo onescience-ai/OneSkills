@@ -35,8 +35,8 @@
     "workflow-planning",
     "climate",
     "e37",
-    "edge:scenario:sc-bec83fee",
-    "edge:workflow:wf-climate-31a89519"
+    "edge:scenario:climate-weather-driven-next-day-wildfire-danger-probability-scenario",
+    "edge:workflow:climate-hazard-factor-event-label-and-boundary-precheck-hazard-factor-workflow-6"
   ],
   "scenario_id": "E37",
   "source_papers": [

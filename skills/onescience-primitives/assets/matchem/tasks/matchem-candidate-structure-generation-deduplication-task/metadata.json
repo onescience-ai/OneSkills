@@ -1,0 +1,23 @@
+{
+  "name": "matchem-candidate-structure-generation-deduplication-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：候选结构生成与去重。被 6 个场景复用；含 6 个实例任务；资源引用 ['models/strain-tuning-method-for-hbn-quantum-emitters', 'tools/molecular-structure-preparation']。",
+  "tags": [
+    "edge:resource:models/strain-tuning-method-for-hbn-quantum-emitters",
+    "edge:resource:tools/molecular-structure-preparation",
+    "edge:prev:matchem-composition-structure-search-space-definition-task",
+    "edge:next:matchem-relaxation-stability-ranking-task",
+    "slot:STRUCTURE_CONSTRAINTS:结构约束",
+    "edge:instance:matchem-candidate-structure-generation-graph-neural-network-crystal-inst",
+    "edge:instance:matchem-candidate-structure-generation-finite-temperature-crystal-inst",
+    "edge:instance:matchem-candidate-structure-generation-perovskite-oxide-and-halide-inst",
+    "edge:instance:matchem-candidate-structure-generation-sodium-amide-conditional-inst",
+    "edge:instance:matchem-candidate-structure-generation-high-pressure-crystal-inst",
+    "edge:instance:matchem-candidate-structure-generation-high-curie-temperature-2d-inst"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "climate-lead-time-multi-threshold-test-delivery-decision-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：分时效多阈值检验与交付判定。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/kling-gupta-efficiency-kge-metric', 'datasets/lpma-airport-wind-observation-validation', 'datasets/precipitation-nowcasting-evaluation-metrics', 'datasets/uk-radar-composite-dataset', 'tools/lhasa-v2-global-rainfall-triggered-landslide-probabilistic-nowcast-model']。",
+  "tags": [
+    "edge:resource:datasets/kling-gupta-efficiency-kge-metric",
+    "edge:resource:datasets/lpma-airport-wind-observation-validation",
+    "edge:resource:datasets/precipitation-nowcasting-evaluation-metrics",
+    "edge:resource:datasets/uk-radar-composite-dataset",
+    "edge:resource:tools/lhasa-v2-global-rainfall-triggered-landslide-probabilistic-nowcast-model",
+    "edge:prev:climate-probability-calibration-nowcast-generation-task",
+    "slot:VERIFICATION_RADAR:未来验证雷达资料",
+    "slot:BASELINE_NOWCASTS:基线临近预报",
+    "slot:METRICS:检验指标",
+    "slot:VALIDATION_PROTOCOL:验证与验收协议",
+    "edge:instance:climate-lead-time-multi-threshold-radar-driven-0-3-hour-inst"
+  ]
+}

@@ -27,8 +27,8 @@
     "workflow-planning",
     "matchem",
     "linico_高镍层状正极掺杂结构优化与应变风险分析",
-    "edge:scenario:sc-f94cf8ec",
-    "edge:workflow:wf-matchem-9d782366"
+    "edge:scenario:matchem-lini091co09o2-high-ni-layered-cathode-doping-strain-risk-scenario",
+    "edge:workflow:matchem-host-structure-doping-candidate-modeling-delithiation-states-workflow"
   ],
   "scenario_id": "LiNiCo_高镍层状正极掺杂结构优化与应变风险分析",
   "source_papers": [

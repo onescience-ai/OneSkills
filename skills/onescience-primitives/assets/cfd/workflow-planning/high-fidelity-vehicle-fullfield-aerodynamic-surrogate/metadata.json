@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s011",
     "neural-cfd-surrogate",
-    "edge:scenario:sc-5bbd7ba8",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-high-fidelity-vehicle-dataset-full-field-and-aerodynamic-force-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S011",
   "source_papers": [

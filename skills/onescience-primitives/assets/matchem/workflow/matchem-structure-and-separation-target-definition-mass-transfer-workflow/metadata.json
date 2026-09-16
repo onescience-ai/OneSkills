@@ -1,0 +1,28 @@
+{
+  "name": "matchem-structure-and-separation-target-definition-mass-transfer-workflow",
+  "type": "workflow",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（matchem）：4 步骨架 [结构与分离目标定义 > 传质或吸附性能获取 > 选择性稳定性与能耗分析 > 材料或工艺窗口输出]，被 12 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:matchem-structure-and-separation-target-definition-task",
+    "edge:task:matchem-mass-transfer-adsorption-performance-acquisition-task",
+    "edge:task:matchem-selective-stability-and-energy-consumption-analysis-task",
+    "edge:task:matchem-material-process-window-output-task",
+    "edge:scenario:matchem-mof-molecular-diffusion-enhanced-co2-capture-performance-scenario",
+    "edge:scenario:matchem-mof-deep-generative-inverse-design-scenario",
+    "edge:scenario:matchem-mof-pre-combustion-co2-capture-genetic-algorithm-screening-scenario",
+    "edge:scenario:matchem-mof-trace-co2-air-capture-material-design-scenario",
+    "edge:scenario:matchem-mof-high-throughput-hydrogen-storage-screening-scenario",
+    "edge:scenario:matchem-mxene-kevlar-composite-membrane-osmotic-power-design-scenario",
+    "edge:scenario:matchem-mxene-zeolite-gas-separation-membrane-design-scenario",
+    "edge:scenario:matchem-diamine-grafted-mof-co2-capture-design-scenario",
+    "edge:scenario:matchem-hydrophilic-responsive-membrane-oil-water-separation-scenario",
+    "edge:scenario:matchem-monolayer-mos2-nanopore-desalination-design-scenario",
+    "edge:scenario:matchem-nanoparticle-template-nanofiltration-membrane-seawater-scenario",
+    "edge:scenario:matchem-black-gold-thin-film-solar-steam-generation-scenario"
+  ]
+}

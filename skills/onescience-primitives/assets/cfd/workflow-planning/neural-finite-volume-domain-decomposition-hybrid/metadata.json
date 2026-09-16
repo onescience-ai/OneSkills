@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s072",
     "neural-finite-volume-solver",
-    "edge:scenario:sc-b9b7f429",
-    "edge:workflow:wf-cfd-f43b987c"
+    "edge:scenario:cfd-neural-finite-volume-domain-decomposition-hybrid-solver-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-5"
   ],
   "scenario_id": "CFD_S072",
   "source_papers": [

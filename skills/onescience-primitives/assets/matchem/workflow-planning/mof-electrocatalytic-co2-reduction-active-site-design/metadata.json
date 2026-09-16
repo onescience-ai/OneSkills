@@ -18,8 +18,8 @@
     "null",
     "organic",
     "reduction",
-    "edge:scenario:sc-ef3cb1fd",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-mof-electrocatalytic-co2-reduction-active-site-design-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "scenario_id": "MOF电催化CO2还原活性位设计",
   "source_papers": [

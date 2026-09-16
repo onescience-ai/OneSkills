@@ -32,8 +32,8 @@
     "workflow-planning",
     "climate",
     "e86",
-    "edge:scenario:sc-8f8efe74",
-    "edge:workflow:wf-climate-57350622"
+    "edge:scenario:climate-global-high-resolution-canopy-height-mapping-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-7"
   ],
   "scenario_id": "E86",
   "source_papers": [

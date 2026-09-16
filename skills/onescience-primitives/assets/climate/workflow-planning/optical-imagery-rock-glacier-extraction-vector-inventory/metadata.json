@@ -21,8 +21,8 @@
     "workflow-planning",
     "climate",
     "e77",
-    "edge:scenario:sc-4f5071fd",
-    "edge:workflow:wf-climate-7e219bc3"
+    "edge:scenario:climate-optical-imagery-rock-glacier-extraction-vector-inventory-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-5"
   ],
   "scenario_id": "E77",
   "source_papers": [

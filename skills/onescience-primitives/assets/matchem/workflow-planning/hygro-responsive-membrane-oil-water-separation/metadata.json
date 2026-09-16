@@ -23,8 +23,8 @@
     "pegda",
     "dip-coating",
     "emulsion-separation",
-    "edge:scenario:sc-63b1c390",
-    "edge:workflow:wf-matchem-2c158827"
+    "edge:scenario:matchem-hydrophilic-responsive-membrane-oil-water-separation-scenario",
+    "edge:workflow:matchem-structure-and-separation-target-definition-mass-transfer-workflow"
   ],
   "scenario_id": "亲水响应膜油水分离设计",
   "source_papers": [

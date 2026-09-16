@@ -1,0 +1,20 @@
+{
+  "name": "climate-future-reflectance-vegetation-greenness-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：生成未来多时次反射率与植被绿度。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/modis-myd13a3-ndvi-product', 'models/ensemble-model-output-statistics-emos-post-processing']。",
+  "tags": [
+    "edge:resource:datasets/modis-myd13a3-ndvi-product",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:prev:climate-method-configuration-input-output-contract-validation-task",
+    "edge:next:climate-output-cloud-masked-and-extrapolation-uncertainty-task",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:OUTPUT_INTERVAL:输出间隔",
+    "slot:CLOUD_GAP_POLICY:云缺口处理规则",
+    "edge:instance:climate-future-reflectance-vegetation-satellite-weather-driven-inst"
+  ]
+}

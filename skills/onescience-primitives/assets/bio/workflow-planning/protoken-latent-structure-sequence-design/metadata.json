@@ -27,8 +27,8 @@
     "workflow-planning",
     "b14",
     "pt-dit",
-    "edge:scenario:sc-c68f868e",
-    "edge:workflow:wf-bio-42419238"
+    "edge:scenario:bio-protoken-latent-protein-structure-sequence-co-design-scenario",
+    "edge:workflow:bio-design-objective-and-constraint-definition-model-condition-workflow"
   ],
   "scenario_id": "B14",
   "source_papers": [

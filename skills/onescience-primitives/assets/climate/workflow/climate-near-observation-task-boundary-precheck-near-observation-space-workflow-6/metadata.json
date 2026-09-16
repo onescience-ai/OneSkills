@@ -1,0 +1,19 @@
+{
+  "name": "climate-near-observation-task-boundary-precheck-near-observation-space-workflow-6",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [临近观测及任务边界预检 > 临近观测时空对齐与样本构造 > 方法配置与输入输出契约验证 > 生成各提前期闪电发生概率场 > 提取超阈告警区域 > 按邻域和事件指标验证]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-near-observation-task-boundary-precheck-task",
+    "edge:task:climate-near-observation-space-time-alignment-sample-construction-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-lightning-probability-by-leadtime-task",
+    "edge:task:climate-extracting-above-threshold-alert-regions-task",
+    "edge:task:climate-validation-by-neighborhood-event-metrics-task",
+    "edge:scenario:climate-radar-and-environmental-field-driven-0-6-hour-lightning-scenario"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "bio-property-filtering-candidate-ranking-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：性质过滤与候选排序。被 10 个场景复用；含 10 个实例任务；资源引用 ['models/diffdock']。",
+  "tags": [
+    "edge:resource:models/diffdock",
+    "edge:prev:bio-3d-molecular-generation-sampling-task",
+    "slot:PROPERTY_LIMITS:性质阈值",
+    "slot:TOP_K:保留分子数",
+    "edge:instance:bio-property-filtering-candidate-best-of-k-aligned-target-inst",
+    "edge:instance:bio-property-filtering-candidate-smiles-foundation-model-adm-inst",
+    "edge:instance:bio-property-filtering-candidate-1d-language-3d-diffusion-inst",
+    "edge:instance:bio-property-filtering-candidate-affinity-gradient-guided-inst",
+    "edge:instance:bio-property-filtering-candidate-all-atom-flow-matching-3d-inst",
+    "edge:instance:bio-property-filtering-candidate-molecular-latent-space-inst",
+    "edge:instance:bio-property-filtering-candidate-synthesis-route-constrained-inst",
+    "edge:instance:bio-property-filtering-candidate-multi-task-target-aware-3d-inst",
+    "edge:instance:bio-property-filtering-candidate-shape-electrostatic-pharmaco-inst",
+    "edge:instance:bio-property-filtering-candidate-positive-negative-activity-inst"
+  ]
+}

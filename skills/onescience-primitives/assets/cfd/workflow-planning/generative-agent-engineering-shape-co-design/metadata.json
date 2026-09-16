@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s032",
     "engineering-agent",
-    "edge:scenario:sc-e9c594b2",
-    "edge:workflow:wf-cfd-8b1af9da"
+    "edge:scenario:cfd-generative-model-agent-engineering-shape-collaborative-design-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-3"
   ],
   "scenario_id": "CFD_S032",
   "source_papers": [

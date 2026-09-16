@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b92",
-    "edge:scenario:sc-53d3256a",
-    "edge:workflow:wf-bio-8c56a4bc"
+    "edge:scenario:bio-contrastive-learning-driven-metagenome-binning-scenario",
+    "edge:workflow:bio-metagenome-input-task-definition-sequence-filtering-model-workflow"
   ],
   "scenario_id": "B92",
   "source_papers": [

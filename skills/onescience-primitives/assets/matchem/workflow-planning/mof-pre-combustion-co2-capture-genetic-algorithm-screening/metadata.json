@@ -20,8 +20,8 @@
     "precombustion",
     "silico",
     "using",
-    "edge:scenario:sc-d9f04a1d",
-    "edge:workflow:wf-matchem-2c158827"
+    "edge:scenario:matchem-mof-pre-combustion-co2-capture-genetic-algorithm-screening-scenario",
+    "edge:workflow:matchem-structure-and-separation-target-definition-mass-transfer-workflow"
   ],
   "scenario_id": "MOF燃烧前CO2捕集遗传算法筛选",
   "source_papers": [

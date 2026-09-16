@@ -27,8 +27,8 @@
     "workflow-planning",
     "climate",
     "e41",
-    "edge:scenario:sc-aae64aeb",
-    "edge:workflow:wf-climate-451bbfc5"
+    "edge:scenario:climate-multi-station-temp-humidity-wind-24to72h-joint-time-series-scenario",
+    "edge:workflow:climate-forecast-data-and-boundary-precheck-forecast-data-alignment-and-workflow-10"
   ],
   "scenario_id": "E41",
   "source_papers": [

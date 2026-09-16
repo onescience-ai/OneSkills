@@ -1,0 +1,15 @@
+{
+  "name": "matchem-interface-or-defect-control-flexible-perovskite-module-inst",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「界面或缺陷调控实施」在场景「柔性钙钛矿组件SnO2界面钝化设计」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:matchem-interface-or-defect-control-implementation-task",
+    "edge:scenario:matchem-flexible-perovskite-module-sno2-interface-passivation-design-scenario",
+    "slot:DEVICE_STACK:器件与材料堆叠"
+  ]
+}

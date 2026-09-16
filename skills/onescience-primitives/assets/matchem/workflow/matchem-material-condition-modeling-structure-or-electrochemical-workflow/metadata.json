@@ -1,0 +1,31 @@
+{
+  "name": "matchem-material-condition-modeling-structure-or-electrochemical-workflow",
+  "type": "workflow",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（matchem）：4 步骨架 [材料与工况建模 > 结构或电化学响应获取 > 退化机制与性能指标分析 > 方案排序与独立复核]，被 15 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:matchem-material-condition-modeling-task",
+    "edge:task:matchem-structure-or-electrochemical-response-acquisition-task",
+    "edge:task:matchem-degradation-mechanism-and-performance-analysis-task",
+    "edge:task:matchem-scheme-ranking-independent-review-task",
+    "edge:scenario:matchem-licoo2-high-voltage-timgal-co-doping-optimization-scenario",
+    "edge:scenario:matchem-limn-li-rich-layered-cathode-current-density-degradation-scenario",
+    "edge:scenario:matchem-commercial-li-ion-battery-voltage-relaxation-capacity-estimation-scenario",
+    "edge:scenario:matchem-solid-state-battery-lithium-deposition-insitu-ct-ml-detection-scenario",
+    "edge:scenario:matchem-solid-state-lithium-ion-conductor-unsupervised-discovery-scenario",
+    "edge:scenario:matchem-porous-silicon-li-ion-battery-anode-structure-design-scenario",
+    "edge:scenario:matchem-li-rich-layered-cathode-degradation-oxygen-release-scenario",
+    "edge:scenario:matchem-battery-particle-carbon-binder-debonding-ml-statistics-scenario",
+    "edge:scenario:matchem-ionomer-electrolyte-machine-learning-formulation-discovery-scenario",
+    "edge:scenario:matchem-lithium-sulfur-battery-polysulfide-adsorption-diffusion-scenario",
+    "edge:scenario:matchem-lithium-ion-battery-calendar-aging-prediction-scenario",
+    "edge:scenario:matchem-lithium-ion-battery-electrode-microstructure-deep-learning-scenario",
+    "edge:scenario:matchem-lithium-ion-battery-degradation-parameter-physics-data-fusion-scenario",
+    "edge:scenario:matchem-lithium-metal-electrolyte-interface-dendrite-constant-potential-scenario",
+    "edge:scenario:matchem-high-ionic-conductivity-electrolyte-foundation-model-formulation-scenario"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "bio-input-and-task-definition-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：输入与任务定义。被 10 个场景复用；含 10 个实例任务；资源引用 ['models/alphafold', 'models/alphafold3', 'models/openfold', 'tools/pdb-structure-data-access', 'tools/simplefold-protein-structure-prediction-model-and-pipeline']。",
+  "tags": [
+    "edge:resource:models/alphafold",
+    "edge:resource:models/alphafold3",
+    "edge:resource:models/openfold",
+    "edge:resource:tools/pdb-structure-data-access",
+    "edge:resource:tools/simplefold-protein-structure-prediction-model-and-pipeline",
+    "edge:next:bio-feature-model-preparation-task",
+    "slot:INPUT_DATA:序列或结构输入",
+    "slot:MODEL_NAME:结构模型",
+    "slot:CHAIN_MODE:链处理模式",
+    "edge:instance:bio-input-and-task-definition-openfold-component-ablation-inst",
+    "edge:instance:bio-input-and-task-definition-atom-level-protein-represent-inst",
+    "edge:instance:bio-input-and-task-definition-msa-free-protein-fast-inst",
+    "edge:instance:bio-input-and-task-definition-physical-feedback-constraine-inst",
+    "edge:instance:bio-input-and-task-definition-protein-monomer-structure-inst",
+    "edge:instance:bio-input-and-task-definition-protein-complex-structure-inst",
+    "edge:instance:bio-input-and-task-definition-protein-multi-conformational-inst",
+    "edge:instance:bio-input-and-task-definition-protein-nucleic-acid-ligand-inst",
+    "edge:instance:bio-input-and-task-definition-protein-ligand-complex-inst",
+    "edge:instance:bio-input-and-task-definition-lightweight-multi-molecular-inst"
+  ]
+}

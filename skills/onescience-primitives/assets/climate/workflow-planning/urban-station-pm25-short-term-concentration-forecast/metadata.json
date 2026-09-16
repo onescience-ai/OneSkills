@@ -71,8 +71,8 @@
     "workflow-planning",
     "climate",
     "e42",
-    "edge:scenario:sc-56496e0c",
-    "edge:workflow:wf-climate-59e8cca6"
+    "edge:scenario:climate-urban-station-pm25-short-term-concentration-forecast-scenario",
+    "edge:workflow:climate-pollution-met-data-boundary-precheck-pollution-met-stalign-workflow-2"
   ],
   "scenario_id": "E42",
   "source_papers": [

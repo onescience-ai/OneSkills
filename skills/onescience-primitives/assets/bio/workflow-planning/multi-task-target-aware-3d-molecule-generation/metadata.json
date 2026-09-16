@@ -22,8 +22,8 @@
     "workflow",
     "workflow-planning",
     "b60",
-    "edge:scenario:sc-5a458785",
-    "edge:workflow:wf-bio-856a5702"
+    "edge:scenario:bio-multi-task-target-aware-3d-molecule-generation-scenario",
+    "edge:workflow:bio-molecular-design-objective-definition-model-property-condition-workflow"
   ],
   "scenario_id": "B60",
   "source_papers": [

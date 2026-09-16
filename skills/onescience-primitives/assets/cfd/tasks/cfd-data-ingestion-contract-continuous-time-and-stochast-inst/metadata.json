@@ -1,0 +1,18 @@
+{
+  "name": "cfd-data-ingestion-contract-continuous-time-and-stochast-inst",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（cfd）：骨架「数据接入与契约核验」在场景「CFD_S060」中的实例化；资源引用 ['models/fno']。",
+  "tags": [
+    "edge:skeleton:cfd-data-ingestion-contract-validation-task",
+    "edge:scenario:cfd-continuous-time-and-stochastic-generative-neural-operator-scenario",
+    "edge:resource:models/fno",
+    "slot:DATASET_PATH:数据集路径",
+    "slot:DATASET_NAME:数据集名称",
+    "slot:DATA_CONTRACT:数据契约"
+  ]
+}

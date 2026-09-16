@@ -1,0 +1,28 @@
+{
+  "name": "bio-residual-based-interpretable-enzyme-function-classification-scenario",
+  "type": "scenario",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：B37（bio）。工作流 4 步，经 edge:workflow 指向 bio-protein-sample-and-target-definition-characterization-and-workflow，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "edge:workflow:bio-protein-sample-and-target-definition-characterization-and-workflow",
+    "edge:task:bio-protein-sample-and-target-definition-task",
+    "edge:task:bio-characterization-and-reference-data-preparation-task",
+    "edge:task:bio-function-effect-reasoning-task",
+    "edge:task:bio-evaluation-and-interpretation-summary-task",
+    "slot:PROTEIN_DATA:蛋白任务数据",
+    "slot:MODEL_NAME:功能模型",
+    "slot:TARGET_TYPE:预测目标",
+    "slot:CHECKPOINT:模型权重",
+    "slot:REFERENCE_DATA:参考数据",
+    "slot:MAX_SEQUENCE_LENGTH:序列长度上限",
+    "slot:BATCH_SIZE:批次大小",
+    "slot:DECISION_THRESHOLD:判定阈值",
+    "slot:SEED:随机种子",
+    "slot:MIN_METRIC:指标下限",
+    "slot:EXPORT_EXPLANATION:导出解释"
+  ]
+}

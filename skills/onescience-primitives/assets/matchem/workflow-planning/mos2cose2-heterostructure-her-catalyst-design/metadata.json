@@ -32,8 +32,8 @@
     "acidic-electrolyte",
     "workflow",
     "workflow-planning",
-    "edge:scenario:sc-864efe88",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-mos2-case2-heterostructure-hydrogen-evolution-catalyst-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "scenario_id": "MoS2CoSe2异质结构析氢催化设计",
   "source_papers": [

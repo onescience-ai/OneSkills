@@ -1,0 +1,24 @@
+{
+  "name": "bio-sequence-filtering-model-preparation-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：序列过滤与模型准备。被 7 个场景复用；含 7 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:bio-metagenome-input-task-definition-task",
+    "edge:next:bio-microorganism-prediction-aggregation-task",
+    "slot:CHECKPOINT:模型权重",
+    "slot:MIN_CONTIG_LENGTH:最短序列长度",
+    "slot:REFERENCE_DB:参考数据库",
+    "edge:instance:bio-sequence-filtering-model-dna-sequence-driven-microbia-inst",
+    "edge:instance:bio-sequence-filtering-model-function-guided-metageneome-inst",
+    "edge:instance:bio-sequence-filtering-model-phage-and-prokaryotic-host-inst",
+    "edge:instance:bio-sequence-filtering-model-phage-lifestyle-classificati-inst",
+    "edge:instance:bio-sequence-filtering-model-contrastive-learning-driven-inst",
+    "edge:instance:bio-sequence-filtering-model-pathogen-monitoring-metageno-inst",
+    "edge:instance:bio-sequence-filtering-model-cross-species-antimicrobial-inst"
+  ]
+}

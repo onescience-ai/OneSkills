@@ -18,8 +18,8 @@
     "promising",
     "thermoelectric",
     "unsupervised",
-    "edge:scenario:sc-85c55ae3",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-half-heusler-thermoelectric-material-unsupervised-discovery-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "半赫斯勒热电材料无监督发现",
   "source_papers": [

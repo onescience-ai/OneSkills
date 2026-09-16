@@ -1,0 +1,20 @@
+{
+  "name": "climate-fuse-multimodal-info-to-generate-precipitation-field-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：融合多模态信息生成地面降水场。被 1 个场景复用；含 1 个实例任务；资源引用 ['models/ensemble-model-output-statistics-emos-post-processing', 'tools/ecmwf-hres']。",
+  "tags": [
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:tools/ecmwf-hres",
+    "edge:prev:climate-method-configuration-input-output-contract-validation-task",
+    "edge:next:climate-output-quality-mask-and-source-availability-flag-task",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:OUTPUT_RESOLUTION:输出分辨率",
+    "slot:DECISION_THRESHOLD:诊断阈值",
+    "edge:instance:climate-fuse-multimodal-info-to-radar-satellite-rain-gauge-inst"
+  ]
+}

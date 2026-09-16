@@ -1,0 +1,15 @@
+{
+  "name": "matchem-constrained-candidate-mof-synthesis-multimodal-inst",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「约束候选生成与排序」在场景「MOF合成应用多模态机器学习关联」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:matchem-constrained-candidate-generation-and-ranking-task",
+    "edge:scenario:matchem-mof-synthesis-multimodal-machine-learning-correlation-scenario",
+    "slot:TARGET:优化目标"
+  ]
+}

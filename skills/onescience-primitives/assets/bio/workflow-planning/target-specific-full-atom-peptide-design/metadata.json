@@ -20,8 +20,8 @@
     "workflow",
     "workflow-planning",
     "b17",
-    "edge:scenario:sc-5938cb88",
-    "edge:workflow:wf-bio-42419238"
+    "edge:scenario:bio-target-specific-all-atom-peptide-design-scenario",
+    "edge:workflow:bio-design-objective-and-constraint-definition-model-condition-workflow"
   ],
   "scenario_id": "B17",
   "source_papers": [

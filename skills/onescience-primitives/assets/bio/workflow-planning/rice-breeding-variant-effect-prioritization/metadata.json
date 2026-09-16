@@ -23,8 +23,8 @@
     "workflow",
     "workflow-planning",
     "b69",
-    "edge:scenario:sc-6cfd5eea",
-    "edge:workflow:wf-bio-afe9f9ae"
+    "edge:scenario:bio-rice-breeding-variant-functional-effect-priority-prediction-scenario",
+    "edge:workflow:bio-genome-input-coordinate-normalization-sequence-window-model-workflow"
   ],
   "scenario_id": "B69",
   "source_papers": [

@@ -1,0 +1,18 @@
+{
+  "name": "matchem-window-output-and-review-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：窗口输出与复核。被 5 个场景复用；含 5 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:matchem-mechanism-performance-quantitative-analysis-task",
+    "edge:instance:matchem-window-output-and-review-crconi-medium-high-entropy-inst",
+    "edge:instance:matchem-window-output-and-review-complex-alloy-thermal-inst",
+    "edge:instance:matchem-window-output-and-review-laser-powder-bed-fusion-inst",
+    "edge:instance:matchem-window-output-and-review-refractory-high-entropy-inst",
+    "edge:instance:matchem-window-output-and-review-high-entropy-metallic-glass-inst"
+  ]
+}

@@ -29,8 +29,8 @@
     "cfd_s054",
     "latent-neural-operator",
     "neural-field-operator",
-    "edge:scenario:sc-03b46de0",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-latent-space-neural-field-continuous-pde-operator-learning-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S054",
   "source_papers": [

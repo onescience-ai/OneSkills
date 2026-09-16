@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b62",
-    "edge:scenario:sc-1bd2ea76",
-    "edge:workflow:wf-bio-afe9f9ae"
+    "edge:scenario:bio-million-base-context-genome-modeling-sequence-design-scenario",
+    "edge:workflow:bio-genome-input-coordinate-normalization-sequence-window-model-workflow"
   ],
   "scenario_id": "B62",
   "source_papers": [

@@ -1,0 +1,24 @@
+{
+  "name": "climate-correct-clear-sky-index-bias-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：订正晴空指数偏差。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/modis-myd13a3-ndvi-product', 'datasets/smap-level-3-passive-soil-moisture-products', 'datasets/snodas-swe-data-product', 'models/ensemble-model-output-statistics-emos-post-processing', 'models/matern-gaussian-process-regression']。",
+  "tags": [
+    "edge:resource:datasets/modis-myd13a3-ndvi-product",
+    "edge:resource:datasets/smap-level-3-passive-soil-moisture-products",
+    "edge:resource:datasets/snodas-swe-data-product",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:models/matern-gaussian-process-regression",
+    "edge:prev:climate-multi-leadtime-irradiance-task",
+    "edge:next:climate-validation-by-cloud-condition-validity-period-task",
+    "slot:OUTPUT_FORMAT:输出格式",
+    "slot:OUTPUT_DIRECTORY:结果保存路径",
+    "slot:POSTPROCESS_CONFIG:后处理配置",
+    "slot:DERIVED_PRODUCTS:派生产品",
+    "edge:instance:climate-correct-clear-sky-index-bias-sky-camera-satellite-solar-inst"
+  ]
+}

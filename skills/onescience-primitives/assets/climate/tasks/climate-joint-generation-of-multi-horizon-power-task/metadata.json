@@ -1,0 +1,20 @@
+{
+  "name": "climate-joint-generation-of-multi-horizon-power-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：联合生成多时效功率。被 1 个场景复用；含 1 个实例任务；资源引用 ['models/ensemble-model-output-statistics-emos-post-processing', 'models/quantile-regression-forest-qrf-methods']。",
+  "tags": [
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:models/quantile-regression-forest-qrf-methods",
+    "edge:prev:climate-method-configuration-input-output-contract-validation-task",
+    "edge:next:climate-result-recovery-and-scenario-product-generation-task",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:QUANTILES:概率分位数",
+    "slot:OUTPUT_INTERVAL:输出间隔",
+    "edge:instance:climate-joint-generation-of-multi-multi-station-solar-farm-inst"
+  ]
+}

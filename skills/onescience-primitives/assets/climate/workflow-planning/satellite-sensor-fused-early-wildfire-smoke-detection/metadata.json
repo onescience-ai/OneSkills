@@ -44,8 +44,8 @@
     "workflow-planning",
     "climate",
     "e22",
-    "edge:scenario:sc-b815245c",
-    "edge:workflow:wf-climate-15ec9736"
+    "edge:scenario:climate-satellite-and-ground-sensor-fusion-early-fire-smoke-plume-scenario",
+    "edge:workflow:climate-hazard-factor-event-label-and-boundary-precheck-hazard-factor-workflow"
   ],
   "scenario_id": "E22",
   "source_papers": [

@@ -1,0 +1,29 @@
+{
+  "name": "climate-ocean-state-forcing-stalign-sample-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：海洋状态和强迫资料时空对齐与样本构造。被 6 个场景复用；含 6 个实例任务；资源引用 ['datasets/CMEMS', 'datasets/glorys12-global-ocean-reanalysis-dataset', 'models/matern-gaussian-process-regression', 'tools/glo12v4-operational-ocean-forecasting-system', 'tools/multi-task-deep-learning-model-for-indian-ocean-dipole-prediction', 'tools/wenhai-global-ocean-forecast-system']。",
+  "tags": [
+    "edge:resource:datasets/CMEMS",
+    "edge:resource:datasets/glorys12-global-ocean-reanalysis-dataset",
+    "edge:resource:models/matern-gaussian-process-regression",
+    "edge:resource:tools/glo12v4-operational-ocean-forecasting-system",
+    "edge:resource:tools/multi-task-deep-learning-model-for-indian-ocean-dipole-prediction",
+    "edge:resource:tools/wenhai-global-ocean-forecast-system",
+    "edge:prev:climate-ocean-state-forcing-data-boundary-precheck-task",
+    "edge:next:climate-method-configuration-input-output-contract-validation-task",
+    "slot:OCEAN_GRID:海洋网格",
+    "slot:COAST_MASK_POLICY:岸线掩膜规则",
+    "slot:PREPROCESS_CONFIG:预处理配置",
+    "edge:instance:climate-ocean-state-forcing-stalign-global-sst-subseasonal-inst",
+    "edge:instance:climate-ocean-state-forcing-stalign-global-eddy-resolving-3d-inst",
+    "edge:instance:climate-ocean-state-forcing-stalign-arctic-sea-ice-jantojune-inst",
+    "edge:instance:climate-ocean-state-forcing-stalign-regional-sst-1to7day-daily-inst",
+    "edge:instance:climate-ocean-state-forcing-stalign-coastal-bathymetry-reconstru-inst",
+    "edge:instance:climate-ocean-state-forcing-stalign-nearshore-significant-wave-inst"
+  ]
+}

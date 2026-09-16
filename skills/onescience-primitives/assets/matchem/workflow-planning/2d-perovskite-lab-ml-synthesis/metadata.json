@@ -20,8 +20,8 @@
     "two-dimensional",
     "typical",
     "universal",
-    "edge:scenario:sc-e010c07d",
-    "edge:workflow:wf-matchem-87e6b0f5"
+    "edge:scenario:matchem-2d-perovskite-lab-ml-synthesis-scenario",
+    "edge:workflow:matchem-device-stacking-failure-boundary-definition-interface-or-defect-workflow"
   ],
   "scenario_id": "二维钙钛矿实验室机器学习合成",
   "source_papers": [

@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b43",
-    "edge:scenario:sc-fe5c3f01",
-    "edge:workflow:wf-bio-9fe7f508"
+    "edge:scenario:bio-protein-ligand-joint-generation-docking-and-affinity-prediction-scenario",
+    "edge:workflow:bio-receptor-ligand-input-precheck-pocket-model-feature-preparation-workflow"
   ],
   "scenario_id": "B43",
   "source_papers": [

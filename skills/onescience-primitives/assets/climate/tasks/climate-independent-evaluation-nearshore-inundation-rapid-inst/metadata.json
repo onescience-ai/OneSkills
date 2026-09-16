@@ -1,0 +1,29 @@
+{
+  "name": "climate-independent-evaluation-nearshore-inundation-rapid-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「独立评估与交付判定」在场景「E109」中的实例化；资源引用 ['datasets/data-infrastructure-observations-and-labels', 'datasets/gedi-footprint-canopy-height-data', 'datasets/kling-gupta-efficiency-kge-metric', 'datasets/lpma-airport-wind-observation-validation', 'datasets/modis-myd13a3-ndvi-product', 'datasets/ostia-sst-data', 'datasets/smap-level-3-passive-soil-moisture-products', 'datasets/snodas-swe-data-product', 'models/multivariate-data-fusion-vector-wind-prediction', 'models/narx-network-configurations-for-inundation-depth-forecasting', 'tools/urban-hydrological-hydraulic-model-chain-for-inundation-simulation']。",
+  "tags": [
+    "edge:skeleton:climate-independent-evaluation-delivery-task",
+    "edge:scenario:climate-nearshore-inundation-rapid-forecast-model-scenario",
+    "edge:resource:datasets/data-infrastructure-observations-and-labels",
+    "edge:resource:datasets/gedi-footprint-canopy-height-data",
+    "edge:resource:datasets/kling-gupta-efficiency-kge-metric",
+    "edge:resource:datasets/lpma-airport-wind-observation-validation",
+    "edge:resource:datasets/modis-myd13a3-ndvi-product",
+    "edge:resource:datasets/ostia-sst-data",
+    "edge:resource:datasets/smap-level-3-passive-soil-moisture-products",
+    "edge:resource:datasets/snodas-swe-data-product",
+    "edge:resource:models/multivariate-data-fusion-vector-wind-prediction",
+    "edge:resource:models/narx-network-configurations-for-inundation-depth-forecasting",
+    "edge:resource:tools/urban-hydrological-hydraulic-model-chain-for-inundation-simulation",
+    "slot:INDEPENDENT_VALIDATION_DATA:独立验证资料",
+    "slot:BASELINE_PRODUCTS:同协议基线产品",
+    "slot:ACCEPTANCE_PROTOCOL:验收协议",
+    "slot:INUNDATION_METRIC:淹没评估指标"
+  ]
+}

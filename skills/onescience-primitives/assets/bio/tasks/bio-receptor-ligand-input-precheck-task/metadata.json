@@ -1,0 +1,28 @@
+{
+  "name": "bio-receptor-ligand-input-precheck-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：受体配体输入预检。被 10 个场景复用；含 10 个实例任务；资源引用 ['models/diffdock', 'tools/simplefold-protein-structure-prediction-model-and-pipeline']。",
+  "tags": [
+    "edge:resource:models/diffdock",
+    "edge:resource:tools/simplefold-protein-structure-prediction-model-and-pipeline",
+    "edge:next:bio-pocket-model-feature-preparation-task",
+    "slot:DOCKING_INPUT:对接输入",
+    "slot:MODEL_NAME:对接模型",
+    "slot:ADD_HYDROGENS:补充氢原子",
+    "edge:instance:bio-receptor-ligand-input-precheck-global-blind-docking-conform-inst",
+    "edge:instance:bio-receptor-ligand-input-precheck-pocket-prediction-enhanced-inst",
+    "edge:instance:bio-receptor-ligand-input-precheck-multi-pocket-conditioned-inst",
+    "edge:instance:bio-receptor-ligand-input-precheck-docking-guided-large-scale-inst",
+    "edge:instance:bio-receptor-ligand-input-precheck-unknown-binding-site-protein-inst",
+    "edge:instance:bio-receptor-ligand-input-precheck-geodesic-path-guided-flexibl-inst",
+    "edge:instance:bio-receptor-ligand-input-precheck-physical-rule-constrained-inst",
+    "edge:instance:bio-receptor-ligand-input-precheck-protein-ligand-joint-generat-inst",
+    "edge:instance:bio-receptor-ligand-input-precheck-lightweight-interpretable-inst",
+    "edge:instance:bio-receptor-ligand-input-precheck-high-precision-protein-inst"
+  ]
+}

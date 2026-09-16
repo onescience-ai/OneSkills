@@ -25,8 +25,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s028",
-    "edge:scenario:sc-9721e856",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-fluid-solid-coupling-moving-mesh-vibration-time-series-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S028",
   "source_papers": [

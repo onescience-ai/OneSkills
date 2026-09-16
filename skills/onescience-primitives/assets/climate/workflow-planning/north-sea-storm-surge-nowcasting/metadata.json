@@ -15,8 +15,8 @@
     "workflow-planning",
     "climate",
     "e101",
-    "edge:scenario:sc-925071b9",
-    "edge:workflow:wf-climate-5720a375"
+    "edge:scenario:climate-north-sea-storm-surge-nowcast-model-scenario",
+    "edge:workflow:climate-model-input-run-condition-precheck-executing-scheme-design-task-workflow-3"
   ],
   "scenario_id": "E101",
   "source_papers": [],

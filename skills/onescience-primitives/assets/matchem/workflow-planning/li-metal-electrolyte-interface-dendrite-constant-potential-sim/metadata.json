@@ -20,8 +20,8 @@
     "null",
     "observation",
     "potential",
-    "edge:scenario:sc-f014485c",
-    "edge:workflow:wf-matchem-c41fa878"
+    "edge:scenario:matchem-lithium-metal-electrolyte-interface-dendrite-constant-potential-scenario",
+    "edge:workflow:matchem-material-condition-modeling-structure-or-electrochemical-workflow"
   ],
   "scenario_id": "锂金属电解液界面枝晶恒电势模拟",
   "source_papers": [

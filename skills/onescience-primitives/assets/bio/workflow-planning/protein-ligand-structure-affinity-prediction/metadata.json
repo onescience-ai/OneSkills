@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b05",
-    "edge:scenario:sc-f26b7c44",
-    "edge:workflow:wf-bio-5aaefe7e"
+    "edge:scenario:bio-protein-ligand-complex-structure-and-binding-affinity-joint-scenario",
+    "edge:workflow:bio-input-and-task-definition-feature-model-preparation-structure-workflow"
   ],
   "scenario_id": "B05",
   "source_papers": [

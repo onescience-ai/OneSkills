@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s075",
     "turbulence-pinn",
-    "edge:scenario:sc-30df5073",
-    "edge:workflow:wf-cfd-17883fa9"
+    "edge:scenario:cfd-pinn-joint-inversion-closure-mean-flow-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-6"
   ],
   "scenario_id": "CFD_S075",
   "source_papers": [

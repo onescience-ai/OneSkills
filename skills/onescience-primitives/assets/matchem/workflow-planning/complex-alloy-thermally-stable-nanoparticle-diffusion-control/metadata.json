@@ -21,8 +21,8 @@
     "sluggish",
     "stable",
     "thermally",
-    "edge:scenario:sc-f9bd9b8a",
-    "edge:workflow:wf-matchem-4097efc6"
+    "edge:scenario:matchem-complex-alloy-thermal-stable-nanoparticle-diffusion-control-scenario",
+    "edge:workflow:matchem-material-control-scheme-definition-response-test-simulation-workflow"
   ],
   "scenario_id": "复杂合金热稳定纳米颗粒扩散调控",
   "source_papers": [

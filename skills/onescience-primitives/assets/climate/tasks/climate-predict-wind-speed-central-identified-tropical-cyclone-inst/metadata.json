@@ -1,0 +1,22 @@
+{
+  "name": "climate-predict-wind-speed-central-identified-tropical-cyclone-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「预测风速和中心气压变化」在场景「E50」中的实例化；资源引用 ['datasets/cesm2-large-ensemble', 'datasets/large-ensemble-testbed', 'models/crpsexp-loss-function-for-ensemble-forecasting', 'models/ensemble-empirical-mode-decomposition-eemd', 'models/ensemble-model-output-statistics-emos-post-processing']。",
+  "tags": [
+    "edge:skeleton:climate-predict-wind-speed-central-pressure-change-task",
+    "edge:scenario:climate-identified-tropical-cyclone-intensity-forecast-12-72h-scenario",
+    "edge:resource:datasets/cesm2-large-ensemble",
+    "edge:resource:datasets/large-ensemble-testbed",
+    "edge:resource:models/crpsexp-loss-function-for-ensemble-forecasting",
+    "edge:resource:models/ensemble-empirical-mode-decomposition-eemd",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:OUTPUT_INTERVAL:输出间隔",
+    "slot:ENSEMBLE_SIZE:集合成员数"
+  ]
+}

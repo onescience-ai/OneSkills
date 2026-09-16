@@ -1,0 +1,23 @@
+{
+  "name": "climate-rolling-multi-member-weather-trajectory-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：滚动生成多成员天气轨迹。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/cesm2-large-ensemble', 'datasets/large-ensemble-testbed', 'models/crpsexp-loss-function-for-ensemble-forecasting', 'models/ensemble-empirical-mode-decomposition-eemd', 'models/ensemble-model-output-statistics-emos-post-processing']。",
+  "tags": [
+    "edge:resource:datasets/cesm2-large-ensemble",
+    "edge:resource:datasets/large-ensemble-testbed",
+    "edge:resource:models/crpsexp-loss-function-for-ensemble-forecasting",
+    "edge:resource:models/ensemble-empirical-mode-decomposition-eemd",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:prev:climate-method-configuration-input-output-contract-validation-task",
+    "edge:next:climate-restoring-physical-quantities-calculating-probability-products-task",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:OUTPUT_INTERVAL:输出间隔",
+    "slot:ENSEMBLE_SIZE:集合成员数",
+    "edge:instance:climate-rolling-multi-member-weather-global-1-15-day-ensemble-inst"
+  ]
+}

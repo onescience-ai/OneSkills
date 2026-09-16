@@ -1,0 +1,19 @@
+{
+  "name": "climate-observation-background-field-and-boundary-precheck-observation-workflow",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [观测和背景场及任务边界预检 > 观测和背景场时空对齐与样本构造 > 方法配置与输入输出契约验证 > 循环生成分析状态并滚动中期天气预报 > 结果恢复与场景产品生成 > 分别验证分析误差与预报技巧]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-observation-background-field-and-boundary-precheck-task",
+    "edge:task:climate-observation-background-field-alignment-and-sampling-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-cyclic-analysis-status-rolling-forecast-task",
+    "edge:task:climate-result-recovery-and-scenario-product-generation-task",
+    "edge:task:climate-analysis-error-forecast-skill-separate-validation-task",
+    "edge:scenario:climate-multi-source-raw-observation-driven-global-analysis-forecast-scenario"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "matchem-material-control-scheme-definition-response-test-simulation-workflow",
+  "type": "workflow",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（matchem）：4 步骨架 [材料与对照方案定义 > 响应测试或模拟 > 机制与性能定量分析 > 窗口输出与复核]，被 5 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:matchem-material-control-scheme-definition-task",
+    "edge:task:matchem-response-test-simulation-task",
+    "edge:task:matchem-mechanism-performance-quantitative-analysis-task",
+    "edge:task:matchem-window-output-and-review-task",
+    "edge:scenario:matchem-crconi-medium-high-entropy-alloy-cryogenic-fracture-toughness-scenario",
+    "edge:scenario:matchem-complex-alloy-thermal-stable-nanoparticle-diffusion-control-scenario",
+    "edge:scenario:matchem-laser-powder-bed-fusion-keyhole-fluctuation-pore-formation-scenario",
+    "edge:scenario:matchem-refractory-high-entropy-alloy-dislocation-migration-and-short-scenario",
+    "edge:scenario:matchem-high-entropy-metallic-glass-nanoparticle-electrosynthesis-scenario"
+  ]
+}

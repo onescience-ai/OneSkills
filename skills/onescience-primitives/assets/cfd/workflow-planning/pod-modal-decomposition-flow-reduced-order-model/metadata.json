@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s086",
     "pod",
-    "edge:scenario:sc-d093d6b8",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-pod-modal-decomposition-flow-reduced-order-modeling-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S086",
   "source_papers": [

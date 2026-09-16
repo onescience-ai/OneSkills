@@ -1,0 +1,17 @@
+{
+  "name": "bio-medical-reasoning-consistency-clinical-reward-aligned-inst",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「医学推理与一致性校订」在场景「B99」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:bio-medical-reasoning-consistency-review-task",
+    "edge:scenario:bio-clinical-reward-aligned-chest-xray-report-generation-scenario",
+    "slot:TEMPERATURE:生成温度",
+    "slot:SEED:随机种子",
+    "slot:REVISION_PASS:启用二次校订"
+  ]
+}

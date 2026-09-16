@@ -35,8 +35,8 @@
     "workflow-planning",
     "climate",
     "e59",
-    "edge:scenario:sc-46ea9d0e",
-    "edge:workflow:wf-climate-bcf0ac0b"
+    "edge:scenario:climate-uav-lidar-image-forest-structure-carbon-stock-estimation-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-11"
   ],
   "scenario_id": "E59",
   "source_papers": [

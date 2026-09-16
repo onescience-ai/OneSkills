@@ -23,8 +23,8 @@
     "workflow-planning",
     "climate",
     "e91",
-    "edge:scenario:sc-64ff4a75",
-    "edge:workflow:wf-climate-e9c7317c"
+    "edge:scenario:climate-avhrr-modis-continuous-ndvi-historical-fusion-reconstruction-scenario",
+    "edge:workflow:climate-target-sequence-gap-and-boundary-precheck-target-sequence-gap-workflow"
   ],
   "scenario_id": "E91",
   "source_papers": [

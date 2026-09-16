@@ -1,0 +1,20 @@
+{
+  "name": "matchem-graph-neural-network-crystal-structure-prediction-and-scenario",
+  "type": "scenario",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：图神经网络晶体结构预测与优化（matchem）。工作流 4 步，经 edge:workflow 指向 matchem-composition-structure-search-space-definition-candidate-workflow，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "edge:workflow:matchem-composition-structure-search-space-definition-candidate-workflow",
+    "edge:task:matchem-composition-structure-search-space-definition-task",
+    "edge:task:matchem-candidate-structure-generation-deduplication-task",
+    "edge:task:matchem-relaxation-stability-ranking-task",
+    "edge:task:matchem-structure-validation-and-output-task",
+    "slot:COMPOSITION:成分与化学计量",
+    "slot:STRUCTURE_CONSTRAINTS:结构约束",
+    "slot:RELAX_CONFIG:弛豫设置"
+  ]
+}

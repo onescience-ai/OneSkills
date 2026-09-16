@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "e36",
-    "edge:scenario:sc-4c30c94e",
-    "edge:workflow:wf-climate-c44eb178"
+    "edge:scenario:climate-given-boundary-forcing-global-climate-large-ensemble-generation-scenario",
+    "edge:workflow:climate-scenario-forcing-task-boundary-precheck-scenario-forcing-workflow-2"
   ],
   "scenario_id": "E36",
   "source_papers": [

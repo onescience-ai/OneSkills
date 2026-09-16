@@ -1,0 +1,20 @@
+{
+  "name": "matchem-catalytic-reaction-ml-potential-active-learning-sampling-scenario",
+  "type": "scenario",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：催化反应机器学习势主动学习与增强采样（matchem）。工作流 4 步，经 edge:workflow 指向 matchem-reference-data-audit-coverage-definition-root-cause-potential-workflow，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "edge:workflow:matchem-reference-data-audit-coverage-definition-root-cause-potential-workflow",
+    "edge:task:matchem-reference-data-audit-coverage-definition-task",
+    "edge:task:matchem-root-cause-potential-function-training-task",
+    "edge:task:matchem-energy-force-stress-and-extrapolation-validation-task",
+    "edge:task:matchem-molecular-dynamics-structure-exploration-validation-task",
+    "slot:REFERENCE_DATA:参考量子化学或第一性原理数据",
+    "slot:POTENTIAL_CONFIG:势函数根源模型配置",
+    "slot:MD_CONFIG:分子动力学验证配置"
+  ]
+}

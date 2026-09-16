@@ -18,8 +18,8 @@
     "optimization",
     "prediction",
     "structure",
-    "edge:scenario:sc-d6eba2e8",
-    "edge:workflow:wf-matchem-30dd7b2f"
+    "edge:scenario:matchem-graph-neural-network-crystal-structure-prediction-and-scenario",
+    "edge:workflow:matchem-composition-structure-search-space-definition-candidate-workflow"
   ],
   "scenario_id": "图神经网络晶体结构预测与优化",
   "source_papers": [

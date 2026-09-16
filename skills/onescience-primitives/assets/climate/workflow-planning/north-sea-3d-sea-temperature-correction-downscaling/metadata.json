@@ -15,8 +15,8 @@
     "workflow-planning",
     "climate",
     "e103",
-    "edge:scenario:sc-e681786f",
-    "edge:workflow:wf-climate-a39b5727"
+    "edge:scenario:climate-north-sea-3d-sea-temperature-smart-correction-and-downscaling-scenario",
+    "edge:workflow:climate-model-input-run-condition-precheck-executing-scheme-design-task-workflow"
   ],
   "scenario_id": "E103",
   "source_papers": [],

@@ -1,0 +1,19 @@
+{
+  "name": "climate-forecast-data-and-boundary-precheck-forecast-data-alignment-and-workflow-5",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [起报资料及任务边界预检 > 起报资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 生成集合轨迹并汇总月季异常 > 校准集合偏差与离散度 > 检验ACC、CRPS及遥相关技巧]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-forecast-data-and-boundary-precheck-task",
+    "edge:task:climate-forecast-data-alignment-and-sample-construction-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-generate-ensemble-trajectories-and-summarize-anomalies-task",
+    "edge:task:climate-calibrating-ensemble-bias-dispersion-task",
+    "edge:task:climate-acc-crps-teleconnection-verification-task",
+    "edge:scenario:climate-global-1-6-month-seasonal-ensemble-weather-climate-forecast-scenario"
+  ]
+}

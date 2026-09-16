@@ -16,8 +16,8 @@
     "machine",
     "matchem",
     "null",
-    "edge:scenario:sc-eeb954d6",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-high-entropy-carbide-hardness-composition-ml-design-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "高熵碳化物硬度成分机器学习设计",
   "source_papers": [

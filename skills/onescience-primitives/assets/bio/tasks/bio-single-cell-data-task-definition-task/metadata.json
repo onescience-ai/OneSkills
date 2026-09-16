@@ -1,0 +1,30 @@
+{
+  "name": "bio-single-cell-data-task-definition-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：单细胞数据与任务定义。被 10 个场景复用；含 10 个实例任务；资源引用 ['components/anndata', 'tools/pdb-structure-data-access', 'tools/scanpy', 'tools/simplefold-protein-structure-prediction-model-and-pipeline']。",
+  "tags": [
+    "edge:resource:components/anndata",
+    "edge:resource:tools/pdb-structure-data-access",
+    "edge:resource:tools/scanpy",
+    "edge:resource:tools/simplefold-protein-structure-prediction-model-and-pipeline",
+    "edge:next:bio-preprocessing-model-representation-task",
+    "slot:CELL_DATA:单细胞数据",
+    "slot:MODEL_NAME:单细胞模型",
+    "slot:DATA_LAYER:表达数据层",
+    "edge:instance:bio-single-cell-data-task-geneformer-scgpt-single-inst",
+    "edge:instance:bio-single-cell-data-task-mcmc-guided-multi-omics-inst",
+    "edge:instance:bio-single-cell-data-task-scgpt-hematopoietic-cell-inst",
+    "edge:instance:bio-single-cell-data-task-single-cell-to-spatial-inst",
+    "edge:instance:bio-single-cell-data-task-single-cell-chromatin-inst",
+    "edge:instance:bio-single-cell-data-task-causal-latent-diffusion-inst",
+    "edge:instance:bio-single-cell-data-task-multimodal-reasoning-enhance-inst",
+    "edge:instance:bio-single-cell-data-task-spatial-transcriptomics-and-inst",
+    "edge:instance:bio-single-cell-data-task-spatial-transcriptomics-inst",
+    "edge:instance:bio-single-cell-data-task-cross-cell-type-and-dose-inst"
+  ]
+}

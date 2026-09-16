@@ -30,8 +30,8 @@
     "workflow",
     "workflow-planning",
     "e87",
-    "edge:scenario:sc-1871bae1",
-    "edge:workflow:wf-climate-408e5350"
+    "edge:scenario:climate-climate-scenario-driven-groundwater-level-long-term-projection-scenario",
+    "edge:workflow:climate-hydro-forcing-basin-data-boundary-precheck-hydro-forcing-basin-workflow-6"
   ],
   "scenario_id": "E87",
   "source_papers": [

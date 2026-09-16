@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b39",
-    "edge:scenario:sc-8f227164",
-    "edge:workflow:wf-bio-78f31941"
+    "edge:scenario:bio-few-shot-multimodal-protein-function-prediction-scenario",
+    "edge:workflow:bio-protein-sample-and-target-definition-characterization-and-workflow"
   ],
   "scenario_id": "B39",
   "source_papers": [

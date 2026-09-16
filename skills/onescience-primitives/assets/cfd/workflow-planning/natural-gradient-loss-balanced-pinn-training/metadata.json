@@ -29,8 +29,8 @@
     "cfd_s043",
     "pinn",
     "natural-gradient-optimizer",
-    "edge:scenario:sc-65e6cc55",
-    "edge:workflow:wf-cfd-fe460ea5"
+    "edge:scenario:cfd-natural-gradient-and-loss-balanced-pinn-stable-training-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-4"
   ],
   "scenario_id": "CFD_S043",
   "source_papers": [

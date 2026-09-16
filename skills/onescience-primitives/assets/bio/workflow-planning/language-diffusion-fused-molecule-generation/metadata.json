@@ -21,8 +21,8 @@
     "workflow",
     "workflow-planning",
     "b57",
-    "edge:scenario:sc-694a6169",
-    "edge:workflow:wf-bio-856a5702"
+    "edge:scenario:bio-1d-language-3d-diffusion-molecular-generation-scenario",
+    "edge:workflow:bio-molecular-design-objective-definition-model-property-condition-workflow"
   ],
   "scenario_id": "B57",
   "source_papers": [

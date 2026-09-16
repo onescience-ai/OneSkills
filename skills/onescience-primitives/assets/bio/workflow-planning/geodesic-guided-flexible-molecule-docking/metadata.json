@@ -21,8 +21,8 @@
     "workflow",
     "workflow-planning",
     "b49",
-    "edge:scenario:sc-892ed8b3",
-    "edge:workflow:wf-bio-9fe7f508"
+    "edge:scenario:bio-geodesic-path-guided-flexible-molecular-docking-scenario",
+    "edge:workflow:bio-receptor-ligand-input-precheck-pocket-model-feature-preparation-workflow"
   ],
   "scenario_id": "B49",
   "source_papers": [

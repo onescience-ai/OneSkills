@@ -1,0 +1,20 @@
+{
+  "name": "cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-2",
+  "type": "workflow",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（cfd）：5 步骨架 [数据接入与契约核验 > 预处理与数据切分 > 模型配置与训练 > 概率推理与不确定性校准 > 任务验收与适用域判定]，被 3 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:cfd-data-ingestion-contract-validation-task",
+    "edge:task:cfd-preprocessing-data-splitting-task",
+    "edge:task:cfd-model-configuration-training-task",
+    "edge:task:cfd-probabilistic-reasoning-uncertainty-calibration-task",
+    "edge:task:cfd-task-acceptance-domain-determination-task",
+    "edge:scenario:cfd-bayesian-multi-fidelity-aerodynamic-proxy-and-active-sampling-scenario",
+    "edge:scenario:cfd-physics-informed-probabilistic-network-flow-field-uncertainty-scenario",
+    "edge:scenario:cfd-out-of-distribution-flow-surrogate-detection-and-calibration-scenario"
+  ]
+}

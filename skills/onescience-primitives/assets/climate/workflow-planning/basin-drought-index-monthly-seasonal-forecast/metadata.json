@@ -69,8 +69,8 @@
     "boruta",
     "rainfall",
     "temperature",
-    "edge:scenario:sc-a3ca2537",
-    "edge:workflow:wf-climate-ab1dd074"
+    "edge:scenario:climate-basin-meteorological-drought-index-monthly-seasonal-scale-scenario",
+    "edge:workflow:climate-hydro-forcing-basin-data-boundary-precheck-hydro-forcing-basin-workflow-9"
   ],
   "scenario_id": "E18",
   "source_papers": [

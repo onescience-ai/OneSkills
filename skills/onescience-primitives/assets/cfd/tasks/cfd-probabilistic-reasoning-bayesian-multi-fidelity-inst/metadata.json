@@ -1,0 +1,17 @@
+{
+  "name": "cfd-probabilistic-reasoning-bayesian-multi-fidelity-inst",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（cfd）：骨架「概率推理与不确定性校准」在场景「CFD_S015」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:cfd-probabilistic-reasoning-uncertainty-calibration-task",
+    "edge:scenario:cfd-bayesian-multi-fidelity-aerodynamic-proxy-and-active-sampling-scenario",
+    "slot:CHECKPOINT:模型权重",
+    "slot:DEVICE:计算设备",
+    "slot:BATCH_SIZE:推理批大小"
+  ]
+}

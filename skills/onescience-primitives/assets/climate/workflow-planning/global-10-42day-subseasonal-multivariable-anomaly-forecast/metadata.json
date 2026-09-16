@@ -27,8 +27,8 @@
     "workflow-planning",
     "climate",
     "e7",
-    "edge:scenario:sc-ebc3b18e",
-    "edge:workflow:wf-climate-eb2d790f"
+    "edge:scenario:climate-global-10-42-day-subseasonal-multivariate-anomaly-forecast-scenario",
+    "edge:workflow:climate-forecast-data-and-boundary-precheck-forecast-data-alignment-and-workflow-3"
   ],
   "scenario_id": "E7",
   "source_papers": [

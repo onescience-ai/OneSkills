@@ -23,8 +23,8 @@
     "single-phase",
     "workflow",
     "workflow-planning",
-    "edge:scenario:sc-cb6c8169",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-b2-multi-principal-intermetallic-single-phase-discovery-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "B2多主元金属间化合物单相发现",
   "source_papers": [

@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b24",
-    "edge:scenario:sc-fa5646c7",
-    "edge:workflow:wf-bio-c6a05f8d"
+    "edge:scenario:bio-structure-retrieval-augmented-antibody-sequence-design-scenario",
+    "edge:workflow:bio-immune-target-task-definition-numbering-and-interface-feature-workflow"
   ],
   "scenario_id": "B24",
   "source_papers": [

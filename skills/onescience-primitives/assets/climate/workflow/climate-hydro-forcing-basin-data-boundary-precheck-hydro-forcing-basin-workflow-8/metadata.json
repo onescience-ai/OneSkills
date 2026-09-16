@@ -1,0 +1,19 @@
+{
+  "name": "climate-hydro-forcing-basin-data-boundary-precheck-hydro-forcing-basin-workflow-8",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [水文强迫和流域资料及任务边界预检 > 水文强迫和流域资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 滚动生成流量过程 > 订正起报偏差 > 独立检验与交付判定]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-hydro-forcing-basin-data-boundary-precheck-task",
+    "edge:task:climate-hydro-forcing-basin-stalign-sample-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-rolling-discharge-process-task",
+    "edge:task:climate-correct-initial-bias-task",
+    "edge:task:climate-independent-verification-delivery-task",
+    "edge:scenario:climate-weather-forecast-driven-hourly-10day-river-flow-peak-scenario"
+  ]
+}

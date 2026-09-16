@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b44",
-    "edge:scenario:sc-ec031926",
-    "edge:workflow:wf-bio-9fe7f508"
+    "edge:scenario:bio-high-precision-protein-ligand-docking-geometry-correction-scenario",
+    "edge:workflow:bio-receptor-ligand-input-precheck-pocket-model-feature-preparation-workflow"
   ],
   "scenario_id": "B44",
   "source_papers": [

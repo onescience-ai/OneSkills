@@ -29,8 +29,8 @@
     "cfd_s055",
     "wavelet-neural-operator",
     "localized-kernel-operator",
-    "edge:scenario:sc-fe576333",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-wavelet-local-spectral-kernel-multiscale-operator-learning-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S055",
   "source_papers": [

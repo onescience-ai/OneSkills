@@ -1,0 +1,20 @@
+{
+  "name": "matchem-data-objective-definition-b2-multi-principal-intermeta-inst",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「数据与目标定义」在场景「B2多主元金属间化合物单相发现」中的实例化；资源引用 ['datasets/perovskite-stability-benchmark-dataset', 'datasets/xjtu-sy-rolling-bearing-accelerated-life-test-protocol-and-dataset', 'models/data-efficient-machine-learning-potentials-modeling-catalytic', 'tools/dataset-contract-auditor']。",
+  "tags": [
+    "edge:skeleton:matchem-data-objective-definition-task",
+    "edge:scenario:matchem-b2-multi-principal-intermetallic-single-phase-discovery-scenario",
+    "edge:resource:datasets/perovskite-stability-benchmark-dataset",
+    "edge:resource:datasets/xjtu-sy-rolling-bearing-accelerated-life-test-protocol-and-dataset",
+    "edge:resource:models/data-efficient-machine-learning-potentials-modeling-catalytic",
+    "edge:resource:tools/dataset-contract-auditor",
+    "slot:DATASET:训练与验证数据",
+    "slot:TARGET:优化目标"
+  ]
+}

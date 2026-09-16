@@ -21,8 +21,8 @@
     "thin-film",
     "ultrabroadband",
     "vapour",
-    "edge:scenario:sc-355b4bda",
-    "edge:workflow:wf-matchem-2c158827"
+    "edge:scenario:matchem-black-gold-thin-film-solar-steam-generation-scenario",
+    "edge:workflow:matchem-structure-and-separation-target-definition-mass-transfer-workflow"
   ],
   "scenario_id": "黑金薄膜太阳能蒸汽发生设计",
   "source_papers": [

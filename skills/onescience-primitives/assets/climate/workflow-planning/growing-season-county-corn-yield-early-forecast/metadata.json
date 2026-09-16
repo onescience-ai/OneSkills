@@ -26,8 +26,8 @@
     "workflow-planning",
     "climate",
     "e58",
-    "edge:scenario:sc-66c922e3",
-    "edge:workflow:wf-climate-890e9bc7"
+    "edge:scenario:climate-growing-season-county-corn-yield-advance-forecast-scenario",
+    "edge:workflow:climate-weather-exposure-target-observation-task-boundary-precheck-workflow-4"
   ],
   "scenario_id": "E58",
   "source_papers": [

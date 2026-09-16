@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s025",
     "wavelet-cnn",
-    "edge:scenario:sc-afe026ce",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-lagrangian-deep-network-vorticity-particle-trajectory-prediction-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S025",
   "source_papers": [

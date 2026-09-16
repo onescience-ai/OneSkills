@@ -25,8 +25,8 @@
     "workflow",
     "workflow-planning",
     "b23",
-    "edge:scenario:sc-6ca6b41d",
-    "edge:workflow:wf-bio-c6a05f8d"
+    "edge:scenario:bio-reinforcement-learning-guided-antibody-affinity-maturation-scenario",
+    "edge:workflow:bio-immune-target-task-definition-numbering-and-interface-feature-workflow"
   ],
   "scenario_id": "B23",
   "source_papers": [

@@ -1,0 +1,32 @@
+{
+  "name": "matchem-candidate-screening-validation-design-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：候选筛选与验证设计。被 19 个场景复用；含 19 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:matchem-activity-selectivity-stability-joint-evaluation-task",
+    "edge:instance:matchem-candidate-screening-validation-cusn-atomic-interface-co2-inst",
+    "edge:instance:matchem-candidate-screening-validation-fenx-site-durability-pem-inst",
+    "edge:instance:matchem-candidate-screening-validation-fe-single-atom-nitrate-inst",
+    "edge:instance:matchem-candidate-screening-validation-fe-single-atom-orr-fuel-inst",
+    "edge:instance:matchem-candidate-screening-validation-lamn-doped-cobalt-spinel-inst",
+    "edge:instance:matchem-candidate-screening-validation-mof-electrocatalytic-co2-inst",
+    "edge:instance:matchem-candidate-screening-validation-mos2-case2-heterostructure-inst",
+    "edge:instance:matchem-candidate-screening-validation-ni-single-atom-mo2c-water-inst",
+    "edge:instance:matchem-candidate-screening-validation-pdceo2-single-atom-catalyst-inst",
+    "edge:instance:matchem-candidate-screening-validation-pt-single-atom-heterostructu-inst",
+    "edge:instance:matchem-candidate-screening-validation-ru-single-atom-nife-ldh-inst",
+    "edge:instance:matchem-candidate-screening-validation-snbi-alloy-co2-formate-inst",
+    "edge:instance:matchem-candidate-screening-validation-molecular-metal-interface-inst",
+    "edge:instance:matchem-candidate-screening-validation-oxidation-derived-copper-inst",
+    "edge:instance:matchem-candidate-screening-validation-ultra-thin-mof-array-electro-inst",
+    "edge:instance:matchem-candidate-screening-validation-metal-nitrogen-doped-carbon-inst",
+    "edge:instance:matchem-candidate-screening-validation-copper-nanocrystal-co2-to-inst",
+    "edge:instance:matchem-candidate-screening-validation-nickel-catalyst-co2-activati-inst",
+    "edge:instance:matchem-candidate-screening-validation-high-entropy-alloy-lattice-inst"
+  ]
+}

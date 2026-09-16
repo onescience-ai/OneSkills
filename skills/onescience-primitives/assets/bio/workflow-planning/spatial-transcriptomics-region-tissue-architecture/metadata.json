@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b78",
-    "edge:scenario:sc-cf10b7e9",
-    "edge:workflow:wf-bio-cdb48c05"
+    "edge:scenario:bio-spatial-transcriptomics-region-identification-and-tissue-scenario",
+    "edge:workflow:bio-single-cell-data-task-definition-preprocessing-model-workflow"
   ],
   "scenario_id": "B78",
   "source_papers": [

@@ -1,0 +1,440 @@
+# 骨架任务：模型配置与训练
+
+- domain: cfd
+- 复用场景数: 100
+- 实例任务数: 100
+
+## 步骤描述（跨场景聚合去重）
+- 训练3D inverse design network、Physics-aware optimizer完成指定输入到目标物理量的映射。
+- 训练ALE neural network、Graph simulator完成指定输入到目标物理量的映射。
+- 训练Active learning surrogate、Differentiable neural operator完成指定输入到目标物理量的映射。
+- 训练Autoregressive CNN、PDE-Refiner完成指定输入到目标物理量的映射。
+- 训练Bayesian PINN、Physics-informed GAN完成指定输入到目标物理量的映射。
+- 训练Bayesian PINN完成指定输入到目标物理量的映射。
+- 训练Bayesian surrogate、Gaussian process完成指定输入到目标物理量的映射。
+- 训练Boundary-embedded neural operator、Hard-constraint neural field完成指定输入到目标物理量的映射。
+- 训练CFD LLM agent完成指定输入到目标物理量的映射。
+- 训练CNN SGS model完成指定输入到目标物理量的映射。
+- 训练CNN decoder、3D GAN完成指定输入到目标物理量的映射。
+- 训练CNN surrogate、Neural differential equation完成指定输入到目标物理量的映射。
+- 训练CNN、Aerodynamic foundation model完成指定输入到目标物理量的映射。
+- 训练CNN、U-Net完成指定输入到目标物理量的映射。
+- 训练Conditional generative model、Neural SDE完成指定输入到目标物理量的映射。
+- 训练Conservative Graph Neural Network完成指定输入到目标物理量的映射。
+- 训练Continuous-time neural operator、Stochastic neural operator完成指定输入到目标物理量的映射。
+- 训练Convolutional autoencoder、Latent dynamics model完成指定输入到目标物理量的映射。
+- 训练CycleGAN完成指定输入到目标物理量的映射。
+- 训练Data-driven LES source model完成指定输入到目标物理量的映射。
+- 训练Deep Lagrangian network、Wavelet CNN完成指定输入到目标物理量的映射。
+- 训练Deep RL controller、Adjoint neural controller完成指定输入到目标物理量的映射。
+- 训练Deep Ritz network、Weak-form neural solver完成指定输入到目标物理量的映射。
+- 训练Deep reinforcement learning、Explainable CNN完成指定输入到目标物理量的映射。
+- 训练Deep reinforcement learning完成指定输入到目标物理量的映射。
+- 训练DeepONet、Neural Green function完成指定输入到目标物理量的映射。
+- 训练Differentiable PDE-GNN、Physics-aware data assimilation完成指定输入到目标物理量的映射。
+- 训练Differentiable controller、Diffusion policy完成指定输入到目标物理量的映射。
+- 训练Differentiable physics、Graph simulator完成指定输入到目标物理量的映射。
+- 训练Differentiable simulator、Mechanistic PDE network完成指定输入到目标物理量的映射。
+- 训练Diffusion design model、Engineering agent完成指定输入到目标物理量的映射。
+- 训练Diffusion model、Stochastic process model完成指定输入到目标物理量的映射。
+- 训练Domain-decomposed neural operator、NUNO完成指定输入到目标物理量的映射。
+- 训练DragSolver、Transformer surrogate、Triplane network完成指定输入到目标物理量的映射。
+- 训练E3-equivariant GNN、Lagrangian simulator完成指定输入到目标物理量的映射。
+- 训练EddyFormer、Mesh Transformer完成指定输入到目标物理量的映射。
+- 训练Equivariant Neural Operator、Spherical FNO、Clifford Neural Operator完成指定输入到目标物理量的映射。
+- 训练FBPINN、XPINN、Parallel PINN完成指定输入到目标物理量的映射。
+- 训练Factorized FNO、Multigrid neural operator完成指定输入到目标物理量的映射。
+- 训练Flow matching model完成指定输入到目标物理量的映射。
+- 训练Fourier Neural Operator完成指定输入到目标物理量的映射。
+- 训练GAN、Normalizing flow完成指定输入到目标物理量的映射。
+- 训练Geometry-encoded neural surrogate完成指定输入到目标物理量的映射。
+- 训练Graph Neural Network完成指定输入到目标物理量的映射。
+- 训练Graph Neural Operator、MeshGraphNet完成指定输入到目标物理量的映射。
+- 训练Graph Neural Operator完成指定输入到目标物理量的映射。
+- 训练Graph ODE、Conformal predictor完成指定输入到目标物理量的映射。
+- 训练Hard-constraint PINN、Boundary PINN完成指定输入到目标物理量的映射。
+- 训练Implicit neural representation、Continuous ROM完成指定输入到目标物理量的映射。
+- 训练Implicit neural representation、Diffusion bridge完成指定输入到目标物理量的映射。
+- 训练Inverse PINN、Physics-informed data assimilation完成指定输入到目标物理量的映射。
+- 训练Kernel surrogate、Diffusion model完成指定输入到目标物理量的映射。
+- 训练Latent Neural Operator、Neural field operator完成指定输入到目标物理量的映射。
+- 训练Latent diffusion model、Generative design model完成指定输入到目标物理量的映射。
+- 训练Lie-equivariant neural network、PDO convolution完成指定输入到目标物理量的映射。
+- 训练Mamba Neural Operator、State-space operator完成指定输入到目标物理量的映射。
+- 训练Mesh movement network、Graph mesh optimizer完成指定输入到目标物理量的映射。
+- 训练Mesh movement network完成指定输入到目标物理量的映射。
+- 训练Message-passing neural PDE solver、Adaptive mesh GNN完成指定输入到目标物理量的映射。
+- 训练Meta-PINN、PINN agent、PINN Transformer完成指定输入到目标物理量的映射。
+- 训练Multi-fidelity surrogate、Bayesian optimizer完成指定输入到目标物理量的映射。
+- 训练Neural CFD surrogate完成指定输入到目标物理量的映射。
+- 训练Neural ODE、Latent neural field完成指定输入到目标物理量的映射。
+- 训练Neural SDE closure、Probabilistic coarse-graining model完成指定输入到目标物理量的映射。
+- 训练Neural aerodynamic ROM、Neural ODE完成指定输入到目标物理量的映射。
+- 训练Neural corrector、Hybrid PDE solver完成指定输入到目标物理量的映射。
+- 训练Neural finite-volume solver、Domain-decomposition network完成指定输入到目标物理量的映射。
+- 训练Neural inverse operator、Inverse DeepONet完成指定输入到目标物理量的映射。
+- 训练Neural multigrid、Learned preconditioner完成指定输入到目标物理量的映射。
+- 训练Neural reduced-order model、Neural ODE完成指定输入到目标物理量的映射。
+- 训练Non-Cartesian CNN、Surface neural simulator完成指定输入到目标物理量的映射。
+- 训练PDE Transformer、Universal Physics Transformer完成指定输入到目标物理量的映射。
+- 训练PDE foundation model、In-context learner完成指定输入到目标物理量的映射。
+- 训练PDE foundation model、Pretrained neural operator完成指定输入到目标物理量的映射。
+- 训练PINN、NSFnet完成指定输入到目标物理量的映射。
+- 训练PINN、Natural-gradient optimizer完成指定输入到目标物理量的映射。
+- 训练POD、Dynamic mode decomposition完成指定输入到目标物理量的映射。
+- 训练Parareal neural solver、Temporal neural operator完成指定输入到目标物理量的映射。
+- 训练Physics-constrained neural operator完成指定输入到目标物理量的映射。
+- 训练Physics-informed diffusion model完成指定输入到目标物理量的映射。
+- 训练Physics-informed neural network、Shock classifier完成指定输入到目标物理量的映射。
+- 训练Physics-informed stochastic solver、Gaussian process完成指定输入到目标物理量的映射。
+- 训练Point-cloud network、Mesh-free neural surrogate完成指定输入到目标物理量的映射。
+- 训练Point-cloud regressor、Graph Neural Network完成指定输入到目标物理量的映射。
+- 训练Reduced-order controller、Neural MPC完成指定输入到目标物理量的映射。
+- 训练Reservoir computer、CNN完成指定输入到目标物理量的映射。
+- 训练Score-based data assimilation、Diffusion PDE model、Neural fluid field完成指定输入到目标物理量的映射。
+- 训练Spectral PINN、SIREN完成指定输入到目标物理量的映射。
+- 训练Stable Neural ODE、Constrained neural process完成指定输入到目标物理量的映射。
+- 训练Super-resolution CNN完成指定输入到目标物理量的映射。
+- 训练Symbolic physics learner、Sparse PDE discovery完成指定输入到目标物理量的映射。
+- 训练Tensor-basis neural network、Symbolic closure model完成指定输入到目标物理量的映射。
+- 训练Transfer learning surrogate、Conformal predictor完成指定输入到目标物理量的映射。
+- 训练Transfer-learning surrogate、Gaussian functional regressor完成指定输入到目标物理量的映射。
+- 训练Transferable ROM、Shallow recurrent decoder完成指定输入到目标物理量的映射。
+- 训练Transformer aerodynamic surrogate、Neural turbulence model完成指定输入到目标物理量的映射。
+- 训练Transolver、Mesh Transformer完成指定输入到目标物理量的映射。
+- 训练Turbulence PINN完成指定输入到目标物理量的映射。
+- 训练Turbulence-augmented PINN完成指定输入到目标物理量的映射。
+- 训练Wavelet Neural Operator、Localized-kernel operator完成指定输入到目标物理量的映射。
+
+## 执行 prompt（跨场景聚合去重）
+- 使用{MODEL_NAME}，默认3D inverse design network、Physics-aware optimizer，和{TRAIN_CONFIG}训练“三维航空器目标气动响应逆向设计”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认ALE neural network、Graph simulator，和{TRAIN_CONFIG}训练“流固耦合移动网格振动时序预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Active learning surrogate、Differentiable neural operator，和{TRAIN_CONFIG}训练“主动学习驱动的PDE约束设计优化”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Autoregressive CNN、PDE-Refiner，和{TRAIN_CONFIG}训练“自回归网络圆柱尾迹长时滚动预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Bayesian PINN、Physics-informed GAN，和{TRAIN_CONFIG}训练“物理信息概率网络流场不确定性反演”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Bayesian PINN，和{TRAIN_CONFIG}训练“贝叶斯PINN噪声数据概率反演”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Bayesian surrogate、Gaussian process，和{TRAIN_CONFIG}训练“贝叶斯多保真气动代理与主动选样”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Boundary-embedded neural operator、Hard-constraint neural field，和{TRAIN_CONFIG}训练“边界嵌入与任意阶硬约束神经场求解”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认CFD LLM agent，和{TRAIN_CONFIG}训练“LLM智能体自动配置与执行CFD仿真”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认CNN SGS model，和{TRAIN_CONFIG}训练“卷积网络二维湍流LES亚格子闭合”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认CNN decoder、3D GAN，和{TRAIN_CONFIG}训练“稀疏壁面传感器三维湍流全场重构”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认CNN surrogate、Neural differential equation，和{TRAIN_CONFIG}训练“多孔与复杂输运流动场数据驱动预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认CNN、Aerodynamic foundation model，和{TRAIN_CONFIG}训练“壁面压力剪切与积分气动力联合反演”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认CNN、U-Net，和{TRAIN_CONFIG}训练“规则网格CNN翼型稳态流场代理预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Conditional generative model、Neural SDE，和{TRAIN_CONFIG}训练“条件生成模型多物理与随机PDE模拟”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Conservative Graph Neural Network，和{TRAIN_CONFIG}训练“守恒图网络有限体积PDE推进”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Continuous-time neural operator、Stochastic neural operator，和{TRAIN_CONFIG}训练“连续时间与随机生成神经算子预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Convolutional autoencoder、Latent dynamics model，和{TRAIN_CONFIG}训练“自编码器潜空间流动降阶时序预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认CycleGAN，和{TRAIN_CONFIG}训练“CycleGAN无配对LES到DNS超分辨率重建”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Data-driven LES source model，和{TRAIN_CONFIG}训练“工程LES等效源项与高保真校准”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Deep Lagrangian network、Wavelet CNN，和{TRAIN_CONFIG}训练“拉格朗日深度网络涡量与粒子轨迹预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Deep RL controller、Adjoint neural controller，和{TRAIN_CONFIG}训练“机翼阵风与跨声速流动主动控制”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Deep Ritz network、Weak-form neural solver，和{TRAIN_CONFIG}训练“Deep Ritz与弱形式神经变分求解”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Deep reinforcement learning、Explainable CNN，和{TRAIN_CONFIG}训练“深度强化学习壁湍流摩阻削减”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Deep reinforcement learning，和{TRAIN_CONFIG}训练“深度强化学习钝体尾迹闭环减阻控制”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认DeepONet、Neural Green function，和{TRAIN_CONFIG}训练“DeepONet与神经Green函数算子学习”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Differentiable PDE-GNN、Physics-aware data assimilation，和{TRAIN_CONFIG}训练“可微PDE求解器与图网络混合数据同化”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Differentiable controller、Diffusion policy，和{TRAIN_CONFIG}训练“可微与生成式PDE最优控制”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Differentiable physics、Graph simulator，和{TRAIN_CONFIG}训练“可微物理流固耦合逆向设计”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Differentiable simulator、Mechanistic PDE network，和{TRAIN_CONFIG}训练“可微分物理求解与方程结构学习”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Diffusion design model、Engineering agent，和{TRAIN_CONFIG}训练“生成模型与智能体工程外形协同设计”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Diffusion model、Stochastic process model，和{TRAIN_CONFIG}训练“扩散与随机过程时空场概率预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Domain-decomposed neural operator、NUNO，和{TRAIN_CONFIG}训练“域分解与非均匀几何神经算子学习”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认DragSolver、Transformer surrogate、Triplane network，和{TRAIN_CONFIG}训练“多尺度Transformer汽车高分辨率气动预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认E3-equivariant GNN、Lagrangian simulator，和{TRAIN_CONFIG}训练“E3等变粒子网络拉格朗日流体模拟”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认EddyFormer、Mesh Transformer，和{TRAIN_CONFIG}训练“三维湍流Transformer多尺度时空预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Equivariant Neural Operator、Spherical FNO、Clifford Neural Operator，和{TRAIN_CONFIG}训练“等变球面与Clifford神经算子学习”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认FBPINN、XPINN、Parallel PINN，和{TRAIN_CONFIG}训练“区域分解并行PINN大域求解”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Factorized FNO、Multigrid neural operator，和{TRAIN_CONFIG}训练“因子分解与多重网格FNO高效算子学习”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Flow matching model，和{TRAIN_CONFIG}训练“流匹配网络复杂流动概率代理”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Fourier Neural Operator，和{TRAIN_CONFIG}训练“FNO规则网格参数化PDE算子学习”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认GAN、Normalizing flow，和{TRAIN_CONFIG}训练“GAN与正规化流湍流降阶生成”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Geometry-encoded neural surrogate，和{TRAIN_CONFIG}训练“几何编码网络跨声速翼型激波流场预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Graph Neural Network，和{TRAIN_CONFIG}训练“图网络翼型非结构网格RANS场预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Graph Neural Operator、MeshGraphNet，和{TRAIN_CONFIG}训练“图神经算子任意域非结构网格流场预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Graph Neural Operator，和{TRAIN_CONFIG}训练“图神经算子任意几何PDE学习”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Graph ODE、Conformal predictor，和{TRAIN_CONFIG}训练“分布外流动代理检测与校准预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Hard-constraint PINN、Boundary PINN，和{TRAIN_CONFIG}训练“硬约束PINN复杂几何边界求解”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Implicit neural representation、Continuous ROM，和{TRAIN_CONFIG}训练“隐式神经场连续流动降阶建模”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Implicit neural representation、Diffusion bridge，和{TRAIN_CONFIG}训练“隐式表示与扩散桥CFD缺失区补全压缩”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Inverse PINN、Physics-informed data assimilation，和{TRAIN_CONFIG}训练“物理信息网络稀疏观测参数反演”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Kernel surrogate、Diffusion model，和{TRAIN_CONFIG}训练“核方法与生成模型翼型跨工况场预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Latent Neural Operator、Neural field operator，和{TRAIN_CONFIG}训练“潜空间与神经场连续PDE算子学习”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Latent diffusion model、Generative design model，和{TRAIN_CONFIG}训练“生成模型气动外形与流场联合逆向设计”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Lie-equivariant neural network、PDO convolution，和{TRAIN_CONFIG}训练“Lie群等变网络对称PDE预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Mamba Neural Operator、State-space operator，和{TRAIN_CONFIG}训练“Mamba状态空间神经算子时序预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Mesh movement network、Graph mesh optimizer，和{TRAIN_CONFIG}训练“学习型网格移动与自适应有限元优化”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Mesh movement network，和{TRAIN_CONFIG}训练“学习型网格移动与自适应重网格”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Message-passing neural PDE solver、Adaptive mesh GNN，和{TRAIN_CONFIG}训练“动态图网络与自适应网格物理时序模拟”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Meta-PINN、PINN agent、PINN Transformer，和{TRAIN_CONFIG}训练“自动化与元学习PINN跨方程求解”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Multi-fidelity surrogate、Bayesian optimizer，和{TRAIN_CONFIG}训练“多保真代理辅助翼型外形优化”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Neural CFD surrogate，和{TRAIN_CONFIG}训练“高保真汽车数据集全场与气动力联合代理”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Neural ODE、Latent neural field，和{TRAIN_CONFIG}训练“潜空间神经ODE连续流动动力学预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Neural SDE closure、Probabilistic coarse-graining model，和{TRAIN_CONFIG}训练“随机微分与概率粗粒化湍流闭合”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Neural aerodynamic ROM、Neural ODE，和{TRAIN_CONFIG}训练“气动弹性与非定常载荷降阶响应预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Neural corrector、Hybrid PDE solver，和{TRAIN_CONFIG}训练“神经校正器耦合粗网格CFD加速”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Neural finite-volume solver、Domain-decomposition network，和{TRAIN_CONFIG}训练“神经有限体积与域分解混合求解”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Neural inverse operator、Inverse DeepONet，和{TRAIN_CONFIG}训练“神经逆算子PDE参数与边界反演”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Neural multigrid、Learned preconditioner，和{TRAIN_CONFIG}训练“神经多重网格与预条件线性PDE求解”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Neural reduced-order model、Neural ODE，和{TRAIN_CONFIG}训练“跨声速气动弹性降阶响应预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Non-Cartesian CNN、Surface neural simulator，和{TRAIN_CONFIG}训练“非笛卡尔晶格与曲面网络流动模拟”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认PDE Transformer、Universal Physics Transformer，和{TRAIN_CONFIG}训练“Transformer通用PDE算子预训练与微调”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认PDE foundation model、In-context learner，和{TRAIN_CONFIG}训练“基础模型跨PDE零样本时序预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认PDE foundation model、Pretrained neural operator，和{TRAIN_CONFIG}训练“科学基础模型多物理算子迁移”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认PINN、NSFnet，和{TRAIN_CONFIG}训练“PINN不可压Navier-Stokes正问题求解”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认PINN、Natural-gradient optimizer，和{TRAIN_CONFIG}训练“自然梯度与损失平衡PINN稳定训练”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认POD、Dynamic mode decomposition，和{TRAIN_CONFIG}训练“POD与模态分解流动降阶建模”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Parareal neural solver、Temporal neural operator，和{TRAIN_CONFIG}训练“时间并行与多时间尺度神经PDE推进”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Physics-constrained neural operator，和{TRAIN_CONFIG}训练“物理边界与不变量约束神经算子学习”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Physics-informed diffusion model，和{TRAIN_CONFIG}训练“物理信息扩散模型流场分布生成”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Physics-informed neural network、Shock classifier，和{TRAIN_CONFIG}训练“物理网络可压缩高速绕流求解与激波识别”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Physics-informed stochastic solver、Gaussian process，和{TRAIN_CONFIG}训练“物理网络随机与高维PDE求解”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Point-cloud network、Mesh-free neural surrogate，和{TRAIN_CONFIG}训练“点云与无网格网络复杂几何流场预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Point-cloud regressor、Graph Neural Network，和{TRAIN_CONFIG}训练“DrivAerNet汽车几何到阻力系数回归”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Reduced-order controller、Neural MPC，和{TRAIN_CONFIG}训练“数据驱动风场与非定常流反馈控制”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Reservoir computer、CNN，和{TRAIN_CONFIG}训练“对流与标量混合湍流热通量预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Score-based data assimilation、Diffusion PDE model、Neural fluid field，和{TRAIN_CONFIG}训练“部分观测扩散同化与连续流场反演”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Spectral PINN、SIREN，和{TRAIN_CONFIG}训练“谱增强PINN高频多尺度PDE求解”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Stable Neural ODE、Constrained neural process，和{TRAIN_CONFIG}训练“稳定性约束神经微分方程动力学学习”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Super-resolution CNN，和{TRAIN_CONFIG}训练“监督学习湍流场单快照超分辨率重建”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Symbolic physics learner、Sparse PDE discovery，和{TRAIN_CONFIG}训练“符号与稀疏物理学习控制方程发现”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Tensor-basis neural network、Symbolic closure model，和{TRAIN_CONFIG}训练“数据驱动RANS雷诺应力与涡黏闭合”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Transfer learning surrogate、Conformal predictor，和{TRAIN_CONFIG}训练“迁移与不确定性约束汽车气动快速评估”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Transfer-learning surrogate、Gaussian functional regressor，和{TRAIN_CONFIG}训练“迁移与多保真航空汽车气动代理”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Transferable ROM、Shallow recurrent decoder，和{TRAIN_CONFIG}训练“可迁移参数化ROM与实时状态监测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Transformer aerodynamic surrogate、Neural turbulence model，和{TRAIN_CONFIG}训练“高超声速与跨声速边界层湍流代理”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Transolver、Mesh Transformer，和{TRAIN_CONFIG}训练“大规模网格Transformer三维流场预测”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Turbulence PINN，和{TRAIN_CONFIG}训练“稀疏观测PINN均值流与闭合联合反演”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Turbulence-augmented PINN，和{TRAIN_CONFIG}训练“PINN湍流RANS均值流求解与闭合”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+- 使用{MODEL_NAME}，默认Wavelet Neural Operator、Localized-kernel operator，和{TRAIN_CONFIG}训练“小波与局部谱核多尺度算子学习”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。
+
+## 输入槽（var/hint/default）
+- {MODEL_NAME} | required=True | type=str | var_name=模型名称 | hint=实现或模型注册名 | default=Implicit neural representation、Diffusion bridge
+- {TRAIN_CONFIG} | required=True | type=object | var_name=训练配置 | hint=超参数和随机种子 | default={'framework': 'PyTorch', 'epochs': 100, 'batch_size': 8, 'learning_rate': 0.001, 'seed': 42, 'early_stopping_patience': 15}
+- {INIT_CHECKPOINT} | required=False | type=doc | var_name=初始权重 | hint=可选预训练权重 | default=
+
+## 产出
+- best_checkpoint.pt
+- environment.txt
+- train_config.json
+- training_metrics.csv
+
+## 质量门禁 quality_gate
+- 最佳权重可重新加载
+- 训练验证损失均为有限值
+- 配置环境随机种子可复现
+
+## 可调资源（edge:resource，仅真实存在）
+- datapipes/conditional-latent-generative-framework-for-rarefied-flows
+- models/cnn-based-tsunami-early-warning-method
+- models/deeponet
+- models/fno
+- models/meshgraphnet
+- models/transformer
+- models/transolver
+- models/u_net
+- tools/fluidsim
+
+## 实例任务（本骨架在各场景的实例化）
+- cfd-model-configuration-training-3d-aircraft-aerodynamic-inst
+- cfd-model-configuration-training-3d-turbulence-transformer-inst
+- cfd-model-configuration-training-active-learning-driven-pde-inst
+- cfd-model-configuration-training-aeroelasticity-unsteady-inst
+- cfd-model-configuration-training-autoencoder-latent-space-inst
+- cfd-model-configuration-training-automation-and-meta-learning-inst
+- cfd-model-configuration-training-autoregressive-network-inst
+- cfd-model-configuration-training-bayesian-multi-fidelity-inst
+- cfd-model-configuration-training-bayesian-pinn-noisy-data-inst
+- cfd-model-configuration-training-boundary-embedding-and-inst
+- cfd-model-configuration-training-conditional-generative-inst
+- cfd-model-configuration-training-conservative-graph-network-inst
+- cfd-model-configuration-training-continuous-time-and-stochast-inst
+- cfd-model-configuration-training-convective-scalar-mixed-inst
+- cfd-model-configuration-training-convolution-network-2d-inst
+- cfd-model-configuration-training-cyclegan-unpaired-les-to-inst
+- cfd-model-configuration-training-data-driven-porous-complex-inst
+- cfd-model-configuration-training-data-driven-rans-reynolds-inst
+- cfd-model-configuration-training-data-driven-wind-field-inst
+- cfd-model-configuration-training-deep-reinforcement-learning-inst
+- cfd-model-configuration-training-deep-ritz-weak-form-neural-inst
+- cfd-model-configuration-training-deep-rl-bluff-body-wake-inst
+- cfd-model-configuration-training-deeponet-neural-green-inst
+- cfd-model-configuration-training-differentiable-and-generativ-inst
+- cfd-model-configuration-training-differentiable-pde-solver-inst
+- cfd-model-configuration-training-differentiable-physics-inst
+- cfd-model-configuration-training-differentiable-physics-inst-2
+- cfd-model-configuration-training-diffusion-stochastic-process-inst
+- cfd-model-configuration-training-domain-decomposition-and-inst
+- cfd-model-configuration-training-domain-decomposition-paralle-inst
+- cfd-model-configuration-training-drivaernet-vehicle-geometry-inst
+- cfd-model-configuration-training-dynamic-graph-network-and-inst
+- cfd-model-configuration-training-e3-equivariant-particle-inst
+- cfd-model-configuration-training-engineering-les-equivalent-inst
+- cfd-model-configuration-training-equivariant-spherical-and-inst
+- cfd-model-configuration-training-factorization-multigrid-fno-inst
+- cfd-model-configuration-training-flow-matching-network-inst
+- cfd-model-configuration-training-fluid-solid-coupling-moving-inst
+- cfd-model-configuration-training-fno-regular-grid-parameteriz-inst
+- cfd-model-configuration-training-foundation-model-cross-pde-inst
+- cfd-model-configuration-training-gan-normalizing-flow-turbule-inst
+- cfd-model-configuration-training-generative-model-aerodynamic-inst
+- cfd-model-configuration-training-generative-model-agent-inst
+- cfd-model-configuration-training-geometric-encoding-network-inst
+- cfd-model-configuration-training-graph-network-airfoil-inst
+- cfd-model-configuration-training-graph-neural-operator-inst
+- cfd-model-configuration-training-graph-neural-operator-inst-2
+- cfd-model-configuration-training-hard-constrained-pinn-inst
+- cfd-model-configuration-training-high-fidelity-vehicle-inst
+- cfd-model-configuration-training-hypersonic-transonic-boundar-inst
+- cfd-model-configuration-training-implicit-neural-field-inst
+- cfd-model-configuration-training-implicit-representation-and-inst
+- cfd-model-configuration-training-kernel-method-generative-inst
+- cfd-model-configuration-training-lagrangian-deep-network-inst
+- cfd-model-configuration-training-large-scale-mesh-transformer-inst
+- cfd-model-configuration-training-latent-space-neural-field-inst
+- cfd-model-configuration-training-latent-space-neural-ode-inst
+- cfd-model-configuration-training-learned-mesh-movement-inst
+- cfd-model-configuration-training-learned-mesh-movement-inst-2
+- cfd-model-configuration-training-lie-group-equivariant-inst
+- cfd-model-configuration-training-llm-agent-auto-config-cfd-inst
+- cfd-model-configuration-training-mamba-state-space-neural-inst
+- cfd-model-configuration-training-multi-fidelity-surrogate-inst
+- cfd-model-configuration-training-multi-scale-transformer-inst
+- cfd-model-configuration-training-natural-gradient-and-loss-inst
+- cfd-model-configuration-training-neural-corrector-coarse-inst
+- cfd-model-configuration-training-neural-finite-volume-domain-inst
+- cfd-model-configuration-training-neural-inverse-operator-pde-inst
+- cfd-model-configuration-training-neural-multigrid-preconditio-inst
+- cfd-model-configuration-training-non-cartesian-lattice-and-inst
+- cfd-model-configuration-training-out-of-distribution-flow-inst
+- cfd-model-configuration-training-partial-observation-diffusio-inst
+- cfd-model-configuration-training-physical-boundary-invariant-inst
+- cfd-model-configuration-training-physical-network-compressibl-inst
+- cfd-model-configuration-training-physical-network-stochastic-inst
+- cfd-model-configuration-training-physics-informed-diffusion-inst
+- cfd-model-configuration-training-physics-informed-network-inst
+- cfd-model-configuration-training-physics-informed-probabilist-inst
+- cfd-model-configuration-training-pinn-incompressible-navier-inst
+- cfd-model-configuration-training-pinn-joint-inversion-closure-inst
+- cfd-model-configuration-training-pinn-turbulence-rans-mean-inst
+- cfd-model-configuration-training-pod-modal-decomposition-inst
+- cfd-model-configuration-training-point-cloud-meshless-network-inst
+- cfd-model-configuration-training-regular-grid-cnn-airfoil-inst
+- cfd-model-configuration-training-scientific-foundation-model-inst
+- cfd-model-configuration-training-sparse-wall-sensor-3d-inst
+- cfd-model-configuration-training-spectral-enhanced-pinn-high-inst
+- cfd-model-configuration-training-stability-constrained-inst
+- cfd-model-configuration-training-stochastic-differential-and-inst
+- cfd-model-configuration-training-supervised-learning-turbulen-inst
+- cfd-model-configuration-training-symbolic-and-sparse-physics-inst
+- cfd-model-configuration-training-time-parallel-multitemporal-inst
+- cfd-model-configuration-training-transfer-and-multi-fidelity-inst
+- cfd-model-configuration-training-transfer-and-uncertainty-inst
+- cfd-model-configuration-training-transferable-parameterized-inst
+- cfd-model-configuration-training-transformer-general-pde-inst
+- cfd-model-configuration-training-transonic-aeroelasticity-inst
+- cfd-model-configuration-training-wall-pressure-shear-and-inst
+- cfd-model-configuration-training-wavelet-local-spectral-inst
+- cfd-model-configuration-training-wing-gust-transonic-flow-inst
+
+## 复用场景
+- CFD_S001
+- CFD_S002
+- CFD_S003
+- CFD_S004
+- CFD_S005
+- CFD_S006
+- CFD_S007
+- CFD_S008
+- CFD_S009
+- CFD_S010
+- CFD_S011
+- CFD_S012
+- CFD_S013
+- CFD_S014
+- CFD_S015
+- CFD_S016
+- CFD_S017
+- CFD_S018
+- CFD_S019
+- CFD_S020
+- CFD_S021
+- CFD_S022
+- CFD_S023
+- CFD_S024
+- CFD_S025
+- CFD_S026
+- CFD_S027
+- CFD_S028
+- CFD_S029
+- CFD_S030
+- CFD_S031
+- CFD_S032
+- CFD_S033
+- CFD_S034
+- CFD_S035
+- CFD_S036
+- CFD_S037
+- CFD_S038
+- CFD_S039
+- CFD_S040
+- CFD_S041
+- CFD_S042
+- CFD_S043
+- CFD_S044
+- CFD_S045
+- CFD_S046
+- CFD_S047
+- CFD_S048
+- CFD_S049
+- CFD_S050
+- CFD_S051
+- CFD_S052
+- CFD_S053
+- CFD_S054
+- CFD_S055
+- CFD_S056
+- CFD_S057
+- CFD_S058
+- CFD_S059
+- CFD_S060
+- CFD_S061
+- CFD_S062
+- CFD_S063
+- CFD_S064
+- CFD_S065
+- CFD_S066
+- CFD_S067
+- CFD_S068
+- CFD_S069
+- CFD_S070
+- CFD_S071
+- CFD_S072
+- CFD_S073
+- CFD_S074
+- CFD_S075
+- CFD_S076
+- CFD_S077
+- CFD_S078
+- CFD_S079
+- CFD_S080
+- CFD_S081
+- CFD_S082
+- CFD_S083
+- CFD_S084
+- CFD_S085
+- CFD_S086
+- CFD_S087
+- CFD_S088
+- CFD_S089
+- CFD_S090
+- CFD_S091
+- CFD_S092
+- CFD_S093
+- CFD_S094
+- CFD_S095
+- CFD_S096
+- CFD_S097
+- CFD_S098
+- CFD_S099
+- CFD_S100

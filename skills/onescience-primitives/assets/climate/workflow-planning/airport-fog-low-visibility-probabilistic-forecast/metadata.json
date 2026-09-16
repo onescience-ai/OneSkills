@@ -27,8 +27,8 @@
     "workflow-planning",
     "climate",
     "e33",
-    "edge:scenario:sc-836794da",
-    "edge:workflow:wf-climate-a573cf71"
+    "edge:scenario:climate-airport-fog-low-visibility-short-term-probability-forecast-scenario",
+    "edge:workflow:climate-near-observation-task-boundary-precheck-near-observation-space-workflow-5"
   ],
   "scenario_id": "E33",
   "source_papers": [

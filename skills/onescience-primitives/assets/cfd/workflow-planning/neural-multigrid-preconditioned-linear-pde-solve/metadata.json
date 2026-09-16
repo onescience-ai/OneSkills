@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s069",
     "neural-multigrid",
-    "edge:scenario:sc-58812786",
-    "edge:workflow:wf-cfd-f43b987c"
+    "edge:scenario:cfd-neural-multigrid-preconditioned-linear-pde-solver-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-5"
   ],
   "scenario_id": "CFD_S069",
   "source_papers": [

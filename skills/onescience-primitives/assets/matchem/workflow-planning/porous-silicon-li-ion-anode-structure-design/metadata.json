@@ -19,8 +19,8 @@
     "scalable",
     "silicon",
     "synthesis",
-    "edge:scenario:sc-f386d7eb",
-    "edge:workflow:wf-matchem-c41fa878"
+    "edge:scenario:matchem-porous-silicon-li-ion-battery-anode-structure-design-scenario",
+    "edge:workflow:matchem-material-condition-modeling-structure-or-electrochemical-workflow"
   ],
   "scenario_id": "多孔硅锂离子电池负极结构设计",
   "source_papers": [

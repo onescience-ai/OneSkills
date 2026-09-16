@@ -27,8 +27,8 @@
     "workflow-planning",
     "climate",
     "e80",
-    "edge:scenario:sc-3208b433",
-    "edge:workflow:wf-climate-8a046406"
+    "edge:scenario:climate-geostationary-meteorological-satellite-driven-convection-scenario",
+    "edge:workflow:climate-source-obs-reference-data-boundary-source-obs-reference-stalign-workflow-6"
   ],
   "scenario_id": "E80",
   "source_papers": [

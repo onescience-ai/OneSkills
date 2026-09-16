@@ -1,0 +1,26 @@
+{
+  "name": "bio-design-objective-and-constraint-definition-model-condition-workflow",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（bio）：4 步骨架 [设计目标与约束定义 > 模型与条件特征准备 > 候选生成与序列采样 > 回折叠与设计筛选]，被 10 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:bio-design-objective-and-constraint-definition-task",
+    "edge:task:bio-model-condition-feature-preparation-task",
+    "edge:task:bio-candidate-generation-sequence-sampling-task",
+    "edge:task:bio-reverse-folding-design-screening-task",
+    "edge:scenario:bio-protoken-latent-protein-structure-sequence-co-design-scenario",
+    "edge:scenario:bio-all-atom-protein-structure-sequence-joint-generation-scenario",
+    "edge:scenario:bio-functional-site-constrained-protein-backbone-generation-scenario",
+    "edge:scenario:bio-reaction-condition-driven-de-novo-enzyme-design-scenario",
+    "edge:scenario:bio-multi-functional-motif-scaffold-protein-generation-scenario",
+    "edge:scenario:bio-multi-conformation-state-compatible-protein-sequence-design-scenario",
+    "edge:scenario:bio-substrate-pocket-constrained-enzyme-scaffold-design-scenario",
+    "edge:scenario:bio-given-protein-backbone-robust-sequence-design-scenario",
+    "edge:scenario:bio-transmembrane-protein-sequence-discrete-diffusion-design-scenario",
+    "edge:scenario:bio-target-specific-all-atom-peptide-design-scenario"
+  ]
+}

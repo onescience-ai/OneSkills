@@ -1,0 +1,24 @@
+{
+  "name": "climate-independent-verification-delivery-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：独立检验与交付判定。被 3 个场景复用；含 3 个实例任务；资源引用 ['datasets/kling-gupta-efficiency-kge-metric', 'datasets/mdn-based-chla-retrieval-benchmark', 'datasets/precipitation-nowcasting-evaluation-metrics']。",
+  "tags": [
+    "edge:resource:datasets/kling-gupta-efficiency-kge-metric",
+    "edge:resource:datasets/mdn-based-chla-retrieval-benchmark",
+    "edge:resource:datasets/precipitation-nowcasting-evaluation-metrics",
+    "edge:prev:climate-correct-initial-bias-task",
+    "edge:prev:climate-result-recovery-and-scenario-product-generation-task",
+    "slot:VERIFICATION_REFERENCE:独立验证资料",
+    "slot:BENCHMARK_RESULT:基线结果",
+    "slot:METRICS:检验指标",
+    "slot:ACCEPTANCE_CRITERIA:验收门限",
+    "edge:instance:climate-independent-verification-visible-image-cloud-mask-inst",
+    "edge:instance:climate-independent-verification-multi-time-window-rainfall-inst",
+    "edge:instance:climate-independent-verification-weather-forecast-driven-inst"
+  ]
+}

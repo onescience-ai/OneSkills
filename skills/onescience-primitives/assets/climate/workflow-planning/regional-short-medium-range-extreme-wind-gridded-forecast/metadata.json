@@ -27,8 +27,8 @@
     "workflow-planning",
     "climate",
     "e95",
-    "edge:scenario:sc-ff3a2b7c",
-    "edge:workflow:wf-climate-4c54f09e"
+    "edge:scenario:climate-regional-short-to-medium-extreme-wind-speed-gridded-forecast-scenario",
+    "edge:workflow:climate-forecast-data-and-boundary-precheck-forecast-data-alignment-and-workflow-7"
   ],
   "scenario_id": "E95",
   "source_papers": [

@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s058",
     "nuno",
-    "edge:scenario:sc-c9e18696",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-domain-decomposition-and-nonuniform-geometry-neural-operator-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S058",
   "source_papers": [

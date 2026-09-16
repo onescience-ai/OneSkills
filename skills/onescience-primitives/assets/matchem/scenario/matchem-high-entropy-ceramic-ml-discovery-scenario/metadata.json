@@ -1,0 +1,21 @@
+{
+  "name": "matchem-high-entropy-ceramic-ml-discovery-scenario",
+  "type": "scenario",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：高熵陶瓷机器学习发现（matchem）。工作流 4 步，经 edge:workflow 指向 matchem-data-objective-definition-root-cause-model-training-workflow，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow",
+    "edge:task:matchem-data-objective-definition-task",
+    "edge:task:matchem-root-cause-model-training-applicability-domain-assessment-task",
+    "edge:task:matchem-constrained-candidate-generation-and-ranking-task",
+    "edge:task:matchem-independent-validation-conclusion-task",
+    "slot:DATASET:训练与验证数据",
+    "slot:TARGET:优化目标",
+    "slot:MODEL_CONFIG:模型配置",
+    "slot:VALIDATION_DATA:独立验证数据"
+  ]
+}

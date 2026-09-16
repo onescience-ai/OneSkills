@@ -23,8 +23,8 @@
     "workflow",
     "workflow-planning",
     "b30",
-    "edge:scenario:sc-da53fb54",
-    "edge:workflow:wf-bio-c6a05f8d"
+    "edge:scenario:bio-antigen-specific-multimodal-antibody-function-design-scenario",
+    "edge:workflow:bio-immune-target-task-definition-numbering-and-interface-feature-workflow"
   ],
   "scenario_id": "B30",
   "source_papers": [

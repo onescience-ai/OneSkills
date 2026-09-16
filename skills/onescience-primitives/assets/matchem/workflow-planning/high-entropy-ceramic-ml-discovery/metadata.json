@@ -15,8 +15,8 @@
     "machine",
     "matchem",
     "null",
-    "edge:scenario:sc-1af7ad1f",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-high-entropy-ceramic-ml-discovery-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "高熵陶瓷机器学习发现",
   "source_papers": [

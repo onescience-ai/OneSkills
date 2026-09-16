@@ -42,8 +42,8 @@
     "workflow",
     "workflow-planning",
     "b04",
-    "edge:scenario:sc-ee59b16f",
-    "edge:workflow:wf-bio-5aaefe7e"
+    "edge:scenario:bio-protein-nucleic-acid-ligand-complex-all-atom-structure-scenario",
+    "edge:workflow:bio-input-and-task-definition-feature-model-preparation-structure-workflow"
   ],
   "scenario_id": "B04",
   "source_papers": [

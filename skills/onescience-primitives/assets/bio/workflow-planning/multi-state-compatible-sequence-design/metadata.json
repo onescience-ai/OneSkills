@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b18",
-    "edge:scenario:sc-f1675b8c",
-    "edge:workflow:wf-bio-42419238"
+    "edge:scenario:bio-multi-conformation-state-compatible-protein-sequence-design-scenario",
+    "edge:workflow:bio-design-objective-and-constraint-definition-model-condition-workflow"
   ],
   "scenario_id": "B18",
   "source_papers": [

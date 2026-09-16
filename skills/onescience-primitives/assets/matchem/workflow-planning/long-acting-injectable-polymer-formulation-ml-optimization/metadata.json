@@ -18,8 +18,8 @@
     "models",
     "null",
     "polymeric",
-    "edge:scenario:sc-4474b94a",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-long-acting-injectable-polymer-formulation-machine-learning-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "长效注射聚合物配方机器学习优化",
   "source_papers": [

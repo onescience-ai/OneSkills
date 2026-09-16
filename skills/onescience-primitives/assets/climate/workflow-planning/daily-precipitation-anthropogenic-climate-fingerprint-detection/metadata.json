@@ -26,8 +26,8 @@
     "workflow-planning",
     "climate",
     "e94",
-    "edge:scenario:sc-c3edf438",
-    "edge:workflow:wf-climate-b25832d3"
+    "edge:scenario:climate-daily-precipitation-field-anthropogenic-climate-change-scenario",
+    "edge:workflow:climate-observation-forced-sample-and-boundary-precheck-observation-workflow"
   ],
   "scenario_id": "E94",
   "source_papers": [

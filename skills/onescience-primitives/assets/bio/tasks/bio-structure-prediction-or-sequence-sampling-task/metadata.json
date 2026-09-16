@@ -1,0 +1,29 @@
+{
+  "name": "bio-structure-prediction-or-sequence-sampling-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：结构预测或序列采样。被 10 个场景复用；含 10 个实例任务；资源引用 ['models/alphafold', 'models/proteinmpnn']。",
+  "tags": [
+    "edge:resource:models/alphafold",
+    "edge:resource:models/proteinmpnn",
+    "edge:prev:bio-structure-constraint-and-model-preparation-task",
+    "edge:next:bio-rna-structure-function-quality-control-task",
+    "slot:NUM_CANDIDATES:候选数量",
+    "slot:TEMPERATURE:采样温度",
+    "slot:SEED:随机种子",
+    "edge:instance:bio-structure-prediction-or-rna-3d-target-structure-inst",
+    "edge:instance:bio-structure-prediction-or-low-data-rna-tertiary-inst",
+    "edge:instance:bio-structure-prediction-or-geometric-deep-learning-inst",
+    "edge:instance:bio-structure-prediction-or-bidirectional-anchored-inst",
+    "edge:instance:bio-structure-prediction-or-large-kernel-rna-secondary-inst",
+    "edge:instance:bio-structure-prediction-or-deep-sequence-model-mirna-inst",
+    "edge:instance:bio-structure-prediction-or-linear-time-rna-secondary-inst",
+    "edge:instance:bio-structure-prediction-or-structure-sequence-encoded-inst",
+    "edge:instance:bio-structure-prediction-or-protein-rna-complex-binding-inst",
+    "edge:instance:bio-structure-prediction-or-language-model-driven-rna-inst"
+  ]
+}

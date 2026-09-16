@@ -1,0 +1,28 @@
+{
+  "name": "bio-genome-prediction-sequence-generation-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：基因组预测或序列生成。被 10 个场景复用；含 10 个实例任务；资源引用 ['models/proteinmpnn']。",
+  "tags": [
+    "edge:resource:models/proteinmpnn",
+    "edge:prev:bio-sequence-window-model-preparation-task",
+    "edge:next:bio-trajectory-and-effect-quality-evaluation-task",
+    "slot:BATCH_SIZE:批次大小",
+    "slot:CELL_CONTEXTS:细胞上下文",
+    "slot:SEED:随机种子",
+    "edge:instance:bio-genome-prediction-sequence-dna-language-model-biologica-inst",
+    "edge:instance:bio-genome-prediction-sequence-simplex-flow-matching-inst",
+    "edge:instance:bio-genome-prediction-sequence-bidirectional-equivariant-inst",
+    "edge:instance:bio-genome-prediction-sequence-genomic-language-model-inst",
+    "edge:instance:bio-genome-prediction-sequence-multi-species-dna-sequence-inst",
+    "edge:instance:bio-genome-prediction-sequence-rice-breeding-variant-inst",
+    "edge:instance:bio-genome-prediction-sequence-million-base-context-genome-inst",
+    "edge:instance:bio-genome-prediction-sequence-histone-modification-driven-inst",
+    "edge:instance:bio-genome-prediction-sequence-cell-type-specific-regulator-inst",
+    "edge:instance:bio-genome-prediction-sequence-long-dna-interval-multi-inst"
+  ]
+}

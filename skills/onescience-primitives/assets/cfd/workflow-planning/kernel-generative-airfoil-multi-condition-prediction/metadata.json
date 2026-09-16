@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s003",
     "kernel-surrogate",
-    "edge:scenario:sc-33189952",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-kernel-method-generative-model-airfoil-cross-condition-field-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S003",
   "source_papers": [

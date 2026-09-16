@@ -24,8 +24,8 @@
     "workflow",
     "workflow-planning",
     "b27",
-    "edge:scenario:sc-f375dd56",
-    "edge:workflow:wf-bio-c6a05f8d"
+    "edge:scenario:bio-interpretable-tcr-epitope-specificity-prediction-scenario",
+    "edge:workflow:bio-immune-target-task-definition-numbering-and-interface-feature-workflow"
   ],
   "scenario_id": "B27",
   "source_papers": [

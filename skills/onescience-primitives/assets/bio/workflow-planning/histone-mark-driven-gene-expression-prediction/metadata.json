@@ -20,8 +20,8 @@
     "workflow",
     "workflow-planning",
     "b68",
-    "edge:scenario:sc-d1af9cf0",
-    "edge:workflow:wf-bio-afe9f9ae"
+    "edge:scenario:bio-histone-modification-driven-gene-expression-prediction-scenario",
+    "edge:workflow:bio-genome-input-coordinate-normalization-sequence-window-model-workflow"
   ],
   "scenario_id": "B68",
   "source_papers": [

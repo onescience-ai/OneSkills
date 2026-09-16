@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s098",
     "super-resolution-cnn",
-    "edge:scenario:sc-76507c95",
-    "edge:workflow:wf-cfd-29af55b0"
+    "edge:scenario:cfd-supervised-learning-turbulence-field-single-snapshot-super-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-9"
   ],
   "scenario_id": "CFD_S098",
   "source_papers": [

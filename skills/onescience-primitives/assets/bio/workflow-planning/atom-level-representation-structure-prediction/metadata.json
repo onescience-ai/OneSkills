@@ -34,8 +34,8 @@
     "workflow",
     "workflow-planning",
     "b08",
-    "edge:scenario:sc-c0091dea",
-    "edge:workflow:wf-bio-5aaefe7e"
+    "edge:scenario:bio-atom-level-protein-representation-driven-structure-prediction-scenario",
+    "edge:workflow:bio-input-and-task-definition-feature-model-preparation-structure-workflow"
   ],
   "scenario_id": "B08",
   "source_papers": [

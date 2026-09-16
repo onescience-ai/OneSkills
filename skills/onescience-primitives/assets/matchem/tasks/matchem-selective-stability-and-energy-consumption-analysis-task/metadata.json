@@ -1,0 +1,27 @@
+{
+  "name": "matchem-selective-stability-and-energy-consumption-analysis-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：选择性稳定性与能耗分析。被 12 个场景复用；含 12 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:matchem-mass-transfer-adsorption-performance-acquisition-task",
+    "edge:next:matchem-material-process-window-output-task",
+    "slot:FEED_AND_OPERATION:进料与运行条件",
+    "edge:instance:matchem-selective-stability-and-mof-molecular-diffusion-inst",
+    "edge:instance:matchem-selective-stability-and-mof-deep-generative-inverse-inst",
+    "edge:instance:matchem-selective-stability-and-mof-pre-combustion-co2-inst",
+    "edge:instance:matchem-selective-stability-and-mof-trace-co2-air-capture-inst",
+    "edge:instance:matchem-selective-stability-and-mof-high-throughput-hydrogen-inst",
+    "edge:instance:matchem-selective-stability-and-mxene-kevlar-composite-inst",
+    "edge:instance:matchem-selective-stability-and-mxene-zeolite-gas-separation-inst",
+    "edge:instance:matchem-selective-stability-and-diamine-grafted-mof-co2-inst",
+    "edge:instance:matchem-selective-stability-and-hydrophilic-responsive-inst",
+    "edge:instance:matchem-selective-stability-and-monolayer-mos2-nanopore-inst",
+    "edge:instance:matchem-selective-stability-and-nanoparticle-template-inst",
+    "edge:instance:matchem-selective-stability-and-black-gold-thin-film-solar-inst"
+  ]
+}

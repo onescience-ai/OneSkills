@@ -17,8 +17,8 @@
     "workflow",
     "workflow-planning",
     "b98",
-    "edge:scenario:sc-dd5688e7",
-    "edge:workflow:wf-bio-468b46a3"
+    "edge:scenario:bio-medical-text-and-image-multimodal-qa-and-report-assistant-scenario",
+    "edge:workflow:bio-medical-data-task-definition-image-preprocessing-prompt-workflow"
   ],
   "scenario_id": "B98",
   "source_papers": [

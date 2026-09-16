@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s064",
-    "edge:scenario:sc-1341920e",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-boundary-embedding-and-arbitrary-order-hard-constrained-neural-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S064",
   "source_papers": [

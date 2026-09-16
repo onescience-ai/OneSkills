@@ -21,8 +21,8 @@
     "refractory",
     "short-range",
     "simulations",
-    "edge:scenario:sc-35e6d99e",
-    "edge:workflow:wf-matchem-4097efc6"
+    "edge:scenario:matchem-refractory-high-entropy-alloy-dislocation-migration-and-short-scenario",
+    "edge:workflow:matchem-material-control-scheme-definition-response-test-simulation-workflow"
   ],
   "scenario_id": "难熔高熵合金位错迁移与短程有序分析",
   "source_papers": [

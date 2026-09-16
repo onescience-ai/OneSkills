@@ -19,8 +19,8 @@
     "splitting",
     "ultrathin",
     "water",
-    "edge:scenario:sc-c0976de7",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-ultra-thin-mof-array-electrocatalytic-water-splitting-design-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "scenario_id": "超薄MOF阵列电催化水分解设计",
   "source_papers": [

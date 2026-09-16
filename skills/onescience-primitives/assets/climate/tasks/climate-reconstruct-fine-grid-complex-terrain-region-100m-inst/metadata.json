@@ -1,0 +1,22 @@
+{
+  "name": "climate-reconstruct-fine-grid-complex-terrain-region-100m-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「重建细网格水平风矢量」在场景「E89」中的实例化；资源引用 ['datasets/cesm2-large-ensemble', 'datasets/large-ensemble-testbed', 'models/crpsexp-loss-function-for-ensemble-forecasting', 'models/ensemble-empirical-mode-decomposition-eemd', 'models/ensemble-model-output-statistics-emos-post-processing']。",
+  "tags": [
+    "edge:skeleton:climate-reconstruct-fine-grid-horizontal-wind-vector-task",
+    "edge:scenario:climate-complex-terrain-region-100m-wind-field-concurrent-spatial-scenario",
+    "edge:resource:datasets/cesm2-large-ensemble",
+    "edge:resource:datasets/large-ensemble-testbed",
+    "edge:resource:models/crpsexp-loss-function-for-ensemble-forecasting",
+    "edge:resource:models/ensemble-empirical-mode-decomposition-eemd",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:ENSEMBLE_SIZE:生成成员数",
+    "slot:OUTPUT_INTERVAL:输出间隔"
+  ]
+}

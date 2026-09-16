@@ -1,0 +1,23 @@
+{
+  "name": "climate-recursive-generation-of-multi-step-bathymetry-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：递推生成多步水深。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/cesm2-large-ensemble', 'datasets/large-ensemble-testbed', 'models/crpsexp-loss-function-for-ensemble-forecasting', 'models/ensemble-empirical-mode-decomposition-eemd', 'models/ensemble-model-output-statistics-emos-post-processing']。",
+  "tags": [
+    "edge:resource:datasets/cesm2-large-ensemble",
+    "edge:resource:datasets/large-ensemble-testbed",
+    "edge:resource:models/crpsexp-loss-function-for-ensemble-forecasting",
+    "edge:resource:models/ensemble-empirical-mode-decomposition-eemd",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:prev:climate-method-configuration-input-output-contract-validation-task",
+    "edge:next:climate-extracting-above-threshold-moments-task",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:INITIAL_STATE:初始水文状态",
+    "slot:ENSEMBLE_SIZE:集合成员数",
+    "edge:instance:climate-recursive-generation-of-multi-urban-waterlogging-point-inst"
+  ]
+}

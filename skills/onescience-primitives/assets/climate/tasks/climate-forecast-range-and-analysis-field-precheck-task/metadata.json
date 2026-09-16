@@ -1,0 +1,31 @@
+{
+  "name": "climate-forecast-range-and-analysis-field-precheck-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：起报范围与分析场预检。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/data-infrastructure-observations-and-labels', 'datasets/gedi-footprint-canopy-height-data', 'datasets/ostia-sst-data', 'datasets/smap-level-3-passive-soil-moisture-products', 'datasets/snodas-swe-data-product', 'models/1d-cnn-based-groundwater-level-prediction', 'models/dynamic-pre-training-for-time-series-dynpt', 'models/multivariate-data-fusion-vector-wind-prediction', 'models/radially-averaged-power-spectral-density-analysis', 'tools/fengwu-global-medium-range-weather-forecast-system', 'tools/multi-level-b-spline-analysis-mba', 'tools/wenhai-global-ocean-forecast-system']。",
+  "tags": [
+    "edge:resource:datasets/data-infrastructure-observations-and-labels",
+    "edge:resource:datasets/gedi-footprint-canopy-height-data",
+    "edge:resource:datasets/ostia-sst-data",
+    "edge:resource:datasets/smap-level-3-passive-soil-moisture-products",
+    "edge:resource:datasets/snodas-swe-data-product",
+    "edge:resource:models/1d-cnn-based-groundwater-level-prediction",
+    "edge:resource:models/dynamic-pre-training-for-time-series-dynpt",
+    "edge:resource:models/multivariate-data-fusion-vector-wind-prediction",
+    "edge:resource:models/radially-averaged-power-spectral-density-analysis",
+    "edge:resource:tools/fengwu-global-medium-range-weather-forecast-system",
+    "edge:resource:tools/multi-level-b-spline-analysis-mba",
+    "edge:resource:tools/wenhai-global-ocean-forecast-system",
+    "edge:next:climate-grid-alignment-and-input-standardization-task",
+    "slot:INITIAL_ANALYSIS:全球分析初场",
+    "slot:FORECAST_START_TIME:起报时间",
+    "slot:LEAD_DAYS:预报步长",
+    "slot:VARIABLES_AND_LEVELS:变量与层次",
+    "slot:DATA_CUTOFF_TIME:资料截止时间",
+    "edge:instance:climate-forecast-range-and-analysis-global-analysis-driven-1-10-inst"
+  ]
+}

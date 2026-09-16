@@ -1,0 +1,20 @@
+{
+  "name": "climate-instantaneous-rainfall-retrieval-accumulation-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：反演瞬时雨强并累积到目标时段。被 1 个场景复用；含 1 个实例任务；资源引用 ['models/ensemble-model-output-statistics-emos-post-processing', 'tools/ecmwf-hres']。",
+  "tags": [
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:tools/ecmwf-hres",
+    "edge:prev:climate-method-configuration-input-output-contract-validation-task",
+    "edge:next:climate-rain-gauge-calibration-rainfall-intensity-product-task",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:OUTPUT_RESOLUTION:输出分辨率",
+    "slot:DECISION_THRESHOLD:诊断阈值",
+    "edge:instance:climate-instantaneous-rainfall-weather-radar-volume-scan-inst"
+  ]
+}

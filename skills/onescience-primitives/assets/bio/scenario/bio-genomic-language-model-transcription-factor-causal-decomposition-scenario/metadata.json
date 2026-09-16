@@ -1,0 +1,28 @@
+{
+  "name": "bio-genomic-language-model-transcription-factor-causal-decomposition-scenario",
+  "type": "scenario",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：B66（bio）。工作流 4 步，经 edge:workflow 指向 bio-genome-input-coordinate-normalization-sequence-window-model-workflow，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "edge:workflow:bio-genome-input-coordinate-normalization-sequence-window-model-workflow",
+    "edge:task:bio-genome-input-coordinate-normalization-task",
+    "edge:task:bio-sequence-window-model-preparation-task",
+    "edge:task:bio-genome-prediction-sequence-generation-task",
+    "edge:task:bio-trajectory-and-effect-quality-evaluation-task",
+    "slot:GENOMICS_INPUT:基因组输入",
+    "slot:MODEL_NAME:基因组模型",
+    "slot:REFERENCE_GENOME:参考基因组",
+    "slot:CHECKPOINT:模型权重",
+    "slot:CONTEXT_LENGTH:上下文长度",
+    "slot:REVERSE_COMPLEMENT:反向互补增强",
+    "slot:BATCH_SIZE:批次大小",
+    "slot:CELL_CONTEXTS:细胞上下文",
+    "slot:SEED:随机种子",
+    "slot:SCORE_THRESHOLD:结果阈值",
+    "slot:OUTPUT_LEVEL:输出粒度"
+  ]
+}

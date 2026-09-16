@@ -27,8 +27,8 @@
     "pore-engineering",
     "fluoride-pillared",
     "adsorption-selectivity",
-    "edge:scenario:sc-415a3980",
-    "edge:workflow:wf-matchem-2c158827"
+    "edge:scenario:matchem-mof-trace-co2-air-capture-material-design-scenario",
+    "edge:workflow:matchem-structure-and-separation-target-definition-mass-transfer-workflow"
   ],
   "scenario_id": "MOF痕量CO2空气捕集材料定制",
   "source_papers": [

@@ -33,8 +33,8 @@
     "workflow-planning",
     "climate",
     "e34",
-    "edge:scenario:sc-2a31eae0",
-    "edge:workflow:wf-climate-73803e44"
+    "edge:scenario:climate-weather-radar-volume-scan-driven-realtime-quantitative-scenario",
+    "edge:workflow:climate-source-obs-reference-data-boundary-source-obs-reference-stalign-workflow-3"
   ],
   "scenario_id": "E34",
   "source_papers": [

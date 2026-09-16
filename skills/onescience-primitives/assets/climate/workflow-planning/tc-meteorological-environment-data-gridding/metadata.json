@@ -11,8 +11,8 @@
     "tc-meteorological-environment-data-gridding",
     "datapipe",
     "fallback",
-    "edge:scenario:sc-43f4af27",
-    "edge:workflow:wf-climate-9455cb08"
+    "edge:scenario:climate-identified-tropical-cyclone-track-forecast-24-120h-scenario",
+    "edge:workflow:climate-forecast-data-and-boundary-precheck-forecast-data-alignment-and-workflow-12"
   ],
   "harvested": true,
   "tier": "medium",

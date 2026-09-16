@@ -16,8 +16,8 @@
     "galvanic-displacement",
     "surface-alloy",
     "noble-metal-catalyst-alternative",
-    "edge:scenario:sc-449525cd",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-cusn-atomic-interface-co2-to-co-selectivity-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "harvested": true,
   "tier": "medium",

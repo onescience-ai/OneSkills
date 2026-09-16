@@ -1,0 +1,17 @@
+{
+  "name": "bio-3d-molecular-generation-molecular-latent-space-inst",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「三维分子生成与采样」在场景「B52」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:bio-3d-molecular-generation-sampling-task",
+    "edge:scenario:bio-molecular-latent-space-diffusion-evolution-and-multi-site-scenario",
+    "slot:NUM_MOLECULES:生成分子数",
+    "slot:TEMPERATURE:采样温度",
+    "slot:SEED:随机种子"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "matchem-degradation-mechanism-and-high-ionic-conductivity-inst",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「退化机制与性能指标分析」在场景「高离子电导电解液基础模型配方设计」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:matchem-degradation-mechanism-and-performance-analysis-task",
+    "edge:scenario:matchem-high-ionic-conductivity-electrolyte-foundation-model-formulation-scenario",
+    "slot:CELL_CONDITION:电池工况"
+  ]
+}

@@ -63,8 +63,8 @@
     "workflow-planning",
     "climate",
     "e53",
-    "edge:scenario:sc-a5021c3d",
-    "edge:workflow:wf-climate-f2838b40"
+    "edge:scenario:climate-nwp-24-240h-near-surface-multivariate-bias-correction-scenario",
+    "edge:workflow:climate-multi-resolution-data-and-boundary-precheck-multi-resolution-workflow-2"
   ],
   "scenario_id": "E53",
   "source_papers": [

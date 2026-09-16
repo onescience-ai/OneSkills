@@ -1,0 +1,29 @@
+{
+  "name": "bio-conformation-sampling-scoring-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：构象采样与打分。被 10 个场景复用；含 10 个实例任务；资源引用 ['models/diffdock', 'models/few-step-ode-sampling-for-diffusion-models']。",
+  "tags": [
+    "edge:resource:models/diffdock",
+    "edge:resource:models/few-step-ode-sampling-for-diffusion-models",
+    "edge:prev:bio-pocket-model-feature-preparation-task",
+    "edge:next:bio-physical-geometry-qc-sorting-task",
+    "slot:POSES_PER_LIGAND:每配体姿态数",
+    "slot:INFERENCE_STEPS:推理步数",
+    "slot:SEED:随机种子",
+    "edge:instance:bio-conformation-sampling-scoring-global-blind-docking-conform-inst",
+    "edge:instance:bio-conformation-sampling-scoring-pocket-prediction-enhanced-inst",
+    "edge:instance:bio-conformation-sampling-scoring-multi-pocket-conditioned-inst",
+    "edge:instance:bio-conformation-sampling-scoring-docking-guided-large-scale-inst",
+    "edge:instance:bio-conformation-sampling-scoring-unknown-binding-site-protein-inst",
+    "edge:instance:bio-conformation-sampling-scoring-geodesic-path-guided-flexibl-inst",
+    "edge:instance:bio-conformation-sampling-scoring-physical-rule-constrained-inst",
+    "edge:instance:bio-conformation-sampling-scoring-protein-ligand-joint-generat-inst",
+    "edge:instance:bio-conformation-sampling-scoring-lightweight-interpretable-inst",
+    "edge:instance:bio-conformation-sampling-scoring-high-precision-protein-inst"
+  ]
+}

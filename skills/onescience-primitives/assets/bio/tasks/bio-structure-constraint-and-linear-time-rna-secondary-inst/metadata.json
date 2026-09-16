@@ -1,0 +1,17 @@
+{
+  "name": "bio-structure-constraint-and-linear-time-rna-secondary-inst",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「结构约束与模型准备」在场景「B87」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:bio-structure-constraint-and-model-preparation-task",
+    "edge:scenario:bio-linear-time-rna-secondary-structure-folding-prediction-scenario",
+    "slot:CHECKPOINT:模型权重",
+    "slot:MAX_LENGTH:RNA长度上限",
+    "slot:ALLOW_PSEUDOKNOT:允许假结"
+  ]
+}

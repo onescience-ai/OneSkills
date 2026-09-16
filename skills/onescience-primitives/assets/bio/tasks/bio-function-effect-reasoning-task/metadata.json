@@ -1,0 +1,27 @@
+{
+  "name": "bio-function-effect-reasoning-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：功能或效应推理。被 10 个场景复用；含 10 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:bio-characterization-and-reference-data-preparation-task",
+    "edge:next:bio-evaluation-and-interpretation-summary-task",
+    "slot:BATCH_SIZE:批次大小",
+    "slot:DECISION_THRESHOLD:判定阈值",
+    "slot:SEED:随机种子",
+    "edge:instance:bio-function-effect-reasoning-few-shot-multimodal-protein-inst",
+    "edge:instance:bio-function-effect-reasoning-preference-optimization-inst",
+    "edge:instance:bio-function-effect-reasoning-multi-scale-representation-inst",
+    "edge:instance:bio-function-effect-reasoning-residual-based-interpretable-inst",
+    "edge:instance:bio-function-effect-reasoning-deep-mutational-scanning-inst",
+    "edge:instance:bio-function-effect-reasoning-equivariant-structural-inst",
+    "edge:instance:bio-function-effect-reasoning-protein-mutation-effect-inst",
+    "edge:instance:bio-function-effect-reasoning-evolutionary-spectrum-inst",
+    "edge:instance:bio-function-effect-reasoning-enzyme-classification-and-inst",
+    "edge:instance:bio-function-effect-reasoning-enzyme-sequence-and-substrat-inst"
+  ]
+}

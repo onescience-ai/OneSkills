@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b94",
-    "edge:scenario:sc-9eefd1d2",
-    "edge:workflow:wf-bio-8c56a4bc"
+    "edge:scenario:bio-pathogen-monitoring-metagenomic-foundation-model-scenario",
+    "edge:workflow:bio-metagenome-input-task-definition-sequence-filtering-model-workflow"
   ],
   "scenario_id": "B94",
   "source_papers": [

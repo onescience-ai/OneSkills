@@ -16,8 +16,8 @@
     "water dissociation",
     "electronic structure tuning",
     "electrocatalysis",
-    "edge:scenario:sc-458b671b",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-pt-single-atom-heterostructure-alkaline-hydrogen-evolution-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "harvested": true,
   "tier": "medium",

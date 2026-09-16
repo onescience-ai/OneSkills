@@ -22,8 +22,8 @@
     "workflow",
     "workflow-planning",
     "b79",
-    "edge:scenario:sc-c519e406",
-    "edge:workflow:wf-bio-cdb48c05"
+    "edge:scenario:bio-causal-latent-diffusion-unseen-perturbation-response-prediction-scenario",
+    "edge:workflow:bio-single-cell-data-task-definition-preprocessing-model-workflow"
   ],
   "scenario_id": "B79",
   "source_papers": [

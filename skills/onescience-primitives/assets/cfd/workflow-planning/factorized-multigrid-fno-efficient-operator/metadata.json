@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s049",
-    "edge:scenario:sc-bc3a3da0",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-factorization-multigrid-fno-efficient-operator-learning-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S049",
   "source_papers": [

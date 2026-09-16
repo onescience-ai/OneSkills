@@ -25,8 +25,8 @@
     "workflow",
     "workflow-planning",
     "b100",
-    "edge:scenario:sc-e4455cb5",
-    "edge:workflow:wf-bio-468b46a3"
+    "edge:scenario:bio-longitudinal-chest-ct-change-detection-and-report-generation-scenario",
+    "edge:workflow:bio-medical-data-task-definition-image-preprocessing-prompt-workflow"
   ],
   "scenario_id": "B100",
   "source_papers": [

@@ -20,8 +20,8 @@
     "null",
     "synthesis",
     "using",
-    "edge:scenario:sc-b2e7696a",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-mof-synthesis-multimodal-machine-learning-correlation-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "MOF合成应用多模态机器学习关联",
   "source_papers": [

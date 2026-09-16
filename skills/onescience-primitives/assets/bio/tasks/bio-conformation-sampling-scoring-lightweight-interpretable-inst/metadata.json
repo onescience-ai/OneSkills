@@ -1,0 +1,19 @@
+{
+  "name": "bio-conformation-sampling-scoring-lightweight-interpretable-inst",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「构象采样与打分」在场景「B48」中的实例化；资源引用 ['models/diffdock', 'models/few-step-ode-sampling-for-diffusion-models']。",
+  "tags": [
+    "edge:skeleton:bio-conformation-sampling-scoring-task",
+    "edge:scenario:bio-lightweight-interpretable-protein-ligand-conformation-prediction-scenario",
+    "edge:resource:models/diffdock",
+    "edge:resource:models/few-step-ode-sampling-for-diffusion-models",
+    "slot:POSES_PER_LIGAND:每配体姿态数",
+    "slot:INFERENCE_STEPS:推理步数",
+    "slot:SEED:随机种子"
+  ]
+}

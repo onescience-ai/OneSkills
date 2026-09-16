@@ -31,8 +31,8 @@
     "wavelength-tuning",
     "workflow",
     "workflow-planning",
-    "edge:scenario:sc-5dc20736",
-    "edge:workflow:wf-matchem-e0e8489b"
+    "edge:scenario:matchem-hbn-single-photon-emission-atomic-defect-design-scenario",
+    "edge:workflow:matchem-defect-model-and-control-definition-structure-electronic-or-workflow"
   ],
   "scenario_id": "hBN单光子发射原子缺陷设计",
   "source_papers": [

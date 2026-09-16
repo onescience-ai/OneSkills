@@ -23,8 +23,8 @@
     "workflow",
     "workflow-planning",
     "e96",
-    "edge:scenario:sc-f8e671ed",
-    "edge:workflow:wf-climate-c3ca09f3"
+    "edge:scenario:climate-grassland-aboveground-biomass-remote-sensing-estimation-and-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-12"
   ],
   "scenario_id": "E96",
   "source_papers": [

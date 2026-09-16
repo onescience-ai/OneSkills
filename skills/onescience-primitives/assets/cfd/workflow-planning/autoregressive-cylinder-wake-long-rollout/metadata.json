@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s018",
-    "edge:scenario:sc-bf49f59c",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-autoregressive-network-cylinder-wake-long-term-rolling-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S018",
   "source_papers": [

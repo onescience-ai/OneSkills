@@ -1,0 +1,16 @@
+{
+  "name": "matchem-structure-and-separation-mof-molecular-diffusion-inst",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「结构与分离目标定义」在场景「MOF分子扩散增强CO2捕集性能评估」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:matchem-structure-and-separation-target-definition-task",
+    "edge:scenario:matchem-mof-molecular-diffusion-enhanced-co2-capture-performance-scenario",
+    "slot:MATERIAL_MODEL:多孔材料或膜结构",
+    "slot:FEED_AND_OPERATION:进料与运行条件"
+  ]
+}

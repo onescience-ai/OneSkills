@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b61",
-    "edge:scenario:sc-310f8a31",
-    "edge:workflow:wf-bio-afe9f9ae"
+    "edge:scenario:bio-long-dna-interval-multi-omics-trajectory-and-variant-effect-scenario",
+    "edge:workflow:bio-genome-input-coordinate-normalization-sequence-window-model-workflow"
   ],
   "scenario_id": "B61",
   "source_papers": [

@@ -22,8 +22,8 @@
     "trace",
     "workflow",
     "workflow-planning",
-    "edge:scenario:sc-dea620c9",
-    "edge:workflow:wf-matchem-c41fa878"
+    "edge:scenario:matchem-licoo2-high-voltage-timgal-co-doping-optimization-scenario",
+    "edge:workflow:matchem-material-condition-modeling-structure-or-electrochemical-workflow"
   ],
   "scenario_id": "LiCoO2高电压TiMgAl协同掺杂优化",
   "source_papers": [

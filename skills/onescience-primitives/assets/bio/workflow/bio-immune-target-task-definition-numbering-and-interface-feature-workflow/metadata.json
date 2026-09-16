@@ -1,0 +1,26 @@
+{
+  "name": "bio-immune-target-task-definition-numbering-and-interface-feature-workflow",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（bio）：4 步骨架 [免疫对象与任务定义 > 编号与界面特征准备 > 免疫预测或候选生成 > 特异性与可开发性质控]，被 10 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:bio-immune-target-task-definition-task",
+    "edge:task:bio-numbering-and-interface-feature-preparation-task",
+    "edge:task:bio-immune-prediction-candidate-generation-task",
+    "edge:task:bio-specificity-developability-qc-task",
+    "edge:scenario:bio-cd4-t-cell-epitope-processing-presentation-prediction-scenario",
+    "edge:scenario:bio-cdr-loop-antibody-scaffold-joint-generation-scenario",
+    "edge:scenario:bio-affinity-optimized-structure-aware-antibody-inverse-folding-scenario",
+    "edge:scenario:bio-interpretable-tcr-epitope-specificity-prediction-scenario",
+    "edge:scenario:bio-reinforcement-learning-guided-antibody-affinity-maturation-scenario",
+    "edge:scenario:bio-antibody-antigen-binding-site-joint-prediction-scenario",
+    "edge:scenario:bio-antigen-conditioned-full-atom-antibody-de-novo-design-scenario",
+    "edge:scenario:bio-antigen-specific-multimodal-antibody-function-design-scenario",
+    "edge:scenario:bio-sars-cov-2-antibody-binding-affinity-prediction-scenario",
+    "edge:scenario:bio-structure-retrieval-augmented-antibody-sequence-design-scenario"
+  ]
+}

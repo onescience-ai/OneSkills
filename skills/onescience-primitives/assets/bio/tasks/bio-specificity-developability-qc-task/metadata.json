@@ -1,0 +1,26 @@
+{
+  "name": "bio-specificity-developability-qc-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：特异性与可开发性质控。被 10 个场景复用；含 10 个实例任务；资源引用 ['datasets/tm-score-evaluation']。",
+  "tags": [
+    "edge:resource:datasets/tm-score-evaluation",
+    "edge:prev:bio-immune-prediction-candidate-generation-task",
+    "slot:SCORE_THRESHOLD:得分阈值",
+    "slot:TOP_K:保留数量",
+    "edge:instance:bio-specificity-developability-qc-cd4-t-cell-epitope-processin-inst",
+    "edge:instance:bio-specificity-developability-qc-cdr-loop-antibody-scaffold-inst",
+    "edge:instance:bio-specificity-developability-qc-affinity-optimized-structure-inst",
+    "edge:instance:bio-specificity-developability-qc-interpretable-tcr-epitope-inst",
+    "edge:instance:bio-specificity-developability-qc-reinforcement-learning-inst",
+    "edge:instance:bio-specificity-developability-qc-antibody-antigen-binding-inst",
+    "edge:instance:bio-specificity-developability-qc-antigen-conditioned-full-inst",
+    "edge:instance:bio-specificity-developability-qc-antigen-specific-multimodal-inst",
+    "edge:instance:bio-specificity-developability-qc-sars-cov-2-antibody-binding-inst",
+    "edge:instance:bio-specificity-developability-qc-structure-retrieval-augmente-inst"
+  ]
+}

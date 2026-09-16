@@ -21,8 +21,8 @@
     "null",
     "polymer",
     "publisher",
-    "edge:scenario:sc-6ff58780",
-    "edge:workflow:wf-matchem-c41fa878"
+    "edge:scenario:matchem-ionomer-electrolyte-machine-learning-formulation-discovery-scenario",
+    "edge:workflow:matchem-material-condition-modeling-structure-or-electrochemical-workflow"
   ],
   "scenario_id": "离子聚合物电解质机器学习配方发现",
   "source_papers": [

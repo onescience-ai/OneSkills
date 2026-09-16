@@ -17,8 +17,8 @@
     "improtoo",
     "supervised-learning",
     "cross-validation",
-    "edge:scenario:sc-21812d19",
-    "edge:workflow:wf-climate-4e875ce6"
+    "edge:scenario:climate-passive-microwave-satellite-instantaneous-precipitation-rate-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-13"
   ],
   "harvested": true,
   "tier": "medium",

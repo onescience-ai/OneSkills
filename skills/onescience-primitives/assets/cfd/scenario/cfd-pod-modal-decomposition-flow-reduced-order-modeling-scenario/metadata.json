@@ -1,0 +1,33 @@
+{
+  "name": "cfd-pod-modal-decomposition-flow-reduced-order-modeling-scenario",
+  "type": "scenario",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：CFD_S086（cfd）。工作流 5 步，经 edge:workflow 指向 cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow",
+    "edge:task:cfd-data-ingestion-contract-validation-task",
+    "edge:task:cfd-preprocessing-data-splitting-task",
+    "edge:task:cfd-model-configuration-training-task",
+    "edge:task:cfd-batch-inference-physics-restoration-task",
+    "edge:task:cfd-task-acceptance-domain-determination-task",
+    "slot:DATASET_PATH:数据集路径",
+    "slot:DATASET_NAME:数据集名称",
+    "slot:DATA_CONTRACT:数据契约",
+    "slot:SPLIT_CONFIG:切分配置",
+    "slot:TARGET_FIELDS:目标变量",
+    "slot:NONDIMENSIONALIZE:是否无量纲化",
+    "slot:MODEL_NAME:模型名称",
+    "slot:TRAIN_CONFIG:训练配置",
+    "slot:INIT_CHECKPOINT:初始权重",
+    "slot:CHECKPOINT:模型权重",
+    "slot:DEVICE:计算设备",
+    "slot:BATCH_SIZE:推理批大小",
+    "slot:METRICS:验收指标",
+    "slot:MAX_RELATIVE_L2:相对误差门限",
+    "slot:RUN_OOD_TEST:是否外推测试"
+  ]
+}

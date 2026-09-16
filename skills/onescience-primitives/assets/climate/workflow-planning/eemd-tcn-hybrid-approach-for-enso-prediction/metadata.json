@@ -16,8 +16,8 @@
     "temporal-convolutional-network",
     "nonlinear-prediction",
     "multi-step-forecasting",
-    "edge:scenario:sc-bd948540",
-    "edge:workflow:wf-climate-5303e892"
+    "edge:scenario:climate-enso-index-6-24-month-probabilistic-forecast-scenario",
+    "edge:workflow:climate-forecast-data-and-boundary-precheck-forecast-data-alignment-and-workflow"
   ],
   "harvested": true,
   "tier": "medium",

@@ -1,0 +1,19 @@
+{
+  "name": "climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-5",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [遥感观测标签及任务边界预检 > 遥感观测标签时空对齐与样本构造 > 方法配置与输入输出契约验证 > 以坡度、形状和上下文执行对象分割 > 结果恢复与场景产品生成 > 与独立人工清查比较面积和分类精度]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-remote-sensing-label-and-boundary-precheck-task",
+    "edge:task:climate-remote-sensing-labels-alignment-sample-construction-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-slope-shape-context-object-segmentation-task",
+    "edge:task:climate-result-recovery-and-scenario-product-generation-task",
+    "edge:task:climate-independent-manual-survey-area-classification-accuracy-task",
+    "edge:scenario:climate-optical-imagery-rock-glacier-extraction-vector-inventory-scenario"
+  ]
+}

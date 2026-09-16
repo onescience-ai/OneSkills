@@ -1,0 +1,22 @@
+{
+  "name": "climate-searching-multi-objective-feasible-routes-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：搜索多目标可行航线。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/lpma-airport-wind-observation-validation', 'datasets/southern-great-plains-sgp-observatory-wind-dataset', 'models/multivariate-data-fusion-vector-wind-prediction', 'models/random-forest-regression-for-vertical-wind-speed-extrapolation']。",
+  "tags": [
+    "edge:resource:datasets/lpma-airport-wind-observation-validation",
+    "edge:resource:datasets/southern-great-plains-sgp-observatory-wind-dataset",
+    "edge:resource:models/multivariate-data-fusion-vector-wind-prediction",
+    "edge:resource:models/random-forest-regression-for-vertical-wind-speed-extrapolation",
+    "edge:prev:climate-method-configuration-input-output-contract-validation-task",
+    "edge:next:climate-result-recovery-and-scenario-product-generation-task",
+    "slot:SEARCH_CONFIG:搜索配置",
+    "slot:ARRIVAL_WINDOW:到达时间窗",
+    "slot:ALTERNATIVE_COUNT:候选航线数",
+    "edge:instance:climate-searching-multi-objective-marine-weather-navigation-inst"
+  ]
+}

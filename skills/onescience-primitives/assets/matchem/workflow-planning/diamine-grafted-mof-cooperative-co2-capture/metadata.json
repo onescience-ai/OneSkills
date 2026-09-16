@@ -19,8 +19,8 @@
     "workflow",
     "workflow-planning",
     "二胺接枝mof协同co2捕集设计",
-    "edge:scenario:sc-cff6d1f3",
-    "edge:workflow:wf-matchem-2c158827"
+    "edge:scenario:matchem-diamine-grafted-mof-co2-capture-design-scenario",
+    "edge:workflow:matchem-structure-and-separation-target-definition-mass-transfer-workflow"
   ],
   "scenario_id": "二胺接枝MOF协同CO2捕集设计",
   "source_papers": [

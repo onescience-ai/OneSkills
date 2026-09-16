@@ -17,8 +17,8 @@
     "ensemble-learning",
     "machine-learning-weather",
     "single-station-prediction",
-    "edge:scenario:sc-acdba65e",
-    "edge:workflow:wf-climate-588cef74"
+    "edge:scenario:climate-ground-meteorological-driven-0to30min-lightning-nowcast-scenario",
+    "edge:workflow:climate-near-observation-task-boundary-precheck-near-observation-space-workflow"
   ],
   "harvested": true,
   "tier": "high",

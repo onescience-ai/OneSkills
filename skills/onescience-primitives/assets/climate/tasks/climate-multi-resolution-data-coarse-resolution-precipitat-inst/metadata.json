@@ -1,0 +1,17 @@
+{
+  "name": "climate-multi-resolution-data-coarse-resolution-precipitat-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「粗细分辨率资料时空对齐与样本构造」在场景「E15」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:climate-multi-resolution-data-alignment-and-sample-construction-task",
+    "edge:scenario:climate-coarse-resolution-precipitation-to-kilometer-subhourly-scenario",
+    "slot:PAIRING_CONFIG:粗细样本配对",
+    "slot:ACCUMULATION_POLICY:累计量转换规则",
+    "slot:SPLIT_PROTOCOL:数据划分协议"
+  ]
+}

@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b21",
-    "edge:scenario:sc-58fe8103",
-    "edge:workflow:wf-bio-c6a05f8d"
+    "edge:scenario:bio-antigen-conditioned-full-atom-antibody-de-novo-design-scenario",
+    "edge:workflow:bio-immune-target-task-definition-numbering-and-interface-feature-workflow"
   ],
   "scenario_id": "B21",
   "source_papers": [

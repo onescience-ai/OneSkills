@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s021",
     "stochastic-process-model",
-    "edge:scenario:sc-a3525e0b",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-diffusion-stochastic-process-spatiotemporal-field-probability-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S021",
   "source_papers": [

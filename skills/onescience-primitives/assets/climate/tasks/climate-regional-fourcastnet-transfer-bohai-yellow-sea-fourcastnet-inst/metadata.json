@@ -1,0 +1,23 @@
+{
+  "name": "climate-regional-fourcastnet-transfer-bohai-yellow-sea-fourcastnet-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「区域FourCastNet迁移训练与预报生成」在场景「E107」中的实例化；资源引用 ['models/dynamic-pre-training-for-time-series-dynpt', 'models/ensemble-model-output-statistics-emos-post-processing', 'models/fourcastnet', 'tools/fengwu-global-medium-range-weather-forecast-system', 'tools/wenhai-global-ocean-forecast-system']。",
+  "tags": [
+    "edge:skeleton:climate-regional-fourcastnet-transfer-training-forecast-task",
+    "edge:scenario:climate-bohai-yellow-sea-fourcastnet-intel-forecast-scenario",
+    "edge:resource:models/dynamic-pre-training-for-time-series-dynpt",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:models/fourcastnet",
+    "edge:resource:tools/fengwu-global-medium-range-weather-forecast-system",
+    "edge:resource:tools/wenhai-global-ocean-forecast-system",
+    "slot:FORECAST_START_TIME:起报时间",
+    "slot:FORECAST_HORIZON:预报时效",
+    "slot:OUTPUT_INTERVAL:输出时间间隔",
+    "slot:OUTPUT_DIRECTORY:结果输出目录"
+  ]
+}

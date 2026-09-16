@@ -44,8 +44,8 @@
     "workflow-planning",
     "climate",
     "e11",
-    "edge:scenario:sc-54bb1fb4",
-    "edge:workflow:wf-climate-583d5922"
+    "edge:scenario:climate-typhoon-and-pressure-wind-field-driven-coastal-storm-surge-scenario",
+    "edge:workflow:climate-hazard-factor-event-label-and-boundary-precheck-hazard-factor-workflow-2"
   ],
   "scenario_id": "E11",
   "source_papers": [

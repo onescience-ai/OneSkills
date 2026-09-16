@@ -1,0 +1,19 @@
+{
+  "name": "climate-multi-resolution-data-cmip6-temperature-precipitat-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「粗细分辨率资料时空对齐与样本构造」在场景「E38」中的实例化；资源引用 ['datasets/ERA5', 'models/matern-gaussian-process-regression']。",
+  "tags": [
+    "edge:skeleton:climate-multi-resolution-data-alignment-and-sample-construction-task",
+    "edge:scenario:climate-cmip6-temperature-precipitation-regional-climate-downscaling-scenario",
+    "edge:resource:datasets/ERA5",
+    "edge:resource:models/matern-gaussian-process-regression",
+    "slot:PAIRING_CONFIG:样本配对配置",
+    "slot:SPLIT_PROTOCOL:数据划分协议",
+    "slot:PREPROCESS_CONFIG:预处理配置"
+  ]
+}

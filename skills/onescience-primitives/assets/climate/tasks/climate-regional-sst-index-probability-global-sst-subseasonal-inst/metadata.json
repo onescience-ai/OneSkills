@@ -1,0 +1,23 @@
+{
+  "name": "climate-regional-sst-index-probability-global-sst-subseasonal-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「派生区域海温指数并校准概率」在场景「E29」中的实例化；资源引用 ['datasets/modis-myd13a3-ndvi-product', 'datasets/smap-level-3-passive-soil-moisture-products', 'datasets/snodas-swe-data-product', 'models/ensemble-model-output-statistics-emos-post-processing', 'models/matern-gaussian-process-regression']。",
+  "tags": [
+    "edge:skeleton:climate-regional-sst-index-probability-calibration-task",
+    "edge:scenario:climate-global-sst-subseasonal-seasonal-anomaly-forecast-scenario",
+    "edge:resource:datasets/modis-myd13a3-ndvi-product",
+    "edge:resource:datasets/smap-level-3-passive-soil-moisture-products",
+    "edge:resource:datasets/snodas-swe-data-product",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:models/matern-gaussian-process-regression",
+    "slot:OUTPUT_FORMAT:输出格式",
+    "slot:OUTPUT_DIRECTORY:结果保存路径",
+    "slot:POSTPROCESS_CONFIG:后处理配置",
+    "slot:DERIVED_PRODUCTS:派生产品"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "climate-pollution-met-data-boundary-precheck-pollution-met-stalign-workflow",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [污染气象资料及任务边界预检 > 污染气象资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 逐3小时预测区域浓度场 > 结果恢复与场景产品生成 > 检验RMSE、相关性和污染事件技巧]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-pollution-met-data-boundary-precheck-task",
+    "edge:task:climate-pollution-met-stalign-sample-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-predict-regional-concentration-field-3hourly-task",
+    "edge:task:climate-result-recovery-and-scenario-product-generation-task",
+    "edge:task:climate-rmse-correlation-pollution-event-task",
+    "edge:scenario:climate-nwp-emission-driven-regional-aerosol-0-72h-forecast-scenario"
+  ]
+}

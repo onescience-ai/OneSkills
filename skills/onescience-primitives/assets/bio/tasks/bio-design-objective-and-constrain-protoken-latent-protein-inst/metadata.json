@@ -1,0 +1,20 @@
+{
+  "name": "bio-design-objective-and-constrain-protoken-latent-protein-inst",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「设计目标与约束定义」在场景「B14」中的实例化；资源引用 ['models/protoken', 'models/rdesign-tertiary-structure-based-rna-design', 'tools/simplefold-protein-structure-prediction-model-and-pipeline']。",
+  "tags": [
+    "edge:skeleton:bio-design-objective-and-constraint-definition-task",
+    "edge:scenario:bio-protoken-latent-protein-structure-sequence-co-design-scenario",
+    "edge:resource:models/protoken",
+    "edge:resource:models/rdesign-tertiary-structure-based-rna-design",
+    "edge:resource:tools/simplefold-protein-structure-prediction-model-and-pipeline",
+    "slot:DESIGN_INPUT:设计输入",
+    "slot:MODEL_NAME:设计模型",
+    "slot:TARGET_LENGTH:目标长度"
+  ]
+}

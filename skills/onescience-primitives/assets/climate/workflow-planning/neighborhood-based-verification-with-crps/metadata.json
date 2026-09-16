@@ -18,8 +18,8 @@
     "sla",
     "probabilistic verification",
     "pss",
-    "edge:scenario:sc-9a86054e",
-    "edge:workflow:wf-climate-26aaf414"
+    "edge:scenario:climate-global-eddy-resolving-3d-ocean-1to10day-forecast-scenario",
+    "edge:workflow:climate-ocean-state-forcing-data-boundary-precheck-ocean-state-forcing-workflow-2"
   ],
   "harvested": true,
   "tier": "high",

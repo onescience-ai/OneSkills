@@ -1,0 +1,15 @@
+{
+  "name": "matchem-activity-selectivity-stability-oxidation-derived-copper-inst",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「活性选择性稳定性联评」在场景「氧化衍生铜CO2电还原活性位分析」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:matchem-activity-selectivity-stability-joint-evaluation-task",
+    "edge:scenario:matchem-oxidation-derived-copper-co2-electroreduction-active-site-scenario",
+    "slot:REACTION_CONDITION:反应条件"
+  ]
+}

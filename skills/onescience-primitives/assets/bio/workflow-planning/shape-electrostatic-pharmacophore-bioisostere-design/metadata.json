@@ -27,8 +27,8 @@
     "workflow-planning",
     "b55",
     "shepherd",
-    "edge:scenario:sc-ce275989",
-    "edge:workflow:wf-bio-856a5702"
+    "edge:scenario:bio-shape-electrostatic-pharmacophore-bioisostere-design-scenario",
+    "edge:workflow:bio-molecular-design-objective-definition-model-property-condition-workflow"
   ],
   "scenario_id": "B55",
   "source_papers": [

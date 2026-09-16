@@ -1,0 +1,20 @@
+{
+  "name": "climate-batch-generation-stitching-30m-large-scale-farmland-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「批量生成并拼接农田概率图」在场景「E56」中的实例化；资源引用 ['datasets/gleam-v3-8a-global-land-evaporation-dataset', 'models/ensemble-model-output-statistics-emos-post-processing', 'tools/ecmwf-hres']。",
+  "tags": [
+    "edge:skeleton:climate-batch-generation-stitching-farmland-probability-maps-task",
+    "edge:scenario:climate-30m-large-scale-farmland-extent-area-mapping-scenario",
+    "edge:resource:datasets/gleam-v3-8a-global-land-evaporation-dataset",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:tools/ecmwf-hres",
+    "slot:RUN_CONFIG:制图运行配置",
+    "slot:CROPLAND_THRESHOLD:农田判定阈值",
+    "slot:AREA_STATISTICS_UNITS:面积统计单位"
+  ]
+}

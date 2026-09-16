@@ -27,8 +27,8 @@
     "workflow-planning",
     "climate",
     "e56",
-    "edge:scenario:sc-85b54362",
-    "edge:workflow:wf-climate-062f4304"
+    "edge:scenario:climate-30m-large-scale-farmland-extent-area-mapping-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow"
   ],
   "scenario_id": "E56",
   "source_papers": [

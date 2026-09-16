@@ -1,0 +1,19 @@
+{
+  "name": "climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [遥感观测标签及任务边界预检 > 遥感观测标签时空对齐与样本构造 > 方法配置与输入输出契约验证 > 批量生成并拼接农田概率图 > 输出农田概率、二值范围和面积统计 > 用混淆矩阵及统计资料检验空间和面积]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-remote-sensing-label-and-boundary-precheck-task",
+    "edge:task:climate-remote-sensing-labels-alignment-sample-construction-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-batch-generation-stitching-farmland-probability-maps-task",
+    "edge:task:climate-output-farmland-probability-binary-range-and-area-task",
+    "edge:task:climate-validate-spatial-and-area-with-confusion-matrix-task",
+    "edge:scenario:climate-30m-large-scale-farmland-extent-area-mapping-scenario"
+  ]
+}

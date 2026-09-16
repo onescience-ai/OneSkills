@@ -1,0 +1,33 @@
+{
+  "name": "climate-hazard-factor-event-label-alignment-and-sample-construction-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：致灾因子和事件标签时空对齐与样本构造。被 9 个场景复用；含 9 个实例任务；资源引用 ['datasets/spatial-generalization-benchmarks-for-hydrologic-models', 'models/dust-event-forecasting-with-multi-task-deep-learning', 'models/spatial-and-temporal-deep-learning-models-for-fire-prediction', 'models/swe-reconstruction-using-energy-balance-model', 'tools/parbal-energy-balance-model']。",
+  "tags": [
+    "edge:resource:datasets/spatial-generalization-benchmarks-for-hydrologic-models",
+    "edge:resource:models/dust-event-forecasting-with-multi-task-deep-learning",
+    "edge:resource:models/spatial-and-temporal-deep-learning-models-for-fire-prediction",
+    "edge:resource:models/swe-reconstruction-using-energy-balance-model",
+    "edge:resource:tools/parbal-energy-balance-model",
+    "edge:prev:climate-hazard-factor-event-label-and-boundary-precheck-task",
+    "edge:next:climate-method-configuration-input-output-contract-validation-task",
+    "slot:EVENT_DEFINITION:事件定义",
+    "slot:ALIGNMENT_CONFIG:时空对齐配置",
+    "slot:IMBALANCE_POLICY:样本不平衡规则",
+    "slot:STATIC_FEATURE_CONFIG:静态因子配置",
+    "slot:SPATIAL_SPLIT_PROTOCOL:空间分块协议",
+    "edge:instance:climate-hazard-factor-event-label-satellite-and-ground-sensor-inst",
+    "edge:instance:climate-hazard-factor-event-label-typhoon-and-pressure-wind-inst",
+    "edge:instance:climate-hazard-factor-event-label-terrain-and-underlying-inst",
+    "edge:instance:climate-hazard-factor-event-label-multi-time-window-rainfall-inst",
+    "edge:instance:climate-hazard-factor-event-label-multi-source-observation-inst",
+    "edge:instance:climate-hazard-factor-event-label-weather-driven-next-day-inst",
+    "edge:instance:climate-hazard-factor-event-label-dry-snow-avalanche-danger-inst",
+    "edge:instance:climate-hazard-factor-event-label-climate-fuel-anomaly-driven-inst",
+    "edge:instance:climate-hazard-factor-event-label-tsunami-geodetic-observation-inst"
+  ]
+}

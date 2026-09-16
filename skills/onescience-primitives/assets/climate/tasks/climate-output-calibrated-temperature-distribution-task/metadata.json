@@ -1,0 +1,21 @@
+{
+  "name": "climate-output-calibrated-temperature-distribution-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：输出校准后的温度分布。被 1 个场景复用；含 1 个实例任务；资源引用 ['models/ensemble-model-output-statistics-emos-post-processing', 'models/neural-network-based-nwp-model-calibration', 'models/quantile-regression-forest-qrf-methods']。",
+  "tags": [
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:models/neural-network-based-nwp-model-calibration",
+    "edge:resource:models/quantile-regression-forest-qrf-methods",
+    "edge:prev:climate-method-configuration-input-output-contract-validation-task",
+    "edge:next:climate-quantile-confidence-interval-task",
+    "slot:CALIBRATION_CONFIG:概率校准配置",
+    "slot:OUTPUT_DISTRIBUTION:输出分布形式",
+    "slot:QUANTILES:温度分位数",
+    "edge:instance:climate-output-calibrated-temperature-station-temperature-ensemble-inst"
+  ]
+}

@@ -29,8 +29,8 @@
     "cfd_s090",
     "transferable-rom",
     "shallow-recurrent-decoder",
-    "edge:scenario:sc-52b62d65",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-transferable-parameterized-rom-real-time-monitoring-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S090",
   "source_papers": [

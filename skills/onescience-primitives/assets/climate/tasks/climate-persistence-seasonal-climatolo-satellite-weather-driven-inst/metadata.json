@@ -1,0 +1,22 @@
+{
+  "name": "climate-persistence-seasonal-climatolo-satellite-weather-driven-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「与持续性、季节气候态按时空块验证」在场景「E39」中的实例化；资源引用 ['datasets/kling-gupta-efficiency-kge-metric', 'datasets/mdn-based-chla-retrieval-benchmark', 'datasets/modis-myd13a3-ndvi-product', 'datasets/precipitation-nowcasting-evaluation-metrics']。",
+  "tags": [
+    "edge:skeleton:climate-persistence-seasonal-climatology-space-time-block-validation-task",
+    "edge:scenario:climate-satellite-weather-driven-surface-reflectance-and-vegetation-scenario",
+    "edge:resource:datasets/kling-gupta-efficiency-kge-metric",
+    "edge:resource:datasets/mdn-based-chla-retrieval-benchmark",
+    "edge:resource:datasets/modis-myd13a3-ndvi-product",
+    "edge:resource:datasets/precipitation-nowcasting-evaluation-metrics",
+    "slot:VERIFICATION_REFERENCE:独立验证资料",
+    "slot:BENCHMARK_RESULT:基线结果",
+    "slot:METRICS:检验指标",
+    "slot:ACCEPTANCE_CRITERIA:验收门限"
+  ]
+}

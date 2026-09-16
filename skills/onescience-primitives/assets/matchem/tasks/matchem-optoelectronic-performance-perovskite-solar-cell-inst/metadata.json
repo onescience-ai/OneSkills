@@ -1,0 +1,16 @@
+{
+  "name": "matchem-optoelectronic-performance-perovskite-solar-cell-inst",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「光电性能与老化响应评估」在场景「钙钛矿太阳能电池氧诱导碘缺陷退化分析」中的实例化；资源引用 ['models/data-efficient-machine-learning-potentials-modeling-catalytic']。",
+  "tags": [
+    "edge:skeleton:matchem-optoelectronic-performance-aging-response-evaluation-task",
+    "edge:scenario:matchem-perovskite-solar-cell-oxygen-induced-iodide-defect-degradation-scenario",
+    "edge:resource:models/data-efficient-machine-learning-potentials-modeling-catalytic",
+    "slot:CHARACTERIZATION_DATA:表征或器件数据"
+  ]
+}

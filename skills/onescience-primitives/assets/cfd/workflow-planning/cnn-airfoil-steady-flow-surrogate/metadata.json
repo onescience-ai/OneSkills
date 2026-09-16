@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s001",
     "u-net",
-    "edge:scenario:sc-56c3ce15",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-regular-grid-cnn-airfoil-steady-flow-field-proxy-prediction-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S001",
   "source_papers": [

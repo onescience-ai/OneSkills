@@ -17,8 +17,8 @@
     "copper-oxide",
     "precursor-synthesis",
     "surface-modification",
-    "edge:scenario:sc-9566751c",
-    "edge:workflow:wf-matchem-923c2045"
+    "edge:scenario:matchem-cu-nxby-single-atom-co2-to-ch4-selectivity-optimization-scenario",
+    "edge:workflow:matchem-cu-n4-substrate-local-coordination-geometry-generation-workflow"
   ],
   "harvested": true,
   "tier": "medium",

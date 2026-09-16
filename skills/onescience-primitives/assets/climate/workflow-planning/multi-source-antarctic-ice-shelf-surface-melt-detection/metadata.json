@@ -23,8 +23,8 @@
     "workflow-planning",
     "climate",
     "e75",
-    "edge:scenario:sc-630ecb82",
-    "edge:workflow:wf-climate-55b2c143"
+    "edge:scenario:climate-multi-source-remote-sensing-antarctic-ice-shelf-surface-melt-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-10"
   ],
   "scenario_id": "E75",
   "source_papers": [

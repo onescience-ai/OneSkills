@@ -1,0 +1,19 @@
+{
+  "name": "climate-observation-forced-sample-and-boundary-precheck-observation-workflow",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [观测强迫样本及任务边界预检 > 观测强迫样本时空对齐与样本构造 > 方法配置与输入输出契约验证 > 将指纹投影到多套观测产品 > 结果恢复与场景产品生成 > 检验跨模式跨产品稳健性]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-observation-forced-sample-and-boundary-precheck-task",
+    "edge:task:climate-observation-forced-sample-alignment-and-sampling-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-fingerprint-projection-multiple-observation-products-task",
+    "edge:task:climate-result-recovery-and-scenario-product-generation-task",
+    "edge:task:climate-cross-model-cross-product-robustness-task",
+    "edge:scenario:climate-daily-precipitation-field-anthropogenic-climate-change-scenario"
+  ]
+}

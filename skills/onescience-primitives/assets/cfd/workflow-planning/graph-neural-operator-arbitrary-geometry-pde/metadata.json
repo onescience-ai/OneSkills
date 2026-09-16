@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s051",
-    "edge:scenario:sc-8b25ce26",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-graph-neural-operator-arbitrary-geometry-pde-learning-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S051",
   "source_papers": [

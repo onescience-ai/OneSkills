@@ -29,8 +29,8 @@
     "cfd_s052",
     "pde-transformer",
     "universal-physics-transformer",
-    "edge:scenario:sc-ae96e6d8",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-transformer-general-pde-operator-pretrain-finetune-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S052",
   "source_papers": [

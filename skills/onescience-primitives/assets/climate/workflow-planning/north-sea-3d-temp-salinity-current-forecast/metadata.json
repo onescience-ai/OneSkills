@@ -21,8 +21,8 @@
     "workflow-planning",
     "climate",
     "e104",
-    "edge:scenario:sc-40dcb436",
-    "edge:workflow:wf-climate-378718a7"
+    "edge:scenario:climate-north-sea-3d-temperature-salinity-current-intelligent-forecast-scenario",
+    "edge:workflow:climate-model-input-run-condition-precheck-executing-scheme-design-task-workflow-2"
   ],
   "scenario_id": "E104",
   "source_papers": [

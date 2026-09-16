@@ -1,0 +1,32 @@
+{
+  "name": "climate-grid-alignment-and-input-standardization-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：网格对齐与输入标准化。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/forecasting-model-performance-evaluation', 'datasets/random-forest-model-performance-evaluation', 'models/ensemble-empirical-mode-decomposition-eemd', 'models/ensemble-model-output-statistics-emos-post-processing', 'models/matern-gaussian-process-regression', 'models/neural-network-based-nwp-model-calibration', 'models/swe-reconstruction-using-energy-balance-model', 'models/weighted-long-short-term-memory-neural-network-extended-model-for-pm2-5-forecasting', 'tools/deep-learning-precipitation-retrieval-model-and-evaluation', 'tools/gencast-global-probabilistic-weather-forecasting-model', 'tools/lhasa-v2-global-rainfall-triggered-landslide-probabilistic-nowcast-model', 'tools/multi-task-deep-learning-model-for-indian-ocean-dipole-prediction', 'tools/parbal-energy-balance-model', 'tools/urban-hydrological-hydraulic-model-chain-for-inundation-simulation']。",
+  "tags": [
+    "edge:resource:datasets/forecasting-model-performance-evaluation",
+    "edge:resource:datasets/random-forest-model-performance-evaluation",
+    "edge:resource:models/ensemble-empirical-mode-decomposition-eemd",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:models/matern-gaussian-process-regression",
+    "edge:resource:models/neural-network-based-nwp-model-calibration",
+    "edge:resource:models/swe-reconstruction-using-energy-balance-model",
+    "edge:resource:models/weighted-long-short-term-memory-neural-network-extended-model-for-pm2-5-forecasting",
+    "edge:resource:tools/deep-learning-precipitation-retrieval-model-and-evaluation",
+    "edge:resource:tools/gencast-global-probabilistic-weather-forecasting-model",
+    "edge:resource:tools/lhasa-v2-global-rainfall-triggered-landslide-probabilistic-nowcast-model",
+    "edge:resource:tools/multi-task-deep-learning-model-for-indian-ocean-dipole-prediction",
+    "edge:resource:tools/parbal-energy-balance-model",
+    "edge:resource:tools/urban-hydrological-hydraulic-model-chain-for-inundation-simulation",
+    "edge:prev:climate-forecast-range-and-analysis-field-precheck-task",
+    "edge:next:climate-model-checkpoint-compatibility-verification-task",
+    "slot:MODEL_INPUT_SPEC:模型输入规格",
+    "slot:PREPROCESS_CONFIG:预处理配置",
+    "slot:MISSING_VALUE_POLICY:缺测处理策略",
+    "edge:instance:climate-grid-alignment-and-input-global-analysis-driven-1-10-inst"
+  ]
+}

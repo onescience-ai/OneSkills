@@ -17,8 +17,8 @@
     "foagrnn",
     "3d-profile-reconstruction",
     "indirect-assimilation",
-    "edge:scenario:sc-8d796207",
-    "edge:workflow:wf-climate-8adaf389"
+    "edge:scenario:climate-sparse-observation-3d-temperature-salt-field-fast-scenario",
+    "edge:workflow:climate-observation-background-field-and-boundary-precheck-observation-workflow-2"
   ],
   "harvested": true,
   "tier": "high",

@@ -1,0 +1,19 @@
+{
+  "name": "climate-source-obs-reference-data-boundary-source-obs-reference-stalign-workflow-6",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [源观测和参考资料及任务边界预检 > 源观测和参考资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 输出像元或对象初生概率 > 结果恢复与场景产品生成 > 按独立过程检验POD和FAR]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-source-obs-reference-data-boundary-task",
+    "edge:task:climate-source-obs-reference-stalign-sample-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-output-pixel-or-object-initial-probability-task",
+    "edge:task:climate-result-recovery-and-scenario-product-generation-task",
+    "edge:task:climate-testing-pod-far-by-independent-process-task",
+    "edge:scenario:climate-geostationary-meteorological-satellite-driven-convection-scenario"
+  ]
+}

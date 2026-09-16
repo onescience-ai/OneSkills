@@ -1,0 +1,17 @@
+{
+  "name": "matchem-verification-output-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：验证与输出。被 4 个场景复用；含 4 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:matchem-defect-functionality-and-stability-ranking-task",
+    "edge:instance:matchem-verification-output-mos2-monolayer-atomic-inst",
+    "edge:instance:matchem-verification-output-hbn-single-photon-emission-inst",
+    "edge:instance:matchem-verification-output-phosphorene-monolayer-inst",
+    "edge:instance:matchem-verification-output-lithium-reduction-room-inst"
+  ]
+}

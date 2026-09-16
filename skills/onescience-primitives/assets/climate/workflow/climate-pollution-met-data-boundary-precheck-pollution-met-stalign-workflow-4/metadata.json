@@ -1,0 +1,19 @@
+{
+  "name": "climate-pollution-met-data-boundary-precheck-pollution-met-stalign-workflow-4",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [污染气象资料及任务边界预检 > 污染气象资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 逐时效预测臭氧浓度 > 计算MDA8并校准超标概率 > 检验RMSE、峰值和事件命中率]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-pollution-met-data-boundary-precheck-task",
+    "edge:task:climate-pollution-met-stalign-sample-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-predict-ozone-concentration-by-lead-time-task",
+    "edge:task:climate-compute-mda8-and-calibrate-exceedance-probability-task",
+    "edge:task:climate-rmse-peak-event-hit-rate-task",
+    "edge:scenario:climate-near-surface-ozone-hourly-multi-horizon-forecast-scenario"
+  ]
+}

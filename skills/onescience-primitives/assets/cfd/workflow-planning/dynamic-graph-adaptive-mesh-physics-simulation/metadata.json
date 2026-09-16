@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s020",
     "message-passing-neural-pde-solver",
-    "edge:scenario:sc-06d4c2be",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-dynamic-graph-network-and-adaptive-mesh-physics-time-series-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S020",
   "source_papers": [

@@ -1,0 +1,19 @@
+{
+  "name": "climate-forecast-data-alignment-and-multi-station-temp-humidity-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「起报资料时空对齐与样本构造」在场景「E41」中的实例化；资源引用 ['models/matern-gaussian-process-regression', 'models/spatial-and-temporal-deep-learning-models-for-fire-prediction']。",
+  "tags": [
+    "edge:skeleton:climate-forecast-data-alignment-and-sample-construction-task",
+    "edge:scenario:climate-multi-station-temp-humidity-wind-24to72h-joint-time-series-scenario",
+    "edge:resource:models/matern-gaussian-process-regression",
+    "edge:resource:models/spatial-and-temporal-deep-learning-models-for-fire-prediction",
+    "slot:SPATIOTEMPORAL_GRID:时空网格",
+    "slot:PREPROCESS_CONFIG:预处理配置",
+    "slot:MISSING_VALUE_POLICY:缺测处理规则"
+  ]
+}

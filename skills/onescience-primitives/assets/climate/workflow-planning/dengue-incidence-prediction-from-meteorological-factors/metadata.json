@@ -17,8 +17,8 @@
     "epidemiological-modeling",
     "lag-effects",
     "model-comparison",
-    "edge:scenario:sc-7d1fa1a7",
-    "edge:workflow:wf-climate-a2b88c9a"
+    "edge:scenario:climate-weather-driven-weekly-dengue-incidence-forecast-scenario",
+    "edge:workflow:climate-weather-exposure-target-observation-task-boundary-precheck-workflow-3"
   ],
   "harvested": true,
   "tier": "medium",

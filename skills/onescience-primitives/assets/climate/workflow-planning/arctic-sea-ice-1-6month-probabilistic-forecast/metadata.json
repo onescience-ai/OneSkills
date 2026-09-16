@@ -43,8 +43,8 @@
     "workflow",
     "workflow-planning",
     "e17",
-    "edge:scenario:sc-dc726c81",
-    "edge:workflow:wf-climate-5a275244"
+    "edge:scenario:climate-arctic-sea-ice-jantojune-probabilistic-forecast-scenario",
+    "edge:workflow:climate-ocean-state-forcing-data-boundary-precheck-ocean-state-forcing-workflow-3"
   ],
   "scenario_id": "E17",
   "source_papers": [

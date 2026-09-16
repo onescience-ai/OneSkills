@@ -1,0 +1,20 @@
+{
+  "name": "climate-multi-resolution-data-coarse-grid-atmospheric-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「粗细分辨率资料时空对齐与样本构造」在场景「E55」中的实例化；资源引用 ['datasets/smap-level-3-passive-soil-moisture-products', 'models/1d-cnn-based-groundwater-level-prediction', 'tools/multi-level-b-spline-analysis-mba']。",
+  "tags": [
+    "edge:skeleton:climate-multi-resolution-data-alignment-and-sample-construction-task",
+    "edge:scenario:climate-coarse-grid-atmospheric-field-to-kilometer-scale-concurrent-scenario",
+    "edge:resource:datasets/smap-level-3-passive-soil-moisture-products",
+    "edge:resource:models/1d-cnn-based-groundwater-level-prediction",
+    "edge:resource:tools/multi-level-b-spline-analysis-mba",
+    "slot:PAIRING_CONFIG:粗细样本配对",
+    "slot:VARIABLE_LEVEL_MAPPING:变量层次映射",
+    "slot:SPLIT_PROTOCOL:数据划分协议"
+  ]
+}

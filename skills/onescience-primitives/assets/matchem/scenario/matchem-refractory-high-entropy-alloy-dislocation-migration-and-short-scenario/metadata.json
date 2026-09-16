@@ -1,0 +1,20 @@
+{
+  "name": "matchem-refractory-high-entropy-alloy-dislocation-migration-and-short-scenario",
+  "type": "scenario",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：难熔高熵合金位错迁移与短程有序分析（matchem）。工作流 4 步，经 edge:workflow 指向 matchem-material-control-scheme-definition-response-test-simulation-workflow，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "edge:workflow:matchem-material-control-scheme-definition-response-test-simulation-workflow",
+    "edge:task:matchem-material-control-scheme-definition-task",
+    "edge:task:matchem-response-test-simulation-task",
+    "edge:task:matchem-mechanism-performance-quantitative-analysis-task",
+    "edge:task:matchem-window-output-and-review-task",
+    "slot:MATERIAL_AND_PROCESS:材料与工艺参数",
+    "slot:LOAD_OR_REACTION_CONDITION:载荷或反应条件",
+    "slot:MEASUREMENT_DATA:表征数据"
+  ]
+}

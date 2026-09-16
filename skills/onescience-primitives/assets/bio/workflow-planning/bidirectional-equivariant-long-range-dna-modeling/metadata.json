@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b64",
-    "edge:scenario:sc-9c3a83c8",
-    "edge:workflow:wf-bio-afe9f9ae"
+    "edge:scenario:bio-bidirectional-equivariant-long-range-dna-sequence-modeling-scenario",
+    "edge:workflow:bio-genome-input-coordinate-normalization-sequence-window-model-workflow"
   ],
   "scenario_id": "B64",
   "source_papers": [

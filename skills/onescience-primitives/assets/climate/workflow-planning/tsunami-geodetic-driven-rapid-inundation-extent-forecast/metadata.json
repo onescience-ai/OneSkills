@@ -30,8 +30,8 @@
     "workflow-planning",
     "climate",
     "e90",
-    "edge:scenario:sc-ddd58d0f",
-    "edge:workflow:wf-climate-f320f434"
+    "edge:scenario:climate-tsunami-geodetic-observation-driven-rapid-inundation-range-scenario",
+    "edge:workflow:climate-hazard-factor-event-label-and-boundary-precheck-hazard-factor-workflow-9"
   ],
   "scenario_id": "E90",
   "source_papers": [

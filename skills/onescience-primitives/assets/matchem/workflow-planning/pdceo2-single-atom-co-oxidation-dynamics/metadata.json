@@ -19,8 +19,8 @@
     "single-atom",
     "workflow",
     "workflow-planning",
-    "edge:scenario:sc-013a98f4",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-pdceo2-single-atom-catalyst-co-oxidation-dynamics-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "scenario_id": "PdCeO2单原子催化剂CO氧化动态分析",
   "source_papers": [

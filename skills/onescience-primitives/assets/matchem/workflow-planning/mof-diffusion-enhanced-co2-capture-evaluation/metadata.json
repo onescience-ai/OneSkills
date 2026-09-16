@@ -19,8 +19,8 @@
     "molecular",
     "null",
     "performance",
-    "edge:scenario:sc-1ac80f69",
-    "edge:workflow:wf-matchem-2c158827"
+    "edge:scenario:matchem-mof-molecular-diffusion-enhanced-co2-capture-performance-scenario",
+    "edge:workflow:matchem-structure-and-separation-target-definition-mass-transfer-workflow"
   ],
   "scenario_id": "MOF分子扩散增强CO2捕集性能评估",
   "source_papers": [

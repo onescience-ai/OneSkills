@@ -16,8 +16,8 @@
     "isos-standard",
     "module-reliability",
     "accelerated-aging",
-    "edge:scenario:sc-81ccd8cb",
-    "edge:workflow:wf-matchem-87e6b0f5"
+    "edge:scenario:matchem-2d-3d-perovskite-interface-long-term-stability-design-scenario",
+    "edge:workflow:matchem-device-stacking-failure-boundary-definition-interface-or-defect-workflow"
   ],
   "harvested": true,
   "tier": "high",

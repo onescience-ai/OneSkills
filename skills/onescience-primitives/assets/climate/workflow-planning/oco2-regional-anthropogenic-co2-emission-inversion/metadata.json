@@ -26,8 +26,8 @@
     "workflow-planning",
     "climate",
     "e84",
-    "edge:scenario:sc-e6a39119",
-    "edge:workflow:wf-climate-2b1fc6d8"
+    "edge:scenario:climate-oco-2-regional-anthropogenic-co2-emission-inversion-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-4"
   ],
   "scenario_id": "E84",
   "source_papers": [

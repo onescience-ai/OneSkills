@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s015",
     "gaussian-process",
-    "edge:scenario:sc-fd32e13d",
-    "edge:workflow:wf-cfd-e7748c02"
+    "edge:scenario:cfd-bayesian-multi-fidelity-aerodynamic-proxy-and-active-sampling-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-2"
   ],
   "scenario_id": "CFD_S015",
   "source_papers": [

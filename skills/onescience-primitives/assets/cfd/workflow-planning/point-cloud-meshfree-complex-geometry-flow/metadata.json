@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s008",
-    "edge:scenario:sc-be228411",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-point-cloud-meshless-network-complex-geometry-flow-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S008",
   "source_papers": [

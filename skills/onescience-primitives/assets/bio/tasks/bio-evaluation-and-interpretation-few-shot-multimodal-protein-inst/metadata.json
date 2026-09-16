@@ -1,0 +1,16 @@
+{
+  "name": "bio-evaluation-and-interpretation-few-shot-multimodal-protein-inst",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「评测与解释汇总」在场景「B39」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:bio-evaluation-and-interpretation-summary-task",
+    "edge:scenario:bio-few-shot-multimodal-protein-function-prediction-scenario",
+    "slot:MIN_METRIC:指标下限",
+    "slot:EXPORT_EXPLANATION:导出解释"
+  ]
+}

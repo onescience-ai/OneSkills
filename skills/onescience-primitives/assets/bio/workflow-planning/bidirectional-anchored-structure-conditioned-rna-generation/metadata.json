@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b82",
-    "edge:scenario:sc-347495e9",
-    "edge:workflow:wf-bio-1964c994"
+    "edge:scenario:bio-bidirectional-anchored-structure-conditioned-rna-sequence-scenario",
+    "edge:workflow:bio-rna-input-task-definition-structure-constraint-and-model-workflow"
   ],
   "scenario_id": "B82",
   "source_papers": [

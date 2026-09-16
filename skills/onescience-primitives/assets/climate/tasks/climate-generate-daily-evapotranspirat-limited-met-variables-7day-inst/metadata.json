@@ -1,0 +1,20 @@
+{
+  "name": "climate-generate-daily-evapotranspirat-limited-met-variables-7day-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「生成逐日蒸散发预报」在场景「E66」中的实例化；资源引用 ['models/ensemble-model-output-statistics-emos-post-processing', 'tools/fengwu-global-medium-range-weather-forecast-system', 'tools/wenhai-global-ocean-forecast-system']。",
+  "tags": [
+    "edge:skeleton:climate-generate-daily-evapotranspiration-forecast-task",
+    "edge:scenario:climate-limited-met-variables-7day-ref-evapotranspiration-forecast-scenario",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:tools/fengwu-global-medium-range-weather-forecast-system",
+    "edge:resource:tools/wenhai-global-ocean-forecast-system",
+    "slot:RUN_CONFIG:蒸散发预报配置",
+    "slot:FORECAST_DAYS:预报天数",
+    "slot:OUTPUT_INTERVAL:输出间隔"
+  ]
+}

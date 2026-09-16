@@ -29,8 +29,8 @@
     "cfd_s056",
     "pde-foundation-model",
     "pretrained-neural-operator",
-    "edge:scenario:sc-61983584",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-scientific-foundation-model-multi-physics-operator-transfer-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S056",
   "source_papers": [

@@ -1,0 +1,19 @@
+{
+  "name": "matchem-li-ni-mixing-structural-stability-calculation-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：Li/Ni 混排与结构稳定性计算。被 1 个场景复用；含 1 个实例任务；资源引用 ['tools/molecular-structure-preparation', 'tools/pymatgen']。",
+  "tags": [
+    "edge:resource:tools/molecular-structure-preparation",
+    "edge:resource:tools/pymatgen",
+    "edge:prev:matchem-delithiation-states-vasp-structural-relaxation-task",
+    "edge:next:matchem-elasticity-cracking-risk-proxy-indicator-analysis-task",
+    "slot:RELAXED_STRUCTURES:弛豫结构集合",
+    "slot:LI_CONTENT:脱锂状态",
+    "edge:instance:matchem-li-ni-mixing-structural-lini091co09o2-high-ni-inst"
+  ]
+}

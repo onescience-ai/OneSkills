@@ -1,0 +1,19 @@
+{
+  "name": "climate-multi-leadtime-irradiance-sky-camera-satellite-solar-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「生成多时效辐照度」在场景「E23」中的实例化；资源引用 ['models/dynamic-pre-training-for-time-series-dynpt', 'models/ensemble-model-output-statistics-emos-post-processing']。",
+  "tags": [
+    "edge:skeleton:climate-multi-leadtime-irradiance-task",
+    "edge:scenario:climate-sky-camera-satellite-solar-irradiance-nowcast-scenario",
+    "edge:resource:models/dynamic-pre-training-for-time-series-dynpt",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "slot:RUN_CONFIG:辐照度预报配置",
+    "slot:LEAD_TIMES:目标提前期",
+    "slot:OUTPUT_INTERVAL:输出间隔"
+  ]
+}

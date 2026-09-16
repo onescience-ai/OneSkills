@@ -1,0 +1,27 @@
+{
+  "name": "matchem-mass-transfer-adsorption-performance-acquisition-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：传质或吸附性能获取。被 12 个场景复用；含 12 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:matchem-structure-and-separation-target-definition-task",
+    "edge:next:matchem-selective-stability-and-energy-consumption-analysis-task",
+    "slot:EVALUATION_CONFIG:评价方法",
+    "edge:instance:matchem-mass-transfer-adsorption-mof-molecular-diffusion-inst",
+    "edge:instance:matchem-mass-transfer-adsorption-mof-deep-generative-inverse-inst",
+    "edge:instance:matchem-mass-transfer-adsorption-mof-pre-combustion-co2-inst",
+    "edge:instance:matchem-mass-transfer-adsorption-mof-trace-co2-air-capture-inst",
+    "edge:instance:matchem-mass-transfer-adsorption-mof-high-throughput-hydrogen-inst",
+    "edge:instance:matchem-mass-transfer-adsorption-mxene-kevlar-composite-inst",
+    "edge:instance:matchem-mass-transfer-adsorption-mxene-zeolite-gas-separation-inst",
+    "edge:instance:matchem-mass-transfer-adsorption-diamine-grafted-mof-co2-inst",
+    "edge:instance:matchem-mass-transfer-adsorption-hydrophilic-responsive-inst",
+    "edge:instance:matchem-mass-transfer-adsorption-monolayer-mos2-nanopore-inst",
+    "edge:instance:matchem-mass-transfer-adsorption-nanoparticle-template-inst",
+    "edge:instance:matchem-mass-transfer-adsorption-black-gold-thin-film-solar-inst"
+  ]
+}

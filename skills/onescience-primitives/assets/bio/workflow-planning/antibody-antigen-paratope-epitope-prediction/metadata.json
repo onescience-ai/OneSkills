@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b25",
-    "edge:scenario:sc-1f440561",
-    "edge:workflow:wf-bio-c6a05f8d"
+    "edge:scenario:bio-antibody-antigen-binding-site-joint-prediction-scenario",
+    "edge:workflow:bio-immune-target-task-definition-numbering-and-interface-feature-workflow"
   ],
   "scenario_id": "B25",
   "source_papers": [

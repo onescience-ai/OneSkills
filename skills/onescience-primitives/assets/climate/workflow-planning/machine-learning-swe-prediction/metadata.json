@@ -17,8 +17,8 @@
     "microwave-brightness-temperature",
     "snow-covered-area",
     "water-resources",
-    "edge:scenario:sc-0d1ae6e7",
-    "edge:workflow:wf-climate-480f62b2"
+    "edge:scenario:climate-mountain-snow-water-equivalent-nrt-estimation-scenario",
+    "edge:workflow:climate-multi-resolution-data-and-boundary-precheck-multi-resolution-workflow-5"
   ],
   "harvested": true,
   "tier": "high",

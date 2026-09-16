@@ -1,0 +1,25 @@
+{
+  "name": "cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-6",
+  "type": "workflow",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（cfd）：5 步骨架 [数据接入与契约核验 > 预处理与数据切分 > 模型配置与训练 > 闭合项预测与后验CFD耦合 > 任务验收与适用域判定]，被 8 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:cfd-data-ingestion-contract-validation-task",
+    "edge:task:cfd-preprocessing-data-splitting-task",
+    "edge:task:cfd-model-configuration-training-task",
+    "edge:task:cfd-closure-term-prediction-posterior-cfd-coupling-task",
+    "edge:task:cfd-task-acceptance-domain-determination-task",
+    "edge:scenario:cfd-data-driven-rans-reynolds-stress-eddy-viscosity-closure-scenario",
+    "edge:scenario:cfd-hypersonic-transonic-boundary-layer-turbulence-surrogate-scenario",
+    "edge:scenario:cfd-pinn-joint-inversion-closure-mean-flow-scenario",
+    "edge:scenario:cfd-transfer-and-multi-fidelity-aerospace-vehicle-aerodynamic-proxy-scenario",
+    "edge:scenario:cfd-data-driven-porous-complex-transport-flow-prediction-scenario",
+    "edge:scenario:cfd-convolution-network-2d-turbulence-les-subgrid-closure-scenario",
+    "edge:scenario:cfd-stochastic-differential-and-probabilistic-coarse-graining-scenario",
+    "edge:scenario:cfd-engineering-les-equivalent-source-term-high-fidelity-calibration-scenario"
+  ]
+}

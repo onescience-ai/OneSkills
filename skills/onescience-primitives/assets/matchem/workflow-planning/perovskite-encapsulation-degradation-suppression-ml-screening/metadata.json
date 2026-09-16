@@ -18,8 +18,8 @@
     "perovskite",
     "select",
     "suppress",
-    "edge:scenario:sc-aa98e9f1",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-perovskite-encapsulation-layer-degradation-suppression-machine-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "钙钛矿封装层降解抑制机器学习筛选",
   "source_papers": [

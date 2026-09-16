@@ -29,8 +29,8 @@
     "cfd_s089",
     "neural-aerodynamic-rom",
     "neural-ode",
-    "edge:scenario:sc-82ffc8d6",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-aeroelasticity-unsteady-load-reduced-order-response-prediction-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S089",
   "source_papers": [

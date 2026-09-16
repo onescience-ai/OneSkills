@@ -17,8 +17,8 @@
     "nanocomposite",
     "electrospinning",
     "hot-injection",
-    "edge:scenario:sc-523bf3bd",
-    "edge:workflow:wf-matchem-87e6b0f5"
+    "edge:scenario:matchem-tio2-cspibr3-heterojunction-co2-photoreduction-scenario",
+    "edge:workflow:matchem-device-stacking-failure-boundary-definition-interface-or-defect-workflow"
   ],
   "harvested": true,
   "tier": "high",

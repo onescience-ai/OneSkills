@@ -22,8 +22,8 @@
     "workflow",
     "workflow-planning",
     "b19",
-    "edge:scenario:sc-33ef2b11",
-    "edge:workflow:wf-bio-42419238"
+    "edge:scenario:bio-transmembrane-protein-sequence-discrete-diffusion-design-scenario",
+    "edge:workflow:bio-design-objective-and-constraint-definition-model-condition-workflow"
   ],
   "scenario_id": "B19",
   "source_papers": [

@@ -1,0 +1,20 @@
+{
+  "name": "climate-chlorophyll-a-conditional-distribution-point-retrieval-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：反演叶绿素a条件分布或点估计。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/gleam-v3-8a-global-land-evaporation-dataset', 'tools/ecmwf-hres']。",
+  "tags": [
+    "edge:resource:datasets/gleam-v3-8a-global-land-evaporation-dataset",
+    "edge:resource:tools/ecmwf-hres",
+    "edge:prev:climate-method-configuration-input-output-contract-validation-task",
+    "edge:next:climate-output-concentration-map-uncertainty-and-domain-flag-task",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:DECISION_THRESHOLD:判定阈值",
+    "slot:UNCERTAINTY_CONFIG:不确定性配置",
+    "edge:instance:climate-chlorophyll-a-conditional-landsat-water-chlorophyll-a-inst"
+  ]
+}

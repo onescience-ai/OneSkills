@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b22",
-    "edge:scenario:sc-a813f314",
-    "edge:workflow:wf-bio-c6a05f8d"
+    "edge:scenario:bio-cdr-loop-antibody-scaffold-joint-generation-scenario",
+    "edge:workflow:bio-immune-target-task-definition-numbering-and-interface-feature-workflow"
   ],
   "scenario_id": "B22",
   "source_papers": [

@@ -35,8 +35,8 @@
     "workflow-planning",
     "climate",
     "e81",
-    "edge:scenario:sc-9ca1a99d",
-    "edge:workflow:wf-climate-397cfbb7"
+    "edge:scenario:climate-hyperspectral-satellite-methane-plume-pixel-level-detection-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-16"
   ],
   "scenario_id": "E81",
   "source_papers": [

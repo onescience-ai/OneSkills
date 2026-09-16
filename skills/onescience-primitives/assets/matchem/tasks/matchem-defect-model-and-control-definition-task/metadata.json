@@ -1,0 +1,21 @@
+{
+  "name": "matchem-defect-model-and-control-definition-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：缺陷模型与对照定义。被 4 个场景复用；含 4 个实例任务；资源引用 ['models/dft-calculation-of-defect-formation-energy', 'tools/molecular-structure-preparation']。",
+  "tags": [
+    "edge:resource:models/dft-calculation-of-defect-formation-energy",
+    "edge:resource:tools/molecular-structure-preparation",
+    "edge:next:matchem-structure-electronic-or-functional-response-acquisition-task",
+    "slot:HOST_STRUCTURE:母体结构",
+    "slot:DEFECT_SET:缺陷候选",
+    "edge:instance:matchem-defect-model-and-control-mos2-monolayer-atomic-inst",
+    "edge:instance:matchem-defect-model-and-control-hbn-single-photon-emission-inst",
+    "edge:instance:matchem-defect-model-and-control-phosphorene-monolayer-inst",
+    "edge:instance:matchem-defect-model-and-control-lithium-reduction-room-inst"
+  ]
+}

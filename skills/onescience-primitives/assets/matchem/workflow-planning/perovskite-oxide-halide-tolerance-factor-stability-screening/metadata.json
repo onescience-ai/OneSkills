@@ -17,8 +17,8 @@
     "predict",
     "stability",
     "tolerance",
-    "edge:scenario:sc-89a7da1c",
-    "edge:workflow:wf-matchem-30dd7b2f"
+    "edge:scenario:matchem-perovskite-oxide-and-halide-tolerance-factor-stability-screening-scenario",
+    "edge:workflow:matchem-composition-structure-search-space-definition-candidate-workflow"
   ],
   "scenario_id": "钙钛矿氧化物与卤化物容忍因子稳定性筛选",
   "source_papers": [

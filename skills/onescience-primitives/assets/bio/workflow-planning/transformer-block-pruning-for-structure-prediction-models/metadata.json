@@ -16,8 +16,8 @@
     "model-finetuning",
     "protein-structure",
     "model-optimization",
-    "edge:scenario:sc-078cac5b",
-    "edge:workflow:wf-bio-5aaefe7e"
+    "edge:scenario:bio-lightweight-multi-molecular-complex-structure-prediction-scenario",
+    "edge:workflow:bio-input-and-task-definition-feature-model-preparation-structure-workflow"
   ],
   "harvested": true,
   "tier": "high",

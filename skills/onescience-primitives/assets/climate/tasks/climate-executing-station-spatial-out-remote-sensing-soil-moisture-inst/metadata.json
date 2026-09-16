@@ -1,0 +1,21 @@
+{
+  "name": "climate-executing-station-spatial-out-remote-sensing-soil-moisture-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「执行站点与空间外验证」在场景「E16」中的实例化；资源引用 ['datasets/kling-gupta-efficiency-kge-metric', 'datasets/mdn-based-chla-retrieval-benchmark', 'datasets/precipitation-nowcasting-evaluation-metrics']。",
+  "tags": [
+    "edge:skeleton:climate-executing-station-spatial-out-of-sample-validation-task",
+    "edge:scenario:climate-remote-sensing-soil-moisture-kilometer-scale-spatial-scenario",
+    "edge:resource:datasets/kling-gupta-efficiency-kge-metric",
+    "edge:resource:datasets/mdn-based-chla-retrieval-benchmark",
+    "edge:resource:datasets/precipitation-nowcasting-evaluation-metrics",
+    "slot:VERIFICATION_REFERENCE:独立验证资料",
+    "slot:BENCHMARK_RESULT:基线结果",
+    "slot:METRICS:检验指标",
+    "slot:ACCEPTANCE_CRITERIA:验收门限"
+  ]
+}

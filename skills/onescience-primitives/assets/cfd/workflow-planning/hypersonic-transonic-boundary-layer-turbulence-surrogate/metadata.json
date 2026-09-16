@@ -29,8 +29,8 @@
     "cfd_s074",
     "transformer-aerodynamic-surrogate",
     "neural-turbulence-model",
-    "edge:scenario:sc-821d199e",
-    "edge:workflow:wf-cfd-17883fa9"
+    "edge:scenario:cfd-hypersonic-transonic-boundary-layer-turbulence-surrogate-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-6"
   ],
   "scenario_id": "CFD_S074",
   "source_papers": [

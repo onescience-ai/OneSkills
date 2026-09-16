@@ -20,8 +20,8 @@
     "sieving",
     "workflow",
     "workflow-planning",
-    "edge:scenario:sc-c57df921",
-    "edge:workflow:wf-matchem-2c158827"
+    "edge:scenario:matchem-mxene-zeolite-gas-separation-membrane-design-scenario",
+    "edge:workflow:matchem-structure-and-separation-target-definition-mass-transfer-workflow"
   ],
   "scenario_id": "MXene分子筛气体分离膜设计",
   "source_papers": [

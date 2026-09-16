@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s034",
-    "edge:scenario:sc-f3eb07d9",
-    "edge:workflow:wf-cfd-8b1af9da"
+    "edge:scenario:cfd-differentiable-physics-fluid-structure-coupling-inverse-design-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-3"
   ],
   "scenario_id": "CFD_S034",
   "source_papers": [

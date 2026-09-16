@@ -1,0 +1,19 @@
+{
+  "name": "climate-scenario-forcing-task-boundary-precheck-scenario-forcing-workflow",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [情景外强迫及任务边界预检 > 情景外强迫时空对齐与样本构造 > 方法配置与输入输出契约验证 > 在给定强迫下多年自由积分 > 结果恢复与场景产品生成 > 检查漂移、守恒和极端统计]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-scenario-forcing-task-boundary-precheck-task",
+    "edge:task:climate-scenario-forcing-spacetime-alignment-sample-construction-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-multiyear-free-integration-under-forcing-task",
+    "edge:task:climate-result-recovery-and-scenario-product-generation-task",
+    "edge:task:climate-drift-conservation-extreme-check-task",
+    "edge:scenario:climate-given-boundary-forcing-global-atmospheric-climate-trajectory-scenario"
+  ]
+}

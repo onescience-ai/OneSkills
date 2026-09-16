@@ -1,0 +1,44 @@
+# 实例任务：在给定强迫下多年自由积分 @ E57
+
+- domain: climate
+- 骨架: climate-multiyear-free-integration-under-forcing-task
+- 场景: climate-given-boundary-forcing-global-atmospheric-climate-trajectory-scenario (E57)
+- step_id: s04
+- depend: ['s03']
+
+## 场景研究主体
+- E57
+- 关联论文: ACE_ A fast, skillful learned global atmospheric model for climate prediction | doi:; Neural general circulation models for weather and climate | doi:
+
+## 本实例步骤描述
+按冻结配置执行“在给定强迫下多年自由积分”，完成从海温、太阳辐射、地形及初始大气状态到多年全球大气场、降水和能量水分通量的核心计算并保存逐阶段日志。
+
+## 本实例执行 prompt
+依据{RUN_CONFIG}、{ENSEMBLE_SIZE}、{OUTPUT_FREQUENCY}执行在给定强迫下多年自由积分，将海温、太阳辐射、地形及初始大气状态转换为多年全球大气场、降水和能量水分通量。保存配置、随机种子、开始结束时间、退出状态和中间产物；不得临时更换数据、阈值或方法版本。
+
+## 本实例输入槽
+- {RUN_CONFIG} | required=True | type=str | var_name=运行配置 | hint=输入运行参数配置。 | default=None
+- {ENSEMBLE_SIZE} | required=True | type=str | var_name=集合成员数 | hint=输入集合成员数量。 | default=1
+- {OUTPUT_FREQUENCY} | required=True | type=str | var_name=输出频率 | hint=输入结果输出频率。 | default=None
+
+## 本实例产出
+- 在给定强迫下多年自由积分结果
+- 中间状态与运行日志
+- 资源和退出状态记录
+
+## 本实例质量门禁
+- 目标区域和时段内结果完整且无重复或错位
+- 核心计算未读取任务截止时间之后的数据
+- 配置、随机种子、日志和中间状态能够追溯
+- 长期积分无非物理漂移或未解释的数值突变
+
+## 可调资源（edge:resource，仅真实存在）
+- datasets/cesm2-large-ensemble
+- datasets/large-ensemble-testbed
+- models/crpsexp-loss-function-for-ensemble-forecasting
+- models/ensemble-empirical-mode-decomposition-eemd
+- models/ensemble-model-output-statistics-emos-post-processing
+
+## 验收/缺失策略（继承场景）
+- acceptance: （源场景未提供）
+- missing_policy: （源场景未提供）

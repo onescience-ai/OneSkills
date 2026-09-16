@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s035",
     "physics-aware-optimizer",
-    "edge:scenario:sc-2e0dfe19",
-    "edge:workflow:wf-cfd-8b1af9da"
+    "edge:scenario:cfd-3d-aircraft-aerodynamic-inverse-design-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-3"
   ],
   "scenario_id": "CFD_S035",
   "source_papers": [

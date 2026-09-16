@@ -21,8 +21,8 @@
     "null",
     "parameters",
     "physical",
-    "edge:scenario:sc-b6efc47d",
-    "edge:workflow:wf-matchem-c41fa878"
+    "edge:scenario:matchem-lithium-ion-battery-degradation-parameter-physics-data-fusion-scenario",
+    "edge:workflow:matchem-material-condition-modeling-structure-or-electrochemical-workflow"
   ],
   "scenario_id": "锂离子电池衰减参数物理数据融合反演",
   "source_papers": [

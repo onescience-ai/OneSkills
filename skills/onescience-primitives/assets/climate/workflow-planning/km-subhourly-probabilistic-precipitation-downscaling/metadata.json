@@ -48,8 +48,8 @@
     "workflow-planning",
     "climate",
     "e15",
-    "edge:scenario:sc-acf02f5d",
-    "edge:workflow:wf-climate-f19d33a9"
+    "edge:scenario:climate-coarse-resolution-precipitation-to-kilometer-subhourly-scenario",
+    "edge:workflow:climate-multi-resolution-data-and-boundary-precheck-multi-resolution-workflow-6"
   ],
   "scenario_id": "E15",
   "source_papers": [

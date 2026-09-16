@@ -18,8 +18,8 @@
     "null",
     "relaxation",
     "voltage",
-    "edge:scenario:sc-e4726f15",
-    "edge:workflow:wf-matchem-c41fa878"
+    "edge:scenario:matchem-commercial-li-ion-battery-voltage-relaxation-capacity-estimation-scenario",
+    "edge:workflow:matchem-material-condition-modeling-structure-or-electrochemical-workflow"
   ],
   "scenario_id": "商用锂离子电池电压松弛容量估计",
   "source_papers": [

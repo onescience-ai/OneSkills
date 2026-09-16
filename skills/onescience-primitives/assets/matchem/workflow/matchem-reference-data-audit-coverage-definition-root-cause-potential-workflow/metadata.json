@@ -1,0 +1,23 @@
+{
+  "name": "matchem-reference-data-audit-coverage-definition-root-cause-potential-workflow",
+  "type": "workflow",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（matchem）：4 步骨架 [参考数据审计与覆盖定义 > 根源势函数训练 > 能量力应力与外推验证 > 分子动力学或结构探索验证]，被 7 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:matchem-reference-data-audit-coverage-definition-task",
+    "edge:task:matchem-root-cause-potential-function-training-task",
+    "edge:task:matchem-energy-force-stress-and-extrapolation-validation-task",
+    "edge:task:matchem-molecular-dynamics-structure-exploration-validation-task",
+    "edge:scenario:matchem-hfo2-amorphous-liquid-ml-potential-active-learning-scenario",
+    "edge:scenario:matchem-mof-quantum-ml-potential-temperature-active-learning-scenario",
+    "edge:scenario:matchem-catalytic-reaction-ml-potential-active-learning-sampling-scenario",
+    "edge:scenario:matchem-polarizable-long-range-interaction-foundation-ml-potential-scenario",
+    "edge:scenario:matchem-layered-material-transferable-ml-atomic-potential-validation-scenario",
+    "edge:scenario:matchem-neural-network-potential-long-range-electrostatic-training-scenario",
+    "edge:scenario:matchem-defective-potential-energy-surface-machine-learning-potential-scenario"
+  ]
+}

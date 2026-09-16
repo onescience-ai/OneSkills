@@ -27,8 +27,8 @@
     "workflow-planning",
     "climate",
     "e23",
-    "edge:scenario:sc-6e705dff",
-    "edge:workflow:wf-climate-8fcdf03c"
+    "edge:scenario:climate-sky-camera-satellite-solar-irradiance-nowcast-scenario",
+    "edge:workflow:climate-weather-energy-operational-data-task-boundary-precheck-weather-workflow-4"
   ],
   "scenario_id": "E23",
   "source_papers": [

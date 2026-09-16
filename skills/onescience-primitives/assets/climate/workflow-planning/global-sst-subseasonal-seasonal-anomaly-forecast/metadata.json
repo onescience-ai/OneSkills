@@ -27,8 +27,8 @@
     "workflow-planning",
     "climate",
     "e29",
-    "edge:scenario:sc-dfcf58f9",
-    "edge:workflow:wf-climate-b23789c9"
+    "edge:scenario:climate-global-sst-subseasonal-seasonal-anomaly-forecast-scenario",
+    "edge:workflow:climate-ocean-state-forcing-data-boundary-precheck-ocean-state-forcing-workflow"
   ],
   "scenario_id": "E29",
   "source_papers": [

@@ -16,8 +16,8 @@
     "review",
     "ocean-science",
     "geophysical-forecasting",
-    "edge:scenario:sc-6771277f",
-    "edge:workflow:wf-climate-0064db67"
+    "edge:scenario:climate-bohai-yellow-sea-fourcastnet-intel-forecast-scenario",
+    "edge:workflow:climate-model-input-run-condition-precheck-executing-scheme-design-task-workflow-5"
   ],
   "harvested": true,
   "tier": "medium",

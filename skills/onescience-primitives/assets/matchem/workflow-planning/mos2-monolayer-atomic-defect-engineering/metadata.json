@@ -26,8 +26,8 @@
     "thermodynamic-stability",
     "two-dimensional-materials",
     "molybdenum-disulfide",
-    "edge:scenario:sc-7cf6650d",
-    "edge:workflow:wf-matchem-e0e8489b"
+    "edge:scenario:matchem-mos2-monolayer-atomic-defect-engineering-scenario",
+    "edge:workflow:matchem-defect-model-and-control-definition-structure-electronic-or-workflow"
   ],
   "scenario_id": "MoS2单层原子缺陷工程",
   "source_papers": [

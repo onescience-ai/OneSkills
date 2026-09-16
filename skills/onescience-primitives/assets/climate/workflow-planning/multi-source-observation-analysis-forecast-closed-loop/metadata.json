@@ -72,8 +72,8 @@
     "error-decomposition",
     "forecast-smoothness",
     "model-comparison",
-    "edge:scenario:sc-84809286",
-    "edge:workflow:wf-climate-a3c4e65c"
+    "edge:scenario:climate-multi-source-raw-observation-driven-global-analysis-forecast-scenario",
+    "edge:workflow:climate-observation-background-field-and-boundary-precheck-observation-workflow"
   ],
   "scenario_id": "E4",
   "source_papers": [

@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s026",
-    "edge:scenario:sc-a3a6727d",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-convective-scalar-mixed-turbulent-heat-flux-prediction-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S026",
   "source_papers": [

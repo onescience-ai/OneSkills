@@ -1,0 +1,24 @@
+{
+  "name": "climate-1-10d-deterministic-state-global-analysis-driven-1-10-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「1—10天确定性状态滚动」在场景「E1」中的实例化；资源引用 ['datasets/random-forest-model-performance-evaluation', 'models/ensemble-model-output-statistics-emos-post-processing', 'models/importance-sampling-strategy-for-extreme-events', 'models/random-forest-meteorological-normalization', 'models/random-forest-regression-for-vertical-wind-speed-extrapolation', 'models/weighted-long-short-term-memory-neural-network-extended-model-for-pm2-5-forecasting']。",
+  "tags": [
+    "edge:skeleton:climate-1-10d-deterministic-state-rolling-task",
+    "edge:scenario:climate-global-analysis-driven-1-10-day-multivariate-deterministic-scenario",
+    "edge:resource:datasets/random-forest-model-performance-evaluation",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:models/importance-sampling-strategy-for-extreme-events",
+    "edge:resource:models/random-forest-meteorological-normalization",
+    "edge:resource:models/random-forest-regression-for-vertical-wind-speed-extrapolation",
+    "edge:resource:models/weighted-long-short-term-memory-neural-network-extended-model-for-pm2-5-forecasting",
+    "slot:ROLLOUT_STRATEGY:状态推进策略",
+    "slot:OUTPUT_INTERVAL_HOURS:输出时间间隔",
+    "slot:SAVE_INTERMEDIATE_STATES:保存中间状态",
+    "slot:RANDOM_SEED:运行随机种子"
+  ]
+}

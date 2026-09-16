@@ -33,8 +33,8 @@
     "alkaline-electrolyte",
     "workflow",
     "workflow-planning",
-    "edge:scenario:sc-29387a61",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-ru-single-atom-nife-ldh-water-splitting-optimization-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "scenario_id": "Ru单原子NiFe层状双氢氧化物水分解优化",
   "source_papers": [

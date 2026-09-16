@@ -27,8 +27,8 @@
     "workflow-planning",
     "climate",
     "e39",
-    "edge:scenario:sc-8131edae",
-    "edge:workflow:wf-climate-c9a04ebd"
+    "edge:scenario:climate-satellite-weather-driven-surface-reflectance-and-vegetation-scenario",
+    "edge:workflow:climate-forecast-data-and-boundary-precheck-forecast-data-alignment-and-workflow-8"
   ],
   "scenario_id": "E39",
   "source_papers": [

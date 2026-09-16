@@ -1,0 +1,33 @@
+{
+  "name": "climate-source-obs-reference-stalign-sample-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：源观测和参考资料时空对齐与样本构造。被 6 个场景复用；含 6 个实例任务；资源引用 ['datasets/south-korea-air-quality-and-weather-monitoring-dataset', 'datasets/uk-radar-composite-dataset', 'models/multivariate-data-fusion-vector-wind-prediction', 'models/random-forest-regression-for-vertical-wind-speed-extrapolation']。",
+  "tags": [
+    "edge:resource:datasets/south-korea-air-quality-and-weather-monitoring-dataset",
+    "edge:resource:datasets/uk-radar-composite-dataset",
+    "edge:resource:models/multivariate-data-fusion-vector-wind-prediction",
+    "edge:resource:models/random-forest-regression-for-vertical-wind-speed-extrapolation",
+    "edge:prev:climate-source-obs-reference-data-boundary-task",
+    "edge:next:climate-method-configuration-input-output-contract-validation-task",
+    "slot:ALIGNMENT_CONFIG:时空对齐配置",
+    "slot:QUALITY_CONTROL:质量控制配置",
+    "slot:REFERENCE_DEFINITION:参考定义",
+    "slot:RADAR_QC:雷达质控配置",
+    "slot:VERTICAL_FEATURE_CONFIG:垂直特征配置",
+    "slot:TARGET_GRID:雷达目标网格",
+    "slot:COREGISTRATION_CONFIG:多模态配准",
+    "slot:GAUGE_QC:雨量计质控",
+    "slot:FUSION_GRID:融合目标网格",
+    "edge:instance:climate-source-obs-reference-stalign-ground-meteorological-inst",
+    "edge:instance:climate-source-obs-reference-stalign-multi-element-analysis-inst",
+    "edge:instance:climate-source-obs-reference-stalign-weather-radar-volume-scan-inst",
+    "edge:instance:climate-source-obs-reference-stalign-lidar-sounding-fusion-inst",
+    "edge:instance:climate-source-obs-reference-stalign-radar-satellite-rain-gauge-inst",
+    "edge:instance:climate-source-obs-reference-stalign-geostationary-meteorological-inst"
+  ]
+}

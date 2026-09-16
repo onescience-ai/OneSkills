@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s085",
-    "edge:scenario:sc-1442ceb7",
-    "edge:workflow:wf-cfd-94ab0c83"
+    "edge:scenario:cfd-deep-reinforcement-learning-wall-turbulence-friction-reduction-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-7"
   ],
   "scenario_id": "CFD_S085",
   "source_papers": [

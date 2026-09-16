@@ -24,8 +24,8 @@
     "workflow",
     "workflow-planning",
     "e57",
-    "edge:scenario:sc-f46bfa08",
-    "edge:workflow:wf-climate-4f9ee533"
+    "edge:scenario:climate-given-boundary-forcing-global-atmospheric-climate-trajectory-scenario",
+    "edge:workflow:climate-scenario-forcing-task-boundary-precheck-scenario-forcing-workflow"
   ],
   "scenario_id": "E57",
   "source_papers": [

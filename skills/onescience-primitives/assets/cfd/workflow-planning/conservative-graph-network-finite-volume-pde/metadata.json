@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s061",
-    "edge:scenario:sc-f3b2361b",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-conservative-graph-network-fv-pde-advancement-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S061",
   "source_papers": [

@@ -22,8 +22,8 @@
     "workflow-planning",
     "climate",
     "e89",
-    "edge:scenario:sc-14cadd0c",
-    "edge:workflow:wf-climate-088e31e6"
+    "edge:scenario:climate-complex-terrain-region-100m-wind-field-concurrent-spatial-scenario",
+    "edge:workflow:climate-multi-resolution-data-and-boundary-precheck-multi-resolution-workflow-4"
   ],
   "scenario_id": "E89",
   "source_papers": [

@@ -26,8 +26,8 @@
     "workflow-planning",
     "climate",
     "e66",
-    "edge:scenario:sc-db022c00",
-    "edge:workflow:wf-climate-801c278d"
+    "edge:scenario:climate-limited-met-variables-7day-ref-evapotranspiration-forecast-scenario",
+    "edge:workflow:climate-hydro-forcing-basin-data-boundary-precheck-hydro-forcing-basin-workflow-4"
   ],
   "scenario_id": "E66",
   "source_papers": [

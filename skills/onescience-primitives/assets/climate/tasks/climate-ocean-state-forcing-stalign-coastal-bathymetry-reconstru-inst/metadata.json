@@ -1,0 +1,23 @@
+{
+  "name": "climate-ocean-state-forcing-stalign-coastal-bathymetry-reconstru-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「海洋状态和强迫资料时空对齐与样本构造」在场景「E74」中的实例化；资源引用 ['datasets/CMEMS', 'datasets/glorys12-global-ocean-reanalysis-dataset', 'models/matern-gaussian-process-regression', 'tools/glo12v4-operational-ocean-forecasting-system', 'tools/multi-task-deep-learning-model-for-indian-ocean-dipole-prediction', 'tools/wenhai-global-ocean-forecast-system']。",
+  "tags": [
+    "edge:skeleton:climate-ocean-state-forcing-stalign-sample-task",
+    "edge:scenario:climate-coastal-bathymetry-reconstruction-morphological-evolution-scenario",
+    "edge:resource:datasets/CMEMS",
+    "edge:resource:datasets/glorys12-global-ocean-reanalysis-dataset",
+    "edge:resource:models/matern-gaussian-process-regression",
+    "edge:resource:tools/glo12v4-operational-ocean-forecasting-system",
+    "edge:resource:tools/multi-task-deep-learning-model-for-indian-ocean-dipole-prediction",
+    "edge:resource:tools/wenhai-global-ocean-forecast-system",
+    "slot:OCEAN_GRID:海洋网格",
+    "slot:COAST_MASK_POLICY:岸线掩膜规则",
+    "slot:PREPROCESS_CONFIG:预处理配置"
+  ]
+}

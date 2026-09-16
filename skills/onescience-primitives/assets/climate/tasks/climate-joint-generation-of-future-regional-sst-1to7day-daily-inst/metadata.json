@@ -1,0 +1,22 @@
+{
+  "name": "climate-joint-generation-of-future-regional-sst-1to7day-daily-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「联合生成未来1—7日海温或异常场」在场景「E27」中的实例化；资源引用 ['datasets/cesm2-large-ensemble', 'datasets/large-ensemble-testbed', 'models/crpsexp-loss-function-for-ensemble-forecasting', 'models/ensemble-empirical-mode-decomposition-eemd', 'models/ensemble-model-output-statistics-emos-post-processing']。",
+  "tags": [
+    "edge:skeleton:climate-joint-generation-of-future-sst-or-anomaly-fields-task",
+    "edge:scenario:climate-regional-sst-1to7day-daily-forecast-scenario",
+    "edge:resource:datasets/cesm2-large-ensemble",
+    "edge:resource:datasets/large-ensemble-testbed",
+    "edge:resource:models/crpsexp-loss-function-for-ensemble-forecasting",
+    "edge:resource:models/ensemble-empirical-mode-decomposition-eemd",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:OUTPUT_INTERVAL:输出间隔",
+    "slot:ENSEMBLE_SIZE:集合成员数"
+  ]
+}

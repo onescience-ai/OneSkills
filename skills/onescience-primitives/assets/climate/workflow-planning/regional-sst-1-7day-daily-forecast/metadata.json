@@ -35,8 +35,8 @@
     "workflow-planning",
     "climate",
     "e27",
-    "edge:scenario:sc-3e879c80",
-    "edge:workflow:wf-climate-972414a0"
+    "edge:scenario:climate-regional-sst-1to7day-daily-forecast-scenario",
+    "edge:workflow:climate-ocean-state-forcing-data-boundary-precheck-ocean-state-forcing-workflow-4"
   ],
   "scenario_id": "E27",
   "source_papers": [

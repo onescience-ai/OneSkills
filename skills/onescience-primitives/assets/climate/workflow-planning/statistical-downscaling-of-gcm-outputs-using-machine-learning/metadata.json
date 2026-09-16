@@ -17,8 +17,8 @@
     "random-forest",
     "support-vector-regression",
     "climate-projection",
-    "edge:scenario:sc-bbedbf34",
-    "edge:workflow:wf-climate-47e1e56a"
+    "edge:scenario:climate-cmip6-temperature-precipitation-regional-climate-downscaling-scenario",
+    "edge:workflow:climate-multi-resolution-data-and-boundary-precheck-multi-resolution-workflow"
   ],
   "harvested": true,
   "tier": "high",

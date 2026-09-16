@@ -27,8 +27,8 @@
     "workflow-planning",
     "climate",
     "e20",
-    "edge:scenario:sc-bae97f9f",
-    "edge:workflow:wf-climate-c58a9074"
+    "edge:scenario:climate-weather-sensitive-urban-electric-load-day-ahead-probabilistic-scenario",
+    "edge:workflow:climate-weather-energy-operational-data-task-boundary-precheck-weather-workflow-3"
   ],
   "scenario_id": "E20",
   "source_papers": [

@@ -27,8 +27,8 @@
     "workflow-planning",
     "b46",
     "rapid-net",
-    "edge:scenario:sc-def9b8b1",
-    "edge:workflow:wf-bio-9fe7f508"
+    "edge:scenario:bio-unknown-binding-site-protein-pocket-identification-scenario",
+    "edge:workflow:bio-receptor-ligand-input-precheck-pocket-model-feature-preparation-workflow"
   ],
   "scenario_id": "B46",
   "source_papers": [

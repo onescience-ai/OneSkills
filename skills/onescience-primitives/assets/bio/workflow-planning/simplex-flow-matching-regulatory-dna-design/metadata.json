@@ -22,8 +22,8 @@
     "workflow",
     "workflow-planning",
     "b70",
-    "edge:scenario:sc-a42a7aa2",
-    "edge:workflow:wf-bio-afe9f9ae"
+    "edge:scenario:bio-simplex-flow-matching-regulatory-dna-sequence-design-scenario",
+    "edge:workflow:bio-genome-input-coordinate-normalization-sequence-window-model-workflow"
   ],
   "scenario_id": "B70",
   "source_papers": [

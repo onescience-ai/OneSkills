@@ -33,8 +33,8 @@
     "workflow-planning",
     "climate",
     "e78",
-    "edge:scenario:sc-62dab04b",
-    "edge:workflow:wf-climate-bbd58b69"
+    "edge:scenario:climate-indian-ocean-dipole-multi-season-index-forecast-scenario",
+    "edge:workflow:climate-forecast-data-and-boundary-precheck-forecast-data-alignment-and-workflow-9"
   ],
   "scenario_id": "E78",
   "source_papers": [

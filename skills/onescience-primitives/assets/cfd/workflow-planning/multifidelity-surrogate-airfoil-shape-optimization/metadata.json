@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s031",
     "multi-fidelity-surrogate",
-    "edge:scenario:sc-feedf511",
-    "edge:workflow:wf-cfd-8b1af9da"
+    "edge:scenario:cfd-multi-fidelity-surrogate-assisted-airfoil-shape-optimization-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-3"
   ],
   "scenario_id": "CFD_S031",
   "source_papers": [

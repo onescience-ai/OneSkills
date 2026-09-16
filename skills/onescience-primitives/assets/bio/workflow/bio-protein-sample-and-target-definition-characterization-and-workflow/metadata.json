@@ -1,0 +1,26 @@
+{
+  "name": "bio-protein-sample-and-target-definition-characterization-and-workflow",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（bio）：4 步骨架 [蛋白样本与目标定义 > 表征与参考数据准备 > 功能或效应推理 > 评测与解释汇总]，被 10 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:bio-protein-sample-and-target-definition-task",
+    "edge:task:bio-characterization-and-reference-data-preparation-task",
+    "edge:task:bio-function-effect-reasoning-task",
+    "edge:task:bio-evaluation-and-interpretation-summary-task",
+    "edge:scenario:bio-few-shot-multimodal-protein-function-prediction-scenario",
+    "edge:scenario:bio-preference-optimization-driven-protein-function-annotation-scenario",
+    "edge:scenario:bio-multi-scale-representation-protein-fitness-prediction-scenario",
+    "edge:scenario:bio-residual-based-interpretable-enzyme-function-classification-scenario",
+    "edge:scenario:bio-deep-mutational-scanning-supervised-protein-variant-effect-scenario",
+    "edge:scenario:bio-equivariant-structural-network-mutation-stability-prediction-scenario",
+    "edge:scenario:bio-protein-mutation-effect-interpretation-and-sequence-engineering-scenario",
+    "edge:scenario:bio-evolutionary-spectrum-driven-protein-fitness-prediction-scenario",
+    "edge:scenario:bio-enzyme-classification-and-reaction-retrieval-benchmark-scenario",
+    "edge:scenario:bio-enzyme-sequence-and-substrate-joint-kinetic-constant-prediction-scenario"
+  ]
+}

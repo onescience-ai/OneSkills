@@ -1,0 +1,23 @@
+{
+  "name": "climate-physical-quantity-recovery-product-generation-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：物理量恢复与产品生成。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/modis-myd13a3-ndvi-product', 'datasets/smap-level-3-passive-soil-moisture-products', 'datasets/snodas-swe-data-product', 'models/ensemble-model-output-statistics-emos-post-processing']。",
+  "tags": [
+    "edge:resource:datasets/modis-myd13a3-ndvi-product",
+    "edge:resource:datasets/smap-level-3-passive-soil-moisture-products",
+    "edge:resource:datasets/snodas-swe-data-product",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:prev:climate-1-10d-deterministic-state-rolling-task",
+    "edge:next:climate-uniform-protocol-test-delivery-decision-task",
+    "slot:OUTPUT_GRID:交付网格",
+    "slot:OUTPUT_FORMAT:输出格式",
+    "slot:DERIVED_PRODUCTS:派生产品",
+    "slot:OUTPUT_DIRECTORY:结果保存路径",
+    "edge:instance:climate-physical-quantity-recovery-global-analysis-driven-1-10-inst"
+  ]
+}

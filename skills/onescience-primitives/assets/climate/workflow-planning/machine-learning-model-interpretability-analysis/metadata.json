@@ -11,8 +11,8 @@
     "machine-learning-model-interpretability-analysis",
     "datapipe",
     "fallback",
-    "edge:scenario:sc-2a31eae0",
-    "edge:workflow:wf-climate-73803e44"
+    "edge:scenario:climate-weather-radar-volume-scan-driven-realtime-quantitative-scenario",
+    "edge:workflow:climate-source-obs-reference-data-boundary-source-obs-reference-stalign-workflow-3"
   ],
   "harvested": true,
   "tier": "medium",

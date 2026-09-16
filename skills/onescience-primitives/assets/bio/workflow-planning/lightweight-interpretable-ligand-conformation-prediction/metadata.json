@@ -22,8 +22,8 @@
     "workflow",
     "workflow-planning",
     "b48",
-    "edge:scenario:sc-f3f3db2d",
-    "edge:workflow:wf-bio-9fe7f508"
+    "edge:scenario:bio-lightweight-interpretable-protein-ligand-conformation-prediction-scenario",
+    "edge:workflow:bio-receptor-ligand-input-precheck-pocket-model-feature-preparation-workflow"
   ],
   "scenario_id": "B48",
   "source_papers": [

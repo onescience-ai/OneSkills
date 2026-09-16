@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "e62",
-    "edge:scenario:sc-9e48fcca",
-    "edge:workflow:wf-climate-3f1d27b1"
+    "edge:scenario:climate-weather-and-population-change-driven-urban-monthly-daily-water-scenario",
+    "edge:workflow:climate-weather-exposure-target-observation-task-boundary-precheck-workflow-2"
   ],
   "scenario_id": "E62",
   "source_papers": [

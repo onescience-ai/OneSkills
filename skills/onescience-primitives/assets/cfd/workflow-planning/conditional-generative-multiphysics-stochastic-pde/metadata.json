@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s095",
     "neural-sde",
-    "edge:scenario:sc-d9464c5e",
-    "edge:workflow:wf-cfd-5b6bc953"
+    "edge:scenario:cfd-conditional-generative-model-multiphysics-stochastic-pde-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-8"
   ],
   "scenario_id": "CFD_S095",
   "source_papers": [

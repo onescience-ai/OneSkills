@@ -1,0 +1,19 @@
+{
+  "name": "matchem-defect-functionality-and-stability-ranking-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：缺陷功能与稳定性排序。被 4 个场景复用；含 4 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:matchem-structure-electronic-or-functional-response-acquisition-task",
+    "edge:next:matchem-verification-output-task",
+    "slot:ENVIRONMENT:环境与表征条件",
+    "edge:instance:matchem-defect-functionality-and-mos2-monolayer-atomic-inst",
+    "edge:instance:matchem-defect-functionality-and-hbn-single-photon-emission-inst",
+    "edge:instance:matchem-defect-functionality-and-phosphorene-monolayer-inst",
+    "edge:instance:matchem-defect-functionality-and-lithium-reduction-room-inst"
+  ]
+}

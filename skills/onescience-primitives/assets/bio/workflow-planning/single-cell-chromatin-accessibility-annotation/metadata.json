@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b76",
-    "edge:scenario:sc-e1cdfde0",
-    "edge:workflow:wf-bio-cdb48c05"
+    "edge:scenario:bio-single-cell-chromatin-accessibility-foundation-characterization-scenario",
+    "edge:workflow:bio-single-cell-data-task-definition-preprocessing-model-workflow"
   ],
   "scenario_id": "B76",
   "source_papers": [

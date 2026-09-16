@@ -1,0 +1,18 @@
+{
+  "name": "climate-hydro-forcing-basin-stalign-limited-met-variables-7day-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「水文强迫和流域资料时空对齐与样本构造」在场景「E66」中的实例化；资源引用 ['models/dynamic-pre-training-for-time-series-dynpt']。",
+  "tags": [
+    "edge:skeleton:climate-hydro-forcing-basin-stalign-sample-task",
+    "edge:scenario:climate-limited-met-variables-7day-ref-evapotranspiration-forecast-scenario",
+    "edge:resource:models/dynamic-pre-training-for-time-series-dynpt",
+    "slot:TIME_ALIGNMENT_CONFIG:时间对齐配置",
+    "slot:REFERENCE_ET_DEFINITION:参考蒸散发定义",
+    "slot:MISSING_VALUE_POLICY:缺测处理规则"
+  ]
+}

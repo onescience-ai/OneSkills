@@ -1,0 +1,19 @@
+{
+  "name": "climate-near-observation-task-boundary-precheck-near-observation-space-workflow-3",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [临近观测及任务边界预检 > 临近观测时空对齐与样本构造 > 方法配置与输入输出契约验证 > 生成多个未来时效概率场 > 提取连续冰雹风险对象 > 检验CSI、FSS和概率可靠度]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-near-observation-task-boundary-precheck-task",
+    "edge:task:climate-near-observation-space-time-alignment-sample-construction-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-multi-leadtime-probability-field-task",
+    "edge:task:climate-extracting-continuous-hail-risk-objects-task",
+    "edge:task:climate-csi-fss-probability-reliability-task",
+    "edge:scenario:climate-weather-radar-hail-probability-nowcast-0-2h-scenario"
+  ]
+}

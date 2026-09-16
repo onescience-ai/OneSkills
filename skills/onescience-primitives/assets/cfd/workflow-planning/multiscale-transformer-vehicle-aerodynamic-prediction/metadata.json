@@ -29,8 +29,8 @@
     "cfd_s012",
     "transformer-surrogate",
     "triplane-network",
-    "edge:scenario:sc-536df40b",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-multi-scale-transformer-vehicle-high-resolution-aerodynamic-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S012",
   "source_papers": [

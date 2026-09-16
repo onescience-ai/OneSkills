@@ -87,8 +87,8 @@
     "sequence-prediction",
     "weather-prediction",
     "encoder-predictor",
-    "edge:scenario:sc-16d509a7",
-    "edge:workflow:wf-climate-850e80fd"
+    "edge:scenario:climate-radar-driven-0-3-hour-extreme-precipitation-ensemble-nowcasting-scenario",
+    "edge:workflow:climate-forecast-range-and-radar-sequence-precheck-radar-quality-workflow"
   ],
   "scenario_id": "E2",
   "source_papers": [

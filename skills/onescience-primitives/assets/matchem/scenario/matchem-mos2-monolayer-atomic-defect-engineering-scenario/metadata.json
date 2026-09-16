@@ -1,0 +1,20 @@
+{
+  "name": "matchem-mos2-monolayer-atomic-defect-engineering-scenario",
+  "type": "scenario",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：MoS2单层原子缺陷工程（matchem）。工作流 4 步，经 edge:workflow 指向 matchem-defect-model-and-control-definition-structure-electronic-or-workflow，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "edge:workflow:matchem-defect-model-and-control-definition-structure-electronic-or-workflow",
+    "edge:task:matchem-defect-model-and-control-definition-task",
+    "edge:task:matchem-structure-electronic-or-functional-response-acquisition-task",
+    "edge:task:matchem-defect-functionality-and-stability-ranking-task",
+    "edge:task:matchem-verification-output-task",
+    "slot:HOST_STRUCTURE:母体结构",
+    "slot:DEFECT_SET:缺陷候选",
+    "slot:ENVIRONMENT:环境与表征条件"
+  ]
+}

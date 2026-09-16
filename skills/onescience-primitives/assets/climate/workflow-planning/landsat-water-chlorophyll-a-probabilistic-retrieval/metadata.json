@@ -43,8 +43,8 @@
     "workflow-planning",
     "climate",
     "e73",
-    "edge:scenario:sc-5e3371ff",
-    "edge:workflow:wf-climate-4986c5ee"
+    "edge:scenario:climate-landsat-water-chlorophyll-a-probabilistic-retrieval-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-3"
   ],
   "scenario_id": "E73",
   "source_papers": [

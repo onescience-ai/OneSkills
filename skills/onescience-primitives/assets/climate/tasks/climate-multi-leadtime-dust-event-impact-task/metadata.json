@@ -1,0 +1,20 @@
+{
+  "name": "climate-multi-leadtime-dust-event-impact-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：生成多时效沙尘发生、强度和影响区。被 1 个场景复用；含 1 个实例任务；资源引用 ['models/dynamic-pre-training-for-time-series-dynpt', 'tools/ecmwf-hres']。",
+  "tags": [
+    "edge:resource:models/dynamic-pre-training-for-time-series-dynpt",
+    "edge:resource:tools/ecmwf-hres",
+    "edge:prev:climate-method-configuration-input-output-contract-validation-task",
+    "edge:next:climate-forming-graded-impact-zones-task",
+    "slot:RUN_CONFIG:沙尘预警配置",
+    "slot:LEAD_TIMES:目标提前期",
+    "slot:WARNING_THRESHOLDS:沙尘预警阈值",
+    "edge:instance:climate-multi-leadtime-dust-event-multi-source-observation-inst"
+  ]
+}

@@ -27,8 +27,8 @@
     "workflow-planning",
     "b95",
     "patholm",
-    "edge:scenario:sc-9a52edf0",
-    "edge:workflow:wf-bio-8c56a4bc"
+    "edge:scenario:bio-dna-sequence-driven-microbial-pathogenicity-identification-scenario",
+    "edge:workflow:bio-metagenome-input-task-definition-sequence-filtering-model-workflow"
   ],
   "scenario_id": "B95",
   "source_papers": [

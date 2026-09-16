@@ -1,0 +1,20 @@
+{
+  "name": "matchem-defect-model-and-control-definition-structure-electronic-or-workflow",
+  "type": "workflow",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（matchem）：4 步骨架 [缺陷模型与对照定义 > 结构电子或功能响应获取 > 缺陷功能与稳定性排序 > 验证与输出]，被 4 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:matchem-defect-model-and-control-definition-task",
+    "edge:task:matchem-structure-electronic-or-functional-response-acquisition-task",
+    "edge:task:matchem-defect-functionality-and-stability-ranking-task",
+    "edge:task:matchem-verification-output-task",
+    "edge:scenario:matchem-mos2-monolayer-atomic-defect-engineering-scenario",
+    "edge:scenario:matchem-hbn-single-photon-emission-atomic-defect-design-scenario",
+    "edge:scenario:matchem-phosphorene-monolayer-defect-engineering-air-stability-scenario",
+    "edge:scenario:matchem-lithium-reduction-room-temperature-oxide-defect-modulation-scenario"
+  ]
+}

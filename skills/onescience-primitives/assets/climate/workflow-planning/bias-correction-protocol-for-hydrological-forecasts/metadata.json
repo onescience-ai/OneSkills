@@ -16,8 +16,8 @@
     "streamflow",
     "kge",
     "nse",
-    "edge:scenario:sc-2b699093",
-    "edge:workflow:wf-climate-40df56bf"
+    "edge:scenario:climate-weather-forecast-driven-hourly-10day-river-flow-peak-scenario",
+    "edge:workflow:climate-hydro-forcing-basin-data-boundary-precheck-hydro-forcing-basin-workflow-8"
   ],
   "harvested": true,
   "tier": "high",

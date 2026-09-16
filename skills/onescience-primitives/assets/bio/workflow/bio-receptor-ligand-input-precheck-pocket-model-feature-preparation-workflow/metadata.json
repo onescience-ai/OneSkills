@@ -1,0 +1,26 @@
+{
+  "name": "bio-receptor-ligand-input-precheck-pocket-model-feature-preparation-workflow",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（bio）：4 步骨架 [受体配体输入预检 > 口袋与模型特征准备 > 构象采样与打分 > 物理几何质控与排序]，被 10 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:bio-receptor-ligand-input-precheck-task",
+    "edge:task:bio-pocket-model-feature-preparation-task",
+    "edge:task:bio-conformation-sampling-scoring-task",
+    "edge:task:bio-physical-geometry-qc-sorting-task",
+    "edge:scenario:bio-global-blind-docking-conformation-confidence-ranking-scenario",
+    "edge:scenario:bio-pocket-prediction-enhanced-protein-ligand-rapid-docking-scenario",
+    "edge:scenario:bio-multi-pocket-conditioned-physically-valid-docking-scenario",
+    "edge:scenario:bio-docking-guided-large-scale-virtual-screening-scenario",
+    "edge:scenario:bio-unknown-binding-site-protein-pocket-identification-scenario",
+    "edge:scenario:bio-geodesic-path-guided-flexible-molecular-docking-scenario",
+    "edge:scenario:bio-physical-rule-constrained-docking-pose-reranking-scenario",
+    "edge:scenario:bio-protein-ligand-joint-generation-docking-and-affinity-prediction-scenario",
+    "edge:scenario:bio-lightweight-interpretable-protein-ligand-conformation-prediction-scenario",
+    "edge:scenario:bio-high-precision-protein-ligand-docking-geometry-correction-scenario"
+  ]
+}

@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b11",
-    "edge:scenario:sc-18c8a2d3",
-    "edge:workflow:wf-bio-42419238"
+    "edge:scenario:bio-functional-site-constrained-protein-backbone-generation-scenario",
+    "edge:workflow:bio-design-objective-and-constraint-definition-model-condition-workflow"
   ],
   "scenario_id": "B11",
   "source_papers": [

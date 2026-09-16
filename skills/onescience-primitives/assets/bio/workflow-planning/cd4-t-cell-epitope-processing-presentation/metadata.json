@@ -36,8 +36,8 @@
     "workflow",
     "workflow-planning",
     "b26",
-    "edge:scenario:sc-9bd29e90",
-    "edge:workflow:wf-bio-c6a05f8d"
+    "edge:scenario:bio-cd4-t-cell-epitope-processing-presentation-prediction-scenario",
+    "edge:workflow:bio-immune-target-task-definition-numbering-and-interface-feature-workflow"
   ],
   "scenario_id": "B26",
   "source_papers": [

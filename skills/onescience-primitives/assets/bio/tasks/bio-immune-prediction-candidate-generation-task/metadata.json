@@ -1,0 +1,28 @@
+{
+  "name": "bio-immune-prediction-candidate-generation-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：免疫预测或候选生成。被 10 个场景复用；含 10 个实例任务；资源引用 ['models/proteinmpnn']。",
+  "tags": [
+    "edge:resource:models/proteinmpnn",
+    "edge:prev:bio-numbering-and-interface-feature-preparation-task",
+    "edge:next:bio-specificity-developability-qc-task",
+    "slot:NUM_CANDIDATES:候选数量",
+    "slot:TEMPERATURE:采样温度",
+    "slot:SEED:随机种子",
+    "edge:instance:bio-immune-prediction-candidate-cd4-t-cell-epitope-processin-inst",
+    "edge:instance:bio-immune-prediction-candidate-cdr-loop-antibody-scaffold-inst",
+    "edge:instance:bio-immune-prediction-candidate-affinity-optimized-structure-inst",
+    "edge:instance:bio-immune-prediction-candidate-interpretable-tcr-epitope-inst",
+    "edge:instance:bio-immune-prediction-candidate-reinforcement-learning-inst",
+    "edge:instance:bio-immune-prediction-candidate-antibody-antigen-binding-inst",
+    "edge:instance:bio-immune-prediction-candidate-antigen-conditioned-full-inst",
+    "edge:instance:bio-immune-prediction-candidate-antigen-specific-multimodal-inst",
+    "edge:instance:bio-immune-prediction-candidate-sars-cov-2-antibody-binding-inst",
+    "edge:instance:bio-immune-prediction-candidate-structure-retrieval-augmente-inst"
+  ]
+}

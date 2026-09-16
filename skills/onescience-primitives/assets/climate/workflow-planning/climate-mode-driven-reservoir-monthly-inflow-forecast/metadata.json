@@ -35,8 +35,8 @@
     "hyperparameter-optimization",
     "hydrological-modeling",
     "climate-indices",
-    "edge:scenario:sc-edddeefe",
-    "edge:workflow:wf-climate-b07f16db"
+    "edge:scenario:climate-climate-modality-driven-reservoir-monthly-inflow-forecast-scenario",
+    "edge:workflow:climate-hydro-forcing-basin-data-boundary-precheck-hydro-forcing-basin-workflow-7"
   ],
   "scenario_id": "E65",
   "source_papers": [

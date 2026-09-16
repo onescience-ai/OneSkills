@@ -29,8 +29,8 @@
     "cfd_s009",
     "non-cartesian-cnn",
     "surface-neural-simulator",
-    "edge:scenario:sc-fd141be0",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-non-cartesian-lattice-and-curved-surface-network-flow-simulation-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S009",
   "source_papers": [

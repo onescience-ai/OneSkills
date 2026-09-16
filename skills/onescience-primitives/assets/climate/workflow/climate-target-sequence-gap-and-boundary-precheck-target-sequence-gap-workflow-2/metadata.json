@@ -1,0 +1,19 @@
+{
+  "name": "climate-target-sequence-gap-and-boundary-precheck-target-sequence-gap-workflow-2",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [目标序列及缺口及任务边界预检 > 目标序列及缺口时空对齐与样本构造 > 方法配置与输入输出契约验证 > 重建时间缺口和历史序列 > 结果恢复与场景产品生成 > 交叉验证空间和年代泛化]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-target-sequence-gap-and-boundary-precheck-task",
+    "edge:task:climate-target-sequence-gap-alignment-and-sample-construction-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-reconstruct-time-gap-historical-sequence-task",
+    "edge:task:climate-result-recovery-and-scenario-product-generation-task",
+    "edge:task:climate-cross-validation-spatial-temporal-generalization-task",
+    "edge:scenario:climate-grace-gap-terrestrial-water-storage-anomaly-reconstruction-scenario"
+  ]
+}

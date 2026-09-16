@@ -1,0 +1,19 @@
+{
+  "name": "bio-rna-input-task-definition-large-kernel-rna-secondary-inst",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「RNA输入与任务定义」在场景「B86」中的实例化；资源引用 ['models/alphafold', 'tools/simplefold-protein-structure-prediction-model-and-pipeline']。",
+  "tags": [
+    "edge:skeleton:bio-rna-input-task-definition-task",
+    "edge:scenario:bio-large-kernel-rna-secondary-structure-prediction-scenario",
+    "edge:resource:models/alphafold",
+    "edge:resource:tools/simplefold-protein-structure-prediction-model-and-pipeline",
+    "slot:RNA_INPUT:RNA输入",
+    "slot:MODEL_NAME:RNA模型",
+    "slot:TASK_MODE:RNA任务模式"
+  ]
+}

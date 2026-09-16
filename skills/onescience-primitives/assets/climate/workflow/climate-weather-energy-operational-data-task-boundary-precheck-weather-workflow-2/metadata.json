@@ -1,0 +1,19 @@
+{
+  "name": "climate-weather-energy-operational-data-task-boundary-precheck-weather-workflow-2",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [天气能源运行资料及任务边界预检 > 天气能源运行资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 联合生成多时效功率 > 结果恢复与场景产品生成 > 按站点与爬坡事件验证]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-weather-energy-operational-data-task-boundary-precheck-task",
+    "edge:task:climate-weather-energy-operational-data-space-time-alignment-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-joint-generation-of-multi-horizon-power-task",
+    "edge:task:climate-result-recovery-and-scenario-product-generation-task",
+    "edge:task:climate-validation-by-station-rainfall-event-task",
+    "edge:scenario:climate-multi-station-solar-farm-0to48h-power-joint-forecast-scenario"
+  ]
+}

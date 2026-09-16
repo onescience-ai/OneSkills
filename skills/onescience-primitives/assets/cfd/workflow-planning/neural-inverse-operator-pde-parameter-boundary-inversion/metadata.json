@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s033",
     "neural-inverse-operator",
-    "edge:scenario:sc-e445d443",
-    "edge:workflow:wf-cfd-8b1af9da"
+    "edge:scenario:cfd-neural-inverse-operator-pde-parameter-boundary-inversion-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-3"
   ],
   "scenario_id": "CFD_S033",
   "source_papers": [

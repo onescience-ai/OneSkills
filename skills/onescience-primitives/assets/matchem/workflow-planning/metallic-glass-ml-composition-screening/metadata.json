@@ -20,8 +20,8 @@
     "metallic",
     "null",
     "through",
-    "edge:scenario:sc-28b3d891",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-metallic-glass-machine-learning-composition-screening-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "金属玻璃机器学习成分筛选",
   "source_papers": [

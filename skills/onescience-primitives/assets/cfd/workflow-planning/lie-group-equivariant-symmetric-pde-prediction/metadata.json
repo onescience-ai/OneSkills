@@ -29,8 +29,8 @@
     "cfd_s063",
     "lie-equivariant-neural-network",
     "pdo-convolution",
-    "edge:scenario:sc-5691ed69",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-lie-group-equivariant-network-symmetric-pde-prediction-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S063",
   "source_papers": [

@@ -17,8 +17,8 @@
     "lammps",
     "molecular-dynamics",
     "ridge-regression",
-    "edge:scenario:sc-4dcd5267",
-    "edge:workflow:wf-matchem-ec013e02"
+    "edge:scenario:matchem-mof-quantum-ml-potential-temperature-active-learning-scenario",
+    "edge:workflow:matchem-reference-data-audit-coverage-definition-root-cause-potential-workflow"
   ],
   "harvested": true,
   "tier": "medium",

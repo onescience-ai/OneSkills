@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s093",
     "normalizing-flow",
-    "edge:scenario:sc-12288948",
-    "edge:workflow:wf-cfd-5b6bc953"
+    "edge:scenario:cfd-gan-normalizing-flow-turbulence-reduced-order-generation-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-8"
   ],
   "scenario_id": "CFD_S093",
   "source_papers": [

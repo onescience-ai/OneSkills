@@ -24,8 +24,8 @@
     "workflow",
     "workflow-planning",
     "b01",
-    "edge:scenario:sc-0e25362c",
-    "edge:workflow:wf-bio-5aaefe7e"
+    "edge:scenario:bio-protein-monomer-structure-prediction-and-confidence-assessment-scenario",
+    "edge:workflow:bio-input-and-task-definition-feature-model-preparation-structure-workflow"
   ],
   "scenario_id": "B01",
   "source_papers": [

@@ -1,0 +1,20 @@
+{
+  "name": "climate-hazard-factor-event-label-climate-fuel-anomaly-driven-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「致灾因子和事件标签时空对齐与样本构造」在场景「E70」中的实例化；资源引用 ['models/dust-event-forecasting-with-multi-task-deep-learning', 'models/swe-reconstruction-using-energy-balance-model', 'tools/parbal-energy-balance-model']。",
+  "tags": [
+    "edge:skeleton:climate-hazard-factor-event-label-alignment-and-sample-construction-task",
+    "edge:scenario:climate-climate-fuel-anomaly-driven-seasonal-wildfire-probability-scenario",
+    "edge:resource:models/dust-event-forecasting-with-multi-task-deep-learning",
+    "edge:resource:models/swe-reconstruction-using-energy-balance-model",
+    "edge:resource:tools/parbal-energy-balance-model",
+    "slot:EVENT_DEFINITION:事件定义",
+    "slot:ALIGNMENT_CONFIG:时空对齐配置",
+    "slot:IMBALANCE_POLICY:样本不平衡规则"
+  ]
+}

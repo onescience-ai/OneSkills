@@ -1,0 +1,31 @@
+{
+  "name": "climate-hazard-factor-event-label-and-terrain-and-underlying-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「致灾因子和事件标签及任务边界预检」在场景「E76」中的实例化；资源引用 ['datasets/data-infrastructure-observations-and-labels', 'datasets/gedi-footprint-canopy-height-data', 'datasets/gleam-v3-8a-global-land-evaporation-dataset', 'datasets/international-soil-moisture-network-ismn', 'datasets/ostia-sst-data', 'datasets/snodas-swe-data-product', 'models/multivariate-data-fusion-vector-wind-prediction', 'models/narx-network-configurations-for-inundation-depth-forecasting', 'models/neural-network-based-nwp-model-calibration', 'models/neural-network-soil-moisture-downscaling', 'models/weighted-long-short-term-memory-neural-network-extended-model-for-pm2-5-forecasting', 'tools/matlab-neural-network-toolbox']。",
+  "tags": [
+    "edge:skeleton:climate-hazard-factor-event-label-and-boundary-precheck-task",
+    "edge:scenario:climate-terrain-and-underlying-surface-driven-static-flood-scenario",
+    "edge:resource:datasets/data-infrastructure-observations-and-labels",
+    "edge:resource:datasets/gedi-footprint-canopy-height-data",
+    "edge:resource:datasets/gleam-v3-8a-global-land-evaporation-dataset",
+    "edge:resource:datasets/international-soil-moisture-network-ismn",
+    "edge:resource:datasets/ostia-sst-data",
+    "edge:resource:datasets/snodas-swe-data-product",
+    "edge:resource:models/multivariate-data-fusion-vector-wind-prediction",
+    "edge:resource:models/narx-network-configurations-for-inundation-depth-forecasting",
+    "edge:resource:models/neural-network-based-nwp-model-calibration",
+    "edge:resource:models/neural-network-soil-moisture-downscaling",
+    "edge:resource:models/weighted-long-short-term-memory-neural-network-extended-model-for-pm2-5-forecasting",
+    "edge:resource:tools/matlab-neural-network-toolbox",
+    "slot:DEM_DATA:数字高程资料",
+    "slot:RIVER_NETWORK:河网资料",
+    "slot:LAND_SURFACE_DATA:下垫面资料",
+    "slot:HISTORICAL_FLOOD_POINTS:历史洪水样点",
+    "slot:MAPPING_EXTENT:制图范围"
+  ]
+}

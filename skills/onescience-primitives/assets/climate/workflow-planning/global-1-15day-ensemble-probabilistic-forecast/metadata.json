@@ -38,8 +38,8 @@
     "workflow-planning",
     "climate",
     "e3",
-    "edge:scenario:sc-04cf543b",
-    "edge:workflow:wf-climate-70695201"
+    "edge:scenario:climate-global-1-15-day-ensemble-probabilistic-weather-forecast-scenario",
+    "edge:workflow:climate-forecast-data-and-boundary-precheck-forecast-data-alignment-and-workflow-4"
   ],
   "scenario_id": "E3",
   "source_papers": [

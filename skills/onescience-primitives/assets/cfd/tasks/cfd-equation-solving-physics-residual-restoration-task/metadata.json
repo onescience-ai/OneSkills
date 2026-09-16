@@ -1,0 +1,29 @@
+{
+  "name": "cfd-equation-solving-physics-residual-restoration-task",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（cfd）：方程求解与物理残差恢复。被 12 个场景复用；含 12 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:cfd-model-configuration-training-task",
+    "edge:next:cfd-task-acceptance-domain-determination-task",
+    "slot:CHECKPOINT:模型权重",
+    "slot:DEVICE:计算设备",
+    "slot:BATCH_SIZE:推理批大小",
+    "edge:instance:cfd-equation-solving-physics-pinn-incompressible-navier-inst",
+    "edge:instance:cfd-equation-solving-physics-pinn-turbulence-rans-mean-inst",
+    "edge:instance:cfd-equation-solving-physics-physics-informed-network-inst",
+    "edge:instance:cfd-equation-solving-physics-bayesian-pinn-noisy-data-inst",
+    "edge:instance:cfd-equation-solving-physics-hard-constrained-pinn-inst",
+    "edge:instance:cfd-equation-solving-physics-domain-decomposition-paralle-inst",
+    "edge:instance:cfd-equation-solving-physics-spectral-enhanced-pinn-high-inst",
+    "edge:instance:cfd-equation-solving-physics-natural-gradient-and-loss-inst",
+    "edge:instance:cfd-equation-solving-physics-deep-ritz-weak-form-neural-inst",
+    "edge:instance:cfd-equation-solving-physics-symbolic-and-sparse-physics-inst",
+    "edge:instance:cfd-equation-solving-physics-physical-network-stochastic-inst",
+    "edge:instance:cfd-equation-solving-physics-automation-and-meta-learning-inst"
+  ]
+}

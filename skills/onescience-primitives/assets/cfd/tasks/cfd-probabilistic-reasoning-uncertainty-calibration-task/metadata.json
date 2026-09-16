@@ -1,0 +1,20 @@
+{
+  "name": "cfd-probabilistic-reasoning-uncertainty-calibration-task",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（cfd）：概率推理与不确定性校准。被 3 个场景复用；含 3 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:cfd-model-configuration-training-task",
+    "edge:next:cfd-task-acceptance-domain-determination-task",
+    "slot:CHECKPOINT:模型权重",
+    "slot:DEVICE:计算设备",
+    "slot:BATCH_SIZE:推理批大小",
+    "edge:instance:cfd-probabilistic-reasoning-bayesian-multi-fidelity-inst",
+    "edge:instance:cfd-probabilistic-reasoning-physics-informed-probabilist-inst",
+    "edge:instance:cfd-probabilistic-reasoning-out-of-distribution-flow-inst"
+  ]
+}

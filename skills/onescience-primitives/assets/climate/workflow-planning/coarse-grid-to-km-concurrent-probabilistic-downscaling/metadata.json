@@ -37,8 +37,8 @@
     "workflow-planning",
     "climate",
     "e55",
-    "edge:scenario:sc-b1822141",
-    "edge:workflow:wf-climate-49e4d528"
+    "edge:scenario:climate-coarse-grid-atmospheric-field-to-kilometer-scale-concurrent-scenario",
+    "edge:workflow:climate-multi-resolution-data-and-boundary-precheck-multi-resolution-workflow-7"
   ],
   "scenario_id": "E55",
   "source_papers": [

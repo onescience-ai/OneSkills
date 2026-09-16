@@ -16,8 +16,8 @@
     "double-layer-capacitance",
     "three-electrode-system",
     "alkaline-electrolyte",
-    "edge:scenario:sc-29387a61",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-ru-single-atom-nife-ldh-water-splitting-optimization-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "harvested": true,
   "tier": "medium",

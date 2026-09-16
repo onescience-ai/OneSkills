@@ -32,8 +32,8 @@
     "wheat-yield",
     "field-trials",
     "finlay-wilkinson-regression",
-    "edge:scenario:sc-c76b434f",
-    "edge:workflow:wf-climate-7a37168c"
+    "edge:scenario:climate-cultivar-location-uncertain-weather-yield-distribution-and-scenario",
+    "edge:workflow:climate-weather-exposure-target-observation-task-boundary-precheck-workflow"
   ],
   "scenario_id": "E98",
   "source_papers": [

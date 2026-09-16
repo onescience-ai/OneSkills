@@ -23,8 +23,8 @@
     "workflow",
     "workflow-planning",
     "分子金属界面co2到乙醇催化设计",
-    "edge:scenario:sc-08057b19",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-molecular-metal-interface-co2-to-ethanol-catalysis-design-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "scenario_id": "分子金属界面CO2到乙醇催化设计",
   "source_papers": [

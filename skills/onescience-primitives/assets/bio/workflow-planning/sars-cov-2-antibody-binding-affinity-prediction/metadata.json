@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b29",
-    "edge:scenario:sc-0edc4f96",
-    "edge:workflow:wf-bio-c6a05f8d"
+    "edge:scenario:bio-sars-cov-2-antibody-binding-affinity-prediction-scenario",
+    "edge:workflow:bio-immune-target-task-definition-numbering-and-interface-feature-workflow"
   ],
   "scenario_id": "B29",
   "source_papers": [

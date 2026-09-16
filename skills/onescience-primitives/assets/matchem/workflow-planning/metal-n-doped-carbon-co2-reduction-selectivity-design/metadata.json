@@ -19,8 +19,8 @@
     "reduction",
     "selectivity",
     "understanding",
-    "edge:scenario:sc-f53d0708",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-metal-nitrogen-doped-carbon-co2-electroreduction-selectivity-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "scenario_id": "金属氮掺杂碳CO2电还原选择性设计",
   "source_papers": [

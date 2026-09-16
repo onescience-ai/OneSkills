@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b65",
-    "edge:scenario:sc-7f15dbcc",
-    "edge:workflow:wf-bio-afe9f9ae"
+    "edge:scenario:bio-dna-language-model-biological-benchmark-evaluation-scenario",
+    "edge:workflow:bio-genome-input-coordinate-normalization-sequence-window-model-workflow"
   ],
   "scenario_id": "B65",
   "source_papers": [

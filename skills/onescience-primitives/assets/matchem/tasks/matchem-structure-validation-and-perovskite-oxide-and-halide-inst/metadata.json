@@ -1,0 +1,14 @@
+{
+  "name": "matchem-structure-validation-and-perovskite-oxide-and-halide-inst",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「结构验证与输出」在场景「钙钛矿氧化物与卤化物容忍因子稳定性筛选」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:matchem-structure-validation-and-output-task",
+    "edge:scenario:matchem-perovskite-oxide-and-halide-tolerance-factor-stability-screening-scenario"
+  ]
+}

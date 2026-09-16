@@ -1,0 +1,31 @@
+{
+  "name": "bio-candidate-generation-sequence-sampling-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：候选生成与序列采样。被 10 个场景复用；含 10 个实例任务；资源引用 ['models/proteinmpnn', 'models/protoken', 'models/rdesign-tertiary-structure-based-rna-design', 'models/rfdiffusion']。",
+  "tags": [
+    "edge:resource:models/proteinmpnn",
+    "edge:resource:models/protoken",
+    "edge:resource:models/rdesign-tertiary-structure-based-rna-design",
+    "edge:resource:models/rfdiffusion",
+    "edge:prev:bio-model-condition-feature-preparation-task",
+    "edge:next:bio-reverse-folding-design-screening-task",
+    "slot:NUM_DESIGNS:设计数量",
+    "slot:TEMPERATURE:采样温度",
+    "slot:SEED:随机种子",
+    "edge:instance:bio-candidate-generation-sequence-protoken-latent-protein-inst",
+    "edge:instance:bio-candidate-generation-sequence-all-atom-protein-structure-inst",
+    "edge:instance:bio-candidate-generation-sequence-functional-site-constrained-inst",
+    "edge:instance:bio-candidate-generation-sequence-reaction-condition-driven-inst",
+    "edge:instance:bio-candidate-generation-sequence-multi-functional-motif-inst",
+    "edge:instance:bio-candidate-generation-sequence-multi-conformation-state-inst",
+    "edge:instance:bio-candidate-generation-sequence-substrate-pocket-constrained-inst",
+    "edge:instance:bio-candidate-generation-sequence-given-protein-backbone-inst",
+    "edge:instance:bio-candidate-generation-sequence-transmembrane-protein-inst",
+    "edge:instance:bio-candidate-generation-sequence-target-specific-all-atom-inst"
+  ]
+}

@@ -19,8 +19,8 @@
     "organic-inorganic",
     "perovskites",
     "stable",
-    "edge:scenario:sc-d5554800",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-lead-free-hybrid-perovskite-stability-ml-screening-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "无铅杂化钙钛矿稳定性机器学习筛选",
   "source_papers": [

@@ -14,8 +14,8 @@
     "null",
     "organic",
     "semiconductors",
-    "edge:scenario:sc-7f832325",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-organic-semiconductor-active-learning-discovery-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "有机半导体主动学习发现",
   "source_papers": [

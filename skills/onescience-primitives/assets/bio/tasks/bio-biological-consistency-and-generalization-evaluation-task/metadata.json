@@ -1,0 +1,26 @@
+{
+  "name": "bio-biological-consistency-and-generalization-evaluation-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：生物一致性与泛化评估。被 10 个场景复用；含 10 个实例任务；资源引用 ['tools/pydeseq2']。",
+  "tags": [
+    "edge:resource:tools/pydeseq2",
+    "edge:prev:bio-cell-state-inference-and-generation-task",
+    "slot:MIN_CORRELATION:相关性下限",
+    "slot:LABEL_KEY:评测标签字段",
+    "edge:instance:bio-biological-consistency-and-geneformer-scgpt-single-inst",
+    "edge:instance:bio-biological-consistency-and-mcmc-guided-multi-omics-inst",
+    "edge:instance:bio-biological-consistency-and-scgpt-hematopoietic-cell-inst",
+    "edge:instance:bio-biological-consistency-and-single-cell-to-spatial-inst",
+    "edge:instance:bio-biological-consistency-and-single-cell-chromatin-inst",
+    "edge:instance:bio-biological-consistency-and-causal-latent-diffusion-inst",
+    "edge:instance:bio-biological-consistency-and-multimodal-reasoning-enhance-inst",
+    "edge:instance:bio-biological-consistency-and-spatial-transcriptomics-and-inst",
+    "edge:instance:bio-biological-consistency-and-spatial-transcriptomics-inst",
+    "edge:instance:bio-biological-consistency-and-cross-cell-type-and-dose-inst"
+  ]
+}

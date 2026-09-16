@@ -29,8 +29,8 @@
     "cfd_s023",
     "parareal-neural-solver",
     "temporal-neural-operator",
-    "edge:scenario:sc-0c2a070f",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-time-parallel-multitemporal-neural-pde-advancement-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S023",
   "source_papers": [

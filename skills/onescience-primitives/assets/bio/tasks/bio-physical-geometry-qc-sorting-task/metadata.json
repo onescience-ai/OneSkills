@@ -1,0 +1,26 @@
+{
+  "name": "bio-physical-geometry-qc-sorting-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：物理几何质控与排序。被 10 个场景复用；含 10 个实例任务；资源引用 ['models/diffdock']。",
+  "tags": [
+    "edge:resource:models/diffdock",
+    "edge:prev:bio-conformation-sampling-scoring-task",
+    "slot:MAX_RMSD:RMSD阈值",
+    "slot:TOP_K:保留姿态数",
+    "edge:instance:bio-physical-geometry-qc-sorting-global-blind-docking-conform-inst",
+    "edge:instance:bio-physical-geometry-qc-sorting-pocket-prediction-enhanced-inst",
+    "edge:instance:bio-physical-geometry-qc-sorting-multi-pocket-conditioned-inst",
+    "edge:instance:bio-physical-geometry-qc-sorting-docking-guided-large-scale-inst",
+    "edge:instance:bio-physical-geometry-qc-sorting-unknown-binding-site-protein-inst",
+    "edge:instance:bio-physical-geometry-qc-sorting-geodesic-path-guided-flexibl-inst",
+    "edge:instance:bio-physical-geometry-qc-sorting-physical-rule-constrained-inst",
+    "edge:instance:bio-physical-geometry-qc-sorting-protein-ligand-joint-generat-inst",
+    "edge:instance:bio-physical-geometry-qc-sorting-lightweight-interpretable-inst",
+    "edge:instance:bio-physical-geometry-qc-sorting-high-precision-protein-inst"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "bio-rna-input-task-definition-structure-constraint-and-model-workflow",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（bio）：4 步骨架 [RNA输入与任务定义 > 结构约束与模型准备 > 结构预测或序列采样 > RNA结构与功能质控]，被 10 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:bio-rna-input-task-definition-task",
+    "edge:task:bio-structure-constraint-and-model-preparation-task",
+    "edge:task:bio-structure-prediction-or-sequence-sampling-task",
+    "edge:task:bio-rna-structure-function-quality-control-task",
+    "edge:scenario:bio-rna-3d-target-structure-swarm-inverse-folding-scenario",
+    "edge:scenario:bio-low-data-rna-tertiary-structure-conditional-sequence-design-scenario",
+    "edge:scenario:bio-geometric-deep-learning-driven-rna-3d-inverse-design-scenario",
+    "edge:scenario:bio-bidirectional-anchored-structure-conditioned-rna-sequence-scenario",
+    "edge:scenario:bio-large-kernel-rna-secondary-structure-prediction-scenario",
+    "edge:scenario:bio-deep-sequence-model-mirna-target-prediction-scenario",
+    "edge:scenario:bio-linear-time-rna-secondary-structure-folding-prediction-scenario",
+    "edge:scenario:bio-structure-sequence-encoded-multi-constraint-rna-design-scenario",
+    "edge:scenario:bio-protein-rna-complex-binding-affinity-prediction-scenario",
+    "edge:scenario:bio-language-model-driven-rna-3d-structure-prediction-scenario"
+  ]
+}

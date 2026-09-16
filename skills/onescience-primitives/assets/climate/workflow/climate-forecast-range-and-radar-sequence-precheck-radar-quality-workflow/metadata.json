@@ -1,0 +1,19 @@
+{
+  "name": "climate-forecast-range-and-radar-sequence-precheck-radar-quality-workflow",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [起报范围与雷达序列预检 > 雷达质控与模型输入构造 > 预测组件与参数兼容性验证 > 0—3小时集合降水生成 > 概率校准与短临产品生成 > 分时效多阈值检验与交付判定]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-forecast-range-and-radar-sequence-precheck-task",
+    "edge:task:climate-radar-quality-control-model-input-construction-task",
+    "edge:task:climate-predict-component-parameter-compatibility-verification-task",
+    "edge:task:climate-0-3h-ensemble-precipitation-generation-task",
+    "edge:task:climate-probability-calibration-nowcast-generation-task",
+    "edge:task:climate-lead-time-multi-threshold-test-delivery-decision-task",
+    "edge:scenario:climate-radar-driven-0-3-hour-extreme-precipitation-ensemble-nowcasting-scenario"
+  ]
+}

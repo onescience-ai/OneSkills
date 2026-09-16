@@ -1,0 +1,20 @@
+{
+  "name": "climate-wave-bias-correction-model-bohai-yellow-sea-wave-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「海浪偏差订正模型训练与产品生成」在场景「E105」中的实例化；资源引用 ['models/ensemble-model-output-statistics-emos-post-processing', 'tools/fengwu-global-medium-range-weather-forecast-system', 'tools/wenhai-global-ocean-forecast-system']。",
+  "tags": [
+    "edge:skeleton:climate-wave-bias-correction-model-product-task",
+    "edge:scenario:climate-bohai-yellow-sea-wave-intelligent-correction-scenario",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:tools/fengwu-global-medium-range-weather-forecast-system",
+    "edge:resource:tools/wenhai-global-ocean-forecast-system",
+    "slot:TARGET_WAVE_FORECAST:待订正海浪产品",
+    "slot:TRIAL_PERIOD:试运行时段",
+    "slot:OUTPUT_DIRECTORY:结果输出目录"
+  ]
+}

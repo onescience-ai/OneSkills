@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s062",
     "lagrangian-simulator",
-    "edge:scenario:sc-44f648b3",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-e3-equivariant-particle-lagrangian-fluid-simulation-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S062",
   "source_papers": [

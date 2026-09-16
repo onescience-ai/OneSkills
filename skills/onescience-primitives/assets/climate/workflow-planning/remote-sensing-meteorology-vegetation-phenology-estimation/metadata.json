@@ -62,8 +62,8 @@
     "protocol",
     "agriculture",
     "PRISMA",
-    "edge:scenario:sc-b5341da3",
-    "edge:workflow:wf-climate-48fe2bf3"
+    "edge:scenario:climate-remote-sensing-meteorological-coupling-vegetation-phenology-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-14"
   ],
   "scenario_id": "E67",
   "source_papers": [

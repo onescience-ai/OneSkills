@@ -1,0 +1,14 @@
+{
+  "name": "matchem-verification-output-mos2-monolayer-atomic-inst",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「验证与输出」在场景「MoS2单层原子缺陷工程」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:matchem-verification-output-task",
+    "edge:scenario:matchem-mos2-monolayer-atomic-defect-engineering-scenario"
+  ]
+}

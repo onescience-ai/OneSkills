@@ -35,8 +35,8 @@
     "workflow-planning",
     "climate",
     "e49",
-    "edge:scenario:sc-3b456843",
-    "edge:workflow:wf-climate-21d40683"
+    "edge:scenario:climate-grace-gap-terrestrial-water-storage-anomaly-reconstruction-scenario",
+    "edge:workflow:climate-target-sequence-gap-and-boundary-precheck-target-sequence-gap-workflow-2"
   ],
   "scenario_id": "E49",
   "source_papers": [

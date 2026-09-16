@@ -1,0 +1,24 @@
+{
+  "name": "cfd-neural-numerical-coupled-solver-task",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（cfd）：神经数值耦合求解。被 6 个场景复用；含 6 个实例任务；资源引用 ['tools/fluidsim']。",
+  "tags": [
+    "edge:resource:tools/fluidsim",
+    "edge:prev:cfd-model-configuration-training-task",
+    "edge:next:cfd-task-acceptance-domain-determination-task",
+    "slot:CHECKPOINT:模型权重",
+    "slot:DEVICE:计算设备",
+    "slot:BATCH_SIZE:推理批大小",
+    "edge:instance:cfd-neural-numerical-coupled-neural-corrector-coarse-inst",
+    "edge:instance:cfd-neural-numerical-coupled-learned-mesh-movement-inst",
+    "edge:instance:cfd-neural-numerical-coupled-neural-multigrid-preconditio-inst",
+    "edge:instance:cfd-neural-numerical-coupled-llm-agent-auto-config-cfd-inst",
+    "edge:instance:cfd-neural-numerical-coupled-differentiable-physics-inst",
+    "edge:instance:cfd-neural-numerical-coupled-neural-finite-volume-domain-inst"
+  ]
+}

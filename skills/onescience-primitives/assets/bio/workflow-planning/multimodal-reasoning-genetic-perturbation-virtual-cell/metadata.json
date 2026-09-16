@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b74",
-    "edge:scenario:sc-dbff59ac",
-    "edge:workflow:wf-bio-cdb48c05"
+    "edge:scenario:bio-multimodal-reasoning-enhanced-genetic-perturbation-virtual-cell-scenario",
+    "edge:workflow:bio-single-cell-data-task-definition-preprocessing-model-workflow"
   ],
   "scenario_id": "B74",
   "source_papers": [

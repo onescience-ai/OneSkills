@@ -1,0 +1,25 @@
+{
+  "name": "matchem-device-stacking-failure-boundary-definition-interface-or-defect-workflow",
+  "type": "workflow",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（matchem）：4 步骨架 [器件堆叠与失效边界定义 > 界面或缺陷调控实施 > 光电性能与老化响应评估 > 优化方案与复核]，被 9 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:matchem-device-stacking-failure-boundary-definition-task",
+    "edge:task:matchem-interface-or-defect-control-implementation-task",
+    "edge:task:matchem-optoelectronic-performance-aging-response-evaluation-task",
+    "edge:task:matchem-optimization-scheme-review-task",
+    "edge:scenario:matchem-tio2-cspibr3-heterojunction-co2-photoreduction-scenario",
+    "edge:scenario:matchem-2d-3d-perovskite-interface-long-term-stability-design-scenario",
+    "edge:scenario:matchem-2d-perovskite-lab-ml-synthesis-scenario",
+    "edge:scenario:matchem-inverted-perovskite-grain-interface-ligand-anchoring-scenario",
+    "edge:scenario:matchem-all-inorganic-lead-free-perovskite-native-oxide-passivation-scenario",
+    "edge:scenario:matchem-quasi-2d-perovskite-green-led-phase-component-passivation-scenario",
+    "edge:scenario:matchem-planar-perovskite-solar-cell-passivation-optimization-scenario",
+    "edge:scenario:matchem-flexible-perovskite-module-sno2-interface-passivation-design-scenario",
+    "edge:scenario:matchem-perovskite-solar-cell-oxygen-induced-iodide-defect-degradation-scenario"
+  ]
+}

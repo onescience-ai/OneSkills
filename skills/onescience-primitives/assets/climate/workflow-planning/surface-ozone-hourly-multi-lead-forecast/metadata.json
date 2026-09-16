@@ -37,8 +37,8 @@
     "workflow-planning",
     "climate",
     "e44",
-    "edge:scenario:sc-055f5820",
-    "edge:workflow:wf-climate-1defe546"
+    "edge:scenario:climate-near-surface-ozone-hourly-multi-horizon-forecast-scenario",
+    "edge:workflow:climate-pollution-met-data-boundary-precheck-pollution-met-stalign-workflow-4"
   ],
   "scenario_id": "E44",
   "source_papers": [

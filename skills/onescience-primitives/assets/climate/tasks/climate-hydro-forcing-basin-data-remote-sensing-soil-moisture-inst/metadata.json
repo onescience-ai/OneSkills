@@ -1,0 +1,23 @@
+{
+  "name": "climate-hydro-forcing-basin-data-remote-sensing-soil-moisture-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「水文强迫和流域资料及任务边界预检」在场景「E16」中的实例化；资源引用 ['datasets/international-soil-moisture-network-ismn', 'datasets/ismn-and-nasa-power-datasets-for-soil-moisture-prediction', 'datasets/smap-level-3-passive-soil-moisture-products', 'models/neural-network-soil-moisture-downscaling']。",
+  "tags": [
+    "edge:skeleton:climate-hydro-forcing-basin-data-boundary-precheck-task",
+    "edge:scenario:climate-remote-sensing-soil-moisture-kilometer-scale-spatial-scenario",
+    "edge:resource:datasets/international-soil-moisture-network-ismn",
+    "edge:resource:datasets/ismn-and-nasa-power-datasets-for-soil-moisture-prediction",
+    "edge:resource:datasets/smap-level-3-passive-soil-moisture-products",
+    "edge:resource:models/neural-network-soil-moisture-downscaling",
+    "slot:COARSE_SOIL_MOISTURE:粗网格土壤湿度",
+    "slot:FINE_SCALE_COVARIATES:细尺度辅助变量",
+    "slot:FINE_REFERENCE:细尺度参考资料",
+    "slot:GAP_MASK:时间缺口掩膜",
+    "slot:TARGET_GRID:公里级目标网格"
+  ]
+}

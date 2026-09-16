@@ -1,0 +1,19 @@
+{
+  "name": "matchem-host-structure-doping-lini091co09o2-high-ni-inst",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「母体结构检查与掺杂候选建模」在场景「LiNiCo_高镍层状正极掺杂结构优化与应变风险分析」中的实例化；资源引用 ['tools/molecular-structure-preparation', 'tools/pymatgen']。",
+  "tags": [
+    "edge:skeleton:matchem-host-structure-doping-candidate-modeling-task",
+    "edge:scenario:matchem-lini091co09o2-high-ni-layered-cathode-doping-strain-risk-scenario",
+    "edge:resource:tools/molecular-structure-preparation",
+    "edge:resource:tools/pymatgen",
+    "slot:PARENT_STRUCTURE:母体结构文件",
+    "slot:DOPANT_SET:掺杂集合",
+    "slot:DOPANT_RATIO:掺杂比例"
+  ]
+}

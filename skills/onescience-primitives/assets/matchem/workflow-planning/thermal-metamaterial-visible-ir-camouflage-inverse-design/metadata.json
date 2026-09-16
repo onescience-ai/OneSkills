@@ -19,8 +19,8 @@
     "thermal",
     "ultrahigh-efficient",
     "visible-infrared-compatible",
-    "edge:scenario:sc-25756aca",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-thermal-metamaterial-visible-infrared-camouflage-inverse-design-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "热超材料可见红外兼容伪装逆向设计",
   "source_papers": [

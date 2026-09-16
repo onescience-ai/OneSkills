@@ -1,0 +1,19 @@
+{
+  "name": "matchem-adsorption-configuration-search-vasp-relaxation-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：吸附构型搜索与 VASP 弛豫。被 1 个场景复用；含 1 个实例任务；资源引用 ['tools/molecular-structure-preparation']。",
+  "tags": [
+    "edge:resource:tools/molecular-structure-preparation",
+    "edge:prev:matchem-cu-n4-substrate-local-coordination-geometry-generation-task",
+    "edge:next:matchem-co2-to-ch4-her-competing-pathway-free-energy-analysis-task",
+    "slot:COORDINATION_STRUCTURES:配位结构集合",
+    "slot:INTERMEDIATE_SET:中间体集合",
+    "slot:DFT_CONFIG:DFT 设置",
+    "edge:instance:matchem-adsorption-configuration-cu-nxby-single-atom-co2-to-inst"
+  ]
+}

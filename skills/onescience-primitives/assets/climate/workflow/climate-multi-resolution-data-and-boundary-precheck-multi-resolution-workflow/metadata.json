@@ -1,0 +1,19 @@
+{
+  "name": "climate-multi-resolution-data-and-boundary-precheck-multi-resolution-workflow",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [粗细分辨率资料及任务边界预检 > 粗细分辨率资料时空对齐与样本构造 > 方法配置与输入输出契约验证 > 生成未来情景高分辨率场 > 结果恢复与场景产品生成 > 检验历史期技巧和外推稳定性]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-multi-resolution-data-and-boundary-precheck-task",
+    "edge:task:climate-multi-resolution-data-alignment-and-sample-construction-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-future-scenario-highres-field-task",
+    "edge:task:climate-result-recovery-and-scenario-product-generation-task",
+    "edge:task:climate-historical-skill-extrapolation-stability-task",
+    "edge:scenario:climate-cmip6-temperature-precipitation-regional-climate-downscaling-scenario"
+  ]
+}

@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s014",
-    "edge:scenario:sc-3c9b6171",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-wall-pressure-shear-and-integral-aerodynamic-force-joint-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S014",
   "source_papers": [

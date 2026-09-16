@@ -1,0 +1,20 @@
+{
+  "name": "climate-restoring-missing-sst-cloud-covered-satellite-sst-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「恢复缺测海温并估计逐像元条件误差」在场景「E69」中的实例化；资源引用 ['datasets/gtws-mlrec-machine-learning-based-global-terrestrial-water-storage-anomaly-reconstruction-dataset-and-workflow', 'models/ensemble-model-output-statistics-emos-post-processing', 'models/swe-reconstruction-using-energy-balance-model']。",
+  "tags": [
+    "edge:skeleton:climate-restoring-missing-sst-estimating-pixel-conditional-error-task",
+    "edge:scenario:climate-cloud-covered-satellite-sst-reconstruction-pixel-uncertainty-scenario",
+    "edge:resource:datasets/gtws-mlrec-machine-learning-based-global-terrestrial-water-storage-anomaly-reconstruction-dataset-and-workflow",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:models/swe-reconstruction-using-energy-balance-model",
+    "slot:RECONSTRUCTION_CONFIG:重建配置",
+    "slot:OUTPUT_RESOLUTION:输出分辨率",
+    "slot:UNCERTAINTY_CONFIG:不确定性配置"
+  ]
+}

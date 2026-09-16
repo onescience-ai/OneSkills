@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s007",
     "meshgraphnet",
-    "edge:scenario:sc-a7b832f4",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-graph-neural-operator-arbitrary-domain-unstructured-mesh-flow-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S007",
   "source_papers": [

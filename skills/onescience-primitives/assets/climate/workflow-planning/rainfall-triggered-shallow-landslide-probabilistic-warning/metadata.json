@@ -56,8 +56,8 @@
     "workflow-planning",
     "climate",
     "e51",
-    "edge:scenario:sc-fb225651",
-    "edge:workflow:wf-climate-1e8afd55"
+    "edge:scenario:climate-multi-time-window-rainfall-driven-regional-shallow-landslide-scenario",
+    "edge:workflow:climate-hazard-factor-event-label-and-boundary-precheck-hazard-factor-workflow-4"
   ],
   "scenario_id": "E51",
   "source_papers": [

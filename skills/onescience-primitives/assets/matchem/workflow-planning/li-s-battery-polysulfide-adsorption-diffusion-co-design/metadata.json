@@ -21,8 +21,8 @@
     "oxides",
     "sulfur",
     "surface",
-    "edge:scenario:sc-b11d308f",
-    "edge:workflow:wf-matchem-c41fa878"
+    "edge:scenario:matchem-lithium-sulfur-battery-polysulfide-adsorption-diffusion-scenario",
+    "edge:workflow:matchem-material-condition-modeling-structure-or-electrochemical-workflow"
   ],
   "scenario_id": "锂硫电池多硫化物吸附扩散协同设计",
   "source_papers": [

@@ -1,0 +1,24 @@
+{
+  "name": "climate-direct-inference-of-multiple-multi-source-observation-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「直接推理多个目标提前量」在场景「E8」中的实例化；资源引用 ['datasets/cesm2-large-ensemble', 'datasets/large-ensemble-testbed', 'models/crpsexp-loss-function-for-ensemble-forecasting', 'models/dust-event-forecasting-with-multi-task-deep-learning', 'models/ensemble-empirical-mode-decomposition-eemd', 'models/ensemble-model-output-statistics-emos-post-processing', 'tools/ecmwf-hres']。",
+  "tags": [
+    "edge:skeleton:climate-direct-inference-of-multiple-target-lead-times-task",
+    "edge:scenario:climate-multi-source-observation-driven-regional-3to12h-quantitative-scenario",
+    "edge:resource:datasets/cesm2-large-ensemble",
+    "edge:resource:datasets/large-ensemble-testbed",
+    "edge:resource:models/crpsexp-loss-function-for-ensemble-forecasting",
+    "edge:resource:models/dust-event-forecasting-with-multi-task-deep-learning",
+    "edge:resource:models/ensemble-empirical-mode-decomposition-eemd",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:tools/ecmwf-hres",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:EVENT_THRESHOLDS:事件阈值",
+    "slot:ENSEMBLE_SIZE:集合成员数"
+  ]
+}

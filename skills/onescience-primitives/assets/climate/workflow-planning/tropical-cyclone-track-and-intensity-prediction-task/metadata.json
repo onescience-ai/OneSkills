@@ -18,8 +18,8 @@
     "global-ocean-basins",
     "pytorch",
     "data-pipeline",
-    "edge:scenario:sc-6c7103f2",
-    "edge:workflow:wf-climate-c34a5d07"
+    "edge:scenario:climate-identified-tropical-cyclone-intensity-forecast-12-72h-scenario",
+    "edge:workflow:climate-forecast-data-and-boundary-precheck-forecast-data-alignment-and-workflow-11"
   ],
   "harvested": true,
   "tier": "high",

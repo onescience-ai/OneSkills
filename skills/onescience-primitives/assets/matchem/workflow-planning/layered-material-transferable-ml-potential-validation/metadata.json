@@ -18,8 +18,8 @@
     "potentials",
     "transferable",
     "verifiable",
-    "edge:scenario:sc-49cbde90",
-    "edge:workflow:wf-matchem-ec013e02"
+    "edge:scenario:matchem-layered-material-transferable-ml-atomic-potential-validation-scenario",
+    "edge:workflow:matchem-reference-data-audit-coverage-definition-root-cause-potential-workflow"
   ],
   "scenario_id": "层状材料可迁移机器学习原子势验证",
   "source_papers": [

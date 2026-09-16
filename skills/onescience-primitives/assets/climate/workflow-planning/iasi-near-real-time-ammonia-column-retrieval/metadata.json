@@ -31,8 +31,8 @@
     "workflow-planning",
     "climate",
     "e79",
-    "edge:scenario:sc-51f44d8d",
-    "edge:workflow:wf-climate-7587393f"
+    "edge:scenario:climate-iasi-near-real-time-atmospheric-ammonia-column-retrieval-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-2"
   ],
   "scenario_id": "E79",
   "source_papers": [

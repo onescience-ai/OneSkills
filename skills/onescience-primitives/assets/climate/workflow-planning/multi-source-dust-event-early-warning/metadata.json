@@ -29,8 +29,8 @@
     "workflow-planning",
     "climate",
     "e92",
-    "edge:scenario:sc-6152ecb0",
-    "edge:workflow:wf-climate-0fa8b64c"
+    "edge:scenario:climate-multi-source-observation-and-weather-forecast-driven-dust-event-scenario",
+    "edge:workflow:climate-hazard-factor-event-label-and-boundary-precheck-hazard-factor-workflow-5"
   ],
   "scenario_id": "E92",
   "source_papers": [

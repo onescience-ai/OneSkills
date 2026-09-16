@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s087",
     "latent-dynamics-model",
-    "edge:scenario:sc-46ac5b2d",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-autoencoder-latent-space-flow-reduced-order-time-series-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S087",
   "source_papers": [

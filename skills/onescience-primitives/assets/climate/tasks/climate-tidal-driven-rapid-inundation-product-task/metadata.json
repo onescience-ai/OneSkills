@@ -1,0 +1,22 @@
+{
+  "name": "climate-tidal-driven-rapid-inundation-product-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：沿岸潮位驱动的快速淹没产品生成。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/gtws-mlrec-machine-learning-based-global-terrestrial-water-storage-anomaly-reconstruction-dataset-and-workflow', 'datasets/smap-level-3-passive-soil-moisture-products', 'models/1d-cnn-based-groundwater-level-prediction', 'models/ensemble-model-output-statistics-emos-post-processing', 'tools/multi-level-b-spline-analysis-mba']。",
+  "tags": [
+    "edge:resource:datasets/gtws-mlrec-machine-learning-based-global-terrestrial-water-storage-anomaly-reconstruction-dataset-and-workflow",
+    "edge:resource:datasets/smap-level-3-passive-soil-moisture-products",
+    "edge:resource:models/1d-cnn-based-groundwater-level-prediction",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:tools/multi-level-b-spline-analysis-mba",
+    "edge:prev:climate-spatial-data-alignment-and-run-input-construction-task",
+    "edge:next:climate-product-quality-control-operational-performance-check-task",
+    "slot:TARGET_WATER_LEVEL_CYCLE:目标潮位批次",
+    "slot:OUTPUT_DIRECTORY:结果输出目录",
+    "edge:instance:climate-tidal-driven-rapid-inundation-nearshore-inundation-rapid-inst"
+  ]
+}

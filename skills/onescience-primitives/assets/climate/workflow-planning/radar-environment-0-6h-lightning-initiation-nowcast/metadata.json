@@ -23,8 +23,8 @@
     "workflow-planning",
     "climate",
     "e72",
-    "edge:scenario:sc-6ed0d444",
-    "edge:workflow:wf-climate-8f1a52a5"
+    "edge:scenario:climate-radar-and-environmental-field-driven-0-6-hour-lightning-scenario",
+    "edge:workflow:climate-near-observation-task-boundary-precheck-near-observation-space-workflow-6"
   ],
   "scenario_id": "E72",
   "source_papers": [

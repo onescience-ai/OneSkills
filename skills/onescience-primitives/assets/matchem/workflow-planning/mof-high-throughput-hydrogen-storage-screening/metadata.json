@@ -20,8 +20,8 @@
     "null",
     "screening",
     "storage",
-    "edge:scenario:sc-9c1c1ccc",
-    "edge:workflow:wf-matchem-2c158827"
+    "edge:scenario:matchem-mof-high-throughput-hydrogen-storage-screening-scenario",
+    "edge:workflow:matchem-structure-and-separation-target-definition-mass-transfer-workflow"
   ],
   "scenario_id": "MOF高通量储氢筛选",
   "source_papers": [

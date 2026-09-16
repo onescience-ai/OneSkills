@@ -29,8 +29,8 @@
     "workflow-planning",
     "climate",
     "e85",
-    "edge:scenario:sc-68dbc71f",
-    "edge:workflow:wf-climate-ac883a28"
+    "edge:scenario:climate-weather-radar-convective-gust-nowcast-scenario",
+    "edge:workflow:climate-near-observation-task-boundary-precheck-near-observation-space-workflow-4"
   ],
   "scenario_id": "E85",
   "source_papers": [

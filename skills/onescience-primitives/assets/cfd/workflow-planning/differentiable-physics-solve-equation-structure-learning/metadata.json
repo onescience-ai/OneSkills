@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s071",
     "mechanistic-pde-network",
-    "edge:scenario:sc-a65ec683",
-    "edge:workflow:wf-cfd-f43b987c"
+    "edge:scenario:cfd-differentiable-physics-solver-and-equation-structure-learning-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-5"
   ],
   "scenario_id": "CFD_S071",
   "source_papers": [

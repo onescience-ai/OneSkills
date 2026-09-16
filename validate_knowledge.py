@@ -24,6 +24,11 @@ Checks
 10. runnable:script implies a non-empty script/ directory inside the card.
 11. Vocabulary edges (edge:method/operation/validation/fallback_method) are
     reported as INFO only - they are allowed to have no card.
+12. Card folder name must carry meaning: opaque hash ids (it-xxxxxxxx,
+    tk-<dom>-xxxxxxxx, sc-xxxxxxxx, wf-<dom>-xxxxxxxx) are hard errors for every
+    knowledge type; metadata.name must equal the folder name (hard error for TC
+    cards, warning for legacy ones). Non-ascii / underscore styles are warnings
+    only (legacy folders still use them). Applies to every domain and type.
 
 Usage
 -----
@@ -36,6 +41,7 @@ Exit code: 0 = no errors, 1 = errors found.
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -251,6 +257,31 @@ def check_edges(rel, domain, tags, by_type, card_dirs):
 ATOM_IDS = load_atoms()
 card_dirs_set = set()
 
+# --- folder-name gate ------------------------------------------------------
+# The folder name is the first thing a human (or a search) reads, and TC edges
+# address cards by it.  The generator used to emit sha1[:8] folder names
+# (it-01684b6f / tk-bio-9a8b7c6d) and nothing rejected them, so 2927 piled up.
+# Hash ids are now hard errors; style issues stay warnings so the gate is not
+# blocked by legacy folders that were never named by the generator.
+HASH_NAME = re.compile(r"^(?:it|sc)-[0-9a-f]{6,}$|^(?:wf|tk)-[a-z]+-[0-9a-f]{6,}$", re.I)
+NON_ASCII = re.compile(r"[^\x00-\x7F]")
+
+
+def check_names(rel, domain, category, name, data):
+    """Folder-name gate: applies to every domain and every knowledge type."""
+    if HASH_NAME.match(name):
+        err(rel, "card folder is an opaque hash id: %s" % name)
+    if data and data.get("name") and data["name"] != name:
+        # TC cards are addressed by folder name (edge targets are folder names), so
+        # a diverging metadata.name splits search from reference.  Legacy cards
+        # (components/datapipes) historically use name=tool, folder=snake_case.
+        msg = "metadata.name %r does not match folder %r" % (data["name"], name)
+        (err if is_tc(data) else warn)(rel, msg)
+    if NON_ASCII.search(name):
+        warn(rel, "card folder contains non-ascii characters: %s" % name)
+    if "_" in name:
+        warn(rel, "card folder uses '_' instead of kebab-case: %s" % name)
+
 
 def main():
     ap = argparse.ArgumentParser()
@@ -267,6 +298,9 @@ def main():
         dirs[rel] = cdir
         if data:
             by_type[(domain, category, name)] = data.get("type")
+
+    for rel, domain, category, name, data, cdir in cards:
+        check_names(rel, domain, category, name, data)
 
     tc_count = 0
     for rel, domain, category, name, data, cdir in cards:

@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b91",
-    "edge:scenario:sc-30edf759",
-    "edge:workflow:wf-bio-8c56a4bc"
+    "edge:scenario:bio-phage-and-prokaryotic-host-interaction-prediction-scenario",
+    "edge:workflow:bio-metagenome-input-task-definition-sequence-filtering-model-workflow"
   ],
   "scenario_id": "B91",
   "source_papers": [

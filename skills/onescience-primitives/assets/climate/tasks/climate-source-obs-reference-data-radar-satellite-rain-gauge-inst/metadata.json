@@ -1,0 +1,32 @@
+{
+  "name": "climate-source-obs-reference-data-radar-satellite-rain-gauge-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「源观测和参考资料及任务边界预检」在场景「E21」中的实例化；资源引用 ['datasets/data-infrastructure-observations-and-labels', 'datasets/gedi-footprint-canopy-height-data', 'datasets/in-situ-and-satellite-matchup-dataset-for-chlorophyll-a-retrieval', 'datasets/integrated-multi-satellite-retrievals-for-gpm-imerg-precipitation-dataset', 'datasets/lpma-airport-wind-observation-validation', 'datasets/machine-learning-modeling-plant-phenology-coupling-satellite', 'datasets/ostia-sst-data', 'datasets/snodas-swe-data-product', 'datasets/uk-radar-composite-dataset', 'models/anomaly-numerical-correction-with-observations-ano', 'models/dynamic-pre-training-for-time-series-dynpt', 'models/multivariate-data-fusion-vector-wind-prediction', 'tools/anni-nh3-v2-1-satellite-ammonia-retrieval-algorithm-and-reanalysis-dataset']。",
+  "tags": [
+    "edge:skeleton:climate-source-obs-reference-data-boundary-task",
+    "edge:scenario:climate-radar-satellite-rain-gauge-multimodal-concurrent-quantitative-scenario",
+    "edge:resource:datasets/data-infrastructure-observations-and-labels",
+    "edge:resource:datasets/gedi-footprint-canopy-height-data",
+    "edge:resource:datasets/in-situ-and-satellite-matchup-dataset-for-chlorophyll-a-retrieval",
+    "edge:resource:datasets/integrated-multi-satellite-retrievals-for-gpm-imerg-precipitation-dataset",
+    "edge:resource:datasets/lpma-airport-wind-observation-validation",
+    "edge:resource:datasets/machine-learning-modeling-plant-phenology-coupling-satellite",
+    "edge:resource:datasets/ostia-sst-data",
+    "edge:resource:datasets/snodas-swe-data-product",
+    "edge:resource:datasets/uk-radar-composite-dataset",
+    "edge:resource:models/anomaly-numerical-correction-with-observations-ano",
+    "edge:resource:models/dynamic-pre-training-for-time-series-dynpt",
+    "edge:resource:models/multivariate-data-fusion-vector-wind-prediction",
+    "edge:resource:tools/anni-nh3-v2-1-satellite-ammonia-retrieval-algorithm-and-reanalysis-dataset",
+    "slot:RADAR_VOLUME:雷达体扫资料",
+    "slot:SATELLITE_OBSERVATIONS:卫星观测资料",
+    "slot:RAIN_GAUGE_DATA:雨量计资料",
+    "slot:TARGET_PERIOD:目标估计时段",
+    "slot:DATA_CUTOFF_TIME:资料截止时间"
+  ]
+}

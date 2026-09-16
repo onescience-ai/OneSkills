@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b99",
-    "edge:scenario:sc-44c95825",
-    "edge:workflow:wf-bio-468b46a3"
+    "edge:scenario:bio-clinical-reward-aligned-chest-xray-report-generation-scenario",
+    "edge:workflow:bio-medical-data-task-definition-image-preprocessing-prompt-workflow"
   ],
   "scenario_id": "B99",
   "source_papers": [

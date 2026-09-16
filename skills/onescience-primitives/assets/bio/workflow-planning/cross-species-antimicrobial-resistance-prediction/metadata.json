@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b97",
-    "edge:scenario:sc-aa2a08ba",
-    "edge:workflow:wf-bio-8c56a4bc"
+    "edge:scenario:bio-cross-species-antimicrobial-resistance-prediction-scenario",
+    "edge:workflow:bio-metagenome-input-task-definition-sequence-filtering-model-workflow"
   ],
   "scenario_id": "B97",
   "source_papers": [

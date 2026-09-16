@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b93",
-    "edge:scenario:sc-d32093c7",
-    "edge:workflow:wf-bio-8c56a4bc"
+    "edge:scenario:bio-function-guided-metageneome-gene-characterization-and-scenario",
+    "edge:workflow:bio-metagenome-input-task-definition-sequence-filtering-model-workflow"
   ],
   "scenario_id": "B93",
   "source_papers": [

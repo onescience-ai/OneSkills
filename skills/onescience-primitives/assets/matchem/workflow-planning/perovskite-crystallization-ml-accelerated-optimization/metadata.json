@@ -13,8 +13,8 @@
     "matchem",
     "null",
     "perovskite",
-    "edge:scenario:sc-c22a5d9a",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-perovskite-crystallization-machine-learning-accelerated-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "钙钛矿结晶机器学习加速优化",
   "source_papers": [

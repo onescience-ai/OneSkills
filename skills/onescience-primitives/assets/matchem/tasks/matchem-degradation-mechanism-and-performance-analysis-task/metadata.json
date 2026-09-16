@@ -1,0 +1,30 @@
+{
+  "name": "matchem-degradation-mechanism-and-performance-analysis-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：退化机制与性能指标分析。被 15 个场景复用；含 15 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:matchem-structure-or-electrochemical-response-acquisition-task",
+    "edge:next:matchem-scheme-ranking-independent-review-task",
+    "slot:CELL_CONDITION:电池工况",
+    "edge:instance:matchem-degradation-mechanism-and-licoo2-high-voltage-timgal-inst",
+    "edge:instance:matchem-degradation-mechanism-and-limn-li-rich-layered-cathode-inst",
+    "edge:instance:matchem-degradation-mechanism-and-commercial-li-ion-battery-inst",
+    "edge:instance:matchem-degradation-mechanism-and-solid-state-battery-lithium-inst",
+    "edge:instance:matchem-degradation-mechanism-and-solid-state-lithium-ion-inst",
+    "edge:instance:matchem-degradation-mechanism-and-porous-silicon-li-ion-inst",
+    "edge:instance:matchem-degradation-mechanism-and-li-rich-layered-cathode-inst",
+    "edge:instance:matchem-degradation-mechanism-and-battery-particle-carbon-inst",
+    "edge:instance:matchem-degradation-mechanism-and-ionomer-electrolyte-machine-inst",
+    "edge:instance:matchem-degradation-mechanism-and-lithium-sulfur-battery-inst",
+    "edge:instance:matchem-degradation-mechanism-and-lithium-ion-battery-calendar-inst",
+    "edge:instance:matchem-degradation-mechanism-and-lithium-ion-battery-electrod-inst",
+    "edge:instance:matchem-degradation-mechanism-and-lithium-ion-battery-degradat-inst",
+    "edge:instance:matchem-degradation-mechanism-and-lithium-metal-electrolyte-inst",
+    "edge:instance:matchem-degradation-mechanism-and-high-ionic-conductivity-inst"
+  ]
+}

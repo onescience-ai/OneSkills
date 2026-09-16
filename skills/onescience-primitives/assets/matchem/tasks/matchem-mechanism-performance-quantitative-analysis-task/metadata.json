@@ -1,0 +1,20 @@
+{
+  "name": "matchem-mechanism-performance-quantitative-analysis-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：机制与性能定量分析。被 5 个场景复用；含 5 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:matchem-response-test-simulation-task",
+    "edge:next:matchem-window-output-and-review-task",
+    "slot:LOAD_OR_REACTION_CONDITION:载荷或反应条件",
+    "edge:instance:matchem-mechanism-performance-crconi-medium-high-entropy-inst",
+    "edge:instance:matchem-mechanism-performance-complex-alloy-thermal-inst",
+    "edge:instance:matchem-mechanism-performance-laser-powder-bed-fusion-inst",
+    "edge:instance:matchem-mechanism-performance-refractory-high-entropy-inst",
+    "edge:instance:matchem-mechanism-performance-high-entropy-metallic-glass-inst"
+  ]
+}

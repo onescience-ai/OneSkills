@@ -1,0 +1,21 @@
+{
+  "name": "climate-fingerprint-projection-daily-precipitation-field-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「将指纹投影到多套观测产品」在场景「E94」中的实例化；资源引用 ['datasets/smap-level-3-passive-soil-moisture-products', 'models/1d-cnn-based-groundwater-level-prediction', 'models/importance-sampling-strategy-for-extreme-events', 'tools/multi-level-b-spline-analysis-mba']。",
+  "tags": [
+    "edge:skeleton:climate-fingerprint-projection-multiple-observation-products-task",
+    "edge:scenario:climate-daily-precipitation-field-anthropogenic-climate-change-scenario",
+    "edge:resource:datasets/smap-level-3-passive-soil-moisture-products",
+    "edge:resource:models/1d-cnn-based-groundwater-level-prediction",
+    "edge:resource:models/importance-sampling-strategy-for-extreme-events",
+    "edge:resource:tools/multi-level-b-spline-analysis-mba",
+    "slot:FINGERPRINT_CONFIG:指纹投影配置",
+    "slot:RESAMPLING_COUNT:重采样次数",
+    "slot:SIGNIFICANCE_LEVEL:显著性水平"
+  ]
+}

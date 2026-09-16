@@ -1,0 +1,16 @@
+{
+  "name": "matchem-reference-data-audit-coverage-catalytic-reaction-ml-inst",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「参考数据审计与覆盖定义」在场景「催化反应机器学习势主动学习与增强采样」中的实例化；资源引用 ['models/data-efficient-machine-learning-potentials-modeling-catalytic']。",
+  "tags": [
+    "edge:skeleton:matchem-reference-data-audit-coverage-definition-task",
+    "edge:scenario:matchem-catalytic-reaction-ml-potential-active-learning-sampling-scenario",
+    "edge:resource:models/data-efficient-machine-learning-potentials-modeling-catalytic",
+    "slot:REFERENCE_DATA:参考量子化学或第一性原理数据"
+  ]
+}

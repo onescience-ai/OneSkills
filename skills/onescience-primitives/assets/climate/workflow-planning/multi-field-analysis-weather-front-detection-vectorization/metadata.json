@@ -29,8 +29,8 @@
     "workflow-planning",
     "climate",
     "e97",
-    "edge:scenario:sc-dd530fdf",
-    "edge:workflow:wf-climate-70f9ee3f"
+    "edge:scenario:climate-multi-element-analysis-field-driven-weather-front-detection-and-scenario",
+    "edge:workflow:climate-source-obs-reference-data-boundary-source-obs-reference-stalign-workflow-2"
   ],
   "scenario_id": "E97",
   "source_papers": [

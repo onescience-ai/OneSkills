@@ -1,0 +1,19 @@
+{
+  "name": "climate-train-susceptibility-classifier-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：训练易发性分类器。被 1 个场景复用；含 1 个实例任务；资源引用 ['tools/ecmwf-hres']。",
+  "tags": [
+    "edge:resource:tools/ecmwf-hres",
+    "edge:prev:climate-method-configuration-input-output-contract-validation-task",
+    "edge:next:climate-probability-class-map-task",
+    "slot:RUN_CONFIG:易发性制图配置",
+    "slot:SUSCEPTIBILITY_THRESHOLDS:易发性等级阈值",
+    "slot:UNCERTAINTY_CONFIG:不确定性配置",
+    "edge:instance:climate-train-susceptibility-classifie-terrain-and-underlying-inst"
+  ]
+}

@@ -30,8 +30,8 @@
     "mechanical-behavior",
     "parametric-modeling",
     "architectural-materials",
-    "edge:scenario:sc-0b145c35",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-mechanical-metamaterial-target-response-inverse-design-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "力学超材料目标响应逆向设计",
   "source_papers": [

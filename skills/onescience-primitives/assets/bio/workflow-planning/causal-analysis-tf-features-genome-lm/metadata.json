@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b66",
-    "edge:scenario:sc-03d4dbbc",
-    "edge:workflow:wf-bio-afe9f9ae"
+    "edge:scenario:bio-genomic-language-model-transcription-factor-causal-decomposition-scenario",
+    "edge:workflow:bio-genome-input-coordinate-normalization-sequence-window-model-workflow"
   ],
   "scenario_id": "B66",
   "source_papers": [

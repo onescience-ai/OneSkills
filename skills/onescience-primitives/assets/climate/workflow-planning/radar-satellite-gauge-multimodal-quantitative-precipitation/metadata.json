@@ -27,8 +27,8 @@
     "workflow-planning",
     "climate",
     "e21",
-    "edge:scenario:sc-61b5e0f0",
-    "edge:workflow:wf-climate-26d6e55d"
+    "edge:scenario:climate-radar-satellite-rain-gauge-multimodal-concurrent-quantitative-scenario",
+    "edge:workflow:climate-source-obs-reference-data-boundary-source-obs-reference-stalign-workflow-5"
   ],
   "scenario_id": "E21",
   "source_papers": [

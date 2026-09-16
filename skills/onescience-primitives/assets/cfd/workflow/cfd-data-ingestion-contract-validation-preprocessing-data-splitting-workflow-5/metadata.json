@@ -1,0 +1,23 @@
+{
+  "name": "cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-5",
+  "type": "workflow",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（cfd）：5 步骨架 [数据接入与契约核验 > 预处理与数据切分 > 模型配置与训练 > 神经数值耦合求解 > 任务验收与适用域判定]，被 6 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:cfd-data-ingestion-contract-validation-task",
+    "edge:task:cfd-preprocessing-data-splitting-task",
+    "edge:task:cfd-model-configuration-training-task",
+    "edge:task:cfd-neural-numerical-coupled-solver-task",
+    "edge:task:cfd-task-acceptance-domain-determination-task",
+    "edge:scenario:cfd-neural-corrector-coarse-mesh-cfd-acceleration-scenario",
+    "edge:scenario:cfd-learned-mesh-movement-adaptive-remesh-scenario",
+    "edge:scenario:cfd-neural-multigrid-preconditioned-linear-pde-solver-scenario",
+    "edge:scenario:cfd-llm-agent-auto-config-cfd-simulation-scenario",
+    "edge:scenario:cfd-differentiable-physics-solver-and-equation-structure-learning-scenario",
+    "edge:scenario:cfd-neural-finite-volume-domain-decomposition-hybrid-solver-scenario"
+  ]
+}

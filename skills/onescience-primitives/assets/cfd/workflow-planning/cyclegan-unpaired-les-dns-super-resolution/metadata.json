@@ -26,8 +26,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s099",
-    "edge:scenario:sc-cc4e8770",
-    "edge:workflow:wf-cfd-29af55b0"
+    "edge:scenario:cfd-cyclegan-unpaired-les-to-dns-super-resolution-reconstruction-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-9"
   ],
   "scenario_id": "CFD_S099",
   "source_papers": [

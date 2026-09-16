@@ -29,8 +29,8 @@
     "cfd_s097",
     "score-based-data-assimilation",
     "neural-fluid-field",
-    "edge:scenario:sc-b98eb0df",
-    "edge:workflow:wf-cfd-29af55b0"
+    "edge:scenario:cfd-partial-observation-diffusion-assimilation-and-continuous-flow-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-9"
   ],
   "scenario_id": "CFD_S097",
   "source_papers": [

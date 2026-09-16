@@ -1,0 +1,17 @@
+{
+  "name": "bio-clinical-quality-safety-review-longitudinal-chest-ct-inst",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「临床质量与安全复核」在场景「B100」中的实例化；资源引用 ['datasets/tm-score-evaluation']。",
+  "tags": [
+    "edge:skeleton:bio-clinical-quality-safety-review-task",
+    "edge:scenario:bio-longitudinal-chest-ct-change-detection-and-report-generation-scenario",
+    "edge:resource:datasets/tm-score-evaluation",
+    "slot:MIN_CLINICAL_SCORE:临床得分下限",
+    "slot:REQUIRE_REVIEW:要求医生复核"
+  ]
+}

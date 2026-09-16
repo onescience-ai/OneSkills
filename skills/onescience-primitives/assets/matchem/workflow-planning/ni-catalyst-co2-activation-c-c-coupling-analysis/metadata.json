@@ -17,8 +17,8 @@
     "nickel",
     "null",
     "understanding",
-    "edge:scenario:sc-a317a1a3",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-nickel-catalyst-co2-activation-and-carbon-carbon-coupling-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "scenario_id": "镍催化剂CO2活化与碳碳偶联分析",
   "source_papers": [

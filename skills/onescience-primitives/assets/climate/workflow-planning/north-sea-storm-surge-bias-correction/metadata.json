@@ -17,8 +17,8 @@
     "workflow-planning",
     "climate",
     "e102",
-    "edge:scenario:sc-702e036f",
-    "edge:workflow:wf-climate-b7ccac91"
+    "edge:scenario:climate-north-sea-storm-surge-intelligent-correction-scenario",
+    "edge:workflow:climate-model-input-run-condition-precheck-executing-scheme-design-task-workflow-4"
   ],
   "scenario_id": "E102",
   "source_papers": [],

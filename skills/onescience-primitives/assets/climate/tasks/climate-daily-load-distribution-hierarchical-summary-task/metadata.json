@@ -1,0 +1,19 @@
+{
+  "name": "climate-daily-load-distribution-hierarchical-summary-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：生成日前负荷分布并协调层级汇总。被 1 个场景复用；含 1 个实例任务；资源引用 ['models/quantile-regression-forest-qrf-methods']。",
+  "tags": [
+    "edge:resource:models/quantile-regression-forest-qrf-methods",
+    "edge:prev:climate-method-configuration-input-output-contract-validation-task",
+    "edge:next:climate-calibrating-quantiles-intervals-task",
+    "slot:RUN_CONFIG:负荷预测配置",
+    "slot:QUANTILES:负荷分位数",
+    "slot:RECONCILIATION_CONFIG:层级协调配置",
+    "edge:instance:climate-daily-load-distribution-weather-sensitive-urban-inst"
+  ]
+}

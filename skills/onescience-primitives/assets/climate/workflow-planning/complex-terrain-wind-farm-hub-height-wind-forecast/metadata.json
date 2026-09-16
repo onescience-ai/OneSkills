@@ -53,8 +53,8 @@
     "workflow-planning",
     "climate",
     "e26",
-    "edge:scenario:sc-2528a6c2",
-    "edge:workflow:wf-climate-f90d2444"
+    "edge:scenario:climate-complex-terrain-wind-farm-hub-height-short-term-wind-speed-scenario",
+    "edge:workflow:climate-weather-energy-operational-data-task-boundary-precheck-weather-workflow"
   ],
   "scenario_id": "E26",
   "source_papers": [

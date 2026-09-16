@@ -1,0 +1,24 @@
+{
+  "name": "climate-data-alignment-sample-north-sea-3d-sea-temperature-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「数据对齐、样本构建与最小干运行」在场景「E103」中的实例化；资源引用 ['datasets/data-infrastructure-observations-and-labels', 'datasets/gedi-footprint-canopy-height-data', 'datasets/ostia-sst-data', 'datasets/snodas-swe-data-product', 'models/multivariate-data-fusion-vector-wind-prediction', 'models/random-forest-regression-for-vertical-wind-speed-extrapolation']。",
+  "tags": [
+    "edge:skeleton:climate-data-alignment-sample-construction-minimum-dry-run-task",
+    "edge:scenario:climate-north-sea-3d-sea-temperature-smart-correction-and-downscaling-scenario",
+    "edge:resource:datasets/data-infrastructure-observations-and-labels",
+    "edge:resource:datasets/gedi-footprint-canopy-height-data",
+    "edge:resource:datasets/ostia-sst-data",
+    "edge:resource:datasets/snodas-swe-data-product",
+    "edge:resource:models/multivariate-data-fusion-vector-wind-prediction",
+    "edge:resource:models/random-forest-regression-for-vertical-wind-speed-extrapolation",
+    "slot:HIGH_RES_TEMPERATURE_REFERENCE:高分辨率海温参考",
+    "slot:VERTICAL_COORDINATE_SPEC:垂向坐标规格",
+    "slot:DATA_ALIGNMENT_SPEC:数据对齐规格",
+    "slot:SAMPLE_SPLIT_SPEC:样本划分规格"
+  ]
+}

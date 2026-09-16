@@ -1,0 +1,20 @@
+{
+  "name": "matchem-2d-perovskite-lab-ml-synthesis-scenario",
+  "type": "scenario",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "场景卡：二维钙钛矿实验室机器学习合成（matchem）。工作流 4 步，经 edge:workflow 指向 matchem-device-stacking-failure-boundary-definition-interface-or-defect-workflow，经 edge:task 指向其骨架任务。",
+  "tags": [
+    "edge:workflow:matchem-device-stacking-failure-boundary-definition-interface-or-defect-workflow",
+    "edge:task:matchem-device-stacking-failure-boundary-definition-task",
+    "edge:task:matchem-interface-or-defect-control-implementation-task",
+    "edge:task:matchem-optoelectronic-performance-aging-response-evaluation-task",
+    "edge:task:matchem-optimization-scheme-review-task",
+    "slot:DEVICE_STACK:器件与材料堆叠",
+    "slot:STRESS_CONDITION:运行与老化条件",
+    "slot:CHARACTERIZATION_DATA:表征或器件数据"
+  ]
+}

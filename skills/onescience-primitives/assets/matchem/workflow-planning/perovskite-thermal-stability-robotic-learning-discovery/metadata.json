@@ -19,8 +19,8 @@
     "stability",
     "temperature-induced",
     "using",
-    "edge:scenario:sc-1f771c7e",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-perovskite-temperature-stability-robotic-learning-discovery-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "钙钛矿温度稳定性机器人学习发现",
   "source_papers": [

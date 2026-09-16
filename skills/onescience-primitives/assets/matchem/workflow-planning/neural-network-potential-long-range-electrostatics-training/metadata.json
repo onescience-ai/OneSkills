@@ -17,8 +17,8 @@
     "null",
     "potentials",
     "self-consistent",
-    "edge:scenario:sc-95d6aae9",
-    "edge:workflow:wf-matchem-ec013e02"
+    "edge:scenario:matchem-neural-network-potential-long-range-electrostatic-training-scenario",
+    "edge:workflow:matchem-reference-data-audit-coverage-definition-root-cause-potential-workflow"
   ],
   "scenario_id": "神经网络势长程静电自洽训练",
   "source_papers": [

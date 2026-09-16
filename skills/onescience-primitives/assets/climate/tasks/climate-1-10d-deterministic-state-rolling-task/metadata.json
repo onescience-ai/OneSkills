@@ -1,0 +1,25 @@
+{
+  "name": "climate-1-10d-deterministic-state-rolling-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：1—10天确定性状态滚动。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/random-forest-model-performance-evaluation', 'models/ensemble-model-output-statistics-emos-post-processing', 'models/importance-sampling-strategy-for-extreme-events', 'models/random-forest-meteorological-normalization', 'models/random-forest-regression-for-vertical-wind-speed-extrapolation', 'models/weighted-long-short-term-memory-neural-network-extended-model-for-pm2-5-forecasting']。",
+  "tags": [
+    "edge:resource:datasets/random-forest-model-performance-evaluation",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:models/importance-sampling-strategy-for-extreme-events",
+    "edge:resource:models/random-forest-meteorological-normalization",
+    "edge:resource:models/random-forest-regression-for-vertical-wind-speed-extrapolation",
+    "edge:resource:models/weighted-long-short-term-memory-neural-network-extended-model-for-pm2-5-forecasting",
+    "edge:prev:climate-model-checkpoint-compatibility-verification-task",
+    "edge:next:climate-physical-quantity-recovery-product-generation-task",
+    "slot:ROLLOUT_STRATEGY:状态推进策略",
+    "slot:OUTPUT_INTERVAL_HOURS:输出时间间隔",
+    "slot:SAVE_INTERMEDIATE_STATES:保存中间状态",
+    "slot:RANDOM_SEED:运行随机种子",
+    "edge:instance:climate-1-10d-deterministic-state-global-analysis-driven-1-10-inst"
+  ]
+}

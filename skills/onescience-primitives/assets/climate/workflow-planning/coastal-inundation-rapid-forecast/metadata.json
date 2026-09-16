@@ -24,8 +24,8 @@
     "workflow-planning",
     "climate",
     "e109",
-    "edge:scenario:sc-2c4fca50",
-    "edge:workflow:wf-climate-176c48c4"
+    "edge:scenario:climate-nearshore-inundation-rapid-forecast-model-scenario",
+    "edge:workflow:climate-model-input-run-condition-precheck-executing-scheme-design-task-workflow-9"
   ],
   "scenario_id": "E109",
   "source_papers": [],

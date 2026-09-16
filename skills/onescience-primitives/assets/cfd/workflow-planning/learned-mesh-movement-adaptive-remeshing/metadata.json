@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s068",
-    "edge:scenario:sc-ec58a5cb",
-    "edge:workflow:wf-cfd-f43b987c"
+    "edge:scenario:cfd-learned-mesh-movement-adaptive-remesh-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-5"
   ],
   "scenario_id": "CFD_S068",
   "source_papers": [

@@ -17,8 +17,8 @@
     "electrochemical stability",
     "overall water splitting",
     "electrocatalyst evaluation",
-    "edge:scenario:sc-4e931bfb",
-    "edge:workflow:wf-matchem-023e41f2"
+    "edge:scenario:matchem-ni-single-atom-mo2c-water-splitting-microenvironment-scenario",
+    "edge:workflow:matchem-active-site-reaction-network-definition-adsorption-reaction-workflow"
   ],
   "harvested": true,
   "tier": "medium",

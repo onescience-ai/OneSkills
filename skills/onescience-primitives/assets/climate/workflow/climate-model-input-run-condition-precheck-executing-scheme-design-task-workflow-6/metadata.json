@@ -1,0 +1,19 @@
+{
+  "name": "climate-model-input-run-condition-precheck-executing-scheme-design-task-workflow-6",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [模型输入与运行条件预检 > 执行方案设计与任务配置冻结 > 数据对齐、样本构建与最小干运行 > WRF偏差订正模型训练与产品生成 > 产品质控与运行性能检查 > 独立评估与交付判定]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-model-input-run-condition-precheck-task",
+    "edge:task:climate-executing-scheme-design-task-configuration-freeze-task",
+    "edge:task:climate-data-alignment-sample-construction-minimum-dry-run-task",
+    "edge:task:climate-wrf-bias-correction-model-training-product-generation-task",
+    "edge:task:climate-product-quality-control-operational-performance-check-task",
+    "edge:task:climate-independent-evaluation-delivery-task",
+    "edge:scenario:climate-bohai-yellow-sea-wrf-numerical-forecast-intelligent-correction-scenario"
+  ]
+}

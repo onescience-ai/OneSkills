@@ -1,0 +1,29 @@
+{
+  "name": "climate-hazard-factor-event-label-and-satellite-and-ground-sensor-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「致灾因子和事件标签及任务边界预检」在场景「E22」中的实例化；资源引用 ['datasets/data-infrastructure-observations-and-labels', 'datasets/gedi-footprint-canopy-height-data', 'datasets/lpma-airport-wind-observation-validation', 'datasets/ostia-sst-data', 'datasets/snodas-swe-data-product', 'datasets/southern-great-plains-sgp-observatory-wind-dataset', 'models/dust-event-forecasting-with-multi-task-deep-learning', 'models/dynamic-pre-training-for-time-series-dynpt', 'models/multivariate-data-fusion-vector-wind-prediction', 'models/random-forest-regression-for-vertical-wind-speed-extrapolation']。",
+  "tags": [
+    "edge:skeleton:climate-hazard-factor-event-label-and-boundary-precheck-task",
+    "edge:scenario:climate-satellite-and-ground-sensor-fusion-early-fire-smoke-plume-scenario",
+    "edge:resource:datasets/data-infrastructure-observations-and-labels",
+    "edge:resource:datasets/gedi-footprint-canopy-height-data",
+    "edge:resource:datasets/lpma-airport-wind-observation-validation",
+    "edge:resource:datasets/ostia-sst-data",
+    "edge:resource:datasets/snodas-swe-data-product",
+    "edge:resource:datasets/southern-great-plains-sgp-observatory-wind-dataset",
+    "edge:resource:models/dust-event-forecasting-with-multi-task-deep-learning",
+    "edge:resource:models/dynamic-pre-training-for-time-series-dynpt",
+    "edge:resource:models/multivariate-data-fusion-vector-wind-prediction",
+    "edge:resource:models/random-forest-regression-for-vertical-wind-speed-extrapolation",
+    "slot:HAZARD_DRIVERS:致灾驱动资料",
+    "slot:STATIC_CONDITIONS:静态环境资料",
+    "slot:EVENT_LABELS:历史事件标签",
+    "slot:TARGET_WINDOW:目标预警窗口",
+    "slot:DATA_CUTOFF_TIME:资料截止时间"
+  ]
+}

@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b42",
-    "edge:scenario:sc-5d896c59",
-    "edge:workflow:wf-bio-9fe7f508"
+    "edge:scenario:bio-physical-rule-constrained-docking-pose-reranking-scenario",
+    "edge:workflow:bio-receptor-ligand-input-precheck-pocket-model-feature-preparation-workflow"
   ],
   "scenario_id": "B42",
   "source_papers": [

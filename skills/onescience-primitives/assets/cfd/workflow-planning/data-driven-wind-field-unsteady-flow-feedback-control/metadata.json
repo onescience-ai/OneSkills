@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s084",
-    "edge:scenario:sc-cba5ed40",
-    "edge:workflow:wf-cfd-94ab0c83"
+    "edge:scenario:cfd-data-driven-wind-field-unsteady-flow-feedback-control-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-7"
   ],
   "scenario_id": "CFD_S084",
   "source_papers": [

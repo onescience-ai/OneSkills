@@ -27,8 +27,8 @@
     "workflow-planning",
     "b52",
     "molsculptor",
-    "edge:scenario:sc-be1fb4bc",
-    "edge:workflow:wf-bio-856a5702"
+    "edge:scenario:bio-molecular-latent-space-diffusion-evolution-and-multi-site-scenario",
+    "edge:workflow:bio-molecular-design-objective-definition-model-property-condition-workflow"
   ],
   "scenario_id": "B52",
   "source_papers": [

@@ -27,8 +27,8 @@
     "pourbaix",
     "bandgap",
     "hse06",
-    "edge:scenario:sc-10a5135f",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-co2-photocatalyst-data-driven-synthesizability-screening-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "CO2光催化剂数据驱动可合成性筛选",
   "source_papers": [

@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b63",
-    "edge:scenario:sc-a88a7437",
-    "edge:workflow:wf-bio-afe9f9ae"
+    "edge:scenario:bio-multi-species-dna-sequence-representation-and-downstream-scenario",
+    "edge:workflow:bio-genome-input-coordinate-normalization-sequence-window-model-workflow"
   ],
   "scenario_id": "B63",
   "source_papers": [

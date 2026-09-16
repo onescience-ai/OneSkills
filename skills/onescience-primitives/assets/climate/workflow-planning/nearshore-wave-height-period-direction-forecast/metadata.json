@@ -27,8 +27,8 @@
     "workflow-planning",
     "climate",
     "e31",
-    "edge:scenario:sc-9e74e9bb",
-    "edge:workflow:wf-climate-b2bf7ece"
+    "edge:scenario:climate-nearshore-significant-wave-height-period-direction-short-term-scenario",
+    "edge:workflow:climate-ocean-state-forcing-data-boundary-precheck-ocean-state-forcing-workflow-6"
   ],
   "scenario_id": "E31",
   "source_papers": [

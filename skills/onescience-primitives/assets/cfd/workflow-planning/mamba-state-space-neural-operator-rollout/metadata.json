@@ -29,8 +29,8 @@
     "cfd_s053",
     "mamba-neural-operator",
     "state-space-operator",
-    "edge:scenario:sc-151b4062",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-mamba-state-space-neural-operator-temporal-forecast-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S053",
   "source_papers": [

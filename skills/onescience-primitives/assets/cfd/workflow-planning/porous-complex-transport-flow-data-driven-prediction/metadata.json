@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s077",
     "neural-differential-equation",
-    "edge:scenario:sc-ad48c314",
-    "edge:workflow:wf-cfd-17883fa9"
+    "edge:scenario:cfd-data-driven-porous-complex-transport-flow-prediction-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-6"
   ],
   "scenario_id": "CFD_S077",
   "source_papers": [

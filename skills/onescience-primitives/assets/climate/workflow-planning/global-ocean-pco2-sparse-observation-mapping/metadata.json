@@ -42,8 +42,8 @@
     "workflow-planning",
     "climate",
     "e13",
-    "edge:scenario:sc-697ebcbc",
-    "edge:workflow:wf-climate-4eb921ee"
+    "edge:scenario:climate-global-ocean-pco2-sparse-observation-spatiotemporal-expansion-scenario",
+    "edge:workflow:climate-target-sequence-gap-and-boundary-precheck-target-sequence-gap-workflow-4"
   ],
   "scenario_id": "E13",
   "source_papers": [

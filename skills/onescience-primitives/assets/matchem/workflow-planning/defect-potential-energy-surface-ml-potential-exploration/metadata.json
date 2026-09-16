@@ -19,8 +19,8 @@
     "null",
     "potential",
     "surfaces",
-    "edge:scenario:sc-e5b3557e",
-    "edge:workflow:wf-matchem-ec013e02"
+    "edge:scenario:matchem-defective-potential-energy-surface-machine-learning-potential-scenario",
+    "edge:workflow:matchem-reference-data-audit-coverage-definition-root-cause-potential-workflow"
   ],
   "scenario_id": "缺陷势能面机器学习势探索",
   "source_papers": [

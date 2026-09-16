@@ -1,0 +1,18 @@
+{
+  "name": "matchem-li-ni-mixing-structural-lini091co09o2-high-ni-inst",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「Li/Ni 混排与结构稳定性计算」在场景「LiNiCo_高镍层状正极掺杂结构优化与应变风险分析」中的实例化；资源引用 ['tools/molecular-structure-preparation', 'tools/pymatgen']。",
+  "tags": [
+    "edge:skeleton:matchem-li-ni-mixing-structural-stability-calculation-task",
+    "edge:scenario:matchem-lini091co09o2-high-ni-layered-cathode-doping-strain-risk-scenario",
+    "edge:resource:tools/molecular-structure-preparation",
+    "edge:resource:tools/pymatgen",
+    "slot:RELAXED_STRUCTURES:弛豫结构集合",
+    "slot:LI_CONTENT:脱锂状态"
+  ]
+}

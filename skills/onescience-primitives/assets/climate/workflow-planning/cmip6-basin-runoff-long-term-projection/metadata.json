@@ -42,8 +42,8 @@
     "workflow",
     "workflow-planning",
     "e28",
-    "edge:scenario:sc-cb8828e9",
-    "edge:workflow:wf-climate-a08049c7"
+    "edge:scenario:climate-cmip6-climate-scenario-watershed-runoff-projection-scenario",
+    "edge:workflow:climate-hydro-forcing-basin-data-boundary-precheck-hydro-forcing-basin-workflow"
   ],
   "scenario_id": "E28",
   "source_papers": [

@@ -18,8 +18,8 @@
     "mof深度生成逆向设计",
     "null",
     "using",
-    "edge:scenario:sc-8d6b09d1",
-    "edge:workflow:wf-matchem-2c158827"
+    "edge:scenario:matchem-mof-deep-generative-inverse-design-scenario",
+    "edge:workflow:matchem-structure-and-separation-target-definition-mass-transfer-workflow"
   ],
   "scenario_id": "MOF深度生成逆向设计",
   "source_papers": [

@@ -35,8 +35,8 @@
     "workflow-planning",
     "climate",
     "e25",
-    "edge:scenario:sc-1e3c4752",
-    "edge:workflow:wf-climate-af29b90b"
+    "edge:scenario:climate-multi-station-solar-farm-0to48h-power-joint-forecast-scenario",
+    "edge:workflow:climate-weather-energy-operational-data-task-boundary-precheck-weather-workflow-2"
   ],
   "scenario_id": "E25",
   "source_papers": [

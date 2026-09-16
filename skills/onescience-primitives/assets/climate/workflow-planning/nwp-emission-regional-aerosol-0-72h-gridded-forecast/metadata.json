@@ -23,8 +23,8 @@
     "workflow-planning",
     "climate",
     "e99",
-    "edge:scenario:sc-2eb9b3c3",
-    "edge:workflow:wf-climate-69122a37"
+    "edge:scenario:climate-nwp-emission-driven-regional-aerosol-0-72h-forecast-scenario",
+    "edge:workflow:climate-pollution-met-data-boundary-precheck-pollution-met-stalign-workflow"
   ],
   "scenario_id": "E99",
   "source_papers": [

@@ -1,0 +1,17 @@
+{
+  "name": "cfd-low-resolution-partial-partial-observation-diffusio-inst",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（cfd）：骨架「低分辨或部分观测流场重构」在场景「CFD_S097」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:cfd-low-resolution-partial-observation-flow-reconstruction-task",
+    "edge:scenario:cfd-partial-observation-diffusion-assimilation-and-continuous-flow-scenario",
+    "slot:CHECKPOINT:模型权重",
+    "slot:DEVICE:计算设备",
+    "slot:BATCH_SIZE:推理批大小"
+  ]
+}

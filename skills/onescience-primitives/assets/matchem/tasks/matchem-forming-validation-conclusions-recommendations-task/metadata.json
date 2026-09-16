@@ -1,0 +1,16 @@
+{
+  "name": "matchem-forming-validation-conclusions-recommendations-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：形成验证结论与后续建议。被 1 个场景复用；含 1 个实例任务；资源引用 ['tools/reaxnet-polarizable-long-range-neural-network-potential']。",
+  "tags": [
+    "edge:resource:tools/reaxnet-polarizable-long-range-neural-network-potential",
+    "edge:prev:matchem-executing-2ps-short-term-validation-task",
+    "slot:LONG_RUN_GOAL:长时目标",
+    "edge:instance:matchem-forming-validation-conclusions-co2-cu111-water-k-interface-inst"
+  ]
+}

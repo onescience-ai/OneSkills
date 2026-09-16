@@ -19,8 +19,8 @@
     "workflow",
     "workflow-planning",
     "b59",
-    "edge:scenario:sc-676e46e8",
-    "edge:workflow:wf-bio-856a5702"
+    "edge:scenario:bio-all-atom-flow-matching-3d-small-molecule-generation-scenario",
+    "edge:workflow:bio-molecular-design-objective-definition-model-property-condition-workflow"
   ],
   "scenario_id": "B59",
   "source_papers": [

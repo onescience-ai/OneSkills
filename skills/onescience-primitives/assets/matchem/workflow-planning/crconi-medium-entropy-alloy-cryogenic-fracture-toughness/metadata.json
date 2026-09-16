@@ -21,8 +21,8 @@
     "toughness",
     "workflow",
     "workflow-planning",
-    "edge:scenario:sc-8daa397c",
-    "edge:workflow:wf-matchem-4097efc6"
+    "edge:scenario:matchem-crconi-medium-high-entropy-alloy-cryogenic-fracture-toughness-scenario",
+    "edge:workflow:matchem-material-control-scheme-definition-response-test-simulation-workflow"
   ],
   "scenario_id": "CrCoNi中高熵合金低温断裂韧性分析",
   "source_papers": [

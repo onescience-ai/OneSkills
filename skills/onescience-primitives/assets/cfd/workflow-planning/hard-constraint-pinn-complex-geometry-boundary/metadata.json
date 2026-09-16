@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s040",
     "hard-constraint-pinn",
-    "edge:scenario:sc-52b885af",
-    "edge:workflow:wf-cfd-fe460ea5"
+    "edge:scenario:cfd-hard-constrained-pinn-complex-geometry-boundary-solver-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-4"
   ],
   "scenario_id": "CFD_S040",
   "source_papers": [

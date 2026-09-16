@@ -17,8 +17,8 @@
     "cloud-mask",
     "image-preprocessing",
     "accuracy-assessment",
-    "edge:scenario:sc-2d7262ea",
-    "edge:workflow:wf-climate-435ef2a9"
+    "edge:scenario:climate-visible-image-cloud-mask-and-cloud-opacity-classification-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-8"
   ],
   "harvested": true,
   "tier": "medium",

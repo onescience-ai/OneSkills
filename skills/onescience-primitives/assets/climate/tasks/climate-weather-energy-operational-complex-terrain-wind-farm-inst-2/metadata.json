@@ -1,0 +1,18 @@
+{
+  "name": "climate-weather-energy-operational-complex-terrain-wind-farm-inst-2",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「天气能源运行资料时空对齐与样本构造」在场景「E26」中的实例化；资源引用 ['models/random-forest-regression-for-vertical-wind-speed-extrapolation']。",
+  "tags": [
+    "edge:skeleton:climate-weather-energy-operational-data-space-time-alignment-task",
+    "edge:scenario:climate-complex-terrain-wind-farm-hub-height-short-term-wind-speed-scenario",
+    "edge:resource:models/random-forest-regression-for-vertical-wind-speed-extrapolation",
+    "slot:TERRAIN_ALIGNMENT_CONFIG:地形对齐配置",
+    "slot:VERTICAL_MAPPING_CONFIG:垂向映射配置",
+    "slot:MISSING_VALUE_POLICY:缺测处理规则"
+  ]
+}

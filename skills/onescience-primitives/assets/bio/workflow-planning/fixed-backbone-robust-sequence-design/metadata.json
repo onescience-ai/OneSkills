@@ -22,8 +22,8 @@
     "workflow",
     "workflow-planning",
     "b12",
-    "edge:scenario:sc-e776d2e8",
-    "edge:workflow:wf-bio-42419238"
+    "edge:scenario:bio-given-protein-backbone-robust-sequence-design-scenario",
+    "edge:workflow:bio-design-objective-and-constraint-definition-model-condition-workflow"
   ],
   "scenario_id": "B12",
   "source_papers": [

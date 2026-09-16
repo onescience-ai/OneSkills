@@ -44,8 +44,8 @@
     "workflow-planning",
     "climate",
     "e64",
-    "edge:scenario:sc-187cdfeb",
-    "edge:workflow:wf-climate-78267929"
+    "edge:scenario:climate-urban-waterlogging-point-future-hours-inundation-depth-scenario",
+    "edge:workflow:climate-hydro-forcing-basin-data-boundary-precheck-hydro-forcing-basin-workflow-2"
   ],
   "scenario_id": "E64",
   "source_papers": [

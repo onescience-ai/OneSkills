@@ -1,0 +1,22 @@
+{
+  "name": "climate-random-generate-spatiotemporal-coarse-resolution-precipitat-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「随机生成时空连续细雨场」在场景「E15」中的实例化；资源引用 ['datasets/cesm2-large-ensemble', 'datasets/large-ensemble-testbed', 'models/crpsexp-loss-function-for-ensemble-forecasting', 'models/ensemble-empirical-mode-decomposition-eemd', 'models/ensemble-model-output-statistics-emos-post-processing']。",
+  "tags": [
+    "edge:skeleton:climate-random-generate-spatiotemporal-continuous-drizzle-field-task",
+    "edge:scenario:climate-coarse-resolution-precipitation-to-kilometer-subhourly-scenario",
+    "edge:resource:datasets/cesm2-large-ensemble",
+    "edge:resource:datasets/large-ensemble-testbed",
+    "edge:resource:models/crpsexp-loss-function-for-ensemble-forecasting",
+    "edge:resource:models/ensemble-empirical-mode-decomposition-eemd",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "slot:RUN_CONFIG:运行配置",
+    "slot:ENSEMBLE_SIZE:生成成员数",
+    "slot:OUTPUT_INTERVAL:输出间隔"
+  ]
+}

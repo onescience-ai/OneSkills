@@ -19,8 +19,8 @@
     "null",
     "porous",
     "supervised",
-    "edge:scenario:sc-468fa64d",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-porous-material-data-efficient-foundation-model-construction-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "多孔材料数据高效基础模型构建",
   "source_papers": [

@@ -1,0 +1,28 @@
+{
+  "name": "bio-feature-model-preparation-task",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（bio）：特征与模型准备。被 10 个场景复用；含 10 个实例任务；资源引用 ['tools/biopython']。",
+  "tags": [
+    "edge:resource:tools/biopython",
+    "edge:prev:bio-input-and-task-definition-task",
+    "edge:next:bio-structure-inference-and-sampling-task",
+    "slot:CHECKPOINT:模型权重",
+    "slot:MSA_MODE:MSA模式",
+    "slot:MAX_TEMPLATES:模板上限",
+    "edge:instance:bio-feature-model-preparation-openfold-component-ablation-inst",
+    "edge:instance:bio-feature-model-preparation-atom-level-protein-represent-inst",
+    "edge:instance:bio-feature-model-preparation-msa-free-protein-fast-inst",
+    "edge:instance:bio-feature-model-preparation-physical-feedback-constraine-inst",
+    "edge:instance:bio-feature-model-preparation-protein-monomer-structure-inst",
+    "edge:instance:bio-feature-model-preparation-protein-complex-structure-inst",
+    "edge:instance:bio-feature-model-preparation-protein-multi-conformational-inst",
+    "edge:instance:bio-feature-model-preparation-protein-nucleic-acid-ligand-inst",
+    "edge:instance:bio-feature-model-preparation-protein-ligand-complex-inst",
+    "edge:instance:bio-feature-model-preparation-lightweight-multi-molecular-inst"
+  ]
+}

@@ -17,8 +17,8 @@
     "publisher",
     "structure",
     "temperatures",
-    "edge:scenario:sc-b7e5107b",
-    "edge:workflow:wf-matchem-30dd7b2f"
+    "edge:scenario:matchem-finite-temperature-crystal-structure-prediction-scenario",
+    "edge:workflow:matchem-composition-structure-search-space-definition-candidate-workflow"
   ],
   "scenario_id": "有限温度晶体结构预测",
   "source_papers": [

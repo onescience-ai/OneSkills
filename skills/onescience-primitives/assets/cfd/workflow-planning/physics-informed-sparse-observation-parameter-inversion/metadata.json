@@ -29,8 +29,8 @@
     "cfd_s038",
     "inverse-pinn",
     "physics-informed-data-assimilation",
-    "edge:scenario:sc-85108da0",
-    "edge:workflow:wf-cfd-fe460ea5"
+    "edge:scenario:cfd-physics-informed-network-sparse-observation-parameter-inversion-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-4"
   ],
   "scenario_id": "CFD_S038",
   "source_papers": [

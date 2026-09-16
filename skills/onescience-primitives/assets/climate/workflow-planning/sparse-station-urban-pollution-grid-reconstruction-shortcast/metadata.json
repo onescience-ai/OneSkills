@@ -35,8 +35,8 @@
     "workflow-planning",
     "climate",
     "e60",
-    "edge:scenario:sc-f4bb308a",
-    "edge:workflow:wf-climate-c96cb6e6"
+    "edge:scenario:climate-sparse-monitoring-station-driven-urban-pollution-grid-scenario",
+    "edge:workflow:climate-pollution-met-data-boundary-precheck-pollution-met-stalign-workflow-3"
   ],
   "scenario_id": "E60",
   "source_papers": [

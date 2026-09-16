@@ -1,0 +1,21 @@
+{
+  "name": "matchem-candidate-ranking-experiment-literature-cross-validation-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：候选排序与实验/文献交叉验证。被 1 个场景复用；含 1 个实例任务；资源引用 ['datapipes/xps-nife-oer-surface-analysis', 'models/data-efficient-machine-learning-potentials-modeling-catalytic', 'models/operando-ct-image-analysis-for-lithium-metal-batteries', 'tools/phonopy-phonon-analysis', 'tools/pymatgen']。",
+  "tags": [
+    "edge:resource:datapipes/xps-nife-oer-surface-analysis",
+    "edge:resource:models/data-efficient-machine-learning-potentials-modeling-catalytic",
+    "edge:resource:models/operando-ct-image-analysis-for-lithium-metal-batteries",
+    "edge:resource:tools/phonopy-phonon-analysis",
+    "edge:resource:tools/pymatgen",
+    "edge:prev:matchem-elasticity-cracking-risk-proxy-indicator-analysis-task",
+    "slot:ANALYSIS_TABLES:分析结果表",
+    "slot:VALIDATION_DATA:验证数据",
+    "edge:instance:matchem-candidate-ranking-experiment-lini091co09o2-high-ni-inst"
+  ]
+}

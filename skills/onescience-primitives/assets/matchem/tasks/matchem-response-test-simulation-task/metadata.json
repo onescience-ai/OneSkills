@@ -1,0 +1,21 @@
+{
+  "name": "matchem-response-test-simulation-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：响应测试或模拟。被 5 个场景复用；含 5 个实例任务；资源引用 ['models/data-efficient-machine-learning-potentials-modeling-catalytic']。",
+  "tags": [
+    "edge:resource:models/data-efficient-machine-learning-potentials-modeling-catalytic",
+    "edge:prev:matchem-material-control-scheme-definition-task",
+    "edge:next:matchem-mechanism-performance-quantitative-analysis-task",
+    "slot:MEASUREMENT_DATA:表征数据",
+    "edge:instance:matchem-response-test-simulation-crconi-medium-high-entropy-inst",
+    "edge:instance:matchem-response-test-simulation-complex-alloy-thermal-inst",
+    "edge:instance:matchem-response-test-simulation-laser-powder-bed-fusion-inst",
+    "edge:instance:matchem-response-test-simulation-refractory-high-entropy-inst",
+    "edge:instance:matchem-response-test-simulation-high-entropy-metallic-glass-inst"
+  ]
+}

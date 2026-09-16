@@ -26,8 +26,8 @@
     "workflow",
     "workflow-planning",
     "b13",
-    "edge:scenario:sc-783047a7",
-    "edge:workflow:wf-bio-42419238"
+    "edge:scenario:bio-all-atom-protein-structure-sequence-joint-generation-scenario",
+    "edge:workflow:bio-design-objective-and-constraint-definition-model-condition-workflow"
   ],
   "scenario_id": "B13",
   "source_papers": [

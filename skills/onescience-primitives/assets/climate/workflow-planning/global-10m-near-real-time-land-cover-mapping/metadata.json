@@ -19,8 +19,8 @@
     "workflow-planning",
     "climate",
     "e71",
-    "edge:scenario:sc-99f6f860",
-    "edge:workflow:wf-climate-3d493300"
+    "edge:scenario:climate-global-10m-near-real-time-land-cover-mapping-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-6"
   ],
   "scenario_id": "E71",
   "source_papers": [

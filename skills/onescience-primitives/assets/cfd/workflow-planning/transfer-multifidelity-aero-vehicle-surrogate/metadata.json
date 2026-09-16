@@ -29,8 +29,8 @@
     "cfd_s076",
     "transfer-learning-surrogate",
     "gaussian-functional-regressor",
-    "edge:scenario:sc-b597ff44",
-    "edge:workflow:wf-cfd-17883fa9"
+    "edge:scenario:cfd-transfer-and-multi-fidelity-aerospace-vehicle-aerodynamic-proxy-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-6"
   ],
   "scenario_id": "CFD_S076",
   "source_papers": [

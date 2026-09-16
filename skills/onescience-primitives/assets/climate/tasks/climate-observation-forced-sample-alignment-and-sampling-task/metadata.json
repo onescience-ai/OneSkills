@@ -1,0 +1,19 @@
+{
+  "name": "climate-observation-forced-sample-alignment-and-sampling-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：观测强迫样本时空对齐与样本构造。被 2 个场景复用；含 2 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:climate-observation-forced-sample-and-boundary-precheck-task",
+    "edge:next:climate-method-configuration-input-output-contract-validation-task",
+    "slot:ALIGNMENT_CONFIG:时空对齐配置",
+    "slot:SPLIT_PROTOCOL:数据划分协议",
+    "slot:CONFOUNDER_POLICY:混杂因素规则",
+    "edge:instance:climate-observation-forced-sample-daily-precipitation-field-inst",
+    "edge:instance:climate-observation-forced-sample-ozone-and-particulate-inst"
+  ]
+}

@@ -27,8 +27,8 @@
     "workflow-planning",
     "climate",
     "e68",
-    "edge:scenario:sc-343e9fa3",
-    "edge:workflow:wf-climate-abecd97b"
+    "edge:scenario:climate-soil-hyperspectral-reflectance-driven-organic-carbon-content-scenario",
+    "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-9"
   ],
   "scenario_id": "E68",
   "source_papers": [

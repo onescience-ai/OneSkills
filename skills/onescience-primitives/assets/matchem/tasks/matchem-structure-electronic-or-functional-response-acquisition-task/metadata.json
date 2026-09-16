@@ -1,0 +1,19 @@
+{
+  "name": "matchem-structure-electronic-or-functional-response-acquisition-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：结构电子或功能响应获取。被 4 个场景复用；含 4 个实例任务；资源引用 （域内暂无匹配资源卡，见知识文档资源缺口）。",
+  "tags": [
+    "edge:prev:matchem-defect-model-and-control-definition-task",
+    "edge:next:matchem-defect-functionality-and-stability-ranking-task",
+    "slot:ENVIRONMENT:环境与表征条件",
+    "edge:instance:matchem-structure-electronic-or-mos2-monolayer-atomic-inst",
+    "edge:instance:matchem-structure-electronic-or-hbn-single-photon-emission-inst",
+    "edge:instance:matchem-structure-electronic-or-phosphorene-monolayer-inst",
+    "edge:instance:matchem-structure-electronic-or-lithium-reduction-room-inst"
+  ]
+}

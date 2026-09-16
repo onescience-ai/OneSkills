@@ -1,0 +1,30 @@
+{
+  "name": "climate-observation-background-field-sparse-observation-3d-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「观测和背景场及任务边界预检」在场景「E48」中的实例化；资源引用 ['datasets/data-infrastructure-observations-and-labels', 'datasets/gedi-footprint-canopy-height-data', 'datasets/lpma-airport-wind-observation-validation', 'datasets/ostia-sst-data', 'datasets/snodas-swe-data-product', 'datasets/southern-great-plains-sgp-observatory-wind-dataset', 'models/dynamic-pre-training-for-time-series-dynpt', 'models/multivariate-data-fusion-vector-wind-prediction', 'models/radially-averaged-power-spectral-density-analysis', 'models/random-forest-regression-for-vertical-wind-speed-extrapolation', 'tools/multi-level-b-spline-analysis-mba']。",
+  "tags": [
+    "edge:skeleton:climate-observation-background-field-and-boundary-precheck-task",
+    "edge:scenario:climate-sparse-observation-3d-temperature-salt-field-fast-scenario",
+    "edge:resource:datasets/data-infrastructure-observations-and-labels",
+    "edge:resource:datasets/gedi-footprint-canopy-height-data",
+    "edge:resource:datasets/lpma-airport-wind-observation-validation",
+    "edge:resource:datasets/ostia-sst-data",
+    "edge:resource:datasets/snodas-swe-data-product",
+    "edge:resource:datasets/southern-great-plains-sgp-observatory-wind-dataset",
+    "edge:resource:models/dynamic-pre-training-for-time-series-dynpt",
+    "edge:resource:models/multivariate-data-fusion-vector-wind-prediction",
+    "edge:resource:models/radially-averaged-power-spectral-density-analysis",
+    "edge:resource:models/random-forest-regression-for-vertical-wind-speed-extrapolation",
+    "edge:resource:tools/multi-level-b-spline-analysis-mba",
+    "slot:OBSERVATION_DATA:原始观测资料",
+    "slot:BACKGROUND_STATE:背景状态",
+    "slot:ANALYSIS_TIME:分析时刻",
+    "slot:ASSIMILATION_WINDOW:同化时间窗",
+    "slot:DATA_CUTOFF_TIME:资料截止时间"
+  ]
+}

@@ -28,8 +28,8 @@
     "cfd",
     "cfd_s016",
     "physics-informed-gan",
-    "edge:scenario:sc-6e6159a2",
-    "edge:workflow:wf-cfd-e7748c02"
+    "edge:scenario:cfd-physics-informed-probabilistic-network-flow-field-uncertainty-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-2"
   ],
   "scenario_id": "CFD_S016",
   "source_papers": [

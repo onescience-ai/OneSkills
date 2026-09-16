@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s024",
-    "edge:scenario:sc-1efa20b7",
-    "edge:workflow:wf-cfd-32ebb7bb"
+    "edge:scenario:cfd-3d-turbulence-transformer-multiscale-spatiotemporal-forecast-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow"
   ],
   "scenario_id": "CFD_S024",
   "source_papers": [

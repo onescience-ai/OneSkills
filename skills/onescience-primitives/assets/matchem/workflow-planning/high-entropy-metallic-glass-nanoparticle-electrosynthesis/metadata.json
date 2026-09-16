@@ -18,8 +18,8 @@
     "multi-functional",
     "nanoparticles",
     "null",
-    "edge:scenario:sc-82ca1efc",
-    "edge:workflow:wf-matchem-4097efc6"
+    "edge:scenario:matchem-high-entropy-metallic-glass-nanoparticle-electrosynthesis-scenario",
+    "edge:workflow:matchem-material-control-scheme-definition-response-test-simulation-workflow"
   ],
   "scenario_id": "高熵金属玻璃纳米颗粒电合成与电催化设计",
   "source_papers": [

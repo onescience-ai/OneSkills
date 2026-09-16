@@ -1,0 +1,20 @@
+{
+  "name": "matchem-co2-to-ch4-her-competing-pathway-free-energy-analysis-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：CO2→CH4 与 HER 竞争路径自由能分析。被 1 个场景复用；含 1 个实例任务；资源引用 ['models/strain-tuning-method-for-hbn-quantum-emitters', 'tools/reaxnet-polarizable-long-range-neural-network-potential']。",
+  "tags": [
+    "edge:resource:models/strain-tuning-method-for-hbn-quantum-emitters",
+    "edge:resource:tools/reaxnet-polarizable-long-range-neural-network-potential",
+    "edge:prev:matchem-adsorption-configuration-search-vasp-relaxation-task",
+    "edge:next:matchem-site-stability-selectivity-ranking-task",
+    "slot:ADSORPTION_RESULTS:吸附结果",
+    "slot:ELECTROCHEMICAL_POTENTIAL:电位",
+    "slot:BARRIER_METHOD:能垒方法",
+    "edge:instance:matchem-co2-to-ch4-her-competing-cu-nxby-single-atom-co2-to-inst"
+  ]
+}

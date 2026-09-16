@@ -27,8 +27,8 @@
     "workflow-planning",
     "b72",
     "scgpt",
-    "edge:scenario:sc-e37a188b",
-    "edge:workflow:wf-bio-cdb48c05"
+    "edge:scenario:bio-geneformer-scgpt-single-cell-interpretability-comparison-scenario",
+    "edge:workflow:bio-single-cell-data-task-definition-preprocessing-model-workflow"
   ],
   "scenario_id": "B72",
   "source_papers": [

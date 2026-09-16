@@ -27,8 +27,8 @@
     "workflow-planning",
     "b71",
     "scgpt",
-    "edge:scenario:sc-628ab0d9",
-    "edge:workflow:wf-bio-cdb48c05"
+    "edge:scenario:bio-scgpt-hematopoietic-cell-representation-lineage-analysis-scenario",
+    "edge:workflow:bio-single-cell-data-task-definition-preprocessing-model-workflow"
   ],
   "scenario_id": "B71",
   "source_papers": [

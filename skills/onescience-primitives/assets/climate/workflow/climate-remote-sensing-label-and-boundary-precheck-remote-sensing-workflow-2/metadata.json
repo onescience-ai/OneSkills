@@ -1,0 +1,19 @@
+{
+  "name": "climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow-2",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "工作流卡（climate）：6 步骨架 [遥感观测标签及任务边界预检 > 遥感观测标签时空对齐与样本构造 > 方法配置与输入输出契约验证 > 逐像元生成NH3总柱浓度 > 输出检测限、不确定性和质量等级 > 按季节、区域和浓度范围独立验证]，被 1 个场景共用；经 edge:task 指向骨架任务、edge:scenario 回指场景。",
+  "tags": [
+    "edge:task:climate-remote-sensing-label-and-boundary-precheck-task",
+    "edge:task:climate-remote-sensing-labels-alignment-sample-construction-task",
+    "edge:task:climate-method-configuration-input-output-contract-validation-task",
+    "edge:task:climate-generate-pixelwise-nh3-total-column-concentration-task",
+    "edge:task:climate-output-detection-limit-uncertainty-and-quality-grade-task",
+    "edge:task:climate-independent-validation-by-season-region-concentration-range-task",
+    "edge:scenario:climate-iasi-near-real-time-atmospheric-ammonia-column-retrieval-scenario"
+  ]
+}

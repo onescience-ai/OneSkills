@@ -25,8 +25,8 @@
     "workflow",
     "workflow-planning",
     "b16",
-    "edge:scenario:sc-8dda9f65",
-    "edge:workflow:wf-bio-42419238"
+    "edge:scenario:bio-substrate-pocket-constrained-enzyme-scaffold-design-scenario",
+    "edge:workflow:bio-design-objective-and-constraint-definition-model-condition-workflow"
   ],
   "scenario_id": "B16",
   "source_papers": [

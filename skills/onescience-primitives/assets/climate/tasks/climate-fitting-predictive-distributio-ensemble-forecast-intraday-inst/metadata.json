@@ -1,0 +1,20 @@
+{
+  "name": "climate-fitting-predictive-distributio-ensemble-forecast-intraday-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「拟合预测分布或分位数」在场景「E24」中的实例化；资源引用 ['models/ensemble-model-output-statistics-emos-post-processing', 'models/neural-network-based-nwp-model-calibration', 'models/quantile-regression-forest-qrf-methods']。",
+  "tags": [
+    "edge:skeleton:climate-fitting-predictive-distribution-quantiles-task",
+    "edge:scenario:climate-ensemble-forecast-intraday-to-days-ahead-solar-irradiance-scenario",
+    "edge:resource:models/ensemble-model-output-statistics-emos-post-processing",
+    "edge:resource:models/neural-network-based-nwp-model-calibration",
+    "edge:resource:models/quantile-regression-forest-qrf-methods",
+    "slot:CALIBRATION_CONFIG:辐照度校准配置",
+    "slot:OUTPUT_DISTRIBUTION:输出分布形式",
+    "slot:QUANTILES:辐照度分位数"
+  ]
+}

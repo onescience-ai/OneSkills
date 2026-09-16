@@ -20,8 +20,8 @@
     "rules",
     "solid",
     "solution",
-    "edge:scenario:sc-e282a1e9",
-    "edge:workflow:wf-matchem-128b457b"
+    "edge:scenario:matchem-high-entropy-solid-solution-formation-ml-prediction-scenario",
+    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
   "scenario_id": "高熵固溶体形成机器学习预测",
   "source_papers": [

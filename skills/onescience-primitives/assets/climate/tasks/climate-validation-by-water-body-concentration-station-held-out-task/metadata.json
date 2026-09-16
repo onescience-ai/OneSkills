@@ -1,0 +1,21 @@
+{
+  "name": "climate-validation-by-water-body-concentration-station-held-out-task",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（climate）：按水体、浓度区间和留站样本验证。被 1 个场景复用；含 1 个实例任务；资源引用 ['datasets/kling-gupta-efficiency-kge-metric', 'datasets/mdn-based-chla-retrieval-benchmark', 'datasets/precipitation-nowcasting-evaluation-metrics']。",
+  "tags": [
+    "edge:resource:datasets/kling-gupta-efficiency-kge-metric",
+    "edge:resource:datasets/mdn-based-chla-retrieval-benchmark",
+    "edge:resource:datasets/precipitation-nowcasting-evaluation-metrics",
+    "edge:prev:climate-output-concentration-map-uncertainty-and-domain-flag-task",
+    "slot:VERIFICATION_REFERENCE:独立验证资料",
+    "slot:BENCHMARK_RESULT:基线结果",
+    "slot:METRICS:检验指标",
+    "slot:ACCEPTANCE_CRITERIA:验收门限",
+    "edge:instance:climate-validation-by-water-body-landsat-water-chlorophyll-a-inst"
+  ]
+}

@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s081",
-    "edge:scenario:sc-5b85cc9b",
-    "edge:workflow:wf-cfd-94ab0c83"
+    "edge:scenario:cfd-deep-rl-bluff-body-wake-drag-reduction-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-7"
   ],
   "scenario_id": "CFD_S081",
   "source_papers": [

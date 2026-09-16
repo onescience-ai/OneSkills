@@ -22,8 +22,8 @@
     "workflow",
     "workflow-planning",
     "b77",
-    "edge:scenario:sc-250ae6d0",
-    "edge:workflow:wf-bio-cdb48c05"
+    "edge:scenario:bio-single-cell-to-spatial-transcriptome-missing-expression-recovery-scenario",
+    "edge:workflow:bio-single-cell-data-task-definition-preprocessing-model-workflow"
   ],
   "scenario_id": "B77",
   "source_papers": [

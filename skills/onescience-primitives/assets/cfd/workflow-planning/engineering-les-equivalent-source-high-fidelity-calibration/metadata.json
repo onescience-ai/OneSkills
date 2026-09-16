@@ -27,8 +27,8 @@
     "workflow-planning",
     "cfd",
     "cfd_s080",
-    "edge:scenario:sc-94e1f1c2",
-    "edge:workflow:wf-cfd-17883fa9"
+    "edge:scenario:cfd-engineering-les-equivalent-source-term-high-fidelity-calibration-scenario",
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-6"
   ],
   "scenario_id": "CFD_S080",
   "source_papers": [

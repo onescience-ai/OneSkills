@@ -21,8 +21,8 @@
     "workflow",
     "workflow-planning",
     "b80",
-    "edge:scenario:sc-7377b7f8",
-    "edge:workflow:wf-bio-cdb48c05"
+    "edge:scenario:bio-spatial-transcriptomics-and-proteomics-basic-representation-scenario",
+    "edge:workflow:bio-single-cell-data-task-definition-preprocessing-model-workflow"
   ],
   "scenario_id": "B80",
   "source_papers": [

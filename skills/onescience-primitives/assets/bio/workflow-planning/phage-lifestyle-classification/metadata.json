@@ -35,8 +35,8 @@
     "workflow",
     "workflow-planning",
     "b96",
-    "edge:scenario:sc-3082d5ee",
-    "edge:workflow:wf-bio-8c56a4bc"
+    "edge:scenario:bio-phage-lifestyle-classification-prediction-scenario",
+    "edge:workflow:bio-metagenome-input-task-definition-sequence-filtering-model-workflow"
   ],
   "scenario_id": "B96",
   "source_papers": [

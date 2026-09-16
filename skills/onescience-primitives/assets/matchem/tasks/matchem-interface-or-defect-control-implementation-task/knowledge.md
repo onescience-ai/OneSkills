@@ -1,0 +1,47 @@
+# 骨架任务：界面或缺陷调控实施
+
+- domain: matchem
+- 复用场景数: 9
+- 实例任务数: 9
+
+## 步骤描述（跨场景聚合去重）
+- 制备或建模界面钝化、组分、晶粒或缺陷调控方案。
+
+## 执行 prompt（跨场景聚合去重）
+- 在保持对照一致的前提下实施调控，记录全部工艺参数或计算设置。
+
+## 输入槽（var/hint/default）
+- {DEVICE_STACK} | required=True | type=object | var_name=器件与材料堆叠 | hint=钙钛矿组成、传输层、界面层、厚度和制备路 | default={'perovskite': 'specified', 'stack': 'specified'}
+
+## 产出
+- 候选方案
+- 工艺/模型日志
+
+## 质量门禁 quality_gate
+- 仅改变预定义变量
+- 对照样完整
+
+## 可调资源（edge:resource，仅真实存在）
+- （域内暂无匹配资源卡——资源缺口，不编造）
+
+## 实例任务（本骨架在各场景的实例化）
+- matchem-interface-or-defect-control-2d-3d-perovskite-interface-inst
+- matchem-interface-or-defect-control-2d-perovskite-lab-ml-synthes-inst
+- matchem-interface-or-defect-control-all-inorganic-lead-free-inst
+- matchem-interface-or-defect-control-flexible-perovskite-module-inst
+- matchem-interface-or-defect-control-inverted-perovskite-grain-inst
+- matchem-interface-or-defect-control-perovskite-solar-cell-inst
+- matchem-interface-or-defect-control-planar-perovskite-solar-inst
+- matchem-interface-or-defect-control-quasi-2d-perovskite-green-inst
+- matchem-interface-or-defect-control-tio2-cspibr3-heterojunction-inst
+
+## 复用场景
+- TiO2CsPbBr3异质结CO2光还原设计
+- 二维三维钙钛矿界面长期稳定设计
+- 二维钙钛矿实验室机器学习合成
+- 倒置钙钛矿晶粒界面配体锚定优化
+- 全无机无铅钙钛矿原生氧化物钝化
+- 准二维钙钛矿绿光LED相组分钝化优化
+- 平面钙钛矿太阳能电池接触钝化优化
+- 柔性钙钛矿组件SnO2界面钝化设计
+- 钙钛矿太阳能电池氧诱导碘缺陷退化分析

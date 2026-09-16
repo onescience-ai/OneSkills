@@ -1,0 +1,31 @@
+{
+  "name": "matchem-material-condition-modeling-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "骨架任务卡（matchem）：材料与工况建模。被 15 个场景复用；含 15 个实例任务；资源引用 ['tools/molecular-structure-preparation']。",
+  "tags": [
+    "edge:resource:tools/molecular-structure-preparation",
+    "edge:next:matchem-structure-or-electrochemical-response-acquisition-task",
+    "slot:MATERIAL_STRUCTURE:电极或电解质材料信息",
+    "slot:CELL_CONDITION:电池工况",
+    "edge:instance:matchem-material-condition-modeling-licoo2-high-voltage-timgal-inst",
+    "edge:instance:matchem-material-condition-modeling-limn-li-rich-layered-cathode-inst",
+    "edge:instance:matchem-material-condition-modeling-commercial-li-ion-battery-inst",
+    "edge:instance:matchem-material-condition-modeling-solid-state-battery-lithium-inst",
+    "edge:instance:matchem-material-condition-modeling-solid-state-lithium-ion-inst",
+    "edge:instance:matchem-material-condition-modeling-porous-silicon-li-ion-inst",
+    "edge:instance:matchem-material-condition-modeling-li-rich-layered-cathode-inst",
+    "edge:instance:matchem-material-condition-modeling-battery-particle-carbon-inst",
+    "edge:instance:matchem-material-condition-modeling-ionomer-electrolyte-machine-inst",
+    "edge:instance:matchem-material-condition-modeling-lithium-sulfur-battery-inst",
+    "edge:instance:matchem-material-condition-modeling-lithium-ion-battery-calendar-inst",
+    "edge:instance:matchem-material-condition-modeling-lithium-ion-battery-electrod-inst",
+    "edge:instance:matchem-material-condition-modeling-lithium-ion-battery-degradat-inst",
+    "edge:instance:matchem-material-condition-modeling-lithium-metal-electrolyte-inst",
+    "edge:instance:matchem-material-condition-modeling-high-ionic-conductivity-inst"
+  ]
+}

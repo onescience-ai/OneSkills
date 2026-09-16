@@ -1,0 +1,18 @@
+{
+  "name": "bio-medical-data-task-definition-medical-text-and-image-inst",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「医学数据与任务定义」在场景「B98」中的实例化；资源引用 ['tools/simplefold-protein-structure-prediction-model-and-pipeline']。",
+  "tags": [
+    "edge:skeleton:bio-medical-data-task-definition-task",
+    "edge:scenario:bio-medical-text-and-image-multimodal-qa-and-report-assistant-scenario",
+    "edge:resource:tools/simplefold-protein-structure-prediction-model-and-pipeline",
+    "slot:MEDICAL_INPUT:医学输入",
+    "slot:MODEL_NAME:医学模型",
+    "slot:MODALITY:影像模态"
+  ]
+}

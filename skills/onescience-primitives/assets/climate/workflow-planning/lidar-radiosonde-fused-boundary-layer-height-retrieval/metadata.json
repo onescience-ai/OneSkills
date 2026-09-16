@@ -40,8 +40,8 @@
     "workflow-planning",
     "climate",
     "e61",
-    "edge:scenario:sc-7ba09147",
-    "edge:workflow:wf-climate-23d9e145"
+    "edge:scenario:climate-lidar-sounding-fusion-boundary-layer-height-retrieval-scenario",
+    "edge:workflow:climate-source-obs-reference-data-boundary-source-obs-reference-stalign-workflow-4"
   ],
   "scenario_id": "E61",
   "source_papers": [

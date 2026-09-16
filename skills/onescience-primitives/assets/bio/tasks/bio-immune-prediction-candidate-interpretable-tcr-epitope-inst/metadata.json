@@ -1,0 +1,17 @@
+{
+  "name": "bio-immune-prediction-candidate-interpretable-tcr-epitope-inst",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「免疫预测或候选生成」在场景「B27」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:bio-immune-prediction-candidate-generation-task",
+    "edge:scenario:bio-interpretable-tcr-epitope-specificity-prediction-scenario",
+    "slot:NUM_CANDIDATES:候选数量",
+    "slot:TEMPERATURE:采样温度",
+    "slot:SEED:随机种子"
+  ]
+}

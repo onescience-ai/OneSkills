@@ -20,8 +20,8 @@
     "workflow-planning",
     "climate",
     "e100",
-    "edge:scenario:sc-975001b3",
-    "edge:workflow:wf-climate-738dbdfe"
+    "edge:scenario:climate-marine-weather-navigation-constraint-ship-route-optimization-scenario",
+    "edge:workflow:climate-cruise-data-navigation-constraint-and-boundary-precheck-cruise-workflow"
   ],
   "scenario_id": "E100",
   "source_papers": [

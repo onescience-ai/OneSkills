@@ -22,8 +22,8 @@
     "structural",
     "workflow",
     "workflow-planning",
-    "edge:scenario:sc-56a267f2",
-    "edge:workflow:wf-matchem-c41fa878"
+    "edge:scenario:matchem-limn-li-rich-layered-cathode-current-density-degradation-scenario",
+    "edge:workflow:matchem-material-condition-modeling-structure-or-electrochemical-workflow"
   ],
   "scenario_id": "LiMn富锂层状正极电流密度退化分析",
   "source_papers": [

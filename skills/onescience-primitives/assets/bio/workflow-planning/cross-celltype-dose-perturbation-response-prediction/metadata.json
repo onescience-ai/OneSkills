@@ -27,8 +27,8 @@
     "workflow-planning",
     "b73",
     "state",
-    "edge:scenario:sc-f55f553f",
-    "edge:workflow:wf-bio-cdb48c05"
+    "edge:scenario:bio-cross-cell-type-and-dose-perturbation-response-prediction-scenario",
+    "edge:workflow:bio-single-cell-data-task-definition-preprocessing-model-workflow"
   ],
   "scenario_id": "B73",
   "source_papers": [

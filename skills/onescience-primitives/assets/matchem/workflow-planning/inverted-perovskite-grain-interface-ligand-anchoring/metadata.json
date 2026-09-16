@@ -21,8 +21,8 @@
     "null",
     "perovskite",
     "solar",
-    "edge:scenario:sc-4b00f07f",
-    "edge:workflow:wf-matchem-87e6b0f5"
+    "edge:scenario:matchem-inverted-perovskite-grain-interface-ligand-anchoring-scenario",
+    "edge:workflow:matchem-device-stacking-failure-boundary-definition-interface-or-defect-workflow"
   ],
   "scenario_id": "倒置钙钛矿晶粒界面配体锚定优化",
   "source_papers": [

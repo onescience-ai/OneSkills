@@ -1,0 +1,28 @@
+{
+  "name": "climate-pollution-met-data-boundary-sparse-monitoring-station-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「污染气象资料及任务边界预检」在场景「E60」中的实例化；资源引用 ['datasets/data-infrastructure-observations-and-labels', 'datasets/gedi-footprint-canopy-height-data', 'datasets/manila-dengue-meteorological-dataset', 'datasets/ostia-sst-data', 'datasets/snodas-swe-data-product', 'datasets/south-korea-air-quality-and-weather-monitoring-dataset', 'models/dynamic-pre-training-for-time-series-dynpt', 'models/multivariate-data-fusion-vector-wind-prediction', 'models/random-forest-meteorological-normalization']。",
+  "tags": [
+    "edge:skeleton:climate-pollution-met-data-boundary-precheck-task",
+    "edge:scenario:climate-sparse-monitoring-station-driven-urban-pollution-grid-scenario",
+    "edge:resource:datasets/data-infrastructure-observations-and-labels",
+    "edge:resource:datasets/gedi-footprint-canopy-height-data",
+    "edge:resource:datasets/manila-dengue-meteorological-dataset",
+    "edge:resource:datasets/ostia-sst-data",
+    "edge:resource:datasets/snodas-swe-data-product",
+    "edge:resource:datasets/south-korea-air-quality-and-weather-monitoring-dataset",
+    "edge:resource:models/dynamic-pre-training-for-time-series-dynpt",
+    "edge:resource:models/multivariate-data-fusion-vector-wind-prediction",
+    "edge:resource:models/random-forest-meteorological-normalization",
+    "slot:AIR_QUALITY_DATA:污染观测资料",
+    "slot:METEOROLOGICAL_DATA:气象驱动资料",
+    "slot:EMISSION_DATA:排放与活动资料",
+    "slot:TARGET_REGION_TIME:目标区域时段",
+    "slot:DATA_CUTOFF_TIME:资料截止时间"
+  ]
+}

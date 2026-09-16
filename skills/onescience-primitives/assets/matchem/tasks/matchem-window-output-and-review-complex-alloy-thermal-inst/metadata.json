@@ -1,0 +1,14 @@
+{
+  "name": "matchem-window-output-and-review-complex-alloy-thermal-inst",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（matchem）：骨架「窗口输出与复核」在场景「复杂合金热稳定纳米颗粒扩散调控」中的实例化；资源引用 （域内暂无匹配资源卡）。",
+  "tags": [
+    "edge:skeleton:matchem-window-output-and-review-task",
+    "edge:scenario:matchem-complex-alloy-thermal-stable-nanoparticle-diffusion-control-scenario"
+  ]
+}

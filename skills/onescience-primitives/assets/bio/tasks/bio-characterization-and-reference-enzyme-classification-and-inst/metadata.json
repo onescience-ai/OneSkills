@@ -1,0 +1,18 @@
+{
+  "name": "bio-characterization-and-reference-enzyme-classification-and-inst",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（bio）：骨架「表征与参考数据准备」在场景「B40」中的实例化；资源引用 ['tools/pdb-structure-data-access']。",
+  "tags": [
+    "edge:skeleton:bio-characterization-and-reference-data-preparation-task",
+    "edge:scenario:bio-enzyme-classification-and-reaction-retrieval-benchmark-scenario",
+    "edge:resource:tools/pdb-structure-data-access",
+    "slot:CHECKPOINT:模型权重",
+    "slot:REFERENCE_DATA:参考数据",
+    "slot:MAX_SEQUENCE_LENGTH:序列长度上限"
+  ]
+}

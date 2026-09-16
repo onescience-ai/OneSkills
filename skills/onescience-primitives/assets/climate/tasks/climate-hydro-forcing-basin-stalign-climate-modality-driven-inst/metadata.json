@@ -1,0 +1,21 @@
+{
+  "name": "climate-hydro-forcing-basin-stalign-climate-modality-driven-inst",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "实例任务卡（climate）：骨架「水文强迫和流域资料时空对齐与样本构造」在场景「E65」中的实例化；资源引用 ['datasets/spatial-generalization-benchmarks-for-hydrologic-models', 'models/dynamic-pre-training-for-time-series-dynpt', 'models/spatial-and-temporal-deep-learning-models-for-fire-prediction']。",
+  "tags": [
+    "edge:skeleton:climate-hydro-forcing-basin-stalign-sample-task",
+    "edge:scenario:climate-climate-modality-driven-reservoir-monthly-inflow-forecast-scenario",
+    "edge:resource:datasets/spatial-generalization-benchmarks-for-hydrologic-models",
+    "edge:resource:models/dynamic-pre-training-for-time-series-dynpt",
+    "edge:resource:models/spatial-and-temporal-deep-learning-models-for-fire-prediction",
+    "slot:TIME_RESOLUTION:时间分辨率",
+    "slot:SPATIAL_MAPPING:空间映射配置",
+    "slot:WARMUP_POLICY:预热期规则",
+    "slot:MISSING_VALUE_POLICY:缺测处理规则"
+  ]
+}
