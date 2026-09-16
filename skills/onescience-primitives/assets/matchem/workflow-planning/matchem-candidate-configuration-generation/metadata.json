@@ -1,0 +1,28 @@
+{
+  "name": "matchem-candidate-configuration-generation",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T18:30:00Z",
+  "updated_at": "2026-09-15T18:30:00Z",
+  "description": "候选构型生成算法与约束规则：在成分约束空间内生成多样候选晶体构型。适用于晶体结构预测任务中的s02步骤，包括随机结构搜索（RSS）、对称性约束生成、原子重叠检测、等价结构判定。核心方法包括基于空间群的对称性约束生成、原子距离最小化检测、Space Group对称操作比对去重。输出为候选结构库和去重日志。",
+  "tags": ["candidate structure generation", "random structure search", "symmetry constraint", "atomic overlap detection", "space group", "structure deduplication", "CIF", "POSCAR", "crystal structure prediction"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "候选构型生成的具体算法与约束规则",
+  "evidence_papers": [
+    {
+      "title": "Graph neural networks for materials science and chemistry",
+      "doi": "10.1038/s43246-022-00315-6",
+      "year": 2022,
+      "venue": "Communications Materials"
+    },
+    {
+      "title": "The seventh blind test of crystal structure prediction: structure generation methods",
+      "doi": "10.1107/S2052520624002126",
+      "year": 2024,
+      "venue": "Acta Crystallographica Section B"
+    }
+  ]
+}

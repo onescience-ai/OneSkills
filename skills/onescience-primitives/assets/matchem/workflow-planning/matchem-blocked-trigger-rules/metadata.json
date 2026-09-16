@@ -1,0 +1,15 @@
+{
+  "name": "matchem-blocked-trigger-rules",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T18:30:00Z",
+  "updated_at": "2026-09-15T18:30:00Z",
+  "description": "matchem域BLOCKED触发规则：当任务必填输入缺失时必须标记BLOCKED状态并列出缺失项清单。适用于晶体结构预测任务中的输入验证，包括Materials Project API key、晶体结构CIF文件、工况参数等必填输入。核心规则：不得使用模拟数据或典型值替代执行，不得将模拟数据产物标记为PARTIAL。BLOCKED后的处置流程：列出缺失项、请求用户补充、不可自行替代。",
+  "tags": ["BLOCKED", "trigger rules", "input validation", "Materials Project", "API key", "CIF", "simulation data", "partial", "blocked status"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "matchem域BLOCKED触发规则的完整定义",
+  "evidence_papers": []
+}

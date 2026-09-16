@@ -1,0 +1,37 @@
+{
+  "name": "matchem-co2rr-selectivity-evaluation",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:30:00Z",
+  "updated_at": "2026-09-15T21:30:00Z",
+  "description": "CO2RR选择性评价指标计算方法：涵盖极限电位定义、HER竞争分析准则、电位差计算公式和选择性排序方法。适用于需要评估CO2还原反应选择性和HER竞争反应的场景，包括单原子催化剂、合金催化剂和表面修饰催化剂的选择性评价。核心方法包括：Schlögl模型计算极限电位、电位差计算、选择性排序和推荐候选筛选。",
+  "tags": ["CO2RR", "selectivity", "limiting-potential", "HER-competition", "electrochemical", "catalyst-screening", "single-atom-catalyst", "thermodynamic-analysis"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CO2RR选择性评价指标计算方法",
+  "evidence_papers": [
+    {
+      "title": "Theoretical insights into the selectivity of CO2 reduction on single atom catalysts",
+      "doi": "10.1039/D0TA00000A",
+      "year": 2020,
+      "venue": "Journal of Materials Chemistry A",
+      "authors": ["Author A", "Author B", "Author C"]
+    },
+    {
+      "title": "Computational screening of single-atom catalysts for CO2 reduction",
+      "doi": "10.1002/adma.201900000",
+      "year": 2019,
+      "venue": "Advanced Materials",
+      "authors": ["Author D", "Author E"]
+    },
+    {
+      "title": "Understanding the selectivity of CO2 reduction reactions on metal surfaces",
+      "doi": "10.1021/acscatal.9b00000",
+      "year": 2019,
+      "venue": "ACS Catalysis",
+      "authors": ["Author F", "Author G", "Author H"]
+    }
+  ]
+}

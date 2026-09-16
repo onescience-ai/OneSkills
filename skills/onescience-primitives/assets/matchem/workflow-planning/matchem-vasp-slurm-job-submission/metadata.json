@@ -1,0 +1,37 @@
+{
+  "name": "matchem-vasp-slurm-job-submission",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:29:00Z",
+  "updated_at": "2026-09-15T21:29:00Z",
+  "description": "VASP计算执行流程与SLURM作业提交规范：涵盖VASP输入文件校验、SLURM作业脚本编写、HPC集群任务提交、计算监控、输出文件解析和收敛判断标准。适用于需要执行DFT计算并确保计算任务成功完成的场景，包括单点能计算、结构优化、吸附能计算等。核心方法包括：输入文件检查、作业提交命令、资源请求、输出文件解析和收敛验证。",
+  "tags": ["VASP", "SLURM", "HPC", "job-submission", "DFT", "input-validation", "output-parsing", "convergence-check", "adsorption-energy", "calculation-workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "VASP计算执行流程与SLURM作业提交规范",
+  "evidence_papers": [
+    {
+      "title": "VASP Manual - Vienna Ab initio Simulation Package",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "VASP Software",
+      "authors": ["VASP Development Team"]
+    },
+    {
+      "title": "SLURM Workload Manager Documentation",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "SLURM",
+      "authors": ["SchedMD"]
+    },
+    {
+      "title": "Materials Project - VASP Calculation Details",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Materials Project",
+      "authors": ["Materials Project Team"]
+    }
+  ]
+}

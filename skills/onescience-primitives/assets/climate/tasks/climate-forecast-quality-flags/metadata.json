@@ -1,0 +1,26 @@
+{
+  "name": "climate-forecast-quality-flags",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "气象预报产品质量标志编码任务：包括质量标志等级定义、WMO标准编码体系、质量标志与不确定性关联关系和产品元数据标准（CF约定）。适用于earth域预报产品的质量标志生成。",
+  "tags": [
+    "quality-flags",
+    "CF-convention",
+    "metadata",
+    "edge:workflow:climate-forecast-data-validation-workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报产品质量标志编码规范",
+  "evidence_papers": [
+    {
+      "title": "Accurate medium-range global weather forecasting with 3D neural networks",
+      "doi": "10.1038/s41586-023-06185-3",
+      "year": 2023
+    }
+  ]
+}

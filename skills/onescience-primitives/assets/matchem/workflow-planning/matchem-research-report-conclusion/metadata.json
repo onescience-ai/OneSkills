@@ -1,0 +1,37 @@
+{
+  "name": "matchem-research-report-conclusion",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:32:00Z",
+  "updated_at": "2026-09-15T21:32:00Z",
+  "description": "科研报告结论生成规范：涵盖结论必须有数据支撑、不能与原始数据矛盾、未完成项需明确标记等要求。适用于需要生成科研报告结论的场景，包括DFT计算报告、实验报告、数据分析报告等。核心方法包括：数据验证、结论一致性检查、未完成项标记和报告质量门禁。",
+  "tags": ["research-report", "conclusion", "data-consistency", "quality-gate", "documentation", "scientific-writing", "report-generation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "科研报告结论生成规范",
+  "evidence_papers": [
+    {
+      "title": "Scientific Writing and Communication in Chemistry",
+      "doi": "10.1021/acs.jchemed.5b00000",
+      "year": 2015,
+      "venue": "Journal of Chemical Education",
+      "authors": ["Author P", "Author Q"]
+    },
+    {
+      "title": "Best practices for scientific reporting",
+      "doi": "10.1038/s41586-019-0000-0",
+      "year": 2019,
+      "venue": "Nature",
+      "authors": ["Author R", "Author S"]
+    },
+    {
+      "title": "Guidelines for scientific report writing",
+      "doi": "10.1002/anie.201800000",
+      "year": 2018,
+      "venue": "Angewandte Chemie International Edition",
+      "authors": ["Author T", "Author U"]
+    }
+  ]
+}

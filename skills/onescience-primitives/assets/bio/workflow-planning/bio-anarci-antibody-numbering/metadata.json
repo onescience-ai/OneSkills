@@ -1,0 +1,23 @@
+{
+  "name": "bio-anarci-antibody-numbering",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T12:00:00Z",
+  "updated_at": "2026-09-15T12:00:00Z",
+  "description": "ANARCI抗体编号工具使用工作流：将抗体序列按IMGT、Kabat、Chothia或Schofield方案进行标准编号并识别CDR区域。适用于需要对重链和轻链序列进行编号、提取CDR H1/H2/H3掩码、获取抗原界面特征的抗体亲和力预测任务。核心方法包括：序列输入（FASTA或字符串）、ANARCI安装与调用、编号方案选择、CDR区域提取。输出为标准编号序列、CDR掩码和链类型信息。",
+  "tags": ["ANARCI", "antibody numbering", "CDR region", "IMGT", "Kabat", "Chothia", "Schofield", "antibody annotation", "CDR mask", "antigen interface", "bioinformatics", "antibody affinity"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "ANARCI工具在抗体编号中的使用方法与接口规范",
+  "evidence_papers": [
+    {
+      "title": "ANARCI: antigen receptor numbering and receptor classification.",
+      "doi": "10.1093/bioinformatics/btv552",
+      "year": 2016,
+      "venue": "Bioinformatics",
+      "authors": ["Dunbar J", "Deane CM"]
+    }
+  ]
+}

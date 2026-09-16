@@ -1,0 +1,36 @@
+{
+  "name": "bio-antibody-antigen-data-acquisition",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T19:53:00Z",
+  "updated_at": "2026-09-15T19:53:00Z",
+  "description": "抗体抗原结合位点预测任务的真实数据获取知识，包括SAbDab数据库访问方法、PDB文件下载与解析、FASTA格式标准、抗体-抗原配对数据格式",
+  "tags": ["antibody", "antigen", "binding-site", "prediction", "data-acquisition", "SAbDab", "PDB", "FASTA"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "抗体抗原结合位点预测任务的真实数据获取知识",
+  "evidence_papers": [
+    {
+      "title": "Accurate structure prediction of biomolecular interactions with AlphaFold 3",
+      "doi": "https://doi.org/10.1038/s41586-024-07487-w",
+      "year": 2024
+    },
+    {
+      "title": "The antigenic anatomy of SARS-CoV-2 receptor binding domain",
+      "doi": "https://doi.org/10.1016/j.cell.2021.02.032",
+      "year": 2021
+    },
+    {
+      "title": "Structures of Human Antibodies Bound to SARS-CoV-2 Spike Reveal Common Epitopes and Recurrent Features of Antibodies",
+      "doi": "https://doi.org/10.1016/j.cell.2020.06.025",
+      "year": 2020
+    },
+    {
+      "title": "Fast, accurate antibody structure prediction from deep learning on massive set of natural antibodies",
+      "doi": "https://doi.org/10.1038/s41467-023-38063-x",
+      "year": 2023
+    }
+  ]
+}

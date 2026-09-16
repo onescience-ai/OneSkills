@@ -1,0 +1,35 @@
+{
+  "name": "climate-forecast-data-validation-workflow",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "气象预报数据与验证工作流：涵盖输入数据契约规范（数据来源、资料截止时间、数据时点规则）、时空对齐规范（UTC对齐、WGS84坐标、标准单位）和独立验证规范。适用于earth域多站点时序预报任务的完整数据处理与验证流程。",
+  "tags": [
+    "weather",
+    "forecast",
+    "data-validation",
+    "edge:scenario:climate-forecast-acceptance-criteria-scenario",
+    "edge:task:climate-forecast-independent-validation",
+    "edge:task:climate-forecast-model-validation",
+    "edge:task:climate-forecast-performance-evaluation",
+    "edge:task:climate-forecast-quality-flags"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报数据契约、时空对齐、独立验证和数据时点规则",
+  "evidence_papers": [
+    {
+      "title": "Accurate medium-range global weather forecasting with 3D neural networks",
+      "doi": "10.1038/s41586-023-06185-3",
+      "year": 2023
+    },
+    {
+      "title": "Probabilistic weather forecasting with machine learning",
+      "doi": "10.1038/s41586-024-08252-9",
+      "year": 2025
+    }
+  ]
+}

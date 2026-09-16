@@ -1,0 +1,25 @@
+{
+  "name": "climate-forecast-independent-validation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "气象预报独立验证任务：包括独立验证资料定义、来源选择、与测试集区别和同协议要求。适用于earth域所有预报任务的独立验证。",
+  "tags": [
+    "independent-validation",
+    "verification",
+    "edge:workflow:climate-forecast-data-validation-workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报独立验证规范",
+  "evidence_papers": [
+    {
+      "title": "Probabilistic weather forecasting with machine learning",
+      "doi": "10.1038/s41586-024-08252-9",
+      "year": 2025
+    }
+  ]
+}

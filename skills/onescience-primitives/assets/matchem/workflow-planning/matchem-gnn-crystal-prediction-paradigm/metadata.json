@@ -1,0 +1,28 @@
+{
+  "name": "matchem-gnn-crystal-prediction-paradigm",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T18:30:00Z",
+  "updated_at": "2026-09-15T18:30:00Z",
+  "description": "图神经网络在晶体结构预测中的应用范式：CGCNN等模型的正确使用方式。适用于晶体结构预测任务中的GNN集成，包括作为预训练模型进行性质预测、作为能量面代理模型进行结构弛豫、作为候选筛选工具。核心方法：使用预训练CGCNN预测候选结构性质→排序→筛选→弛豫验证。输出为性质预测结果和稳定性评估。",
+  "tags": ["graph neural network", "CGCNN", "crystal property prediction", "pretrained model", "structure relaxation", "candidate screening", "formation energy", "band gap", "GNN", "materials discovery"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "图神经网络在晶体结构预测中的应用范式",
+  "evidence_papers": [
+    {
+      "title": "Graph neural networks for materials science and chemistry",
+      "doi": "10.1038/s43246-022-00315-6",
+      "year": 2022,
+      "venue": "Communications Materials"
+    },
+    {
+      "title": "Transfer learning for materials informatics using crystal graph convolutional neural networks",
+      "doi": "10.1016/j.commatsci.2021.110543",
+      "year": 2021,
+      "venue": "Computational Materials Science"
+    }
+  ]
+}

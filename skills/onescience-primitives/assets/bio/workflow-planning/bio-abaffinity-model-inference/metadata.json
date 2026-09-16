@@ -1,0 +1,15 @@
+{
+  "name": "bio-abaffinity-model-inference",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T12:00:00Z",
+  "updated_at": "2026-09-15T12:00:00Z",
+  "description": "AbAffinity模型推理工作流：基于深度学习的抗体-抗原亲和力预测模型，需要结构化的抗体-抗原特征作为输入，输出可用于排序的亲和力得分。适用于需要执行真实AbAffinity模型推理并产出候选抗体及其亲和力得分的任务。核心方法包括：模型权重加载、特征预处理、推理执行、结果后处理。输入为抗体编号序列、CDR掩码、抗原界面特征，输出为亲和力预测得分。",
+  "tags": ["AbAffinity", "antibody affinity", "deep learning", "model inference", "binding prediction", "antibody engineering", "bioinformatics", "machine learning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "AbAffinity模型的推理接口规范与执行参数",
+  "evidence_papers": []
+}

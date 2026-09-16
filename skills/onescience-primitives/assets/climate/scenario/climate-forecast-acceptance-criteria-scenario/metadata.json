@@ -1,0 +1,41 @@
+{
+  "name": "climate-forecast-acceptance-criteria-scenario",
+  "type": "scenario",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "气象预报任务验收门限规范场景：涵盖温度、湿度、风速等变量的RMSE合理范围、R2最低要求、Skill Score基线比较标准，以及分层验收标准（按时效、站点、变量分别设定门限）。适用于earth域所有预报任务的交付判定。",
+  "tags": [
+    "weather",
+    "forecast",
+    "verification",
+    "acceptance",
+    "edge:task:climate-forecast-independent-validation",
+    "edge:task:climate-forecast-model-validation",
+    "edge:task:climate-forecast-performance-evaluation",
+    "edge:task:climate-forecast-quality-flags",
+    "edge:workflow:climate-forecast-data-validation-workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报任务的验收门限规范",
+  "evidence_papers": [
+    {
+      "title": "Accurate medium-range global weather forecasting with 3D neural networks",
+      "doi": "10.1038/s41586-023-06185-3",
+      "year": 2023
+    },
+    {
+      "title": "Probabilistic weather forecasting with machine learning",
+      "doi": "10.1038/s41586-024-08252-9",
+      "year": 2025
+    },
+    {
+      "title": "Skilful precipitation nowcasting using deep generative models of radar",
+      "doi": "10.1038/s41586-021-03854-z",
+      "year": 2021
+    }
+  ]
+}

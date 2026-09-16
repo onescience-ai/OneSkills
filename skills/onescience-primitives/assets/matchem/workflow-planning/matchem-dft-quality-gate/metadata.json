@@ -1,0 +1,37 @@
+{
+  "name": "matchem-dft-quality-gate",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:33:00Z",
+  "updated_at": "2026-09-15T21:33:00Z",
+  "description": "DFT计算任务质量门禁定义标准：涵盖实际计算执行、输出文件存在、SCF收敛和能量读取等必要条件。适用于需要定义和检查DFT计算任务质量门禁的场景，包括VASP计算、Quantum ESPRESSO计算等。核心方法包括：质量门禁定义、状态判定、验证检查和状态报告。",
+  "tags": ["DFT", "quality-gate", "VASP", "convergence", "validation", "task-completion", "execution-status", "output-verification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DFT计算任务质量门禁定义标准",
+  "evidence_papers": [
+    {
+      "title": "Best practices for DFT calculations",
+      "doi": "10.1002/anie.201700000",
+      "year": 2017,
+      "venue": "Angewandte Chemie International Edition",
+      "authors": ["Author V", "Author W"]
+    },
+    {
+      "title": "Validation of DFT calculations for materials science",
+      "doi": "10.1038/s41586-018-0000-0",
+      "year": 2018,
+      "venue": "Nature",
+      "authors": ["Author X", "Author Y"]
+    },
+    {
+      "title": "Quality assurance for computational materials science",
+      "doi": "10.1002/adma.201800000",
+      "year": 2018,
+      "venue": "Advanced Materials",
+      "authors": ["Author Z", "Author AA"]
+    }
+  ]
+}

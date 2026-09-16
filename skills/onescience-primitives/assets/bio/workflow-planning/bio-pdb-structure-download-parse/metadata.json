@@ -1,0 +1,21 @@
+{
+  "name": "bio-pdb-structure-download-parse",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T19:53:00Z",
+  "updated_at": "2026-09-15T19:53:00Z",
+  "description": "PDB结构文件的下载和解析方法，包括rcsb.org API调用、PDB文件格式解析、残基坐标提取、界面残基识别",
+  "tags": ["PDB", "structure", "download", "parse", "residue", "coordinate", "antibody", "antigen"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PDB结构文件的下载和解析方法",
+  "evidence_papers": [
+    {
+      "title": "AbDb: antibody structure database -- a database of PDB-derived antibody structures",
+      "doi": "https://doi.org/10.1093/database/bay040",
+      "year": 2018
+    }
+  ]
+}

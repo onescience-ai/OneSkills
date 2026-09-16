@@ -1,0 +1,41 @@
+{
+  "name": "climate-hail-nowcast-scenario",
+  "type": "scenario",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00+08:00",
+  "updated_at": "2026-09-16T10:00:00+08:00",
+  "description": "天气雷达驱动的0-2小时冰雹概率临近预报场景：利用多普勒天气雷达反射率因子、双偏振参数及环境场数据，通过深度学习模型生成逐时效冰雹发生概率场，为防灾减灾提供分钟级预警。适用于强对流天气监测、机场跑道预警、农业冰雹防护等场景。核心方法包括雷达数据预处理、扩散概率模型、集合扰动生成。输出为0-120分钟逐时效冰雹概率空间分布图。",
+  "tags": [
+    "hail",
+    "nowcast",
+    "radar",
+    "diffusion model",
+    "probabilistic forecast",
+    "severe weather",
+    "CINRAD",
+    "convective",
+    "early warning",
+    "edge:task:climate-diffusion-nowcast-model",
+    "edge:task:climate-hail-nowcast-verification",
+    "edge:task:climate-hail-radar-data-acquisition",
+    "edge:task:climate-nowcast-metrics-baseline",
+    "edge:workflow:climate-hail-nowcast-workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "天气雷达驱动的0-2小时冰雹概率临近预报",
+  "evidence_papers": [
+    {
+      "title": "Skilful probabilistic nowcasting of weather at multiple scales using deep generative models",
+      "doi": "10.1038/s41586-021-03854-z",
+      "year": 2021
+    },
+    {
+      "title": "GenCast: AI-based ensemble weather forecasting",
+      "doi": "10.1038/s41586-024-08252-9",
+      "year": 2024
+    }
+  ]
+}

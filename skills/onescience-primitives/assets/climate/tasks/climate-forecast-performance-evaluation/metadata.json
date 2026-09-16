@@ -1,0 +1,31 @@
+{
+  "name": "climate-forecast-performance-evaluation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "气象时序预报模型性能评估任务：包括R2/Skill Score/RMSE/ACC/CRPS等指标的合理范围、负R2诊断方法、模型选择决策树和性能不达标时的回退策略。适用于earth域所有预报任务的性能评估。",
+  "tags": [
+    "performance-evaluation",
+    "RMSE",
+    "skill-score",
+    "edge:workflow:climate-forecast-data-validation-workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象时序预报模型性能评估标准",
+  "evidence_papers": [
+    {
+      "title": "Accurate medium-range global weather forecasting with 3D neural networks",
+      "doi": "10.1038/s41586-023-06185-3",
+      "year": 2023
+    },
+    {
+      "title": "Probabilistic weather forecasting with machine learning",
+      "doi": "10.1038/s41586-024-08252-9",
+      "year": 2025
+    }
+  ]
+}

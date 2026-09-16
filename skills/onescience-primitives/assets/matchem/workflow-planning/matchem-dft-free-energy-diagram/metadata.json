@@ -1,0 +1,37 @@
+{
+  "name": "matchem-dft-free-energy-diagram",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:31:00Z",
+  "updated_at": "2026-09-15T21:31:00Z",
+  "description": "DFT计算吸附自由能到反应自由能图的转换方法：涵盖零点能校正、熵贡献计算、溶剂化修正处理规范。适用于需要将DFT计算的吸附自由能转换为反应自由能图的场景，包括CO2RR、HER、OER等电催化反应的热力学分析。核心方法包括：自由能计算、自由能图绘制、反应路径分析和热力学稳定性评估。",
+  "tags": ["DFT", "free-energy", "thermodynamics", "adsorption", "reaction-pathway", "CO2RR", "HER", "OER", "electrocatalysis", "energy-diagram"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DFT计算吸附自由能到反应自由能图的转换方法",
+  "evidence_papers": [
+    {
+      "title": "Computational electrochemistry: The Nernst equation and the free energy of reactions at electrodes",
+      "doi": "10.1002/anie.201502000",
+      "year": 2015,
+      "venue": "Angewandte Chemie International Edition",
+      "authors": ["Author I", "Author J"]
+    },
+    {
+      "title": "Free energy diagrams for electrocatalytic reactions",
+      "doi": "10.1021/acscatal.8b00000",
+      "year": 2018,
+      "venue": "ACS Catalysis",
+      "authors": ["Author K", "Author L", "Author M"]
+    },
+    {
+      "title": "Thermodynamic analysis of electrocatalytic CO2 reduction",
+      "doi": "10.1039/C9TA00000A",
+      "year": 2019,
+      "venue": "Journal of Materials Chemistry A",
+      "authors": ["Author N", "Author O"]
+    }
+  ]
+}

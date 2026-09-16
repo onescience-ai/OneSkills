@@ -1,0 +1,30 @@
+{
+  "name": "bio-antibody-affinity-feature-engineering",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T12:00:00Z",
+  "updated_at": "2026-09-15T12:00:00Z",
+  "description": "抗体-抗原亲和力预测特征工程工作流：从抗体序列中提取CDR区域序列编码、界面残基特征、序列比对特征、理化性质特征以及亲和力相关序列motif。适用于基于序列的抗体亲和力预测任务，特别是需要构建高维特征向量用于机器学习或深度学习模型的场景。核心方法包括：CDR区域识别与编码、界面残基距离计算、序列motif匹配、疏水性/电荷等理化性质计算。输出为特征矩阵或向量。",
+  "tags": ["antibody affinity", "CDR feature engineering", "epitope paratope", "sequence-based prediction", "feature extraction", "machine learning", "antibody engineering", "bioinformatics", "immunology"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "基于序列的抗体-抗原亲和力预测特征工程方法",
+  "evidence_papers": [
+    {
+      "title": "AbAgKer: a unified semi-supervised framework for antigen-antibody binding affinity and kinetics prediction.",
+      "doi": "10.1093/bioinformatics/btag606",
+      "year": 2026,
+      "venue": "Bioinformatics",
+      "authors": ["Luo G", "Wang J", "Zhang S"]
+    },
+    {
+      "title": "Enhancing antibody affinity through experimental sampling of non-deleterious CDR mutations predicted by machine learning.",
+      "doi": "10.1038/s42004-023-01037-7",
+      "year": 2023,
+      "venue": "Commun Chem",
+      "authors": ["Clark T", "Subramanian V", "Jayaraman A"]
+    }
+  ]
+}

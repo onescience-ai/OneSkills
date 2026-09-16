@@ -1,0 +1,15 @@
+{
+  "name": "bio-came-ab-pretrained-weights",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T19:53:00Z",
+  "updated_at": "2026-09-15T19:53:00Z",
+  "description": "CAME-AB模型预训练权重的获取途径和加载方法，包括论文作者提供的权重下载链接、权重文件格式、加载接口",
+  "tags": ["CAME-AB", "pretrained-weights", "antibody", "antigen", "prediction", "model-loading"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CAME-AB模型预训练权重的获取途径和加载方法",
+  "evidence_papers": []
+}

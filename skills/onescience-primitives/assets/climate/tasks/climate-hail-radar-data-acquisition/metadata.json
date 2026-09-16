@@ -1,0 +1,18 @@
+{
+  "name": "climate-hail-radar-data-acquisition",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00+08:00",
+  "updated_at": "2026-09-16T10:00:00+08:00",
+  "description": "冰雹临近预报雷达数据获取任务：从中国CINRAD雷达网、美国MRMS系统等数据源获取真实雷达基数据或组合反射率产品，完成数据质量控制、格式转换和时空对齐。适用于需要真实雷达观测输入的临近预报任务。核心数据源包括CINRAD SA/SB组合反射率、MRMS多雷达多传感器产品。输出为标准化的雷达反射率numpy数组和元数据。",
+  "tags": ["radar", "data acquisition", "CINRAD", "MRMS", "hail", "nowcast", "reflectivity", "quality control", "edge:workflow:climate-hail-nowcast-workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "天气雷达临近预报任务中真实观测数据的获取渠道和格式规范",
+  "evidence_papers": [
+    {"title": "Skilful probabilistic nowcasting of weather at multiple scales using deep generative models", "doi": "10.1038/s41586-021-03854-z", "year": 2021},
+    {"title": "Key factors for quantitative precipitation nowcasting using ground weather radar", "doi": "10.5194/gmd-16-6111-2023", "year": 2023}
+  ]
+}

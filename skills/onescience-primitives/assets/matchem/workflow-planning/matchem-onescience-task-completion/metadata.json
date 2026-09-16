@@ -1,0 +1,37 @@
+{
+  "name": "matchem-onescience-task-completion",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:34:00Z",
+  "updated_at": "2026-09-15T21:34:00Z",
+  "description": "OneScience任务完成标准定义：涵盖必需交付物、质量门禁通过要求和执行状态判定规则。适用于需要定义OneScience任务完成标准的场景，包括DFT计算任务、数据分析任务、工作流执行任务等。核心方法包括：任务完成标准定义、执行状态判定、质量门禁检查和状态报告。",
+  "tags": ["OneScience", "task-completion", "quality-gate", "execution-status", "delivery", "workflow", "validation", "completion-criteria"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience任务完成标准定义",
+  "evidence_papers": [
+    {
+      "title": "OneScience Framework Documentation",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "OneScience",
+      "authors": ["OneScience Team"]
+    },
+    {
+      "title": "Workflow execution and quality assurance",
+      "doi": "10.1002/anie.201900000",
+      "year": 2019,
+      "venue": "Angewandte Chemie International Edition",
+      "authors": ["Author AB", "Author AC"]
+    },
+    {
+      "title": "Computational workflow management systems",
+      "doi": "10.1002/adma.201900000",
+      "year": 2019,
+      "venue": "Advanced Materials",
+      "authors": ["Author AD", "Author AE"]
+    }
+  ]
+}

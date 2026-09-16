@@ -1,0 +1,15 @@
+{
+  "name": "bio-abaffinity-model-knowledge-graph",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T12:00:00Z",
+  "updated_at": "2026-09-15T12:00:00Z",
+  "description": "AbAffinity模型完整技术知识图谱：包括模型来源论文、代码仓库地址、预训练权重下载方式、输入输出契约、依赖工具(ANARCI)的版本要求、已知的模型局限性和适用范围。适用于需要全面了解AbAffinity模型技术细节、寻找替代方案或集成模型的场景。核心方法包括：论文检索、代码库搜索、模型文档分析、技术规格提取。输出为模型技术规格文档和替代方案列表。",
+  "tags": ["AbAffinity", "antibody affinity", "model documentation", "technical specification", "code repository", "pretrained weights", "bioinformatics", "machine learning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "AbAffinity模型的完整技术知识图谱",
+  "evidence_papers": []
+}
