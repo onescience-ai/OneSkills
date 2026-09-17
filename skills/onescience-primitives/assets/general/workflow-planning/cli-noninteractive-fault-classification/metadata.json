@@ -1,0 +1,29 @@
+{
+  "name": "cli-noninteractive-fault-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T20:20:00Z",
+  "updated_at": "2026-09-16T18:58:00Z",
+  "description": "CLI非交互执行与故障分类知识，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，用于诊断和修复CLI执行故障。基于Python argparse权威文档补充退出码语义与错误处理机制。",
+  "tags": ["cli", "fault-classification", "error-handling", "exit-codes", "diagnostics", "general"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {"title": "JSON Schema Reference", "doi": "", "year": 2026}
+  ],
+  "evidence_docs": [
+    {
+      "title": "argparse — Parser for command-line options, arguments and subcommands",
+      "url": "https://docs.python.org/3/library/argparse.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7 documentation",
+      "accessed_at": "2026-09-16T18:58:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-16: 基于Python argparse文档补充退出码语义与错误处理机制"],
+  "conflicts": []
+}

@@ -1,0 +1,41 @@
+{
+  "name": "bio-dna-lm-bend-benchmark-dataset",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T09:49:00Z",
+  "updated_at": "2026-09-16T09:49:00Z",
+  "description": "面向DNA语言模型生物任务基准评测，获取并准备BEND基准数据集。适用于需要评测DNA语言模型在调控、剪接和染色质等生物任务上迁移与泛化能力的研究场景。BEND基准数据集包含基于人类基因组的现实生物任务，覆盖基因表达预测、剪接位点识别、染色质可及性预测等多类任务。输出为经过坐标规范化和质量检查的标准化基因组区间数据，供后续模型推理和评估使用。",
+  "tags": ["DNA", "language model", "benchmark", "BEND", "genomics", "regulation", "splicing", "chromatin", "evaluation", "hg38", "human genome", "genome annotation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "BEND_tasks数据集的获取方式、格式规范、版本信息、完整规模、采样要求和划分策略",
+  "evidence_papers": [
+    {
+      "title": "BEND: Benchmarking DNA Language Models on biologically meaningful tasks",
+      "doi": "10.48550/arXiv.2311.12570",
+      "year": 2024,
+      "venue": "ICLR 2024",
+      "authors": ["Frederikke Isa Marin", "Felix Teufel", "Marc Horlacher", "Dennis Madsen", "Dennis Pultz", "Ole Winther", "Wouter Boomsma"],
+      "oa_url": "https://arxiv.org/abs/2311.12570"
+    },
+    {
+      "title": "Same model, better performance: the impact of shuffling on DNA Language Models benchmarking",
+      "doi": "10.48550/arXiv.2510.12617",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": ["Davide Greco", "Konrad Rawlik"],
+      "oa_url": "https://arxiv.org/abs/2510.12617"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "BEND GitHub Repository",
+      "url": "https://github.com/frederikkemarin/BEND",
+      "publisher": "GitHub (frederikkemarin)",
+      "version": "2024",
+      "accessed_at": "2026-09-16"
+    }
+  ]
+}

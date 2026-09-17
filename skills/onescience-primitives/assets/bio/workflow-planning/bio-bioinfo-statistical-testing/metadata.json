@@ -1,0 +1,19 @@
+{
+  "name": "bio-bioinfo-statistical-testing",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:47:00Z",
+  "updated_at": "2026-09-16T18:47:00Z",
+  "description": "面向生物信息学分析中的统计检验需求，提供样本量规划、效应量解释、p值与实际意义关系判断的标准化流程",
+  "tags": ["bioinformatics", "statistical-testing", "sample-size", "effect-size", "p-value", "significance"],
+  "aliases": ["统计检验", "样本量", "效应量", "p值"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "生物信息学统计检验知识，包括单细胞分析中统计检验的样本量要求、效应量解释标准、p值与实际意义的关系、以及模拟数据与真实数据结论差异的风险",
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

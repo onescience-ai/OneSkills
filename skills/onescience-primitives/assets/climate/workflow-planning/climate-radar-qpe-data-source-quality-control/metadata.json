@@ -1,0 +1,43 @@
+{
+  "name": "climate-radar-qpe-data-source-quality-control",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T20:37:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "雷达定量降水估计（QPE）任务的数据来源约束与质量控制规范。定义真实雷达体扫数据（CAPPI/PPI格式）和雨量计校准数据的获取渠道、数据格式要求和质量标准。涵盖气象数据开放平台（如中国气象数据网、NOAA、ECMWF）的API访问方式和数据下载协议。适用于需要核验雷达QPE任务输入数据真实性、可追溯性和质量控制的场景。输出为数据来源清单、质量控制报告和数据可追溯性证明。",
+  "tags": ["radar", "QPE", "precipitation", "data source", "quality control", "CAPPI", "PPI", "rain gauge", "calibration", "meteorological data", "NOAA", "ECMWF", "China Meteorological Data", "data access", "data format", "NEXRAD", "WSR-88D", "data archive"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达QPE任务的输入数据来源约束规范，包括真实雷达体扫数据（如CAPPI/PPI格式）和雨量计校准数据的获取渠道、数据格式要求和质量标准；气象数据开放平台（如中国气象数据网、NOAA、ECMWF）的API访问方式和数据下载协议。",
+  "evidence_papers": [
+    {
+      "title": "Radar Rainfall Data Estimation and Use",
+      "doi": "10.1061/9780784415115",
+      "year": 2018,
+      "venue": "ASCE"
+    },
+    {
+      "title": "Rainfall estimation for hydrology using volumetric weather radar",
+      "doi": "10.18174/260839",
+      "year": 2013,
+      "venue": "Wageningen University"
+    },
+    {
+      "title": "Spatial evaluation rainfall estimation on weather radar using Marshall–Palmer reflectivity–rainfall rate in Banten",
+      "doi": "10.24425/jwld.2024.151567",
+      "year": 2024,
+      "venue": "Journal of Water and Land Development"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "NEXRAD Data Archive, Inventory and Access",
+      "url": "https://www.ncdc.noaa.gov/nexradinv/",
+      "publisher": "NOAA/NCEI",
+      "version": "2026",
+      "accessed_at": "2026-09-16"
+    }
+  ]
+}

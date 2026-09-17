@@ -1,0 +1,28 @@
+{
+  "name": "bio-eternafold-tool",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T11:00:00Z",
+  "updated_at": "2026-09-16T11:00:00Z",
+  "description": "EternaFold工具使用工作流：提供EternaFold RNA结构预测工具的功能定义、输入输出契约和调用方式。适用于需要预测RNA三维结构以验证设计序列的研究场景。核心方法包括：PDB输入处理、结构预测执行、结果验证。输出为预测的RNA三维结构。",
+  "tags": ["EternaFold", "RNA structure prediction", "PDB", "3D structure", "validation", "evaluation", "TM-score", "RMSD"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "EternaFold工具的功能定义（RNA结构预测）、输入输出契约（PDB输入→结构预测输出）和调用方式",
+  "evidence_papers": [
+    {
+      "title": "RiboDiffusion: tertiary structure-based RNA inverse folding with generative diffusion models",
+      "doi": "10.1093/bioinformatics/btae259",
+      "year": 2024,
+      "venue": "Bioinformatics"
+    },
+    {
+      "title": "R3Design: deep tertiary structure-based RNA sequence design and beyond",
+      "doi": "10.1093/bib/bbae682",
+      "year": 2024,
+      "venue": "Briefings in Bioinformatics"
+    }
+  ]
+}

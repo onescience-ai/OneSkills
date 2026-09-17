@@ -1,0 +1,20 @@
+{
+  "name": "onescience-workflow-orchestration",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:19:00Z",
+  "updated_at": "2026-09-16T18:19:00Z",
+  "description": "面向OneScience工作流编排任务，提供executor技能调用方式、step_handoff格式规范和状态传递机制的知识卡片，适用于工作流步骤的正确调度和执行",
+  "tags": ["workflow orchestration", "executor skills", "step_handoff", "state passing", "OneScience", "skill invocation"],
+  "aliases": ["workflow orchestration", "skill invocation", "step handoff"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "onescience工作流编排中executor技能的正确调用方式，包括step_handoff的格式规范、executor输入输出契约和状态传递机制",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,24 @@
+{
+  "name": "cfd-diffusion-model-acceptance-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "物理信息扩散模型的任务验收与适用域判定方法：按统计与物理指标评估生成结果，给出PASS/REJECT/BLOCKED结论，执行几何或工况外推测试并明确适用域边界。不得仅凭平均误差宣称工程可用，结论须含最差样本追溯与CFD复核建议。",
+  "tags": ["acceptance", "applicability", "evaluation", "OOD", "CFD", "quality-gate"],
+  "aliases": ["任务验收适用域", "diffusion model acceptance CFD"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "物理信息扩散模型流场分布生成",
+  "evidence_papers": [
+    {"title": "Physics-Informed Diffusion Models", "doi": "", "year": 2024},
+    {"title": "Learning Distributions of Complex Fluid Simulations with Diffusion Graph Networks", "doi": "10.48550/arXiv.2504.02843", "year": 2025},
+    {"title": "Uni-Flow: a unified autoregressive-diffusion model for complex multiscale flows", "doi": "10.48550/arXiv.2602.15592", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

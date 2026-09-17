@@ -1,0 +1,26 @@
+{
+  "name": "general-onescience-environment-setup-and-verification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向OneScience科研任务执行，确保CLI工具、conda环境和运行站点配置正确就绪的方法与验证流程。",
+  "tags": ["onescience", "environment-setup", "installation", "configuration", "workflow-planning", "preflight-validation", "runsite"],
+  "aliases": ["OneScience环境准备", "onescience安装配置", "onescience运行站点设置"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "有机半导体主动学习发现任务中OneScience工具链环境准备知识缺失",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-16",
+      "location": "E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-w5\\379\\report.json"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

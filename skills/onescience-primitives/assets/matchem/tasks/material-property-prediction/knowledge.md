@@ -65,5 +65,5 @@
 ## 缺口与降级（Fallback / Gap）
 
 - 改道触发：`prediction_confidence < 0.5`，或 `slot:adsorbate = CO` 且需可逆化学键判定 → 由 MLIP 改道 DFT；DFT 算力不足 → 改道回 MLIP 并显式标注精度降级。
-- 分层降级：资源全命中 = `full`；仅命中部分资源（如缺 DFT 求解器）= `partial`；仅命中本 Task 卡 = `task_only`；无命中 = `none`。`retrieval_level != full` 时向 `references/tc/gaps.jsonl` 追加缺口记录。
+- 分层降级：资源全命中 = `full`；仅命中部分资源（如缺 DFT 求解器）= `partial`；仅命中本 Task 卡 = `task_only`；无命中 = `none`。`retrieval_level != full` 时向 `.onescience/gaps.jsonl` 追加缺口记录。
 - 已知缺口：DFT 求解器资源卡未建；`selectivity` 需多性质组合，尚无专用操作序列。

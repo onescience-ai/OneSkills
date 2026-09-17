@@ -1,0 +1,23 @@
+{
+  "name": "cfd-neural-operator-validation-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "神经算子任务验收与适用域判定任务：按统计误差与物理约束双重指标评估推理结果，报告逐变量误差、边界误差、守恒/方程残差、最差样本和推理成本。给出PASS/REJECT/BLOCKED结论，执行几何或工况外推测试并明确适用域边界。不得仅凭平均误差宣称工程可用。",
+  "tags": ["validation", "applicability", "evaluation", "physical consistency", "OOD test", "error analysis", "worst case", "CFD", "quality gate"],
+  "aliases": ["任务验收", "适用域判定", "验收评估"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "连续时间与随机生成神经算子预测场景知识补充",
+  "evidence_papers": [
+    {
+      "title": "CFO: Learning Continuous-Time PDE Dynamics via Flow-Matched Neural Operators",
+      "doi": "arXiv:2303.08797",
+      "year": 2023,
+      "url": "https://arxiv.org/abs/2303.08797"
+    }
+  ]
+}

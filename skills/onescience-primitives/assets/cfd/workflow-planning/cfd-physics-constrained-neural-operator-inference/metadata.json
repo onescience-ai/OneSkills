@@ -1,0 +1,19 @@
+{
+  "name": "cfd-physics-constrained-neural-operator-inference",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T20:02:00Z",
+  "updated_at": "2026-09-16T20:02:00Z",
+  "description": "面向带守恒边界和无量纲约束PDE数据的批量推理与物理恢复任务，在独立测试集推理，恢复原始单位、网格和物理派生量，保存逐样本结果和耗时，禁止用测试标签修正预测。适用于Physics-constrained neural operator的推理阶段，确保预测结果可恢复为物理单位并保持物理一致性。",
+  "tags": ["inference", "physical recovery", "denormalization", "neural operator", "PDE", "CFD", "batch inference", "timing", "boundary conditions", "conservation laws"],
+  "aliases": ["物理恢复推理", "批量推理", "Physics-constrained inference"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "物理边界与不变量约束神经算子学习推理",
+  "evidence_papers": [
+    {"title": "Guiding Continuous Operator Learning through Physics-Based Boundary Constraints", "doi": "2212.07477", "year": 2022, "url": "https://arxiv.org/abs/2212.07477"},
+    {"title": "Training neural operators to preserve invariant measures of chaotic attractors", "doi": "", "year": 2023}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "bio-antibody-candidate-screening-evaluation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "面向抗体候选筛选任务，描述Spearman相关评估方法、可开发性指标体系和候选排序策略，包括统计显著性判断、CDR截断检测、低特异性标记和可开发性评估",
+  "tags": ["antibody-candidate", "screening", "Spearman-correlation", "developability", "evaluation", "selection"],
+  "aliases": ["抗体候选筛选", "antibody selection", "candidate ranking"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "抗体候选筛选的Spearman相关评估方法与可开发性指标体系",
+  "evidence_papers": [
+    {
+      "title": "For antibody sequence generative modeling, mixture models may be all you need",
+      "doi": "10.1093/bioinformatics/btae278",
+      "year": 2024
+    },
+    {
+      "title": "Antibody–Antigen Affinity Prediction with Chain-Aware Protein Language Modeling",
+      "doi": "10.64898/2026.06.19.733375",
+      "year": 2026
+    }
+  ]
+}

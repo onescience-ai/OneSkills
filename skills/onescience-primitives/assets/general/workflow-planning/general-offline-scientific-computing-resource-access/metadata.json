@@ -1,0 +1,28 @@
+{
+  "name": "general-offline-scientific-computing-resource-access",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T12:31:00Z",
+  "updated_at": "2026-09-16T12:31:00Z",
+  "description": "面向网络受限或离线环境下的科学计算资源获取，提供代理配置、镜像源使用、离线包管理等解决方案，确保Python包、模型权重、数据集等外部资源的可靠获取。",
+  "tags": ["offline-computing", "proxy-configuration", "mirror-source", "package-management", "scientific-computing"],
+  "aliases": ["网络代理", "镜像源", "离线安装", "科学计算环境"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "执行环境的网络访问策略和限制；离线环境下的资源获取方案；代理配置和镜像源使用方法",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "User Guide - Using a Proxy Server",
+      "url": "https://pip.pypa.io/en/stable/user_guide/#using-a-proxy-server",
+      "publisher": "pip",
+      "version": "v26.2.1",
+      "accessed_at": "2026-09-16T12:31:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

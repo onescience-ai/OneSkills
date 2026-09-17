@@ -2,10 +2,10 @@
   "name": "layered-material-transferable-ml-potential-validation",
   "type": "workflow-planning",
   "domain": "matchem",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
+  "updated_at": "2026-09-16T17:30:00Z",
   "description": "基于 mace 的「层状材料可迁移机器学习原子势验证」工作流。研究对象为层状材料可迁移机器学习原子势验证。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从参考数据审计与覆盖定义到分子动力学或结构探索验证的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
   "tags": [
     "accurate",
@@ -18,11 +18,26 @@
     "potentials",
     "transferable",
     "verifiable",
+    "moiré",
+    "split-MLIP",
+    "MDE",
     "edge:scenario:matchem-layered-material-transferable-ml-atomic-potential-validation-scenario",
     "edge:workflow:matchem-reference-data-audit-coverage-definition-root-cause-potential-workflow"
   ],
   "scenario_id": "层状材料可迁移机器学习原子势验证",
   "source_papers": [
     "doi_10_1038_s41467_026_74482_2"
-  ]
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "层状材料可迁移机器学习原子势验证的标准工作流步骤定义（s01-s04），包括每个步骤的具体目标、输入输出要求和依赖关系",
+  "evidence_papers": [
+    {
+      "title": "Accurate, transferable, and verifiable machine-learned interatomic potentials for layered materials",
+      "doi": "10.1038/s41467-026-74482-2",
+      "year": 2026,
+      "venue": "Nature Communications"
+    }
+  ],
+  "merged_batches": ["harvest-2026-09-16"]
 }

@@ -1,0 +1,19 @@
+{
+  "name": "cfd-pinn-ns-formulation-selection",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T11:00:00Z",
+  "updated_at": "2026-09-16T11:00:00Z",
+  "description": "面向 PINN 求解不可压缩 Navier-Stokes 方程时的表述形式选择：比较速度-压力 (VP) 表述与速度-涡量 (VV) 表述的网络输入输出设计、损失函数构造、压力恢复方式和适用范围，帮助根据问题特征选择最优表述。VP 表述通过连续性方程隐式获得压力，VV 表述通过涡量方程避免压力直接求解。",
+  "tags": ["velocity-pressure formulation", "vorticity-velocity formulation", "Navier-Stokes", "PINN", "pressure recovery", "vorticity", "incompressible flow", "formulation selection", "NSFnet"],
+  "aliases": ["VP-NSFnet", "VV-NSFnet", "VP formulation", "VV formulation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PINN不可压Navier-Stokes正问题求解",
+  "evidence_papers": [
+    {"title": "NSFnets: Physics-informed neural networks for the incompressible Navier-Stokes equations", "doi": "10.1016/j.jcp.2020.109951", "year": 2020},
+    {"title": "Error Estimates and Physics Informed Augmentation for Thermally Coupled Incompressible Navier Stokes", "doi": "10.48550/arXiv.2209.02977", "year": 2022}
+  ]
+}

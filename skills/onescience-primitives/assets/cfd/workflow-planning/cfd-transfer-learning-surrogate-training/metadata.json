@@ -1,0 +1,33 @@
+{
+  "name": "cfd-transfer-learning-surrogate-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:06:00Z",
+  "updated_at": "2026-09-16T18:06:00Z",
+  "description": "面向跨车型家族汽车CFD数据的迁移学习代理模型训练任务。使用Transfer learning surrogate和Conformal predictor完成指定输入到目标物理量的映射训练，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。",
+  "tags": ["cfd", "transfer-learning", "surrogate-training", "model-training", "cross-vehicle", "automotive", "aerodynamics", "PyTorch", "conformal-prediction"],
+  "aliases": ["transfer learning surrogate training", "CFD model training", "迁移学习代理训练", "CFD模型训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S013 模型配置与训练任务知识补充",
+  "evidence_papers": [
+    {
+      "title": "A Blueprint for Self-Evolving Coding Agents in Vehicle Aerodynamic Drag Prediction",
+      "doi": "N/A",
+      "year": 2026,
+      "arxiv": "2603.21698"
+    },
+    {
+      "title": "Multi-Granularity Conformal Prediction for Reliable Neural-Operator Automotive Aerodynamic Surrogates",
+      "doi": "N/A",
+      "year": 2026,
+      "arxiv": "2607.17297"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

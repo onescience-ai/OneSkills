@@ -1,0 +1,41 @@
+{
+  "name": "cfd-diff-phys-data-ingestion",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "可微分物理求解的数据接入与契约核验任务，检查数据文件可读性、样本数、输入与目标变量、单位、坐标系、网格拓扑、时间或工况范围、缺失值和使用许可，输出机器可读的数据契约。",
+  "tags": [
+    "data-ingestion",
+    "contract-validation",
+    "data-audit",
+    "differentiable-physics",
+    "edge:workflow:cfd-differentiable-physics-workflow"
+  ],
+  "aliases": [
+    "数据接入",
+    "契约核验",
+    "data ingestion"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S071 数据接入与契约核验",
+  "evidence_papers": [
+    {
+      "title": "Mechanistic PDE Networks for Discovery of Governing Equations",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "PhysPDE_ Rethinking PDE Discovery and a Physical Hypothesis Selection Benchmark",
+      "doi": "",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

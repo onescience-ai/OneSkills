@@ -1,0 +1,22 @@
+{
+  "name": "cfd-boundary-embedded-arbitrary-order-hard-constraint-neural-field-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "边界嵌入与任意阶硬约束神经场求解的完整工作流，涵盖数据接入、预处理、模型训练、批量推理与任务验收五个阶段。",
+  "tags": ["workflow", "boundary-embedded", "hard-constraint", "neural field", "neural operator", "cfd", "physics-informed", "pipeline", "complex-geometry", "mixed-boundary"],
+  "aliases": ["边界嵌入神经算子工作流", "硬约束神经场流程"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "边界嵌入与任意阶硬约束神经场求解工作流",
+  "evidence_papers": [
+    {"title": "BENO: Boundary-Embedded Neural Operators for PDEs", "doi": "", "year": 2024, "url": ""},
+    {"title": "Harnessing the Power of Neural Operators with Automatically Encoded Conservation Laws", "doi": "", "year": 2024, "url": ""},
+    {"title": "Scaling Physics-Informed Hard Constraints with Mixture-of-Experts", "doi": "", "year": 2024, "url": ""},
+    {"title": "Neural Fields with Hard Constraints of Arbitrary Differential Order", "doi": "", "year": 2024, "url": ""},
+    {"title": "Physics-Embedded Neural Networks: Graph Neural PDE Solvers with Mixed Boundary Conditions", "doi": "", "year": 2024, "url": ""}
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "cfd-latent-pde-model-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向连续坐标PDE算子学习的模型配置与训练任务，使用Latent Neural Operator或Neural field operator完成指定输入到目标物理量的映射训练。",
+  "tags": ["model-training", "latent-neural-operator", "neural-field", "checkpoint"],
+  "aliases": ["模型训练", "算子训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "潜空间与神经场连续PDE算子学习-模型训练",
+  "evidence_papers": [
+    {"title": "Latent Neural Operator for Solving Forward and Inverse PDE Problems", "doi": "", "year": 2024},
+    {"title": "Operator Learning with Neural Fields: Tackling PDEs on General Geometries", "doi": "", "year": 2024}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

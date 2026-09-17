@@ -1,0 +1,22 @@
+{
+  "name": "cfd-preprocessing-data-splitting",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T21:22:00Z",
+  "description": "CFD预处理与数据切分：统一物理量与表示，按几何、工况或时间构造无泄漏切分。完成质控、重采样或图构建、掩膜、归一化或无量纲化，为可微PDE求解器、图网络、自编码器潜空间流动降阶时序预测训练提供标准化数据。适用于流场数据需要按轨迹/几何/工况进行无泄漏切分的场景。",
+  "tags": ["preprocessing", "data splitting", "CFD", "normalization", "graph construction", "no-leak splitting", "non-dimensionalization", "autoencoder", "reduced-order-modeling"],
+  "aliases": ["预处理", "数据切分", "无量纲化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD预处理与数据切分步骤知识",
+  "evidence_papers": [
+    {
+      "title": "Reduced-order modeling of advection-dominated systems with recurrent neural networks and convolutional autoencoders",
+      "doi": "10.48550/arXiv.2002.00470",
+      "year": 2020
+    }
+  ]
+}

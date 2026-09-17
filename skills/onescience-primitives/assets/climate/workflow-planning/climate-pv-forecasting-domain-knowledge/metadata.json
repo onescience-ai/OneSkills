@@ -1,0 +1,23 @@
+{
+  "name": "climate-pv-forecasting-domain-knowledge",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "光伏功率预测的领域专门知识，包括光伏功率的物理原理、常用预测方法、数据预处理方法以及多站联合预测的特殊考虑",
+  "tags": ["pv", "forecasting", "domain-knowledge", "irradiance", "temperature-coefficient", "capacity-normalization", "multi-site", "spatial-correlation"],
+  "aliases": ["solar PV domain", "photovoltaic power physics", "PV prediction domain"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "光伏功率预测的领域专门知识，包括光伏功率的物理原理（辐照度-功率转换、温度系数、组件效率）、常用的预测方法、数据预处理方法（容量归一化、缺测处理、异常值检测）以及多站联合预测的特殊考虑",
+  "evidence_papers": [
+    {"title": "Learning Long-Term Temporal Dependencies in Photovoltaic Power Output Prediction Through Multi-Horizon Forecasting", "doi": "2605.19074", "year": 2026},
+    {"title": "M3S-Net: Multimodal Feature Fusion Network Based on Multi-scale Data for Ultra-short-term PV Power Forecasting", "doi": "2602.19832", "year": 2026},
+    {"title": "Thermodynamic Liquid Manifold Networks: Physics-Bounded Deep Learning for Solar Forecasting in Autonomous Off-Grid Microgrids", "doi": "2604.11909", "year": 2026},
+    {"title": "Estimation of Photovoltaic Generation Forecasting Models using Limited Information", "doi": "1903.04827", "year": 2019}
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

@@ -1,0 +1,18 @@
+{
+  "name": "cfd-lagrangian-inference-physics-recovery",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T20:07:00Z",
+  "updated_at": "2026-09-16T20:07:00Z",
+  "description": "拉格朗日流体模型批量推理与物理恢复任务：在独立测试集上推理，反归一化恢复原始单位、坐标网格及物理派生量",
+  "tags": ["inference", "physics-recovery", "Lagrangian", "batch-inference", "de-normalization"],
+  "aliases": ["批量推理", "物理恢复", "反归一化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "E3等变粒子网络拉格朗日流体模拟的完整工作流与方法知识",
+  "evidence_papers": [
+    {"title": "Learning Lagrangian Fluid Mechanics with E(3)-Equivariant Graph Neural Networks", "doi": "arXiv:2305.15603", "year": 2023}
+  ]
+}

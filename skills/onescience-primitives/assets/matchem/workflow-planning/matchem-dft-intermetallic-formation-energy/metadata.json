@@ -1,0 +1,23 @@
+{
+  "name": "matchem-dft-intermetallic-formation-energy",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "DFT计算B2金属间化合物形成能的工作流。使用第一性原理计算（VASP/ABINIT）准确预测B2结构金属间化合物的形成能、相稳定性和热力学性质。核心方法包括：INCAR参数设置、KPOINTS网格密度选择、收敛性检查、形成能计算公式。适用于需要高精度DFT验证的研究场景。",
+  "tags": ["DFT", "VASP", "formation-energy", "B2-intermetallic", "phase-stability", "first-principles", "computational-materials-science", "thermodynamics", "high-throughput", "materials-validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DFT计算B2金属间化合物形成能的工作流配置知识",
+  "evidence_papers": [
+    {
+      "title": "A Multi-Scale Machine Learning Framework for Coupled Chemical, Spin, and Structural Disorder in Alloys",
+      "doi": "10.48550/arXiv.2607.07456",
+      "year": 2026,
+      "venue": "arXiv",
+      "authors": ["Zhenyao Fang", "Qimin Yan"]
+    }
+  ]
+}

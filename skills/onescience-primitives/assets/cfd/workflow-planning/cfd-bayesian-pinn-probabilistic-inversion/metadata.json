@@ -1,0 +1,41 @@
+{
+  "name": "cfd-bayesian-pinn-probabilistic-inversion",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:02:00Z",
+  "updated_at": "2026-09-16T19:02:00Z",
+  "description": "面向含噪观测与PDE先验数据完成贝叶斯PINN概率反演，涵盖数据接入、预处理、模型训练、方程求解与物理残差恢复、任务验收与适用域判定全流程；适用于流体力学、热传导、反应扩散等PDE控制问题的参数估计与不确定性量化。",
+  "tags": ["Bayesian PINN", "uncertainty quantification", "PDE inverse problem", "noisy data", "physics-informed neural networks", "probabilistic inversion", "Hamiltonian Monte Carlo", "variational inference"],
+  "aliases": ["B-PINN", "Bayesian physics-informed neural networks", "贝叶斯PINN", "概率反演"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "贝叶斯PINN噪声数据概率反演",
+  "evidence_papers": [
+    {
+      "title": "B-PINNs: Bayesian physics-informed neural networks for forward and inverse PDE problems with noisy data",
+      "doi": "10.1016/j.jcp.2020.109913",
+      "year": 2020
+    },
+    {
+      "title": "Bayesian Physics Informed Neural Networks for real-world nonlinear dynamical systems",
+      "doi": "10.1016/j.cma.2022.115346",
+      "year": 2022
+    },
+    {
+      "title": "Adversarial uncertainty quantification in physics-informed neural networks",
+      "doi": "10.1016/j.jcp.2019.05.027",
+      "year": 2019
+    },
+    {
+      "title": "Uncertainty-Aware Diagnostics for Physics-Informed Machine Learning",
+      "doi": "arXiv:2510.26121",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

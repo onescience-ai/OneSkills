@@ -1,0 +1,31 @@
+{
+  "name": "climate-nowcasting-independent-verification",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:38:00Z",
+  "updated_at": "2026-09-16T18:38:00Z",
+  "description": "面向气象预报独立验证任务，定义验证数据集划分原则、验证指标计算方法和验证结果解释标准，确保预报评估的客观性和可靠性。",
+  "tags": ["verification", "validation", "meteorology", "forecasting", "statistics"],
+  "aliases": ["预报验证", "独立验证", "气象预报评估"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "独立验证的执行规范",
+  "evidence_papers": [
+    {
+      "title": "Wind Gust Measurement Techniques-From Traditional Anemometry to New Possibilities",
+      "doi": "10.3390/s18041300",
+      "year": 2018
+    },
+    {
+      "title": "European supercell thunderstorms -- A prevalent current threat and an increasing future hazard",
+      "doi": "10.1126/sciadv.adx0513",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

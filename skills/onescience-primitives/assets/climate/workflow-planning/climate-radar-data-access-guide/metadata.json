@@ -1,0 +1,41 @@
+{
+  "name": "climate-radar-data-access-guide",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T17:54:07Z",
+  "updated_at": "2026-09-16T17:54:07Z",
+  "description": "面向天气雷达临近预报等任务，提供真实观测数据的获取渠道、格式规范、时空覆盖范围及时效性要求，包括中国CINRAD、国际MRMS、NEXRAD等数据源的访问方式与替代方案",
+  "tags": ["radar", "data-access", "CINRAD", "MRMS", "NEXRAD", "nowcasting", "weather-radar"],
+  "aliases": ["CINRAD", "MRMS", "NEXRAD", "radar-reflectivity", "composite-reflectivity"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "天气雷达临近预报任务中真实观测数据的获取渠道和格式规范",
+  "evidence_papers": [
+    {
+      "title": "Skillful nowcasting of global precipitation with generative models",
+      "doi": "10.1038/s41586-021-03854-z",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "MRMS Multi-Radar Multi-Sensor System",
+      "url": "https://www.nssl.noaa.gov/projects/mrms/",
+      "publisher": "NOAA National Severe Storms Laboratory",
+      "version": "2024",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "Met Office Radar Products",
+      "url": "https://www.metoffice.gov.uk/research/weather/observations-research/radar-products",
+      "publisher": "Met Office",
+      "version": "2024",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,21 @@
+{
+  "name": "cfd-pde-data-preprocessing-splitting",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T11:46:00Z",
+  "updated_at": "2026-09-16T11:46:00Z",
+  "description": "PDE场数据预处理与无泄漏切分任务，统一物理量与表示，按几何、工况或时间构造无泄漏切分。适用于算子学习工作流的数据预处理阶段，确保训练/验证/测试集独立性。",
+  "tags": ["data preprocessing", "data splitting", "PDE", "normalization", "non-dimensionalization", "CFD", "train-val-test split"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PDE场数据预处理与无泄漏切分",
+  "evidence_papers": [
+    {
+      "title": "Multiwavelet-based Operator Learning for Differential Equations",
+      "doi": "2109.13459",
+      "year": 2021
+    }
+  ]
+}

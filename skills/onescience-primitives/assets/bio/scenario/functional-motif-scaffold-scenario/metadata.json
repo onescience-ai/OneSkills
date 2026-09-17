@@ -1,0 +1,39 @@
+{
+  "name": "functional-motif-scaffold-scenario",
+  "type": "scenario",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "功能位点约束的蛋白骨架生成场景：围绕给定功能基序（如酶活性位点、结合口袋）生成可设计蛋白骨架，适用于酶活性位点和结合蛋白支架构建。核心模型为RFdiffusion，需配合ProteinMPNN进行序列设计，PyMOL进行结构可视化与验证。验收核心指标为基序RMSD（阈值≤0.6Å）。",
+  "tags": [
+    "bio",
+    "protein-design",
+    "motif-scaffolding",
+    "rfdiffusion",
+    "enzyme-active-site",
+    "binding-protein",
+    "scenario",
+    "edge:task:s01-design-input-parsing",
+    "edge:task:s02-model-weight-loading",
+    "edge:task:s03-candidate-generation",
+    "edge:task:s04-motif-rmsd-screening",
+    "edge:workflow:rfdiffusion-input-output-spec"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "功能位点约束的蛋白骨架生成",
+  "evidence_papers": [
+    {
+      "title": "De novo design of protein structure and function with RFdiffusion",
+      "doi": "10.1038/s41586-023-06415-8",
+      "year": 2023
+    },
+    {
+      "title": "Robust deep learning-based protein sequence design using ProteinMPNN",
+      "doi": "10.1126/science.add2187",
+      "year": 2023
+    }
+  ]
+}

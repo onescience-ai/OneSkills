@@ -1,0 +1,25 @@
+{
+  "name": "cfd-closed-loop-deployment-task",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "数据驱动风场与非定常流反馈控制的闭环策略部署与滚动仿真任务。在独立流动工况中部署控制策略，执行滚动仿真并记录观测、动作、载荷和安全约束。",
+  "tags": [
+    "closed-loop",
+    "deployment",
+    "simulation",
+    "control-actions",
+    "wind-farm",
+    "flow-control",
+    "cfd",
+    "cfd_s084"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "闭环策略部署与滚动仿真任务",
+  "evidence_papers": [],
+  "scenario_id": "CFD_S084"
+}

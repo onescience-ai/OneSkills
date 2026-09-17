@@ -1,0 +1,58 @@
+{
+  "name": "bio-mouse-enhancer-variant-tissue-prediction",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T10:00:00Z",
+  "updated_at": "2026-09-15T10:00:00Z",
+  "description": "小鼠增强子变异的组织特异调控预测工作流：基于AlphaGenome模型预测小鼠增强子变异在不同组织（肝脏、大脑）中的调控效应。适用于需要理解非编码变异如何影响组织特异性基因调控的研究场景。核心方法包括：mm10参考基因组验证、AlphaGenome模型加载与checkpoint验证、UBERON本体项映射、多轨迹（ATAC/CAGE/RNA_SEQ）预测、per_track_robust_z跨轨迹标准化、背景变异集比对和组织特异候选筛选。输出为组织特异排序的变异列表和效应汇总报告。",
+  "tags": ["mouse", "enhancer", "variant", "tissue-specific", "AlphaGenome", "mm10", "GRCm38", "UBERON", "ATAC", "CAGE", "RNA-seq", "robust-z-score", "regulatory-variant", "noncoding-variant", "epigenomics"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "小鼠增强子变异的组织特异调控预测任务知识补充：mm10参考基因组验证、AlphaGenome模型接口、UBERON本体映射、跨轨迹标准化、preflight环境预检",
+  "evidence_papers": [
+    {
+      "title": "AlphaGenome: a framework for integrated regulatory variant interpretation",
+      "doi": "10.7150/ijbs.133555",
+      "year": 2026,
+      "venue": "International Journal of Biological Sciences"
+    },
+    {
+      "title": "CREsted: modeling genomic and synthetic cell-type-specific enhancers across tissues and species",
+      "doi": "10.1038/s41592-026-03057-2",
+      "year": 2026,
+      "venue": "Nature Methods"
+    },
+    {
+      "title": "An encyclopedia of human enhancer–gene regulatory interactions",
+      "doi": "10.1038/s41586-026-10781-4",
+      "year": 2026,
+      "venue": "Nature"
+    },
+    {
+      "title": "Benchmarking DNA foundation models for genomic and genetic tasks",
+      "doi": "10.1038/s41467-025-65823-8",
+      "year": 2025,
+      "venue": "Nature Communications"
+    },
+    {
+      "title": "Harnessing artificial intelligence for genomic variant prediction: advances, challenges, and future directions",
+      "doi": "10.1093/gigascience/giag004",
+      "year": 2026,
+      "venue": "GigaScience"
+    },
+    {
+      "title": "Pre-training genomic language model with variants for better modeling functional genomics",
+      "doi": "10.1038/s44387-026-00103-4",
+      "year": 2026,
+      "venue": "npj Artificial Intelligence"
+    },
+    {
+      "title": "Nucleotide Transformer: building and evaluating robust foundation models for human genomics",
+      "doi": "10.1038/s41592-024-02523-z",
+      "year": 2024,
+      "venue": "Nature Methods"
+    }
+  ]
+}

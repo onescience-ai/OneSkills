@@ -1,0 +1,15 @@
+{
+  "name": "general-scientific-computing-offline-installation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T20:41:00Z",
+  "updated_at": "2026-09-15T20:41:00Z",
+  "description": "科学计算环境离线安装与异常恢复工作流：在网络受限环境下安装科学计算依赖包（如PyPI、conda包），配置本地镜像源，管理离线包依赖关系。适用于无法访问外部网络的HPC集群、安全隔离环境或网络不稳定场景。核心方法包括：预下载依赖包、配置本地镜像源、使用conda离线安装、处理包依赖冲突。输出为可重复的离线安装脚本和依赖清单。",
+  "tags": ["scientific computing", "offline installation", "conda", "pip", "package management", "error recovery", "workflow", "HPC", "dependency management", "mirror source"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "科学计算环境离线安装方法和离线包管理策略",
+  "evidence_papers": []
+}

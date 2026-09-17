@@ -1,0 +1,26 @@
+{
+  "name": "cfd-porous-media-preprocessing-split",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T12:42:00Z",
+  "updated_at": "2026-09-16T12:42:00Z",
+  "description": "多孔介质 CFD 数据预处理与无泄漏切分：统一物理量表示，按几何、工况或时间构造训练/验证/测试集切分，执行归一化或无量纲化，保存统计量与可逆变换。适用于数据驱动预测流程的第二步，确保数据质量与切分合理性。",
+  "tags": ["porous media", "preprocessing", "data splitting", "normalization", "CFD", "leakage prevention", "non-dimensionalization"],
+  "aliases": ["预处理切分", "data preprocessing", "无泄漏切分"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔与复杂输运流动场数据驱动预测",
+  "evidence_papers": [
+    {
+      "title": "Online Gate-Driven Flow Control in Resin Transfer Moulding Using a Neural-Network Surrogate",
+      "url": "https://arxiv.org/abs/2608.29521",
+      "year": 2026
+    },
+    {
+      "title": "Turbulent Microscale Flow Field Prediction In Porous Media Using Convolutional Neural Networks",
+      "year": 2026
+    }
+  ]
+}

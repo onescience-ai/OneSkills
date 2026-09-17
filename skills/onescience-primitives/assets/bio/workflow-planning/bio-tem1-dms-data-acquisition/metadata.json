@@ -1,0 +1,20 @@
+{
+  "name": "bio-tem1-dms-data-acquisition",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:16:00Z",
+  "updated_at": "2026-09-16T18:16:00Z",
+  "description": "面向TEM-1 β-内酰胺酶深度突变扫描数据获取任务，提供数据源定位、格式验证和下载方式的知识卡片，适用于BLAT_ECOLX_Ranganathan2015.csv数据获取场景",
+  "tags": ["TEM-1", "β-lactamase", "deep mutational scanning", "DMS", "Ranganathan", "BLAT_ECOLX", "mutation data", "dataset acquisition"],
+  "aliases": ["TEM-1 DMS data", "BLAT_ECOLX_Ranganathan2015", "Ranganathan Lab DMS"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "TEM-1 β-内酰胺酶深度突变扫描数据的公开来源和获取方式，包括Ranganathan Lab原始数据在GitHub/Zenodo的确切存储路径、BLAT_ECOLX_Ranganathan2015.csv的标准列格式及数据血缘说明",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

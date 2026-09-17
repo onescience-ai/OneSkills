@@ -1,0 +1,27 @@
+{
+  "name": "cfd-learning-based-mesh-movement-optimization",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:42:00Z",
+  "updated_at": "2026-09-16T10:42:00Z",
+  "description": "面向自适应有限元网格误差数据，学习型网格移动与自适应有限元优化场景。核心方法为Mesh movement network与Graph mesh optimizer，从误差数据中学习网格重定位策略以优化网格质量。适用于需要在自适应有限元方法中利用数据驱动网格移动以提升求解效率和精度的研究场景。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": ["cfd", "mesh movement", "adaptive finite element", "graph mesh optimizer", "mesh relocation", "error-driven learning", "FEM", "mesh optimization", "graph neural network", "finite element method", "mesh adaptation"],
+  "aliases": ["G-Adaptivity", "Universal Mesh Movement Network", "学习型网格移动", "自适应有限元优化", "图网格优化器"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "学习型网格移动与自适应有限元优化场景知识补充",
+  "evidence_papers": [
+    {
+      "title": "G-Adaptivity: optimised graph-based mesh relocation for finite element methods",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "Towards Universal Mesh Movement Networks",
+      "doi": "",
+      "year": 2024
+    }
+  ]
+}

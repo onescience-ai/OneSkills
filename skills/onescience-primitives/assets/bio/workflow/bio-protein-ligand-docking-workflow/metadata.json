@@ -1,0 +1,39 @@
+{
+  "name": "bio-protein-ligand-docking-workflow",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "蛋白质-配体对接标准工作流：从数据准备到几何修正的完整步骤序列和依赖关系。包括数据预处理、口袋定义、姿态采样、打分筛选和几何修正五个阶段，每步有明确的输入输出契约和质量门禁。",
+  "tags": [
+    "protein-ligand docking",
+    "workflow",
+    "docking pipeline",
+    "data preparation",
+    "pocket definition",
+    "pose sampling",
+    "scoring",
+    "geometric refinement",
+    "edge:scenario:bio-protein-ligand-docking-scenario",
+    "edge:task:bio-protein-ligand-docking-data-preparation",
+    "edge:task:bio-protein-ligand-docking-geometric-refinement",
+    "edge:task:bio-protein-ligand-docking-resource-retrieval"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白质-配体对接工作流标准步骤序列及依赖关系",
+  "evidence_papers": [
+    {
+      "title": "Open-Source Molecular Docking and AI-Augmented Structure-Based Drug Design",
+      "doi": "10.3390/ijms27073302",
+      "year": 2026
+    },
+    {
+      "title": "Data driven selection of consensus docking pipelines",
+      "doi": "10.1038/s44386-026-00063-4",
+      "year": 2026
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "cfd-data-ingestion-contract-verification",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:03:00Z",
+  "updated_at": "2026-09-16T19:03:00Z",
+  "description": "接入含噪观测与PDE先验数据，核验样本、变量、单位、网格坐标及许可，为贝叶斯PINN概率反演建立数据清单；适用于所有需要数据接入与契约核验的CFD工作流。",
+  "tags": ["data ingestion", "contract verification", "data audit", "quality control", "PDE data", "noisy observations"],
+  "aliases": ["数据接入", "契约核验", "数据审计"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "贝叶斯PINN噪声数据概率反演",
+  "evidence_papers": [
+    {
+      "title": "B-PINNs: Bayesian physics-informed neural networks for forward and inverse PDE problems with noisy data",
+      "doi": "10.1016/j.jcp.2020.109913",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

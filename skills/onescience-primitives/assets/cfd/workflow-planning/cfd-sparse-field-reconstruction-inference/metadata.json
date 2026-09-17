@@ -1,0 +1,32 @@
+{
+  "name": "cfd-sparse-field-reconstruction-inference",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T13:44:00Z",
+  "updated_at": "2026-09-16T13:44:00Z",
+  "description": "稀疏/缺损CFD流场重构推理任务卡：加载训练好的INR或扩散桥模型，对测试集构造与真实采集一致的低分辨、稀疏或缺损输入并执行重构，恢复物理单位和边界，保存逐样本重构结果、误差场、频谱与统计剖面。适用于CFD缺失区补全场景的第四步推断评估。",
+  "tags": ["CFD", "inference", "flow field reconstruction", "sparse field", "low-resolution", "inpainting", "spectral analysis", "error field", "physics consistency"],
+  "aliases": ["场重构推理", "流场推断"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "稀疏CFD流场重构推理",
+  "evidence_papers": [
+    {
+      "title": "PEINR: A Physics-enhanced Implicit Neural Representation for High-Fidelity Flow Field Reconstruction",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "Inpainting Computational Fluid Dynamics with Deep Learning",
+      "doi": "10.48550/arXiv.2402.17185",
+      "year": 2024
+    },
+    {
+      "title": "SCoReT: Super-Resolution Compression and Reconstruction of Turbulent Flows",
+      "doi": "10.48550/arXiv.2607.03683",
+      "year": 2026
+    }
+  ]
+}

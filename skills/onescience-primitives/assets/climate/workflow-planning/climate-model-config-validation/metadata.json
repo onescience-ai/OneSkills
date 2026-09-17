@@ -1,0 +1,22 @@
+{
+  "name": "climate-model-config-validation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "模型配置验证的具体内容和执行方法，包括模型权重版本确认、参数冻结、随机种子设置、最小干运行测试等。适用于需要确保模型配置正确性和推理结果可复现的场景。核心要求：s03步骤中完成方法配置验证，生成method_artifact_identity_report和dry_run_log。",
+  "tags": ["model-validation", "configuration", "dry-run", "reproducibility", "random-seed", "method-artifact", "identity-check", "inference", "NWP"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "模型配置验证的具体内容和执行方法，包括模型权重版本确认、参数冻结、随机种子设置、最小干运行测试等",
+  "evidence_papers": [
+    {
+      "title": "基于归因报告分析的模型配置规范（任务268）",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Internal Attribution Analysis"
+    }
+  ]
+}

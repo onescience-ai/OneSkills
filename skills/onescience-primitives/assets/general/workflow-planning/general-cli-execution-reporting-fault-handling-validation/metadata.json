@@ -1,0 +1,51 @@
+{
+  "name": "general-cli-execution-reporting-fault-handling-validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T21:43:00Z",
+  "updated_at": "2026-09-17T10:30:00Z",
+  "description": "面向 CLI 工具在非交互环境下的稳定执行与结构化报告生成，确保任务身份、字段完整性及输出契约一致性，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，不扩展到具体领域结论。补充了 Python subprocess 模块的退出码语义、超时处理和异常机制，以及 JSON Schema type 关键字的类型定义规范。",
+  "tags": ["CLI", "non-interactive", "fault-classification", "exit-code", "timeout", "sandbox", "authentication", "JSON-Schema", "report-validation", "structured-output", "python-subprocess", "type-keyword"],
+  "aliases": ["CLI execution", "report contract", "fault handling", "subprocess", "exit code handling"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识；JSON Schema 报告交付契约",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema Specification",
+      "url": "https://json-schema.org/specification",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-16T21:43:00Z"
+    },
+    {
+      "title": "POSIX.1-2017: Exit status",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/functions/exit.html",
+      "publisher": "The Open Group",
+      "version": "POSIX.1-2017",
+      "accessed_at": "2026-09-16T21:43:00Z"
+    },
+    {
+      "title": "Python subprocess Module Documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7",
+      "accessed_at": "2026-09-17T10:30:00Z"
+    },
+    {
+      "title": "JSON Schema Type-specific Keywords",
+      "url": "https://json-schema.org/understanding-json-schema/reference/type",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T10:30:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [
+    "2026-09-17: 基于 Python subprocess 文档补充退出码语义、超时处理和异常机制；基于 JSON Schema type 关键字文档补充类型定义规范"
+  ],
+  "conflicts": []
+}

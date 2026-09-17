@@ -1,0 +1,18 @@
+{
+  "name": "cli-error-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "CLI非交互执行故障分类知识：覆盖命令参数解析、认证失败、沙箱限制、超时处理、退出码语义和标准错误判读，用于归因分析CLI故障诊断与恢复",
+  "tags": ["cli", "error-handling", "exit-code", "fault-classification", "automation", "workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {"title": "Modern Approaches to Unix Automation: Shell Scripting, Configuration Management, and Security", "doi": "10.22214/ijraset.2025.72773", "year": 2025},
+    {"title": "ROBOT: A Tool for Automating Ontology Workflows", "doi": "10.1186/s12859-019-3002-3", "year": 2019}
+  ]
+}

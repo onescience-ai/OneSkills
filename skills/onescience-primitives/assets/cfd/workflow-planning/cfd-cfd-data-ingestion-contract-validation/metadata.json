@@ -1,0 +1,27 @@
+{
+  "name": "cfd-cfd-data-ingestion-contract-validation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T13:44:00Z",
+  "updated_at": "2026-09-16T13:44:00Z",
+  "description": "CFD流场数据接入与契约核验任务卡：接入稀疏或缺损CFD场与坐标查询，核验文件可读性、样本数、输入与目标变量、单位、坐标系、网格拓扑、时间范围、缺失值和使用许可，按数据契约输出机器可读清单。适用于隐式表示与扩散桥CFD缺失区补全场景的第一步数据准备，确保后续步骤的数据完整性与可追溯性。",
+  "tags": ["CFD", "data ingestion", "contract validation", "data audit", "dataset manifest", "quality gate", "sparse field", "missing region"],
+  "aliases": ["数据接入", "契约核验", "数据审计"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD数据接入与契约核验",
+  "evidence_papers": [
+    {
+      "title": "PEINR: A Physics-enhanced Implicit Neural Representation for High-Fidelity Flow Field Reconstruction",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "Inpainting Computational Fluid Dynamics with Deep Learning",
+      "doi": "10.48550/arXiv.2402.17185",
+      "year": 2024
+    }
+  ]
+}

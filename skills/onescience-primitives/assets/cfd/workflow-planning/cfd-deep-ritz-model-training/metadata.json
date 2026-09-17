@@ -1,0 +1,20 @@
+{
+  "name": "cfd-deep-ritz-model-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T12:00:00Z",
+  "updated_at": "2026-09-16T12:00:00Z",
+  "description": "Deep Ritz变分求解的模型配置与训练步骤：配置Deep Ritz网络或弱形式神经求解器，使用切分数据训练模型，记录训练过程、配置和最佳权重。适用于变分PDE求解的模型训练阶段，确保可复现性和训练收敛性。",
+  "tags": ["model training", "Deep Ritz network", "weak form solver", "PyTorch", "checkpoint", "training metrics", "early stopping", "hyperparameter", "PDE", "CFD", "variational"],
+  "aliases": ["training step", "model fitting step", "network training step"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Deep Ritz变分求解模型训练",
+  "evidence_papers": [
+    {"title": "The Deep Ritz Method: A Deep Learning-Based Numerical Algorithm for Solving Variational Problems", "year": 2017},
+    {"title": "Refined generalization analysis of the Deep Ritz Method and Physics-Informed Neural Networks", "year": 2023},
+    {"title": "Adaptive activation functions accelerate convergence in deep and physics-informed neural networks", "year": 2019}
+  ]
+}

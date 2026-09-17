@@ -1,0 +1,21 @@
+{
+  "name": "general-scenario-resource-directory-structure",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T16:37:00Z",
+  "updated_at": "2026-09-15T16:37:00Z",
+  "description": "OneScience场景资源文件的目录结构规范，包括领域子目录组织方式和JSON文件的命名规则。适用于场景发现、资源检索和工作流规划。",
+  "tags": ["scenario", "directory", "structure", "organization", "JSON", "file", "naming", "convention"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "场景资源文件的目录结构规范，包括bio/、cfd/、matchem/等领域子目录的组织方式和JSON文件的命名规则",
+  "evidence_papers": [
+    {
+      "title": "OneScience Scenario Resource Organization",
+      "doi": "N/A (内部文档)",
+      "year": 2026
+    }
+  ]
+}

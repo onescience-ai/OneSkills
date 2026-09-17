@@ -1,0 +1,23 @@
+{
+  "name": "climate-pv-forecasting-model-selection-evaluation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "机器学习模型选择与评估的标准方法，包括训练集/验证集/测试集划分、交叉验证、过拟合检测、模型选择应基于验证集性能的原则",
+  "tags": ["pv", "forecasting", "model-selection", "cross-validation", "overfitting", "evaluation", "machine-learning"],
+  "aliases": ["solar model evaluation", "PV model selection", "photovoltaic ML assessment"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "机器学习模型选择与评估的标准方法，包括训练集/验证集/测试集划分、交叉验证、过拟合检测指标以及模型选择应基于验证集性能而非训练集性能的原则",
+  "evidence_papers": [
+    {"title": "Optimizing Solar Energy Production in the USA: Time-Series Analysis Using AI for Smart Energy Management", "doi": "2506.23368", "year": 2025},
+    {"title": "Quantum Long Short-Term Memory (QLSTM) vs Classical LSTM in Time Series Forecasting", "doi": "2310.17032", "year": 2023},
+    {"title": "NFISiS: New Perspectives on Fuzzy Inference Systems for Renewable Energy Forecasting", "doi": "2506.06285", "year": 2025},
+    {"title": "Gaussian Process Regression for Probabilistic Short-term Solar Output Forecast", "doi": "2002.10878", "year": 2020}
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

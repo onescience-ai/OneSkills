@@ -2,18 +2,17 @@
   "name": "co2-photocatalyst-data-driven-synthesizability-screening",
   "type": "workflow-planning",
   "domain": "matchem",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-12",
-  "updated_at": "2026-09-12",
-  "description": "基于 NULL 的「CO2光催化剂数据驱动可合成性筛选」工作流。研究对象为CO2光催化剂数据驱动可合成性筛选。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从数据与目标定义到独立验证与结论的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。 面向从大型材料数据库中系统性发现兼具热力学稳定、光吸收匹配和电化学稳定催化候选的高通量计算筛选场景，采用一种基于材料固有性质的分层漏斗式筛选方法。该方法整合了凸包能量、带隙范围、Pourbaix稳定性等多层次判据，从数万初始候选中逐步缩窄范围，并结合高精度杂化泛函计算进行最终验证，为光催化材料的理性设计提供了可复用的计算工作流。流程的核心判据参数（如ΔEhull ≤ 80 meV.atom⁻¹、PBE带隙1.0–2.5 eV）可供同类固态无机材料筛选任务参考。",
+  "updated_at": "2026-09-16",
+  "description": "CO2光催化剂数据驱动可合成性筛选工作流：从Materials Project等公开数据库获取真实材料数据集，采用6层分层漏斗筛选策略（热力学稳定性→可见光吸收→电化学稳定性→计算成本→HSE06带隙→能带边缘对齐），从数万候选中识别兼具热力学稳定、光吸收匹配和电化学稳定的光催化候选材料，结合VASP DFT高精度计算验证电子结构。适用于需要从大型材料数据库系统性发现CO2光催化剂的研究场景。核心判据：ΔEhull < 80 meV.atom⁻¹、PBE带隙1.0-2.5 eV、ΔGpbx < 0.2 eV.atom⁻¹、HSE06带隙在可见光范围、CBM在-4.3至-2.4 eV vs vacuum。流程可复用于其他固态无机材料的高通量筛选任务。",
   "tags": [
     "co2光催化剂数据驱动可合成性筛选",
     "data-driven",
     "discovery",
     "matchem",
     "materials",
-    "null",
     "photocatalysts",
     "reduction",
     "robust",
@@ -27,32 +26,24 @@
     "pourbaix",
     "bandgap",
     "hse06",
-    "edge:scenario:matchem-co2-photocatalyst-data-driven-synthesizability-screening-scenario",
-    "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
-  ],
-  "scenario_id": "CO2光催化剂数据驱动可合成性筛选",
-  "source_papers": [
-    "doi_10_1038_s41467_019_08356_1"
+    "Materials-Project",
+    "VASP",
+    "DFT",
+    "tiered-screening"
   ],
   "harvested": true,
-  "tier": "high",
-  "score": 87.0,
-  "accuracy": 100.0,
-  "authority": 51.0,
-  "generalization": 97.8,
-  "source_paper": {
-    "title": "Robust and synthesizable photocatalysts for CO2 reduction: a data-driven materials discovery",
-    "doi": "",
-    "source": "openalex",
-    "external_id": "doi_10_1038_s41467_019_08356_1",
-    "venue": "",
-    "cited_by_count": null,
-    "objective_score": 30.0
-  },
-  "lifecycle": "probation",
-  "grounded_ratio": 0.571,
-  "scenario_ids": [
-    "CO2光催化剂数据驱动可合成性筛选"
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CO2光催化剂数据驱动可合成性筛选",
+  "evidence_papers": [
+    {
+      "title": "Robust and synthesizable photocatalysts for CO2 reduction: a data-driven materials discovery",
+      "doi": "10.1038/s41467-019-08356-1",
+      "year": 2019,
+      "venue": "Nature Communications",
+      "authors": ["A.K. Singh", "K.A. Persson", "J.M. Gregoire"]
+    }
   ],
-  "batch": "2026-09-14"
+  "scenario_id": "CO2光催化剂数据驱动可合成性筛选",
+  "lifecycle": "stable",
+  "batch": "2026-09-16"
 }

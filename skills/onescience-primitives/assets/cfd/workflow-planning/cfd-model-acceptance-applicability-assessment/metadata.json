@@ -1,0 +1,37 @@
+{
+  "name": "cfd-model-acceptance-applicability-assessment",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T13:44:00Z",
+  "updated_at": "2026-09-16T13:44:00Z",
+  "description": "CFD流场补全模型验收与适用域判定任务卡：按统计误差、关键物理约束、泛化能力和计算收益进行综合评估，给出PASS/REJECT/BLOCKED结论，明确适用域边界与复核建议。适用于隐式表示与扩散桥CFD缺失区补全场景的第五步验收评估，确保工程可用性判定有据可依。",
+  "tags": ["CFD", "evaluation", "acceptance", "applicability", "physical consistency", "out-of-domain", "worst case", "conservation error", "spectrum error", "engineering validation"],
+  "aliases": ["模型验收", "适用域评估", "任务验收"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD模型验收与适用域判定",
+  "evidence_papers": [
+    {
+      "title": "PEINR: A Physics-enhanced Implicit Neural Representation for High-Fidelity Flow Field Reconstruction",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "Physics-aligned field reconstruction with diffusion bridge",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "Inpainting Computational Fluid Dynamics with Deep Learning",
+      "doi": "10.48550/arXiv.2402.17185",
+      "year": 2024
+    },
+    {
+      "title": "SCoReT: Super-Resolution Compression and Reconstruction of Turbulent Flows",
+      "doi": "10.48550/arXiv.2607.03683",
+      "year": 2026
+    }
+  ]
+}

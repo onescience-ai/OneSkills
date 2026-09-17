@@ -1,0 +1,27 @@
+{
+  "name": "cfd-2d-turbulence-cnn-sgs-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "二维湍流LES亚格子闭合任务的CNN模型训练步骤，负责配置网络架构、执行训练并保存最佳权重。",
+  "tags": ["cfd", "LES", "CNN", "training", "turbulence", "subgrid-scale"],
+  "aliases": ["model-training", "cnn-training"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "卷积网络二维湍流LES亚格子闭合",
+  "evidence_papers": [
+    {
+      "title": "Stable a posteriori LES of 2D turbulence using convolutional neural networks: Backscattering analysis and generalization to higher Re via transfer learning",
+      "doi": "10.1016/j.jcp.2022.111090",
+      "year": 2021
+    },
+    {
+      "title": "Sub-grid modelling for two-dimensional turbulence using neural networks",
+      "doi": "10.1017/jfm.2018.770",
+      "year": 2018
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "bio-protein-structure-validation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:19:00Z",
+  "updated_at": "2026-09-16T10:19:00Z",
+  "description": "蛋白结构自洽性评估方法，包括回折叠验证、Ramachandran图检查、几何验证和结构有效性评估。",
+  "tags": ["protein-validation", "structure-quality", "ramachandran", "geometric-check", "foldability"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白结构自洽性评估方法（回折叠验证流程、Ramachandran图检查、二级结构一致性检查）、设计成功率的正确定义、MDTraj/OpenFold的API接口用于结构分析",
+  "evidence_papers": [
+    {
+      "title": "FastMDAnalysis: Software for Automated Analysis of Molecular Dynamics Trajectories",
+      "doi": "10.1002/jcc.27436",
+      "year": 2026
+    },
+    {
+      "title": "Protein foundation models: a comprehensive survey",
+      "doi": "10.1007/s11427-025-3147-2",
+      "year": 2026
+    }
+  ]
+}

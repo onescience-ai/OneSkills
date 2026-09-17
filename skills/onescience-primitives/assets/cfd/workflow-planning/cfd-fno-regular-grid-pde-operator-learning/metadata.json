@@ -1,0 +1,34 @@
+{
+  "name": "cfd-fno-regular-grid-pde-operator-learning",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:30:00Z",
+  "updated_at": "2026-09-16T19:30:00Z",
+  "description": "Fourier Neural Operator在规则网格上学习参数化PDE算子的完整工作流。适用于需要从Darcy流或Navier-Stokes方程等规则网格数据训练算子学习模型的研究场景。核心方法包括：数据接入与契约核验、预处理与数据切分、模型配置与训练、批量推理与物理恢复、任务验收与适用域判定。输出为可复现模型、任务结果、物理一致性评估和适用域报告。",
+  "tags": ["Fourier Neural Operator", "FNO", "parametric PDE", "operator learning", "regular grid", "Darcy flow", "Navier-Stokes", "CFD", "neural operator", "PDE solver", "deep learning", "scientific computing"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "为CFD_S048场景（FNO规则网格参数化PDE算子学习）补充结构化知识卡片",
+  "evidence_papers": [
+    {
+      "title": "Fourier Neural Operator for Parametric Partial Differential Equations",
+      "doi": "2010.08895",
+      "year": 2020,
+      "venue": "arXiv preprint"
+    },
+    {
+      "title": "Factorized Fourier Neural Operators",
+      "doi": "2111.13802",
+      "year": 2021,
+      "venue": "arXiv preprint"
+    },
+    {
+      "title": "U-FNO: An Enhanced Fourier Neural Operator-Based Deep-Learning Model for Multiphase Flow",
+      "doi": "2109.03697",
+      "year": 2021,
+      "venue": "arXiv preprint"
+    }
+  ]
+}

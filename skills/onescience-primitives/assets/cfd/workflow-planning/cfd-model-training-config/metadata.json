@@ -1,0 +1,20 @@
+{
+  "name": "cfd-model-training-config",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:12:00Z",
+  "updated_at": "2026-09-16T18:12:00Z",
+  "description": "CFD流场不确定性反演工作流第三步：配置并训练Bayesian PINN或Physics-informed GAN，记录训练过程与最佳权重。",
+  "tags": ["model-training", "PINN", "GAN", "Bayesian", "CFD", "checkpoint"],
+  "aliases": ["模型配置", "模型训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "模型配置与训练步骤知识补充",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

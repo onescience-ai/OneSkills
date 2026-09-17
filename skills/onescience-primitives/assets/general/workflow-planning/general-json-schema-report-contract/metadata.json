@@ -1,0 +1,37 @@
+{
+  "name": "general-json-schema-report-contract",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T12:18:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向结构化报告交付的 JSON Schema 契约定义与校验：确保程序输出符合预定义的 JSON Schema 规范，包括必填字段、数据类型、数组约束和身份验证。适用于自动化报告生成、API 响应验证、数据交换格式标准化等场景。核心方法包括：Schema 定义、字段完整性检查、类型验证、数组约束验证、身份字段匹配。输出为通过校验的 JSON 报告或结构化错误信息。",
+  "tags": ["JSON", "Schema", "validation", "report", "contract", "specification", "field-validation", "type-checking", "array-constraint", "identity-verification", "automation", "data-exchange"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_docs": [
+    {
+      "title": "JSON Schema官方文档",
+      "url": "https://json-schema.org/documentation",
+      "publisher": "JSON Schema organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-15"
+    },
+    {
+      "title": "Understanding JSON Schema",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-15"
+    },
+    {
+      "title": "Python jsonschema library documentation",
+      "url": "https://python-jsonschema.readthedocs.io/",
+      "publisher": "Python Software Foundation",
+      "version": "jsonschema 4.20.0",
+      "accessed_at": "2026-09-15"
+    }
+  ]
+}

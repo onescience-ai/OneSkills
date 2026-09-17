@@ -1,0 +1,53 @@
+{
+  "name": "cli-fault-diagnosis-schema-validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.2.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-17T10:00:00Z",
+  "description": "面向CLI工具的非交互式执行场景，覆盖进程退出码分类、故障诊断、JSON结构化报告的Schema校验与契约一致性检查",
+  "tags": ["cli", "fault-diagnosis", "exit-code", "json-schema", "validation", "non-interactive", "structured-report"],
+  "aliases": ["command-line fault handling", "CLI error classification", "report schema validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识；JSON Schema 报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Bionitio: demonstrating and facilitating best practices for bioinformatics command-line software",
+      "doi": "10.1093/gigascience/giz109",
+      "year": 2019
+    },
+    {
+      "title": "Schema Enforcement and Structured-Output Stability in Locally Deployed LLMs for Clinical Admission-Note Editing: A Proxy-Based Pre-Deployment Evaluation",
+      "doi": "10.3390/healthcare14142150",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "Python subprocess module documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "Python json module documentation",
+      "url": "https://docs.python.org/3/library/json.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "JSON Schema reference",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-16: 基于归因分析任务396案例补充CLI执行故障和JSON Schema报告交付契约的实际应用案例", "2026-09-17: 基于论文证据补充CLI最佳实践与Schema执行知识"],
+  "conflicts": []
+}

@@ -1,0 +1,17 @@
+{
+  "name": "bio-esm2-protein-language-model",
+  "type": "model",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T16:20:00Z",
+  "updated_at": "2026-09-16T16:20:00Z",
+  "description": "ESM-2蛋白质语言模型：Meta AI开发的进化尺度蛋白质表征模型，支持序列编码和结构预测。提供650M/3B/15B多种规模，输出640/1280维embedding。",
+  "tags": ["ESM-2", "protein-language-model", "embedding", "Meta-AI", "edge:task:bio-protein-language-model-integration"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "预训练蛋白质语言模型ESM-2加载方式和输入格式",
+  "evidence_papers": [
+    {"title": "Evolutionary-scale prediction of atomic-level protein structure with a language model", "doi": "10.1126/science.ade2574", "year": 2023}
+  ]
+}

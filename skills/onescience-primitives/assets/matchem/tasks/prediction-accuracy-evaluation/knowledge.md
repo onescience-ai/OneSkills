@@ -69,5 +69,5 @@ python skills/onescience-primitives/assets/matchem/tools/prediction-metric-calcu
 ## 缺口与降级（Fallback / Gap）
 
 - 改道触发：需分箱但无 `group` 列 → 降级 global 并标注；参考值缺失 → 判 `none` 并写缺口。
-- 分层降级：`full`（任务卡 + 脚本资源均命中）/ `partial` / `task_only` / `none`；`retrieval_level != full` 时向 `references/tc/gaps.jsonl` 追加缺口记录。
+- 分层降级：`full`（任务卡 + 脚本资源均命中）/ `partial` / `task_only` / `none`；`retrieval_level != full` 时向 `.onescience/gaps.jsonl` 追加缺口记录。
 - 已知缺口：不确定度传播（委员会方差）尚未脚本化；分箱阈值缺省口径未定。

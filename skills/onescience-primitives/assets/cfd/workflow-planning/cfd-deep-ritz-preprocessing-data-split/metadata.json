@@ -1,0 +1,20 @@
+{
+  "name": "cfd-deep-ritz-preprocessing-data-split",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T12:00:00Z",
+  "updated_at": "2026-09-16T12:00:00Z",
+  "description": "Deep Ritz变分求解的预处理与数据切分步骤：统一物理量表示，按几何、工况或时间构造无泄漏切分，完成归一化或无量纲化处理。适用于变分PDE求解的数据预处理阶段，确保训练集统计量纯净、切分无信息泄漏。",
+  "tags": ["preprocessing", "data split", "normalization", "non-dimensionalization", "train-val-test", "Deep Ritz", "variational", "PDE", "CFD", "no data leakage"],
+  "aliases": ["data preprocessing step", "train-test split step", "normalization step"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Deep Ritz变分求解预处理与数据切分",
+  "evidence_papers": [
+    {"title": "The Deep Ritz Method: A Deep Learning-Based Numerical Algorithm for Solving Variational Problems", "year": 2017},
+    {"title": "Error Analysis of Deep Ritz Methods for Elliptic Equations", "year": 2021},
+    {"title": "Characterizing possible failure modes in physics-informed neural networks", "year": 2021}
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "name": "general-cli-fault-classification-error-handling",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:04:00+08:00",
+  "updated_at": "2026-09-17T19:00:00+08:00",
+  "description": "面向命令行工具的非交互执行场景，提供进程退出码分类、标准错误诊断、超时处理、沙箱执行与故障恢复的通用方法论框架，支持跨语言跨平台的CLI错误处理与故障诊断",
+  "tags": ["cli", "error-handling", "fault-classification", "exit-code", "timeout", "sandbox", "diagnostics"],
+  "aliases": ["CLI故障分类", "命令行错误处理", "退出码诊断", "进程错误处理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识：覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "The Open Group Base Specifications Issue 7, 2018 edition - exit",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/functions/exit.html",
+      "publisher": "IEEE/The Open Group (POSIX.1-2017)",
+      "version": "2018",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "subprocess — Subprocess management",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "sysexits(3) - FreeBSD Manual Pages",
+      "url": "https://www.freebsd.org/cgi/man.cgi?query=sysexits&sektion=3",
+      "publisher": "FreeBSD Project",
+      "version": "15.1",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "exit(3) - Linux manual page",
+      "url": "https://man7.org/linux/man-pages/man3/exit.3.html",
+      "publisher": "Linux man-pages project",
+      "version": "latest",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "os — Miscellaneous operating system interfaces",
+      "url": "https://docs.python.org/3/library/os.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Subprocesses — asyncio",
+      "url": "https://docs.python.org/3/library/asyncio-subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "The Open Group Base Specifications Issue 7, 2018 edition - alarm",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/functions/alarm.html",
+      "publisher": "IEEE/The Open Group (POSIX.1-2017)",
+      "version": "2018",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-17T00:00:00Z: modify for task 410 - CLI non-interactive execution fault classification", "2026-09-17T18:00:00Z: modify for task 92 - CLI non-interactive execution fault classification"],
+  "conflicts": []
+}

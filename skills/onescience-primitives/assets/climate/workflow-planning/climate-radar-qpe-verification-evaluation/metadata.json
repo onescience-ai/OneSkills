@@ -1,0 +1,34 @@
+{
+  "name": "climate-radar-qpe-verification-evaluation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T20:38:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "雷达定量降水估计（QPE）验证与评估方法，涵盖强降水检验、样本划分和验收门限。定义气象领域强降水事件的统计特征和阈值定义（通常≥10 mm/h或≥25 mm/h），以及强降水检验指标（检测率、虚警率、临界成功指数）的计算方法和样本量要求。涵盖训练集/验证集划分的标准方法，包括时间划分、空间划分和传感器划分的原则。定义气象业务中雷达QPE产品的验收标准体系，包括RMSE、相关系数、偏差等指标的业务门限值。适用于需要验证雷达QPE方法性能、评估强降水估计能力、确保验证独立性的场景。",
+  "tags": ["radar", "QPE", "verification", "evaluation", "heavy rain", "extreme precipitation", "detection rate", "false alarm ratio", "critical success index", "calibration", "validation", "separation", "acceptance criteria", "RMSE", "correlation coefficient", "meteorological verification", "cross-validation", "holdout method"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象领域强降水事件的统计特征和阈值定义，雷达QPE对强降水估计的典型误差特征，以及强降水检验指标的计算方法和样本量要求；气象统计验证中训练集/验证集划分的标准方法；气象业务中雷达QPE产品的验收标准体系。",
+  "evidence_papers": [
+    {
+      "title": "Radar Rainfall Data Estimation and Use",
+      "doi": "10.1061/9780784415115",
+      "year": 2018,
+      "venue": "ASCE"
+    },
+    {
+      "title": "Evaluation and Improvement of Radar Rainfall Data",
+      "doi": "10.1061/9780784415115.ch04",
+      "year": 2018,
+      "venue": "ASCE"
+    },
+    {
+      "title": "Estimation of Radar Calibration Uncertainties Related to the Spatial Variability of Rainfall within a Single Radar Pixel",
+      "doi": "10.1061/40976(316)412",
+      "year": 2008,
+      "venue": "World Environmental and Water Resources Congress"
+    }
+  ]
+}

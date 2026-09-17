@@ -1,0 +1,27 @@
+{
+  "name": "cfd-pde-large-scale-mesh-transformer-flow-prediction",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向百万节点通用三维PDE网格数据，使用Transformer架构完成流场预测的完整工作流。适用于需要对大规模非结构化网格上的三维流场进行快速推断、同时要求物理一致性评估和适用域判定的研究或工程场景。核心方法包括Transolver、Mesh Transformer等网格Transformer模型，覆盖数据接入、预处理、训练、推理和验收评估五个阶段。输出为可复用模型权重、逐变量误差分析、守恒残差报告和适用域边界说明。",
+  "tags": ["CFD", "PDE", "Transformer", "mesh", "flow prediction", "large-scale", "Transolver", "Mesh Transformer", "neural solver", "physics-informed", "3D flow", "non-structured grid", "million node"],
+  "aliases": ["大规模网格Transformer流场预测", "百万节点PDE求解"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "大规模网格Transformer三维流场预测",
+  "evidence_papers": [
+    {
+      "title": "Transolver: A Fast Transformer Solver for PDEs on General Geometries",
+      "doi": "N/A",
+      "year": 2024
+    },
+    {
+      "title": "Transolver++: An Accurate Neural Solver for PDEs on Million-Scale Geometries",
+      "doi": "N/A",
+      "year": 2024
+    }
+  ]
+}

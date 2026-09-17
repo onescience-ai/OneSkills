@@ -1,0 +1,18 @@
+{
+  "name": "matchem-porous-si-anode-material-structure",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "多孔硅锂离子电池负极材料结构文件（CIF/POSCAR）格式规范、电池工况参数定义、以及必填输入缺失时的用户交互决策规则。适用于材料与工况建模步骤（s01），确保输入完整性检查和用户请求补充信息的正确触发。",
+  "tags": ["porous silicon", "anode", "material structure", "CIF", "POSCAR", "battery condition", "user interaction", "input validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "材料结构文件（CIF/POSCAR）和电池工况参数的数据格式与获取方式知识，包括何时应向用户请求补充信息的决策规则",
+  "evidence_papers": [
+    {"title": "Hierarchical porous silicon structures with extraordinary mechanical strength as high-performance lithium-ion battery anodes", "doi": "10.1038/s41467-020-15217-9", "year": 2020},
+    {"title": "Fundamental Understanding and Facing Challenges in Structural Design of Porous Si-Based Anodes for Lithium-Ion Batteries", "doi": "10.1002/adfm.202301109", "year": 2023}
+  ]
+}

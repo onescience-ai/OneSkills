@@ -1,0 +1,22 @@
+{
+  "name": "cfd-gan-normalizing-flow-data-ingestion-contract-validation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "GAN与正规化流湍流降阶生成的数据接入与契约核验任务（Step s01），负责接入湍流快照与低维潜变量数据，核验样本、变量、单位、网格坐标及许可，建立数据清单和机器可读契约。缺少必填输入时返回 BLOCKED 并列出缺项。",
+  "tags": ["data-ingestion", "contract-validation", "turbulence", "GAN", "normalizing-flow", "snapshot", "latent-variable"],
+  "aliases": ["数据接入任务", "契约核验任务"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "GAN与正规化流湍流降阶数据接入与契约核验",
+  "evidence_papers": [
+    {"title": "Enforcing statistical constraints in generative adversarial networks for modeling chaotic dynamical systems", "doi": "arxiv.org/abs/1905.06841", "year": 2019}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,31 @@
+{
+  "name": "matchem-next-mol-1d-3d-fusion-architecture",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "Knowledge card for 1D-3D fusion architectures in molecular generation, focusing on combining SMILES transformer language models with 3D equivariant diffusion models for structure-based drug design. Covers fusion mechanisms, equivariant graph neural networks, noise scheduling, and conditional generation.",
+  "tags": ["molecular generation", "1D-3D fusion", "SMILES transformer", "3D diffusion", "E3NN", "EGNN", "structure-based drug design", "conditional generation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "NExT-Mol 1D-3D fusion architecture for molecular generation",
+  "evidence_papers": [
+    {
+      "title": "Deep generative molecular design reshapes drug discovery",
+      "doi": "10.1016/j.xcrm.2022.100794",
+      "year": 2022
+    },
+    {
+      "title": "Diffusion Models in De Novo Drug Design",
+      "doi": "10.1021/acs.jcim.4c01107",
+      "year": 2024
+    },
+    {
+      "title": "Generative Models as an Emerging Paradigm in the Chemical Sciences",
+      "doi": "10.1021/jacs.2c13467",
+      "year": 2023
+    }
+  ]
+}

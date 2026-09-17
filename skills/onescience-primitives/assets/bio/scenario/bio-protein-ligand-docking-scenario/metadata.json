@@ -1,0 +1,44 @@
+{
+  "name": "bio-protein-ligand-docking-scenario",
+  "type": "scenario",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "高精度蛋白配体对接场景：将小分子配体对接到蛋白质靶标的结合口袋，预测结合姿态和亲和力。适用于基于结构的药物发现（SBDD）中的虚拟筛选、先导化合物优化和结合机制研究。核心流程包括数据预处理、口袋定义、姿态采样、打分筛选和几何修正。输出为蛋白-配体复合物结构及结合评分。",
+  "tags": [
+    "protein-ligand docking",
+    "structure-based drug design",
+    "virtual screening",
+    "binding pose prediction",
+    "scoring function",
+    "geometric correction",
+    "molecular docking",
+    "drug discovery",
+    "edge:task:bio-protein-ligand-docking-data-preparation",
+    "edge:task:bio-protein-ligand-docking-geometric-refinement",
+    "edge:task:bio-protein-ligand-docking-resource-retrieval",
+    "edge:workflow:bio-protein-ligand-docking-workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "高精度蛋白配体对接与几何修正任务的归因知识补充",
+  "evidence_papers": [
+    {
+      "title": "Open-Source Molecular Docking and AI-Augmented Structure-Based Drug Design: Current Workflows, Challenges, and Opportunities",
+      "doi": "10.3390/ijms27073302",
+      "year": 2026
+    },
+    {
+      "title": "Data driven selection of consensus docking pipelines for structure based hit identification",
+      "doi": "10.1038/s44386-026-00063-4",
+      "year": 2026
+    },
+    {
+      "title": "Cross-docking and redocking reveal distinct determinants of success in physics-based and AI-driven binding pose prediction",
+      "doi": "10.1039/d6ra05440d",
+      "year": 2026
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "climate-nowcast-verification-data-generation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T17:56:30Z",
+  "updated_at": "2026-09-16T17:56:30Z",
+  "description": "面向天气临近预报验证任务，提供独立验证资料的生成规范，包括每个预报时效的验证标签必须对应各自目标时刻的真实状态、验证标签应从独立数据源获取、不同时效标签之间应具有时间差异性",
+  "tags": ["verification", "validation", "independent-data", "nowcasting", "hail", "forecast-evaluation"],
+  "aliases": ["verification-labels", "ground-truth", "evaluation-data"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "临近预报验证中独立验证资料的生成规范",
+  "evidence_papers": [
+    {
+      "title": "Skillful nowcasting of global precipitation with generative models",
+      "doi": "10.1038/s41586-021-03854-z",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

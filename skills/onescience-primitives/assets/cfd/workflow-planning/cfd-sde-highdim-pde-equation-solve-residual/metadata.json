@@ -1,0 +1,24 @@
+{
+  "name": "cfd-sde-highdim-pde-equation-solve-residual",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向随机微分方程与高维PDE求解任务，执行方程求解与物理残差恢复：在查询配点或网格上恢复解场、导数、边界值与方程残差。适用于所有需要物理信息PDE求解的求解验证阶段，禁止仅凭训练损失判定方程已求解。",
+  "tags": ["equation-solve", "pde-residual", "physics-consistency", "stochastic-pde", "high-dimensional", "cfd"],
+  "aliases": ["方程求解", "残差恢复", "解场恢复"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "物理网络随机与高维PDE求解-方程求解与物理残差恢复",
+  "evidence_papers": [
+    {"title": "Physics-Informed Inference Time Scaling for Solving High-Dimensional Partial Differential Equations", "doi": "", "year": 2024},
+    {"title": "Learning a Neural Solver for Parametric PDEs to Enhance Physics-Informed Methods", "doi": "10.1145/3620665.3640366", "year": 2024},
+    {"title": "Physics-informed machine learning with smoothed particle hydrodynamics", "doi": "10.1103/PhysRevFluids.8.054602", "year": 2023}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

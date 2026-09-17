@@ -1,0 +1,22 @@
+{
+  "name": "bio-scatac-data-acquisition",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "scATAC-seq数据获取任务：从公开数据源下载标准scATAC-seq数据集（如10x Genomics PBMC scATAC），验证H5AD格式完整性，确保包含peak×cell矩阵、细胞类型注释和批次信息。适用于任务s01数据获取阶段，替代随机模拟数据生成。",
+  "tags": ["scATAC-seq", "data acquisition", "H5AD", "AnnData", "10x Genomics", "PBMC", "public dataset", "Zenodo", "open access", "data download"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "scATAC-seq公开数据集获取途径",
+  "evidence_papers": [
+    {
+      "title": "10x Genomics PBMC scATAC Dataset",
+      "doi": "",
+      "year": 2023,
+      "venue": "10x Genomics"
+    }
+  ]
+}

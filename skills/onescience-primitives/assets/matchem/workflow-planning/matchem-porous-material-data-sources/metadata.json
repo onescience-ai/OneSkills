@@ -1,0 +1,21 @@
+{
+  "name": "matchem-porous-material-data-sources",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T19:33:00Z",
+  "updated_at": "2026-09-15T19:33:00Z",
+  "description": "多孔材料数据获取与验证方法知识卡片：涵盖公开数据库（Materials Project、ICSD、QMOF、CSD）途径、数据格式规范、数据质量要求、实验验证方法（吸附测试）和高保真计算验证（GCMC模拟、DFT）。适用于多孔材料数据高效基础模型构建的数据准备和验证环节。",
+  "tags": ["porous-material", "data-source", "Materials-Project", "ICSD", "QMOF", "validation", "GCMC", "adsorption", "matchem"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔材料数据获取途径（如Materials Project、ICSD、QMOF等数据库）、数据格式规范、数据质量要求；多孔材料验证方法（如实验吸附测试、高保真计算如GCMC模拟）、验证数据获取途径、验证指标定义",
+  "evidence_papers": [
+    {"title": "Graph neural networks for materials science and chemistry", "doi": "10.1038/s43246-022-00315-6", "year": 2022},
+    {"title": "High Throughput Methods in the Synthesis, Characterization, and Optimization of Porous Materials", "doi": "10.1002/adma.202002780", "year": 2020},
+    {"title": "Porous materials for hydrogen storage", "doi": "10.1016/j.chempr.2022.01.012", "year": 2022},
+    {"title": "New insights into hydrogen uptake on porous carbon materials via explainable machine learning", "doi": "10.1016/j.carbon.2021.07.053", "year": 2021},
+    {"title": "Machine-learning-assisted material discovery of oxygen-rich highly porous carbon materials", "doi": "10.1038/s41467-023-39479-x", "year": 2023}
+  ]
+}

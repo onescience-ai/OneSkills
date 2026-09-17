@@ -1,0 +1,28 @@
+{
+  "name": "climate-era5-data-source-verification",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:23:00Z",
+  "updated_at": "2026-09-16T15:23:00Z",
+  "description": "ERA5再分析数据源核验工作流：验证ERA5数据的获取途径、版本标识、时空覆盖和数据质量。适用于需要从ECMWF CDS API获取真实ERA5数据并进行完整性验证的气象数据分析场景。核心方法包括：CDS API调用、数据版本核验、时空覆盖检查、质量标志解读。输出为数据来源追溯报告、版本信息、时空覆盖验证结果和质量标志说明。",
+  "tags": ["ERA5", "ECMWF", "CDS API", "reanalysis", "data verification", "spatial coverage", "temporal coverage", "quality flags", "data provenance", "meteorological data", "climate", "workflow-planning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象数据源核验流程知识，包括ERA5再分析数据的标准获取途径（ECMWF CDS API）、数据版本标识（如ERA5/ERA5-Land）、时空覆盖验证方法、数据质量标志解读、以及源观测资料与合成数据的本质区别和使用边界",
+  "evidence_papers": [
+    {
+      "title": "ERA5: ECMWF global reanalysis from 1979 to present",
+      "doi": "10.1002/qj.3803",
+      "year": 2020,
+      "venue": "Quarterly Journal of the Royal Meteorological Society"
+    },
+    {
+      "title": "The Copernicus Climate Change Service: A new era for climate data",
+      "doi": "10.1002/joc.6334",
+      "year": 2020,
+      "venue": "Journal of Climatology"
+    }
+  ]
+}

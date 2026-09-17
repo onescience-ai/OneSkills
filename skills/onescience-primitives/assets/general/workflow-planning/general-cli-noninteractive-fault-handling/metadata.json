@@ -1,0 +1,35 @@
+{
+  "name": "general-cli-noninteractive-fault-handling",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T02:06:00Z",
+  "updated_at": "2026-09-17T02:06:00Z",
+  "description": "面向命令行工具的非交互执行场景，提供进程生命周期管理、退出码分类诊断与故障恢复的通用方法框架，满足自动化流水线中对CLI工具稳定调用与错误处理的需求",
+  "tags": ["CLI", "non-interactive", "fault-diagnosis", "exit-code", "subprocess", "error-handling", "automation"],
+  "aliases": ["command-line fault handling", "CLI error codes", "subprocess management"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "subprocess - Subprocess management",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Exit Codes With Special Meanings",
+      "url": "https://tldp.org/LDP/abs/html/exitcodes.html",
+      "publisher": "The Linux Documentation Project",
+      "version": "Advanced Bash-Scripting Guide Appendix E",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

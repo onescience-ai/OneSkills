@@ -1,0 +1,18 @@
+{
+  "name": "cfd-cylinder-wake-validation-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "圆柱绕流自回归预测模型的统计误差评估、物理约束验证、泛化能力和计算收益分析，以及适用域判定。",
+  "tags": ["cfd", "validation", "applicability", "physics-consistency", "evaluation", "ood-testing"],
+  "aliases": ["cylinder wake validation", "CFD model evaluation", "applicability assessment"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "圆柱绕流预测验收适用域",
+  "evidence_papers": [
+    {"title": "Data-driven prediction of unsteady flow over a circular cylinder using deep learning", "doi": "", "year": 2018}
+  ]
+}

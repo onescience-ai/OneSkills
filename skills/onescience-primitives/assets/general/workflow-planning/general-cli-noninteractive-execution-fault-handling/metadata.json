@@ -1,0 +1,32 @@
+{
+  "name": "general-cli-noninteractive-execution-fault-handling",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.2.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T20:30:00Z",
+  "updated_at": "2026-09-17T16:30:00Z",
+  "description": "面向命令行接口（CLI）工具的非交互执行与故障分类，提供可靠的进程管理、错误处理和诊断方法。适用于需要在自动化脚本、批处理作业或远程环境中稳定执行CLI命令的场景。核心方法包括：进程创建与参数传递、标准输入/输出/错误重定向、沙箱环境约束检查、超时控制与清理、JSON输出完整性校验、退出码分析与故障分类。输出为可复现的执行结果和结构化的错误诊断信息。",
+  "tags": ["CLI", "command-line", "non-interactive", "execution", "error-handling", "fault-classification", "subprocess", "exit-codes", "timeout", "diagnostics", "automation", "scripting"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识；知识缺失证据：归因分析 CLI 未正常退出或未产生有效响应；知识内容与边界：覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，不扩展到任务领域结论；应用动作：依据故障类别修正启动配置或恢复策略；预期修复点：归因分析进程稳定完成并保留诊断证据；验证方式：使用成功、非零退出和超时用例验证状态及日志。",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "subprocess — Subprocess management — Python 3.14.7 documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "Exit Codes With Special Meanings - Advanced Bash-Scripting Guide",
+      "url": "https://tldp.org/LDP/abs/html/exitcodes.html",
+      "publisher": "The Linux Documentation Project",
+      "version": "2024",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "merged_batches": ["2026-09-16: 补充沙箱环境约束检查、JSON输出完整性校验步骤、超时清理要点", "2026-09-17: merge for task 297 - add CLI execution failure pattern case"]
+}

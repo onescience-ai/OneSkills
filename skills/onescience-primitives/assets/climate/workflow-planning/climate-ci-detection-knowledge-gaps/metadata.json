@@ -1,0 +1,67 @@
+{
+  "name": "climate-ci-detection-knowledge-gaps",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-16",
+  "description": "静止气象卫星驱动的对流初生识别任务中关键知识缺口的补充。涵盖卫星数据格式与获取、CI概率阈值选择、机器学习方法应用、独立验证协议和质量标志生成等核心知识领域。基于归因报告中的证据和知识边界，提供可追溯的权威来源和应用指导。",
+  "tags": [
+    "convective-initiation",
+    "satellite-data",
+    "machine-learning",
+    "threshold-selection",
+    "verification-protocol",
+    "quality-flags",
+    "uncertainty-estimation",
+    "climate",
+    "workflow-planning",
+    "FY-4A",
+    "AGRI",
+    "CI-detection",
+    "radar-reflectivity",
+    "deep-learning"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "静止气象卫星驱动的对流初生识别相关知识补充",
+  "evidence_papers": [
+    {
+      "title": "A dataset for machine learning model to convective initiation detection and nowcasting over southeastern China",
+      "doi": "10.1038/s41597-026-06902-3",
+      "year": 2026
+    },
+    {
+      "title": "Four-hour thunderstorm nowcasting using a deep diffusion model for satellite data",
+      "doi": "10.1073/pnas.2517520122",
+      "year": 2025
+    },
+    {
+      "title": "A Deep Learning-Based Algorithm for Identifying Precipitation Clouds Using Fengyun-4A Satellite Observation Data",
+      "doi": "10.3390/s23156832",
+      "year": 2023
+    },
+    {
+      "title": "Radar Composite Reflectivity Reconstruction Based on FY-4A Using Deep Learning",
+      "doi": "10.3390/s23010081",
+      "year": 2022
+    },
+    {
+      "title": "Radiometric Performance Evaluation of FY-4A/AGRI Based on Aqua/MODIS",
+      "doi": "10.3390/s21051859",
+      "year": 2021
+    },
+    {
+      "title": "A study on the DAM-EfficientNet hail rapid identification algorithm based on FY-4A_AGRI",
+      "doi": "10.1038/s41598-024-54142-5",
+      "year": 2024
+    },
+    {
+      "title": "A Novel Framework of Detecting Convective Initiation Combining Automated Sampling, Machine Learning, and Repeated Model Tuning from Geostationary Satellite Data",
+      "doi": "10.3390/rs11121454",
+      "year": 2019
+    }
+  ],
+  "merged_batches": ["batch-2026-09-16-evidence-update"]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "climate-ensemble-probability-calibration",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:08:00Z",
+  "updated_at": "2026-09-16T18:08:00Z",
+  "description": "面向集合预报概率校准的EMOS原理、标准方法与验证指标知识。包括EMOS校准数学原理、实现步骤、概率校准验证方法。",
+  "tags": ["EMOS", "probability-calibration", "ensemble-forecast", "verification", "meteorology"],
+  "aliases": ["ensemble model output statistics", "probability calibration"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "EMOS概率校准原理、集合预报校准标准方法、概率校准验证指标",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-16T18:08:00Z",
+      "location": "归因报告: E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-w4\\314\\report.json"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

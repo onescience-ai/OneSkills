@@ -20,7 +20,7 @@
    - 远程 GPU 当前环境：`§5b`
    - 本地 DCU 当前环境：`§7b` 安装段
    - 本地 GPU 当前环境：`§8b` 安装段
-4. 执行安装流程。必须先执行 `workspace_bootstrap_profiles.json.wheel.download_wheel_command` 下载 OneScience wheel，再从已下载 wheel 的 METADATA 探测支持的 `Provides-Extra`，然后将领域 + 加速卡组合成候选 extra，并用 `pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` 安装匹配的 extra；候选 extra 不存在时必须阻断。
+4. 执行安装流程。默认按 `{domain}-{accelerator}` 命名规则拼出 extra（如 `earth-dcu`），直接用 `pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` 一条命令安装，无需预下载 wheel；仅当 pip 报 `does not provide the extra` 或加速卡无法判定时，才回退执行 `workspace_bootstrap_profiles.json.wheel.download_wheel_command` 下载 wheel 并从 METADATA 探测 `Provides-Extra`，选出实际存在的 extra 重装；兜底后仍无匹配 extra 时必须阻断。
 5. 执行验证命令：
    - 远程 DCU 当前环境：`§4b`
    - 远程 GPU 当前环境：`§6b`

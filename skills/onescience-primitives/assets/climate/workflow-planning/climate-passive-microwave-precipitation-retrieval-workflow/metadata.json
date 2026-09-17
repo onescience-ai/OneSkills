@@ -1,0 +1,30 @@
+{
+  "name": "climate-passive-microwave-precipitation-retrieval-workflow",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T10:34:00Z",
+  "updated_at": "2026-09-15T10:34:00Z",
+  "description": "面向被动微波卫星瞬时降水率反演任务，提供从输入数据预检、预处理对齐、方法配置验证、核心反演计算到独立验证的完整工作流知识，覆盖GPM GMI、AMSR2、TMI等传感器，包括物理反演、统计反演和机器学习反演等方法的原理与适用条件，以及按海陆、强度、天气型分层验证的标准流程",
+  "tags": ["passive microwave", "precipitation retrieval", "satellite", "GPM", "GMI", "AMSR2", "TMI", "brightness temperature", "rain rate", "remote sensing", "validation"],
+  "aliases": ["被动微波降水反演", "卫星降水估计", "微波亮温反演", "PMW precipitation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "被动微波卫星瞬时降水率反演任务的知识补充",
+  "evidence_papers": [
+    {"title": "The Global Precipitation Measurement (GPM) Mission for Science and Society", "doi": "10.1175/BAMS-D-15-00254.1", "year": 2016},
+    {"title": "A Review of Global Precipitation Data Sets: Data Sources, Estimation, and Intercomparison", "doi": "10.1002/2017RG000574", "year": 2017},
+    {"title": "Constructing a Multifrequency Passive Microwave Hail Retrieval and Climatology", "doi": "10.1175/JAMC-D-18-0188.1", "year": 2019},
+    {"title": "Assessment of GPM-IMERG and Other Precipitation Products against Gauge Data", "doi": "10.3390/rs8070534", "year": 2016},
+    {"title": "Satellite Estimation of Falling Snow: A GPM Constellation Study", "doi": "10.1175/JAMC-D-18-0136.1", "year": 2019},
+    {"title": "Microphysical properties of frozen particles inferred from GPM Microwave Imager", "doi": "10.5194/acp-17-9149-2017", "year": 2017},
+    {"title": "Exploring Deep Neural Networks to Retrieve Rain and Snow in High Latitudes", "doi": "10.1029/2018WR023934", "year": 2018},
+    {"title": "A Review of Merged High-Resolution Satellite Precipitation Product Accuracy", "doi": "10.1175/JHM-D-15-0211.1", "year": 2016},
+    {"title": "Evaluation of GPM-era Global Satellite Precipitation Products over Multiple Climates", "doi": "10.3390/rs11141688", "year": 2019},
+    {"title": "Global Precipitation Estimates from Cross-Track Passive Microwave Observations", "doi": "10.1175/JHM-D-14-0200.1", "year": 2015},
+    {"title": "The Passive Microwave Neural Network Precipitation Retrieval (PNPR) Algorithm", "doi": "10.3390/rs10071143", "year": 2018},
+    {"title": "A 1DVAR retrieval applied to GMI: Algorithm description, validation, and sensitivity", "doi": "10.1029/2016JD025196", "year": 2016},
+    {"title": "Validation of the New Algorithm for Rain Rate Retrieval from AMSR2 Data Using TMI", "doi": "10.1155/2015/169528", "year": 2015}
+  ]
+}

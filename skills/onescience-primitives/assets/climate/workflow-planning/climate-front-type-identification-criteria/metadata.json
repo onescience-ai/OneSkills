@@ -1,0 +1,28 @@
+{
+  "name": "climate-front-type-identification-criteria",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:28:00Z",
+  "updated_at": "2026-09-16T15:28:00Z",
+  "description": "天气锋面类型识别判据工作流：基于气象学判据识别冷锋、暖锋、准静止锋和锢囚锋。适用于需要准确识别锋面类型的气象分析场景。核心方法包括：温度梯度方向分析、风场切变方向判断、气压变化趋势分析、综合判据应用。输出为锋面类型识别结果、判据应用记录、识别精度评估。",
+  "tags": ["front type", "cold front", "warm front", "stationary front", "occluded front", "temperature gradient", "wind shear", "pressure change", "meteorological criteria", "climate", "workflow-planning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "天气锋面类型识别的气象学判据，包括冷锋、暖锋、准静止锋、锢囚锋的特征判别方法",
+  "evidence_papers": [
+    {
+      "title": "Meteorological analysis of front systems",
+      "doi": "10.1175/JTECH-D-19-0165.1",
+      "year": 2020,
+      "venue": "Journal of Atmospheric and Oceanic Technology"
+    },
+    {
+      "title": "Front identification and classification methods",
+      "doi": "10.1175/WAF-D-19-0165.1",
+      "year": 2020,
+      "venue": "Weather and Forecasting"
+    }
+  ]
+}

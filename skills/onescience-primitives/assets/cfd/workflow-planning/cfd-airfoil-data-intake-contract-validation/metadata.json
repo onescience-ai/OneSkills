@@ -1,0 +1,47 @@
+{
+  "name": "cfd-airfoil-data-intake-contract-validation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T17:44:25Z",
+  "updated_at": "2026-09-16T17:44:25Z",
+  "description": "接入参数化翼型多工况与多保真数据，核验样本、变量、单位、网格坐标及许可。",
+  "tags": ["data-intake", "contract-validation", "airfoil", "multi-fidelity", "multi-condition"],
+  "aliases": ["数据接入", "契约核验"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "核方法与生成模型翼型跨工况场预测知识",
+  "evidence_papers": [
+    {
+      "title": "A Kernel-based Resource-efficient Neural Surrogate for Multi-fidelity Prediction of Aerodynamic Field",
+      "doi": "arXiv:2512.10287",
+      "year": 2025
+    },
+    {
+      "title": "AFBench_ A Large-scale Benchmark for Airfoil Design",
+      "doi": "arXiv:1411.1784",
+      "year": 2014
+    },
+    {
+      "title": "Airfoil optimization using Design-by-Morphing with minimized design-space dimensionality",
+      "doi": "arXiv:2510.16020",
+      "year": 2025
+    },
+    {
+      "title": "Predictive Criteria for Electrospray-Assisted Droplet Dynamics in Aerodynamic Flow Fields",
+      "doi": "arXiv:2509.22676",
+      "year": 2025
+    },
+    {
+      "title": "AeroJEPA_ Learning Semantic Latent Representations for Scalable 3D Aerodynamic Field Modeling",
+      "doi": "arXiv:2605.05586",
+      "year": 2026
+    },
+    {
+      "title": "AirfoilGen_ A valid-by-construction and performance-aware latent diffusion model for airfoil generation",
+      "doi": "arXiv:2605.20303",
+      "year": 2026
+    }
+  ]
+}

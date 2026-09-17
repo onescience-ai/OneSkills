@@ -1,0 +1,15 @@
+{
+  "name": "matchem-forcefield-validation",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "分子动力学力场验证方法，包括LJ参数来源验证、水模型选择标准、CO2力场验证指标、Cu表面力场验证方法",
+  "tags": ["force-field", "validation", "LJ-parameters", "water-model", "CO2", "copper-surface", "DFT-validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "分子动力学力场验证方法，包括LJ参数来源验证（DFT拟合/实验拟合）、水模型选择标准（SPC/E vs TIP3P vs TIP4P）、CO2力场验证指标（密度、蒸发热、扩散系数）、Cu表面力场验证方法（表面能、吸附能）",
+  "evidence_papers": []
+}

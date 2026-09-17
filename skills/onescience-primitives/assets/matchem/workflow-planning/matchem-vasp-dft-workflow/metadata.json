@@ -1,0 +1,30 @@
+{
+  "name": "matchem-vasp-dft-workflow",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T12:47:00Z",
+  "updated_at": "2026-09-15T12:47:00Z",
+  "description": "VASP DFT计算工作流：使用 Vienna Ab Initio Simulation Package (VASP) 执行密度泛函理论计算，获取材料的电子结构、能量、光学性质等第一性原理数据。适用于需要高精度计算验证机器学习预测、研究材料电子性质或计算催化反应能垒的研究场景。核心方法包括：结构优化、静态计算、能带结构计算、态密度计算、光学性质计算。输出为VASP输出文件、能量数据、电子结构数据和可视化结果。",
+  "tags": ["VASP", "DFT", "density-functional-theory", "electronic-structure", "band-gap", "optical-properties", "first-principles", "high-throughput", "atomate", "pymatgen"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "VASP计算工作流和配置方法",
+  "evidence_papers": [
+    {
+      "title": "Materials Project Documentation - Calculation Details",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Materials Project",
+      "authors": ["Materials Project Team"]
+    },
+    {
+      "title": "Materials Project Documentation - Data Workflows",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Materials Project",
+      "authors": ["Materials Project Team"]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "general-orchestrator-skill-tool-interface-recovery",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:44:00Z",
+  "updated_at": "2026-09-16T10:44:00Z",
+  "description": "面向多技能编排智能体系统，解决 type=expert 技能调用接口契约不清导致的死循环问题，并提供异常检测与降级恢复策略。适用于需要调用专家技能获取规划提案（planner_proposal）但工具调用参数格式不正确的编排场景。核心方法包括：skill 工具结构化请求负载构造、连续相同调用模式检测与降级触发、基于已召回资源的直接规划路径。输出为正确的技能调用格式规范与异常恢复决策树。",
+  "tags": ["orchestrator", "skill-tool", "planning-request", "infinite-loop", "recovery", "fallback", "direct-planning", "expert-skill", "workflow-planning", "LLM-agent"],
+  "aliases": ["编排智能体死循环修复", "skill调用接口契约", "专家技能调用格式"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "skill 工具的接口契约与调用模式、编排智能体的异常自恢复策略、编排智能体的直接执行模式",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "OneScience Orchestrator SKILL.md",
+      "url": "skills/onescience-orchestrator/SKILL.md",
+      "publisher": "OneScience/OneSkills",
+      "version": "2026-09",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "OneScience Research Workflow SKILL.md",
+      "url": "skills/onescience-research-workflow/SKILL.md",
+      "publisher": "OneScience/OneSkills",
+      "version": "2026-09",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-16",
+      "location": "results/attr-w2/211/report.json",
+      "attestation": true
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

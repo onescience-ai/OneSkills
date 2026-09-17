@@ -1,0 +1,18 @@
+{
+  "name": "general-executor-skill-invocation-contract",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "executor 技能调用契约规范，规定 orchestrator 调用 executor 技能时必须通过 step_handoff 传递任务信息，executor 技能接收后必须先调用 type=resource 技能获取规格知识、使用知识和规划决策知识，再按分步流程执行",
+  "tags": ["orchestrator", "executor", "invocation", "step-handoff", "resource-binding", "contract"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "executor 技能调用契约知识 - 从归因报告 Issue 3 提取",
+  "evidence_papers": [
+    {"title": "OneScience Orchestrator SKILL.md 规范", "doi": "internal-spec", "year": 2026},
+    {"title": "归因报告 Task 260 Issue 3 优化计划", "doi": "attr-report-260", "year": 2026}
+  ]
+}

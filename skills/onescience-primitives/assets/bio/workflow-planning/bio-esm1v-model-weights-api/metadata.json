@@ -1,0 +1,17 @@
+{
+  "name": "bio-esm1v-model-weights-api",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:54:00Z",
+  "updated_at": "2026-09-15T21:54:00Z",
+  "description": "ESM-1v模型权重文件的官方下载源、esm库的加载API和零样本评分策略。用于指导正确加载和使用ESM-1v模型进行蛋白变异效应预测。",
+  "tags": ["ESM-1v", "protein language model", "pretrained weights", "Facebook Research", "variant effect prediction"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "ESM-1v模型权重文件的官方下载源和加载API",
+  "evidence_papers": [
+    {"title": "Evolutionary-scale prediction of atomic-level protein structure with a language model", "doi": "10.1126/science.abb2511", "year": 2021}
+  ]
+}

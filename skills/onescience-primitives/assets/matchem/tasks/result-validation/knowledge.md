@@ -60,5 +60,5 @@
 ## 缺口与降级（Fallback / Gap）
 
 - 改道触发：无独立划分 → 仅做一致性核验并标注不可复核泛化性；无基准值 → 降级为内部一致性检查。
-- 分层降级：`full` / `partial` / `task_only` / `none`；`retrieval_level != full` 时向 `references/tc/gaps.jsonl` 追加缺口记录。
+- 分层降级：`full` / `partial` / `task_only` / `none`；`retrieval_level != full` 时向 `.onescience/gaps.jsonl` 追加缺口记录。
 - 已知缺口：实验数据回流通道未接入；文献基准值需 `onescience-live-literature` 在线补齐。

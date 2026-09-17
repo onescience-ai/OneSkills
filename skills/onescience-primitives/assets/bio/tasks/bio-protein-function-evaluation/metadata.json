@@ -1,0 +1,33 @@
+{
+  "name": "bio-protein-function-evaluation",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T16:20:00Z",
+  "updated_at": "2026-09-16T16:20:00Z",
+  "description": "蛋白质功能预测评估任务：执行分层性能评估（per-class F1、macro/micro/weighted F1）、AUPRC、bootstrap置信区间估计和跨家族泛化测试。确保评估指标与验收阈值对比正确。",
+  "tags": [
+    "evaluation",
+    "F1-score",
+    "AUPRC",
+    "bootstrap",
+    "edge:resource:bio/components/bio-go-ontology-validator",
+    "edge:workflow:bio-fewshot-protein-function-prediction-workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白质功能预测分层评估方法、验收指标阈值",
+  "evidence_papers": [
+    {
+      "title": "CAFA-evaluator: a Python tool for benchmarking ontological classification methods",
+      "doi": "10.1093/bioadv/vbae043",
+      "year": 2024
+    },
+    {
+      "title": "Protein function prediction through multi-view multi-label latent tensor reconstruction",
+      "doi": "10.1186/s12859-024-05789-4",
+      "year": 2024
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "matchem-layered-materials-ml-potential-validation-workflow",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T20:35:00Z",
+  "updated_at": "2026-09-16T17:30:00Z",
+  "description": "层状材料可迁移机器学习原子势验证的标准工作流步骤定义（s01-s04），包括数据审计、模型训练、验证评估和分子动力学验证。适用于二维材料、层状化合物的MLIP验证，核心方法包括split MLIP策略和mean disregistry error (MDE)验证指标。",
+  "tags": ["layered-materials", "machine-learning-potential", "validation-workflow", "interatomic-potential", "materials-science", "moiré", "split-MLIP", "MDE", "transferability", "MLIP"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "层状材料可迁移机器学习原子势验证的标准工作流步骤定义（s01-s04），包括每个步骤的具体目标、输入输出要求和依赖关系",
+  "evidence_papers": [
+    {
+      "title": "Accurate, transferable, and verifiable machine-learned interatomic potentials for layered materials",
+      "doi": "10.1038/s41467-026-74482-2",
+      "year": 2026,
+      "venue": "Nature Communications"
+    }
+  ],
+  "merged_batches": ["harvest-2026-09-16"]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "matchem-docking-rmsd-evaluation",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T12:00:00+08:00",
+  "updated_at": "2026-09-16T12:00:00+08:00",
+  "description": "蛋白-配体对接姿态RMSD计算标准流程知识，包括heavy-atom RMSD计算方法、2Å阈值标准、PoseBusters物理合理性验证、以及无实验参考时的替代验证策略（self-RMSD、PLIF恢复率、对接分数校准）",
+  "tags": ["docking", "RMSD", "pose-evaluation", "PoseBusters", "blind-docking", "scoring-function"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白-配体对接姿态RMSD计算的标准流程知识，包括DiffDock等扩散对接模型输出坐标系的定义、从模型内部坐标到PDB实验坐标系的变换方法、以及无实验参考构象时的替代验证策略",
+  "evidence_papers": [
+    {"title": "PoseBusters: AI-based docking methods fail to generate physically valid poses or generalise to novel sequences", "doi": "10.1039/d3sc04185a", "year": 2023},
+    {"title": "Assessing interaction recovery of predicted protein-ligand poses", "doi": "10.1186/s13321-025-01011-6", "year": 2025},
+    {"title": "Normalized Protein-Ligand Distance Likelihood Score for End-to-End Blind Docking and Virtual Screening", "doi": "10.1021/acs.jcim.4c01014", "year": 2025},
+    {"title": "CarsiDock: a deep learning paradigm for accurate protein-ligand docking and screening based on large-scale pre-training", "doi": "10.1039/d3sc05552c", "year": 2023}
+  ]
+}

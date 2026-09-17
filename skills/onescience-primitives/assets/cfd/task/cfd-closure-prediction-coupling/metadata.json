@@ -1,0 +1,19 @@
+{
+  "name": "cfd-closure-prediction-coupling",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2025-09-15T00:00:00Z",
+  "updated_at": "2025-09-15T00:00:00Z",
+  "description": "数据驱动RANS湍流闭合模型的闭合项预测与后验CFD耦合任务卡，涵盖先验评估（独立快照预测误差与可实现性检查）和后验推进（嵌入RANS/LES求解器执行完整CFD计算）两个阶段。",
+  "tags": ["closure-prediction", "aposteriori", "CFD-coupling", "RANS", "LES", "turbulence", "validation"],
+  "aliases": ["闭合项预测", "后验耦合", "CFD验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "数据驱动RANS雷诺应力与涡黏闭合-后验耦合",
+  "evidence_papers": [
+    {"title": "Machine-Learning-Augmented Predictive Modeling of Turbulent Separated Flows over Airfoils", "doi": "10.48550/arXiv.1608.03990", "year": 2016},
+    {"title": "RANS turbulence model development using CFD-driven machine learning", "doi": "10.48550/arXiv.1902.09075", "year": 2019}
+  ]
+}

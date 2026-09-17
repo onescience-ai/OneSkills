@@ -1,0 +1,36 @@
+{
+  "name": "rfdiffusion-input-output-spec",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "RFdiffusion功能位点约束蛋白骨架生成的输入输出规范与权重约定。明确输入PDB文件格式要求、模型权重文件命名约定（Base_ckpt.pt/Supercharge_ckpt.pt等）、命令行参数接口（--num_designs/--random_seed/--temperature）、基序RMSD计算方法（默认阈值0.6Å）以及PyMOL等工具依赖。补充归因报告中识别的知识缺口。",
+  "tags": [
+    "bio",
+    "rfdiffusion",
+    "input-spec",
+    "output-spec",
+    "checkpoint",
+    "weights",
+    "motif-rmsd",
+    "pymol",
+    "workflow-planning",
+    "edge:scenario:functional-motif-scaffold-scenario",
+    "edge:task:s01-design-input-parsing",
+    "edge:task:s02-model-weight-loading",
+    "edge:task:s03-candidate-generation",
+    "edge:task:s04-motif-rmsd-screening"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "RFdiffusion模型权重文件命名约定、生成参数使用方法、基序RMSD计算方法、工具链依赖",
+  "evidence_papers": [
+    {
+      "title": "De novo design of protein structure and function with RFdiffusion",
+      "doi": "10.1038/s41586-023-06415-8",
+      "year": 2023
+    }
+  ]
+}

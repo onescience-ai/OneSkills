@@ -1,0 +1,35 @@
+{
+  "name": "cfd-mamba-operator-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向PDE时序预测的Mamba/SSM状态空间神经算子训练方法：配置SSM架构超参数（d_state、ssm_ratio、双向扫描、阻尼/频率自适应、记忆窗口），加载预处理切分数据，执行训练并记录逐轮指标。覆盖MNO、SS-NO、LaMO等主流Mamba算子变体的训练配置范式。",
+  "tags": ["training", "Mamba", "SSM", "S4", "S4D", "neural operator", "PDE", "hyperparameters", "optimizer", "loss function", "early stopping", "checkpoint"],
+  "aliases": ["Mamba training", "SSM operator training"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Mamba状态空间神经算子训练配置",
+  "evidence_papers": [
+    {
+      "title": "Mamba Neural Operator: Who Wins? Transformers vs. State-Space Models for PDEs",
+      "doi": "10.48550/arXiv.2410.02113",
+      "year": 2024,
+      "venue": "Journal of Computational Physics (accepted 2025)"
+    },
+    {
+      "title": "Merging Memory and Space: A State Space Neural Operator",
+      "doi": "10.48550/arXiv.2507.23428",
+      "year": 2025,
+      "venue": "arXiv"
+    },
+    {
+      "title": "Latent Mamba Operator for Partial Differential Equations",
+      "doi": "10.48550/arXiv.2505.19105",
+      "year": 2025,
+      "venue": "ICML 2025"
+    }
+  ]
+}

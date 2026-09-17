@@ -1,0 +1,69 @@
+{
+  "name": "general-json-schema-report-validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:23:00Z",
+  "updated_at": "2026-09-17T00:23:00Z",
+  "description": "面向结构化数据输出场景，使用JSON Schema验证报告交付契约的通用方法论。适用于自动化系统、API接口、数据管道等需要确保输出格式符合预定义契约的场景。核心方法包括：Schema定义与版本管理、必填字段验证、数组约束检查、类型验证、格式校验。输出为验证结果报告和修复建议。",
+  "tags": ["JSON Schema", "validation", "report contract", "data validation", "API", "automation", "schema", "type checking", "required fields", "array validation", "format validation", "data integrity", "quality assurance"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约，规定必填字段、任务身份、数组约束及输出格式",
+  "evidence_papers": [
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "2307.10034",
+      "year": 2023
+    },
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "2503.02770",
+      "year": 2025
+    },
+    {
+      "title": "Decision Trace Schema for Governance Evidence in Real-Time Risk Systems",
+      "doi": "2604.09296",
+      "year": 2026
+    },
+    {
+      "title": "Validating API Design Requirements for Interoperability (S.E.O.R.A)",
+      "doi": "2511.17836",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema reference",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Type-specific Keywords",
+      "url": "https://json-schema.org/understanding-json-schema/reference/type",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "object",
+      "url": "https://json-schema.org/understanding-json-schema/reference/object",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "array",
+      "url": "https://json-schema.org/understanding-json-schema/reference/array",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-17: added 4 papers on JSON Schema validation complexity, performance optimization, and governance evidence"],
+  "conflicts": []
+}

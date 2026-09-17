@@ -22,11 +22,10 @@
   {
     "id": "bio",
     "display_name": "生物信息",
-    "description": "蛋白质结构预测、基因分析等生物信息模型。",
+    "description": "蛋白质结构预测、基因分析等生物信息模型。仅支持 DCU，不支持 GPU。",
     "extra_family": "bio",
     "supported_installer_backends": [
-      "dcu_remote_install",
-      "gpu_remote_install"
+      "dcu_remote_install"
     ]
   },
   {

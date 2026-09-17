@@ -58,5 +58,5 @@
 ## 缺口与降级（Fallback / Gap）
 
 - 改道触发：生成模型不覆盖目标元素/反应 → 改道 structure-substitution；无参考骨架库 → 降级为组成空间枚举并标注可信度下降。
-- 分层降级：`full` / `partial` / `task_only` / `none`；`retrieval_level != full` 时向 `references/tc/gaps.jsonl` 追加缺口记录。
+- 分层降级：`full` / `partial` / `task_only` / `none`；`retrieval_level != full` 时向 `.onescience/gaps.jsonl` 追加缺口记录。
 - 已知缺口：MOF 专用拓扑生成资源卡未建；可合成性预测资源缺失。

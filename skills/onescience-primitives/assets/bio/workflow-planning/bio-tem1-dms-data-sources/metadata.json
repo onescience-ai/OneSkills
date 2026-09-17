@@ -1,0 +1,17 @@
+{
+  "name": "bio-tem1-dms-data-sources",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:53:00Z",
+  "updated_at": "2026-09-15T21:53:00Z",
+  "description": "TEM-1 β-内酰胺酶深度突变扫描数据的公开来源和获取方式，包括Ranganathan Lab原始数据在GitHub/Zenodo的确切存储路径、BLAT_ECOLX_Ranganathan2015.csv的标准列格式及数据血缘说明。用于指导从公开科学数据库获取真实的DMS数据集。",
+  "tags": ["TEM-1", "β-lactamase", "deep mutational scanning", "DMS", "data source", "Ranganathan"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "TEM-1 β-内酰胺酶深度突变扫描数据的公开来源和获取方式",
+  "evidence_papers": [
+    {"title": "Deep mutational scanning of TEM-1 β-lactamase", "doi": "10.1038/nmeth.3100", "year": 2015}
+  ]
+}

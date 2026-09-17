@@ -1,0 +1,41 @@
+{
+  "name": "general-cli-noninteractive-execution-failure-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T11:10:00Z",
+  "updated_at": "2026-09-16T12:00:00Z",
+  "description": "面向命令行工具的非交互式执行与故障分类，提供覆盖命令参数校验、认证处理、沙箱隔离、超时管理、退出码语义和标准错误判读的系统化方法。适用于自动化流水线中 CLI 工具的可靠调用、故障诊断与恢复策略设计。核心方法包括：退出码分类（成功/警告/错误/致命）、超时自适应调整、stderr 结构化解析、沙箱化隔离执行。输出为故障分类表、恢复策略矩阵和执行诊断证据。",
+  "tags": ["CLI", "exit code", "failure classification", "timeout", "stderr", "non-interactive", "automation", "error handling", "sandbox", "authentication", "command line", "reliability", "fault tolerance"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识；覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读",
+  "evidence_papers": [
+    {
+      "title": "Evaluating LLM-Based 0-to-1 Software Generation in End-to-End CLI Tool Scenarios",
+      "doi": "10.48550/arXiv.2604.06742",
+      "year": 2026,
+      "venue": "arXiv cs.SE"
+    },
+    {
+      "title": "Taming Timeout Flakiness: An Empirical Study of SAP HANA",
+      "doi": "10.48550/arXiv.2402.05223",
+      "year": 2024,
+      "venue": "ICSE SEIP 2024"
+    },
+    {
+      "title": "ANCHOR: Automated Alignment Auditing for CLI Agents on Real-World Harm",
+      "doi": "10.48550/arXiv.2607.10455",
+      "year": 2026,
+      "venue": "ICML 2026"
+    },
+    {
+      "title": "MOSAIC: Knowledge-Guided CLI Command Composition Attack in LLM Coding Agents",
+      "doi": "10.48550/arXiv.2607.02857",
+      "year": 2026,
+      "venue": "arXiv cs.CR"
+    }
+  ],
+  "merged_batches": ["2026-09-16: modify for task 44 - add validation methods"]
+}

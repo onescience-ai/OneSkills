@@ -1,0 +1,15 @@
+{
+  "name": "bio-data-lineage-tracking",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T19:09:21Z",
+  "updated_at": "2026-09-15T19:09:21Z",
+  "description": "数据血缘记录的标准格式、必需字段和验证方法。确保从输入到输出的完整可追溯性，支持实验复现和结果验证。",
+  "tags": ["data_lineage", "provenance_tracking", "reproducibility", "experiment_tracking", "bioinformatics"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DNA语言模型生物任务基准评测中数据血缘记录的标准格式、必需字段和验证方法",
+  "evidence_papers": []
+}

@@ -1,0 +1,29 @@
+{
+  "name": "cfd-cyclegan-les-to-dns-super-resolution-scenario",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向非配对LES与DNS湍流数据的无配对超分辨率重建：利用CycleGAN在无配对训练条件下完成从大涡模拟（LES）低分辨流场到直接数值模拟（DNS）高分辨流场的映射。适用于湍流超分辨率、流场细节恢复和物理一致性评估等CFD任务。核心要素包括：非配对LES/DNS数据接入与契约核验、物理感知预处理与无泄漏切分、CycleGAN对抗训练与循环一致性约束、低分辨输入到高分辨重构、统计误差与物理约束联合验收及适用域判定。域外工况需经CFD复核。",
+  "tags": ["CycleGAN", "super-resolution", "LES", "DNS", "turbulence", "unsupervised learning", "unpaired data", "flow reconstruction", "CFD", "deep learning", "physics consistency", "applicability domain"],
+  "aliases": ["LES到DNS超分辨率", "无配对湍流超分辨率重建", "CycleGAN湍流超分辨"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CycleGAN无配对LES到DNS超分辨率重建场景知识",
+  "evidence_papers": [
+    {
+      "title": "Unsupervised deep learning for super-resolution reconstruction of turbulence",
+      "doi": "",
+      "year": 2020,
+      "oa_url": "https://arxiv.org/abs/2007.15324"
+    },
+    {
+      "title": "A neural network approach for the blind deconvolution of turbulent flows",
+      "doi": "",
+      "year": 2017,
+      "oa_url": "https://arxiv.org/abs/1706.00912"
+    }
+  ]
+}

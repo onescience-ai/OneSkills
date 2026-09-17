@@ -1,0 +1,37 @@
+{
+  "name": "matchem-gnn-alloy-phase-prediction",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "物理信息图神经网络（PINN-GNN）用于合金相预测的工作流。面向多主元合金和高熵合金的相稳定性预测，结合图神经网络架构与物理约束损失函数，实现从原子结构到热力学性质的端到端预测。核心方法包括：图表示学习（节点=原子，边=原子间相互作用）、物理约束损失函数设计（形成能约束、相稳定性约束）、模型训练与验证流程。适用于需要高精度合金相预测的研究场景。",
+  "tags": ["graph-neural-network", "physics-informed", "alloy-phase-prediction", "multi-principal-element-alloy", "high-entropy-alloy", "materials-discovery", "machine-learning", "materials-science", "B2-intermetallic", "formation-energy"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "物理信息图神经网络用于合金相预测的模型架构知识",
+  "evidence_papers": [
+    {
+      "title": "A Multi-Scale Machine Learning Framework for Coupled Chemical, Spin, and Structural Disorder in Alloys",
+      "doi": "10.48550/arXiv.2607.07456",
+      "year": 2026,
+      "venue": "arXiv",
+      "authors": ["Zhenyao Fang", "Qimin Yan"]
+    },
+    {
+      "title": "Information Entropy Based Crystal Structure Prediction of Chemically Disordered Alloys via Graph Convolutional Neural Networks",
+      "doi": "10.48550/arXiv.2606.08686",
+      "year": 2026,
+      "venue": "arXiv",
+      "authors": ["Suman Chabri", "Gautam Anand"]
+    },
+    {
+      "title": "Rapid Assessment of Stable Crystal Structures in Single Phase High Entropy Alloys Via Graph Neural Network Based Surrogate Modelling",
+      "doi": "10.48550/arXiv.2409.07664",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": ["Nicholas Beaver", "Aniruddha Dive", "Marina Wong", "Keita Shimanuki", "Ananya Patil", "Anthony Ferrell", "Mohsen B. Kivy"]
+    }
+  ]
+}

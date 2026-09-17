@@ -1,0 +1,48 @@
+{
+  "name": "bio-protein-function-prediction-multimodal-fewshot",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T17:38:00Z",
+  "updated_at": "2026-09-16T17:38:00Z",
+  "description": "面向蛋白质功能预测任务，整合多模态数据（序列、结构、文本）、预训练蛋白质语言模型和few-shot学习策略，提供从数据获取到模型评估的完整工作流规划知识。覆盖CAFA/UniProt公开数据集、ESM-2/AlphaFold2集成、多标签分类评估等核心环节。",
+  "tags": ["protein-function-prediction", "few-shot", "multimodal", "ESM-2", "AlphaFold2", "CAFA", "UniProt", "Gene-Ontology", "multi-label-classification"],
+  "aliases": ["蛋白功能预测", "低样本蛋白功能预测", "多模态蛋白预测"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "低样本多模态蛋白功能预测任务中缺失的公开数据集获取、预训练蛋白质语言模型集成、few-shot学习策略、多标签分类评估规范等知识",
+  "evidence_papers": [
+    {
+      "title": "Evolutionary-scale prediction of atomic-level protein structure with a language model",
+      "doi": "10.1126/science.ade2574",
+      "year": 2023
+    },
+    {
+      "title": "Biological structure and function emerge from scaling unsupervised learning to 250 million protein sequences",
+      "doi": "10.1073/pnas.2016239118",
+      "year": 2021
+    },
+    {
+      "title": "Language models enable zero-shot prediction of the effects of mutations on protein function",
+      "doi": "10.1101/2021.07.09.450648",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "CAFA Challenge Official Website",
+      "url": "https://www.biofunctionprediction.org/cafa/",
+      "publisher": "Function-SIG",
+      "version": "2024",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "ESM GitHub Repository",
+      "url": "https://github.com/facebookresearch/esm",
+      "publisher": "Meta FAIR",
+      "version": "2024",
+      "accessed_at": "2026-09-16"
+    }
+  ]
+}

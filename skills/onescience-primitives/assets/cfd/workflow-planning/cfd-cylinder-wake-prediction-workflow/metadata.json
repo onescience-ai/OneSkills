@@ -1,0 +1,19 @@
+{
+  "name": "cfd-cylinder-wake-prediction-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "圆柱绕流非定常时序自回归预测的端到端工作流，从数据接入与契约核验、预处理与数据切分、模型配置与训练、批量推理与物理恢复，到任务验收与适用域判定，共5步闭环流程。",
+  "tags": ["cfd", "workflow", "cylinder-wake", "autoregressive", "data-pipeline", "model-training", "inference", "validation"],
+  "aliases": ["cylinder wake prediction pipeline", "CFD autoregressive workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "自回归网络圆柱尾迹长时滚动预测工作流",
+  "evidence_papers": [
+    {"title": "PDE-Refiner: Achieving Accurate Long Rollouts with Neural PDE Solvers", "doi": "", "year": 0},
+    {"title": "Data-driven prediction of unsteady flow over a circular cylinder using deep learning", "doi": "", "year": 2018}
+  ]
+}

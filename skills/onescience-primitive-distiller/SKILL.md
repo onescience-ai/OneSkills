@@ -69,6 +69,8 @@ primitive_distillation_request:
 4. **Normalize**
    - 生成稳定 `primitive_id`: `<domain>.<category>.<primitive_name>`。
    - 目录固定为 `skills/onescience-primitives/assets/<domain>/<category>/<primitive_name>/`。
+   - `primitive_name` 必须能看出这张原语讲什么（工具名/模型名/服务名等）：禁止哈希 id（`it-01684b6f`、`tk-bio-9a8b7c6d`）、裸占位词（`card`、`tool`、`component`）、纯编号（`s001`、`20260910`）；上游技能名本身无语义时，补上对象或能力词（如 `mesh-graph-solver-fusible` 而不是 `component3`）。
+   - 写盘前自检：`python validate_knowledge.py --names-only --quiet` 必须 `RESULT: PASS`（不限领域、不限 category）。
    - 第三方来源写入 `provider_kind`、`provider_name` 和 `source.distilled_from`，不要创建长期 bridge。
    - `metadata.domain` 优先使用目录 domain；需要兼容旧值时写 `legacy_domain`。
 

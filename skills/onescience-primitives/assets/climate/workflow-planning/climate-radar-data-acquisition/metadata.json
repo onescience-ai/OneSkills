@@ -1,0 +1,18 @@
+{
+  "name": "climate-radar-data-acquisition",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T18:45:00+08:00",
+  "updated_at": "2026-09-15T18:45:00+08:00",
+  "description": "雷达降水临近预报任务中的数据获取、格式规范与预处理流程知识。涵盖中国气象局雷达数据共享政策、NetCDF数据格式规范、雷达数据质量控制标准、数据预处理步骤。适用于0-3小时极端降水集合临近预报任务的数据准备阶段。",
+  "tags": ["radar", "data-acquisition", "preprocessing", "quality-control", "NetCDF", "precipitation", "nowcasting", "China"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达数据获取渠道、数据格式规范、数据预处理流程、数据质量控制标准",
+  "evidence_papers": [
+    {"title": "Inter-Comparison of Rain-Gauge, Radar, and Satellite (IMERG GPM) Precipitation Estimates", "doi": "10.3390/w10121763", "year": 2018},
+    {"title": "Key factors for quantitative precipitation nowcasting using ground weather radar", "doi": "10.5194/gmd-16-6111-2023", "year": 2023}
+  ]
+}

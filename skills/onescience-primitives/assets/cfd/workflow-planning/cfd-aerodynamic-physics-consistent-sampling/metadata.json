@@ -1,0 +1,19 @@
+{
+  "name": "cfd-aerodynamic-physics-consistent-sampling",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "基于训练好的生成模型进行条件采样与物理一致性筛选的任务，按工况生成多样流场样本，恢复物理量后计算边界残差、守恒残差和方程残差，剔除不合格样本并评估分布覆盖。适用于气动逆向设计工作流的推理与筛选阶段。",
+  "tags": ["cfd", "conditional-sampling", "physics-filter", "generative-model", "airfoil", "flow-field", "residual-check", "distribution-evaluation"],
+  "aliases": ["条件采样物理筛选", "气动物理一致性筛选"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "生成模型条件采样与物理一致性筛选",
+  "evidence_papers": [
+    {"title": "Aerodynamic Shape Design Space Exploration with Deep Latent Diffusion Model", "doi": "", "year": null, "url": "https://arxiv.org/abs/2609.00812"},
+    {"title": "From Zero to Turbulence_ Generative Modeling for 3D Flow Simulation", "doi": "10.1017/jfm.2019.923", "year": null}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "bio-target-specific-peptide-design-workflow",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:38:00Z",
+  "updated_at": "2026-09-16T18:38:00Z",
+  "description": "面向靶标特异性全原子肽类设计任务，提供基于PepFlow模型的标准四步工作流规范，涵盖输入解析、权重加载与条件编码、候选生成与筛选，确保设计符合界面置信度与结构自洽性要求。",
+  "tags": ["peptide-design", "target-specific", "all-atom", "PepFlow", "flow-matching", "workflow"],
+  "aliases": ["PepFlow", "靶标特异性肽设计", "全原子肽设计"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "靶标特异性全原子肽类设计任务需要补充PepFlow模型的技术原理、输入输出契约、使用方法和适用条件；标准工作流规范；输入契约；论文获取替代方案；生物信息学领域原语资源库构建",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "PepFlow: Full-Atom Peptide Design based on Multi-modal Flow Matching (ICML 2024)",
+      "url": "https://github.com/Ced3-han/PepFlowww",
+      "publisher": "GitHub",
+      "version": "main branch",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,35 @@
+{
+  "name": "cfd-deeponet-neural-green-operator-learning",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "DeepONet与神经Green函数算子学习场景：面向函数输入到解函数配对数据，完成DeepONet或Neural Green function的算子学习任务。适用于需要学习PDE算子映射、加速流体动力学推理或构建代理模型的CFD研究场景。核心方法包括：数据接入与契约核验、物理量预处理与数据切分、DeepONet/Neural Green function模型训练、独立测试集推理与物理恢复、统计误差与物理一致性评估。输出为可复现模型、任务结果、物理一致性评估和适用域报告，域外工况需经CFD复核。",
+  "tags": ["DeepONet", "Neural Green function", "operator learning", "PDE", "CFD", "代理模型", "物理一致性", "函数到函数映射", "流体动力学", "算子回归"],
+  "aliases": ["DeepONet算子学习", "神经Green函数", "算子学习CFD"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S050 DeepONet与神经Green函数算子学习场景知识补充",
+  "evidence_papers": [
+    {
+      "title": "Neural Green's Functions",
+      "doi": "",
+      "year": 2025,
+      "url": "https://arxiv.org/abs/2511.01924"
+    },
+    {
+      "title": "Learning nonlinear operators via DeepONet based on the universal approximation theorem of operators",
+      "doi": "",
+      "year": 2019,
+      "url": "https://arxiv.org/abs/1910.03193"
+    },
+    {
+      "title": "Learning Partial Differential Equations in Reproducing Kernel Hilbert Spaces",
+      "doi": "",
+      "year": 2021,
+      "url": "https://arxiv.org/abs/2108.11580"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "bio-cafa-dataset",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T16:20:00Z",
+  "updated_at": "2026-09-16T16:20:00Z",
+  "description": "CAFA Challenge标准蛋白质功能预测基准数据集：包含蛋白质序列和Gene Ontology功能注释，用于评估多标签蛋白功能预测方法。支持BP/MF/CC三个命名空间。",
+  "tags": ["CAFA", "benchmark", "protein-function", "GO-annotation", "edge:task:bio-protein-dataset-acquisition"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白质功能预测领域公开数据集清单与获取方式",
+  "evidence_papers": [
+    {"title": "On the state of protein function prediction: a report on the fourth CAFA challenge", "doi": "10.64898/2026.05.06.722942", "year": 2024}
+  ]
+}

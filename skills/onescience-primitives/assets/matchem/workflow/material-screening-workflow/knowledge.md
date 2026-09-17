@@ -28,6 +28,6 @@
 ## 缺口与降级
 
 - **阶段级降级**：某阶段资源仅部分命中 → `retrieval_level=partial`，继续但在交付中标注精度/覆盖降级；仅命中 Task 卡 → `task_only`，只输出方法与契约说明，不产出数值结论；无命中 → `none`，停止该分支。
-- **缺口记录**：任一阶段 `retrieval_level != full`，向 `references/tc/gaps.jsonl` 追加记录（domain、task、缺失资源、请求槽取值、时间戳），供 harvester 后续填补。
+- **缺口记录**：任一阶段 `retrieval_level != full`，向 `.onescience/gaps.jsonl` 追加记录（domain、task、缺失资源、请求槽取值、时间戳），供 harvester 后续填补。
 - **改道**：阶段 3 的 MLIP↔DFT 互备改道按 Task 卡内条件触发；DFT 求解器资源卡当前缺失，触发时记 `partial` 并说明。
 - **已知缺口**：DFT 求解器资源卡、MOF 拓扑生成资源、成本/可合成性代理、实验数据回流通道均未建。

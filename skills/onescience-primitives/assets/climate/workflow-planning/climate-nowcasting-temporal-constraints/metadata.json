@@ -1,0 +1,22 @@
+{
+  "name": "climate-nowcasting-temporal-constraints",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "气象临近预报的数据时点规则，包括资料截止时间的定义、观测资料的时间限制和预报产品的时间范围约束。核心原则：预报、预警或决策只能使用签发时已经可获得的观测、分析和已签发预报产品，目标时刻之后形成的真实观测不得进入输入。适用于所有气象预报任务。",
+  "tags": ["temporal-constraint", "data-cutoff", "nowcasting", "forecast-timing", "observation-limit", "WMO-standard", "temporal-validity", "real-time", "operational"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象临近预报的数据时点规则，包括资料截止时间的定义、观测资料的时间限制和预报产品的时间范围约束",
+  "evidence_papers": [
+    {
+      "title": "基于归因报告分析的数据时点规则（任务268）",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Internal Attribution Analysis"
+    }
+  ]
+}

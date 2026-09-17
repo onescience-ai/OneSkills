@@ -1,0 +1,22 @@
+{
+  "name": "cfd-acceptance-validation-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:55:00Z",
+  "updated_at": "2026-09-16T18:55:00Z",
+  "description": "任务验收与适用域判定步骤，用于评估统计误差、关键物理约束、泛化能力和计算收益，给出PASS、REJECT或BLOCKED结论，并明确适用域限制与复核建议。",
+  "tags": ["acceptance-validation", "applicability-domain", "error-analysis", "quality-assurance"],
+  "aliases": ["acceptance-step", "validation-step", "applicability-determination"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "任务验收与适用域判定",
+  "evidence_papers": [
+    {
+      "title": "AI Agents in Engineering Design: A Multi-Agent Framework for Aesthetic and Aerodynamic Car Design",
+      "doi": "10.48550/arXiv.2503.23315",
+      "year": 2025
+    }
+  ]
+}

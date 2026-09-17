@@ -1,7 +1,7 @@
 {
   "name": "bohai-yellow-sea-fourcastnet-regional-forecast",
   "type": "workflow-planning",
-  "domain": "matchem",
+  "domain": "climate",
   "version": "1.0.0",
   "visibility": "public",
   "created_at": "2026-09-12",

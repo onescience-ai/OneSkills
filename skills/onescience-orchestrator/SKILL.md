@@ -572,7 +572,7 @@ tiered_completion_contract:
    - **结论前置标注**：`complete_with_caveats` / `partial` 状态下，最终输出**第一行必须**前置：「⚠ 本次未产生科研结论，以下为方法演示/工程脚手架输出，验证状态：<FAIL/PARTIAL 明细>」；禁止把演示数值（如「最大温升 1.03 K」「换热系数 35249 W/(m²·K)」「无热点」）写进「关键发现」段。
    - **禁止无条件完成自述**：存在验证 FAIL 或任一 `not_a_result` step 时，禁止输出「任务已完成，所有步骤均有可追溯证据链」这类无条件完成自述；必须改为「工程链已跑通，但科研验证未通过（明细），本次不产生科研结论」。
 
-   **门禁可观测性（A/B 归因用）**：A/B/C/D 任一门禁被触发（REJECT / 自动锁 / 级联回退 / status 降级 / domain 降级）时，orchestrator 必须向 `skills/onescience-primitives/references/tc/gaps.jsonl` 追加一行，含 `gate_hit ∈ {domain_mismatch, bare_number_reject, result_identity_lock, validation_rollback, complete_downgrade}` 与 `gate_layer ∈ {A_knowledge, B_planning, C_execution, D_acceptance}` 字段，便于下一轮 A/B 直接统计「哪层门禁真的生效、哪层还在被绕过」，不再靠人读 session 日志归因。
+   **门禁可观测性（A/B 归因用）**：A/B/C/D 任一门禁被触发（REJECT / 自动锁 / 级联回退 / status 降级 / domain 降级）时，orchestrator 必须向工作区状态目录的 `.onescience/gaps.jsonl` 追加一行（与 task_state.json 同一状态区；**严禁写进 `skills/**` 知识树内路径**，那会污染只读知识库），含 `gate_hit ∈ {domain_mismatch, bare_number_reject, result_identity_lock, validation_rollback, complete_downgrade}` 与 `gate_layer ∈ {A_knowledge, B_planning, C_execution, D_acceptance}` 字段，便于下一轮 A/B 直接统计「哪层门禁真的生效、哪层还在被绕过」，不再靠人读 session 日志归因。
 
 ### 阶段三：执行与状态更新
 

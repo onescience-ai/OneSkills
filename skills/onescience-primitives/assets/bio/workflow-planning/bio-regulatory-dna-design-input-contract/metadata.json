@@ -1,0 +1,26 @@
+{
+  "name": "bio-regulatory-dna-design-input-contract",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T16:35:00Z",
+  "updated_at": "2026-09-15T16:35:00Z",
+  "description": "调控DNA序列设计任务的输入数据契约，包括enhancer_activity.csv的字段规范、数据来源和获取方式。适用于单纯形流匹配、增强子设计、启动子设计等生物信息学场景。",
+  "tags": ["enhancer", "activity", "CSV", "genomic", "coordinates", "allele", "regulatory", "DNA", "design", "ENCODE", "Roadmap"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "生物信息学场景中调控DNA序列设计任务的输入数据契约，包括enhancer_activity.csv的字段规范（基因组坐标、等位基因、活性标签）、数据来源（公开数据库如ENCODE、Roadmap Epigenomics）和获取方式",
+  "evidence_papers": [
+    {
+      "title": "ENCODE Project: Regulatory Element Annotation",
+      "doi": "10.1038/nature11247",
+      "year": 2012
+    },
+    {
+      "title": "Roadmap Epigenomics: Integrative analysis of 111 reference epigenomes",
+      "doi": "10.1038/nature14248",
+      "year": 2015
+    }
+  ]
+}

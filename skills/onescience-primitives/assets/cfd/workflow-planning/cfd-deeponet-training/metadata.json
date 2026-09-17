@@ -1,0 +1,16 @@
+{
+  "name": "cfd-deeponet-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "DeepONet模型训练任务：训练DeepONet或Neural Green function完成函数输入到目标物理量的映射。适用于算子学习流程的模型训练阶段，支持PyTorch框架，记录代码版本、依赖、随机种子与逐轮指标。输出为最佳权重、训练配置、训练指标和环境信息，缺少必填输入时返回BLOCKED。",
+  "tags": ["DeepONet训练", "Neural Green function", "算子学习", "CFD", "PyTorch", "模型训练", "超参数", "早停", "checkpoint"],
+  "aliases": ["模型训练任务", "DeepONet训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S050 DeepONet模型训练任务",
+  "evidence_papers": []
+}

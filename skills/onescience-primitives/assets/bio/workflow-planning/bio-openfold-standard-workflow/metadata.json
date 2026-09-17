@@ -1,0 +1,15 @@
+{
+  "name": "bio-openfold-standard-workflow",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T20:41:00Z",
+  "updated_at": "2026-09-15T20:41:00Z",
+  "description": "OpenFold组件消融与结构泛化评测标准工作流：定义蛋白质结构预测模型消融实验的完整流程，包括输入验证、权重准备、推理执行和结果筛选。适用于需要评估OpenFold模型组件贡献和泛化能力的研究场景。核心方法包括：FASTA序列验证、链标识唯一性检查、模型权重版本验证、标准四步工作流（s01-s04）。输出为标准化输入、消融实验结果和结构预测评估报告。",
+  "tags": ["OpenFold", "protein structure prediction", "ablation study", "workflow", "validation", "FASTA", "chain identifier", "model weight", "TM-score", "AlphaFold2"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OpenFold组件消融与结构泛化评测的标准工作流定义和步骤约束",
+  "evidence_papers": []
+}

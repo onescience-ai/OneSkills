@@ -1,0 +1,18 @@
+{
+  "name": "neural-pde-workflow-pipeline",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:28:00Z",
+  "updated_at": "2026-09-16T18:28:00Z",
+  "description": "面向神经PDE求解器的标准工作流管道，覆盖从数据接入到适用域判定的完整流程；适用于Parareal neural solver、Temporal neural operator等时间并行或多时间尺度神经PDE推进任务。",
+  "tags": ["workflow-pipeline", "neural-pde", "data-ingestion", "model-training", "inference", "evaluation"],
+  "aliases": ["神经PDE工作流", "PDE求解管道", "neural-pde-pipeline"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "神经PDE工作流管道标准流程",
+  "evidence_papers": [],
+  "merged_batches": [],
+  "conflicts": []
+}

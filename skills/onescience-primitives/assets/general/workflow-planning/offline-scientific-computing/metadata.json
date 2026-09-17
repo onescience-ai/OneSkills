@@ -1,0 +1,17 @@
+{
+  "name": "offline-scientific-computing",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T17:07:00Z",
+  "updated_at": "2026-09-15T17:07:00Z",
+  "description": "离线环境下科学计算资源获取方案。涵盖网络受限环境下的Python包安装、模型权重分发、镜像源配置、代理设置，以及预下载资源管理策略。",
+  "tags": ["offline-computing", "network-restriction", "mirrors", "proxy", "resource-distribution", "scientific-computing", "package-management"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "执行环境的网络访问策略和限制；离线环境下的资源获取方案；代理配置和镜像源使用方法",
+  "evidence_papers": [
+    {"title": "BoKDiff: best-of-K diffusion alignment for target-specific 3D molecule generation", "doi": "10.1093/bioadv/vbaf137", "year": 2025}
+  ]
+}

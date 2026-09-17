@@ -1,0 +1,26 @@
+{
+  "name": "climate-radar-data-processing",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:38:00Z",
+  "updated_at": "2026-09-16T18:38:00Z",
+  "description": "面向气象雷达数据获取与处理任务，定义从原始雷达数据到质量控制产品的完整处理流程，包括数据采集、质量控制、特征提取和产品生成，确保雷达数据的准确性和可用性。",
+  "tags": ["radar", "data-processing", "quality-control", "meteorology", "remote-sensing"],
+  "aliases": ["雷达数据处理", "天气雷达质量控制", "双偏振雷达数据处理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象数据获取与处理的专业知识",
+  "evidence_papers": [
+    {
+      "title": "Typhoon short-term heavy precipitation warning based on dual-polarization radar observations of precipitation particle vertical distribution",
+      "doi": "10.1038/s41598-025-31842-0",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

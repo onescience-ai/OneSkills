@@ -1,0 +1,20 @@
+{
+  "name": "matchem-electrochemical-simulation-tool-selection",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向电池电极电化学模拟任务，根据研究尺度（原子/介观/宏观）和物理过程（电子结构/离子扩散/力学响应/传质传热）选择合适的计算工具（VASP/LAMMPS/COMSOL等），并提供工具的输入输出格式、资源需求和工作流集成方式",
+  "tags": ["VASP", "LAMMPS", "COMSOL", "DFT", "molecular-dynamics", "multiscale-modeling", "electrochemical-simulation"],
+  "aliases": ["计算工具选择", "模拟软件", "多尺度建模"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔硅负极电化学模拟的计算工具选择知识，包括VASP、LAMMPS、COMSOL等工具的适用条件",
+  "evidence_papers": [
+    {"title": "Boosting Rechargeable Batteries R&D by Multiscale Modeling: Myth or Reality?", "doi": "10.1021/acs.chemrev.8b00239", "year": 2019},
+    {"title": "Feasibility study of Mg storage in a bilayer silicene anode via application of an external electric field", "doi": "10.1039/d2ra02475f", "year": 2022},
+    {"title": "Self-Healing Mechanism of Lithium in Lithium Metal", "doi": "10.1002/advs.202105574", "year": 2022}
+  ]
+}

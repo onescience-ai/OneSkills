@@ -1,0 +1,48 @@
+{
+  "name": "climate-pv-power-forecasting-validation-workflow",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T09:00:00Z",
+  "updated_at": "2026-09-15T09:00:00Z",
+  "description": "光伏功率预测验证与工作流规划知识：涵盖光伏功率预测的标准验证方法（按站点分层、爬坡事件分层）、数据来源规范（气象预报、历史功率、电站属性）、模型评估原则（训练/验证集划分、过拟合检测、基线比较）以及标准工作流步骤（s01-s06）。适用于多站光伏电站0-48小时功率联合预报任务的规划、执行和验证。核心方法包括：分层指标计算（RMSE、MAE、R²）、爬坡事件检测、持久性/气候平均基线比较、容量归一化、数据时点规则遵守。输出为完整的验证报告、模型性能评估和工作流执行清单。",
+  "tags": ["photovoltaic", "PV", "power forecasting", "validation", "metrics", "RMSE", "MAE", "R²", "ramp events", "site stratification", "data sources", "model evaluation", "overfitting", "baseline comparison", "workflow", "s01-s06", "solar energy", "weather forecasting", "multi-site"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "光伏功率预测的标准验证方法、数据来源规范、模型评估方法、领域知识和标准工作流步骤",
+  "evidence_papers": [
+    {
+      "title": "Extensive comparison of physical models for photovoltaic power forecasting",
+      "doi": "10.1016/j.apenergy.2020.116239",
+      "year": 2020,
+      "venue": "Applied Energy",
+      "authors": ["Martin János Mayer", "Gyula Gróf"],
+      "oa_url": "https://www.sciencedirect.com/science/article/pii/S0306261920316330/pdf"
+    },
+    {
+      "title": "Comparison of machine learning methods for photovoltaic power forecasting based on numerical weather prediction",
+      "doi": "10.1016/j.rser.2022.112364",
+      "year": 2022,
+      "venue": "Renewable and Sustainable Energy Reviews",
+      "authors": ["Dávid Markovics", "Martin János Mayer"],
+      "oa_url": "https://www.sciencedirect.com/science/article/pii/S136403212200274X/pdf"
+    },
+    {
+      "title": "Advanced Methods for Photovoltaic Output Power Forecasting: A Review",
+      "doi": "10.3390/app10020487",
+      "year": 2020,
+      "venue": "Applied Sciences",
+      "authors": ["A. Mellit", "Alessandro Pavan", "Emanuèle Ogliari"],
+      "oa_url": "https://doi.org/10.3390/app10020487"
+    },
+    {
+      "title": "Deep learning based forecasting of photovoltaic power generation by incorporating domain knowledge",
+      "doi": "10.1016/j.energy.2021.120240",
+      "year": 2021,
+      "venue": "Energy",
+      "authors": ["Xing Luo", "Dongxiao Zhang", "Xu Zhu"],
+      "oa_url": "https://www.sciencedirect.com/science/article/pii/S0360544221004898/pdf"
+    }
+  ]
+}

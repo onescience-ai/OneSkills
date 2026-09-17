@@ -1,0 +1,21 @@
+{
+  "name": "cfd-pdo-convolution-layer-design",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向具有连续群对称性的PDE数据，设计基于偏微分算子（PDO）的等变卷积层的知识卡片。PDO卷积通过将偏微分算子嵌入卷积核实现群等变性，适用于SO(2)/SE(2)等连续对称群，支持2D和3D可转向卷积。涵盖PDO-eConvs与PDO-s3DCNNs两个架构变体。",
+  "tags": ["pdo-convolution", "equivariant-layer", "steerable-cnn", "pde-operator", "cfd", "lie-group", "continuous-symmetry"],
+  "aliases": ["PDO卷积层", "偏微分算子卷积", "可转向卷积"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Lie群等变网络对称PDE预测",
+  "evidence_papers": [
+    {"title": "PDO-eConvs: Partial Differential Operator Based Equivariant Convolutions", "doi": "", "year": 0},
+    {"title": "PDO-s3DCNNs: Partial Differential Operator Based Steerable 3D CNNs", "doi": "", "year": 0}
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,19 @@
+{
+  "name": "cfd-boundary-embedded-neural-operator-acceptance-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "边界嵌入神经算子任务验收与适用域判定任务，负责评估统计误差、关键物理约束、泛化能力和计算收益，给出PASS、REJECT或BLOCKED结论。",
+  "tags": ["acceptance", "applicability", "boundary-embedded", "neural-operator", "cfd", "evaluation", "ood-testing"],
+  "aliases": ["任务验收与适用域判定", "边界嵌入验收"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "边界嵌入神经算子任务验收与适用域判定",
+  "evidence_papers": [
+    {"title": "BENO: Boundary-Embedded Neural Operators for PDEs", "doi": "", "year": 2024, "url": ""},
+    {"title": "Physics-Embedded Neural Networks: Graph Neural PDE Solvers with Mixed Boundary Conditions", "doi": "", "year": 2024, "url": ""}
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "cfd-drl-bluff-body-drag-reduction-scenario",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T21:00:00Z",
+  "updated_at": "2026-09-16T21:00:00Z",
+  "description": "面向钝体与圆柱形状的主动流动控制问题：利用深度强化学习（DRL）在 OpenFOAM CFD 环境中实现尾迹闭环减阻控制。适用于需要通过实时传感-动作轨迹完成策略训练、闭环仿真部署与物理一致性评估的研究场景。核心要素包括：OpenFOAM 流场求解与传感器数据采集、DRL 策略网络训练、闭环滚动仿真与基线对比、统计与物理联合验收及适用域判定。产出可复现模型、任务结果和域外工况需 CFD 复核的适用域报告。",
+  "tags": ["deep reinforcement learning", "drag reduction", "bluff body", "cylinder", "active flow control", "OpenFOAM", "closed-loop control", "wake", "CFD", "sensor trajectory", "policy deployment", "applicability domain"],
+  "aliases": ["DRL drag reduction", "bluff body wake control", "active flow control DRL"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "深度强化学习钝体尾迹闭环减阻控制",
+  "evidence_papers": [
+    {
+      "title": "Active flow control for bluff body drag reduction using reinforcement learning with partial measurements",
+      "doi": "",
+      "year": 2023,
+      "oa_url": "https://arxiv.org/abs/2307.12650"
+    },
+    {
+      "title": "DRLinFluids: An open-source Python platform of coupling deep reinforcement learning and OpenFOAM",
+      "doi": "",
+      "year": 2022,
+      "oa_url": "https://arxiv.org/abs/2205.12699"
+    },
+    {
+      "title": "Artificial neural networks trained through deep reinforcement learning discover control strategies for active flow control",
+      "doi": "",
+      "year": 2018,
+      "oa_url": "https://arxiv.org/abs/1808.07664"
+    },
+    {
+      "title": "Reinforcement Learning with Function-Valued Action Spaces for Partial Differential Equation Control",
+      "doi": "",
+      "year": null,
+      "oa_url": ""
+    }
+  ]
+}

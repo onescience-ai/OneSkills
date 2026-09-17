@@ -1,0 +1,23 @@
+{
+  "name": "climate-pv-forecasting-validation-stratified",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向光伏功率预测任务的分层验证方法，包括按站点分层、按预测时效分层、按天气类型分层、爬坡事件检测与检验，以及基线比较与验收门限设置的完整验证协议",
+  "tags": ["pv", "forecasting", "validation", "ramp-event", "stratified-evaluation", "baseline-comparison", "acceptance-threshold"],
+  "aliases": ["solar power validation", "PV forecast verification", "photovoltaic prediction assessment"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "光伏功率预测的标准验证方法，特别是按站点分层和爬坡事件分层的检验协议、指标计算方法和验收门限设置原则",
+  "evidence_papers": [
+    {"title": "Intraday spatiotemporal PV power prediction at national scale using satellite-based solar forecast models", "doi": "2601.04751", "year": 2026},
+    {"title": "FarSky: Task-Aware Latent-Space Coupling for Generative Intra-Hour Solar Forecasting", "doi": "2608.11254", "year": 2026},
+    {"title": "Gaussian Process Regression for Probabilistic Short-term Solar Output Forecast", "doi": "2002.10878", "year": 2020},
+    {"title": "Optimizing Solar Energy Production in the USA: Time-Series Analysis Using AI for Smart Energy Management", "doi": "2506.23368", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

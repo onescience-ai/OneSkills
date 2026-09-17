@@ -1,0 +1,28 @@
+{
+  "name": "matchem-perovskite-validation-data",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:41:00Z",
+  "updated_at": "2026-09-15T21:41:00Z",
+  "description": "无铅杂化钙钛矿稳定性独立验证数据获取工作流：从实验文献、DFT计算结果和高保真模拟中获取独立验证数据。适用于需要验证机器学习模型预测准确性的研究场景。核心方法包括：文献数据挖掘、DFT计算验证、实验数据对比。输出为验证数据集和误差分析报告。",
+  "tags": ["perovskite", "lead-free", "validation", "experimental data", "DFT", "ab initio", "high-fidelity", "independent verification", "accuracy assessment", "materials science"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "无铅杂化钙钛矿稳定性的独立验证数据来源、验证标准和误差容忍度",
+  "evidence_papers": [
+    {
+      "title": "First-principles study of structural stability and electronic properties of lead-free perovskites",
+      "doi": "10.1016/j.commatsci.2019.109234",
+      "year": 2019,
+      "venue": "Computational Materials Science"
+    },
+    {
+      "title": "Experimental validation of machine learning predictions for perovskite stability",
+      "doi": "10.1038/s41524-020-00362-y",
+      "year": 2020,
+      "venue": "npj Computational Materials"
+    }
+  ]
+}

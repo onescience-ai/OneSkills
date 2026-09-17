@@ -54,6 +54,6 @@
 
 | 缺口 | 影响 | 处置 |
 |---|---|---|
-| 域内无弹性张量计算资源卡（如 VASP / Quantum ESPRESSO） | s04 的「高保真独立验证」无法本地执行，只能用留出集统计验证 | retrieval_level 降为 partial，追加 gaps.jsonl，`suggested_fill` 写「补 DFT 求解器资源卡」 |
+| 域内无弹性张量计算资源卡（如 VASP / Quantum ESPRESSO） | s04 的「高保真独立验证」无法本地执行，只能用留出集统计验证 | retrieval_level 降为 partial，追加 .onescience/gaps.jsonl，`suggested_fill` 写「补 DFT 求解器资源卡」 |
 | `dataset=csv-user-provided` 但用户未给列语义 | s01 无法操作化目标 | s01 判 BLOCKED，整条链停在第一步，不得用默认值补齐 |
 | 关联论文全文不可得 | 只能做背景引用，不能提取数值事实 | 标注证据等级为 doc-only，相关 atom 引用降级为 medium 置信 |

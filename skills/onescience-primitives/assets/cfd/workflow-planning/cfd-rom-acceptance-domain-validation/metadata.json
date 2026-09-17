@@ -1,0 +1,19 @@
+{
+  "name": "cfd-rom-acceptance-domain-validation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向可迁移ROM推理结果，执行任务验收与适用域判定：评估统计误差、物理约束满足度、泛化能力和计算收益，给出PASS/REJECT/BLOCKED判定并明确适用域限制。",
+  "tags": ["acceptance-testing", "domain-validation", "OOD-testing", "physical-consistency", "cross-geometry"],
+  "aliases": ["任务验收", "适用域判定", "OOD测试"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "可迁移ROM任务验收与适用域判定的任务知识",
+  "evidence_papers": [
+    {"title": "Real-Time Monitoring of MHD Liquid Metal Flows with Shallow Recurrent Decoders", "doi": "arxiv:2608.28366", "year": 2026},
+    {"title": "Non-intrusive, transferable model for coupled turbulent channel-porous media flow based upon neural networks", "doi": "arxiv:2311.15600", "year": 2023}
+  ]
+}

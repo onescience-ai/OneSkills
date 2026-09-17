@@ -1,0 +1,22 @@
+{
+  "name": "bio-chromfound-model-loading",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "ChromFound模型加载任务：从官方仓库获取ChromFound预训练权重，配置环境依赖，加载模型并生成细胞嵌入表征。适用于任务s02模型加载阶段，替代通用VAE从头训练。",
+  "tags": ["ChromFound", "pretrained model", "single-cell", "chromatin accessibility", "cell embedding", "foundation model", "HuggingFace", "model loading", "deep learning", "epigenomics"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "ChromFound模型官方仓库与权重下载",
+  "evidence_papers": [
+    {
+      "title": "ChromFound: Towards A Universal Foundation Model for Single-Cell Chromatin Accessibility Data",
+      "doi": "10.48550/arXiv.2505.12638",
+      "year": 2025,
+      "venue": "arXiv"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "climate-radar-precipitation-nowcasting-scenario",
+  "type": "scenario",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:25:00Z",
+  "updated_at": "2026-09-16T15:25:00Z",
+  "description": "雷达驱动的0-3小时极端降水集合临近预报场景，涵盖数据获取、预处理、模型验证、概率校准、独立验证和产品生成全流程。适用于基于雷达数据的短时强降水临近预报，需要处理数据可用性、模型验证、概率校准和产品交付等挑战。",
+  "tags": [
+    "edge:task:climate-emos-probability-calibration",
+    "edge:task:climate-nowcastnet-model-verification",
+    "edge:task:climate-radar-data-acquisition",
+    "edge:task:climate-verification-and-product-delivery",
+    "edge:task:climate-workflow-dependency-management",
+    "edge:workflow:climate-radar-precipitation-nowcasting-workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达数据获取渠道、数据格式规范、数据预处理流程、数据质量控制标准；OneScience工作流依赖管理规则、气象预报任务标准流程；NowcastNet模型架构、检查点文件格式、模型验证标准流程；EMOS概率校准原理、集合预报校准标准方法、概率校准验证指标；独立验证数据获取渠道、验证指标计算方法、基线预报比较标准；气象预报产品格式规范、产品交付标准、产品元数据要求",
+  "evidence_papers": [
+    {
+      "title": "Skilful precipitation nowcasting using deep generative models of radar",
+      "doi": "10.1038/s41586-021-03854-z",
+      "year": 2021
+    },
+    {
+      "title": "Hybrid physics-AI outperforms numerical weather prediction for extreme precipitation nowcasting",
+      "doi": "10.1038/s41612-024-00834-8",
+      "year": 2024
+    },
+    {
+      "title": "Skilful Precipitation Nowcasting Using NowcastNet",
+      "doi": "10.48550/arXiv.2311.17961",
+      "year": 2023
+    }
+  ]
+}

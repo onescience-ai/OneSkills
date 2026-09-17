@@ -1,0 +1,35 @@
+{
+  "name": "cfd-domain-decomposition-parallel-pinn-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:00:00Z",
+  "updated_at": "2026-09-16T19:00:00Z",
+  "description": "区域分解并行PINN大域求解的端到端工作流，覆盖从分区PDE数据接入到适用域判定的全流程。适用于需要将FBPINN、XPINN或Parallel PINN应用于实际大域PDE问题的场景。核心流程包括：数据接入与契约核验、预处理与切分、模型训练、方程残差恢复、验收与适用域判定。每步含明确输入输出与质量门禁。",
+  "tags": ["domain decomposition", "PINN workflow", "FBPINN", "XPINN", "parallel PINN", "PDE data pipeline", "physics-informed", "domain decomposition workflow", "CFD workflow", "residual recovery", "applicability domain"],
+  "aliases": ["区域分解PINN工作流", "DD-PINN workflow", "大域PINN求解流程"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "区域分解并行PINN大域求解工作流",
+  "evidence_papers": [
+    {
+      "title": "Finite Basis Physics-Informed Neural Networks (FBPINNs): A Scalable Domain Decomposition Approach for Solving Differential Equations",
+      "doi": "10.1007/s10444-023-10065-9",
+      "year": 2023,
+      "venue": "Advances in Computational Mathematics"
+    },
+    {
+      "title": "Parallel Physics-Informed Neural Networks via Domain Decomposition",
+      "doi": "10.1016/j.jcp.2021.110683",
+      "year": 2022,
+      "venue": "Journal of Computational Physics"
+    },
+    {
+      "title": "When Do Extended Physics-Informed Neural Networks (XPINNs) Improve Generalization",
+      "doi": "10.1137/21M1447039",
+      "year": 2022,
+      "venue": "SIAM Journal on Scientific Computing"
+    }
+  ]
+}

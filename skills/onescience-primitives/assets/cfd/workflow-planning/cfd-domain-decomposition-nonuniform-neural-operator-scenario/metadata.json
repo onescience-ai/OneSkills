@@ -1,0 +1,51 @@
+{
+  "name": "cfd-domain-decomposition-nonuniform-neural-operator-scenario",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:58:00Z",
+  "updated_at": "2026-09-16T19:58:00Z",
+  "description": "面向非均匀采样与变形几何PDE数据完成域分解与非均匀几何神经算子学习的CFD场景，覆盖数据接入、预处理、模型训练、推理恢复和验收评估全流程，产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": ["domain-decomposition", "neural-operator", "non-uniform-mesh", "geometry-generalization", "PDE", "CFD", "surrogate-model"],
+  "aliases": ["域分解神经算子", "非均匀几何神经算子", "NUNO", "DD-RNO", "domain decomposed neural operator"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "域分解与非均匀几何神经算子学习场景知识补充",
+  "evidence_papers": [
+    {
+      "title": "DD-RNO: A Domain-Decomposed Routed Neural Operator for Airfoil Flow Prediction",
+      "doi": "arXiv:2608.13490",
+      "year": 2026
+    },
+    {
+      "title": "Reference Neural Operators: Learning the Smooth Dependence of Solutions of PDEs on Geometric Deformations",
+      "doi": "arXiv:2405.17509",
+      "year": 2024
+    },
+    {
+      "title": "Geometry-Aware Anisotropic Boundary Correction for Aerodynamic Simulation",
+      "doi": "arXiv:2606.09963",
+      "year": 2026
+    },
+    {
+      "title": "Striding Across Reynolds Numbers: Representation Geometry in Neural PDE Generalisation",
+      "doi": "arXiv:2605.30112",
+      "year": 2026
+    },
+    {
+      "title": "Neural Operator: Graph Kernel Network for Partial Differential Equations",
+      "doi": "arXiv:2003.03485",
+      "year": 2020
+    },
+    {
+      "title": "NUNO: A General Framework for Learning Parametric PDEs with Non-Uniform Data",
+      "doi": "",
+      "year": 2023
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

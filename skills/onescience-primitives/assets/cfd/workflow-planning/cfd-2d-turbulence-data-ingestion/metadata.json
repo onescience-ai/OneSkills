@@ -1,0 +1,22 @@
+{
+  "name": "cfd-2d-turbulence-data-ingestion",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "二维湍流LES亚格子闭合任务的数据接入与核验步骤，负责读取DNS滤波数据、检查数据完整性并生成机器可读的数据契约。",
+  "tags": ["cfd", "LES", "data-ingestion", "turbulence", "DNS"],
+  "aliases": ["data-loading", "data-validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "卷积网络二维湍流LES亚格子闭合",
+  "evidence_papers": [
+    {
+      "title": "Sub-grid modelling for two-dimensional turbulence using neural networks",
+      "doi": "10.1017/jfm.2018.770",
+      "year": 2018
+    }
+  ]
+}

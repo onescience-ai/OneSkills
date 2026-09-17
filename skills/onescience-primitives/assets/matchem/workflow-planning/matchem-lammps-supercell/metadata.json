@@ -1,0 +1,15 @@
+{
+  "name": "matchem-lammps-supercell",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "LAMMPS超胞构建规范，包括三斜晶胞参数计算、元素映射规则、固定原子组设置、Cu(111)表面超胞尺寸计算",
+  "tags": ["LAMMPS", "supercell", "periodic-boundary", "surface-model", "Cu111", "simulation-box"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "LAMMPS超胞构建规范，包括三斜晶胞参数计算方法、元素映射规则（原子类型与力场对应）、固定原子组设置方法、Cu(111)表面超胞尺寸计算（3×3超胞应包含288个Cu原子）",
+  "evidence_papers": []
+}

@@ -1,0 +1,44 @@
+{
+  "name": "bio-fewshot-multimodal-protein-function-prediction-scenario",
+  "type": "scenario",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T16:20:00Z",
+  "updated_at": "2026-09-16T16:20:00Z",
+  "description": "低样本多模态蛋白功能预测场景：在标注数据稀缺条件下，融合蛋白质序列（ESM-2）、结构（AlphaFold2 pLDDT）和功能文本（PubMedBERT）三种模态的预训练表征，实现多标签Gene Ontology功能分类。适用于CAFA挑战赛标准数据集、few-shot蛋白功能预测基准任务。",
+  "tags": [
+    "protein-function-prediction",
+    "few-shot",
+    "multimodal",
+    "ESM-2",
+    "AlphaFold2",
+    "Gene-Ontology",
+    "edge:task:bio-go-annotation-validation",
+    "edge:task:bio-protein-dataset-acquisition",
+    "edge:task:bio-protein-function-evaluation",
+    "edge:task:bio-protein-language-model-integration",
+    "edge:task:bio-protein-model-training",
+    "edge:workflow:bio-fewshot-protein-function-prediction-workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "低样本多模态蛋白功能预测",
+  "evidence_papers": [
+    {
+      "title": "On the state of protein function prediction: a report on the fourth CAFA challenge",
+      "doi": "10.64898/2026.05.06.722942",
+      "year": 2024
+    },
+    {
+      "title": "Evaluating the advancements in protein language models for encoding strategies in protein function prediction",
+      "doi": "10.3389/fbioe.2025.1506508",
+      "year": 2025
+    },
+    {
+      "title": "PANDA-3D: protein function prediction based on AlphaFold models",
+      "doi": "10.1093/nargab/lqae094",
+      "year": 2024
+    }
+  ]
+}

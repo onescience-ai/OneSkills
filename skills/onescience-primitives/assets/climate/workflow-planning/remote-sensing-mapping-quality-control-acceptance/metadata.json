@@ -1,0 +1,49 @@
+{
+  "name": "remote-sensing-mapping-quality-control-acceptance",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向遥感制图任务，制定从数据真实性验证、预处理记录、方法配置验证、产品格式规范到独立验证的完整质量控制与验收标准，确保制图结果的科学可信性和可追溯性。",
+  "tags": [
+    "remote sensing",
+    "quality control",
+    "acceptance criteria",
+    "validation",
+    "preprocessing",
+    "GeoTIFF",
+    "metadata",
+    "independent validation",
+    "baseline comparison",
+    "cropland mapping",
+    "workflow-planning",
+    "climate"
+  ],
+  "aliases": [
+    "遥感制图质量控制",
+    "遥感产品验收标准",
+    "遥感数据预处理",
+    "遥感独立验证"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "遥感制图任务中真实传感器数据与合成数据的本质区别及其对验收判定的影响；当必需输入缺失时的标准处置流程；遥感数据预处理工作流中辐射定标、几何配准和质量掩膜的具体作用与必要性；方法配置与输入输出契约验证的具体执行要求；遥感制图产品的标准输出格式规范；遥感分类独立验证的标准要求；Landsat数据预处理标准流程",
+  "evidence_papers": [
+    {
+      "title": "A 30-m landsat-derived cropland extent product of Australia and China using random forest machine learning algorithm on Google Earth Engine cloud computing platform",
+      "doi": "10.1016/j.isprsjprs.2018.07.017",
+      "year": 2018
+    },
+    {
+      "title": "Agricultural cropland extent and areas of South Asia derived using Landsat satellite 30-m time-series big-data using random forest machine learning algorithms on the Google Earth Engine cloud",
+      "doi": "10.1080/15481603.2019.1690780",
+      "year": 2019
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

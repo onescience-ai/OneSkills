@@ -1,0 +1,21 @@
+{
+  "name": "climate-hpc-remote-computing-environment",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:00:00Z",
+  "updated_at": "2026-09-15T21:00:00Z",
+  "description": "HPC远程计算环境连接与预检执行知识卡片。涵盖SSH连接配置、SLURM作业调度系统操作、模块加载规范、超时重试策略、本地与远程环境一致性校验方法。适用于在超算中心执行气候数据处理、降尺度计算等大规模科学计算任务。",
+  "tags": ["HPC", "SLURM", "SSH", "remote-computing", "job-scheduling", "module-loading", "timeout-retry", "environment-validation", "scientific-computing"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "远程SSH/SLURM环境连接与预检执行知识",
+  "evidence_papers": [
+    {"title": "SciTokens SSH: Token-based Authentication for Remote Login to Scientific Computing Environments", "doi": "10.1145/3311790.3399613", "year": 2020},
+    {"title": "Automatic Energy-Efficient Job Scheduling in HPC: A Novel SLURM Plugin Approach", "doi": "10.1145/3624062.3624265", "year": 2023},
+    {"title": "Moving to a Multi-cluster HPC Slurm Environment", "doi": "10.2172/1884078", "year": 2021},
+    {"title": "Empirical Study on Request Timeout and Retry for Microservices Communication", "doi": "10.1109/prdc63035.2024.00037", "year": 2024},
+    {"title": "Running matlab code on HPC with SLURM", "doi": "10.59350/0pps7-f7a86", "year": 2020}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "climate-workflow-dependency-management",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:29:00Z",
+  "updated_at": "2026-09-16T15:29:00Z",
+  "description": "工作流依赖管理任务，定义步骤间依赖关系，确保执行顺序正确，避免循环依赖和并行冲突。",
+  "tags": ["edge:workflow:climate-radar-precipitation-nowcasting-workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience工作流依赖管理规则、气象预报任务标准流程",
+  "evidence_papers": [
+    {"title": "Skilful precipitation nowcasting using deep generative models of radar", "doi": "10.1038/s41586-021-03854-z", "year": 2021}
+  ]
+}

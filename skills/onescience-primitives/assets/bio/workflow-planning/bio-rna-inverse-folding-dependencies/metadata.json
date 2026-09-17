@@ -1,0 +1,28 @@
+{
+  "name": "bio-rna-inverse-folding-dependencies",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T11:00:00Z",
+  "updated_at": "2026-09-16T11:00:00Z",
+  "description": "RNA反向设计工具依赖安装工作流：提供gRNAde、RiboDiffusion、R3Design等RNA反向设计工具的Python依赖清单和安装命令。适用于需要配置RNA设计工具运行环境的研究场景。核心方法包括：依赖版本检查、conda环境创建、依赖安装验证。输出为可运行的Python环境。",
+  "tags": ["RNA inverse folding", "dependencies", "PyTorch", "PyG", "Biopython", "conda", "environment", "installation", "Python"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "gRNAde/RDesign模型的Python依赖清单（PyTorch版本、PyG版本、Biopython版本）和安装命令",
+  "evidence_papers": [
+    {
+      "title": "RiboDiffusion: tertiary structure-based RNA inverse folding with generative diffusion models",
+      "doi": "10.1093/bioinformatics/btae259",
+      "year": 2024,
+      "venue": "Bioinformatics"
+    },
+    {
+      "title": "R3Design: deep tertiary structure-based RNA sequence design and beyond",
+      "doi": "10.1093/bib/bbae682",
+      "year": 2024,
+      "venue": "Briefings in Bioinformatics"
+    }
+  ]
+}

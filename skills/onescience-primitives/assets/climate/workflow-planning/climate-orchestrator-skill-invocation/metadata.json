@@ -1,0 +1,18 @@
+{
+  "name": "climate-orchestrator-skill-invocation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "skill工具接口契约与调用模式知识：type=expert技能必须接收结构化planning_request负载（含from_skill、task_state_summary、intent_profile、matched_resources、assigned_aspect等字段），仅传name参数时工具行为退化为文档加载。适用于OneScience编排智能体正确触发专家规划流程。",
+  "tags": ["skill-invocation", "orchestrator", "planning-request", "expert-skill", "interface-contract"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CMIP6气候情景驱动的流域径流长期投影任务中skill工具接口契约与调用模式知识缺口",
+  "evidence_papers": [
+    {"title": "Twenty-First Century Drought Projections in the CMIP6 Forcing Scenarios", "doi": "https://doi.org/10.1029/2019ef001461", "year": 2020},
+    {"title": "A comprehensive review of deep learning applications in hydrology and water resources", "doi": "https://doi.org/10.2166/wst.2020.369", "year": 2020}
+  ]
+}

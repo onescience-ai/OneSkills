@@ -1,0 +1,23 @@
+{
+  "name": "cfd-cyclegan-data-ingestion-contract-validation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "非配对LES与DNS湍流数据的接入与契约核验：为CycleGAN无配对超分辨率重建建立数据清单。检查文件可读性、样本数、输入与目标变量、单位、坐标系、网格拓扑、时间或工况范围、缺失值和使用许可，输出机器可读契约。适用于非配对湍流数据接入场景的数据审计与质量保证。",
+  "tags": ["data ingestion", "contract validation", "LES", "DNS", "turbulence", "unpaired data", "data audit", "quality assurance", "CFD"],
+  "aliases": ["非配对数据接入", "LES DNS数据核验"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "非配对LES与DNS湍流数据接入与契约核验步骤知识",
+  "evidence_papers": [
+    {
+      "title": "Unsupervised deep learning for super-resolution reconstruction of turbulence",
+      "doi": "",
+      "year": 2020,
+      "oa_url": "https://arxiv.org/abs/2007.15324"
+    }
+  ]
+}

@@ -259,6 +259,8 @@ aliases 与后四个字段均为可选：aliases 是实例别名数组（如具�
 - 名称与卡片身份层级一致：
   - **通用类卡**：`<domain>-<问题类>-<方案/交付物>`（如 `matchem-gas-capture-material-design-validation`），**不得含实例分子/材料/模型专名**（如 co2、saffron、mxene）
   - **实例级卡**：`<domain>-<topic>-<method>`（如 `bio-saffron-gene-derivative-reasoning`），可含实体名
+- **零信息目录名一律禁止**（不限领域、不限卡片类型）：哈希 id（`it-01684b6f`、`tk-bio-9a8b7c6d`）、裸占位词（`card`、`task`）、场景编号骨架（`cfd-s001-workflow`）、中文/空格名均不合格；拿不出语义名就回到卡片内容重取名，**不得用 id 或哈希后缀防撞名**（细则与反例表见 `./references/card_format.md`“禁止清单”）
+- 定名前自检：`python validate_knowledge.py --names-only --quiet` 必须 `RESULT: PASS`
 
 **实时汇报**：`🔄 Step 4：生成知识卡片...`
 

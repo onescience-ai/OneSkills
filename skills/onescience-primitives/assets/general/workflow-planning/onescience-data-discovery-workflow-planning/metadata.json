@@ -1,0 +1,64 @@
+{
+  "name": "onescience-data-discovery-workflow-planning",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:50:00Z",
+  "updated_at": "2026-09-16T18:50:00Z",
+  "description": "面向 OneScience 工作空间中的科研任务，执行数据文件定位、数据发现策略选择与标准工作流规划的知识。适用于代理在接收任务后需要在工作空间中搜索输入数据文件、利用 workflow planning primitive 的 metadata 与内容指导工作流步骤规划、并将 primitive 的 source_papers/tags/tier 信息映射为数据来源线索和参数配置的场景。核心方法包括：多路径数据文件搜索优先级规则（任务产物目录→工作空间根目录→.onescience/data/→ModelScope/数据注册表）、基于 primitive metadata 的数据来源推断、标准4步工作流（s01 输入验证→s02 特征准备→s03 推理执行→s04 评估筛选）的输入输出契约对齐。输出为数据发现日志、对齐后的工作流步骤规划和 primitive 内容解析结果。",
+  "tags": [
+    "onescience",
+    "data-discovery",
+    "workflow-planning",
+    "primitive",
+    "metadata",
+    "source-papers",
+    "data-validation",
+    "standard-workflow",
+    "s01-s04",
+    "task-artifact",
+    "data-file-location",
+    "general",
+    "workflow",
+    "bio",
+    "matchem",
+    "climate",
+    "cfd"
+  ],
+  "aliases": [
+    "数据发现策略",
+    "工作流规划",
+    "原语应用",
+    "数据文件定位",
+    "standard workflow planning"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience工作空间中数据文件的标准存放位置规范、数据发现与定位策略、标准工作流4步结构输入输出契约、workflow planning primitive内容解读与应用方法",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "OneScience Primitives SKILL.md - 原语资源召回技能文档",
+      "url": "https://github.com/onescience-ai/OneScience/tree/main/src/onescience",
+      "publisher": "onescience-ai (官方 GitHub 组织)",
+      "version": "2026-09-16",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "OneScience-doc - 科学智能代码开发教程",
+      "url": "https://github.com/onescience-ai/OneScience-doc/blob/main/doc/基于OneScience的科学智能代码开发教程-V4.trae.md",
+      "publisher": "onescience-ai (官方 GitHub 组织)",
+      "version": "V4",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "OneScience 主仓库 README",
+      "url": "https://github.com/onescience-ai/OneScience",
+      "publisher": "onescience-ai (官方 GitHub 组织)",
+      "version": "main",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": []
+}

@@ -1,0 +1,57 @@
+{
+  "name": "general-cli-workflow-execution-validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T11:14:00Z",
+  "updated_at": "2026-09-16T12:00:00Z",
+  "description": "面向命令行接口（CLI）驱动的科学工作流，提供非交互执行可靠性保障与结构化输出验证方法。适用于需要在自动化流水线中运行 CLI 工具并校验其 JSON 输出契约的场景，覆盖退出码分类、标准错误流隔离、JSON Schema 验证与报告交付契约定义。输出为经过验证的结构化报告和可追溯的诊断证据。",
+  "tags": ["CLI", "exit code", "error handling", "workflow automation", "JSON schema", "validation", "structured output", "report contract", "non-interactive", "fault classification", "stderr", "reproducibility"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识；JSON Schema报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Ten simple rules for making a software tool workflow-ready",
+      "doi": "10.1371/journal.pcbi.1009823",
+      "year": 2022,
+      "venue": "PLoS Computational Biology"
+    },
+    {
+      "title": "Will it run? - A proof of concept for smoke testing decentralized data analytics experiments",
+      "doi": "10.3389/fmed.2023.1305415",
+      "year": 2023,
+      "venue": "Frontiers in Medicine"
+    },
+    {
+      "title": "A workflow reproducibility scale for automatic validation of biological interpretation results",
+      "doi": "10.1093/gigascience/giad031",
+      "year": 2022,
+      "venue": "GigaScience"
+    },
+    {
+      "title": "Structured information extraction from scientific text with large language models",
+      "doi": "10.1038/s41467-024-45563-x",
+      "year": 2024,
+      "venue": "Nature Communications"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "subprocess — Subprocess management",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "JSON Schema reference",
+      "url": "https://json-schema.org/understanding-json-schema/reference/",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "merged_batches": ["2026-09-16: 基于归因报告优化计划补充Python subprocess和JSON Schema权威文档证据"]
+}

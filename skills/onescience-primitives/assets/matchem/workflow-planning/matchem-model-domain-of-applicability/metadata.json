@@ -1,0 +1,30 @@
+{
+  "name": "matchem-model-domain-of-applicability",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "模型适用域（Domain of Applicability）检测方法工作流。用于识别机器学习模型在材料科学中的可靠预测范围，包括基于训练数据特征范围的边界判定、基于预测置信度的阈值选择、域外样本的标记方法。核心方法包括：特征空间分析、距离度量、概率密度估计、不确定性量化。适用于需要评估模型泛化能力和预测可靠性的研究场景。",
+  "tags": ["domain-of-applicability", "model-validation", "uncertainty-quantification", "materials-science", "machine-learning", "reliability", "extrapolation", "confidence-threshold", "feature-space", "materials-discovery"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "模型适用域（domain of applicability）的定义和检测方法",
+  "evidence_papers": [
+    {
+      "title": "Energy-GNoME: A Living Database of Selected Materials for Energy Applications",
+      "doi": "10.48550/arXiv.2411.10125",
+      "year": 2024,
+      "venue": "arXiv",
+      "authors": ["Paolo De Angelis", "Giovanni Trezza", "Giulio Barletta", "Pietro Asinari", "Eliodoro Chiavazzo"]
+    },
+    {
+      "title": "Opportunities and Challenges for Machine Learning in Materials Science",
+      "doi": "10.1146/annurev-matsci-070218-010015",
+      "year": 2020,
+      "venue": "Annual Review of Materials Research",
+      "authors": ["Dane Morgan", "Ryan Jacobs"]
+    }
+  ]
+}

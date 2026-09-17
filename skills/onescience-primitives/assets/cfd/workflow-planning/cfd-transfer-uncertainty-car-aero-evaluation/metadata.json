@@ -1,0 +1,45 @@
+{
+  "name": "cfd-transfer-uncertainty-car-aero-evaluation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:06:00Z",
+  "updated_at": "2026-09-16T18:06:00Z",
+  "description": "面向跨车型家族汽车CFD数据，构建迁移学习代理模型与不确定性约束快速评估的完整任务场景。核心方法包括迁移学习代理训练、共形预测不确定性量化、物理一致性评估和适用域报告。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": ["cfd", "automotive", "aerodynamics", "transfer-learning", "conformal-prediction", "uncertainty-quantification", "surrogate-model", "cross-vehicle", "physics-consistency", "applicability-domain"],
+  "aliases": ["transfer learning car aerodynamics", "uncertainty constrained CFD surrogate", "汽车气动迁移学习", "不确定性约束代理评估"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S013 迁移与不确定性约束汽车气动快速评估场景知识补充",
+  "evidence_papers": [
+    {
+      "title": "A Blueprint for Self-Evolving Coding Agents in Vehicle Aerodynamic Drag Prediction",
+      "doi": "N/A",
+      "year": 2026,
+      "arxiv": "2603.21698"
+    },
+    {
+      "title": "Faster by Design: Interactive Aerodynamics via Neural Surrogates Trained on Expert-Validated CFD",
+      "doi": "N/A",
+      "year": 2026,
+      "arxiv": "2604.18491"
+    },
+    {
+      "title": "Multi-Granularity Conformal Prediction for Reliable Neural-Operator Automotive Aerodynamic Surrogates",
+      "doi": "N/A",
+      "year": 2026,
+      "arxiv": "2607.17297"
+    },
+    {
+      "title": "Toward Generalizable Graph Learning for 3D Engineering AI: Explainable Workflows for CAE Mode Shape Classification and CFD Field Prediction",
+      "doi": "N/A",
+      "year": 2026,
+      "arxiv": "2604.07781"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

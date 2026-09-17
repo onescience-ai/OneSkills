@@ -1,0 +1,23 @@
+{
+  "name": "cfd-latent-pde-acceptance-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向连续坐标PDE算子学习的任务验收与适用域判定任务，评估统计误差、关键物理约束、泛化能力和计算收益，给出适用域限制与复核建议。",
+  "tags": ["acceptance", "applicability-domain", "physics-consistency", "ood-test"],
+  "aliases": ["任务验收", "适用域判定"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "潜空间与神经场连续PDE算子学习-验收",
+  "evidence_papers": [
+    {"title": "Latent Neural Operator for Solving Forward and Inverse PDE Problems", "doi": "", "year": 2024},
+    {"title": "Neural Emulator Superiority: When Machine Learning for PDEs Surpasses its Training Data", "doi": "10.48550/arXiv.2510.23111", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

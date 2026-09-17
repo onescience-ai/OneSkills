@@ -1,0 +1,22 @@
+{
+  "name": "bio-scatac-train-test-split",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "scATAC-seq训练测试划分任务：在单细胞数据分析中实施训练集/测试集隔离，避免数据泄露，确保评估结果反映模型真实泛化能力。适用于任务s04评估阶段，替代全数据训练和评估。",
+  "tags": ["train test split", "data isolation", "cross validation", "single-cell", "scATAC-seq", "evaluation", "generalization", "data partition", "model validation", "overfitting prevention"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "单细胞数据分析训练测试划分方法",
+  "evidence_papers": [
+    {
+      "title": "An introduction to the bootstrap",
+      "doi": "",
+      "year": 1994,
+      "venue": "Chapman and Hall"
+    }
+  ]
+}

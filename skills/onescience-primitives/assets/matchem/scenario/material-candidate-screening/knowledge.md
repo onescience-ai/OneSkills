@@ -42,4 +42,4 @@
 
 - 槽不匹配（如请求 `adsorbate=CO`）→ 改道 DFT 路线；DFT 求解器资源卡缺失 → `partial` + 缺口记录。
 - `target_property=selectivity` → 需多性质组合，当前无专用操作序列 → `partial` 并说明。
-- 任一阶段 `retrieval_level != full` → 向 `references/tc/gaps.jsonl` 追加记录，供 harvester 填补。
+- 任一阶段 `retrieval_level != full` → 向 `.onescience/gaps.jsonl` 追加记录，供 harvester 填补。

@@ -1,0 +1,25 @@
+{
+  "name": "cfd-diffusion-conditional-sampling-physics-filter",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "物理信息扩散模型的条件采样与物理一致性筛选方法：按工况生成多样流场样本，通过边界残差、守恒律与方程残差进行物理筛选，评估分布覆盖与多样性。核心约束为禁止单样本代表整体、必须报告筛选前后统计。",
+  "tags": ["conditional-sampling", "physics-filter", "diffusion-model", "CFD", "diversity", "residual"],
+  "aliases": ["条件采样物理筛选", "diffusion sampling CFD"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "物理信息扩散模型流场分布生成",
+  "evidence_papers": [
+    {"title": "Physics-Informed Diffusion Models", "doi": "", "year": 2024},
+    {"title": "Learning Distributions of Complex Fluid Simulations with Diffusion Graph Networks", "doi": "10.48550/arXiv.2504.02843", "year": 2025},
+    {"title": "How well can Diffusion Models learn Lagrangian-Tracer Statistics in Non-reciprocal Turbulence", "doi": "10.48550/arXiv.2608.27378", "year": 2026},
+    {"title": "Learning Flow Distributions via Projection-Constrained Diffusion on Manifolds", "doi": "10.48550/arXiv.2602.17773", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

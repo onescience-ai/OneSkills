@@ -1,0 +1,20 @@
+{
+  "name": "cfd-implicit-neural-field-preprocessing-data-splitting",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "隐式神经场连续流动降阶建模的预处理与数据切分任务，负责统一物理量与表示，按几何、工况或时间构造无泄漏切分，保存统计量与可逆变换。",
+  "tags": ["preprocessing", "data_splitting", "normalization", "non-dimensionalization", "implicit_neural_field"],
+  "aliases": ["预处理任务", "数据切分任务", "s02任务"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "隐式神经场预处理与数据切分",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

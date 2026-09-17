@@ -1,0 +1,33 @@
+{
+  "name": "cfd-multifidelity-surrogate-bayesian-model-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:49:00Z",
+  "updated_at": "2026-09-16T18:49:00Z",
+  "description": "训练Multi-fidelity surrogate与Bayesian optimizer完成指定输入到目标物理量的映射。适用于多保真代理辅助翼型优化的模型训练阶段，确保训练收敛、权重可复现。",
+  "tags": ["cfd", "model-training", "multi-fidelity", "surrogate-model", "Bayesian-optimization", "airfoil", "checkpoint", "reproducibility"],
+  "aliases": ["多保真代理训练", "multi-fidelity surrogate training"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多保真代理辅助翼型外形优化场景知识补充",
+  "evidence_papers": [
+    {
+      "title": "Optimization-Embedded Active Multi-Fidelity Surrogate Learning for Multi-Condition Airfoil Shape Optimization",
+      "doi": "",
+      "year": 2026,
+      "arxiv": "2603.17057"
+    },
+    {
+      "title": "Surrogate-Based Aerodynamic Shape Optimization in Multiscale Flows via the Implicit Unified Gas-Kinetic Scheme",
+      "doi": "",
+      "year": 2025,
+      "arxiv": "2606.00645"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

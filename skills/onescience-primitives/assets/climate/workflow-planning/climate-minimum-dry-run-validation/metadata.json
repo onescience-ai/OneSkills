@@ -1,0 +1,28 @@
+{
+  "name": "climate-minimum-dry-run-validation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:25:00Z",
+  "updated_at": "2026-09-16T15:25:00Z",
+  "description": "最小干运行验证工作流：用小样本数据验证算法输入输出契约，确保核心计算前算法能正确处理实际数据格式。适用于气象数据分析任务中的方法配置与验证阶段。核心方法包括：子集数据提取、完整算法流程执行、输出shape检查、NaN/Inf检测、方法工件身份报告。输出为最小干运行日志、输入输出兼容性矩阵、方法工件身份报告。",
+  "tags": ["dry run", "validation", "input output contract", "algorithm verification", "small sample", "shape check", "NaN detection", "method artifact", "reproducibility", "climate", "workflow-planning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "最小干运行验证规范，包括如何用子集数据验证算法输入输出契约、随机种子设置方法、方法工件身份报告的必需字段",
+  "evidence_papers": [
+    {
+      "title": "Best practices for scientific computing research",
+      "doi": "10.1371/journal.pcbi.1005510",
+      "year": 2017,
+      "venue": "PLOS Computational Biology"
+    },
+    {
+      "title": "Reproducibility in scientific computing",
+      "doi": "10.1063/1.4964633",
+      "year": 2017,
+      "venue": "The Journal of Chemical Physics"
+    }
+  ]
+}

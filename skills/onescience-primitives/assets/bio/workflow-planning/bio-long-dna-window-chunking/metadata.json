@@ -1,0 +1,28 @@
+{
+  "name": "bio-long-dna-window-chunking",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "基因组DNA长窗口（>100kb）的分块处理与内存管理策略。适用于需要处理131072bp或更长DNA序列窗口的场景，包含滑动窗口分块的坐标对齐规则、中心坐标固定与两端padding方法、正反链方向映射的数据结构设计（正向链索引→反向互补链索引的可逆映射表）。",
+  "tags": ["DNA-sequence", "long-window", "chunking", "memory-management", "reverse-complement", "coordinate-alignment", "bioinformatics", "genome", "FASTA", "sequence-processing"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "基因组DNA长窗口的分块处理与内存管理策略",
+  "evidence_papers": [
+    {
+      "title": "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling",
+      "doi": "10.48550/arXiv.2403.03234",
+      "year": 2024,
+      "venue": "ICML 2024"
+    },
+    {
+      "title": "HyenaDNA: Long-Range Genomic Sequence Modeling at Single Nucleotide Resolution",
+      "doi": "10.48550/arXiv.2306.15794",
+      "year": 2023,
+      "venue": "NeurIPS 2023"
+    }
+  ]
+}

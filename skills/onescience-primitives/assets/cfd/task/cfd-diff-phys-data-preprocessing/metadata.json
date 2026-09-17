@@ -1,0 +1,41 @@
+{
+  "name": "cfd-diff-phys-data-preprocessing",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "可微分物理求解的数据预处理与切分任务，统一物理量表示、进行无量纲化处理，按几何、完整轨迹或物理工况为单位构造无泄漏切分，保存统计量与可逆变换。",
+  "tags": [
+    "data-preprocessing",
+    "train-test-split",
+    "normalization",
+    "non-leakage",
+    "edge:workflow:cfd-differentiable-physics-workflow"
+  ],
+  "aliases": [
+    "数据切分",
+    "预处理",
+    "data splitting"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S071 预处理与数据切分",
+  "evidence_papers": [
+    {
+      "title": "Mechanistic PDE Networks for Discovery of Governing Equations",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "PhysPDE_ Rethinking PDE Discovery and a Physical Hypothesis Selection Benchmark",
+      "doi": "",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

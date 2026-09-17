@@ -1,0 +1,26 @@
+{
+  "name": "general-cli-error-diagnosis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T23:15:00Z",
+  "updated_at": "2026-09-16T23:15:00Z",
+  "description": "命令行接口非交互执行的故障诊断与恢复，涵盖CLI命令参数、认证、沙箱、超时、退出码和标准错误判读的系统化分类方法",
+  "tags": ["CLI", "error-diagnosis", "exit-code", "command-line", "fault-classification"],
+  "aliases": ["命令行错误诊断", "CLI故障分类", "退出码分析"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "PyMETA: Evaluating Student Code Diagnosis on and Beyond the First Execution Error",
+      "doi": "10.48550/arXiv.2606.30610",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

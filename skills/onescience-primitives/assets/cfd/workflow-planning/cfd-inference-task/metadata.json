@@ -1,0 +1,26 @@
+{
+  "name": "cfd-inference-task",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "在独立测试集上进行批量推理，恢复原始单位、网格和物理派生量，生成壁面压力剪切与积分气动力反演结果。",
+  "tags": ["inference", "batch-prediction", "cfd", "wall-shear-stress", "wall-pressure"],
+  "aliases": ["批量推理", "物理恢复"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "壁面压力剪切与积分气动力联合反演的批量推理与物理恢复方法",
+  "evidence_papers": [
+    {
+      "title": "Predicting the wall-shear stress and wall pressure through convolutional neural networks",
+      "doi": "10.48550/arXiv.2303.00706",
+      "year": 2023
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

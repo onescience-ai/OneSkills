@@ -1,0 +1,30 @@
+{
+  "name": "matchem-data-driven-screening-workflow",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T12:47:00Z",
+  "updated_at": "2026-09-15T12:47:00Z",
+  "description": "数据驱动光催化剂筛选工作流：整合数据获取、机器学习预测、DFT验证的完整筛选流程，用于从大规模材料库中识别高效CO2光催化剂。适用于需要端到端执行材料筛选、从数据获取到候选验证的完整研究项目。核心方法包括：Materials Project数据获取、特征工程、ML模型训练、候选排序、DFT验证。输出为筛选后的候选材料列表、性能预测报告和验证结果。",
+  "tags": ["data-driven", "high-throughput-screening", "CO2-photocatalyst", "workflow", "materials-discovery", "integrated-pipeline", "validation", "machine-learning", "DFT", "Materials-Project"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "标准工作流步骤的详细执行要求和输入输出契约",
+  "evidence_papers": [
+    {
+      "title": "Materials Project Documentation - ML & AI Applications",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Materials Project",
+      "authors": ["Materials Project Team"]
+    },
+    {
+      "title": "Materials Project Documentation - Catalysis Explorer",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Materials Project",
+      "authors": ["Materials Project Team"]
+    }
+  ]
+}

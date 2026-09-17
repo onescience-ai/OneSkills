@@ -1,0 +1,18 @@
+{
+  "name": "cfd-e3-gnn-model-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T20:07:00Z",
+  "updated_at": "2026-09-16T20:07:00Z",
+  "description": "E3等变图神经网络模型配置与训练任务：配置E3-equivariant GNN和Lagrangian simulator，执行训练并记录配置、指标与最佳权重",
+  "tags": ["model-training", "E3-equivariant", "GNN", "Lagrangian", "deep-learning", "PyTorch"],
+  "aliases": ["模型训练", "E3-GNN训练", "等变网络训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "E3等变粒子网络拉格朗日流体模拟的完整工作流与方法知识",
+  "evidence_papers": [
+    {"title": "Learning Lagrangian Fluid Mechanics with E(3)-Equivariant Graph Neural Networks", "doi": "arXiv:2305.15603", "year": 2023}
+  ]
+}

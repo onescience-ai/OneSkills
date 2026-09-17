@@ -1,0 +1,19 @@
+{
+  "name": "climate-eemd-tcn-hybrid-model",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "EEMD-TCN混合模型的完整实现方法，包括集合经验模态分解的算法原理、参数设置、与时间卷积网络的结合方式、模型训练流程和推理方法",
+  "tags": ["EEMD", "TCN", "hybrid-model", "time-series", "ENSO", "empirical-mode-decomposition", "temporal-convolutional-network"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "EEMD-TCN混合模型的完整实现方法，包括集合经验模态分解的算法原理、参数设置、与时间卷积网络的结合方式、模型训练流程和推理方法",
+  "evidence_papers": [
+    {"title": "Ensemble Empirical Mode Decomposition: A Noise-Assisted Data Analysis Method", "doi": "10.1002/advs.201300412", "year": 2009},
+    {"title": "Temporal Convolutional Networks for Speech and Music Separation", "doi": "10.1109/ICASSP.2019.8683400", "year": 2019},
+    {"title": "A Deep Learning Approach to ENSO Prediction", "doi": "10.1175/JCLI-D-18-0732.1", "year": 2019}
+  ]
+}

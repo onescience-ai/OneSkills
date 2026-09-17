@@ -1,0 +1,39 @@
+{
+  "name": "bio-protein-ligand-docking-geometric-refinement",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "蛋白配体对接几何修正任务：对对接采样产生的低质量姿态进行几何修正和物理有效性验证。包括立体冲突检测、键长键角校正、PoseBusters 验证和 MD relaxation。",
+  "tags": [
+    "geometric correction",
+    "pose refinement",
+    "PoseBusters",
+    "physical validity",
+    "steric clash",
+    "molecular dynamics relaxation",
+    "edge:workflow:bio-protein-ligand-docking-workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白配体对接几何修正与姿态验证",
+  "evidence_papers": [
+    {
+      "title": "Teaching diffusion models physics: reinforcement learning for physically valid diffusion-based docking",
+      "doi": "10.1039/d6sc02655a",
+      "year": 2026
+    },
+    {
+      "title": "BA-Pred and RMSD-Pred: Integrated Graph Neural Network Models for Accurate Protein-Ligand Binding Affinity and Binding Pose Prediction",
+      "doi": "10.1021/acs.jcim.5c02591",
+      "year": 2026
+    },
+    {
+      "title": "Enhanced Line Search Improves Robustness and Efficiency of Pose Sampling in Protein-Ligand Docking",
+      "doi": "10.1021/acs.jctc.6c01110",
+      "year": 2026
+    }
+  ]
+}

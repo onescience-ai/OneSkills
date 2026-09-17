@@ -1,0 +1,27 @@
+{
+  "name": "bio-singlecell-dataset-acquisition",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:47:00Z",
+  "updated_at": "2026-09-16T18:47:00Z",
+  "description": "面向单细胞RNA-seq分析任务，获取公开数据集（如immune_atlas.h5ad）的标准流程，包括数据源选择、下载验证和格式标准化",
+  "tags": ["single-cell", "RNA-seq", "dataset", "CellxGene", "HCA", "h5ad", "immune-atlas"],
+  "aliases": ["immune_atlas", "immune atlas", "单细胞数据集", "scRNA-seq dataset"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "单细胞RNA-seq数据集公开获取知识，包括immune_atlas.h5ad或类似免疫细胞图谱数据集的下载地址、文件格式、版本标识和数据血缘追踪方法",
+  "evidence_docs": [
+    {
+      "title": "CZ CELLxGENE Discover",
+      "url": "https://cellxgene.cziscience.com/",
+      "publisher": "Chan Zuckerberg Initiative",
+      "version": "2026",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

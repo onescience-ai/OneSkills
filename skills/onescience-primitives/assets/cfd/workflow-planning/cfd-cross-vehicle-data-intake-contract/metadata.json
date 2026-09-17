@@ -1,0 +1,33 @@
+{
+  "name": "cfd-cross-vehicle-data-intake-contract",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:06:00Z",
+  "updated_at": "2026-09-16T18:06:00Z",
+  "description": "面向跨车型家族汽车CFD数据接入与契约核验任务。核验样本可追溯性、变量定义完整性、单位坐标一致性、网格拓扑与使用许可，输出机器可读数据契约，确保数据质量满足迁移学习要求。",
+  "tags": ["cfd", "data-intake", "contract-validation", "cross-vehicle", "automotive", "aerodynamics", "data-quality", "traceability"],
+  "aliases": ["cross-vehicle data intake", "CFD data contract validation", "跨车型数据接入", "数据契约核验"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S013 数据接入与契约核验任务知识补充",
+  "evidence_papers": [
+    {
+      "title": "A Blueprint for Self-Evolving Coding Agents in Vehicle Aerodynamic Drag Prediction",
+      "doi": "N/A",
+      "year": 2026,
+      "arxiv": "2603.21698"
+    },
+    {
+      "title": "Multi-Granularity Conformal Prediction for Reliable Neural-Operator Automotive Aerodynamic Surrogates",
+      "doi": "N/A",
+      "year": 2026,
+      "arxiv": "2607.17297"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

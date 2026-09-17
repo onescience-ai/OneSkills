@@ -1,0 +1,19 @@
+{
+  "name": "cfd-fsi-moving-mesh-vibration-prediction-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "流固耦合移动网格振动时序预测的端到端工作流，从数据接入与契约核验、预处理与数据切分、ALE/Graph模型配置与训练、批量推理与物理恢复，到任务验收与适用域判定，共5步闭环流程。",
+  "tags": ["cfd", "workflow", "fsi", "fluid-structure-interaction", "moving-mesh", "ale", "viv", "vortex-induced-vibration", "time-series-prediction", "graph-simulator"],
+  "aliases": ["FSI振动预测工作流", "流固耦合时序预测流程"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "流固耦合移动网格振动时序预测工作流知识补充",
+  "evidence_papers": [
+    {"title": "Neural Latent Arbitrary Lagrangian-Eulerian Grids for Fluid-Solid Interaction", "doi": "", "year": null},
+    {"title": "Deep learning of vortex-induced vibrations", "doi": "10.48550/arXiv.1808.08952", "year": 2018}
+  ]
+}

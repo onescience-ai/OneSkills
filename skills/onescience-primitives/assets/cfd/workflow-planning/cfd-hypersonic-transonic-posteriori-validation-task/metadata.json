@@ -1,0 +1,26 @@
+{
+  "name": "cfd-hypersonic-transonic-posteriori-validation-task",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "数据驱动湍流代理模型构建的第四步：先验评估闭合项，再嵌入RANS或LES执行稳定后验推进，验证模型在真实CFD求解器中的表现。",
+  "tags": ["posteriori-validation", "CFD-coupling", "RANS", "LES", "hypersonic", "transonic"],
+  "aliases": ["后验验证", "CFD耦合验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "高超声速与跨声速边界层湍流代理",
+  "evidence_papers": [
+    {
+      "title": "Data-Driven Turbulence Modeling Approach for Cold-Wall Hypersonic Boundary Layers",
+      "doi": "10.48550/arXiv.2406.17446",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

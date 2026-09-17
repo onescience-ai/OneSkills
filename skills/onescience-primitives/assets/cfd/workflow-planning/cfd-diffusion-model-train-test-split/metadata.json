@@ -1,0 +1,22 @@
+{
+  "name": "cfd-diffusion-model-train-test-split",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向流场扩散模型训练的预处理与数据切分方法：统一物理量表示，按几何、工况或时间构造无泄漏切分，执行归一化或无量纲化，保存可逆变换统计量。核心约束为同一轨迹帧不得跨切分打散。",
+  "tags": ["data-split", "preprocessing", "normalization", "CFD", "train-test-split", "leakage-prevention"],
+  "aliases": ["数据切分预处理", "CFD数据分割"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "物理信息扩散模型流场分布生成",
+  "evidence_papers": [
+    {"title": "Learning Distributions of Complex Fluid Simulations with Diffusion Graph Networks", "doi": "10.48550/arXiv.2504.02843", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

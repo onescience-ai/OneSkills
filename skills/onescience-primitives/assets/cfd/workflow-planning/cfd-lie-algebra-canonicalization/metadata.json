@@ -1,0 +1,20 @@
+{
+  "name": "cfd-lie-algebra-canonicalization",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向任意Lie群下的等变神经算子设计，通过李代数正规化（Lie Algebra Canonicalization）实现对任意Lie群的统一等变性处理的知识卡片。该方法将任意Lie群的等变性约化为李代数层面的规范化操作，使等变网络可处理任意连续对称群，不仅限于常见的SO(2)/SE(2)。",
+  "tags": ["lie-algebra", "canonicalization", "arbitrary-lie-group", "equivariant-operator", "cfd", "symmetry-group", "normalization"],
+  "aliases": ["李代数正规化", "任意Lie群等变", "李代数规范化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Lie群等变网络对称PDE预测",
+  "evidence_papers": [
+    {"title": "Lie Algebra Canonicalization: Equivariant Neural Operators under arbitrary Lie Groups", "doi": "", "year": 0}
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

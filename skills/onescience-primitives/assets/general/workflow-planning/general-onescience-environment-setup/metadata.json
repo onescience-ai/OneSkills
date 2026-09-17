@@ -1,0 +1,15 @@
+{
+  "name": "general-onescience-environment-setup",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:57:00Z",
+  "updated_at": "2026-09-15T21:57:00Z",
+  "description": "OneScience工具链（CLI, Installer, Runtime）的安装、配置与环境激活知识，涵盖conda环境创建/复用、Python包安装、系统依赖检查、运行站点配置识别、环境就绪验证标准等完整流程。适用于任务执行前环境准备阶段，解决'无法执行onescience命令'和'conda环境不存在'等环境配置问题。",
+  "tags": ["onescience", "environment", "installation", "conda", "configuration", "setup"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience工具链（CLI, Installer, Runtime）在目标计算节点的正确安装、配置与环境激活方法的知识",
+  "evidence_papers": []
+}

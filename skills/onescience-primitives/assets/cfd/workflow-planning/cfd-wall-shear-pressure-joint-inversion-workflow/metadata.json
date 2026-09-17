@@ -1,0 +1,31 @@
+{
+  "name": "cfd-wall-shear-pressure-joint-inversion-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "从翼型壁面压力剪切及速度测量数据联合反演壁面压力剪切与积分气动力的完整工作流，包含数据接入、预处理、模型训练、推理和验收五个步骤。",
+  "tags": ["wall-shear-stress", "wall-pressure", "aerodynamic-force", "inversion", "workflow", "cfd"],
+  "aliases": ["壁面反演工作流", "气动力联合反演流程"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "壁面压力剪切与积分气动力联合反演的工作流知识",
+  "evidence_papers": [
+    {
+      "title": "Predicting the wall-shear stress and wall pressure through convolutional neural networks",
+      "doi": "10.48550/arXiv.2303.00706",
+      "year": 2023
+    },
+    {
+      "title": "Towards a Foundation-Model Paradigm for Aerodynamic Prediction in Three-dimensional Design",
+      "doi": "10.48550/arXiv.2604.18062",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,22 @@
+{
+  "name": "cfd-data-driven-rans-reynolds-stress-eddy-viscosity-closure",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2025-09-15T00:00:00Z",
+  "updated_at": "2025-09-15T00:00:00Z",
+  "description": "面向DNS与RANS配对湍流闭合数据，完成数据驱动RANS雷诺应力与涡黏闭合模型训练、先验-后验验证及适用域判定的完整场景级工作流规划卡。适用于湍流闭合模型开发、模型形式不确定性量化、以及物理约束机器学习增强湍流建模等任务。",
+  "tags": ["RANS", "turbulence", "closure", "machine-learning", "data-driven", "Reynolds-stress", "eddy-viscosity", "DNS", "CFD"],
+  "aliases": ["data-driven turbulence closure", "ML-augmented RANS", "neural network turbulence model"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "数据驱动RANS雷诺应力与涡黏闭合场景知识",
+  "evidence_papers": [
+    {"title": "Quantifying model form uncertainty in Reynolds-averaged turbulence models with Bayesian deep neural networks", "doi": "10.48550/arXiv.1807.02901", "year": 2018},
+    {"title": "Machine learning for RANS turbulence modeling of variable property flows", "doi": "10.48550/arXiv.2210.15384", "year": 2022},
+    {"title": "Deep Learning Methods for Reynolds-Averaged Navier–Stokes Simulations of Airfoil Flows", "doi": "10.48550/arXiv.1810.08217", "year": 2018},
+    {"title": "Perspectives on machine learning-augmented Reynolds-averaged and large eddy simulation models of turbulence", "doi": "10.1103/PhysRevFluids.6.050504", "year": 2022},
+    {"title": "Physics-informed machine learning approach for augmenting turbulence models: A comprehensive framework", "doi": "10.48550/arXiv.1701.07102", "year": 2017}
+  ]
+}

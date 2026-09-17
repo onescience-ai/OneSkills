@@ -1,0 +1,21 @@
+{
+  "name": "cfd-automated-meta-learning-pinn-cross-equation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向PDE方程族，使用自动化与元学习方法训练物理信息神经网络以跨多个偏微分方程求解，覆盖数据接入、模型训练、物理残差恢复、适用域评估全流程；适用于PDEBench/PINNacle等多方程基准测试场景",
+  "tags": ["pinn", "meta-learning", "automated-pde-solving", "cross-equation", "pdebench", "pinnacle", "physics-informed-neural-network"],
+  "aliases": ["Meta-PINN", "PINN agent", "PINN Transformer", "元学习PINN", "自动化PINN"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "自动化与元学习PINN跨方程求解",
+  "evidence_papers": [
+    {"title": "PINNacle: A Comprehensive Benchmark of Physics-Informed Neural Networks for Solving PDEs", "doi": "10.48550/arXiv.2306.08827", "year": 2023},
+    {"title": "PINNsAgent: Automated PDE Surrogation with Large Language Models", "doi": "N/A", "year": 2024},
+    {"title": "DATS: Difficulty-Aware Task Sampler for Meta-Learning Physics-Informed Neural Networks", "doi": "N/A", "year": 2024},
+    {"title": "PDEBench: An Extensive Benchmark for Scientific Machine Learning", "doi": "10.48550/arXiv.2202.00728", "year": 2022}
+  ]
+}

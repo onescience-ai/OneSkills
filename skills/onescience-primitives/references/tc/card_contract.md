@@ -8,7 +8,7 @@
 
 | 字段 | 用途 | TC 约定 |
 |---|---|---|
-| `name` | primitive-id | kebab-case，全局唯一，等于所在目录名 |
+| `name` | primitive-id | kebab-case，全局唯一，等于所在目录名；**必须能看出卡片讲什么**（哈希 id、纯编号、裸 `card`/`task` 一律不合格，见 §2c） |
 | `type` | 卡片种类 | `task` / `workflow` / `scenario` / `model` / `tool` / `dataset` / `datapipes` / `components` / `application` / `visualization` / `databases` / `workflow-planning` / `contracts` / `output-format` |
 | `domain` | 领域 | 用**目录名**：`bio` / `cfd` / `climate` / `general` / `matchem`（语义领域写进 description 与 tags） |
 | `version` | 版本 | semver，演进时递增 |
@@ -33,8 +33,8 @@
 | `edge:next:<task>` / `edge:prev:<task>` | Task Graph 前后置 | `edge:next:candidate-ranking` | 同 domain `tasks/<name>/` |
 | `edge:step:<step_id>:<task>` | Workflow 卡里源场景步骤与 Task 的映射 | `edge:step:s01:data-target-definition` | 第 3 段必须解析到同 domain `tasks/<name>/` |
 | `edge:fallback_method:<vocab>` | 前提不满足时的改道方法 | `edge:fallback_method:density-functional-theory` | 改道条件写在 knowledge.md「缺口与降级」节 |
-| `edge:scenario:<name>` | 指向 Scenario 卡（legacy `workflow-planning` 卡跨系接线用） | `edge:scenario:sc-1844e750` | 同 domain 的 `scenario/<name>/`；命中 legacy 卡后必须沿此边反查 Scenario 卡并完整展开 |
-| `edge:alias:<name>` | 同一场景两张 Scenario 卡（语义卡 ↔ 图谱 `sc-*` 卡）互指 | `edge:alias:sc-1844e750` | 同 domain 的 `scenario/<name>/`；两条谱系都要展开，互为别名而非替代 |
+| `edge:scenario:<name>` | 指向 Scenario 卡（legacy `workflow-planning` 卡跨系接线用） | `edge:scenario:matchem-2d-perovskite-lab-ml-synthesis-scenario` | 同 domain 的 `scenario/<name>/`；命中 legacy 卡后必须沿此边反查 Scenario 卡并完整展开 |
+| `edge:alias:<name>` | 同一场景两张 Scenario 卡（语义卡 ↔ 图谱卡）互指 | `edge:alias:matchem-mof-mechanical-stability-machine-learning-prediction-scenario` | 同 domain 的 `scenario/<name>/`；两条谱系都要展开，互为别名而非替代 |
 | `slot:<slot_name>:<value>` | 实体槽取值 | `slot:adsorbate:CO2` | 槽定义写在 knowledge.md「实体槽」节 |
 | `atom:<atom_id>` | 指向 `references/tc/atoms.jsonl` 的原子事实 | `atom:atom_mpp_mace_mae_energy` | 数值级召回时 grep atoms.jsonl；**id 必须真实存在** |
 | `runnable` | 裸标签：该卡所在任务/资源可执行落地 | `runnable` | 仅作检索关键词，不校验 |
@@ -58,7 +58,7 @@
 
 | 源字段 | 归并判据 | 落到卡的位置 |
 |---|---|---|
-| `workflow[i].step_name` | 字面完全相同且位于同一步序 | 合并为同一张 Task 骨架卡的 `name` |
+| `workflow[i].step_name` | 字面完全相同且位于同一步序 | 合并为同一张 Task 骨架卡的 `name`（中文步骤名须先译成英文 kebab 短名，见 §2c） |
 | `workflow[i].step_input[].var` | 变量集合相同 | Task 卡的 `slot:<key>:<value>`（变量名 → 槽名，取值域 → 槽值） |
 | `workflow[i].quality_gate[]` | 门禁原文相同 | Task 卡的 `edge:validation:<vocab>` + knowledge.md「验证契约」节 |
 | `workflow[i].outputs[]` | — | Task 卡 knowledge.md「输入输出契约」节 |
@@ -70,6 +70,25 @@
 - **禁止 1:1 直出**。若 N 个场景的某一步在 step_name + var 集合 + quality_gate 上完全一致，必须归并为 1 张 Task 卡，N 写进所属 Workflow 卡的 `src:scenarios_count`。
 - 场景差异只能落在槽取值上；如果差异大到必须改门禁或改操作序列，那它是另一个骨架族，开新卡而不是往现卡里塞条件分支。
 - Task 骨架卡不得写死具体场景名；具体场景名只出现在 Scenario 卡的 `src:scenario_id`。
+
+## 2c. 卡夹命名硬门禁（全领域、全知识类型，无例外）
+
+目录名是知识库的检索入口：catalog_search 与人工定位先看到的就是这一串字。它不是内部 id，
+不得用任何只对生成器有意义的写法。
+
+| 禁止形态 | 反例 | 为什么不行 | 正例 |
+|---|---|---|---|
+| 哈希 id | `it-01684b6f`、`tk-bio-9a8b7c6d`、`gap-a1b2c3d4` | 零信息 | `matchem-mof-mechanical-stability-ml-prediction` |
+| 裸占位词 | `card`、`task`、`workflow`、`component` | 全库同名，互相覆盖 | `cfd-batch-inference-physics-3d-turbulence-transformer-inst` |
+| 编号骨架 | `cfd-s001-workflow`、`b03-task` | 看不出讲什么 | `cnn-airfoil-steady-flow-surrogate` |
+| 中文/空格名 | `翼型阻力预测`、`my card` | 路径不可移植 | `3d-turbulence-transformer-multiscale-prediction` |
+
+四条约束：
+
+1. **中文源字段先译再当名**。`step_name`、场景中文名、论文中文标题不得直接拿作目录名（旧生成器把中文剔成 ASCII 后整串塌空，兜底成裸名 `card`，多卡互覆）。中文名写在 `knowledge.md` 一级标题与 `description` 里。
+2. **防撞名靠补词，不靠编号**。名字已占用就再加一个主题词（方法/对象/交付物），不得退化成 `-s001` 或 `-<哈希>`。
+3. **编号与年份本身不是病**。`global-canopy-height-map-2020`（年份）、`co2-cu111-slab`（Miller 指数）、`oc20`（数据集正式简称）都是合法名；只有当整名除编号、领域码和结构词外**再没别的字**时才拦。
+4. **入库前自检**：`python validate_knowledge.py --names-only --quiet` 必须 `RESULT: PASS`（CI 同一道门禁，哈希/裸名/编号骨架直接阻断 PR）。
 
 ## 3. knowledge.md 章节骨架（Task 卡）
 
@@ -108,8 +127,9 @@ assets/<domain>/
 | 文件 | 用途 |
 |---|---|
 | `references/tc/atoms.jsonl` | 原子事实（数值级召回），每行一个 JSON，靠 `atom:<id>` tag 回链卡片 |
-| `references/tc/gaps.jsonl` | 检索缺口记录，`retrieval_level != full` 时追加 |
 | `references/tc/knowledge_evolution_log.jsonl` | 知识演进日志（预留双向反馈闭环） |
+
+> 缺口记录**不在本目录**：它是运行期写入，落工作区状态目录 `.onescience/gaps.jsonl`（`retrieval_level != full` 或门禁命中时追加）。技能树是只读知识区，不得放任何运行期可写文件，否则单次会话就会改变知识库指纹（seta3 实测撞上：`references/tc/gaps.jsonl` 跑测中被追加 923→2479 字节，导致三臂单变量前提失效）。
 
 ## 6. 存量（legacy）卡与 TC 卡的共存
 

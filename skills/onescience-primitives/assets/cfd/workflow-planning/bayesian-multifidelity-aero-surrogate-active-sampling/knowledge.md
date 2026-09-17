@@ -4,6 +4,10 @@
 
 面向低高保真配对气动数据完成贝叶斯多保真气动代理与主动选样。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。
 
+## 适用范围
+
+本卡服务的问题类：面向低高保真配对气动数据，构建贝叶斯多保真代理模型，通过主动选样降低高保真数据获取成本，完成不确定性量化与适用域判定。适用于气动设计、优化、不确定性量化等场景，可迁移到其他多保真代理体系（如材料、气候等领域）。
+
 ## 工作流
 
 ### 步骤 1：数据接入与契约核验
@@ -109,10 +113,71 @@
 
 **操作指令**：`按{METRICS}评价s04结果，至少报告逐变量误差、边界误差、守恒或方程残差、最差样本和推理成本。使用{MAX_RELATIVE_L2}及任务物理门限给出PASS、REJECT或BLOCKED。若{RUN_OOD_TEST}为true，执行几何或工况外推测试并明确适用域，不得仅凭平均误差宣称工程可用。`
 
-## 关联文献
+## 关键参数
 
-1. **Disentangled Multi-Fidelity Deep Bayesian Active Learning** — sha256:46d6641b0bd446e4bf77da01c1b953bd899749150b148b110102682d15a0a84f
-2. **Physics guided machine learning using simplified theories** — [sha256:22e6457fa0c782ddd89fe4c626bb4361b1cc17a2f40af6748002f2fed648e460](https://arxiv.org/abs/2012.13343)
-3. **A composite neural network that learns from multi-fidelity data_ Application to function approximation and inver** — [sha256:57a308cebf92e39cb6282aca6541c52a226ff7c6349e976bf8bcef2fe3ddc492](https://arxiv.org/abs/1903.00104)
-4. **A Multi-fidelity Double-Delta Wing Dataset and Empirical Scaling Laws for GNN-based Aerodynamic Field Surrogate** — [sha256:aa4f7097183fe092966b99094d07f441012c5bb523ac679cef244a7f0ff6f997](https://arxiv.org/abs/2512.20941)
-5. **A Bayesian latent Gaussian process framework for aerodynamic uncertainty quantification** — [sha256:f60edde919bbd747bb418ad8c95665a99d5a6726fea409ef6e4d81b4d5104954](https://arxiv.org/abs/2606.28871)
+### 通用判据（方法层，同类体系可参考）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 多保真数据配对 | 低高保真配对气动数据 | 场景需求书 | 必须包含低高保真配对数据 |
+| 贝叶斯代理模型 | Bayesian surrogate、Gaussian process | 场景需求书 | 核心模型选择 |
+| 主动选样策略 | 基于不确定性量化 | 论文[5] | 通过不确定性指导选样 |
+| 不确定性分解 | 认知与随机不确定性 | 论文[5] | 区分两种不确定性来源 |
+| 校准误差 | NLL、coverage、calibration_error | 场景需求书 | 概率输出质量评估 |
+
+### 校准数值（体系专属值）
+
+以下数值来自 CFD_S015 体系，供量级校准；其他体系需以自身证据重新锚定。
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 相对误差门限 | 0.1 | 场景需求书 | 测试集放行阈值 |
+| 训练验证比例 | 0.7/0.15/0.15 | 场景需求书 | 切分配置 |
+| 推理批大小 | 8 | 场景需求书 | 按显存调整批量 |
+| 最佳权重 | best_checkpoint.pt | 场景需求书 | 通过训练门限权重 |
+
+## 边界与分流
+
+1. **数据不足时**：若低高保真配对数据不足，转向纯低保真代理或高斯过程回归
+2. **模型不收敛时**：检查超参数配置，尝试降低学习率或增加正则化
+3. **域外工况时**：执行几何或工况外推测试并明确适用域，域外工况需经CFD复核
+4. **概率输出异常时**：检查校准过程，重新执行不确定性量化
+
+## 质量检查
+
+1. **数据质量**：数据文件可读且样本可追溯，输入目标变量单位坐标定义完整
+2. **模型质量**：训练验证损失均为有限值，最佳权重可重新加载，配置环境随机种子可复现
+3. **概率质量**：概率输出有限且定义清楚，测试集未参与校准训练，区间覆盖率与宽度同时报告
+4. **验收质量**：统计与物理指标同时报告，最差样本可追溯，结论含适用域限制与复核建议
+
+## 回退策略
+
+1. **数据不足回退**：使用纯低保真代理或高斯过程回归
+2. **模型失败回退**：尝试不同超参数配置或简化模型结构
+3. **概率输出失败回退**：使用确定性代理模型，标注不确定性缺失
+4. **验收失败回退**：执行CFD复核，更新模型或调整适用域
+
+## 资源召回建议
+
+当用户需要以下资源时，应召回本卡片：
+- 贝叶斯多保真气动代理模型
+- 主动选样策略
+- 不确定性量化与校准
+- 气动设计与优化
+- 多保真数据处理
+- 适用域判定
+
+配套资源：
+- 数据接入与契约核验任务卡
+- 预处理与数据切分任务卡
+- 模型配置与训练任务卡
+- 概率推理与不确定性校准任务卡
+- 任务验收与适用域判定任务卡
+
+## 证据来源
+
+[1] Disentangled Multi-Fidelity Deep Bayesian Active Learning, 2018
+[2] Physics guided machine learning using simplified theories, Suraj Pawar等, Physics of Fluids, 2020, DOI: 10.1063/5.0038929
+[3] A composite neural network that learns from multi-fidelity data: Application to function approximation and inverse PDE problems, Xuhui Meng等, Journal of Computational Physics, 2019, DOI: 10.1016/j.jcp.2019.109020
+[4] A Multi-fidelity Double-Delta Wing Dataset and Empirical Scaling Laws for GNN-based Aerodynamic Field Surrogate, Yiren Shen等, AIAA SCITECH 2026 Forum, 2025, DOI: 10.2514/6.2026-0686
+[5] A Bayesian latent Gaussian process framework for aerodynamic uncertainty quantification, Geoffrey Davis等, arXiv, 2026, DOI: 10.48550/arXiv.2606.28871

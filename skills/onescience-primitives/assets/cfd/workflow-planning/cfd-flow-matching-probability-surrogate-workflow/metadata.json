@@ -1,0 +1,22 @@
+{
+  "name": "cfd-flow-matching-probability-surrogate-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "复杂流动概率代理的五阶段工作流：数据接入与契约核验 → 预处理与数据切分 → 模型配置与训练（Flow matching model） → 条件采样与物理一致性筛选 → 任务验收与适用域判定。定义各阶段的输入输出契约、质量门禁与流转条件。",
+  "tags": ["workflow", "flow-matching", "probability-surrogate", "five-stage", "complex-flow", "physics-consistency"],
+  "aliases": ["流匹配概率代理工作流", "Flow Matching surrogate workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "流匹配网络复杂流动概率代理工作流知识补充",
+  "evidence_papers": [
+    {"title": "Switched Flow Matching: Eliminating Singularities via Switching ODEs", "doi": "待确认", "year": 2024},
+    {"title": "Physics vs Distributions: Pareto Optimal Flow Matching with Physics Constraints", "doi": "待确认", "year": 2024},
+    {"title": "Dflow-SUR: Enhancing Generative Aerodynamic Inverse Design using Differentiation Throughout Flow Matching", "doi": "10.48550/arXiv.2512.08336", "year": 2025},
+    {"title": "GeoFunFlow-3D: A Physics-Guided Generative Flow Matching Framework for High-Fidelity 3D Aerodynamic Inference over Complex Geometries", "doi": "10.48550/arXiv.2604.23350", "year": 2026},
+    {"title": "Physics-Guided Generative Surrogates for Parametric Rarefied Flows with Neural-Field Auto-Decoders: A Pipeline-Level Study of Flow Matching and Diffusion", "doi": "10.48550/arXiv.2608.25454", "year": 2026}
+  ]
+}

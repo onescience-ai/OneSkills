@@ -1,0 +1,21 @@
+{
+  "name": "climate-cmip6-statistical-downscaling",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:00:00Z",
+  "updated_at": "2026-09-15T21:00:00Z",
+  "description": "CMIP6温度—降水区域气候统计降尺度方法知识卡片。涵盖经验统计降尺度(ESD)、分位数映射(EQM)、偏差校正、深度学习降尺度等方法，适用于将CMIP6全球气候模型输出降尺度到区域/本地尺度，提供温度和降水的高分辨率气候投影。关键参数包括训练期选择、验证指标(RMSE、相关系数、bias)、极端事件再现能力。",
+  "tags": ["CMIP6", "statistical-downscaling", "climate-projection", "temperature", "precipitation", "bias-correction", "EQM", "ESD", "regional-climate"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CMIP6温度—降水区域气候统计降尺度方法知识",
+  "evidence_papers": [
+    {"title": "Statistical Downscaling over Italy using EQM: CMIP6 Climate Projections for the 1985-2100 Period", "doi": "10.1038/s41597-025-05270-8", "year": 2025},
+    {"title": "CMIP6-MedPlus dataset: climate projections for the Mediterranean region using statistical downscaling", "doi": "10.5194/essd-2026-337", "year": 2026},
+    {"title": "Evaluating CMIP6 models under different statistical downscaling methods for climate assessments in the north of Chile", "doi": "10.5194/egusphere-egu24-12446", "year": 2024},
+    {"title": "Downscaling and bias-correction contribute considerable uncertainty to local climate projections in CMIP6", "doi": "10.22541/essoar.168286894.44910061/v1", "year": 2023},
+    {"title": "A machine-learning framework for spatio-temporal statistical downscaling of CMIP6 climate projections", "doi": "10.5194/ems2026-643", "year": 2026}
+  ]
+}

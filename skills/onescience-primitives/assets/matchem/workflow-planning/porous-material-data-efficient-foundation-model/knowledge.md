@@ -145,3 +145,42 @@
 ## 关联文献
 
 1. **A data-efficient foundation model for porous materials based on expert-guided supervised learning** — [doi_10_1038_s41467_026_69245_y](https://doi.org/10.1038/s41467-026-69245-y)
+
+## 批次补充（2026-09-16）
+
+### 补充1：图神经网络架构选择知识
+
+**来源**：基于SchNet和DimeNet论文证据补充
+
+#### 适用范围补充
+
+面向多孔材料数据高效基础模型构建任务，需要处理原子级结构信息、具备预训练-微调能力和迁移学习能力的机器学习模型选择场景。适用于晶体结构、孔径分布、吸附性能等多孔材料特性预测任务，不适用于传统机器学习模型（如线性回归、决策树等）无法处理原子级结构信息的场景。
+
+#### 关键参数补充
+
+**通用判据**：
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 图神经网络类型 | 消息传递神经网络（MPNN） | [论文2] | 基于原子间消息传递的图神经网络架构 |
+| 旋转不变性 | 必须满足 | [论文1][论文2] | 模型预测应与分子旋转无关 |
+| 连续滤波器 | 推荐使用 | [论文1] | 连续滤波器卷积层能更好建模局部相关性 |
+| 方向信息 | 推荐包含 | [论文2] | 方向消息传递能提高模型精度 |
+
+**校准数值**（以下数值来自SchNet和DimeNet体系，供量级校准；其他体系需以自身证据重新锚定）：
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| MD17基准测试提升 | DimeNet比SchNet平均提升76% | [论文2] | 在分子动力学轨迹预测任务上的性能提升 |
+| QM9基准测试提升 | DimeNet比SchNet平均提升31% | [论文2] | 在量子化学性质预测任务上的性能提升 |
+| 参数效率 | DimeNet使用不到1/4的参数达到更好性能 | [论文2] | 球形贝塞尔函数表示比高斯基表示更高效 |
+
+#### 边界与分流补充
+
+- **当多孔材料体系需要处理周期性边界条件时**：应选择支持周期性图表示的图神经网络变体，或对标准架构进行适配修改
+- **当计算资源有限时**：可优先考虑轻量级架构（如SchNet），在精度和效率间权衡
+- **当需要高精度预测时**：推荐使用DimeNet或MACE等更先进的架构，牺牲部分计算效率换取精度提升
+- **当数据量不足时**：应考虑迁移学习策略，使用预训练模型进行微调
+
+#### 证据来源
+
+[1] SchNet: A continuous-filter convolutional neural network for modeling quantum interactions, Kristof T. Schütt et al., Advances in Neural Information Processing Systems 30, 2017, DOI: 10.48550/arXiv.1706.08566
+[2] Directional Message Passing for Molecular Graphs, Johannes Gasteiger et al., International Conference on Learning Representations (ICLR 2020), 2020, DOI: 10.48550/arXiv.2003.03123

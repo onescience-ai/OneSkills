@@ -1,0 +1,37 @@
+{
+  "name": "30m-cropland-mapping-preprocessing",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "30米农田范围与面积制图的数据预处理任务。执行Landsat数据预处理流程，包括辐射定标、大气校正、几何配准和云掩膜，将原始数据转换为可用于分类的地表反射率产品。当使用合成数据时，需记录预处理配置或说明跳过原因。",
+  "tags": [
+    "remote-sensing",
+    "preprocessing",
+    "radiometric-calibration",
+    "atmospheric-correction",
+    "geometric-registration",
+    "cloud-masking",
+    "Landsat",
+    "task",
+    "climate",
+    "edge:workflow:30m-cropland-mapping-preprocessing-validation"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "遥感数据预处理工作流中辐射定标、几何配准和质量掩膜的具体作用与必要性；当使用替代数据源时如何保持工作流步骤完整性；Landsat数据预处理标准流程",
+  "evidence_papers": [
+    {
+      "title": "30 m 5-yearly land cover maps of Qilian Mountain Area (QMA_LC30) from 1990 to 2020",
+      "doi": "10.1038/s41597-024-03976-9",
+      "year": 2024
+    },
+    {
+      "title": "Aeolian sand migration induced land degradation and desertification hotspots identification in the semi-arid rain shadow regions of Anantapur, India",
+      "doi": "10.1038/s41598-025-31610-0",
+      "year": 2025
+    }
+  ]
+}

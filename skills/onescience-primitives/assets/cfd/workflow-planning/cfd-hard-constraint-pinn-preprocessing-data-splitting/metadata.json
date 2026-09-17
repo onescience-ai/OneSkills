@@ -1,0 +1,23 @@
+{
+  "name": "cfd-hard-constraint-pinn-preprocessing-data-splitting",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "硬约束PINN复杂几何边界求解的预处理与数据切分步骤，负责统一物理量与表示，按几何、工况或时间构造无泄漏切分。",
+  "tags": ["preprocessing", "data-split", "pinn", "hard-constraint", "complex-geometry", "cfd", "normalization"],
+  "aliases": ["预处理", "数据切分", "s02"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "硬约束PINN复杂几何边界求解预处理",
+  "evidence_papers": [
+    {"title": "Nonparametric Boundary Geometry in Physics Informed Deep Learning", "doi": "", "year": 2020, "url": ""},
+    {"title": "Solving Differential Equations with Constrained Learning", "doi": "", "year": 2020, "url": ""},
+    {"title": "Hybrid Boundary Physics-Informed Neural Networks for Solving Navier–Stokes Equations with Complex Boundary Conditions", "doi": "", "year": 2025, "url": "https://arxiv.org/abs/2507.17535"},
+    {"title": "SPINN: Separable Physics-Informed Neural Networks", "doi": "", "year": 2021, "url": ""},
+    {"title": "A Unified Hard-Constraint Framework for Solving Geometrically Complex PDEs", "doi": "", "year": 2023, "url": ""},
+    {"title": "Error analysis for physics informed neural networks (PINNs) approximating Kolmogorov PDEs", "doi": "", "year": 2021, "url": "https://arxiv.org/abs/2106.14473"}
+  ]
+}

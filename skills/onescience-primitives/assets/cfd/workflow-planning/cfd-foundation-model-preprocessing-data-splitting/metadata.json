@@ -1,0 +1,20 @@
+{
+  "name": "cfd-foundation-model-preprocessing-data-splitting",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "科学基础模型多物理算子迁移的预处理与数据切分任务：统一物理量与表示、归一化或无量纲化、按几何轨迹工况构造无泄漏切分，保存统计量与可逆变换。",
+  "tags": ["preprocessing", "data-splitting", "normalization", "foundation-model", "multiphysics"],
+  "aliases": ["data-normalization", "train-test-split"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S056 预处理与数据切分",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

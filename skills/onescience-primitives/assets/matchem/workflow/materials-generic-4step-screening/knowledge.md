@@ -72,6 +72,6 @@ materials 域中「有标签数据 + 训练模型 + 约束排序 + 独立验证�
 | 缺口 | 处置 |
 |---|---|
 | s02 无本地可执行落点（训练需要 GPU 与数据集） | 标注「无可执行落点，仅规划」，retrieval_level 最多到 partial |
-| s03 硬约束判定缺约束求解资源卡 | 追加 gaps.jsonl，`suggested_fill` 写「补约束筛选/优化器资源卡」 |
+| s03 硬约束判定缺约束求解资源卡 | 追加 .onescience/gaps.jsonl，`suggested_fill` 写「补约束筛选/优化器资源卡」 |
 | s04 缺高保真独立验证资源（DFT 求解器） | 只能用留出集统计验证，结论降级为「待验证预测」 |
 | 另 3 个 materials 骨架族尚未建卡（催化 19 / 电池 15 / 分离膜 12 场景） | 这 46 个场景当前只能命中 legacy 实例卡，须标 `legacy_instance: true` |

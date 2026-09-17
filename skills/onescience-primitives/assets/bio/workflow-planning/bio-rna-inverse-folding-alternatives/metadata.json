@@ -1,0 +1,28 @@
+{
+  "name": "bio-rna-inverse-folding-alternatives",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T11:00:00Z",
+  "updated_at": "2026-09-16T11:00:00Z",
+  "description": "RNA反向折叠备选方法工作流：提供RNA反向折叠的备选推理方法，包括随机序列基线、其他公开RNA设计工具。适用于主模型不可用时的降级方案。核心方法包括：随机序列生成、基线方法比较、工具选择。输出为基线候选序列和比较结果。",
+  "tags": ["RNA inverse folding", "baseline", "random sequence", "alternative methods", "tools", "RNAinverse", "INFO-RNA", "DSS-Opt"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "RNA反向折叠的备选推理方法（如随机序列基线、其他公开RNA设计工具）",
+  "evidence_papers": [
+    {
+      "title": "Comprehensive datasets for RNA design, machine learning, and beyond",
+      "doi": "10.1038/s41598-025-07041-2",
+      "year": 2025,
+      "venue": "Scientific Reports"
+    },
+    {
+      "title": "RiboDiffusion: tertiary structure-based RNA inverse folding with generative diffusion models",
+      "doi": "10.1093/bioinformatics/btae259",
+      "year": 2024,
+      "venue": "Bioinformatics"
+    }
+  ]
+}

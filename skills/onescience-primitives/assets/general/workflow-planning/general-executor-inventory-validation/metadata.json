@@ -1,0 +1,18 @@
+{
+  "name": "general-executor-inventory-validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "executor inventory 完整性校验规范，规定 orchestrator 在继续规划前必须做集合校验 set(all_executor_skills) == set(read_executor_skills)，若不相等则停止后续 proposal 融合和 Global Plan 生成，必须补齐缺失的 executor 技能读取后再继续",
+  "tags": ["orchestrator", "executor", "inventory", "validation", "set-check", "completeness"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "executor inventory 完整性校验知识 - 从归因报告 Issue 2 提取",
+  "evidence_papers": [
+    {"title": "OneScience Orchestrator SKILL.md 规范", "doi": "internal-spec", "year": 2026},
+    {"title": "归因报告 Task 260 Issue 2 优化计划", "doi": "attr-report-260", "year": 2026}
+  ]
+}

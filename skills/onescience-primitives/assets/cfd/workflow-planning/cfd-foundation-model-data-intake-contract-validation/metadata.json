@@ -1,0 +1,20 @@
+{
+  "name": "cfd-foundation-model-data-intake-contract-validation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "科学基础模型多物理算子迁移的数据接入与契约核验任务：接入多物理多分辨率大规模预训练数据，核验样本可追溯性、变量定义、单位坐标系、网格拓扑、时间工况范围、缺失值和使用许可，输出机器可读数据契约。",
+  "tags": ["data-intake", "contract-validation", "foundation-model", "multiphysics", "data-audit"],
+  "aliases": ["data-contract-verification", "dataset-validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S056 数据接入与契约核验",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,26 @@
+{
+  "name": "cfd-multiscale-operator-model-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T11:46:00Z",
+  "updated_at": "2026-09-16T11:46:00Z",
+  "description": "多尺度算子模型训练任务，训练Wavelet Neural Operator与Localized-kernel Operator完成从输入物理场到目标物理量的映射。适用于算子学习工作流的模型训练阶段，确保模型收敛性与可复现性。",
+  "tags": ["model training", "wavelet neural operator", "localized kernel", "PDE", "CFD", "operator learning", "multi-scale", "PyTorch"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多尺度算子模型训练",
+  "evidence_papers": [
+    {
+      "title": "Multiwavelet-based Operator Learning for Differential Equations",
+      "doi": "2109.13459",
+      "year": 2021
+    },
+    {
+      "title": "Neural Operators with Localized Integral and Differential Kernels",
+      "doi": "",
+      "year": 2023
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "general-json-schema-validation-contract",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T21:40:00Z",
+  "updated_at": "2026-09-16T21:40:00Z",
+  "description": "面向结构化数据交付场景，使用 JSON Schema 定义报告契约的必填字段、类型约束、数组结构及输出格式，确保交付物可解析且与任务身份一致的通用方法论。",
+  "tags": ["json-schema", "validation", "contract", "report-delivery", "data-validation"],
+  "aliases": ["JSON Schema验证", "报告契约校验", "结构化输出约束"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约（必填字段、任务身份、数组约束、输出格式）",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema: A Media Type for Describing JSON Documents",
+      "url": "https://json-schema.org/draft/2020-12/json-schema-core",
+      "publisher": "IETF (Internet Engineering Task Force)",
+      "version": "draft-bhutton-json-schema-01",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

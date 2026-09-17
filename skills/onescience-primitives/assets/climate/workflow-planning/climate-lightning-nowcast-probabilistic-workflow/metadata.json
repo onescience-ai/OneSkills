@@ -1,0 +1,52 @@
+{
+  "name": "climate-lightning-nowcast-probabilistic-workflow",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "雷达与环境场驱动的0-6小时闪电发生临近预报概率工作流。涵盖从多源数据时空对齐、方法配置验证、分时段概率场生成、超阈值告警区域提取到独立验证的完整业务化流程。适用于气象雷达、闪电历史观测和对流环境场融合的闪电临近预报场景。核心方法包括：雷达反射率与环境场网格匹配、概率阈值提取（0.3/0.5/0.7）、邻域验证指标（FSS/CSI）计算。",
+  "tags": ["lightning", "nowcasting", "radar", "environmental fields", "probabilistic forecast", "threshold extraction", "FSS", "CSI", "neighborhood verification", "0-6 hours", "convective", "operational workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达与环境场驱动的0-6小时闪电发生临近预报工作流技术规范，包括预检、时空对齐、方法验证、概率场生成、超阈值提取和独立验证",
+  "evidence_papers": [
+    {
+      "title": "Probabilistic weather forecasting with machine learning",
+      "doi": "10.1038/s41586-024-08252-9",
+      "year": 2024,
+      "venue": "Nature"
+    },
+    {
+      "title": "Pangu-Weather: Accurate medium-range global weather forecasting with 3D neural networks",
+      "doi": "10.1038/s41586-023-06185-3",
+      "year": 2023,
+      "venue": "Nature"
+    },
+    {
+      "title": "Skillful nowcasting of precipitation with deep generative models",
+      "doi": "10.1038/s41586-021-03854-z",
+      "year": 2021,
+      "venue": "Nature"
+    },
+    {
+      "title": "Lightning nowcasting with aerosol-informed machine learning",
+      "doi": "10.21203/rs.3.rs-2616886/v1",
+      "year": 2023,
+      "venue": "Research Square"
+    },
+    {
+      "title": "Deep learning for lightning prediction: A review and benchmark",
+      "doi": "10.1007/s10712-023-09730-9",
+      "year": 2023,
+      "venue": "Surveys in Geophysics"
+    },
+    {
+      "title": "Seamless lightning nowcasting with recurrent-convolutional deep learning",
+      "doi": "10.1175/AIES-D-22-0043.1",
+      "year": 2022,
+      "venue": "Artificial Intelligence for the Earth Systems"
+    }
+  ]
+}

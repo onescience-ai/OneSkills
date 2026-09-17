@@ -1,0 +1,40 @@
+{
+  "name": "cfd-porous-media-data-driven-prediction",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T12:42:00Z",
+  "updated_at": "2026-09-16T12:42:00Z",
+  "description": "面向多孔介质微流动与输运 CFD 数据，完成流动场数据驱动预测。适用于需要从 CFD 模拟数据中训练神经网络代理模型以预测多孔介质内部速度、压力、浓度等物理场的研究场景。核心方法包括 CNN surrogate 和 Neural differential equation，要求产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经 CFD 复核。",
+  "tags": ["porous media", "data-driven", "CFD", "CNN surrogate", "neural differential equation", "microflow", "transport", "flow field prediction", "surrogate model", "physical consistency"],
+  "aliases": ["多孔介质微流动预测", "porous media microflow prediction", "transport flow field prediction"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔与复杂输运流动场数据驱动预测",
+  "evidence_papers": [
+    {
+      "title": "Data-Driven Design Optimization of Streaming-Potential-Mediated Electrokinetic Transport of Viscoelastic Fluids in Microchannels",
+      "doi": "",
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.29939"
+    },
+    {
+      "title": "Advances in Scientific Machine Learning for Coupled Fluid Flow and Transport",
+      "doi": "",
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2606.19562"
+    },
+    {
+      "title": "Online Gate-Driven Flow Control in Resin Transfer Moulding Using a Neural-Network Surrogate",
+      "doi": "",
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.29521"
+    },
+    {
+      "title": "Turbulent Microscale Flow Field Prediction In Porous Media Using Convolutional Neural Networks",
+      "doi": "",
+      "year": 2026
+    }
+  ]
+}

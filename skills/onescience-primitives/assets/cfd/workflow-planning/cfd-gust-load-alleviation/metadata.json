@@ -1,0 +1,22 @@
+{
+  "name": "cfd-gust-load-alleviation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T21:06:00+08:00",
+  "updated_at": "2026-09-16T21:06:00+08:00",
+  "description": "面向翼型阵风载荷缓解场景，提供基于深度学习的阵风响应预测与主动控制策略规划，覆盖数据接入、预处理、模型训练、闭环仿真与评估全流程。",
+  "tags": ["gust-load-alleviation", "compliant-wing", "deep-learning", "atmospheric-turbulence", "load-reduction"],
+  "aliases": ["阵风载荷缓解", "大气湍流响应", "柔性翼"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "机翼阵风与跨声速流动主动控制",
+  "evidence_papers": [
+    {
+      "title": "A Deep Learning Density Shaping Model Predictive Gust Load Alleviation Control of a Compliant Wing Subjected to Atmospheric Turbulence",
+      "doi": "",
+      "year": 2025
+    }
+  ]
+}

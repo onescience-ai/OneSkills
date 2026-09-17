@@ -255,6 +255,7 @@ tags 用于快速过滤，必须覆盖多个维度：
 10. **补充证据溯源**：evidence_docs 每条含 url/publisher/accessed_at；evidence_user 每条含 provided_at/location；权威黑名单来源不得出现
 11. **脚手架禁词零命中**（通用类卡）：对 knowledge.md 与 metadata.json 执行禁词检查，命中即不合格
 12. **变体召回自测**（通用类卡）：≥2 条"同需求换体系"变体查询仍能命中本卡；不命中则回重写身份面，而非追加实例词
+13. **目录名有语义**（全领域全类型）：卡夹名不得为哈希 id、裸占位词或编号骨架（见"命名约束"禁止清单）；`python validate_knowledge.py --names-only` 必须零报错
 
 ## 命名规则
 
@@ -271,6 +272,26 @@ tags 用于快速过滤，必须覆盖多个维度：
 - 长度 ≤ 80 字符
 - 不含特殊字符（除连字符外）
 - 语义清晰，可从名称推断卡片内容
+
+### 禁止清单（硬门禁，不限领域、不限卡片类型）
+
+目录名是知识库的检索入口——召回时模型先看到的就是一串名字。以下名字一律不合格：
+
+| 形态 | 反例 | 为什么不行 | 正例 |
+|------|------|-----------|------|
+| 哈希 id | `it-01684b6f`、`tk-bio-9a8b7c6d`、`gap-a1b2c3d4` | 十六进制串不含任何语义 | `bio-3d-molecular-generation-1d-language-3d-diffusion-inst` |
+| 裸占位词 | `card`、`task`、`workflow`、`scenario`、`tmp` | 全库同名，既无法检索还会互相覆盖 | `matchem-2d-perovskite-lab-ml-synthesis-scenario` |
+| 编号骨架 | `cfd-s001-workflow`、`b03-task` | 编号只对生成器有意义，读者看不出讲什么 | `cnn-airfoil-steady-flow-surrogate` |
+| 中文/空格/纯数字 | `翼型阻力预测`、`my card`、`20260910` | 破坏路径可移植性与大小写一致性 | `cfd-batch-inference-physics-3d-turbulence-transformer-inst` |
+
+- 拿不出语义名时**必须回到卡片内容重取名**，禁止退回"用 id 当名字"或"加哈希后缀防撞名"。
+- 防撞名的正确做法：补一个主题词（方法/对象/交付物），而不是加编号。
+- 编号/年份本身不是罪：`global-canopy-height-map-2020`（年份）、`co2-cu111-slab`（Miller 指数）、`oc20`（数据集正式简称）都是合法名——只有当**名字里除了编号和结构词就剩不下别的**才算零信息。
+- 入库前自检（不联网、纯本地）：
+
+```bash
+python validate_knowledge.py --names-only --quiet   # RESULT 必须为 PASS
+```
 
 ## 与 onescience-primitives 的集成
 

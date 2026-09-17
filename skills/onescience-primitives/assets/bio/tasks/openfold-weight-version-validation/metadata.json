@@ -1,0 +1,23 @@
+{
+  "name": "openfold-weight-version-validation",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:30:00Z",
+  "updated_at": "2026-09-16T15:30:00Z",
+  "description": "OpenFold模型权重版本验证与许可检查：验证finetuning_ptm_2.pt等权重文件的版本、来源、训练数据和许可条款，确保模型权重可追溯且符合使用要求。适用于OpenFold模型消融实验前的权重验证环节。",
+  "tags": [
+    "OpenFold",
+    "model weight",
+    "version validation",
+    "license check",
+    "finetuning_ptm_2.pt",
+    "protein structure prediction",
+    "edge:workflow:general-task-execution-exception-recovery"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OpenFold模型权重版本验证方法和许可检查流程",
+  "evidence_papers": []
+}

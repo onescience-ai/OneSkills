@@ -1,0 +1,24 @@
+{
+  "name": "cfd-data-preprocessing-splitting-task",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "数据驱动风场与非定常流反馈控制的数据预处理与切分任务。统一物理量表示，按几何、工况或时间构造无泄漏切分，保证训练、验证、测试集独立性。",
+  "tags": [
+    "data-preprocessing",
+    "data-splitting",
+    "normalization",
+    "wind-farm",
+    "flow-control",
+    "cfd",
+    "cfd_s084"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "预处理与数据切分任务",
+  "evidence_papers": [],
+  "scenario_id": "CFD_S084"
+}

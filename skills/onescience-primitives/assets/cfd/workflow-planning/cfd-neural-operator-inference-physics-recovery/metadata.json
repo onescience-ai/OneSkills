@@ -1,0 +1,23 @@
+{
+  "name": "cfd-neural-operator-inference-physics-recovery",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "神经算子批量推理与物理恢复任务：加载训练完成的checkpoint，在独立测试集上执行推理，反归一化恢复原始物理单位、坐标网格、边界掩膜及任务派生量。保存逐样本结果和推理耗时，禁止使用测试标签修正预测。产出预测结果目录、推理清单和耗时统计。",
+  "tags": ["neural operator", "inference", "physics recovery", "denormalization", "test set", "timing", "CFD", "batch inference"],
+  "aliases": ["批量推理", "物理恢复", "反归一化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "连续时间与随机生成神经算子预测场景知识补充",
+  "evidence_papers": [
+    {
+      "title": "CFO: Learning Continuous-Time PDE Dynamics via Flow-Matched Neural Operators",
+      "doi": "arXiv:2303.08797",
+      "year": 2023,
+      "url": "https://arxiv.org/abs/2303.08797"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "matchem-quantum-chemistry-data-acquisition",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T20:36:00Z",
+  "updated_at": "2026-09-16T17:30:00Z",
+  "description": "参考量子化学或第一性原理数据的获取方式、数据要求和公开数据集来源。适用于机器学习原子势训练、材料模拟等任务，包括数据格式（extxyz/npz）、内容要求（结构、能量、力、应力）和获取途径（用户上传、Materials Project、AFLOW、NOMAD）。",
+  "tags": ["quantum-chemistry", "first-principles", "DFT", "data-acquisition", "public-datasets", "materials-science", "extxyz", "npz", "Materials-Project", "AFLOW", "NOMAD", "MLIP-training"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "参考量子化学或第一性原理数据的获取方式、数据要求和公开数据集来源",
+  "evidence_papers": [
+    {
+      "title": "Accurate, transferable, and verifiable machine-learned interatomic potentials for layered materials",
+      "doi": "10.1038/s41467-026-74482-2",
+      "year": 2026,
+      "venue": "Nature Communications"
+    }
+  ],
+  "merged_batches": ["harvest-2026-09-16"]
+}

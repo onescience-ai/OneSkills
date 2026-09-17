@@ -1,0 +1,20 @@
+{
+  "name": "cfd-probabilistic-inference-calibration",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:12:00Z",
+  "updated_at": "2026-09-16T18:12:00Z",
+  "description": "CFD流场不确定性反演工作流第四步：执行概率推理输出预测分布与不确定性分解，并执行校准评估。",
+  "tags": ["probabilistic-inference", "uncertainty-calibration", "CFD", "NLL", "coverage"],
+  "aliases": ["概率推理", "不确定性校准"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "概率推理与不确定性校准步骤知识补充",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

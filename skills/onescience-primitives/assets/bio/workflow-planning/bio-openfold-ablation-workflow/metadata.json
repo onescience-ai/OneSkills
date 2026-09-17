@@ -1,0 +1,41 @@
+{
+  "name": "bio-openfold-ablation-workflow",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向 OpenFold 组件消融与结构泛化评测的标准工作流定义，涵盖输入校验、权重准备、模型推理、结果筛选四个标准步骤，以及模型权重版本验证和许可检查流程",
+  "tags": ["OpenFold", "ablation", "protein-structure", "workflow", "AlphaFold2", "model-evaluation"],
+  "aliases": ["OpenFold消融", "结构泛化评测", "组件消融"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OpenFold组件消融与结构泛化评测的标准工作流定义和步骤约束；OpenFold模型权重版本验证方法和许可检查流程",
+  "evidence_docs": [
+    {
+      "title": "OpenFold Inference Documentation",
+      "url": "https://openfold.readthedocs.io/en/latest/Inference.html",
+      "publisher": "OpenFold Team",
+      "version": "2024",
+      "accessed_at": "2026-09-16T00:00:00Z"
+    },
+    {
+      "title": "OpenFold Installation Documentation",
+      "url": "https://openfold.readthedocs.io/en/latest/Installation.html",
+      "publisher": "OpenFold Team",
+      "version": "2024",
+      "accessed_at": "2026-09-16T00:00:00Z"
+    },
+    {
+      "title": "OpenFold GitHub Repository",
+      "url": "https://github.com/aqlaboratory/openfold",
+      "publisher": "aqlaboratory",
+      "version": "2024",
+      "accessed_at": "2026-09-16T00:00:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

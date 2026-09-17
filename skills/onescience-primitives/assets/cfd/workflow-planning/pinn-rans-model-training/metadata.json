@@ -1,0 +1,19 @@
+{
+  "name": "pinn-rans-model-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "PINN湍流RANS均值流求解与闭合的模型配置与训练步骤，负责训练Turbulence-augmented PINN完成指定输入到目标物理量的映射，记录训练过程与最佳权重。",
+  "tags": ["PINN", "RANS", "model-training", "turbulence-augmented", "CFD", "neural-network"],
+  "aliases": ["模型训练", "PINN训练", "training"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PINN湍流RANS均值流求解模型配置与训练",
+  "evidence_papers": [
+    {"title": "Physics-informed neural networks for solving Reynolds-averaged Navier–Stokes equations", "doi": "2107.10711", "year": 2021},
+    {"title": "Generalizable turbulence closures across bluff-body shapes by PINN-based solver-agnostic training", "doi": "2607.04491", "year": 2026}
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "admet-smiles-prediction-workflow",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:35:00Z",
+  "updated_at": "2026-09-15T21:35:00Z",
+  "description": "ADMET性质预测的完整工作流契约，包括s01-s04各步骤的输入输出格式、AUROC计算方法、QED/SA评分接口和化学合法性校验规则。基于SMILES基础模型驱动的ADMET预测任务，涵盖数据准备、模型推理、性质筛选和评估验证。",
+  "tags": ["ADMET", "SMILES", "molecular property prediction", "workflow", "AUROC", "QED", "SA", "chemical validity"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "ADMET性质预测的完整工作流契约，包括s01-s04各步骤的输入输出格式、AUROC计算方法、QED/SA评分接口和化学合法性校验规则",
+  "evidence_papers": [
+    {
+      "title": "DCPM-ADMET: fusion of dual-component pre-trained model and molecular fingerprints to enhance drug ADMET properties prediction",
+      "doi": "10.1186/s13321-026-01244-z",
+      "year": 2026
+    },
+    {
+      "title": "AI-driven computational drug design: tools, workflow and challenges",
+      "doi": "10.1039/d6ra02374f",
+      "year": 2026
+    },
+    {
+      "title": "An End-User Audit of Reproducibility, Data Leakage, and Overfitting of the Top-Ranked ADMET Prediction Models in TDC Leaderboards",
+      "doi": "10.1021/acs.jcim.6c00819",
+      "year": 2026
+    }
+  ]
+}

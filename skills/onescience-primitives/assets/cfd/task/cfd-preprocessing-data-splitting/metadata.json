@@ -1,0 +1,19 @@
+{
+  "name": "cfd-preprocessing-data-splitting",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2025-09-15T00:00:00Z",
+  "updated_at": "2025-09-15T00:00:00Z",
+  "description": "DNS与RANS配对湍流闭合数据的预处理与切分任务卡，涵盖物理量统一、无量纲化、按几何/工况/轨迹无泄漏切分、统计量保存等操作，确保训练数据质量与可复现性。",
+  "tags": ["preprocessing", "data-splitting", "normalization", "train-val-test", "turbulence", "DNS"],
+  "aliases": ["数据预处理", "数据切分", "无量纲化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "数据驱动RANS雷诺应力与涡黏闭合-预处理",
+  "evidence_papers": [
+    {"title": "Machine learning for RANS turbulence modeling of variable property flows", "doi": "10.48550/arXiv.2210.15384", "year": 2022},
+    {"title": "Deep Learning Methods for Reynolds-Averaged Navier–Stokes Simulations of Airfoil Flows", "doi": "10.48550/arXiv.1810.08217", "year": 2018}
+  ]
+}

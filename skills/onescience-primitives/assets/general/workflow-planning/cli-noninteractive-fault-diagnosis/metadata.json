@@ -1,0 +1,35 @@
+{
+  "name": "cli-noninteractive-fault-diagnosis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向命令行接口的非交互执行场景，诊断CLI进程故障、退出码异常和标准错误输出，覆盖参数校验、超时、沙箱限制和退出状态分类。",
+  "tags": ["cli", "fault-diagnosis", "exit-code", "non-interactive", "error-handling", "command-line"],
+  "aliases": ["CLI故障诊断", "命令行退出码", "非交互执行错误"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识；知识缺失证据：归因分析CLI未正常退出或未产生有效响应；知识内容与边界：覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，不扩展到任务领域结论",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "argparse — Parser for command-line options, arguments and subcommands",
+      "url": "https://docs.python.org/3/library/argparse.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Built-in Exceptions",
+      "url": "https://docs.python.org/3/library/exceptions.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

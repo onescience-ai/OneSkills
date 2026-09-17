@@ -1,0 +1,25 @@
+{
+  "name": "general-task-execution-exception-recovery",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:25:00Z",
+  "updated_at": "2026-09-16T15:25:00Z",
+  "description": "任务执行异常恢复策略与离线执行方案：当任务因网络连接、依赖安装或环境问题被阻塞时，提供系统化的异常恢复流程，包括离线安装、本地源码安装、替代环境配置等。适用于科学计算任务执行失败后的恢复场景，特别是涉及网络受限环境的HPC集群。",
+  "tags": [
+    "exception recovery",
+    "offline execution",
+    "task blocking",
+    "network failure",
+    "dependency installation",
+    "HPC",
+    "scientific computing",
+    "edge:task:openfold-weight-version-validation",
+    "edge:task:protein-sequence-input-validation"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "任务执行异常恢复策略和离线执行方案",
+  "evidence_papers": []
+}

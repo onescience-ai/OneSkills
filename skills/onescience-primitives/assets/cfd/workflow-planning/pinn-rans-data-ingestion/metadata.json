@@ -1,0 +1,18 @@
+{
+  "name": "pinn-rans-data-ingestion",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "PINN湍流RANS均值流求解与闭合的数据接入与契约核验步骤，负责接入RANS方程与稀疏均值流湍流数据，核验样本、变量、单位、网格坐标及许可，建立数据清单与机器可读契约。",
+  "tags": ["PINN", "RANS", "data-ingestion", "contract-validation", "CFD", "turbulence"],
+  "aliases": ["数据接入", "契约核验", "data audit"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PINN湍流RANS均值流求解数据接入与契约核验",
+  "evidence_papers": [
+    {"title": "Physics-informed neural networks for solving Reynolds-averaged Navier–Stokes equations", "doi": "2107.10711", "year": 2021}
+  ]
+}

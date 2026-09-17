@@ -1,0 +1,17 @@
+{
+  "name": "bio-go-ontology-validator",
+  "type": "component",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T16:20:00Z",
+  "updated_at": "2026-09-16T16:20:00Z",
+  "description": "Gene Ontology标签验证器：验证GO ID唯一性、功能描述去重、与官方OBO文件一致性。确保蛋白质功能预测任务的标签体系权威可靠。",
+  "tags": ["Gene-Ontology", "validation", "OBO", "go-basic.obo", "edge:task:bio-go-annotation-validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Gene Ontology标签唯一性验证规则",
+  "evidence_papers": [
+    {"title": "GOBoost: leveraging long-tail Gene Ontology terms for accurate protein function prediction", "doi": "10.1093/bioinformatics/btaf267", "year": 2025}
+  ]
+}

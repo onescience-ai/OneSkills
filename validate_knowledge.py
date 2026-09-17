@@ -24,16 +24,22 @@ Checks
 10. runnable:script implies a non-empty script/ directory inside the card.
 11. Vocabulary edges (edge:method/operation/validation/fallback_method) are
     reported as INFO only - they are allowed to have no card.
-12. Card folder name must carry meaning: opaque hash ids (it-xxxxxxxx,
-    tk-<dom>-xxxxxxxx, sc-xxxxxxxx, wf-<dom>-xxxxxxxx) are hard errors for every
-    knowledge type; metadata.name must equal the folder name (hard error for TC
-    cards, warning for legacy ones). Non-ascii / underscore styles are warnings
-    only (legacy folders still use them). Applies to every domain and type.
+12. Card folder name must carry meaning. Zero-information names are hard errors
+    for every domain and every knowledge type: opaque hash ids (it-xxxxxxxx,
+    tk-<dom>-xxxxxxxx, sc-xxxxxxxx, wf-<dom>-xxxxxxxx, any -<hex> tail), bare
+    placeholders (card / task / workflow / scenario ...), and id skeletons that
+    hold no content word (cfd-s001-workflow, b03-task).  metadata.name must equal
+    the folder name (hard error for TC cards, warning for legacy ones).  Style
+    issues stay warnings - non-ascii, '_' and upper-case names are still readable,
+    and legacy folders from other contributors were never named by our generator.
+    `--names-only` runs just this gate, so CI can block junk names without being
+    held back by the legacy contract errors.
 
 Usage
 -----
     python validate_knowledge.py            # TC cards only
     python validate_knowledge.py --all      # also lint legacy 9-field contract
+    python validate_knowledge.py --names-only   # folder-name gate only (used by CI)
     python validate_knowledge.py --json     # machine readable report
 
 Exit code: 0 = no errors, 1 = errors found.
@@ -95,13 +101,18 @@ def load_atoms():
     return ids
 
 
-def scan_cards():
-    """Return list of (rel, domain, category, name, metadata dict|None)."""
+def scan_cards(assets=None):
+    """Return list of (rel, domain, category, name, metadata dict|None).
+
+    `assets` is overridable so the name gate can be pointed at a fixture tree
+    (negative self-test) without touching the shipped library.
+    """
     out = []
-    if not ASSETS.exists():
+    assets = Path(assets) if assets else ASSETS
+    if not assets.exists():
         return out
-    for meta in sorted(ASSETS.glob("*/*/*/metadata.json")):
-        parts = meta.relative_to(ASSETS).parts
+    for meta in sorted(assets.glob("*/*/*/metadata.json")):
+        parts = meta.relative_to(assets).parts
         domain, category, name = parts[0], parts[1], parts[2]
         rel = "assets/" + "/".join(parts[:3])
         try:
@@ -261,16 +272,95 @@ card_dirs_set = set()
 # The folder name is the first thing a human (or a search) reads, and TC edges
 # address cards by it.  The generator used to emit sha1[:8] folder names
 # (it-01684b6f / tk-bio-9a8b7c6d) and nothing rejected them, so 2927 piled up.
-# Hash ids are now hard errors; style issues stay warnings so the gate is not
-# blocked by legacy folders that were never named by the generator.
+# Zero-information names are hard errors; style issues stay warnings so the gate
+# is not blocked by legacy folders that were never named by the generator.
+# The rules mirror pkp/renderer/cardformat.name_quality on purpose (the harvester
+# and this linter must not disagree about what counts as a junk name); keep the
+# two in sync when either side changes.  Stdlib-only here: this file ships with
+# the knowledge repo and runs on contributors' machines without pkp installed.
 HASH_NAME = re.compile(r"^(?:it|sc)-[0-9a-f]{6,}$|^(?:wf|tk)-[a-z]+-[0-9a-f]{6,}$", re.I)
+HASH_TAIL = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*-[0-9a-f]{8,}$")
+HEX_TOKEN = re.compile(r"^[a-f][0-9a-f]{4,}$")      # 5-7 chars, must start with a letter
+HEX_LONG = re.compile(r"^[0-9a-f]{8,}$")
+ID_TOKEN = re.compile(r"^(?:[a-z]{1,2}\d{2,4}|\d{2,4})$")
 NON_ASCII = re.compile(r"[^\x00-\x7F]")
+# Words that only describe the card's plumbing, never its subject.
+STRUCTURAL_WORDS = {
+    "workflow", "workflows", "task", "tasks", "datapipe", "datapipes",
+    "scenario", "scenarios", "tool", "tools", "model", "models",
+    "dataset", "datasets", "inst", "instance", "app", "step", "steps",
+    "pipeline", "data", "knowledge", "card", "general", "final",
+    "component", "components", "module", "modules", "service", "services",
+    "application",
+}
+GENERIC_NAMES = {
+    "card", "cards", "knowledge", "workflow", "workflows", "task", "tasks",
+    "scenario", "scenarios", "new", "new-card", "tmp", "temp", "test",
+    "untitled", "default", "misc", "unknown", "unnamed", "draft", "sample",
+    "placeholder",
+    # The distilled-primitive vocabulary is bare category words too: a folder
+    # named "component" says as little as one named "card" (the category parent
+    # already carries that information).
+    "tool", "tools", "component", "components", "module", "modules",
+    "service", "services", "application", "dataset", "datasets", "model",
+    "models", "inst", "instance", "app", "step", "steps",
+}
+# Genuine dataset / tool names that look like id skeletons but are not.
+NAME_ALLOW = {"oc20", "iberia01", "dp"}
+
+
+def _is_numbered_stub(name, domain):
+    """`cfd-s001-workflow` is an id wearing a name; `co2-cu111-slab` is not.
+
+    A number alone is never evidence of a junk name -- years (2020), Miller
+    indices (cu111), resolutions (0-05) and isotope ratios (12c13c) all carry
+    real information.  Only flag the name when *every* token is an id, the
+    domain code, or a structural word, i.e. nothing is left that says what the
+    card is about.
+    """
+    toks = [t for t in name.split("-") if t]
+    if not any(ID_TOKEN.match(t) for t in toks):
+        return False
+    filler = STRUCTURAL_WORDS | {t for t in domain.lower().split("-") if t}
+    return all(t in filler or ID_TOKEN.match(t) for t in toks)
+
+
+def _has_hash_token(name):
+    for tok in name.split("-"):
+        if not (HEX_TOKEN.match(tok) or HEX_LONG.match(tok)):
+            continue
+        # Require digits inside the token: a pure-letter hex-looking token
+        # ("deadbeef", "cafebabe") is more likely a real word than a sha prefix.
+        if sum(c.isdigit() for c in tok) >= 2:
+            return True
+    return False
+
+
+def name_defect(name, domain):
+    """Return why this folder name carries no information, or None if readable."""
+    n = (name or "").strip().lower()
+    if not n:
+        return "empty"
+    if n in NAME_ALLOW:
+        return None
+    if n in GENERIC_NAMES:
+        return "placeholder name"
+    if len(n) <= 2:
+        return "name too short to say anything"
+    if (HASH_NAME.match(n) or HASH_TAIL.match(n) or _has_hash_token(n)
+            or re.fullmatch(r"[0-9a-f]{8,}", n)):
+        return "opaque hash id"
+    if _is_numbered_stub(n, domain):
+        return "id skeleton with no content word"
+    return None
 
 
 def check_names(rel, domain, category, name, data):
     """Folder-name gate: applies to every domain and every knowledge type."""
-    if HASH_NAME.match(name):
-        err(rel, "card folder is an opaque hash id: %s" % name)
+    defect = name_defect(name, domain)
+    if defect:
+        err(rel, "card folder name carries no information (%s): %s"
+            % (defect, name))
     if data and data.get("name") and data["name"] != name:
         # TC cards are addressed by folder name (edge targets are folder names), so
         # a diverging metadata.name splits search from reference.  Legacy cards
@@ -281,16 +371,24 @@ def check_names(rel, domain, category, name, data):
         warn(rel, "card folder contains non-ascii characters: %s" % name)
     if "_" in name:
         warn(rel, "card folder uses '_' instead of kebab-case: %s" % name)
+    if name != name.lower():
+        warn(rel, "card folder is not lowercase: %s" % name)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--all", action="store_true", help="also lint legacy cards strictly")
+    ap.add_argument("--names-only", action="store_true",
+                    help="run only the folder-name gate (CI-blocking: the legacy "
+                         "contract rules still have pre-existing violations)")
     ap.add_argument("--json", action="store_true", help="machine readable output")
     ap.add_argument("--quiet", action="store_true", help="only print the summary")
+    ap.add_argument("--assets", default=None,
+                    help="lint another assets root instead of "
+                         "skills/onescience-primitives/assets")
     args = ap.parse_args()
 
-    cards = scan_cards()
+    cards = scan_cards(args.assets)
     by_type = {}
     dirs = {}
     for rel, domain, category, name, data, cdir in cards:
@@ -301,6 +399,27 @@ def main():
 
     for rel, domain, category, name, data, cdir in cards:
         check_names(rel, domain, category, name, data)
+
+    if args.names_only:
+        report = {
+            "cards_scanned": len(cards),
+            "errors": len(errors),
+            "warnings": len(warnings),
+        }
+        if args.json:
+            print(json.dumps({"summary": report, "errors": errors,
+                              "warnings": warnings}, ensure_ascii=False, indent=2))
+        else:
+            if not args.quiet:
+                for e in errors:
+                    print("[ERROR] %s :: %s" % (e["card"], e["message"]))
+                for w in warnings:
+                    print("[WARN ] %s :: %s" % (w["card"], w["message"]))
+            print("--- summary (names-only) ---")
+            for k, v in report.items():
+                print("%s: %s" % (k, v))
+            print("RESULT: %s" % ("PASS" if not errors else "FAIL"))
+        return 0 if not errors else 1
 
     tc_count = 0
     for rel, domain, category, name, data, cdir in cards:

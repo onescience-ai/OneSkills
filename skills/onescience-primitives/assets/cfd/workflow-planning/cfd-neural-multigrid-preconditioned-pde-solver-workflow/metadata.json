@@ -1,0 +1,24 @@
+{
+  "name": "cfd-neural-multigrid-preconditioned-pde-solver-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "神经多重网格与预条件线性PDE求解的完整工作流，包含数据接入、预处理切分、模型训练、神经-数值耦合求解、验收评估五个标准步骤，每个步骤有明确的输入输出契约和质量门禁。",
+  "tags": ["workflow", "neural-multigrid", "learned-preconditioner", "PDE-solver", "pipeline", "data-contract", "model-training", "coupled-solver", "acceptance-testing"],
+  "aliases": ["神经PDE求解工作流", "学习预条件器工作流"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "神经多重网格与预条件线性PDE求解工作流",
+  "evidence_papers": [
+    {"title": "UGrid: An Efficient-And-Rigorous Neural Multigrid Solver for Linear PDEs", "doi": "10.48550/arXiv.2408.04846", "year": 2024},
+    {"title": "Learning Preconditioner for Conjugate Gradient PDE Solvers", "doi": "10.48550/arXiv.2305.16432", "year": 2023},
+    {"title": "MGCNN: a learnable multigrid solver for sparse linear systems from PDEs on structured grids", "doi": "10.48550/arXiv.2312.11093", "year": 2023}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,15 @@
+{
+  "name": "matchem-onescience-research-workflow-trigger",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "onescience-research-workflow专家技能的触发条件和输入契约。用于指导orchestrator如何正确调用工作流规划专家，包括触发条件、输入格式、返回格式和异常处理。核心方法包括：intent_profile解析、planner_propposal生成、异常诊断和降级策略。适用于需要自动化工作流规划的科研任务编排场景。",
+  "tags": ["onescience", "orchestrator", "workflow-planning", "expert-skill", "trigger-condition", "input-contract", "planner-proposal", "exception-handling", "degradation-strategy", "research-automation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "onescience-research-workflow专家技能的触发条件和输入契约",
+  "evidence_papers": []
+}

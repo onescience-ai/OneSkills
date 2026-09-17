@@ -1,0 +1,18 @@
+{
+  "name": "bio-alphafold2-structure-features",
+  "type": "model",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T16:20:00Z",
+  "updated_at": "2026-09-16T16:20:00Z",
+  "description": "AlphaFold2结构特征提取：从AlphaFold2预测结构中提取pLDDT置信度分数和几何特征，用于蛋白质功能预测的结构模态输入。",
+  "tags": ["AlphaFold2", "pLDDT", "structure-features", "DeepMind", "edge:task:bio-protein-language-model-integration"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "AlphaFold2 pLDDT结构特征提取方式",
+  "evidence_papers": [
+    {"title": "Highly accurate protein structure prediction with AlphaFold", "doi": "10.1038/s41586-021-03819-2", "year": 2021},
+    {"title": "PANDA-3D: protein function prediction based on AlphaFold models", "doi": "10.1093/nargab/lqae094", "year": 2024}
+  ]
+}

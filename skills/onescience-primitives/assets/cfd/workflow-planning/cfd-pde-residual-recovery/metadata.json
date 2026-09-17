@@ -1,0 +1,20 @@
+{
+  "name": "cfd-pde-residual-recovery",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "在查询配点或网格上恢复解场、导数、边界值与方程残差的步骤：加载训练好的模型权重，使用自动微分或离散算子计算PDE残差，保存解场与残差场，禁止仅凭训练残差判定方程已求解。",
+  "tags": ["residual-recovery", "pde-solve", "autodiff", "cfd", "solution-field"],
+  "aliases": ["s04", "方程求解", "残差恢复"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "符号与稀疏物理学习控制方程发现残差恢复",
+  "evidence_papers": [
+    {"title": "Physics informed deep learning (Part II): Data-driven discovery of nonlinear partial differential equations", "doi": "10.48550/arXiv.1711.10566", "year": 2017},
+    {"title": "Competitive Physics Informed Networks", "doi": "10.48550/arXiv.2204.11144", "year": 2022},
+    {"title": "D-CIPHER: Discovery of Closed-form Partial Differential Equations", "doi": "", "year": 2022}
+  ]
+}

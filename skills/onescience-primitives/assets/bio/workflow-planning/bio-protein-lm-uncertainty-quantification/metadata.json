@@ -1,0 +1,20 @@
+{
+  "name": "bio-protein-lm-uncertainty-quantification",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:19:00Z",
+  "updated_at": "2026-09-16T18:19:00Z",
+  "description": "面向蛋白语言模型预测不确定度量化任务，提供bootstrap采样、模型集成和置信区间估计的知识卡片，适用于评估蛋白变异效应预测结果的可靠性",
+  "tags": ["uncertainty quantification", "bootstrap", "confidence interval", "model ensemble", "protein language model", "prediction reliability"],
+  "aliases": ["uncertainty estimation", "prediction confidence", "model uncertainty"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白语言模型预测不确定度的量化方法，包括bootstrap采样估计、多次随机种子推理的方差分析、模型集成预测的置信区间",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

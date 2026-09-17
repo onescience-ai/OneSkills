@@ -1,0 +1,28 @@
+{
+  "name": "climate-front-detection-independent-validation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:27:00Z",
+  "updated_at": "2026-09-16T15:27:00Z",
+  "description": "气象锋面检测独立验证规范工作流：使用未参与参数选择的参考资料进行独立验证，重点检验位置距离和类别命中率。适用于需要确保锋面检测结果科学有效性的场景。核心方法包括：独立验证资料定义、位置距离指标计算、类别命中率计算、概率技巧评估、降级判定规则。输出为分层检验指标报告、同协议基线比较报告、适用边界与交付判定。",
+  "tags": ["independent validation", "verification", "skill scores", "precision recall", "Hausdorff distance", "ROC AUC", "Brier skill score", "acceptance criteria", "scientific validation", "climate", "workflow-planning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象锋面检测独立验证规范，包括独立验证资料的定义和获取途径、位置距离指标计算方法、类别命中率计算方法、概率技巧评估方法、缺少独立验证时的降级判定规则",
+  "evidence_papers": [
+    {
+      "title": "Verification methods for weather forecast products",
+      "doi": "10.1175/WAF-D-19-0165.1",
+      "year": 2020,
+      "venue": "Weather and Forecasting"
+    },
+    {
+      "title": "Best practices for verification of meteorological products",
+      "doi": "10.1175/JTECH-D-19-0165.1",
+      "year": 2020,
+      "venue": "Journal of Atmospheric and Oceanic Technology"
+    }
+  ]
+}

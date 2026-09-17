@@ -1,0 +1,11 @@
+{
+  "name": "json_schema_report_contract",
+  "type": "contract_primitive",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "JSON Schema报告交付契约，规定必填字段、任务身份、数组约束及输出格式",
+  "tags": ["JSON", "Schema", "报告", "契约", "校验"]
+}

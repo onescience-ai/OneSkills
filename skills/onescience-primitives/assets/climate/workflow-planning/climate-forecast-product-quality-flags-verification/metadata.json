@@ -1,0 +1,24 @@
+{
+  "name": "climate-forecast-product-quality-flags-verification",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向气象预报任务的产品质量标志与独立验证规范。涵盖气象预报产品质量标志编码体系、质量标志与不确定性关联关系、产品元数据标准、独立验证规范和验收门限规范。适用于所有earth域预报任务的产品生成与验证阶段。",
+  "tags": ["climate", "forecast", "quality-flags", "independent-verification", "acceptance-criteria", "product-metadata", "workflow-planning"],
+  "aliases": ["weather product quality", "forecast verification protocol", "meteorological quality code"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报产品质量标志编码规范、气象预报独立验证规范、气象预报任务的验收门限规范",
+  "evidence_papers": [
+    {"title": "Verification of Space Weather Forecasts issued by the Met Office Space Weather Operations Centre", "doi": "10.1002/2017SW001683", "year": 2018},
+    {"title": "Skills for forecasting space weather", "doi": "10.1002/wea.3076", "year": 2018},
+    {"title": "Examining Entropic Unbalanced Optimal Transport and Sinkhorn Divergences for Spatial Forecast Verification", "doi": "10.48550/arXiv.2412.16063", "year": 2024}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

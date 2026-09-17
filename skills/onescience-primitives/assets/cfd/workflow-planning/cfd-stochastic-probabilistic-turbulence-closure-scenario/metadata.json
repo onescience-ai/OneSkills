@@ -1,0 +1,37 @@
+{
+  "name": "cfd-stochastic-probabilistic-turbulence-closure-scenario",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向多尺度湍流粗细状态轨迹，采用随机微分方程与概率粗粒化方法构建湍流闭合模型的完整场景；涵盖数据接入、预处理、Neural SDE/概率模型训练、闭合项预测与CFD耦合、任务验收与适用域判定全流程。",
+  "tags": ["turbulence", "stochastic-differential-equation", "coarse-graining", "closure-model", "neural-SDE", "LES", "RANS", "multi-scale", "machine-learning", "fluid-dynamics"],
+  "aliases": ["SDE turbulence closure", "probabilistic coarse-graining", "neural SDE closure", "stochastic multiscale turbulence"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "随机微分与概率粗粒化湍流闭合",
+  "evidence_papers": [
+    {
+      "title": "A physics-aware, probabilistic machine learning framework for coarse-graining high-dimensional systems in the Small Data regime",
+      "doi": "10.1016/j.jcp.2019.05.053",
+      "year": 2019
+    },
+    {
+      "title": "Learning Stochastic Multiscale Models",
+      "doi": "10.48550/arXiv.2506.22655",
+      "year": 2025
+    },
+    {
+      "title": "Echo State Network for two-dimensional turbulent moist Rayleigh-Bénard convection",
+      "doi": "10.1103/PhysRevE.103.053107",
+      "year": 2021
+    },
+    {
+      "title": "Machine-learning energy-preserving nonlocal closures for turbulent fluid flows and inertial tracers",
+      "doi": "10.1103/PhysRevFluids.7.024305",
+      "year": 2022
+    }
+  ]
+}

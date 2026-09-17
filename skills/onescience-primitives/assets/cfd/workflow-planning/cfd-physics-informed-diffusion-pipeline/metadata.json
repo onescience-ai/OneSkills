@@ -1,0 +1,24 @@
+{
+  "name": "cfd-physics-informed-diffusion-pipeline",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "物理信息扩散模型流场分布生成的端到端工作流，覆盖从数据接入到任务验收的五个阶段：数据接入与契约核验、预处理与数据切分、模型配置与训练、条件采样与物理一致性筛选、任务验收与适用域判定。每个阶段有明确输入输出契约与质量门禁，支持独立执行与回退。",
+  "tags": ["workflow", "pipeline", "physics-informed", "diffusion-model", "CFD", "flow-field"],
+  "aliases": ["扩散模型CFD工作流", "PIDM pipeline"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "物理信息扩散模型流场分布生成",
+  "evidence_papers": [
+    {"title": "Physics-Informed Diffusion Models", "doi": "", "year": 2024},
+    {"title": "Learning Distributions of Complex Fluid Simulations with Diffusion Graph Networks", "doi": "10.48550/arXiv.2504.02843", "year": 2025},
+    {"title": "Self-Augmented Diffusion Guidance for Physics-Informed Generation", "doi": "10.48550/arXiv.2608.26748", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

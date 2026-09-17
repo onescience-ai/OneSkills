@@ -1,0 +1,28 @@
+{
+  "name": "bio-sc-data-public-dataset-acquisition",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "单细胞RNA-seq数据集公开获取知识卡片。涵盖H5AD格式单细胞数据集的主要获取渠道（CellxGene、HCA Data Portal、Zenodo、GEO）、免疫细胞图谱数据集定位方法、数据集验证流程（格式检查、字段完整性、细胞/基因标识唯一性）以及数据血缘追踪规范。",
+  "tags": [
+    "bio",
+    "single-cell",
+    "H5AD",
+    "CellxGene",
+    "dataset",
+    "data-acquisition",
+    "immune-atlas",
+    "workflow-planning"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "单细胞RNA-seq数据集公开获取知识，包括immune_atlas.h5ad或类似免疫细胞图谱数据集的下载地址、文件格式、版本标识和数据血缘追踪方法",
+  "evidence_papers": [
+    {"title": "CZ CELLxGENE Discover: a single-cell data platform for scalable exploration, analysis and modeling of aggregated data", "doi": "10.1093/nar/gkae1142", "year": 2024},
+    {"title": "Single-cell multi-omics analysis of the immune response in COVID-19", "doi": "10.1038/s41591-021-01329-2", "year": 2021},
+    {"title": "scPerturb: harmonized single-cell perturbation data", "doi": "10.1038/s41592-023-02144-y", "year": 2024}
+  ]
+}

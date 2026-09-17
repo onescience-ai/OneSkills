@@ -1,0 +1,20 @@
+{
+  "name": "cfd-pinn-loss-weighting-strategies",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T11:00:00Z",
+  "updated_at": "2026-09-16T11:00:00Z",
+  "description": "面向 PINN 求解偏微分方程的损失权重平衡策略：解决多目标损失函数（数据项、PDE残差项、边界条件项）之间竞争导致的训练不稳定和精度下降问题。涵盖静态权重调参、基于最大似然估计的自适应权重、梯度归一化和多任务动态权重分配方法，适用于不可压缩 NS 方程及其他物理约束优化场景。",
+  "tags": ["loss balancing", "weight tuning", "self-adaptive", "multi-objective optimization", "PINN training", "maximum likelihood estimation", "gradient normalization", "Navier-Stokes", "physics-informed"],
+  "aliases": ["lbPINN", "loss weighted PINN", "dynamic loss weight"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PINN不可压Navier-Stokes正问题求解",
+  "evidence_papers": [
+    {"title": "NSFnets: Physics-informed neural networks for the incompressible Navier-Stokes equations", "doi": "10.1016/j.jcp.2020.109951", "year": 2020},
+    {"title": "Self-adaptive loss balanced Physics-informed neural networks for the incompressible Navier-Stokes equations", "doi": "10.1016/j.neucom.2022.05.015", "year": 2022},
+    {"title": "UniPINN: A Unified PINN Framework for Multi-task Learning", "doi": "10.48550/arXiv.2603.10466", "year": 2026}
+  ]
+}

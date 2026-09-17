@@ -2,10 +2,10 @@
   "name": "porous-material-data-efficient-foundation-model",
   "type": "workflow-planning",
   "domain": "matchem",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-09",
-  "updated_at": "2026-09-09",
+  "updated_at": "2026-09-16T18:05:00Z",
   "description": "基于 NULL 的「多孔材料数据高效基础模型构建」工作流。研究对象为多孔材料数据高效基础模型构建。本场景从关联论文提炼为可直接执行的具体材料化学任务；关联论文用于理解背景和核验依据，不替代本次任务的数据与结论。覆盖从数据与目标定义到独立验证与结论的完整管线。获得可复现、可审计的研究结果，并明确结果证据、适用范围、不确定度和不能得出的结论。",
   "tags": [
     "based",
@@ -19,9 +19,33 @@
     "null",
     "porous",
     "supervised",
+    "graph-neural-network",
+    "SchNet",
+    "DimeNet",
+    "MACE",
     "edge:scenario:matchem-porous-material-data-efficient-foundation-model-construction-scenario",
     "edge:workflow:matchem-data-objective-definition-root-cause-model-training-workflow"
   ],
+  "aliases": ["图神经网络", "基础模型", "MACE", "SchNet", "DimeNet"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔材料领域基础模型的定义、标准架构（如MACE、SchNet、DimeNet等图神经网络模型）、模型选择依据和适用条件",
+  "evidence_papers": [
+    {
+      "title": "SchNet: A continuous-filter convolutional neural network for modeling quantum interactions",
+      "doi": "10.48550/arXiv.1706.08566",
+      "year": 2017
+    },
+    {
+      "title": "Directional Message Passing for Molecular Graphs",
+      "doi": "10.48550/arXiv.2003.03123",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-16: 补充图神经网络架构选择知识"],
+  "conflicts": [],
   "scenario_id": "多孔材料数据高效基础模型构建",
   "source_papers": [
     "doi_10_1038_s41467_026_69245_y"

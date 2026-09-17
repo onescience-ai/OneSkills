@@ -1,0 +1,15 @@
+{
+  "name": "bio-openfold-model-specification",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T20:41:00Z",
+  "updated_at": "2026-09-15T20:41:00Z",
+  "description": "OpenFold模型规格与计算资源需求：详细描述OpenFold蛋白质结构预测模型的架构、组件接口、数据管线契约和GPU依赖关系。适用于需要部署、优化或扩展OpenFold模型的研究场景。核心内容包括：模型架构规格、输入输出接口、数据预处理流程、GPU内存需求、计算性能基准。输出为模型部署配置、性能优化建议和资源规划方案。",
+  "tags": ["OpenFold", "model specification", "GPU requirements", "computational resources", "data pipeline", "interface", "AlphaFold2", "protein structure", "deep learning", "HPC"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OpenFold模型、组件和数据管线的详细规格和接口契约",
+  "evidence_papers": []
+}

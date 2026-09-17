@@ -1,0 +1,18 @@
+{
+  "name": "bio-cdr-rmsd-calculation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "CDR-RMSD计算方法和验证标准，用于衡量生成CDR构象与参考构象的结构差异，包括结构比对算法、阈值定义和异常值处理",
+  "tags": ["antibody", "CDR", "RMSD", "structure-comparison", "validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CDR-RMSD的计算方法和验证标准，包括结构比对算法、阈值定义、异常值处理规则",
+  "evidence_papers": [
+    {"title": "ABlooper: fast accurate antibody CDR loop structure prediction with accuracy estimation", "doi": "10.1093/bioinformatics/btac016", "year": 2022},
+    {"title": "Fast, accurate antibody structure prediction from deep learning on massive set of natural antibodies", "doi": "10.1038/s41467-023-38063-x", "year": 2023}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "cfd-rom-data-ingestion-contract-validation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向跨几何参数CFD数据集，执行数据接入与契约核验：检查文件可读性、样本可追溯性、变量与单位完整性、坐标系定义、网格拓扑、缺失值及使用许可，输出机器可读数据契约。",
+  "tags": ["data-ingestion", "contract-validation", "cross-geometry", "dataset-audit", "CFD-data"],
+  "aliases": ["数据接入", "契约核验", "数据清单"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD数据接入与契约核验的任务知识",
+  "evidence_papers": [
+    {"title": "Real-Time Monitoring of MHD Liquid Metal Flows with Shallow Recurrent Decoders", "doi": "arxiv:2608.28366", "year": 2026}
+  ]
+}

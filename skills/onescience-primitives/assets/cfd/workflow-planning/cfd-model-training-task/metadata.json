@@ -1,0 +1,31 @@
+{
+  "name": "cfd-model-training-task",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "训练CNN、Aerodynamic foundation model完成翼型壁面压力剪切及速度测量数据到目标物理量的映射。",
+  "tags": ["model-training", "deep-learning", "cfd", "wall-shear-stress", "wall-pressure"],
+  "aliases": ["模型训练", "CNN训练", "基础模型训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "壁面压力剪切与积分气动力联合反演的模型配置与训练方法",
+  "evidence_papers": [
+    {
+      "title": "Predicting the wall-shear stress and wall pressure through convolutional neural networks",
+      "doi": "10.48550/arXiv.2303.00706",
+      "year": 2023
+    },
+    {
+      "title": "Towards a Foundation-Model Paradigm for Aerodynamic Prediction in Three-dimensional Design",
+      "doi": "10.48550/arXiv.2604.18062",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

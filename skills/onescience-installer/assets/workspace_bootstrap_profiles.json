@@ -1,15 +1,33 @@
 [
   {
-    "id": "onescience_wheel_bootstrap",
+    "id": "onescience_pip_extra_bootstrap",
     "lifecycle_status": "stable",
-    "workspace_kind": "wheel_install",
+    "workspace_kind": "pip_extra_install",
     "supported_installer_backends": [
       "dcu_remote_install",
       "dcu_local_install",
       "gpu_remote_install",
       "gpu_local_install"
     ],
+    "install": {
+      "command_template": "pip install \"onescience[{resolved_extra}]\" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai",
+      "extra_naming_convention": "{domain}-{accelerator}",
+      "known_extras": [
+        "earth-dcu",
+        "cfd-dcu",
+        "matchem-dcu",
+        "bio-dcu",
+        "all-dcu",
+        "earth-gpu",
+        "cfd-gpu",
+        "matchem-gpu",
+        "all-gpu"
+      ],
+      "notes": "默认路径：按 {domain}-{accelerator} 命名规则直接拼 extra，一条 pip 命令安装，无需预下载 wheel。bio 领域仅支持 dcu，不得拼出 bio-gpu。"
+    },
     "wheel": {
+      "role": "fallback_probe_only",
+      "when": "仅当 pip 报 'does not provide the extra' 或加速卡无法判定时才启用",
       "wheel_dir": "~/onescience_wheels",
       "wheel_glob": "onescience*.whl",
       "download_wheel_command": "pip download --no-deps onescience -d {wheel_dir} -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai",
@@ -17,8 +35,8 @@
       "install_command_template": "pip install \"onescience[{resolved_extra}]\" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai"
     },
     "notes": [
-      "当前稳定工作区引导 profile",
-      "负责 OneScience wheel 发现、extras 探测与基于 extra 的 onescience 安装入口，不属于硬件环境安装语义"
+      "当前稳定工作区引导 profile：一条 pip 命令为主，wheel 下载与 METADATA 探测仅作失败兜底",
+      "负责 OneScience 基于 extra 的 pip 安装入口，不属于硬件环境安装语义"
     ]
   }
 ]

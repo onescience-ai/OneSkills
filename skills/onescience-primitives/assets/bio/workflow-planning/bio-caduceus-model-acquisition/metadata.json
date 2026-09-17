@@ -1,0 +1,22 @@
+{
+  "name": "bio-caduceus-model-acquisition",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T19:09:21Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "Caduceus模型获取、安装和验证。包含模型下载地址、安装步骤、版本信息、许可证和双向建模配置要求。Caduceus是首个RC等变双向长程DNA语言模型，基于Mamba架构扩展BiMamba和MambaDNA组件。",
+  "tags": ["Caduceus", "DNA_language_model", "bidirectional", "model_acquisition", "bioinformatics", "RC-equivariant", "Mamba", "DNA-sequence-modeling", "genomics", "long-range"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DNA语言模型生物任务基准评测中Caduceus模型的下载地址、安装步骤、版本信息和许可证",
+  "evidence_papers": [
+    {
+      "title": "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling",
+      "doi": "10.48550/arXiv.2403.03234",
+      "year": 2024,
+      "venue": "ICML 2024"
+    }
+  ]
+}

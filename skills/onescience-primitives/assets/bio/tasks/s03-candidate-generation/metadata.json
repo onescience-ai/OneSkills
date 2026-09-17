@@ -1,0 +1,29 @@
+{
+  "name": "s03-candidate-generation",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "s03步骤：候选结构生成与参数记录任务。使用RFdiffusion生成功能位点约束的蛋白骨架候选，记录生成参数（数量、温度、随机种子），确保生成数量≥64并完整记录采样参数。",
+  "tags": [
+    "bio",
+    "task",
+    "s03",
+    "candidate-generation",
+    "sampling",
+    "rfdiffusion",
+    "edge:workflow:rfdiffusion-input-output-spec"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "s03候选结构生成与参数记录",
+  "evidence_papers": [
+    {
+      "title": "De novo design of protein structure and function with RFdiffusion",
+      "doi": "10.1038/s41586-023-06415-8",
+      "year": 2023
+    }
+  ]
+}

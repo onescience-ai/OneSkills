@@ -1,0 +1,24 @@
+{
+  "name": "protein-sequence-input-validation",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:35:00Z",
+  "updated_at": "2026-09-16T15:35:00Z",
+  "description": "蛋白质序列输入验证与链标识唯一性检查：验证FASTA格式序列的合法性、链标识唯一性和模型支持实体类型，确保输入数据符合OpenFold等蛋白质结构预测模型的要求。适用于蛋白质结构预测任务的输入验证阶段。",
+  "tags": [
+    "protein sequence",
+    "FASTA",
+    "input validation",
+    "chain identifier",
+    "sequence verification",
+    "OpenFold",
+    "AlphaFold2",
+    "edge:workflow:general-task-execution-exception-recovery"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白质序列输入验证方法和链标识唯一性检查流程",
+  "evidence_papers": []
+}

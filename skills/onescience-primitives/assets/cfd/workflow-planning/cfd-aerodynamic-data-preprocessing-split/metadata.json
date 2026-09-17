@@ -1,0 +1,18 @@
+{
+  "name": "cfd-aerodynamic-data-preprocessing-split",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "翼型几何流场联合数据的预处理与无泄漏切分任务，完成物理量统一、无量纲化、归一化，并按几何对象或工况轨迹构造训练/验证/测试集切分。适用于气动逆向设计工作流的数据准备阶段，确保切分不破坏物理连续性。",
+  "tags": ["cfd", "preprocessing", "data-splitting", "airfoil", "normalization", "leakage-prevention", "inverse-design"],
+  "aliases": ["翼型数据预处理切分", "气动数据无泄漏切分"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "翼型几何流场联合数据预处理与无泄漏切分",
+  "evidence_papers": [
+    {"title": "Aerodynamic Shape Design Space Exploration with Deep Latent Diffusion Model", "doi": "", "year": null, "url": "https://arxiv.org/abs/2609.00812"}
+  ]
+}

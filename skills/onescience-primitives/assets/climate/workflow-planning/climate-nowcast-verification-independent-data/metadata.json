@@ -1,0 +1,15 @@
+{
+  "name": "climate-nowcast-verification-independent-data",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "临近预报验证中独立验证资料的生成规范，包括每个预报时效的验证标签必须对应各自目标时刻的真实冰雹发生状态、验证标签应从独立数据源（如地面冰雹报告、双偏振雷达衍生产品）获取而非从输入数据派生、不同时效标签之间应具有时间差异性",
+  "tags": ["verification", "independent", "hail", "ground report", "dual-polarization", "nowcast"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "临近预报验证中独立验证资料的生成规范",
+  "evidence_papers": []
+}

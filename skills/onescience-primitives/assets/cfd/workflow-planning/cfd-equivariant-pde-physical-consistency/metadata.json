@@ -1,0 +1,21 @@
+{
+  "name": "cfd-equivariant-pde-physical-consistency",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向等变PDE预测模型的物理一致性评估，涵盖守恒律检验、边界条件满足度、对称性保持度验证、方程残差计算等维度的知识卡片。评估结果用于验收判定和适用域报告，域外工况需经CFD复核。",
+  "tags": ["physical-consistency", "conservation-law", "boundary-error", "symmetry-preservation", "pde-residual", "cfd", "ood-validation"],
+  "aliases": ["物理一致性评估", "守恒律检验", "对称性保持验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Lie群等变网络对称PDE预测",
+  "evidence_papers": [
+    {"title": "Self-Supervised Learning with Lie Symmetries for Partial Differential Equations", "doi": "", "year": 0},
+    {"title": "Physics and Lie symmetry informed Gaussian processes", "doi": "", "year": 0}
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

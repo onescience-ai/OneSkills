@@ -1,0 +1,29 @@
+{
+  "name": "cfd-overlapping-domain-decomposition-pinn",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:00:00Z",
+  "updated_at": "2026-09-16T19:00:00Z",
+  "description": "面向PDE大域求解，采用重叠子域划分与窗口函数实现区域分解PINN的核心技术。通过将计算域划分为多个重叠子域，在每个子域内放置独立PINN网络，利用可微窗口函数约束子域输出并在重叠区域求和实现连续性。支持子域独立归一化缓解谱偏差、灵活训练调度从边界向外顺序求解、以及多线程并行训练。适用于FBPINN等基于有限元思想的区域分解PINN方法。",
+  "tags": ["domain decomposition", "overlapping subdomains", "window function", "FBPINN", "PINN", "spectral bias", "subdomain normalization", "flexible training schedule", "parallel training", "divide-and-conquer", "finite element inspired", "PDE solver", "CFD"],
+  "aliases": ["重叠域分解PINN", "FBPINN子域划分", "overlapping DD-PINN", "窗口函数约束"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "区域分解并行PINN大域求解-子域划分与窗口函数技术",
+  "evidence_papers": [
+    {
+      "title": "Finite Basis Physics-Informed Neural Networks (FBPINNs): A Scalable Domain Decomposition Approach for Solving Differential Equations",
+      "doi": "10.1007/s10444-023-10065-9",
+      "year": 2023,
+      "venue": "Advances in Computational Mathematics"
+    },
+    {
+      "title": "When Do Extended Physics-Informed Neural Networks (XPINNs) Improve Generalization",
+      "doi": "10.1137/21M1447039",
+      "year": 2022,
+      "venue": "SIAM Journal on Scientific Computing"
+    }
+  ]
+}

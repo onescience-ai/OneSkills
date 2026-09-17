@@ -1,0 +1,19 @@
+{
+  "name": "climate-forecast-verification",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T18:48:00+08:00",
+  "updated_at": "2026-09-15T18:48:00+08:00",
+  "description": "独立验证数据获取渠道、验证指标计算方法、基线预报比较标准知识。适用于气象预报验证评估阶段，包括验证数据获取、性能指标计算和基线比较。",
+  "tags": ["forecast-verification", "metrics", "CRPS", "RMSE", "baseline", "evaluation", "precipitation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "独立验证数据获取渠道、验证指标计算方法、基线预报比较标准",
+  "evidence_papers": [
+    {"title": "Predictive performance of ensemble hydroclimatic forecasts: Verification metrics", "doi": "10.1002/wat2.1612", "year": 2022},
+    {"title": "Object-based verification metrics applied to the evaluation and weighting of convection", "doi": "10.1002/met.1412", "year": 2019},
+    {"title": "Subseasonal Precipitation Prediction for Africa: Forecast Evaluation and Sources", "doi": "10.1175/WAF-D-19-0206.1", "year": 2020}
+  ]
+}

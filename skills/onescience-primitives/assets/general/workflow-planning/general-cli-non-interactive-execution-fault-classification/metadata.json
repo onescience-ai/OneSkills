@@ -1,0 +1,57 @@
+{
+  "name": "general-cli-non-interactive-execution-fault-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向命令行接口（CLI）工具的非交互执行场景，提供故障分类、退出码诊断与错误处理的通用方法，覆盖参数解析、超时控制、沙箱环境和标准错误判读，确保自动化工作流中CLI调用的可靠性与可调试性。补充了TLDP退出码文档的详细分类，包括退出码1-2、126-128、130、255的具体含义，以及用户定义退出码范围（64-113）和保留退出码范围（1-2, 126-165, 255）。合并了CLI故障分类退出码卡片的论文证据，包括失效契约、测试引导修复和执行边界一致性配置文件。",
+  "tags": ["CLI", "command-line", "non-interactive", "fault-classification", "error-handling", "exit-code", "subprocess", "POSIX", "sysexits", "timeout", "signal", "resource-limit", "docker", "exit-codes", "TLDP", "exit-code-semantic", "invalidation-contracts", "test-guided-repair", "execution-boundary"],
+  "aliases": ["命令行非交互执行", "CLI故障分类", "命令行错误处理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Invalidation Contracts for Cross-Episode Agent Memory",
+      "doi": "10.48550/arXiv.2609.00243",
+      "year": 2026
+    },
+    {
+      "title": "Recompilation Is Not Enough: Test-Guided Decompiled-C Repair",
+      "doi": "10.48550/arXiv.2609.07201",
+      "year": 2026
+    },
+    {
+      "title": "From Intent to Execution Grant: An Execution-Boundary Conformance Profile for High-Risk AI Actions",
+      "doi": "10.48550/arXiv.2609.11596",
+      "year": 2026
+    }
+  ],
+  "evidence_docs_extended": [
+    {"title": "exit(3) — Linux man page", "url": "https://man7.org/linux/man-pages/man3/exit.3.html", "publisher": "man7.org", "version": "2026", "accessed_at": "2026-09-17"},
+    {"title": "sysexits.h(3head) — Linux man page", "url": "https://man7.org/linux/man-pages/man3/sysexits.h.3head.html", "publisher": "man7.org", "version": "2026", "accessed_at": "2026-09-17"},
+    {"title": "timeout(1) — Linux man page", "url": "https://man7.org/linux/man-pages/man1/timeout.1.html", "publisher": "man7.org", "version": "2026", "accessed_at": "2026-09-17"},
+    {"title": "waitpid(2) — Linux man page", "url": "https://man7.org/linux/man-pages/man2/waitpid.2.html", "publisher": "man7.org", "version": "2026", "accessed_at": "2026-09-17"},
+    {"title": "getrlimit(2) — Linux man page", "url": "https://man7.org/linux/man-pages/man2/getrlimit.2.html", "publisher": "man7.org", "version": "2026", "accessed_at": "2026-09-17"},
+    {"title": "signal.h — POSIX standard", "url": "https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/signal.h.html", "publisher": "Open Group", "version": "POSIX.1-2024", "accessed_at": "2026-09-17"},
+    {"title": "Docker exit codes", "url": "https://docs.docker.com/engine/reference/run/#exit-status", "publisher": "Docker Inc.", "version": "2026", "accessed_at": "2026-09-17"},
+    {"title": "GNU Bash Reference Manual - Exit Status", "url": "https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html", "publisher": "GNU", "version": "v5.3, 2025", "accessed_at": "2026-09-17"},
+    {"title": "POSIX exit() function specification", "url": "https://pubs.opengroup.org/onlinepubs/9699919799/functions/exit.html", "publisher": "IEEE/Open Group", "version": "POSIX.1-2017", "accessed_at": "2026-09-17"},
+    {"title": "Command Line Interface Guidelines", "url": "https://clig.dev/", "publisher": "clig.dev community", "version": "2024", "accessed_at": "2026-09-17"},
+    {"title": "Exit Codes With Special Meanings", "url": "https://tldp.org/LDP/abs/html/exitcodes.html", "publisher": "The Linux Documentation Project", "version": "Advanced Bash-Scripting Guide Appendix E", "accessed_at": "2026-09-17"}
+  ],
+  "evidence_docs": [
+    {
+      "title": "subprocess — Subprocess management — Python 3.14.7 documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["batch-2026-09-17-CLI-fault-classification-expansion", "2026-09-17: 合并CLI故障分类退出码卡片，补充TLDP退出码文档和arXiv论文证据"],
+  "conflicts": []
+}

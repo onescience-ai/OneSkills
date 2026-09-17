@@ -1,0 +1,26 @@
+{
+  "name": "climate-workflow-dependency-management",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:06:00Z",
+  "updated_at": "2026-09-16T18:06:00Z",
+  "description": "面向气象预报任务的工作流依赖管理规则与标准流程知识。包括OneScience工作流依赖关系定义、验证方法、任务拆解原则。",
+  "tags": ["workflow", "dependency", "standard-process", "meteorology", "forecast"],
+  "aliases": ["workflow dependency management", "forecast workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience工作流依赖管理规则、气象预报任务标准流程",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-16T18:06:00Z",
+      "location": "归因报告: E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-w4\\314\\report.json"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

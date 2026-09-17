@@ -1,0 +1,20 @@
+{
+  "name": "bio-esm1v-model-acquisition",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:17:00Z",
+  "updated_at": "2026-09-16T18:17:00Z",
+  "description": "面向ESM-1v蛋白语言模型获取任务，提供模型权重下载、加载API使用和零样本评分策略的知识卡片，适用于蛋白变异效应预测的模型准备阶段",
+  "tags": ["ESM-1v", "protein language model", "model weights", "Facebook Research", "variant effect prediction", "zero-shot scoring"],
+  "aliases": ["ESM-1v model", "esm1v_t33_650M_UR90S_1", "Facebook ESM"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "ESM-1v模型权重文件的官方下载源和加载接口，包括权重下载URL、加载代码示例和评分函数封装",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

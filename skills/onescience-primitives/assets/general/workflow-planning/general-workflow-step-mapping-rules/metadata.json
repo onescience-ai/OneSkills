@@ -1,0 +1,28 @@
+{
+  "name": "general-workflow-step-mapping-rules",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T17:51:00Z",
+  "updated_at": "2026-09-16T17:51:00Z",
+  "description": "面向工作流步骤与执行器步骤的映射规则，定义场景workflow步骤与executor步骤的对应关系、合并/拆分约束条件、依赖关系传递规则和步骤数量变更时的质量门禁继承规则。适用于需要将场景工作流映射到执行器工作流的编排场景，确保步骤结构一致性和执行流程可追溯性。核心方法包括：步骤数量校验、依赖关系传递、质量门禁继承。输出为步骤映射规则和校验结果。",
+  "tags": ["workflow", "step-mapping", "executor", "orchestrator", "dependency", "quality-gate", "workflow-management", "scientific-workflow", "task-decomposition"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience场景workflow步骤与executor步骤的映射规则",
+  "evidence_papers": [
+    {
+      "title": "Recording provenance of workflow runs with RO-Crate",
+      "doi": "10.1371/journal.pone.0309210",
+      "year": 2024,
+      "venue": "PLoS ONE"
+    },
+    {
+      "title": "Watchdog 2.0: New developments for reusability, reproducibility, and workflow execution",
+      "doi": "10.1093/gigascience/giaa068",
+      "year": 2020,
+      "venue": "GigaScience"
+    }
+  ]
+}

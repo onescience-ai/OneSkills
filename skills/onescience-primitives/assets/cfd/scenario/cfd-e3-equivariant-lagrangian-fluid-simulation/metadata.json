@@ -1,0 +1,24 @@
+{
+  "name": "cfd-e3-equivariant-lagrangian-fluid-simulation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T20:07:00Z",
+  "updated_at": "2026-09-16T20:07:00Z",
+  "description": "面向拉格朗日粒子轨迹数据，使用E3等变图神经网络构建流体动力学模拟模型，完成从粒子状态到物理场量的映射训练、推理与物理一致性验证，产出可复现模型及适用域报告；域外工况需经CFD复核",
+  "tags": ["E3-equivariant", "GNN", "Lagrangian", "fluid-mechanics", "particle-simulation", "equivariant-neural-network", "graph-neural-network"],
+  "aliases": ["E3等变粒子网络", "Lagrangian fluid simulation", "E(3)-equivariant GNN fluid"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "E3等变粒子网络拉格朗日流体模拟的完整工作流与方法知识",
+  "evidence_papers": [
+    {"title": "Learning Lagrangian Fluid Mechanics with E(3)-Equivariant Graph Neural Networks", "doi": "arXiv:2305.15603", "year": 2023},
+    {"title": "DEL: Discrete Element Learner for Learning 3D Particle Dynamics with Neural Rendering", "doi": "", "year": 2023},
+    {"title": "Learning Physical Models that Can Respect Conservation Laws", "doi": "", "year": 2022},
+    {"title": "Modeling Dynamics over Meshes with Gauge Equivariant Nonlinear Message Passing", "doi": "", "year": 2022},
+    {"title": "Incorporating Symmetry into Deep Dynamics Models for Improved Generalization", "doi": "arXiv:2002.03061", "year": 2020},
+    {"title": "LagrangeBench: A Lagrangian Fluid Mechanics Benchmarking Suite", "doi": "arXiv:1806.01261", "year": 2018},
+    {"title": "Symmetric Basis Convolutions for Learning Lagrangian Fluid Mechanics", "doi": "", "year": 2023}
+  ]
+}

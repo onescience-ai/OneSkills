@@ -1,0 +1,20 @@
+{
+  "name": "cfd-foundation-model-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "科学基础模型多物理算子迁移的模型配置与训练任务：加载预训练权重、配置训练超参数、在目标任务数据上 fine-tune 或 transfer 训练，记录代码版本依赖随机种子与训练验证指标。",
+  "tags": ["model-training", "fine-tune", "transfer-learning", "foundation-model", "neural-operator"],
+  "aliases": ["pretrain-finetune", "weight-transfer"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S056 模型配置与训练",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

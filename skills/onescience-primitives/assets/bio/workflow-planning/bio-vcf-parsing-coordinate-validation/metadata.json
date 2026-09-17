@@ -1,0 +1,20 @@
+{
+  "name": "bio-vcf-parsing-coordinate-validation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "VCF文件解析规范与GRCh38参考基因组坐标验证流程。包含VCF 4.3+格式字段定义、POS坐标系统（1-based inclusive）、REF/ALT等位基因合法性验证、参考等位基因匹配逻辑和区间边界检查规则。适用于BRCA1等基因的变异输入规范化。",
+  "tags": ["VCF", "variant-parsing", "GRCh38", "coordinate-validation", "BRCA1", "genomics"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "VCF文件解析规范、GRCh38坐标验证、BRCA1变异坐标检查",
+  "evidence_papers": [
+    {"title": "Twelve years of SAMtools and BCFtools", "doi": "10.1093/gigascience/giab008", "year": 2021},
+    {"title": "A spectrum of free software tools for processing the VCF variant call format", "doi": "10.1371/journal.pcbi.1010303", "year": 2022},
+    {"title": "Standards and Guidelines for the Interpretation and Reporting of Sequence Variants", "doi": "10.1016/j.jmoldx.2015.12.004", "year": 2016},
+    {"title": "VCF-Miner: GUI-based application for mining variants and annotations stored in VCF files", "doi": "10.1093/bib/bbv080", "year": 2015}
+  ]
+}

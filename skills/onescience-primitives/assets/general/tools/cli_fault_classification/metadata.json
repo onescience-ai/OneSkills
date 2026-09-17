@@ -1,0 +1,11 @@
+{
+  "name": "cli_fault_classification",
+  "type": "tool_primitive",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "CLI非交互执行与故障分类知识，覆盖命令参数解析、认证、沙箱、超时、退出码和标准错误判读",
+  "tags": ["CLI", "故障分类", "退出码", "标准错误", "非交互执行"]
+}

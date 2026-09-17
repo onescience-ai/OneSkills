@@ -1,0 +1,26 @@
+{
+  "name": "cfd-task-acceptance-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T17:58:00Z",
+  "updated_at": "2026-09-16T17:58:00Z",
+  "description": "CFD任务验收与适用域判定任务，评估统计误差、关键物理约束、泛化能力和计算收益，确定模型适用范围。",
+  "tags": ["task acceptance", "applicability", "evaluation", "CFD", "physical consistency"],
+  "aliases": ["任务验收", "适用域判定"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD任务验收与适用域判定",
+  "evidence_papers": [
+    {
+      "title": "RIGNO: A Graph-based Framework For Robust And Accurate Operator Learning For PDEs On Arbitrary Domains",
+      "doi": "10.48550/arXiv.2501.19205",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

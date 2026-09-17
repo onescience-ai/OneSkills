@@ -1,0 +1,46 @@
+{
+  "name": "matchem-cusn-dft-calculation-parameters",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向Cu-Sn双金属体系DFT计算的参数配置和结构建模需求，提供从论文中提取的经过验证的计算参数、表面模型构建方法和结构数据。包括VASP输入文件生成、表面 slab 模型参数、Sn掺杂位置、晶格常数等关键信息，用于活性位模型的精确定义和DFT计算执行。",
+  "tags": [
+    "cusn",
+    "dft",
+    "vasp",
+    "surface-model",
+    "slab-model",
+    "bimetallic",
+    "co2-reduction",
+    "electrocatalysis",
+    "atomic-structure",
+    "matchem"
+  ],
+  "aliases": [
+    "CuSn DFT参数",
+    "Cu-Sn表面模型",
+    "铜锡双金属DFT"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CuSn原子界面（特别是Cu-Sn双金属表面）的精确原子坐标和晶体结构数据，来源为关联论文或数据库",
+  "evidence_papers": [
+    {
+      "title": "Engineering Surface Oxophilicity of Copper for Electrochemical CO2 Reduction to Ethanol",
+      "doi": "10.1002/advs.202204579",
+      "year": 2023
+    },
+    {
+      "title": "Syngas Production Improvement from CO2RR Using Cu-Sn Electrodeposited Catalysts",
+      "doi": "10.3390/ma18010105",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

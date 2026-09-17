@@ -1,0 +1,19 @@
+{
+  "name": "cfd-pinn-physics-residual-recovery",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "PINN方程求解与物理残差恢复：在查询配点或网格上恢复解场、导数、边界值与方程残差，使用自动微分或离散算子恢复导数，禁止仅依据训练损失判定求解",
+  "tags": ["pinn", "physics-residual", "auto-differentiation", "pde-solving", "solution-recovery"],
+  "aliases": ["PINN残差恢复", "物理残差计算"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PINN方程求解与物理残差恢复",
+  "evidence_papers": [
+    {"title": "PINNsFormer: A Transformer-Based Framework For Physics-Informed Neural Networks", "doi": "10.48550/arXiv.1904.10509", "year": 2024},
+    {"title": "PPINN: Parareal physics-informed neural network for time-dependent PDEs", "doi": "10.48550/arXiv.1909.10145", "year": 2019}
+  ]
+}

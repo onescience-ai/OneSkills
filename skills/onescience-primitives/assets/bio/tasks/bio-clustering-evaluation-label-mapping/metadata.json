@@ -1,0 +1,22 @@
+{
+  "name": "bio-clustering-evaluation-label-mapping",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "聚类评估与标签映射任务：使用匈牙利算法将Leiden聚类标签最优映射到真实细胞类型标签，解决标签空间不匹配问题，正确计算宏平均F1分数。适用于任务s04评估阶段，替代直接比较不同标签空间导致的F1=0问题。",
+  "tags": ["clustering evaluation", "label mapping", "Hungarian algorithm", "F1 score", "macro average", "cell type annotation", "Leiden clustering", "scikit-learn", "linear_sum_assignment", "evaluation metrics"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "无监督聚类评估标签映射方法",
+  "evidence_papers": [
+    {
+      "title": "Scikit-learn: Machine Learning in Python",
+      "doi": "10.5281/zenodo.12526258",
+      "year": 2011,
+      "venue": "JMLR"
+    }
+  ]
+}

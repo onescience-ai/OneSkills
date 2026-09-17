@@ -1,0 +1,16 @@
+{
+  "name": "cfd-fno-data-intake-contract-validation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:35:00Z",
+  "updated_at": "2026-09-16T19:35:00Z",
+  "description": "FNO算子学习数据接入与契约核验任务：接入高分辨率规则网格PDE数据，核验样本完整性、变量定义、单位、网格坐标及使用许可。适用于因子分解与多重网格FNO高效算子学习流程的数据准备阶段，确保数据质量满足训练要求。输出为数据清单、数据契约和审计报告，缺少必填输入时返回BLOCKED。",
+  "tags": ["FNO", "data validation", "data contract", "PDE", "CFD", "operator learning", "high-resolution", "regular grid", "data quality", "sample integrity"],
+  "aliases": ["FNO data validation", "operator data intake"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "因子分解与多重网格FNO数据接入与契约核验",
+  "evidence_papers": []
+}

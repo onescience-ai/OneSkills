@@ -1,0 +1,61 @@
+{
+  "name": "general-json-schema-report-delivery-contract",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向JSON数据交换场景，定义报告交付契约的验证方法，包括Schema校验、必填字段检查、数组约束、任务身份一致性验证，确保自动化工作流中报告产物的结构完整性与可解析性。合并了JSON Schema报告验证卡片的论文证据，包括形式化验证、编译优化、决策追踪Schema和API互操作性验证。",
+  "tags": ["JSON", "Schema", "validation", "report-contract", "data-validation", "schema-validation", "report-delivery", "composition", "conditional", "cli-tools", "error-handling", "formal-verification", "compilation-optimization", "decision-trace", "api-interoperability", "governance", "audit"],
+  "aliases": ["JSON Schema报告契约", "报告交付验证", "Schema校验"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.48550/arXiv.2307.10034",
+      "year": 2023
+    },
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.48550/arXiv.2503.02770",
+      "year": 2025
+    },
+    {
+      "title": "Decision Trace Schema for Governance Evidence in Real-Time Risk Systems",
+      "doi": "10.48550/arXiv.2604.09296",
+      "year": 2026
+    },
+    {
+      "title": "Validating API Design Requirements for Interoperability (S.E.O.R.A)",
+      "doi": "10.48550/arXiv.2511.17836",
+      "year": 2025
+    }
+  ],
+  "evidence_docs_extended": [
+    {"title": "Understanding JSON Schema — Combining schemas", "url": "https://json-schema.org/understanding-json-schema/reference/combining", "publisher": "JSON Schema Organization", "version": "2026", "accessed_at": "2026-09-17"},
+    {"title": "Understanding JSON Schema — Conditionals", "url": "https://json-schema.org/understanding-json-schema/reference/conditionals", "publisher": "JSON Schema Organization", "version": "2026", "accessed_at": "2026-09-17"},
+    {"title": "Understanding JSON Schema — Object", "url": "https://json-schema.org/understanding-json-schema/reference/object", "publisher": "JSON Schema Organization", "version": "2026", "accessed_at": "2026-09-17"},
+    {"title": "ajv-cli — CLI validation tool", "url": "https://ajv.js.org/packages/ajv-cli.html", "publisher": "Ajv", "version": "2026", "accessed_at": "2026-09-17"},
+    {"title": "check-jsonschema — Python CLI tool", "url": "https://github.com/python-jsonschema/check-jsonschema", "publisher": "python-jsonschema", "version": "2026", "accessed_at": "2026-09-17"},
+    {"title": "jsonschema — Python library", "url": "https://python-jsonschema.readthedocs.io/en/stable/", "publisher": "python-jsonschema", "version": "2026", "accessed_at": "2026-09-17"},
+    {"title": "jsonschema errors — Error handling", "url": "https://python-jsonschema.readthedocs.io/en/stable/errors/", "publisher": "python-jsonschema", "version": "2026", "accessed_at": "2026-09-17"},
+    {"title": "JSON Schema reference", "url": "https://json-schema.org/understanding-json-schema/", "publisher": "JSON Schema Organization", "version": "2020-12", "accessed_at": "2026-09-17"},
+    {"title": "Type-specific Keywords", "url": "https://json-schema.org/understanding-json-schema/reference/type", "publisher": "JSON Schema Organization", "version": "2020-12", "accessed_at": "2026-09-17"},
+    {"title": "array", "url": "https://json-schema.org/understanding-json-schema/reference/array", "publisher": "JSON Schema Organization", "version": "2020-12", "accessed_at": "2026-09-17"}
+  ],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema",
+      "url": "https://json-schema.org/",
+      "publisher": "JSON Schema Organization",
+      "version": "2026",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["batch-2026-09-17-JSON-Schema-validation-expansion", "2026-09-17: 合并JSON Schema报告验证卡片，补充arXiv论文证据和形式化验证知识"],
+  "conflicts": []
+}

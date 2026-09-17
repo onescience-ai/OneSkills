@@ -144,3 +144,16 @@
 ## 关联文献
 
 1. **Accurate, transferable, and verifiable machine-learned interatomic potentials for layered materials** — [doi_10_1038_s41467_026_74482_2](https://doi.org/10.1038/s41467-026-74482-2)
+
+## 补充证据
+
+[1] Georgaras, J. D., Ramdas, A., Shan, C. H., et al. (2026). Accurate, transferable, and verifiable machine-learned interatomic potentials for layered materials. Nature Communications, 17(1). DOI: 10.1038/s41467-026-74482-2
+
+## 关键参数补充
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 层间能量RMSE | ~4 meV/atom | [1] | 实现MDE < 0.01 Å的严格要求 |
+| 层内能量RMSE | ~200 meV/atom | [1] | 更宽松的阈值 |
+| MDE阈值 | <0.01 Å | [1] | 结构验证目标，对应原子零点运动量级 |
+| 层间截断半径 | 10.0 Å | [1] | Split MLIP策略的层间相互作用截断 |
+| 层内截断半径 | 6.0 Å | [1] | Split MLIP策略的层内相互作用截断 |

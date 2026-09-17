@@ -1,0 +1,41 @@
+{
+  "name": "cfd-diff-phys-coupled-solving",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "可微分物理求解的神经数值耦合求解任务，将训练好的神经网络嵌入数值求解器执行端到端迭代，监控收敛状态与守恒量，发散时停止并输出最后稳定状态。",
+  "tags": [
+    "coupled-solving",
+    "neural-solver",
+    "convergence",
+    "residual-monitoring",
+    "edge:workflow:cfd-differentiable-physics-workflow"
+  ],
+  "aliases": [
+    "耦合求解",
+    "神经求解器",
+    "coupled solving"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S071 神经数值耦合求解",
+  "evidence_papers": [
+    {
+      "title": "Hamiltonian Neural PDE Solvers through Functional Approximation",
+      "doi": "",
+      "year": 2025
+    },
+    {
+      "title": "ΦFlow_ Differentiable Simulations for PyTorch, TensorFlow and Jax",
+      "doi": "",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

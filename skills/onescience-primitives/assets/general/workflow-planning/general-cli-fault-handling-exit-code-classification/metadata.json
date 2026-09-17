@@ -1,0 +1,42 @@
+{
+  "name": "general-cli-fault-handling-exit-code-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:25:00Z",
+  "updated_at": "2026-09-16T17:55:00Z",
+  "description": "面向非交互环境中的命令行工具执行，提供故障分类、退出码处理、错误传播机制与JSON Schema报告校验，确保工具在批处理、自动化和脚本化场景下的稳定性、可诊断性与结构化输出一致性。",
+  "tags": ["CLI", "exit-code", "fault-classification", "non-interactive", "error-handling", "process-termination", "json-schema", "validation"],
+  "aliases": ["command line interface fault handling", "exit code semantics", "batch processing error recovery", "JSON Schema validation", "structured output verification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "exit(3) - Linux manual page",
+      "url": "https://www.kernel.org/doc/man-pages/online/pages/man3/exit.3.html",
+      "publisher": "Linux man-pages project",
+      "version": "6.19",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "exit - terminate a process (POSIX.1-2017)",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/functions/exit.html",
+      "publisher": "The Open Group",
+      "version": "IEEE Std 1003.1-2017",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "JSON Schema reference",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema",
+      "version": "2026",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-16: 合并JSON Schema报告交付契约知识，覆盖Schema校验流程与错误分类"],
+  "conflicts": []
+}

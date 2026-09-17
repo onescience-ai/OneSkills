@@ -1,0 +1,17 @@
+{
+  "name": "bio-uniprotkb-reference",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T16:20:00Z",
+  "updated_at": "2026-09-16T16:20:00Z",
+  "description": "UniProtKB参考数据集：蛋白质序列和功能注释权威来源，包含GO terms、EC numbers、Pfam domains等注释。用于标签验证和参考数据对齐。",
+  "tags": ["UniProtKB", "protein-annotation", "GO-terms", "reference-dataset", "edge:task:bio-protein-dataset-acquisition", "edge:task:bio-go-annotation-validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "UniProtKB数据获取方式和GO注释提取",
+  "evidence_papers": [
+    {"title": "UniProt: the Universal Protein Knowledgebase in 2023", "doi": "10.1093/nar/gkac1052", "year": 2023}
+  ]
+}

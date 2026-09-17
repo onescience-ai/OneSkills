@@ -1,0 +1,20 @@
+{
+  "name": "matchem-material-structure-file-formats",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向电池电极材料结构设计任务，提供材料结构文件（CIF/POSCAR）的标准格式规范、公开数据库获取途径、工况参数（电压窗口、温度、倍率）的定义方法，以及必填输入缺失时的决策规则",
+  "tags": ["CIF", "POSCAR", "crystal-structure", "battery-electrode", "input-validation", "workflow-contract"],
+  "aliases": ["晶体结构文件", "材料结构数据库", "电池工况参数"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "材料结构文件（CIF/POSCAR）和电池工况参数的数据格式与获取方式知识",
+  "evidence_papers": [
+    {"title": "CAVD, towards better characterization of void space for ionic transport analysis", "doi": "10.1038/s41597-020-0491-x", "year": 2020},
+    {"title": "In Situ and Ex Situ TEM Study of Lithiation Behaviours of Porous Silicon Nanostructures", "doi": "10.1038/srep31334", "year": 2016},
+    {"title": "Boosting Rechargeable Batteries R&D by Multiscale Modeling: Myth or Reality?", "doi": "10.1021/acs.chemrev.8b00239", "year": 2019}
+  ]
+}

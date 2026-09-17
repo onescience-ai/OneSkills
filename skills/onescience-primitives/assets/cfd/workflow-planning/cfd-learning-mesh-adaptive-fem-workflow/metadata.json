@@ -1,0 +1,27 @@
+{
+  "name": "cfd-learning-mesh-adaptive-fem-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:42:00Z",
+  "updated_at": "2026-09-16T10:42:00Z",
+  "description": "学习型网格移动与自适应有限元优化的完整工作流。从自适应有限元网格误差数据出发，经数据接入、预处理切分、模型训练、候选生成与约束优化，到任务验收与适用域判定，形成可复现的数据驱动网格移动流水线。适用于需要构建Mesh movement network或Graph mesh optimizer以优化自适应有限元网格质量的研究场景。",
+  "tags": ["cfd", "workflow", "mesh movement", "adaptive finite element", "graph mesh optimizer", "model training", "constraint optimization", "applicability domain", "FEM", "mesh relocation", "end-to-end pipeline"],
+  "aliases": ["学习型网格移动工作流", "自适应有限元优化流水线"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "学习型网格移动与自适应有限元优化场景知识补充",
+  "evidence_papers": [
+    {
+      "title": "G-Adaptivity: optimised graph-based mesh relocation for finite element methods",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "Towards Universal Mesh Movement Networks",
+      "doi": "",
+      "year": 2024
+    }
+  ]
+}

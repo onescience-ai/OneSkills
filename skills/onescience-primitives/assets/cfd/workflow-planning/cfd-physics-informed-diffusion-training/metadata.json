@@ -1,0 +1,24 @@
+{
+  "name": "cfd-physics-informed-diffusion-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "物理信息扩散模型的训练配置与执行方法：加载切分数据与统计量，配置训练超参数，执行扩散模型训练并记录逐轮指标与最佳权重。支持预训练权重初始化与早停机制。核心判据为训练验证损失有限、权重可重载、随机种子可复现。",
+  "tags": ["model-training", "diffusion-model", "physics-informed", "CFD", "checkpoint", "reproducibility"],
+  "aliases": ["扩散模型训练", "PIDM training"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "物理信息扩散模型流场分布生成",
+  "evidence_papers": [
+    {"title": "Physics-Informed Diffusion Models", "doi": "", "year": 2024},
+    {"title": "Learning Distributions of Complex Fluid Simulations with Diffusion Graph Networks", "doi": "10.48550/arXiv.2504.02843", "year": 2025},
+    {"title": "Self-Augmented Diffusion Guidance for Physics-Informed Generation", "doi": "10.48550/arXiv.2608.26748", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

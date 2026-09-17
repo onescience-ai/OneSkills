@@ -1,0 +1,15 @@
+{
+  "name": "matchem-isotope-validation",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "同位素效应验证标准，包括质量效应预期、统计显著性检验方法、短时与长时动力学关系、验收判定标准",
+  "tags": ["isotope-effect", "kinetic-isotope", "statistical-validation", "diffusion", "carbon-12", "carbon-13"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "同位素效应验证标准，包括质量效应预期（13C扩散系数应低于12C）、统计显著性检验方法（t检验/ANOVA）、短时动力学与长时动力学的关系、验收判定标准",
+  "evidence_papers": []
+}

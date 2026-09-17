@@ -1,0 +1,29 @@
+{
+  "name": "cfd-pinn-turbulence-closure-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "稀疏观测PINN湍流闭合联合反演的完整工作流：从数据接入、预处理切分、PINN训练、闭合项预测与后验CFD耦合，到任务验收与适用域判定。覆盖5个步骤节点，每步含输入输出契约与质量门禁。",
+  "tags": ["PINN", "turbulence closure", "workflow", "RANS", "joint inversion", "aposteriori coupling", "data intake", "model training"],
+  "aliases": ["PINN闭合反演工作流", "湍流闭合PINN流程"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "稀疏观测PINN均值流与闭合联合反演",
+  "evidence_papers": [
+    {
+      "title": "Turbulence Closure in RANS and Flow Inference around a Cylinder using PINNs and Sparse Experimental Data",
+      "doi": "arxiv:2510.06049",
+      "year": 2025
+    },
+    {
+      "title": "Turbulence closure in Reynolds-averaged Navier–Stokes and flow inference around a cylinder using physics-informed neural networks",
+      "doi": "10.1017/jfm.2026.11471",
+      "year": 2026
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

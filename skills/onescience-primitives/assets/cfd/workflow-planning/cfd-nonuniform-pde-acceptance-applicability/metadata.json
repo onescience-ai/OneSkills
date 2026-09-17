@@ -1,0 +1,31 @@
+{
+  "name": "cfd-nonuniform-pde-acceptance-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T20:03:00Z",
+  "updated_at": "2026-09-16T20:03:00Z",
+  "description": "非均匀PDE任务验收与适用域判定步骤，负责评估统计误差、关键物理约束、泛化能力和计算收益，输出验收结论与适用域报告。",
+  "tags": ["acceptance", "applicability-domain", "non-uniform", "PDE", "evaluation", "OOD"],
+  "aliases": ["任务验收", "适用域判定", "验收评估"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "非均匀PDE任务验收与适用域判定步骤知识补充",
+  "evidence_papers": [
+    {
+      "title": "Striding Across Reynolds Numbers: Representation Geometry in Neural PDE Generalisation",
+      "doi": "arXiv:2605.30112",
+      "year": 2026
+    },
+    {
+      "title": "DD-RNO: A Domain-Decomposed Routed Neural Operator for Airfoil Flow Prediction",
+      "doi": "arXiv:2608.13490",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

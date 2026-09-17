@@ -1,0 +1,23 @@
+{
+  "name": "cfd-airfoil-gnn-rans-prediction-pipeline",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "图网络翼型非结构网格RANS场预测的完整工作流：从数据接入、预处理切分、GNN训练、批量推理到任务验收与适用域判定。定义五步流程的输入输出契约、质量门禁和异常处理。",
+  "tags": ["cfd", "workflow", "gnn", "airfoil", "rans", "pipeline", "unstructured-mesh"],
+  "aliases": ["GNN airfoil RANS workflow", "翼型图网络预测流水线"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "图网络翼型非结构网格RANS场预测场景知识补充",
+  "evidence_papers": [
+    {"title": "AirfRANS: High Fidelity Computational Fluid Dynamics Dataset for Approximating Reynolds-Averaged Navier-Stokes Solutions", "doi": "", "year": 2022},
+    {"title": "TandemFoilSet: Datasets for Flow Field Prediction of Tandem-Airfoil Through the Reuse of Single Airfoils", "doi": "10.48550/arXiv.2106.04900", "year": 2021}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

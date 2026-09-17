@@ -1,0 +1,24 @@
+{
+  "name": "cfd-neural-multigrid-smoother-learning",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "使用神经网络替代传统多重网格平滑器（如Gauss-Seidel、Jacobi）的方法，通过学习自适应平滑算子加速多重网格收敛。适用于PDE离散化产生的稀疏线性系统，特别是传统平滑器对高频误差分量衰减不足的场景。",
+  "tags": ["neural-smoother", "multigrid", "graph-convolution", "frequency-decomposition", "PDE-solver", "iterative-method"],
+  "aliases": ["神经平滑器", "学习平滑算子", "可学习多重网格"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "神经多重网格平滑器学习",
+  "evidence_papers": [
+    {"title": "UGrid: An Efficient-And-Rigorous Neural Multigrid Solver for Linear PDEs", "doi": "10.48550/arXiv.2408.04846", "year": 2024},
+    {"title": "A Learnable Multigrid Framework via Graph Convolutions", "doi": "10.48550/arXiv.2608.29082", "year": 2026},
+    {"title": "A level-wise training scheme for learning neural multigrid smoothers with application to integral equations", "doi": "10.48550/arXiv.2603.01064", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,29 @@
+{
+  "name": "bio-sc-rnaseq-statistical-testing",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "生物信息学统计检验知识卡片。涵盖单细胞RNA-seq分析中统计检验的样本量要求、效应量解释标准、p值与实际意义的关系、多重检验校正、置信区间计算以及模拟数据与真实数据结论差异的风险评估。",
+  "tags": [
+    "bio",
+    "single-cell",
+    "statistics",
+    "sample-size",
+    "effect-size",
+    "p-value",
+    "confidence-interval",
+    "multiple-testing",
+    "workflow-planning"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "生物信息学统计检验知识，包括单细胞分析中统计检验的样本量要求、效应量解释标准、p值与实际意义的关系、以及模拟数据与真实数据结论差异的风险",
+  "evidence_papers": [
+    {"title": "Comparison and evaluation of statistical error models for scRNA-seq", "doi": "10.1186/s13059-021-02584-9", "year": 2022},
+    {"title": "Benchmarking single-cell RNA-sequencing protocols for cell atlas projects", "doi": "10.1038/s41587-020-0469-4", "year": 2020},
+    {"title": "A benchmark of batch-effect correction methods for single-cell RNA sequencing data", "doi": "10.1186/s13059-019-1850-9", "year": 2020}
+  ]
+}

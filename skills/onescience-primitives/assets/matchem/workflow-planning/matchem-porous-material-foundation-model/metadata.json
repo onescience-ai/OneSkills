@@ -1,0 +1,21 @@
+{
+  "name": "matchem-porous-material-foundation-model",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T19:32:00Z",
+  "updated_at": "2026-09-15T19:32:00Z",
+  "description": "多孔材料数据高效基础模型构建的知识卡片：涵盖基础模型定义、标准图神经网络架构（MACE/SchNet/DimeNet/NequIP等）、模型选择依据、适用条件、预训练-微调范式和迁移学习能力。适用于多孔材料（MOF、沸石、多孔碳等）的性质预测、结构设计和虚拟筛选任务。",
+  "tags": ["porous-material", "foundation-model", "graph-neural-network", "MACE", "SchNet", "DimeNet", "transfer-learning", "molecular-property-prediction", "matchem"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔材料领域基础模型的定义、标准架构（如MACE、SchNet、DimeNet等图神经网络模型）、模型选择依据和适用条件",
+  "evidence_papers": [
+    {"title": "Graph neural networks for materials science and chemistry", "doi": "10.1038/s43246-022-00315-6", "year": 2022},
+    {"title": "A graph neural network for the era of large atomistic models", "doi": "10.1038/s41524-026-02146-2", "year": 2026},
+    {"title": "Benchmarking graph neural networks for materials chemistry", "doi": "10.1038/s41524-021-00554-0", "year": 2021},
+    {"title": "Explainable machine learning in materials science", "doi": "10.1038/s41524-022-00884-7", "year": 2022},
+    {"title": "High Throughput Methods in the Synthesis, Characterization, and Optimization of Porous Materials", "doi": "10.1002/adma.202002780", "year": 2020}
+  ]
+}

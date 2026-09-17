@@ -1,0 +1,22 @@
+{
+  "name": "cfd-physics-constrained-neural-operator-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:58:00Z",
+  "updated_at": "2026-09-16T19:58:00Z",
+  "description": "面向带守恒边界和无量纲约束PDE数据的物理约束神经算子学习标准工作流，覆盖从数据接入到适用域判定的完整闭环。适用于Physics-constrained neural operator训练任务，核心流程包括数据契约核验、预处理切分、物理约束模型训练、推理物理恢复和验收评估。工作流强调物理一致性验证，要求同时报告统计误差和物理约束指标。",
+  "tags": ["workflow", "physics-constrained", "neural operator", "PDE", "CFD", "operator learning", "boundary constraints", "invariant measures", "conservation laws", "physical consistency", "applicability domain"],
+  "aliases": ["物理约束神经算子工作流", "Physics-constrained neural operator workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "物理边界与不变量约束神经算子学习工作流",
+  "evidence_papers": [
+    {"title": "Guiding Continuous Operator Learning through Physics-Based Boundary Constraints", "doi": "2212.07477", "year": 2022, "url": "https://arxiv.org/abs/2212.07477"},
+    {"title": "Training neural operators to preserve invariant measures of chaotic attractors", "doi": "", "year": 2023},
+    {"title": "Buckingham pi-Invariant Test-Time Projection for Robust PDE Surrogate Modeling", "doi": "2410.03263", "year": 2024, "url": "https://arxiv.org/abs/2410.03263"},
+    {"title": "Towards Generalizable PDE Dynamics Forecasting via Physics-Guided Invariant Learning", "doi": "1907.02893", "year": 2019, "url": "https://arxiv.org/abs/1907.02893"},
+    {"title": "Wrong-Physics Backdoors in Neural PDE Operators", "doi": "2608.20439", "year": 2026, "url": "https://arxiv.org/abs/2608.20439"}
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "cfd-operator-data-preprocessing",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "预处理与数据切分任务：统一物理量表示，按几何、工况或时间构造无泄漏切分。适用于算子学习流程的数据准备阶段，确保训练/验证/测试集独立且物理语义完整。输出为三份切分清单和归一化统计量，切分时不得把同一轨迹的帧随机打散。",
+  "tags": ["数据预处理", "数据切分", "无泄漏", "归一化", "算子学习", "CFD", "物理量统一", "轨迹分组", "训练验证测试"],
+  "aliases": ["预处理任务", "数据切分任务"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S050 预处理与数据切分任务",
+  "evidence_papers": []
+}

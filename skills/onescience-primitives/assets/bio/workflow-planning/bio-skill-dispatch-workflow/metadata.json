@@ -1,0 +1,20 @@
+{
+  "name": "bio-skill-dispatch-workflow",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "OneScience执行技能调度工作流规范。定义各执行技能（onescience-coder/onescience-infer/onescience-runtime/onescience-data-analyzer）的功能边界、调用规范和依赖关系，确保任务步骤正确绑定对应技能。",
+  "tags": ["skill-dispatch", "workflow-orchestration", "onescience-coder", "onescience-infer", "onescience-runtime"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "执行技能调度规范、技能功能边界、调用依赖关系",
+  "evidence_papers": [
+    {"title": "OneSkills Knowledge-Driven Feedback System", "doi": "N/A", "year": 2026},
+    {"title": "OneScience Orchestrator SKILL.md", "doi": "N/A", "year": 2026},
+    {"title": "OneScience Coder SKILL.md", "doi": "N/A", "year": 2026},
+    {"title": "OneScience Infer SKILL.md", "doi": "N/A", "year": 2026}
+  ]
+}

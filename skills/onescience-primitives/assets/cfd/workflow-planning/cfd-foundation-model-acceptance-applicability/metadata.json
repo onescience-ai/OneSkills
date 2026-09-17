@@ -1,0 +1,20 @@
+{
+  "name": "cfd-foundation-model-acceptance-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "科学基础模型多物理算子迁移的任务验收与适用域判定任务：评估统计误差、关键物理约束、泛化能力和计算收益，输出 PASS/REJECT/BLOCKED 结论与适用域限制，域外工况需经 CFD 复核。",
+  "tags": ["acceptance", "applicability", "evaluation", "physics-consistency", "ood-testing"],
+  "aliases": ["task-validation", "domain-determination"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S056 任务验收与适用域判定",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

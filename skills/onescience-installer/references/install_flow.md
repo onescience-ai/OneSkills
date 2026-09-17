@@ -1,6 +1,6 @@
 # 安装流程 - 命令模板
 
-本文件只放可渲染、可拷贝执行的命令模板。流程路由见 `../SKILL.md`；具体执行过程见对应的功能工作流文件。OneScience bootstrap 的执行顺序固定为：先下载 wheel，再探测 METADATA 中的 `Provides-Extra`，最后通过 `pip install \"onescience[{resolved_extra}]\" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` 安装。
+本文件只放可渲染、可拷贝执行的命令模板。流程路由见 `../SKILL.md`；具体执行过程见对应的功能工作流文件。OneScience bootstrap 默认只执行一条 `pip install \"onescience[{resolved_extra}]\" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` 命令（extra 按 `{domain}-{accelerator}` 命名规则拼出，如 `earth-dcu`）；仅当 pip 报 `does not provide the extra` 或加速卡无法判定时，才回退下载 wheel 并探测 METADATA 中的 `Provides-Extra` 作为失败兜底。
 
 ## 占位符
 
@@ -13,11 +13,11 @@
 | `{ssh_server}` | 优先 `hostname`，否则 `host` |
 | `{env_name}` | `backend_profiles.json.defaults.env_name`，当前默认 `onescience311` |
 | `{python_version}` | `backend_profiles.json.defaults.python_version`，当前默认 `3.11` |
-| `{wheel_dir}` | `workspace_bootstrap_profiles.json.wheel.wheel_dir`，当前默认 `~/onescience_wheels` |
-| `{wheel_glob}` | `workspace_bootstrap_profiles.json.wheel.wheel_glob`，当前默认 `onescience*.whl` |
-| `{download_wheel_command}` | `workspace_bootstrap_profiles.json.wheel.download_wheel_command` |
-| `{resolved_extra}` | 安装阶段在下载 wheel 并确定 backend 后，根据领域 + 加速卡组合并校验后的 wheel extra，如 `earth-dcu` |
-| `{metadata_probe_command}` | `workspace_bootstrap_profiles.json.wheel.metadata_probe_command` |
+| `{wheel_dir}` | （兜底）`workspace_bootstrap_profiles.json.wheel.wheel_dir`，当前默认 `~/onescience_wheels` |
+| `{wheel_glob}` | （兜底）`workspace_bootstrap_profiles.json.wheel.wheel_glob`，当前默认 `onescience*.whl` |
+| `{download_wheel_command}` | （兜底）`workspace_bootstrap_profiles.json.wheel.download_wheel_command`，仅在 pip 报 extra 不存在时启用 |
+| `{resolved_extra}` | 默认按 `workspace_bootstrap_profiles.json.install.extra_naming_convention`（`{domain}-{accelerator}`）拼出，如 `earth-dcu`；bio 仅 dcu，不得拼 `bio-gpu` |
+| `{metadata_probe_command}` | （兜底）`workspace_bootstrap_profiles.json.wheel.metadata_probe_command`，仅在 pip 报 extra 不存在时启用 |
 | `{wheel_install_command}` | `workspace_bootstrap_profiles.json.wheel.install_command_template`，当前默认 `pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` |
 | `{module_loads}` | 由 `backend_profiles.json.bootstrap.module_sequence` 渲染出的 `module load ... && ...` 命令串 |
 | `{python_packages}` | 需要安装或校验的 Python 包列表，渲染为空格分隔参数 |

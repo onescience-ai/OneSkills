@@ -1,0 +1,46 @@
+{
+  "name": "30m-cropland-mapping-preprocessing-validation",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "30米农田范围与面积制图的数据预处理、产品生成与验证工作流。涵盖Landsat数据预处理（辐射定标、大气校正、几何配准、云掩膜）、GeoTIFF/COG产品生成、元数据完整性要求、独立验证与基线比较的完整流程。适用于遥感制图任务中真实传感器数据与合成数据的本质区别判定、当必需输入缺失时的标准处置流程。",
+  "tags": [
+    "remote-sensing",
+    "cropland-mapping",
+    "preprocessing",
+    "validation",
+    "GeoTIFF",
+    "Landsat",
+    "radiometric-calibration",
+    "atmospheric-correction",
+    "independent-validation",
+    "workflow",
+    "climate",
+    "edge:task:30m-cropland-mapping-preprocessing",
+    "edge:task:30m-cropland-mapping-product-generation",
+    "edge:task:30m-cropland-mapping-validation"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "遥感制图任务中真实传感器数据与合成数据的本质区别及其对验收判定的影响；遥感数据预处理工作流中辐射定标、几何配准和质量掩膜的具体作用与必要性；方法配置与输入输出契约验证的具体执行要求；遥感制图产品的标准输出格式规范；遥感分类独立验证的标准要求；Landsat数据预处理标准流程",
+  "evidence_papers": [
+    {
+      "title": "30 m 5-yearly land cover maps of Qilian Mountain Area (QMA_LC30) from 1990 to 2020",
+      "doi": "10.1038/s41597-024-03976-9",
+      "year": 2024
+    },
+    {
+      "title": "Spatial-temporal distribution of global production-living-ecological space during the period 2000-2020",
+      "doi": "10.1038/s41597-023-02497-1",
+      "year": 2023
+    },
+    {
+      "title": "Aeolian sand migration induced land degradation and desertification hotspots identification in the semi-arid rain shadow regions of Anantapur, India",
+      "doi": "10.1038/s41598-025-31610-0",
+      "year": 2025
+    }
+  ]
+}

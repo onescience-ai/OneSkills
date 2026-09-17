@@ -1,0 +1,23 @@
+{
+  "name": "cfd-deep-ritz-variational-pde-solver-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T12:00:00Z",
+  "updated_at": "2026-09-16T12:00:00Z",
+  "description": "Deep Ritz与弱形式神经变分PDE求解的完整工作流：从变分积分数据接入到物理一致性验收的五步闭环流程。适用于椭圆方程和演化方程的变分求解任务，覆盖数据核验、预处理切分、模型训练、方程求解残差恢复、适用域判定。每步含明确输入输出契约和质量门禁，确保可复现性和物理一致性。",
+  "tags": ["Deep Ritz", "weak form", "PDE workflow", "variational solver", "physics-informed", "elliptic equation", "evolution equation", "neural network", "CFD", "data contract", "model training", "residual recovery", "applicability assessment"],
+  "aliases": ["Deep Ritz workflow", "weak-form solver workflow", "variational PDE pipeline"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Deep Ritz与弱形式神经变分求解工作流",
+  "evidence_papers": [
+    {"title": "The Deep Ritz Method: A Deep Learning-Based Numerical Algorithm for Solving Variational Problems", "year": 2017},
+    {"title": "Error Analysis of Deep Ritz Methods for Elliptic Equations", "year": 2021},
+    {"title": "Weak adversarial networks for high-dimensional partial differential equations", "year": 2019},
+    {"title": "Learning from Integral Losses in Physics-Informed Neural Networks", "year": 2024},
+    {"title": "Efficient Error Certification for Physics-Informed Neural Networks", "year": 2024},
+    {"title": "Characterizing possible failure modes in physics-informed neural networks", "year": 2021}
+  ]
+}

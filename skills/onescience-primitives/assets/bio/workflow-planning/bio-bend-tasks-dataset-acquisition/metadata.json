@@ -1,0 +1,15 @@
+{
+  "name": "bio-bend-tasks-dataset-acquisition",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T19:09:21Z",
+  "updated_at": "2026-09-15T19:09:21Z",
+  "description": "BEND_tasks数据集获取、格式验证和版本管理。包含DNA语言模型基准评测所需的调控、剪接和染色质任务数据集获取方式、格式规范和版本信息。",
+  "tags": ["BEND_tasks", "DNA_language_model", "benchmark", "dataset_acquisition", "genomics", "bioinformatics"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DNA语言模型生物任务基准评测中BEND_tasks数据集的获取方式、格式规范和版本信息",
+  "evidence_papers": []
+}

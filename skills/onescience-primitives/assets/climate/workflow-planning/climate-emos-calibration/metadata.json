@@ -1,0 +1,19 @@
+{
+  "name": "climate-emos-calibration",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T18:47:00+08:00",
+  "updated_at": "2026-09-15T18:47:00+08:00",
+  "description": "EMOS概率校准原理、集合预报校准标准方法、概率校准验证指标知识。适用于气象预报集合产品的概率校准阶段，确保概率预报的可靠性和准确性。",
+  "tags": ["EMOS", "calibration", "ensemble-forecast", "probability", "postprocessing", "reliability", "sharpness"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "EMOS概率校准原理、集合预报校准标准方法、概率校准验证指标",
+  "evidence_papers": [
+    {"title": "Neural Networks for Postprocessing Ensemble Weather Forecasts", "doi": "10.1175/MWR-D-18-0040.1", "year": 2018},
+    {"title": "Statistical Postprocessing for Weather Forecasts: Review, Challenges, and Avenues", "doi": "10.1175/BAMS-D-19-0300.1", "year": 2020},
+    {"title": "Predictive performance of ensemble hydroclimatic forecasts: Verification metrics", "doi": "10.1002/wat2.1612", "year": 2022}
+  ]
+}

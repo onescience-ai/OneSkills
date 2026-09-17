@@ -1,0 +1,16 @@
+{
+  "name": "cfd-drl-task-validation-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T21:00:00Z",
+  "updated_at": "2026-09-16T21:00:00Z",
+  "description": "CFD-DRL 任务的验收与适用域判定步骤：按统计与物理联合指标评价闭环仿真结果，报告逐变量误差、边界误差、守恒残差、最差样本和推理成本，给出 PASS/REJECT/BLOCKED 判定。执行几何或工况外推测试明确适用域边界，输出含限制与复核建议的适用域报告。适用于 DRL 控制策略的最终工程验收阶段。",
+  "tags": ["task validation", "applicability domain", "evaluation", "worst case", "OOD test", "error metrics", "physics consistency", "CFD", "deep reinforcement learning", "drag reduction", "pass-reject"],
+  "aliases": ["DRL validation", "CFD-DRL evaluation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "深度强化学习钝体尾迹闭环减阻控制",
+  "evidence_papers": []
+}

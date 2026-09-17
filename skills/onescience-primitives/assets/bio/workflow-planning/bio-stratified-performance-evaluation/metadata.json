@@ -1,0 +1,15 @@
+{
+  "name": "bio-stratified-performance-evaluation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T19:09:21Z",
+  "updated_at": "2026-09-15T19:09:21Z",
+  "description": "分层性能评估方法、报告格式和验证指标。包含按染色体/基因、物种、细胞类型和变异类别分层评估的标准方法和报告要求。",
+  "tags": ["stratified_evaluation", "performance_metrics", "AUC_ROC", "accuracy", "bioinformatics"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DNA语言模型生物任务基准评测中分层性能评估的标准方法、报告格式和验证指标",
+  "evidence_papers": []
+}

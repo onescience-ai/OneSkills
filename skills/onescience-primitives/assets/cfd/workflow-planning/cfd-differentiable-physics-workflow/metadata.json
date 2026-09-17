@@ -1,0 +1,71 @@
+{
+  "name": "cfd-differentiable-physics-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "可微分物理求解与方程结构学习的标准工作流，从数据接入到适用域判定的完整5步流程，覆盖不同iable simulator和Mechanistic PDE network两类模型的训练与耦合求解。",
+  "tags": [
+    "differentiable-physics",
+    "pde-learning",
+    "workflow",
+    "5-step",
+    "physics-informed",
+    "edge:scenario:cfd-differentiable-physics-equation-learning",
+    "edge:task:cfd-diff-phys-coupled-solving",
+    "edge:task:cfd-diff-phys-data-ingestion",
+    "edge:task:cfd-diff-phys-data-preprocessing",
+    "edge:task:cfd-diff-phys-evaluation",
+    "edge:task:cfd-diff-phys-model-training"
+  ],
+  "aliases": [
+    "可微分物理求解工作流",
+    "PDE发现流程"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD_S071 可微分物理求解与方程结构学习工作流",
+  "evidence_papers": [
+    {
+      "title": "Mechanistic PDE Networks for Discovery of Governing Equations",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "Hamiltonian Neural PDE Solvers through Functional Approximation",
+      "doi": "",
+      "year": 2025
+    },
+    {
+      "title": "PhysPDE_ Rethinking PDE Discovery and a Physical Hypothesis Selection Benchmark",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "Neural Stochastic Flows_ Solver-Free Modelling and Inference for SDE Solutions",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "Accelerating PDE Data Generation via Differential Operator Action in Solution Space",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "Stochastic Taylor Derivative Estimator_ Efficient Amortization for Arbitrary Differential Operators",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "ΦFlow_ Differentiable Simulations for PyTorch, TensorFlow and Jax",
+      "doi": "",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

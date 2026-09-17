@@ -1,0 +1,25 @@
+{
+  "name": "general-cli-noninteractive-failure-diagnosis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T20:07:00Z",
+  "updated_at": "2026-09-16T20:07:00Z",
+  "description": "面向CLI工具在非交互模式下执行失败时的诊断流程，覆盖退出码语义分类、超时处理、沙箱执行故障和标准错误判读，提供从错误模式到根因定位的系统化排查方法",
+  "tags": ["CLI", "exit-code", "troubleshooting", "non-interactive", "error-handling", "diagnosis"],
+  "aliases": ["command-line", "shell-exit", "process-termination", "error-code"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {"title": "Linux man-pages: exit(3)", "url": "https://www.man7.org/linux/man-pages/man3/exit.3.html", "publisher": "Linux man-pages project", "version": "man-pages", "accessed_at": "2026-09-16"},
+    {"title": "POSIX.1-2017 exit() specification", "url": "https://pubs.opengroup.org/onlinepubs/9699919799/functions/exit.html", "publisher": "The Open Group", "version": "POSIX.1-2017", "accessed_at": "2026-09-16"},
+    {"title": "Advanced Bash-Scripting Guide: Exit Codes With Special Meanings", "url": "https://www.tldp.org/LDP/abs/html/exitcodes.html", "publisher": "The Linux Documentation Project", "version": "2024", "accessed_at": "2026-09-16"},
+    {"title": "CLI Guidelines (clig.dev)", "url": "https://clig.dev/", "publisher": "clig.dev", "version": "2024", "accessed_at": "2026-09-16"}
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

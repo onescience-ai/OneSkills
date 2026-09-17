@@ -1,0 +1,28 @@
+{
+  "name": "bio-auprc-evaluation-metrics",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "基因组功能预测任务中平均精度(average precision)的标准定义——PR曲线下面积(AUPRC)，与多指标简单平均的本质区别。区间层/碱基层/变异层结果导出的具体格式规范（VCF/BED/tabular），参考与替代等位基因在评估中的区分方式。",
+  "tags": ["AUPRC", "average-precision", "evaluation-metrics", "PR-curve", "genomic-prediction", "variant-effect", "bioinformatics", "VCF", "BED", "tabular", "precision-recall"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "平均精度的标准定义与结果导出格式",
+  "evidence_papers": [
+    {
+      "title": "BEND: Benchmarking DNA Language Models on biologically meaningful tasks",
+      "doi": "10.48550/arXiv.2311.12570",
+      "year": 2024,
+      "venue": "ICLR 2024"
+    },
+    {
+      "title": "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling",
+      "doi": "10.48550/arXiv.2403.03234",
+      "year": 2024,
+      "venue": "ICML 2024"
+    }
+  ]
+}

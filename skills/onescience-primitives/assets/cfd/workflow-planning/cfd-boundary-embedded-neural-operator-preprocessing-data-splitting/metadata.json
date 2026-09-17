@@ -1,0 +1,19 @@
+{
+  "name": "cfd-boundary-embedded-neural-operator-preprocessing-data-splitting",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "边界嵌入神经算子预处理与数据切分任务，负责统一物理量与表示，按几何、工况或时间构造无泄漏切分，保存统计量与可逆变换。",
+  "tags": ["preprocessing", "data-splitting", "boundary-embedded", "neural-operator", "cfd", "normalization", "train-val-test"],
+  "aliases": ["预处理与数据切分", "边界嵌入数据预处理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "边界嵌入神经算子预处理与数据切分",
+  "evidence_papers": [
+    {"title": "BENO: Boundary-Embedded Neural Operators for PDEs", "doi": "", "year": 2024, "url": ""},
+    {"title": "Physics-Embedded Neural Networks: Graph Neural PDE Solvers with Mixed Boundary Conditions", "doi": "", "year": 2024, "url": ""}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "bio-per-track-robust-z-normalization",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "per_track_robust_z标准化方法，用于跨轨迹比较变异效应值。包含MAD计算、背景变异集比对、MAD=0回退规则和原始值与无量纲值并列保留的报告格式。适用于多轨迹预测结果的标准化和统计显著性评估。",
+  "tags": ["robust-z-score", "MAD", "normalization", "background-variant-set", "statistical-analysis"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "per_track_robust_z标准化、MAD计算、背景变异集比对",
+  "evidence_papers": [
+    {"title": "Cross-platform normalization of microarray and RNA-seq data for machine learning", "doi": "10.7717/peerj.1262", "year": 2016},
+    {"title": "Fast Robust Correlation for High-Dimensional Data", "doi": "10.1080/01621459.2019.1629761", "year": 2019},
+    {"title": "Guidelines and considerations for the use of system suitability and quality control samples in metabolomics", "doi": "10.1007/s11306-018-1418-0", "year": 2018},
+    {"title": "A Deep Learning-Based Radiomics Model for Prediction of Survival in Glioblastoma", "doi": "10.1038/s41598-017-04765-9", "year": 2017}
+  ]
+}

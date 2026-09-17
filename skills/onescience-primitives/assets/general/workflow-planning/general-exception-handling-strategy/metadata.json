@@ -1,0 +1,15 @@
+{
+  "name": "general-exception-handling-strategy",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T20:37:00Z",
+  "updated_at": "2026-09-15T20:37:00Z",
+  "description": "执行阻塞后的异常处理策略，包括数据补充、配置调整和用户交互流程。适用于任何工作流中的阻塞场景，提供分类处理机制和恢复流程。知识内容基于领域通用实践，证据有限，需进一步文献验证。",
+  "tags": ["exception-handling", "error-recovery", "workflow-blocking", "user-interaction", "data-recovery"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "执行阻塞后的异常处理策略，包括数据补充、配置调整和用户交互流程",
+  "evidence_papers": []
+}

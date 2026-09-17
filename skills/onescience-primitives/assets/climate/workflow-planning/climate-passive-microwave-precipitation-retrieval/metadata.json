@@ -1,0 +1,23 @@
+{
+  "name": "climate-passive-microwave-precipitation-retrieval",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T12:12:00Z",
+  "updated_at": "2026-09-15T12:12:00Z",
+  "description": "被动微波卫星降水反演算法与数据规范知识，包括GPM GMI、AMSR2、TMI等传感器的亮温数据格式、覆盖范围、时空分辨率和质量标志定义；数据来源、版本、时空覆盖、变量、单位、质量标志、使用权限和资料截止时间的核验流程；遥感观测标签及任务边界预检的标准步骤和输出要求；辐射定标配置、几何配准配置和切片配置；降水识别算法和降水率反演算法；物理原理和算法选择；产品生成和质量控制流程。",
+  "tags": ["passive microwave", "precipitation retrieval", "GPM", "AMSR2", "TMI", "satellite", "remote sensing", "algorithm", "data specification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "被动微波卫星降水反演的输入数据规范、预处理流程、反演算法、产品生成、验证方法、数据真实性原则和性能评估知识",
+  "evidence_papers": [
+    {"title": "The Global Precipitation Measurement (GPM) Mission for Science and Society", "doi": "10.1175/bams-d-15-00306.1", "year": 2016},
+    {"title": "A Review of Global Precipitation Data Sets: Data Sources, Estimation, and Intercomparisons", "doi": "10.1002/2017rg000574", "year": 2017},
+    {"title": "Global Multiscale Evaluation of Satellite Passive Microwave Retrieval of Precipitation during the TRMM and GPM Eras", "doi": "10.1175/jhm-d-17-0087.1", "year": 2017},
+    {"title": "The Passive Microwave Neural Network Precipitation Retrieval (PNPR) Algorithm for the CONICAL Scanning Global Microwave Imager (GMI) Radiometer", "doi": "10.3390/rs10071122", "year": 2018},
+    {"title": "Evaluation of Precipitation Retrieval Performance from 13 Passive Microwave Radiometers Relative to Spaceborne Radar Estimate", "doi": "10.1175/jhm-d-25-0036.1", "year": 2025},
+    {"title": "Global Precipitation Estimate Error Decomposition Analysis for 14 Passive Microwave Sensors", "doi": "10.1029/2024gl113631", "year": 2025},
+    {"title": "A One‐Dimensional Variational Precipitation Retrieval Algorithm Considering Cloud Types for Western North Pacific Tropical Cyclones", "doi": "10.1029/2025jd044523", "year": 2025}
+  ]
+}

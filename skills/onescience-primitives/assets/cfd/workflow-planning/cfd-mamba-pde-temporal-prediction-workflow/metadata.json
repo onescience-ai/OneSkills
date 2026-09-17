@@ -1,0 +1,29 @@
+{
+  "name": "cfd-mamba-pde-temporal-prediction-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "Mamba状态空间神经算子时序预测的端到端工作流编排：从PDE轨迹数据接入、预处理切分、Mamba/SSM算子训练、批量推理与物理恢复，到统计-物理联合验收与适用域判定。适用于时间依赖PDE（Navier-Stokes、Burgers、浅水方程、反应扩散、可压缩欧拉等）的神经算子替代模型构建，强调无泄漏切分、双向空间扫描、自适应阻尼/频率调制、线性复杂度全局感受野和物理约束验收。",
+  "tags": ["workflow", "Mamba", "state-space model", "neural operator", "PDE", "temporal prediction", "training pipeline", "evaluation", "data preprocessing", "physical consistency"],
+  "aliases": ["Mamba PDE workflow", "SSM operator pipeline"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Mamba状态空间神经算子时序预测工作流",
+  "evidence_papers": [
+    {
+      "title": "Mamba Neural Operator: Who Wins? Transformers vs. State-Space Models for PDEs",
+      "doi": "10.48550/arXiv.2410.02113",
+      "year": 2024,
+      "venue": "Journal of Computational Physics (accepted 2025)"
+    },
+    {
+      "title": "Merging Memory and Space: A State Space Neural Operator",
+      "doi": "10.48550/arXiv.2507.23428",
+      "year": 2025,
+      "venue": "arXiv"
+    }
+  ]
+}

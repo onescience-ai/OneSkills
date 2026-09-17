@@ -1,0 +1,23 @@
+{
+  "name": "climate-forecast-data-preprocessing-quality-control",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向气象预报任务的数据预处理与质量控制规范。涵盖输入数据契约验证、资料截止时间检查、时空对齐标准化流程、质量标志编码和数据时点规则执行。适用于所有earth域多站点时序预报任务的输入数据准备阶段。",
+  "tags": ["climate", "forecast", "quality-control", "data-preprocessing", "temporal-alignment", "data-cutoff", "workflow-planning"],
+  "aliases": ["meteorological data quality", "forecast data preprocessing", "weather data alignment"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报任务的输入数据契约规范、气象数据时空对齐的标准化流程规范、气象预报数据时点规则",
+  "evidence_papers": [
+    {"title": "Pangu-Weather: A 3D High-Resolution Model for Fast and Accurate Global Weather Forecast", "doi": "10.48550/arXiv.2211.02556", "year": 2022},
+    {"title": "SCINet: Time Series Modeling and Forecasting with Sample Convolution and Interaction", "doi": "10.48550/arXiv.2106.09305", "year": 2022}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

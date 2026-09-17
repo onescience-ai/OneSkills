@@ -1,0 +1,26 @@
+{
+  "name": "climate-data-cutoff-time-rules",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:38:00Z",
+  "updated_at": "2026-09-16T18:38:00Z",
+  "description": "面向气象临近预报数据时点规则任务，定义资料截止时间、观测资料时间限制和预报产品时间范围约束，确保预报的实时性和可靠性。",
+  "tags": ["data-cutoff", "real-time", "nowcasting", "meteorology", "temporal-constraints"],
+  "aliases": ["资料截止时间", "数据时点规则", "实时预报约束"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象临近预报的数据时点规则",
+  "evidence_papers": [
+    {
+      "title": "A dataset for machine learning model to convective initiation detection and nowcasting over southeastern China",
+      "doi": "10.1038/s41597-026-06902-3",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

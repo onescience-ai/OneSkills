@@ -1,0 +1,29 @@
+{
+  "name": "s01-design-input-parsing",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "s01步骤：设计输入解析与约束定义任务。解析功能位点约束蛋白骨架生成的输入PDB文件，验证格式完整性，提取固定残基索引，生成标准化设计输入和约束清单。核心任务是正确核对输入文件名（motif_5tpn.pdb）和固定残基索引（默认[10, 25]）。",
+  "tags": [
+    "bio",
+    "task",
+    "s01",
+    "input-parsing",
+    "constraint-definition",
+    "rfdiffusion",
+    "edge:workflow:rfdiffusion-input-output-spec"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "s01设计输入解析与约束定义",
+  "evidence_papers": [
+    {
+      "title": "De novo design of protein structure and function with RFdiffusion",
+      "doi": "10.1038/s41586-023-06415-8",
+      "year": 2023
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "cfd-model-training-autoencoder-rom",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T21:21:00Z",
+  "updated_at": "2026-09-16T21:21:00Z",
+  "description": "自编码器潜空间流动降阶模型的训练：训练卷积自编码器（CAE）和潜空间动力学模型，完成指定输入到目标物理量的映射。适用于平流主导型偏微分方程系统的低维表示与时间演化建模，覆盖模型架构选择、超参数配置、训练过程监控和最佳权重保存。",
+  "tags": ["training", "autoencoder", "convolutional-autoencoder", "latent-dynamics", "reduced-order-modeling", "model-training", "hyperparameter-optimization"],
+  "aliases": ["模型训练", "自编码器训练", "降阶模型训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "自编码器潜空间流动降阶模型训练知识",
+  "evidence_papers": [
+    {
+      "title": "Reduced-order modeling of advection-dominated systems with recurrent neural networks and convolutional autoencoders",
+      "doi": "10.48550/arXiv.2002.00470",
+      "year": 2020
+    },
+    {
+      "title": "β-Variational autoencoders and transformers for reduced-order modelling of fluid flows",
+      "doi": "10.48550/arXiv.2304.03571",
+      "year": 2023
+    },
+    {
+      "title": "Slim multi-scale convolutional autoencoder-based reduced-order models for interpretable features of a complex dynamical system",
+      "doi": "10.48550/arXiv.2501.03070",
+      "year": 2025
+    }
+  ]
+}

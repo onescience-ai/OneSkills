@@ -1,0 +1,42 @@
+{
+  "name": "cli-noninteractive-execution-fault-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T23:35:00Z",
+  "updated_at": "2026-09-16T23:35:00Z",
+  "description": "面向命令行接口非交互执行场景，提供故障分类、退出码处理与错误恢复策略，确保CLI工具在自动化流水线中稳定运行",
+  "tags": ["CLI", "non-interactive", "fault-classification", "exit-code", "error-handling"],
+  "aliases": ["command-line-interface", "batch-execution", "automated-pipeline"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Python argparse Documentation",
+      "url": "https://docs.python.org/3/library/argparse.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-16T23:35:00Z"
+    },
+    {
+      "title": "Python subprocess Documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-16T23:35:00Z"
+    },
+    {
+      "title": "The GNU C Library Manual - Exit Status",
+      "url": "https://www.gnu.org/software/libc/manual/html_node/Exit-Status.html",
+      "publisher": "Free Software Foundation",
+      "version": "2.44",
+      "accessed_at": "2026-09-16T23:35:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

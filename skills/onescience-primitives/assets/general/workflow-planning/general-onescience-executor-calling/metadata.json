@@ -1,0 +1,15 @@
+{
+  "name": "general-onescience-executor-calling",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:56:00Z",
+  "updated_at": "2026-09-15T21:56:00Z",
+  "description": "onescience工作流编排中executor技能的正确调用方式，包括step_handoff的格式规范、executor输入输出契约和状态传递机制。用于指导正确编排和调度执行技能。",
+  "tags": ["onescience", "workflow orchestration", "executor skill", "step_handoff", "skill calling"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "onescience工作流编排中executor技能的正确调用方式",
+  "evidence_papers": []
+}

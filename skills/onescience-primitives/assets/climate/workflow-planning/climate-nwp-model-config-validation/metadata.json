@@ -1,0 +1,26 @@
+{
+  "name": "climate-nwp-model-config-validation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:38:00Z",
+  "updated_at": "2026-09-16T18:38:00Z",
+  "description": "面向数值天气预报模型配置验证任务，定义模型版本确认、参数冻结、随机种子设置和最小干运行测试等验证步骤，确保模型配置的正确性和可复现性。",
+  "tags": ["model-configuration", "validation", "NWP", "meteorology", "reproducibility"],
+  "aliases": ["模型配置验证", "NWP配置检查", "数值模式验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "模型配置验证的具体内容和执行方法",
+  "evidence_papers": [
+    {
+      "title": "European supercell thunderstorms -- A prevalent current threat and an increasing future hazard",
+      "doi": "10.1126/sciadv.adx0513",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

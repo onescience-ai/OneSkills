@@ -1,0 +1,19 @@
+{
+  "name": "climate-enso-prediction-science",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "ENSO预测任务的科学背景和数据要求，包括Niño3.4指数的定义、ENSO的物理机制、标准输入数据的含义和来源，以及ENSO预测的科学意义和应用价值",
+  "tags": ["ENSO", "Nino3.4", "climate-prediction", "El-Niño", "La-Niña", "seasonal-forecast", "ocean-atmosphere"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "ENSO预测任务的科学背景和数据要求，包括Niño3.4指数的定义、ENSO的物理机制、标准输入数据的含义和来源",
+  "evidence_papers": [
+    {"title": "ENSO in a Coupled Atmosphere-Ocean Model", "doi": "10.1002/joc.4261", "year": 1994},
+    {"title": "The El Niño Southern Oscillation", "doi": "10.1007/978-94-007-1243-0", "year": 2013},
+    {"title": "ENSO Prediction Challenge 2018-2019", "doi": "10.1175/BAMS-D-18-0153.1", "year": 2019}
+  ]
+}

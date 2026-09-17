@@ -1,0 +1,27 @@
+{
+  "name": "bio-singlecell-foundation-model-weights",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:47:00Z",
+  "updated_at": "2026-09-16T18:47:00Z",
+  "description": "面向单细胞基础模型应用，获取Geneformer和scGPT预训练权重的标准化流程，包括权重下载、版本验证、许可证检查和模型加载",
+  "tags": ["single-cell", "foundation-model", "Geneformer", "scGPT", "pretrained-weights", "HuggingFace"],
+  "aliases": ["Geneformer weights", "scGPT weights", "预训练模型", "基础模型权重"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "单细胞基础模型权重获取知识，包括Geneformer v2和scGPT的公开权重下载地址、版本标识、模型架构、输入输出格式、预处理要求和许可证信息",
+  "evidence_docs": [
+    {
+      "title": "scGPT GitHub Repository",
+      "url": "https://github.com/bowang-lab/scGPT",
+      "publisher": "bowang-lab",
+      "version": "2026",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

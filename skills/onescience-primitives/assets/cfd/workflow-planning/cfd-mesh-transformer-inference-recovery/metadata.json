@@ -1,0 +1,22 @@
+{
+  "name": "cfd-mesh-transformer-inference-recovery",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向百万节点PDE网格的批量推理与物理恢复步骤：在独立测试集上推理，反归一化恢复原始单位、坐标网格、边界掩膜及物理派生量，保存逐样本结果和耗时，禁止用测试标签修正预测。",
+  "tags": ["CFD", "inference", "prediction", "PDE", "mesh", "physics recovery", "denormalization", "timing"],
+  "aliases": ["批量推理", "物理恢复"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "大规模网格Transformer三维流场预测-批量推理与物理恢复",
+  "evidence_papers": [
+    {
+      "title": "Transolver: A Fast Transformer Solver for PDEs on General Geometries",
+      "doi": "N/A",
+      "year": 2024
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "climate-forecast-verification-protocol",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "气象预报独立验证执行规范，定义了验证数据集划分原则、验证指标计算方法（POD/FAR/CSI/RMSE）和验证结果解释标准。核心要求：验证数据集必须独立于训练和调参数据，验证过程可追溯。适用于临近预报、数值天气预报等场景的性能评估。",
+  "tags": ["verification", "validation", "POD", "FAR", "CSI", "RMSE", "independent", "dataset", "forecast-evaluation", "metrics"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "独立验证的执行规范，包括验证数据集的划分原则、验证指标的计算方法和验证结果的解释标准",
+  "evidence_papers": [
+    {
+      "title": "基于归因报告分析的验证规范（任务268）",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Internal Attribution Analysis"
+    }
+  ]
+}

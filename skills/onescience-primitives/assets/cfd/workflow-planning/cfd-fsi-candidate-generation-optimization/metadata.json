@@ -1,0 +1,19 @@
+{
+  "name": "cfd-fsi-candidate-generation-optimization",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "流固耦合逆向设计候选生成与约束优化任务，围绕目标性能生成候选，执行约束优化并保留完整搜索轨迹，产出设计候选和Pareto前沿。",
+  "tags": ["cfd", "candidate-generation", "optimization", "fsi", "fluid-structure-interaction", "pareto"],
+  "aliases": ["FSI候选生成", "流固耦合优化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "流固耦合逆向设计候选生成与约束优化任务知识补充",
+  "evidence_papers": [
+    {"title": "PRDP_ Progressively Refined Differentiable Physics", "doi": "", "year": null},
+    {"title": "PETAL_ Physics Emulation Through Averaged Linearizations for Solving Inverse Problems", "doi": "", "year": null}
+  ]
+}

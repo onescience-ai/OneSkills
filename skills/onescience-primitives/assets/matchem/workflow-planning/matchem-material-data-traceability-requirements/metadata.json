@@ -1,0 +1,20 @@
+{
+  "name": "matchem-material-data-traceability-requirements",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:33:00Z",
+  "updated_at": "2026-09-16T18:33:00Z",
+  "description": "面向材料科学计算任务的数据可追溯性要求，确保材料结构数据来自权威来源、性能数据标注具体文献，建立完整的证据链",
+  "tags": ["data-traceability", "materials-database", "evidence-chain", "quality-assurance"],
+  "aliases": ["数据溯源", "证据链", "权威来源"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "材料科学任务中数据可追溯性要求",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

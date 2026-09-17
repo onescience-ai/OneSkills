@@ -1,0 +1,19 @@
+{
+  "name": "cfd-aerodynamic-applicability-domain-evaluation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "气动逆向设计生成模型的任务验收与适用域判定任务，评估统计误差、关键物理约束、泛化能力和计算收益，输出PASS/REJECT/BLOCKED判定和适用域报告。适用于气动逆向设计工作流的最终验收阶段。",
+  "tags": ["cfd", "evaluation", "applicability-domain", "acceptance-test", "physics-consistency", "ood-testing", "inverse-design", "airfoil"],
+  "aliases": ["气动设计适用域判定", "逆向设计任务验收"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气动逆向设计任务验收与适用域判定",
+  "evidence_papers": [
+    {"title": "Aerodynamic Shape Design Space Exploration with Deep Latent Diffusion Model", "doi": "", "year": null, "url": "https://arxiv.org/abs/2609.00812"},
+    {"title": "Diffusion Model Driven Airfoil Design_ From Geometry Encoding to Practical Applications", "doi": "", "year": null, "url": "https://arxiv.org/abs/2601.16228"}
+  ]
+}

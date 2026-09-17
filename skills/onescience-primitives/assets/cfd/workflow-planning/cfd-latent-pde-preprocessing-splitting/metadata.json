@@ -1,0 +1,22 @@
+{
+  "name": "cfd-latent-pde-preprocessing-splitting",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向连续坐标PDE算子学习的预处理与数据切分任务，统一物理量表示，按几何、工况或时间构造无泄漏切分，保存变换统计量与可逆变换。",
+  "tags": ["preprocessing", "data-splitting", "normalization", "no-leakage"],
+  "aliases": ["数据预处理", "数据切分"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "潜空间与神经场连续PDE算子学习-预处理",
+  "evidence_papers": [
+    {"title": "Latent Neural Operator for Solving Forward and Inverse PDE Problems", "doi": "", "year": 2024}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

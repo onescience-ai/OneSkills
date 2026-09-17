@@ -1,0 +1,18 @@
+{
+  "name": "cfd-cylinder-wake-data-ingestion-preprocessing",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "圆柱绕流非定常时序数据的接入、契约核验、预处理与无泄漏切分，确保数据质量与训练/测试集独立性。",
+  "tags": ["cfd", "data-ingestion", "preprocessing", "data-split", "cylinder-wake", "contract-validation"],
+  "aliases": ["cylinder wake data preprocessing", "CFD data ingestion"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "圆柱绕流数据接入预处理切分",
+  "evidence_papers": [
+    {"title": "Data-driven prediction of unsteady flow over a circular cylinder using deep learning", "doi": "", "year": 2018}
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "name": "json-schema-report-contract",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.4.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:48:00Z",
+  "updated_at": "2026-09-17T18:00:00Z",
+  "description": "面向结构化报告交付场景，基于 JSON Schema 定义必填字段、类型约束和验证流程，确保输出契约与任务身份一致。补充类型验证、对象验证、模式组合和格式验证等详细规范。",
+  "tags": ["json-schema", "validation", "api-contract", "report-delivery", "schema-validation"],
+  "aliases": ["JSON Schema 验证", "报告契约", "API response contract"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Schema Enforcement and Structured-Output Stability in Locally Deployed LLMs for Clinical Admission-Note Editing: A Proxy-Based Pre-Deployment Evaluation",
+      "doi": "10.3390/healthcare14142150",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema: A Media Type for Describing JSON Documents",
+      "url": "https://json-schema.org/draft/2020-12/json-schema-core.html",
+      "publisher": "IETF / JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
+      "url": "https://json-schema.org/draft/2020-12/json-schema-validation.html",
+      "publisher": "IETF / JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "JSON Schema Reference (Understanding JSON Schema)",
+      "url": "https://json-schema.org/understanding-json-schema/reference/",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "OpenAPI Specification - Version 3.2.0",
+      "url": "https://swagger.io/specification/",
+      "publisher": "OpenAPI Initiative (Linux Foundation)",
+      "version": "3.2.0",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "Learn JSON Schema (2020-12)",
+      "url": "https://www.learnjsonschema.com/2020-12/",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-16: 基于JSON Schema官方文档补充类型验证、对象验证、模式组合和格式验证等详细规范", "2026-09-16: 基于归因分析任务396案例补充报告契约定义和验证流程案例", "2026-09-16: 基于归因分析任务283案例补充报告契约验证流程案例", "2026-09-17: 基于论文证据补充Schema执行与结构化输出稳定性知识", "2026-09-17: 基于归因分析任务81案例补充报告契约验证失败症状和修复验证要点", "2026-09-17: 基于归因分析任务291案例补充报告契约验证失败症状和修复验证要点", "2026-09-17: 基于归因分析任务292案例补充报告契约验证失败症状和修复验证要点"],
+  "conflicts": []
+}

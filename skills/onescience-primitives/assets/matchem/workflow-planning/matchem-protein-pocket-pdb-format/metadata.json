@@ -1,0 +1,28 @@
+{
+  "name": "matchem-protein-pocket-pdb-format",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T12:32:00Z",
+  "updated_at": "2026-09-16T12:32:00Z",
+  "description": "面向靶标特异性分子生成任务中蛋白口袋PDB文件的格式要求、获取方法和验证标准，提供PDB文件的原子坐标规范、结构验证和口袋提取流程，适用于分子对接、虚拟筛选和基于结构的药物设计。",
+  "tags": ["protein-pocket", "PDB-format", "molecular-docking", "binding-site", "structure-preparation"],
+  "aliases": ["蛋白口袋", "结合位点", "PDB文件", "靶标结构"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "靶标特异性分子生成对蛋白口袋文件的格式要求；PDB文件的结构和原子坐标规范；如何获取或创建真实的蛋白口袋结构",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Introduction to Protein Data Bank Format",
+      "url": "https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/pdbintro.html",
+      "publisher": "UCSF Chimera",
+      "version": "October 2022",
+      "accessed_at": "2026-09-16T12:32:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,47 @@
+{
+  "name": "cfd-domain-decomposition-parallel-pinn-solution",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:00:00Z",
+  "updated_at": "2026-09-16T19:00:00Z",
+  "description": "面向分区PDE配点与界面条件数据，采用区域分解并行PINN完成大域PDE求解的通用方法框架。适用于物理信息神经网络在大域或多尺度场景下的求解能力不足、谱偏差导致收敛困难等问题。核心方法包括：重叠子域划分与窗口函数约束、子域独立输入归一化、界面连续性条件（弱约束或构造约束）、灵活训练调度与并行化。输出可复现模型、解场残差、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": ["domain decomposition", "PINN", "parallel PINN", "FBPINN", "XPINN", "physics-informed neural network", "large domain", "multi-scale", "interface conditions", "window function", "divide-and-conquer", "spectral bias", "PDE solver", "CFD", "neural network parallelization"],
+  "aliases": ["区域分解并行PINN", "FBPINN", "XPINN", "大域PINN求解", "domain decomposition parallel PINN"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "区域分解并行PINN大域求解",
+  "evidence_papers": [
+    {
+      "title": "Finite Basis Physics-Informed Neural Networks (FBPINNs): A Scalable Domain Decomposition Approach for Solving Differential Equations",
+      "doi": "10.1007/s10444-023-10065-9",
+      "year": 2023,
+      "venue": "Advances in Computational Mathematics"
+    },
+    {
+      "title": "PINN Balls: Scaling Second-Order Methods for PINNs with Domain Decomposition and Adaptive Sampling",
+      "doi": "10.48550/arXiv.2510.21262",
+      "year": 2025,
+      "venue": "Accepted Conference Paper"
+    },
+    {
+      "title": "When Do Extended Physics-Informed Neural Networks (XPINNs) Improve Generalization",
+      "doi": "10.1137/21M1447039",
+      "year": 2022,
+      "venue": "SIAM Journal on Scientific Computing"
+    },
+    {
+      "title": "Parallel Physics-Informed Neural Networks via Domain Decomposition",
+      "doi": "10.1016/j.jcp.2021.110683",
+      "year": 2022,
+      "venue": "Journal of Computational Physics"
+    },
+    {
+      "title": "Meta Learning of Interface Conditions for Multi-Domain Physics-Informed Neural Networks",
+      "doi": "",
+      "year": null,
+      "venue": ""
+    }
+  ]
+}

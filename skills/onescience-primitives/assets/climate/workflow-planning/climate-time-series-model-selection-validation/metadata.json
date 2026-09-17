@@ -1,0 +1,24 @@
+{
+  "name": "climate-time-series-model-selection-validation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向气象时序预报任务的模型选择与验证规范。涵盖LSTM/Transformer/GRU等模型在气象预报中的适用条件、输入输出契约定义、最小干运行验证流程、随机性控制要求和性能评估标准。适用于所有earth域时序预报任务的模型选择与配置验证阶段。",
+  "tags": ["climate", "forecast", "model-selection", "validation", "LSTM", "transformer", "performance-evaluation", "workflow-planning"],
+  "aliases": ["weather model validation", "forecast model selection", "time series model verification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象时序预报模型的选择与验证规范、气象时序预报模型性能评估标准",
+  "evidence_papers": [
+    {"title": "Pangu-Weather: A 3D High-Resolution Model for Fast and Accurate Global Weather Forecast", "doi": "10.48550/arXiv.2211.02556", "year": 2022},
+    {"title": "LLM-Mixer: Multiscale Mixing in LLMs for Time Series Forecasting", "doi": "10.48550/arXiv.2410.11674", "year": 2024},
+    {"title": "SCINet: Time Series Modeling and Forecasting with Sample Convolution and Interaction", "doi": "10.48550/arXiv.2106.09305", "year": 2022}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

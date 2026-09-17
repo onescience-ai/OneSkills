@@ -60,6 +60,8 @@ skills/onescience-knowledge-capture/contributions/<domain>/<contribution_id>/
 - 已有或新的 `type=expert` skill：需要动态判断、取舍和 fallback 的经验。
 - 已有或新的 `type=executor` skill：输入输出和验证方式稳定的流程。
 
+迁移到生产卡目录时，`<primitive_name>` **不得直接沿用贡献目录名**（`2026-09-07_scanpy_qc_fallback` 这种带日期的 intake 名只服务于审计排序，对检索是噪声），也不得用哈希 id、纯编号或裸占位词；必须从贡献正文里抠出一个能说出“对什么东西做什么事”的语义名（如 `scanpy-qc-threshold-fallback`），并与 `metadata.name` 保持一致。入库前跑 `python validate_knowledge.py --names-only --quiet`，必须 `RESULT: PASS`（不限领域、不限知识类型）。
+
 ## 输入契约
 
 标准输入是 orchestrator 传入的 `step_handoff`：

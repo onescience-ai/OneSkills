@@ -1,0 +1,28 @@
+{
+  "name": "general-cli-fault-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "CLI 非交互执行与故障分类工作流：在自动化流水线中安全启动子进程、捕获退出码与标准错误、分类故障类别并执行恢复策略。适用于需要通过命令行接口（CLI）执行外部工具（如归因分析、数据处理、模型推理）且要求非交互式稳定运行的场景。核心方法包括：Python subprocess 模块调用、退出码语义解析（POSIX/Windows）、超时控制与信号终止、stderr 结构化判读、故障分类（参数错误/认证失败/沙箱限制/超时/资源不足）及自动重试策略。输出为故障类别标签、诊断日志和恢复建议。",
+  "tags": ["CLI", "subprocess", "exit-code", "fault-classification", "non-interactive", "stderr", "timeout", "process-management", "automation", "recovery", "POSIX", "Windows", "diagnostics"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识：命令参数、认证、沙箱、超时、退出码和标准错误判读",
+  "evidence_papers": [
+    {
+      "title": "Python subprocess module documentation",
+      "doi": null,
+      "year": 2026,
+      "venue": "Python 3.14.7 Documentation"
+    },
+    {
+      "title": "POSIX exit status conventions",
+      "doi": null,
+      "year": 2026,
+      "venue": "The Open Group Base Specifications Issue 7"
+    }
+  ]
+}

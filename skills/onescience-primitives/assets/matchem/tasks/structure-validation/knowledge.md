@@ -57,5 +57,5 @@
 ## 缺口与降级（Fallback / Gap）
 
 - 改道触发：MLIP 优化不收敛或体系超出覆盖 → 改道 DFT 弛豫（资源缺失时标记 `partial` 并说明精度降级）。
-- 分层降级：`full` / `partial` / `task_only` / `none`；`retrieval_level != full` 时向 `references/tc/gaps.jsonl` 追加缺口记录。
+- 分层降级：`full` / `partial` / `task_only` / `none`；`retrieval_level != full` 时向 `.onescience/gaps.jsonl` 追加缺口记录。
 - 已知缺口：DFT 求解器资源卡未建；非晶/缺陷体系核验方法缺失。

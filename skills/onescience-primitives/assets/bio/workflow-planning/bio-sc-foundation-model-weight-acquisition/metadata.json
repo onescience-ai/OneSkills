@@ -1,0 +1,28 @@
+{
+  "name": "bio-sc-foundation-model-weight-acquisition",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15",
+  "updated_at": "2026-09-15",
+  "description": "单细胞基础模型权重获取知识卡片。涵盖Geneformer v2、scGPT等主流单细胞基础模型的官方权重下载渠道（HuggingFace Model Hub、GitHub Releases）、版本标识、模型架构规格、输入输出格式、预处理要求和许可证信息。",
+  "tags": [
+    "bio",
+    "single-cell",
+    "Geneformer",
+    "scGPT",
+    "foundation-model",
+    "pretrained-weights",
+    "HuggingFace",
+    "workflow-planning"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "单细胞基础模型权重获取知识，包括Geneformer v2和scGPT的公开权重下载地址、版本标识、模型架构、输入输出格式、预处理要求和许可证信息",
+  "evidence_papers": [
+    {"title": "Zero-shot evaluation reveals limitations of single-cell foundation models", "doi": "10.1186/s13059-025-03574-x", "year": 2025},
+    {"title": "A foundation model of transcription across human cell types", "doi": "10.1038/s41586-024-08391-z", "year": 2025},
+    {"title": "GeneCompass: deciphering universal gene regulatory mechanisms with a knowledge-informed cross-species foundation model", "doi": "10.1038/s41422-024-01034-y", "year": 2024}
+  ]
+}

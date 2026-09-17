@@ -1,0 +1,28 @@
+{
+  "name": "climate-front-detection-methods-comparison",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:25:00Z",
+  "updated_at": "2026-09-16T15:25:00Z",
+  "description": "天气锋面检测方法对比工作流：对比CNN深度学习方法与传统阈值方法在锋面检测中的适用条件、输入要求和输出精度差异。适用于需要选择锋面检测算法的研究场景。核心方法包括：CNN方法（DL-FRONT等）与传统梯度阈值方法的对比分析、方法选择论证、精度评估。输出为方法选择理由、适用性评估、精度对比报告。",
+  "tags": ["front detection", "CNN", "deep learning", "threshold method", "DL-FRONT", "gradient", "algorithm comparison", "method selection", "accuracy assessment", "climate", "workflow-planning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "天气锋面检测方法学对比知识，包括CNN方法（DL-FRONT等）与传统阈值方法的适用条件、输入要求、输出精度差异",
+  "evidence_papers": [
+    {
+      "title": "Automated detection of weather fronts using a deep learning neural network",
+      "doi": "10.5194/ascmo-5-147-2019",
+      "year": 2019,
+      "venue": "Atmospheric Measurement Techniques"
+    },
+    {
+      "title": "A comparison of front detection methods",
+      "doi": "10.1175/JTECH-D-19-0165.1",
+      "year": 2020,
+      "venue": "Journal of Atmospheric and Oceanic Technology"
+    }
+  ]
+}

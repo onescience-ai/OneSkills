@@ -1,0 +1,20 @@
+{
+  "name": "cfd-aerodynamic-inverse-design-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "生成模型驱动的气动外形与流场联合逆向设计工作流，覆盖从数据接入、预处理切分、潜空间扩散模型训练、条件采样物理筛选到任务验收与适用域判定的完整五步闭环。适用于基于翼型几何流场联合数据训练生成模型并产出可复现设计结果的场景。",
+  "tags": ["cfd", "workflow", "inverse-design", "generative-model", "latent-diffusion", "airfoil", "flow-field", "physics-consistency", "applicability-domain"],
+  "aliases": ["气动逆向设计工作流", "生成模型逆向设计流程"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "生成模型气动外形与流场联合逆向设计工作流",
+  "evidence_papers": [
+    {"title": "Aerodynamic Shape Design Space Exploration with Deep Latent Diffusion Model", "doi": "", "year": null, "url": "https://arxiv.org/abs/2609.00812"},
+    {"title": "Diffusion Model Driven Airfoil Design_ From Geometry Encoding to Practical Applications", "doi": "", "year": null, "url": "https://arxiv.org/abs/2601.16228"},
+    {"title": "From Zero to Turbulence_ Generative Modeling for 3D Flow Simulation", "doi": "10.1017/jfm.2019.923", "year": null}
+  ]
+}

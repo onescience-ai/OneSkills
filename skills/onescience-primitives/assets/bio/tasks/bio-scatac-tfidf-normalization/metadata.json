@@ -1,0 +1,28 @@
+{
+  "name": "bio-scatac-tfidf-normalization",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "scATAC-seq TF-IDF归一化任务：对peak × cell稀疏计数矩阵进行TF-IDF（Term Frequency-Inverse Document Frequency）归一化，替代scRNA-seq的normalize_total+log1p流水线。适用于任务s02预处理阶段，确保预处理方法与scATAC数据类型匹配。",
+  "tags": ["scATAC-seq", "TF-IDF", "normalization", "preprocessing", "single-cell", "chromatin accessibility", "peak matrix", "sparse matrix", "data preprocessing", "epigenomics"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "scATAC-seq TF-IDF归一化预处理方法",
+  "evidence_papers": [
+    {
+      "title": "Signac: Analysis of Single-Cell Chromatin Data",
+      "doi": "",
+      "year": 2024,
+      "venue": "Bioconductor"
+    },
+    {
+      "title": "chromVAR: inferring transcription factor dynamics from single-cell chromatin accessibility data",
+      "doi": "10.1038/nmeth.4463",
+      "year": 2017,
+      "venue": "Nature Methods"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "bio-protein-prediction-quality-metrics",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:54:00Z",
+  "updated_at": "2026-09-15T21:54:00Z",
+  "description": "蛋白变异效应预测结果的质量评估标准，包括Spearman相关性阈值、ESM-1v预期表现范围、统计显著性要求。用于评估预测结果的科学有效性和可靠性。",
+  "tags": ["protein variant prediction", "quality metrics", "Spearman correlation", "statistical significance", "ESM-1v benchmark"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白变异效应预测结果的质量评估标准",
+  "evidence_papers": [
+    {"title": "Protein variant effect prediction with sequence-based deep learning", "doi": "10.1038/s41587-021-00826-2", "year": 2021}
+  ]
+}

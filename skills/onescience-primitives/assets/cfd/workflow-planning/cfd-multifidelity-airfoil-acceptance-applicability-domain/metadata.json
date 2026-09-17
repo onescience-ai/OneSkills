@@ -1,0 +1,33 @@
+{
+  "name": "cfd-multifidelity-airfoil-acceptance-applicability-domain",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:49:00Z",
+  "updated_at": "2026-09-16T18:49:00Z",
+  "description": "评估统计误差、关键物理约束、泛化能力和计算收益。适用于多保真代理辅助翼型优化的验收阶段，输出适用域报告与域外工况CFD复核建议。",
+  "tags": ["cfd", "acceptance", "applicability-domain", "evaluation", "airfoil", "multi-fidelity", "OOD", "physics-consistency", "generalization"],
+  "aliases": ["验收适用域判定", "airfoil acceptance applicability domain"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多保真代理辅助翼型外形优化场景知识补充",
+  "evidence_papers": [
+    {
+      "title": "ShapeBench: A Scalable Benchmark and Diagnostic Suite for Standardized Evaluation in Aerodynamic Shape Optimization",
+      "doi": "",
+      "year": 2025,
+      "arxiv": "2605.20763"
+    },
+    {
+      "title": "Surrogate-Based Aerodynamic Shape Optimization in Multiscale Flows via the Implicit Unified Gas-Kinetic Scheme",
+      "doi": "",
+      "year": 2025,
+      "arxiv": "2606.00645"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

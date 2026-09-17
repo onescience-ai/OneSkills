@@ -1,0 +1,53 @@
+{
+  "name": "matchem-lead-free-perovskite-stability-ml-screening",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:12:00.000000",
+  "updated_at": "2026-09-16T18:12:00.000000",
+  "description": "面向无铅杂化钙钛矿稳定性机器学习筛选任务，涵盖数据来源、模型配置、不确定性估计、验证方法和过拟合处理的完整工作流。",
+  "tags": [
+    "lead-free perovskite",
+    "machine learning",
+    "stability screening",
+    "uncertainty estimation",
+    "overfitting diagnosis",
+    "Materials Project",
+    "OQMD",
+    "DFT validation"
+  ],
+  "aliases": [
+    "无铅钙钛矿稳定性筛选",
+    "lead-free hybrid perovskite ML screening"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "无铅杂化钙钛矿稳定性机器学习筛选的知识补充",
+  "evidence_papers": [
+    {
+      "title": "Genome-Guided Interpretable Screening of Phase-Stable, Lead-Free Double Perovskite Absorbers for All-Inorganic Semiconductors, Sensors, and Photovoltaics with DFT-Validated Design Rules",
+      "doi": "10.48550/arXiv.2605.22887",
+      "year": 2026
+    },
+    {
+      "title": "Machine Learning Design of Perovskite Catalytic Properties",
+      "doi": "10.1021/acs.chemmater.9b02166",
+      "year": 2019
+    },
+    {
+      "title": "Clarifying Trust of Materials Property Predictions using Neural Networks with Distribution-Specific Uncertainty Quantification",
+      "doi": "10.48550/arXiv.2302.02595",
+      "year": 2023
+    },
+    {
+      "title": "Methods for comparing uncertainty quantifications for material property predictions",
+      "doi": "10.48550/arXiv.1912.10066",
+      "year": 2019
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

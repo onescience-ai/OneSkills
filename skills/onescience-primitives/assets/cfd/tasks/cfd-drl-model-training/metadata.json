@@ -1,0 +1,23 @@
+{
+  "name": "cfd-drl-model-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T21:00:00Z",
+  "updated_at": "2026-09-16T21:00:00Z",
+  "description": "CFD-DRL 任务的模型训练步骤：加载预处理后的数据切分与统计量，使用深度强化学习框架训练控制策略网络，记录训练过程指标与最佳权重。确保训练可复现（种子、依赖、环境）、权重可重新加载、早停机制防止过拟合。适用于需要从传感器轨迹数据学习闭环控制策略的 DRL 训练阶段。",
+  "tags": ["model training", "deep reinforcement learning", "PyTorch", "policy network", "early stopping", "reproducibility", "OpenFOAM", "CFD", "checkpoint", "training metrics"],
+  "aliases": ["DRL training", "reinforcement learning model training"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "深度强化学习钝体尾迹闭环减阻控制",
+  "evidence_papers": [
+    {
+      "title": "Artificial neural networks trained through deep reinforcement learning discover control strategies for active flow control",
+      "doi": "",
+      "year": 2018,
+      "oa_url": "https://arxiv.org/abs/1808.07664"
+    }
+  ]
+}

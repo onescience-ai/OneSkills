@@ -1,0 +1,34 @@
+{
+  "name": "climate-radar-zr-parameter-sensitivity",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T20:39:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "雷达气象学中Z-R关系的理论基础和参数选择原则。定义不同降水类型（层状云、对流云、混合型）对应的典型参数范围，以及参数敏感性分析的方法（如Bootstrap采样、网格搜索）。涵盖Z-R关系参数a和b的物理意义、地区依赖性、降水类型依赖性。适用于需要选择合适Z-R参数、进行参数敏感性分析、论证参数选择理由的场景。输出为参数选择论证、敏感性分析报告和参数推荐。",
+  "tags": ["radar", "Z-R relationship", "parameters", "sensitivity analysis", "Marshall-Palmer", "stratiform", "convective", "mixed precipitation", "Bootstrap", "grid search", "radar meteorology", "reflectivity", "rainfall", "estimation", "parameter selection", "rainfall microstructure"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达气象学中Z-R关系的理论基础和参数选择原则，包括不同降水类型（层状云、对流云、混合型）对应的典型参数范围，以及参数敏感性分析的方法（如Bootstrap采样、网格搜索）。",
+  "evidence_papers": [
+    {
+      "title": "MEASUREMENT OF RAINFALL BY RADAR",
+      "doi": "10.1175/1520-0469(1947)004<0186:morbr>2.0.co;2",
+      "year": 1947,
+      "venue": "Journal of Meteorology"
+    },
+    {
+      "title": "Parameterization of rainfall microstructure for radar meteorology and hydrology",
+      "doi": "10.18174/192722",
+      "year": 1999,
+      "venue": "Wageningen University"
+    },
+    {
+      "title": "Spatial evaluation rainfall estimation on weather radar using Marshall–Palmer reflectivity–rainfall rate in Banten",
+      "doi": "10.24425/jwld.2024.151567",
+      "year": 2024,
+      "venue": "Journal of Water and Land Development"
+    }
+  ]
+}

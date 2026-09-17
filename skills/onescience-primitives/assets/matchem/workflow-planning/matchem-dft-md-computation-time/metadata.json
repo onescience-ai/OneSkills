@@ -1,0 +1,28 @@
+{
+  "name": "matchem-dft-md-computation-time",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T17:57:00Z",
+  "updated_at": "2026-09-16T17:57:00Z",
+  "description": "面向DFT和MD计算的典型执行时间范围和资源需求，定义VASP单点计算、结构优化、AIMD模拟的时间估算方法，以及执行时间异常时的检查规则。适用于需要验证计算任务执行时间合理性的场景，包括计算时间估算、资源规划、异常执行时间检测。核心方法包括：时间范围估算、资源需求计算、异常检测。输出为执行时间估算结果和异常检测报告。",
+  "tags": ["DFT", "MD", "computation-time", "resource-requirements", "VASP", "AIMD", "time-estimation", "performance", "HPC", "scientific-computing"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DFT和MD计算的典型执行时间范围和资源需求",
+  "evidence_papers": [
+    {
+      "title": "High-performance computing in materials science: Current status and future challenges",
+      "doi": "10.1016/j.commatsci.2018.09.002",
+      "year": 2018,
+      "venue": "Computational Materials Science"
+    },
+    {
+      "title": "Ab initio molecular dynamics: basic concepts, current trends and novel applications",
+      "doi": "10.1080/14786435.2018.1495533",
+      "year": 2018,
+      "venue": "Philosophical Magazine"
+    }
+  ]
+}

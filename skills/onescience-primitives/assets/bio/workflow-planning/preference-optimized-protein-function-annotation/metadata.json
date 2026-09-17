@@ -2,10 +2,10 @@
   "name": "preference-optimized-protein-function-annotation",
   "type": "workflow-planning",
   "domain": "bio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-12",
-  "updated_at": "2026-09-12",
+  "updated_at": "2026-09-16T08:00:00Z",
   "description": "基于 AnnoDPO 的「偏好优化驱动的蛋白功能注释」工作流。研究对象为蛋白序列、突变、结构域、酶底物或功能标签数据。本场景研究蛋白序列、突变、结构域、酶底物或功能标签数据，希望解决利用优选与拒绝注释对训练蛋白功能模型，减少无依据标签并提升多标签注释质量。覆盖从蛋白样本与目标定义到评测与解释汇总的完整管线。核心指标包括宏平均F1。得到与输入和任务约束一致、可追溯、可复核的偏好优化驱动的蛋白功能注释结果，包括规范化序列、突变/底物表示、标签本体、去重和数据质量报告、独立评估、宏平均F1统计、不确定度、失败案例和适用边界；不能支持的结论必须明确说明原因。 偏好优化驱动的蛋白功能注释 的端到端可复用工作流：4 个节点，核心模型 AnnoDPO。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "annodpo",
@@ -27,29 +27,65 @@
     "workflow-planning",
     "b32",
     "edge:scenario:bio-preference-optimization-driven-protein-function-annotation-scenario",
-    "edge:workflow:bio-protein-sample-and-target-definition-characterization-and-workflow"
+    "edge:workflow:bio-protein-sample-and-target-definition-characterization-and-workflow",
+    "ESM-2",
+    "checkpoint",
+    "multi-label",
+    "interpretability",
+    "label-sparsity",
+    "data-leakage",
+    "accession-split",
+    "hierarchical-GO",
+    "contrastive-learning"
   ],
+  "aliases": ["protein-function-prediction", "GO-annotation", "multilabel-classification"],
   "scenario_id": "B32",
   "source_papers": [
     "2506.07035",
-    "2405.06729"
+    "2405.06729",
+    "10.1038/s41598-025-94612-y",
+    "10.1002/pro.70182",
+    "10.1021/acsomega.5c05484"
   ],
   "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "偏好优化驱动的蛋白功能注释任务知识补充",
+  "evidence_papers": [
+    {
+      "title": "A multimodal model for protein function prediction",
+      "doi": "10.1038/s41598-025-94612-y",
+      "year": 2025,
+      "venue": "Scientific Reports",
+      "authors": ["Y. Yang", "Y. S.", "L. X. C.", "W. H. X."],
+      "oa_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11947276"
+    },
+    {
+      "title": "GOBeacon: An ensemble model for protein function prediction enhanced by contrastive learning",
+      "doi": "10.1002/pro.70182",
+      "year": 2025,
+      "venue": "Protein Science",
+      "authors": ["W. Lin", "D. Miller", "Z. Gu", "C. Orengo"],
+      "oa_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12183117"
+    },
+    {
+      "title": "Integrating ESM-2 and Graph Neural Networks with AlphaFold-2 Structures for Enhanced Protein Function Prediction",
+      "doi": "10.1021/acsomega.5c05484",
+      "year": 2025,
+      "venue": "ACS Omega",
+      "authors": ["T.-T. N.", "Z. J.", "V. N. N.", "N. Q. K. L.", "M. C. H. C."],
+      "oa_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12391975"
+    }
+  ],
   "tier": "medium",
   "score": 0.0,
-  "source_paper": {
-    "title": "偏好优化驱动的蛋白功能注释（场景工作流）",
-    "doi": "",
-    "source": "scenario_json",
-    "external_id": "B32",
-    "venue": "",
-    "cited_by_count": null,
-    "objective_score": 0.0
-  },
-  "lifecycle": "probation",
+  "lifecycle": "stable",
   "grounded_ratio": 1.0,
   "scenario_ids": [
     "B32"
   ],
-  "batch": "2026-09-14"
+  "batch": "2026-09-14",
+  "merged_batches": [
+    "harvest-2026-09-16"
+  ],
+  "conflicts": []
 }

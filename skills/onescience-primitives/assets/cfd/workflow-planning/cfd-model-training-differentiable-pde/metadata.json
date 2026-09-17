@@ -1,0 +1,29 @@
+{
+  "name": "cfd-model-training-differentiable-pde",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "可微PDE模型训练：训练Differentiable PDE-GNN与Physics-aware data assimilation模型，完成从输入到目标物理量的映射。核心包括损失函数设计（PDE残差+数据拟合）、激活函数选择、优化器策略、迁移学习。适用于需要将物理约束嵌入深度学习训练流程的CFD场景。",
+  "tags": ["model training", "differentiable PDE", "PINN", "DeepONet", "loss function", "activation function", "optimizer", "transfer learning", "physics-informed"],
+  "aliases": ["模型训练", "可微PDE训练", "物理约束训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "可微PDE模型训练步骤知识",
+  "evidence_papers": [
+    {
+      "title": "Learning the solution operator of parametric partial differential equations with physics-informed DeepONets",
+      "doi": "10.1126/sciadv.abi8605",
+      "year": 2021,
+      "venue": "Science Advances"
+    },
+    {
+      "title": "The Old and the New: Can Physics-Informed Deep-Learning Replace Traditional Linear Solvers?",
+      "doi": "10.3389/fdata.2021.669097",
+      "year": 2021,
+      "venue": "Frontiers in Big Data"
+    }
+  ]
+}

@@ -28,14 +28,14 @@ type: executor
 3. 读取 `./references/discover-route.md`，识别用户意图、安装领域、Python 包列表、`runtime.conda` 状态和目标环境路径。
 4. 根据“意图 + 环境路径 + conda 状态”读取对应分支文件，并且只读取命中的分支文件。
 5. 需要渲染探测、下载、安装、验证命令时，读取 `./references/install_flow.md`。
-6. OneScience 自身是特殊 bootstrap 目标，不属于普通 Python 包：安装 `onescience`、`OneScience 环境`、`earth/cfd/bio/matchem/all` 时必须先执行 `workspace_bootstrap_profiles.json.wheel.download_wheel_command` 下载 wheel，再从已下载 wheel 的 METADATA 探测 `Provides-Extra`，然后按领域 + 加速卡选择匹配 extra，并通过 `pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` 安装；不得把下载下来的 wheel 当作安装载体，也不得渲染 `pip install onescience`、`python -m pip install onescience` 或把 `onescience` 放入 `{python_packages}`。
+6. OneScience 自身是特殊 bootstrap 目标，不属于普通 Python 包：安装 `onescience`、`OneScience 环境`、`earth/cfd/bio/matchem/all` 时，默认按 `workspace_bootstrap_profiles.json.install.extra_naming_convention`（`{domain}-{accelerator}`，如 `earth-dcu`）直接拼出 extra，并通过一条命令 `pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` 安装，无需预下载 wheel；仅当 pip 报 `does not provide the extra` 或加速卡无法判定时，才启用 `workspace_bootstrap_profiles.json.wheel` 的下载 + METADATA 探测兜底，从 `Provides-Extra` 中选出实际存在的 extra 重装。`bio` 领域仅支持 dcu，不得拼出 `bio-gpu`。不得把下载下来的 wheel 当作安装载体，也不得渲染 `pip install onescience`、`python -m pip install onescience` 或把 `onescience` 放入 `{python_packages}`。
 7. 检测成功、安装成功且验证成功后，若 `install_intent` 为 `bootstrap` 或 `python_packages`，读取 `./references/writeback-conda-state.md` 写回 `onescience.json.runtime.conda`。若 `install_intent=hpc_software`，跳过 conda 写回（HPC 软件不依赖 conda 环境）。
 8. 写回成功后，若当前任务带有上游 handoff / resume 信息，则返回调用它的技能继续执行；若没有明确调用方，则交回 `onescience-orchestrator` 规划后续任务。installer 不得自行推断新的业务 downstream skill；除文档中已明确的 runsite 补齐调用外，后续由谁执行一律由 caller 或 `onescience-orchestrator` 决定。
 
 ## 必要资产
 
 - `./assets/backend_profiles.json`：环境名、Python 版本、module 顺序、verify 口径。
-- `./assets/workspace_bootstrap_profiles.json`：OneScience wheel 来源、extras 探测与安装入口。
+- `./assets/workspace_bootstrap_profiles.json`：OneScience 一条 pip 命令安装入口（extra 命名规则与已知 extras）与失败兜底的 wheel 探测配置。
 - `./assets/install_domains.json`：`earth/cfd/bio/matchem/all` 到领域意图的映射。
 - `./assets/hpc_software_profiles.json`：HPC 科学计算软件（GROMACS、LAMMPS 等）的定义、下载地址、安装配置与验证命令。
 - `./assets/conda_env.example.json`：成功写回格式示例。
@@ -79,7 +79,7 @@ installer 的环境信息写回位置是 `onescience.json.runtime.conda`。除 `
   - **autonomous_mode 例外**：当上游 `step_handoff.execution_flags.autonomous_mode` 为 `true` 时，安装确认自动通过，不向用户提问。但安装失败后仍需报告失败原因，不得静默跳过。若安装过程涉及不可逆操作（如覆盖已有 conda 环境），仍需返回 `status: blocked` 说明风险，不得直接覆盖。
 - `run_site=remote` 时，在 SSH 信息齐备前不要执行安装、验证或包检测。
 - `run_site=remote` 时不要在本端 shell 执行 `conda` 或任何安装/验证命令；远端安装必须通过远端执行模板完成。
-- 禁止把 `onescience` 当作普通包塞进 `{python_packages}`；bootstrap 路径必须先下载 wheel 以探测 extra，再通过 `pip install \"onescience[{resolved_extra}]\" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` 完成安装，而不是把下载下来的 wheel 直接拿来安装。
+- 禁止把 `onescience` 当作普通包塞进 `{python_packages}`；bootstrap 路径默认按 `{domain}-{accelerator}` 命名规则拼 extra，直接用一条 `pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` 完成安装，不预下载 wheel；只有 pip 报 extra 不存在时才回退到 `wheel` 的下载 + METADATA 探测兜底。不得把下载下来的 wheel 直接当作安装载体。
 - `runtime.conda` 缺失时，必须先走 `detect-existing-onescience.md`；若目标环境已有 `onescience` 和 `torch` 包，写回环境信息到 `runtime.conda` 并返回，不创建环境；若都没有，只报告检测结果，询问是否创建 conda 环境并安装 onescience。
   - **autonomous_mode 例外**：当 `autonomous_mode: true` 且 `runtime.conda` 缺失、目标环境无 `onescience` 时，自动创建 conda 环境并安装 onescience（使用 `install_domains.json` 中与任务领域匹配的默认 extra），不向用户提问。
 - 已有 `runtime.conda.enabled=true` 时，后续 Conda 路径必须使用记录的 `env_name` 和 `activate_script`。

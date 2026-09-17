@@ -1,0 +1,46 @@
+{
+  "name": "general-cli-noninteractive-execution-fault-diagnosis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:24:00.000Z",
+  "updated_at": "2026-09-16T23:55:00Z",
+  "description": "面向CLI非交互执行场景，提供命令参数、认证、沙箱、超时、退出码和标准错误判读的故障分类与诊断知识，用于修正启动配置或恢复策略，支持自动化工作流中的错误检测、分类与修复策略选择",
+  "tags": ["CLI", "non-interactive", "fault-diagnosis", "exit-codes", "error-handling", "automation", "workflow-automation", "troubleshooting", "error-recovery"],
+  "aliases": ["command-line interface", "CLI execution", "fault classification", "error diagnosis", "command-line interface fault diagnosis", "CLI error recovery", "non-interactive execution troubleshooting"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "ASTRA - Agentic System for Ticket Resolution and Analysis",
+      "doi": "arXiv:2608.28790",
+      "year": 2026
+    },
+    {
+      "title": "StepFly: Agentic Troubleshooting Guide Automation for Incident Diagnosis",
+      "doi": "10.48550/arXiv.2510.10074",
+      "year": 2025
+    },
+    {
+      "title": "GENIUS: An Agentic AI Framework for Autonomous Design and Execution of Simulation Protocols",
+      "doi": "10.1038/s43246-026-01167-0",
+      "year": 2025
+    },
+    {
+      "title": "Beyond Training: Enabling Self-Evolution of Agents with MOBIMEM",
+      "doi": "10.48550/arXiv.2512.15784",
+      "year": 2025
+    },
+    {
+      "title": "Toward Greater Autonomy in Materials Discovery Agents: Unifying Planning, Physics, and Scientists",
+      "doi": "10.48550/arXiv.2506.05616",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-16T23:55:00Z: 补充CLI非交互执行故障诊断的论文证据与校准数值"],
+  "conflicts": []
+}

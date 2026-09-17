@@ -1,0 +1,21 @@
+{
+  "name": "bio-metagenome-binning-contrastive-learning",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T17:37:00Z",
+  "updated_at": "2026-09-15T17:37:00Z",
+  "description": "对比学习在宏基因组分箱中的应用原理与实践，包括样本对构造方法、对比损失函数设计、表征学习目标，以及CLMB、SemiBin、COMEBin等模型的架构与推理流程。",
+  "tags": ["contrastive learning", "metagenome binning", "deep learning", "representation learning", "MAGs"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "对比学习在宏基因组分箱中的应用原理，包括序列对比学习的样本对构造方法、对比损失函数设计、表征学习目标；CLMB模型的架构、输入输出接口、权重加载和推理流程；长度过滤、k-mer分词和参考数据库编码的具体实现方法",
+  "evidence_papers": [
+    {"title": "SemiBin2: self-supervised contrastive learning leads to better MAGs for short- and long-read sequencing", "doi": "10.1093/bioinformatics/btad209", "year": 2023},
+    {"title": "A deep siamese neural network improves metagenome-assembled genomes in microbiome datasets across different environments", "doi": "10.1038/s41467-022-29843-y", "year": 2022},
+    {"title": "Effective binning of metagenomic contigs using contrastive multi-view representation learning", "doi": "10.1038/s41467-023-44290-z", "year": 2024},
+    {"title": "Evaluation of metagenome binning: advances and challenges", "doi": "10.1093/bib/bbaf617", "year": 2025},
+    {"title": "Critical Assessment of Metagenome Interpretation: the second round of challenges", "doi": "10.1038/s41592-022-01431-4", "year": 2022}
+  ]
+}

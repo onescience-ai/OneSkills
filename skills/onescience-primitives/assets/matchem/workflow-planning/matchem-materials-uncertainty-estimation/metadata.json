@@ -1,0 +1,28 @@
+{
+  "name": "matchem-materials-uncertainty-estimation",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:40:00Z",
+  "updated_at": "2026-09-15T21:40:00Z",
+  "description": "材料筛选不确定性估计工作流：为机器学习模型提供不确定性量化，包括集成方法、贝叶斯神经网络和dropout方法。适用于需要评估材料性能预测可靠性的高通量筛选场景。核心方法包括：随机森林集成不确定性、蒙特卡洛dropout、贝叶斯线性回归。输出为预测值和不确定性估计，支持风险决策。",
+  "tags": ["uncertainty quantification", "ensemble methods", "Bayesian", "dropout", "materials screening", "machine learning", "reliability", "risk assessment", "perovskite", "lead-free", "high-throughput"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "机器学习模型不确定性估计的方法及其在材料筛选中的应用",
+  "evidence_papers": [
+    {
+      "title": "Uncertainty quantification in machine learning for materials science",
+      "doi": "10.1038/s41524-021-00571-z",
+      "year": 2021,
+      "venue": "npj Computational Materials"
+    },
+    {
+      "title": "Bayesian deep learning for materials discovery",
+      "doi": "10.1038/s41524-019-0153-7",
+      "year": 2019,
+      "venue": "npj Computational Materials"
+    }
+  ]
+}

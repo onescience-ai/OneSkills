@@ -1,0 +1,42 @@
+{
+  "name": "cfd-autoencoder-latent-space-flow-reduced-order-temporal-prediction",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T21:17:00Z",
+  "updated_at": "2026-09-16T21:17:00Z",
+  "description": "面向高维流场快照时序数据，使用自编码器进行潜空间流动降阶并完成时序预测。适用于对平流主导型偏微分方程系统的低维表示与时间演化建模，覆盖卷积自编码器、变分自编码器与潜空间动力学模型的组合框架，产出可复现模型、物理一致性评估和适用域报告。",
+  "tags": ["autoencoder", "latent-space", "reduced-order-modeling", "fluid-dynamics", "temporal-prediction", "convolutional-autoencoder", "advection-dominated"],
+  "aliases": ["CAE-ROM", "latent dynamics", "flow prediction", "降阶模型"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "基于场景需求书为'自编码器潜空间流动降阶时序预测'补充结构化知识卡片",
+  "evidence_papers": [
+    {
+      "title": "Reduced-order modeling of advection-dominated systems with recurrent neural networks and convolutional autoencoders",
+      "doi": "10.48550/arXiv.2002.00470",
+      "year": 2020
+    },
+    {
+      "title": "β-Variational autoencoders and transformers for reduced-order modelling of fluid flows",
+      "doi": "10.48550/arXiv.2304.03571",
+      "year": 2023
+    },
+    {
+      "title": "Evolve Smoothly, Fit Consistently: Learning Smooth Latent Dynamics For Advection-Dominated Systems",
+      "doi": "10.48550/arXiv.2301.10391",
+      "year": 2023
+    },
+    {
+      "title": "Time-series learning of latent-space dynamics for reduced-order model closure",
+      "doi": "10.48550/arXiv.1906.07815",
+      "year": 2019
+    },
+    {
+      "title": "Slim multi-scale convolutional autoencoder-based reduced-order models for interpretable features of a complex dynamical system",
+      "doi": "10.48550/arXiv.2501.03070",
+      "year": 2025
+    }
+  ]
+}

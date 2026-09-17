@@ -1,0 +1,33 @@
+{
+  "name": "cfd-stochastic-pde-physical-network-solver",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向随机微分方程（SDE）与高维偏微分方程（PDE）样本，完成物理信息驱动的随机PDE求解工作流，涵盖数据接入、预处理、物理信息模型训练、方程残差恢复与适用域判定；适用于需要物理一致性保证的随机高维PDE求解任务，域外工况需经CFD复核。",
+  "tags": ["stochastic-pde", "physics-informed", "high-dimensional", "gaussian-process", "pde-solver", "cfd", "workflow"],
+  "aliases": ["SDE", "高维PDE", "物理网络随机", "Physics-informed stochastic solver"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "物理网络随机与高维PDE求解",
+  "evidence_papers": [
+    {"title": "Aerodynamic force reconstruction using physics-informed Gaussian processes", "doi": "10.48550/arXiv.2605.22111", "year": 2025},
+    {"title": "Integration Matters for Learning PDEs with Backward SDEs", "doi": "10.48550/arXiv.2505.01078", "year": 2025},
+    {"title": "PIG: Physics-Informed Gaussians as Adaptive Parametric Mesh Representations", "doi": "", "year": 2024},
+    {"title": "Score-based free-form architectures for high-dimensional Fokker-Planck equations", "doi": "", "year": 2024},
+    {"title": "In-Context Learning of Stochastic Differential Equations with Foundation Inference Models", "doi": "10.48550/arXiv.2502.19049", "year": 2025},
+    {"title": "Learning in modal space: Solving time-dependent stochastic PDEs using physics-informed neural networks", "doi": "10.48550/arXiv.1905.01205", "year": 2019},
+    {"title": "Gaussian Process Priors for Systems of Linear Partial Differential Equations with Constant Coefficients", "doi": "", "year": 2024},
+    {"title": "Physics-informed machine learning with smoothed particle hydrodynamics: Hierarchy of reduced Lagrangian modes", "doi": "10.1103/PhysRevFluids.8.054602", "year": 2023},
+    {"title": "Learning a Neural Solver for Parametric PDEs to Enhance Physics-Informed Methods", "doi": "10.1145/3620665.3640366", "year": 2024},
+    {"title": "Physics-Informed Inference Time Scaling for Solving High-Dimensional Partial Differential Equations", "doi": "", "year": 2024},
+    {"title": "UrbanGraph: Physics-Informed Spatio-Temporal Dynamic Heterogeneous Graphs for Urban Microclimate Prediction", "doi": "10.1016/j.buildenv", "year": 2024},
+    {"title": "Physics-Informed Kolmogorov-Arnold networks for viscoelastic fluid equations", "doi": "10.48550/arXiv.2608.29895", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,26 @@
+{
+  "name": "cfd-transonic-aeroelastic-reduced-order-response-prediction",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:38:00Z",
+  "updated_at": "2026-09-16T18:38:00Z",
+  "description": "面向跨声速颤振与buffet耦合数据，构建降阶响应预测模型，实现从高保真CFD数据到快速气动弹性分析的转换，覆盖数据接入、预处理、模型训练、推理和适用域判定全流程",
+  "tags": ["transonic", "aeroelastic", "reduced-order-model", "DMDc", "flutter", "buffet", "CFD", "surrogate-model"],
+  "aliases": ["transonic flutter prediction", "aeroelastic ROM", "DMDc aeroelastic", "BSCW flutter"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "跨声速气动弹性降阶响应预测",
+  "evidence_papers": [
+    {
+      "title": "Data-Driven Modeling for Transonic Aeroelastic Analysis",
+      "doi": "2304.07046",
+      "year": 2023
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

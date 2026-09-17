@@ -1,0 +1,23 @@
+{
+  "name": "cfd-pde-data-preprocessing-split",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "PDE数据预处理与无泄漏切分任务：统一物理量表示，执行质控、重采样、掩膜、归一化或无量纲化，按几何/完整轨迹/物理工况为单位进行train/val/test切分。确保同一轨迹的帧不被打散，仅用训练集计算变换统计量，保存可逆变换参数。产出三份切分清单与归一化参数文件。",
+  "tags": ["PDE", "preprocessing", "data split", "normalization", "no-leak split", "CFD", "train-val-test", "trajectory split"],
+  "aliases": ["数据预处理", "数据切分", "无泄漏切分"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "连续时间与随机生成神经算子预测场景知识补充",
+  "evidence_papers": [
+    {
+      "title": "CFO: Learning Continuous-Time PDE Dynamics via Flow-Matched Neural Operators",
+      "doi": "arXiv:2303.08797",
+      "year": 2023,
+      "url": "https://arxiv.org/abs/2303.08797"
+    }
+  ]
+}

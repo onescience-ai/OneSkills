@@ -1,0 +1,31 @@
+{
+  "name": "cfd-hypersonic-transonic-turbulence-surrogate-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "高超声速与跨声速边界层湍流代理模型构建的完整工作流，包含数据接入、预处理、模型训练、后验验证和适用域判定五个步骤。",
+  "tags": ["workflow", "hypersonic", "transonic", "turbulence", "surrogate", "CFD", "data-driven"],
+  "aliases": ["湍流代理工作流", "数据驱动湍流建模流程"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "高超声速与跨声速边界层湍流代理",
+  "evidence_papers": [
+    {
+      "title": "Data-Driven Turbulence Modeling Approach for Cold-Wall Hypersonic Boundary Layers",
+      "doi": "10.48550/arXiv.2406.17446",
+      "year": 2024
+    },
+    {
+      "title": "Scalable Transformer for PDE Surrogate Modeling",
+      "doi": "10.48550/arXiv.2209.04934",
+      "year": 2022
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

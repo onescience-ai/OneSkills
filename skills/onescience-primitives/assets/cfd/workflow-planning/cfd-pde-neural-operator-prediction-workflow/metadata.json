@@ -1,0 +1,33 @@
+{
+  "name": "cfd-pde-neural-operator-prediction-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "PDE神经算子预测的端到端工作流：从数据接入、预处理切分、模型训练、批量推理到验收与适用域判定的完整流程。适用于连续时间或随机PDE分布数据的算子学习任务。每个阶段产出机器可读契约与质量门禁报告，确保模型可复现、物理一致且适用域明确。",
+  "tags": ["PDE", "neural operator", "workflow", "data ingestion", "preprocessing", "model training", "inference", "validation", "applicability", "CFD", "operator learning"],
+  "aliases": ["PDE neural operator workflow", "算子预测工作流"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "连续时间与随机生成神经算子预测场景知识补充",
+  "evidence_papers": [
+    {
+      "title": "CFO: Learning Continuous-Time PDE Dynamics via Flow-Matched Neural Operators",
+      "doi": "arXiv:2303.08797",
+      "year": 2023,
+      "url": "https://arxiv.org/abs/2303.08797"
+    },
+    {
+      "title": "Wavelet Diffusion Neural Operator",
+      "doi": "N/A",
+      "year": 2024
+    },
+    {
+      "title": "Neural Stochastic PDEs: Resolution-Invariant Learning of Continuous Spatiotemporal Dynamics",
+      "doi": "N/A",
+      "year": 2023
+    }
+  ]
+}

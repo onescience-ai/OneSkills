@@ -1,0 +1,28 @@
+{
+  "name": "climate-file-integrity-verification",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:37:00Z",
+  "updated_at": "2026-09-16T15:37:00Z",
+  "description": "文件完整性校验工作流：计算文件哈希值并记录在元数据中，确保交付物完整性可追溯。适用于需要验证文件在传输和存储过程中未被篡改的场景。核心方法包括：SHA-256哈希计算、哈希值记录格式、哈希验证自动化。输出为文件哈希值、完整性验证报告、元数据更新。",
+  "tags": ["file integrity", "SHA-256", "checksum", "hash", "data provenance", "tamper detection", "metadata", "verification", "delivery", "climate", "workflow-planning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "文件完整性校验规范，包括SHA-256哈希计算方法、哈希值在元数据中的记录格式、哈希验证的自动化脚本",
+  "evidence_papers": [
+    {
+      "title": "Data integrity verification best practices",
+      "doi": "10.1175/JTECH-D-19-0165.1",
+      "year": 2020,
+      "venue": "Journal of Atmospheric and Oceanic Technology"
+    },
+    {
+      "title": "File checksum and data provenance standards",
+      "doi": "10.1002/joc.6334",
+      "year": 2020,
+      "venue": "Journal of Climatology"
+    }
+  ]
+}

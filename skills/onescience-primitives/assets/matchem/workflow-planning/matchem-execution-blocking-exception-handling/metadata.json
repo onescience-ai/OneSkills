@@ -1,0 +1,15 @@
+{
+  "name": "matchem-execution-blocking-exception-handling",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T17:30:00Z",
+  "updated_at": "2026-09-16T17:30:00Z",
+  "description": "执行阻塞后的异常处理策略，包括数据补充、配置调整和用户交互流程。适用于材料计算、模拟任务中的阻塞场景处理，提供分类处理机制和恢复流程。",
+  "tags": ["exception-handling", "blocking-recovery", "error-recovery", "task-orchestration", "materials-science", "data-missing", "configuration-error", "resource-insufficient"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "执行阻塞后的异常处理策略，包括数据补充、配置调整和用户交互流程",
+  "evidence_papers": []
+}

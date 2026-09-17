@@ -1,0 +1,15 @@
+{
+  "name": "climate-nowcast-verification-baseline-range",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "临近预报检验指标的业务基准值范围，包括真实冰雹预报场景中CSI（通常0.2-0.5）、FSS（通常0.5-0.8）、Brier Score（通常0.1-0.3）的典型值域，以及合成数据上指标虚高的原因（信号已知、噪声可控、无观测误差）",
+  "tags": ["verification", "CSI", "FSS", "Brier Score", "baseline", "operational", "synthetic"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "临近预报检验指标的业务基准值范围",
+  "evidence_papers": []
+}

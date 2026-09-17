@@ -1,0 +1,19 @@
+{
+  "name": "bio-singlecell-model-evaluation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:47:00Z",
+  "updated_at": "2026-09-16T18:47:00Z",
+  "description": "面向单细胞基础模型比较评测，涵盖细胞状态表征、扰动/反事实响应、空间结构保持性和跨模态一致性验证的标准化评估流程",
+  "tags": ["single-cell", "model-evaluation", "perturbation", "spatial", "cross-modal", "counterfactual"],
+  "aliases": ["模型评测", "扰动预测", "空间结构验证", "跨模态一致性"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "单细胞基础模型评测方法知识，包括扰动预测评估方法、空间结构保持性检验方法、跨模态一致性验证方法、以及这些评测指标与概念纯度的互补关系",
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

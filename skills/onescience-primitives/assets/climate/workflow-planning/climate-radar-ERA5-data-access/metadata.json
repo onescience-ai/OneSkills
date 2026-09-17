@@ -1,0 +1,22 @@
+{
+  "name": "climate-radar-ERA5-data-access",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "气象数据获取与处理专业知识，涵盖UK Radar Composite Dataset和ERA5再分析数据的获取方式、格式要求和处理流程。适用于需要真实雷达反射率、风速数据进行临近预报的场景。核心方法包括：CDS API下载、NetCDF4格式处理、数据质量控制、坐标对齐。禁止使用模拟数据替代真实观测。",
+  "tags": ["radar", "ERA5", "UK-Radar", "data-access", "CDS-API", "NetCDF4", "quality-control", "nowcasting", "weather-data", "observation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象数据获取与处理的专业知识，包括UK Radar Composite Dataset和ERA5数据的获取方式、格式要求和处理流程",
+  "evidence_papers": [
+    {
+      "title": "基于归因报告分析的数据获取规范（任务268）",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Internal Attribution Analysis"
+    }
+  ]
+}

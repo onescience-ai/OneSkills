@@ -1,0 +1,49 @@
+{
+  "name": "general-cli-non-interactive-execution-json-schema-validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:24:00Z",
+  "updated_at": "2026-09-17T00:24:00Z",
+  "description": "面向需要非交互式执行CLI程序并产生结构化输出的任务，提供命令参数设计、退出码处理、超时控制和JSON Schema输出验证的通用方法论；适用于自动化流水线、CI/CD管道、批量处理脚本等场景",
+  "tags": ["CLI", "non-interactive", "exit-codes", "JSON-Schema", "structured-output", "error-handling", "timeout", "subprocess"],
+  "aliases": ["command-line execution", "CLI automation", "structured output validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识；JSON Schema报告交付契约",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Python subprocess module documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17T00:24:00Z"
+    },
+    {
+      "title": "Python json module documentation",
+      "url": "https://docs.python.org/3/library/json.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17T00:24:00Z"
+    },
+    {
+      "title": "Python argparse module documentation",
+      "url": "https://docs.python.org/3/library/argparse.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17T00:24:00Z"
+    },
+    {
+      "title": "JSON Schema Understanding JSON Schema",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T00:24:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

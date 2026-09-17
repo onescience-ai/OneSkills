@@ -1,0 +1,20 @@
+{
+  "name": "cfd-symbolic-pde-model-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "符号与稀疏PDE发现模型的配置与训练步骤：加载切分数据、配置超参数、训练Symbolic physics learner或Sparse PDE discovery模型，记录训练过程与环境信息，确保可复现性。",
+  "tags": ["model-training", "symbolic-physics", "sparse-pde", "cfd", "checkpoint"],
+  "aliases": ["s03", "模型训练", "Symbolic physics learner训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "符号与稀疏物理学习控制方程发现模型训练",
+  "evidence_papers": [
+    {"title": "Symbolic Physics Learner: Discovering governing equations via Monte Carlo tree search", "doi": "10.48550/arXiv.2205.13134", "year": 2022},
+    {"title": "Universal Physics-Informed Neural Networks: Symbolic Differential Operator Discovery with Sparse Data", "doi": "", "year": 2022},
+    {"title": "Deep hidden physics models: Deep learning of nonlinear partial differential equations", "doi": "10.48550/arXiv.1801.06637", "year": 2018}
+  ]
+}

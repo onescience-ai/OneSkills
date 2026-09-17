@@ -1,0 +1,15 @@
+{
+  "name": "climate-radar-data-source-specification",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "天气雷达临近预报任务中真实观测数据的获取渠道和格式规范，包括中国CINRAD雷达基数据/组合反射率产品的下载地址、格式说明（ODIM_H5/CF/Radial）、时空覆盖范围、数据时效性要求，以及MRMS、NEXRAD等国际数据源的替代方案",
+  "tags": ["radar", "CINRAD", "MRMS", "NEXRAD", "data source", "format", "nowcast", "hail"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "天气雷达临近预报任务中真实观测数据的获取渠道和格式规范",
+  "evidence_papers": []
+}

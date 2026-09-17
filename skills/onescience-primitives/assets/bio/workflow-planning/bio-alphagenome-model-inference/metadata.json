@@ -1,0 +1,20 @@
+{
+  "name": "bio-alphagenome-model-inference",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "AlphaGenome模型加载配置与多轨迹预测推理流程。包含模型checkpoint配置、OrganismSettings构建、predict_variant方法调用、输出轨迹类型定义（ATAC/CAGE/RNA_SEQ/DNASE/CHIP_TF/CHIP_HISTONE/SPLICE_SITES）和上下文长度参数设置。",
+  "tags": ["AlphaGenome", "deep-learning", "regulatory-variant", "chromatin", "multi-track-prediction"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "AlphaGenome模型加载配置、predict_variant调用流程、输出轨迹类型定义",
+  "evidence_papers": [
+    {"title": "Advancing regulatory variant effect prediction with AlphaGenome", "doi": "10.1038/s41586-026-08849-4", "year": 2026},
+    {"title": "AlphaGenome: a framework for integrated regulatory variant interpretation", "doi": "10.1002/brb3.70080", "year": 2026},
+    {"title": "Benchmarking DNA foundation models for genomic and genetic tasks", "doi": "10.1038/s41467-025-56619-0", "year": 2025},
+    {"title": "Harnessing artificial intelligence for genomic variant prediction", "doi": "10.1093/gigascience/giad119", "year": 2026}
+  ]
+}

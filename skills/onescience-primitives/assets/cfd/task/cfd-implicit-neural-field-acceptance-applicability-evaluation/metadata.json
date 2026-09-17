@@ -1,0 +1,20 @@
+{
+  "name": "cfd-implicit-neural-field-acceptance-applicability-evaluation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "隐式神经场连续流动降阶建模的任务验收与适用域判定任务，负责评估统计误差、关键物理约束、泛化能力和计算收益，给出PASS、REJECT或BLOCKED结论。",
+  "tags": ["acceptance", "applicability", "evaluation", "physics_consistency", "ood_generalization"],
+  "aliases": ["验收评估任务", "适用域判定任务", "s05任务"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "隐式神经场任务验收与适用域判定",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

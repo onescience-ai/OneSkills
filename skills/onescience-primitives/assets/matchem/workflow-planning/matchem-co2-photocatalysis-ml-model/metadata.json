@@ -1,0 +1,30 @@
+{
+  "name": "matchem-co2-photocatalysis-ml-model",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T12:47:00Z",
+  "updated_at": "2026-09-15T12:47:00Z",
+  "description": "CO2光催化领域机器学习预测模型工作流：基于材料属性特征（带隙、导带/价带位置、元素组成等）训练预测模型，用于筛选高效CO2光催化剂。适用于需要快速评估材料光催化活性、预测光吸收性能或优化催化剂设计的研究场景。核心方法包括：梯度提升树（XGBoost/LightGBM）、随机森林、神经网络等模型选择与训练。输出为训练好的预测模型、特征重要性分析和候选材料排序列表。",
+  "tags": ["machine-learning", "CO2-photocatalysis", "XGBoost", "random-forest", "neural-network", "band-gap", "catalyst-screening", "materials-informatics", "feature-engineering", "model-training"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CO2光催化剂领域常用的机器学习模型和预测方法",
+  "evidence_papers": [
+    {
+      "title": "Materials Project Documentation - ML & AI Applications",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Materials Project",
+      "authors": ["Materials Project Team"]
+    },
+    {
+      "title": "Matbench - Machine Learning for Materials Properties",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Materials Project",
+      "authors": ["Materials Project Team"]
+    }
+  ]
+}

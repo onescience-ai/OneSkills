@@ -1,0 +1,77 @@
+{
+  "name": "json-schema-report-delivery-contract",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T02:20:00Z",
+  "updated_at": "2026-09-17T02:20:00Z",
+  "description": "面向JSON格式报告交付场景，提供Schema定义、字段校验、格式验证与契约合规检查，适用于数据交换、API响应、配置文件与结构化输出验证",
+  "tags": ["json-schema", "validation", "contract", "report-delivery", "format-verification", "data-exchange", "api", "configuration"],
+  "aliases": ["json-schema-validation", "report-contract", "schema-validation", "format-compliance"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema reference",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T02:20:00Z"
+    },
+    {
+      "title": "JSON Schema - Type-specific Keywords",
+      "url": "https://json-schema.org/understanding-json-schema/reference/type",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T02:20:00Z"
+    },
+    {
+      "title": "JSON Schema - object",
+      "url": "https://json-schema.org/understanding-json-schema/reference/object",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T02:20:00Z"
+    },
+    {
+      "title": "JSON Schema - array",
+      "url": "https://json-schema.org/understanding-json-schema/reference/array",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T02:20:00Z"
+    },
+    {
+      "title": "JSON Schema - string",
+      "url": "https://json-schema.org/understanding-json-schema/reference/string",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T02:20:00Z"
+    },
+    {
+      "title": "JSON Schema - Numeric types",
+      "url": "https://json-schema.org/understanding-json-schema/reference/numeric",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T02:20:00Z"
+    },
+    {
+      "title": "JSON Schema - Boolean JSON Schema combination",
+      "url": "https://json-schema.org/understanding-json-schema/reference/combining",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T02:20:00Z"
+    },
+    {
+      "title": "JSON Schema - Conditional schema validation",
+      "url": "https://json-schema.org/understanding-json-schema/reference/conditionals",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T02:20:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

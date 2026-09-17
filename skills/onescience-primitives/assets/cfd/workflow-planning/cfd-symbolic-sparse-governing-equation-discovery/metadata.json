@@ -1,0 +1,28 @@
+{
+  "name": "cfd-symbolic-sparse-governing-equation-discovery",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向稀疏状态轨迹与导数观测，通过符号回归与稀疏正则化从数据中发现控制偏微分方程。覆盖数据接入、模型训练、方程恢复与适用域判定全流程，要求产出可复现模型、物理一致性评估和适用域报告，域外工况需经CFD复核。",
+  "tags": ["symbolic-regression", "sparse-pde-discovery", "governing-equation", "physics-informed", "cfd", "equation-discovery"],
+  "aliases": ["symbolic physics learner", "Sparse PDE discovery", "SPL", "控制方程发现"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "符号与稀疏物理学习控制方程发现",
+  "evidence_papers": [
+    {"title": "Universal Physics-Informed Neural Networks: Symbolic Differential Operator Discovery with Sparse Data", "doi": "", "year": 2022},
+    {"title": "Sub-Sequential Physics-Informed Learning with State Space Model", "doi": "", "year": 2023},
+    {"title": "Understanding Generalization in Physics Informed Models through Affine Variety Dimensions", "doi": "10.48550/arXiv.2501.18879", "year": 2025},
+    {"title": "Competitive Physics Informed Networks", "doi": "10.48550/arXiv.2204.11144", "year": 2022},
+    {"title": "D-CIPHER: Discovery of Closed-form Partial Differential Equations", "doi": "", "year": 2022},
+    {"title": "Homotopy-based training of NeuralODEs for accurate dynamics discovery", "doi": "", "year": 2023},
+    {"title": "Learning Neural Constitutive Laws from Motion Observations for Generalizable PDE Dynamics", "doi": "", "year": 2023},
+    {"title": "Symbolic Physics Learner: Discovering governing equations via Monte Carlo tree search", "doi": "10.48550/arXiv.2205.13134", "year": 2022},
+    {"title": "Deep hidden physics models: Deep learning of nonlinear partial differential equations", "doi": "10.48550/arXiv.1801.06637", "year": 2018},
+    {"title": "Physics informed deep learning (Part II): Data-driven discovery of nonlinear partial differential equations", "doi": "10.48550/arXiv.1711.10566", "year": 2017},
+    {"title": "Learning fluid physics from highly turbulent data using sparse physics-informed discovery of empirical relations", "doi": "10.1017/jfm.2024.813", "year": 2024}
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "json-schema-validation-workflow",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向JSON数据验证，提供基于JSON Schema的验证工作流，覆盖Schema定义、验证执行、错误报告生成和契约校验，适用于API测试、数据质量管控和自动化流水线。",
+  "tags": ["JSON", "Schema", "validation", "contract", "API", "testing", "error-reporting"],
+  "aliases": ["JSON schema validation", "schema compliance", "report contract"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.48550/arXiv.2307.10034",
+      "year": 2023
+    },
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.48550/arXiv.2503.02770",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema Specification (2020-12)",
+      "url": "https://json-schema.org/specification",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-16T00:00:00Z"
+    },
+    {
+      "title": "JSON Schema Validation: A Vocabulary for Structural Validation of JSON",
+      "url": "https://datatracker.ietf.org/doc/draft-bhutton-json-schema-validation/",
+      "publisher": "IETF",
+      "version": "draft-bhutton-json-schema-validation-01",
+      "accessed_at": "2026-09-16T00:00:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

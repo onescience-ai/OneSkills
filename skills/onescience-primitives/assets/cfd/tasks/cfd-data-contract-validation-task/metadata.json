@@ -1,0 +1,24 @@
+{
+  "name": "cfd-data-contract-validation-task",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "数据驱动风场与非定常流反馈控制的数据接入与契约核验任务。核验风场尾迹状态与反馈控制数据的完整性、一致性和可用性，建立机器可读的数据契约。",
+  "tags": [
+    "data-validation",
+    "data-contract",
+    "data-ingestion",
+    "wind-farm",
+    "flow-control",
+    "cfd",
+    "cfd_s084"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "数据接入与契约核验任务",
+  "evidence_papers": [],
+  "scenario_id": "CFD_S084"
+}

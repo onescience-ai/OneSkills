@@ -1,0 +1,18 @@
+{
+  "name": "cfd-acceptance-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2025-09-15T00:00:00Z",
+  "updated_at": "2025-09-15T00:00:00Z",
+  "description": "数据驱动RANS湍流闭合模型的任务验收与适用域判定任务卡，涵盖统计误差评估、物理约束验证、泛化能力测试、适用域边界明确等操作，输出最终验收结论与复核建议。",
+  "tags": ["acceptance", "applicability", "validation", "OOD", "metrics", "turbulence", "RANS"],
+  "aliases": ["任务验收", "适用域判定", "泛化测试"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "数据驱动RANS雷诺应力与涡黏闭合-验收判定",
+  "evidence_papers": [
+    {"title": "Perspectives on machine learning-augmented Reynolds-averaged and large eddy simulation models of turbulence", "doi": "10.1103/PhysRevFluids.6.050504", "year": 2022}
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "climate-forecast-product-delivery",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:10:00Z",
+  "updated_at": "2026-09-16T18:10:00Z",
+  "description": "面向气象预报产品格式规范、交付标准与元数据要求的知识。包括NetCDF产品格式、元数据规范、产品交付流程。",
+  "tags": ["forecast-product", "NetCDF", "metadata", "delivery-standard", "meteorology"],
+  "aliases": ["forecast product format", "meteorological product delivery"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报产品格式规范、产品交付标准、产品元数据要求",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-16T18:10:00Z",
+      "location": "归因报告: E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-w4\\314\\report.json"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

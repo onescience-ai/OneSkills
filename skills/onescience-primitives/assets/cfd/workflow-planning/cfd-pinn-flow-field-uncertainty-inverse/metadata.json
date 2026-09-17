@@ -1,0 +1,25 @@
+{
+  "name": "cfd-pinn-flow-field-uncertainty-inverse",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:12:00Z",
+  "updated_at": "2026-09-16T18:12:00Z",
+  "description": "面向稀疏观测与CFD先验联合数据，完成物理信息概率网络流场不确定性反演的场景。支持Bayesian PINN与Physics-informed GAN两类模型，产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": ["CFD", "PINN", "uncertainty-quantification", "Bayesian", "GAN", "flow-field", "inverse-problem", "sparse-observation"],
+  "aliases": ["物理信息概率网络", "流场不确定性反演", "Bayesian PINN", "Physics-informed GAN"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "物理信息概率网络流场不确定性反演场景知识补充",
+  "evidence_papers": [
+    {"title": "Flow Field Tomography with Uncertainty Quantification using a Bayesian Physics-Informed Neural Network", "url": "https://arxiv.org/abs/2108.09247", "year": 2021},
+    {"title": "Calibrated Physics-Informed Uncertainty Quantification", "url": "", "year": 0},
+    {"title": "PID-GAN: A GAN Framework based on a Physics-informed Discriminator for Uncertainty Quantification with Physics", "url": "https://doi.org/10.1145/3447548.3467449", "year": 2021},
+    {"title": "Physics-constrained deep learning for high-dimensional surrogate modeling and uncertainty quantification without labeled data", "url": "https://arxiv.org/abs/1901.06314", "year": 2019}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

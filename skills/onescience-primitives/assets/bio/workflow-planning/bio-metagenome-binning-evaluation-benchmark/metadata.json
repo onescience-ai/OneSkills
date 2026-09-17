@@ -1,0 +1,20 @@
+{
+  "name": "bio-metagenome-binning-evaluation-benchmark",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T17:39:00Z",
+  "updated_at": "2026-09-15T17:39:00Z",
+  "description": "宏基因组分箱评估的标准方法，包括分箱F1的计算原理、跨物种泛化评估、未知类别处理规则，以及CAMI基准数据集的使用。",
+  "tags": ["metagenome binning", "evaluation", "benchmark", "F1 score", "CAMI", "quality assessment"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "宏基因组分箱评估的标准方法，包括分箱F1的计算原理（需要真实物种标签或组装基因组作为参考）；跨物种泛化评估的设计方法（按物种划分测试集）；未知类别处理规则",
+  "evidence_papers": [
+    {"title": "Evaluation of metagenome binning: advances and challenges", "doi": "10.1093/bib/bbaf617", "year": 2025},
+    {"title": "Critical Assessment of Metagenome Interpretation: the second round of challenges", "doi": "10.1038/s41592-022-01431-4", "year": 2022},
+    {"title": "CheckM2: a rapid, scalable and accurate tool for assessing microbial genome quality using machine learning", "doi": "10.1038/s41592-023-01940-w", "year": 2023},
+    {"title": "GUNC: chimerism detection for prokaryotic genomes using marker gene information", "doi": "10.1093/bioinformatics/btab836", "year": 2021}
+  ]
+}

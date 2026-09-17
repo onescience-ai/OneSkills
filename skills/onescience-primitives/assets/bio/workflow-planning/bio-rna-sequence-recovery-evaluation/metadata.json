@@ -1,0 +1,28 @@
+{
+  "name": "bio-rna-sequence-recovery-evaluation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T11:00:00Z",
+  "updated_at": "2026-09-16T11:00:00Z",
+  "description": "RNA序列恢复率计算与评估工作流：提供RNA序列恢复率计算方法、结构一致性检查流程和dot-bracket格式解析。适用于评估RNA设计质量的研究场景。核心方法包括：序列对齐、恢复率计算、结构验证。输出为评估报告和质量指标。",
+  "tags": ["RNA", "sequence recovery", "evaluation", "dot-bracket", "structure consistency", "RMSD", "TM-score", "F1-score"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "RNA序列恢复率计算方法（序列对齐、恢复率公式）、结构一致性检查流程（dot-bracket格式解析）",
+  "evidence_papers": [
+    {
+      "title": "R3Design: deep tertiary structure-based RNA sequence design and beyond",
+      "doi": "10.1093/bib/bbae682",
+      "year": 2024,
+      "venue": "Briefings in Bioinformatics"
+    },
+    {
+      "title": "RiboDiffusion: tertiary structure-based RNA inverse folding with generative diffusion models",
+      "doi": "10.1093/bioinformatics/btae259",
+      "year": 2024,
+      "venue": "Bioinformatics"
+    }
+  ]
+}

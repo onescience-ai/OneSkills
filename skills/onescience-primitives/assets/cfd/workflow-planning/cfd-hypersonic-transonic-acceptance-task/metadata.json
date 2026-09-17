@@ -1,0 +1,26 @@
+{
+  "name": "cfd-hypersonic-transonic-acceptance-task",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "数据驱动湍流代理模型构建的第五步：评估统计误差、关键物理约束、泛化能力和计算收益，判定模型是否通过验收并明确适用域。",
+  "tags": ["acceptance", "evaluation", "applicability", "hypersonic", "transonic", "CFD"],
+  "aliases": ["任务验收", "适用域判定"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "高超声速与跨声速边界层湍流代理",
+  "evidence_papers": [
+    {
+      "title": "Data-Driven Turbulence Modeling Approach for Cold-Wall Hypersonic Boundary Layers",
+      "doi": "10.48550/arXiv.2406.17446",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

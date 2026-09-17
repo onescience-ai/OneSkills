@@ -1,0 +1,22 @@
+{
+  "name": "bio-scatac-biological-consistency-evaluation",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "scATAC-seq生物一致性评估任务：评估细胞嵌入表征的生物学意义，包括通路保持、细胞类型分离度和空间结构保持。适用于任务s04评估阶段，验证表征的生物学有效性。",
+  "tags": ["biological consistency", "pathway preservation", "cell type separation", "spatial structure", "scATAC-seq", "embedding evaluation", "quality control", "GO", "KEGG", "evaluation metrics"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "scATAC表征生物一致性评估方法",
+  "evidence_papers": [
+    {
+      "title": "Gene set enrichment analysis: A knowledge-based approach for interpreting genome-wide expression profiles",
+      "doi": "10.1073/pnas.0506580102",
+      "year": 2005,
+      "venue": "PNAS"
+    }
+  ]
+}

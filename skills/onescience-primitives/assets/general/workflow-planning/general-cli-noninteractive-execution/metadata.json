@@ -1,0 +1,18 @@
+{
+  "name": "general-cli-noninteractive-execution",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T19:08:00+08:00",
+  "updated_at": "2026-09-17T18:00:00+08:00",
+  "description": "CLI非交互执行与故障分类知识，覆盖Python subprocess模块的进程创建、退出码语义、超时处理、错误分类和诊断方法",
+  "tags": ["cli", "subprocess", "exit-code", "timeout", "error-handling", "python", "non-interactive"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读",
+  "evidence_papers": [
+    {"title": "Python 3.14.7 subprocess module documentation", "doi": "", "year": 2026, "url": "https://docs.python.org/3/library/subprocess.html"}
+  ],
+  "merged_batches": ["2026-09-17: 基于归因分析任务292、291、81案例补充退出码诊断知识"]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "matchem-si-anode-simulation-tools",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "多孔硅负极电化学模拟的计算工具选择知识，包括VASP、LAMMPS、COMSOL等工具的适用条件、输入输出格式、资源需求和工作流集成方式。适用于计算或测试配置步骤（s02），确保为每个步骤预选可行的计算工具。",
+  "tags": ["porous silicon", "anode", "simulation", "VASP", "LAMMPS", "COMSOL", "DFT", "molecular dynamics", "finite element"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔硅负极电化学模拟的计算工具选择知识，包括VASP、LAMMPS、COMSOL等工具的适用条件、输入输出格式、资源需求和工作流集成方式",
+  "evidence_papers": [
+    {"title": "Revolutionizing batteries based on digital twin through AI-simulation synergy for design, manufacturing, operation, and recycling", "doi": "10.1360/nso/20250054", "year": 2025},
+    {"title": "Data-driven systematic parameter identification of an electrochemical model for lithium-ion batteries with artificial intelligence", "doi": "10.1016/j.ensm.2021.10.023", "year": 2021}
+  ]
+}

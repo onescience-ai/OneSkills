@@ -1,0 +1,20 @@
+{
+  "name": "cfd-pinn-cross-equation-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "跨方程PINN训练方法：使用Meta-PINN、PINN agent或PINN Transformer在多个PDE方程上训练统一模型，记录训练配置、逐轮指标与最佳权重",
+  "tags": ["pinn", "meta-learning", "cross-equation-training", "model-training", "checkpoint"],
+  "aliases": ["PINN跨方程训练", "元学习PINN训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "跨方程PINN训练",
+  "evidence_papers": [
+    {"title": "PINNsAgent: Automated PDE Surrogation with Large Language Models", "doi": "N/A", "year": 2024},
+    {"title": "DATS: Difficulty-Aware Task Sampler for Meta-Learning Physics-Informed Neural Networks", "doi": "N/A", "year": 2024},
+    {"title": "Hypernetwork-based Meta-Learning for Low-Rank Physics-Informed Neural Networks", "doi": "N/A", "year": 2024}
+  ]
+}

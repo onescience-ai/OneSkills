@@ -1,0 +1,35 @@
+{
+  "name": "cli-json-schema-validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向CLI工具的结构化输出交付，验证JSON Schema合规性，包括必填字段校验、类型约束检查、任务身份一致性验证和数组约束确认。",
+  "tags": ["json-schema", "validation", "structured-output", "cli", "report-contract", "schema-validation"],
+  "aliases": ["JSON Schema验证", "报告契约校验", "结构化输出校验"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约；知识缺失证据：最终响应缺失、无法解析或字段校验失败；知识内容与边界：规定必填字段、任务身份、数组约束及输出格式，不补写无证据的领域归因",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema - object",
+      "url": "https://json-schema.org/understanding-json-schema/reference/object",
+      "publisher": "JSON Schema Organization",
+      "version": "Draft 2020-12",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "JSON Schema - boolean",
+      "url": "https://json-schema.org/understanding-json-schema/reference/boolean",
+      "publisher": "JSON Schema Organization",
+      "version": "Draft 2020-12",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,23 @@
+{
+  "name": "general-cli-noninteractive-fault-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:47:00Z",
+  "updated_at": "2026-09-16T19:47:00Z",
+  "description": "面向命令行工具非交互式执行场景，提供故障分类与诊断框架。适用于CLI工具在自动化流水线、批处理任务或远程执行环境中遇到异常退出、超时或输出格式错误时的故障定位。核心方法包括：退出码语义映射、标准错误流解析、超时机制检测、沙箱环境隔离验证。输出为结构化故障分类报告与恢复建议。",
+  "tags": ["CLI", "exit-code", "fault-classification", "error-handling", "non-interactive", "command-line", "POSIX", "diagnostics", "automation", "batch-processing"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_docs": [
+    {
+      "title": "The Open Group Base Specifications Issue 7 - Shell and Utilities",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap01.html",
+      "publisher": "IEEE/The Open Group",
+      "version": "POSIX.1-2017",
+      "accessed_at": "2026-09-16"
+    }
+  ]
+}

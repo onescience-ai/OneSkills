@@ -1,0 +1,22 @@
+{
+  "name": "climate-pv-forecasting-workflow-steps",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "光伏功率预测的标准工作流步骤（s01-s06）的详细定义、每个步骤的输入输出契约、依赖关系以及验证要求",
+  "tags": ["pv", "forecasting", "workflow", "pipeline", "s01-s06", "input-output-contract", "dependency"],
+  "aliases": ["solar forecast workflow", "PV prediction pipeline", "photovoltaic forecast process"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "光伏功率预测的标准工作流步骤（s01-s06）的详细定义、每个步骤的输入输出契约、依赖关系以及验证要求",
+  "evidence_papers": [
+    {"title": "Intraday spatiotemporal PV power prediction at national scale using satellite-based solar forecast models", "doi": "2601.04751", "year": 2026},
+    {"title": "Forecasting solar power output in Ibadan: A machine learning approach leveraging weather data and system specifications", "doi": "2508.07462", "year": 2025},
+    {"title": "Learning Long-Term Temporal Dependencies in Photovoltaic Power Output Prediction Through Multi-Horizon Forecasting", "doi": "2605.19074", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

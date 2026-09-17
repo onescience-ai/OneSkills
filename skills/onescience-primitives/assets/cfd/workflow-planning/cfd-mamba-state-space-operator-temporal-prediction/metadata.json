@@ -1,0 +1,59 @@
+{
+  "name": "cfd-mamba-state-space-operator-temporal-prediction",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向时间依赖PDE轨迹数据，使用Mamba状态空间模型（SSM）构建神经算子完成时序预测。适用于需要从有限历史窗口预测未来PDE演化轨迹的场景，覆盖流体力学（Navier-Stokes、Burgers、浅水方程）、反应扩散、可压缩欧拉方程等物理系统。核心方法：将结构化状态空间模型（S4/Mamba）与神经算子的核积分框架统一，通过双向空间扫描和自适应阻尼/频率调制实现线性复杂度全局感受野。输出为预测场、统计误差、物理约束残差和适用域报告。",
+  "tags": ["Mamba", "state-space model", "SSM", "neural operator", "PDE", "temporal prediction", "time-dependent", "fluid dynamics", "Navier-Stokes", "Burgers", "operator learning", "structured state space", "S4", "bidirectional scan", "adaptive damping", "frequency modulation"],
+  "aliases": ["MNO", "SS-NO", "LaMO", "Mamba Neural Operator", "State Space Neural Operator", "Latent Mamba Operator", "GeoMaNO", "PDE-FM"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Mamba状态空间神经算子时序预测",
+  "evidence_papers": [
+    {
+      "title": "Mamba Neural Operator: Who Wins? Transformers vs. State-Space Models for PDEs",
+      "doi": "10.48550/arXiv.2410.02113",
+      "year": 2024,
+      "venue": "Journal of Computational Physics (accepted 2025)"
+    },
+    {
+      "title": "Merging Memory and Space: A State Space Neural Operator",
+      "doi": "10.48550/arXiv.2507.23428",
+      "year": 2025,
+      "venue": "arXiv (reviewed on OpenReview)"
+    },
+    {
+      "title": "Latent Mamba Operator for Partial Differential Equations",
+      "doi": "10.48550/arXiv.2505.19105",
+      "year": 2025,
+      "venue": "ICML 2025 (PMLR 267)"
+    },
+    {
+      "title": "Adaptive Mamba Neural Operators",
+      "doi": "10.48550/arXiv.2607.18043",
+      "year": 2026,
+      "venue": "ICLR 2026"
+    },
+    {
+      "title": "GeoMaNO: Geometric Mamba Neural Operator for Partial Differential Equations",
+      "doi": "10.48550/arXiv.2505.12020",
+      "year": 2025,
+      "venue": "arXiv"
+    },
+    {
+      "title": "On the Benefits of Memory for Modeling Time-Dependent PDEs",
+      "doi": "10.48550/arXiv.2409.02313",
+      "year": 2024,
+      "venue": "arXiv"
+    },
+    {
+      "title": "Towards a Foundation Model for Partial Differential Equations Across Physics Domains",
+      "doi": "10.48550/arXiv.2511.21861",
+      "year": 2025,
+      "venue": "AAAI 2026 AI2ASE Workshop"
+    }
+  ]
+}

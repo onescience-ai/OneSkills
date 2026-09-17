@@ -1,0 +1,18 @@
+{
+  "name": "bokdiff-model-weights-setup",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T17:07:00Z",
+  "updated_at": "2026-09-15T17:07:00Z",
+  "description": "BoKDiff模型权重获取、存储与版本管理知识。涵盖DecompDiff基础模型权重获取途径、GitHub代码仓库结构、模型检查点格式(.ckpt)、离线环境权重分发方案，以及与CrossDocked2020数据集的配合使用。",
+  "tags": ["BoKDiff", "model-weights", "checkpoint", "DecompDiff", "diffusion-model", "SBDD", "molecular-generation", "3D-drug-design"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "BoKDiff模型权重的获取途径、存储位置和访问协议；模型权重文件的版本管理与本地缓存机制；离线环境下的模型权重分发方案",
+  "evidence_papers": [
+    {"title": "BoKDiff: best-of-K diffusion alignment for target-specific 3D molecule generation", "doi": "10.1093/bioadv/vbaf137", "year": 2025},
+    {"title": "Diffusion Models at the Drug Discovery Frontier: A Review on Generating Small Molecules Versus Therapeutic Peptides", "doi": "10.3390/biology14121665", "year": 2025}
+  ]
+}

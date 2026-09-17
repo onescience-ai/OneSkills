@@ -1,0 +1,22 @@
+{
+  "name": "climate-nowcasting-workflow-steps",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "气象临近预报任务标准工作流步骤定义与依赖关系知识。定义了从数据获取到产品交付的完整6步流程（s01-s06），包括数据预处理、方法配置与输入输出契约验证、模型推理、后处理、独立验证和产品生成。适用于天气雷达驱动的对流阵风临近预报、降水临近预报等场景。核心要求：每个步骤必须有明确的输入输出契约，s03方法配置验证步骤不可跳过。",
+  "tags": ["nowcasting", "workflow", "NWP", "convective", "gust", "forecast", "pipeline", "method-config", "contract-validation", "operational-procedure"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象临近预报任务的标准工作流步骤定义与依赖关系知识，特别是方法配置与输入输出契约验证的具体内容和执行方法",
+  "evidence_papers": [
+    {
+      "title": "基于归因报告分析的工作流规范（任务268）",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Internal Attribution Analysis"
+    }
+  ]
+}

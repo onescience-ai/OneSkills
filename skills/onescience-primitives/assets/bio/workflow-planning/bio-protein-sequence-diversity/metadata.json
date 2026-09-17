@@ -1,0 +1,26 @@
+{
+  "name": "bio-protein-sequence-diversity",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:19:00Z",
+  "updated_at": "2026-09-16T10:19:00Z",
+  "description": "蛋白序列多样性评估方法，包括序列同一性计算、聚类分析、去冗余策略和多样性指标。",
+  "tags": ["sequence-diversity", "clustering", "redundancy-removal", "sequence-alignment", "protein-design"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白序列多样性评估方法（序列同一性百分比、BLOSUM/PAM打分矩阵、序列聚类方法、TM-score用于结构多样性评估）、去冗余策略（按序列同一性阈值如30%/50%/70%去冗余）",
+  "evidence_papers": [
+    {
+      "title": "UniProt: the universal protein knowledgebase in 2021",
+      "doi": "10.1093/nucleic/gkab1062",
+      "year": 2021
+    },
+    {
+      "title": "Generative models for protein sequence modeling: recent advances and future directions",
+      "doi": "10.1093/bib/bbad358",
+      "year": 2023
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "general-knowledge-resource-application",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T17:56:00Z",
+  "updated_at": "2026-09-16T17:56:00Z",
+  "description": "面向OneScience知识资源的应用规则，定义workflow-planning类型知识的参数契约如何传递给executor、质量门禁如何在执行过程中强制检查、知识定义与实际执行不一致时的处理流程。适用于需要确保知识资源正确应用到执行流程的编排场景，保证执行流程与知识定义的一致性和可追溯性。核心方法包括：参数契约传递、质量门禁强制检查、偏离记录和处理。输出为知识资源应用规则和检查结果。",
+  "tags": ["knowledge-resource", "parameter-contract", "quality-gate", "workflow-planning", "executor", "orchestrator", "consistency", "traceability", "onescience"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience知识资源的应用规则",
+  "evidence_papers": [
+    {
+      "title": "Sharing interoperable workflow provenance: A review of best practices and their practical application",
+      "doi": "10.1093/gigascience/giy149",
+      "year": 2019,
+      "venue": "GigaScience"
+    },
+    {
+      "title": "Validity constraints for data analysis workflows",
+      "doi": "10.1016/j.gtc.2024.100409",
+      "year": 2024,
+      "venue": "Future Generation Computer Systems"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "matchem-data-driven-design-optimization",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向电池电极设计优化任务，提供基于性能数据的参数敏感性分析、多目标优化算法（NSGA-II等）和实验设计（DOE）方法，用于识别关键影响因素、生成针对性的设计改进建议",
+  "tags": ["sensitivity-analysis", "multi-objective-optimization", "DOE", "battery-design", "data-driven", "NSGA-II"],
+  "aliases": ["参数敏感性分析", "多目标优化", "实验设计"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "基于数据驱动的设计优化方法，包括参数敏感性分析、多目标优化算法和实验设计（DOE）方法",
+  "evidence_papers": [
+    {"title": "Boosting Rechargeable Batteries R&D by Multiscale Modeling: Myth or Reality?", "doi": "10.1021/acs.chemrev.8b00239", "year": 2019},
+    {"title": "In Situ and Ex Situ TEM Study of Lithiation Behaviours of Porous Silicon Nanostructures", "doi": "10.1038/srep31334", "year": 2016}
+  ]
+}

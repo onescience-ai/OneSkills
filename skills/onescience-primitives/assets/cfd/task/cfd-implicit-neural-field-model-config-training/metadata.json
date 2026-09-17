@@ -1,0 +1,20 @@
+{
+  "name": "cfd-implicit-neural-field-model-config-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "隐式神经场连续流动降阶建模的模型配置与训练任务，负责训练Implicit neural representation和Continuous ROM，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。",
+  "tags": ["model_training", "implicit_neural_representation", "continuous_rom", "pytorch", "early_stopping"],
+  "aliases": ["模型训练任务", "训练配置任务", "s03任务"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "隐式神经场模型配置与训练",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,26 @@
+{
+  "name": "cfd-data-acquisition-task",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+ "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "从翼型壁面压力剪切及速度测量数据中接入数据、核验契约，建立数据清单、数据契约和数据审计报告。",
+  "tags": ["data-acquisition", "data-contract", "cfd", "wall-shear-stress", "wall-pressure"],
+  "aliases": ["数据接入", "契约核验"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "壁面压力剪切与积分气动力联合反演的数据接入与契约核验方法",
+  "evidence_papers": [
+    {
+      "title": "Predicting the wall-shear stress and wall pressure through convolutional neural networks",
+      "doi": "10.48550/arXiv.2303.00706",
+      "year": 2023
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

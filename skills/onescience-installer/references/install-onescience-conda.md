@@ -7,7 +7,7 @@
 - 用户已经明确同意创建或复用 Conda 环境。
 - `env_name` 已从 `runtime.conda.env_name` 或 `assets/backend_profiles.json` 获取。
 - `install_domain` 已通过 `assets/install_domains.json` 映射。
-- `repo_url`、`repo_ref`、`repo_dir` 已从 `assets/workspace_bootstrap_profiles.json` 获取。
+- `install_domain` 与加速卡已确定，可按 `workspace_bootstrap_profiles.json.install.extra_naming_convention`（`{domain}-{accelerator}`）拼出 `{resolved_extra}`。
 - 当前目标是 OneScience 自身 bootstrap；禁止把 `onescience` 放入 `{python_packages}`。
 
 ## 步骤
@@ -28,7 +28,7 @@
    - 本地 DCU 复用 Conda：`§7a` 安装段
    - 本地 GPU 新建 Conda：`§8` 安装段
    - 本地 GPU 复用 Conda：`§8a` 安装段
-4. 执行安装流程。必须先执行 `workspace_bootstrap_profiles.json.wheel.download_wheel_command` 下载 OneScience wheel，再从已下载 wheel 的 METADATA 探测支持的 `Provides-Extra`，然后将领域 + 加速卡组合成候选 extra，并用 `pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` 安装匹配的 extra；候选 extra 不存在时必须阻断，不得改走仓库同步。
+4. 执行安装流程。默认按 `{domain}-{accelerator}` 命名规则拼出 extra（如 `earth-dcu`），直接用 `pip install "onescience[{resolved_extra}]" -i http://mirrors.onescience.ai:3141/pypi/simple/ --trusted-host mirrors.onescience.ai` 一条命令安装，无需预下载 wheel；仅当 pip 报 `does not provide the extra` 或加速卡无法判定时，才回退执行 `workspace_bootstrap_profiles.json.wheel.download_wheel_command` 下载 wheel 并从 METADATA 探测 `Provides-Extra`，选出实际存在的 extra 重装；兜底后仍无匹配 extra 时必须阻断，不得改走仓库同步。
 5. 执行匹配的验证命令：
    - 远程 DCU：`§4`
    - 远程 GPU：`§6`

@@ -1,0 +1,34 @@
+{
+  "name": "matchem-vibrationally-stable-materials-ml-screening",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T13:20:00Z",
+  "updated_at": "2026-09-15T13:20:00Z",
+  "description": "振动稳定材料机器学习筛选工作流：使用ML模型快速预测晶体结构的动力学稳定性，替代或加速VASP phonon计算。适用于大规模材料筛选场景，核心方法包括E(3)-等变图神经网络（DynStabNet）、ML势函数辅助数据生成、以及基于Materials Project数据库的训练数据构建。输出为动力学稳定性预测结果和候选材料列表。",
+  "tags": ["vibrationally stable materials", "machine learning", "phonon stability", "dynamical stability", "crystal structure screening", "DynStabNet", "E3GNN", "Materials Project", "VASP", "high-throughput screening"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "振动稳定材料机器学习筛选的真实数据集来源和工作流",
+  "evidence_papers": [
+    {
+      "title": "DynStabNet: A Deep Learning Framework for Fast Dynamical Stability Prediction of Crystal Structures",
+      "doi": "10.1021/acs.jpclett.6c01523",
+      "year": 2026,
+      "venue": "J Phys Chem Lett"
+    },
+    {
+      "title": "Data-Driven Exploration and Insights Into Temperature-Dependent Phonons in Inorganic Materials",
+      "doi": "10.1002/smll.202600071",
+      "year": 2026,
+      "venue": "Small"
+    },
+    {
+      "title": "Anharmonic effects on the dynamical stability of Ce-Co-Cu intermetallic ternary compounds",
+      "doi": "10.1039/d5ra09680d",
+      "year": 2026,
+      "venue": "RSC Adv"
+    }
+  ]
+}

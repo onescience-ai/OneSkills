@@ -1,0 +1,35 @@
+{
+  "name": "general-json-schema-report-contract-validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T01:26:00Z",
+  "updated_at": "2026-09-17T01:30:00Z",
+  "description": "面向结构化报告交付场景，提供 JSON Schema 契约定义、必填字段校验、数组约束与输出格式验证方法，以确保报告符合预定规范。",
+  "tags": ["JSON-Schema", "report-contract", "validation", "structured-output", "schema-validation"],
+  "aliases": ["report schema validation", "JSON Schema contract"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema reference",
+      "url": "https://json-schema.org/understanding-json-schema/reference/",
+      "publisher": "JSON Schema",
+      "version": "Understanding JSON Schema",
+      "accessed_at": "2026-09-17T01:26:00Z"
+    },
+    {
+      "title": "Type-specific Keywords",
+      "url": "https://json-schema.org/understanding-json-schema/reference/type",
+      "publisher": "JSON Schema",
+      "version": "Understanding JSON Schema",
+      "accessed_at": "2026-09-17T01:26:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-17-harvester-merge-json-schema-contract"],
+  "conflicts": []
+}

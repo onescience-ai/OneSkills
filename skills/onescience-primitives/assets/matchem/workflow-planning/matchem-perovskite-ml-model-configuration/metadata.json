@@ -1,0 +1,22 @@
+{
+  "name": "matchem-perovskite-ml-model-configuration",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:40:00Z",
+  "updated_at": "2026-09-15T21:40:00Z",
+  "description": "无铅杂化钙钛矿稳定性机器学习模型配置工作流：基于Nature Communications论文doi_10_1038_s41467_018_05761_w的模型配置，包括特征工程、模型选择、超参数设置和验证方法。适用于需要复现或应用论文中机器学习模型进行钙钛矿稳定性预测的研究场景。核心方法包括：组分特征提取、随机森林回归、5折交叉验证。输出为训练好的模型检查点和性能评估报告。",
+  "tags": ["perovskite", "lead-free", "machine learning", "random forest", "feature engineering", "cross validation", "stability prediction", "Nature Communications", "hybrid", "organic-inorganic", "materials science", "model configuration"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "关联论文中记录的模型类型、超参数、训练策略和验证方法",
+  "evidence_papers": [
+    {
+      "title": "Accelerated discovery of stable lead-free hybrid organic-inorganic perovskites via machine learning",
+      "doi": "10.1038/s41467-018-05761-w",
+      "year": 2018,
+      "venue": "Nature Communications"
+    }
+  ]
+}

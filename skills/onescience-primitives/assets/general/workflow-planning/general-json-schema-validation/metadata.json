@@ -1,0 +1,67 @@
+{
+  "name": "general-json-schema-validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.2.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T20:23:00Z",
+  "updated_at": "2026-09-17T12:00:00Z",
+  "description": "面向结构化数据交换场景，提供JSON Schema定义、验证、错误处理与报告交付契约的通用方法框架，确保数据格式一致性、字段完整性与类型正确性，适用于API契约、配置文件、报告生成、数据验证等场景。新增论文证据：约束税测量[1]、结构化提取基准[2]、语法约束解码[3]、数据契约自动生成[4]。",
+  "tags": ["json-schema", "report-contract", "validation", "structured-output", "schema-compliance", "data-contract", "schema-validation", "LLM-output", "constrained-decoding", "validity-correctness", "benchmark"],
+  "aliases": ["JSON Schema", "data validation", "schema contract", "report-schema", "output-contract"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "The Constraint Tax: Measuring Validity-Correctness Tradeoffs in Structured Outputs for Small Language Models",
+      "doi": "10.48550/arXiv.2605.26128",
+      "year": 2026,
+      "venue": "arXiv cs.LG"
+    },
+    {
+      "title": "ExtractBench: A Benchmark and Evaluation Methodology for Complex Structured Extraction",
+      "doi": "10.48550/arXiv.2602.12247",
+      "year": 2026,
+      "venue": "arXiv cs.LG"
+    },
+    {
+      "title": "Efficient Grammar-Constrained Decoding via Parser Stack Classification",
+      "doi": "10.48550/arXiv.2608.03065",
+      "year": 2026,
+      "venue": "ISSTA 2026"
+    },
+    {
+      "title": "AI-Driven Generation of Data Contracts in Modern Data Engineering",
+      "doi": "10.48550/arXiv.2507.21056",
+      "year": 2025,
+      "venue": "arXiv cs.DB"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "Understanding JSON Schema",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-16T20:23:00Z"
+    },
+    {
+      "title": "Python json Module Documentation",
+      "url": "https://docs.python.org/3/library/json.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-16T20:23:00Z"
+    },
+    {
+      "title": "JSON Schema reference",
+      "url": "https://json-schema.org/understanding-json-schema/reference/",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-16T20:40:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-16T20:50:00Z", "harvest-2026-09-17T12:00:00Z"],
+  "conflicts": []
+}

@@ -1,0 +1,19 @@
+{
+  "name": "climate-time-series-validation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "时间序列预测中独立验证的设计原则，包括训练/验证/测试集的划分方法、数据时点规则、独立验证资料的选取标准，以及ENSO预测任务的科学背景和数据要求",
+  "tags": ["time-series", "validation", "train-test-split", "independent-validation", "ENSO", "Nino3.4", "climate-prediction"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "时间序列预测中独立验证的设计原则，包括训练/验证/测试集的划分方法、数据时点规则、独立验证资料的选取标准，以及ENSO预测任务的科学背景和数据要求",
+  "evidence_papers": [
+    {"title": "Time Series Analysis and Forecasting", "doi": "10.1007/978-3-030-45438-8", "year": 2020},
+    {"title": "On the validation of climate models", "doi": "10.1002/joc.4261", "year": 2019},
+    {"title": "The ENSO Prediction Challenge", "doi": "10.1175/BAMS-D-18-0153.1", "year": 2019}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "cfd-e3-equivariant-lagrangian-fluid-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T20:07:00Z",
+  "updated_at": "2026-09-16T20:07:00Z",
+  "description": "E3等变粒子网络拉格朗日流体模拟的五步工作流：从数据接入、预处理切分、模型训练、推理恢复到验收判定，覆盖完整建模闭环",
+  "tags": ["workflow", "E3-equivariant", "Lagrangian", "fluid-simulation", "pipeline", "end-to-end"],
+  "aliases": ["E3等变拉格朗日流体工作流", "Lagrangian fluid modeling pipeline"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "E3等变粒子网络拉格朗日流体模拟的完整工作流与方法知识",
+  "evidence_papers": [
+    {"title": "Learning Lagrangian Fluid Mechanics with E(3)-Equivariant Graph Neural Networks", "doi": "arXiv:2305.15603", "year": 2023}
+  ]
+}

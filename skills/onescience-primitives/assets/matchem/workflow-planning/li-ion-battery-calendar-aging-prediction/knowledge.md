@@ -138,6 +138,47 @@
 - **evidence_result**：输入来源、数据血缘、方法选择依据、验证结果、质量检查和适用性说明。
 - **结论结果**：区分已证实结果、探索性观察、不确定度、限制条件和无法回答问题的结论报告。
 
+## 补充证据：预测模型方法
+
+### 电化学-热-退化耦合模型
+
+基于 PyBaMM 平台的 P2D（Pseudo Two-Dimensional）电化学-热-退化模型可一致参数化关键退化模式（SEI 膜生长、锂镀层、活性材料损失），预测 NMC 锂离子电池在日历和循环老化下的容量衰减轨迹。预测周期寿命在 0.8 至 14 年之间达到 75% SOH。模型揭示日历老化与循环老化的竞争效应，展示亚线性、线性和超线性/加速容量衰减行为 [2604.09217]。
+
+### 物理信息可微分退化建模
+
+PiDDM（Physics-Informed Differentiable Degradation Modeling）框架将 Arrhenius 退化动力学（SEI 膜生长和锂损失）结合到训练目标中，鼓励物理一致的容量衰减。在 55 个电池的公共数据集上评估，取得最低平均预测误差，捕捉加速末期退化并避免非物理容量再生 [2607.29095]。
+
+### 深度学习混合模型
+
+Cerberus 混合模型从充放电弛豫过程提取与老化高度相关的显著特征，结合历史容量衰减数据动态提供当前容量估计和未来容量预测。在 0.25C 充电条件下，MAPE 达 0.29% [2308.07824]。
+
+### 世界模型预测框架
+
+将电池退化预测构建为世界模型问题，将原始电压、电流和温度时间序列编码为潜在状态，通过学习的动态转换向前传播，预测未来 80 个循环的轨迹。迭代滚动相比直接回归将轨迹预测误差降低一半 [2603.10527]。
+
+### 连续老化轨迹表示
+
+基于连续表示的电池老化分析框架，可从异构公共数据集（NASA、CALCE、ISU-ILCC）提取退化描述符，包括曲率、平台长度和膝点相关指标。膝点起始与寿命终止之间存在显著相关性（Pearson 0.75-0.84）[2604.16580]。
+
+### 退化模式分析验证
+
+退化模式分析（LLI 锂损失、LAM 活性材料损失）已成为电池退化研究的必要要求。仅验证容量和功率衰减不再足够，应包含退化模式分析以进行验证 [2311.05482]。
+
+## 关键参数（补充）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| SOH 目标阈值 | 75% | [2604.09217] | 寿命终止判据 |
+| 预测周期范围 | 0.8-14 年 | [2604.09217] | 达到 75% SOH 的时间跨度 |
+| 膝点相关性系数 | 0.75-0.84 (Pearson) | [2604.16580] | 膝点起始与 EOL 的关联 |
+| 充电条件 MAPE | 0.29% | [2308.07824] | 0.25C 充电条件下的预测精度 |
+
 ## 关联文献
 
 1. **Battery calendar aging and machine learning** — [doi_10_1016_j_joule_2022_06_007](https://doi.org/10.1016/j.joule.2022.06.007)
+2. **Linking Calendar and Cycle Ageing in Lithium-Ion Batteries** — [arXiv:2604.09217](https://arxiv.org/abs/2604.09217) (2026)
+3. **Continuous ageing trajectory representations for knee-aware lifetime prediction** — [arXiv:2604.16580](https://arxiv.org/abs/2604.16580) (2026)
+4. **Cerberus: A Deep Learning Hybrid Model for Lithium-Ion Battery Aging Estimation** — [arXiv:2308.07824](https://arxiv.org/abs/2308.07824) (2023)
+5. **PiDDM: Physics-Informed Differentiable Degradation Modeling** — [arXiv:2607.29095](https://arxiv.org/abs/2607.29095) (2026)
+6. **World Model for Battery Degradation Prediction** — [arXiv:2603.10527](https://arxiv.org/abs/2603.10527) (2026)
+7. **Lithium-ion battery degradation: using degradation mode analysis** — [arXiv:2311.05482](https://arxiv.org/abs/2311.05482) (2023)

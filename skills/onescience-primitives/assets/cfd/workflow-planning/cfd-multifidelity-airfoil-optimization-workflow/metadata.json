@@ -1,0 +1,39 @@
+{
+  "name": "cfd-multifidelity-airfoil-optimization-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:48:00Z",
+  "updated_at": "2026-09-16T18:48:00Z",
+  "description": "多保真代理辅助翼型外形优化的端到端工作流：从多工况数据接入、无泄漏切分、多保真代理与贝叶斯优化训练、约束候选生成到任务验收与适用域判定。适用于需要完成翼型或气动外形参数化优化并产出可复现模型与物理一致性评估的工程场景。",
+  "tags": ["cfd", "workflow", "multi-fidelity", "surrogate-model", "Bayesian-optimization", "airfoil", "shape-optimization", "data-ingestion", "preprocessing", "model-training", "constrained-optimization", "acceptance", "applicability-domain"],
+  "aliases": ["多保真翼型优化工作流", "multi-fidelity airfoil optimization workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多保真代理辅助翼型外形优化场景知识补充",
+  "evidence_papers": [
+    {
+      "title": "Optimization-Embedded Active Multi-Fidelity Surrogate Learning for Multi-Condition Airfoil Shape Optimization",
+      "doi": "",
+      "year": 2026,
+      "arxiv": "2603.17057"
+    },
+    {
+      "title": "Surrogate-Based Aerodynamic Shape Optimization in Multiscale Flows via the Implicit Unified Gas-Kinetic Scheme",
+      "doi": "",
+      "year": 2025,
+      "arxiv": "2606.00645"
+    },
+    {
+      "title": "ShapeBench: A Scalable Benchmark and Diagnostic Suite for Standardized Evaluation in Aerodynamic Shape Optimization",
+      "doi": "",
+      "year": 2025,
+      "arxiv": "2605.20763"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

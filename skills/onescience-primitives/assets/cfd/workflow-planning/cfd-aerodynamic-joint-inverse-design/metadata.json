@@ -1,0 +1,23 @@
+{
+  "name": "cfd-aerodynamic-joint-inverse-design",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向翼型或飞行器气动外形与流场性能联合数据，使用生成模型完成外形-流场联合逆向设计。适用于需要从目标气动性能出发同时生成几何外形与对应流场分布的研究场景。核心方法包括：潜空间扩散模型编码几何-流场联合分布、条件采样生成多样化候选设计、物理残差筛选保证物理一致性。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
+  "tags": ["cfd", "aerodynamic-design", "inverse-design", "generative-model", "latent-diffusion", "airfoil", "shape-optimization", "flow-field", "physics-consistency", "joint-inverse-design"],
+  "aliases": ["气动外形流场联合逆向设计", "翼型生成模型逆向设计", "生成模型气动外形设计"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "生成模型气动外形与流场联合逆向设计场景知识补充",
+  "evidence_papers": [
+    {"title": "Aerodynamic Shape Design Space Exploration with Deep Latent Diffusion Model", "doi": "", "year": null, "url": "https://arxiv.org/abs/2609.00812"},
+    {"title": "Multi-fidelity reduced-order surrogate modeling", "doi": "", "year": null, "url": "https://arxiv.org/abs/2309.00325"},
+    {"title": "Data-assisted reduced-order modeling of extreme events in complex dynamical systems", "doi": "", "year": null, "url": "https://arxiv.org/abs/1803.03365"},
+    {"title": "Text2PDE_ Latent Diffusion Models for Accessible Physics Simulation", "doi": "", "year": null},
+    {"title": "From Zero to Turbulence_ Generative Modeling for 3D Flow Simulation", "doi": "10.1017/jfm.2019.923", "year": null},
+    {"title": "Diffusion Model Driven Airfoil Design_ From Geometry Encoding to Practical Applications", "doi": "", "year": null, "url": "https://arxiv.org/abs/2601.16228"}
+  ]
+}

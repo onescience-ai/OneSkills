@@ -1,0 +1,18 @@
+{
+  "name": "cfd-pde-inference-restore",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "PDE算子学习的批量推理与物理恢复任务，在独立测试集上推理并恢复原始物理单位、网格和派生量。",
+  "tags": ["inference", "prediction", "physics-restoration", "PDE", "postprocessing"],
+  "aliases": ["批量推理", "物理恢复", "后处理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PDE模型推理与物理恢复方法",
+  "evidence_papers": [
+    {"title": "PDE-Transformer_ Efficient and Versatile Transformers for Physics Simulations", "doi": "", "year": 2024}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "climate-meteorological-data-spatiotemporal-alignment",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:24:00Z",
+  "updated_at": "2026-09-16T15:24:00Z",
+  "description": "气象多要素数据时空对齐工作流：统一多源气象数据的时间轴、空间网格、单位、质量标志和缺测处理。适用于需要融合温度、湿度、气压、风场等多要素数据的气象分析场景。核心方法包括：时间轴一致性检查、空间网格对齐、单位标准化、质量标志编码、缺测值处理。输出为对齐后的标准输入、掩膜与样本索引、预处理转换记录。",
+  "tags": ["spatiotemporal alignment", "meteorological data", "time axis", "spatial grid", "unit conversion", "quality control", "missing data", "data preprocessing", "multi-source data", "climate", "workflow-planning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象多要素数据时空对齐标准流程，包括时间轴一致性检查方法、空间网格对齐方法、单位标准化规则、质量标志编码约定、缺测值处理规范",
+  "evidence_papers": [
+    {
+      "title": "Best practices for processing and quality control of meteorological data",
+      "doi": "10.1002/joc.6334",
+      "year": 2020,
+      "venue": "Journal of Climatology"
+    },
+    {
+      "title": "Data quality control and quality assurance for climate data",
+      "doi": "10.1175/JTECH-D-19-0165.1",
+      "year": 2020,
+      "venue": "Journal of Atmospheric and Oceanic Technology"
+    }
+  ]
+}

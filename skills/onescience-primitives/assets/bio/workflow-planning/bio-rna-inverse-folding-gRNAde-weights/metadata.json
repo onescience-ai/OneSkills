@@ -1,0 +1,28 @@
+{
+  "name": "bio-rna-inverse-folding-gRNAde-weights",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T11:00:00Z",
+  "updated_at": "2026-09-16T11:00:00Z",
+  "description": "gRNAde模型权重获取与验证工作流：提供gRNAde几何深度学习RNA三维反向设计模型的权重文件获取渠道、版本信息和许可证说明。适用于需要加载gRNAde模型权重进行RNA反向设计的研究场景。核心方法包括：官方GitHub仓库检索、模型权重下载、许可证检查。输出为可用的gRNAde模型权重文件和版本信息。",
+  "tags": ["gRNAde", "RNA inverse folding", "geometric deep learning", "model weights", "pretrained models", "3D structure", "Python", "PyTorch", "GitHub"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "gRNAde模型权重文件的官方发布渠道、版本控制信息和许可证说明",
+  "evidence_papers": [
+    {
+      "title": "RiboDiffusion: tertiary structure-based RNA inverse folding with generative diffusion models",
+      "doi": "10.1093/bioinformatics/btae259",
+      "year": 2024,
+      "venue": "Bioinformatics"
+    },
+    {
+      "title": "R3Design: deep tertiary structure-based RNA sequence design and beyond",
+      "doi": "10.1093/bib/bbae682",
+      "year": 2024,
+      "venue": "Briefings in Bioinformatics"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "s04-motif-rmsd-screening",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "s04步骤：候选结构筛选与质控任务。计算基序RMSD作为核心筛选指标（阈值≤0.6Å），生成基序RMSD汇总表和约束质控报告。明确基序RMSD与sc/ptm等其他结构分数的区别与应用场景。",
+  "tags": [
+    "bio",
+    "task",
+    "s04",
+    "motif-rmsd",
+    "screening",
+    "quality-control",
+    "edge:workflow:rfdiffusion-input-output-spec"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "s04基序RMSD筛选指标计算方法",
+  "evidence_papers": [
+    {
+      "title": "De novo design of protein structure and function with RFdiffusion",
+      "doi": "10.1038/s41586-023-06415-8",
+      "year": 2023
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "general-json-schema-structured-output-contract",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T22:54:00Z",
+  "updated_at": "2026-09-16T22:54:00Z",
+  "description": "面向需要定义和验证结构化输出格式的任务，提供 JSON Schema 契约设计、必填字段校验、类型约束和数组约束的方法论。适用于 CLI 工具输出验证、API 响应格式校验、报告生成质量保证等场景，覆盖 schema 定义、validate 工具链、错误分类与修复策略。输出为符合契约的结构化 JSON 产物和验证通过报告。",
+  "tags": ["JSON Schema", "validation", "structured output", "contract", "schema", "type checking", "required fields", "array constraints", "report validation", "API contract", "output format"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约：必填字段、任务身份、数组约束及输出格式校验",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema - Understanding JSON Schema",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "JSON Schema - Type-specific Keywords",
+      "url": "https://json-schema.org/understanding-json-schema/reference/type",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-16"
+    }
+  ]
+}

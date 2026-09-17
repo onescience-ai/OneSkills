@@ -1,0 +1,18 @@
+{
+  "name": "neural-pde-acceptance-testing",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:31:00Z",
+  "updated_at": "2026-09-16T18:31:00Z",
+  "description": "面向神经PDE求解器的任务验收与适用域判定任务，评估统计误差、关键物理约束、泛化能力和计算收益，给出PASS/REJECT/BLOCKED结论；适用于时间并行或多时间尺度神经PDE推进场景的最终验证阶段。",
+  "tags": ["acceptance-testing", "applicability-domain", "physics-consistency", "generalization", "evaluation"],
+  "aliases": ["任务验收", "适用域判定", "acceptance"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "神经PDE任务验收与适用域判定任务",
+  "evidence_papers": [],
+  "merged_batches": [],
+  "conflicts": []
+}

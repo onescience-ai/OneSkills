@@ -1,0 +1,35 @@
+{
+  "name": "matchem-molecular-model-weight-distribution",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T12:28:00Z",
+  "updated_at": "2026-09-16T12:28:00Z",
+  "description": "面向分子生成模型的权重获取、存储、版本管理与离线分发，提供模型权重文件的管理流程和最佳实践，适用于各类分子生成模型如扩散模型、生成对抗网络等。",
+  "tags": ["molecular-generation", "model-weights", "checkpoint", "offline-distribution", "version-management"],
+  "aliases": ["BoKDiff", "molecular generation model", "diffusion model weights", "checkpoint management"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "BoKDiff模型权重的获取途径、存储位置和访问协议；模型权重文件的版本管理与本地缓存机制；离线环境下的模型权重分发方案",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "BoKDiff: Best-of-K diffusion Alignment for Enhancing 3D Molecule Generation",
+      "url": "https://github.com/khodabandeh-ali/BoKDiff",
+      "publisher": "GitHub",
+      "version": "main branch",
+      "accessed_at": "2026-09-16T12:28:00Z"
+    },
+    {
+      "title": "Saving and Loading Models",
+      "url": "https://pytorch.org/tutorials/beginner/saving_loading_models.html",
+      "publisher": "PyTorch",
+      "version": "v2.14.0",
+      "accessed_at": "2026-09-16T12:28:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

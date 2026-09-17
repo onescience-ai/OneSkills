@@ -1,0 +1,21 @@
+{
+  "name": "climate-satellite-precipitation-validation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T12:12:00Z",
+  "updated_at": "2026-09-15T12:12:00Z",
+  "description": "卫星降水产品独立验证和性能评估知识，包括验证资料的选择原则、来源、分层验证设计、验证指标计算和业务门限；误差分解分析方法；性能不足时的诊断方法。",
+  "tags": ["satellite precipitation", "validation", "performance evaluation", "error analysis", "GPM", "IMERG", "GSMaP", "CMORPH", "MSWEP"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "卫星降水产品独立验证和性能评估知识",
+  "evidence_papers": [
+    {"title": "Have satellite precipitation products improved over last two decades? A comprehensive comparison of GPM IMERG with nine satellite and reanalysis datasets", "doi": "10.1016/j.rse.2020.111697", "year": 2020},
+    {"title": "MSWEP V2 Global 3-Hourly 0.1° Precipitation: Methodology and Quantitative Assessment", "doi": "10.1175/bams-d-17-0138.1", "year": 2018},
+    {"title": "Reprocessed, Bias-Corrected CMORPH Global High-Resolution Precipitation Estimates from 1998", "doi": "10.1175/jhm-d-16-0168.1", "year": 2017},
+    {"title": "Evaluation of Precipitation Retrieval Performance from 13 Passive Microwave Radiometers Relative to Spaceborne Radar Estimate", "doi": "10.1175/jhm-d-25-0036.1", "year": 2025},
+    {"title": "Global Precipitation Estimate Error Decomposition Analysis for 14 Passive Microwave Sensors", "doi": "10.1029/2024gl113631", "year": 2025}
+  ]
+}

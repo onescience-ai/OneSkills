@@ -1,0 +1,30 @@
+{
+  "name": "matchem-materials-project-data-api",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T12:47:00Z",
+  "updated_at": "2026-09-15T12:47:00Z",
+  "description": "Materials Project数据库API数据获取工作流：通过MPRester Python客户端从Materials Project公开数据库获取材料数据，支持按元素组成、带隙、材料ID等条件筛选。适用于需要获取真实材料数据集进行机器学习训练、高通量筛选或DFT验证的研究场景。核心方法包括：API密钥配置、属性过滤查询、批量数据下载。输出为结构化的材料属性数据集（含material_id、formula、band_gap、structure等字段）。",
+  "tags": ["materials-project", "MPRester", "API", "data-retrieval", "high-throughput", "band-gap", "crystal-structure", "materials-database", "CO2-photocatalyst", "data-driven", "machine-learning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "从Materials Project等公开数据库获取CO2光催化剂材料数据的API和方法",
+  "evidence_papers": [
+    {
+      "title": "Materials Project Documentation - Getting Started",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Materials Project",
+      "authors": ["Materials Project Team"]
+    },
+    {
+      "title": "Materials Project Documentation - Querying Data",
+      "doi": "N/A",
+      "year": 2026,
+      "venue": "Materials Project",
+      "authors": ["Materials Project Team"]
+    }
+  ]
+}

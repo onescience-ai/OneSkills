@@ -1,0 +1,22 @@
+{
+  "name": "cfd-adjoint-neural-control",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T21:06:00+08:00",
+  "updated_at": "2026-09-16T21:06:00+08:00",
+  "description": "基于伴随方程与深度学习的流动控制策略训练方法，通过自动微分计算流场对神经网络参数的敏感性，优化升阻比或目标函数，适用于湍流翼型流动控制。",
+  "tags": ["adjoint-method", "neural-network", "flow-control", "sensitivity-analysis", "automatic-differentiation"],
+  "aliases": ["伴随神经网络控制", "敏感性分析", "自动微分"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "机翼阵风与跨声速流动主动控制",
+  "evidence_papers": [
+    {
+      "title": "Active Control of Turbulent Airfoil Flows Using Adjoint-based Deep Learning",
+      "doi": "10.48550/arXiv.2510.07106",
+      "year": 2025
+    }
+  ]
+}

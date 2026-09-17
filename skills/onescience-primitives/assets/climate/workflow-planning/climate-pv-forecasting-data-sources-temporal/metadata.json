@@ -1,0 +1,22 @@
+{
+  "name": "climate-pv-forecasting-data-sources-temporal",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "光伏功率预测任务的数据来源规范、数据时点规则（签发时可获得数据 vs 事后数据）以及数据缺失时的正确处理流程",
+  "tags": ["pv", "forecasting", "data-source", "temporal-constraint", "data-availability", "SCADA", "weather-data"],
+  "aliases": ["solar data requirements", "PV data temporal rules", "photovoltaic data availability"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "光伏功率预测任务的数据来源规范、数据时点规则的具体含义（签发时可获得的数据 vs 事后数据）以及数据缺失时的正确处理流程",
+  "evidence_papers": [
+    {"title": "Intraday spatiotemporal PV power prediction at national scale using satellite-based solar forecast models", "doi": "2601.04751", "year": 2026},
+    {"title": "Forecasting solar power output in Ibadan: A machine learning approach leveraging weather data and system specifications", "doi": "2508.07462", "year": 2025},
+    {"title": "SPIRIT: Short-term Prediction of solar IRradIance for zero-shot Transfer learning using Foundation Models", "doi": "2502.10307", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

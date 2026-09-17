@@ -1,0 +1,33 @@
+{
+  "name": "cfd-neural-operator-model-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "神经算子模型训练任务：配置Continuous-time neural operator或Stochastic neural operator，加载预处理切分数据与归一化参数，执行端到端训练。记录代码版本、依赖环境、随机种子、逐轮训练验证指标与最佳权重。支持可选预训练权重微调。产出best_checkpoint.pt、训练配置、训练指标和环境信息。",
+  "tags": ["neural operator", "model training", "Continuous-time", "Stochastic", "PyTorch", "checkpoint", "training metrics", "reproducibility", "CFD"],
+  "aliases": ["模型训练", "算子训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "连续时间与随机生成神经算子预测场景知识补充",
+  "evidence_papers": [
+    {
+      "title": "CFO: Learning Continuous-Time PDE Dynamics via Flow-Matched Neural Operators",
+      "doi": "arXiv:2303.08797",
+      "year": 2023,
+      "url": "https://arxiv.org/abs/2303.08797"
+    },
+    {
+      "title": "Wavelet Diffusion Neural Operator",
+      "doi": "N/A",
+      "year": 2024
+    },
+    {
+      "title": "Neural Stochastic PDEs: Resolution-Invariant Learning of Continuous Spatiotemporal Dynamics",
+      "doi": "N/A",
+      "year": 2023
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "name": "cfd-aeroelastic-unsteady-load-rom-prediction",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T21:18:00Z",
+  "updated_at": "2026-09-16T21:18:00Z",
+  "description": "面向非定常气动力与耦合响应时序，完成气动弹性与非定常载荷降阶响应预测。提供数据接入、预处理、模型训练、推理和验收的完整工作流框架，适用于神经网络降阶模型（Neural aerodynamic ROM、Neural ODE）在气动弹性问题中的应用。",
+  "tags": ["aeroelasticity", "reduced-order-model", "unsteady-aerodynamics", "neural-ODE", "CFD", "load-prediction", "physics-informed"],
+  "aliases": ["气动弹性降阶模型", "非定常载荷预测", "aerodynamic ROM", "unsteady load response"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气动弹性与非定常载荷降阶响应预测",
+  "evidence_papers": [
+    {
+      "title": "Stable Port-Hamiltonian Neural Networks",
+      "doi": "10.48550/arXiv.2502.02480",
+      "year": 2025
+    },
+    {
+      "title": "Convolutional neural network and long short-term memory based reduced order surrogate for minimal turbulent channel flow",
+      "doi": "10.48550/arXiv.2010.13351",
+      "year": 2020
+    },
+    {
+      "title": "A deep learning enabler for non-intrusive reduced order modeling of fluid flows",
+      "doi": "10.48550/arXiv.1907.04945",
+      "year": 2019
+    },
+    {
+      "title": "Validation and parameterization of a novel physics-constrained neural dynamics model applied to turbulent fluid flow",
+      "doi": "10.48550/arXiv.2110.11528",
+      "year": 2021
+    },
+    {
+      "title": "A Residual Learning Approach for Unsteady Aerodynamic Load Prediction",
+      "doi": "10.48550/arXiv.2608.17894",
+      "year": 2026
+    },
+    {
+      "title": "Neural-Network and Reduced-order Modeling Workflows for AI-Driven CFD: Fast Response Surfaces, Reduced Dynamics and Jet in Cross-flow Examples",
+      "doi": "10.48550/arXiv.2608.26064",
+      "year": 2026
+    },
+    {
+      "title": "Nonlinear Model Order Reduction for Coupled Aeroelastic-Flight Dynamic Systems",
+      "doi": "10.48550/arXiv.2603.15296",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

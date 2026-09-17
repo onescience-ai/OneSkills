@@ -119,9 +119,9 @@
 | 缺口 | 表现 | 处置 |
 |---|---|---|
 | 目标列缺失或全为空 | 无法操作化 `{TARGET}` | decision=BLOCKED，记录 `missing_resources:[target_labels]`，禁止用默认值补齐 |
-| 许可信息缺失 | 无法确认可用性 | decision=PARTIAL，追加 gaps.jsonl，`suggested_fill` 写「补数据许可声明」 |
+| 许可信息缺失 | 无法确认可用性 | decision=PARTIAL，追加 .onescience/gaps.jsonl，`suggested_fill` 写「补数据许可声明」 |
 | 单位列缺失 | 无法做单位一致性验证 | 改道 `edge:fallback_method:manual-curation`，decision=PARTIAL |
-| `slot:dataset` 取值在域内无资源卡 | 如 mofdb 无对应 datasets 卡 | 只降级本任务的接入路径，不影响 Task Graph 其余部分；追加 gaps.jsonl |
+| `slot:dataset` 取值在域内无资源卡 | 如 mofdb 无对应 datasets 卡 | 只降级本任务的接入路径，不影响 Task Graph 其余部分；追加 .onescience/gaps.jsonl |
 | 划分互斥性验证失败 | 存在泄漏 | decision=REJECT，必须重划分后才能进 s02 |
 
-降级后 `retrieval_level` 由 full 降为 partial，按 SKILL.md 协议向 `references/tc/gaps.jsonl` 追加一行缺口记录。
+降级后 `retrieval_level` 由 full 降为 partial，按 SKILL.md 协议向 `.onescience/gaps.jsonl` 追加一行缺口记录。

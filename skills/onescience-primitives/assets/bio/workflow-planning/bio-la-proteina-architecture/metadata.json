@@ -1,0 +1,26 @@
+{
+  "name": "bio-la-proteina-architecture",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:18:00Z",
+  "updated_at": "2026-09-16T10:18:00Z",
+  "description": "La-Proteina模型架构与条件编码知识，包括部分潜空间流匹配、固定残基编码、对称群约束和全原子结构生成。",
+  "tags": ["protein-generation", "flow-matching", "la-proteina", "structure-prediction", "conditional-generation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "La-Proteina模型架构细节（部分潜空间流匹配、扩散过程、条件编码接口），模型输入输出契约（输入特征维度、条件信息格式、输出坐标和序列的shape），权重加载协议（checkpoint格式、state_dict key映射、参数量级）",
+  "evidence_papers": [
+    {
+      "title": "La-Proteina: Atomistic Protein Generation via Partially Latent Flow Matching",
+      "doi": "2507.09466",
+      "year": 2025
+    },
+    {
+      "title": "Flow matching meets biology and life science: a survey",
+      "doi": "10.1038/s44387-025-00066-y",
+      "year": 2026
+    }
+  ]
+}

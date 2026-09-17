@@ -1,0 +1,28 @@
+{
+  "name": "bio-scatac-chromatin-accessibility-workflow",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "单细胞染色质可及性（scATAC-seq）基础表征与注释工作流：从原始数据加载到细胞类型注释的完整流程。适用于需要分析scATAC-seq数据、构建细胞表征、进行细胞类型注释的研究场景。核心方法包括：TF-IDF归一化预处理、SVD降维、ChromFound预训练模型推理、Leiden聚类与标签映射评估、生物一致性检查。输出为细胞嵌入表征、细胞类型注释结果和生物一致性报告。",
+  "tags": ["scATAC-seq", "chromatin accessibility", "single-cell", "epigenomics", "TF-IDF", "SVD", "ChromFound", "cell type annotation", "clustering", "bioinformatics", "epigenetics", "peak calling", "genome", "regulatory"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "单细胞染色质可及性基础表征与注释",
+  "evidence_papers": [
+    {
+      "title": "ChromFound: Towards A Universal Foundation Model for Single-Cell Chromatin Accessibility Data",
+      "doi": "10.48550/arXiv.2505.12638",
+      "year": 2025,
+      "venue": "arXiv"
+    },
+    {
+      "title": "Signac: Analysis of Single-Cell Chromatin Data",
+      "doi": "",
+      "year": 2024,
+      "venue": "Bioconductor"
+    }
+  ]
+}

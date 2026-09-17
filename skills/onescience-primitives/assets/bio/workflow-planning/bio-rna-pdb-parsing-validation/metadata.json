@@ -1,0 +1,28 @@
+{
+  "name": "bio-rna-pdb-parsing-validation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T11:00:00Z",
+  "updated_at": "2026-09-16T11:00:00Z",
+  "description": "RNA PDB文件解析与验证工作流：提供RNA PDB文件的解析规则、碱基字符合法性检查、配对索引格式验证和链标识规范。适用于需要验证RNA输入文件合法性的研究场景。核心方法包括：碱基字符检查、配对索引验证、链标识规范化。输出为验证后的标准化RNA输入。",
+  "tags": ["RNA", "PDB", "parsing", "validation", "nucleotide", "base pairing", "chain ID", "dot-bracket", "AUGC"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "RNA PDB文件解析规则（碱基字符A/U/G/C合法集、配对索引格式、链标识规范）",
+  "evidence_papers": [
+    {
+      "title": "R3Design: deep tertiary structure-based RNA sequence design and beyond",
+      "doi": "10.1093/bib/bbae682",
+      "year": 2024,
+      "venue": "Briefings in Bioinformatics"
+    },
+    {
+      "title": "Comprehensive datasets for RNA design, machine learning, and beyond",
+      "doi": "10.1038/s41598-025-07041-2",
+      "year": 2025,
+      "venue": "Scientific Reports"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "climate-radar-diffusion-model-implementation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "雷达临近预报中扩散概率模型的实现规范，包括UNet编解码器结构定义、前向/反向扩散过程、噪声调度策略、条件输入（雷达回波+环境场）的融合方式，以及集合扰动的物理含义与生成方法",
+  "tags": ["diffusion model", "UNet", "ensemble", "probability", "nowcast", "hail", "radar"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达临近预报中扩散概率模型的实现规范",
+  "evidence_papers": []
+}

@@ -1,0 +1,27 @@
+{
+  "name": "cfd-porous-media-acceptance-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T12:42:00Z",
+  "updated_at": "2026-09-16T12:42:00Z",
+  "description": "多孔介质 CFD 任务验收与适用域判定：评估统计误差、关键物理约束、泛化能力和计算收益，给出 PASS/REJECT/BLOCKED 结论，输出适用域报告与域外工况复核建议。适用于数据驱动预测流程的第五步，确保模型工程可用性。",
+  "tags": ["porous media", "acceptance testing", "applicability", "physical consistency", "generalization", "OOD testing", "evaluation"],
+  "aliases": ["任务验收", "适用域判定", "acceptance testing", "applicability assessment"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔与复杂输运流动场数据驱动预测",
+  "evidence_papers": [
+    {
+      "title": "Data-Driven Design Optimization of Streaming-Potential-Mediated Electrokinetic Transport of Viscoelastic Fluids in Microchannels",
+      "url": "https://arxiv.org/abs/2608.29939",
+      "year": 2026
+    },
+    {
+      "title": "Advances in Scientific Machine Learning for Coupled Fluid Flow and Transport",
+      "url": "https://arxiv.org/abs/2606.19562",
+      "year": 2026
+    }
+  ]
+}

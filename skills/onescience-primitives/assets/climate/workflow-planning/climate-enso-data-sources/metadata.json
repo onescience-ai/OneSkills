@@ -1,0 +1,19 @@
+{
+  "name": "climate-enso-data-sources",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "ENSO预测任务所需的标准数据源获取方式，包括NOAA ERSSTv5、ERA5、ORAS5等再分析数据的访问接口、数据格式、时空覆盖范围和版本要求",
+  "tags": ["ENSO", "Nino3.4", "SST", "reanalysis", "data-source", "NOAA", "ERA5", "ORAS5", "climate-data"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "ENSO预测任务所需的标准数据源获取方式，包括NOAA ERSSTv5、ERA5、ORAS5等再分析数据的访问接口、数据格式、时空覆盖范围和版本要求",
+  "evidence_papers": [
+    {"title": "NOAA Extended Reconstructed Sea Surface Temperature Version 5 (ERSSTv5)", "doi": "10.1175/JCLI-D-16-0836.1", "year": 2017},
+    {"title": "ERA5: the ECMWF global reanalysis", "doi": "10.1002/qj.3803", "year": 2020},
+    {"title": "ORAS5 global ocean reanalysis", "doi": "10.1002/joc.4659", "year": 2019}
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "matchem-conditional-diffusion-training-inference",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "Knowledge card for training and inference strategies of conditional diffusion models for molecular generation. Covers noise scheduling, classifier guidance, diversity sampling, and convergence diagnostics.",
+  "tags": ["conditional diffusion", "molecular generation", "training strategy", "inference sampling", "noise scheduling", "classifier guidance", "diversity", "convergence"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "conditional diffusion model training inference strategies for molecular generation",
+  "evidence_papers": [
+    {
+      "title": "Diffusion Models in De Novo Drug Design",
+      "doi": "10.1021/acs.jcim.4c01107",
+      "year": 2024
+    },
+    {
+      "title": "Generative Models as an Emerging Paradigm in the Chemical Sciences",
+      "doi": "10.1021/jacs.2c13467",
+      "year": 2023
+    },
+    {
+      "title": "Deep generative molecular design reshapes drug discovery",
+      "doi": "10.1016/j.xcrm.2022.100794",
+      "year": 2022
+    }
+  ]
+}

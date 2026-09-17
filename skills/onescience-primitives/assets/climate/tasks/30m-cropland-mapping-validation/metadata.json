@@ -1,0 +1,35 @@
+{
+  "name": "30m-cropland-mapping-validation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "30米农田范围与面积制图的独立验证任务。使用独立参考数据（GlobeLand30、FROM-GLC、ESA WorldCover等）验证分类精度，执行同协议基线比较，给出适用边界与交付判定。",
+  "tags": [
+    "remote-sensing",
+    "validation",
+    "accuracy-assessment",
+    "independent-reference-data",
+    "baseline-comparison",
+    "task",
+    "climate",
+    "edge:workflow:30m-cropland-mapping-preprocessing-validation"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "遥感分类独立验证的标准要求，包括独立参考数据的来源（GlobeLand30、FROM-GLC、ESA WorldCover等）、同协议基线比较的具体执行方式、验收门限的设定原则",
+  "evidence_papers": [
+    {
+      "title": "Spatial-temporal distribution of global production-living-ecological space during the period 2000-2020",
+      "doi": "10.1038/s41597-023-02497-1",
+      "year": 2023
+    },
+    {
+      "title": "30 m 5-yearly land cover maps of Qilian Mountain Area (QMA_LC30) from 1990 to 2020",
+      "doi": "10.1038/s41597-024-03976-9",
+      "year": 2024
+    }
+  ]
+}

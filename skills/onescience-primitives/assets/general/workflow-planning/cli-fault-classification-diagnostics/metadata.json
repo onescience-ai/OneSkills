@@ -1,0 +1,31 @@
+{
+  "name": "cli-fault-classification-diagnostics",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向CLI工具非交互执行，提供故障分类与诊断方法，覆盖退出码解读、错误模式识别和恢复策略，适用于自动化脚本与流水线中的命令行接口错误处理。",
+  "tags": ["CLI", "fault-classification", "exit-codes", "error-handling", "diagnostics", "automation"],
+  "aliases": ["command-line interface fault", "CLI error diagnosis", "script failure classification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Command-line Risk Classification using Transformer-based Neural Architectures",
+      "doi": "10.48550/arXiv.2412.01655v1",
+      "year": 2024
+    },
+    {
+      "title": "Command Line Interface Risk Modeling",
+      "doi": "10.48550/arXiv.2302.01749v1",
+      "year": 2023
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -60,5 +60,5 @@
 ## 缺口与降级（Fallback / Gap）
 
 - 改道触发：权重不可审计 → 改道 pareto-ranking；判据缺失（如无稳定性数据）→ 降维排序并标注缺失判据。
-- 分层降级：`full` / `partial` / `task_only` / `none`；`retrieval_level != full` 时向 `references/tc/gaps.jsonl` 追加缺口记录。
+- 分层降级：`full` / `partial` / `task_only` / `none`；`retrieval_level != full` 时向 `.onescience/gaps.jsonl` 追加缺口记录。
 - 已知缺口：成本与可合成性代理资源缺失；实验验证回路未接入。

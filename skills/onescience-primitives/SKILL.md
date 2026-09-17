@@ -90,9 +90,10 @@ assets/
 skills/onescience-primitives/references/tc/   ← TC 辅助索引（skill 内，**不进 assets 域树**）
   card_contract.md               ← 9 字段 + tags 边契约（替代原 schemas/*.yaml）
   atoms.jsonl                    ← 原子事实（数值级召回），靠 atom:<id> tag 回链卡片
-    gaps.jsonl                     ← 缺口记录（retrieval_level != full 时追加）
   knowledge_evolution_log.jsonl  ← 知识演进日志（预留双向反馈闭环）
 ```
+
+> **知识区只读**：技能树（`skills/**`）是**只读知识区**，运行期一律不得写入。缺口/门禁记录 `.onescience/gaps.jsonl` 落在工作区状态目录（与 `.onescience/task_state.json`、`onescience.json` 同一约定，已在 `.gitignore` 内），理由见 step 10。
 
 > **卡片双形态说明**：资源目录支持两种形态——(A) 传统四文件形态（`metadata.json` + `spec.md` + `usage.md` + `workflow_planning.md`）和 (B) 灵活单文档形态（`metadata.json` + `knowledge.md`）。当目录中仅有 `metadata.json` 和 `knowledge.md` 时，`knowledge.md` 即为完整正文，必须读取。
 
@@ -196,7 +197,8 @@ skills/onescience-primitives/references/tc/   ← TC 辅助索引（skill 内，
      d. 命中资源的 domain 与请求目标 domain 不一致（如问 `cfd` 却只命中 `general` 域通用流程卡），且无该 domain 的实质资源。
    - **铁律**：泛化 `workflow-planning` 卡只描述「怎么做研究」的通用流程，**不构成对具体科学问题的领域知识回答**。仅命中此类卡一律等同「没查到」，必须置 `knowledge_gap=true`，不得当成「有资源可用」继续往下走。
 
-10. **缺口记录**：`retrieval_level != full` **或** `knowledge_gap=true` 时，向 `skills/onescience-primitives/references/tc/gaps.jsonl` **追加**一行 JSON：`{ts, domain, task, retrieval_level, knowledge_gap, request_slots{}, missing_resources[], dangling_edges[], suggested_fill, domain_match_summary{exact, adjacent, cross_domain}, gate_hit, gate_layer}`。只追加、不删改历史记录。
+10. **缺口记录**：`retrieval_level != full` **或** `knowledge_gap=true` 时，向工作区状态目录 `.onescience/gaps.jsonl`（相对当前工作区根，**不是** `skills/` 里的任何路径）**追加**一行 JSON：`{ts, domain, task, retrieval_level, knowledge_gap, request_slots{}, missing_resources[], dangling_edges[], suggested_fill, domain_match_summary{exact, adjacent, cross_domain}, gate_hit, gate_layer}`。只追加、不删改历史记录。
+    - **禁止把该记录写进 `skills/onescience-primitives/references/tc/` 或任何技能树内路径**：知识树是评测与生产环境共同的只读区，运行期写入会让知识库被单次会话污染、破坏「同一知识库多次运行结果可比」的前提。目录不存在时先创建 `.onescience/`（不得为写入而修改技能树内任何文件）。
     - `domain_match_summary`：在线兜底完成后按 step 11 的 domain_match 标签统计三档数量；未触发兜底时三档均填 0。
     - `gate_hit`：∈ {`domain_mismatch`, `bare_number_reject`, `result_identity_lock`, `validation_rollback`, `complete_downgrade`, null}。本技能只在 A 层门禁命中时填 `domain_mismatch`（cross_domain 文献被当参数来源、或兜底后 exact=0）；B/C/D 层由 orchestrator 命中后追加各自 gate_hit 行（同一 gaps.jsonl，四层共用，便于 A/B 归因统计）。
     - `gate_layer`：∈ {`A_knowledge`, `B_planning`, `C_execution`, `D_acceptance`}，与 gate_hit 配套。

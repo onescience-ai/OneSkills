@@ -1,0 +1,20 @@
+{
+  "name": "matchem-admet-property-prediction-workflow-contract",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T19:22:52Z",
+  "updated_at": "2026-09-16T19:22:52Z",
+  "description": "面向ADMET性质预测任务，定义从输入验证到输出评估的完整工作流契约，包括各步骤的输入输出格式、评估指标计算方法、化学合法性校验规则和质量门禁，以支持SMILES基础模型驱动的药物发现流程。",
+  "tags": ["ADMET", "property-prediction", "workflow", "contract", "SMILES", "molecular-design", "drug-discovery"],
+  "aliases": ["ADMET预测工作流", "药物性质预测流程", "分子ADMET评估"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "ADMET性质预测的完整工作流契约，包括s01-s04各步骤的输入输出格式、AUROC计算方法、QED/SA评分接口和化学合法性校验规则",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

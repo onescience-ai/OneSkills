@@ -1,0 +1,23 @@
+{
+  "name": "general-cli-execution-fault-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向 CLI 非交互执行场景，提供进程生命周期管理、退出码分类与故障诊断的通用方法框架。适用于需要在自动化流水线中可靠地启动、监控和诊断外部命令行工具的场景，覆盖参数传递、超时控制、沙箱隔离、标准错误判读等关键环节。输出为结构化的故障分类表和恢复策略建议。",
+  "tags": ["CLI", "command line", "exit code", "error handling", "automation", "subprocess", "timeout", "process management", "fault classification", "non-interactive execution"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_docs": [
+    {
+      "title": "Python subprocess module documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    }
+  ]
+}

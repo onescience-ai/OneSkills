@@ -1,0 +1,51 @@
+{
+  "name": "matchem-dft-software-hpc-installation",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向在高性能计算（HPC）环境中安装和配置密度泛函理论（DFT）软件的需求，提供VASP和Quantum ESPRESSO的安装配置知识。包括依赖库编译、许可证获取、模块加载、环境验证等完整流程，确保DFT软件可在HPC集群上正常运行并用于材料科学研究。",
+  "tags": [
+    "vasp",
+    "quantum-espresso",
+    "dft",
+    "hpc",
+    "installation",
+    "compilation",
+    "scientific-computing",
+    "materials-science",
+    "electronic-structure",
+    "matchem"
+  ],
+  "aliases": [
+    "VASP安装",
+    "Quantum ESPRESSO安装",
+    "DFT软件配置",
+    "密度泛函理论软件"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DFT软件（VASP/Quantum ESPRESSO）在HPC环境中的安装配置知识，包括依赖、许可证、模块加载和验证步骤",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "VASP Wiki - Getting Started",
+      "url": "https://www.vasp.at/wiki/index.php/Getting_started",
+      "publisher": "University of Vienna",
+      "version": "current",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "Quantum ESPRESSO Documentation",
+      "url": "https://www.quantum-espresso.org/Doc/",
+      "publisher": "Quantum ESPRESSO Team",
+      "version": "current",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

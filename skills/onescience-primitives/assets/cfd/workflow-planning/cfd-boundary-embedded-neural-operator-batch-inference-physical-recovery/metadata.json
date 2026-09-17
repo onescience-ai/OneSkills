@@ -1,0 +1,19 @@
+{
+  "name": "cfd-boundary-embedded-neural-operator-batch-inference-physical-recovery",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "边界嵌入神经算子批量推理与物理恢复任务，负责在独立测试集推理，恢复原始单位、网格和物理派生量。",
+  "tags": ["batch-inference", "physical-recovery", "boundary-embedded", "neural-operator", "cfd", "pde-solving", "reverse-normalization"],
+  "aliases": ["批量推理与物理恢复", "边界嵌入推理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "边界嵌入神经算子批量推理与物理恢复",
+  "evidence_papers": [
+    {"title": "BENO: Boundary-Embedded Neural Operators for PDEs", "doi": "", "year": 2024, "url": ""},
+    {"title": "Physics-Embedded Neural Networks: Graph Neural PDE Solvers with Mixed Boundary Conditions", "doi": "", "year": 2024, "url": ""}
+  ]
+}

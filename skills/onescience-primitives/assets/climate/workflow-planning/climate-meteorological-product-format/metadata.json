@@ -1,0 +1,18 @@
+{
+  "name": "climate-meteorological-product-format",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T18:49:00+08:00",
+  "updated_at": "2026-09-15T18:49:00+08:00",
+  "description": "气象预报产品格式规范、产品交付标准、产品元数据要求知识。适用于气象预报产品生成和交付阶段，包括NetCDF标准格式、产品元数据规范、数据质量标识。",
+  "tags": ["NetCDF", "product-format", "metadata", "WMO", "CF-convention", "delivery", "standard"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报产品格式规范、产品交付标准、产品元数据要求",
+  "evidence_papers": [
+    {"title": "MetPy: A Meteorological Python Library for Data Analysis and Visualization", "doi": "10.1175/BAMS-D-21-0218.1", "year": 2022},
+    {"title": "WFDE5: bias-adjusted ERA5 reanalysis data for impact studies", "doi": "10.5194/essd-12-2921-2020", "year": 2020}
+  ]
+}

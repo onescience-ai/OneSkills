@@ -1,0 +1,22 @@
+{
+  "name": "bio-scatac-low-quality-cell-marking",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:00:00Z",
+  "updated_at": "2026-09-16T10:00:00Z",
+  "description": "scATAC-seq低质量细胞标记任务：在预处理阶段标记低质量细胞（如peak检测数过低、TSS富集分数低、FRiP过低），在AnnData.obs中保留QC标记字段，支持分层评估和结果追溯。适用于任务s02预处理阶段，补充低质量细胞标记功能。",
+  "tags": ["quality control", "low quality cells", "QC metrics", "scATAC-seq", "TSS enrichment", "FRiP", "peak detection", "cell filtering", "metadata", "annotation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "scATAC数据低质量细胞判定标准",
+  "evidence_papers": [
+    {
+      "title": "Signac: Analysis of Single-Cell Chromatin Data",
+      "doi": "",
+      "year": 2024,
+      "venue": "Bioconductor"
+    }
+  ]
+}

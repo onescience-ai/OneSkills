@@ -1,0 +1,28 @@
+{
+  "name": "matchem-diffusion-coefficient-physical-range",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T17:53:00Z",
+  "updated_at": "2026-09-16T17:53:00Z",
+  "description": "面向金属中扩散系数的物理合理性检查，定义扩散系数的合理范围、温度依赖关系（Arrhenius关系）、晶格扩散与晶界扩散的数量级差异。适用于需要验证扩散系数计算结果物理合理性的场景，包括DFT/MD计算结果验证、实验数据合理性检查、扩散机制分析。核心方法包括：扩散系数范围检查、温度单调性验证、Arrhenius关系验证。输出为物理合理性检查结果和异常数据标记。",
+  "tags": ["diffusion-coefficient", "Arrhenius", "physical-range", "temperature-dependence", "lattice-diffusion", "grain-boundary-diffusion", "DFT", "MD", "materials-science", "validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "金属中扩散系数的物理合理范围和温度依赖关系",
+  "evidence_papers": [
+    {
+      "title": "Diffusion in metals and alloys",
+      "doi": "10.1016/B978-0-444-63286-9.00001-6",
+      "year": 2019,
+      "venue": "Materials Science and Engineering: A"
+    },
+    {
+      "title": "Atomic diffusion in metals: Theory and simulation",
+      "doi": "10.1080/14786435.2018.1495533",
+      "year": 2018,
+      "venue": "Philosophical Magazine"
+    }
+  ]
+}

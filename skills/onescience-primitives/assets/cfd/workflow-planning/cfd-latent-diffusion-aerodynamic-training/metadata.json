@@ -1,0 +1,19 @@
+{
+  "name": "cfd-latent-diffusion-aerodynamic-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "潜空间扩散模型与生成设计模型的气动逆向设计训练任务，加载预处理切分数据，训练Latent diffusion model完成指定输入到目标物理量的映射，记录训练配置、逐轮指标和最佳权重。适用于气动逆向设计工作流的模型训练阶段。",
+  "tags": ["cfd", "model-training", "latent-diffusion", "generative-design", "airfoil", "PyTorch", "inverse-design", "checkpoint"],
+  "aliases": ["潜空间扩散模型训练", "气动生成模型训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "潜空间扩散模型气动逆向设计训练",
+  "evidence_papers": [
+    {"title": "Aerodynamic Shape Design Space Exploration with Deep Latent Diffusion Model", "doi": "", "year": null, "url": "https://arxiv.org/abs/2609.00812"},
+    {"title": "From Zero to Turbulence_ Generative Modeling for 3D Flow Simulation", "doi": "10.1017/jfm.2019.923", "year": null}
+  ]
+}

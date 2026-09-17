@@ -1,0 +1,19 @@
+{
+  "name": "cfd-transformer-pde-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "PDE Transformer模型训练任务，完成指定输入到目标物理量的映射训练，记录训练过程与可复现环境。",
+  "tags": ["training", "PDE", "transformer", "checkpoint", "reproducibility"],
+  "aliases": ["模型训练", "PDE Transformer训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PDE Transformer模型训练方法",
+  "evidence_papers": [
+    {"title": "PDE-Transformer_ Efficient and Versatile Transformers for Physics Simulations", "doi": "", "year": 2024},
+    {"title": "Universal Physics Transformers_ A Framework For Efficiently Scaling Neural Operators", "doi": "", "year": 2023}
+  ]
+}

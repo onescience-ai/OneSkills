@@ -1,0 +1,28 @@
+{
+  "name": "general-cli-noninteractive-fault-diagnosis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向命令行工具的非交互执行场景，诊断和处理 CLI 进程的启动失败、超时、退出码异常和标准错误输出，覆盖参数解析、认证、沙箱、超时和退出码分类等通用故障处理流程",
+  "tags": ["CLI", "fault-diagnosis", "non-interactive", "exit-code", "error-handling"],
+  "aliases": ["command-line error", "CLI failure", "process exit"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "argparse — Parser for command-line options, arguments and subcommands",
+      "url": "https://docs.python.org/3/library/argparse.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

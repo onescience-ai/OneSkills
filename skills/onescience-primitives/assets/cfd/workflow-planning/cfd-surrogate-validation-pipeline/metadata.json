@@ -1,0 +1,41 @@
+{
+  "name": "cfd-surrogate-validation-pipeline",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T12:00:00Z",
+  "updated_at": "2026-09-16T12:00:00Z",
+  "description": "从数据接入到适用域判定的端到端气动代理验证工作流。适用于任何需要对 CFD 代理模型进行完整训练-验证-部署评估的场景，覆盖数据契约核验、无泄漏切分、模型训练、闭合项先验与后验耦合校验、物理一致性评估及适用域判定。输出为 PASS/REJECT/BLOCKED 结论、最差样本追溯与适用域报告。",
+  "tags": ["CFD", "surrogate", "validation", "workflow", "data-contract", "train-test-split", "physical-consistency", "applicability-domain", "a posteriori", "a priori", "RANS", "LES", "quality-gate"],
+  "aliases": ["surrogate evaluation pipeline", "代理模型验证流程"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "跨几何族多保真RANS数据的迁移学习与多保真航空汽车气动代理构建",
+  "evidence_papers": [
+    {
+      "title": "Adapting Automotive Aerodynamics Surrogates to New Vehicle Families via Transfer Learning",
+      "doi": "10.48550/arXiv.2605.27968",
+      "year": 2026,
+      "venue": "arXiv"
+    },
+    {
+      "title": "Multi-fidelity aerodynamic data fusion by autoencoder transfer learning",
+      "doi": "10.48550/arXiv.2512.13069",
+      "year": 2025,
+      "venue": "arXiv"
+    },
+    {
+      "title": "Dimension Bridging for 3D RANS with Neural Network Accelerated Gaussian Functional Regression",
+      "doi": "10.48550/arXiv.2608.27639",
+      "year": 2026,
+      "venue": "arXiv"
+    },
+    {
+      "title": "RETO: A Rotary-Enhanced Transformer Operator for High-Fidelity Prediction of Automotive Aerodynamics",
+      "doi": "10.48550/arXiv.2605.00062",
+      "year": 2026,
+      "venue": "arXiv"
+    }
+  ]
+}

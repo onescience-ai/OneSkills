@@ -1,0 +1,32 @@
+{
+  "name": "cfd-inr-diffusion-bridge-model-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T13:44:00Z",
+  "updated_at": "2026-09-16T13:44:00Z",
+  "description": "隐式神经表示与扩散桥模型训练任务卡：配置并训练INR和扩散桥模型，完成从稀疏/缺损CFD输入到完整高保真流场的映射。记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重，确保模型可复现、可重新加载。适用于CFD缺失区补全场景的第三步模型训练。",
+  "tags": ["CFD", "model training", "implicit neural representation", "diffusion bridge", "INR", "checkpoint", "reproducibility", "early stopping", "loss convergence"],
+  "aliases": ["模型训练", "INR训练", "扩散桥训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "INR与扩散桥模型训练",
+  "evidence_papers": [
+    {
+      "title": "PEINR: A Physics-enhanced Implicit Neural Representation for High-Fidelity Flow Field Reconstruction",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "Physics-aligned field reconstruction with diffusion bridge",
+      "doi": "",
+      "year": 2024
+    },
+    {
+      "title": "SCoReT: Super-Resolution Compression and Reconstruction of Turbulent Flows",
+      "doi": "10.48550/arXiv.2607.03683",
+      "year": 2026
+    }
+  ]
+}

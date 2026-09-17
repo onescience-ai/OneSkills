@@ -1,0 +1,21 @@
+{
+  "name": "general-agent-cli-fault-classification-recovery",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向自动化智能体工作流中 CLI 工具执行失败的故障分类与恢复策略。覆盖非交互执行模式下的退出码判读、错误类型分层、动态重规划与级联故障阻断，适用于需要可靠执行外部命令行工具的 agent 系统。",
+  "tags": ["CLI", "fault-classification", "error-recovery", "agent-workflow", "tool-failure", "exit-code", "replanning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {"title": "When Tools Fail: Benchmarking Dynamic Replanning and Anomaly Recovery in LLM Agents", "doi": "10.48550/arXiv.2606.05806", "year": 2026},
+    {"title": "AgentDebugX: An Open-Source Toolkit for Failure Observability, Attribution, and Recovery in LLM Agents", "doi": "10.48550/arXiv.2607.18754", "year": 2026},
+    {"title": "GUI vs. CLI: Execution Bottlenecks in Screen-Only and Skill-Mediated Computer-Use Agents", "doi": "10.48550/arXiv.2606.24551", "year": 2026},
+    {"title": "ParaRecover: A Process-Level Benchmark for Error Localization and Recovery in Parallel Tool-Use Agents", "doi": "10.48550/arXiv.2609.12345", "year": 2026}
+  ],
+  "aliases": ["CLI故障分类", "tool failure recovery", "agent error handling", "exit code diagnosis"]
+}

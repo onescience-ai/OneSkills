@@ -1,0 +1,23 @@
+{
+  "name": "cfd-mamba-inference-physical-recovery",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向Mamba/SSM神经算子的批量推理与物理量恢复：在独立测试集上加载训练权重执行推理，反归一化恢复原始物理单位、网格坐标和边界掩膜，保存逐样本结果和推理耗时。适用于PDE时序预测的后训练推理阶段。",
+  "tags": ["inference", "physical recovery", "denormalization", "Mamba", "SSM", "neural operator", "PDE", "prediction", "timing", "batch inference"],
+  "aliases": ["Mamba inference", "operator prediction"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Mamba神经算子推理与物理恢复",
+  "evidence_papers": [
+    {
+      "title": "Mamba Neural Operator: Who Wins? Transformers vs. State-Space Models for PDEs",
+      "doi": "10.48550/arXiv.2410.02113",
+      "year": 2024,
+      "venue": "Journal of Computational Physics (accepted 2025)"
+    }
+  ]
+}

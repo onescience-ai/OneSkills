@@ -1,0 +1,42 @@
+{
+  "name": "matchem-crystal-structure-prediction-workflow-algorithm-rules",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T17:45:00Z",
+  "updated_at": "2026-09-16T17:45:00Z",
+  "description": "面向晶体结构预测与优化任务，提供从成分约束建立到可合成性判断的完整工作流定义、候选构型生成算法、BLOCKED触发规则、数据可追溯性要求以及图神经网络模型集成范式，适用于材料科学领域的结构搜索与稳定性评估。",
+  "tags": ["crystal structure prediction", "graph neural network", "workflow planning", "algorithm", "rules", "materials science", "matchem"],
+  "aliases": ["CGCNN", "Materials Project", "symmetry constraint", "random structure search", "structural relaxation", "synthesizability"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "图神经网络晶体结构预测与优化的标准科研工作流、候选构型生成算法、matchem域工作流规划知识、orchestrator expert技能调度规则、BLOCKED触发规则完整定义、GNN应用范式",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Materials Project API Documentation",
+      "url": "https://materialsproject.org/api/",
+      "publisher": "Lawrence Berkeley National Laboratory",
+      "version": "v2",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "Atomic Simulation Environment (ASE) Documentation",
+      "url": "https://wiki.fysik.dtu.dk/ase/",
+      "publisher": "Technical University of Denmark",
+      "version": "3.22.1",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "pymatgen Documentation",
+      "url": "https://pymatgen.org/",
+      "publisher": "Materials Project",
+      "version": "2023.1",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

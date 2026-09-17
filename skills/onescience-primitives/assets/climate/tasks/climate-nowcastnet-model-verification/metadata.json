@@ -1,0 +1,18 @@
+{
+  "name": "climate-nowcastnet-model-verification",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:30:00Z",
+  "updated_at": "2026-09-16T15:30:00Z",
+  "description": "NowcastNet模型验证任务，包括检查点加载、干运行验证、输入输出尺寸检查、成员采样接口验证。",
+  "tags": ["edge:workflow:climate-radar-precipitation-nowcasting-workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "NowcastNet模型架构、检查点文件格式、模型验证标准流程",
+  "evidence_papers": [
+    {"title": "Hybrid physics-AI outperforms numerical weather prediction for extreme precipitation nowcasting", "doi": "10.1038/s41612-024-00834-8", "year": 2024},
+    {"title": "Skilful Precipitation Nowcasting Using NowcastNet", "doi": "10.48550/arXiv.2311.17961", "year": 2023}
+  ]
+}

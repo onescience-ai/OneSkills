@@ -1,0 +1,19 @@
+{
+  "name": "cfd-model-config-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2025-09-15T00:00:00Z",
+  "updated_at": "2025-09-15T00:00:00Z",
+  "description": "数据驱动RANS湍流闭合模型的配置与训练任务卡，涵盖Tensor-basis neural network和Symbolic closure model的训练流程，包括超参数配置、训练监控、权重保存与环境记录。",
+  "tags": ["model-training", "Tensor-basis-NN", "symbolic-closure", "PyTorch", "turbulence", "RANS"],
+  "aliases": ["模型训练", "Tensor神经网络", "符号闭合模型"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "数据驱动RANS雷诺应力与涡黏闭合-模型训练",
+  "evidence_papers": [
+    {"title": "Quantifying model form uncertainty in Reynolds-averaged turbulence models with Bayesian deep neural networks", "doi": "10.48550/arXiv.1807.02901", "year": 2018},
+    {"title": "Discovering explicit Reynolds-averaged turbulence closures for turbulent separated flows through deep learning", "doi": "10.48550/arXiv.2301.09048", "year": 2023}
+  ]
+}

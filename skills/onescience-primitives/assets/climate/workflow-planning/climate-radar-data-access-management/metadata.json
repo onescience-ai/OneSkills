@@ -1,0 +1,26 @@
+{
+  "name": "climate-radar-data-access-management",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:05:00Z",
+  "updated_at": "2026-09-16T18:05:00Z",
+  "description": "面向气象雷达数据获取、格式规范、预处理与质量控制的数据管理知识。包括中国气象局雷达数据共享政策、NetCDF数据格式规范、雷达数据预处理标准流程。",
+  "tags": ["radar", "data-access", "NetCDF", "preprocessing", "quality-control", "meteorology"],
+  "aliases": ["radar data management", "weather radar data"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达数据获取渠道、数据格式规范、数据预处理流程、数据质量控制标准",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-16T18:05:00Z",
+      "location": "归因报告: E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-w4\\314\\report.json"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

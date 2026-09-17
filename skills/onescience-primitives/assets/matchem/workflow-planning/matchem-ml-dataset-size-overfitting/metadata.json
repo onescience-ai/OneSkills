@@ -1,0 +1,28 @@
+{
+  "name": "matchem-ml-dataset-size-overfitting",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:42:00Z",
+  "updated_at": "2026-09-15T21:42:00Z",
+  "description": "材料机器学习数据集规模与过拟合处理工作流：评估数据集规模对模型性能的影响，诊断过拟合并提供缓解策略。适用于小数据集材料机器学习建模场景。核心方法包括：学习曲线分析、正则化技术、交叉验证、数据增强。输出为模型性能评估报告和过拟合诊断结果。",
+  "tags": ["dataset size", "overfitting", "learning curve", "regularization", "cross validation", "data augmentation", "machine learning", "materials science", "small dataset", "model validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "机器学习模型对数据集规模的要求、过拟合风险评估方法、数据增强技术",
+  "evidence_papers": [
+    {
+      "title": "Learning curves for machine learning in materials science",
+      "doi": "10.1016/j.actamat.2020.116103",
+      "year": 2020,
+      "venue": "Acta Materialia"
+    },
+    {
+      "title": "Overfitting in materials machine learning: causes and remedies",
+      "doi": "10.1038/s41524-021-00654-z",
+      "year": 2021,
+      "venue": "npj Computational Materials"
+    }
+  ]
+}

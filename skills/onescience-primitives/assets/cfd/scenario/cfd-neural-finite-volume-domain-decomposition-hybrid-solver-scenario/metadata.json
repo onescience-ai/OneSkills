@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "visibility": "public",
   "created_at": "2026-09-15",
-  "updated_at": "2026-09-15",
+  "updated_at": "2026-09-16",
   "description": "场景卡：CFD_S072（cfd）。工作流 5 步，经 edge:workflow 指向 cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-5，经 edge:task 指向其骨架任务。",
   "tags": [
     "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-5",
@@ -29,5 +29,21 @@
     "slot:METRICS:验收指标",
     "slot:MAX_RELATIVE_L2:相对误差门限",
     "slot:RUN_OOD_TEST:是否外推测试"
-  ]
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "神经有限体积与域分解混合求解场景知识补充",
+  "evidence_papers": [
+    {"title": "Learning Interface Conditions in Domain Decomposition Solvers", "doi": "", "year": 0},
+    {"title": "Unisoma_ A Unified Transformer-based Solver for Multi-Solid Systems", "doi": "", "year": 0},
+    {"title": "Heavy-Ball Momentum Method in Continuous Time and Discretization Error Analysis", "doi": "arxiv:2506.14806", "year": 0},
+    {"title": "Towards General Neural Surrogate Solvers with Specialized Neural Accelerators", "doi": "", "year": 0},
+    {"title": "MG-GNN_ Multigrid Graph Neural Networks for Learning Multilevel Domain Decomposition Methods", "doi": "", "year": 0},
+    {"title": "NeuralStagger_ Accelerating Physics-constrained Neural PDE Solver with Spatial-temporal Decomposition", "doi": "", "year": 0},
+    {"title": "Accelerating Eulerian Fluid Simulation With Convolutional Networks", "doi": "", "year": 0},
+    {"title": "DiscretizationNet_ A machine-learning based solver for Navier–Stokes equations using finite volume discretiz", "doi": "arxiv:2005.08357", "year": 0},
+    {"title": "(U)NFV_ (Un)Supervised Neural Finite Volume Methods for Solving Hyperbolic PDEs", "doi": "", "year": 0}
+  ],
+  "merged_batches": [],
+  "conflicts": []
 }

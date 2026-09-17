@@ -1,0 +1,23 @@
+{
+  "name": "general-cli-fault-diagnosis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T20:18:00Z",
+  "updated_at": "2026-09-15T20:18:00Z",
+  "description": "面向命令行工具非交互执行场景，诊断进程启动失败、超时、退出码异常和标准错误输出问题的通用方法论。适用于自动化脚本、CI/CD流水线、批处理任务等需要可靠执行CLI工具并处理故障的场景。核心方法包括：进程生命周期管理、退出码分类与解读、标准错误流捕获与分析、超时控制与恢复策略。输出为故障分类报告和修复建议。",
+  "tags": ["CLI", "command line", "exit code", "error diagnosis", "subprocess", "automation", "fault classification", "timeout", "stderr", "process management", "non-interactive", "batch processing", "CI/CD"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读",
+  "evidence_docs": [
+    {
+      "title": "subprocess — Subprocess management",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7 Documentation",
+      "accessed_at": "2026-09-15"
+    }
+  ]
+}

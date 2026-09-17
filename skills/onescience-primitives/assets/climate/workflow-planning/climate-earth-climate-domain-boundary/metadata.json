@@ -1,0 +1,15 @@
+{
+  "name": "climate-earth-climate-domain-boundary",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T00:00:00Z",
+  "updated_at": "2026-09-15T00:00:00Z",
+  "description": "OneScience领域分类体系中earth与climate的边界定义，earth覆盖地球科学全领域（包括但不限于气候、天气、海洋、固体地球等），climate专指气候预测与气候模拟子领域",
+  "tags": ["domain", "classification", "earth", "climate", "taxonomy", "OneScience"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience领域分类体系中earth与climate的边界定义",
+  "evidence_papers": []
+}

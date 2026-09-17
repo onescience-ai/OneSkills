@@ -1,0 +1,66 @@
+{
+  "name": "general-execution-manifest-workflow-precheck",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T18:54:00Z",
+  "updated_at": "2026-09-16T19:16:00Z",
+  "description": "Execution manifest generation, validation, and recovery for workflow preflight checks. Covers required fields, generation timing, version control, and recovery strategies when manifest is missing. 面向工作流编排系统，提供执行清单（execution manifest）的生成规范、验证契约和缺失恢复策略，确保工作流预检阶段能正确验证任务配置、步骤定义和资源绑定信息，并在清单缺失时触发自动恢复或降级机制。",
+  "tags": ["execution-manifest", "workflow-preflight", "configuration-validation", "recovery-strategy", "workflow-management", "workflow", "validation", "orchestration"],
+  "aliases": ["execution-manifest.json", "workflow-manifest", "execution清单"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "execution-manifest.json的生成规范和验证契约，包括必需字段定义、生成时机、版本控制和缺失时的恢复策略",
+  "evidence_papers": [
+    {
+      "title": "Recording provenance of workflow runs with RO-Crate",
+      "doi": "10.1371/journal.pone.0309210",
+      "year": 2024
+    },
+    {
+      "title": "Watchdog 2.0: New developments for reusability, reproducibility, and workflow execution",
+      "doi": "10.1093/gigascience/giaa068",
+      "year": 2020
+    },
+    {
+      "title": "Sapporo: A workflow execution service that encourages the reuse of workflows in various languages in bioinformatics",
+      "doi": "10.12688/f1000research.122924.2",
+      "year": 2024
+    },
+    {
+      "title": "Design considerations for workflow management systems use in production genomics research and the clinic",
+      "doi": "10.1038/s41598-021-99288-8",
+      "year": 2021
+    },
+    {
+      "title": "Towards Agentic Cloud Engineering: Graph and Loop Engineering with a Zero-Trust Agent Harness",
+      "doi": "10.48550/arXiv.2609.00050",
+      "year": 2026
+    },
+    {
+      "title": "Symbolic Separation: Grounding Deep Agents in Knowledge Graphs for Trustworthy Operational Data Analytics",
+      "doi": "10.48550/arXiv.2609.17107",
+      "year": 2026
+    },
+    {
+      "title": "Ground-Side Mission Plan Compilation with Policy-as-Code Guardrails for Cloud-Native Satellite Platforms",
+      "doi": "10.48550/arXiv.2607.14798",
+      "year": 2026
+    },
+    {
+      "title": "A Formal Hierarchical Architecture for Agentic Orchestration with Stack-Based Execution and Lazy Discovery",
+      "doi": "10.48550/arXiv.2607.11138",
+      "year": 2026
+    },
+    {
+      "title": "Resume Means Resume: A Machine-Checked Conformance Contract for Checkpoint, Interrupt, and Resume Semantics in Workflow Persistence Layers",
+      "doi": "10.48550/arXiv.2608.03836",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": ["batch-2026-09-16: 添加执行清单生成规范、验证契约和缺失恢复策略的补充知识"],
+  "conflicts": []
+}

@@ -1,0 +1,20 @@
+{
+  "name": "pinn-turbulence-rans-mean-flow-solving",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-16T00:00:00Z",
+  "description": "面向RANS方程与稀疏均值流湍流数据，使用物理信息神经网络(PINN)进行湍流均值流求解与闭合建模的场景。适用于需要从稀疏测量数据重建完整湍流场、验证物理一致性并评估模型适用域的计算流体力学任务。",
+  "tags": ["PINN", "turbulence", "RANS", "mean-flow", "closure", "physics-informed", "neural-network", "CFD", "sparse-data"],
+  "aliases": ["PINN湍流RANS均值流求解", "turbulence-augmented PINN", "physics-informed neural network for RANS"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PINN湍流RANS均值流求解与闭合",
+  "evidence_papers": [
+    {"title": "Generalizable turbulence closures across bluff-body shapes by PINN-based solver-agnostic training", "doi": "2607.04491", "year": 2026},
+    {"title": "Physics-informed neural networks for solving Reynolds-averaged Navier–Stokes equations", "doi": "2107.10711", "year": 2021},
+    {"title": "Physics-informed data based neural networks for two-dimensional turbulence", "doi": "2203.02555", "year": 2022}
+  ]
+}

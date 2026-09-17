@@ -1,0 +1,26 @@
+{
+  "name": "cfd-operator-evaluation-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T11:46:00Z",
+  "updated_at": "2026-09-16T11:46:00Z",
+  "description": "算子评估与适用域判定任务，评估统计误差、关键物理约束、泛化能力和计算收益。适用于算子学习工作流的验收阶段，确保模型满足工程应用要求。",
+  "tags": ["evaluation", "applicability", "error analysis", "physical constraints", "generalization", "CFD", "operator learning", "worst case analysis"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "算子评估与适用域判定",
+  "evidence_papers": [
+    {
+      "title": "Multiwavelet-based Operator Learning for Differential Equations",
+      "doi": "2109.13459",
+      "year": 2021
+    },
+    {
+      "title": "Spectral-Embedded Operator Learning for Three-Phase Interfacial Flow",
+      "doi": "2608.29069",
+      "year": 2026
+    }
+  ]
+}

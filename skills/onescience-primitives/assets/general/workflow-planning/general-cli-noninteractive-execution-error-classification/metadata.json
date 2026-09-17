@@ -1,0 +1,44 @@
+{
+  "name": "general-cli-noninteractive-execution-error-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T00:00:00Z",
+  "updated_at": "2026-09-17T12:00:00Z",
+  "description": "面向命令行工具的非交互执行场景，提供进程生命周期管理、退出码语义分类、超时控制与标准错误诊断的方法论框架，用于在自动化流水线中准确定位 CLI 故障类别并执行恢复策略",
+  "tags": ["CLI", "exit-code", "error-classification", "subprocess", "non-interactive", "automation", "diagnosis", "json-schema", "validation", "report-contract"],
+  "aliases": ["CLI故障诊断", "退出码分类", "进程错误处理", "命令行错误诊断", "JSON Schema验证", "报告契约", "结构化输出校验"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识：命令参数、认证、沙箱、超时、退出码和标准错误判读",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Python subprocess documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "exit(3) - Linux manual page",
+      "url": "https://www.man7.org/linux/man-pages/man3/exit.3.html",
+      "publisher": "Linux man-pages project",
+      "version": "6.19",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "Python json module documentation",
+      "url": "https://docs.python.org/3/library/json.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [
+    "2026-09-17: 合并CLI退出码语义分类与JSON Schema验证Python实现细节"
+  ],
+  "conflicts": []
+}

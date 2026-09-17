@@ -1,0 +1,32 @@
+{
+  "name": "cfd-transonic-active-flow-control",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T21:06:00+08:00",
+  "updated_at": "2026-09-16T21:06:00+08:00",
+  "description": "面向跨声速翼型流动主动控制场景，提供基于深度学习与伴随方法的控制策略规划与执行框架，覆盖数据接入、预处理、模型训练、闭环仿真与任务验收全流程。",
+  "tags": ["active-flow-control", "transonic", "deep-learning", "reinforcement-learning", "adjoint-method", "airfoil", "CFD"],
+  "aliases": ["跨声速流动主动控制", "阵风载荷缓解", "RAE2822", "NACA0012"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "机翼阵风与跨声速流动主动控制",
+  "evidence_papers": [
+    {
+      "title": "Shocks Under Control: Taming Transonic Compressible Flow over an RAE2822 Airfoil with Deep Reinforcement Learning",
+      "doi": "10.48550/arXiv.2511.07564",
+      "year": 2025
+    },
+    {
+      "title": "Active Control of Turbulent Airfoil Flows Using Adjoint-based Deep Learning",
+      "doi": "10.48550/arXiv.2510.07106",
+      "year": 2025
+    },
+    {
+      "title": "A Provably Robust Multi-Jet Framework applied to Active Flow Control of an Airfoil in Weakly Compressible Flow",
+      "doi": "10.48550/arXiv.2604.26481",
+      "year": 2026
+    }
+  ]
+}

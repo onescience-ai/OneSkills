@@ -2,13 +2,21 @@
   "name": "cfd-regular-grid-cnn-airfoil-steady-flow-field-proxy-prediction-scenario",
   "type": "scenario",
   "domain": "cfd",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-15",
-  "updated_at": "2026-09-15",
-  "description": "场景卡：CFD_S001（cfd）。工作流 5 步，经 edge:workflow 指向 cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow，经 edge:task 指向其骨架任务。",
+  "updated_at": "2026-09-16",
+  "description": "场景卡：CFD_S001（cfd）。面向DeepCFD规则网格翼型RANS数据，使用CNN/U-Net完成稳态流场代理预测。工作流5步：数据接入与契约核验→预处理与数据切分→模型配置与训练→批量推理与物理恢复→任务验收与适用域判定。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。",
   "tags": [
-    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow",
+    "airfoil",
+    "cnn",
+    "deepcfd",
+    "steady-state",
+    "surrogate",
+    "u-net",
+    "cfd",
+    "cfd_s001",
+    "edge:workflow:cnn-airfoil-steady-flow-surrogate",
     "edge:task:cfd-data-ingestion-contract-validation-task",
     "edge:task:cfd-preprocessing-data-splitting-task",
     "edge:task:cfd-model-configuration-training-task",
@@ -29,5 +37,15 @@
     "slot:METRICS:验收指标",
     "slot:MAX_RELATIVE_L2:相对误差门限",
     "slot:RUN_OOD_TEST:是否外推测试"
-  ]
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "规则网格CNN翼型稳态流场代理预测场景知识补充",
+  "evidence_papers": [
+    {"title": "DeepCFD: Efficient steady-state laminar flow approximation with deep convolutional neural networks", "doi": "arXiv:2004.08826", "year": 2020},
+    {"title": "A composable machine-learning approach for steady-state simulations on high-resolution grids", "doi": "", "year": null},
+    {"title": "A Hybrid CNN-Cheby-KAN Framework for Efficient Prediction of Two-Dimensional Airfoil Pressure Distribution", "doi": "arXiv:2511.03223", "year": 2025},
+    {"title": "Towards Interpretable Damage Detection based on Aerodynamic Pressure Measurements", "doi": "arXiv:2605.08187", "year": 2026}
+  ],
+  "scenario_id": "CFD_S001"
 }
