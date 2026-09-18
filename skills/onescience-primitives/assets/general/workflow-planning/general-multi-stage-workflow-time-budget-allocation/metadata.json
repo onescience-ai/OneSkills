@@ -1,0 +1,27 @@
+{
+  "name": "general-multi-stage-workflow-time-budget-allocation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T03:44:00Z",
+  "updated_at": "2026-09-17T03:44:00Z",
+  "description": "面向多阶段科研工作流的时间预算分配原则，提供规划阶段vs执行阶段的时间比例建议、各执行步骤的典型耗时估算和execution-manifest.json生成时机。适用于包含数据接入→预处理→训练→推理→评估的多步骤工作流编排。核心方法包括：规划<20%/执行>80%的时间分配、各步骤独立超时保护、execution-manifest.json在Global Plan生成后立即创建。输出为多阶段工作流按时完成率提升。",
+  "tags": ["workflow", "time budget", "execution plan", "manifest", "timeout", "multi-stage", "scientific workflow", "orchestration"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多阶段科研工作流的时间预算分配原则，包括规划阶段vs执行阶段的时间比例建议、各执行步骤的典型耗时估算、以及execution-manifest.json的生成时机",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Python concurrent.futures documentation",
+      "url": "https://docs.python.org/3/library/concurrent.futures.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

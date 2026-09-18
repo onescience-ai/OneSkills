@@ -1,0 +1,23 @@
+{
+  "name": "cfd-cylinder-flow-dns-les-data-acquisition",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:53:00Z",
+  "updated_at": "2026-09-17T12:53:00Z",
+  "description": "面向圆柱绕流DNS/LES模拟任务，提供真实CFD数据的标准格式规范、来源渠道和获取方法，以及工程验证数据与真实科研数据的区别和使用限制",
+  "tags": ["cfd", "cylinder", "DNS", "LES", "data-acquisition", "simulation", "benchmark"],
+  "aliases": ["cylinder flow data", "DNS data", "LES data", "圆柱绕流数据"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "圆柱绕流DNS/LES模拟数据的标准格式、来源渠道和获取方法",
+  "evidence_papers": [
+    {"title": "Unsteady cylinder wakes from arbitrary bodies with differentiable physics-assisted neural network.", "doi": "10.1103/PhysRevE.109.055304", "year": 2024},
+    {"title": "Enstrophy-based proper orthogonal decomposition for reduced-order modeling of flow past a cylinder.", "doi": "10.1103/PhysRevE.91.043303", "year": 2015}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

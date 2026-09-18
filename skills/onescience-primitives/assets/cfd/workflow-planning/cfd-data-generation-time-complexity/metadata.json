@@ -1,0 +1,20 @@
+{
+  "name": "cfd-data-generation-time-complexity",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T16:42:00Z",
+  "updated_at": "2026-09-17T16:42:00Z",
+  "description": "面向CFD数据生成步骤，提供不同网格尺寸、样本数量下的预估生成时间、资源需求和超时规避策略知识",
+  "tags": ["data-generation", "time-complexity", "resource-planning", "CFD", "Navier-Stokes"],
+  "aliases": ["数据生成时间", "资源需求", "超时规避"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD数据生成的时间复杂度和资源需求知识，包括不同网格尺寸、样本数量下的预估生成时间",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

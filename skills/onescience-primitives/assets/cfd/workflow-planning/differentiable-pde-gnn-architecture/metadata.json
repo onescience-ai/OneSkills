@@ -1,0 +1,20 @@
+{
+  "name": "cfd-differentiable-pde-gnn-architecture",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T19:09:00Z",
+  "updated_at": "2026-09-17T19:09:00Z",
+  "description": "面向需要构建可微PDE求解器与图网络混合架构的CFD研究者，提供GNN消息传递层设计、物理约束损失函数配置、双模型联合训练策略，确保模型既具有神经网络的表达能力又满足物理约束。",
+  "tags": ["cfd", "pde", "gnn", "differentiable", "physics-informed", "data-assimilation", "neural-network"],
+  "aliases": ["PDE-GNN", "Physics-aware data assimilation", "可微PDE求解器"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Differentiable PDE-GNN与Physics-aware data assimilation的完整架构规范，包括GNN消息传递层设计、物理约束损失权重配置、双模型联合训练策略",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

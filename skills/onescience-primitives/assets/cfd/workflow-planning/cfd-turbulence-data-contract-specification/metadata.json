@@ -1,0 +1,28 @@
+{
+  "name": "cfd-turbulence-data-contract-specification",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T22:15:00Z",
+  "updated_at": "2026-09-17T22:15:00Z",
+  "description": "面向湍流数据集，定义标准化数据契约规范，包括样本标识、变量定义、单位、坐标系等字段，确保数据可追溯、可验证，支持下游数据核验与切分。",
+  "tags": ["turbulence", "data-contract", "metadata", "FAIR", "CFD", "data-management"],
+  "aliases": ["turbulent flow data schema", "CFD data contract"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "湍流数据集的数据契约生成规范",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "FAIR Guiding Principles for scientific data management and stewardship",
+      "url": "https://www.go-fair.org/fair-principles/",
+      "publisher": "GO FAIR Foundation",
+      "version": "2016",
+      "accessed_at": "2026-09-17T22:15:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

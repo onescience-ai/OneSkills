@@ -1,0 +1,26 @@
+{
+  "name": "cfd-workflow-preflight-execution-manifest",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T16:39:00Z",
+  "updated_at": "2026-09-17T16:39:00Z",
+  "description": "面向CFD工作流预检阶段，提供execution-manifest.json的生成时机、内容要求和检查逻辑知识，确保工作流预检不因清单缺失而失败",
+  "tags": ["workflow-preflight", "execution-manifest", "CFD", "workflow-validation"],
+  "aliases": ["execution manifest", "预检清单", "工作流清单"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience工作流预检机制的知识，包括execution-manifest.json的生成时机、内容要求和检查逻辑",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-17",
+      "location": "归因报告CFD_S098"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

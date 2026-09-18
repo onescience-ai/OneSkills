@@ -1,0 +1,49 @@
+{
+  "name": "cfd-simulation-input-identification-auto-completion",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T10:00:00Z",
+  "updated_at": "2026-09-18T10:00:00Z",
+  "description": "CFD仿真任务输入识别与自动补全工作流：从用户自然语言描述自动识别CFD仿真所需的关键输入参数，包括几何模型、边界条件、求解器设置等，并在用户未提供时自动补全默认配置。适用于需要快速启动CFD仿真但用户缺乏完整输入参数的场景，如自动化CFD工作流、LLM驱动的CFD智能体等。核心方法包括：自然语言解析、参数提取、依赖图遍历、默认配置生成。输出为完整的OpenFOAM/FEM案例配置文件。",
+  "tags": ["CFD", "OpenFOAM", "input identification", "auto-completion", "workflow automation", "LLM agent", "simulation setup", "default configuration", "dependency graph", "parameter extraction"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD仿真任务的关键输入识别与自动补全策略，包括如何在用户未提供数据时自动检索公开OpenFOAM案例数据、如何自动配置默认运行站点、如何基于领域知识确定评估指标",
+  "evidence_papers": [
+    {
+      "title": "Fine-tuning a Large Language Model for Automating Computational Fluid Dynamics Simulations",
+      "doi": "10.1016/j.taml.2025.100594",
+      "year": 2025,
+      "venue": "Theoretical and Applied Mechanics Letters"
+    },
+    {
+      "title": "MetaOpenFOAM: an LLM-based multi-agent framework for CFD",
+      "doi": "2407.21320",
+      "year": 2024,
+      "venue": "arXiv"
+    },
+    {
+      "title": "MetaOpenFOAM 2.0: LLM Driven Chain of Thought for Automating CFD Simulation and Post-Processing",
+      "doi": "2502.00498",
+      "year": 2025,
+      "venue": "arXiv"
+    },
+    {
+      "title": "Foam-Agent: LLM-Based Multi-Agent Framework for Automating CFD Workflows",
+      "doi": "10.1016/j.cma.2026.119271",
+      "year": 2025,
+      "venue": "Computer Methods in Applied Mechanics and Engineering"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "OpenFOAM-10 Repository",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-10",
+      "publisher": "OpenFOAM Foundation",
+      "version": "v10",
+      "accessed_at": "2026-09-18"
+    }
+  ]
+}

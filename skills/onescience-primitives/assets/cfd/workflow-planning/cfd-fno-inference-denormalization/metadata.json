@@ -1,0 +1,31 @@
+{
+  "name": "cfd-fno-inference-denormalization",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18",
+  "updated_at": "2026-09-18",
+  "description": "面向FNO算子学习推理阶段，提供物理量反归一化流程、网格坐标恢复方法和物理派生量计算规范，将无量纲预测值恢复为具有物理意义的原始单位值",
+  "tags": ["denormalization", "inference", "FNO", "physical recovery", "operator learning", "CFD", "post-processing"],
+  "aliases": ["反归一化", "物理量恢复", "推理后处理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "FNO规则网格参数化PDE算子学习推理阶段的物理量反归一化流程和物理派生量计算规范",
+  "evidence_papers": [
+    {
+      "title": "Fourier Neural Operators Explained: A Practical Perspective",
+      "doi": "10.48550/arXiv.2512.01421",
+      "year": 2025,
+      "authors": "Valentin Duruisseaux, Jean Kossaifi, Anima Anandkumar"
+    },
+    {
+      "title": "Fourier Neural Operator for Parametric Partial Differential Equations",
+      "doi": "10.48550/arXiv.2010.08895",
+      "year": 2020,
+      "authors": "Zongyi Li, Nikola Kovachki, Kamyar Azizzadenesheli, Burigede Liu, Kaushik Bhattacharya, Andrew Stuart, Anima Anandkumar"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

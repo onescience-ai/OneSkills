@@ -1,0 +1,20 @@
+{
+  "name": "general-cfd-task-artifacts",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:27:00Z",
+  "updated_at": "2026-09-17T20:27:00Z",
+  "description": "面向CFD工作流管理任务，定义标准产物清单，包括每步的必选和可选产物，以及产物完整性检查的自动化方法",
+  "tags": ["task-artifacts", "CFD", "workflow", "standard-outputs", "completeness-check"],
+  "aliases": ["CFD任务产物", "task artifacts", "standard outputs"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience CFD任务的标准产物清单",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

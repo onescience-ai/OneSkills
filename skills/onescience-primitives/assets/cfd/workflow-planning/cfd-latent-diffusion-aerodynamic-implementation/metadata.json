@@ -1,0 +1,19 @@
+{
+  "name": "cfd-latent-diffusion-aerodynamic-implementation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向气动外形设计任务，实现Latent Diffusion Model进行几何-流场联合生成。涵盖变分自编码器编码、扩散过程训练、条件采样生成等核心技术细节，适用于需要从目标气动性能反向生成多样化候选设计的研究场景。",
+  "tags": ["cfd", "latent-diffusion", "generative-model", "VAE", "aerodynamic-design", "airfoil", "conditional-sampling", "inverse-design"],
+  "aliases": ["潜空间扩散模型", "气动设计生成模型", "翼型扩散模型"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Latent diffusion model 在气动外形设计中的实现方法",
+  "evidence_papers": [
+    {"title": "Aerodynamic Shape Design Space Exploration with Deep Latent Diffusion Model", "doi": "", "year": null, "url": "https://arxiv.org/abs/2609.00812"},
+    {"title": "Diffusion Model Driven Airfoil Design: From Geometry Encoding to Practical Applications", "doi": "", "year": null, "url": "https://arxiv.org/abs/2601.16228"}
+  ]
+}

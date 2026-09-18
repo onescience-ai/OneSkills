@@ -1,0 +1,24 @@
+{
+  "name": "cfd-fsi-benchmark-dataset-sources",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "流固耦合公开基准数据集来源清单与获取方式，面向FSI逆向设计任务提供数据接入参考，包括经典基准案例、开源求解器教程数据和公开FSI数据集的获取路径。",
+  "tags": ["cfd", "fluid-structure-interaction", "benchmark", "dataset", "open-source", "FSI", "data-acquisition"],
+  "aliases": ["FSI数据集", "流固耦合基准数据", "FSI benchmark dataset"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "流固耦合公开基准数据集来源清单和获取方式",
+  "evidence_papers": [
+    {"title": "Diff-FlowFSI: A GPU-Optimized Differentiable CFD Platform for High-Fidelity Turbulence and FSI Simulations", "doi": "10.48550/arXiv.2505.23940", "year": 2025},
+    {"title": "HGATSolver: A Heterogeneous Graph Attention Solver for Fluid-Structure Interaction", "doi": "10.1609/aaai.v40i2.37129", "year": 2026},
+    {"title": "turtleFSI: A Robust and Monolithic FEniCS-based Fluid-Structure Interaction Solver", "doi": "10.21105/joss.02089", "year": 2020}
+  ],
+  "evidence_docs": [
+    {"title": "preCICE Coupling Library", "url": "https://precice.org", "publisher": "TU Munich & University of Stuttgart", "version": "latest", "accessed_at": "2026-09-17"},
+    {"title": "turtleFSI Documentation", "url": "https://turtlefsi2.readthedocs.io", "publisher": "KVSlab", "version": "latest", "accessed_at": "2026-09-17"}
+  ]
+}

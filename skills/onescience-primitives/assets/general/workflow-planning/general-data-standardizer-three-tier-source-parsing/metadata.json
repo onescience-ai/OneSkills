@@ -1,0 +1,20 @@
+{
+  "name": "general-data-standardizer-three-tier-source-parsing",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T13:47:00Z",
+  "updated_at": "2026-09-17T13:47:00Z",
+  "description": "面向科学计算任务的数据标准化技能触发条件、输入契约和三段式源解析机制。适用于需要将原始数据转换为AI-Ready格式的场景，包含显式路径、本地探测和ModelScope下载三段式源解析，以及Tier1确定性适配器与Tier2 LLM合成转换器双层架构。",
+  "tags": ["data-standardization", "source-parsing", "AI-Ready", "workflow", "scientific-data", "dataset-management"],
+  "aliases": ["data standardizer", "数据标准化", "三段式源解析"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "onescience-data-standardizer技能的触发条件、输入契约和三段式源解析机制",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

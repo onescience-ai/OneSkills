@@ -1,0 +1,22 @@
+{
+  "name": "cfd-model-acceptance-specifications",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "CFD模型验收的标准产物规格，包括evaluation.json字段契约、worst_cases.csv追溯字段、applicability_report.md结构、PASS/REJECT/BLOCKED判定规则",
+  "tags": ["model acceptance", "validation", "evaluation", "applicability", "CFD", "quality assurance"],
+  "aliases": ["模型验收", "适用域判定"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD模型验收的标准产物规格，包括evaluation.json的字段契约（统计指标+物理约束+泛化能力+计算收益四维度）、worst_cases.csv的追溯字段（样本ID、输入特征、预测值、真实值、误差、违反的约束）、applicability_report.md的结构（适用域定义、域外工况识别、复核建议）、PASS/REJECT/BLOCKED的判定规则（统计指标+物理约束双门槛）",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {"provider": "user", "provided_at": "2026-09-17", "location": "归因报告 CFD_S032 report.json"}
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

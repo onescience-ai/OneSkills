@@ -1,0 +1,35 @@
+{
+  "name": "general-cli-exit-code-fault-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T19:32:00+08:00",
+  "updated_at": "2026-09-17T19:32:00+08:00",
+  "description": "面向命令行界面非交互执行场景，提供进程退出码分类标准、故障诊断判读方法和执行状态监控策略，满足自动化流水线中对CLI工具可靠性与可追溯性的要求",
+  "tags": ["cli", "exit-code", "fault-classification", "non-interactive", "process-management", "diagnosis"],
+  "aliases": ["exit-status", "return-code", "退出码", "进程退出状态"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "The Open Group Base Specifications Issue 7 - Shell Command Language",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html",
+      "publisher": "IEEE/The Open Group",
+      "version": "IEEE Std 1003.1-2017",
+      "accessed_at": "2026-09-17T19:30:00+08:00"
+    },
+    {
+      "title": "Python 3.14.7 Documentation - subprocess: Subprocess management",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17T19:30:00+08:00"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

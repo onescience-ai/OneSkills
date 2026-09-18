@@ -1,0 +1,41 @@
+{
+  "name": "cfd-mamba-ssm-neural-operator-architecture",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T12:00:00Z",
+  "updated_at": "2026-09-18T12:00:00Z",
+  "description": "面向PDE求解与算子学习任务，设计并实现基于Mamba选择性状态空间模型（SSM）的神经算子架构。适用于需要捕捉PDE轨迹长程时序依赖、同时保持线性计算复杂度的流体/固体力学问题。核心方法包括：SSM离散化（ZOH/FOH）将连续参数(A,B,C)转换为离散参数，选择性扫描（selective scan）机制实现输入依赖的序列建模，Mamba块标准组件（线性投影→Conv1d→SSM→SiLU门控→输出投影）。输出为可训练的Mamba Neural Operator模型，支持PDE解算子近似。",
+  "tags": ["Mamba", "state space model", "SSM", "selective scan", "neural operator", "PDE", "CFD", "discretization", "zero-order hold", "parallel scan", "operator learning", "sequence modeling"],
+  "aliases": ["Mamba Neural Operator", "MNO", "Mamba-NO", "SSM neural operator", "state space neural operator"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Mamba选择性状态空间模型核心架构原理与实现规范，用于PDE算子学习",
+  "evidence_papers": [
+    {
+      "title": "Mamba Neural Operator: Who Wins? Transformers vs. State-Space Models for PDEs",
+      "doi": "10.48550/arXiv.2410.02113",
+      "year": 2024,
+      "venue": "Journal of Computational Physics"
+    },
+    {
+      "title": "Adaptive Mamba Neural Operators",
+      "doi": "10.48550/arXiv.2607.18043",
+      "year": 2026,
+      "venue": "ICLR 2026"
+    },
+    {
+      "title": "Latent Mamba Operator for Partial Differential Equations",
+      "doi": "10.48550/arXiv.2505.19105",
+      "year": 2025,
+      "venue": "ICML 2025"
+    },
+    {
+      "title": "Regularity and Stability Properties of Selective SSMs with Discontinuous Gating",
+      "doi": "10.48550/arXiv.2505.11602",
+      "year": 2025,
+      "venue": "arXiv"
+    }
+  ]
+}

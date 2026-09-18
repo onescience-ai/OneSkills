@@ -2,10 +2,10 @@
   "name": "spectral-enhanced-pinn-high-frequency-multiscale-pde",
   "type": "workflow-planning",
   "domain": "cfd",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-12",
-  "updated_at": "2026-09-12",
+  "updated_at": "2026-09-17",
   "description": "谱增强PINN高频多尺度PDE求解。面向高频与多尺度PDE配点完成谱增强PINN高频多尺度PDE求解。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 谱增强PINN高频多尺度PDE求解 的端到端可复用工作流：5 个节点，核心模型 Spectral PINN、SIREN。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "architectures",
@@ -30,7 +30,10 @@
     "spectral-pinn",
     "siren",
     "edge:scenario:cfd-spectral-enhanced-pinn-high-frequency-multi-scale-pde-solving-scenario",
-    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-4"
+    "edge:workflow:cfd-data-ingestion-contract-validation-preprocessing-data-splitting-workflow-4",
+    "high-frequency",
+    "multi-scale",
+    "slot:METHOD:pinn"
   ],
   "scenario_id": "CFD_S042",
   "source_papers": [
@@ -40,7 +43,20 @@
     "sha256:8936203b565696b9548b30994a3c1444cd8d5cd243207d351269667f99d5ba19",
     "sha256:5e3e0376f6bde477a5d2e45a41871586abafc37727ce8f42c1119d9dfa76d8a8"
   ],
+  "evidence_papers": [
+    {"title": "Spectral bias in physics-informed and operator learning: Analysis and mitigation guidelines", "doi": "2602.19265", "year": 2026},
+    {"title": "Alternating Levenberg-Marquardt Training of Physics-Informed Neural Networks with Fourier-Enhanced Features", "doi": "2608.05892", "year": 2026},
+    {"title": "Simple initialization and parametrization of sinusoidal networks via their kernel bandwidth", "doi": "2211.14503", "year": 2022},
+    {"title": "When Does Frequency Decomposition Benefit Physics-Informed Neural Networks? A Preliminary Ablation Study", "doi": "2608.24940", "year": 2026},
+    {"title": "A new strategy for physics-informed neural networks based on hierarchical collocation point refinement", "doi": "2607.14665", "year": 2026},
+    {"title": "RUNNs: Ritz-Uzawa Neural Networks for Solving Variational Problems", "doi": "2603.12982", "year": 2026},
+    {"title": "Multi-Scale Separable Fourier Neural Networks for Solving High-Frequency PDEs", "doi": "2605.31027", "year": 2026},
+    {"title": "RepNN: Tackling spectral bias in deep neural networks via parameter reparameterization", "doi": "2606.16575", "year": 2026},
+    {"title": "Separated-Variable Spectral Neural Networks: A Physics-Informed Learning Approach for High-Frequency PDEs", "doi": "2508.00628", "year": 2025}
+  ],
   "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "谱增强PINN高频多尺度PDE求解所需的原语知识卡片",
   "tier": "medium",
   "score": 0.0,
   "source_paper": {
@@ -57,5 +73,5 @@
   "scenario_ids": [
     "CFD_S042"
   ],
-  "batch": "2026-09-14"
+  "batch": "2026-09-17"
 }

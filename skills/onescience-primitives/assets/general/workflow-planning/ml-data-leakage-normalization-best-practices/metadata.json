@@ -1,0 +1,20 @@
+{
+  "name": "ml-data-leakage-normalization-best-practices",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T23:04:00Z",
+  "updated_at": "2026-09-17T23:04:00Z",
+  "description": "面向监督学习数据预处理，提供数据泄漏的类型与危害、正确的归一化流程（先切分、再用训练集计算统计量、最后统一应用到所有切分）、无量纲化在CFD中的标准做法。适用于需要避免数据泄漏、确保模型泛化能力的机器学习任务。",
+  "tags": ["data-leakage", "normalization", "preprocessing", "train-test-split", "supervised-learning", "machine-learning", "CFD", "preprocessing"],
+  "aliases": ["data leakage prevention", "normalization pipeline", "train test split normalization"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "监督学习数据泄漏类型与正确归一化流程",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,28 @@
+{
+  "name": "cfd-normalizing-flow-turbulence-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T22:18:00Z",
+  "updated_at": "2026-09-17T22:18:00Z",
+  "description": "面向湍流降阶任务，定义 Normalizing Flow 模型的训练配置和实现细节，包括架构选择、损失函数、训练策略等，确保模型可训练且收敛。",
+  "tags": ["turbulence", "normalizing-flow", "generative-model", "reduced-order-model", "CFD", "training-configuration"],
+  "aliases": ["NF turbulence training", "flow-based turbulence model"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Normalizing Flow 在湍流降阶任务中的训练配置和实现细节",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Free energy calculation of crystalline solids using normalizing flow",
+      "url": "https://arxiv.org/abs/2111.01292v2",
+      "publisher": "arXiv",
+      "version": "2021",
+      "accessed_at": "2026-09-17T22:18:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

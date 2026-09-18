@@ -1,0 +1,31 @@
+{
+  "name": "cfd-wing-gust-transonic-active-control",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T13:08:00Z",
+  "updated_at": "2026-09-17T13:08:00Z",
+  "description": "翼型阵风与跨声速流动主动控制工作流：针对跨声速工况下翼型绕流的激波-边界层干扰问题，设计并部署基于深度强化学习（DRL）的主动流动控制策略。适用于RAE2822、NACA 0012等翼型在Re=10^4-10^5量级、Ma=0.4-0.85范围内的阵风载荷控制场景。核心方法包括：翼型几何参数化、阵风条件建模（如(1-cosine)阵风模型）、跨声速CFD求解（高阶格式/可压缩求解器）、DRL控制器设计（状态空间=壁面传感器观测，动作空间=合成射流速度，奖励函数=载荷削减-能耗惩罚）、闭环部署与滚动仿真。输出为控制策略网络、载荷削减率、气动效率改善指标。",
+  "tags": ["wing", "airfoil", "gust", "transonic", "active flow control", "DRL", "deep reinforcement learning", "synthetic jet", "shock-boundary layer interaction", "RAE2822", "NACA 0012", "load alleviation", "CFD", "compressible flow"],
+  "aliases": ["翼型阵风控制", "跨声速主动控制", "阵风载荷抑制"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "机翼阵风与跨声速流动主动控制的专用Task卡",
+  "evidence_papers": [
+    {
+      "title": "Shocks Under Control: Taming Transonic Compressible Flow over an RAE2822 Airfoil with Deep Reinforcement Learning",
+      "doi": "10.48550/arXiv.2511.07564",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": ["Trishit Mondal", "Ricardo Vinuesa", "Ameya D. Jagtap"]
+    },
+    {
+      "title": "A Provably Robust Multi-Jet Framework applied to Active Flow Control of an Airfoil in Weakly Compressible Flow",
+      "doi": "10.48550/arXiv.2604.26481",
+      "year": 2026,
+      "venue": "arXiv",
+      "authors": ["Rohan Kaushik", "Anna Schwarz", "Andrea Beck"]
+    }
+  ]
+}

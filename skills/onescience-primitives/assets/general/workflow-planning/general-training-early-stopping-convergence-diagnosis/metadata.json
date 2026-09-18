@@ -1,0 +1,38 @@
+{
+  "name": "general-training-early-stopping-convergence-diagnosis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T12:00:00Z",
+  "updated_at": "2026-09-18T12:00:00Z",
+  "description": "面向深度学习训练过程，实现早停机制与训练收敛诊断。适用于任何需要监控训练过程、防止过拟合、判断模型收敛状态的场景。核心方法包括：基于验证集指标的耐心(patience)计数器实现早停，训练曲线诊断（欠拟合/过拟合/收敛极限的识别），batch size对训练动态的影响分析，以及模型-任务匹配度评估。输出为带早停机制的训练脚本和收敛诊断报告。",
+  "tags": ["early stopping", "training convergence", "overfitting", "underfitting", "patience", "batch size", "training dynamics", "model diagnosis", "regularization", "deep learning"],
+  "aliases": ["early stopping implementation", "training monitoring"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "深度学习训练早停机制与收敛诊断方法",
+  "evidence_papers": [
+    {
+      "title": "Implicit Regularization of Large Neural Networks via Mean-Field Formulation",
+      "doi": "10.48550/arXiv.2603.20892",
+      "year": 2026,
+      "venue": "arXiv"
+    },
+    {
+      "title": "ILDR: Geometric Early Detection of Grokking",
+      "doi": "10.48550/arXiv.2604.20923",
+      "year": 2026,
+      "venue": "arXiv"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "Goodfellow, I. et al. Deep Learning (Chapter 7: Regularization)",
+      "url": "https://www.deeplearningbook.org/contents/regularization.html",
+      "publisher": "MIT Press",
+      "version": "2016",
+      "accessed_at": "2026-09-18"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "cfd-diffusion-flow-reconstruction-architecture",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T05:07:00Z",
+  "updated_at": "2026-09-18T05:07:00Z",
+  "description": "扩散模型在流场重构任务中的标准架构设计、训练超参数选择与CPU/GPU性能差异。适用于需要设计扩散模型架构完成流场重构的研究场景。核心方法包括：U-Net分辨率设计、注意力机制选择、时间嵌入方式、训练超参数（epochs/batch_size/learning_rate）的物理意义及典型取值范围。输出为架构设计指南和训练配置模板。",
+  "tags": ["diffusion model", "U-Net", "attention mechanism", "time embedding", "training hyperparameters", "flow reconstruction", "CFD", "CPU training", "GPU training", "architecture design"],
+  "aliases": ["扩散模型架构设计", "U-Net流场重构", "训练超参数选择", "CPU/GPU性能差异"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "扩散模型在流场重构任务中的标准架构设计（U-Net分辨率、注意力机制、时间嵌入方式）、训练超参数选择依据（epochs/batch_size/learning_rate的物理意义及典型取值范围）、CPU与GPU训练的性能差异及降级策略",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

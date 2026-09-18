@@ -1,0 +1,26 @@
+{
+  "name": "climate-forecast-model-verification",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T04:00:00Z",
+  "updated_at": "2026-09-18T04:00:00Z",
+  "description": "面向气象时序预报任务的模型选择与验证规范，定义模型适用条件、输入输出契约验证、最小干运行流程和性能评估指标体系，确保预报模型的可靠性与可解释性",
+  "tags": ["weather-forecast", "model-verification", "performance-metrics", "dry-run", "forecast-skill"],
+  "aliases": ["模型验证", "性能评估", "干运行", "model verification", "forecast skill score"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象时序预报模型的选择与验证规范，包括模型适用条件、输入输出契约验证、最小干运行流程和性能评估指标体系",
+  "evidence_papers": [
+    {"title": "Accurate medium-range global weather forecasting with 3D neural networks", "doi": "10.1038/s41586-023-06185-3", "year": "2023"},
+    {"title": "The Modern-Era Retrospective Analysis for Research and Applications, Version 2 (MERRA-2)", "doi": "10.1175/jcli-d-16-0758.1", "year": "2017"},
+    {"title": "Statistical and Machine Learning forecasting methods: Concerns and ways forward", "doi": "10.1371/journal.pone.0194889", "year": "2018"}
+  ],
+  "evidence_docs": [
+    {"title": "WMO Guidelines on Verification of Numerical Weather Prediction", "url": "https://library.wmo.int/idurl/4/66931", "publisher": "WMO", "version": "WMO-No. 1145", "accessed_at": "2026-09-18"}
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,46 @@
+{
+  "name": "cfd-multi-physics-operator-transfer",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "面向CFD多物理算子迁移任务，提供从预训练数据获取、模型选型与配置到推理后处理的全流程指导，支持将科学基础模型迁移至目标流体系统",
+  "tags": ["cfd", "neural-operator", "transfer-learning", "multi-physics", "foundation-model", "pretraining-data", "inference"],
+  "aliases": ["CFD基础模型迁移", "神经算子迁移学习", "PDE基础模型微调"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD多物理多分辨率预训练数据集、PDE基础模型预训练模型、科学计算模型推理后处理",
+  "evidence_papers": [
+    {
+      "title": "BubbleML: A Multi-Physics Dataset and Benchmarks for Machine Learning",
+      "doi": "10.48550/arXiv.2305.10031",
+      "year": 2023
+    },
+    {
+      "title": "RealPDEBench: A Benchmark for Complex Physical Systems with Paired Real-World and Simulated Data",
+      "doi": "10.48550/arXiv.2502.09030",
+      "year": 2026
+    },
+    {
+      "title": "Pretraining Codomain Attention Neural Operators for Solving Multiphysics PDEs",
+      "doi": "10.48550/arXiv.2407.04620",
+      "year": 2024
+    },
+    {
+      "title": "A Library for Learning Neural Operators",
+      "doi": "10.48550/arXiv.2412.10354",
+      "year": 2025
+    },
+    {
+      "title": "Spectral-Refiner: Accurate Fine-Tuning of Spatiotemporal Fourier Neural Operator for Turbulent Flows",
+      "doi": "10.48550/arXiv.2405.17211",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

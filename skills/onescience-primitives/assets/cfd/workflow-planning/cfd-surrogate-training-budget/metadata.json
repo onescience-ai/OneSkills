@@ -1,0 +1,36 @@
+{
+  "name": "cfd-surrogate-training-budget",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T03:23:00Z",
+  "updated_at": "2026-09-18T03:23:00Z",
+  "description": "面向CFD代理模型训练任务，估算不同模型架构（MLP、GPR、神经网络）在不同数据规模下的训练时间预算和算力需求，为工作流规划提供时间/资源参考基准",
+  "tags": ["CFD", "surrogate-model", "training-time", "computational-cost", "GPU", "CPU", "budget-estimation"],
+  "aliases": ["training-budget", "compute-estimation", "time-forecast"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD代理模型训练时间/算力预算估算知识，包括不同模型架构在不同数据规模下的训练耗时基准、单GPU/CPU吞吐量参考值",
+  "evidence_papers": [
+    {
+      "title": "Learning Curves for Decision Making in Supervised Machine Learning: A Survey",
+      "doi": "10.48550/arXiv.2201.12150",
+      "year": 2022
+    },
+    {
+      "title": "Multifidelity Surrogate Models: A New Data Fusion Perspective",
+      "doi": "10.48550/arXiv.2404.14456",
+      "year": 2024
+    },
+    {
+      "title": "BlendedNet: A Blended Wing Body Aircraft Dataset and Surrogate Model for Aerodynamic Predictions",
+      "doi": "10.48550/arXiv.2509.07209",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

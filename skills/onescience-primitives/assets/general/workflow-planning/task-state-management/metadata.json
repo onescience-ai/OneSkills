@@ -1,0 +1,20 @@
+{
+  "name": "general-task-state-management",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T19:06:00Z",
+  "updated_at": "2026-09-17T19:06:00Z",
+  "description": "面向需要管理多步骤工作流任务状态的开发者或编排器，提供状态定义、同步机制、状态文件更新规范，确保任务进度可追踪、状态一致。",
+  "tags": ["task-management", "workflow", "state-synchronization", "execution-manifest", "status-tracking", "atomic-update", "fault-recovery", "checkpoint"],
+  "aliases": ["task_state.json", "execution-manifest", "状态管理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "任务状态管理规范，包括步骤完成后立即更新状态文件、状态字段定义、状态变更日志记录方法",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": ["CFD_S079-2026-09-17", "CFD_S081-2026-09-17"],
+  "conflicts": []
+}

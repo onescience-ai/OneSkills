@@ -2,10 +2,10 @@
   "name": "cli-fault-diagnosis-schema-validation",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.2.0",
+  "version": "1.8.0",
   "visibility": "public",
   "created_at": "2026-09-16",
-  "updated_at": "2026-09-17T10:00:00Z",
+  "updated_at": "2026-09-18",
   "description": "面向CLI工具的非交互式执行场景，覆盖进程退出码分类、故障诊断、JSON结构化报告的Schema校验与契约一致性检查",
   "tags": ["cli", "fault-diagnosis", "exit-code", "json-schema", "validation", "non-interactive", "structured-report"],
   "aliases": ["command-line fault handling", "CLI error classification", "report schema validation"],
@@ -48,6 +48,6 @@
     }
   ],
   "evidence_user": [],
-  "merged_batches": ["2026-09-16: 基于归因分析任务396案例补充CLI执行故障和JSON Schema报告交付契约的实际应用案例", "2026-09-17: 基于论文证据补充CLI最佳实践与Schema执行知识"],
+  "merged_batches": ["2026-09-16: 基于归因分析任务396案例补充CLI执行故障和JSON Schema报告交付契约的实际应用案例", "2026-09-17: 基于论文证据补充CLI最佳实践与Schema执行知识", "2026-09-17: 基于归因分析任务334案例补充CLI执行故障和JSON Schema报告交付契约的实际应用案例", "2026-09-17: 基于归因分析任务342案例补充CLI执行故障和JSON Schema报告交付契约的实际应用案例", "2026-09-17: 基于归因分析任务269案例补充CLI执行故障、退出码语义和报告契约验证案例", "2026-09-17: 基于归因分析任务237案例补充CLI执行故障、JSON Schema报告交付契约和任务身份校验案例", "2026-09-17: 基于归因分析任务86案例补充CLI执行故障、JSON Schema报告交付契约和任务身份校验案例", "2026-09-18: 基于归因分析任务347案例补充CLI执行故障、JSON Schema报告交付契约和任务身份校验案例"],
   "conflicts": []
 }

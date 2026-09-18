@@ -1,0 +1,46 @@
+{
+  "name": "cfd-aeroelastic-unsteady-load-rom-prediction-task",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T10:00:00Z",
+  "updated_at": "2026-09-17T10:00:00Z",
+  "description": "气动弹性与非定常载荷降阶响应预测任务，包含Neural aerodynamic ROM和Neural ODE在气动弹性领域的具体应用方法、数据格式契约、训练超参推荐、评估指标阈值。适用于跨声速颤振、抖振等非线性气动弹性问题的降阶建模。",
+  "tags": ["aeroelasticity", "reduced-order-model", "neural-ODE", "unsteady-aerodynamics", "transonic", "load-prediction", "CFD", "task-centric"],
+  "aliases": ["气动弹性降阶预测", "非定常载荷ROM", "aerodynamic ROM task", "transonic buffet modeling"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气动弹性与非定常载荷降阶响应预测的Task-Centric知识卡",
+  "evidence_papers": [
+    {
+      "title": "Neural Differential Equations for Oscillatory Flows in Aeroelasticity Applied to Transonic Buffet",
+      "doi": "10.48550/arXiv.2607.22402",
+      "year": 2026
+    },
+    {
+      "title": "Aeroelastic Reduced-Order Model Differential Equations in Transonic Buffeting Flow",
+      "doi": "10.48550/arXiv.2510.22216",
+      "year": 2025
+    },
+    {
+      "title": "Optimal Sparsity in Nonlinear Non-Parametric Reduced Order Models for Transonic Aeroelastic Systems",
+      "doi": "10.48550/arXiv.2407.08161",
+      "year": 2024
+    },
+    {
+      "title": "Data-Driven Modeling for Transonic Aeroelastic Analysis",
+      "doi": "10.48550/arXiv.2304.07046",
+      "year": 2023
+    },
+    {
+      "title": "A novel unsteady aerodynamic Reduced-Order Modeling method for transonic aeroelastic optimization",
+      "doi": "10.1016/j.jfluidstructs.2018.07.001",
+      "year": 2018
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

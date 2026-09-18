@@ -1,0 +1,23 @@
+{
+  "name": "bio-dnalongbench-benchmark-dataset",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+ "created_at": "2026-09-17T11:24:00Z",
+  "updated_at": "2026-09-17T11:24:00Z",
+  "description": "DNALONGBENCH基准数据集的获取路径、任务定义、数据格式规范与评估指标，用于长程DNA序列建模任务的模型评估与比较",
+  "tags": ["DNALONGBENCH", "benchmark", "DNA", "long-range", "evaluation", "dataset", "genomics"],
+  "aliases": ["DNALONGBENCH", "长程DNA基准数据"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "公开基因组DNA序列数据获取路径与DNALONGBENCH基准数据集规范",
+  "evidence_papers": [
+    {"title": "DNALONGBENCH: a benchmark suite for long-range DNA prediction tasks", "doi": "10.1038/s41467-025-65077-4", "year": 2025},
+    {"title": "Benchmarking DNA foundation models for genomic and genetic tasks", "doi": "10.1038/s41467-025-65823-8", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

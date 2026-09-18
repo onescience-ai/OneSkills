@@ -2,10 +2,10 @@
   "name": "cli-fault-diagnosis",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "visibility": "public",
   "created_at": "2026-09-16T19:48:00Z",
-  "updated_at": "2026-09-17T17:10:00Z",
+  "updated_at": "2026-09-18T12:00:00Z",
   "description": "面向非交互式 CLI 工具执行场景，诊断退出码、超时、权限和沙箱隔离故障，提供标准化的错误分类与恢复策略",
   "tags": ["cli", "error-handling", "exit-codes", "fault-diagnosis", "automation"],
   "aliases": ["命令行故障诊断", "CLI error handling", "process exit codes"],
@@ -64,6 +64,6 @@
     }
   ],
   "evidence_user": [],
-  "merged_batches": ["2026-09-17: 基于CLI-Tool-Bench论文补充CLI基准测试与黑盒差异测试知识"],
+  "merged_batches": ["2026-09-17: 基于CLI-Tool-Bench论文补充CLI基准测试与黑盒差异测试知识", "2026-09-17: 基于归因分析任务51案例补充CLI故障诊断案例", "2026-09-18: 基于归因分析任务232案例补充CLI执行与报告契约故障"],
   "conflicts": []
 }

@@ -1,0 +1,24 @@
+{
+  "name": "cfd-conditional-generative-pde-data-pipeline",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向条件生成模型多物理PDE模拟任务的数据接入、契约定义、归一化与审计全流程。覆盖PDEBench等公开数据集的HDF5/NetCDF格式解析、字段契约规范（input_fields/target_fields/units/coordinates）、z-score归一化数值稳定性保障以及数据审计检查清单（缺失值、单位一致性、坐标合法性、训练测试泄漏检测）。",
+  "tags": ["data-pipeline", "pde-data", "PDEBench", "HDF5", "data-contract", "normalization", "data-audit", "conditional-generative", "multi-physics", "cfd"],
+  "aliases": ["PDE数据接入", "多物理PDE数据集", "扩散反应PDE数据"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多物理PDE数据源接入（PDEBench、CFD模拟输出）的接入路径、文件格式、数据契约定义规范、归一化数值稳定性、数据审计验证流程",
+  "evidence_papers": [
+    {"title": "A primer on variational inference for physics-informed deep generative models", "doi": "10.1098/rsta.2024.0324", "year": 2025},
+    {"title": "Regime-adaptive partial differential equations for interpretable multi-ethnic population dynamics", "doi": "10.1038/s41598-025-26832-1", "year": 2025},
+    {"title": "Energy-Consistent Neural Networks with Fenchel-Young Loss for Physics-Informed Prediction", "doi": "10.3390/ma19081571", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

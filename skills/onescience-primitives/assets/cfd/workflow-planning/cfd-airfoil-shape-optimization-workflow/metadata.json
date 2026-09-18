@@ -1,0 +1,32 @@
+{
+  "name": "cfd-airfoil-shape-optimization-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T14:20:00Z",
+  "updated_at": "2026-09-17T14:20:00Z",
+  "description": "面向气动外形设计需求，对翼型几何参数化、约束优化、气动力评估与多目标权衡进行系统编排，生成满足升阻比、升力系数或阻力系数等指标的优化翼型方案；覆盖CST/PARSEC参数化选择、优化算法调度、CFD求解器集成与后处理验证等全流程节点",
+  "tags": ["airfoil", "shape-optimization", "CST", "PARSEC", "multi-objective", "aerodynamic", "CFD", "lift-to-drag", "constraint-optimization"],
+  "aliases": ["翼型优化", "airfoil design", "翼型设计", "气动外形优化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多保真代理辅助翼型外形优化的task-centric知识",
+  "evidence_papers": [
+    {
+      "title": "Optimization-Embedded Active Multi-Fidelity Surrogate Learning for Multi-Condition Airfoil Shape Optimization",
+      "doi": "10.48550/arXiv.2603.17057",
+      "year": 2026
+    },
+    {
+      "title": "Applying Bayesian Optimization with Gaussian Process Regression to Computational Fluid Dynamics Problems",
+      "doi": "10.48550/arXiv.2101.09985",
+      "year": 2021
+    },
+    {
+      "title": "Active subspaces of airfoil shape parameterizations",
+      "doi": "10.48550/arXiv.1702.02909",
+      "year": 2017
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "cfd-bayesian-optimization-aerodynamic",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T14:30:00Z",
+  "updated_at": "2026-09-17T14:30:00Z",
+  "description": "面向计算昂贵的气动优化问题，构建基于高斯过程代理的贝叶斯优化框架，通过采集函数平衡探索与利用，高效搜索设计空间并收敛到全局最优；覆盖EI/UCB/PI采集函数选择、约束处理、多保真贝叶斯优化与批量评估策略",
+  "tags": ["Bayesian optimization", "Gaussian Process", "acquisition function", "EI", "UCB", "aerodynamic", "CFD", "global optimization", "constrained optimization"],
+  "aliases": ["贝叶斯优化", "Bayesian optimization", "BO-GPR", "代理优化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Bayesian optimization task（输入：代理模型+设计空间，输出：Pareto前沿候选，方法：EI/UCB采集函数）",
+  "evidence_papers": [
+    {
+      "title": "Applying Bayesian Optimization with Gaussian Process Regression to Computational Fluid Dynamics Problems",
+      "doi": "10.48550/arXiv.2101.09985",
+      "year": 2021
+    },
+    {
+      "title": "Optimization-Embedded Active Multi-Fidelity Surrogate Learning for Multi-Condition Airfoil Shape Optimization",
+      "doi": "10.48550/arXiv.2603.17057",
+      "year": 2026
+    },
+    {
+      "title": "Robust Airfoil Design Optimization via a Bilevel Model-Based Methodology",
+      "doi": "10.48550/arXiv.2607.29161",
+      "year": 2026
+    }
+  ]
+}

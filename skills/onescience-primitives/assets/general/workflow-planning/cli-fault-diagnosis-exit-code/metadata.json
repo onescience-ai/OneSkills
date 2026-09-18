@@ -1,0 +1,36 @@
+{
+  "name": "cli-fault-diagnosis-exit-code",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T13:53:00Z",
+  "updated_at": "2026-09-17T13:53:00Z",
+  "description": "面向CLI非交互执行场景，提供进程退出码分类、故障诊断与自动化恢复的方法论框架，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读",
+  "tags": ["CLI", "exit-code", "fault-diagnosis", "automation", "process-management", "error-handling"],
+  "aliases": ["command-line", "terminal", "process", "SIGTERM", "timeout"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Compaction as Epistemic Failure: How Agentic LLM Tools Fabricate Confirmed Results from Killed Processes",
+      "doi": "arXiv:2607.13071",
+      "year": 2026
+    },
+    {
+      "title": "SWE-Factory: Your Automated Factory for Issue Resolution Training Data and Evaluation Benchmarks",
+      "doi": "arXiv:2506.10954",
+      "year": 2025
+    },
+    {
+      "title": "Refinement type contracts for verification of scientific investigative software",
+      "doi": "10.1007/978-3-030-41600-3_10",
+      "year": 2019
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

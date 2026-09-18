@@ -1,0 +1,46 @@
+{
+  "name": "cli-execution-failure-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18",
+  "updated_at": "2026-09-18",
+  "description": "面向命令行工具执行失败诊断，提供错误分类框架、根因分析方法和恢复策略，满足CLI工具可靠性提升需求",
+  "tags": ["CLI", "错误处理", "故障分类", "命令行工具", "错误诊断", "恢复策略"],
+  "aliases": ["命令行错误", "CLI故障", "执行失败", "退出码"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Failure as a Process: An Anatomy of CLI Coding Agent Trajectories",
+      "doi": "10.48550/arXiv.2607.09510",
+      "year": "2026"
+    },
+    {
+      "title": "Evaluating LLM-Based 0-to-1 Software Generation in End-to-End CLI Tool Scenarios",
+      "doi": "10.48550/arXiv.2604.06742",
+      "year": "2026"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "Error Handling | cli-guidelines/cli-guidelines",
+      "url": "https://deepwiki.com/cli-guidelines/cli-guidelines/6-error-handling",
+      "publisher": "DeepWiki",
+      "version": "2025-04-23",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "Troubleshooting Azure CLI | Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/cli/azure/use-azure-cli-successfully-troubleshooting?view=azure-cli-latest",
+      "publisher": "Microsoft",
+      "version": "2026-09-01",
+      "accessed_at": "2026-09-18"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

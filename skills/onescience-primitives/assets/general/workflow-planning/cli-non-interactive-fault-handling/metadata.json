@@ -1,0 +1,28 @@
+{
+  "name": "cli-non-interactive-fault-handling",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T23:18:00Z",
+  "updated_at": "2026-09-17T23:18:00Z",
+  "description": "面向命令行工具的非交互执行，诊断故障分类并处理退出码、错误流和超时问题，确保CLI进程稳定完成并保留诊断证据",
+  "tags": ["cli", "exit-codes", "fault-handling", "non-interactive", "batch-processing"],
+  "aliases": ["CLI故障处理", "退出码分类", "命令行错误处理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "POSIX Shell Command Language Specification",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html",
+      "publisher": "The Open Group",
+      "version": "IEEE Std 1003.1-2017",
+      "accessed_at": "2026-09-17T23:18:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,31 @@
+{
+  "name": "physics-informed-loss-design",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T02:44:00Z",
+  "updated_at": "2026-09-18T02:44:00Z",
+  "description": "CFD降阶模型中物理信息损失项的具体实现方法，包括质量守恒、动量方程、边界条件约束的数学公式和PyTorch实现模板",
+  "tags": ["CFD", "物理信息", "损失函数", "PINN", "守恒律", "边界条件"],
+  "aliases": ["物理约束损失", "PDE残差", "守恒损失"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD降阶模型中物理信息损失项的具体实现方法",
+  "evidence_papers": [
+    {
+      "title": "Fast-forward prediction of lattice Boltzmann dynamics with physics-informed neural operators",
+      "doi": "10.1038/s41467-026-75730-1",
+      "year": 2026
+    },
+    {
+      "title": "Physics-informed convolutional neural networks for fluid flow through porous media",
+      "doi": "10.1038/s41598-026-55389-w",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,42 @@
+{
+  "name": "cli-noninteractive-execution-fault-diagnosis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向命令行工具在非交互环境下的执行与故障诊断，提供退出码分类、错误处理和超时管理的最佳实践",
+  "tags": ["CLI", "non-interactive", "fault-diagnosis", "exit-code", "error-handling"],
+  "aliases": ["CLI故障诊断", "命令行工具错误处理", "退出码分类"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "The Open Group Base Specifications Issue 7, 2018 edition - exit",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/functions/exit.html",
+      "publisher": "IEEE/The Open Group (POSIX.1-2017)",
+      "version": "IEEE Std 1003.1-2017",
+      "accessed_at": "2026-09-17T00:00:00Z"
+    },
+    {
+      "title": "subprocess — Subprocess management",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7 Documentation",
+      "accessed_at": "2026-09-17T00:00:00Z"
+    },
+    {
+      "title": "sysexits(3) - FreeBSD Manual Pages",
+      "url": "https://www.freebsd.org/cgi/man.cgi?query=sysexits&sektion=3",
+      "publisher": "FreeBSD Project",
+      "version": "FreeBSD 15.1 Manual Pages",
+      "accessed_at": "2026-09-17T00:00:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

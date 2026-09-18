@@ -1,0 +1,42 @@
+{
+  "name": "cli-json-schema-report-validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T04:49:00Z",
+  "updated_at": "2026-09-17T04:49:00Z",
+  "description": "面向命令行工具输出的JSON Schema验证，确保报告交付物符合预定义契约，支持数据验证、格式检查和互操作性保证。注意：本卡片为重复卡片，已合并到 general-json-schema-report-delivery-contract 卡片中。",
+  "tags": ["JSON-Schema", "validation", "report", "contract", "CLI", "output-format", "data-integrity"],
+  "aliases": ["JSON validation", "schema validation", "report contract", "output specification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema",
+      "url": "https://json-schema.org/",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T04:49:00Z"
+    },
+    {
+      "title": "JSON Schema reference",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T04:49:00Z"
+    },
+    {
+      "title": "JSON Schema - Type-specific Keywords",
+      "url": "https://json-schema.org/understanding-json-schema/reference/type",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T04:49:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

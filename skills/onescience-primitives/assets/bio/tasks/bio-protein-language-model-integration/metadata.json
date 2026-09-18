@@ -12,8 +12,8 @@
     "ESM-2",
     "AlphaFold2",
     "pretrained",
-    "edge:resource:bio/models/bio-esm2-protein-language-model",
-    "edge:resource:bio/models/bio-alphafold2-structure-features",
+    "edge:resource:models/bio-esm2-protein-language-model",
+    "edge:resource:models/bio-alphafold2-structure-features",
     "edge:workflow:bio-fewshot-protein-function-prediction-workflow"
   ],
   "harvested": true,

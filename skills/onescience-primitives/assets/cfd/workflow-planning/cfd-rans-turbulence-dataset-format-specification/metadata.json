@@ -1,0 +1,35 @@
+{
+  "name": "cfd-rans-turbulence-dataset-format-specification",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向RANS湍流模型数据集，定义典型文件格式、变量定义（雷诺应力、平均速度、湍动能）、物理量单位约定及网格坐标的通用表示方法。适用于需要接入、验证或转换RANS湍流数据的计算流体力学任务。",
+  "tags": ["RANS", "turbulence", "dataset", "format", "variables", "units", "grid", "coordinates", "CFD", "data-specification"],
+  "aliases": ["RANS湍流数据格式", "Reynolds-averaged Navier-Stokes dataset format"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "RANS湍流模型数据集的典型文件格式、变量定义（如雷诺应力、平均速度、湍动能）、物理量单位约定及网格坐标的通用表示方法",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "OpenFOAM User Guide",
+      "url": "https://www.openfoam.com/documentation/guides/",
+      "publisher": "OpenFOAM Foundation",
+      "version": "10",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Turbulence Data Server - UT Austin",
+      "url": "https://turbulence.oden.utexas.edu/",
+      "publisher": "University of Texas at Austin",
+      "version": "2015",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

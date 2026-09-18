@@ -1,0 +1,23 @@
+{
+  "name": "matchem-performance-characterization",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:26:00Z",
+  "updated_at": "2026-09-16T15:26:00Z",
+  "description": "钙钛矿太阳能电池性能表征任务，包括J-V曲线测试、稳定性测试、迟滞分析，获取性能数据标准。",
+  "tags": [
+    "edge:workflow:matchem-perovskite-contact-passivation-optimization-workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "平面钙钛矿太阳能电池接触钝化优化所需的知识，包括器件设计表标准、钝化方案制备、性能表征、方案评估、DFT计算方法和工具、结果解释等。",
+  "evidence_papers": [
+    {
+      "title": "Synergistic Defect Passivation by Metformin Halides for Improving Perovskite Solar Cell Performance",
+      "doi": "10.1021/acs.jpcc.3c02121.s001",
+      "year": 2023
+    }
+  ]
+}

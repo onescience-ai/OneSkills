@@ -1,0 +1,20 @@
+{
+  "name": "cfd-training-budget-degradation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向CFD模型训练任务，定义资源预算与降级策略。当训练因数据缺失或计算资源不足而超时时，执行降级链：缩小数据规模、减少训练轮数、简化模型结构，确保即使超时也能产出部分训练结果用于评估。",
+  "tags": ["cfd", "training", "budget", "degradation", "timeout", "fallback", "resource-management"],
+  "aliases": ["训练预算", "降级策略", "超时处理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD模型训练的资源预算与降级策略",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

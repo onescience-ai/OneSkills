@@ -1,0 +1,35 @@
+{
+  "name": "general-cli-fault-classification-and-error-handling",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向命令行工具的非交互执行场景，提供故障分类、退出码解读、超时处理与错误恢复的通用方法，以确保自动化工作流稳定完成并保留诊断证据。",
+  "tags": ["cli", "error-handling", "fault-classification", "exit-codes", "timeout", "automation", "debugging"],
+  "aliases": ["command line error", "CLI fault", "exit code handling", "non-interactive execution"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "The Art of Command Line",
+      "url": "https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README.md",
+      "publisher": "GitHub - jlevy",
+      "version": "2023",
+      "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "Exit Codes With Special Meanings",
+      "url": "https://tldp.org/LDP/abs/html/exitcodes.html",
+      "publisher": "The Linux Documentation Project",
+      "version": "Advanced Bash-Scripting Guide",
+      "accessed_at": "2026-09-16"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,20 @@
+{
+  "name": "cfd-pinn-natural-gradient-optimizer",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T15:43:00Z",
+  "updated_at": "2026-09-17T15:43:00Z",
+  "description": "面向PINN训练的自然梯度优化器实现方法：解决传统梯度下降在参数空间曲率不一致时收敛缓慢的问题。通过Fisher信息矩阵逆预处理梯度，校正参数空间曲率，加速收敛并提高训练稳定性。适用于PINN多目标损失场景，平衡不同损失分量的梯度尺度。注意：本卡片内容基于领域通用知识，缺乏直接论文证据，需进一步验证。",
+  "tags": ["natural gradient", "Fisher information matrix", "optimization", "PINN training", "curvature correction", "KFAC", "EKFAC", "physics-informed"],
+  "aliases": ["自然梯度优化器", "Fisher预处理", "曲率校正优化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "自然梯度优化器的数学定义与实现方法",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

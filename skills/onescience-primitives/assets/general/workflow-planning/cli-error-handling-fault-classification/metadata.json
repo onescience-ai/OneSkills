@@ -1,0 +1,76 @@
+{
+  "name": "cli-error-handling-fault-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.3.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-18T00:30:00Z",
+  "description": "面向命令行工具的非交互执行场景，提供退出码语义解读、标准错误流判读、超时与认证故障分类方法，以及恢复策略选择依据",
+  "tags": ["cli", "exit-code", "error-handling", "fault-classification", "non-interactive", "command-line", "argparse", "exception-handling"],
+  "aliases": ["CLI故障诊断", "命令行错误分类", "退出码语义", "argparse错误处理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_docs": [
+    {
+      "title": "The GNU C Library Manual - Exit Status",
+      "url": "https://www.gnu.org/software/libc/manual/html_node/Exit-Status.html",
+      "publisher": "GNU Project, Free Software Foundation",
+      "version": "2.44",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "argparse — Parser for command-line options, arguments and subcommands",
+      "url": "https://docs.python.org/3/library/argparse.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7 documentation",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Docker Documentation - Security configuration",
+      "url": "https://docs.docker.com/engine/reference/run/#security-configuration",
+      "publisher": "Docker Inc.",
+      "version": "latest",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "POSIX.1-2024 exit() - Open Group Base Specifications",
+      "url": "https://pubs.opengroup.org/onlinepubs/9799919799/functions/exit.html",
+      "publisher": "IEEE / The Open Group",
+      "version": "POSIX.1-2024",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Python sys.exit() Documentation",
+      "url": "https://docs.python.org/3/library/sys.html#sys.exit",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7 documentation",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Python Built-in Exceptions - Exit Code Classification",
+      "url": "https://docs.python.org/3/library/exceptions.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7 documentation",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "errno(3) - Linux Manual Page",
+      "url": "https://man7.org/linux/man-pages/man3/errno.3.html",
+      "publisher": "Linux man-pages project",
+      "version": "Linux man-pages 6.11",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "subprocess — Subprocess management",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7 documentation",
+      "accessed_at": "2026-09-18"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-17: 添加Python argparse错误处理证据", "2026-09-17: 添加沙箱执行故障分类", "2026-09-17: 添加POSIX标准、Python sys.exit()、异常层次和errno系统证据", "2026-09-18: 添加Python subprocess模块文档证据"],
+  "conflicts": []
+}

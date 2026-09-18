@@ -1,0 +1,20 @@
+{
+  "name": "onescience-orchestrator-executor-handoff",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向OneScience orchestrator与executor技能的交接流程，定义step_handoff的格式、执行技能的选择逻辑和任务状态传递机制，确保规划结果能正确传递给执行层",
+  "tags": ["onescience", "orchestrator", "executor", "handoff", "step-handoff", "skill-dispatch"],
+  "aliases": ["技能交接", "step_handoff", "orchestrator-executor"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience orchestrator与executor技能的交接协议，包括step_handoff的格式、执行技能的选择逻辑和任务状态传递机制",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

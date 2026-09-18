@@ -1,0 +1,26 @@
+{
+  "name": "bio-dna-sequence-modeling-long-window-chunking",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T18:01:00Z",
+  "updated_at": "2026-09-17T18:01:00Z",
+  "description": "面向DNA序列建模任务，处理长窗口（>100kb）的分块策略与内存管理；覆盖滑动窗口分块、坐标对齐、正反链映射和方向恢复逻辑",
+  "tags": ["DNA", "long-window", "chunking", "sequence-modeling", "reverse-complement"],
+  "aliases": ["长窗口分块", "滑动窗口", "反向互补映射"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "基因组DNA长窗口（>100kb）的分块处理与内存管理策略，包括滑动窗口分块的坐标对齐规则、中心坐标固定与两端padding方法、正反链方向映射的数据结构设计（正向链索引→反向互补链索引的可逆映射表）",
+  "evidence_papers": [
+    {
+      "title": "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling",
+      "doi": "10.48550/arXiv.2403.03234",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

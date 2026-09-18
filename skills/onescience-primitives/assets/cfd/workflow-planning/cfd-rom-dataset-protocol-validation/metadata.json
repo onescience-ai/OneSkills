@@ -1,0 +1,36 @@
+{
+  "name": "cfd-rom-dataset-protocol-validation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向参数化CFD降阶模型训练任务，验证输入数据集的完整性、格式规范性和参数范围一致性，确保数据集路径、几何参数定义、稀疏监测点位置等必填字段在任务启动前获得用户确认",
+  "tags": ["cfd", "rom", "dataset", "protocol", "validation", "data-ingestion", "input-verification"],
+  "aliases": ["CFD ROM数据集接入", "数据集路径验证", "参数化数据集协议"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD ROM任务的数据集接入协议与用户确认机制",
+  "evidence_papers": [
+    {
+      "title": "Reduced Order Modeling with Shallow Recurrent Decoder Networks",
+      "doi": "10.1038/s41467-025-65126-y",
+      "year": 2025
+    },
+    {
+      "title": "Real-Time Monitoring of MHD Liquid Metal Flows with SHRED",
+      "doi": "2608.28366",
+      "year": 2026
+    },
+    {
+      "title": "Multi-Fidelity Learning with SHRED",
+      "doi": "2606.05202",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

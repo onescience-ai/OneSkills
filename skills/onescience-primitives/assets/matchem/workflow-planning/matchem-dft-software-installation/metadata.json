@@ -1,0 +1,35 @@
+{
+  "name": "matchem-dft-software-installation",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T21:52:00Z",
+  "updated_at": "2026-09-17T22:15:00Z",
+  "description": "面向HPC环境中的DFT软件安装与配置任务，提供编译器、数学库、MPI库的依赖管理、许可证处理、模块加载和验证步骤。适用于VASP、Quantum ESPRESSO等第一性原理计算软件的部署。",
+  "tags": ["DFT software installation", "HPC environment", "VASP installation", "Quantum ESPRESSO setup", "computational chemistry"],
+  "aliases": ["VASP setup", "QE installation", "ab initio software deployment"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DFT软件（VASP/Quantum ESPRESSO）在HPC环境中的安装配置知识，包括依赖、许可证、模块加载和验证步骤",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Installing VASP.6.X.X",
+      "url": "https://www.vasp.at/wiki/index.php/Installing_VASP.6.X.X",
+      "publisher": "VASP",
+      "version": "release",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Quantum ESPRESSO Installation Guide",
+      "url": "https://www.quantum-espresso.org/Doc/user_guide/node7.html",
+      "publisher": "Quantum ESPRESSO Foundation",
+      "version": "release",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-17: 根据归因报告任务323补充证据"],
+  "conflicts": []
+}

@@ -1,0 +1,46 @@
+{
+  "name": "cfd-api-rate-limit-handling",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T03:23:00Z",
+  "updated_at": "2026-09-18T03:23:00Z",
+  "description": "面向学术API调用过程中的限流处理，提供HTTP 429错误的检测、指数退避重试策略、多API降级通道的实现方法，确保文献检索和数据获取的连续性",
+  "tags": ["API", "rate-limit", "HTTP-429", "retry", "backoff", "fallback", "OpenAlex", "Semantic-Scholar"],
+  "aliases": ["rate-limiting", "api-throttling", "retry-strategy"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "API限流处理与重试策略知识，包括HTTP 429错误的语义、推荐的重试间隔、最大重试次数、备用检索通道",
+  "evidence_papers": [
+    {
+      "title": "Application-layer Fault-Tolerance Protocols",
+      "doi": "10.48550/arXiv.1611.02273",
+      "year": 2016
+    },
+    {
+      "title": "Scheduling and Checkpointing optimization algorithm for Byzantine fault tolerance in Cloud Clusters",
+      "doi": "10.48550/arXiv.1802.00951",
+      "year": 2018
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "OpenAlex API Documentation",
+      "url": "https://docs.openalex.org/",
+      "publisher": "OpenAlex",
+      "version": "2024",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "Semantic Scholar API Documentation",
+      "url": "https://api.semanticscholar.org/api-docs/",
+      "publisher": "Allen Institute for AI",
+      "version": "2024",
+      "accessed_at": "2026-09-18"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

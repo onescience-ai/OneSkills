@@ -1,0 +1,20 @@
+{
+  "name": "cfd-openfoam-porous-media-setup",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:25:00Z",
+  "updated_at": "2026-09-17T20:25:00Z",
+  "description": "面向多孔介质CFD求解任务，定义OpenFOAM求解器的安装配置流程，包括paraview后处理、blockMesh/snappyHexMesh网格生成、simpleFoam/pimpleFoam求解器选择，以及RANS湍流模型在多孔介质中的配置参数",
+  "tags": ["OpenFOAM", "porous-media", "CFD-solver", "mesh-generation", "RANS", "turbulence"],
+  "aliases": ["OpenFOAM多孔介质", "porous media CFD solver", "Darcy resistance"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OpenFOAM或多孔介质CFD求解器的安装配置流程",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

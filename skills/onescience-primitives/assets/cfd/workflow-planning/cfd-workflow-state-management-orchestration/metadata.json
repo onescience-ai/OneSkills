@@ -1,0 +1,35 @@
+{
+  "name": "cfd-workflow-state-management-orchestration",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:29:00Z",
+  "updated_at": "2026-09-17T12:29:00Z",
+  "description": "面向科学工作流的状态管理与编排协议，确保任务状态实时更新和编排流程正确执行。涵盖 task_state.json 更新契约、execution-manifest.json 生成、编排协议执行流程。",
+  "tags": ["workflow orchestration", "state management", "execution manifest", "task state", "编排协议"],
+  "aliases": ["workflow state tracking", "orchestration protocol"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "task_state.json 的状态更新契约和 onescience-orchestrator 的编排协议执行流程",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Apache Airflow Documentation",
+      "url": "https://airflow.apache.org/docs/",
+      "publisher": "Apache Airflow",
+      "version": "2.7.0",
+      "accessed_at": "2026-09-17T12:29:00Z"
+    },
+    {
+      "title": "Prefect Documentation",
+      "url": "https://docs.prefect.io/",
+      "publisher": "Prefect",
+      "version": "2.13.0",
+      "accessed_at": "2026-09-17T12:29:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

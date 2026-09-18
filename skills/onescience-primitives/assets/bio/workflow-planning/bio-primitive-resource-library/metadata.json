@@ -1,0 +1,15 @@
+{
+  "name": "bio-primitive-resource-library",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T17:45:00Z",
+  "updated_at": "2026-09-15T17:45:00Z",
+  "description": "生物信息学领域（特别是肽设计）的原语资源库构建规范，包含PepFlow模型原语、肽设计工作流原语和相关工具原语。支持orchestrator进行资源召回和规划。",
+  "tags": ["bioinformatics", "primitive-resources", "resource-library", "peptide-design", "PepFlow", "workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "生物信息学领域（特别是肽设计）的原语资源库构建",
+  "evidence_papers": []
+}

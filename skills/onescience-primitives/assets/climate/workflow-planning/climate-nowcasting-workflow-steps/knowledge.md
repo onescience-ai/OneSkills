@@ -176,3 +176,5 @@
 [1] 任务268归因报告分析 - 工作流步骤完整性问题分析
 [2] OneScience场景索引s01-s06步骤定义（内部文档）
 [3] 气象业务预报工作流规范（WMO标准参考）
+[4] Skillful nowcasting of global precipitation with generative models, Ravuri et al., Nature, 2021, DOI: 10.1038/s41586-021-03854-z（降水临近预报工作流验证）
+[5] GenCast: AI weather forecasting system, Price et al., Nature, 2024, DOI: 10.1038/s41586-024-08252-9（概率预报验证方法）

@@ -1,0 +1,28 @@
+{
+  "name": "cfd-evaluation-fallback-strategy",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T22:21:00Z",
+  "updated_at": "2026-09-17T22:21:00Z",
+  "description": "面向湍流生成模型评估，定义评估失败时的降级策略，包括部分评估、错误报告和恢复机制，确保任务可追溯且不因局部失败而完全中断。",
+  "tags": ["turbulence", "evaluation", "fallback", "error-handling", "CFD", "robustness"],
+  "aliases": ["turbulence evaluation error recovery", "CFD model assessment fallback"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "评估失败时的降级策略，包括部分评估和错误报告",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Python Errors and Exceptions documentation",
+      "url": "https://docs.python.org/3/tutorial/errors.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17T22:21:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -227,7 +227,57 @@ mpirun vasp_std < POSCAR > stdout
 
 [D1] VASP Wiki - Getting Started, University of Vienna, current, URL: https://www.vasp.at/wiki/index.php/Getting_started（accessed_at 2026-09-16，官方安装指南）
 [D2] Quantum ESPRESSO Documentation, Quantum ESPRESSO Team, current, URL: https://www.quantum-espresso.org/Doc/（accessed_at 2026-09-16，官方文档）
+[D3] Installing VASP.6.X.X, VASP, 2026-07-20, URL: https://www.vasp.at/wiki/index.php/Installing_VASP.6.X.X（accessed_at 2026-09-17，官方Wiki详细安装指南）
+[D4] Quantum ESPRESSO User Guide - Installation, Quantum ESPRESSO Foundation, 2026, URL: https://www.quantum-espresso.org/Doc/user_guide/node7.html（accessed_at 2026-09-17，官方用户指南安装章节）
 
 ## 证据来源
 
 [论文2] Engineering Surface Oxophilicity of Copper for Electrochemical CO2 Reduction to Ethanol, Li M et al., Advanced Science, 2023, DOI: 10.1002/advs.202204579（DFT计算参数和VASP配置）
+
+## 批次补充（2026-09-17）
+
+基于VASP和Quantum ESPRESSO官方文档的最新安装配置知识补充：
+
+### VASP 6.x.x 安装要点（来自[D3]）
+1. **编译器要求**：Fortran编译器需符合F2008标准，支持gcc、Intel oneAPI、NVIDIA HPC-SDK、AOCC（AMD CPU）
+2. **数学库要求**：FFTW、BLAS、LAPACK、ScaLAPACK，推荐组合：
+   - Intel oneapi-mkl
+   - FFTW + OpenBLAS + ScaLAPACK
+   - NVIDIA HPC-SDK（内置OpenBLAS和ScaLAPACK）+ FFTW
+   - AOCL（AMD CPU）
+3. **MPI库要求**：intel-oneapi-mpi、OpenMPI或NVIDIA HPC-SDK内置MPI
+4. **HDF5支持**：强烈推荐启用，需要HDF5库
+5. **安装方式**：
+   - 传统makefile.include方式：`cp arch/makefile.include.your_choice ./makefile.include`
+   - CMake方式：需要cmake 3.24+，从github.com/vasp-dev/cmake获取构建文件
+6. **验证步骤**：运行`make test`执行测试套件
+7. **环境设置**：
+   - 设置`ulimit -s unlimited`
+   - 设置`OMP_STACKSIZE=512m`（如果启用OpenMP）
+   - 将可执行文件目录添加到PATH
+
+### Quantum ESPRESSO 安装要点（来自[D4]）
+1. **编译器要求**：F2008标准兼容的Fortran编译器，C编译器
+2. **数学库要求**：
+   - BLAS和LAPACK：推荐厂商优化版本（如Intel MKL）
+   - FFT：支持FFTW3、Intel MKL DFTI、ESSL等
+   - MPI库：用于并行执行
+3. **HDF5库**：v1.8.16+，需要启用Fortran和并行支持
+4. **安装步骤**：
+   - 下载源代码
+   - 运行`./configure`（自动检测系统环境）
+   - 执行`make all`编译
+   - 运行`make test`验证
+5. **环境变量**：设置`LC_ALL=C`避免脚本问题
+6. **GPU支持**：需要NVIDIA HPC SDK v21.7+
+
+### 通用安装检查清单
+1. 编译器版本和兼容性检查
+2. 数学库路径和版本确认
+3. MPI环境配置验证
+4. 磁盘空间（≥10GB）和内存（≥16GB）检查
+5. 源代码获取（VASP需要许可证，QE开源）
+6. 配置文件准备（makefile.include或CMake配置）
+7. 编译构建和错误处理
+8. 测试套件验证
+9. 环境变量和模块加载配置

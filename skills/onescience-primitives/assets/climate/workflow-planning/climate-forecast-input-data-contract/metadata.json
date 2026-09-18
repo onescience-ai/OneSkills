@@ -1,0 +1,19 @@
+{
+  "name": "climate-forecast-input-data-contract",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T18:28:00Z",
+  "updated_at": "2026-09-15T18:28:00Z",
+  "description": "气象预报任务的输入数据契约规范，包括数据来源类型、资料截止时间定义、数据时点规则和数据血缘追溯要求。适用于所有earth域预报任务的输入预检规范。",
+  "tags": ["气象预报", "数据契约", "输入预检", "资料截止时间", "数据血缘"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报任务的输入数据契约规范，包括数据来源类型（ERA5、站点观测、再分析产品）、资料截止时间定义（观测签发时点）、数据时点规则（目标时刻之后的观测不得进入输入）和数据血缘追溯要求",
+  "evidence_papers": [
+    {"title": "Quality control and gap-filling methods applied to hourly temperature observations over central Italy", "doi": "10.1002/met.1913", "year": 2020},
+    {"title": "Programme for Monitoring of the Greenland Ice Sheet (PROMICE) automatic weather station data", "doi": "10.5194/essd-13-3819-2021", "year": 2021},
+    {"title": "The CMIP6 Data Request (DREQ, version 01.00.31)", "doi": "10.5194/gmd-13-201-2020", "year": 2020}
+  ]
+}

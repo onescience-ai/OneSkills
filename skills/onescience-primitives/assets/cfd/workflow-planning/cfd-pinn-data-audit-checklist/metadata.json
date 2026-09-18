@@ -1,0 +1,20 @@
+{
+  "name": "cfd-pinn-data-audit-checklist",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T15:45:00Z",
+  "updated_at": "2026-09-17T15:45:00Z",
+  "description": "面向PINN训练的数据审计清单：确保数据质量、可追溯性和训练有效性。涵盖数据来源追溯、域覆盖充分性、边界点分布、数值精度、训练/验证/测试集信息泄漏检测、数据维度一致性等检查项。适用于PINN训练前的数据质量保证。注意：本卡片内容基于领域通用知识，缺乏直接论文证据，需进一步验证。",
+  "tags": ["data audit", "quality assurance", "PINN", "data validation", "leakage detection", "traceability", "numerical precision"],
+  "aliases": ["数据审计清单", "PINN数据质量检查"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PINN数据审计清单",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

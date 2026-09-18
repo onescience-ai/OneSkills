@@ -1,0 +1,22 @@
+{
+  "name": "cfd-drivaernet-dataset-access",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "DrivAerNet/DrivAerNet++汽车空气动力学数据集的获取方式、数据格式、变量定义、单位体系、数据许可和下载接口",
+  "tags": ["DrivAerNet", "dataset", "automotive", "aerodynamics", "CFD", "open data"],
+  "aliases": ["DrivAerNet++", "汽车空气动力学数据"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DrivAerNet/DrivAerNet++汽车空气动力学数据集的获取方式、数据格式（STL表面网格+CFD流场）、变量定义（阻力系数Cd、升力系数Cl、表面压力分布）、单位体系（SI制）、数据许可（CC-BY）和下载接口（ModelScope或GitHub仓库地址）",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {"provider": "user", "provided_at": "2026-09-17", "location": "归因报告 CFD_S032 report.json"}
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

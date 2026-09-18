@@ -1,0 +1,20 @@
+{
+  "name": "eemdtcn-model-implementation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "EEMD-TCN混合模型的完整实现方法，包括集合经验模态分解的算法原理、参数设置、与时间卷积网络的结合方式、模型训练流程和推理方法",
+  "tags": ["EEMD", "TCN", "hybrid-model", "time-series", "prediction", "ensemble-empirical-mode-decomposition", "temporal-convolutional-network"],
+  "aliases": ["集合经验模态分解", "时间卷积网络", "EEMD-TCN"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "EEMD-TCN混合模型的完整实现方法，包括集合经验模态分解的算法原理、参数设置、与时间卷积网络的结合方式、模型训练流程和推理方法",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

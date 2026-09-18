@@ -1,0 +1,35 @@
+{
+  "name": "cli-non-interactive-execution-error-handling",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T04:47:00Z",
+  "updated_at": "2026-09-17T04:47:00Z",
+  "description": "面向命令行工具非交互执行场景，提供错误处理、退出码分类和故障诊断的方法论，确保CLI工具在自动化流水线中稳定运行。注意：本卡片为重复卡片，已合并到 general-cli-execution-fault-classification 卡片中。",
+  "tags": ["CLI", "command-line", "error-handling", "exit-code", "non-interactive", "automation", "diagnosis"],
+  "aliases": ["command line interface", "CLI execution", "exit status", "error classification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Exit Status (Bash Reference Manual)",
+      "url": "https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html",
+      "publisher": "GNU",
+      "version": "5.1",
+      "accessed_at": "2026-09-17T04:47:00Z"
+    },
+    {
+      "title": "argparse — Parser for command-line options, arguments and subcommands",
+      "url": "https://docs.python.org/3/library/argparse.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14",
+      "accessed_at": "2026-09-17T04:47:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

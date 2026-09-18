@@ -1,0 +1,20 @@
+{
+  "name": "cfd-turbulence-sr-acceptance-metrics",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T23:08:00Z",
+  "updated_at": "2026-09-17T23:08:00Z",
+  "description": "面向CFD湍流超分辨率模型验收，提供验收指标体系（relative_L2、spectrum_error、gradient_error、conservation_error的定义和阈值）、适用域判定的标准流程（外推测试、最差案例分析、物理约束验证）、PASS/REJECT/BLOCKED结论的判定规则。适用于需要评估模型性能、判定模型适用域的任务。",
+  "tags": ["acceptance-metrics", "evaluation", "super-resolution", "turbulence", "CFD", "validation", "applicability-domain"],
+  "aliases": ["SR model acceptance", "turbulence model evaluation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD湍流超分辨率模型验收指标体系",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

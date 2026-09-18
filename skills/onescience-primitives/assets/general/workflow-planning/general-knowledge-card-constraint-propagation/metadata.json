@@ -1,0 +1,20 @@
+{
+  "name": "general-knowledge-card-constraint-propagation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T18:33:00Z",
+  "updated_at": "2026-09-17T18:33:00Z",
+  "description": "面向OneScience工作流规划知识卡到executor的约束传递机制，定义知识卡中质量门禁和缺项处理规则如何编码到step_handoff.yaml的completion_criteria和fallback字段中，以及executor在执行前如何验证输入数据是否满足知识卡中定义的前提条件。适用于需要将领域知识卡中的约束传递给执行技能的场景。",
+  "tags": ["constraint propagation", "knowledge card", "step handoff", "completion criteria", "fallback", "executor", "OneScience", "workflow planning"],
+  "aliases": ["约束传递", "知识卡约束", "handoff约束"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience工作流规划知识卡到executor的约束传递机制——知识卡中定义的质量门禁和缺项处理规则应如何编码到step_handoff.yaml的completion_criteria和fallback字段中；executor在执行前如何验证输入数据是否满足知识卡中定义的前提条件",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

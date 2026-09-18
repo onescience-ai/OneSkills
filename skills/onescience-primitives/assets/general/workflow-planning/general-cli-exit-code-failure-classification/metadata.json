@@ -1,0 +1,44 @@
+{
+  "name": "general-cli-exit-code-failure-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T10:00:00Z",
+  "updated_at": "2026-09-17T10:00:00Z",
+  "description": "面向CLI工具的非交互执行与故障分类需求，提供进程退出码语义解读与错误分类框架。适用于需要诊断命令行工具异常退出、超时、信号中断等故障的自动化工作流场景。核心知识包括：POSIX退出码标准（0-255范围与语义）、Python sys.exit()行为规范、Shell特殊退出码含义（1-2、126-128+n）、故障根因分类方法。输出为结构化故障诊断报告与修复建议。",
+  "tags": ["CLI", "exit code", "failure classification", "error handling", "POSIX", "sys.exit", "process termination", "automation", "workflow debugging"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_docs": [
+    {
+      "title": "The GNU C Library (glibc) manual - exit",
+      "url": "https://www.gnu.org/software/libc/manual/html_node/Exit-Status.html",
+      "publisher": "GNU Project, Free Software Foundation",
+      "version": "2.44",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Exit Codes With Special Meanings - Advanced Bash-Scripting Guide",
+      "url": "https://tldp.org/LDP/abs/html/exitcodes.html",
+      "publisher": "The Linux Documentation Project",
+      "version": "Appendix E",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Python sys.exit() documentation",
+      "url": "https://docs.python.org/3/library/sys.html#sys.exit",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "POSIX.1-2017 exit() specification",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/functions/exit.html",
+      "publisher": "IEEE/The Open Group",
+      "version": "Issue 7, 2018",
+      "accessed_at": "2026-09-17"
+    }
+  ]
+}

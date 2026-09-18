@@ -1,0 +1,31 @@
+{
+  "name": "cfd-neural-green-function-operator-learning",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T16:46:00+08:00",
+  "updated_at": "2026-09-17T16:46:00+08:00",
+  "description": "面向线性PDE求解的神经Green函数算子学习方法，通过学习Green函数的特征分解实现跨几何和边界条件的泛化，适用于稳态热分析、弹性力学等场景。",
+  "tags": ["neural-green-function", "operator-learning", "PDE-solver", "generalization", "feature-decomposition"],
+  "aliases": ["neural-green-function", "green-function-learning", "greensonet"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DeepONet与神经Green函数算子学习的实现架构、数据格式、验证方法及预检规则",
+  "evidence_papers": [
+    {
+      "title": "Neural Green's Functions",
+      "doi": "2511.01924",
+      "year": 2025
+    },
+    {
+      "title": "An explainable operator approximation framework under the guideline of Green's function",
+      "doi": "2412.16644",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

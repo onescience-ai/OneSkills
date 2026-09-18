@@ -1,0 +1,18 @@
+{
+  "name": "cfd-workflow-artifact-contract",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18",
+  "updated_at": "2026-09-18",
+  "description": "面向CFD神经PDE求解器工作流，定义每个步骤的必填输出文件名、格式和内容要求，覆盖数据审计、切分清单、归一化参数、推理结果等产物规范",
+  "tags": ["workflow", "artifact", "contract", "reproducibility", "data-audit"],
+  "aliases": ["工作流产物", "产物契约", "输出规范"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience工作流产物契约规范",
+  "evidence_papers": [
+    {"title": "Physics-Informed Machine Learning in Biomedical Science and Engineering", "doi": "10.1146/annurev-bioeng-110824-124907", "year": 2026}
+  ]
+}

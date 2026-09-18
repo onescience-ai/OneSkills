@@ -1,0 +1,26 @@
+{
+  "name": "general-json-schema-metadata-validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T16:02:00Z",
+  "updated_at": "2026-09-17T16:02:00Z",
+  "description": "面向研究数据管理场景，提供基于JSON Schema的元数据验证与管理方法，覆盖Schema定义、表单渲染、输入验证和API集成等通用问题。",
+  "tags": ["json-schema", "metadata", "validation", "research-data-management", "form-rendering", "api-integration"],
+  "aliases": ["JSON Schema验证", "元数据管理", "Schema表单渲染"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Adamant: a JSON schema-based metadata editor for research data management workflows",
+      "doi": "10.12688/f1000research.110875.2",
+      "year": 2022
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

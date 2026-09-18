@@ -1,0 +1,28 @@
+{
+  "name": "climate-json-schema-report-contract",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T22:42:00Z",
+  "updated_at": "2026-09-17T22:42:00Z",
+  "description": "面向科学计算任务的JSON Schema报告交付契约，规定必填字段、任务身份、数组约束及输出格式。适用于需要生成结构化报告的归因分析、模型评估、数据验证等场景。核心方法包括：Schema定义与验证、字段类型检查、必填字段验证、数组约束验证。输出为符合契约的报告文件和验证结果。",
+  "tags": ["JSON-Schema", "report-validation", "data-contract", "structural-validation", "scientific-reporting", "workflow-output", "schema-compliance", "field-validation", "array-constraint", "task-identity"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026,
+      "venue": "Scientific Reports"
+    },
+    {
+      "title": "mmCIF Validator: a comprehensive validation tool for structural biology data files",
+      "doi": "10.1107/s1600576726005431",
+      "year": 2026,
+      "venue": "Journal of Applied Crystallography"
+    }
+  ]
+}

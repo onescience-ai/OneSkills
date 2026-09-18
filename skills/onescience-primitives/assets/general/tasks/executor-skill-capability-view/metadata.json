@@ -1,0 +1,20 @@
+{
+  "name": "executor-skill-capability-view",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T10:00:00Z",
+  "updated_at": "2026-09-17T10:00:00Z",
+  "description": "所有executor技能的完整能力视图，包括输入要求、输出产物、负责事项、不负责事项、下游交接对象等。适用于OneScience任务编排系统的技能调度和任务拆分。",
+  "tags": ["executor", "skill", "capability", "view", "input-output", "responsibility", "task-orchestration"],
+  "aliases": ["技能能力视图", "executor能力台账", "skill capability", "executor inventory"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "所有executor技能的完整能力视图",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

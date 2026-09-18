@@ -1,0 +1,19 @@
+{
+  "name": "climate-satellite-data-validation-protocol",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T10:30:00Z",
+  "updated_at": "2026-09-17T10:40:00Z",
+  "description": "面向静止气象卫星数据，验证源观测资料完整性、格式合规性与时序连续性的协议。适用于对流初生检测等应用中确保输入数据质量的场景。核心方法包括：数据格式检查（NetCDF4/HDF5）、时间分辨率验证（15分钟）、空间覆盖确认、质量标志解析。输出为数据验证报告与完整性指标。",
+  "tags": ["satellite data", "validation", "geostationary", "FY-4A", "Himawari", "convection initiation", "data quality", "NetCDF", "HDF5", "quality control"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "静止气象卫星源观测资料的标准格式、获取渠道和验证协议；对流初生标签的生成方法和独立验证要求；数据截止时间和资料完整性的判断标准。",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,20 @@
+{
+  "name": "cfd-multi-model-training-config",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向CFD缺失区补全任务，定义多模型并行训练的配置规范。支持在单次任务中同时训练INR和Diffusion Bridge两个模型，提供train_config.json的列表结构或嵌套配置模板，确保每个模型有独立的超参数、共享的切分配置和输出目录约定。",
+  "tags": ["cfd", "training", "multi-model", "INR", "diffusion-bridge", "configuration", "parallel-training"],
+  "aliases": ["多模型训练配置", "并行训练设置", "双模型训练"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多模型并行训练的配置规范",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

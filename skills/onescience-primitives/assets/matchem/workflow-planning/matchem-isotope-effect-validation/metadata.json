@@ -1,0 +1,20 @@
+{
+  "name": "matchem-isotope-effect-validation",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:24:00Z",
+  "updated_at": "2026-09-16T18:24:00Z",
+  "description": "面向同位素效应验证任务，建立验证标准，确保质量效应预期合理、统计显著性检验充分、短时与长时动力学关系明确、验收判定标准清晰。",
+  "tags": ["isotope effect", "kinetic isotope effect", "diffusion coefficient", "statistical significance"],
+  "aliases": ["isotope validation", "KIE verification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "同位素效应验证标准，包括质量效应预期、统计显著性检验方法、短时动力学与长时动力学的关系、验收判定标准",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

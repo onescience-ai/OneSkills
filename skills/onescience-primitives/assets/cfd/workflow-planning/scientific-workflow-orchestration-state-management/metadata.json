@@ -1,0 +1,49 @@
+{
+  "name": "scientific-workflow-orchestration-state-management",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T13:00:00Z",
+  "updated_at": "2026-09-17T13:00:00Z",
+  "description": "面向科学计算工作流编排系统，提供任务状态管理、执行清单生成、阶段过渡触发条件、数据传递契约和预检失败恢复机制的设计原则与实现模式",
+  "tags": ["workflow", "orchestration", "state-management", "planning", "execution", "preflight", "manifest", "scientific-computing"],
+  "aliases": ["workflow-orchestration", "task-state", "execution-manifest", "preflight-check"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience orchestrator在resource_retrieval完成后生成execution-manifest.json的触发条件与必要字段契约，包括manifest应包含的字段（task_id、step_sequence、executor_binding、input契约、output契约、quality_gate）以及生成时机",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Apache Airflow Documentation - Tasks",
+      "url": "https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/tasks.html",
+      "publisher": "Apache Software Foundation",
+      "version": "3.3.1",
+      "accessed_at": "2026-09-17T13:00:00Z"
+    },
+    {
+      "title": "Apache Airflow Documentation - Dag Runs",
+      "url": "https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dag-run.html",
+      "publisher": "Apache Software Foundation",
+      "version": "3.3.1",
+      "accessed_at": "2026-09-17T13:00:00Z"
+    },
+    {
+      "title": "Nextflow Documentation",
+      "url": "https://www.nextflow.io/docs/latest/",
+      "publisher": "Seqera Labs",
+      "version": "latest",
+      "accessed_at": "2026-09-17T13:00:00Z"
+    },
+    {
+      "title": "Snakemake Documentation",
+      "url": "https://snakemake.readthedocs.io/en/stable/",
+      "publisher": "Snakemake Community",
+      "version": "9.27.0",
+      "accessed_at": "2026-09-17T13:00:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

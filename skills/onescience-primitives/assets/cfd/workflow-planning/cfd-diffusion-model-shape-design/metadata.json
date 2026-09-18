@@ -1,0 +1,25 @@
+{
+  "name": "cfd-diffusion-model-shape-design",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向工程外形设计，使用扩散模型生成候选并协同优化，包括DDPM/DDIM架构、噪声调度、去噪网络、训练目标以及Engineering agent多智能体框架接口契约",
+  "tags": ["diffusion model", "DDPM", "shape optimization", "multi-agent", "CFD", "generative design"],
+  "aliases": ["DiffuseBot", "AI Agents in Engineering Design"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "扩散模型（Diffusion Model）在CFD外形设计中的标准架构知识，包括DDPM/DDIM的正向扩散过程（噪声调度β_t、前向分布q(x_t|x_0)）、反向去噪网络（U-Net或Transformer骨干、时间步嵌入、条件输入拼接）、训练目标（噪声预测ε_θ或得分匹配）以及Engineering agent作为多智能体协同设计框架的接口契约（输入几何参数→多物理量预测→约束反馈）",
+  "evidence_papers": [
+    {"title": "Denoising Diffusion Probabilistic Models", "doi": "10.48550/arXiv.2006.11239", "year": 2020},
+    {"title": "DiffuseBot: Designing Physical Objects with Diffusion Models", "doi": "10.48550/arXiv.2405.15683", "year": 2024}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [
+    {"provider": "user", "provided_at": "2026-09-17", "location": "归因报告 CFD_S032 report.json"}
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

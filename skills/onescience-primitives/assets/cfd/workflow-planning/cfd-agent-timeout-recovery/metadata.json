@@ -1,0 +1,38 @@
+{
+  "name": "cfd-agent-timeout-recovery",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T18:40:00Z",
+  "updated_at": "2026-09-17T18:40:00Z",
+  "description": "面向科研任务执行智能体的超时处理与异常恢复策略，涵盖超时阈值设定、重试机制、优雅降级、状态保存与恢复，适用于 OneScience 工作流引擎的预检阶段及后续步骤执行",
+  "tags": ["timeout", "fault-tolerance", "retry", "recovery", "workflow", "agent", "scientific-computing", "cfd", "timeout-budget", "execution-manifest", "state-persistence"],
+  "aliases": ["超时处理", "异常恢复", "重试策略", "优雅降级", "预检超时", "timeout handling", "exception recovery"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "任务执行智能体的超时处理机制与异常恢复策略",
+  "evidence_papers": [
+    {
+      "title": "Empirical Study on Request Timeout and Retry for Microservices Communication",
+      "doi": "10.1109/prdc63035.2024.00037",
+      "year": 2024
+    },
+    {
+      "title": "Multi-Objective Fault Tolerance Model for Scientific Workflow Scheduling on Cloud Computing",
+      "doi": "10.22247/ijcna/2022/214505",
+      "year": 2022
+    },
+    {
+      "title": "MCPF: Fault-Tolerant Scheduling of Scientific Workflow on Cloud Computing",
+      "doi": "10.21203/rs.3.rs-4155303/v1",
+      "year": 2024
+    },
+    {
+      "title": "Performance Comparison of Retry and N-Copy Software Fault Tolerance Techniques",
+      "doi": "10.30534/ijeter/2020/42892020",
+      "year": 2020
+    }
+  ],
+  "merged_batches": ["CFD_S079-2026-09-17"]
+}

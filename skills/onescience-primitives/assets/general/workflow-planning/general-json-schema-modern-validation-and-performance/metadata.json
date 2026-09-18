@@ -1,0 +1,36 @@
+{
+  "name": "general-json-schema-modern-validation-and-performance",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T01:00:00Z",
+  "updated_at": "2026-09-18T01:00:00Z",
+  "description": "面向现代JSON Schema（Draft 2019-09+）的复杂验证场景，提供动态引用、注释依赖验证等新特性的理解与处理方法论，以及验证性能优化策略，覆盖PSPACE复杂度分析、编译优化和LLM生成JSON验证。",
+  "tags": ["json-schema", "modern-schema", "validation", "performance", "dynamic-references", "LLM", "structured-output"],
+  "aliases": ["Modern JSON Schema", "Schema验证优化", "动态引用验证", "JSON生成验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "arXiv:2307.10034",
+      "year": 2023
+    },
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "arXiv:2503.02770",
+      "year": 2025
+    },
+    {
+      "title": "Learning to Generate Structured Output with Schema Reinforcement Learning",
+      "doi": "arXiv:2502.18878",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

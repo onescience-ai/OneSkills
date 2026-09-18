@@ -70,6 +70,7 @@
 - 需要在离线环境部署分子化学操作功能
 - 管理分子生成工作流的依赖关系
 - 优化分子处理性能
+- 配套资源：rdkit-molecular-dependency（RDKit在BoKDiff中的具体应用）、bokdiff-model-weights-setup
 
 ## 补充证据（开源文档/用户自有，可选）
 [D1] Installation — The RDKit 2026.03.6 documentation, RDKit, version 2026.03.6, URL: https://www.rdkit.org/docs/Install.html（accessed_at 2026-09-16，权威官方文档）

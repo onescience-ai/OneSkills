@@ -1,0 +1,28 @@
+{
+  "name": "cfd-cli-noninteractive-execution-fault-classification",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T18:40:00Z",
+  "description": "CLI非交互执行与故障分类知识，包括命令参数、认证、沙箱、超时、退出码和标准错误判读，覆盖科学计算CLI的错误处理和故障恢复策略。",
+  "tags": ["CLI", "非交互执行", "故障分类", "错误处理", "科学计算", "命令行接口"],
+  "aliases": ["命令行错误处理", "CLI故障分类", "非交互执行"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {"title": "PyExoCross 2.0: A Python Framework for LTE and non-LTE Spectra, Cross Sections, and Spectroscopic Post-processing of Atomic and Molecular Line Lists", "doi": "10.48550/arXiv.2609.17273", "year": "2026"},
+    {"title": "ToolGate: An Executable Acceptance Pipeline for Tool-Dependent Scientific Benchmark Construction", "doi": "10.48550/arXiv.2609.02067", "year": "2026"},
+    {"title": "SpecOps: A Fully Automated AI Agent Testing Framework in Real-World GUI Environments", "doi": "10.48550/arXiv.2603.10268", "year": "2026"},
+    {"title": "TuiML: Machine Learning for AI Agents", "doi": "10.48550/arXiv.2609.17984", "year": "2026"}
+  ],
+  "evidence_docs": [
+    {"title": "Built-in Exceptions", "url": "https://docs.python.org/3/library/exceptions.html", "publisher": "Python Software Foundation", "version": "3.14.7", "accessed_at": "2026-09-17"},
+    {"title": "Exit Status (Bash Reference Manual)", "url": "https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html", "publisher": "GNU", "version": "5.2", "accessed_at": "2026-09-17"}
+  ],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-17补充开源文档证据"],
+  "conflicts": []
+}

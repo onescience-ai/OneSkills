@@ -1,0 +1,41 @@
+{
+  "name": "bio-dna-sequence-modeling-genomic-data-retrieval",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T17:59:00Z",
+  "updated_at": "2026-09-17T17:59:00Z",
+  "description": "面向DNA序列建模任务，获取公开基因组DNA序列数据的路径与格式规范；覆盖ENCODE、UCSC、GenBank等数据库，以及DNALONGBENCH等基准数据集",
+  "tags": ["DNA", "genomic", "data", "ENCODE", "UCSC", "benchmark"],
+  "aliases": ["基因组数据", "DNA序列数据", "benchmark dataset"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "公开基因组DNA序列数据的获取路径与格式规范，包括ENCODE项目的DNA-seq/ATAC-seq数据下载接口、UCSC基因组浏览器的bigWig/bedtools数据获取方式、DNALONGBENCH基准数据集的下载地址和数据格式说明、Caduceus论文配套的训练/测试数据集获取渠道",
+  "evidence_papers": [
+    {
+      "title": "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling",
+      "doi": "10.48550/arXiv.2403.03234",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "DNALONGBENCH Dataset on HuggingFace",
+      "url": "https://huggingface.co/datasets/InstaDeepAI/genomics-long-range-benchmark",
+      "publisher": "Hugging Face",
+      "version": "2024",
+      "accessed_at": "2026-09-17T17:59:00Z"
+    },
+    {
+      "title": "Human Reference Genome Data",
+      "url": "https://storage.googleapis.com/basenji_barnyard2/hg38.ml.fa.gz",
+      "publisher": "Google Cloud Storage",
+      "version": "hg38",
+      "accessed_at": "2026-09-17T17:59:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

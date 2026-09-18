@@ -1,0 +1,49 @@
+{
+  "name": "general-workflow-execution-manifest-schema",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T03:43:00Z",
+  "updated_at": "2026-09-17T03:43:00Z",
+  "description": "面向多步骤工作流执行，定义执行清单（execution-manifest.json）的必填字段Schema以通过预检门禁并确保任务可追踪。涵盖task_id、workflow_steps列表、executor_skill映射、input/output契约、依赖关系和资源绑定等核心字段，以及预检验证逻辑和生命周期管理。",
+  "tags": ["execution-manifest", "workflow-orchestration", "preflight-validation", "task-tracking", "global-plan"],
+  "aliases": ["execution-manifest.json", "执行清单", "执行清单Schema"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "execution-manifest.json的必填字段Schema——需包含task_id、workflow_steps列表、每个step的executor_skill映射、input/output契约、依赖关系和资源绑定",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "workflow_preflight.py - Preflight validation script",
+      "url": "local://workflow_preflight.py",
+      "publisher": "OneScience Framework",
+      "version": "1.0",
+      "accessed_at": "2026-09-17T03:43:00Z"
+    },
+    {
+      "title": "onescience-orchestrator SKILL.md",
+      "url": "local://skills/onescience-orchestrator/SKILL.md",
+      "publisher": "OneScience Framework",
+      "version": "1.0",
+      "accessed_at": "2026-09-17T03:43:00Z"
+    },
+    {
+      "title": "task_execute.md - Task execution prompt",
+      "url": "local://prompts/task_execute.md",
+      "publisher": "OneScience Framework",
+      "version": "1.0",
+      "accessed_at": "2026-09-17T03:43:00Z"
+    },
+    {
+      "title": "task_state_contract.md - Task State schema",
+      "url": "local://skills/onescience-orchestrator/references/task_state_contract.md",
+      "publisher": "OneScience Framework",
+      "version": "1.0",
+      "accessed_at": "2026-09-17T03:43:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

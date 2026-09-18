@@ -1,0 +1,31 @@
+{
+  "name": "climate-forecast-model-selection-validation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T04:40:00Z",
+  "updated_at": "2026-09-18T04:40:00Z",
+  "description": "面向气象时序预报模型的选择与验证规范，提供模型适用条件、输入输出契约定义、最小干运行验证流程、随机性控制要求以及性能评估标准，适用于LSTM/Transformer/GRU等模型在气象预报中的应用。",
+  "tags": ["model selection", "validation", "LSTM", "Transformer", "GRU", "dry run", "performance metrics", "R2", "Skill Score", "RMSE"],
+  "aliases": ["model validation", "性能评估", "模型选择"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象时序预报模型的选择与验证规范，包括模型适用条件、输入输出契约、最小干运行验证、随机性控制、性能评估标准",
+  "evidence_papers": [
+    {
+      "title": "GenCast: Diffusion-based ensemble forecasting for medium-range weather",
+      "doi": "10.1038/s41586-024-08252-9",
+      "year": 2024
+    },
+    {
+      "title": "Deep learning for probabilistic ensemble forecasting of precipitation",
+      "doi": "10.1038/s41586-021-03854-z",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

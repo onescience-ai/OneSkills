@@ -1,0 +1,20 @@
+{
+  "name": "cfd-spherical-vector-field-data-format",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向球面向量场与三维对称PDE数据接入任务，提供数据格式规范、公开数据集来源和接入协议知识。",
+  "tags": ["spherical-vector-field", "data-format", "netcdf", "hdf5", "weatherbench", "cfd", "data-intake"],
+  "aliases": ["球面数据格式", "向量场数据集", "PDE数据接入"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "球面向量场与三维对称PDE数据的典型格式、来源渠道和接入协议",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

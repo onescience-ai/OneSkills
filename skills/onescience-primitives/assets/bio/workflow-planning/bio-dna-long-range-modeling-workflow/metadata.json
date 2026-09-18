@@ -1,0 +1,25 @@
+{
+  "name": "bio-dna-long-range-modeling-workflow",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T11:24:00Z",
+  "updated_at": "2026-09-17T11:24:00Z",
+  "description": "面向长程DNA序列建模任务，覆盖模型选择与权重获取、真实基因组数据准备、长窗口分块预处理、反向互补等变处理、以及基因组功能预测评估指标的完整工作流规划",
+  "tags": ["DNA", "long-range", "genomics", "sequence-modeling", "bidirectional", "equivariant", "benchmark"],
+  "aliases": ["双向等变长程DNA序列建模", "Caduceus DNA modeling", "长程DNA预测"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "双向等变长程DNA序列建模任务中缺失的知识：Caduceus权重获取、mamba-ssm安装、基因组数据获取、长窗口处理、AUPRC评估",
+  "evidence_papers": [
+    {"title": "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling", "doi": "10.48550/arxiv.2403.03234", "year": 2024},
+    {"title": "DNALONGBENCH: a benchmark suite for long-range DNA prediction tasks", "doi": "10.1038/s41467-025-65077-4", "year": 2025},
+    {"title": "Benchmarking DNA foundation models for genomic and genetic tasks", "doi": "10.1038/s41467-025-65823-8", "year": 2025},
+    {"title": "The DNA dialect: a comprehensive guide to pretrained genomic language models", "doi": "10.1038/s44320-025-00184-4", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

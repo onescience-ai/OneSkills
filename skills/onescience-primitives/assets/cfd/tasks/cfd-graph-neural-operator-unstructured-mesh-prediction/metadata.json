@@ -1,0 +1,49 @@
+{
+  "name": "cfd-graph-neural-operator-unstructured-mesh-prediction",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "图神经算子任意域非结构网格流场预测任务卡，定义从非结构网格CFD数据接入到模型训练、推理和评估的完整任务契约，适用于Graph Neural Operator、MeshGraphNet等图神经网络模型在任意几何域上的流场预测任务",
+  "tags": [
+    "graph-neural-operator",
+    "MeshGraphNet",
+    "unstructured-mesh",
+    "CFD",
+    "flow-prediction",
+    "task",
+    "edge:workflow:cfd-graph-neural-operator-unstructured-mesh-workflow",
+    "edge:resource:workflow-planning/cfd-workflow-timeout-monitoring-recovery"
+  ],
+  "aliases": [
+    "GNO任务",
+    "图神经算子任务",
+    "非结构网格流场预测"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "GNO任务的TC知识卡片结构规范，包括task卡的必要字段和tags定义",
+  "evidence_papers": [
+    {
+      "title": "Learning Mesh-Based Simulation with Graph Networks",
+      "doi": "10.48550/arXiv.2010.03409",
+      "year": 2020
+    },
+    {
+      "title": "X-MeshGraphNet: Scalable Multi-Scale Graph Neural Networks for Physics Simulation",
+      "doi": "10.48550/arXiv.2411.17164",
+      "year": 2024
+    },
+    {
+      "title": "Generalization capabilities of MeshGraphNets to unseen geometries for fluid dynamics",
+      "doi": "10.48550/arXiv.2408.06101",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

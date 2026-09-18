@@ -1,0 +1,24 @@
+{
+  "name": "cfd-neural-sde-architecture-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向PDE场量预测任务的Neural SDE架构设计与训练方法。覆盖drift/diffusion网络定义、SDE求解器选择（Euler-Maruyama、SRK）、score matching与denoising score matching训练方法、ODE-SDE一致性保障、条件生成集成方式，以及在PDE场量预测中的应用范式。",
+  "tags": ["Neural-SDE", "score-matching", "drift-diffusion", "stochastic-differential-equation", "generative-model", "PDE-prediction", "conditional-generation", "cfd"],
+  "aliases": ["随机微分方程神经网络", "SDE生成模型", "Neural ODE SDE"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Neural SDE架构设计（drift/diffusion网络定义、SDE求解器选择）、训练方法（score matching、denoising score matching）、与条件生成模型的集成方式、在PDE场量预测中的应用",
+  "evidence_papers": [
+    {"title": "Resistive memory-based neural differential equation solver for score-based diffusion models", "doi": "10.1038/s41467-026-72900-z", "year": 2026},
+    {"title": "Closing the ODE-SDE gap in score-based diffusion models through the Fokker-Planck equation", "doi": "10.1098/rsta.2024.0503", "year": 2025},
+    {"title": "Generative models of cell dynamics: from Neural ODEs to flow matching", "doi": "10.1038/s42003-026-09758-w", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

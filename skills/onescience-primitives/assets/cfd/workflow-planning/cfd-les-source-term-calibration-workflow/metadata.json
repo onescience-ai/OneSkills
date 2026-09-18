@@ -1,0 +1,51 @@
+{
+  "name": "cfd-les-source-term-calibration-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:52:00Z",
+  "updated_at": "2026-09-17T20:52:00Z",
+  "description": "面向LES等效源项校准与后验CFD耦合任务，定义从RANS数据到LES源项映射的工作流，涵盖可微PDE求解器接口、求解器耦合前置条件检查、HPC资源需求评估，以及求解器不可用时的降级策略",
+  "tags": ["LES", "source-term", "calibration", "CFD-coupling", "OpenFOAM", "HPC", "RANS-to-LES", "differentiable-pipeline"],
+  "aliases": ["LES equivalent source term", "RANS-to-LES mapping", "LES calibration workflow", "等效源项校准"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "LES等效源项校准与高保真CFD后验耦合的工作流前置条件",
+  "evidence_papers": [
+    {
+      "title": "An End-to-End PyTorch Interface for Differentiable PDE Solvers: A RANS Model-Correction Study",
+      "doi": "10.48550/arXiv.2605.28858",
+      "year": "2026"
+    },
+    {
+      "title": "Differentiable Hybrid Neural-CFD Modelling of Wall-Bounded Turbulence",
+      "doi": "10.48550/arXiv.2607.17357",
+      "year": "2026"
+    },
+    {
+      "title": "Multiscale Convolutional Neural Networks for Subgrid-scale Modeling in LES",
+      "doi": "10.48550/arXiv.2502.10814",
+      "year": "2025"
+    },
+    {
+      "title": "Foam-Agent 2.0: End-to-End Composable Multi-Agent Framework for Automating CFD",
+      "doi": "10.48550/arXiv.2509.18178",
+      "year": "2025"
+    },
+    {
+      "title": "PythonFOAM: In-situ data analyses with OpenFOAM and Python",
+      "doi": "10.48550/arXiv.2103.09389",
+      "year": "2021"
+    },
+    {
+      "title": "Learning physics-constrained SGS closures in small-data regime",
+      "doi": "10.48550/arXiv.2201.07347",
+      "year": "2022"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

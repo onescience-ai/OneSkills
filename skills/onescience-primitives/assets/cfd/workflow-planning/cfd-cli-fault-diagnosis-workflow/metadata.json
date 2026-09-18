@@ -1,0 +1,26 @@
+{
+  "name": "cfd-cli-fault-diagnosis-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T07:16:00Z",
+  "updated_at": "2026-09-17T07:16:00Z",
+  "description": "面向科学计算工作流中的命令行接口非交互执行场景，提供故障分类、退出码诊断、标准错误判读与恢复策略的通用方法框架；覆盖认证、沙箱、超时等常见故障类别，适用于CFD求解器、归因分析器等CLI工具的稳定性保障",
+  "tags": ["cli", "fault-diagnosis", "exit-code", "error-handling", "workflow-stability", "scientific-computing"],
+  "aliases": ["CLI故障诊断", "命令行错误处理", "非交互执行故障"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识，用于归因分析CLI未正常退出或未产生有效响应的诊断",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-17T07:16:00Z",
+      "location": "归因报告 CFD_S041 report.json 中的 optimization_plan 证据"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

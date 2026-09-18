@@ -1,0 +1,28 @@
+{
+  "name": "general-cli-execution-json-schema-validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T11:43:00Z",
+  "updated_at": "2026-09-17T11:43:00Z",
+  "description": "面向命令行工具执行和JSON模式验证的通用故障诊断与报告交付契约，涵盖非交互执行模式、退出码分类、标准错误解读以及JSON Schema验证的必填字段、任务身份、数组约束和输出格式规范",
+  "tags": ["CLI", "execution", "fault-classification", "JSON-Schema", "validation", "report-contract", "non-interactive", "exit-codes", "standard-error"],
+  "aliases": ["命令行工具执行", "JSON模式验证", "报告交付契约", "CLI故障诊断"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识；JSON Schema报告交付契约",
+  "evidence_papers": [
+    {"title": "Validation of Modern JSON Schema: Formalization and Complexity", "doi": "10.48550/arXiv.2307.10034", "year": 2024},
+    {"title": "Elimination of annotation dependencies in validation for Modern JSON Schema", "doi": "10.48550/arXiv.2503.11288", "year": 2025},
+    {"title": "Blaze: Compiling JSON Schema for 10x Faster Validation", "doi": "10.48550/arXiv.2503.02770", "year": 2025},
+    {"title": "Negation-Closure for JSON Schema", "doi": "10.48550/arXiv.2202.13434", "year": 2022},
+    {"title": "Witness Generation for JSON Schema", "doi": "10.48550/arXiv.2202.12849", "year": 2022},
+    {"title": "Not Elimination and Witness Generation for JSON Schema", "doi": "10.48550/arXiv.2104.14828", "year": 2021},
+    {"title": "Synthesizing JSON Schema Transformers", "doi": "10.48550/arXiv.2405.17681", "year": 2024}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

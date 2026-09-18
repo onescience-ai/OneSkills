@@ -1,0 +1,26 @@
+{
+  "name": "general-cli-workflow-error-handling",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T16:01:00Z",
+  "updated_at": "2026-09-17T16:01:00Z",
+  "description": "面向计算工作流自动化场景，提供CLI工具执行错误处理与故障恢复的最佳实践，覆盖任务状态管理、错误处理器系统和工作流恢复策略。",
+  "tags": ["CLI", "workflow", "error-handling", "fault-recovery", "task-management", "automation"],
+  "aliases": ["工作流错误处理", "CLI故障恢复", "任务状态管理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Taskblaster: a generic framework for automated computational workflows",
+      "doi": "10.1039/d5dd00097a",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

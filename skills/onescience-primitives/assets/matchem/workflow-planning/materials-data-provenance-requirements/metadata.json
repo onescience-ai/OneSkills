@@ -1,0 +1,28 @@
+{
+  "name": "materials-data-provenance-requirements",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "材料科学任务中数据可追溯性要求——所有材料结构数据必须来自可追溯的权威来源（Materials Project MP-xxx、ICSD编号、文献DOI），性能数据必须标注具体文献来源和测量条件。假设数据或典型值只能用于方法验证，不能作为正式结论依据。",
+  "tags": ["data-provenance", "materials-data", "Materials-Project", "ICSD", "traceability"],
+  "aliases": ["data-traceability", "materials-database", "citation-requirements"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "材料科学任务中数据可追溯性要求",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Materials Project Documentation",
+      "url": "https://docs.materialsproject.org/",
+      "publisher": "Materials Project",
+      "version": "2026",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

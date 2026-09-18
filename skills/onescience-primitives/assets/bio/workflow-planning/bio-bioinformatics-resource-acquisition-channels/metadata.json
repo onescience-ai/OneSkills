@@ -1,0 +1,17 @@
+{
+  "name": "bio-bioinformatics-resource-acquisition-channels",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:07:00Z",
+  "updated_at": "2026-09-16T18:07:00Z",
+  "description": "生物信息学数据集和模型权重的专业获取渠道，包括PDBbind、ModelScope、Zenodo、论文附属仓库等权威平台的访问方式和许可证信息。",
+  "tags": ["resource-acquisition", "datasets", "model-weights", "bioinformatics", "PDBbind", "Zenodo"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "生物信息学数据集和模型权重的专业获取渠道，如PDBbind、ModelScope、Zenodo、论文附属仓库等。",
+  "evidence_papers": [
+    {"title": "Molecular Embedding-Based Algorithm Selection in Protein-Ligand Docking", "doi": "10.1186/s13321-026-01168-8", "year": 2026}
+  ]
+}

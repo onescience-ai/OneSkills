@@ -1,0 +1,20 @@
+{
+  "name": "general-data-contract-specification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:20:00Z",
+  "updated_at": "2026-09-17T20:20:00Z",
+  "description": "面向科学数据管理任务，定义数据契约(data_contract.json)的标准字段规范，包括input_fields/target_fields的物理量定义、units的SI单位映射、coordinates的坐标系类型定义",
+  "tags": ["data-contract", "specification", "scientific-data", "metadata", "JSON-schema"],
+  "aliases": ["数据契约规范", "data contract specification", "dataset manifest"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience数据契约的标准字段规范",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

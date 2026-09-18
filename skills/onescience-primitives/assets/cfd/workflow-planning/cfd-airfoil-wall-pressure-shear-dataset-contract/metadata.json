@@ -1,0 +1,33 @@
+{
+  "name": "cfd-airfoil-wall-pressure-shear-dataset-contract",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:22:00Z",
+  "updated_at": "2026-09-17T12:22:00Z",
+  "description": "面向翼型壁面压力剪切与积分气动力联合反演任务，提供壁面压力系数、剪切应力、速度场数据的标准格式规范、数据契约要求及权威获取路径，支持数据接入阶段的格式校验与降级策略。",
+  "tags": ["airfoil", "wall-pressure", "shear-stress", "dataset-contract", "pressure-distribution", "inverse-problem"],
+  "aliases": ["airfoil-pressure-shear", "壁面压力剪切数据"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "翼型壁面压力剪切数据的权威来源、标准格式、数据契约规范，以及在ModelScope或其他数据平台上的正确数据集ID和获取方式",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "NASA Turbulence Modeling Resource - Airfoil Validation Cases",
+      "url": "https://turbmodels.larc.nasa.gov/airfoil.html",
+      "publisher": "NASA Langley Research Center",
+      "version": "2024",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "OpenFOAM Validation Guide - Incompressible Flow over Airfoil",
+      "url": "https://www.openfoam.com/documentation/guides/latest/doc/guide-tutorials.html",
+      "publisher": "OpenCFD Ltd",
+      "version": "11",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": []
+}

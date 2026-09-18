@@ -1,0 +1,39 @@
+{
+  "name": "cfd-orchestrator-planning-time-budget-management",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向CFD任务编排的orchestrator规划阶段时间预算管理规则，当规划阶段已消耗超过总预算50%时，应生成最小化execution-manifest.json并立即转入执行阶段，而非继续完善规划细节。提供规划阶段时间监控逻辑和强制转换规则，确保任务在预算内完成规划→执行转换。",
+  "tags": [
+    "cfd",
+    "orchestrator",
+    "planning",
+    "time-budget",
+    "execution-manifest",
+    "workflow-management",
+    "task-scheduling",
+    "edge:task:cfd-drivaernet-task-centric-knowledge"
+  ],
+  "aliases": [
+    "orchestrator planning time budget",
+    "execution manifest generation",
+    "planning phase timeout"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "orchestrator规划阶段时间预算管理规则——当规划阶段已消耗超过总预算50%时，应生成最小化execution-manifest.json并立即转入执行阶段",
+  "evidence_papers": [
+    {
+      "title": "A Formal Hierarchical Architecture for Agentic Orchestration with Stack-Based Execution and Lazy Discovery",
+      "doi": "2607.11138",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

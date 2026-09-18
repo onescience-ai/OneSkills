@@ -129,3 +129,7 @@
 [1] exit(3) - Linux manual page, Linux man-pages project, 2026-06-05, URL: https://www.kernel.org/doc/man-pages/online/pages/man3/exit.3.html
 [2] exit - terminate a process (POSIX.1-2017), The Open Group, IEEE Std 1003.1-2017, URL: https://pubs.opengroup.org/onlinepubs/9699919799/functions/exit.html
 [3] JSON Schema官方文档, JSON Schema, 2026, URL: https://json-schema.org/understanding-json-schema/
+[4] Evaluating LLM-Based 0-to-1 Software Generation in End-to-End CLI Tool Scenarios, Ruida Hu et al., arXiv:2604.06742, 2026
+[5] GUI vs. CLI: Execution Bottlenecks in Screen-Only and Skill-Mediated Computer-Use Agents, Xiao Zhou et al., arXiv:2606.24551, 2026
+[6] Learning CLI Agents with Structured Action Credit under Selective Observation, Haoyang Su et al., arXiv:2605.08013, 2026
+[7] CLI-Gym: Scalable CLI Task Generation via Agentic Environment Inversion, Yusong Lin et al., arXiv:2602.10999, 2026

@@ -16,7 +16,6 @@
     "u-net",
     "cfd",
     "cfd_s001",
-    "edge:workflow:cnn-airfoil-steady-flow-surrogate",
     "edge:task:cfd-data-ingestion-contract-validation-task",
     "edge:task:cfd-preprocessing-data-splitting-task",
     "edge:task:cfd-model-configuration-training-task",
@@ -36,16 +35,33 @@
     "slot:BATCH_SIZE:推理批大小",
     "slot:METRICS:验收指标",
     "slot:MAX_RELATIVE_L2:相对误差门限",
-    "slot:RUN_OOD_TEST:是否外推测试"
+    "slot:RUN_OOD_TEST:是否外推测试",
+    "edge:resource:workflow-planning/cnn-airfoil-steady-flow-surrogate"
   ],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "规则网格CNN翼型稳态流场代理预测场景知识补充",
   "evidence_papers": [
-    {"title": "DeepCFD: Efficient steady-state laminar flow approximation with deep convolutional neural networks", "doi": "arXiv:2004.08826", "year": 2020},
-    {"title": "A composable machine-learning approach for steady-state simulations on high-resolution grids", "doi": "", "year": null},
-    {"title": "A Hybrid CNN-Cheby-KAN Framework for Efficient Prediction of Two-Dimensional Airfoil Pressure Distribution", "doi": "arXiv:2511.03223", "year": 2025},
-    {"title": "Towards Interpretable Damage Detection based on Aerodynamic Pressure Measurements", "doi": "arXiv:2605.08187", "year": 2026}
+    {
+      "title": "DeepCFD: Efficient steady-state laminar flow approximation with deep convolutional neural networks",
+      "doi": "arXiv:2004.08826",
+      "year": 2020
+    },
+    {
+      "title": "A composable machine-learning approach for steady-state simulations on high-resolution grids",
+      "doi": "",
+      "year": null
+    },
+    {
+      "title": "A Hybrid CNN-Cheby-KAN Framework for Efficient Prediction of Two-Dimensional Airfoil Pressure Distribution",
+      "doi": "arXiv:2511.03223",
+      "year": 2025
+    },
+    {
+      "title": "Towards Interpretable Damage Detection based on Aerodynamic Pressure Measurements",
+      "doi": "arXiv:2605.08187",
+      "year": 2026
+    }
   ],
   "scenario_id": "CFD_S001"
 }

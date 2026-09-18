@@ -1,0 +1,31 @@
+{
+  "name": "cfd-data-type-applicability",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T02:40:00Z",
+  "updated_at": "2026-09-18T02:40:00Z",
+  "description": "CFD任务中数据类型选择与模型适配的边界知识，包括连续坐标采样数据与规则网格数据的适用范围、隐式神经场模型与传统卷积模型的匹配规则",
+  "tags": ["CFD", "数据类型", "连续坐标", "规则网格", "隐式神经场", "INR", "CNN"],
+  "aliases": ["数据适用性", "坐标采样", "网格数据"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "连续坐标采样数据与规则网格数据的适用边界知识",
+  "evidence_papers": [
+    {
+      "title": "Fast-forward prediction of lattice Boltzmann dynamics with physics-informed neural operators",
+      "doi": "10.1038/s41467-026-75730-1",
+      "year": 2026
+    },
+    {
+      "title": "Physics-informed convolutional neural networks for fluid flow through porous media",
+      "doi": "10.1038/s41598-026-55389-w",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

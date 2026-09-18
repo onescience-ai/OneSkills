@@ -1,0 +1,41 @@
+{
+  "name": "cfd-json-validation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T03:23:00Z",
+  "updated_at": "2026-09-18T03:23:00Z",
+  "description": "面向科学报告和配置文件的JSON输出格式化与校验，提供字符串转义规则、Schema校验最佳实践、自动校验机制，确保输出文件可被下游系统正确解析",
+  "tags": ["JSON", "validation", "schema", "escaping", "formatting", "scientific-report", "configuration"],
+  "aliases": ["json-format", "schema-validation", "output-validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON输出格式化与校验知识，包括字符串内特殊字符转义规则、JSON Schema校验最佳实践、输出前自动校验机制",
+  "evidence_papers": [
+    {
+      "title": "DOME: Recommendations for supervised machine learning validation in biology",
+      "doi": "10.48550/arXiv.2006.16189",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "RFC 8259 - The JavaScript Object Notation (JSON) Data Interchange Format",
+      "url": "https://www.rfc-editor.org/rfc/rfc8259",
+      "publisher": "IETF",
+      "version": "2017",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "JSON Schema Validation",
+      "url": "https://json-schema.org/draft/2020-12/json-schema-validation",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-18"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

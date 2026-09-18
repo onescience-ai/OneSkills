@@ -1,0 +1,51 @@
+{
+  "name": "general-cli-fault-classification-non-interactive-execution",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T13:43:00Z",
+  "updated_at": "2026-09-17T14:15:00Z",
+  "description": "面向命令行工具非交互执行场景，提供故障分类、退出码解读、沙箱超时处理与标准错误判读的方法，确保归因分析等自动化流程稳定完成并保留诊断证据。涵盖黑箱差分测试、自愈恢复框架与科学工作流 I/O 监控的最新实践。",
+  "tags": ["CLI", "non-interactive", "fault-classification", "exit-code", "timeout", "error-handling", "workflow-automation", "black-box-testing", "self-healing", "MAPE-K"],
+  "aliases": ["command-line interface fault", "CLI error handling", "non-interactive execution", "CLI fault tolerance"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Evaluating LLM-Based 0-to-1 Software Generation in End-to-End CLI Tool Scenarios",
+      "doi": "arXiv:2604.06742",
+      "year": 2026
+    },
+    {
+      "title": "When Web Apps Heal Themselves: A MAPE-K Based Approach to Fault Tolerance and Adaptive Recovery",
+      "doi": "arXiv:2605.19261",
+      "year": 2026
+    },
+    {
+      "title": "Low-level I/O Monitoring for Scientific Workflows",
+      "doi": "arXiv:2408.00411",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "Python subprocess module documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.12",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "POSIX standard exit codes",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/functions/exit.html",
+      "publisher": "IEEE/The Open Group",
+      "version": "2018",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,28 @@
+{
+  "name": "cfd-pde-data-preprocessing-standardization",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向PDE逆问题任务，提供数据预处理的标准流程，包括数据验证、单位统一、无泄漏切分和归一化规范，确保数据质量满足训练要求。",
+  "tags": ["PDE", "data preprocessing", "normalization", "validation", "splitting"],
+  "aliases": ["PDE数据预处理流程", "数据切分归一化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PDE数据预处理的标准流程，包括数据验证、单位统一、无泄漏切分和归一化规范",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "PDEBench Data Processing Guidelines",
+      "url": "https://pdebench.org/",
+      "publisher": "PDEBench Project",
+      "version": "2023",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

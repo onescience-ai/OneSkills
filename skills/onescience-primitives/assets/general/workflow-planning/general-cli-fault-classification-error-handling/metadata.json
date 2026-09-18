@@ -2,10 +2,10 @@
   "name": "general-cli-fault-classification-error-handling",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "visibility": "public",
   "created_at": "2026-09-17T00:04:00+08:00",
-  "updated_at": "2026-09-17T19:00:00+08:00",
+  "updated_at": "2026-09-17T22:52:00+08:00",
   "description": "面向命令行工具的非交互执行场景，提供进程退出码分类、标准错误诊断、超时处理、沙箱执行与故障恢复的通用方法论框架，支持跨语言跨平台的CLI错误处理与故障诊断",
   "tags": ["cli", "error-handling", "fault-classification", "exit-code", "timeout", "sandbox", "diagnostics"],
   "aliases": ["CLI故障分类", "命令行错误处理", "退出码诊断", "进程错误处理"],
@@ -65,6 +65,6 @@
     }
   ],
   "evidence_user": [],
-  "merged_batches": ["2026-09-17T00:00:00Z: modify for task 410 - CLI non-interactive execution fault classification", "2026-09-17T18:00:00Z: modify for task 92 - CLI non-interactive execution fault classification"],
+  "merged_batches": ["2026-09-17T00:00:00Z: modify for task 410 - CLI non-interactive execution fault classification", "2026-09-17T18:00:00Z: modify for task 92 - CLI non-interactive execution fault classification", "2026-09-17T22:52:00Z: modify for task 255 - CLI non-interactive execution fault classification"],
   "conflicts": []
 }

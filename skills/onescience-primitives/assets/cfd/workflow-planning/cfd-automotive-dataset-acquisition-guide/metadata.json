@@ -1,0 +1,26 @@
+{
+  "name": "cfd-automotive-dataset-acquisition-guide",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向汽车空气动力学CFD任务，提供公开数据集的获取方法、下载命令、数据格式说明和预处理要求，支持从模拟数据切换到真实CFD数据。",
+  "tags": ["automotive", "CFD", "dataset", "DrivAerNet", "Ahmed body", "WindsorML", "open source", "download"],
+  "aliases": ["DrivAerNet", "Ahmed body", "WindsorML", "car aerodynamics dataset"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "公开汽车CFD数据集的获取知识，包括DrivAerNet、Ahmed body、WindsorML等数据集的存储位置、下载方法、数据格式、许可证信息以及数据预处理要求。",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "task_execution_report",
+      "provided_at": "2026-09-17",
+      "location": "E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-cfd\\CFD_S012\\report.json"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

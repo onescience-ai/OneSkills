@@ -1,0 +1,36 @@
+{
+  "name": "cfd-multi-fidelity-task-preparation-degradation-strategy",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T04:28:00Z",
+  "updated_at": "2026-09-18T04:28:00Z",
+  "description": "面向CFD多保真代理模型任务执行前的准备与降级策略，包括数据获取渠道检查、计算环境配置、可行性评估方法以及任务阻塞时的降级执行方案；覆盖UIUC翼型数据库访问、XFOIL工具使用、Python科学计算栈配置、模拟数据生成等核心知识点，支持任务从规划到执行的完整路径规划",
+  "tags": ["task-preparation", "degradation-strategy", "data-acquisition", "computational-environment", "feasibility-assessment", "CFD", "multi-fidelity", "UIUC", "XFOIL", "Python-scipy"],
+  "aliases": ["任务准备", "降级策略", "数据获取", "环境配置", "可行性评估"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD多保真代理模型任务执行前的准备知识，包括数据获取渠道、计算环境配置、可行性评估方法和降级执行策略",
+  "evidence_papers": [
+    {
+      "title": "A Multi-fidelity Double-Delta Wing Dataset and Empirical Scaling Laws for GNN-based Aerodynamic Field Surrogate",
+      "doi": "arXiv:2512.20941v1",
+      "year": 2025
+    },
+    {
+      "title": "Bayesian and non-Bayesian multi-fidelity surrogate models for multi-objective aerodynamic optimization under extreme cost imbalance",
+      "doi": "arXiv:2505.17279v1",
+      "year": 2025
+    },
+    {
+      "title": "Deep Learning for Multi-Fidelity Aerodynamic Distribution Modeling from Experimental and Simulation Data",
+      "doi": "arXiv:2109.12966v2",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

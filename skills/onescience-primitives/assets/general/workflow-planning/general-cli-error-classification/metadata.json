@@ -1,0 +1,31 @@
+{
+  "name": "general-cli-error-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T19:07:00Z",
+  "updated_at": "2026-09-17T19:07:00Z",
+  "description": "面向命令行接口（CLI）程序的非交互执行场景，提供故障分类、退出码语义解读与错误恢复策略。适用于需要在自动化流水线、CI/CD 或远程作业调度中可靠执行 CLI 工具并诊断其失败原因的场景。核心方法包括：退出码分类（0=成功，1=通用错误，2=用法错误，126-199=信号终止）、标准错误流解析、超时与资源限制检测、沙箱环境隔离验证。输出为结构化故障诊断报告与修复建议。",
+  "tags": ["CLI", "command line interface", "exit code", "error classification", "non-interactive", "failure diagnosis", "automation", "CI/CD", "error handling", "fault recovery"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "GNU Bash Manual - Exit Status",
+      "url": "https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html",
+      "publisher": "GNU Project",
+      "version": "5.2",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Linux System Calls Manual - exit(2)",
+      "url": "https://man7.org/linux/man-pages/man2/exit.2.html",
+      "publisher": "Linux man-pages project",
+      "version": "6.0",
+      "accessed_at": "2026-09-17"
+    }
+  ]
+}

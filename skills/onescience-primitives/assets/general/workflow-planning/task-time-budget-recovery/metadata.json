@@ -1,0 +1,20 @@
+{
+  "name": "task-time-budget-recovery",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T23:07:00Z",
+  "updated_at": "2026-09-17T23:07:00Z",
+  "description": "面向任务执行时间管理，提供任务时间预算分配策略（各步骤的时间配额）、超时恢复的标准流程（检查点保存、断点续跑）、推理阶段的输入输出契约。适用于需要管理长时间运行任务、避免超时中断的场景。",
+  "tags": ["time-budget", "timeout-recovery", "checkpoint", "task-management", "workflow", "recovery"],
+  "aliases": ["time budget allocation", "timeout recovery", "checkpoint save"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "任务时间预算分配与超时恢复流程",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -11,8 +11,8 @@
     "protein-dataset",
     "CAFA",
     "UniProtKB",
-    "edge:resource:bio/datasets/bio-cafa-dataset",
-    "edge:resource:bio/datasets/bio-uniprotkb-reference",
+    "edge:resource:datasets/bio-cafa-dataset",
+    "edge:resource:datasets/bio-uniprotkb-reference",
     "edge:workflow:bio-fewshot-protein-function-prediction-workflow"
   ],
   "harvested": true,

@@ -1,6 +1,6 @@
 {
   "name": "bio-go-ontology-validator",
-  "type": "component",
+  "type": "tool",
   "domain": "bio",
   "version": "1.0.0",
   "visibility": "public",

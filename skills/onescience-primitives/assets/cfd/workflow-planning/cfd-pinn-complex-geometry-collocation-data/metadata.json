@@ -1,0 +1,56 @@
+{
+  "name": "cfd-pinn-complex-geometry-collocation-data",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T01:00:00Z",
+  "updated_at": "2026-09-18T01:00:00Z",
+  "description": "面向物理信息神经网络（PINN）在复杂几何边界条件下的训练数据生成与管理，定义标准化数据格式、必需字段、无网格配点生成方法及公开数据源。适用于需要为CFD领域PINN模型准备包含复杂几何边界和配点坐标的训练数据集的场景，包括几何边界表示（STL/网格/隐式表示）、配点坐标生成（随机采样/残差自适应采样）、数据契约定义及验证。核心方法包括：几何数据获取、配点生成算法、数据格式标准化、数据质量验证。基于DeepXDE库实现及CFD领域实践。",
+  "tags": ["PINN", "complex geometry", "boundary conditions", "meshless collocation", "collocation points", "data generation", "CFD", "mesh-free", "STL", "implicit representation", "adaptive sampling", "residual-based sampling"],
+  "aliases": ["hard constraint PINN", "complex boundary data", "no-mesh collocation data"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "复杂几何边界与无网格配点数据集的标准化格式、必需字段、典型生成流程或公开数据源",
+  "evidence_papers": [
+    {
+      "title": "Physics-informed convolutional neural networks for fluid flow through porous media",
+      "doi": "10.1038/s41598-026-55389-w",
+      "year": 2026
+    },
+    {
+      "title": "Peristaltic transport and thermodynamic analysis of hybrid nanofluids in porous media using physics-informed neural networks",
+      "doi": "10.1186/s11671-026-04694-4",
+      "year": 2026
+    },
+    {
+      "title": "The finite element neural network method to simulate two dimensional partial differential equations and perform parameter identification",
+      "doi": "10.1038/s41598-026-46707-3",
+      "year": 2026
+    },
+    {
+      "title": "Simulation of spin dephasing in arbitrary susceptibility fields using physics-informed neural networks",
+      "doi": "10.1103/wdrv-v6pj",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "DeepXDE: A deep learning library for solving differential equations",
+      "url": "https://github.com/lululxvi/deepxde",
+      "publisher": "GitHub Repository",
+      "version": "master branch",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "DeepXDE Documentation - Complex Domain Geometries",
+      "url": "https://deepxde.readthedocs.io",
+      "publisher": "ReadTheDocs",
+      "version": "latest",
+      "accessed_at": "2026-09-18"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

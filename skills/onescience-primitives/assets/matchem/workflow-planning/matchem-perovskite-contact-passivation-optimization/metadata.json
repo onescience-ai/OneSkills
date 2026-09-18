@@ -1,0 +1,43 @@
+{
+  "name": "matchem-perovskite-contact-passivation-optimization",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向钙钛矿太阳能电池体系，通过DFT计算筛选与实验验证相结合的流程，设计、评估并优化接触界面钝化方案，以提升光电转换效率与长期运行稳定性。覆盖从缺陷识别、分子设计、吸附能计算、能级对齐分析到J-V性能表征与ISOS标准稳定性测试的完整管线。",
+  "tags": [
+    "perovskite",
+    "solar-cell",
+    "passivation",
+    "DFT",
+    "contact-engineering",
+    "defect-passivation",
+    "molecular-design",
+    "adsorption-energy",
+    "energy-level-alignment",
+    "stability-testing",
+    "ISOS-standard",
+    "J-V-characterization",
+    "matchem",
+    "workflow-planning"
+  ],
+  "aliases": [
+    "perovskite passivation DFT",
+    "contact passivation optimization",
+    "interface passivation solar cell",
+    "defect passivation perovskite"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "平面钙钛矿太阳能电池接触钝化优化相关知识（器件设计表标准、界面钝化方案制备方法、性能表征方法、方案优先级评估、钝化机理与分子设计原则、DFT计算工具调用与结果解释）",
+  "evidence_papers": [
+    {"title": "Defect passivation in methylammonium/bromine free inverted perovskite solar cells using charge-modulated molecular bonding", "doi": "10.1038/s41467-024-45228-9", "year": 2024},
+    {"title": "Rational molecular design of multifunctional self-assembled monolayers for efficient hole selection and buried interface passivation in inverted perovskite solar cells", "doi": "10.1039/d3sc05485c", "year": 2024},
+    {"title": "Achievements, challenges, and future prospects for industrialization of perovskite solar cells", "doi": "10.1038/s41377-024-01461-x", "year": 2024},
+    {"title": "Stability of perovskite solar cells: issues and prospects", "doi": "10.1039/d2ra05903g", "year": 2023},
+    {"title": "Anion optimization for bifunctional surface passivation in perovskite solar cells", "doi": "10.1038/s41563-023-01705-y", "year": 2023},
+    {"title": "Efficient and Stable Perovskite Solar Cells by Tailoring of Interfaces", "doi": "10.1002/adma.202211324", "year": 2023}
+  ]
+}

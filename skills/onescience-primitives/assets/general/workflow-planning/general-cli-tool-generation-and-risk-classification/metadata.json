@@ -1,0 +1,36 @@
+{
+  "name": "general-cli-tool-generation-and-risk-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T01:00:00Z",
+  "updated_at": "2026-09-18T01:00:00Z",
+  "description": "面向命令行工具的自动化生成与风险分类场景，提供从需求到可执行工具的完整生成方法论，以及基于机器学习的命令风险识别与拦截框架，覆盖沙箱执行、多层等价性验证和自然语言接口设计。",
+  "tags": ["CLI", "tool-generation", "risk-classification", "LLM", "sandboxes", "natural-language-interface", "automation"],
+  "aliases": ["CLI工具生成", "命令风险分类", "自然语言CLI", "自动化工具开发"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Evaluating LLM-Based 0-to-1 Software Generation in End-to-End CLI Tool Scenarios",
+      "doi": "arXiv:2604.06742",
+      "year": 2026
+    },
+    {
+      "title": "Command-line Risk Classification using Transformer-based Neural Architectures",
+      "doi": "arXiv:2412.01655",
+      "year": 2024
+    },
+    {
+      "title": "EQSANS-CLI: A natural-language, agent-ready command-line tool for small-angle neutron scattering data reduction at EQ-SANS",
+      "doi": "arXiv:2605.00651",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

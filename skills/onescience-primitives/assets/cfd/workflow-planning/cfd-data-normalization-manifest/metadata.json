@@ -1,0 +1,20 @@
+{
+  "name": "cfd-data-normalization-manifest",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:21:00Z",
+  "updated_at": "2026-09-17T20:21:00Z",
+  "description": "面向CFD数据预处理任务，定义数据无量纲化标准方法（基于特征速度、特征长度的Reynolds数无量纲化）以及train/val/test manifest的字段规范（样本ID列表、切分依据、随机种子记录）",
+  "tags": ["normalization", "manifest", "CFD", "data-split", "non-dimensionalization", "Reynolds-number"],
+  "aliases": ["数据无量纲化", "data normalization", "train validation test split"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD数据无量纲化的标准方法以及train/val/test manifest的字段规范",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,26 @@
+{
+  "name": "climate-forecast-spatiotemporal-alignment",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T04:00:00Z",
+  "updated_at": "2026-09-18T04:00:00Z",
+  "description": "面向气象预报任务的数据时空对齐规范，定义时间轴UTC对齐、空间坐标统一、气象变量标准单位、质量标志编码和缺测处理策略，确保多源气象数据在时空维度上可比较、可复现",
+  "tags": ["weather-forecast", "spatiotemporal-alignment", "data-preprocessing", "quality-flags", "missing-data"],
+  "aliases": ["时空对齐", "数据预处理", "质量标志", "spatiotemporal alignment", "data preprocessing"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象数据时空对齐的标准化流程规范，包括时间轴UTC对齐、空间坐标统一、气象变量标准单位和缺测处理策略",
+  "evidence_papers": [
+    {"title": "The Modern-Era Retrospective Analysis for Research and Applications, Version 2 (MERRA-2)", "doi": "10.1175/jcli-d-16-0758.1", "year": "2017"},
+    {"title": "Climatologies at high resolution for the earth's land surface areas", "doi": "10.1038/sdata.2017.122", "year": "2017"},
+    {"title": "The FLUXNET2015 dataset and the ONEFlux processing pipeline for eddy covariance data", "doi": "10.1038/s41597-020-0534-3", "year": "2020"}
+  ],
+  "evidence_docs": [
+    {"title": "WMO Guide to Meteorological Instruments and Methods of Observation (CIMO Guide)", "url": "https://library.wmo.int/idurl/4/68698", "publisher": "WMO", "version": "WMO-No. 8", "accessed_at": "2026-09-18"}
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

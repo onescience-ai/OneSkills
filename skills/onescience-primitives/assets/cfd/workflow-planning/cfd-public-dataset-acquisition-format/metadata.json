@@ -1,0 +1,27 @@
+{
+  "name": "cfd-public-dataset-acquisition-format",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向CFD缺失区补全与压缩任务，获取公开基准数据集并定义数据契约。提供NASA翼型数据、圆柱绕流CFD数据等公开数据源的访问路径、下载接口、格式规范（NetCDF/HDF5/CSV）和数据契约模板，确保数据规模满足生成模型训练需求。适用于需要真实CFD数据进行方法演示和验证的场景。",
+  "tags": ["cfd", "dataset", "public", "benchmark", "airfoil", "cylinder", "NASA", "UIUC", "data-acquisition", "data-contract"],
+  "aliases": ["公开CFD数据集", "基准数据集获取", "CFD数据契约"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD公开数据集的获取路径、下载接口与格式规范",
+  "evidence_papers": [
+    {"title": "A Neural Network-Based Mesh Quality Indicator for Three-Dimensional Cylinder Modelling", "doi": "10.3390/e24091245", "year": 2022},
+    {"title": "Computational Fluid Dynamics (CFD) applications in Floating Offshore Wind Turbine (FOWT) dynamics: A review", "doi": "10.1016/j.apor.2024.104075", "year": 2024}
+  ],
+  "evidence_docs": [
+    {"title": "UIUC Airfoil Data Site", "url": "https://m-selig.ae.illinois.edu/ads/coord_database.html", "publisher": "University of Illinois at Urbana-Champaign", "version": null, "accessed_at": "2026-09-17"},
+    {"title": "NASA Turbulence Modeling Resource", "url": "https://turbmodels.larc.nasa.gov/", "publisher": "NASA Langley Research Center", "version": null, "accessed_at": "2026-09-17"},
+    {"title": "3D Cylinder Mesh Benchmark Dataset", "url": "https://github.com/MeshDataset/3D-Cylinder", "publisher": "GitHub", "version": null, "accessed_at": "2026-09-17"}
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,20 @@
+{
+  "name": "matchem-force-field-validation",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:23:00Z",
+  "updated_at": "2026-09-16T18:23:00Z",
+  "description": "面向分子动力学力场验证任务，建立力场参数验证方法，确保LJ参数来源可靠、水模型选择合理、CO2力场指标达标、Cu表面力场验证充分。",
+  "tags": ["force field validation", "LJ parameters", "water model", "CO2 force field", "Cu surface"],
+  "aliases": ["force field verification", "MD force field check"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "分子动力学力场验证方法，包括LJ参数来源验证、水模型选择标准、CO2力场验证指标、Cu表面力场验证方法",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

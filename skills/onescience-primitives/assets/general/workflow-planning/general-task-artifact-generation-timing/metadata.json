@@ -1,0 +1,20 @@
+{
+  "name": "general-task-artifact-generation-timing",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向任务执行过程中产物生成的具体要求和时机，提供各步骤产物的生成条件、格式规范和完整性检查机制。适用于需要按步骤生成产物文件的多阶段工作流，确保每个步骤完成后生成对应的产物文件。核心方法包括：步骤产物映射、生成时机定义、完整性校验和缺失产物处理。输出为任务产物目录包含所有必需文件。",
+  "tags": ["task-artifact", "artifact-generation", "workflow-execution", "product-completeness", "step-artifact-mapping"],
+  "aliases": ["任务产物生成", "产物时机", "步骤产物"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "任务产物生成的具体要求和时机",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

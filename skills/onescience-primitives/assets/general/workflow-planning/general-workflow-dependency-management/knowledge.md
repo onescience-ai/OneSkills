@@ -98,6 +98,12 @@ s04_probability_calibration → s05_independent_verification → s06_delivery
 | 依赖缺失 | 补充依赖定义 | 添加占位步骤 |
 | 执行失败 | 重试或跳过 | 降级执行 |
 
+#### OneScience工作流阶段推进规则（CFD_S087补充）
+- **BLOCKED状态处理**：当某一executor_step返回BLOCKED时，编排器应根据依赖关系决定是否跳过后续步骤并标记所有依赖步骤为BLOCKED
+- **中间状态保存**：同时将中间状态写入execution-manifest.json；不应在失败步骤上无限重试导致超时
+- **依赖阻塞关系**：检查task_state.json中所有步骤状态是否正确反映依赖阻塞关系
+- **manifest生成**：超时前必须确保execution-manifest.json已写入以保存中间状态
+
 ### 分支条件
 - 若存在循环依赖：报错并要求重新设计
 - 若依赖缺失：添加默认依赖或询问用户

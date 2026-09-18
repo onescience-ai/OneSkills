@@ -1,0 +1,19 @@
+{
+  "name": "cfd-public-datasets",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18",
+  "updated_at": "2026-09-18",
+  "description": "面向CFD神经PDE求解器，提供公开CFD数据集的获取渠道、数据格式、变量定义和使用规范，确保模型训练和验证基于真实物理数据",
+  "tags": ["dataset", "benchmark", "turbulence", "airfoil", "CFD-data"],
+  "aliases": ["CFD数据集", "公开数据集", "基准数据集"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "公开CFD数据集获取渠道与数据契约规范",
+  "evidence_papers": [
+    {"title": "Fast-forward prediction of lattice Boltzmann dynamics with physics-informed neural operators", "doi": "10.1038/s41467-026-75730-1", "year": 2026},
+    {"title": "A Second-Order Network Structure Based on Gradient-Enhanced Physics-Informed Neural Networks for Solving Parabolic Partial Differential Equations", "doi": "10.3390/e25040674", "year": 2023}
+  ]
+}

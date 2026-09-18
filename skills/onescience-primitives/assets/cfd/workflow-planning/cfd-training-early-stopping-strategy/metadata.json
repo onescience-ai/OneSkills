@@ -1,0 +1,28 @@
+{
+  "name": "cfd-training-early-stopping-strategy",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T13:59:00Z",
+  "updated_at": "2026-09-17T13:59:00Z",
+  "description": "面向深度学习模型训练任务，定义训练轮数与早停策略的关系，包括patience参数设置、收敛判断和最优checkpoint选择方法",
+  "tags": ["early-stopping", "training-epochs", "convergence", "model-training", "hyperparameter"],
+  "aliases": ["patience-training", "epoch-stopping", "training-strategy"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "训练轮数与早停策略的关系（early_stopping_patience=15时epochs应足够大）",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "PyTorch Early Stopping Examples",
+      "url": "https://pytorch.org/tutorials/beginner/saving_loading_models.html",
+      "publisher": "PyTorch",
+      "version": "v2.14",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

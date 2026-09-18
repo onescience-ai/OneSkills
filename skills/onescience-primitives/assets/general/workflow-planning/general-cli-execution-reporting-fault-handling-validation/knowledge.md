@@ -64,12 +64,38 @@
 - 使用 subprocess.CompletedProcess 检查 returncode 属性判断执行状态。
 - 使用 JSON Schema validate() 函数验证报告符合 schema 定义。
 - 确保 type 关键字正确指定数据类型（string/number/boolean/array/object/null）。
+- 验证报告 JSON 可被标准 JSON 解析器解析（无语法错误）。
+- 检查报告是否包含额外顶层字段（如归因报告中的'responsibility_attribution'字段）。
+
+## 具体故障诊断步骤
+
+### CLI 执行故障诊断
+1. **检查退出码**：
+   - 退出码 0：执行成功
+   - 退出码 1-125：应用程序特定错误
+   - 退出码 126：命令文件不可执行
+   - 退出码 127：命令未找到
+   - 退出码 128+N：被信号 N 终止（如 137 = 被 SIGKILL 终止）
+2. **检查标准错误输出**：分析 stderr 中的错误信息
+3. **检查超时**：如果设置了超时，检查是否因超时被终止
+4. **检查资源限制**：检查内存、磁盘空间、进程数限制
+5. **检查环境变量**：检查必要的环境变量是否设置
+
+### JSON Schema 验证故障诊断
+1. **字段缺失**：检查报告是否包含所有 required 字段
+2. **字段类型错误**：检查字段类型是否符合 schema 定义
+3. **额外字段**：检查是否有 schema 中未定义的额外顶层字段
+4. **嵌套结构错误**：检查嵌套对象是否符合嵌套 schema
+5. **数组约束错误**：检查数组是否满足 minItems、maxItems、uniqueItems 约束
+6. **格式错误**：检查字符串字段是否符合 format 约束（如 date-time、email 等）
 
 ## 回退策略
 - 如果 CLI 命令无法执行，尝试简化命令或使用替代工具。
 - 如果报告生成失败，使用模板或默认值填充字段。
 - 如果契约验证失败，回退到更宽松的验证规则或手动修复。
 - 如果故障分类不确定，记录所有可用信息供人工分析。
+- 如果报告包含额外顶层字段，根据 schema 定义决定是否忽略或拒绝。
+- 如果 JSON 解析失败，检查转义字符和编码问题。
 
 ## 资源召回建议
 当遇到以下情况时召回本卡片：
@@ -84,6 +110,52 @@
 [D2] POSIX.1-2017: Exit status, The Open Group, 版本 POSIX.1-2017, URL: https://pubs.opengroup.org/onlinepubs/9699919799/functions/exit.html（accessed_at 2026-09-16，权威文档）
 [D3] Python subprocess Module Documentation, Python Software Foundation, 版本 Python 3.14.7, URL: https://docs.python.org/3/library/subprocess.html（accessed_at 2026-09-17，权威文档）覆盖 subprocess.run()、CompletedProcess、TimeoutExpired、CalledProcessError、returncode 语义
 [D4] JSON Schema Type-specific Keywords, JSON Schema Organization, 版本 2020-12, URL: https://json-schema.org/understanding-json-schema/reference/type（accessed_at 2026-09-17，权威文档）覆盖 type 关键字定义、数据类型映射、required 属性
+[D6] Bash Reference Manual: Exit Status, GNU Project, 版本 5.2, URL: https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html（accessed_at 2026-09-18，权威文档）覆盖 shell 命令退出码语义、信号终止、命令未找到/不可执行状态
+[D7] jsonschema — Schema Validation, jsonschema community / Julian Berman, 版本 4.26.0, URL: https://python-jsonschema.readthedocs.io/en/stable/validate/（accessed_at 2026-09-18，权威文档）覆盖 validate() 函数、Validator 协议、类型检查、格式验证
 
 ## 证据来源
 无论文证据。本卡片基于权威文档和最佳实践生成。
+[D6] Bash Reference Manual: Exit Status, GNU Project, 版本 5.2, URL: https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html
+[D7] jsonschema — Schema Validation, jsonschema community / Julian Berman, 版本 4.26.0, URL: https://python-jsonschema.readthedocs.io/en/stable/validate/
+
+## 批次补充
+
+### batch-2026-09-17-update-cli-schema-diagnostics
+
+来源：归因报告问题分析（任务ID:10，RNA三维靶结构的群智能反向折叠）
+
+**具体故障诊断步骤补充**：
+1. **CLI 执行故障诊断**：补充了退出码分类、标准错误输出分析、超时检查、资源限制检查、环境变量检查等具体步骤
+2. **JSON Schema 验证故障诊断**：补充了字段缺失、字段类型错误、额外字段、嵌套结构错误、数组约束错误、格式错误等具体诊断方法
+3. **回退策略补充**：增加了对额外顶层字段和JSON解析失败的处理建议
+
+### batch-2026-09-17-supplement-sys-exit-semantics
+
+来源：基于 Python sys.exit 文档补充退出码语义（任务ID:348，Pt单原子异质结构碱性析氢优化归因报告知识补充）
+
+**sys.exit 退出码语义补充**：
+1. **退出码 0**：表示成功终止（successful termination）。
+2. **退出码 1-125**：表示异常终止（abnormal termination），具体含义由应用程序定义。
+3. **退出码 126**：表示命令文件不可执行（command not executable）。
+4. **退出码 127**：表示命令未找到（command not found）。
+5. **退出码 128+N**：表示进程被信号 N 终止（如 137 = 被 SIGKILL 终止）。
+6. **特殊退出码**：`sys.exit("some error message")` 会打印错误消息到 stderr 并返回退出码 1。
+7. **对象参数**：如果传递非整数对象，`None` 等价于 0，其他对象会被打印到 stderr 并返回退出码 1。
+8. **范围限制**：大多数系统要求退出码在 0-127 范围内，超出范围会产生未定义结果。
+9. **异常机制**：`sys.exit()` 最终引发 `SystemExit` 异常，仅在主线程中调用时才会退出进程。
+10. **清理操作**：`try` 语句的 `finally` 子句指定的清理操作会被执行。
+
+**补充证据**：
+[D5] Python sys Module Documentation, Python Software Foundation, 版本 Python 3.14.7, URL: https://docs.python.org/3/library/sys.html#sys.exit（accessed_at 2026-09-17，权威文档）覆盖 sys.exit() 函数、退出码语义、SystemExit 异常
+
+### batch-2026-09-18-supplement-bash-jsonschema-docs
+
+来源：基于 Bash 退出状态文档和 jsonschema 验证文档补充（任务ID:358，催化反应机器学习势主动学习与增强采样归因报告知识补充）
+
+**补充内容**：
+1. **Bash 退出状态语义**：补充了 shell 命令退出码的详细语义，包括成功（0）、失败（1-255）、信号终止（128+N）、命令未找到（127）、命令不可执行（126）等。
+2. **jsonschema 验证函数**：补充了 validate() 函数的使用方法、Validator 协议、类型检查、格式验证等具体实现细节。
+
+**补充证据**：
+[D6] Bash Reference Manual: Exit Status, GNU Project, 版本 5.2, URL: https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html（accessed_at 2026-09-18，权威文档）覆盖 shell 命令退出码语义、信号终止、命令未找到/不可执行状态
+[D7] jsonschema — Schema Validation, jsonschema community / Julian Berman, 版本 4.26.0, URL: https://python-jsonschema.readthedocs.io/en/stable/validate/（accessed_at 2026-09-18，权威文档）覆盖 validate() 函数、Validator 协议、类型检查、格式验证

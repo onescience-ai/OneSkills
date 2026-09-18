@@ -1,0 +1,35 @@
+{
+  "name": "cfd-pde-data-acquisition-offline-access",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向PDE逆问题任务，提供观测数据集的获取途径与离线访问策略，涵盖PDEBench、DeepXDE等公开数据集的本地缓存机制和备用下载渠道，确保在网络受限环境下仍能获取训练数据。",
+  "tags": ["PDE", "inverse problem", "data acquisition", "offline access", "PDEBench", "DeepXDE"],
+  "aliases": ["PDEBench数据获取", "DeepXDE数据本地缓存"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PDE观测数据集的获取途径与离线访问策略，包括PDEBench、DeepXDE等公开数据集的本地缓存机制和备用下载渠道",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "PDEBench: An Extensible Benchmark for Scientific Machine Learning",
+      "url": "https://pdebench.org/",
+      "publisher": "PDEBench Project",
+      "version": "2023",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "DeepXDE: A Deep Learning Library for Solving Differential Equations",
+      "url": "https://deepxde.readthedocs.io/",
+      "publisher": "DeepXDE Project",
+      "version": "2023",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,20 @@
+{
+  "name": "cfd-multiscale-turbulence-dataset-validation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:34:00Z",
+  "updated_at": "2026-09-17T20:34:00Z",
+  "description": "面向多尺度湍流数据集获取与验证的流程规范，涵盖公开DNS/LES数据库使用、数据契约验证方法、真实湍流数据特征识别，适用于CFD湍流闭合模型训练与验证",
+  "tags": ["turbulence", "DNS", "LES", "dataset-validation", "data-quality", "multi-scale", "cfd", "turbulence-database"],
+  "aliases": ["湍流数据集", "DNS数据库", "LES数据库", "多尺度湍流", "数据验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多尺度湍流数据集获取与验证知识，包括公开DNS/LES数据库、数据契约验证方法、真实湍流数据特征识别",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": ["CFD_S079-2026-09-17"],
+  "conflicts": []
+}

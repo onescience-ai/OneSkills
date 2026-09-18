@@ -1,0 +1,21 @@
+{
+  "name": "bio-pepflow-model",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T17:25:00Z",
+  "updated_at": "2026-09-15T17:25:00Z",
+  "description": "PepFlow模型是基于多模态条件流匹配（CFM）的全原子肽类设计生成模型，专注于靶标特异性肽设计。模型通过学习肽序列、结构和表面的联合分布，实现全原子肽的精细设计。适用于蛋白质受体结合肽设计、固定骨架序列设计和侧链包装等任务。",
+  "tags": ["peptide-design", "flow-matching", "generative-model", "bioinformatics", "drug-discovery", "PepFlow", "full-atom"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PepFlow模型的技术原理、输入输出契约、使用方法和适用条件",
+  "evidence_papers": [
+    {
+      "title": "Full-Atom Peptide Design based on Multi-modal Flow Matching",
+      "doi": "10.48550/arXiv.2406.00735",
+      "year": 2024
+    }
+  ]
+}

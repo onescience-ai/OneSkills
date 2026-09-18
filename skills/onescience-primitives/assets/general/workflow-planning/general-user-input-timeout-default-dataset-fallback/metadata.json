@@ -1,0 +1,20 @@
+{
+  "name": "general-user-input-timeout-default-dataset-fallback",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向任务编排系统中用户输入超时的处理策略，提供超时检测机制、默认数据集降级条件和自动恢复流程。适用于需要用户确认数据来源、执行模式或验收阈值的场景，当用户响应超时时自动使用内置demo案例作为默认数据集继续执行。核心方法包括：超时阈值设置、默认数据集选择条件、降级执行与状态恢复。输出为任务在用户无响应时仍能进入执行阶段。",
+  "tags": ["user-input", "timeout", "default-dataset", "fallback", "workflow-orchestration", "auto-recovery", "demo-dataset"],
+  "aliases": ["用户输入超时", "默认数据集降级", "超时自动执行"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "用户输入超时处理策略和默认数据集使用条件",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

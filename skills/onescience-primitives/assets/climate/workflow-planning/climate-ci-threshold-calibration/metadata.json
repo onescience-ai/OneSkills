@@ -1,0 +1,19 @@
+{
+  "name": "climate-ci-threshold-calibration",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T10:30:00Z",
+  "updated_at": "2026-09-17T10:40:00Z",
+  "description": "面向对流初生概率预测，选择或设计满足检测性能要求的阈值校准方法。适用于需要从概率输出中确定二分类阈值的场景。核心方法包括：ROC曲线分析、F1-score最大化、Youden指数、自适应阈值算法。输出为校准后的阈值与性能指标。",
+  "tags": ["threshold calibration", "convection initiation", "ROC curve", "F1-score", "Youden index", "adaptive threshold", "probability calibration", "binary classification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "对流初生概率的典型范围和阈值选择方法；自适应阈值调整算法；概率校准技术。",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

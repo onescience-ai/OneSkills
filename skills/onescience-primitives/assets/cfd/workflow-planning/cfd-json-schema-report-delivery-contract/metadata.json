@@ -1,0 +1,26 @@
+{
+  "name": "cfd-json-schema-report-delivery-contract",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T18:40:00Z",
+  "description": "JSON Schema报告交付契约，规定必填字段、任务身份、数组约束及输出格式，覆盖科学计算报告的结构验证和错误处理。",
+  "tags": ["JSON Schema", "报告交付", "结构验证", "错误处理", "科学计算", "数据契约"],
+  "aliases": ["报告契约", "Schema验证", "输出格式"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {"title": "SciSchema.org: A Multidisciplinary Collection of Schemas for Structured Scientific Process Descriptions", "doi": "10.48550/arXiv.2607.27955", "year": "2026"},
+    {"title": "MetaConfigurator: AI-Assisted RDF Authoring from JSON Data", "doi": "10.48550/arXiv.2606.07094", "year": "2026"},
+    {"title": "ToolFactory: Automating Tool Generation by Leveraging LLM to Understand REST API Documentations", "doi": "10.48550/arXiv.2501.16945", "year": "2025"}
+  ],
+  "evidence_docs": [
+    {"title": "JSON Schema - Type-specific Keywords", "url": "https://json-schema.org/understanding-json-schema/reference/type", "publisher": "JSON Schema", "version": "draft-07", "accessed_at": "2026-09-17"}
+  ],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-17补充开源文档证据"],
+  "conflicts": []
+}

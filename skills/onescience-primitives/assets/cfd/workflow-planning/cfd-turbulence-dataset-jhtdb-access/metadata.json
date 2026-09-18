@@ -1,0 +1,28 @@
+{
+  "name": "cfd-turbulence-dataset-jhtdb-access",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+ "created_at": "2026-09-17T22:22:00Z",
+  "updated_at": "2026-09-17T22:22:00Z",
+  "description": "面向湍流数据集获取，定义公开湍流数据集（如 JHTDB）的获取方式和数据格式，包括访问接口、数据结构、下载方法等，确保数据获取可复现。",
+  "tags": ["turbulence", "dataset", "JHTDB", "data-access", "CFD", "open-data"],
+  "aliases": ["JHTDB access", "Johns Hopkins Turbulence Database"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "公开湍流数据集（如 JHTDB）的获取方式和数据格式",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Johns Hopkins Turbulence Database (JHTDB)",
+      "url": "https://turbulence.pha.jhu.edu/",
+      "publisher": "Johns Hopkins University",
+      "version": "2026",
+      "accessed_at": "2026-09-17T22:22:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

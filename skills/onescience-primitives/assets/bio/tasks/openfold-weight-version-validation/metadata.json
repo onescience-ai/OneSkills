@@ -14,7 +14,7 @@
     "license check",
     "finetuning_ptm_2.pt",
     "protein structure prediction",
-    "edge:workflow:general-task-execution-exception-recovery"
+    "general-task-execution-exception-recovery"
   ],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",

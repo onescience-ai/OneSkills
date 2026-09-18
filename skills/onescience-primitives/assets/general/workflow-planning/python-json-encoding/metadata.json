@@ -1,0 +1,28 @@
+{
+  "name": "general-python-json-encoding",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T19:05:00Z",
+  "updated_at": "2026-09-17T19:05:00Z",
+  "description": "面向需要在Python中生成包含非ASCII字符（如中文）的JSON文件的开发者，提供编码设置、最佳实践和常见错误避免方法，确保JSON文件内容正确显示和解析。",
+  "tags": ["python", "json", "encoding", "utf-8", "file-io", "data-serialization"],
+  "aliases": ["ensure_ascii", "json.dump encoding", "Python JSON中文处理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Python文件写入的编码规范，包括UTF-8编码设置、中文字符处理、JSON文件生成的最佳实践",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "json — JSON encoder and decoder",
+      "url": "https://docs.python.org/3/library/json.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7 documentation",
+      "accessed_at": "2026-09-17T19:05:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

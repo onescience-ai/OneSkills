@@ -1,0 +1,27 @@
+{
+  "name": "cli-fault-classification-recovery",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:52:00Z",
+  "updated_at": "2026-09-18T00:52:00Z",
+  "description": "面向自动化 CLI 工具执行场景，分类进程退出故障类别并选择恢复策略，覆盖超时、非零退出码、信号终止和标准错误判读，确保诊断证据完整可追溯。",
+  "tags": ["cli", "exit-code", "fault-classification", "timeout", "error-handling", "subprocess", "recovery"],
+  "aliases": ["command-line fault", "CLI error", "process exit", "returncode"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_docs": [
+    {
+      "title": "subprocess — Subprocess management — Python 3.14.7 documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-18T00:52:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

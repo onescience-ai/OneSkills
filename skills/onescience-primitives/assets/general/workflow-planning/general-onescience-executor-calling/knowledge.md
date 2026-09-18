@@ -67,8 +67,37 @@
 - workflow-planning/bio-esm1v-model-weights-api（具体技能示例）
 - workflow-planning/bio-protein-prediction-quality-metrics（质量检查示例）
 
+## 映射决策规则
+
+### executor技能职责边界
+每个type=executor技能有明确的职责范围：
+
+| executor技能 | 职责范围 | 不负责事项 |
+|-------------|----------|-----------|
+| onescience-coder | CFD代码生成与执行 | 数据标准化、模型训练、推理 |
+| onescience-data-standardizer | 数据转换与标准化 | 代码生成、模型训练、推理 |
+| onescience-trainer | 模型训练工作流 | 数据处理、推理、评估 |
+| onescience-infer | 模型推理工作流 | 数据处理、训练、评估 |
+| onescience-data-analyzer | 数据分析与可视化 | 代码生成、模型训练、推理 |
+
+### 映射决策流程
+orchestrator在Global Plan阶段执行以下映射：
+
+1. **原子动作识别**：将步骤分解为最小操作单元（数据处理、代码生成、训练、推理、分析）
+2. **能力匹配**：根据原子动作从executor能力台账中选择最匹配的executor
+3. **契约验证**：检查步骤输入输出是否满足executor的输入输出契约
+4. **前置条件检查**：验证executor执行的前置条件是否满足
+5. **绑定决策**：生成step_handoff并调用skill工具加载对应executor
+
+### 映射规则
+- **单一动作**：直接映射到对应executor
+- **复合动作**：拆分为多个步骤，每个步骤映射到单一executor
+- **能力不足**：标记BLOCKED，等待人工干预
+- **契约违反**：调整输入输出格式或选择其他executor
+
 ## 证据来源
 [1] 归因报告：TEM-1β-内酰胺酶深度突变效应排序任务，任务ID：12
 [2] onescience工作流编排规范：step_handoff格式和状态传递机制
 [3] executor技能调用记录：skill_calls数组分析
 [4] 工作流执行最佳实践：步骤拆分和依赖管理
+[U1] 归因报告 CFD_S092 任务分析，用户自有数据，2026-09-17（用户自有, 未经公开源验证）

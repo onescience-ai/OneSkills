@@ -1,0 +1,31 @@
+{
+  "name": "cfd-neural-network-flow-control-methods",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T13:08:00Z",
+  "updated_at": "2026-09-17T13:08:00Z",
+  "description": "神经网络流动控制方法对比与选择：面向空气动力学主动控制问题，对比深度强化学习（DRL）与伴随神经网络（Adjoint Neural）两种方法的原理、训练范式、适用条件与性能特点。适用于需要选择控制策略的CFD优化场景，包括翼型升阻比优化、分离流动控制、湍流减阻等。DRL适用于在线学习和非定常流动控制，Adjoint方法适用于稳态优化和参数敏感性分析。输出为方法选择指南、训练配置模板和性能对比表。",
+  "tags": ["neural network", "flow control", "DRL", "deep reinforcement learning", "adjoint", "automatic differentiation", "PDE-constrained optimization", "active flow control", "CFD", "airfoil", "lift-to-drag ratio"],
+  "aliases": ["伴随神经网络控制", "DRL流动控制", "神经网络控制方法对比"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Adjoint neural controller的工作原理、训练方法和与DRL控制器的对比适用条件",
+  "evidence_papers": [
+    {
+      "title": "Active Control of Turbulent Airfoil Flows Using Adjoint-based Deep Learning",
+      "doi": "10.48550/arXiv.2510.07106",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": ["Xuemin Liu", "Tom Hickling", "Jonathan F. MacArt"]
+    },
+    {
+      "title": "Shocks Under Control: Taming Transonic Compressible Flow over an RAE2822 Airfoil with Deep Reinforcement Learning",
+      "doi": "10.48550/arXiv.2511.07564",
+      "year": 2025,
+      "venue": "arXiv",
+      "authors": ["Trishit Mondal", "Ricardo Vinuesa", "Ameya D. Jagtap"]
+    }
+  ]
+}

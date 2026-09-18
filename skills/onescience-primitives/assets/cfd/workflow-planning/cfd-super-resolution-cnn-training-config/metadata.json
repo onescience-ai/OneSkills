@@ -1,0 +1,20 @@
+{
+  "name": "cfd-super-resolution-cnn-training-config",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T23:05:00Z",
+  "updated_at": "2026-09-17T23:05:00Z",
+  "description": "面向CFD湍流超分辨率CNN训练，提供超参数选择依据（learning_rate与batch_size的关系、epochs与early_stopping的配合）、典型训练配置（从文献中提取的推荐参数）、early stopping的实现方法和patience参数的含义。适用于需要配置和训练超分辨率CNN模型的任务。",
+  "tags": ["super-resolution", "CNN", "training", "hyperparameter", "early-stopping", "learning-rate", "batch-size", "CFD", "turbulence"],
+  "aliases": ["SR-CNN training config", "super-resolution hyperparameter tuning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Super-resolution CNN训练超参数选择依据",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

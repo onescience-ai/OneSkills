@@ -1,0 +1,50 @@
+{
+  "name": "cfd-evaluation-robustness-failure-recovery",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:52:00Z",
+  "updated_at": "2026-09-17T20:52:00Z",
+  "description": "面向CFD数据驱动模型的验收评估鲁棒性设计，定义评估脚本对上游JSON产物的schema校验、完整性检查和降级执行策略，包括manifest生成门禁、缺失产物时的BLOCKED判定，以及任何评估失败都必须产出PASS_REJECT_BLOCKED.txt的契约",
+  "tags": ["evaluation", "robustness", "failure-recovery", "CFD", "schema-validation", "BLOCKED", "manifest"],
+  "aliases": ["CFD evaluation robustness", "评估鲁棒性", "failure recovery", "graceful degradation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD任务验收评估的鲁棒性设计与execution-manifest生成契约",
+  "evidence_papers": [
+    {
+      "title": "An Adaptive Framework for Autoregressive Forecasting in CFD",
+      "doi": "10.48550/arXiv.2505.01531",
+      "year": "2025"
+    },
+    {
+      "title": "CFDagent: A Language-Guided, Zero-Shot Multi-Agent System",
+      "doi": "10.48550/arXiv.2507.23693",
+      "year": "2025"
+    },
+    {
+      "title": "A DSMC-CFD coupling method using surrogate modelling",
+      "doi": "10.48550/arXiv.2311.14140",
+      "year": "2023"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema",
+      "url": "https://json-schema.org/",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T20:52:00Z"
+    }
+  ],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-17",
+      "location": "任务CFD_S080归因报告：execution-manifest.json缺失、apriori_evaluation.json截断、evaluation.py解析失败案例"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

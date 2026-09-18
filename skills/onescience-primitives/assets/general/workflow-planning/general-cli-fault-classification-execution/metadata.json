@@ -1,0 +1,23 @@
+{
+  "name": "general-cli-fault-classification-execution",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:00:00Z",
+  "updated_at": "2026-09-17T12:00:00Z",
+  "description": "CLI非交互执行与故障分类知识：面向命令行工具的自动化执行场景，提供退出码语义解析、超时处理、沙箱隔离和错误恢复策略。适用于需要在无人值守环境下稳定运行CLI工具并进行故障诊断的研究与工程场景。核心方法包括：退出码分类（0=成功、1-125=应用错误、126-125=执行错误、128+=信号终止）、超时监控与进程清理、标准错误流捕获与解析。输出为结构化故障分类报告和恢复建议。",
+  "tags": ["CLI", "exit-code", "fault-classification", "non-interactive", "timeout", "subprocess", "automation", "error-handling", "diagnostics"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_docs": [
+    {
+      "title": "subprocess — Subprocess management — Python 3.14.7 documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    }
+  ]
+}

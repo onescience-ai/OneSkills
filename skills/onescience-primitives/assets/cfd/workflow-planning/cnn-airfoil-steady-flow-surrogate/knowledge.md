@@ -115,3 +115,46 @@
 2. **A composable machine-learning approach for steady-state simulations on high-resolution grids** — sha256:0cb4f3ed1495f689eef563e0ca249934f1d0889986a8f2ef857de73999e92258
 3. **A Hybrid CNN-Cheby-KAN Framework for Efficient Prediction of Two-Dimensional Airfoil Pressure Distribution** — [sha256:aa78ad939656a9c2ea9b2e29b2f99a583bc45f5bbdcec6a11d79f13c96ad2e3b](https://arxiv.org/abs/2511.03223)
 4. **Towards Interpretable Damage Detection based on Aerodynamic Pressure Measurements** — [sha256:5751b311a98603660066b00935d5fbc78914d79a4f8577abd8ebe0b989003c9f](https://arxiv.org/abs/2605.08187)
+
+## 关键参数校准值（论文证据，harvest 补充）
+
+以下数值来自已发表论文，供量级校准；其他体系需以自身证据重新锚定。
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| U-Net 编码器级数 | 4 级 | [García-Fernández 2023] | Conv→ReLU→Conv→ReLU→MaxPooling |
+| 卷积核大小 | 前级5，后级3 | [García-Fernández 2023] | 前级大核捕获全局，后级小核精细化 |
+| 滤波器增长 | 每级×2 | [García-Fernández 2023] | 标准 U-Net 设计 |
+| 优化器 | Adam | [García-Fernández 2023; Gao 2025] | 自适应学习率 |
+| 学习率 | 0.001（衰减） | [García-Fernández 2023] | bus 空气动力学案例 |
+| 学习率 | 0.0006~0.0009 | [Gao 2025] | 压缩机叶片，不同工况 |
+| Batch size | 64 | [García-Fernández 2023] | 大 batch 稳定训练 |
+| Batch size | 10 | [Gao 2025] | 小 batch 适配 GPU 显存 |
+| Weight decay | 0.005 | [García-Fernández 2023] | L2 正则化 |
+| 损失函数 | L1 | [Gao 2025] | 对离群值更鲁棒 |
+| 数据划分 | 60/30/10 | [García-Fernández 2023] | 训练/验证/测试 |
+| 数据划分 | 80/20 | [Gao 2025] | 训练/测试 |
+| 输入表示 | FRC + 2×SDF | [García-Fernández 2023] | SDF 优于二值掩码 |
+| 网格分辨率 | 256×512 | [García-Fernández 2023] | 二维外流场 |
+| 网格分辨率 | 512×512 | [Gao 2025] | 叶片通道流场 |
+| 物理量输出 | 独立解码器 | [García-Fernández 2023] | 每个物理量单独解码 |
+| 激活函数 | LeakyReLU(0.2) 编码 / ReLU 解码 | [Gao 2025] | 编码层避免梯度消失 |
+| 注意力模块 | CAM + SAM | [Gao 2025] | 加速收敛，3000 epoch 内收敛 |
+| 加速比 | ~10,700× (CPU) | [García-Fernández 2023] | CNN vs CFD，单核 Intel Xeon |
+| 加速比 | ~1,000× (GPU) | [Gao 2025] | CNN vs CFD，RTX-2080Ti |
+| 平均绝对误差 | <1% | [Gao 2025] | 马赫数预测 |
+| 最大绝对误差 | <3% | [Gao 2025] | 单样本最差情况 |
+| 训练时间 | ~24h (CPU) | [García-Fernández 2023] | Intel Xeon Gold |
+| 主要误差区域 | 边界层 | [García-Fernández 2023] | 几何轮廓处误差最大 |
+| 尾迹区精度 | 准确 | [García-Fernández 2023] | 尾迹区预测低误差 |
+
+### 已有卡片关联文献（harvest 补充 DOI 追溯）
+
+| 编号 | 标题 | DOI | 年份 |
+|------|------|-----|------|
+| [H1] | CNN-based flow field prediction for bus aerodynamics analysis | 10.1038/s41598-023-48419-4 | 2023 |
+| [H2] | A deep neural network with attention mechanism for flow prediction of compressor blade | 10.1038/s41598-025-99688-0 | 2025 |
+| [H3] | CNN Predictions for Unsteady RANS-Based Numerical Simulations | 10.3390/jmse11020239 | 2023 |
+| [H4] | Two-Dimensional Prediction of Transient Cavitating Flow Around Hydrofoils Using a DeepCFD Model | 10.3390/jmse12112074 | 2024 |
+| [H5] | Benchmarking CNN and GNN based surrogate models | 10.1016/j.compfluid.2025.106760 | 2025 |
+| [H6] | Surrogate modeling with multigrid inspired neural network (U-Net-MG) | 10.1016/j.mlwa.2021.100176 | 2021 |

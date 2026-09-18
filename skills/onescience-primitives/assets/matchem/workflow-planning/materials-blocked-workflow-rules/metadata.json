@@ -1,0 +1,28 @@
+{
+  "name": "materials-blocked-workflow-rules",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "当材料化学任务的必填输入（材料结构CIF/POSCAR、电池工况参数、电解液/对电极信息）缺失时，必须标记BLOCKED并列出缺失项清单，不得自行假设或使用典型值继续执行。",
+  "tags": ["materials-informatics", "workflow-validation", "data-provenance", "blocked-status"],
+  "aliases": ["blocked-workflow", "missing-input-handling", "materials-data-validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "材料化学任务中BLOCKED触发规则",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Materials Project Documentation",
+      "url": "https://docs.materialsproject.org/",
+      "publisher": "Materials Project",
+      "version": "2026",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

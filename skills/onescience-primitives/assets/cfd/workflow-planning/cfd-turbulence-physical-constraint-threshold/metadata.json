@@ -1,0 +1,28 @@
+{
+  "name": "cfd-turbulence-physical-constraint-threshold",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T22:19:00Z",
+  "updated_at": "2026-09-17T22:19:00Z",
+  "description": "面向湍流场物理约束筛选，定义合理的阈值范围，包括连续性方程残差、能量谱残差等，确保生成的样本满足物理规律。",
+  "tags": ["turbulence", "physical-constraint", "threshold", "filtering", "CFD", "validation"],
+  "aliases": ["turbulence physics filter", "CFD constraint threshold"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "湍流场物理约束筛选的合理阈值范围",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Threshold amplitudes for transition to turbulence in a pipe",
+      "url": "https://arxiv.org/abs/physics/0502099v2",
+      "publisher": "arXiv",
+      "version": "2005",
+      "accessed_at": "2026-09-17T22:19:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

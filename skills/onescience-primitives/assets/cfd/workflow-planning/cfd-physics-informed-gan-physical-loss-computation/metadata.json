@@ -1,0 +1,35 @@
+{
+  "name": "cfd-physics-informed-gan-physical-loss-computation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:24:00Z",
+  "updated_at": "2026-09-17T12:24:00Z",
+  "description": "面向 Physics-informed GAN 训练，正确计算物理约束损失以确保生成器学习物理规律。涵盖 PDE 残差通过自动微分对生成器输出求导，坐标输入保留计算图，梯度回传至生成器参数。",
+  "tags": ["physics-informed GAN", "physical loss", "automatic differentiation", "gradient flow", "PDE residual"],
+  "aliases": ["PiGAN physical loss computation", "physics-constrained GAN training"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Physics-informed GAN 中物理损失的正确计算方式——PDE 残差必须通过自动微分对生成器输出求导，坐标输入需在生成器 forward 中保留计算图（不 detach），梯度通过链式法则回传至生成器参数",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "PyTorch Autograd Documentation",
+      "url": "https://pytorch.org/docs/stable/autograd.html",
+      "publisher": "PyTorch",
+      "version": "2.0.0",
+      "accessed_at": "2026-09-17T12:24:00Z"
+    },
+    {
+      "title": "Physics-Informed Neural Networks: A Deep Learning Framework for Solving Forward and Inverse Problems Involving Nonlinear Partial Differential Equations",
+      "url": "https://arxiv.org/abs/1711.10561",
+      "publisher": "arXiv",
+      "version": "v1",
+      "accessed_at": "2026-09-17T12:24:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,31 @@
+{
+  "name": "climate-forecast-quality-flag-coding",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T04:50:00Z",
+  "updated_at": "2026-09-18T04:50:00Z",
+  "description": "面向气象预报产品质量标志编码规范，提供质量标志等级定义、质量标志编码体系、质量标志与不确定性的关联关系以及产品元数据标准，适用于所有需要生成质量标志的预报产品。",
+  "tags": ["quality flags", "uncertainty", "CF convention", "metadata", "forecast quality", "data quality"],
+  "aliases": ["质量标志", "不确定性", "元数据标准"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报产品质量标志编码规范，包括质量标志等级定义、编码体系、不确定性关联和产品元数据标准",
+  "evidence_papers": [
+    {
+      "title": "GenCast: Diffusion-based ensemble forecasting for medium-range weather",
+      "doi": "10.1038/s41586-024-08252-9",
+      "year": 2024
+    },
+    {
+      "title": "Deep learning for probabilistic ensemble forecasting of precipitation",
+      "doi": "10.1038/s41586-021-03854-z",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

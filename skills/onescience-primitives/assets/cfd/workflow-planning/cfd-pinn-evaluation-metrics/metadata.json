@@ -1,0 +1,23 @@
+{
+  "name": "cfd-pinn-evaluation-metrics",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "面向贝叶斯PINN概率反演任务的验收指标体系，提供NRMSE（相对L2误差）计算公式、PDE残差评估方法、边界误差判定标准、守恒误差物理含义，以及PASS/PARTIAL/REJECT/BLOCKED判定逻辑，用于确保模型满足科学计算的精度与可靠性要求",
+  "tags": ["pinn-evaluation", "nrmse", "relative-l2-error", "pde-residual", "boundary-error", "acceptance-criteria", "rejection-logic"],
+  "aliases": ["pinn-metrics", "pinn-validation", "scientific-ml-evaluation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "贝叶斯PINN概率反演任务的验收指标体系与判定规则，包括relative_L2计算公式、PDE残差计算方法、边界误差判定标准、守恒误差物理含义，以及PASS/PARTIAL/REJECT/BLOCKED的判定逻辑",
+  "evidence_papers": [
+    {"title": "NPINN+: an enhanced physics-informed neural network for solving wave equations with nonlocal conditions", "doi": "10.1038/s41598-026-50374-9", "year": "2026"},
+    {"title": "Physics-Informed Emulation of Systemic Circulation for Fast Parameter Estimation", "doi": "10.1002/cnm.70147", "year": "2026"}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

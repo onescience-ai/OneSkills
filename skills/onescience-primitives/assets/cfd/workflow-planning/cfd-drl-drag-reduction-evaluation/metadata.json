@@ -1,0 +1,31 @@
+{
+  "name": "cfd-drl-drag-reduction-evaluation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向深度强化学习壁湍流摩阻削减任务的验收评估流程，包括多维指标统计、物理一致性验证、最差样本追溯、适用域判定和PASS/REJECT/BLOCKED结论生成，确保控制策略的物理有效性而非奖励欺骗",
+  "tags": ["drag reduction", "evaluation", "DRL", "wall-bounded turbulence", "energy budget", "physical consistency"],
+  "aliases": ["摩阻削减评估", "减阻验收", "CFD-DRL评估"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD-DRL任务的验收评估流程，包括evaluation.json schema、worst_cases.csv字段、applicability_report.md结构和PASS/REJECT/BLOCKED判定规则",
+  "evidence_papers": [
+    {
+      "title": "Active flow control for drag reduction through multi-agent reinforcement learning on a turbulent cylinder at Re_D=3900",
+      "doi": "10.48550/arXiv.2405.17655",
+      "year": 2024
+    },
+    {
+      "title": "Reward hacking in physical reinforcement learning revealed by turbulent drag reduction",
+      "doi": "10.48550/arXiv.2606.06227",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

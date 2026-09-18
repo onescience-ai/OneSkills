@@ -1,0 +1,26 @@
+{
+  "name": "cfd-pod-dmd-rom-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "面向流动降阶建模场景，基于POD与DMD方法构建从快照数据到降阶模型的标准五步工作流，包括数据接入、预处理切分、模型训练、推理恢复与评估验收，支持PyTorch等深度学习框架集成。",
+  "tags": ["POD", "DMD", "reduced-order-model", "workflow", "CFD", "pipeline", "SVD", "fluid-dynamics", "snapshots"],
+  "aliases": ["POD降阶建模", "DMD降阶建模", "流动降阶建模工作流"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "POD与DMD降阶建模标准5步工作流定义，包括每步输入输出和质量门禁；PyTorch在降阶建模中的标准应用模式",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "NASA Turbulence Modeling Resource",
+      "url": "https://tmbwg.github.io/turbmodels/",
+      "publisher": "NASA",
+      "version": "2026-02-24",
+      "accessed_at": "2026-09-18"
+    }
+  ],
+  "evidence_user": []
+}

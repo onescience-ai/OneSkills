@@ -1,0 +1,35 @@
+{
+  "name": "general-cli-fault-diagnosis-exit-code-handling",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T01:41:00Z",
+  "updated_at": "2026-09-18T01:41:00Z",
+  "description": "面向命令行接口执行故障诊断，提供退出码分类、错误处理模式和故障恢复策略，适用于非交互式CLI工具执行场景",
+  "tags": ["CLI", "exit-code", "error-handling", "fault-diagnosis", "command-line", "troubleshooting"],
+  "aliases": ["命令行错误处理", "退出码分类", "CLI故障诊断"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Exit Codes With Special Meanings",
+      "url": "https://tldp.org/LDP/abs/html/exitcodes.html",
+      "publisher": "The Linux Documentation Project",
+      "version": "Advanced Bash-Scripting Guide",
+      "accessed_at": "2026-09-18T01:41:00Z"
+    },
+    {
+      "title": "The GNU C Library - Exit Status",
+      "url": "https://www.gnu.org/software/libc/manual/html_node/Exit-Status.html",
+      "publisher": "Free Software Foundation",
+      "version": "glibc manual 2.44",
+      "accessed_at": "2026-09-18T01:41:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

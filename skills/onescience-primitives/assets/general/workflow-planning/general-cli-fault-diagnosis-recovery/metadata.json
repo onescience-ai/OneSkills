@@ -1,0 +1,28 @@
+{
+  "name": "general-cli-fault-diagnosis-recovery",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T13:20:00Z",
+  "updated_at": "2026-09-17T13:20:00Z",
+  "description": "面向命令行界面非交互执行场景，诊断并分类各类运行时故障，提供恢复策略。适用于自动化脚本、批处理作业、远程任务提交等无人值守环境下的 CLI 故障排查。核心方法包括：退出码分类、标准错误流解析、超时检测、沙箱环境隔离验证。输出为故障类型报告与恢复操作建议。",
+  "tags": ["CLI", "command line interface", "non-interactive", "fault diagnosis", "error handling", "exit code", "timeout", "sandbox", "recovery", "automation", "scripting", "batch processing"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Evaluating LLM-Based 0-to-1 Software Generation in End-to-End CLI Tool Scenarios",
+      "doi": "10.48550/arXiv.2604.06742",
+      "year": 2026,
+      "venue": "arXiv preprint"
+    },
+    {
+      "title": "GUI vs. CLI: Execution Bottlenecks in Screen-Only and Skill-Mediated Computer-Use Agents",
+      "doi": "10.48550/arXiv.2606.24551",
+      "year": 2026,
+      "venue": "arXiv preprint"
+    }
+  ]
+}

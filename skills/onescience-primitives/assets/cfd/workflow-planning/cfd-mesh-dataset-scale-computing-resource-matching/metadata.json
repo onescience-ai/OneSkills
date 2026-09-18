@@ -1,0 +1,48 @@
+{
+  "name": "cfd-mesh-dataset-scale-computing-resource-matching",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T03:44:00Z",
+  "updated_at": "2026-09-17T03:44:00Z",
+  "description": "面向大规模网格CFD流场预测任务的数据集规模与计算资源匹配策略，提供百万节点级三维PDE网格数据集的公开来源清单、数据规模与GPU显存的匹配关系、以及合成数据与真实数据的适用域差异说明。适用于需要接入真实大规模PDE网格数据的CFD机器学习任务。核心方法包括：数据可用性预检、公开PDE数据源检索、合成数据标注规范。输出为数据规模满足任务要求、数据来源可追溯。",
+  "tags": ["CFD", "PDE", "mesh", "dataset", "scale", "GPU", "VRAM", "synthetic data", "real data", "turbulence", "OpenFOAM", "DNS"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "百万节点级三维PDE网格数据集的公开来源清单、数据规模与计算资源的匹配关系、合成数据与真实数据的适用域差异说明",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "NASA Turbulence Modeling Resource",
+      "url": "https://turbmodels.larc.nasa.gov/",
+      "publisher": "NASA Langley Research Center",
+      "version": "current",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "OpenFOAM Foundation Documentation",
+      "url": "https://openfoam.org/documentation/",
+      "publisher": "OpenFOAM Foundation",
+      "version": "current",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "CFD General Notation System (CGNS) Standard",
+      "url": "https://cgns.github.io/CGNS/",
+      "publisher": "CGNS Steering Committee",
+      "version": "current",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "h5py FAQ - What datatypes are supported?",
+      "url": "https://docs.h5py.org/en/stable/faq.html",
+      "publisher": "h5py Project",
+      "version": "3.16",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

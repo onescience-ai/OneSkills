@@ -157,3 +157,26 @@
 [2] Christopher Cruz, "ATLAS-RTC: Closing the Loop on LLM Agent Output with Token-Level Runtime Control", arXiv, 2026, DOI: 10.48550/arXiv.2603.27905
 [3] Lyes Attouche et al., "Validation of Modern JSON Schema: Formalization and Complexity", arXiv, 2023, DOI: 10.48550/arXiv.2307.10034
 [4] Juan Cruz Viotti et al., "Blaze: Compiling JSON Schema for 10x Faster Validation", arXiv, 2025, DOI: 10.48550/arXiv.2503.02770
+[5] Akshey Sigdel & Rista Baral, "Schema First Tool APIs for LLM Agents: A Controlled Study of Tool Misuse, Recovery, and Budgeted Performance", arXiv, 2026, DOI: 10.48550/arXiv.2603.13404
+
+## 批次补充
+
+### batch-2026-09-17-merge-arxiv2603.13404
+
+来源：arXiv:2603.13404 "Schema First Tool APIs for LLM Agents: A Controlled Study of Tool Misuse, Recovery, and Budgeted Performance"
+
+**三层失败分类法** [5]：
+1. **Interface misuse**：调用违反接口有效性（schema/well-formedness），包括缺失必填字段、类型不匹配、无效枚举、格式错误的 JSON
+2. **Execution failures**：schema 合法的调用因运行时前置条件失败（如文件路径不存在、指标键不可用）
+3. **Semantic misuse**：schema 合法但无生产力或与任务进度不匹配的调用（如错误工具选择、无关查询意图）
+
+**关键实证发现** [5]：
+- Schema-first 接口相比自然语言文档，可将 interface misuse 从 5.39 降低至 3.72（平均无效调用数）
+- Schema 条件下 semantic misuse 反而升高（A=0.93, B/C=3.03），说明剩余错误以 schema 合法但无生产力的动作为主
+- 结构化诊断反馈（包含 JSONPath、期望类型、约束类别）可进一步提升恢复概率
+- 预算敏感性：在 tight budget (B=3,5) 下，单次 interface error 可能决定最终结果
+
+**信息等价约束设计** [5]：
+- 从同一 canonical contract 生成 prose documentation 和 JSON Schema
+- 条件差异在于表示形式和反馈格式，而非约束语义内容
+- 此设计确保隔离表示效果，避免将"schema"与"更多信息"混淆

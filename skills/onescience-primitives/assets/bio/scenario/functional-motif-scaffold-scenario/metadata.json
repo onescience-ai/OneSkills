@@ -19,7 +19,7 @@
     "edge:task:s02-model-weight-loading",
     "edge:task:s03-candidate-generation",
     "edge:task:s04-motif-rmsd-screening",
-    "edge:workflow:rfdiffusion-input-output-spec"
+    "edge:resource:workflow-planning/rfdiffusion-input-output-spec"
   ],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",

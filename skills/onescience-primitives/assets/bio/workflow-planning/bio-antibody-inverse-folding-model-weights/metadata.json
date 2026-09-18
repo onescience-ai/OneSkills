@@ -1,0 +1,19 @@
+{
+  "name": "bio-antibody-inverse-folding-model-weights",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:06:00Z",
+  "updated_at": "2026-09-16T10:06:00Z",
+  "description": "提供抗体反向折叠模型权重文件的公开来源、获取途径、许可证要求和验证方法，包括AntiFold、ESM-IF、ProteinMPNN、LM-Design等常用模型的权重获取信息，以及模型权重与PDB输入文件的兼容性要求。",
+  "tags": ["antibody", "inverse folding", "model weights", "checkpoint", "download", "validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Affinity-Optimized Inverse Folding模型权重文件（ab_if.ckpt）的公开来源、获取途径、许可证要求和验证方法；抗体反向折叠领域常用开源模型权重库的权重文件位置和格式规范；模型权重文件与PDB输入文件的兼容性要求和版本对应关系。",
+  "evidence_papers": [
+    {"title": "AntiFold: improved structure-based antibody design using inverse folding", "doi": "10.1093/bioadv/vbae202", "year": 2024},
+    {"title": "Benchmarking inverse folding models for antibody CDR sequence design", "doi": "10.1371/journal.pone.0324566", "year": 2025},
+    {"title": "Large scale paired antibody language models", "doi": "10.1371/journal.pcbi.1012646", "year": 2024}
+  ]
+}

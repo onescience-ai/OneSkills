@@ -12,7 +12,7 @@
     "F1-score",
     "AUPRC",
     "bootstrap",
-    "edge:resource:bio/components/bio-go-ontology-validator",
+    "edge:resource:components/bio-go-ontology-validator",
     "edge:workflow:bio-fewshot-protein-function-prediction-workflow"
   ],
   "harvested": true,

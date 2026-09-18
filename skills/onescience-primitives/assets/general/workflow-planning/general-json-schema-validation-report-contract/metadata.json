@@ -2,13 +2,13 @@
   "name": "general-json-schema-validation-report-contract",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "visibility": "public",
   "created_at": "2026-09-16T12:34:00Z",
-  "updated_at": "2026-09-16T12:34:00Z",
-  "description": "面向结构化输出交付，定义JSON Schema报告契约的校验规则，覆盖必填字段检查、类型约束、数组规范和身份一致性验证",
-  "tags": ["JSON-Schema", "validation", "report-contract", "structured-output", "schema-check", "data-contract"],
-  "aliases": ["JSON validation", "schema check", "report schema", "output contract"],
+  "updated_at": "2026-09-17T16:50:00Z",
+  "description": "面向结构化输出交付，定义JSON Schema报告契约的校验规则，覆盖必填字段检查、类型约束、数组规范、对象属性控制和身份一致性验证",
+  "tags": ["JSON-Schema", "validation", "report-contract", "structured-output", "schema-check", "data-contract", "object-validation"],
+  "aliases": ["JSON validation", "schema check", "report schema", "output contract", "JSON Schema object"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "JSON Schema 报告交付契约",
@@ -19,24 +19,38 @@
       "url": "https://json-schema.org/draft/2020-12/json-schema-core",
       "publisher": "json-schema.org",
       "version": "2020-12",
-      "accessed_at": "2026-09-16T12:34:00Z"
+      "accessed_at": "2026-09-17T12:00:00Z"
     },
     {
       "title": "JSON Schema Validation (Draft 2020-12)",
       "url": "https://json-schema.org/draft/2020-12/json-schema-validation",
       "publisher": "json-schema.org",
       "version": "2020-12",
-      "accessed_at": "2026-09-16T12:34:00Z"
+      "accessed_at": "2026-09-17T12:00:00Z"
     },
     {
       "title": "Python jsonschema Library Documentation",
       "url": "https://python-jsonschema.readthedocs.io/",
       "publisher": "Python Package Authority",
       "version": "4.x",
-      "accessed_at": "2026-09-16T12:34:00Z"
+      "accessed_at": "2026-09-17T12:00:00Z"
+    },
+    {
+      "title": "JSON Schema Object Reference",
+      "url": "https://json-schema.org/understanding-json-schema/reference/object",
+      "publisher": "json-schema.org",
+      "version": "Draft 2020-12",
+      "accessed_at": "2026-09-17T12:00:00Z"
+    },
+    {
+      "title": "Understanding JSON Schema",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema",
+      "version": "2026",
+      "accessed_at": "2026-09-17T16:50:00Z"
     }
   ],
   "evidence_user": [],
-  "merged_batches": [],
+  "merged_batches": ["2026-09-17: 基于权威文档补充Object类型验证详细规则", "2026-09-17: 基于Understanding JSON Schema补充类型验证详细规则"],
   "conflicts": []
 }

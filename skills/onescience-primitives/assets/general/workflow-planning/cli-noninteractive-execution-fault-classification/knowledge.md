@@ -145,3 +145,108 @@
 - Python官方文档（argparse、subprocess模块）
 - GNU C库手册（退出状态标准）
 - 行业最佳实践（CLI错误处理模式）
+
+## 批次补充（2026-09-17：任务70案例补充）
+
+### 实际应用案例
+
+基于归因分析任务（任务ID：70，深度突变扫描监督的蛋白变异效应预测）的CLI非交互执行故障分类案例：
+
+#### CLI非交互执行故障分类案例
+- **故障现象**：归因分析智能体退出码为1，未返回符合Schema的JSON
+- **故障分类**：应用错误（退出码1-125），具体含义由应用程序定义
+- **错误详情**：CLI启动、超时或结构化输出契约失败，导致工作流逐步对照、领域知识缺口判断和下游优化建议均不可置信
+- **修复方法**：依据故障类别修正启动配置或恢复策略；使用成功、非零退出和超时用例验证状态及日志
+- **诊断证据**：目录内文件：agent-events.log、agent-final.txt、agent-stderr.log、analysis-events.jsonl、analysis-stderr.log、blocked-run.log、preflight-evidence.json、report-agent-final.txt
+
+### 校准数值（案例专属值，供量级校准）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 退出码 | 1 | 任务70案例 | 应用错误，具体含义由应用程序定义 |
+| 故障类型 | 应用错误 | 任务70案例 | 退出码1-125范围 |
+| 退出码范围 | 1-125 | 任务70案例 | 应用错误，具体含义由应用程序定义 |
+
+## 批次补充（2026-09-17：任务274案例补充）
+
+### 实际应用案例
+
+基于归因分析任务（任务ID：274，干雪雪崩危险等级日尺度预报）的CLI非交互执行故障分类案例：
+
+#### CLI非交互执行故障分类案例
+- **故障现象**：归因分析智能体退出码为1，报告校验错误
+- **故障分类**：应用错误（退出码1-125），具体含义由应用程序定义
+- **错误详情**：
+  - 缺少顶层字段：`['issues', 'summary', 'task', 'task_id']`
+  - 包含额外顶层字段：`['error', 'sessionID', 'timestamp', 'type']`
+  - task_id与任务索引不一致
+  - task与任务name不一致
+  - summary必须是非空字符串
+  - issues必须是数组
+- **错误传播**：CLI启动、超时或结构化输出契约失败，导致工作流逐步对照、领域知识缺口判断和下游优化建议均不可置信
+- **修复方法**：依据故障类别修正启动配置或恢复策略；使用成功、非零退出和超时用例验证状态及日志
+- **诊断证据**：目录内文件：agent-events.log、agent-final.txt、agent-stderr.log、analysis-events.jsonl、analysis-stderr.log、blocked-run.log、preflight-evidence.json、report-agent-final.txt
+
+### 校准数值（案例专属值，供量级校准）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 退出码 | 1 | 任务274案例 | 应用错误，具体含义由应用程序定义 |
+| 故障类型 | 应用错误 | 任务274案例 | 退出码1-125范围 |
+| 缺失字段数 | 4 | 任务274案例 | issues, summary, task, task_id |
+| 额外字段数 | 4 | 任务274案例 | error, sessionID, timestamp, type |
+
+## 批次补充（2026-09-17：任务75案例补充）
+
+### 实际应用案例
+
+基于归因分析任务（任务ID：75，空间转录组与蛋白组图基础表征）的CLI非交互执行故障分类案例：
+
+#### CLI非交互执行故障分类案例
+- **故障现象**：归因分析智能体退出码为1，报告校验错误
+- **故障分类**：应用错误（退出码1-125），具体含义由应用程序定义
+- **错误详情**：
+  - 缺少顶层字段：`['issues', 'summary', 'task', 'task_id']`
+  - 包含额外顶层字段：`['error', 'sessionID', 'timestamp', 'type']`
+  - task_id与任务索引不一致
+  - task与任务name不一致
+  - summary必须是非空字符串
+  - issues必须是数组
+- **错误传播**：CLI启动、超时或结构化输出契约失败，导致工作流逐步对照、领域知识缺口判断和下游优化建议均不可置信
+- **修复方法**：依据故障类别修正启动配置或恢复策略；使用成功、非零退出和超时用例验证状态及日志
+- **诊断证据**：目录内文件：agent-events.log、agent-final.txt、agent-stderr.log、analysis-events.jsonl、analysis-stderr.log、blocked-run.log、preflight-evidence.json、report-agent-final.txt
+
+### 校准数值（案例专属值，供量级校准）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 退出码 | 1 | 任务75案例 | 应用错误，具体含义由应用程序定义 |
+| 故障类型 | 应用错误 | 任务75案例 | 退出码1-125范围 |
+| 缺失字段数 | 4 | 任务75案例 | issues, summary, task, task_id |
+| 额外字段数 | 4 | 任务75案例 | error, sessionID, timestamp, type |
+
+## 批次补充（2026-09-18：任务CFD_S045案例补充）
+
+### 实际应用案例
+
+基于归因分析任务（任务ID：CFD_S045，符号与稀疏物理学习控制方程发现）的CLI非交互执行故障分类案例：
+
+#### CLI非交互执行故障分类案例
+- **故障现象**：归因分析智能体未返回符合Schema的JSON，退出码为1
+- **故障分类**：应用错误（退出码1-125），具体含义由应用程序定义
+- **错误详情**：
+  - 报告根节点不是 JSON 对象
+  - JSON 语法错误：Expecting ',' delimiter: line 1 column 6273 (char 6272)
+  - 报告校验错误：报告根节点不是 JSON 对象；JSON 语法错误
+- **错误传播**：CLI 启动、超时或结构化输出契约失败，导致工作流逐步对照、领域知识缺口判断和下游优化建议均不可置信
+- **修复方法**：依据故障类别修正启动配置或恢复策略；使用成功、非零退出和超时用例验证状态及日志
+- **诊断证据**：目录内文件：agent-events.log、agent-final.txt、agent-stderr.log、analysis-events.jsonl、analysis-stderr.log、knowledge-agent-final.txt、knowledge-events.jsonl、knowledge-stderr.log、preflight-evidence.json、report-agent-final.txt、report.json
+
+### 校准数值（案例专属值，供量级校准）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 退出码 | 1 | CFD_S045案例 | 应用错误，具体含义由应用程序定义 |
+| 故障类型 | 应用错误 | CFD_S045案例 | 退出码1-125范围 |
+| 错误子类型 | JSON语法错误 | CFD_S045案例 | 非Schema验证，而是JSON解析阶段失败 |
+| 错误位置 | line 1 column 6273 | CFD_S045案例 | 字符级定位 |

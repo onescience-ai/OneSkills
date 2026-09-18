@@ -14,7 +14,7 @@
     "motif-rmsd",
     "screening",
     "quality-control",
-    "edge:workflow:rfdiffusion-input-output-spec"
+    "edge:resource:workflow-planning/rfdiffusion-input-output-spec"
   ],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",

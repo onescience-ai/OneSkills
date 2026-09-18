@@ -2,12 +2,12 @@
   "name": "general-execution-manifest-contract",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "visibility": "public",
   "created_at": "2026-09-15T16:36:00Z",
-  "updated_at": "2026-09-15T16:36:00Z",
-  "description": "OneScience任务执行规范中execution-manifest.json的生成时机、内容契约和预检要求。适用于所有需要执行工作流的任务，确保任务可追溯性和预检通过。",
-  "tags": ["execution", "manifest", "JSON", "workflow", "initialization", "preflight", "traceability"],
+  "updated_at": "2026-09-17T12:00:00Z",
+  "description": "OneScience任务执行规范中execution-manifest.json的生成时机、内容契约、预检要求和闭环更新协议。适用于所有需要执行工作流的任务，确保任务可追溯性和预检通过。必须在写入global_plan.json的同一事务中同步生成，包含steps定义、依赖关系、executor绑定和预期产物，并在每个executor_step完成后自动更新清单状态。",
+  "tags": ["execution", "manifest", "JSON", "workflow", "initialization", "preflight", "traceability", "orchestrator", "dependency-graph"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "OneScience任务执行规范中execution-manifest.json的生成时机和内容契约，包括该文件必须在任务启动时创建并记录初始状态",
@@ -17,5 +17,13 @@
       "doi": "N/A (内部文档)",
       "year": 2026
     }
-  ]
+  ],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-17T00:00:00Z",
+      "location": "归因报告 CFD_S092 任务分析"
+    }
+  ],
+  "merged_batches": ["CFD_S046-attr-report-modify-2026-09-17", "CFD_S092-attr-report-modify-2026-09-17"]
 }

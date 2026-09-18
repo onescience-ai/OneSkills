@@ -1,0 +1,42 @@
+{
+  "name": "general-automated-cli-fault-diagnosis-guidelines",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T21:13:00Z",
+  "updated_at": "2026-09-17T21:13:00Z",
+  "description": "面向自动化分析工具的CLI执行故障诊断与JSON Schema报告交付验证，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，以及JSON报告必填字段、任务身份、数组约束及输出格式校验",
+  "tags": ["CLI", "故障诊断", "JSON Schema", "报告验证", "自动化工具", "错误处理"],
+  "aliases": ["CLI error handling", "JSON validation", "automated analysis troubleshooting"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识；JSON Schema报告交付契约",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "subprocess — Subprocess management",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7 documentation",
+      "accessed_at": "2026-09-17T21:10:00Z"
+    },
+    {
+      "title": "json — JSON encoder and decoder",
+      "url": "https://docs.python.org/3/library/json.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7 documentation",
+      "accessed_at": "2026-09-17T21:10:00Z"
+    },
+    {
+      "title": "JSON Schema reference",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema",
+      "version": "2026",
+      "accessed_at": "2026-09-17T21:10:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

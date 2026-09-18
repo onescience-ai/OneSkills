@@ -1,0 +1,20 @@
+{
+  "name": "cfd-neural-differential-equation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:23:00Z",
+  "updated_at": "2026-09-17T20:23:00Z",
+  "description": "面向CFD数据驱动预测任务，定义Neural differential equation的架构选择（Neural ODE、Neural SDE、FNO-NDE混合架构）和实现方法，包括多孔介质流动中NDE的输入输出契约和PyTorch实现框架",
+  "tags": ["neural-differential-equation", "Neural-ODE", "CFD", "data-driven", "PyTorch", "torchdiffeq"],
+  "aliases": ["神经微分方程", "Neural ODE", "NDE CFD"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Neural differential equation在CFD数据驱动预测中的架构选择和实现",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

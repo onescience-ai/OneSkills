@@ -2,10 +2,10 @@
   "name": "general-cli-noninteractive-failure-diagnosis",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-16T20:07:00Z",
-  "updated_at": "2026-09-16T20:07:00Z",
+  "updated_at": "2026-09-17T04:30:00Z",
   "description": "面向CLI工具在非交互模式下执行失败时的诊断流程，覆盖退出码语义分类、超时处理、沙箱执行故障和标准错误判读，提供从错误模式到根因定位的系统化排查方法",
   "tags": ["CLI", "exit-code", "troubleshooting", "non-interactive", "error-handling", "diagnosis"],
   "aliases": ["command-line", "shell-exit", "process-termination", "error-code"],
@@ -20,6 +20,6 @@
     {"title": "CLI Guidelines (clig.dev)", "url": "https://clig.dev/", "publisher": "clig.dev", "version": "2024", "accessed_at": "2026-09-16"}
   ],
   "evidence_user": [],
-  "merged_batches": [],
+  "merged_batches": ["2026-09-17: 基于归因分析任务395案例补充报告校验错误模式匹配示例"],
   "conflicts": []
 }

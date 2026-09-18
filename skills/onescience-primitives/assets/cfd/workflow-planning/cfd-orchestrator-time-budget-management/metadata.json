@@ -1,0 +1,20 @@
+{
+  "name": "cfd-orchestrator-time-budget-management",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T01:45:00Z",
+  "updated_at": "2026-09-18T01:45:00Z",
+  "description": "面向工作流编排器中规划阶段的时间预算分配策略与executor能力视图高效加载方法，优化编排器整体执行效率",
+  "tags": ["orchestrator", "time-budget", "planning", "executor-capability", "efficiency"],
+  "aliases": ["time-budget-allocation", "executor-cache", "planning-optimization"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "orchestrator规划阶段的时间预算分配策略及executor能力视图的高效加载方法",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

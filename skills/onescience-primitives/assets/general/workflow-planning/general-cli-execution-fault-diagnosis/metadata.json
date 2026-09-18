@@ -1,0 +1,31 @@
+{
+  "name": "general-cli-execution-fault-diagnosis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向命令行工具的非交互执行场景，诊断进程退出异常、超时挂起、标准错误捕获失败等故障，提供分类判据与恢复策略",
+  "tags": ["cli", "fault-diagnosis", "exit-code", "timeout", "subprocess", "debugging", "process-management"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Python subprocess module documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "The GNU C Library manual - Exit Status",
+      "url": "https://www.gnu.org/software/libc/manual/html_node/Exit-Status.html",
+      "publisher": "Free Software Foundation",
+      "version": "2.44",
+      "accessed_at": "2026-09-17"
+    }
+  ]
+}

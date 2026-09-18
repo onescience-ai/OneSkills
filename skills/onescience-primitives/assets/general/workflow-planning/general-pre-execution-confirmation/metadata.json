@@ -1,0 +1,28 @@
+{
+  "name": "general-pre-execution-confirmation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T10:43:00Z",
+  "updated_at": "2026-09-17T10:43:00Z",
+  "description": "面向需要用户确认关键取舍的任务场景，提供预确认流程知识，包括预确认报告的生成时机、内容要求和等待用户确认的机制。适用于orchestrator在执行前必须提交任务理解、数据可用性检查、方法选择理由、输入输出契约、验证设计、时间与资源估算、质量门禁、主要风险、失败分支、替代方案和缺失信息的场景。",
+  "tags": ["orchestrator", "pre-execution", "confirmation", "user-validation", "task-understanding", "workflow planning", "LLM agent"],
+  "aliases": ["pre-execution confirmation", "task confirmation", "user validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "场景执行前预确认流程知识，包括预确认报告的生成时机、内容要求和等待用户确认的机制",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "OneScience Orchestrator SKILL.md",
+      "url": ".opencode/skills/onescience-orchestrator/SKILL.md",
+      "publisher": "OneSkills",
+      "version": "current",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

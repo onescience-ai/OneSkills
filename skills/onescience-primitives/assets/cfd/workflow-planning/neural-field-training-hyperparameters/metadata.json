@@ -1,0 +1,31 @@
+{
+  "name": "neural-field-training-hyperparameters",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T02:42:00Z",
+  "updated_at": "2026-09-18T02:42:00Z",
+  "description": "隐式神经场（INR/CROM）训练超参数选择依据，包括epochs、batch_size、early_stopping_patience等参数的选择逻辑和调优指南",
+  "tags": ["CFD", "训练", "超参数", "INR", "CROM", "early stopping", "收敛"],
+  "aliases": ["训练参数", "超参数选择", "收敛控制"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "隐式神经场（INR/CROM）训练超参数选择依据",
+  "evidence_papers": [
+    {
+      "title": "Fast-forward prediction of lattice Boltzmann dynamics with physics-informed neural operators",
+      "doi": "10.1038/s41467-026-75730-1",
+      "year": 2026
+    },
+    {
+      "title": "Physics-informed convolutional neural networks for fluid flow through porous media",
+      "doi": "10.1038/s41598-026-55389-w",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

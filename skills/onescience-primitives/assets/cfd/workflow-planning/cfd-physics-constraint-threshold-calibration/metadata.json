@@ -1,0 +1,23 @@
+{
+  "name": "cfd-physics-constraint-threshold-calibration",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向CFD场量生成任务的物理约束阈值校准方法。覆盖non-negative约束（基于物理含义的绝对阈值设定）、Laplacian平滑性阈值（基于网格分辨率和物理扩散系数）、Dirichlet/Neumann边界条件一致性检查、守恒律验证积分方法，以及物理筛选逻辑的正确实现。",
+  "tags": ["physics-constraint", "non-negative", "Laplacian", "boundary-condition", "conservation-law", "threshold-calibration", "physics-filter", "cfd"],
+  "aliases": ["物理约束阈值", "non-negative检查", "守恒律验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD场量物理约束阈值设定（non-negative、Laplacian平滑性、边界条件、守恒律）的合理规则和物理依据",
+  "evidence_papers": [
+    {"title": "WHC-PINN: Physics-Informed Neural Network with weighted loss and hard constraint for compressible flow", "doi": "10.1038/s41598-025-34263-1", "year": 2026},
+    {"title": "Subject-specific modeling framework for particle deposition using computational fluid dynamics", "doi": "10.1016/j.jaerosci.2025.106660", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

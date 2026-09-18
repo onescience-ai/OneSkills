@@ -68,6 +68,7 @@
 - 管理多个模型版本或进行版本回滚
 - 建立模型权重的本地缓存机制
 - 配置离线科学计算环境
+- 配套资源：bokdiff-model-weights-setup（BoKDiff专用权重管理）、general-offline-scientific-computing-resource-access
 
 ## 补充证据（开源文档/用户自有，可选）
 [D1] BoKDiff: Best-of-K diffusion Alignment for Enhancing 3D Molecule Generation, GitHub Repository, main branch, URL: https://github.com/khodabandeh-ali/BoKDiff（accessed_at 2026-09-16，权威开源项目文档）

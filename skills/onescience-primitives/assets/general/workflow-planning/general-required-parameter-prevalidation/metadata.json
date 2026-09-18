@@ -1,0 +1,19 @@
+{
+  "name": "general-required-parameter-prevalidation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T03:30:00Z",
+  "updated_at": "2026-09-17T03:30:00Z",
+  "description": "面向任务启动预检阶段，定义必填参数的有效性验证规则与交互确认流程。适用于需要确保任务启动前所有必填参数都有有效输入的场景，包括参数有效性检查、默认值判断、用户交互确认以及无效参数的拦截策略。核心方法包括：参数预检清单、有效性验证规则、交互确认接口、错误拦截与反馈。输出为参数验证结果与任务启动决策。论文证据缺失，基于通用实践总结。",
+  "tags": ["parameter validation", "task startup", "required parameters", "prevalidation", "user interaction", "error interception", "workflow planning", "input confirmation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "对于标有“必填”的任务输入参数，在任务启动预检阶段必须进行有效性验证或与用户交互确认的知识与规则",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

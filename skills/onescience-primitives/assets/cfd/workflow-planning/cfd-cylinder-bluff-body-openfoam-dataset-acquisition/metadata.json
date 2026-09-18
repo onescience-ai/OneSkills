@@ -1,0 +1,20 @@
+{
+  "name": "cfd-cylinder-bluff-body-openfoam-dataset-acquisition",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:41:00Z",
+  "updated_at": "2026-09-17T20:41:00Z",
+  "description": "面向深度强化学习钝体尾迹闭环减阻控制任务，提供圆柱与钝体OpenFOAM传感动作轨迹数据集的获取途径、公开数据源、数据格式规范和许可要求，确保数据接入步骤的可执行性。",
+  "tags": ["cfd", "dataset", "OpenFOAM", "cylinder", "bluff-body", "drag-reduction", "deep-reinforcement-learning", "data-acquisition", "trajectory-data"],
+  "aliases": ["圆柱绕流数据集", "钝体尾迹数据", "OpenFOAM传感动作轨迹数据"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "圆柱与钝体OpenFOAM传感动作轨迹数据集的获取方式和公开来源",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

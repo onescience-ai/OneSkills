@@ -1,0 +1,42 @@
+{
+  "name": "cfd-control-volume-data-sources-formats",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T18:30:00Z",
+  "updated_at": "2026-09-17T18:30:00Z",
+  "description": "面向CFD控制体网格数据接入任务，提供标准数据来源与格式规范，包括OpenFOAM、SU2、CFX等主流求解器的控制体输出格式定义、控制体数据与有限体积法守恒通量的对应关系、公开CFD数据集获取渠道。适用于需要接入真实CFD数据而非模拟数据的任务场景。",
+  "tags": ["CFD", "control volume", "data sources", "data formats", "OpenFOAM", "SU2", "CFX", "finite volume", "conservative flux", "dataset acquisition"],
+  "aliases": ["CFD数据来源", "控制体数据格式", "有限体积数据"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD控制体网格数据的标准来源与格式规范——包括OpenFOAM、SU2、CFX等主流CFD求解器的控制体输出格式定义；控制体数据与有限体积法守恒通量的对应关系；公开CFD数据集获取渠道",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "OpenFOAM Foundation Documentation",
+      "url": "https://openfoam.org/documentation/",
+      "publisher": "OpenFOAM Foundation",
+      "version": "latest",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "SU2 Documentation",
+      "url": "https://su2code.github.io/docs/",
+      "publisher": "SU2 Foundation",
+      "version": "latest",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "ANSYS CFX Documentation",
+      "url": "https://www.ansys.com/products/fluids/ansys-cfx",
+      "publisher": "ANSYS Inc.",
+      "version": "latest",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

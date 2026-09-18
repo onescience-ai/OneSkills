@@ -1,0 +1,44 @@
+{
+  "name": "matchem-perovskite-solar-cell-contact-passivation-scenario",
+  "type": "scenario",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T15:26:00Z",
+  "updated_at": "2026-09-16T15:26:00Z",
+  "description": "钙钛矿太阳能电池接触钝化优化场景，涉及器件设计、钝化方案建模、性能表征、多目标评估和DFT计算验证。",
+  "tags": [
+    "edge:task:matchem-device-design-table-creation",
+    "edge:task:matchem-dft-calculation-setup",
+    "edge:task:matchem-optimization-evaluation",
+    "edge:task:matchem-passivation-scheme-modeling",
+    "edge:task:matchem-performance-characterization",
+    "edge:task:matchem-result-interpretation",
+    "edge:workflow:matchem-perovskite-contact-passivation-optimization-workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "平面钙钛矿太阳能电池接触钝化优化所需的知识，包括器件设计表标准、钝化方案制备、性能表征、方案评估、DFT计算方法和工具、结果解释等。",
+  "evidence_papers": [
+    {
+      "title": "Construction of 1D perovskite nanowires by Urotropin passivation towards efficient and stable perovskite solar cell",
+      "doi": "10.1016/j.solmat.2021.111119",
+      "year": 2021
+    },
+    {
+      "title": "Enhanced Perovskite Solar Cell Performance via 2Amino-5-iodobenzoic Acid Passivation",
+      "doi": "10.1021/acsami.1c22454.s001",
+      "year": 2022
+    },
+    {
+      "title": "Synergistic Defect Passivation by Metformin Halides for Improving Perovskite Solar Cell Performance",
+      "doi": "10.1021/acs.jpcc.3c02121.s001",
+      "year": 2023
+    },
+    {
+      "title": "Understanding of Defect Passivation Effect on Wide Band Gap pin Perovskite Solar Cell",
+      "doi": "10.1021/acsami.4c05838.s001",
+      "year": 2024
+    }
+  ]
+}

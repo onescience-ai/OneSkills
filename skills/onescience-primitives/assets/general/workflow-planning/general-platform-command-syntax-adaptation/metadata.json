@@ -1,0 +1,24 @@
+{
+  "name": "general-platform-command-syntax-adaptation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:00:00Z",
+  "updated_at": "2026-09-17T12:00:00Z",
+  "description": "跨平台命令语法适配规范，提供Windows PowerShell 5.1与Linux bash的命令差异对照、平台检测策略和orchestrator命令自动生成规则。确保在不同操作系统环境下正确执行shell命令，避免因语法不兼容导致的执行失败。",
+  "tags": ["platform", "command", "syntax", "PowerShell", "bash", "cross-platform", "orchestrator", "adaptation"],
+  "aliases": ["命令语法适配", "跨平台执行", "平台检测"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Windows PowerShell与Linux bash命令差异对照及平台适配规则",
+  "evidence_papers": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-17T00:00:00Z",
+      "location": "归因报告 CFD_S092 任务分析"
+    }
+  ],
+  "merged_batches": ["CFD_S092-attr-report-new-2026-09-17"]
+}

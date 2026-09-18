@@ -2,33 +2,34 @@
   "name": "general-cli-non-interactive-execution-fault-handling",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-16T23:13:00Z",
-  "updated_at": "2026-09-17T10:00:00Z",
-  "description": "面向命令行界面程序的非交互执行场景，提供进程管理、超时控制、退出码分类与标准错误处理的通用方法框架，覆盖沙箱环境、认证配置和故障恢复策略。",
-  "tags": ["cli", "non-interactive", "subprocess", "timeout", "exit-code", "error-handling", "automation"],
-  "aliases": ["CLI execution", "command line automation", "process management"],
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向命令行工具非交互执行场景，识别、分类和处理执行故障（如超时、退出码异常、沙箱限制），提供诊断与恢复策略。",
+  "tags": ["CLI", "non-interactive", "fault-handling", "error-diagnosis", "command-line"],
+  "aliases": ["command line error handling", "CLI failure diagnosis", "exit code analysis"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "CLI 非交互执行与故障分类知识",
-  "evidence_papers": [
-    {
-      "title": "Bionitio: demonstrating and facilitating best practices for bioinformatics command-line software",
-      "doi": "10.1093/gigascience/giz109",
-      "year": 2019
-    }
-  ],
+  "evidence_papers": [],
   "evidence_docs": [
     {
-      "title": "Python subprocess Module Documentation",
+      "title": "GNU Bash Reference Manual",
+      "url": "https://www.gnu.org/software/bash/manual/bash.html",
+      "publisher": "GNU Project",
+      "version": "5.2",
+      "accessed_at": "2026-09-17T00:00:00Z"
+    },
+    {
+      "title": "Python subprocess module documentation",
       "url": "https://docs.python.org/3/library/subprocess.html",
       "publisher": "Python Software Foundation",
-      "version": "Python 3.14.7",
-      "accessed_at": "2026-09-16"
+      "version": "3.12",
+      "accessed_at": "2026-09-17T00:00:00Z"
     }
   ],
   "evidence_user": [],
-  "merged_batches": ["2026-09-17: 基于论文证据补充CLI最佳实践知识"],
+  "merged_batches": [],
   "conflicts": []
 }

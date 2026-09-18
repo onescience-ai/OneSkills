@@ -1,0 +1,28 @@
+{
+  "name": "general-cli-failure-diagnosis-recovery",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T16:46:00Z",
+  "updated_at": "2026-09-17T16:46:00Z",
+  "description": "面向命令行界面非交互执行场景，诊断故障分类、退出码解释与错误恢复的方法论框架，适用于自动化脚本、CI/CD流水线和批处理作业的故障排查。",
+  "tags": ["CLI", "non-interactive", "failure-diagnosis", "exit-code", "error-recovery", "shell", "automation"],
+  "aliases": ["command-line interface failure", "CLI error handling", "non-interactive execution"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "GNU Bash Reference Manual",
+      "url": "https://www.gnu.org/software/bash/manual/bash.html",
+      "publisher": "GNU Project",
+      "version": "5.3 (18 May 2025)",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

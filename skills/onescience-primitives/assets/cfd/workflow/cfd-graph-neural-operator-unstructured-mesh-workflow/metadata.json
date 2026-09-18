@@ -1,0 +1,48 @@
+{
+  "name": "cfd-graph-neural-operator-unstructured-mesh-workflow",
+  "type": "workflow",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "图神经算子任意域非结构网格流场预测的端到端工作流规划卡，覆盖从数据接入到模型训练、推理、评估的5步标准流程，适用于Graph Neural Operator、MeshGraphNet等图神经网络模型在任意几何域上的流场预测任务编排",
+  "tags": [
+    "graph-neural-operator",
+    "MeshGraphNet",
+    "unstructured-mesh",
+    "CFD",
+    "workflow",
+    "flow-prediction",
+    "edge:task:cfd-graph-neural-operator-unstructured-mesh-prediction"
+  ],
+  "aliases": [
+    "GNO工作流",
+    "图神经算子工作流",
+    "非结构网格流场预测工作流"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "GNO任务的TC知识卡片结构规范，包括workflow卡的必要字段和tags定义",
+  "evidence_papers": [
+    {
+      "title": "Learning Mesh-Based Simulation with Graph Networks",
+      "doi": "10.48550/arXiv.2010.03409",
+      "year": 2020
+    },
+    {
+      "title": "MultiScale MeshGraphNets",
+      "doi": "10.48550/arXiv.2210.00612",
+      "year": 2022
+    },
+    {
+      "title": "Data-driven modeling of shock physics by physics-informed MeshGraphNets",
+      "doi": "10.48550/arXiv.2602.14918",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -2,10 +2,10 @@
   "name": "cli-noninteractive-execution-fault-classification",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-16T23:35:00Z",
-  "updated_at": "2026-09-16T23:35:00Z",
+  "updated_at": "2026-09-18T12:00:00Z",
   "description": "面向命令行接口非交互执行场景，提供故障分类、退出码处理与错误恢复策略，确保CLI工具在自动化流水线中稳定运行",
   "tags": ["CLI", "non-interactive", "fault-classification", "exit-code", "error-handling"],
   "aliases": ["command-line-interface", "batch-execution", "automated-pipeline"],
@@ -37,6 +37,6 @@
     }
   ],
   "evidence_user": [],
-  "merged_batches": [],
+  "merged_batches": ["2026-09-17: 基于归因分析任务70案例补充CLI非交互执行故障分类的实际应用案例", "2026-09-17: 基于归因分析任务274案例补充CLI非交互执行故障分类的实际应用案例", "2026-09-17: 基于归因分析任务75案例补充CLI非交互执行故障分类的实际应用案例", "2026-09-18: 基于归因分析任务CFD_S045案例补充JSON语法错误型CLI故障分类"],
   "conflicts": []
 }

@@ -1,0 +1,41 @@
+{
+  "name": "cfd-data-input-contract-validation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.1",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-18",
+  "description": "面向依赖外部数据输入的计算流体力学（CFD）工作流，定义数据输入契约（数据集路径、名称、格式）的强制性验证规则、验证时机与错误处置标准，确保任务在执行核心业务逻辑前确认所有必填输入可用且有效。",
+  "tags": ["cfd", "data-validation", "input-contract", "workflow", "preflight", "error-handling"],
+  "aliases": ["CFD数据验证", "数据集路径校验", "输入参数验证", "数据契约检查"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD数据处理任务中，数据输入契约（如数据集路径、名称）作为必填参数的验证规则、验证时机与错误处置标准",
+  "evidence_papers": [
+    {
+      "title": "ChannelFlow-Tools: A Configuration-Driven Pipeline for Generating Machine-Learning-Ready Datasets of 3D Obstructed Channel Flows",
+      "doi": "10.48550/arXiv.2509.15236",
+      "year": 2025
+    },
+    {
+      "title": "A Validated LBM Dataset and Pipeline for Surrogate Modeling of Turbulent 3D Obstructed Channel Flows",
+      "doi": "10.48550/arXiv.2606.16765",
+      "year": 2026
+    },
+    {
+      "title": "GenCast: AI-based ensemble weather forecasting",
+      "doi": "10.1038/s41586-024-08252-9",
+      "year": 2024
+    },
+    {
+      "title": "Flow-Bench: A Dataset for Computational Workflow Anomaly Detection",
+      "doi": "10.48550/arXiv.2306.09930",
+      "year": 2023
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-18: 添加对cfd-dataset-path-validation-workflow卡片的引用，作为路径验证的底层实现参考"],
+  "conflicts": []
+}

@@ -11,8 +11,8 @@
     "Gene-Ontology",
     "GO-validation",
     "annotation",
-    "edge:resource:bio/components/bio-go-ontology-validator",
-    "edge:resource:bio/datasets/bio-uniprotkb-reference",
+    "edge:resource:components/bio-go-ontology-validator",
+    "edge:resource:datasets/bio-uniprotkb-reference",
     "edge:workflow:bio-fewshot-protein-function-prediction-workflow"
   ],
   "harvested": true,

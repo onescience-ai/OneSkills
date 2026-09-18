@@ -1,0 +1,31 @@
+{
+  "name": "cli-execution-fault-diagnosis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T06:30:00Z",
+  "updated_at": "2026-09-17T06:30:00Z",
+  "description": "面向命令行接口（CLI）非交互执行场景，提供故障分类、错误诊断和退出码分析的方法论，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，不扩展到具体任务领域结论",
+  "tags": ["CLI", "fault-diagnosis", "exit-code", "error-handling", "execution"],
+  "aliases": ["CLI故障诊断", "命令行错误分析", "退出码分类"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "PyMETA: Evaluating Student Code Diagnosis on and Beyond the First Execution Error",
+      "doi": "10.48550/arXiv.2606.30610",
+      "year": 2026
+    },
+    {
+      "title": "Evaluating LLM-Based 0-to-1 Software Generation in End-to-End CLI Tool Scenarios",
+      "doi": "10.48550/arXiv.2604.06742",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

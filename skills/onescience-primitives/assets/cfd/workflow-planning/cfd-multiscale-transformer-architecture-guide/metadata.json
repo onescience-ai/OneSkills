@@ -1,0 +1,26 @@
+{
+  "name": "cfd-multiscale-transformer-architecture-guide",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向汽车气动预测CFD任务，提供多尺度Transformer架构（DragSolver、PMRT、Triplane network）的网络结构设计、输入输出格式、训练策略和超参数选择指南，支持从简化MLP模型切换到正确的多尺度Transformer架构。",
+  "tags": ["transformer", "multi-scale", "CFD", "DragSolver", "PMRT", "triplane", "surrogate model", "aerodynamics"],
+  "aliases": ["DragSolver", "PMRT", "Triplane network", "multi-scale attention"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多尺度Transformer架构实现知识，包括DragSolver、PMRT、Triplane network的网络结构设计、输入输出格式、训练策略、超参数选择以及与其他架构的对比分析。",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "task_execution_report",
+      "provided_at": "2026-09-17",
+      "location": "E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-cfd\\CFD_S012\\report.json"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

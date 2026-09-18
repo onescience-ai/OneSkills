@@ -1,0 +1,54 @@
+{
+  "name": "cfd-drivaernet-task-centric-knowledge",
+  "type": "task",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "DrivAerNet/DrivAerNet++数据集的Task-Centric知识卡，包含数据格式契约、模型架构选择依据、训练超参推荐范围、评估指标阈值和物理约束。面向汽车几何到阻力系数回归任务，提供从数据接入到模型评估的全链路领域知识。",
+  "tags": [
+    "cfd",
+    "aerodynamics",
+    "drag-prediction",
+    "automotive",
+    "drivaernet",
+    "task-centric",
+    "data-contract",
+    "model-selection",
+    "evaluation-metrics",
+    "edge:resource:workflow-planning/cfd-execution-manifest-generation-contract",
+    "edge:resource:workflow-planning/cfd-orchestrator-planning-time-budget-management"
+  ],
+  "aliases": [
+    "drivaernet",
+    "drivaernet++",
+    "car drag coefficient prediction",
+    "vehicle aerodynamics ML",
+    "Cd prediction"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DrivAerNet/DrivAerNet++数据集的Task-Centric知识卡——包含数据格式契约、模型架构选择依据、训练超参推荐范围、评估指标阈值、物理约束",
+  "evidence_papers": [
+    {
+      "title": "DrivAerNet++: A Large-Scale Multimodal Car Dataset with Computational Fluid Dynamics Simulations and Deep Learning Benchmarks",
+      "doi": "10.48550/arXiv.2406.09624",
+      "year": 2025
+    },
+    {
+      "title": "Car Drag Coefficient Prediction from 3D Point Clouds Using a Slice-Based Surrogate Model",
+      "doi": "10.1007/978-3-032-11442-6_5",
+      "year": 2025
+    },
+    {
+      "title": "DrivAer Transformer: A high-precision and fast prediction method for vehicle aerodynamic drag coefficient based on the DrivAerNet++ dataset",
+      "doi": "10.1063/5.0275835",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

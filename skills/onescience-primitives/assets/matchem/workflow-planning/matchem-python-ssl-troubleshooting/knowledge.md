@@ -101,7 +101,7 @@ SSL错误类型？
 
 ## 资源召回建议
 - **何时召回**：API调用失败时、SSL证书错误时
-- **配套资源**：无（独立故障诊断知识）
+- **配套资源**：general-offline-scientific-computing-resource-access（离线资源获取策略）
 
 ## 证据来源
 本知识卡片基于实践经验总结，无特定论文来源。

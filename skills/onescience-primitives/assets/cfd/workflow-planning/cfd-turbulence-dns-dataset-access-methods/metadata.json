@@ -1,0 +1,35 @@
+{
+  "name": "cfd-turbulence-dns-dataset-access-methods",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T23:02:00Z",
+  "updated_at": "2026-09-17T23:02:00Z",
+  "description": "面向湍流DNS数据集获取需求，提供公开湍流数据集（JHTDB、NASA turbulence data repository、Kaggle turbulence datasets等）的API接口、下载协议、数据格式规范，以及真实DNS数据与合成数据在超分辨率任务中的适用性差异。适用于需要获取真实湍流数据用于监督学习超分辨率重建的任务。",
+  "tags": ["turbulence", "DNS", "dataset", "JHTDB", "NASA", "Kaggle", "data-access", "API", "super-resolution", "synthetic-data"],
+  "aliases": ["JHTDB access", "turbulence dataset download", "DNS data acquisition"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "公开湍流DNS数据集的获取路径与接入方法",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Johns Hopkins Turbulence Database (JHTDB)",
+      "url": "https://turbulence.pha.jhu.edu/",
+      "publisher": "Johns Hopkins University",
+      "version": "2026",
+      "accessed_at": "2026-09-17T23:02:00Z"
+    },
+    {
+      "title": "NASA Turbulence Data Repository",
+      "url": "https://www.nas.nasa.gov/p/science/turbulence.html",
+      "publisher": "NASA",
+      "version": "2026",
+      "accessed_at": "2026-09-17T23:02:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

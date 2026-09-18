@@ -1,0 +1,25 @@
+{
+  "name": "cfd-pde-trajectory-data-splitting",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T12:00:00Z",
+  "updated_at": "2026-09-18T12:00:00Z",
+  "description": "面向PDE轨迹数据集的结构化切分与无泄漏验证。适用于需要将PDE轨迹数据（按几何/工况/初始条件组织）分为训练集、验证集和测试集的场景。核心方法包括：group_by参数的实现（按几何形状、初始条件类型、工况参数或完整轨迹分组），无泄漏切分策略（确保同一组的样本不跨集合），数据泄漏检测方法（时间序列重叠/空间域重叠/初始条件相似度检查），以及切分比例的默认配置与调整规则。输出为无泄漏的train/val/test切分索引和泄漏检测报告。",
+  "tags": ["data splitting", "group by", "data leakage", "cross-validation", "PDE trajectory", "train validation test split", "groupKFold", "structured splitting"],
+  "aliases": ["PDE data splitting", "trajectory data splitting"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PDE轨迹数据结构化切分与无泄漏验证方法",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Pedregosa, F. et al. Scikit-learn: Machine Learning in Python (GroupKFold/GroupShuffleSplit)",
+      "url": "https://scikit-learn.org/stable/modules/cross_validation.html#group-related-splits",
+      "publisher": "JMLR",
+      "version": "1.0",
+      "accessed_at": "2026-09-18"
+    }
+  ]
+}

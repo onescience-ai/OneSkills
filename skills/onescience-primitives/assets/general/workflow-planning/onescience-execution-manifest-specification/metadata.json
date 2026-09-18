@@ -1,0 +1,20 @@
+{
+  "name": "onescience-execution-manifest-specification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向OneScience orchestrator工作流中execution-manifest.json文件的生成、内容规范和校验规则，确保preflight检查通过。提供清单的必需字段、生成时机和校验标准。",
+  "tags": ["OneScience", "orchestrator", "execution-manifest", "workflow", "preflight", "metadata"],
+  "aliases": ["execution manifest", "workflow manifest", "preflight check"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience orchestrator工作流契约要求，execution-manifest.json的生成时机、内容规范和校验规则",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -2,17 +2,18 @@
   "name": "general-workflow-dependency-management",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-15T18:49:00+08:00",
-  "updated_at": "2026-09-15T18:49:00+08:00",
+  "updated_at": "2026-09-17",
   "description": "OneScience工作流依赖管理规则、气象预报任务标准流程知识。适用于任务规划阶段的依赖关系设计，确保步骤间依赖关系正确，避免合并步骤违反标准工作流。",
-  "tags": ["workflow", "dependency", "planning", "task-management", "standard-workflow", "NWP"],
+  "tags": ["workflow", "dependency", "planning", "task-management", "standard-workflow", "NWP", "step-progression", "blocked-handling", "execution-manifest"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "OneScience工作流依赖管理规则、气象预报任务标准流程",
   "evidence_papers": [
     {"title": "SEAS5: the new ECMWF seasonal forecast system", "doi": "10.5194/gmd-12-993-2019", "year": 2019},
     {"title": "Accurate medium-range global weather forecasting with 3D neural networks", "doi": "10.1038/s41586-023-06132-9", "year": 2023}
-  ]
+  ],
+  "merged_batches": ["CFD_S087-attr-report-modify-2026-09-17"]
 }

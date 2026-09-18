@@ -1,0 +1,20 @@
+{
+  "name": "cfd-workflow-preflight-manifest-management",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T01:45:00Z",
+  "updated_at": "2026-09-18T01:45:00Z",
+  "description": "面向工作流编排系统中前置校验文件（execution-manifest.json）的生成、格式定义与校验机制管理，确保编排器规划完成后能正确启动执行流程",
+  "tags": ["workflow", "preflight", "manifest", "validation", "orchestration"],
+  "aliases": ["execution-manifest", "preflight-validation", "workflow-manifest"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "workflow_preflight.py对execution-manifest.json的强制校验机制及编排流程中该文件的正确生成时机与格式要求",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

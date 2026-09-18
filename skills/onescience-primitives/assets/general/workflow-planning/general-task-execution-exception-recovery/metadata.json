@@ -2,11 +2,11 @@
   "name": "general-task-execution-exception-recovery",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "visibility": "public",
   "created_at": "2026-09-16T15:25:00Z",
-  "updated_at": "2026-09-16T15:25:00Z",
-  "description": "任务执行异常恢复策略与离线执行方案：当任务因网络连接、依赖安装或环境问题被阻塞时，提供系统化的异常恢复流程，包括离线安装、本地源码安装、替代环境配置等。适用于科学计算任务执行失败后的恢复场景，特别是涉及网络受限环境的HPC集群。",
+  "updated_at": "2026-09-17",
+  "description": "任务执行异常恢复策略与离线执行方案：当任务因网络连接、依赖安装或环境问题被阻塞时，提供系统化的异常恢复流程，包括离线安装、本地源码安装、替代环境配置等。覆盖 orchestrator 编排层异常：预检失败自愈（自动生成 execution-manifest.json 并重试）、分阶段超时预算、executor 调用失败降级。适用于科学计算任务执行失败后的恢复场景，特别是涉及网络受限环境的HPC集群。",
   "tags": [
     "exception recovery",
     "offline execution",
@@ -15,11 +15,20 @@
     "dependency installation",
     "HPC",
     "scientific computing",
-    "edge:task:openfold-weight-version-validation",
-    "edge:task:protein-sequence-input-validation"
+    "orchestrator-recovery",
+    "preflight-self-heal",
+    "staged-timeout",
+    "execution-manifest",
+    "timeout-management",
+    "openfold-weight-version-validation",
+    "protein-sequence-input-validation"
   ],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "任务执行异常恢复策略和离线执行方案",
-  "evidence_papers": []
+  "evidence_papers": [],
+  "merged_batches": [
+    "CFD_S046-attr-report-modify-2026-09-17",
+    "CFD_S087-attr-report-modify-2026-09-17"
+  ]
 }

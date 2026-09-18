@@ -1,0 +1,20 @@
+{
+  "name": "cfd-data-ingestion-pde-observation-verification",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T05:07:00Z",
+  "updated_at": "2026-09-18T05:07:00Z",
+  "description": "CFD任务中PDE状态观测数据的接入、来源验证与真实性核验流程。适用于需要接入实验/仿真/公开数据集完成流场重构、数据同化或参数反演的CFD任务场景。核心方法包括：数据来源分类（实验测量/数值仿真/公开基准）、合成数据与真实数据的区分标准、数据许可检查与变量完整性核验。输出为经验证的数据集和数据来源报告。",
+  "tags": ["CFD", "data ingestion", "PDE observation", "data verification", "synthetic data", "real data", "dataset validation", "flow field", "data source", "reproducibility"],
+  "aliases": ["PDE观测数据接入", "CFD数据来源验证", "合成数据区分", "数据真实性核验"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "缺测PDE状态视频或双帧观测的标准数据接入流程，包括数据来源验证、数据许可检查、变量完整性核验的具体操作规范；真实CFD数据与合成数据的区分标准及使用场景边界；当用户未提供数据时的BLOCKED判定规则与所需数据规格清单",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

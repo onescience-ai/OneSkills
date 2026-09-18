@@ -1,0 +1,16 @@
+{
+  "name": "cfd-generative-model-gpu-requirements",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向生成模型训练任务，提供硬件需求评估与资源配置建议。涵盖GPU内存要求、分布式训练配置、CPU替代方案的可行性评估，以及HPC资源申请指导。适用于需要训练Latent Diffusion Model等复杂生成模型的气动设计场景。",
+  "tags": ["cfd", "GPU", "distributed-training", "HPC", "generative-model", "hardware-requirements", "resource-planning"],
+  "aliases": ["GPU需求评估", "分布式训练配置", "HPC资源申请"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "生成模型训练的硬件需求",
+  "evidence_papers": []
+}

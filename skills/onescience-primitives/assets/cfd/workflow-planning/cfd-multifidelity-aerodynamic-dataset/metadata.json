@@ -1,0 +1,36 @@
+{
+  "name": "cfd-multifidelity-aerodynamic-dataset",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T03:23:00Z",
+  "updated_at": "2026-09-18T03:23:00Z",
+  "description": "面向跨几何族多保真航空/汽车气动代理建模任务，提供公开RANS数据集的来源清单、访问协议、格式规范和获取流程，支持数据接入阶段的可用数据源决策",
+  "tags": ["CFD", "multifidelity", "aerodynamic", "dataset", "RANS", "open-source", "DrivAerNet", "BlendedNet"],
+  "aliases": ["aerodynamic-dataset", "CFD-data-source", "RANS-dataset"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "跨几何族多保真汽车/航空气动RANS数据集的公开来源清单，包括数据集名称、访问协议、文件格式、变量命名约定",
+  "evidence_papers": [
+    {
+      "title": "BlendedNet: A Blended Wing Body Aircraft Dataset and Surrogate Model for Aerodynamic Predictions",
+      "doi": "10.48550/arXiv.2509.07209",
+      "year": 2025
+    },
+    {
+      "title": "Multifidelity Surrogate Models: A New Data Fusion Perspective",
+      "doi": "10.48550/arXiv.2404.14456",
+      "year": 2024
+    },
+    {
+      "title": "MFNets: Data efficient all-at-once learning of multifidelity surrogates as directed networks of information sources",
+      "doi": "10.48550/arXiv.2008.02672",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

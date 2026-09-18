@@ -1,0 +1,23 @@
+{
+  "name": "cfd-pde-training-evaluation-standards",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向PDE条件生成模型的训练超参数配置标准与评估产物规范。覆盖epochs/early_stopping_patience与模型收敛性的关系、CPU环境训练规模估算、超参数偏离记录规范、worst_cases.csv定义规范（指标选择、排序规则、字段定义），以及评估报告完整性要求。",
+  "tags": ["training-hyperparameter", "early-stopping", "convergence", "worst-cases", "evaluation-metrics", "model-training", "cfd", "PDE"],
+  "aliases": ["训练超参数标准", "评估产物规范", "worst case分析"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "训练超参数（epochs、early_stopping_patience）与模型收敛性关系、CPU环境合理训练规模估算、worst_cases.csv定义规范和提取流程",
+  "evidence_papers": [
+    {"title": "WHC-PINN: Physics-Informed Neural Network with weighted loss and hard constraint for compressible flow", "doi": "10.1038/s41598-025-34263-1", "year": 2026},
+    {"title": "A primer on variational inference for physics-informed deep generative models", "doi": "10.1098/rsta.2024.0324", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

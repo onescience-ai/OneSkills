@@ -1,0 +1,20 @@
+{
+  "name": "enso-independent-validation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "时间序列预测中独立验证的设计原则，包括训练/验证/测试集的划分方法、数据时点规则、独立验证资料的选取标准",
+  "tags": ["validation", "train-test-split", "independent-validation", "time-series", "cross-validation", "overfitting"],
+  "aliases": ["交叉验证", "独立验证", "训练测试划分"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "时间序列预测中独立验证的设计原则，包括训练/验证/测试集的划分方法、数据时点规则、独立验证资料的选取标准",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

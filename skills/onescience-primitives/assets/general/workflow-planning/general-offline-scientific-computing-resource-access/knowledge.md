@@ -68,6 +68,7 @@
 - 创建离线安装包用于空气隔离环境
 - 管理科学计算资源的版本和依赖
 - 解决网络连接失败导致的安装错误
+- 配套资源：matchem-python-ssl-troubleshooting（SSL证书问题诊断）、matchem-molecular-model-weight-distribution（分子生成模型权重管理）
 
 ## 补充证据（开源文档/用户自有，可选）
 [D1] User Guide - Using a Proxy Server, pip Documentation, v26.2.1, URL: https://pip.pypa.io/en/stable/user_guide/#using-a-proxy-server（accessed_at 2026-09-16，权威官方文档）

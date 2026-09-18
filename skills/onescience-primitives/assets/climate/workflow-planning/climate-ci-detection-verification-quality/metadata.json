@@ -1,0 +1,35 @@
+{
+  "name": "climate-ci-detection-verification-quality",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:00:00Z",
+  "updated_at": "2026-09-17T12:00:00Z",
+  "description": "对流初生（CI）检测结果的独立验证协议和产品质量保证体系，定义了独立验证资料的类型与获取方法（雷达回波、不同传感器数据）、验证协议设计原则（样本划分、指标计算、门限设定）、POD/FAR/CSI等指标的计算方法、质量标志的完整定义（数据有效性、缺测、可疑状态）以及不确定性估计技术（观测误差、算法误差、代表性误差）。适用于CI检测任务的验证和产品生成阶段。",
+  "tags": ["convective-initiation", "CI", "verification", "validation", "POD", "FAR", "CSI", "quality-flags", "uncertainty", "radar", "independent-data", "product-metadata", "verification-protocol"],
+  "aliases": ["CI verification protocol", "convective initiation validation", "CI quality assurance"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "独立验证资料的类型和获取方法；验证协议的设计原则；POD/FAR/CSI等指标的计算方法；质量标志的定义和生成方法；不确定性估计的常用技术；产品元数据的完整要求",
+  "evidence_papers": [
+    {
+      "title": "A dataset for machine learning model to convective initiation detection and nowcasting over southeastern China",
+      "doi": "10.1038/s41597-026-06902-3",
+      "year": 2026,
+      "venue": "Scientific Data"
+    },
+    {
+      "title": "Physically Explainable Deep Learning for Convective Initiation Nowcasting Using GOES-16 Satellite Observations",
+      "doi": "10.1175/aies-d-23-0098.1",
+      "year": 2024,
+      "venue": "Artificial Intelligence for the Earth Systems"
+    },
+    {
+      "title": "BAB3T: A Methodology to Determine Extreme Convective Initiation Regions Using Satellite Infrared Imagery",
+      "doi": "10.3390/rs12020337",
+      "year": 2020,
+      "venue": "Remote Sensing"
+    }
+  ]
+}

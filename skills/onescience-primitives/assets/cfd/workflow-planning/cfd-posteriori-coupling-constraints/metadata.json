@@ -1,0 +1,20 @@
+{
+  "name": "cfd-posteriori-coupling-constraints",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:36:00Z",
+  "updated_at": "2026-09-17T20:36:00Z",
+  "description": "面向CFD后验耦合执行约束的流程规范，涵盖RANS/LES求解器接口要求、闭合项张量约束条件、后验推进稳定性判据，适用于湍流闭合模型的后验验证",
+  "tags": ["CFD", "RANS", "LES", "posteriori", "closure-model", "solver-interface", "stability", "turbulence-closure"],
+  "aliases": ["后验耦合", "闭合项验证", "RANS耦合", "LES耦合", "求解器接口"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD后验耦合执行约束知识，包括RANS/LES求解器接口要求、闭合项张量约束条件、后验推进稳定性判据",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": ["CFD_S079-2026-09-17"],
+  "conflicts": []
+}

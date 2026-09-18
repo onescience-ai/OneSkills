@@ -1,0 +1,26 @@
+{
+  "name": "climate-pv-power-forecasting-validation-protocol",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T21:53:00Z",
+  "updated_at": "2026-09-17T21:53:00Z",
+  "description": "面向多站光伏电站0-48小时功率联合预报任务，提供标准验证方法、数据来源规范、模型选择原则和工作流步骤的知识卡片。涵盖按站点分层和爬坡事件分层的检验协议、数据时点规则、过拟合检测以及标准工作流步骤s01-s06的定义。",
+  "tags": ["photovoltaic", "power forecasting", "validation", "multi-site", "ramp event", "model selection", "workflow", "solar energy"],
+  "aliases": ["solar power prediction", "PV power forecast", "photovoltaic power verification", "multi-site PV forecasting"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多站光伏电站0—48小时功率联合预报任务的知识补充",
+  "evidence_papers": [
+    {
+      "title": "Assessing the Utility of Weather Data for Photovoltaic Power Prediction",
+      "doi": "",
+      "year": "2018"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

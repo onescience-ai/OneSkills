@@ -1,0 +1,35 @@
+{
+  "name": "general-workflow-preflight-manifest-validation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向工作流预检阶段，验证execution manifest文件的生成规范、必需字段定义、生成时机和缺失恢复策略，确保预检失败时能自动恢复或提示用户补充。",
+  "tags": ["workflow", "manifest", "preflight", "validation", "recovery", "orchestration"],
+  "aliases": ["execution-manifest", "workflow-manifest", "preflight-manifest"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "execution-manifest.json的生成规范和验证契约，包括必需字段定义、生成时机、版本控制和缺失时的恢复策略",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Deterministic Workflow Builder",
+      "url": "https://github.com/googlarz/deterministic-workflow-builder",
+      "publisher": "GitHub",
+      "version": "main",
+      "accessed_at": "2026-09-17T00:00:00Z"
+    },
+    {
+      "title": "workflow-verifier",
+      "url": "https://github.com/vlu532/workflow-verifier",
+      "publisher": "GitHub",
+      "version": "main",
+      "accessed_at": "2026-09-17T00:00:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

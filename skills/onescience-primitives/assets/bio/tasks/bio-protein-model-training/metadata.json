@@ -12,7 +12,7 @@
     "few-shot",
     "PyTorch",
     "reproducibility",
-    "edge:resource:bio/models/bio-esm2-protein-language-model",
+    "edge:resource:models/bio-esm2-protein-language-model",
     "edge:workflow:bio-fewshot-protein-function-prediction-workflow"
   ],
   "harvested": true,

@@ -1,0 +1,20 @@
+{
+  "name": "cfd-turbulence-dataset-acquisition",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T13:27:00Z",
+  "updated_at": "2026-09-17T13:27:00Z",
+  "description": "面向三维湍流时空预测任务，提供DNS/LES湍流数据集的获取途径、公开数据源、生成工具部署与配置知识，以及数据格式契约规范",
+  "tags": ["cfd", "turbulence", "DNS", "LES", "dataset", "data-acquisition", "OpenFOAM", "Nek5000", "HDF5", "NetCDF", "VTK"],
+  "aliases": ["turbulence data", "DNS data", "LES data", "湍流数据"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "获取或生成三维DNS与LES体湍流数据集的具体途径、公开数据源、生成该数据集所需的数据生成工具（如OpenFOAM、Nek5000等DNS/LES求解器）的部署与配置知识，以及数据格式（如HDF5、NetCDF、VTK）的契约规范",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

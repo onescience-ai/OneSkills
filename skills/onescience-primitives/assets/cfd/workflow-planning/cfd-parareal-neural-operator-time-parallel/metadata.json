@@ -1,0 +1,36 @@
+{
+  "name": "cfd-parareal-neural-operator-time-parallel",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T03:10:00Z",
+  "updated_at": "2026-09-18T03:10:00Z",
+  "description": "面向时间依赖偏微分方程的并行时间推进求解，将Parareal时间并行算法与神经网络算子结合，实现粗粒度预测器与细粒度求解器的协作加速。适用于需要对长时间积分PDE进行高效并行求解的CFD场景，包括Navier-Stokes方程、扩散方程、反应-扩散方程等。核心方法包括：Parareal框架的时间子域分解、神经网络作为粗传播子学习粗细解差异、多GPU并行训练与推理。区分于传统时间算子学习方法，Parareal方法强调粗细粒度解耦与迭代校正机制。",
+  "tags": ["Parareal", "time-parallel", "neural operator", "PDE solver", "parallel-in-time", "coarse-fine decomposition", "iterative correction", "multi-GPU", "temporal decomposition", "PPINN"],
+  "aliases": ["parareal neural network", "time parallel neural PDE", "PPINN", "RandNet-Parareal"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Parareal neural solver与Temporal neural operator的架构差异与独立评估方法",
+  "evidence_papers": [
+    {
+      "title": "PPINN: Parareal Physics-Informed Neural Network for time-dependent PDEs",
+      "doi": "10.1016/j.cma.2020.113250",
+      "year": 2019
+    },
+    {
+      "title": "RandNet-Parareal: a time-parallel PDE solver using Random Neural Networks",
+      "doi": "10.48550/arXiv.2411.06225",
+      "year": 2024
+    },
+    {
+      "title": "Parallel-in-Time Solution of Allen-Cahn Equations by Integrating Operator Learning into the Parareal Method",
+      "doi": "10.48550/arXiv.2510.07672",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

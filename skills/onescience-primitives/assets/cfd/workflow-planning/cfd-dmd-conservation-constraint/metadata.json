@@ -1,0 +1,18 @@
+{
+  "name": "cfd-dmd-conservation-constraint",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "面向DMD降阶模型的物理守恒约束机制，涵盖质量/动量/能量守恒在降阶投影中的数学表达、守恒残差惩罚项的构造方法，以及在目标函数或投影过程中保持Navier-Stokes方程守恒性质的实现策略。",
+  "tags": ["DMD", "conservation", "constraint", "Navier-Stokes", "reduced-order-model", "physics-informed", "penalty", "residual"],
+  "aliases": ["DMD守恒约束", "物理守恒约束", "降阶模型守恒性"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DMD降阶模型的物理守恒约束机制，质量/动量/能量守恒在降阶投影中的数学表达和实现方法",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": []
+}

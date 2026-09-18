@@ -162,3 +162,23 @@
 [2] Kunlun Zhu et al., "AgentDebugX: An Open-Source Toolkit for Failure Observability, Attribution, and Recovery in LLM Agents", arXiv, 2026, DOI: 10.48550/arXiv.2607.18754
 [3] Bowen Guan et al., "ParaRecover: A Process-Level Benchmark for Error Localization and Recovery in Parallel Tool-Use Agents", arXiv, 2026, DOI: 10.48550/arXiv.2609.12345
 [4] Xiao Zhou et al., "GUI vs. CLI: Execution Bottlenecks in Screen-Only and Skill-Mediated Computer-Use Agents", arXiv, 2026, DOI: 10.48550/arXiv.2606.24551
+[5] Yang Tian et al., "Beyond Function Calling: Benchmarking Tool-Using Agents under Tool-Environment Unreliability", arXiv, 2026, DOI: 10.48550/arXiv.2606.25819
+
+## 批次补充
+
+### batch-2026-09-17-merge-arxiv2606.25819
+
+来源：arXiv:2606.25819 "Beyond Function Calling: Benchmarking Tool-Using Agents under Tool-Environment Unreliability"
+
+**五类结构化可靠性 Hazard** [5]：
+1. **Specification Drift**：文档化契约与运行时契约不匹配（字段重命名、类型变更、输出形状改变）
+2. **Invocation Error**：参数在传输过程中被丢弃、重命名、强制转换或截断
+3. **Execution Failure**：超时、连接错误、运行时异常导致执行不稳定
+4. **Output Drift**：返回值格式不稳定（包装值、添加单位、嵌套字段、别名）
+5. **Cross-source Conflict**：多源证据不完整、不一致或格式不同
+
+**诊断瓶颈发现** [5]：
+- 提供针对性 hints 可将准确率提升 25.5~35.5 个百分点，恢复 60~80% 的丢失准确率
+- 仅增加计算量（TTS）仅提升 3.5~11.5 个百分点，远不如诊断信息有效
+- 诊断失败是主要瓶颈：agent 无法自主识别 hazard 类型时，重试策略往往无效
+- 重试后切换工具的比例在 44%~76%，但与整体准确率关联较弱

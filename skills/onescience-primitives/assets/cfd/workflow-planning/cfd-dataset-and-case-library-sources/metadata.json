@@ -1,0 +1,44 @@
+{
+  "name": "cfd-dataset-and-case-library-sources",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T10:05:00Z",
+  "updated_at": "2026-09-18T10:05:00Z",
+  "description": "CFD领域公开数据集与案例库权威来源指南：提供CFD仿真所需的公开数据集、案例库、基准测试集的权威来源列表，包括OpenFOAM官方教程库、FEM基准案例库、学术数据集仓库等。适用于需要获取CFD仿真数据、验证案例、基准测试的场景，如CFD工作流开发、模型验证、自动化仿真等。核心来源包括：OpenFOAM官方GitHub仓库、CFD基准测试数据库、学术数据集平台。输出为可访问的数据源URL列表和使用指南。",
+  "tags": ["CFD", "OpenFOAM", "dataset", "case library", "benchmark", "tutorial", "repository", "FEM", "simulation data", "open source"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD领域公开数据集和案例库的权威来源，包括OpenFOAM官方教程库、FEM基准案例库、以及相关的学术数据集仓库",
+  "evidence_papers": [
+    {
+      "title": "OpenFOAMGPT: RAG-Augmented LLM Agent for OpenFOAM-Based CFD",
+      "doi": "10.1063/5.0257555",
+      "year": 2025,
+      "venue": "Physics of Fluids"
+    },
+    {
+      "title": "Foam-Agent: LLM-Based Multi-Agent Framework for Automating CFD Workflows",
+      "doi": "10.1016/j.cma.2026.119271",
+      "year": 2025,
+      "venue": "Computer Methods in Applied Mechanics and Engineering"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "OpenFOAM-10 Repository",
+      "url": "https://github.com/OpenFOAM/OpenFOAM-10",
+      "publisher": "OpenFOAM Foundation",
+      "version": "v10",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "OpenFOAM Official Website",
+      "url": "https://openfoam.org",
+      "publisher": "OpenFOAM Foundation",
+      "version": "2026",
+      "accessed_at": "2026-09-18"
+    }
+  ]
+}

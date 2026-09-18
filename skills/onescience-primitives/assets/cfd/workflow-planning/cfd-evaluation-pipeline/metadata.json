@@ -1,0 +1,35 @@
+{
+  "name": "cfd-evaluation-pipeline",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:28:00Z",
+  "updated_at": "2026-09-17T12:28:00Z",
+  "description": "面向科学计算任务的评估步骤，计算统计误差、物理约束指标和不确定性指标，生成评估报告和适用域分析。涵盖 relative_L2、NLL、coverage、calibration_error 等验收指标。",
+  "tags": ["evaluation", "metrics", "physics constraints", "applicability report", "PASS REJECT"],
+  "aliases": ["model evaluation workflow", "assessment pipeline"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "评估步骤的完整执行流程——计算统计误差、物理约束指标、不确定性指标、识别最差样本、综合判定、生成报告",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Machine Learning Evaluation Metrics",
+      "url": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+      "publisher": "scikit-learn",
+      "version": "1.3.0",
+      "accessed_at": "2026-09-17T12:28:00Z"
+    },
+    {
+      "title": "Physics-Informed Neural Networks: A Deep Learning Framework for Solving Forward and Inverse Problems Involving Nonlinear Partial Differential Equations",
+      "url": "https://arxiv.org/abs/1711.10561",
+      "publisher": "arXiv",
+      "version": "v1",
+      "accessed_at": "2026-09-17T12:28:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

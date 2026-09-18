@@ -1,0 +1,20 @@
+{
+  "name": "cfd-diffusion-model-families-comparison",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T05:07:00Z",
+  "updated_at": "2026-09-18T05:07:00Z",
+  "description": "CFD任务中三种扩散模型族的架构差异、适用场景与训练配置对比。适用于需要选择或比较Score-based data assimilation、Diffusion PDE model、Neural fluid field三种模型族的研究场景。核心方法包括：三种模型族的架构设计差异、训练配置要求、输入输出契约定义。输出为模型选择指南和多模型对比实验设计规范。",
+  "tags": ["diffusion model", "score-based", "data assimilation", "PDE constraint", "neural fluid field", "model comparison", "CFD", "flow reconstruction", "architecture design", "training configuration"],
+  "aliases": ["扩散模型族对比", "Score-based数据同化", "Diffusion PDE模型", "神经流场模型"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Score-based data assimilation、Diffusion PDE model、Neural fluid field三种模型族的架构差异、适用场景、训练配置要求及输入输出契约；多模型对比实验的设计规范",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

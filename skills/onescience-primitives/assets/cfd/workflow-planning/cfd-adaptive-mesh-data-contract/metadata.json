@@ -1,0 +1,28 @@
+{
+  "name": "cfd-adaptive-mesh-data-contract",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T13:59:00Z",
+  "updated_at": "2026-09-17T13:59:00Z",
+  "description": "面向自适应有限元网格优化任务，定义网格误差数据的标准格式契约，包括节点坐标、单元连接、误差指示器和目标位移的JSON/CSV结构规范",
+  "tags": ["adaptive-mesh", "finite-element", "data-contract", "error-indicator", "mesh-optimization"],
+  "aliases": ["mesh-error-data", "FEM-data-format", "adaptive-grid-data"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "自适应有限元网格误差数据的标准格式（节点坐标、单元连接、误差指示器、目标位移的JSON/CSV结构）",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "PyTorch Serialization Documentation",
+      "url": "https://pytorch.org/docs/stable/notes/serialization.html",
+      "publisher": "PyTorch",
+      "version": "2.14",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

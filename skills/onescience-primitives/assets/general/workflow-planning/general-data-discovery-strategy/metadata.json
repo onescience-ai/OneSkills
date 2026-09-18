@@ -1,0 +1,15 @@
+{
+  "name": "general-data-discovery-strategy",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:16:00Z",
+  "updated_at": "2026-09-15T21:16:00Z",
+  "description": "数据发现与定位完整策略：提供科学工作流中数据文件的多层查找方法。适用于自动化工作流中的数据发现阶段，覆盖本地文件系统搜索、远程数据源查询和数据规范文档检索三个层次。输出为数据发现日志和定位结果。",
+  "tags": ["data discovery", "file location", "search strategy", "workflow", "data management", "scientific computing", "automation", "multi-source", "data provenance"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "数据发现与定位的完整策略",
+  "evidence_papers": []
+}

@@ -1,0 +1,32 @@
+{
+  "name": "cfd-pde-prediction-postprocessing",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T12:00:00Z",
+  "updated_at": "2026-09-18T12:00:00Z",
+  "description": "面向PDE轨迹预测结果的后处理与物理量恢复。适用于将归一化空间的模型预测恢复为原始物理量、关联网格坐标、计算物理派生量的场景。核心方法包括：逆归一化流程（使用训练集统计量mean/std的逆变换），网格坐标关联（将预测张量索引与实际空间坐标和时间步对应），物理派生量计算（从速度场派生涡度、压力、动能等），以及推理结果的可追溯性规范。输出为包含原始物理量、网格坐标和派生量的完整预测结果。",
+  "tags": ["postprocessing", "inverse normalization", "physical quantities", "grid coordinates", "vorticity", "kinetic energy", "PDE prediction", "unit restoration", "CFD postprocessing"],
+  "aliases": ["PDE postprocessing", "neural operator postprocessing"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PDE预测后处理与物理量恢复规范",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "The VTK User's Guide (Visualization Toolkit)",
+      "url": "https://vtk.org/documentation/",
+      "publisher": "Kitware",
+      "version": "9.3",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "NetCDF Classic and Format Specification",
+      "url": "https://www.unidata.ucar.edu/software/netcdf/docs/",
+      "publisher": "Unidata",
+      "version": "4.9",
+      "accessed_at": "2026-09-18"
+    }
+  ]
+}

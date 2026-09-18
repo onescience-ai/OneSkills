@@ -1,0 +1,20 @@
+{
+  "name": "matchem-supercell-construction",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:23:00Z",
+  "updated_at": "2026-09-16T18:23:00Z",
+  "description": "面向LAMMPS超胞构建任务，建立超胞构建规范，确保三斜晶胞参数计算正确、元素映射规则明确、固定原子组设置合理、表面超胞尺寸符合标准。",
+  "tags": ["supercell construction", "LAMMPS", "triclinic cell", "element mapping", "fixed atoms"],
+  "aliases": ["supercell building", "simulation box setup"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "LAMMPS超胞构建规范，包括三斜晶胞参数计算方法、元素映射规则、固定原子组设置方法、Cu(111)表面超胞尺寸计算",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

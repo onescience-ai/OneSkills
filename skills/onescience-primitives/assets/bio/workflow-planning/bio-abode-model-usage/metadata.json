@@ -1,0 +1,20 @@
+{
+  "name": "bio-abode-model-usage",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "AbODE模型的使用知识缺口记录，该模型基于图偏微分方程用于抗体生成，但公开文献证据有限，需进一步确认模型细节",
+  "tags": ["antibody", "generative-model", "graph-PDE", "AbODE", "evidence-limited"],
+  "aliases": ["AbODE", "抗体生成模型", "图偏微分方程抗体设计"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "AbODE模型的安装、配置和调用方法",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": ["AbODE模型的具体实现细节在公开文献中未找到，需进一步确认模型来源、权重文件和调用接口"]
+}

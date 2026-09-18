@@ -1,0 +1,20 @@
+{
+  "name": "time-series-data-partitioning",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "时间序列预测中数据用途划分的原则，包括训练集、验证集、测试集的定义和划分方法，特别是对于滚动预测任务的数据隔离要求",
+  "tags": ["data-partitioning", "train-validation-test", "time-series", "data-isolation", "rolling-forecast"],
+  "aliases": ["数据划分", "训练验证测试划分"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "时间序列预测中数据用途划分的原则，包括训练集、验证集、测试集的定义和划分方法，特别是对于滚动预测任务的数据隔离要求",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

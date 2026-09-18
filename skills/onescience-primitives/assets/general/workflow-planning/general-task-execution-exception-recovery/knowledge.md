@@ -6,12 +6,15 @@
 - 依赖安装失败导致后续步骤无法执行
 - 环境预检未通过，关键模块缺失
 - 任务状态为 blocked，需要恢复执行
+- **orchestrator 预检失败（BLOCKED 状态）需要自愈恢复**
 
 **适用场景**：
 - HPC集群无外网访问权限
 - 网络不稳定导致依赖安装超时
 - 任务执行中途失败需要恢复
 - 需要离线部署科学计算环境
+- **execution-manifest.json 缺失导致预检失败**
+- **orchestrator 编排产物缺失需要自动生成**
 
 **不适用场景**：
 - 有稳定网络连接的环境
@@ -89,6 +92,18 @@
 - 依赖冲突：使用虚拟环境隔离或版本约束
 - 磁盘空间不足：清理缓存或选择性安装
 - 任务恢复失败：回滚到初始状态，通知管理员
+
+**orchestrator 编排层异常处理（CFD_S046 补充）**：
+- **预检失败（execution-manifest.json 缺失）**：orchestrator 应检测到缺失后立即从 global_plan.json 映射生成该文件并重试预检，而非直接终止
+- **超时异常**：应设置分阶段超时预算（s01-s02 预留 40%、s03 预留 30%、s04-s05 预留 30%），而非单一总超时
+- **executor 调用失败**：记录失败原因，尝试降级到备用 executor 或通知用户
+
+**OneScience任务超时与异常恢复机制（CFD_S087补充）**：
+- **超时处理**：当执行步骤遇到不可恢复错误（如RuntimeError）时，应在该步骤标记BLOCKED并记录错误详情到execution-manifest.json，而非继续重试
+- **manifest生成**：超时前必须确保execution-manifest.json已写入以保存中间状态
+- **异常恢复**：编排器应在训练崩溃后有效恢复或标记BLOCKED状态，避免超时；execution-manifest未生成违反工作流契约
+
+> **CFD_S046 失败模式**：blocked-run.log 仅记录超时和预检失败，未见任何重试或恢复尝试。orchestrator 在预检失败后未能启动异常恢复流程（如跳过预检继续执行或重新生成 execution-manifest.json），且时间预算分配不当导致超时。
 
 **降级策略**：
 - 核心功能优先：只安装必需依赖

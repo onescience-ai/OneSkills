@@ -179,3 +179,170 @@
 - [D1] JSON Schema Specification (Draft 2020-12) - JSON Schema核心规范的权威定义
 - [D2] JSON Schema Validation (Draft 2020-12) - JSON Schema验证规则的权威定义
 - [D3] Python jsonschema Library - JSON Schema验证的Python实践参考
+
+## 批次补充（2026-09-17：基于权威文档的Object类型验证详细规则）
+
+### Object类型基础验证
+
+基于 JSON Schema Object Reference [D4] 补充以下对象验证规则：
+
+| 关键字 | 功能 | 来源 | 说明 |
+|--------|------|------|------|
+| type: "object" | 验证值为对象（Python dict） | [D4] | JSON对象键必须为字符串 |
+| properties | 定义对象属性及其Schema | [D4] | 每个键对应一个属性Schema |
+| required | 必填属性数组 | [D4] | 数组中的属性必须存在 |
+| additionalProperties | 额外属性控制 | [D4] | false=禁止额外属性；Schema=验证额外属性 |
+| patternProperties | 按正则匹配的属性Schema | [D4] | 属性名匹配正则时应用对应Schema |
+| unevaluatedProperties | 未评估属性控制 | [D4] | 可识别子Schema中声明的属性 |
+| minProperties/maxProperties | 属性数量约束 | [D4] | 非负整数，限制对象属性数量 |
+| propertyNames | 属性名验证 | [D4] | 验证属性名是否符合Schema |
+
+### additionalProperties 详细机制
+
+| 配置 | 行为 | 来源 | 说明 |
+|------|------|------|------|
+| additionalProperties: false | 禁止任何未在properties/patternProperties中声明的属性 | [D4] | 严格模式 |
+| additionalProperties: {type: "string"} | 额外属性的值必须为字符串 | [D4] | 宽松模式，但限制额外属性类型 |
+| 默认值（不设置） | 允许任意额外属性 | [D4] | 最宽松模式 |
+
+### required 与 properties 交互
+
+| 场景 | 结果 | 来源 | 说明 |
+|------|------|------|------|
+| 属性在required中但不在properties中 | ERROR | [D4] | 必填但未定义Schema |
+| 属性在properties中但不在required中 | 有效 | [D4] | 可选属性 |
+| 属性值为null | 不等同于属性不存在 | [D4] | null是有效值，需单独定义type |
+
+### patternProperties 正则匹配
+
+| 正则示例 | 匹配属性 | 来源 | 说明 |
+|----------|----------|------|------|
+| "^S_" | 所有以S_开头的属性 | [D4] | 需用^和$锚定避免误匹配 |
+| "^I_" | 所有以I_开头的属性 | [D4] | 例如I_0, I_42 |
+| "p" | 所有包含p的属性 | [D4] | 会匹配apple等，通常不推荐 |
+
+### unevaluatedProperties vs additionalProperties
+
+| 特性 | additionalProperties | unevaluatedProperties | 来源 |
+|------|---------------------|----------------------|------|
+| 识别子Schema声明的属性 | 不识别 | 识别 | [D4] |
+| 与allOf组合使用 | 可能导致意外失败 | 正常工作 | [D4] |
+| 条件属性声明 | 不支持 | 支持（配合if/then） | [D4] |
+| 推荐使用场景 | 简单单层Schema | 复杂组合Schema | [D4] |
+
+### propertyNames 验证
+
+| 配置 | 行为 | 来源 | 说明 |
+|------|------|------|------|
+| propertyNames: {pattern: "^[A-Za-z_][A-Za-z0-9_]*$"} | 属性名必须为有效标识符 | [D4] | 确保可作为编程语言属性名 |
+| propertyNames: {maxLength: 50} | 属性名长度限制 | [D4] | 防止过长属性名 |
+
+### 实际应用示例
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "task_id": {"type": "string"},
+    "task": {"type": "string"},
+    "issues": {"type": "array"},
+    "summary": {"type": "string"}
+  },
+  "required": ["task_id", "task", "issues", "summary"],
+  "additionalProperties": false
+}
+```
+[D4] 此Schema定义了归因报告的基本结构，additionalProperties:false确保不接受额外字段。
+
+### 常见错误与修复
+
+| 错误 | 原因 | 修复方案 | 来源 |
+|------|------|----------|------|
+| Missing property | required中的属性不存在 | 添加缺失属性 | [D4] |
+| Additional property | additionalProperties:false时有额外属性 | 删除额外属性或设置为true | [D4] |
+| Invalid type | 属性值类型不匹配 | 检查properties中的type定义 | [D4] |
+| Invalid pattern | 属性名不符合正则 | 调整属性名或正则表达式 | [D4] |
+
+[D4] JSON Schema Object Reference, json-schema.org, Draft 2020-12. URL: https://json-schema.org/understanding-json-schema/reference/object (accessed_at: 2026-09-17, 交叉验证：JSON Schema官方文档)
+
+## 批次补充（2026-09-17：基于Understanding JSON Schema的类型验证详细规则）
+
+### 基础类型验证
+
+基于 Understanding JSON Schema [D5] 补充以下类型验证规则：
+
+| 类型 | JSON值 | Python等价类型 | 验证规则 | 来源 |
+|------|--------|----------------|----------|------|
+| string | "hello" | str | 验证值为字符串 | [D5] |
+| number | 42, 3.14 | int/float | 验证值为数字（整数或浮点数） | [D5] |
+| integer | 42 | int | 验证值为整数 | [D5] |
+| boolean | true/false | bool | 验证值为布尔值 | [D5] |
+| array | [1, 2, 3] | list | 验证值为数组 | [D5] |
+| object | {"key": "value"} | dict | 验证值为对象 | [D5] |
+| null | null | None | 验证值为空 | [D5] |
+
+### 数组验证规则
+
+| 关键字 | 功能 | 示例 | 来源 |
+|--------|------|------|------|
+| items | 定义数组元素的Schema | {"items": {"type": "string"}} | [D5] |
+| minItems | 数组最小长度 | {"minItems": 1} | [D5] |
+| maxItems | 数组最大长度 | {"maxItems": 10} | [D5] |
+| uniqueItems | 数组元素唯一性 | {"uniqueItems": true} | [D5] |
+| contains | 数组必须包含至少一个匹配元素 | {"contains": {"type": "number"}} | [D5] |
+
+### 数值验证规则
+
+| 关键字 | 功能 | 示例 | 来源 |
+|--------|------|------|------|
+| minimum | 最小值（包含） | {"minimum": 0} | [D5] |
+| maximum | 最大值（包含） | {"maximum": 100} | [D5] |
+| exclusiveMinimum | 最小值（不包含） | {"exclusiveMinimum": 0} | [D5] |
+| exclusiveMaximum | 最大值（不包含） | {"exclusiveMaximum": 100} | [D5] |
+| multipleOf | 倍数约束 | {"multipleOf": 5} | [D5] |
+
+### 字符串验证规则
+
+| 关键字 | 功能 | 示例 | 来源 |
+|--------|------|------|------|
+| minLength | 最小长度 | {"minLength": 1} | [D5] |
+| maxLength | 最大长度 | {"maxLength": 255} | [D5] |
+| pattern | 正则表达式匹配 | {"pattern": "^[a-zA-Z0-9]+$"} | [D5] |
+| format | 格式验证 | {"format": "email"} | [D5] |
+
+### 格式验证详细规则
+
+基于 Understanding JSON Schema [D5] 补充以下格式验证规则：
+
+| 格式 | 验证内容 | 示例值 | 来源 |
+|------|----------|--------|------|
+| date-time | ISO 8601日期时间 | "2026-09-17T16:50:00Z" | [D5] |
+| date | ISO 8601日期 | "2026-09-17" | [D5] |
+| time | ISO 8601时间 | "16:50:00Z" | [D5] |
+| email | 电子邮件地址 | "user@example.com" | [D5] |
+| hostname | 互联网主机名 | "example.com" | [D5] |
+| ipv4 | IPv4地址 | "192.168.1.1" | [D5] |
+| ipv6 | IPv6地址 | "2001:0db8:85a3:0000:0000:8a2e:0370:7334" | [D5] |
+| uri | 统一资源标识符 | "https://example.com" | [D5] |
+| uuid | 通用唯一标识符 | "3e4666bf-d5e5-4aa7-b8ce-cefe41c7568a" | [D5] |
+
+### 类型验证错误处理
+
+| 错误类型 | 错误消息示例 | 修复建议 | 来源 |
+|----------|--------------|----------|------|
+| type-mismatch | "Expected string, got number" | 检查字段值类型 | [D5] |
+| format-violation | "Invalid email format" | 修正字段格式 | [D5] |
+| range-violation | "Value below minimum" | 调整数值范围 | [D5] |
+| length-violation | "String too short" | 调整字符串长度 | [D5] |
+| pattern-violation | "String does not match pattern" | 修正字符串内容 | [D5] |
+
+### 类型验证最佳实践
+
+| 实践 | 描述 | 来源 |
+|------|------|------|
+| 使用最具体的类型 | 优先使用integer而非number（当值为整数时） | [D5] |
+| 组合类型验证 | 使用"anyOf"/"oneOf"验证多种可能类型 | [D5] |
+| 条件类型验证 | 使用"if/then/else"根据条件选择类型验证 | [D5] |
+| 默认值设置 | 使用"default"为可选字段提供默认值 | [D5] |
+
+[D5] Understanding JSON Schema, JSON Schema, 2026. URL: https://json-schema.org/understanding-json-schema/ (accessed_at: 2026-09-17, 交叉验证：JSON Schema官方文档)

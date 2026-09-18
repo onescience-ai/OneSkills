@@ -1,0 +1,22 @@
+{
+  "name": "cfd-cylinder-wake-autoregressive-parameter-confirmation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:56:00Z",
+  "updated_at": "2026-09-17T12:56:00Z",
+  "description": "面向圆柱绕流自回归预测任务，提供关键参数的确定方法、默认值依据和用户确认流程",
+  "tags": ["cfd", "cylinder", "autoregressive", "parameter", "confirmation", "workflow"],
+  "aliases": ["参数确认", "参数设置", "parameter setting"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "圆柱绕流自回归预测任务中关键参数的确定方法、默认值依据和用户确认流程",
+  "evidence_papers": [
+    {"title": "A flow feature detection method for modeling pressure distribution around a cylinder in non-uniform flows by using a convolutional neural network.", "doi": "10.1038/s41598-020-61450-z", "year": 2020}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

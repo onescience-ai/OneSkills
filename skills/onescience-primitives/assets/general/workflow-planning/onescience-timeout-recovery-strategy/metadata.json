@@ -1,0 +1,20 @@
+{
+  "name": "onescience-timeout-recovery-strategy",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向OneScience任务的超时处理与恢复机制，定义超时阈值设置、自动恢复策略（任务拆分、重试、降级）和用户通知机制，确保长时间任务在超时后能保存状态并提供恢复入口",
+  "tags": ["onescience", "timeout", "recovery", "task-management", "fault-tolerance", "state-persistence"],
+  "aliases": ["超时恢复", "任务恢复", "timeout-recovery"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience任务超时处理规则，包括超时阈值设置、自动恢复策略和用户通知机制",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

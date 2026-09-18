@@ -1,0 +1,39 @@
+{
+  "name": "cfd-pde-numerical-stability-data-generation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T12:00:00Z",
+  "updated_at": "2026-09-18T12:00:00Z",
+  "description": "面向PDE合成数据生成任务，保障数值求解稳定性并生成高质量训练数据。适用于需要从常见CFD基准PDE（Burgers方程、Navier-Stokes方程、线性对流方程、扩散方程）生成合成数据的研究场景。核心方法包括：CFL条件检查（Δt ≤ Δx/c）确保显式格式稳定性，伪谱法+去混叠处理非线性项，Crank-Nicolson/IMEX格式处理刚性项，以及生成后的NaN/Inf自动检测。输出为数值稳定的PDE合成数据集。",
+  "tags": ["CFL condition", "numerical stability", "PDE", "synthetic data", "spectral method", "pseudospectral", "Burgers equation", "Navier-Stokes", "advection equation", "diffusion equation", "data generation"],
+  "aliases": ["PDE synthetic data generation", "numerical PDE solver"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PDE数值求解稳定性保障与合成数据生成规范",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Trefethen, L.N. Spectral Methods in MATLAB",
+      "url": "https://epubs.siam.org/doi/10.1137/1.9780898719598",
+      "publisher": "SIAM",
+      "version": "2000",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "LeVeque, R.J. Finite Difference Methods for Ordinary and Partial Differential Equations",
+      "url": "https://epubs.siam.org/doi/10.1137/1.9780898717839",
+      "publisher": "SIAM",
+      "version": "2007",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "Kassam, A.K. & Trefethen, L.N. Fourth-order time-stepping for stiff PDEs",
+      "url": "https://epubs.siam.org/doi/10.1137/S0036144502418383",
+      "publisher": "SIAM",
+      "version": "2005",
+      "accessed_at": "2026-09-18"
+    }
+  ]
+}

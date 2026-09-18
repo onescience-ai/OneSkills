@@ -1,0 +1,32 @@
+{
+  "name": "cfd-multi-fidelity-surrogate-modeling",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T14:25:00Z",
+  "updated_at": "2026-09-17T14:25:00Z",
+  "description": "面向计算昂贵的气动仿真场景，构建融合低保真与高保真数据的代理模型，通过保真度间相关性建模降低高保真CFD调用次数，支持不确定性量化与主动学习采样策略；覆盖多保真高斯过程、神经网络多保真方法、保真度相关性建模与不确定性传播等核心技术",
+  "tags": ["multi-fidelity", "surrogate-modeling", "Gaussian Process", "neural network", "uncertainty quantification", "aerodynamic", "CFD", "co-kriging", "transfer learning"],
+  "aliases": ["多保真代理", "multi-fidelity surrogate", "代理模型", "surrogate model"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Multi-fidelity surrogate模型的实现知识，包括多保真建模方法、保真度间相关性建模、不确定性量化",
+  "evidence_papers": [
+    {
+      "title": "Optimization-Embedded Active Multi-Fidelity Surrogate Learning for Multi-Condition Airfoil Shape Optimization",
+      "doi": "10.48550/arXiv.2603.17057",
+      "year": 2026
+    },
+    {
+      "title": "Multi-Fidelity modeling of Probabilistic Aerodynamic Databases for Use in Aerospace Engineering",
+      "doi": "10.48550/arXiv.1911.05036",
+      "year": 2019
+    },
+    {
+      "title": "Multi-fidelity modeling with different input domain definitions using Deep Gaussian Processes",
+      "doi": "10.48550/arXiv.2006.15924",
+      "year": 2020
+    }
+  ]
+}

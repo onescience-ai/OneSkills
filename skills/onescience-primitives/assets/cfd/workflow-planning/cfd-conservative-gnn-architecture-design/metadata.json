@@ -1,0 +1,20 @@
+{
+  "name": "cfd-conservative-gnn-architecture-design",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T18:32:00Z",
+  "updated_at": "2026-09-17T18:32:00Z",
+  "description": "面向守恒图神经网络（Conservative Graph Neural Network）的架构设计规范，包括守恒约束的数学定义、图卷积层中嵌入控制体几何信息的方法、损失函数中守恒残差项的权重设置、图构建中控制体网格到图结构的标准映射规则。适用于需要在图神经网络中保持物理守恒律的CFD任务。",
+  "tags": ["Conservative Graph Neural Network", "architecture design", "conservation law", "graph convolution", "control volume", "finite volume", "PDE", "CFD"],
+  "aliases": ["守恒GNN架构", "保守图网络设计", "守恒约束GNN"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Conservative Graph Neural Network的架构设计规范——包括守恒约束的数学定义、图卷积层中如何嵌入控制体几何信息、损失函数中守恒残差项的权重设置、图构建中控制体网格到图结构的标准映射规则",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

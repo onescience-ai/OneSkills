@@ -23,7 +23,7 @@
 - 输入目标变量单位坐标定义完整
 - 不存在训练测试泄漏
 
-**操作指令**：`读取{DATASET_PATH}中的{DATASET_NAME}，为“谱增强PINN高频多尺度PDE求解”建立数据清单。检查文件可读性、样本数、输入与目标变量、单位、坐标系、网格拓扑、时间或工况范围、缺失值和使用许可，按{DATA_CONTRACT}输出机器可读契约。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。`
+**操作指令**：`读取{DATASET_PATH}中的{DATASET_NAME}，为"谱增强PINN高频多尺度PDE求解"建立数据清单。检查文件可读性、样本数、输入与目标变量、单位、坐标系、网格拓扑、时间或工况范围、缺失值和使用许可，按{DATA_CONTRACT}输出机器可读契约。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。`
 
 ### 步骤 2：预处理与数据切分
 
@@ -65,7 +65,7 @@
 - 最佳权重可重新加载
 - 配置环境随机种子可复现
 
-**操作指令**：`使用{MODEL_NAME}，默认Spectral PINN、SIREN，和{TRAIN_CONFIG}训练“谱增强PINN高频多尺度PDE求解”模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。`
+**操作指令**：`使用{MODEL_NAME}，默认Spectral PINN、SIREN，和{TRAIN_CONFIG}训练"谱增强PINN高频多尺度PDE求解"模型。加载s02切分与统计量，记录代码版本、依赖、随机种子、逐轮训练验证指标与最佳权重。若提供{INIT_CHECKPOINT}须检查结构兼容性。缺少必填输入时返回BLOCKED并列出缺项，不得编造数据、权重、工况或结果。`
 
 ### 步骤 4：方程求解与物理残差恢复
 
@@ -109,10 +109,81 @@
 
 **操作指令**：`按{METRICS}评价s04结果，至少报告逐变量误差、边界误差、守恒或方程残差、最差样本和推理成本。使用{MAX_RELATIVE_L2}及任务物理门限给出PASS、REJECT或BLOCKED。若{RUN_OOD_TEST}为true，执行几何或工况外推测试并明确适用域，不得仅凭平均误差宣称工程可用。`
 
+## 补充知识（基于最新文献）
+
+### 频谱偏差问题与缓解策略
+
+频谱偏差是神经网络在学习高频分量时存在的固有偏差，低频分量学习得更快。根据最新研究[1]，频谱偏差不仅是表征限制，还与优化动力学和基于物理的损失函数设计密切相关。
+
+**关键发现**：
+- 二阶优化方法可以显著改变频谱学习顺序，使高频模态更早、更准确地恢复[1]
+- Fourier特征嵌入可以丰富潜在空间，使网络能够学习高频分量[2]
+- 正弦激活函数（如SIREN）可以提高网络对高频特征的表达能力[3]
+- 频率分解策略将解分解为低频和高频分量，分别处理，可以提高高频问题的准确性[4]
+
+### 谱增强PINN架构规格
+
+**Spectral PINN**：
+- 使用Fourier特征映射将输入坐标映射到高维频域空间
+- 通过可学习的频率参数自适应调整频谱覆盖
+- 适合处理高频振荡解
+
+**SIREN（Sinusoidal Representation Networks）**：
+- 使用正弦激活函数替代ReLU等标准激活函数
+- 能够自然表示高频振荡函数
+- 初始化策略对性能有重要影响[3]
+
+### 配点采样策略
+
+**自适应配点采样**：
+- 基于残差梯度自适应调整配点密度
+- 在高频区域增加配点密度以提高分辨率
+- 使用多网格策略从粗到细逐步增加配点[5]
+
+**频谱感知采样**：
+- 根据目标解的频谱特性设计采样策略
+- 在高频分量丰富的区域增加采样密度
+- 使用归一化累积功率谱密度（NCPSD）指导采样[6]
+
+### PDE残差计算方法
+
+**谱方法增强的自动微分**：
+- 使用Fourier变换计算频域导数
+- 结合自动微分和谱方法提高导数计算精度
+- 特别适合周期性边界条件和高频问题[7]
+
+**残差加权策略**：
+- 对不同频率分量的残差赋予不同权重
+- 强调高频分量的残差以缓解频谱偏差
+- 使用自适应权重调整策略[8]
+
+### 无量纲化与量纲分析
+
+**高频多尺度场景的无量纲化**：
+- 对空间和时间坐标进行适当的缩放
+- 考虑不同频率分量的特征尺度
+- 保持物理量的量纲一致性[9]
+
+### 验收门限
+
+**边界残差验收**：
+- 边界条件误差应小于相对误差门限的1/10
+- 周期性边界条件应满足周期性约束
+- Neumann边界条件的法向导数误差应小于规定阈值
+
+**守恒误差验收**：
+- 质量、动量、能量等守恒量的误差应小于规定阈值
+- 对于可压缩流动，应检查质量、动量和能量守恒
+- 对于不可压缩流动，应检查质量守恒和散度为零条件
+
 ## 关联文献
 
-1. **Solving High Frequency and Multi-Scale PDEs with Gaussian Processes** — sha256:65147fcfc5fcccf65cf91cb4acb17c455f195e3a4ecb9214fec262d59fb400a5
-2. **Neuro-Spectral Architectures for Causal Physics-Informed Networks** — [sha256:6aeef76a09a537f1a8f54f204b9cf98b1bbbfe7eea6e4daabfd82db71d688e33](https://arxiv.org/abs/2509.04966)
-3. **Simple initialization and parametrization of sinusoidal networks via their kernel bandwidth** — [sha256:9d4d0fc8a3133574fe8879a5a7f212bac39b4f6ce33a0183fbbcf7dd95f8faa3](https://arxiv.org/abs/2211.14503)
-4. **Iterative Training of Physics-Informed Neural Networks with Fourier-enhanced Features** — [sha256:8936203b565696b9548b30994a3c1444cd8d5cd243207d351269667f99d5ba19](https://arxiv.org/abs/2501.18582)
-5. **Data-Free PINNs for Compressible Flows_ Mitigating Spectral Bias and Gradient Pathologies via Mach-Guided Scaling and Hybrid Convolutions** — [sha256:5e3e0376f6bde477a5d2e45a41871586abafc37727ce8f42c1119d9dfa76d8a8](https://arxiv.org/abs/2603.01001)
+1. **Spectral bias in physics-informed and operator learning: Analysis and mitigation guidelines** — arXiv:2602.19265, 2026
+2. **Alternating Levenberg-Marquardt Training of Physics-Informed Neural Networks with Fourier-Enhanced Features** — arXiv:2608.05892, 2026
+3. **Simple initialization and parametrization of sinusoidal networks via their kernel bandwidth** — arXiv:2211.14503, 2022
+4. **When Does Frequency Decomposition Benefit Physics-Informed Neural Networks? A Preliminary Ablation Study** — arXiv:2608.24940, 2026
+5. **A new strategy for physics-informed neural networks based on hierarchical collocation point refinement** — arXiv:2607.14665, 2026
+6. **RUNNs: Ritz-Uzawa Neural Networks for Solving Variational Problems** — arXiv:2603.12982, 2026
+7. **Multi-Scale Separable Fourier Neural Networks for Solving High-Frequency PDEs** — arXiv:2605.31027, 2026
+8. **RepNN: Tackling spectral bias in deep neural networks via parameter reparameterization** — arXiv:2606.16575, 2026
+9. **Separated-Variable Spectral Neural Networks: A Physics-Informed Learning Approach for High-Frequency PDEs** — arXiv:2508.00628, 2025

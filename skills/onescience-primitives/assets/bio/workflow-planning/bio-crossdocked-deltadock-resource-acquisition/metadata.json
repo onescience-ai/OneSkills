@@ -1,0 +1,19 @@
+{
+  "name": "bio-crossdocked-deltadock-resource-acquisition",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T03:58:00Z",
+  "updated_at": "2026-09-18T03:58:00Z",
+  "description": "蛋白质-配体对接任务中CrossDocked数据集和DeltaDock模型权重的官方获取位置、访问方式和许可证信息，适用于结构基药物发现中的对接基准测试和高精度对接任务。",
+  "tags": ["CrossDocked", "DeltaDock", "resource-acquisition", "docking", "benchmark", "model-weights"],
+  "aliases": ["crossdocked2020", "deltadock-weights"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CrossDocked数据集和DeltaDock模型权重的官方发布位置、访问方式和许可证信息",
+  "evidence_papers": [
+    {"title": "Learning Docking with CrossDocked2020", "doi": "10.48550/arXiv.2209.00557", "year": 2022},
+    {"title": "DeltaDock: A unified framework for accurate and efficient docking", "doi": "10.48550/arXiv.2402.01540", "year": 2024}
+  ]
+}

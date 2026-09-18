@@ -1,0 +1,20 @@
+{
+  "name": "cfd-onescience-workflow-output-contracts",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "面向OneScience标准工作流的输出产物契约规范与任务状态管理，提供s01（数据验证）、s04（推理输出）、s05（评估输出）三个步骤的标准文件命名、目录结构、JSON schema定义，以及execution-manifest.json的状态更新规则与一致性校验机制",
+  "tags": ["workflow-contract", "output-specification", "data-manifest", "execution-manifest", "status-management", "onescience-standard"],
+  "aliases": ["output-contract", "workflow-standard", "manifest-management"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience标准工作流s01/s04/s05步骤的输出产物契约规范，包括dataset_manifest.json/data_contract.json/data_audit.md的标准字段定义、solution_fields/pde_residuals/boundary_residuals目录结构、evaluation.json/worst_cases.csv/applicability_report.md/PASS_REJECT_BLOCKED.txt格式，以及execution-manifest.json的状态更新规则",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

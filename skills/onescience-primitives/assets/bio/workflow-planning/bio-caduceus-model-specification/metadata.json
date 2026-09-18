@@ -1,0 +1,23 @@
+{
+  "name": "bio-caduceus-model-specification",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T11:24:00Z",
+  "updated_at": "2026-09-17T11:24:00Z",
+  "description": "Caduceus DNA基础模型的架构规格、权重获取渠道、变体选择标准与反向互补等变性实现规范，用于支持双向等变长程DNA序列建模任务中的模型选择与部署",
+  "tags": ["Caduceus", "DNA", "bidirectional", "equivariant", "Mamba", "pretrained", "weights"],
+  "aliases": ["Caduceus-Ph", "Caduceus-PS", "MambaDNA", "BiMamba"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Caduceus模型权重获取渠道与变体选择标准",
+  "evidence_papers": [
+    {"title": "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling", "doi": "10.48550/arxiv.2403.03234", "year": 2024},
+    {"title": "Benchmarking DNA foundation models for genomic and genetic tasks", "doi": "10.1038/s41467-025-65823-8", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

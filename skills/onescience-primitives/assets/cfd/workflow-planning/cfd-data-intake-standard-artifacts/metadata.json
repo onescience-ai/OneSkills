@@ -1,0 +1,20 @@
+{
+  "name": "cfd-data-intake-standard-artifacts",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T16:41:00Z",
+  "updated_at": "2026-09-17",
+  "description": "面向CFD数据接入步骤，提供dataset_manifest.json、data_contract.json和data_audit.md的标准产物规格，包括内容结构、字段定义和验证要求",
+  "tags": ["data-intake", "dataset-manifest", "data-contract", "data-audit", "CFD", "input-fields", "target-fields", "units", "coordinates"],
+  "aliases": ["数据接入标准产物", "数据清单", "数据契约", "数据审计"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD数据接入步骤的标准产物规格，包括dataset_manifest.json、data_contract.json和data_audit.md的内容结构、字段定义和验证要求",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": ["CFD_S087-attr-report-modify-2026-09-17"],
+  "conflicts": []
+}

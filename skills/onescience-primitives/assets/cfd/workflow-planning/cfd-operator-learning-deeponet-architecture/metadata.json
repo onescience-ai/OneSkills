@@ -1,0 +1,36 @@
+{
+  "name": "cfd-operator-learning-deeponet-architecture",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T16:45:00+08:00",
+  "updated_at": "2026-09-17T16:45:00+08:00",
+  "description": "面向算子学习任务，提供DeepONet标准PyTorch实现架构、数据格式契约与代码验证方法的通用知识卡片，适用于从头实现或调用DeepONet进行PDE求解、参数化模拟等场景。",
+  "tags": ["DeepONet", "operator-learning", "PyTorch", "branch-network", "trunk-network", "data-contract", "code-verification"],
+  "aliases": ["deeponet", "operator-learning", "branch-trunk-network"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DeepONet与神经Green函数算子学习的实现架构、数据格式、验证方法及预检规则",
+  "evidence_papers": [
+    {
+      "title": "From Theory to Application: A Practical Introduction to Neural Operators in Scientific Computing",
+      "doi": "2503.05598",
+      "year": 2025
+    },
+    {
+      "title": "Deep Operator Neural Network Model Predictive Control",
+      "doi": "2505.18008",
+      "year": 2025
+    },
+    {
+      "title": "PDEFlow: Autonomous Agentic PDE Pipelines for Neural Operator Learning and Solver-Free Inference",
+      "doi": "2607.05134",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

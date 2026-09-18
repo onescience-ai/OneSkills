@@ -1,0 +1,20 @@
+{
+  "name": "onescience-execution-preflight-contract",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向OneScience任务执行前的预检流程，定义execution-manifest.json的必填字段、生成时机和验证逻辑，确保任务从规划阶段到执行阶段的平稳过渡",
+  "tags": ["onescience", "execution", "preflight", "manifest", "workflow", "task-management"],
+  "aliases": ["预检契约", "execution-manifest", "任务预检"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience任务执行的预检契约，包括execution-manifest.json的必填字段、生成时机和验证逻辑",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

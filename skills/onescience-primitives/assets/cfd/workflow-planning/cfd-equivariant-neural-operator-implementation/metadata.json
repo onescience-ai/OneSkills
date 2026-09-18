@@ -1,0 +1,28 @@
+{
+  "name": "cfd-equivariant-neural-operator-implementation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向球面向量场与对称PDE任务，提供等变神经算子（Equivariant Neural Operator、Spherical FNO、Clifford Neural Operator）的架构实现细节、超参数选择依据和开源库使用指南。",
+  "tags": ["equivariant-neural-operator", "spherical-fno", "clifford-neural-operator", "e3nn", "pytorch", "implementation", "cfd"],
+  "aliases": ["等变神经算子实现", "球面FNO代码", "Clifford算子库"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Equivariant Neural Operator、Spherical FNO和Clifford Neural Operator的架构实现细节以及开源实现库和代码仓库",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "e3nn: a modular PyTorch framework for Euclidean neural networks",
+      "url": "https://e3nn.org",
+      "publisher": "e3nn team",
+      "version": "2026-09-17",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,31 @@
+{
+  "name": "cfd-fno-evaluation-metrics-formulas",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18",
+  "updated_at": "2026-09-18",
+  "description": "面向PDE算子学习模型评估，提供多维度评估指标的计算公式、验收门限标准、worst_cases可追溯实现方法和适用域报告的标准格式",
+  "tags": ["evaluation", "metrics", "relative-L2", "RMSE", "conservation-residual", "boundary-error", "FNO", "PDE", "operator learning", "CFD"],
+  "aliases": ["评估指标", "验收指标", "误差计算"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PDE算子学习模型的多维度评估指标计算公式和验收门限标准",
+  "evidence_papers": [
+    {
+      "title": "Fourier Neural Operators Explained: A Practical Perspective",
+      "doi": "10.48550/arXiv.2512.01421",
+      "year": 2025,
+      "authors": "Valentin Duruisseaux, Jean Kossaifi, Anima Anandkumar"
+    },
+    {
+      "title": "Fourier Neural Operator for Parametric Partial Differential Equations",
+      "doi": "10.48550/arXiv.2010.08895",
+      "year": 2020,
+      "authors": "Zongyi Li, Nikola Kovachki, Kamyar Azizzadenesheli, Burigede Liu, Kaushik Bhattacharya, Andrew Stuart, Anima Anandkumar"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

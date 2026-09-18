@@ -1,0 +1,32 @@
+{
+  "name": "cfd-json-schema-report-contract",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T07:16:00Z",
+  "updated_at": "2026-09-17T07:16:00Z",
+  "description": "面向科学计算工作流中的结构化报告交付场景，提供JSON Schema校验、字段约束、任务身份匹配与输出格式规范的通用方法框架；覆盖必填字段定义、数组约束、类型校验等契约要求，适用于归因报告、实验报告等结构化产物的质量保障",
+  "tags": ["json-schema", "report-contract", "validation", "structured-output", "workflow-quality", "scientific-reporting"],
+  "aliases": ["JSON Schema契约", "报告格式校验", "结构化输出规范"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约，用于最终响应缺失、无法解析或字段校验失败的诊断",
+  "evidence_papers": [
+    {
+      "title": "SciSchema.org: A Multidisciplinary Collection of Schemas for Structured Scientific Process Descriptions",
+      "doi": "10.48550/arXiv.2607.27955",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-17T07:16:00Z",
+      "location": "归因报告 CFD_S041 report.json 中的 optimization_plan 证据"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

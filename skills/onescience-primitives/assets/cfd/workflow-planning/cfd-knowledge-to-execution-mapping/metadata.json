@@ -1,0 +1,16 @@
+{
+  "name": "cfd-knowledge-to-execution-mapping",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向CFD工作流执行任务，提供知识卡片到具体执行动作的映射方法。涵盖知识卡片结构解读、方法建议优先级排序、知识与执行步骤的映射关系，确保检索到的知识被正确应用。适用于需要将知识库中的方法建议转化为实际执行步骤的CFD任务。",
+  "tags": ["cfd", "knowledge-application", "execution-mapping", "workflow", "methodology", "best-practices"],
+  "aliases": ["知识应用映射", "执行步骤映射", "方法建议解读"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "如何将检索到的知识卡片转化为具体执行动作",
+  "evidence_papers": []
+}

@@ -1,0 +1,32 @@
+{
+  "name": "cfd-pde-operator-data-evaluation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向规则网格PDE算子学习任务，提供Darcy流与Navier-Stokes标准数据契约定义、无泄漏切分策略、反归一化流程、物理派生量计算方法，以及多维度评估指标体系与验收门限标准",
+  "tags": ["PDE", "operator learning", "data splitting", "evaluation metrics", "normalization", "Darcy flow", "Navier-Stokes", "CFD"],
+  "aliases": ["PDE数据契约", "算子学习评估"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "FNO规则网格PDE算子学习中的数据契约定义、无泄漏切分、反归一化与评估指标知识",
+  "evidence_papers": [
+    {
+      "title": "Fourier Neural Operator for Parametric Partial Differential Equations",
+      "doi": "10.48550/arXiv.2010.08895",
+      "year": 2020,
+      "authors": "Zongyi Li, Nikola Kovachki, Kamyar Azizzadenesheli, Burigede Liu, Kaushik Bhattacharya, Andrew Stuart, Anima Anandkumar"
+    },
+    {
+      "title": "Learning to Solve PDEs with Little Data: A Comparative Study",
+      "doi": "10.48550/arXiv.2301.09410",
+      "year": 2023,
+      "authors": "Mishra, N. and Molinaro, R."
+    }
+  ],
+  "evidence_docs": [],
+  "merged_batches": [],
+  "conflicts": []
+}

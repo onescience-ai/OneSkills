@@ -1,0 +1,41 @@
+{
+  "name": "climate-ci-ml-detection-threshold-features",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:00:00Z",
+  "updated_at": "2026-09-17T12:00:00Z",
+  "description": "对流初生（CI）检测的机器学习方法选择、特征工程实践和概率阈值校准流程。涵盖随机森林/XGBoost/CNN等ML模型在CI检测中的应用方法、特征工程最佳实践（CTT、冷却率、多通道亮温差等）、概率阈值自适应选择（ROC曲线、F1-score优化）和概率校准技术。适用于CI检测任务的方法配置和参数推导阶段。",
+  "tags": ["convective-initiation", "CI", "machine-learning", "random-forest", "XGBoost", "CNN", "feature-engineering", "threshold-selection", "ROC-curve", "F1-score", "probability-calibration", "brightness-temperature", "cooling-rate"],
+  "aliases": ["CI ML detection", "convective initiation threshold", "satellite CI feature engineering"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "机器学习在对流初生检测中的应用方法；随机森林/XGBoost模型的训练和推理流程；特征工程的最佳实践；对流初生概率的典型范围和阈值选择方法；自适应阈值调整算法；概率校准技术",
+  "evidence_papers": [
+    {
+      "title": "A dataset for machine learning model to convective initiation detection and nowcasting over southeastern China",
+      "doi": "10.1038/s41597-026-06902-3",
+      "year": 2026,
+      "venue": "Scientific Data"
+    },
+    {
+      "title": "Physically Explainable Deep Learning for Convective Initiation Nowcasting Using GOES-16 Satellite Observations",
+      "doi": "10.1175/aies-d-23-0098.1",
+      "year": 2024,
+      "venue": "Artificial Intelligence for the Earth Systems"
+    },
+    {
+      "title": "BAB3T: A Methodology to Determine Extreme Convective Initiation Regions Using Satellite Infrared Imagery",
+      "doi": "10.3390/rs12020337",
+      "year": 2020,
+      "venue": "Remote Sensing"
+    },
+    {
+      "title": "An Assessment of Convective Initiation Nowcasting Algorithm within 0-60 Minutes using Himawari-8 Satellite",
+      "doi": "10.1088/1755-1315/893/1/012049",
+      "year": 2021,
+      "venue": "IOP Conf. Series"
+    }
+  ]
+}

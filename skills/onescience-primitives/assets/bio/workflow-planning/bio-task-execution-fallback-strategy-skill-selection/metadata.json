@@ -1,0 +1,17 @@
+{
+  "name": "bio-task-execution-fallback-strategy-skill-selection",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T18:07:00Z",
+  "updated_at": "2026-09-16T18:07:00Z",
+  "description": "任务执行中的回退策略要求和技能选择原则，包括资源不足时的替代方案决策逻辑、任务拆解原则和技能选择方法。",
+  "tags": ["fallback-strategy", "skill-selection", "task-execution", "decision-logic", "robustness"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "任务约束中的回退策略要求，包括在资源不足时使用替代方案的决策逻辑；任务拆解原则；技能选择原则。",
+  "evidence_papers": [
+    {"title": "Molecular Embedding-Based Algorithm Selection in Protein-Ligand Docking", "doi": "10.1186/s13321-026-01168-8", "year": 2026}
+  ]
+}

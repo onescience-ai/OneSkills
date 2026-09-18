@@ -1,0 +1,35 @@
+{
+  "name": "cfd-uncertainty-quantification-pipeline",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:27:00Z",
+  "updated_at": "2026-09-17T12:27:00Z",
+  "description": "面向概率模型训练后的不确定性量化步骤，生成预测分布、不确定性分解和校准分析。涵盖 Monte Carlo 采样、置信区间、分布外检测和校准误差计算。",
+  "tags": ["uncertainty quantification", "Monte Carlo sampling", "calibration", "predictive distribution", "confidence interval"],
+  "aliases": ["UQ pipeline", "uncertainty estimation workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "不确定性量化步骤的完整执行流程——加载模型权重、MC 采样、置信区间、分布外检测、校准分析、输出标准产物",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Uncertainty Quantification in Machine Learning",
+      "url": "https://arxiv.org/abs/2011.09544",
+      "publisher": "arXiv",
+      "version": "v1",
+      "accessed_at": "2026-09-17T12:27:00Z"
+    },
+    {
+      "title": "Calibration of Uncertainty Estimates",
+      "url": "https://arxiv.org/abs/1706.04599",
+      "publisher": "arXiv",
+      "version": "v1",
+      "accessed_at": "2026-09-17T12:27:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

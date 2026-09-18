@@ -1,0 +1,26 @@
+{
+  "name": "cfd-surrogate-model-evaluation-risk-guide",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向CFD代理模型任务，提供性能评估指标、风险管控策略、测试集规模影响分析和物理约束验证方法，支持避免因简化模型和模拟数据导致的任务失败。",
+  "tags": ["CFD", "surrogate model", "evaluation", "risk management", "physical constraints", "validation", "aerodynamics"],
+  "aliases": ["model performance", "risk assessment", "validation metrics"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD代理模型性能评估与风险管控知识，包括不同模型架构在汽车气动预测任务上的预期性能范围、模拟数据与真实数据对模型性能的影响差异、测试集规模对评估稳定性的影响、以及物理约束验证的重要性。",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "task_execution_report",
+      "provided_at": "2026-09-17",
+      "location": "E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-cfd\\CFD_S012\\report.json"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

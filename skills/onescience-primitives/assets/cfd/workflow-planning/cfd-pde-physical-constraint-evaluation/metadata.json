@@ -1,0 +1,38 @@
+{
+  "name": "cfd-pde-physical-constraint-evaluation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T12:00:00Z",
+  "updated_at": "2026-09-18T12:00:00Z",
+  "description": "面向PDE求解模型评估任务，量化物理守恒约束满足程度。适用于需要验证模型预测是否满足质量守恒、动量守恒等基本物理定律的CFD/科学计算场景。核心方法包括：conservation_residual基于PDE守恒律的离散残差计算（∂u/∂t + ∇·(u⊗v)），boundary_error在不同边界条件类型下的预测偏差度量，以及统计误差与物理约束的联合评估框架。输出为包含relative_L2、RMSE、conservation_residual、boundary_error的完整评估报告。",
+  "tags": ["conservation residual", "boundary error", "PDE evaluation", "physics constraint", "CFD", "Navier-Stokes", "Burgers equation", "mass conservation", "energy conservation", "model validation"],
+  "aliases": ["physical constraint evaluation", "physics-informed evaluation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD物理守恒约束量化评估方法，包括conservation_residual和boundary_error的计算",
+  "evidence_papers": [
+    {
+      "title": "Improving Weak PINNs for Hyperbolic Conservation Laws: Dual Norm Computation, Boundary Conditions and Systems",
+      "doi": "10.48550/arXiv.2211.12393",
+      "year": 2022,
+      "venue": "arXiv"
+    },
+    {
+      "title": "Solving BDNK diffusion using physics-informed neural networks",
+      "doi": "10.48550/arXiv.2602.16117",
+      "year": 2026,
+      "venue": "arXiv"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "LeVeque, R.J. Finite Difference Methods for Ordinary and Partial Differential Equations",
+      "url": "https://epubs.siam.org/doi/10.1137/1.9780898717839",
+      "publisher": "SIAM",
+      "version": "2007",
+      "accessed_at": "2026-09-18"
+    }
+  ]
+}

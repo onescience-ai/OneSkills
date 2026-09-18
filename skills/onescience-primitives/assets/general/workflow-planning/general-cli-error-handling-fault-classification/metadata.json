@@ -1,0 +1,43 @@
+{
+  "name": "general-cli-error-handling-fault-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "面向 CLI 非交互执行场景，提供命令行工具的故障分类与错误诊断方法。适用于自动化流水线中 CLI 进程异常退出、参数解析错误、超时挂起、认证失败、沙箱环境隔离等问题的定位与恢复。核心内容包括：exit code 语义分类（0/1/2/126-199）、argparse 参数校验机制、沙箱环境隔离要求、超时与信号处理策略、认证失败模式、系统级副作用检测。输出为故障分类表与诊断决策树。",
+  "tags": ["CLI", "exit code", "error handling", "fault classification", "argparse", "command line", "automation", "pipeline", "timeout", "authentication", "sandbox", "non-interactive", "black-box testing", "differential testing"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Evaluating LLM-Based 0-to-1 Software Generation in End-to-End CLI Tool Scenarios",
+      "doi": "10.48550/arXiv.2604.06742",
+      "year": 2026
+    },
+    {
+      "title": "On the Use of Context in Recommending Exception Handling Code Examples",
+      "doi": "10.48550/arXiv.1807.02261",
+      "year": 2018
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "argparse — Parser for command-line options, arguments and subcommands",
+      "url": "https://docs.python.org/3/library/argparse.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "The Open Group Base Specifications Issue 7 - 8. Environment Variables",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html",
+      "publisher": "IEEE/The Open Group",
+      "version": "POSIX.1-2017",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "merged_batches": ["2026-09-18: 添加论文证据，补充沙箱执行和差异测试内容"]
+}

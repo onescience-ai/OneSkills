@@ -1,0 +1,62 @@
+{
+  "name": "general-hdf5-numpy-json-data-interface-compatibility",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T03:44:00Z",
+  "updated_at": "2026-09-17T03:44:00Z",
+  "description": "面向科学计算数据处理中HDF5(h5py)、NumPy与JSON三种数据格式间的接口兼容性问题，提供属性存储限制、类型转换和API差异的解决方案。适用于涉及HDF5文件读写、numpy数组序列化为JSON的CFD/生信/材料等跨领域数据处理场景。核心方法包括：h5py attrs标量存储规则、numpy类型到Python原生类型转换、HDF5 Group/Dataset API区分。输出为兼容性错误率降至0。",
+  "tags": ["h5py", "HDF5", "numpy", "JSON", "serialization", "attrs", "dataset", "group", "data compatibility", "CFD", "scientific computing"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "h5py.attrs属性存储限制（不支持Python dict）、numpy类型与JSON序列化兼容性、HDF5 Group与Dataset API差异",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "h5py FAQ - What datatypes are supported?",
+      "url": "https://docs.h5py.org/en/stable/faq.html",
+      "publisher": "h5py Project",
+      "version": "3.16",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "h5py Attributes Documentation",
+      "url": "https://docs.h5py.org/en/stable/high/attr.html",
+      "publisher": "h5py Project",
+      "version": "3.16",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "h5py Groups Documentation",
+      "url": "https://docs.h5py.org/en/stable/high/group.html",
+      "publisher": "h5py Project",
+      "version": "3.16",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "h5py Datasets Documentation",
+      "url": "https://docs.h5py.org/en/stable/high/dataset.html",
+      "publisher": "h5py Project",
+      "version": "3.16",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Python json module documentation",
+      "url": "https://docs.python.org/3/library/json.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "NumPy ndarray.tolist documentation",
+      "url": "https://numpy.org/doc/stable/reference/generated/numpy.ndarray.tolist.html",
+      "publisher": "NumPy Developers",
+      "version": "2.5",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

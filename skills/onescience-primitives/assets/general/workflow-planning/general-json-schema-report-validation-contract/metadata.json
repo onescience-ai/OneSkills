@@ -1,0 +1,42 @@
+{
+  "name": "general-json-schema-report-validation-contract",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向结构化报告的 JSON Schema 交付契约校验：覆盖必填字段约束、类型校验、数组/对象结构验证、任务身份一致性检查、错误诊断与修复建议，适用于任何需要以 JSON 格式交付结构化报告并在输出前执行 Schema 校验的自动化工作流",
+  "tags": ["json-schema", "validation", "report-contract", "schema-validation", "structured-output", "error-diagnostics", "contract-testing"],
+  "aliases": ["JSON Schema 校验", "报告契约验证", "结构化输出校验"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "jsonschema — Schema Validation (Python jsonschema 4.26.0 documentation)",
+      "url": "https://python-jsonschema.readthedocs.io/en/stable/validate/",
+      "publisher": "jsonschema community / Julian Berman",
+      "version": "4.26.0",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "jsonschema — Handling Validation Errors",
+      "url": "https://python-jsonschema.readthedocs.io/en/stable/errors/",
+      "publisher": "jsonschema community / Julian Berman",
+      "version": "4.26.0",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "JSON Schema reference — Understanding JSON Schema",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema Org",
+      "version": "2020-12 draft",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

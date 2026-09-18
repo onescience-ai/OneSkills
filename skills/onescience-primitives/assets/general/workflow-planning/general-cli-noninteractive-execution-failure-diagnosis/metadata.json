@@ -1,0 +1,57 @@
+{
+  "name": "general-cli-noninteractive-execution-failure-diagnosis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向 CLI 工具的非交互执行故障诊断与分类：覆盖命令参数校验、认证失败、沙箱隔离、超时处理、退出码判读和标准错误捕获。适用于需要在自动化流水线中稳定运行 CLI 进程并从退出状态推断故障类别的场景。核心方法包括：POSIX 退出码分类体系、BSD sysexits.h 标准化退出码映射、超时信号处理模式、stdout/stderr 捕获与结构化诊断。输出为故障类别判定与恢复策略建议。",
+  "tags": ["CLI", "exit code", "failure diagnosis", "non-interactive", "POSIX", "sysexits", "timeout", "error handling", "automation", "pipeline", "process termination", "signal handling"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Process-level trajectory evaluation for environment configuration in software engineering agents",
+      "authors": ["J Kuang", "Y Li", "X Zhang", "Y Li", "X Sun"],
+      "year": 2026,
+      "venue": "ICLR 2026"
+    },
+    {
+      "title": "Agentprocessbench: Diagnosing step-level process quality in tool-using agents",
+      "authors": ["S Fan", "X Ye", "Y Huo", "ZY Chen", "Y Guo", "S Yang"],
+      "year": 2026,
+      "venue": "ACM"
+    },
+    {
+      "title": "Terminal-bench: Benchmarking agents on hard, realistic tasks in command line interfaces",
+      "authors": ["M Merrill", "A Shaw", "N Carlini", "B Li", "H Raj"],
+      "year": 2026,
+      "venue": "ICLR 2026"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "POSIX.1-2017 exit() Function Specification",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/functions/exit.html",
+      "publisher": "The Open Group (IEEE Std 1003.1-2017)",
+      "version": "Issue 7, 2018 edition",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "BSD sysexits.h Standardized Exit Codes",
+      "url": "https://raw.githubusercontent.com/freebsd/freebsd-src/main/include/sysexits.h",
+      "publisher": "FreeBSD Project",
+      "version": "main branch",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Bash Advanced Scripting Guide - Exit Codes With Special Meanings",
+      "url": "https://tldp.org/LDP/abs/html/exitcodes.html",
+      "publisher": "The Linux Documentation Project",
+      "version": "current",
+      "accessed_at": "2026-09-17"
+    }
+  ]
+}

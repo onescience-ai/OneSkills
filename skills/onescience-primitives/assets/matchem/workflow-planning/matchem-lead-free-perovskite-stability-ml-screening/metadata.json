@@ -2,11 +2,11 @@
   "name": "matchem-lead-free-perovskite-stability-ml-screening",
   "type": "workflow-planning",
   "domain": "matchem",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-16T18:12:00.000000",
-  "updated_at": "2026-09-16T18:12:00.000000",
-  "description": "面向无铅杂化钙钛矿稳定性机器学习筛选任务，涵盖数据来源、模型配置、不确定性估计、验证方法和过拟合处理的完整工作流。",
+  "updated_at": "2026-09-17T00:00:00.000000",
+  "description": "面向无铅杂化钙钛矿稳定性机器学习筛选任务，涵盖数据来源、模型配置、不确定性估计、验证方法和过拟合处理的完整工作流。关联论文DOI:10.1038/s41467-018-05761-w提供了GBR模型配置和特征工程方法。",
   "tags": [
     "lead-free perovskite",
     "machine learning",
@@ -15,7 +15,10 @@
     "overfitting diagnosis",
     "Materials Project",
     "OQMD",
-    "DFT validation"
+    "DFT validation",
+    "GBR",
+    "gradient boosted regression",
+    "feature engineering"
   ],
   "aliases": [
     "无铅钙钛矿稳定性筛选",
@@ -25,6 +28,16 @@
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "无铅杂化钙钛矿稳定性机器学习筛选的知识补充",
   "evidence_papers": [
+    {
+      "title": "Accelerated discovery of stable lead-free hybrid organic-inorganic perovskites via machine learning",
+      "doi": "10.1038/s41467-018-05761-w",
+      "year": 2018
+    },
+    {
+      "title": "New tolerance factor to predict the stability of perovskite oxides and halides",
+      "doi": "10.1126/sciadv.aav0693",
+      "year": 2019
+    },
     {
       "title": "Genome-Guided Interpretable Screening of Phase-Stable, Lead-Free Double Perovskite Absorbers for All-Inorganic Semiconductors, Sensors, and Photovoltaics with DFT-Validated Design Rules",
       "doi": "10.48550/arXiv.2605.22887",
@@ -48,6 +61,6 @@
   ],
   "evidence_docs": [],
   "evidence_user": [],
-  "merged_batches": [],
+  "merged_batches": ["2026-09-17: 从关联论文10.1038/s41467-018-05761-w抽取GBR模型配置和特征工程方法"],
   "conflicts": []
 }

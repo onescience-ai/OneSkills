@@ -36,6 +36,8 @@
 | SLURM分区检查间隔 | 5秒 | [D1] | 使用sinfo检查分区状态的推荐间隔 |
 | 模块加载超时 | 10秒 | [D1] | 模块加载操作的超时阈值 |
 | 环境一致性差异阈值 | <5% | 通用实践 | 关键版本号差异应小于5% |
+| SLURM默认端口 | 6817 (slurmctld), 6818 (slurmd), 6819 (slurmdbd) | [D1] | SLURM守护进程默认监听端口 |
+| 防火墙端口开放 | 6817, 6818, 6819 | [D1] | 集群通信必需的端口 |
 
 ### 校准数值（体系专属值，以下数值来自CMIP6气候统计降尺度任务，供量级校准；其他体系需以自身证据重新锚定）
 | 参数 | 值 | 来源 | 说明 |
@@ -52,6 +54,8 @@
 - **模块加载失败**：若模块不存在，检查模块路径（module avail）；若依赖冲突，使用环境容器（conda、singularity）隔离
 - **环境差异过大**：若版本差异超过阈值，在本地使用容器模拟远程环境，或在远程重新安装依赖
 - **认证失败**：检查SSH密钥权限（chmod 600）、主机密钥验证（~/.ssh/known_hosts）、用户名密码正确性
+- **网络端口阻塞**：确保防火墙允许SLURM通信端口（6817, 6818, 6819）的双向连接
+- **时钟不同步**：确保集群所有节点时钟同步（NTP），否则可能导致MUNGE凭证过期错误
 
 ## 质量检查
 - 连接成功率：应达到100%（排除网络故障）
@@ -65,6 +69,7 @@
 - **SLURM系统故障**：使用本地模拟环境（如Singularity容器）进行测试，或联系集群支持团队
 - **模块依赖冲突**：使用conda创建独立环境，或联系软件供应商获取兼容版本
 - **网络延迟过高**：使用SSH压缩（-C选项）、优化数据传输批量大小、考虑使用边缘计算节点
+- **连接超时持续**：检查SLURM网络配置，确保正确配置CommunicationParameters（如EnableIPv6、DisableIPv4）
 
 ## 资源召回建议
 当用户任务涉及以下情况时应召回本卡片：
@@ -81,7 +86,9 @@
 ## 补充证据（开源文档/用户自有，可选）
 [D1] Slurm Workload Manager Documentation, SchedMD, Version 26.05, URL: https://slurm.schedmd.com/documentation.html (accessed_at 2026-09-16, 交叉验证：SLURM官方文档)
 [D2] OpenSSH Manual Pages, OpenBSD, latest development release, URL: https://www.openssh.com/manual.html (accessed_at 2026-09-16, 交叉验证：OpenSSH官方文档)
+[D3] Slurm Network Configuration Guide, SchedMD, Version 26.05, URL: https://slurm.schedmd.com/network.html (accessed_at 2026-09-16, 交叉验证：SLURM官方网络配置文档)
 
 ## 证据来源
 [1] Slurm Workload Manager Documentation, SchedMD, 2026, URL: https://slurm.schedmd.com/documentation.html
 [2] OpenSSH Manual Pages, OpenBSD, 2026, URL: https://www.openssh.com/manual.html
+[3] Slurm Network Configuration Guide, SchedMD, 2026, URL: https://slurm.schedmd.com/network.html

@@ -1,0 +1,27 @@
+{
+  "name": "climate-forecast-acceptance-quality",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T04:00:00Z",
+  "updated_at": "2026-09-18T04:00:00Z",
+  "description": "面向气象预报任务的验收门限与质量标志编码规范，定义性能指标合理范围、验收标准分层设定和产品质量标志体系，确保预报产品可被用户正确理解和使用",
+  "tags": ["weather-forecast", "acceptance-criteria", "quality-flags", "verification-metrics", "product-quality"],
+  "aliases": ["验收门限", "质量标志", "性能标准", "acceptance criteria", "quality flags"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报任务的验收门限规范和质量标志编码规范",
+  "evidence_papers": [
+    {"title": "Accurate medium-range global weather forecasting with 3D neural networks", "doi": "10.1038/s41586-023-06185-3", "year": "2023"},
+    {"title": "Statistical and Machine Learning forecasting methods: Concerns and ways forward", "doi": "10.1371/journal.pone.0194889", "year": "2018"},
+    {"title": "The Modern-Era Retrospective Analysis for Research and Applications, Version 2 (MERRA-2)", "doi": "10.1175/jcli-d-16-0758.1", "year": "2017"}
+  ],
+  "evidence_docs": [
+    {"title": "WMO Guidelines on Verification of Numerical Weather Prediction", "url": "https://library.wmo.int/idurl/4/66931", "publisher": "WMO", "version": "WMO-No. 1145", "accessed_at": "2026-09-18"},
+    {"title": "WMO Guide to Climate Data Management", "url": "https://library.wmo.int/idurl/4/66931", "publisher": "WMO", "version": "WMO-No. 1145", "accessed_at": "2026-09-18"}
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

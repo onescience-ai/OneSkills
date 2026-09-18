@@ -1,0 +1,31 @@
+{
+  "name": "cfd-fno-no-leak-splitting-strategies",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18",
+  "updated_at": "2026-09-18",
+  "description": "面向PDE算子学习任务，提供按几何、工况或时间构造无泄漏切分的具体操作规范，包括Darcy流按样本ID切分和Navier-Stokes按时间轨迹切分的策略模板",
+  "tags": ["data-splitting", "no-leak", "train-validation-test", "FNO", "PDE", "operator learning", "CFD", "Darcy flow", "Navier-Stokes"],
+  "aliases": ["无泄漏切分", "数据切分策略", "train-val-test split"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "FNO规则网格参数化PDE算子学习中按几何、工况或时间构造无泄漏切分的操作规范",
+  "evidence_papers": [
+    {
+      "title": "Fourier Neural Operators Explained: A Practical Perspective",
+      "doi": "10.48550/arXiv.2512.01421",
+      "year": 2025,
+      "authors": "Valentin Duruisseaux, Jean Kossaifi, Anima Anandkumar"
+    },
+    {
+      "title": "Fourier Neural Operator for Parametric Partial Differential Equations",
+      "doi": "10.48550/arXiv.2010.08895",
+      "year": 2020,
+      "authors": "Zongyi Li, Nikola Kovachki, Kamyar Azizzadenesheli, Burigede Liu, Kaushik Bhattacharya, Andrew Stuart, Anima Anandkumar"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

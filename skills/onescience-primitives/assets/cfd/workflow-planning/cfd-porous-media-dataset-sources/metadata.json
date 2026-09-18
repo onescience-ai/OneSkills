@@ -1,0 +1,20 @@
+{
+  "name": "cfd-porous-media-dataset-sources",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:19:00Z",
+  "updated_at": "2026-09-17T20:19:00Z",
+  "description": "面向多孔介质微流动与输运CFD数据驱动预测任务，获取真实CFD数据集的来源清单、数据格式规范与许可证要求，确保训练数据来自真实物理仿真而非合成简化模型",
+  "tags": ["porous-media", "CFD", "dataset", "benchmark", "open-source", "microflow", "transport"],
+  "aliases": ["多孔介质数据集", "porous media CFD dataset", "microflow dataset"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔介质微流动与输运CFD领域的公开数据集来源清单",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

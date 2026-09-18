@@ -73,17 +73,27 @@
 
 ## 关键参数
 
+### 通用判据（方法层）
 | 参数 | 值 | 来源 | 说明 |
 |------|-----|------|------|
-| 退出码 0 | 成功 | [1] | 进程正常完成 |
-| 退出码 1-2 | 用法错误 | [1] | 参数错误或缺少必要输入 |
-| 退出码 126 | 不可执行 | [1] | 命令存在但无执行权限 |
-| 退出码 127 | 命令未找到 | [1] | 命令不存在或 PATH 未包含 |
-| 退出码 128+N | 信号终止 | [1] | 进程被信号 N 终止（如 SIGKILL=137） |
-| 负退出码 -N | 信号终止（POSIX） | [1] | 进程被信号 N 直接终止 |
-| 超时异常 | TimeoutExpired | [1] | 进程超过 timeout 未完成 |
-| 沙箱错误 | PermissionError | [1] | 沙箱环境权限不足 |
-| 认证失败 | 非零退出+auth 关键词 | [1] | API Key/证书无效或过期 |
+| 退出码 0 | 成功 | [1][D1][D2] | 进程正常完成 |
+| 退出码 1-2 | 用法错误 | [1][D1][D2] | 参数错误或缺少必要输入 |
+| 退出码 126 | 不可执行 | [1][D1][D2] | 命令存在但无执行权限 |
+| 退出码 127 | 命令未找到 | [1][D1][D2] | 命令不存在或 PATH 未包含 |
+| 退出码 128+N | 信号终止 | [1][D1][D2] | 进程被信号 N 终止（如 SIGKILL=137） |
+| 负退出码 -N | 信号终止（POSIX） | [1][D1] | 进程被信号 N 直接终止 |
+| 超时异常 | TimeoutExpired | [1][D2] | 进程超过 timeout 未完成 |
+| 认证失败 | 非零退出+auth 关键词 | [1][D2] | API Key/证书无效或过期 |
+| 沙箱错误 | PermissionError | [1][D2] | 沙箱环境权限不足 |
+| 用户定义退出码范围 | 64-113 | [D1] | 建议用户定义的退出码限制在此范围内 |
+| 退出码模 256 | exit 3809 → 225 | [D1] | 大于 255 的退出值返回模 256 的结果 |
+
+### 校准数值（实例参考值）
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| SIGKILL 退出码 | 128+9=137 | [D1][D2] | kill -9 的典型退出码 |
+| SIGTERM 退出码 | 128+15=143 | [D1][D2] | kill -15 的典型退出码 |
+| SIGINT 退出码 | 128+2=130 | [D1][D2] | Ctrl+C 的典型退出码 |
 
 ## 边界与分流
 
@@ -108,6 +118,7 @@
 - OOM → 减少并发数或输入规模 → 重试
 - 认证失败 → 不重试，记录并告警
 - 命令未找到 → 不重试，记录并报告环境问题
+- 沙箱限制 → 检查权限配置或申请资源配额 → 重试
 
 ## 质量检查
 
@@ -115,6 +126,8 @@
 - **stderr 关键词覆盖**：至少覆盖 timeout、permission、auth、memory、not found
 - **故障分类唯一性**：每个退出码+stderr 组合映射到唯一故障类别
 - **恢复策略可执行性**：每个故障类别有明确的恢复动作
+- **认证失败检测**：检查 stderr 中的 auth/unauthorized/401/403 关键词
+- **沙箱限制诊断**：检查 stderr 中的 permission/denied/access/sandbox 关键词
 
 ## 回退策略
 
@@ -128,7 +141,75 @@
 - 配合 `general-json-schema-report-contract` 卡片使用，确保 CLI 输出符合契约
 - 适用于 onescience-runtime、onescience-installer 等涉及外部命令执行的技能
 
+## 补充证据
+
+[D1] Exit Codes With Special Meanings, The Linux Documentation Project, Advanced Bash-Scripting Guide, URL: https://tldp.org/LDP/abs/html/exitcodes.html (accessed 2026-09-17, 权威文档)
+[D2] Python subprocess - Subprocess management, Python Software Foundation, Python 3.14.7, URL: https://docs.python.org/3/library/subprocess.html (accessed 2026-09-17, 权威文档)
+
 ## 证据来源
 
 [1] "subprocess — Subprocess management", Python 3.14.7 Documentation, https://docs.python.org/3/library/subprocess.html
 [2] "The Open Group Base Specifications Issue 7 - exit", IEEE Std 1003.1-2017, https://pubs.opengroup.org/onlinepubs/9699919799/functions/exit.html
+[D1] Exit Codes With Special Meanings, The Linux Documentation Project, Advanced Bash-Scripting Guide, https://tldp.org/LDP/abs/html/exitcodes.html
+[D2] Python subprocess - Subprocess management, Python Software Foundation, Python 3.14.7, https://docs.python.org/3/library/subprocess.html
+
+## 批次补充 2026-09-17（归因分析任务271案例：CLI非交互执行故障）
+
+### 案例描述
+
+任务271（山区近实时雪水当量估计与网格订正）的归因分析智能体未能交付有效的结构化报告，故障模式与任务255、任务362等高度相似：
+
+- **故障现象**：CLI进程退出码为1，报告校验错误：缺少顶层字段 `['issues', 'summary', 'task', 'task_id']`；包含额外顶层字段 `['error', 'sessionID', 'timestamp', 'type']`；task_id与任务索引不一致；task与任务name不一致。
+- **故障分类**：CLI非交互执行失败 + JSON Schema报告交付契约违反
+- **根因分析**：
+  1. CLI进程未正常退出（退出码1），可能由参数错误、认证失败、沙箱隔离或超时引起
+  2. 输出报告不符合预定义Schema，缺少必填字段且包含未声明字段
+- **修复方法**：
+  1. 修正CLI启动配置，确保命令参数、认证、沙箱设置正确
+  2. 在输出前使用JSON Schema校验报告，确保字段完整性和身份一致性
+- **验证方式**：使用成功、非零退出和超时用例验证状态及日志；以report-schema.json校验最终输出并执行错配字段反例测试
+
+### 校准数值（案例专属值，供量级校准）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 缺失必填字段 | 4 | 任务271案例 | issues, summary, task, task_id |
+| 额外字段数 | 4 | 任务271案例 | error, sessionID, timestamp, type |
+| 身份校验失败项 | 2 | 任务271案例 | task_id不匹配、task不匹配 |
+| 退出码 | 1 | 任务271案例 | 通用错误，catchall for general errors |
+
+## 批次补充 2026-09-18（归因分析任务277案例：CLI非交互执行故障）
+
+### 案例描述
+
+任务277（有限气象变量驱动的未来7天参考蒸散发预报）的归因分析智能体未能交付有效的结构化报告，故障模式与任务271高度相似：
+
+- **故障现象**：CLI进程退出码为1，报告校验错误：缺少顶层字段 `['issues', 'summary', 'task', 'task_id']`；包含额外顶层字段 `['error', 'sessionID', 'timestamp', 'type']`；task_id与任务索引不一致；task与任务name不一致；summary必须是非空字符串；issues必须是数组。
+- **故障分类**：CLI非交互执行失败 + JSON Schema报告交付契约违反
+- **根因分析**：
+  1. CLI进程未正常退出（退出码1），可能由参数错误、认证失败、沙箱隔离或超时引起
+  2. 输出报告不符合预定义Schema，缺少必填字段且包含未声明字段
+  3. 归因分析阶段未满足CLI生命周期或结构化报告契约，无法形成可信归因结论
+- **修复方法**：
+  1. 修正CLI启动配置，确保命令参数、认证、沙箱设置正确
+  2. 在输出前使用JSON Schema校验报告，确保字段完整性和身份一致性
+  3. 确保归因分析智能体正常退出并产生有效响应
+- **验证方式**：使用成功、非零退出和超时用例验证状态及日志；以report-schema.json校验最终输出并执行错配字段反例测试；验证归因分析进程稳定完成并保留诊断证据
+
+### 校准数值（案例专属值，供量级校准）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 缺失必填字段 | 4 | 任务277案例 | issues, summary, task, task_id |
+| 额外字段数 | 4 | 任务277案例 | error, sessionID, timestamp, type |
+| 身份校验失败项 | 2 | 任务277案例 | task_id不匹配、task不匹配 |
+| 退出码 | 1 | 任务277案例 | 通用错误，catchall for general errors |
+| 额外校验失败项 | 2 | 任务277案例 | summary必须是非空字符串、issues必须是数组 |
+
+### 案例对比分析
+
+任务277与任务271的故障模式高度一致，表明这是归因分析CLI的系统性故障模式：
+- **相同点**：退出码1、缺少相同必填字段、包含相同额外字段、身份校验失败
+- **不同点**：任务277额外指出了summary和issues的格式约束要求
+- **系统性问题**：多个任务出现相同故障，表明CLI启动配置或输出契约存在共性问题
+- **修复策略**：需要统一修复CLI启动配置和输出校验逻辑，而非逐个任务单独处理

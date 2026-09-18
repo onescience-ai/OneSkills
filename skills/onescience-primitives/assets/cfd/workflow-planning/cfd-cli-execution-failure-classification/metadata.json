@@ -1,0 +1,25 @@
+{
+  "name": "cfd-cli-execution-failure-classification",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18",
+  "updated_at": "2026-09-18",
+  "description": "面向科学计算 CLI 工具的非交互执行故障分类与恢复，覆盖进程生命周期管理、退出码判读、超时处理和标准错误诊断，适用于归因分析、工作流编排和自动化管道中的命令行工具调用场景",
+  "tags": ["cli", "failure-classification", "exit-code", "timeout", "subprocess", "non-interactive", "error-handling", "automation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_docs": [
+    {
+      "title": "Python subprocess — Subprocess management",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-18"
+    }
+  ],
+  "evidence_papers": [],
+  "evidence_user": []
+}

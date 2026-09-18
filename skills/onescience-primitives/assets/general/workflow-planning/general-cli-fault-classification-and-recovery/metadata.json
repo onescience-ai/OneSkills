@@ -1,0 +1,26 @@
+{
+  "name": "general-cli-fault-classification-and-recovery",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向命令行界面（CLI）工具，提供非交互执行环境下的故障分类、诊断与恢复策略，覆盖超时、退出码、沙箱、认证等故障场景，确保CLI工具在自动化流水线中稳定运行。",
+  "tags": ["CLI", "fault-classification", "error-handling", "timeout", "exit-codes", "sandbox", "authentication", "recovery"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Command Line Interface Risk Modeling",
+      "doi": "10.48550/arXiv.2302.01749",
+      "year": 2023
+    },
+    {
+      "title": "Taming Timeout Flakiness: An Empirical Study of SAP HANA",
+      "doi": "10.48550/arXiv.2402.05223",
+      "year": 2024
+    }
+  ]
+}

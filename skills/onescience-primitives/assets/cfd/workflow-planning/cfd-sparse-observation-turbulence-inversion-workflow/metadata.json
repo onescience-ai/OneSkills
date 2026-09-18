@@ -1,0 +1,40 @@
+{
+  "name": "cfd-sparse-observation-turbulence-inversion-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T19:56:00Z",
+  "updated_at": "2026-09-17T19:56:00Z",
+  "description": "面向稀疏观测数据，构建基于物理信息神经网络的湍流均值流与闭合联合反演工作流。适用于需要从稀疏实验测量中重建湍流统计量（均值流、雷诺应力）并验证物理一致性的研究场景。核心方法包括：PINN反演、稀疏数据处理、湍流闭合约束、质量门禁检查、物理约束验证。输出为反演结果、验证报告和收敛性分析。",
+  "tags": ["sparse observation", "PINN", "turbulence closure", "mean flow reconstruction", "joint inversion", "RANS", "data-driven", "workflow", "CFD", "validation", "physics constraints", "Reynolds stress", "cylinder flow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "稀疏观测PINN均值流与闭合联合反演任务中需补充的知识：稀疏实验观测数据集的获取方式、数据格式规范、数据来源；工作流步骤的执行依赖关系、步骤间数据传递契约、产物目录结构规范；质量门禁的具体检查方法、检查标准、异常处理规则；湍流闭合项的物理约束条件、Reynolds应力半正定性检查方法、后验求解稳定性判断标准；验收指标的计算方法、相对误差门限的应用规则、外推测试的执行方法。",
+  "evidence_papers": [
+    {
+      "title": "Turbulent Mean Flow Reconstruction Based on Sparse Multi-sensor Data and Adjoint-based Field Inversion",
+      "doi": "10.2514/6.2022-3900",
+      "year": 2022,
+      "venue": "AIAA AVIATION 2022 Forum"
+    },
+    {
+      "title": "Enhancing PINN-Based Flow Reconstruction with Sparse and Decoupled Gradient-Weighted Sensor Placement",
+      "doi": "10.1109/iecon58223.2025.11221001",
+      "year": 2025,
+      "venue": "IECON 2025 - 51st Annual Conference of the IEEE Industrial Electronics Society"
+    },
+    {
+      "title": "Using physics informed neural network (PINN) and neural network (NN) to improve a k-ω turbulence model",
+      "doi": "10.1080/14685248.2026.2665148",
+      "year": 2026,
+      "venue": "Journal of Turbulence"
+    },
+    {
+      "title": "Turbulence closure in Reynolds-averaged Navier–Stokes and flow inference around a cylinder using physics-informed neural networks and sparse experimental data",
+      "doi": "10.1017/jfm.2026.11471",
+      "year": 2026,
+      "venue": "Journal of Fluid Mechanics"
+    }
+  ]
+}

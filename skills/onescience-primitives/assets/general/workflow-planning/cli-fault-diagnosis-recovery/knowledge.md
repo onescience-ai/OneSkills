@@ -194,3 +194,36 @@
 
 [D1] The Open Group Base Specifications Issue 7 - Shell Command Language, IEEE/The Open Group, 2018
 [D2] Python Built-in Exceptions Documentation, Python Software Foundation, 2024
+
+## 批次补充 2026-09-17（论文证据）
+
+以下内容来自科学计算工作流领域的论文证据，补充了通用 CLI 故障处理在科学计算场景中的实践模式。
+
+### 科学计算工作流中的 CLI 故障处理实践
+
+**连接池管理**：在远程计算资源场景中，应实现连接池算法，将到同一主机的连接分组复用，避免连接风暴导致远程主机无响应。新连接创建应遵守可配置的最小时间间隔。[3]
+
+**指数退避与进程暂停**：对瞬态故障（网络中断、临时资源不可用）实施指数退避重试（初始等待 1-5 秒，退避因子 2，最大等待 300 秒）。当重试次数耗尽时，将进程状态持久化并暂停，而非无限重试。恢复后可从暂停点继续执行，不丢失已完成的中间结果。[3]
+
+**工作流引擎状态持久化**：科学计算工作流引擎（如 AiiDA 的 WorkChain）在步骤之间自动将状态持久化到数据库。如果引擎停止，已持久化的状态不会丢失，重启后可从最后持久化的步骤继续执行。[3]
+
+**任务队列与事件驱动**：基于消息队列（如 RabbitMQ）的任务分发架构比轮询架构更适合高吞吐量场景，可实现近乎即时的事件响应（如提交新计算、子流程完成后继续工作流）。[3]
+
+**错误处理分层**：科学计算工作流中，底层工作链处理代码特定的错误处理（重启、参数调优），高层工作链封装科学逻辑。退出码（exit codes）被预定义为计算和工作流的错误分类依据，错误处理器可根据退出码动态决定重新提交、调整后处理等策略。[3]
+
+**工作流执行挑战**：对 Stack Overflow 和 GitHub 的实证分析表明，工作流执行是科学计算工作流系统开发中最具挑战性的主题，数据结构和操作是 GitHub 上最困难的话题。开发者普遍需要"如何做"（How）类型的过程性指导。[4]
+
+### 新增关键参数
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 连接最小间隔 | 5 秒 | [3] | 避免连接风暴导致远程主机无响应 |
+| 最大等待时间上限 | 300 秒 | [3] | 指数退避上限 |
+| 进程状态持久化频率 | 每步骤一次 | [3] | WorkChain 在步骤之间自动持久化 |
+| 高吞吐量 | ~35000 进程/小时 | [3] | AiiDA 事件驱动引擎在工作站上的吞吐量 |
+
+### 新增证据来源
+
+[3] Huber S P, Zoupanos S, Uhrin M, et al. AiiDA 1.0, a scalable computational infrastructure for automated reproducible workflows and data provenance. Scientific Data, 2020, 7: 300. DOI: 10.1038/s41597-020-00638-4
+
+[4] Alam K, Roy B, Roy C K, et al. An Empirical Investigation on the Challenges in Scientific Workflow Systems Development. arXiv:2411.10890, 2024.

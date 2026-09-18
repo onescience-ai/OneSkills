@@ -1,0 +1,28 @@
+{
+  "name": "cfd-neural-inverse-operator-training-strategy",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向PDE逆问题任务，提供神经逆算子和Inverse DeepONet的训练策略，包括超参数设置、早停机制、检查点保存和训练监控，确保训练过程稳定收敛。",
+  "tags": ["neural inverse operator", "Inverse DeepONet", "training strategy", "hyperparameters", "early stopping"],
+  "aliases": ["神经逆算子训练", "Inverse DeepONet超参数"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "神经逆算子和Inverse DeepONet的训练策略，包括超参数设置、早停机制、检查点保存和训练监控",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "DeepXDE Documentation: Training Neural Networks for PDEs",
+      "url": "https://deepxde.readthedocs.io/en/latest/demos/pinn.html",
+      "publisher": "DeepXDE Project",
+      "version": "2023",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

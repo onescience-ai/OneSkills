@@ -1,0 +1,20 @@
+{
+  "name": "cfd-neural-operator-architecture-evaluation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18",
+  "updated_at": "2026-09-18",
+  "description": "面向CFD神经PDE求解器，区分不同神经算子架构（如UNO、FNO、DeepONet）的设计原理、适用场景和独立评估方法，确保模型性能可区分、可复现",
+  "tags": ["neural-operator", "architecture", "evaluation", "UNO", "FNO", "DeepONet"],
+  "aliases": ["神经算子架构", "算子学习", "函数空间映射"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Parareal neural solver与Temporal neural operator的架构差异与独立评估方法",
+  "evidence_papers": [
+    {"title": "Physics-Informed Machine Learning in Biomedical Science and Engineering", "doi": "10.1146/annurev-bioeng-110824-124907", "year": 2026},
+    {"title": "Fast-forward prediction of lattice Boltzmann dynamics with physics-informed neural operators", "doi": "10.1038/s41467-026-75730-1", "year": 2026},
+    {"title": "A Second-Order Network Structure Based on Gradient-Enhanced Physics-Informed Neural Networks for Solving Parabolic Partial Differential Equations", "doi": "10.3390/e25040674", "year": 2023}
+  ]
+}

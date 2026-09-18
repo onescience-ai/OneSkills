@@ -1,0 +1,20 @@
+{
+  "name": "cfd-default-data-contract-template",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向CFD缺失区补全场景，提供默认数据契约模板。当用户未提供数据契约时，基于场景标准自动生成占位契约，包含标准变量名、单位、坐标系和网格拓扑定义，确保后续步骤可以继续执行。",
+  "tags": ["cfd", "data-contract", "template", "default", "variables", "units", "coordinates"],
+  "aliases": ["数据契约模板", "默认契约", "占位契约"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD缺失区补全场景的默认数据契约模板",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

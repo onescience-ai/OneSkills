@@ -1,0 +1,36 @@
+{
+  "name": "cfd-workflow-fault-recovery",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T03:23:00Z",
+  "updated_at": "2026-09-18T03:23:00Z",
+  "description": "面向CFD工作流执行过程中的异常恢复与降级执行，提供超时检测、中间状态保存、断点续训、降级策略的触发条件和执行流程，确保工作流在异常情况下能保存进度并自动恢复",
+  "tags": ["CFD", "fault-tolerance", "recovery", "checkpoint", "degradation", "timeout", "workflow-resilience"],
+  "aliases": ["fault-recovery", "checkpoint-restart", "degradation-strategy"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "异常恢复与降级执行知识，包括超时检测、中间状态保存、断点续训、降级策略的触发条件和执行流程",
+  "evidence_papers": [
+    {
+      "title": "Learning Curves for Decision Making in Supervised Machine Learning: A Survey",
+      "doi": "10.48550/arXiv.2201.12150",
+      "year": 2022
+    },
+    {
+      "title": "Scheduling and Checkpointing optimization algorithm for Byzantine fault tolerance in Cloud Clusters",
+      "doi": "10.48550/arXiv.1802.00951",
+      "year": 2018
+    },
+    {
+      "title": "Application-layer Fault-Tolerance Protocols",
+      "doi": "10.48550/arXiv.1611.02273",
+      "year": 2016
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

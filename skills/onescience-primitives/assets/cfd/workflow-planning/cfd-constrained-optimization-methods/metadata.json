@@ -1,0 +1,22 @@
+{
+  "name": "cfd-constrained-optimization-methods",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "CFD外形设计中的约束优化标准方法，包括多目标优化算法（NSGA-II、MOEA/D）、基于代理模型的贝叶斯优化、几何约束和物理约束的数学表达、Pareto front的提取和可视化方法",
+  "tags": ["constrained optimization", "NSGA-II", "Bayesian optimization", "Pareto front", "CFD", "multi-objective"],
+  "aliases": ["多目标优化", "约束优化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD外形设计中的约束优化标准方法，包括多目标优化算法（NSGA-II、MOEA/D）的参数设置（种群大小、交叉/变异算子）、基于代理模型的贝叶斯优化（GP/BO）的采集函数（EI/UCB）、几何约束（最小壁厚、曲率限制）和物理约束（阻力系数上限、升力系数下限）的数学表达、Pareto front的提取和可视化方法",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {"provider": "user", "provided_at": "2026-09-17", "location": "归因报告 CFD_S032 report.json"}
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,34 @@
+{
+  "name": "bio-dna-sequence-modeling-evaluation-metrics",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T18:02:00Z",
+  "updated_at": "2026-09-17T18:02:00Z",
+  "description": "面向DNA序列建模任务，定义评估指标与结果导出格式；覆盖平均精度(AUPRC)标准定义、区间/碱基/变异层结果导出、参考与替代等位基因区分",
+  "tags": ["DNA", "evaluation", "metrics", "AUPRC", "benchmark"],
+  "aliases": ["average precision", "评估指标", "结果导出"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "基因组功能预测任务中平均精度(average precision)的标准定义——PR曲线下面积(AUPRC)，与多指标简单平均的本质区别；区间层/碱基层/变异层结果导出的具体格式规范（VCF/BED/tabular），参考与替代等位基因在评估中的区分方式",
+  "evidence_papers": [
+    {
+      "title": "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling",
+      "doi": "10.48550/arXiv.2403.03234",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "scikit-learn average_precision_score Documentation",
+      "url": "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html",
+      "publisher": "scikit-learn",
+      "version": "1.9.1",
+      "accessed_at": "2026-09-17T18:02:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

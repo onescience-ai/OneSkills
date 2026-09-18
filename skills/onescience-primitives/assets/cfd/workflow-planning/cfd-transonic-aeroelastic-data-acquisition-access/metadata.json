@@ -1,0 +1,20 @@
+{
+  "name": "cfd-transonic-aeroelastic-data-acquisition-access",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T05:33:00Z",
+  "updated_at": "2026-09-17T05:33:00Z",
+  "description": "面向跨声速气动弹性任务，获取符合格式要求的CFD仿真数据集并完成接入验证。提供数据路径确认、格式规范、变量定义和许可信息的完整接入流程，适用于颤振与buffet耦合分析场景的数据准备。",
+  "tags": ["CFD", "data acquisition", "transonic", "aeroelasticity", "dataset access", "data validation", "flutter", "buffet"],
+  "aliases": ["跨声速数据接入", "气动弹性数据获取", "CFD数据访问"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "跨声速颤振与buffet耦合CFD数据集的具体路径和访问方式",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

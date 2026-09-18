@@ -1,0 +1,20 @@
+{
+  "name": "onescience-orchestrator-execution-manifest",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向OneScience工作流编排任务，定义execution-manifest.json的生成时机、内容契约与校验规则。确保orchestrator在完成全局计划融合后、进入执行阶段前生成结构化清单，包含task_id、步骤列表、依赖关系、资源绑定、验收标准等字段，避免preflight检查失败。",
+  "tags": ["orchestrator", "execution-manifest", "workflow", "planning", "validation", "OneScience"],
+  "aliases": ["执行清单", "工作流清单", "manifest生成"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience orchestrator的execution-manifest.json生成时机、内容契约与校验规则",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -2,12 +2,12 @@
   "name": "general-agent-schema-contract-validation",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-17",
   "updated_at": "2026-09-17",
   "description": "面向自动化智能体结构化输出的 JSON Schema 契约验证与语义合规保障。覆盖 schema 校验、运行时解码控制、语义层验证及报告交付契约的完整性保障，适用于需要保证 agent 输出符合预定义结构化契约的场景。",
-  "tags": ["JSON-Schema", "structured-output", "validation", "agent-contract", "report-delivery", "semantic-verification", "runtime-control"],
+  "tags": ["JSON-Schema", "structured-output", "validation", "agent-contract", "report-delivery", "semantic-verification", "runtime-control", "failure-taxonomy", "contract-adherence"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "JSON Schema 报告交付契约",
@@ -15,7 +15,9 @@
     {"title": "When JSON Is Not Enough: Semantic Reliability of Schema-Constrained LLM Ordering Agents", "doi": "10.48550/arXiv.2607.18261", "year": 2026},
     {"title": "ATLAS-RTC: Closing the Loop on LLM Agent Output with Token-Level Runtime Control", "doi": "10.48550/arXiv.2603.27905", "year": 2026},
     {"title": "Validation of Modern JSON Schema: Formalization and Complexity", "doi": "10.48550/arXiv.2307.10034", "year": 2023},
-    {"title": "Blaze: Compiling JSON Schema for 10x Faster Validation", "doi": "10.48550/arXiv.2503.02770", "year": 2025}
+    {"title": "Blaze: Compiling JSON Schema for 10x Faster Validation", "doi": "10.48550/arXiv.2503.02770", "year": 2025},
+    {"title": "Schema First Tool APIs for LLM Agents: A Controlled Study of Tool Misuse, Recovery, and Budgeted Performance", "doi": "10.48550/arXiv.2603.13404", "year": 2026}
   ],
-  "aliases": ["Schema验证", "structured output validation", "report schema contract", "JSON Schema校验"]
+  "aliases": ["Schema验证", "structured output validation", "report schema contract", "JSON Schema校验", "failure taxonomy", "contract adherence"],
+  "merged_batches": ["batch-2026-09-17-merge-arxiv2603.13404"]
 }

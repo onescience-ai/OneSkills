@@ -1,0 +1,35 @@
+{
+  "name": "cfd-pytorch-model-save-load",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T13:59:00Z",
+  "updated_at": "2026-09-17T13:59:00Z",
+  "description": "面向深度学习模型训练与推理任务，定义PyTorch模型保存与加载的规范，包括state_dict格式、checkpoint结构和跨设备加载方法",
+  "tags": ["pytorch", "model-save", "state-dict", "checkpoint", "serialization"],
+  "aliases": ["torch-save", "model-serialization", "weight-loading"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PyTorch模型保存规范（torch.save/state_dict格式）",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Saving and Loading Models",
+      "url": "https://pytorch.org/tutorials/beginner/saving_loading_models.html",
+      "publisher": "PyTorch",
+      "version": "v2.14",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "PyTorch Serialization Notes",
+      "url": "https://pytorch.org/docs/stable/notes/serialization.html",
+      "publisher": "PyTorch",
+      "version": "2.14",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

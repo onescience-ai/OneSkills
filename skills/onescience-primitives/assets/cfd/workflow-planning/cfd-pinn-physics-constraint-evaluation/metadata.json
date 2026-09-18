@@ -1,0 +1,22 @@
+{
+  "name": "cfd-pinn-physics-constraint-evaluation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18",
+  "updated_at": "2026-09-18",
+  "description": "PINN模型物理约束评估的标准指标体系和门限值知识，包括连续性方程残差、动量方程残差、边界误差、守恒误差的计算方法和判定标准，以及硬约束PINN确保物理约束满足的技术方法。",
+  "tags": ["physics-constraint", "evaluation", "pinn", "hard-constraint", "complex-geometry", "cfd", "residual-analysis", "conservation"],
+  "aliases": ["物理约束评估", "残差分析", "守恒验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PINN physics constraint evaluation threshold",
+  "evidence_papers": [
+    {"title": "WHC-PINN: Physics-Informed Neural Network with weighted loss and hard constraint for compressible flow", "doi": "10.1038/s41598-025-34263-1", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

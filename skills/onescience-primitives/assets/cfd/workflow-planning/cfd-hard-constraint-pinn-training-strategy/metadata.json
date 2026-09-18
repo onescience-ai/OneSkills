@@ -1,0 +1,22 @@
+{
+  "name": "cfd-hard-constraint-pinn-training-strategy",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18",
+  "updated_at": "2026-09-18",
+  "description": "硬约束PINN在复杂几何边界问题上的训练策略知识，包括学习率调度、损失权重平衡、早停策略、自适应配点采样、网络架构选择等训练技巧，以及收敛性诊断方法。",
+  "tags": ["training-strategy", "pinn", "hard-constraint", "complex-geometry", "cfd", "physics-informed", "loss-balancing", "convergence"],
+  "aliases": ["PINN训练策略", "损失权重", "收敛性诊断"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "hard constraint PINN training strategy complex geometry boundary",
+  "evidence_papers": [
+    {"title": "WHC-PINN: Physics-Informed Neural Network with weighted loss and hard constraint for compressible flow", "doi": "10.1038/s41598-025-34263-1", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

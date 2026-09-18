@@ -1,0 +1,16 @@
+{
+  "name": "cfd-generative-model-training-data-requirements",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向生成模型训练任务，定义数据规模要求与数据增强策略。涵盖最小样本量评估、数据增强方法、小样本学习策略，确保数据规模满足模型训练需求。适用于需要训练扩散模型、GAN等生成式模型的气动设计场景。",
+  "tags": ["cfd", "training-data", "data-augmentation", "generative-model", "sample-size", "few-shot-learning", "data-requirements"],
+  "aliases": ["训练数据规模", "数据增强策略", "小样本学习"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "生成模型训练的数据规模要求",
+  "evidence_papers": []
+}

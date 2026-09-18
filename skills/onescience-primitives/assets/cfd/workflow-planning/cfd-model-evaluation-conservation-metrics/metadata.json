@@ -1,0 +1,33 @@
+{
+  "name": "cfd-model-evaluation-conservation-metrics",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:23:00Z",
+  "updated_at": "2026-09-17T12:23:00Z",
+  "description": "CFD模型评估的完整指标体系规范，包括统计误差（relative_L2、RMSE）、物理约束（conservation_residual、boundary_error）、泛化能力和计算收益，支持评估报告的标准格式生成与最差样本分析。",
+  "tags": ["evaluation-metrics", "conservation-law", "boundary-error", "model-validation", "acceptance-criteria"],
+  "aliases": ["CFD评估指标", "物理约束校验"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD模型评估的完整指标体系（包括conservation_residual、boundary_error等物理约束指标），评估报告的标准格式和必填字段，worst_cases分析的方法论",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "AIAA CFD Verification and Validation Guidelines",
+      "url": "https://www.aiaa.org/Standards/Details/2563",
+      "publisher": "American Institute of Aeronautics and Astronautics",
+      "version": "2023",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "NASA CFD Best Practices Guide",
+      "url": "https://turbmodels.larc.nasa.gov/best_practices.html",
+      "publisher": "NASA Langley Research Center",
+      "version": "2024",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": []
+}

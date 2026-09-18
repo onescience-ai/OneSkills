@@ -1,0 +1,42 @@
+{
+  "name": "cfd-dataset-path-validation-workflow",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18",
+  "updated_at": "2026-09-18",
+  "description": "面向科学计算工作流中数据集路径的获取、解析与验证，提供基于Python pathlib和os.path的标准化路径验证流程，包括路径存在性检查、文件类型验证、跨平台兼容性处理和异常情况处置，确保任务在执行核心业务逻辑前确认数据集路径有效且可访问。",
+  "tags": ["cfd", "path-validation", "dataset", "workflow", "preflight", "python", "pathlib", "os.path"],
+  "aliases": ["数据集路径验证", "路径存在性检查", "文件路径校验", "数据路径验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "数据集路径获取与验证知识，包括有效路径的格式、路径不存在时的默认值处理策略、以及当路径为空或无效时如何向用户请求明确输入的规则",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "pathlib — Object-oriented filesystem paths",
+      "url": "https://docs.python.org/3/library/pathlib.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "os.path — Common pathname manipulations",
+      "url": "https://docs.python.org/3/library/os.path.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "PEP 428 – The pathlib module – object-oriented filesystem paths",
+      "url": "https://www.python.org/dev/peps/pep-0428/",
+      "publisher": "Python Software Foundation",
+      "version": "Final",
+      "accessed_at": "2026-09-18"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

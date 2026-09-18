@@ -96,6 +96,11 @@ assert data["task"] == expected_task_name, f"task 不匹配: {data['task']} vs {
 | summary_type | string (non-empty) | [D1] | 摘要必须是非空字符串 |
 | issues_type | array | [D1] | 问题列表必须是数组 |
 | identity_match | exact | 报告契约 | task_id 和 task 必须完全匹配 |
+| schema_validity_rate | 100% (strong models) | [1] | Schema 约束可保证结构有效性 |
+| semantic_success_rate | ~80% (strong models) | [1] | 即使 schema 有效，语义正确率仍有缺口 |
+| constraint_tax_accuracy_drop | 19.7%→11.0% | [2] | 硬 schema 约束导致小模型答案准确率下降 |
+| schema_validity_gain | 61.5%→100.0% | [2] | 硬 schema 约束将结构有效性提升至 100% |
+| wrong_valid_rate | 49.5%→88.9% | [2] | 硬约束下"结构正确但语义错误"的比例上升 |
 
 ## 边界与分流
 
@@ -115,6 +120,11 @@ assert data["task"] == expected_task_name, f"task 不匹配: {data['task']} vs {
 - task_id 不匹配 → 记录期望值与实际值 → 标记为失败
 - task 不匹配 → 记录期望值与实际值 → 标记为失败
 
+### Schema 有效性 vs 语义正确性场景
+- Schema 验证通过但内容语义错误 → 记录为"wrong-valid-schema" → 需要领域验证层
+- 小模型在硬 schema 约束下准确率下降 → 采用"先自由推理、后约束打包"策略 [2]
+- Schema 描述与 prompt 指令冲突 → 保持单一事实来源，避免 prompt/schema 漂移 [3]
+
 ## 质量检查
 
 - [ ] JSON 语法正确
@@ -123,6 +133,8 @@ assert data["task"] == expected_task_name, f"task 不匹配: {data['task']} vs {
 - [ ] 任务身份一致
 - [ ] 无意外的额外字段
 - [ ] 数组元素结构正确
+- [ ] Schema 有效性与语义正确性分别报告（[1][2]）
+- [ ] 避免 prompt/schema 指令漂移（[3]）
 
 ## 回退策略
 
@@ -139,6 +151,8 @@ assert data["task"] == expected_task_name, f"task 不匹配: {data['task']} vs {
 - 归因分析输出不符合 Schema 契约
 - 需要定义 JSON 报告的必填字段和约束
 - 需要验证任务身份一致性
+- 需要区分 schema 有效性与语义正确性（[1][2]）
+- 需要设计 schema 描述以避免与 prompt 指令冲突（[3]）
 
 ## 补充证据（开源权威文档）
 
@@ -146,4 +160,10 @@ assert data["task"] == expected_task_name, f"task 不匹配: {data['task']} vs {
 
 ## 证据来源
 
-[无论文证据，本卡基于权威技术文档生成]
+[1] When JSON Is Not Enough: Semantic Reliability of Schema-Constrained LLM Ordering Agents, Yin Li, arXiv 2026, DOI: 10.48550/arXiv.2607.18261v1
+[2] The Constraint Tax: Measuring Validity-Correctness Tradeoffs in Structured Outputs for Small Language Models, Jaideep Ray, arXiv 2026, DOI: 10.48550/arXiv.2605.26128v1
+[3] Your Prompt Is Not the Only Prompt: How Much Do LLMs Weight Structured-Output Schema Descriptions?, Sin-Ying Lin, arXiv 2026, DOI: 10.48550/arXiv.2608.08254v1
+
+## 批次补充（2026-09-17）
+
+本次修改引入 3 篇 2026 年学术论文，揭示了 Schema 验证的关键工程警告：(1) schema 有效性不等于语义正确性 [1]，最强模型在 100% schema 有效时语义成功率仅约 80%；(2) 硬 schema 约束对小模型造成"约束税"，准确率从 19.7% 降至 11.0% [2]；(3) schema 描述可覆盖 prompt 指令，需保持单一事实来源 [3]。建议在 Schema 验证之上增加领域语义验证层。

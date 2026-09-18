@@ -1,0 +1,20 @@
+{
+  "name": "cfd-api-rate-limiting-degradation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "面向学术API速率限制与降级方案，提供OpenAlex/Europe PMC/Semantic Scholar等API的请求间隔要求、指数退避参数、429响应处理流程，以及多源检索优先级与降级规则，确保知识检索在API限流时仍能获取足够的领域知识",
+  "tags": ["api-rate-limiting", "exponential-backoff", "fallback-strategy", "openalex", "europe-pmc", "semantic-scholar", "knowledge-retrieval"],
+  "aliases": ["api-degradation", "rate-limit-handling", "multi-source-retrieval"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OpenAlex API的速率限制策略与降级方案，包括请求间隔要求、429响应的标准处理流程、以及在API不可用时的替代检索通道的切换优先级和降级逻辑",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

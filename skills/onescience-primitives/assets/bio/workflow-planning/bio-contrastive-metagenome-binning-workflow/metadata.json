@@ -1,0 +1,41 @@
+{
+  "name": "bio-contrastive-metagenome-binning-workflow",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T11:39:00+08:00",
+  "updated_at": "2026-09-17T11:39:00+08:00",
+  "description": "面向宏基因组数据，使用对比学习方法进行序列分箱的完整工作流规划，涵盖对比学习表征学习原理、模型架构与推理、数据获取、特征编码、聚类分箱、评估基准及标准步骤结构",
+  "tags": ["metagenome", "binning", "contrastive learning", "representation learning", "workflow", "MAG", "completeness", "contamination", "evaluation"],
+  "aliases": ["CLMB", "COMEBin", "VAMB", "SemiBin", "contrastive metagenomic binning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "对比学习在宏基因组分箱中的应用原理，包括序列对比学习的样本对构造方法、对比损失函数设计、表征学习目标；CLMB模型的架构、输入输出接口、权重加载和推理流程；长度过滤、k-mer分词和参考数据库编码的具体实现方法；宏基因组公开数据集的获取渠道和下载方法；宏基因组分箱评估的标准方法",
+  "evidence_papers": [
+    {
+      "title": "Effective binning of metagenomic contigs using contrastive multi-view representation learning",
+      "doi": "10.1038/s41467-023-44290-z",
+      "year": 2024
+    },
+    {
+      "title": "Critical Assessment of Metagenome Interpretation: the second round of challenges",
+      "doi": "10.1038/s41592-022-01431-4",
+      "year": 2022
+    },
+    {
+      "title": "Benchmarking metagenomic binning tools on real datasets across sequencing platforms and binning modes",
+      "doi": "10.1038/s41467-025-57957-6",
+      "year": 2025
+    },
+    {
+      "title": "Solving genomic puzzles: computational methods for metagenomic binning",
+      "doi": "10.1093/bib/bbae372",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

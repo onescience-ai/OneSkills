@@ -1,0 +1,15 @@
+{
+  "name": "general-workspace-data-storage-location",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:15:00Z",
+  "updated_at": "2026-09-15T21:15:00Z",
+  "description": "OneScience工作空间数据文件标准存放位置规范：定义科学工作流中数据文件的标准存储路径和查找优先级。适用于任务执行前的数据发现和定位场景，特别是当输入文件不在默认位置时。关键路径包括：任务产物目录、工作空间根目录、.onescience/data/子目录、模型注册表。输出为数据文件查找策略和优先级顺序。",
+  "tags": ["data storage", "workspace", "file location", "data discovery", "OneScience", "workflow", "data management", "file system", "scientific computing"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience工作空间中数据文件的标准存放位置规范",
+  "evidence_papers": []
+}

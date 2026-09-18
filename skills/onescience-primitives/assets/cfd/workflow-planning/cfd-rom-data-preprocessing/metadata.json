@@ -1,0 +1,26 @@
+{
+  "name": "cfd-rom-data-preprocessing",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "面向CFD快照矩阵的降阶建模数据预处理，涵盖无量纲化标准方法（基于参考量的Re数归一化）、按工况/几何构造无泄漏切分策略、归一化统计量管理，以及公开CFD数据集获取流程。",
+  "tags": ["CFD", "normalization", "non-dimensionalization", "data-preprocessing", "snapshot-matrix", "train-test-split", "open-dataset"],
+  "aliases": ["CFD数据预处理", "快照矩阵归一化", "无量纲化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD快照矩阵的无量纲化标准方法，按工况构造无泄漏切分策略，真实CFD快照数据获取流程",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "NASA Turbulence Modeling Resource",
+      "url": "https://tmbwg.github.io/turbmodels/",
+      "publisher": "NASA",
+      "version": "2026-02-24",
+      "accessed_at": "2026-09-18"
+    }
+  ],
+  "evidence_user": []
+}

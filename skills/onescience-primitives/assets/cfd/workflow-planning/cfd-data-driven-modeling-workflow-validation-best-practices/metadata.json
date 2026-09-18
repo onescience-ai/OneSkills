@@ -1,0 +1,41 @@
+{
+  "name": "cfd-data-driven-modeling-workflow-validation-best-practices",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T02:03:00Z",
+  "updated_at": "2026-09-18T02:03:00Z",
+  "description": "面向CFD数据驱动建模任务，提供从任务状态管理、数据预处理、模型验证到验收评估的全流程规范与最佳实践，确保工作流的可重复性、可信度和鲁棒性。",
+  "tags": ["CFD", "data-driven-modeling", "workflow-validation", "best-practices", "verification", "validation", "robustness"],
+  "aliases": ["CFD数据驱动建模", "工程LES等效源项", "高保真校准", "数据驱动建模工作流验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "工程LES等效源项与高保真校准任务的知识补充",
+  "evidence_papers": [
+    {
+      "title": "Ensuring the quality of in silico evidence: application to medical devices",
+      "doi": "10.1093/bib/bbag442",
+      "year": 2026
+    },
+    {
+      "title": "Twelve quick tips for AI-assisted coding in science",
+      "doi": "10.1371/journal.pcbi.1014428",
+      "year": 2026
+    },
+    {
+      "title": "Trustworthy Agentic AI in Bioinformatics: From Workflow Automation to Traceable and Validated Biological Inference",
+      "doi": "10.3390/biology15171537",
+      "year": 2026
+    },
+    {
+      "title": "Ten simple rules for effective use of generative AI for code development in environmental science",
+      "doi": "10.1371/journal.pcbi.1014627",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

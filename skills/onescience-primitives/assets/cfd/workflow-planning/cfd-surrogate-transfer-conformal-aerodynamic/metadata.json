@@ -1,0 +1,41 @@
+{
+  "name": "cfd-surrogate-transfer-conformal-aerodynamic",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T04:15:00Z",
+  "updated_at": "2026-09-17T04:15:00Z",
+  "description": "面向流体动力学快速评估需求，构建基于迁移学习和保形预测的神经网络代理模型，用于在有限计算资源下实现高保真CFD仿真的快速预测与不确定性量化。适用于汽车、飞机、风力机等各类空气动力学外形的快速性能评估。核心方法包括：迁移学习预训练模型微调、保形预测不确定性区间生成、物理一致性约束的神经网络架构设计。输出为秒级推理的代理模型和具有统计保证的预测区间。",
+  "tags": ["CFD", "surrogate modeling", "transfer learning", "conformal prediction", "automotive aerodynamics", "uncertainty quantification"],
+  "aliases": ["汽车气动代理模型", "迁移学习CFD", "保形预测气动"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "迁移与不确定性约束汽车气动快速评估",
+  "evidence_papers": [
+    {
+      "title": "DrivAerStar: An Industrial-Grade CFD Dataset for Vehicle Aerodynamic Optimization",
+      "doi": "10.48550/arXiv.2510.16857",
+      "year": 2025
+    },
+    {
+      "title": "Faster by Design: Interactive Aerodynamics via Neural Surrogates Trained on Expert-Validated CFD",
+      "doi": "10.48550/arXiv.2604.18491",
+      "year": 2026
+    },
+    {
+      "title": "AB-UPT: Scaling Neural CFD Surrogates for High-Fidelity Automotive Aerodynamics Simulations via Anchored-Branched Universal Physics Transformers",
+      "doi": "10.48550/arXiv.2502.09692",
+      "year": 2025
+    },
+    {
+      "title": "A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification",
+      "doi": "10.48550/arXiv.2107.07511",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

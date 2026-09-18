@@ -1,0 +1,28 @@
+{
+  "name": "general-json-schema-validation-report",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T16:50:00Z",
+  "updated_at": "2026-09-17T16:50:00Z",
+  "description": "面向结构化数据交付场景，验证JSON输出是否符合预定义Schema契约的方法论框架，适用于报告生成、API响应验证和数据管道质量门禁。",
+  "tags": ["JSON", "Schema", "validation", "report", "contract", "data-quality", "verification"],
+  "aliases": ["JSON Schema validation", "report schema compliance", "output contract verification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Understanding JSON Schema",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema",
+      "version": "2026",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

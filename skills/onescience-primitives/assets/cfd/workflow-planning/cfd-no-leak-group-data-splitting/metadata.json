@@ -1,0 +1,52 @@
+{
+  "name": "cfd-no-leak-group-data-splitting",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:52:00Z",
+  "updated_at": "2026-09-17T20:52:00Z",
+  "description": "面向CFD数据驱动建模的数据预处理任务，定义无泄漏分组切分的规范，涵盖geometry_id/operating_condition字段的类型约定、GroupKFold/LeaveOneGroupOut分组策略选择、时间序列数据的时序切分，以及分组键类型校验要求",
+  "tags": ["data-splitting", "no-leak", "group-k-fold", "CFD", "data-preprocessing", "group-validation"],
+  "aliases": ["无泄漏切分", "group-aware splitting", "CFD data splitting", "no-leak cross-validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD数据预处理中无泄漏切分的分组键处理规范",
+  "evidence_papers": [
+    {
+      "title": "Learning physics-constrained SGS closures in small-data regime",
+      "doi": "10.48550/arXiv.2201.07347",
+      "year": "2022"
+    },
+    {
+      "title": "Mixed data-source transfer learning for turbulence model augmented PINN",
+      "doi": "10.48550/arXiv.2601.04921",
+      "year": "2026"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "scikit-learn Cross-validation: evaluating estimator performance",
+      "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+      "publisher": "scikit-learn",
+      "version": "1.5",
+      "accessed_at": "2026-09-17T20:52:00Z"
+    },
+    {
+      "title": "scikit-learn GroupKFold API",
+      "url": "https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GroupKFold.html",
+      "publisher": "scikit-learn",
+      "version": "1.5",
+      "accessed_at": "2026-09-17T20:52:00Z"
+    }
+  ],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-17",
+      "location": "任务CFD_S080归因报告：preprocessing.py中identify_grouping_key返回的group_key类型未校验，tuple类型错误导致切分失败"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

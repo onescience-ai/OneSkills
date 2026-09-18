@@ -1,0 +1,41 @@
+{
+  "name": "general-numpy-json-serialization-rules",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:52:00Z",
+  "updated_at": "2026-09-17T20:52:00Z",
+  "description": "面向科学计算中numpy类型与Python原生类型的JSON序列化兼容性问题，定义类型转换规则和自定义JSONEncoder实现，覆盖np.bool_、np.int64、np.float64、np.ndarray到Python原生类型的映射",
+  "tags": ["numpy", "JSON", "serialization", "type-conversion", "Python", "scientific-computing"],
+  "aliases": ["numpy JSON serialization", "numpy type conversion", "JSONEncoder numpy", "numpy序列化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "numpy布尔类型与Python原生类型在JSON序列化中的兼容性规则",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Python json module documentation",
+      "url": "https://docs.python.org/3/library/json.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.12",
+      "accessed_at": "2026-09-17T20:52:00Z"
+    },
+    {
+      "title": "NumPy Scalar Types documentation",
+      "url": "https://numpy.org/doc/stable/reference/arrays.scalars.html",
+      "publisher": "NumPy",
+      "version": "1.26",
+      "accessed_at": "2026-09-17T20:52:00Z"
+    }
+  ],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-17",
+      "location": "任务CFD_S080归因报告：evaluate_apriori.py中np.bool_类型未转换为Python原生bool，json.dump时抛出TypeError"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

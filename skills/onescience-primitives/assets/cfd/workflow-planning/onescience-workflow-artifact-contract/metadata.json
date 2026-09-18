@@ -1,0 +1,20 @@
+{
+  "name": "onescience-workflow-artifact-contract",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T02:46:00Z",
+  "updated_at": "2026-09-18T02:46:00Z",
+  "description": "OneScience CFD工作流产物格式契约，包括各步骤输出文件的命名、格式和内容要求，确保工作流产物的一致性和可解析性",
+  "tags": ["CFD", "OneScience", "工作流", "产物格式", "契约", "worst_cases"],
+  "aliases": ["产物格式", "工作流契约", "文件格式"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience工作流产物格式契约",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

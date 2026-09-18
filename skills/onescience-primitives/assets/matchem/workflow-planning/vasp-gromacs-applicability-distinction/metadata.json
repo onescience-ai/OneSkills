@@ -1,0 +1,35 @@
+{
+  "name": "vasp-gromacs-applicability-distinction",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "VASP与GROMACS的适用场景区分——VASP用于第一性原理计算（DFT），适用于电子结构、离子迁移能垒、相稳定性等量子力学计算；GROMACS用于分子动力学模拟，适用于原子运动轨迹、扩散系数等经典力学模拟。固态锂离子导体的离子电导率预测通常需要DFT+AIMD（从头算分子动力学），而非经典MD。",
+  "tags": ["VASP", "GROMACS", "DFT", "molecular-dynamics", "ionic-conductivity", "solid-state-electrolyte"],
+  "aliases": ["first-principles-calculation", "classical-MD", "AIMD"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "VASP与GROMACS的适用场景区分",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "VASP Documentation",
+      "url": "https://www.vasp.at/wiki/",
+      "publisher": "University of Vienna",
+      "version": "2026",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "GROMACS Documentation",
+      "url": "https://manual.gromacs.org/",
+      "publisher": "GROMACS Development Team",
+      "version": "2026",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

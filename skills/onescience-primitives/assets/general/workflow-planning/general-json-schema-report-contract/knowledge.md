@@ -1,148 +1,230 @@
-# JSON Schema 报告交付契约
+# JSON Schema 报告交付契约验证
 
 ## 适用范围
-
-**触发条件**：
-- 程序输出需要符合预定义的 JSON 结构
-- 需要验证 JSON 报告的字段完整性和类型正确性
-- 自动化流程中需要确保数据交换格式的一致性
-
-**适用场景**：
-- 自动化报告生成与校验
-- API 响应格式验证
-- 配置文件 Schema 检查
-- 数据管道中的数据格式标准化
-- 科学计算结果的结构化输出验证
-
-**不适用场景**：
-- 非 JSON 格式的数据验证（XML、YAML 等）
-- 复杂业务逻辑验证（仅格式验证）
-- 性能关键型实时验证（考虑流式处理）
+本卡片服务于结构化报告生成场景，提供基于JSON Schema的报告交付契约验证方法。适用于任何需要生成符合预定义格式的JSON报告的自动化系统，包括归因分析报告、测试报告、监控报告、科学计算结果报告等。不适用于非JSON格式的报告或无需格式验证的简单输出。
 
 ## 输入
-
-- JSON Schema 定义文件（JSON 格式）
-- 待验证的 JSON 数据或报告
-- 校验规则配置（严格模式、错误处理策略）
-- 上下文信息（任务 ID、时间戳等）
+- JSON Schema定义文件（.json或.schema.json）
+- 待验证的JSON报告数据
+- 验证选项（如严格模式、额外属性处理）
 
 ## 输出
-
-- 校验结果（通过/失败）
-- 结构化错误信息（字段路径、错误类型、预期值）
-- 修复建议（针对常见错误模式）
-- 校验报告（包含统计信息和历史记录）
+- 验证结果（通过/失败）
+- 详细错误信息（缺失字段、类型错误、约束违反）
+- 修复建议
 
 ## 流程节点
-
-### Step 1：Schema 加载与解析
-- **操作**：加载并解析 JSON Schema 定义文件
-- **参数**：Schema 版本（Draft-04/07/2020-12）、引用解析策略
-- **工具**：jsonschema 库、Schema 解析器
-- **质量门禁**：Schema 必须符合 JSON Schema 规范
-
-### Step 2：字段完整性检查
-- **操作**：验证所有必填字段是否存在
-- **参数**：required 字段列表、可选字段列表
-- **工具**：字段遍历器、存在性检查器
-- **质量门禁**：必填字段缺失必须报告具体字段路径
-
-### Step 3：类型验证
-- **操作**：验证每个字段的数据类型是否符合 Schema
-- **参数**：类型映射表（string/number/integer/boolean/array/object/null）
-- **工具**：类型检查器、类型转换器
-- **质量门禁**：类型不匹配必须报告字段路径和实际类型
-
-### Step 4：数组与对象约束验证
-- **操作**：验证数组长度、对象属性、嵌套结构
-- **参数**：minItems/maxItems/minProperties/maxProperties/patternProperties
-- **工具**：约束验证器、递归检查器
-- **质量门禁**：约束违反必须报告具体约束类型
-
-### Step 5：身份字段匹配验证
-- **操作**：验证任务 ID、名称等身份字段的一致性
-- **参数**：身份字段列表、匹配规则（精确/正则/范围）
-- **工具**：模式匹配器、身份验证器
-- **质量门禁**：身份不匹配必须报告冲突字段
-
-### Step 6：校验报告生成
-- **操作**：汇总校验结果并生成结构化报告
-- **参数**：报告模板、错误聚合策略、统计指标
-- **工具**：报告生成器、模板引擎
-- **质量门禁**：报告必须包含校验状态、错误详情和统计信息
+1. **Schema加载** → 加载并解析JSON Schema定义
+2. **报告解析** → 解析待验证的JSON报告
+3. **字段校验** → 验证必填字段是否存在
+4. **类型检查** → 验证字段数据类型是否符合Schema
+5. **约束验证** → 验证数组长度、字符串格式、数值范围等约束
+6. **任务身份匹配** → 验证task_id、task等身份字段与预期一致
+7. **错误报告** → 生成详细的验证错误报告
 
 ## 关键参数
 
 ### 通用判据
 | 参数 | 值 | 来源 | 说明 |
 |------|-----|------|------|
-| Schema 版本 | 2020-12 | [D1] | 当前推荐版本 |
-| 严格模式 | true | [D2] | 启用所有约束检查 |
-| 错误聚合 | 按字段分组 | [D3] | 便于批量修复 |
-| 报告格式 | JSON | [D1] | 与输入格式一致 |
-| 校验深度 | 无限递归 | [D2] | 验证嵌套结构 |
+| 必填字段 | Schema中required数组 | [D1] | 缺少任何必填字段导致验证失败 |
+| 类型约束 | Schema中type关键字 | [D1] | 字段类型必须匹配 |
+| 数组约束 | Schema中minItems/maxItems | [D1] | 数组长度必须在指定范围内 |
+| 字符串格式 | Schema中format关键字 | [D1] | 如date-time、email、uri等格式 |
 
 ### 校准数值
-以下数值来自典型实现，供量级校准；其他体系需以自身证据重新锚定。
+以下数值来自JSON Schema实践，供量级校准；其他体系需以自身证据重新锚定。
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 额外属性默认 | allow | [D1] | 默认允许额外属性 |
+| 严格模式 | false | [D1] | 默认非严格模式 |
+| 错误收集 | allErrors | [D1] | 默认收集所有错误 |
+
+## 边界与分流
+- **Schema加载失败**：当Schema文件不存在或格式错误时，抛出异常并终止验证
+- **JSON解析失败**：当报告数据不是有效JSON时，抛出解析异常
+- **循环引用**：当Schema存在循环引用时，可能导致无限递归，需设置最大深度
+- **性能考虑**：对于大型报告，验证可能较慢，可考虑分块验证
+- **版本兼容**：不同JSON Schema版本（draft-04、draft-07、2020-12）语法差异
+
+## 质量检查
+- 验证所有必填字段是否存在
+- 检查字段类型是否正确
+- 验证数组长度约束
+- 检查字符串格式约束
+- 验证数值范围约束
+- 确认任务身份字段匹配
+- 检查额外属性处理策略
+
+## 回退策略
+- **降级验证**：当严格验证失败时，尝试宽松模式
+- **部分验证**：当完整验证失败时，只验证关键字段
+- **手动验证**：当自动验证无法进行时，提供手动验证清单
+- **Schema修复**：当Schema本身有问题时，提供修复建议
+
+## 资源召回建议
+当遇到以下情况时召回本卡片：
+- 生成的报告需要符合预定义格式
+- 需要验证报告是否包含所有必填字段
+- 需要检查报告字段类型是否正确
+- 需要确保报告中的任务身份信息正确
+- 需要设计报告生成的质量门禁
+
+配套资源：
+- general-cli-fault-diagnosis-recovery（CLI执行故障诊断）
+- 领域特定的报告Schema定义
+
+## 补充证据（开源文档/用户自有，可选）
+[D1] JSON Schema官方文档, JSON Schema, 2026-01-01, URL: https://json-schema.org/understanding-json-schema/（accessed_at 2026-09-17，权威文档）
+[D2] Python jsonschema库文档, Python Software Foundation, 4.23.0, URL: https://python-jsonschema.readthedocs.io/（accessed_at 2026-09-17，权威文档）
+
+## 批次补充 2026-09-17（归因分析任务255案例：JSON Schema报告交付契约故障）
+
+### 案例描述
+
+任务255（多时间窗降雨驱动的区域浅层滑坡概率临近预警）的归因分析智能体未能交付有效的结构化报告，故障模式与任务362、任务274、任务395、任务75、任务281、任务292、任务311、任务231高度相似：
+
+- **故障现象**：CLI进程退出码为1，报告校验错误：缺少顶层字段 `['issues', 'summary', 'task', 'task_id']`；包含额外顶层字段 `['error', 'sessionID', 'timestamp', 'type']`；task_id与任务索引不一致；task与任务name不一致。
+- **故障分类**：CLI非交互执行失败 + JSON Schema报告交付契约违反
+- **根因分析**：
+  1. CLI进程未正常退出（退出码1），可能由参数错误、认证失败、沙箱隔离或超时引起
+  2. 输出报告不符合预定义Schema，缺少必填字段且包含未声明字段
+- **修复方法**：
+  1. 修正CLI启动配置，确保命令参数、认证、沙箱设置正确
+  2. 在输出前使用JSON Schema校验报告，确保字段完整性和身份一致性
+- **验证方式**：使用成功、非零退出和超时用例验证状态及日志；以report-schema.json校验最终输出并执行错配字段反例测试
+
+### 校准数值（案例专属值，供量级校准）
 
 | 参数 | 值 | 来源 | 说明 |
 |------|-----|------|------|
-| 最大 Schema 复杂度 | 1000 节点 | [D3] | 避免性能问题 |
-| 错误消息最大长度 | 200 字符 | [D3] | 保持可读性 |
-| 嵌套深度限制 | 10 层 | [D3] | 防止栈溢出 |
-| 批量校验大小 | 1000 条 | [D3] | 内存优化 |
+| 缺失必填字段 | 4 | 任务255案例 | issues, summary, task, task_id |
+| 额外字段数 | 4 | 任务255案例 | error, sessionID, timestamp, type |
+| 身份校验失败项 | 2 | 任务255案例 | task_id不匹配、task不匹配 |
+| 退出码 | 1 | 任务255案例 | 通用错误，catchall for general errors |
 
-## 边界与分流
+### 任务255特定考虑
 
-**前提 1：JSON 数据格式正确**
-- 不成立时：先执行 JSON 语法修复（括号匹配、逗号修正）
+- **领域特殊性**：气象/地质预警任务需要处理时间窗口数据、降雨插值和滑坡概率计算
+- **数据格式**：可能涉及多时间窗的JSON数组结构，需要验证时间序列数据的完整性
+- **计算复杂度**：滑坡概率计算可能涉及复杂数学模型，需要验证数值精度约束
+- **输出格式**：预警报告可能包含置信区间、风险等级等特殊字段，需要扩展Schema定义
 
-**前提 2：Schema 定义有效**
-- 不成立时：先验证 Schema 本身是否符合 JSON Schema 规范
+## 批次补充 2026-09-17（归因分析任务341案例：JSON Schema报告交付契约故障）
 
-**前提 3：身份字段可访问**
-- 不成立时：标记为"身份验证跳过"，仅执行格式校验
+### 案例描述
 
-**前提 4：校验性能可接受**
-- 不成立时：采用流式校验或分批处理策略
+任务341（MOF高通量储氢筛选）的归因分析智能体未能交付有效的结构化报告，故障模式与之前案例高度相似：
 
-## 质量检查
+- **故障现象**：CLI进程退出码为1，报告校验错误：缺少顶层字段 `['issues', 'summary', 'task', 'task_id']`；包含额外顶层字段 `['error', 'sessionID', 'timestamp', 'type']`；task_id与任务索引不一致；task与任务name不一致。
+- **故障分类**：CLI非交互执行失败 + JSON Schema报告交付契约违反
+- **根因分析**：
+  1. CLI进程未正常退出（退出码1），可能由参数错误、认证失败、沙箱隔离或超时引起
+  2. 输出报告不符合预定义Schema，缺少必填字段且包含未声明字段
+- **修复方法**：
+  1. 修正CLI启动配置，确保命令参数、认证、沙箱设置正确
+  2. 在输出前使用JSON Schema校验报告，确保字段完整性和身份一致性
+- **验证方式**：使用成功、非零退出和超时用例验证状态及日志；以report-schema.json校验最终输出并执行错配字段反例测试
 
-- Schema 解析必须处理 $ref 引用
-- 字段缺失错误必须包含完整路径
-- 类型错误必须报告实际值和预期类型
-- 校验结果必须可复现
-- 错误消息必须人类可读
+### 校准数值（案例专属值，供量级校准）
 
-## 回退策略
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 缺失必填字段 | 4 | 任务341案例 | issues, summary, task, task_id |
+| 额外字段数 | 4 | 任务341案例 | error, sessionID, timestamp, type |
+| 身份校验失败项 | 2 | 任务341案例 | task_id不匹配、task不匹配 |
+| 退出码 | 1 | 任务341案例 | 通用错误，catchall for general errors |
 
-1. **Schema 版本不兼容**：降级到 Draft-07 或使用兼容性转换器
-2. **循环引用**：设置引用深度限制，标记为"需人工检查"
-3. **性能瓶颈**：启用并行校验或采样校验
-4. **错误信息过多**：按严重性过滤，仅报告关键错误
+### 任务341特定考虑
 
-## 资源召回建议
-
-当遇到以下情况时应召回本卡片：
-- 程序输出 JSON 格式不符合预期
-- 自动化报告校验失败
-- API 响应格式验证错误
-- 配置文件 Schema 检查失败
-- 需要建立 JSON 数据质量标准
-
-配套资源：
-- `general-cli-fault-diagnosis`：用于诊断生成 JSON 的 CLI 工具故障
-- `onescience-paper-repro`：用于处理论文中的 JSON 数据结构
-- `onescience-data-standardizer`：用于数据格式标准化
-
-## 补充证据
-
-[D1] "JSON Schema官方文档", JSON Schema organization, 2020-12, URL: https://json-schema.org/documentation（accessed 2026-09-15，权威官方文档）
-[D2] "Understanding JSON Schema", JSON Schema organization, 2020-12, URL: https://json-schema.org/understanding-json-schema/（accessed 2026-09-15，官方教程）
-[D3] "Python jsonschema library documentation", Python Software Foundation, jsonschema 4.20.0, URL: https://python-jsonschema.readthedocs.io/（accessed 2026-09-15，官方库文档）
+- **领域特殊性**：材料科学/化学领域任务，涉及高通量筛选、储氢材料性能评估
+- **数据格式**：可能涉及材料属性数据库、筛选结果矩阵等复杂数据结构
+- **计算复杂度**：高通量筛选可能涉及大规模并行计算，需要验证资源分配和任务调度
+- **输出格式**：筛选报告可能包含材料性能指标、排名、筛选标准等特殊字段，需要扩展Schema定义
 
 ## 证据来源
+[1] JSON Schema官方文档, JSON Schema, 2026
+[2] Python jsonschema库文档, Python Software Foundation, 2026
 
-[D1] "JSON Schema官方文档", JSON Schema organization, 2020-12, URL: https://json-schema.org/documentation
-[D2] "Understanding JSON Schema", JSON Schema organization, 2020-12, URL: https://json-schema.org/understanding-json-schema/
-[D3] "Python jsonschema library documentation", Python Software Foundation, jsonschema 4.20.0, URL: https://python-jsonschema.readthedocs.io/
+## 批次补充 2026-09-17（归因分析任务271案例：JSON Schema报告交付契约故障）
+
+### 案例描述
+
+任务271（山区近实时雪水当量估计与网格订正）的归因分析智能体未能交付有效的结构化报告，故障模式与任务255、任务362等高度相似：
+
+- **故障现象**：CLI进程退出码为1，报告校验错误：缺少顶层字段 `['issues', 'summary', 'task', 'task_id']`；包含额外顶层字段 `['error', 'sessionID', 'timestamp', 'type']`；task_id与任务索引不一致；task与任务name不一致。
+- **故障分类**：CLI非交互执行失败 + JSON Schema报告交付契约违反
+- **根因分析**：
+  1. CLI进程未正常退出（退出码1），可能由参数错误、认证失败、沙箱隔离或超时引起
+  2. 输出报告不符合预定义Schema，缺少必填字段且包含未声明字段
+- **修复方法**：
+  1. 修正CLI启动配置，确保命令参数、认证、沙箱设置正确
+  2. 在输出前使用JSON Schema校验报告，确保字段完整性和身份一致性
+- **验证方式**：使用成功、非零退出和超时用例验证状态及日志；以report-schema.json校验最终输出并执行错配字段反例测试
+
+### 校准数值（案例专属值，供量级校准）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 缺失必填字段 | 4 | 任务271案例 | issues, summary, task, task_id |
+| 额外字段数 | 4 | 任务271案例 | error, sessionID, timestamp, type |
+| 身份校验失败项 | 2 | 任务271案例 | task_id不匹配、task不匹配 |
+| 退出码 | 1 | 任务271案例 | 通用错误，catchall for general errors |
+
+## 批次补充 2026-09-17（归因分析任务362案例：JSON Schema报告交付契约故障）
+
+### 案例描述
+
+任务362（力学超材料目标响应逆向设计）的归因分析智能体未能交付有效的结构化报告，故障模式与任务274、任务395、任务75、任务281、任务292、任务311、任务231高度相似：
+
+- **故障现象**：CLI进程退出码为1，报告校验错误：缺少顶层字段 `['issues', 'summary', 'task', 'task_id']`；包含额外顶层字段 `['error', 'sessionID', 'timestamp', 'type']`；task_id与任务索引不一致；task与任务name不一致。
+- **故障分类**：CLI非交互执行失败 + JSON Schema报告交付契约违反
+- **根因分析**：
+  1. CLI进程未正常退出（退出码1），可能由参数错误、认证失败、沙箱隔离或超时引起
+  2. 输出报告不符合预定义Schema，缺少必填字段且包含未声明字段
+- **修复方法**：
+  1. 修正CLI启动配置，确保命令参数、认证、沙箱设置正确
+  2. 在输出前使用JSON Schema校验报告，确保字段完整性和身份一致性
+- **验证方式**：使用成功、非零退出和超时用例验证状态及日志；以report-schema.json校验最终输出并执行错配字段反例测试
+
+### 校准数值（案例专属值，供量级校准）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 缺失必填字段 | 4 | 任务362案例 | issues, summary, task, task_id |
+| 额外字段数 | 4 | 任务362案例 | error, sessionID, timestamp, type |
+| 身份校验失败项 | 2 | 任务362案例 | task_id不匹配、task不匹配 |
+| 退出码 | 1 | 任务362案例 | 通用错误，catchall for general errors |
+
+## 批次补充 2026-09-17（论文证据）
+
+以下内容来自科学流程描述和API工具生成领域的论文证据，补充了JSON Schema在科学工作流中的应用实践。
+
+### 科学流程描述Schema
+
+**SciSchema.org**：提供16个跨学科的专家注解Schema，覆盖生物与生物技术、材料与化学、成像与测量、物理和心理学。每个Schema定义了可复用字段，用于描述流程实例，包括输入、输出、材料、仪器或软件、参数、条件、流程步骤、测量和溯源信息。Schema以JSON Schema和SHACL格式提供。[3]
+
+**Schema开发流程**：采用人在回路（human-in-the-loop）的Schema挖掘工作流，大语言模型从流程规格、科学文章和专家反馈中生成候选结构，然后由领域专家构建最终的主Schema。技术验证评估了Schema结构、开发溯源、专家评审和语法合规性。[3]
+
+### API文档Schema标注与工具生成
+
+**ToolFactory**：针对API文档缺乏标准化、Schema不一致和信息不完整的问题，开发了从非结构化API文档自动生成AI兼容工具的开源管道。实现了评估方法来诊断错误，并构建了经过验证的工具知识库。设计了包含167个API文档和744个端点的API提取基准，使用JSON Schema进行标注。[4]
+
+**JSON Schema在API验证中的应用**：JSON Schema确保结构验证，但不提供Linked Data语义的原生支持。在科学工作流中，JSON数据易于交换但难以跨系统一致解释，需要结合语义Web技术（如RML映射）来弥补语义互操作性缺口。[5]
+
+### 新增关键参数
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| Schema格式 | JSON Schema + SHACL | [3] | SciSchema提供双格式支持 |
+| API文档基准规模 | 167文档/744端点 | [4] | ToolFactory评估基准 |
+| Schema学科覆盖 | 5个学科领域 | [3] | 生物、材料、成像、物理、心理学 |
+| 流程描述字段 | 输入、输出、材料、仪器、参数、条件、步骤、测量、溯源 | [3] | SciSchema标准字段集 |
+
+### 新增证据来源
+
+[3] D'Souza J, Sadruddin S, Rula A, et al. SciSchema.org: A Multidisciplinary Collection of Schemas for Structured Scientific Process Descriptions. arXiv:2607.27955, 2026.
+
+[4] Ni X, Wang Q, Zhang Y, et al. ToolFactory: Automating Tool Generation by Leveraging LLM to Understand REST API Documentations. arXiv:2501.16945, 2025.
+
+[5] Neubauer F, Jafarkhani M, Endo K, et al. MetaConfigurator: AI-Assisted RDF Authoring from JSON Data. arXiv:2606.07094, 2026.

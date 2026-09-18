@@ -1,0 +1,15 @@
+{
+  "name": "general-primitive-interpretation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-15T21:17:00Z",
+  "updated_at": "2026-09-15T21:17:00Z",
+  "description": "Workflow planning primitive内容解读与应用方法：指导如何从primitive的metadata、content和tags中提取信息用于工作流执行。适用于资源检索后的内容解析和应用，特别是当需要从primitive获取数据来源、步骤结构和参数配置时。输出为primitive内容解析结果和应用决策。",
+  "tags": ["primitive interpretation", "metadata analysis", "content extraction", "workflow planning", "resource utilization", "OneScience", "workflow execution", "decision making", "configuration"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "workflow planning primitive的内容解读与应用方法",
+  "evidence_papers": []
+}

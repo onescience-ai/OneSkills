@@ -1,0 +1,20 @@
+{
+  "name": "onescience-task-timeout-management",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向OneScience任务执行过程中的超时管理机制，提供超时计算方式、超时后的处理策略和预防措施，确保任务在合理时间内完成或正确终止。",
+  "tags": ["OneScience", "timeout", "task-management", "workflow", "resource-management", "error-handling"],
+  "aliases": ["task timeout", "execution timeout", "timeout management"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience任务超时机制、单任务总超时的计算方式、超时后的处理策略",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

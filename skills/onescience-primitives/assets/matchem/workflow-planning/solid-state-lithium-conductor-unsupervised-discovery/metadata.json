@@ -1,0 +1,26 @@
+{
+  "name": "solid-state-lithium-conductor-unsupervised-discovery",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "固态锂离子导体无监督发现的研究范式——利用机器学习势函数+主动学习在组成空间中无偏搜索新型固态离子导体，而非对已知材料进行模拟验证。发现流程应包括：定义材料搜索空间（元素组成、结构原型）、生成候选材料、计算离子电导率/迁移能垒、筛选排序。",
+  "tags": ["solid-state-electrolyte", "lithium-ion-conductor", "unsupervised-discovery", "machine-learning-potential", "active-learning", "high-throughput-screening"],
+  "aliases": ["materials-discovery", "computational-screening", "ion-conductor-discovery"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "固态锂离子导体无监督发现的研究范式",
+  "evidence_papers": [
+    {
+      "title": "Unsupervised discovery of solid-state lithium ion conductors",
+      "doi": "10.1038/s41467-019-13214-1",
+      "year": 2019
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

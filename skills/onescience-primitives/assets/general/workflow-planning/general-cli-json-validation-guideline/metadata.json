@@ -1,0 +1,35 @@
+{
+  "name": "general-cli-json-validation-guideline",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向命令行工具的非交互执行与输出格式验证，提供故障分类、退出码处理、超时管理以及 JSON Schema 报告交付契约的实践指南，确保自动化流程的可靠性与可诊断性。",
+  "tags": ["cli", "json-schema", "validation", "error-handling", "automation", "reporting"],
+  "aliases": ["command line interface", "exit code", "subprocess", "json validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识；JSON Schema 报告交付契约",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Python subprocess documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "JSON Schema reference",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema",
+      "version": "2026",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

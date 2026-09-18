@@ -4,22 +4,38 @@
   "domain": "general",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-16T21:40:00Z",
-  "updated_at": "2026-09-16T21:40:00Z",
-  "description": "面向结构化数据交付场景，使用 JSON Schema 定义报告契约的必填字段、类型约束、数组结构及输出格式，确保交付物可解析且与任务身份一致的通用方法论。",
-  "tags": ["json-schema", "validation", "contract", "report-delivery", "data-validation"],
-  "aliases": ["JSON Schema验证", "报告契约校验", "结构化输出约束"],
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向JSON数据验证，使用JSON Schema定义结构契约，确保数据正确性、安全性和互操作性，覆盖必填字段、任务身份、数组约束及输出格式验证",
+  "tags": ["JSON Schema", "validation", "data contract", "schema", "report delivery", "structured output"],
+  "aliases": ["JSON validation", "schema validation", "data validation"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
-  "harvest_query": "JSON Schema 报告交付契约（必填字段、任务身份、数组约束、输出格式）",
-  "evidence_papers": [],
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.48550/arXiv.2307.10034",
+      "year": "2024"
+    },
+    {
+      "title": "Elimination of annotation dependencies in validation for Modern JSON Schema",
+      "doi": "10.48550/arXiv.2503.11288",
+      "year": "2025"
+    },
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.48550/arXiv.2503.02770",
+      "year": "2025"
+    }
+  ],
   "evidence_docs": [
     {
-      "title": "JSON Schema: A Media Type for Describing JSON Documents",
-      "url": "https://json-schema.org/draft/2020-12/json-schema-core",
-      "publisher": "IETF (Internet Engineering Task Force)",
-      "version": "draft-bhutton-json-schema-01",
-      "accessed_at": "2026-09-16"
+      "title": "JSON Schema reference",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17"
     }
   ],
   "evidence_user": [],

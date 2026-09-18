@@ -1,0 +1,52 @@
+{
+  "name": "cfd-fno-model-architecture-training",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-18",
+  "description": "面向规则网格PDE算子学习任务，提供Fourier Neural Operator的标准PyTorch架构模板、频域卷积实现、训练超参数配置最佳实践，以及Darcy流与Navier-Stokes场景的模型配置差异说明",
+  "tags": ["FNO", "Fourier Neural Operator", "PDE", "operator learning", "deep learning", "CFD", "neural operator", "spectral method"],
+  "aliases": ["FNO", "Fourier Neural Operator", "傅里叶神经算子"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "FNO规则网格参数化PDE算子学习中Fourier Neural Operator的标准实现架构与训练超参配置知识",
+  "evidence_papers": [
+    {
+      "title": "Fourier Neural Operator for Parametric Partial Differential Equations",
+      "doi": "10.48550/arXiv.2010.08895",
+      "year": 2020,
+      "authors": "Zongyi Li, Nikola Kovachki, Kamyar Azizzadenesheli, Burigede Liu, Kaushik Bhattacharya, Andrew Stuart, Anima Anandkumar"
+    },
+    {
+      "title": "Neural Operator: Learning Maps Between Function Spaces with Applications to PDEs",
+      "doi": "10.48550/arXiv.2108.08481",
+      "year": 2023,
+      "authors": "Nikola Kovachki, Zongyi Li, Burigede Liu, Kamyar Azizzadenesheli, Kaushik Bhattacharya, Andrew Stuart, Anima Anandkumar"
+    },
+    {
+      "title": "A Library for Learning Neural Operators",
+      "doi": "10.48550/arXiv.2412.10354",
+      "year": 2025,
+      "authors": "Jean Kossaifi, Nikola Kovachki, Zongyi Li, David Pitt, Miguel Liu-Schiaffini, et al."
+    },
+    {
+      "title": "Fourier Neural Operators Explained: A Practical Perspective",
+      "doi": "10.48550/arXiv.2512.01421",
+      "year": 2025,
+      "authors": "Valentin Duruisseaux, Jean Kossaifi, Anima Anandkumar"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "NeuralOperator GitHub Repository",
+      "url": "https://github.com/neuraloperator/neuraloperator",
+      "publisher": "NeuralOperator Team",
+      "version": "main branch (2025)",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

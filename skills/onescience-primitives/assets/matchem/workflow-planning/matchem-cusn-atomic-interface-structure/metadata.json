@@ -1,0 +1,20 @@
+{
+  "name": "matchem-cusn-atomic-interface-structure",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T11:30:00Z",
+  "updated_at": "2026-09-17T12:00:00Z",
+  "description": "CuSn原子界面（Cu-Sn双金属表面）的精确原子坐标和晶体结构数据，用于DFT计算吸附能和反应能垒。包括晶格常数、原子位置、Sn掺杂位置等结构参数。本卡片基于材料科学常识和类似体系经验，需结合具体论文数据使用。",
+  "tags": ["CuSn", "bimetallic", "surface", "atomic structure", "crystal coordinates", "POSCAR", "DFT", "copper-tin", "electrocatalysis", "co2-reduction"],
+  "aliases": ["铜锡合金", "Cu-Sn表面", "双金属催化剂", "CuSn催化剂"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CuSn原子界面（Cu-Sn双金属表面）的精确原子坐标和晶体结构数据",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-17-evidence-note"],
+  "conflicts": ["证据有限：论文检索通道受阻（OpenAlex限流），未能获取CuSn双金属表面的精确原子坐标论文证据。卡片内容基于材料科学常识和类似体系经验，仅供参考。用户在实际使用时应以具体论文中的结构数据为准。"]
+}

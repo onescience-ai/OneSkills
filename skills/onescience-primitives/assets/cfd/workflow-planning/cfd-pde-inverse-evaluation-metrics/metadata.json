@@ -1,0 +1,20 @@
+{
+  "name": "cfd-pde-inverse-evaluation-metrics",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向PDE逆问题任务，提供模型评估指标体系，包括统计误差、物理约束满足度、泛化能力和计算收益，全面评价模型性能。",
+  "tags": ["evaluation metrics", "PDE inverse problem", "physics consistency", "generalization", "computational cost"],
+  "aliases": ["PDE逆问题评估", "模型性能评估"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PDE逆问题模型的评估指标体系，包括统计误差、物理约束满足度、泛化能力和计算收益",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

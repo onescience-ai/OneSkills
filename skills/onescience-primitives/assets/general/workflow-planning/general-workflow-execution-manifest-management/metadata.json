@@ -1,0 +1,20 @@
+{
+  "name": "general-workflow-execution-manifest-management",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:55:00Z",
+  "updated_at": "2026-09-17T12:55:00Z",
+  "description": "面向科学计算工作流执行任务，提供execution-manifest.json的生成时机、格式规范和持久化机制，以及任务超时阈值的设定依据和调整策略",
+  "tags": ["workflow", "execution", "manifest", "timeout", "task-management"],
+  "aliases": ["execution manifest", "任务清单", "执行清单"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "execution-manifest.json的生成时机、格式规范和持久化机制，以及任务超时阈值的设定依据和调整策略",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,28 @@
+{
+  "name": "cfd-workflow-time-budget-script-compatibility",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向科研任务工作流管理，提供时间预算分配规则、跨平台Python脚本编码处理和PowerShell命令语法兼容性知识。",
+  "tags": ["time-budget", "workflow-management", "python-encoding", "powershell", "cross-platform", "cfd", "workflow"],
+  "aliases": ["时间预算分配", "脚本编码兼容", "PowerShell语法"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "科研任务工作流各步骤的时间预算分配规则、跨平台Python脚本的编码处理最佳实践和PowerShell命令语法",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Unicode HOWTO — Python 3.14.7 documentation",
+      "url": "https://docs.python.org/3/howto/unicode.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

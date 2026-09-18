@@ -1,0 +1,28 @@
+{
+  "name": "general-cli-execution-fault-classification-diagnosis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向命令行界面（CLI）工具的非交互执行与故障分类，提供故障诊断、退出码解读和错误处理流程，适用于任何CLI工具的错误分析与恢复。",
+  "tags": ["cli", "error-handling", "fault-classification", "exit-code", "diagnosis"],
+  "aliases": ["command-line interface", "CLI error", "exit status", "fault diagnosis"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识；知识缺失证据：归因分析CLI未正常退出或未产生有效响应；知识内容与边界：覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，不扩展到任务领域结论；应用动作：依据故障类别修正启动配置或恢复策略；预期修复点：归因分析进程稳定完成并保留诊断证据；验证方式：使用成功、非零退出和超时用例验证状态及日志。",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Exit and Exit Status - Advanced Bash-Scripting Guide",
+      "url": "https://tldp.org/LDP/abs/html/exit-status.html",
+      "publisher": "The Linux Documentation Project",
+      "version": "2024-01-01",
+      "accessed_at": "2026-09-17T00:00:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

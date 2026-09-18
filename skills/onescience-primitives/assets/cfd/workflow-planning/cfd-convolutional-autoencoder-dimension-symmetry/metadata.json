@@ -1,0 +1,20 @@
+{
+  "name": "cfd-convolutional-autoencoder-dimension-symmetry",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "卷积自编码器编解码维度对称性约束：当输入尺寸(H,W)经stride=2的Conv2d逐层下采样后，编码器末层特征图尺寸为(H//2^n, W//2^n)，解码器必须通过对应的ConvTranspose2d恢复到原始尺寸，需验证output_padding和kernel_size的配合使最终输出恰好等于(H,W)；当H或W为奇数时需要特殊处理。",
+  "tags": ["convolutional-autoencoder", "dimension-symmetry", "conv2d", "conv-transpose2d", "encoder-decoder", "size-matching"],
+  "aliases": ["CAE维度对称", "编解码尺寸匹配", "卷积自编码器维度约束"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "卷积自编码器编解码维度对称性约束",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

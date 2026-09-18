@@ -2,34 +2,33 @@
   "name": "general-json-schema-report-contract-validation",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-17T01:26:00Z",
-  "updated_at": "2026-09-17T01:30:00Z",
-  "description": "面向结构化报告交付场景，提供 JSON Schema 契约定义、必填字段校验、数组约束与输出格式验证方法，以确保报告符合预定规范。",
-  "tags": ["JSON-Schema", "report-contract", "validation", "structured-output", "schema-validation"],
-  "aliases": ["report schema validation", "JSON Schema contract"],
+  "created_at": "2026-09-17T16:32:00Z",
+  "updated_at": "2026-09-17T16:32:00Z",
+  "description": "面向结构化报告生成场景，提供JSON Schema契约定义、验证与错误处理最佳实践。适用于需要生成符合特定Schema的JSON报告、确保数据完整性和互操作性的应用。核心方法包括：Schema定义、验证工具集成、错误信息标准化、契约版本管理。输出为Schema模板、验证脚本和错误处理规范。",
+  "tags": ["JSON Schema", "report generation", "validation", "contract", "data integrity", "interoperability", "error handling", "schema definition", "versioning", "best practices"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "JSON Schema 报告交付契约",
   "evidence_papers": [],
   "evidence_docs": [
     {
-      "title": "JSON Schema reference",
-      "url": "https://json-schema.org/understanding-json-schema/reference/",
-      "publisher": "JSON Schema",
-      "version": "Understanding JSON Schema",
-      "accessed_at": "2026-09-17T01:26:00Z"
+      "title": "JSON Schema Specification",
+      "url": "https://json-schema.org/specification",
+      "publisher": "JSON Schema Initiative",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17"
     },
     {
-      "title": "Type-specific Keywords",
-      "url": "https://json-schema.org/understanding-json-schema/reference/type",
-      "publisher": "JSON Schema",
-      "version": "Understanding JSON Schema",
-      "accessed_at": "2026-09-17T01:26:00Z"
+      "title": "JSON Schema Validation: A Vocabulary and Typing for JSON",
+      "url": "https://json-schema.org/draft/2020-12/json-schema-validation",
+      "publisher": "JSON Schema Initiative",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17"
     }
   ],
   "evidence_user": [],
-  "merged_batches": ["2026-09-17-harvester-merge-json-schema-contract"],
+  "merged_batches": [],
   "conflicts": []
 }

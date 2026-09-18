@@ -1,0 +1,35 @@
+{
+  "name": "general-cli-non-interactive-execution-fault-diagnosis",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T18:27:00Z",
+  "updated_at": "2026-09-17T18:27:00Z",
+  "description": "面向命令行工具的非交互执行场景，提供子进程生命周期管理、退出码分类诊断、超时控制与故障恢复的通用方法框架，适用于自动化脚本、CI/CD 流水线与批量任务调度中的 CLI 工具调用问题排查。",
+  "tags": ["CLI", "subprocess", "exit-code", "fault-diagnosis", "non-interactive", "automation"],
+  "aliases": ["command-line fault diagnosis", "CLI error handling", "process exit code analysis"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "subprocess — Subprocess management",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "json — JSON encoder and decoder",
+      "url": "https://docs.python.org/3/library/json.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

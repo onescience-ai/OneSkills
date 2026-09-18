@@ -1,0 +1,15 @@
+{
+  "name": "climate-execution-manifest-specification",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "OneScience标准工作流execution-manifest.json的生成时机、内容规范和校验逻辑。定义了预检阶段必须输出的清单文件格式、必需字段、生成时机和校验方法。适用于需要确保工作流可追溯性和数据完整性的气象临近预报任务。",
+  "tags": ["execution-manifest", "preflight", "workflow-validation", "data-integrity", "traceability", "climate", "workflow-planning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience标准工作流execution-manifest.json的生成时机、内容规范和校验逻辑",
+  "evidence_papers": []
+}

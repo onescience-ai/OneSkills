@@ -1,0 +1,31 @@
+{
+  "name": "climate-forecast-acceptance-criteria",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T04:45:00Z",
+  "updated_at": "2026-09-18T04:45:00Z",
+  "description": "面向气象预报任务的验收门限规范，提供温度、湿度、风速等变量的RMSE合理范围、R2最低要求、Skill Score最低要求以及分层验收标准，适用于业务预报和研究预报的任务验收。",
+  "tags": ["acceptance criteria", "RMSE", "R2", "Skill Score", "forecast verification", "quality threshold"],
+  "aliases": ["验收标准", "性能门限", "预报验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报任务的验收门限规范，包括温度、湿度、风速的RMSE合理范围、R2最低要求、Skill Score最低要求",
+  "evidence_papers": [
+    {
+      "title": "GenCast: Diffusion-based ensemble forecasting for medium-range weather",
+      "doi": "10.1038/s41586-024-08252-9",
+      "year": 2024
+    },
+    {
+      "title": "Deep learning for probabilistic ensemble forecasting of precipitation",
+      "doi": "10.1038/s41586-021-03854-z",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

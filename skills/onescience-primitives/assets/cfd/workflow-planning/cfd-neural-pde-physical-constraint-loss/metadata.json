@@ -1,0 +1,41 @@
+{
+  "name": "cfd-neural-pde-physical-constraint-loss",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T03:10:00Z",
+  "updated_at": "2026-09-18T03:10:00Z",
+  "description": "面向神经PDE求解器的物理约束损失函数设计，将质量守恒、能量守恒、PDE残差等物理规律嵌入训练目标，确保模型输出满足基本物理定律。适用于PINN、神经算子等学习PDE解算子的场景，包括扩散方程、Navier-Stokes方程、Allen-Cahn方程等。核心方法包括：PDE残差损失、守恒律约束损失、边界条件损失、激活函数选择、多目标损失权重调度。区分于纯数据驱动方法，物理约束方法强调在损失函数中显式编码物理规律。",
+  "tags": ["physics-informed", "conservation law", "loss function", "PINN", "PDE residual", "mass conservation", "energy conservation", "regularization", "activation function", "multi-objective optimization"],
+  "aliases": ["physics-informed loss", "conservation loss", "PDE loss", "structure-preserving PINN"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "神经PDE求解器中物理约束损失函数设计",
+  "evidence_papers": [
+    {
+      "title": "Structure-Preserving Physics-Informed Neural Network for the Korteweg--de Vries (KdV) Equation",
+      "doi": "10.48550/arXiv.2511.00418",
+      "year": 2025
+    },
+    {
+      "title": "Mass-preserving spatio-temporal adaptive PINN for Cahn-Hilliard equations with strong nonlinearity and singularity",
+      "doi": "10.48550/arXiv.2404.18054",
+      "year": 2024
+    },
+    {
+      "title": "AdjointNet: Constraining machine learning models with physics-based codes",
+      "doi": "10.48550/arXiv.2109.03956",
+      "year": 2021
+    },
+    {
+      "title": "Application of mixed-variable physics-informed neural networks to solve normalised momentum and energy transport equations for 2D internal convective flow",
+      "doi": "10.48550/arXiv.2105.10889",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

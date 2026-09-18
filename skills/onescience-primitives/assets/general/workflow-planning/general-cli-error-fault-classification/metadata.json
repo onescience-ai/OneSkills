@@ -1,0 +1,27 @@
+{
+  "name": "general-cli-error-fault-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:51:00Z",
+  "updated_at": "2026-09-17T20:51:00Z",
+  "description": "面向非交互式 CLI 工具的退出码语义解读与故障分类工作流：根据进程退出码、stderr 内容和超时信号将 CLI 失败归入可操作的故障类别（参数错误、环境缺失、运行时异常、超时、信号终止），用于自动化诊断与恢复策略选择。适用于需要在 CI/CD 或 Agent 流水线中可靠调用外部命令行工具并进行故障分类的场景。核心方法包括：退出码区间映射、stderr 关键词模式匹配、超时异常捕获与信号编号解析。输出为结构化故障类别标签及推荐恢复动作。",
+  "tags": ["CLI", "exit code", "error classification", "fault diagnosis", "subprocess", "non-interactive", "automation", "CI/CD", "timeout", "signal handling", "stderr", "recovery strategy"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "subprocess — Subprocess management (Python 3.14 Documentation)",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

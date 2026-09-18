@@ -1,0 +1,41 @@
+{
+  "name": "scientific-workflow-preflight-check",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向需要外部数据输入的科研计算任务，在核心工作流步骤执行前插入标准化预检（Preflight）流程，确保所有必填输入参数有效、计算环境就绪、依赖资源可用，使任务在根本性输入缺失时能快速清晰地失败而非在业务步骤中陷入错误。",
+  "tags": ["preflight", "workflow", "validation", "data-readiness", "error-recovery", "cfd", "scientific-computing"],
+  "aliases": ["预检流程", "数据可用性检查", "前置验证", "工作流预检"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "科研任务工作流中，针对外部数据输入的标准预检（Preflight）流程设计",
+  "evidence_papers": [
+    {
+      "title": "ChannelFlow-Tools: A Configuration-Driven Pipeline for Generating Machine-Learning-Ready Datasets of 3D Obstructed Channel Flows",
+      "doi": "10.48550/arXiv.2509.15236",
+      "year": 2025
+    },
+    {
+      "title": "Flow-Bench: A Dataset for Computational Workflow Anomaly Detection",
+      "doi": "10.48550/arXiv.2306.09930",
+      "year": 2023
+    },
+    {
+      "title": "Physics-Guided Machine Learning for Predictive Turbulent Combustion Simulation",
+      "doi": "10.48550/arXiv.2608.29033",
+      "year": 2026
+    },
+    {
+      "title": "Learning Incompressible Fluid Dynamics from Scratch",
+      "doi": "10.48550/arXiv.2006.08762",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

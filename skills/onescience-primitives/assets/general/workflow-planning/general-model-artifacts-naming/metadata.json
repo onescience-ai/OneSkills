@@ -1,0 +1,20 @@
+{
+  "name": "general-model-artifacts-naming",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:24:00Z",
+  "updated_at": "2026-09-17T20:24:00Z",
+  "description": "面向模型训练管理任务，定义模型训练产物的标准文件命名规范（best_checkpoint.pt）、train_config.json的必填字段（framework、epochs、batch_size、learning_rate、seed、early_stopping_patience）、environment.txt的内容要求",
+  "tags": ["model-artifacts", "naming-convention", "checkpoint", "training-config", "reproducibility"],
+  "aliases": ["模型产物命名", "checkpoint naming", "training artifacts"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience模型训练产物的标准文件命名规范",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

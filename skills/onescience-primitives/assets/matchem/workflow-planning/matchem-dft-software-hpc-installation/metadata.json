@@ -2,10 +2,10 @@
   "name": "matchem-dft-software-hpc-installation",
   "type": "workflow-planning",
   "domain": "matchem",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "visibility": "public",
   "created_at": "2026-09-16",
-  "updated_at": "2026-09-16",
+  "updated_at": "2026-09-17",
   "description": "面向在高性能计算（HPC）环境中安装和配置密度泛函理论（DFT）软件的需求，提供VASP和Quantum ESPRESSO的安装配置知识。包括依赖库编译、许可证获取、模块加载、环境验证等完整流程，确保DFT软件可在HPC集群上正常运行并用于材料科学研究。",
   "tags": [
     "vasp",
@@ -17,13 +17,16 @@
     "scientific-computing",
     "materials-science",
     "electronic-structure",
-    "matchem"
+    "matchem",
+    "first-principles",
+    "density-functional-theory"
   ],
   "aliases": [
     "VASP安装",
     "Quantum ESPRESSO安装",
     "DFT软件配置",
-    "密度泛函理论软件"
+    "密度泛函理论软件",
+    "第一性原理计算软件"
   ],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
@@ -43,9 +46,37 @@
       "publisher": "Quantum ESPRESSO Team",
       "version": "current",
       "accessed_at": "2026-09-16"
+    },
+    {
+      "title": "Installing VASP.6.X.X",
+      "url": "https://www.vasp.at/wiki/index.php/Installing_VASP.6.X.X",
+      "publisher": "VASP",
+      "version": "2026-07-20",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Quantum ESPRESSO User Guide - Installation",
+      "url": "https://www.quantum-espresso.org/Doc/user_guide/node7.html",
+      "publisher": "Quantum ESPRESSO Foundation",
+      "version": "2026",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Quantum ESPRESSO User Guide - Prerequisites",
+      "url": "https://www.quantum-espresso.org/Doc/user_guide/node9.html",
+      "publisher": "Quantum ESPRESSO Foundation",
+      "version": "2026",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "Quantum ESPRESSO User Guide - Libraries",
+      "url": "https://www.quantum-espresso.org/Doc/user_guide/node12.html",
+      "publisher": "Quantum ESPRESSO Foundation",
+      "version": "2026",
+      "accessed_at": "2026-09-17"
     }
   ],
   "evidence_user": [],
-  "merged_batches": [],
+  "merged_batches": ["2026-09-17", "2026-09-17-QE-libs"],
   "conflicts": []
 }

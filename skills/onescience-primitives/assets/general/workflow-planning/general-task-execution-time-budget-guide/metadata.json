@@ -1,0 +1,26 @@
+{
+  "name": "general-task-execution-time-budget-guide",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向计算任务调度，提供任务执行时间预算管理方法、超时设置最佳实践和动态调整策略，支持避免因固定超时设置导致任务在未完成时被中断。",
+  "tags": ["task scheduling", "time budget", "timeout", "execution management", "computational resources"],
+  "aliases": ["timeout management", "execution time", "task scheduling"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "任务执行时间预算管理知识，包括不同任务类型的典型执行时间范围、超时设置的最佳实践、以及如何根据任务复杂度动态调整超时参数。",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "task_execution_report",
+      "provided_at": "2026-09-17",
+      "location": "E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-cfd\\CFD_S012\\report.json"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -68,6 +68,7 @@
 - 定义或提取蛋白结合口袋
 - 评估蛋白结构的质量和适用性
 - 解决蛋白结构相关的格式错误
+- 配套资源：protein-pocket-pdb-format（BoKDiff专用蛋白口袋准备）、bokdiff-model-weights-setup
 
 ## 补充证据（开源文档/用户自有，可选）
 [D1] Introduction to Protein Data Bank Format, UCSF Chimera, October 2022, URL: https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/tutorials/pdbintro.html（accessed_at 2026-09-16，权威教程文档）

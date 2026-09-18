@@ -1,0 +1,30 @@
+{
+  "name": "cfd-execution-manifest-generation-contract",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "execution-manifest.json的生成时机与内容契约，包括必须包含的字段、生成失败的降级策略和预检验证要求。",
+  "tags": [
+    "execution manifest",
+    "workflow contract",
+    "preflight validation",
+    "CFD",
+    "orchestrator",
+    "edge:task:cfd-drivaernet-task-centric-knowledge"
+  ],
+  "aliases": [
+    "执行清单生成",
+    "manifest契约"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "execution-manifest.json的生成时机与内容契约",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

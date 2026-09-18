@@ -1,0 +1,19 @@
+{
+  "name": "climate-ci-independent-verification",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T10:30:00Z",
+  "updated_at": "2026-09-17T10:40:00Z",
+  "description": "使用独立验证资料评估对流初生检测性能的协议。适用于需要客观评估算法在真实场景中表现的场景。核心方法包括：雷达回波验证、不同传感器数据对比、POD/FAR/CSI指标计算。输出为验证报告与性能评估。",
+  "tags": ["independent verification", "convection initiation", "radar", "POD", "FAR", "CSI", "validation protocol", "performance evaluation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "独立验证资料的类型和获取方法；验证协议的设计原则；POD/FAR/CSI等指标的计算方法。",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

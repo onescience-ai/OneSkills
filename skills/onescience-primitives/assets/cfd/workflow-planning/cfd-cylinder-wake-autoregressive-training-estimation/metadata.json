@@ -1,0 +1,23 @@
+{
+  "name": "cfd-cylinder-wake-autoregressive-training-estimation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:54:00Z",
+  "updated_at": "2026-09-17T12:54:00Z",
+  "description": "面向圆柱绕流自回归模型训练任务，提供时间复杂度估算方法、计算资源需求评估标准和训练时长预测模型",
+  "tags": ["cfd", "cylinder", "autoregressive", "training", "time-complexity", "resource-estimation"],
+  "aliases": ["training time estimation", "计算资源评估", "训练时长预测"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "圆柱绕流自回归模型训练的时间复杂度估算方法和计算资源需求评估标准",
+  "evidence_papers": [
+    {"title": "Unsteady cylinder wakes from arbitrary bodies with differentiable physics-assisted neural network.", "doi": "10.1103/PhysRevE.109.055304", "year": 2024},
+    {"title": "Extended Dynamic Mode Decomposition with Invertible Dictionary Learning.", "doi": "10.1016/j.neunet.2024.106177", "year": 2024}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

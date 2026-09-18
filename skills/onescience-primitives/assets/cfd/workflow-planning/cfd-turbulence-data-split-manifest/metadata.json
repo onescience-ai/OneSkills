@@ -1,0 +1,28 @@
+{
+  "name": "cfd-turbulence-data-split-manifest",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T22:16:00Z",
+  "updated_at": "2026-09-17T22:16:00Z",
+  "description": "面向湍流数据集，定义无泄漏切分的清单生成规范，包括样本ID列表、切分比例、随机种子等，确保训练、验证、测试集互斥且可追溯。",
+  "tags": ["turbulence", "data-split", "manifest", "leakage-prevention", "CFD", "cross-validation"],
+  "aliases": ["turbulent flow data split", "CFD data partitioning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "无泄漏切分的清单生成规范",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "scikit-learn cross-validation documentation",
+      "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+      "publisher": "scikit-learn",
+      "version": "1.9.1",
+      "accessed_at": "2026-09-17T22:16:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

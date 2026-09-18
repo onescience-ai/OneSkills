@@ -1,0 +1,48 @@
+{
+  "name": "general-cli-non-interactive-execution-error-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-18",
+  "description": "面向需要非交互式执行命令行接口的场景，提供故障分类、退出码判读和日志分析的方法，确保 CLI 进程稳定完成并保留诊断证据。覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，不扩展到任务领域结论。",
+  "tags": ["CLI", "error-handling", "exit-code", "logging", "fault-classification", "timeout", "sandbox", "non-interactive"],
+  "aliases": ["CLI 非交互执行", "退出码分类", "进程故障诊断"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Exit Codes With Special Meanings - Advanced Bash-Scripting Guide",
+      "url": "https://tldp.org/LDP/abs/html/exitcodes.html",
+      "publisher": "The Linux Documentation Project",
+      "version": "2024",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "sys.exit() - Python官方文档",
+      "url": "https://docs.python.org/3/library/sys.html#sys.exit",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "timeout(1) - Linux manual page",
+      "url": "https://man7.org/linux/man-pages/man1/timeout.1.html",
+      "publisher": "man7.org - Linux man-pages project",
+      "version": "2024",
+      "accessed_at": "2026-09-18"
+    }
+  ],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-17",
+      "location": "E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-w0\\27\\report.json"
+    }
+  ],
+  "merged_batches": ["batch-2026-09-18-add-authoritative-docs"],
+  "conflicts": []
+}

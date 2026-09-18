@@ -1,0 +1,41 @@
+{
+  "name": "climate-nowcasting-workflow-standard-steps",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T18:02:00Z",
+  "updated_at": "2026-09-17T18:02:00Z",
+  "description": "面向临近预报任务的标准工作流步骤，包括预检、时空对齐、方法配置验证、核心计算、后处理、验证等通用流程，适用于雷达与环境场驱动的0-6小时闪电发生临近预报等类似任务",
+  "tags": ["nowcasting", "workflow", "standard", "preflight", "alignment", "verification"],
+  "aliases": ["lightning nowcasting workflow", "thunderstorm nowcasting workflow", "severe weather nowcasting workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达与环境场驱动的0—6小时闪电发生临近预报任务中的标准工作流步骤，包括s01预检、s02时空对齐、s03方法配置验证、s04核心计算、s05告警区域提取、s06独立验证",
+  "evidence_papers": [
+    {
+      "title": "Nowcasting thunderstorm hazards using machine learning: The impact of data sources on performance",
+      "doi": "10.5194/nhess-22-3953-2022",
+      "year": 2022
+    },
+    {
+      "title": "Thunderstorm nowcasting with deep learning: A multi-hazard data fusion model",
+      "doi": "10.1029/2023GL104695",
+      "year": 2023
+    },
+    {
+      "title": "Seamless lightning nowcasting with recurrent-convolutional deep learning",
+      "doi": "10.1175/JTECH-D-22-0030.1",
+      "year": 2022
+    },
+    {
+      "title": "MCGLN: A multimodal ConvLSTM-GAN framework for lightning nowcasting utilizing multi-source spatiotemporal data",
+      "doi": "10.1016/j.atmosres.2024.107625",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

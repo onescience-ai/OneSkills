@@ -257,6 +257,82 @@
 
 [D4] JSON Schema Understanding JSON Schema, JSON Schema Organization, v2020-12, URL: https://json-schema.org/understanding-json-schema/ (accessed_at 2026-09-17, 官方文档)
 
+## 批次补充 2026-09-17（归因分析任务311案例：CLI执行与JSON Schema报告契约故障）
+
+### 案例描述
+
+任务311（集合数值预报的日内至日前太阳辐照度概率后处理）的归因分析智能体未能交付有效的结构化报告，故障模式与任务274、任务395、任务75、任务281、任务292高度相似：
+
+- **故障现象**：CLI进程退出码为1，报告校验错误：缺少顶层字段 `['issues', 'summary', 'task', 'task_id']`；包含额外顶层字段 `['error', 'sessionID', 'timestamp', 'type']`；task_id与任务索引不一致；task与任务name不一致。
+- **故障分类**：CLI非交互执行失败 + JSON Schema报告交付契约违反
+- **根因分析**：
+  1. CLI进程未正常退出（退出码1），可能由参数错误、认证失败、沙箱隔离或超时引起
+  2. 输出报告不符合预定义Schema，缺少必填字段且包含未声明字段
+- **修复方法**：
+  1. 修正CLI启动配置，确保命令参数、认证、沙箱设置正确
+  2. 在输出前使用JSON Schema校验报告，确保字段完整性和身份一致性
+- **验证方式**：使用成功、非零退出和超时用例验证状态及日志；以report-schema.json校验最终输出并执行错配字段反例测试
+
+### 校准数值（案例专属值，供量级校准）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 缺失必填字段 | 4 | 任务311案例 | issues, summary, task, task_id |
+| 额外字段数 | 4 | 任务311案例 | error, sessionID, timestamp, type |
+| 身份校验失败项 | 2 | 任务311案例 | task_id不匹配、task不匹配 |
+| 退出码 | 1 | 任务311案例 | 通用错误，catchall for general errors |
+
+## 批次补充 2026-09-17（归因分析任务264案例：CLI执行与JSON Schema报告契约故障）
+
+### 案例描述
+
+任务264（天气与人口变化驱动的城市月日用水需求预测）的归因分析智能体未能交付有效的结构化报告，故障模式与任务274、任务292、任务311高度相似：
+
+- **故障现象**：CLI进程退出码为1，报告校验错误：报告根节点不是JSON对象；JSON语法错误：Unterminated string starting at: line 49 column 37 (char 4820)；报告缺少顶层字段 `['issues', 'summary', 'task', 'task_id']`。
+- **故障分类**：CLI非交互执行失败 + JSON Schema报告交付契约违反
+- **根因分析**：
+  1. CLI进程未正常退出（退出码1），输出报告JSON解析失败，可能是输出流被截断或格式错误
+  2. 输出报告不符合预定义Schema，缺少必填字段
+- **修复方法**：
+  1. 修正CLI启动配置，确保命令参数、认证、沙箱设置正确
+  2. 增加输出缓冲区和完整性检查，确保JSON输出完整
+  3. 在输出前使用JSON Schema校验报告，确保字段完整性和身份一致性
+- **验证方式**：使用成功、非零退出和超时用例验证状态及日志；以report-schema.json校验最终输出并执行错配字段反例测试
+
+### 校准数值（案例专属值，供量级校准）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 缺失必填字段 | 4 | 任务264案例 | issues, summary, task, task_id |
+| JSON解析错误位置 | line 49 column 37 | 任务264案例 | Unterminated string |
+| 退出码 | 1 | 任务264案例 | 通用错误，catchall for general errors |
+
+## 批次补充 2026-09-18（归因分析任务232案例：CLI执行与JSON Schema报告契约故障）
+
+### 案例描述
+
+任务232（全球航空危险云微物理要素1—7天预报）的归因分析智能体未能交付有效的结构化报告，故障模式与任务311、任务264、任务274、任务292、任务75、任务281高度相似：
+
+- **故障现象**：CLI进程退出码为1，报告校验错误：缺少顶层字段 `['issues', 'summary', 'task', 'task_id']`；包含额外顶层字段 `['error', 'sessionID', 'timestamp', 'type']`；task_id与任务索引不一致；task与任务name不一致；summary必须是非空字符串；issues必须是数组。
+- **故障分类**：CLI非交互执行失败 + JSON Schema报告交付契约违反
+- **根因分析**：
+  1. CLI进程未正常退出（退出码1），可能由参数错误、认证失败、沙箱隔离或超时引起
+  2. 输出报告不符合预定义Schema，缺少必填字段且包含未声明字段，身份字段与任务索引/名称不匹配
+- **修复方法**：
+  1. 修正CLI启动配置，确保命令参数、认证、沙箱设置正确
+  2. 在输出前使用JSON Schema校验报告，确保字段完整性和身份一致性
+  3. 确保task_id与任务索引一致、task与任务name一致
+- **验证方式**：使用成功、非零退出和超时用例验证状态及日志；以report-schema.json校验最终输出并执行错配字段反例测试
+
+### 校准数值（案例专属值，供量级校准）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 缺失必填字段 | 4 | 任务232案例 | issues, summary, task, task_id |
+| 额外字段数 | 4 | 任务232案例 | error, sessionID, timestamp, type |
+| 身份校验失败项 | 2 | 任务232案例 | task_id不匹配、task不匹配 |
+| 退出码 | 1 | 任务232案例 | 通用错误，catchall for general errors |
+
 ## 证据来源
 
 [1] Python subprocess module documentation, Python Software Foundation, 2026, https://docs.python.org/3/library/subprocess.html

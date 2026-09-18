@@ -1,0 +1,28 @@
+{
+  "name": "ndvi-cross-sensor-fusion-validation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向多传感器NDVI时间序列融合重建与验证，提供数据获取、融合算法选择、验证方法设定和异常值处理的通用方法论框架",
+  "tags": ["NDVI", "data-fusion", "AVHRR", "MODIS", "time-series", "validation", "remote-sensing", "vegetation-index"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "AVHRR与MODIS卫星数据获取、NDVI融合算法、独立验证方法、验收门限、NDVI异常值处理",
+  "evidence_papers": [
+    {"title": "High-quality vegetation index product generation: A review of NDVI time series reconstruction techniques", "doi": "10.1016/j.jag.2021.102640", "year": "2021"},
+    {"title": "A comparison of methods for smoothing and gap filling time series of remote sensing observations – application to MODIS LAI products", "doi": "10.5194/bg-10-4055-2013", "year": "2013"},
+    {"title": "Performance of Smoothing Methods for Reconstructing NDVI Time-Series and Estimating Vegetation Phenology from MODIS Data", "doi": "10.3390/rs9121271", "year": "2017"},
+    {"title": "Performance Evaluation of Long NDVI Timeseries from AVHRR, MODIS and Landsat Sensors over Landslide-Prone Locations in Qinghai-Tibetan Plateau", "doi": "10.3390/rs13163172", "year": "2021"},
+    {"title": "Persistent global greening over the last four decades using novel long-term vegetation index data with enhanced temporal consistency", "doi": "10.1016/j.rse.2024.114282", "year": "2024"},
+    {"title": "Reconstruction of a Monthly 1 km NDVI Time Series Product in China Using Random Forest Methodology", "doi": "10.3390/rs15133353", "year": "2023"},
+    {"title": "A 30+ Year AVHRR Land Surface Reflectance Climate Data Record and Its Application to Wheat Yield Monitoring", "doi": "10.3390/rs9030296", "year": "2017"},
+    {"title": "MODIS leaf area index products: from validation to algorithm improvement", "doi": "10.1109/tgrs.2006.871215", "year": "2006"}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

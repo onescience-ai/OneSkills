@@ -1,0 +1,18 @@
+{
+  "name": "bio-antibody-inverse-folding-workflow-dependencies",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16T10:07:00Z",
+  "updated_at": "2026-09-16T10:07:00Z",
+  "description": "抗体反向折叠工作流中各阶段的严格依赖关系和前置检查清单，包括s01-s04子阶段的映射规则、模型权重作为前置条件的预检流程、ANARCI编号步骤的集成时机。",
+  "tags": ["workflow", "dependencies", "precheck", "planning", "antibody", "inverse folding"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "planner_proposal.json中workflow_nodes与executor_step的映射规则；s01-s04四个子阶段的严格依赖关系和前置检查清单；模型权重作为s02前置条件的预检流程。",
+  "evidence_papers": [
+    {"title": "Benchmarking inverse folding models for antibody CDR sequence design", "doi": "10.1371/journal.pone.0324566", "year": 2025},
+    {"title": "AntiFold: improved structure-based antibody design using inverse folding", "doi": "10.1093/bioadv/vbae202", "year": 2024}
+  ]
+}

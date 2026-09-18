@@ -1,0 +1,25 @@
+{
+  "name": "cfd-json-schema-report-validation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向科学计算任务报告交付的 JSON Schema 校验规范，覆盖必填字段定义、类型约束、数组约束及输出格式验证，确保归因报告、分析结果等结构化产物可被下游系统可靠消费。",
+  "tags": ["JSON-Schema", "validation", "report-contract", "structured-output", "schema-validation"],
+  "aliases": ["schema-validation", "report-schema", "structured-report"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {"title": "Validation of Modern JSON Schema: Formalization and Complexity", "doi": "10.1145/3639305", "year": 2024},
+    {"title": "Reducing Ambiguity in JSON Schema Discovery", "doi": "10.1145/3448016.3457263", "year": 2021},
+    {"title": "Definition of REST Web Services with JSON Schema", "doi": "10.1002/spe.2485", "year": 2017}
+  ],
+  "evidence_docs": [
+    {"title": "JSON Schema Official Specification", "url": "https://json-schema.org/draft/2020-12/json-schema-core", "publisher": "json-schema.org", "version": "2020-12", "accessed_at": "2026-09-17"},
+    {"title": "JSON Schema Validation Specification", "url": "https://json-schema.org/draft/2020-12/json-schema-validation", "publisher": "json-schema.org", "version": "2020-12", "accessed_at": "2026-09-17"},
+    {"title": "JSON Schema Test Suite", "url": "https://github.com/json-schema-org/JSON-Schema-Test-Suite", "publisher": "json-schema-org", "version": "latest", "accessed_at": "2026-09-17"}
+  ]
+}

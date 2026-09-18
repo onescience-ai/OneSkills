@@ -1,0 +1,22 @@
+{
+  "name": "cfd-leakage-free-split-strategy",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "CFD数据无泄漏切分的标准策略，包括按几何ID或轨迹ID分组切分、确保同一几何的不同工况样本不跨切分集、仅用训练集计算标准化统计量、三份切分的manifest文件格式",
+  "tags": ["data splitting", "leakage-free", "group shuffle", "cross-validation", "CFD", "preprocessing"],
+  "aliases": ["无泄漏切分", "几何分组切分"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD数据无泄漏切分的标准策略，包括按几何ID或轨迹ID分组切分（GroupShuffleSplit或KFold with groups）、确保同一几何的不同工况样本不跨切分集、仅用训练集计算标准化统计量（StandardScaler的fit_transform仅在train上执行）、三份切分的manifest文件格式（含样本ID列表、分组键、统计量）",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {"provider": "user", "provided_at": "2026-09-17", "location": "归因报告 CFD_S032 report.json"}
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

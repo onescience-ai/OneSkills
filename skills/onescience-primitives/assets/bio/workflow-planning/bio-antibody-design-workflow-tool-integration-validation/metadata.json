@@ -1,0 +1,46 @@
+{
+  "name": "bio-antibody-design-workflow-tool-integration-validation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T21:53:00Z",
+  "updated_at": "2026-09-17T21:53:00Z",
+  "description": "面向抗体设计工作流，集成抗体编号工具（ANARCI）、结构数据库（SAbDab）和验证标准（CDR-RMSD）的方法框架，确保从数据获取到模型部署再到结果验证的全流程可复现。",
+  "tags": ["antibody-design", "workflow", "ANARCI", "SAbDab", "CDR-RMSD", "validation", "tool-integration"],
+  "aliases": ["antibody generation workflow", "CDR loop design validation", "antibody modeling pipeline"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CDR环与抗体骨架联合生成任务中需补充的知识：AbODE模型安装配置调用方法、ANARCI工具安装使用方法、CDR-RMSD计算验证标准、真实抗原抗体数据来源格式、独立验证标准流程",
+  "evidence_papers": [
+    {
+      "title": "ANARCII enables alignment-free antigen receptor numbering using a generalised language model",
+      "doi": "10.1038/s42003-026-10186-z",
+      "year": 2026
+    },
+    {
+      "title": "AbSet: A Standardized Data Set of Antibody Structures for Machine Learning Applications",
+      "doi": "10.1021/acs.jcim.5c00410",
+      "year": 2025
+    },
+    {
+      "title": "GeoGAD: geometry-aware antibody design framework for complementarity-determining region precision engineering",
+      "doi": "10.1093/bioinformatics/btag042",
+      "year": 2026
+    },
+    {
+      "title": "De novo epitope-specific antibody design via time-dependent guidance",
+      "doi": "10.1093/bioinformatics/btag455",
+      "year": 2026
+    },
+    {
+      "title": "SAbDab2: The structural antibody database in the age of machine learning",
+      "doi": "10.64898/2026.06.16.732554",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

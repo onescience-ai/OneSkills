@@ -1,0 +1,31 @@
+{
+  "name": "general-cli-fault-classification-troubleshooting-guide",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-16",
+  "updated_at": "2026-09-16",
+  "description": "面向命令行接口的非交互执行场景，提供故障分类与诊断的通用指南，覆盖退出码分析、错误信息解析、环境验证和恢复策略，适用于各类 CLI 工具的故障排查。",
+  "tags": ["CLI", "error-handling", "fault-diagnosis", "troubleshooting", "command-line"],
+  "aliases": ["CLI故障分类", "命令行错误处理", "非交互执行诊断"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Protocol for inferring mechanical stresses in tissues using ForSys, an open-source Python tool.",
+      "doi": "10.1016/j.xpro.2026.104595",
+      "year": "2026"
+    },
+    {
+      "title": "CtGAP 2.0: enhanced genome assembly, strain resolution, and phylogenomics for Chlamydia trachomatis.",
+      "doi": "10.1128/mra.01470-25",
+      "year": "2026"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

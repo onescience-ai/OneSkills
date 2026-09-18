@@ -2,13 +2,13 @@
   "name": "general-json-schema-report-delivery-contract",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.1.0",
+  "version": "1.4.0",
   "visibility": "public",
-  "created_at": "2026-09-17",
-  "updated_at": "2026-09-17",
-  "description": "面向JSON数据交换场景，定义报告交付契约的验证方法，包括Schema校验、必填字段检查、数组约束、任务身份一致性验证，确保自动化工作流中报告产物的结构完整性与可解析性。合并了JSON Schema报告验证卡片的论文证据，包括形式化验证、编译优化、决策追踪Schema和API互操作性验证。",
-  "tags": ["JSON", "Schema", "validation", "report-contract", "data-validation", "schema-validation", "report-delivery", "composition", "conditional", "cli-tools", "error-handling", "formal-verification", "compilation-optimization", "decision-trace", "api-interoperability", "governance", "audit"],
-  "aliases": ["JSON Schema报告契约", "报告交付验证", "Schema校验"],
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "面向结构化报告交付场景，定义 JSON Schema 契约以确保输出符合必填字段、任务身份、数据类型和格式要求，提供验证与校验策略。适用于自动化流水线中报告生成、API响应验证和系统间数据交换。",
+  "tags": ["JSON-Schema", "report-delivery", "contract", "validation", "structured-output", "required-fields", "type-constraint", "format-validation", "task-identity", "schema-complexity", "witness-generation"],
+  "aliases": ["JSON Schema validation", "report schema", "structured output contract"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "JSON Schema 报告交付契约",
@@ -24,38 +24,53 @@
       "year": 2025
     },
     {
-      "title": "Decision Trace Schema for Governance Evidence in Real-Time Risk Systems",
-      "doi": "10.48550/arXiv.2604.09296",
-      "year": 2026
+      "title": "Witness Generation for JSON Schema",
+      "doi": "10.48550/arXiv.2202.12849",
+      "year": 2022
     },
     {
-      "title": "Validating API Design Requirements for Interoperability (S.E.O.R.A)",
-      "doi": "10.48550/arXiv.2511.17836",
-      "year": 2025
+      "title": "Negation-Closure for JSON Schema",
+      "doi": "10.48550/arXiv.2202.13434",
+      "year": 2022
     }
-  ],
-  "evidence_docs_extended": [
-    {"title": "Understanding JSON Schema — Combining schemas", "url": "https://json-schema.org/understanding-json-schema/reference/combining", "publisher": "JSON Schema Organization", "version": "2026", "accessed_at": "2026-09-17"},
-    {"title": "Understanding JSON Schema — Conditionals", "url": "https://json-schema.org/understanding-json-schema/reference/conditionals", "publisher": "JSON Schema Organization", "version": "2026", "accessed_at": "2026-09-17"},
-    {"title": "Understanding JSON Schema — Object", "url": "https://json-schema.org/understanding-json-schema/reference/object", "publisher": "JSON Schema Organization", "version": "2026", "accessed_at": "2026-09-17"},
-    {"title": "ajv-cli — CLI validation tool", "url": "https://ajv.js.org/packages/ajv-cli.html", "publisher": "Ajv", "version": "2026", "accessed_at": "2026-09-17"},
-    {"title": "check-jsonschema — Python CLI tool", "url": "https://github.com/python-jsonschema/check-jsonschema", "publisher": "python-jsonschema", "version": "2026", "accessed_at": "2026-09-17"},
-    {"title": "jsonschema — Python library", "url": "https://python-jsonschema.readthedocs.io/en/stable/", "publisher": "python-jsonschema", "version": "2026", "accessed_at": "2026-09-17"},
-    {"title": "jsonschema errors — Error handling", "url": "https://python-jsonschema.readthedocs.io/en/stable/errors/", "publisher": "python-jsonschema", "version": "2026", "accessed_at": "2026-09-17"},
-    {"title": "JSON Schema reference", "url": "https://json-schema.org/understanding-json-schema/", "publisher": "JSON Schema Organization", "version": "2020-12", "accessed_at": "2026-09-17"},
-    {"title": "Type-specific Keywords", "url": "https://json-schema.org/understanding-json-schema/reference/type", "publisher": "JSON Schema Organization", "version": "2020-12", "accessed_at": "2026-09-17"},
-    {"title": "array", "url": "https://json-schema.org/understanding-json-schema/reference/array", "publisher": "JSON Schema Organization", "version": "2020-12", "accessed_at": "2026-09-17"}
   ],
   "evidence_docs": [
     {
-      "title": "JSON Schema",
-      "url": "https://json-schema.org/",
+      "title": "JSON Schema Specification",
+      "url": "https://json-schema.org/specification.html",
       "publisher": "JSON Schema Organization",
-      "version": "2026",
-      "accessed_at": "2026-09-17"
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T00:00:00Z"
+    },
+    {
+      "title": "Understanding JSON Schema",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17T00:00:00Z"
+    },
+    {
+      "title": "JSON Schema - Type-specific Keywords",
+      "url": "https://json-schema.org/understanding-json-schema/reference/type",
+      "publisher": "JSON Schema Organization",
+      "version": "draft-07/latest",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "JSON Schema - object",
+      "url": "https://json-schema.org/understanding-json-schema/reference/object",
+      "publisher": "JSON Schema Organization",
+      "version": "draft-07/latest",
+      "accessed_at": "2026-09-18"
     }
   ],
-  "evidence_user": [],
-  "merged_batches": ["batch-2026-09-17-JSON-Schema-validation-expansion", "2026-09-17: 合并JSON Schema报告验证卡片，补充arXiv论文证据和形式化验证知识"],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-18",
+      "location": "任务 254 归因报告：复杂地形风电场轮毂高度短期风速预报 JSON Schema 校验失败案例"
+    }
+  ],
+  "merged_batches": ["modify-json-schema-report-contract-2026-09-17", "harvest-2026-09-18", "harvest-2026-09-18-cli-json-schema", "batch-2026-09-18-task254"],
   "conflicts": []
 }

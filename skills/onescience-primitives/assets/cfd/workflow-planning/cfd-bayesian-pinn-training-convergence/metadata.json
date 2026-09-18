@@ -1,0 +1,25 @@
+{
+  "name": "cfd-bayesian-pinn-training-convergence",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "面向贝叶斯物理信息神经网络（Bayesian PINN）训练过程，提供变分推断损失量级判据、ELBO损失中数据拟合项与KL散度项平衡策略、学习率调度与KL权重退火方法、损失曲线异常诊断与修复方案，用于确保PINN训练收敛并产出可靠概率反演结果",
+  "tags": ["bayesian-pinn", "variational-inference", "training-convergence", "loss-landscape", "kl-annealing", "learning-rate-scheduling", "elbo-loss"],
+  "aliases": ["bnn-pinn-training", "bayesian-physics-informed", "probabilistic-pinn"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "贝叶斯PINN训练中变分推断损失的合理量级范围与收敛判据，包括ELBO损失中数据拟合项与KL散度项的平衡策略、学习率调度策略、KL权重β退火策略、早停耐心值设置、以及损失曲线异常的诊断与修复方法",
+  "evidence_papers": [
+    {"title": "NPINN+: an enhanced physics-informed neural network for solving wave equations with nonlocal conditions", "doi": "10.1038/s41598-026-50374-9", "year": "2026"},
+    {"title": "Bayesian polynomial neural networks and polynomial neural ordinary differential equations", "doi": "10.1371/journal.pcbi.1012414", "year": "2024"},
+    {"title": "A primer on variational inference for physics-informed deep generative modelling", "doi": "10.1038/s41598-025-32612-8", "year": "2025"},
+    {"title": "Residual bayesian attention networks for uncertainty quantification in regression", "doi": "10.1038/s41598-025-24093-6", "year": "2025"}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

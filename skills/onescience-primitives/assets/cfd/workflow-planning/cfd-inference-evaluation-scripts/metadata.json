@@ -1,0 +1,20 @@
+{
+  "name": "cfd-inference-evaluation-scripts",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向CFD缺失区补全任务，定义推理与评估的标准脚本结构。提供推理脚本（reconstruct.py）和评估脚本（evaluate.py）的模板，支持INR和Diffusion Bridge两种模型的统一接口，确保流场重构和误差评估可执行。",
+  "tags": ["cfd", "inference", "evaluation", "scripts", "reconstruct", "evaluate", "flow-field", "error-analysis"],
+  "aliases": ["推理脚本", "评估脚本", "流场重构"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD流场推理与评估的标准脚本结构",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

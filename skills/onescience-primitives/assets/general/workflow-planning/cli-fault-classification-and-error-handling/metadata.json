@@ -5,7 +5,7 @@
   "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-16T00:00:00Z",
-  "updated_at": "2026-09-16T22:52:55Z",
+  "updated_at": "2026-09-18T12:00:00Z",
   "description": "面向非交互式 CLI 执行场景，提供故障分类、退出码判读、stderr 诊断与恢复策略的通用方法框架，适用于自动化脚本、科学计算流水线、CI/CD 环境中的进程管理。",
   "tags": ["cli", "fault-classification", "exit-codes", "error-handling", "subprocess", "automation", "shell", "bash"],
   "aliases": ["CLI故障分类", "命令行错误处理", "退出码诊断"],
@@ -29,6 +29,6 @@
     }
   ],
   "evidence_user": [],
-  "merged_batches": ["2026-09-16T22:52:55Z: 补充Bash Shell退出码语义与通用判据表"],
+  "merged_batches": ["2026-09-16T22:52:55Z: 补充Bash Shell退出码语义与通用判据表", "2026-09-18T12:00:00Z: 补充CLI认证与沙箱安全考虑"],
   "conflicts": []
 }

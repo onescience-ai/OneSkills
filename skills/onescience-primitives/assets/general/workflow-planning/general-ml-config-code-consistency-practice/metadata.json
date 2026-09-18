@@ -1,0 +1,25 @@
+{
+  "name": "general-ml-config-code-consistency-practice",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T12:00:00Z",
+  "updated_at": "2026-09-18T12:00:00Z",
+  "description": "面向机器学习工程实践，保障模型配置文件与代码接口的一致性。适用于任何涉及模型训练配置管理的场景，特别是在模型重构、简化或参数增删后需要同步更新配置的场合。核心方法包括：配置文件单一事实来源原则（从代码接口自动生成或读取时验证），模型简化时的配置同步清单（移除参数时同步更新配置、文档和测试），以及配置版本控制最佳实践。输出为配置-代码一致性检查清单和标准工程实践规范。",
+  "tags": ["config management", "code consistency", "ML engineering", "hydra", "omegaconf", "model configuration", "reproducibility", "best practices", "configuration validation"],
+  "aliases": ["ML config consistency", "configuration management"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "机器学习工程实践中的配置-代码一致性保障规范",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Hydra: A Framework for Configuring Complex Applications",
+      "url": "https://hydra.cc/",
+      "publisher": "Facebook Research",
+      "version": "1.3",
+      "accessed_at": "2026-09-18"
+    }
+  ]
+}

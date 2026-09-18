@@ -1,0 +1,18 @@
+{
+  "name": "cfd-rom-training-characteristics",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "面向不同降阶建模方法的训练特性对比，涵盖SVD-based POD/DMD（非迭代直接分解）与神经网络参数化降阶模型（迭代优化）的训练机制差异、早停策略适用性、以及框架选择（NumPy vs PyTorch）的决策依据。",
+  "tags": ["SVD", "neural-network", "POD", "DMD", "early-stopping", "training-characteristics", "PyTorch", "non-iterative", "iterative"],
+  "aliases": ["降阶模型训练对比", "SVD vs 神经网络", "训练特性差异"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "不同降阶建模方法的训练特性，SVD-based POD/DMD为非迭代方法无需早停，神经网络降阶模型需要早停机制",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": []
+}

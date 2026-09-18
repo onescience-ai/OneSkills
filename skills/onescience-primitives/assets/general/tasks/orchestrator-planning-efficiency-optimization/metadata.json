@@ -1,0 +1,20 @@
+{
+  "name": "orchestrator-planning-efficiency-optimization",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T10:00:00Z",
+  "updated_at": "2026-09-17T10:00:00Z",
+  "description": "orchestrator规划阶段效率优化策略，包括并行化执行器能力查询、提前生成execution-manifest.json、设置规划阶段时间预算等。适用于OneScience任务编排系统的性能优化。",
+  "tags": ["orchestrator", "planning", "efficiency", "parallel", "time-budget", "task-orchestration", "optimization"],
+  "aliases": ["规划优化", "编排效率", "planning optimization", "orchestrator efficiency"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "orchestrator规划阶段的效率优化策略",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

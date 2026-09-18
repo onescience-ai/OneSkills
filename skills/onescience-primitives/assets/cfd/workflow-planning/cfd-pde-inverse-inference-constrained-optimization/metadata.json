@@ -1,0 +1,20 @@
+{
+  "name": "cfd-pde-inverse-inference-constrained-optimization",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17",
+  "updated_at": "2026-09-17",
+  "description": "面向PDE逆问题任务，提供推理阶段的约束优化方法，包括设计候选生成、约束满足验证和Pareto前沿搜索，确保反演结果满足物理约束。",
+  "tags": ["PDE inverse problem", "constrained optimization", "inference", "Pareto front", "design candidate"],
+  "aliases": ["PDE逆问题推理优化", "约束优化反演"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PDE逆问题推理的约束优化方法，包括设计候选生成、约束满足验证和Pareto前沿搜索",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

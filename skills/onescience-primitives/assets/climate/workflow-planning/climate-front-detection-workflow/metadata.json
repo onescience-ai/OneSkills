@@ -1,0 +1,36 @@
+{
+  "name": "climate-front-detection-workflow",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "气象锋面检测与矢量化工作流，涵盖数据获取验证、时空对齐、方法选择（CNN/传统阈值）、质量控制、独立验证和锋面类型识别的完整流程规范",
+  "tags": ["front-detection", "weather-front", "CNN", "quality-control", "independent-validation", "ERA5", "meteorology"],
+  "aliases": ["锋面检测", "天气锋面", "front detection", "weather front"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多要素分析场驱动的天气锋面检测与矢量化",
+  "evidence_papers": [
+    {
+      "title": "Probabilistic medium-range weather forecasting with a generative diffusion model",
+      "doi": "10.1038/s41586-024-08252-9",
+      "year": 2024
+    },
+    {
+      "title": "Accurate medium-range global weather forecasting with 3D neural networks",
+      "doi": "10.1038/s41586-023-06185-3",
+      "year": 2023
+    },
+    {
+      "title": "Skilful probabilistic nowcasting with deep generative models",
+      "doi": "10.1038/s41586-021-03854-z",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,28 @@
+{
+  "name": "cfd-non-cartesian-grid-data-formats",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T11:37:00Z",
+  "updated_at": "2026-09-17T11:37:00Z",
+  "description": "面向非笛卡尔晶格与曲面网络流动模拟任务，提供数据格式标准、典型数据源与获取方式，确保数据接入阶段可执行；适用于CFD模拟中涉及曲线网格、非结构化网格、曲面网络的数据格式选择与数据集获取场景。",
+  "tags": ["cfd", "non-cartesian-grid", "curvilinear-grid", "unstructured-grid", "surface-network", "data-format", "CGNS", "OpenFOAM", "mesh-format", "data-standards"],
+  "aliases": ["非笛卡尔网格数据格式", "曲线网格CFD数据", "曲面网络流动数据", "CFD数据标准"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "非笛卡尔晶格与几何曲面流动数据的标准格式、典型来源与获取方式",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "CGNS: CFD General Notation System",
+      "url": "https://cgns.github.io/",
+      "publisher": "CGNS Steering Committee",
+      "version": "Latest",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

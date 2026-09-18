@@ -2,11 +2,11 @@
   "name": "general-cli-execution-reporting-fault-handling-validation",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.1.0",
+  "version": "1.4.0",
   "visibility": "public",
   "created_at": "2026-09-16T21:43:00Z",
-  "updated_at": "2026-09-17T10:30:00Z",
-  "description": "面向 CLI 工具在非交互环境下的稳定执行与结构化报告生成，确保任务身份、字段完整性及输出契约一致性，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，不扩展到具体领域结论。补充了 Python subprocess 模块的退出码语义、超时处理和异常机制，以及 JSON Schema type 关键字的类型定义规范。",
+  "updated_at": "2026-09-18T10:00:00Z",
+  "description": "面向 CLI 工具在非交互环境下的稳定执行与结构化报告生成，确保任务身份、字段完整性及输出契约一致性，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，不扩展到具体领域结论。补充了 Python subprocess 模块的退出码语义、超时处理和异常机制，以及 JSON Schema type 关键字的类型定义规范。更新了具体故障诊断步骤，包括CLI执行故障诊断和JSON Schema验证故障诊断。",
   "tags": ["CLI", "non-interactive", "fault-classification", "exit-code", "timeout", "sandbox", "authentication", "JSON-Schema", "report-validation", "structured-output", "python-subprocess", "type-keyword"],
   "aliases": ["CLI execution", "report contract", "fault handling", "subprocess", "exit code handling"],
   "harvested": true,
@@ -41,11 +41,35 @@
       "publisher": "JSON Schema Organization",
       "version": "2020-12",
       "accessed_at": "2026-09-17T10:30:00Z"
+    },
+    {
+      "title": "Python sys Module Documentation",
+      "url": "https://docs.python.org/3/library/sys.html#sys.exit",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7",
+      "accessed_at": "2026-09-17T12:00:00Z"
+    },
+    {
+      "title": "Bash Reference Manual: Exit Status",
+      "url": "https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html",
+      "publisher": "GNU Project",
+      "version": "5.2",
+      "accessed_at": "2026-09-18T10:00:00Z"
+    },
+    {
+      "title": "jsonschema — Schema Validation",
+      "url": "https://python-jsonschema.readthedocs.io/en/stable/validate/",
+      "publisher": "jsonschema community / Julian Berman",
+      "version": "4.26.0",
+      "accessed_at": "2026-09-18T10:00:00Z"
     }
   ],
   "evidence_user": [],
   "merged_batches": [
-    "2026-09-17: 基于 Python subprocess 文档补充退出码语义、超时处理和异常机制；基于 JSON Schema type 关键字文档补充类型定义规范"
+    "2026-09-17: 基于 Python subprocess 文档补充退出码语义、超时处理和异常机制；基于 JSON Schema type 关键字文档补充类型定义规范",
+    "2026-09-17: 基于归因报告问题补充具体故障诊断步骤，包括CLI执行故障诊断和JSON Schema验证故障诊断",
+    "2026-09-17: 基于 Python sys.exit 文档补充退出码语义（任务ID:348，Pt单原子异质结构碱性析氢优化归因报告知识补充）",
+    "2026-09-18: 基于 Bash 退出状态文档补充 shell 命令退出码语义；基于 jsonschema 验证文档补充验证函数使用方法（任务ID:358，催化反应机器学习势主动学习与增强采样归因报告知识补充）"
   ],
   "conflicts": []
 }

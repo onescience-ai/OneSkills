@@ -1,0 +1,20 @@
+{
+  "name": "dataset-manifest-format",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T23:09:00Z",
+  "updated_at": "2026-09-17T23:09:00Z",
+  "description": "面向数据集元数据管理，提供dataset_manifest.json的标准格式和必填字段（样本数、变量列表、单位、坐标系、数据来源等）、data_audit.md的标准格式（Markdown格式的审计报告）。适用于需要生成数据集清单、确保数据可追溯的任务。",
+  "tags": ["dataset-manifest", "metadata", "audit", "data-management", "provenance", "documentation"],
+  "aliases": ["dataset manifest format", "metadata json schema"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "dataset_manifest.json标准格式",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

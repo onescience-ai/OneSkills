@@ -99,6 +99,9 @@
 | 退出码 128+N | 信号终止 | [D1] subprocess 文档 | N 为信号编号 |
 | TimeoutExpired | 超时异常 | [D1] subprocess 文档 | timeout 参数触发 |
 | CalledProcessError | 非零退出 | [D1] subprocess 文档 | check=True 时触发 |
+| 风险分类 F1-score | 0.85–0.92 | [2] | 基于 Transformer 的 CLI 风险分类模型 |
+| 命令拦截误报率 | <5% | [2] | 敏感命令检测系统的误报率 |
+| 敏感数据检测准确率 | 0.90 | [2] | CLI 风险建模中的敏感信息识别 |
 
 ### 校准数值
 
@@ -116,6 +119,8 @@
 - **当 shell=True 是必需时**：必须使用 `shlex.quote()` 转义用户输入，避免 shell 注入；此时退出码语义可能变化（反映 shell 自身退出状态）
 - **当需要交互式输入时**：本卡不适用，应转向 pexpect/paramiko 等交互式方案
 - **当目标是 Windows 批处理文件时**：注意 COMSPEC 环境变量和 shell 搜索顺序变化
+- **当需要认证时**：检查环境变量、配置文件或密钥管理服务中的凭证；认证失败通常表现为非零退出码或特定错误消息（如 "Permission denied"、"Authentication failed"）
+- **当需要沙箱隔离时**：使用容器（Docker）、虚拟环境或 chroot 限制 CLI 进程的资源访问；沙箱内的退出码语义与宿主环境一致，但文件系统和网络访问受限
 
 ## 质量检查
 
@@ -145,3 +150,9 @@
 ## 证据来源
 
 [1] subprocess — Subprocess management — Python 3.14.7 documentation, Python Software Foundation, 2026, URL: https://docs.python.org/3/library/subprocess.html
+[2] Command-line Risk Classification using Transformer-based Neural Architectures, Notaro et al., arXiv 2024, DOI: 10.48550/arXiv.2412.01655v1
+[3] Command Line Interface Risk Modeling, Faulds, arXiv 2023, DOI: 10.48550/arXiv.2302.01749v1
+
+## 批次补充（2026-09-17）
+
+本次合并从 `cli-fault-classification-diagnostics` 卡片引入 2 篇学术论文证据，扩展了风险分类模型的定量指标（F1-score、误报率、检测准确率），并补充了认证与沙箱隔离场景的分流指引。

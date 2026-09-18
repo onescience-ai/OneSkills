@@ -12,7 +12,28 @@
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "CLI 非交互执行与故障分类知识",
-  "evidence_papers": [],
+  "evidence_papers": [
+    {
+      "title": "Evaluating LLM-Based 0-to-1 Software Generation in End-to-End CLI Tool Scenarios",
+      "doi": "arXiv:2604.06742",
+      "year": 2026
+    },
+    {
+      "title": "GUI vs. CLI: Execution Bottlenecks in Screen-Only and Skill-Mediated Computer-Use Agents",
+      "doi": "arXiv:2606.24551",
+      "year": 2026
+    },
+    {
+      "title": "Learning CLI Agents with Structured Action Credit under Selective Observation",
+      "doi": "arXiv:2605.08013",
+      "year": 2026
+    },
+    {
+      "title": "CLI-Gym: Scalable CLI Task Generation via Agentic Environment Inversion",
+      "doi": "arXiv:2602.10999",
+      "year": 2026
+    }
+  ],
   "evidence_docs": [
     {
       "title": "exit(3) - Linux manual page",

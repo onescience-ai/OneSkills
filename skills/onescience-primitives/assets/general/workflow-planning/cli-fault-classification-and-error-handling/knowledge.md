@@ -150,3 +150,47 @@ except subprocess.TimeoutExpired:
 | 最大退出码值 | 255 | [D2] | 退出码为8位，最大255 |
 
 [D2] GNU Bash Reference Manual - Exit Status, https://www.gnu.org/software/bash/manual/bash.html#Exit-Status
+
+## 批次补充 2026-09-18（onescience-knowledge-harvester）
+
+### 补充证据：CLI认证与沙箱安全考虑
+
+基于Python subprocess模块安全考虑文档，补充CLI执行中的认证与沙箱相关知识。
+
+**安全考虑补充**（基于[D3]）：
+
+| 安全领域 | 关键点 | 说明 |
+|----------|--------|------|
+| Shell注入防护 | 避免使用`shell=True` | 所有字符（包括shell元字符）可安全传递给子进程 |
+| 权限控制 | 使用`user`、`group`、`extra_groups`参数 | POSIX系统下设置进程权限，需配合`extra_groups=()`减少组成员关系 |
+| 进程隔离 | 使用`start_new_session=True` | 创建新会话，实现进程组隔离 |
+| 文件描述符控制 | `close_fds=True`（默认） | 关闭除0、1、2外的所有文件描述符，防止信息泄露 |
+| 环境变量隔离 | 使用`env`参数 | 提供自定义环境变量，避免继承敏感环境信息 |
+| 资源限制 | 使用`umask`参数 | 控制文件创建权限，防止权限提升 |
+
+**认证相关参数**（基于[D3]）：
+
+| 参数 | 说明 | 安全建议 |
+|------|------|----------|
+| `user` | 设置子进程用户ID | 需配合`extra_groups=()`使用，避免权限残留 |
+| `group` | 设置子进程组ID | 使用组名或GID，确保组成员关系最小化 |
+| `extra_groups` | 设置附加组ID | 空元组`()`可清除现有组成员关系 |
+| `umask` | 设置文件创建掩码 | 合理设置防止敏感文件被创建 |
+
+**沙箱隔离策略**：
+
+1. **会话隔离**：使用`start_new_session=True`创建新会话，防止进程组信号干扰
+2. **进程组隔离**：使用`process_group=N`设置进程组ID，实现资源限制
+3. **文件系统隔离**：使用`cwd`参数限制工作目录，使用`close_fds=True`关闭文件描述符
+4. **环境隔离**：使用`env`参数提供最小化环境变量集
+5. **权限最小化**：使用`user`、`group`、`extra_groups`实现权限降级
+
+**安全检查点**：
+
+- 避免使用`shell=True`执行不可信命令
+- 使用`shlex.quote()`转义用户输入（当必须使用`shell=True`时）
+- 验证`executable`路径，使用`shutil.which()`确认程序存在
+- 监控子进程资源使用，设置合理的`timeout`值
+- 记录所有安全相关参数，便于审计
+
+[D3] Python subprocess - Security Considerations, Python Software Foundation, Python 3.14.7, URL: https://docs.python.org/3/library/subprocess.html#security-considerations (accessed_at: 2026-09-18)

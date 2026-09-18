@@ -2,10 +2,10 @@
   "name": "cnn-airfoil-steady-flow-surrogate",
   "type": "workflow-planning",
   "domain": "cfd",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-12",
-  "updated_at": "2026-09-12",
+  "updated_at": "2026-09-17",
   "description": "规则网格CNN翼型稳态流场代理预测。面向DeepCFD规则网格翼型RANS数据完成规则网格CNN翼型稳态流场代理预测。产出可复现模型、任务结果、物理一致性评估和适用域报告；域外工况需经CFD复核。 规则网格CNN翼型稳态流场代理预测 的端到端可复用工作流：5 个节点，核心模型 CNN、U-Net。含各节点 typed 参数、依赖关系、质量门与提示词模板，可直接迁移到同类科研任务。",
   "tags": [
     "aerodynamic",
@@ -38,7 +38,16 @@
     "sha256:aa78ad939656a9c2ea9b2e29b2f99a583bc45f5bbdcec6a11d79f13c96ad2e3b",
     "sha256:5751b311a98603660066b00935d5fbc78914d79a4f8577abd8ebe0b989003c9f"
   ],
+  "evidence_papers": [
+    {"title": "CNN-based flow field prediction for bus aerodynamics analysis", "doi": "10.1038/s41598-023-48419-4", "year": 2023},
+    {"title": "A deep neural network with attention mechanism for flow prediction of compressor blade", "doi": "10.1038/s41598-025-99688-0", "year": 2025},
+    {"title": "Convolutional Neural Network Predictions for Unsteady RANS-Based Numerical Simulations", "doi": "10.3390/jmse11020239", "year": 2023},
+    {"title": "Two-Dimensional Prediction of Transient Cavitating Flow Around Hydrofoils Using a DeepCFD Model", "doi": "10.3390/jmse12112074", "year": 2024},
+    {"title": "Benchmarking CNN and GNN based surrogate models on a real-world car external aerodynamics dataset", "doi": "10.1016/j.compfluid.2025.106760", "year": 2025},
+    {"title": "Surrogate modeling of fluid dynamics with a multigrid inspired neural network architecture", "doi": "10.1016/j.mlwa.2021.100176", "year": 2021}
+  ],
   "harvested": true,
+  "merged_batches": ["2026-09-17-harvest-cfd-s001"],
   "tier": "medium",
   "score": 0.0,
   "source_paper": {

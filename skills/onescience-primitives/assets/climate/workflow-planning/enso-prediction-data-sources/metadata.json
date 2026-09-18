@@ -1,0 +1,35 @@
+{
+  "name": "enso-prediction-data-sources",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "ENSO预测任务所需的标准再分析数据源获取方式，包括NOAA ERSSTv5/v6、ERA5、ORAS5等数据集的访问接口、数据格式、时空覆盖范围和版本要求",
+  "tags": ["ENSO", "prediction", "NOAA", "ERSST", "ERA5", "ORAS5", "reanalysis", "SST", "data-source"],
+  "aliases": ["Nino3.4", "El Niño", "La Niña", "sea surface temperature"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "ENSO预测任务所需的标准数据源获取方式，包括NOAA ERSSTv5、ERA5、ORAS5等再分析数据的访问接口、数据格式、时空覆盖范围和版本要求",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Extended Reconstructed Sea Surface Temperature (ERSST)",
+      "url": "https://www.ncei.noaa.gov/products/extended-reconstructed-sst",
+      "publisher": "NOAA National Centers for Environmental Information",
+      "version": "Version 6 (2025), Version 5 (2017)",
+      "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "ERA5 hourly data on single levels from 1940 to present",
+      "url": "https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels",
+      "publisher": "Copernicus Climate Data Store (CDS)",
+      "version": "ERA5 (2018-present)",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

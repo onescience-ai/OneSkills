@@ -1,0 +1,46 @@
+{
+  "name": "cfd-rom-architecture-selection",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向参数化CFD降阶建模任务，根据数据维度、几何复杂度和实时性要求选择ROM架构（POD-LSTM、Autoencoder-LSTM、SHRED等），确定hidden_dim、latent_dim、physics_loss_weights等超参数的选取依据与配置方法",
+  "tags": ["cfd", "rom", "architecture", "hyperparameter", "shred", "autoencoder", "lstm", "pod", "physics-informed"],
+  "aliases": ["ROM架构选择", "降阶模型超参配置", "SHRED架构"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Transferable ROM与Shallow Recurrent Decoder的架构差异、适用场景和超参数选择依据",
+  "evidence_papers": [
+    {
+      "title": "Reduced Order Modeling with Shallow Recurrent Decoder Networks",
+      "doi": "10.1038/s41467-025-65126-y",
+      "year": 2025
+    },
+    {
+      "title": "CNN-LSTM based ROM for turbulent channel flow",
+      "doi": "10.1063/5.0039845",
+      "year": 2021
+    },
+    {
+      "title": "Deep Neural Networks for Nonlinear Model Order Reduction",
+      "doi": "10.1063/5.0020526",
+      "year": 2020
+    },
+    {
+      "title": "ML-ROM for unsteady flows around bluff bodies of various shapes",
+      "doi": "10.1007/s00162-020-00528-w",
+      "year": 2020
+    },
+    {
+      "title": "Learning physics-based ROM for combustion",
+      "doi": "10.2514/1.J058943",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

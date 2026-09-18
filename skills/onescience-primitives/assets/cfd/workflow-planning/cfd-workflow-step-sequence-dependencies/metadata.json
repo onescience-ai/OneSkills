@@ -1,0 +1,20 @@
+{
+  "name": "cfd-workflow-step-sequence-dependencies",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T16:43:00Z",
+  "updated_at": "2026-09-17T16:43:00Z",
+  "description": "面向CFD工作流，提供标准工作流的完整步骤序列（s01-s05）和依赖关系知识，包括每个步骤的输入输出契约",
+  "tags": ["workflow-steps", "step-sequence", "dependencies", "CFD", "s01-s05"],
+  "aliases": ["工作流步骤", "步骤序列", "依赖关系"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience标准工作流的完整步骤序列和依赖关系知识，包括s01到s05的输入输出契约",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

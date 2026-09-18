@@ -1,0 +1,16 @@
+{
+  "name": "cfd-airfoil-aerodynamic-physics-constraints",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "面向翼型气动设计任务，定义物理一致性约束标准与实现方法。涵盖升力系数、阻力系数合理范围，升阻比物理限制，压力系数分布规律，以及如何在模型训练中嵌入物理约束（PINN方法）。适用于需要验证生成样本物理合理性的气动设计场景。",
+  "tags": ["cfd", "physics-constraints", "airfoil", "lift-coefficient", "drag-coefficient", "PINN", "aerodynamic", "pressure-distribution"],
+  "aliases": ["气动物理约束", "翼型性能约束", "物理一致性验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "翼型气动性能的物理约束",
+  "evidence_papers": []
+}

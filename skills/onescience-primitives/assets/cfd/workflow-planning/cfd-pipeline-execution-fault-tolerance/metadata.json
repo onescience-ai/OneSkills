@@ -1,0 +1,39 @@
+{
+  "name": "cfd-pipeline-execution-fault-tolerance",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:17:00Z",
+  "updated_at": "2026-09-18T00:17:00Z",
+  "description": "面向CFD仿真流水线，提供步骤间依赖管理、容错策略和任务状态跟踪的最佳实践，确保流水线在部分步骤失败时仍能保留已执行步骤的记录并支持后续步骤的独立执行",
+  "tags": ["CFD", "pipeline", "fault-tolerance", "workflow", "execution", "task-management"],
+  "aliases": ["CFD流水线容错", "仿真工作流管理", "步骤依赖管理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "对流与标量混合湍流热通量预测任务的归因报告中的知识缺口",
+  "evidence_papers": [
+    {
+      "title": "Foam-Agent 2.0: An End-to-End Composable Multi-Agent Framework for Automating CFD Simulation in OpenFOAM",
+      "doi": "10.48550/arXiv.2509.18178",
+      "year": "2025"
+    },
+    {
+      "title": "Temperature and pressure reconstruction in turbulent Rayleigh-Bénard convection by Lagrangian velocities using PINN",
+      "doi": "10.48550/arXiv.2505.02580",
+      "year": "2025"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "PDEBench Datasets",
+      "url": "https://doi.org/10.18419/DARUS-2986",
+      "publisher": "DaRUS",
+      "version": "V8",
+      "accessed_at": "2026-09-18T00:17:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

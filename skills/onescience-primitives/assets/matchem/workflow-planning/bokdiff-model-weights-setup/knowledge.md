@@ -59,7 +59,7 @@
 
 ## 资源召回建议
 - 何时召回：执行BoKDiff/DecompDiff相关任务时
-- 配套资源：rdkit-molecular-dependency、protein-pocket-pdb-format
+- 配套资源：rdkit-molecular-dependency、protein-pocket-pdb-format、matchem-molecular-model-weight-distribution
 
 ## 证据来源
 [1] Khodabandeh Yalabadi A, Yazdani-Jahromi M, Garibay OO. BoKDiff: best-of-K diffusion alignment for target-specific 3D molecule generation. Bioinformatics Advances. 2025;5(1):vbaf137. DOI: 10.1093/bioadv/vbaf137

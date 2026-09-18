@@ -1,0 +1,20 @@
+{
+  "name": "cfd-model-validation-metrics",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T20:26:00Z",
+  "updated_at": "2026-09-17T20:26:00Z",
+  "description": "面向CFD数据驱动模型评估任务，定义验收指标体系，包括closure_RMSE（闭合项均方根误差）、mean_profile_error（均值剖面误差）、spectrum_error（能谱误差）、stability_horizon（稳定性时域）的计算方法和合格阈值",
+  "tags": ["validation-metrics", "CFD", "model-evaluation", "RMSE", "stability", "physical-consistency"],
+  "aliases": ["模型验收指标", "CFD validation metrics", "closure RMSE"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CFD数据驱动模型的验收指标体系",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

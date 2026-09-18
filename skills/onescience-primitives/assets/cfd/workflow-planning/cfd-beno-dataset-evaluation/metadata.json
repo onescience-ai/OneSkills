@@ -1,0 +1,20 @@
+{
+  "name": "cfd-beno-dataset-evaluation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T01:45:00Z",
+  "updated_at": "2026-09-18T01:45:00Z",
+  "description": "面向BENO（边界嵌入神经算子）数据集的具体数据内容评估、场景需求匹配度分析、学术来源追溯与使用许可管理",
+  "tags": ["BENO", "dataset", "boundary-conditions", "PDE", "neural-operators"],
+  "aliases": ["boundary-embedded-neural-operators", "BENO-dataset", "PDE-dataset-evaluation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "BENO数据集的具体数据内容、场景需求匹配度评估方法及学术来源论文、数据生成方法、使用许可和引用要求",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

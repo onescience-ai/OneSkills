@@ -1,0 +1,61 @@
+{
+  "name": "cfd-workflow-timeout-monitoring-recovery",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "CFD工作流执行阶段的超时监控与恢复机制，包括每步执行的时间预算分配、关键决策点的快速路径策略、超时前的优雅降级（保存当前执行状态供人工复核），以及中间状态保存和恢复路径知识",
+  "tags": [
+    "timeout",
+    "monitoring",
+    "recovery",
+    "checkpointing",
+    "fault-tolerance",
+    "workflow-execution",
+    "graceful-degradation",
+    "edge:task:cfd-graph-neural-operator-unstructured-mesh-prediction"
+  ],
+  "aliases": [
+    "超时监控",
+    "执行恢复",
+    "中间状态保存",
+    "优雅降级"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "任务执行阶段的超时监控与恢复机制，包括每步执行的时间预算分配、关键决策点的快速路径策略、以及超时前的优雅降级",
+  "evidence_papers": [
+    {
+      "title": "Low-level I/O Monitoring for Scientific Workflows",
+      "doi": "10.48550/arXiv.2408.00411",
+      "year": 2024
+    },
+    {
+      "title": "Flow-Bench: A Dataset for Computational Workflow Anomaly Detection",
+      "doi": "10.48550/arXiv.2306.09930",
+      "year": 2023
+    },
+    {
+      "title": "Application Failures and Machine Computational Efficiency",
+      "doi": "10.1137/1.9781611979022.3",
+      "year": 2026
+    },
+    {
+      "title": "Reproducible and Portable Workflows for Scientific Computing and HPC in the Cloud",
+      "doi": "10.1145/3311790.3396659",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-18",
+      "location": "归因报告CFD_S007"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

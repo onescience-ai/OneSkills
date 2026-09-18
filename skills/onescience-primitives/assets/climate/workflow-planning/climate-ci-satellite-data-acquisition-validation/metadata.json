@@ -1,0 +1,41 @@
+{
+  "name": "climate-ci-satellite-data-acquisition-validation",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T12:00:00Z",
+  "updated_at": "2026-09-17T12:00:00Z",
+  "description": "静止气象卫星对流初生（CI）检测的数据获取与验证流程，定义了FY-4A/AGRI和Himawari-8/AHI等静止卫星源观测资料的标准格式、获取渠道、时间分辨率要求和资料完整性判断标准，以及CI标签由雷达回波独立生成的验证协议。适用于CI检测任务的源数据准备阶段，确保数据可追溯且不违反不得擅自补造约束。",
+  "tags": ["convective-initiation", "CI", "FY-4A", "AGRI", "Himawari-8", "AHI", "geostationary-satellite", "satellite-data", "radar-label", "data-acquisition", "validation", "NetCDF", "HDF5", "brightness-temperature"],
+  "aliases": ["FY-4A/AGRI CI detection", "Himawari-8 AHI convective initiation", "satellite CI data source"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "静止气象卫星源观测资料的标准格式、获取渠道和验证协议；对流初生标签的生成方法和独立验证要求；数据截止时间和资料完整性的判断标准",
+  "evidence_papers": [
+    {
+      "title": "A dataset for machine learning model to convective initiation detection and nowcasting over southeastern China",
+      "doi": "10.1038/s41597-026-06902-3",
+      "year": 2026,
+      "venue": "Scientific Data"
+    },
+    {
+      "title": "A Direct Estimation Method for Daily Mean Albedo With Multiple Observations From FY-4A AGRI and Himawari-8 AHI",
+      "doi": "10.1109/tgrs.2024.3458178",
+      "year": 2024,
+      "venue": "IEEE Trans. Geosci. Remote Sensing"
+    },
+    {
+      "title": "Comparison of FY-4A/AGRI SST with Himawari-8/AHI and In Situ SST",
+      "doi": "10.3390/rs15174139",
+      "year": 2023,
+      "venue": "Remote Sensing"
+    },
+    {
+      "title": "Intercalibration of FY-4A Agri Thermal Infrared Channels Against the AHI-8 Channels using the Double Difference Method",
+      "doi": "10.1109/igarss46834.2022.9883426",
+      "year": 2022,
+      "venue": "IGARSS 2022"
+    }
+  ]
+}

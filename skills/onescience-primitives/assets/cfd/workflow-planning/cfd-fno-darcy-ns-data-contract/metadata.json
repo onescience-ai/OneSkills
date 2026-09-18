@@ -1,0 +1,40 @@
+{
+  "name": "cfd-fno-darcy-ns-data-contract",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18",
+  "updated_at": "2026-09-18",
+  "description": "面向规则网格PDE算子学习任务，提供Darcy流与Navier-Stokes数据集的标准数据契约定义，包括输入输出字段schema、单位约定、网格坐标规范和数据验证规则",
+  "tags": ["data-contract", "Darcy flow", "Navier-Stokes", "FNO", "operator learning", "CFD", "schema", "regular grid", "PDE"],
+  "aliases": ["Darcy数据契约", "Navier-Stokes数据契约", "PDE数据schema"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "FNO规则网格参数化PDE算子学习中Darcy与Navier-Stokes数据集的标准数据契约定义",
+  "evidence_papers": [
+    {
+      "title": "Fourier Neural Operators Explained: A Practical Perspective",
+      "doi": "10.48550/arXiv.2512.01421",
+      "year": 2025,
+      "authors": "Valentin Duruisseaux, Jean Kossaifi, Anima Anandkumar"
+    },
+    {
+      "title": "Fourier Neural Operator for Parametric Partial Differential Equations",
+      "doi": "10.48550/arXiv.2010.08895",
+      "year": 2020,
+      "authors": "Zongyi Li, Nikola Kovachki, Kamyar Azizzadenesheli, Burigede Liu, Kaushik Bhattacharya, Andrew Stuart, Anima Anandkumar"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "NeuralOperator GitHub Repository",
+      "url": "https://github.com/neuraloperator/neuraloperator",
+      "publisher": "NeuralOperator Team",
+      "version": "main branch (2025)",
+      "accessed_at": "2026-09-18"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

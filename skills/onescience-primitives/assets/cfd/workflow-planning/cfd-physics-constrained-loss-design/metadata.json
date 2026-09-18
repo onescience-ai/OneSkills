@@ -1,0 +1,21 @@
+{
+  "name": "cfd-physics-constrained-loss-design",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18",
+  "updated_at": "2026-09-18",
+  "description": "面向CFD神经PDE求解器，设计物理约束损失函数以确保质量守恒、能量守恒和PDE残差满足，覆盖梯度加权、自适应权重平衡和硬约束嵌入策略",
+  "tags": ["physics-informed", "loss-function", "conservation-law", "neural-PDE", "PINN"],
+  "aliases": ["物理约束损失", "守恒律损失", "PDE残差损失", "梯度加权损失"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "神经PDE求解器中物理约束损失函数设计",
+  "evidence_papers": [
+    {"title": "Physics-informed neural network with weighted loss and hard constraints for hyperbolic conservation laws", "doi": "10.1038/s41598-025-34263-1", "year": 2025},
+    {"title": "A Second-Order Network Structure Based on Gradient-Enhanced Physics-Informed Neural Networks for Solving Parabolic Partial Differential Equations", "doi": "10.3390/e25040674", "year": 2023},
+    {"title": "Physics-Informed Machine Learning in Biomedical Science and Engineering", "doi": "10.1146/annurev-bioeng-110824-124907", "year": 2026},
+    {"title": "Fast-forward prediction of lattice Boltzmann dynamics with physics-informed neural operators", "doi": "10.1038/s41467-026-75730-1", "year": 2026}
+  ]
+}

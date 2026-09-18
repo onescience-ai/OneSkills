@@ -1,0 +1,20 @@
+{
+  "name": "general-cli-error-handling-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-17T00:00:00Z",
+  "updated_at": "2026-09-17T00:00:00Z",
+  "description": "CLI非交互执行与故障分类知识，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，用于修正启动配置或恢复策略",
+  "tags": ["CLI", "error-handling", "exit-code", "fault-classification", "non-interactive-execution"],
+  "aliases": ["命令行错误处理", "退出码分类", "CLI故障诊断"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}
