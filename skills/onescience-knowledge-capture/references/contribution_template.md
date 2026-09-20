@@ -19,41 +19,61 @@ created_at: <ISO-8601>
 
 ## Task Summary
 
-- User goal:
+- Goal:
 - Context:
+- Inputs:
+- Expected outputs:
 - Constraints:
-- Requested outputs:
+- Success criteria:
 
 ## Interaction Timeline
 
-| Step | User need | Action | Observation | Evidence |
-| --- | --- | --- | --- | --- |
-| 1 |  |  |  |  |
+| Step ID | Name | Objective | Expected action | Actual action | Observation | Decision | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |  |
 
 ## Decisions And Evidence
 
 - **D1** Decision:
-  - Rationale:
-  - Evidence: `E1`
-  - Confidence: `high | medium | low`
+  - Decision reason:
+  - Related step, verification or artifact:
 
 ## Resources And Skills
 
-| Name | Type | Role | Evidence | Limitation |
+| Name | Type | Role | Related step | Limitation |
 | --- | --- | --- | --- | --- |
 |  |  |  |  |  |
 
 ## Artifacts And Verification
 
 - Artifacts:
-- Verification performed:
-- Verification not performed:
+- Verification:
+
+| Target | Type | Method | Expected result | Actual result | Status |
+| --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |
 
 ## Failures And Recovery
 
-| Failure | Observed symptom | Recovery | Reusable lesson | Evidence |
+| Failure ID | Related step | Symptom | Root cause | Impact |
 | --- | --- | --- | --- | --- |
 |  |  |  |  |  |
+
+### Recovery Trace
+
+| Trigger failure | Recovery strategy | Recovery action | Recovery result | Status |
+| --- | --- | --- | --- | --- |
+|  |  |  |  |  |
+
+### Capability Attribution
+
+- Knowledge gaps:
+- Reasoning gaps:
+- Planning gaps:
+- Execution gaps:
+- Verification gaps:
+- Resource gaps:
+- Contract gaps:
 
 ## Reusable Knowledge
 
@@ -76,6 +96,10 @@ created_at: <ISO-8601>
 ### Anti-patterns
 
 - [AP-1]
+
+### New Knowledge
+
+- [NK-1]
 
 ### Open Questions
 

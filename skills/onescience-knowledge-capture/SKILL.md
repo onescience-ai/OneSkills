@@ -47,7 +47,7 @@ type: executor
 ```text
 skills/onescience-knowledge-capture/contributions/<domain>/<contribution_id>/
   contribution.md       # 人工审查和后续知识迁移的主文档
-  contribution.json     # 机器可读元数据、证据索引和集成候选
+  contribution.json     # 机器可读元数据、执行/验证轨迹和集成候选
   issue_payload.json     # issue_mode != none 时生成
   submission_card.md     # 由 render_issue_payload.py 生成，供人工在 Gitee 网页端复制提交
 ```
@@ -109,16 +109,16 @@ step_handoff:
 
 ### 1. 建立证据边界
 
-先把交互拆成以下证据：
+先把交互拆成以下证据，并在 `execution_trace`、`verification`、`failures` 和 `recovery_trace` 中分别记录：
 
 - 用户目标：用户要解决什么问题，期望什么输出。
 - 已知上下文：领域、数据、模型、环境、约束、资源和权限。
 - 执行动作：调用了哪些 skill、工具、资源或命令。
 - 观测结果：成功、失败、部分成功、日志、产物和验证结果。
-- 决策依据：为什么选择某条路线，何时发生 fallback。
+- 决策依据：为什么选择某条路线，何时发生 fallback，以及对应的执行步骤。
 - 未决缺口：哪些结论尚未验证，哪些输入由用户补充或假设得到。
 
-只把能在交互中定位到来源的内容写入“事实”和“证据”。对于模型生成但未被验证的建议，写入“候选规则”而不是“已验证规则”。
+只把能在交互中定位到来源的内容写入“事实”和“结论”。对于模型生成但未被验证的建议，写入“候选规则”而不是“已验证规则”。
 
 ### 2. 判断贡献类型
 
@@ -156,7 +156,8 @@ step_handoff:
 10. `Promotion Decision`
 11. `Privacy And Limitations`
 
-每个结论尽量绑定到 `E1`、`E2` 等证据编号。证据只写摘要，不复制大段日志或上游文档。
+每个结论尽量绑定到执行轨迹的 `step_id`、验证目标或产物引用。证据只写摘要，不复制大段日志或上游文档。
+能力缺口写入 `capability_attribution`；事实、启发式、约束、fallback、反模式、新知识和未决问题写入 `knowledge_discovery`。
 
 ### 5. 生成 Issue payload 与提交卡片
 
@@ -246,7 +247,7 @@ execution_result:
 
 1. `contribution.json` 可被标准 JSON 解析。
 2. `contribution.md` 包含全部 11 个必需章节。
-3. `contribution_id`、`domain`、`kind`、`promotion.recommendation` 和 `evidence` 非空。
+3. `contribution_id`、`domain`、`kind` 和 `promotion.recommendation` 非空，`execution_trace` 与 `verification` 为非空列表。
 4. 对产物递归扫描敏感信息模式：API key、Bearer token、密码、私钥、常见云凭证和疑似 JWT；命中时阻止 Issue 提交并返回 `blocked` 或 `partial`。
 5. Issue payload 的标题、正文和标签与贡献元数据一致。
 6. 若执行真实提交，记录 HTTP 状态、Issue 编号和返回 URL；不记录认证头。

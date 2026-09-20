@@ -69,7 +69,7 @@ def validate(directory: Path) -> list[str]:
         errors.append(f"invalid contribution.json: {exc}")
         return errors
 
-    for key in ("schema_version", "contribution_id", "title", "domain", "kind", "evidence", "promotion"):
+    for key in ("schema_version", "contribution_id", "title", "domain", "kind", "promotion"):
         if not metadata.get(key):
             errors.append(f"missing metadata field: {key}")
 
@@ -77,8 +77,13 @@ def validate(directory: Path) -> list[str]:
         errors.append("kind must be knowledge, integration, or both")
     if metadata.get("domain") not in {"bio", "cfd", "climate", "matchem", "general", "unknown"}:
         errors.append("domain is invalid")
-    if not isinstance(metadata.get("evidence"), list) or not metadata["evidence"]:
-        errors.append("evidence must be a non-empty list")
+    for key in ("execution_trace", "verification"):
+        value = metadata.get(key)
+        if not isinstance(value, list) or not value:
+            errors.append(f"{key} must be a non-empty list")
+    for key in ("failures", "recovery_trace"):
+        if key in metadata and not isinstance(metadata[key], list):
+            errors.append(f"{key} must be a list")
     promotion = metadata.get("promotion")
     if not isinstance(promotion, dict) or not promotion.get("recommendation"):
         errors.append("promotion.recommendation is required")
