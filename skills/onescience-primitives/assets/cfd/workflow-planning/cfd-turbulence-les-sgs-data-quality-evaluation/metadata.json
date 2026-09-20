@@ -1,0 +1,41 @@
+{
+  "name": "cfd-turbulence-les-sgs-data-quality-evaluation",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T18:00:00Z",
+  "updated_at": "2026-09-18T18:00:00Z",
+  "description": "面向湍流大涡模拟（LES）数据生成任务，评估DNS模拟参数（网格分辨率、雷诺数）对亚格子闭合数据质量的影响，确定满足充分发展湍流数据生成的基本参数要求，并选择适用的误差评估指标",
+  "tags": ["turbulence", "LES", "SGS", "DNS", "data quality", "evaluation metrics", "CFD"],
+  "aliases": ["subgrid scale closure data quality", "DNS resolution Reynolds number effect"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "二维湍流DNS模拟的网格分辨率与雷诺数对LES亚格子闭合数据质量的影响",
+  "evidence_papers": [
+    {
+      "title": "Stable a posteriori LES of 2D turbulence using convolutional neural networks: Backscattering analysis and generalization to higher Re via transfer learning",
+      "doi": "10.1016/j.jcp.2022.111090",
+      "year": 2022
+    },
+    {
+      "title": "A priori analysis on deep learning of subgrid-scale parameterizations for Kraichnan turbulence",
+      "doi": "10.1007/s00162-019-00512-z",
+      "year": 2020
+    },
+    {
+      "title": "Extrapolation Performance of Convolutional Neural Network-Based Combustion Models for Large-Eddy Simulation: Influence of Reynolds Number, Filter Kernel and Filter Size",
+      "doi": "10.1007/s10494-025-00643-w",
+      "year": 2025
+    },
+    {
+      "title": "Learning physics-constrained subgrid-scale closures in the small-data regime for stable and accurate LES",
+      "doi": "10.1016/j.physd.2022.133568",
+      "year": 2022
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

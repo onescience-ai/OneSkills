@@ -1,0 +1,20 @@
+{
+  "name": "cfd-onescience-workflow-step-output-contract",
+  "type": "workflow-planning",
+  "domain": "cfd",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T18:03:00Z",
+  "updated_at": "2026-09-18T18:03:00Z",
+  "description": "面向OneScience工作流执行任务，定义s01、s04步骤的标准输出文件契约，包括execution-manifest生成时机、data_contract.json格式、apriori_closure/aposteriori_fields目录结构，以及API限流时的降级检索策略",
+  "tags": ["OneScience", "workflow", "output contract", "execution manifest", "data contract", "API fallback"],
+  "aliases": ["execution manifest generation", "step output format"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience orchestrator的execution-manifest生成时机与格式契约、s04步骤的标准输出契约、s01步骤的标准输出文件契约",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

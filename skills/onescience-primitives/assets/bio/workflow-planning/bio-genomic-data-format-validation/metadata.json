@@ -1,0 +1,17 @@
+{
+  "name": "bio-genomic-data-format-validation",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-18T00:00:00Z",
+  "updated_at": "2026-09-18T00:00:00Z",
+  "description": "基因组数据格式验证规范，包括BED格式字段定义与坐标系统、VCF格式REF/ALT等位基因合法性检查、参考基因组FASTA文件验证规则。适用于小鼠mm10 (GRCm38)等参考基因组的增强子区间、变异文件的数据质控。",
+  "tags": ["genomic-data", "BED-format", "VCF-format", "coordinate-validation", "reference-genome", "mm10", "GRCm38", "data-quality"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "mm10参考基因组FASTA获取路径、BED文件字段规范、VCF格式REF/ALT验证、基因组坐标0-based与1-based转换",
+  "evidence_docs": [
+    {"title": "UCSC Genome Browser FAQ: BED format", "url": "https://genome.ucsc.edu/FAQ/FAQformat.html", "publisher": "UCSC Genome Browser", "version": "2026", "accessed_at": "2026-09-18"}
+  ]
+}
