@@ -1,0 +1,128 @@
+# 当 Jenkins 把 oneskills-dev 的公开导出同步到本仓库时，
+# 如果本次 push 新增了知识贡献的 issue_payload.json，自动创建对应的 GitHub Issue。
+#
+# 触发条件：push 到 master 且路径命中 contributions 目录
+# 权限：仅需 issues:write（GITHUB_TOKEN 由 Actions 自动注入，无需额外配置）
+#
+# 幂等性：创建前检查是否已有同名 open Issue，有则跳过。
+
+name: Auto-Issue on New Contribution
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'skills/onescience-knowledge-capture/contributions/**'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  create-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect new issue_payload.json files
+        id: detect
+        run: |
+          # git diff-tree 列出本次 commit 新增的文件（即使没有 parent 也安全）
+          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+            NEW_FILES=$(git diff --name-only --diff-filter=A HEAD~1 HEAD \
+              | grep 'skills/onescience-knowledge-capture/contributions/.*/issue_payload\.json$' || true)
+          else
+            # 首次 commit，用 diff-tree 对比空树
+            NEW_FILES=$(git diff-tree --no-commit-id -r --diff-filter=A HEAD \
+              | awk '{print $NF}' \
+              | grep 'skills/onescience-knowledge-capture/contributions/.*/issue_payload\.json$' || true)
+          fi
+
+          if [ -z "$NEW_FILES" ]; then
+            echo "payloads=" >> "$GITHUB_OUTPUT"
+            echo "count=0" >> "$GITHUB_OUTPUT"
+            echo "No new issue_payload.json detected."
+          else
+            echo "payloads<<EOF" >> "$GITHUB_OUTPUT"
+            echo "$NEW_FILES" >> "$GITHUB_OUTPUT"
+            echo "EOF" >> "$GITHUB_OUTPUT"
+            COUNT=$(echo "$NEW_FILES" | wc -l)
+            echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+            echo "Detected $COUNT new payload(s):"
+            echo "$NEW_FILES"
+          fi
+
+      - name: Ensure labels exist
+        if: steps.detect.outputs.count != '0'
+        run: |
+          # 创建贡献流程所需的 label（--force 幂等，已存在则更新描述）
+          gh label create "knowledge-contribution" --color "7057ff" --description "Knowledge contribution intake" --force || true
+          gh label create "diagnostic" --color "d4c5f9" --description "Diagnostic probe" --force || true
+          # 从 payload 里提取所有 domain: 和 kind: 标签并预建
+          for payload in ${{ steps.detect.outputs.payloads }}; do
+            if [ -f "$payload" ]; then
+              LABELS=$(python3 -c "import json,sys; [print(l) for l in json.load(open(sys.argv[1],encoding='utf-8')).get('labels',[])]" "$payload" 2>/dev/null || true)
+              for label in $LABELS; do
+                gh label create "$label" --color "0075ca" --description "auto-created" --force || true
+              done
+            fi
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitHub Issues
+        if: steps.detect.outputs.count != '0'
+        run: |
+          CREATED=0
+          SKIPPED=0
+          FAILED=0
+
+          for payload in ${{ steps.detect.outputs.payloads }}; do
+            if [ ! -f "$payload" ]; then
+              echo "WARN: payload file not found: $payload"
+              FAILED=$((FAILED + 1))
+              continue
+            fi
+
+            # 解析 payload
+            TITLE=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1],encoding='utf-8'))['title'])" "$payload")
+            BODY=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1],encoding='utf-8'))['body'])" "$payload")
+            LABELS=$(python3 -c "import json,sys; print(','.join(json.load(open(sys.argv[1],encoding='utf-8')).get('labels',[])))" "$payload")
+
+            # 幂等检查：是否已有同名 open Issue
+            EXISTING=$(gh issue list --search "$TITLE" --state open --json number --jq '.[0].number' 2>/dev/null || true)
+            if [ -n "$EXISTING" ]; then
+              echo "SKIP: Issue #$EXISTING already exists with title: $TITLE"
+              SKIPPED=$((SKIPPED + 1))
+              continue
+            fi
+
+            # 创建 Issue
+            LABEL_ARGS=""
+            if [ -n "$LABELS" ]; then
+              LABEL_ARGS="--label $LABELS"
+            fi
+
+            if gh issue create --title "$TITLE" --body "$BODY" $LABEL_ARGS; then
+              echo "CREATED: $TITLE"
+              CREATED=$((CREATED + 1))
+            else
+              echo "ERROR: Failed to create Issue for $payload"
+              FAILED=$((FAILED + 1))
+            fi
+          done
+
+          echo ""
+          echo "=== Summary ==="
+          echo "Created: $CREATED"
+          echo "Skipped (already exist): $SKIPPED"
+          echo "Failed: $FAILED"
+
+          if [ "$FAILED" -gt 0 ]; then
+            exit 1
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

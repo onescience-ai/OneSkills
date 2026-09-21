@@ -30,7 +30,6 @@ Core repository directories:
 - `skills/`: OneScience / OneSkills skill packages
 - `docs/`: User guides, open-source release documentation, and contribution notes
 - `evaluation/`: Skill, code generation, and routing evaluation assets
-- `qa/`: Real-world agent evaluation, runtime assets, and quality check tools
 
 Version information:
 
