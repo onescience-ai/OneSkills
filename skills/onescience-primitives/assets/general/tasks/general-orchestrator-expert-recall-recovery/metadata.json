@@ -1,0 +1,16 @@
+{
+  "name": "general-orchestrator-expert-recall-recovery",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "当orchestrator调用专家技能后未收到planner_proposal时的异常诊断和恢复策略，包括重试条件、降级为direct_step的判断逻辑、以及输入完整性检查",
+  "tags": ["orchestrator", "expert-recall", "planner-proposal", "exception-handling", "workflow-fallback"],
+  "aliases": ["专家召回异常处理", "planner_proposal恢复", "orchestrator降级策略"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "onescience-research-workflow专家技能的触发条件和输入契约；当专家未返回proposal时的异常处理规则",
+  "evidence_papers": []
+}

@@ -1,0 +1,45 @@
+{
+  "name": "pdb-structure-download-parsing",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "Task for downloading and parsing PDB structure files from RCSB Protein Data Bank for antibody-antigen complex analysis. Includes API access, structure parsing, coordinate extraction, interface identification, and feature generation for structural biology applications.",
+  "tags": [
+    "PDB",
+    "structure",
+    "RCSB",
+    "download",
+    "parsing",
+    "coordinates",
+    "antibody structure",
+    "protein structure",
+    "edge:workflow:came-ab-binding-prediction-workflow"
+  ],
+  "aliases": [
+    "PDB file download",
+    "RCSB API access"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PDB结构文件的下载和解析方法",
+  "evidence_papers": [
+    {
+      "title": "Enhanced antibody-antigen structure prediction from molecular docking using AlphaFold2",
+      "authors": [
+        "Francis Gaudreault",
+        "Christopher R. Corbeil",
+        "Traian Sulea"
+      ],
+      "venue": "Scientific Reports",
+      "year": 2023,
+      "doi": "10.1038/s41598-023-42090-5"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

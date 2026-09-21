@@ -1,0 +1,24 @@
+{
+  "name": "single-cell-rna-seq-dataset-access",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "单细胞RNA-seq公开数据集获取方法，涵盖CellxGene Discover、GEO、Zenodo等主要门户的H5AD格式数据下载、格式验证与质量控制流程，适用于免疫细胞图谱、癌症单细胞图谱等数据集的检索与预处理。",
+  "tags": ["single-cell", "RNA-seq", "dataset", "H5AD", "CellxGene", "GEO", "quality-control"],
+  "aliases": ["immune_atlas", "scRNA-seq dataset", "cell atlas"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "单细胞RNA-seq数据集公开获取知识，包括immune_atlas.h5ad或类似免疫细胞图谱数据集的下载地址、文件格式、版本标识和数据血缘追踪方法",
+  "evidence_papers": [
+    {"title": "Portable-CELLxGENE: standalone executables of CELLxGENE for easy installation", "doi": "10.46471/gigabyte.151", "year": 2025},
+    {"title": "Integrated cancer cell-specific single-cell RNA-seq datasets of immune checkpoint blockade-treated patients", "doi": "10.1038/s41597-025-04381-6", "year": 2025},
+    {"title": "Mouse-Geneformer: A deep learning model for mouse single-cell transcriptome and its cross-species utility", "doi": "10.1371/journal.pgen.1011420", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

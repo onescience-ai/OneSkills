@@ -1,0 +1,46 @@
+{
+  "name": "bio-mamba-ssm-selective-state-space-package",
+  "type": "tool",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T05:01:00Z",
+  "updated_at": "2026-09-21T05:01:00Z",
+  "description": "mamba-ssm选择性状态空间模型包安装与使用工具卡。提供mamba-ssm在不同操作系统（Linux/Windows/macOS）上的安装路径、conda-forge预编译版本、源码构建CUDA依赖清单、WSL2安装流程，以及causal-conv1d作为降级选项的接口兼容性说明。mamba-ssm是Caduceus长程建模的核心依赖，支持百万碱基对级别的线性时间序列建模。",
+  "tags": ["mamba", "mamba-ssm", "state_space_model", "SSM", "selective_scan", "long_range", "CUDA", "installation", "conda", "pip", "causal_conv1d", "DNA_sequence_modeling"],
+  "aliases": ["mamba-ssm", "selective_state_space", "causal-conv1d"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "mamba-ssm包在不同操作系统上的安装路径与替代方案，包括conda-forge预编译版本、从源码构建的CUDA依赖清单、WSL2/Linux子系统下的安装流程、causal-conv1d独立包作为降级选项的接口兼容性说明",
+  "evidence_papers": [
+    {
+      "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+      "doi": "10.48550/arXiv.2312.00752",
+      "year": 2023,
+      "venue": "ICLR 2024",
+      "authors": ["Albert Gu", "Tri Dao"]
+    },
+    {
+      "title": "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling",
+      "doi": "10.48550/arXiv.2403.03234",
+      "year": 2024,
+      "venue": "ICML 2024"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "Mamba GitHub Repository",
+      "url": "https://github.com/state-spaces/mamba",
+      "publisher": "GitHub (state-spaces)",
+      "version": "main branch",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "mamba-ssm on PyPI",
+      "url": "https://pypi.org/project/mamba-ssm/",
+      "publisher": "PyPI",
+      "version": "latest",
+      "accessed_at": "2026-09-21"
+    }
+  ]
+}

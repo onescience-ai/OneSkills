@@ -1,0 +1,52 @@
+{
+  "name": "bio-dnalongbench-dataset-acquisition",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T05:01:00Z",
+  "updated_at": "2026-09-21T05:01:00Z",
+  "description": "公开基因组DNA序列数据集获取工具卡。提供DNALONGBENCH基准数据集、ENCODE项目、UCSC基因组浏览器、GenBank等公开数据源的下载地址、数据格式规范与获取流程。覆盖增强子活性预测、变异效应预测、3D基因组接触图等长程DNA功能预测任务的标准评估数据。",
+  "tags": ["genomic_data", "DNA_sequence", "ENCODE", "UCSC", "GenBank", "DNALONGBENCH", "benchmark", "dataset", "FASTA", "hg38", "long_range", "enhancer", "variant_effect", "HiC"],
+  "aliases": ["基因组数据", "DNA序列数据", "benchmark dataset", "DNALONGBENCH"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "公开基因组DNA序列数据的获取路径与格式规范，包括ENCODE项目的DNA-seq/ATAC-seq数据下载接口、UCSC基因组浏览器的bigWig/bedtools数据获取方式、DNALONGBENCH基准数据集的下载地址和数据格式说明、Caduceus论文配套的训练/测试数据集获取渠道",
+  "evidence_papers": [
+    {
+      "title": "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling",
+      "doi": "10.48550/arXiv.2403.03234",
+      "year": 2024,
+      "venue": "ICML 2024"
+    },
+    {
+      "title": "BEND: Benchmarking DNA Language Models on biologically meaningful tasks",
+      "doi": "10.48550/arXiv.2311.12570",
+      "year": 2024,
+      "venue": "ICLR 2024"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "DNALONGBENCH Dataset on HuggingFace",
+      "url": "https://huggingface.co/datasets/InstaDeepAI/genomics-long-range-benchmark",
+      "publisher": "Hugging Face (InstaDeepAI)",
+      "version": "2024",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "ENCODE Project",
+      "url": "https://www.encodeproject.org/",
+      "publisher": "ENCODE Consortium",
+      "version": "latest",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "UCSC Genome Browser",
+      "url": "https://genome.ucsc.edu/",
+      "publisher": "UC Santa Cruz",
+      "version": "hg38",
+      "accessed_at": "2026-09-21"
+    }
+  ]
+}

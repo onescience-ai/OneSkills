@@ -1,0 +1,24 @@
+{
+  "name": "perovskite-stability-ml-model",
+  "type": "model",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:44:00Z",
+  "updated_at": "2026-09-21T12:44:00Z",
+  "description": "无铅杂化钙钛矿稳定性机器学习预测模型，包括论文中记录的模型类型、超参数配置、训练策略和验证方法",
+  "tags": ["perovskite", "machine-learning", "stability", "model", "random-forest", "xgboost", "neural-network"],
+  "aliases": ["lead-free perovskite ML model", "perovskite stability predictor", "halide perovskite screening model"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "关联论文中记录的模型类型、超参数、训练策略和验证方法",
+  "evidence_papers": [
+    {"title": "Machine learning stability and band gap of lead-free halide double perovskite materials for perovskite solar cells", "doi": "10.1016/j.solener.2021.09.030", "year": 2021},
+    {"title": "Efficiency and Stability Analysis of 2D/3D Perovskite Solar Cells Using Machine Learning", "doi": "10.1002/ente.202100948", "year": 2022},
+    {"title": "Machine learning incorporating stability features and Bayesian Optimization for perovskite structure prediction", "doi": "10.1016/j.ssc.2025.116174", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,23 @@
+{
+  "name": "dataset-size-requirement-for-materials-ml",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:46:00Z",
+  "updated_at": "2026-09-21T12:46:00Z",
+  "description": "机器学习模型对数据集规模的要求、过拟合风险评估方法、数据增强技术在材料科学中的应用",
+  "tags": ["dataset-size", "machine-learning", "overfitting", "data-augmentation", "materials-science", "small-data"],
+  "aliases": ["small dataset ML", "data requirement", "sample size"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "机器学习模型对数据集规模的要求、过拟合风险评估方法、数据增强技术",
+  "evidence_papers": [
+    {"title": "Predicting the thermodynamic stability of perovskite oxides using multiple machine learning techniques", "doi": "10.1016/j.matpr.2021.09.208", "year": 2022},
+    {"title": "On a Scalable Entropic Breaching of the Overfitting Barrier for Small Data Problems in Machine Learning", "doi": "10.1162/neco_a_01296", "year": 2020}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,22 @@
+{
+  "name": "porous-silicon-anode-material-structure-design",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "多孔硅锂离子电池负极结构设计中的材料结构参数与工况参数选择，包括孔隙率、孔径、颗粒尺寸、表面改性以及电池工况（电压窗口、温度、倍率）的确定方法。",
+  "tags": ["porous silicon", "anode", "lithium-ion battery", "material structure", "cell condition", "design parameters"],
+  "aliases": ["PSi anode", "silicon anode structure"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "材料结构文件（CIF/POSCAR）和电池工况参数的数据格式与获取方式知识，包括何时应向用户请求补充信息的决策规则",
+  "evidence_papers": [
+    {"title": "Electrochemically anodized porous silicon: Towards simple and affordable anode material for Li-ion batteries", "doi": "10.1038/s41598-017-08285-3", "year": 2017}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

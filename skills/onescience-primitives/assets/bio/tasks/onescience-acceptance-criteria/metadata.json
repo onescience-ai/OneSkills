@@ -1,0 +1,20 @@
+{
+  "name": "onescience-acceptance-criteria",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:56:00Z",
+  "updated_at": "2026-09-21T11:56:00Z",
+  "description": "OneScience任务验收指标阈值定义——completion_criteria中的macro_f1_score>0.7为硬性门槛，低于该阈值时training_completion应标记为REJECT；质量门禁判定规则",
+  "tags": ["acceptance criteria", "OneScience", "quality gate", "macro F1", "threshold"],
+  "aliases": ["quality threshold", "completion criteria", "rejection criteria"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience任务验收指标阈值定义",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,44 @@
+{
+  "name": "climate-remote-sensing-independent-validation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:21:00Z",
+  "updated_at": "2026-09-21T12:21:00Z",
+  "description": "遥感分类独立验证的标准要求，包括独立参考数据的来源（GlobeLand30、FROM-GLC、ESA WorldCover等）、同协议基线比较的具体执行方式、验收门限的设定原则",
+  "tags": [
+    "independent validation",
+    "reference data",
+    "GlobeLand30",
+    "FROM-GLC",
+    "ESA WorldCover",
+    "baseline comparison",
+    "acceptance threshold",
+    "edge:workflow:climate-landsat-preprocessing-pipeline",
+    "edge:workflow:climate-remote-sensing-preprocessing-workflow"
+  ],
+  "aliases": [
+    "accuracy assessment",
+    "validation protocol"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "遥感分类独立验证的标准要求，包括独立参考数据的来源（GlobeLand30、FROM-GLC、ESA WorldCover等）、同协议基线比较的具体执行方式、验收门限的设定原则",
+  "evidence_papers": [
+    {
+      "title": "Accuracy Assessment of GlobeLand30 2010 Land Cover over China Based on Geographic",
+      "doi": "10.3390/rs12020228",
+      "year": 2020
+    },
+    {
+      "title": "APPLICATION OF DEEP LEARNING IN GLOBELAND30-2010 PRODUCT REFINEMENT",
+      "doi": "10.3390/rs12020228",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,27 @@
+{
+  "name": "radar-qpe-input-data-source-constraints",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "雷达定量降水估计（QPE）任务中输入数据来源的约束规范与核验流程，包括真实雷达体扫数据（CAPPI/PPI/体积扫描）和雨量计校准数据的获取渠道、格式要求、质量标准及可追溯性验证。",
+  "tags": ["radar", "QPE", "precipitation", "CAPPI", "PPI", "volume-scan", "rain-gauge", "data-source", "quality-control"],
+  "aliases": ["radar data source verification", "QPE input validation", "雷达数据来源核验"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达QPE任务的输入数据来源约束规范，包括真实雷达体扫数据和雨量计校准数据的获取渠道、数据格式要求和质量标准",
+  "evidence_papers": [
+    {"title": "SUBANG RADAR CAPPI DATA PROCESSING AND Z-R OPTIMIZATION FOR QUANTITATIVE PRECIPITATION ESTIMATES", "doi": "10.11113/jurnalteknologi.v84.17918", "year": 2022},
+    {"title": "The Dutch real-time gauge-adjusted radar precipitation product", "doi": "10.5194/essd-17-4715-2025", "year": 2025},
+    {"title": "A Neural-Network Quality Control scheme for improved Quantitative Precipitation Estimation accuracy", "doi": "10.1175/jtech-d-20-0120.1", "year": 2021},
+    {"title": "Improvement in algorithms for quality control of weather radar data (RADVOL-QC system)", "doi": "10.5194/amt-15-261-2022", "year": 2022},
+    {"title": "Required Time Steps for Weather Radar Quantitative Precipitation Estimation", "doi": "10.1175/jhm-d-25-0151.1", "year": 2026},
+    {"title": "Quality-based compositing of weather radar derived precipitation", "doi": "10.1002/met.1812", "year": 2019}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

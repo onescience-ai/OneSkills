@@ -1,0 +1,20 @@
+{
+  "name": "file-integrity-verification",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:01:00Z",
+  "updated_at": "2026-09-21T12:01:00Z",
+  "description": "文件完整性校验规范，包括SHA-256哈希计算方法、哈希值在元数据中的记录格式、哈希验证的自动化脚本",
+  "tags": ["file-integrity", "SHA256", "checksum", "hash", "verification"],
+  "aliases": ["文件完整性校验", "哈希验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "文件完整性校验规范，包括SHA-256哈希计算方法、哈希值在元数据中的记录格式、哈希验证的自动化脚本",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

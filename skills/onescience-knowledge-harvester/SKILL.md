@@ -35,7 +35,7 @@ type: executor
 2. 生成的卡片必须符合 onescience-primitives 的格式规范（metadata.json + knowledge.md）。
 3. 卡片核心内容必须基于实际检索到的论文证据，不得编造；补充通道（开源文档/用户数据）证据必须有权威出处或用户背书，见 Step 3.4–3.6。
 4. 不修改 onescience-primitives 的 SKILL.md；对已有卡片只允许按 Step 4.5/Step 5 的三态入库（new/modify/merge），且必须通过单调性校验，不得删除内容或卡片目录。
-5. 生成的卡片写入 `skills/onescience-primitives/assets/<domain>/workflow-planning/<name>/`。
+5. 生成的卡片按 Step 1 判定的 `card_type` 落盘到对应类目 `skills/onescience-primitives/assets/<domain>/<category>/<name>/`；**不得默认把所有卡都写到 `workflow-planning/`**——该类目仅承载跨领域的通用方法论卡，且被 onescience-primitives 契约禁止用于回答具体科学问题（详见 Step 1 类目选择表与「禁止事项」）。
 
 ## 执行流程
 
@@ -47,6 +47,23 @@ type: executor
 - **domain**：领域（bio/matchem/climate/cfd/general），从描述中自动检测
 - **search_queries**：2~4 组英文检索词（含同义词、物种学名、基因/酶/通路名、方法名）
 - **card_identity**：卡片身份层级。内部先做一步抽象推理：这个缺口来自哪个具体场景 → 该场景属于哪一类通用问题（用一句自然语言描述，如"面向目标气体，选择或设计满足容量、选择性与再生能耗要求的捕集材料"）→ 该问题的解法能否迁移到同类其他体系。能迁移 → 卡片身份 = 通用问题类（生成通用类卡）；缺口只是单一实例事实、无可迁移方法层 → 不强行升维，卡片身份 = 实例级。**这条推理链只用于确定卡片身份，严禁以任何形式出现在卡片产物中**（见 Step 4 通用类卡撰写规范）。
+- **card_type + category**（硬门禁，决定落盘类目与 metadata.type）：按缺口性质从下表选择**唯一**类型，不得默认落到 `workflow-planning`。判定证据（缺口关键词/归因报告 issues 类型/所需产物形态）必须写入 execution_result.observation.type_rationale。
+
+**card_type 选择表（按优先级从上到下匹配，命中即停）**：
+
+| 缺口性质 | card_type | category（落盘目录） | 命中示例 |
+|---|---|---|---|
+| 具体领域的**任务级** know-how：某类计算/实验/分析任务的做法、参数、验收 | `task` | `<domain>/tasks/` | "CO2 在 MOF 上的 GCMC 吸附等温线计算"、"RNA-seq 差异表达分析" |
+| 具体领域的**场景级** know-how：一个完整科研场景的问题设定、判据、边界 | `scenario` | `<domain>/scenario/` | "面对含湿烟道气的 CO2 捕集材料筛选"、"MW 级电池热失控预警" |
+| 具体领域的**工作流级** know-how：多个 task 的编排序列、依赖、数据流 | `workflow` | `<domain>/workflow/` | "DFT→机器学习势→MD 的跨尺度工作流" |
+| 具体的**资源实体**：模型、数据集、工具、组件、数据库、服务、应用、可视化、契约、输出格式 | `model` / `dataset` / `tool` / `component` / `database` / `service` / `application` / `visualization` / `contract` / `output-format` | 对应同名目录 `<domain>/<category>/` | "MACE-MP-0 势"、"Materials Project API"、"pymatgen 结构分析工具" |
+| **跨领域**的通用方法论：科研规划、通用方法族、通用建模流程、通用筛选策略 | `workflow-planning` | `<domain>/workflow-planning/` | "面向任意目标气体的捕集材料筛选方法论"、"通用 CLI 故障分类" |
+
+**判定原则**：
+- 缺口若指向**具体领域实体**（材料/物种/反应/现象/仪器），一律落到 task/scenario/workflow/resource 层；workflow-planning **只能**承载"跨领域通用方法论"，且必须能通过"把领域实体换成其他领域后卡片仍然成立"的反例测试。
+- 归因报告 issues 里若已明确指向具体 step / 具体资源 / 具体任务失败，card_type 必须与该 issue 层级对齐，不得上提到 workflow-planning。
+- 判定不确定时**默认落 task**（不是 workflow-planning）——task 层缺口最常见，且能被 TC 五级链正常引用。
+- 一次知识补充可产多张卡，每张卡独立判 card_type；不得把整个 bundle 强行统一到同一 type。
 
 **领域检测规则**：
 - 含"基因/蛋白/生物/序列/细胞/组学/藏红花/saffron/gene/protein" → bio
@@ -163,18 +180,18 @@ python lit_fetch.py <outdir> --keys "<领域关键词逗号分隔>" <doi1> <doi2
 
 **证据编号**：论文 `[1]..[n]`、开源文档 `[D1]..`、用户自有 `[U1]..`，三套编号独立不混排。
 
-**卡片目录结构**：
+**卡片目录结构**（`<category>` 由 Step 1 判定的 card_type 决定，见选择表）：
 ```
-skills/onescience-primitives/assets/<domain>/workflow-planning/<card-name>/
+skills/onescience-primitives/assets/<domain>/<category>/<card-name>/
   metadata.json
   knowledge.md
 ```
 
-**metadata.json 格式**（固定 9 字段 + harvested 标记）：
+**metadata.json 格式**（固定 9 字段 + harvested 标记；`type` 必须等于 Step 1 判定的 card_type，`<category>` 必须与 type 对齐）：
 ```json
 {
   "name": "<card-name>",
-  "type": "workflow-planning",
+  "type": "<task|scenario|workflow|model|dataset|tool|component|database|service|application|visualization|contract|output-format|workflow-planning>",
   "domain": "<bio|matchem|climate|cfd|general>",
   "version": "1.0.0",
   "visibility": "public",
@@ -268,7 +285,7 @@ aliases 与后四个字段均为可选：aliases 是实例别名数组（如具�
 
 写入前必须先与已有卡片比对，决定入库方式，避免相似知识产生重复卡：
 
-1. **枚举**：Glob `skills/onescience-primitives/assets/<domain>/**/metadata.json`，只把 `type == "workflow-planning"` 的卡作为 modify/merge 候选（models/datasets/components 等其他类型不是本技能卡型，直接排除）；候选超过 20 张时先按"与候选卡 tags 交集 ≥2 或 description 命中缺口实体词"初筛，再逐张 Read 候选卡 metadata（description/tags）。
+1. **枚举**：Glob `skills/onescience-primitives/assets/<domain>/**/metadata.json`，只把 `type == <本次 card_type>` 的卡作为 modify/merge 候选（跨类型不得互相吞并：task 卡不 merge 进 workflow-planning，反之亦然；resource 类卡按同名 category 过滤）；候选超过 20 张时先按"与候选卡 tags 交集 ≥2 或 description 命中缺口实体词"初筛，再逐张 Read 候选卡 metadata（description/tags）。
 2. **判定**（对最佳候选卡依次回答三问）：
    - a. 同身份层级且同对象：两卡同为通用类卡且属同一问题类（同需求、同方法族），或同为实例级卡且同目标实体（同物种/材料/体系/研究对象）？一为类级、一为实例级 → 视为不同对象（类卡给方法论、实例卡给事实，职责不同不得互相吞并）。
    - b. 同任务目标（同 workflow 目的）？
@@ -287,9 +304,9 @@ aliases 与后四个字段均为可选：aliases 是实例别名数组（如具�
 按 Step 4.5 的决策执行：
 
 **new**：
-1. 创建目录：`skills/onescience-primitives/assets/<domain>/workflow-planning/<card-name>/`
+1. 创建目录：`skills/onescience-primitives/assets/<domain>/<category>/<card-name>/`（`<category>` 由 Step 1 card_type 决定，不得硬编码 workflow-planning）
 2. 写入 `metadata.json` 与 `knowledge.md`
-3. 验证文件存在且格式正确
+3. 验证文件存在且格式正确，且 `metadata.type` 与目录 `<category>` 一致
 
 **modify / merge**：
 1. 写前 Read 旧 `knowledge.md` 与旧 `metadata.json` 全文；新内容 = 旧内容全量保留 + 增量更新（modify）或末尾追加补充节（merge）。
@@ -406,6 +423,8 @@ execution_result:
 - 不得采集权威黑名单来源；不得把未脱敏的用户数据写入卡片。
 - 不得把生成期抽象推理链（"具体场景→上层需求→具体方案"）及其元术语写入卡片正文或 metadata。
 - 不得让通用类卡的 name/description 被实例分子/材料专名饱和；实例召回词只进 tags/aliases。
+- **不得把具体领域缺口（task/scenario/workflow/resource 层）默认落到 `workflow-planning/`**——该类目按 onescience-primitives SKILL.md L198/L206/L542 契约禁止用于回答具体科学问题，误落会导致卡片在召回阶段被 step 9b 判为 `knowledge_gap=true` 直接触发在线兜底，等于本次采集产出对具体问题零贡献。判定不确定时默认落 `task`。
+- 不得让 metadata.type 与落盘 category 不一致（如 type=task 却写到 workflow-planning/ 目录）；Step 5 写入前必须自查一致。
 
 ## 回归保护条款
 

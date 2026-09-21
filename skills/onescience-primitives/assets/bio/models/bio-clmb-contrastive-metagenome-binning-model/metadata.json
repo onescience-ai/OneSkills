@@ -1,0 +1,44 @@
+{
+  "name": "bio-clmb-contrastive-metagenome-binning-model",
+  "type": "model",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T13:17:00+08:00",
+  "updated_at": "2026-09-21T13:17:00+08:00",
+  "description": "CLMB（Contrastive Learning for Metagenomic Binning）模型的架构、输入输出接口、预训练权重加载和推理流程。CLMB使用对比多视图表示学习，接受k-mer分词后的序列特征和覆盖度特征，输出低维嵌入向量用于聚类分箱。适用于需要加载CLMB模型权重并执行推理的宏基因组分箱任务。",
+  "tags": ["CLMB", "metagenome", "binning", "contrastive learning", "pretrained model", "PyTorch", "representation learning", "CLMB model", "inference"],
+  "aliases": ["CLMB", "Contrastive Learning for Metagenomic Binning"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLMB模型的架构、输入输出接口、权重加载和推理流程",
+  "evidence_papers": [
+    {
+      "title": "Effective binning of metagenomic contigs using contrastive multi-view representation learning",
+      "doi": "10.1038/s41467-023-44290-z",
+      "year": 2024,
+      "venue": "Nature Communications",
+      "authors": ["Ziye Wang", "Ronghui You", "Haitao Han"],
+      "oa_url": "https://doi.org/10.1038/s41467-023-44290-z"
+    },
+    {
+      "title": "Benchmarking metagenomic binning tools on real datasets across sequencing platforms and binning modes",
+      "doi": "10.1038/s41467-025-57957-6",
+      "year": 2025,
+      "venue": "Nature Communications",
+      "authors": ["Haitao Han", "Ziye Wang", "Shanfeng Zhu"]
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "COMEBin GitHub Repository",
+      "url": "https://github.com/CAMI-challenge/COMEBin",
+      "publisher": "CAMI-challenge GitHub Organization",
+      "version": "latest",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,49 @@
+{
+  "name": "bio-metagenome-binning-evaluation-methodology",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T13:17:00+08:00",
+  "updated_at": "2026-09-21T13:17:00+08:00",
+  "description": "宏基因组分箱评估的标准方法，包括分箱F1-score的计算原理（基于真实物种标签或组装基因组参考）、跨物种泛化评估设计（按物种划分测试集）、未知类别处理规则，以及CAMI基准数据集的使用方法。适用于需要验证分箱性能真实性和泛化能力的评估任务。",
+  "tags": ["metagenome", "binning", "evaluation", "F1-score", "CAMI", "cross-species", "generalization", "benchmark", "CheckM2", "quality assessment"],
+  "aliases": ["binning evaluation", "metagenome benchmark", "CAMI challenge"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "宏基因组分箱评估的标准方法，包括分箱F1的计算原理、跨物种泛化评估的设计方法、未知类别处理规则",
+  "evidence_papers": [
+    {
+      "title": "Benchmarking metagenomic binning tools on real datasets across sequencing platforms and binning modes",
+      "doi": "10.1038/s41467-025-57957-6",
+      "year": 2025,
+      "venue": "Nature Communications",
+      "authors": ["Haitao Han", "Ziye Wang", "Shanfeng Zhu"]
+    },
+    {
+      "title": "Critical Assessment of Metagenome Interpretation: the second round of challenges",
+      "doi": "10.1038/s41592-022-01431-4",
+      "year": 2022,
+      "venue": "Nature Methods",
+      "authors": ["Fritz A", "Deng ZL", "Hunt M", "et al."]
+    },
+    {
+      "title": "CAMI Benchmarking Portal: online evaluation and ranking of metagenomic software",
+      "doi": "10.1093/nar/gkaf369",
+      "year": 2025,
+      "venue": "Nucleic Acids Research",
+      "authors": ["Fernando Meyer", "Gary Robertson", "Zhi-Luo Deng"]
+    },
+    {
+      "title": "Evaluating metagenomics tools for genome binning with real metagenomic datasets and CAMI datasets",
+      "doi": "10.1186/s12859-020-03667-3",
+      "year": 2020,
+      "venue": "BMC Bioinformatics",
+      "authors": ["Yi Yue", "Hao Huang", "Zhao Qi"]
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

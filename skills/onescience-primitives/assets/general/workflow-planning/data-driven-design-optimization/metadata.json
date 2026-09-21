@@ -1,0 +1,22 @@
+{
+  "name": "data-driven-design-optimization",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "基于数据驱动的设计优化方法，包括参数敏感性分析、多目标优化算法和实验设计（DOE）方法。",
+  "tags": ["design optimization", "data-driven", "sensitivity analysis", "multi-objective optimization", "DOE"],
+  "aliases": ["optimization methods", "design of experiments"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "基于数据驱动的设计优化方法，包括参数敏感性分析、多目标优化算法和实验设计（DOE）方法",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {"title": "Design and Analysis of Experiments", "url": "https://www.wiley.com/en-us/Design+and+Analysis+of+Experiments-p-9781119492443", "publisher": "Wiley", "version": "10th edition", "accessed_at": "2026-09-21"}
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,23 @@
+{
+  "name": "antibody-validation-workflow",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "抗体生成和预测结果的独立验证标准流程，包括验证数据集选择、验证指标计算、结果统计分析、验证报告规范，用于确保抗体生成任务结果的可靠性和可重复性",
+  "tags": ["antibody-validation", "quality-assurance", "reproducibility", "statistical-analysis", "benchmarking"],
+  "aliases": ["antibody validation", "structure validation workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CDR环与抗体骨架联合生成任务中独立验证的标准流程和方法",
+  "evidence_papers": [
+    {"title": "ABlooper: fast accurate antibody CDR loop structure prediction with accuracy estimation", "doi": "10.1093/bioinformatics/btac016", "year": 2022},
+    {"title": "SAbDab in the age of biotherapeutics: updates including SAbDab-nano, the nanobody structure tracker", "doi": "10.1093/nar/gkab1050", "year": 2021}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,26 @@
+{
+  "name": "radar-qpe-calibration-validation-separation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "雷达QPE任务中校准样本与独立验证样本的分离方法，包括时间划分、空间划分、传感器划分原则及交叉验证在雷达降水估计中的应用规范。",
+  "tags": ["radar", "QPE", "calibration", "validation", "cross-validation", "holdout", "sample-separation", "rain-gauge"],
+  "aliases": ["校准验证分离", "train-test split radar QPE", "独立验证样本划分"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象统计验证中训练集/验证集划分的标准方法，包括时间划分、空间划分和传感器划分的原则，以及交叉验证在雷达QPE中的应用规范",
+  "evidence_papers": [
+    {"title": "Merging radar and rain gauge data by using spatial-temporal local weighted linear regression kriging", "doi": "10.1016/J.JHYDROL.2021.126612", "year": 2021},
+    {"title": "Evaluation of the Radar QPE and Rain Gauge Data Merging Methods in Northern China", "doi": "10.3390/rs12030363", "year": 2020},
+    {"title": "Evaluating Geostatistical and Statistical Merging Methods for Radar-Gauge Rainfall Integration", "doi": "10.3390/rs17152622", "year": 2025},
+    {"title": "Calibration of the reflectivity-rainfall rate (Z-R) relationship using long-term radar reflectivity data", "doi": "10.1016/j.jhydrol.2020.125790", "year": 2021},
+    {"title": "Radar-Rain Gauge Merging for High-Spatiotemporal-Resolution Rainfall Estimation Using RBF", "doi": "10.3390/rs17030530", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

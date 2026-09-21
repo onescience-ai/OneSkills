@@ -1,0 +1,26 @@
+{
+  "name": "bio-dnabert2-model",
+  "type": "model",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:08:00Z",
+  "updated_at": "2026-09-21T12:08:00Z",
+  "description": "DNABERT-2 is a DNA language model that supports 131072 context length, pretrained on multi-species genomes with BPE tokenizer.",
+  "tags": ["DNA language model", "DNABERT-2", "transformer", "genomics", "benchmark"],
+  "aliases": ["DNABERT-2", "dnabert2"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DNABERT-2模型的下载地址、安装步骤、版本信息和许可证",
+  "evidence_papers": [
+    {
+      "title": "A comprehensive survey of genome language models in bioinformatics",
+      "doi": "10.1093/bib/bbaf724",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,24 @@
+{
+  "name": "single-cell-statistical-testing",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "单细胞RNA-seq统计检验方法，涵盖样本量规划、效应量解释、p值与实际意义的关系、小样本风险评估，适用于单细胞模型比较、差异表达分析和实验设计中的统计验证。",
+  "tags": ["single-cell", "statistics", "sample-size", "effect-size", "p-value", "power-analysis", "statistical-test"],
+  "aliases": ["statistical testing", "sample size planning", "effect size interpretation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "生物信息学统计检验知识，包括单细胞分析中统计检验的样本量要求、效应量解释标准、p值与实际意义的关系、以及模拟数据与真实数据结论差异的风险",
+  "evidence_papers": [
+    {"title": "Simulation, power evaluation and sample size recommendation for single-cell RNA-seq", "doi": "10.1093/bioinformatics/btaa607", "year": 2020},
+    {"title": "Effects of Sample Size on Plant Single-Cell RNA Profiling", "doi": "10.3390/cimb43030119", "year": 2021},
+    {"title": "Assessing scale and predictive diversity in models for single-cell transcriptomics based on Geneformer", "doi": "10.1371/journal.pcbi.1013701", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -14,6 +14,8 @@ type: executor
 
 本技能不是自动训练、自动发布或自动改写生产技能的入口。它只生成候选贡献、验证贡献格式，并在用户明确授权时提交 Gitee Issue。
 
+> **运行环境（跨平台）**：本文档示例命令统一写作 `python`；Windows 上通常可直接用 `python`，Linux/macOS 上若无 `python` 命令请改用 `python3`（如 `python3 skills/onescience-knowledge-capture/scripts/submit_gitee_issue.py ...`）。本技能的三个脚本（`validate_contribution.py`、`render_issue_payload.py`、`submit_gitee_issue.py`）均为纯标准库实现、无第三方依赖、无平台专有逻辑，在 Windows 与 Linux 上行为一致。其中 `submit_gitee_issue.py` 内部已按平台自动选择 gitee-cli 调用方式（Windows 绕过会把多行正文截断的 `.cmd` shim、直接调 node；Linux 走标准 `gitee` 命令），调用方无需关心差异。
+
 ## 触发场景
 
 使用本技能处理以下请求：
@@ -90,7 +92,7 @@ step_handoff:
       kind: knowledge | integration | both
       target_directory: <可选>
       issue_mode: none | payload_only | submit
-      repository: <默认 onescience-ai/oneskills-dev>
+      repository: <默认 onescience-ai/oneskills>
       labels: <可选标签列表>
       include_raw_transcript: false
       redact_sensitive: true
@@ -163,9 +165,14 @@ step_handoff:
 
 当 `issue_mode` 为 `payload_only` 或 `submit` 时，先生成 `issue_payload.json`：
 
-- `title`：`[Knowledge Contribution][<domain>] <短标题>`。
-- `body`：贡献摘要、目标路径、复用价值、证据状态、集成建议、验证状态和隐私说明。
-- `labels`：至少包含 `knowledge-contribution`；再追加 `domain:<domain>`、`kind:<kind>` 和调用方提供的标签。
+- `title`：按内容选前缀——纯知识用 `[Knowledge Contribution][<domain>] <短标题>`；记录缺口/失败用 `[Knowledge Feedback][<domain>] <短标题>`。提交到 `onescience-ai/oneskills` 时标题尾追加 `（Issue-only）`。
+- `body`：**Issue-only 完整文档格式**（与 `onescience-ai/oneskills` 既有 Issue 保持一致），正文必须是脱敏后的**完整贡献文档**而非摘要。结构依次为：
+  1. H1：`OneScience Knowledge Capture 完整反馈`；
+  2. 引用块：`> 目标仓库: <repo>。本 Issue 采用 Issue-only 通道，正文包含完整脱敏贡献文档和机器可读元数据；不代表内容已进入生产 skill。`；
+  3. 元数据块（加粗 `key: value` 行）：`schema_version`、`contribution_id`、`title`、`domain`、`kind`、`status`、`created_at`；
+  4. H2：贡献标题；
+  5. 依次内嵌 `contribution.md` 的全部 11 个章节（`Contribution Metadata` … `Privacy And Limitations`），保留表格与 `E1/E2` 证据编号。
+- `labels`：至少包含 `issue-only`（标记 Issue-only 通道）；记录缺口/失败追加 `feedback`，因缺少资源/原语所致再追加 `resource-gap`；纯知识追加 `knowledge-contribution`；可再追加 `domain:<domain>`、`kind:<kind>`。目标仓不存在的标签会被 Gitee 静默丢弃，属正常现象。此外，若提交账号对目标仓无 push 权限（非组织成员），Gitee 会在建 Issue 时静默丢弃**全部** labels（仍返回 HTTP 201、正文完整，只是标签为空）；同理该账号也无法用 CLI 关闭 Issue。此时标签需由有权限的成员补加，正文不受影响。
 - `milestone`、assignee 等字段只有调用方明确提供时才写入。
 - Issue body 必须引用仓库内相对贡献路径，不写本机绝对路径、密钥、用户目录或未经授权的远程 URL。
 

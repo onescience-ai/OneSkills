@@ -1,6 +1,6 @@
 ---
 name: onescience-orchestrator
-description: OneScience / OneSkills 的通用任务编排主控，也是体系默认执行入口。它负责根据统一资源契约的资源摘要识别用户意图，召回并融合 type=expert 规划技能的 proposal，维护 Task State，绑定资源，并按执行技能能力边界拆分和调度 type=executor 的 coder/paper-repro/runtime/installer/evaluator 等执行技能，把复杂目标组织成可追踪、可回退、可闭环的任务流。用户提示词中出现“使用onescience”“使用onescience技能”“使用oneskills”“使用oneskills技能”等表达时默认先进入本技能；仅当用户已明确指定要直接使用的具体技能（如“使用onescience-runtime技能执行运行”）时，才可跳过本技能并直接调用目标技能。它不承载具体领域专家知识；新增任务类型应通过新增资源包、专家规划技能或执行技能扩展。注意：本技能负责编排调度但不直接执行任务，规划和执行在同一 skill 内按循环推进，完成 observation 后可继续下一轮。
+description: "科研任务默认入口（论文复现/模型训练/CFD仿真/生信/材料计算/数据分析/运行验证）。当用户提出AI4S科研计算任务或使用onescience/oneskills时调用。负责意图识别、资源召回、专家规划融合、Task State维护与executor调度。不承载具体领域知识，不处理通用编程或简单问答。用户提示词中出现“使用onescience”“使用oneskills”等表达时默认先进入本技能；仅当用户已明确指定要直接使用的具体技能（如“使用onescience-runtime技能执行运行”）时，才可跳过本技能并直接调用目标技能。"
 type: orchestrator
 ---
 

@@ -1,0 +1,34 @@
+{
+  "name": "bio-uberon-tissue-mapping-prediction",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "UBERON 本体术语映射与组织特异变异预测任务：将组织名称映射为 UBERON 本体标识符，通过 AlphaGenome predict_variant 接口的 ontology_terms 参数执行组织条件的调控信号预测，并执行反向互补检查验证预测方向一致性。适用于任何需要以标准本体项指定组织特异性进行基因组轨迹预测的场景。",
+  "tags": ["UBERON", "ontology", "tissue-specific", "enhancer", "regulatory variant", "AlphaGenome", "reverse complement", "liver", "brain", "mouse", "organism"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "UBERON ontology tissue-specific enhancer regulatory prediction, reverse complement consistency check",
+  "evidence_papers": [
+    {
+      "title": "Advancing regulatory variant effect prediction with AlphaGenome",
+      "doi": "10.1038/s41586-025-10014-0",
+      "year": 2026,
+      "venue": "Nature"
+    },
+    {
+      "title": "Tissue-specific atlas of trans-models for gene regulation elucidates complex regulation patterns",
+      "doi": "10.1186/s12864-024-10317-y",
+      "year": 2024,
+      "venue": "BMC Genomics"
+    },
+    {
+      "title": "Enhancer DNA methylation: implications for gene regulation",
+      "doi": "10.1042/ebc20190030",
+      "year": 2019,
+      "venue": "Essays in Biochemistry"
+    }
+  ]
+}

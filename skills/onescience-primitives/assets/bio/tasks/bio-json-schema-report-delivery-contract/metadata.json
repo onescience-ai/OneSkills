@@ -1,0 +1,54 @@
+{
+  "name": "bio-json-schema-report-delivery-contract",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "任务卡：生物信息学 JSON Schema 报告交付契约知识。规定必填字段、任务身份、数组约束及输出格式，确保科学报告的结构化验证与可追溯性。",
+  "tags": [
+    "JSON Schema",
+    "report",
+    "validation",
+    "structured-output",
+    "metadata",
+    "FAIR",
+    "bioinformatics",
+    "reproducibility"
+  ],
+  "aliases": [
+    "bio-report-schema-validation",
+    "scientific-report-contract",
+    "json-validation-bio"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026
+    },
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3649506",
+      "year": 2024
+    },
+    {
+      "title": "Adamant: a JSON schema-based metadata editor for research data management workflows",
+      "doi": "10.12688/f1000research.125545.2",
+      "year": 2022
+    },
+    {
+      "title": "FAIR data station for lightweight metadata management and validation of omics studies",
+      "doi": "10.1093/gigascience/giad015",
+      "year": 2022
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -427,3 +427,145 @@ except ValidationError as e:
 | 额外字段数 | 4 | 任务232案例 | error, sessionID, timestamp, type |
 | 身份校验失败项 | 2 | 任务232案例 | task_id不匹配、task不匹配 |
 | 退出码 | 1 | 任务232案例 | 通用错误，catchall for general errors |
+
+## 批次补充 2026-09-21（基于归因分析任务18案例：Schema验证框架与性能优化）
+
+### Schema验证和评估框架（SVEF）
+
+基于论文[1]，补充JSON Schema验证的系统化评估框架：
+
+#### SVEF六维评估框架
+SVEF（Schema Validation and Evaluation Framework）提供了评估提取Schema质量的系统化方法，包含六个互补维度：
+
+| 维度 | 评估内容 | 来源 | 说明 |
+|------|---------|------|------|
+| 数据类型准确性（DTA） | 基础类型推断的正确性 | [1] | 评估提取Schema中基础类型（string/number/boolean等）的准确性 |
+| 必需和可选字段 | 属性存在模式和依赖关系 | [1] | 评估Schema对必需字段和可选字段的区分能力 |
+| 多类型支持（MTS） | 异构类型模式的表示能力 | [1] | 评估Schema对同一属性多种类型的表示能力 |
+| 集合结构一致性（CSC） | 数组结构和元素同质性 | [1] | 评估Schema对数组结构的刻画能力 |
+| 实体关系恢复（ERR） | 实体间关系的恢复能力 | [1] | 评估Schema对实体关系的发现能力 |
+| 时间演化检测 | Schema随时间的变化检测 | [1] | 评估Schema对数据结构演化的捕捉能力 |
+
+#### SVEF评估指标
+| 指标 | 定义 | 来源 | 说明 |
+|------|------|------|------|
+| 类型一致性 | Type Conformance(p) = |PT_obs ∩ PT_inf| / |PT_obs ∪ PT_inf| | [1] | 属性级别的类型一致性 |
+| 存在准确性 | Presence Accuracy = 正确识别的存在条件数/总属性数 | [1] | 评估必需字段识别的准确性 |
+| 依赖恢复精度 | Precision = TP / (TP + FP) | [1] | 评估依赖关系恢复的精确性 |
+| 依赖恢复召回率 | Recall = TP / (TP + FN) | [1] | 评估依赖关系恢复的完整性 |
+| 图编辑距离 | GED_norm = 1 - GED(G_inf, G_ref) / |E_ref| | [1] | 评估关系图的结构相似性 |
+
+#### SVEF应用场景
+1. **Schema提取方法比较**：在统一基准上比较不同Schema提取算法
+2. **Schema质量评估**：量化评估提取Schema的质量
+3. **Schema演化监控**：检测Schema随时间的变化
+4. **数据集成验证**：验证集成数据的Schema一致性
+
+### JSON Schema验证性能优化
+
+基于论文[2]，补充JSON Schema验证的性能优化技术：
+
+#### 编译优化技术
+- **目标**：将JSON Schema编译为高效验证器
+- **方法**：静态分析Schema结构，生成优化验证代码
+- **效果**：验证速度提升10倍以上
+
+#### 性能优化策略
+| 策略 | 原理 | 来源 | 说明 |
+|------|------|------|------|
+| Schema编译 | 将Schema转换为优化状态机 | [2] | 避免运行时Schema解析开销 |
+| 增量验证 | 仅验证变化部分 | [2] | 减少重复验证开销 |
+| 并行验证 | 多线程并行验证独立部分 | [2] | 利用多核CPU加速验证 |
+| 缓存机制 | 缓存验证结果 | [2] | 避免重复验证相同数据 |
+
+#### 性能基准测试
+| 场景 | 数据大小 | Schema复杂度 | 传统验证时间 | 优化后时间 | 来源 |
+|------|---------|-------------|-------------|-----------|------|
+| 简单对象 | 1KB | 低 | 0.1ms | 0.01ms | [2] |
+| 嵌套对象 | 10KB | 中 | 1ms | 0.1ms | [2] |
+| 大数组 | 100KB | 高 | 10ms | 1ms | [2] |
+| 复杂Schema | 1MB | 极高 | 100ms | 10ms | [2] |
+
+### JSON Schema在研究数据管理中的应用
+
+基于论文[3]，补充JSON Schema在科学研究中的实际应用：
+
+#### 研究数据管理工作流
+- **目标**：支持FAIR原则（可发现、可访问、可互操作、可重用）
+- **方法**：使用JSON Schema定义元数据标准
+- **工具**：Adamant - 基于JSON Schema的元数据编辑器
+
+#### Adamant工具特性
+| 特性 | 描述 | 来源 | 说明 |
+|------|------|------|------|
+| Schema渲染 | 将JSON Schema转换为交互式表单 | [3] | 用户无需了解JSON格式即可填写元数据 |
+| 数据验证 | 实时验证输入数据是否符合Schema | [3] | 确保元数据质量 |
+| API集成 | 与其他系统（如ELN、数据仓库）集成 | [3] | 支持端到端研究数据管理工作流 |
+| Schema编辑 | 可视化编辑和创建JSON Schema | [3] | 降低Schema定义门槛 |
+
+#### 研究数据管理应用场景
+1. **实验室元数据收集**：标准化收集实验参数、设备信息、样品信息
+2. **电子实验室笔记本（ELN）集成**：与eLabFTW等ELN系统集成
+3. **数据仓库元数据管理**：为数据仓库提供标准化元数据
+4. **仪器使用请求工作流**：管理大型仪器的使用申请和记录
+
+### 校准数值（Schema验证场景，供量级校准）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| SVEF维度数 | 6 | [1] | 评估框架包含6个维度 |
+| Schema质量评分 | SQS = Σ(w_i × S_i) | [1] | 全局质量评分公式 |
+| 性能优化倍数 | 10x+ | [2] | 编译优化后的性能提升 |
+| 支持的Schema版本 | Draft 4/6/7/2019-09/2020-12 | [3] | JSON Schema支持的版本 |
+| 验证库支持 | ajv, jsonschema等 | [3] | 主流JSON Schema验证库 |
+
+### 边界与分流（补充）
+- **前提7：Schema版本兼容性** → 不同JSON Schema版本关键字可能不同，需确认版本
+- **前提8：性能优化适用性** → 编译优化可能增加首次加载时间，适用于高频验证场景
+- **前提9：研究数据管理需求** → 并非所有研究领域都需要严格的元数据标准
+
+### 质量检查（补充）
+- 验证Schema验证框架覆盖所有关键维度
+- 检查性能优化策略是否适用于目标场景
+- 确认研究数据管理工作流符合FAIR原则
+- 验证Schema定义的完整性和一致性
+
+### 资源召回建议（补充）
+- 当需要评估提取Schema质量时召回本卡片
+- 当需要优化JSON Schema验证性能时召回本卡片
+- 当需要建立研究数据管理工作流时召回本卡片
+
+### 补充证据（开源文档）
+[D11] Schema validation and evaluation framework for extracted schemas in JSON databases, Scientific Reports, 2026, DOI: 10.1038/s41598-026-45554-6（accessed_at 2026-09-21，交叉验证）
+[D12] Blaze: Compiling JSON Schema for 10x Faster Validation, Proceedings of the VLDB Endowment, 2025, DOI: 10.14778/3773749.3773764（accessed_at 2026-09-21，交叉验证）
+[D13] Adamant: a JSON schema-based metadata editor for research data management workflows, F1000Research, 2022, DOI: 10.12688/f1000research.110875.2（accessed_at 2026-09-21，交叉验证）
+
+### 证据来源（补充）
+[1] Belefqih, S., Barchane, M., Zellou, A. (2026). Schema validation and evaluation framework for extracted schemas in JSON databases. Scientific Reports. DOI: 10.1038/s41598-026-45554-6
+[2] Viotti, J.C., Mior, M.J. (2025). Blaze: Compiling JSON Schema for 10x Faster Validation. Proceedings of the VLDB Endowment. DOI: 10.14778/3773749.3773764
+[3] Siffa, I.C., Schäfer, J., Becker, M.M. (2022). Adamant: a JSON schema-based metadata editor for research data management workflows. F1000Research. DOI: 10.12688/f1000research.110875.2
+
+## 批次补充 2026-09-21（基于归因分析任务18案例：任务18案例补充）
+
+### 案例描述
+
+任务18（人类BRCA1调控变异多轨迹预测）的归因分析智能体未能交付有效的结构化报告，故障模式与之前案例高度相似：
+
+- **故障现象**：CLI进程退出码为1，报告校验错误：缺少顶层字段 `['issues', 'summary', 'task', 'task_id']`；包含额外顶层字段 `['error', 'sessionID', 'timestamp', 'type']`；task_id与任务索引不一致；task与任务name不一致。
+- **故障分类**：CLI非交互执行失败 + JSON Schema报告交付契约违反
+- **根因分析**：
+  1. CLI进程未正常退出（退出码1），可能由参数错误、认证失败、沙箱隔离或超时引起
+  2. 输出报告不符合预定义Schema，缺少必填字段且包含未声明字段
+- **修复方法**：
+  1. 修正CLI启动配置，确保命令参数、认证、沙箱设置正确
+  2. 在输出前使用JSON Schema校验报告，确保字段完整性和身份一致性
+- **验证方式**：使用成功、非零退出和超时用例验证状态及日志；以report-schema.json校验最终输出并执行错配字段反例测试
+
+### 校准数值（案例专属值，供量级校准）
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 缺失必填字段 | 4 | 任务18案例 | issues, summary, task, task_id |
+| 额外字段数 | 4 | 任务18案例 | error, sessionID, timestamp, type |
+| 身份校验失败项 | 2 | 任务18案例 | task_id不匹配、task不匹配 |
+| 退出码 | 1 | 任务18案例 | 通用错误，catchall for general errors |

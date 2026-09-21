@@ -1,0 +1,20 @@
+{
+  "name": "vasp-input-generation-configuration",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:16:00Z",
+  "updated_at": "2026-09-21T12:16:00Z",
+  "description": "VASP在OneScience环境中的配置要求、调用方式和输入文件生成规则，包括INCAR参数设置、POSCAR构建、KPOINTS网格选择和执行命令格式。",
+  "tags": ["VASP", "DFT", "input-generation", "INCAR", "POSCAR", "KPOINTS"],
+  "aliases": ["VASP input files", "VASP configuration"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "VASP configuration requirements, call method, and input file generation rules",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

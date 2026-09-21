@@ -1,0 +1,28 @@
+{
+  "name": "admet-smiles-property-prediction-pipeline",
+  "type": "workflow",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "SMILES基础模型驱动的ADMET性质预测完整工作流，涵盖从分子输入、模型推理、候选生成到性质评估与筛选的端到端管线，适用于药物发现中吸收(ADME)与毒性(T)性质的多任务预测场景",
+  "tags": ["ADMET", "SMILES", "molecular-property-prediction", "drug-discovery", "AUROC", "QED", "SA", "deep-learning", "workflow"],
+  "aliases": ["ADMET prediction", "drug property prediction", "SMILES-based ADMET", "molecular ADMET workflow"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "SMILES基础模型驱动的ADMET性质预测的完整工作流契约，包括s01-s04各步骤的输入输出格式、AUROC计算方法、QED/SA评分接口和化学合法性校验规则",
+  "evidence_papers": [
+    {"title": "A compact review of molecular property prediction with graph neural networks", "doi": "10.1016/j.ddtec.2020.11.009", "year": 2020},
+    {"title": "Deep learning methods for molecular representation and property prediction", "doi": "10.1016/j.drudis.2025.104487", "year": 2022},
+    {"title": "MultiGran-SMILES: multi-granularity SMILES learning for molecular property prediction", "doi": "10.1093/bioinformatics/btac550", "year": 2022},
+    {"title": "SimSon: simple contrastive learning of SMILES for molecular property prediction", "doi": "10.1093/bioinformatics/btaf275", "year": 2025},
+    {"title": "An End-User Audit of Reproducibility, Data Leakage, and Overfitting of the Top-Ranked ADMET Prediction", "doi": "10.1021/acs.jcim.6c00819", "year": 2026},
+    {"title": "Bridging data and drug development: Machine learning approaches for next-generation ADMET prediction", "doi": "10.1016/j.drudis.2025.104487", "year": 2025},
+    {"title": "DCPM-ADMET: fusion of dual-component pre-trained model and molecular fingerprints to enhance drug ADMET properties prediction", "doi": "10.1186/s13321-026-01244-z", "year": 2026},
+    {"title": "ADMET-XSpec: A Tool for Systematic Cross-Species Data Integration in ADMET Prediction", "doi": "10.1021/acs.chemrestox.5c00562", "year": 2026}
+  ],
+  "evidence_docs": [
+    {"title": "RDKit QED Module Documentation", "url": "https://www.rdkit.org/docs/source/rdkit.Chem.QED.html", "publisher": "RDKit", "version": "2026.03.6", "accessed_at": "2026-09-21"}
+  ]
+}

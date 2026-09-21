@@ -1,0 +1,53 @@
+{
+  "name": "tem1-dms-data-source",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:55:00Z",
+  "updated_at": "2026-09-21T12:55:00Z",
+  "description": "TEM-1 beta-lactamase (BLAT_ECOLX) deep mutational scanning dataset source and format specification. Provides the Ranganathan 2015 DMS dataset download paths, CSV column schema, and data lineage for variant effect prediction benchmarks.",
+  "tags": ["TEM-1", "beta-lactamase", "BLAT_ECOLX", "deep mutational scanning", "DMS", "Ranganathan", "variant effect", "dataset", "bio"],
+  "aliases": ["BLAT_ECOLX_Ranganathan2015", "TEM-1 DMS", "Ranganathan 2015 DMS"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "TEM-1 beta-lactamase deep mutational scanning data source and download method",
+  "evidence_papers": [
+    {
+      "title": "Evolvability as a Function of Purifying Selection in TEM-1 β-Lactamase",
+      "authors": ["Stiffler, M.A.", "Hekstra, D.R.", "Ranganathan, R."],
+      "year": 2015,
+      "doi": "10.1016/j.cell.2015.09.049"
+    },
+    {
+      "title": "Software for the analysis and visualization of deep mutational scanning data",
+      "authors": ["Fowler, D.M.", "Dobbs, A.J.", "Vogl, A.W.", "Bell, R.", "Bloom, J."],
+      "year": 2015,
+      "doi": "10.1186/s12859-015-0494-4"
+    },
+    {
+      "title": "popDMS infers mutation effects from deep mutational scanning data",
+      "authors": ["Hong, Z.", "Shimagaki, K.S.", "Barton, J.P."],
+      "year": 2024,
+      "doi": "10.1093/bioinformatics/btae499"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "Ranganathan Lab DMS Data Repository",
+      "url": "https://github.com/RanganathanLab/DMS-data",
+      "publisher": "Ranganathan Lab",
+      "version": "latest",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "MaveDB - Multiplex Assays of Variant Effect Database",
+      "url": "https://www.mavedb.org/",
+      "publisher": "MaveDB Consortium",
+      "version": "latest",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

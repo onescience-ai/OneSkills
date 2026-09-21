@@ -1,0 +1,20 @@
+{
+  "name": "bio-openfold-gpu-computational-requirements",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:00:00Z",
+  "updated_at": "2026-09-21T12:00:00Z",
+  "description": "OpenFold模型的计算资源需求和GPU依赖关系：OpenFold是AlphaFold2的可训练实现，通常需要GPU加速进行训练和推理，CPU模式性能极低。涵盖GPU显存需求、推荐硬件配置、CUDA版本要求以及无GPU环境的降级策略。",
+  "tags": ["OpenFold", "GPU", "computational requirements", "CUDA", "hardware", "AlphaFold2", "training", "inference", "memory"],
+  "aliases": ["OpenFold GPU需求", "OpenFold硬件配置", "AlphaFold2 GPU"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OpenFold的计算资源需求和GPU依赖关系",
+  "evidence_papers": [
+    {"title": "OpenFold: retraining AlphaFold2 yields new insights into its learning mechanisms and capacity for generalization", "doi": "10.1038/s41592-024-02272-z", "year": 2024}
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

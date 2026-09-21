@@ -1,0 +1,48 @@
+{
+  "name": "onescience-skill-invocation-specification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "面向任意 OneScience 科研计算任务的技能调用规范，涵盖 executor 技能的输入输出契约、orchestrator 调度流程、技能选择依据和错误恢复机制，确保任务按规范调用对应技能而非模拟执行。",
+  "tags": [
+    "onescience",
+    "skill-invocation",
+    "orchestrator",
+    "executor",
+    "workflow-specification",
+    "input-output-contract"
+  ],
+  "aliases": ["onescience技能调用规范", "skill invocation spec"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "onescience技能的调用规范、输入输出契约、技能选择依据",
+  "evidence_papers": [
+    {
+      "title": "Operationalizing Intelligence: A Unified Approach to MLOps and Scalable AI Workflows in Hybrid Cloud Environments",
+      "doi": "10.18535/ijecs.v11i12.4743",
+      "year": 2022
+    },
+    {
+      "title": "Reproducibility in machine-learning-based research: Overview, barriers, and drivers",
+      "doi": "10.1002/aaai.70002",
+      "year": 2025
+    },
+    {
+      "title": "Agentic SWMM: Auditable and Reproducible Stormwater Modelling Workflow with Agent Skills and Model Context Protocol",
+      "doi": "10.3390/aieng1010005",
+      "year": 2026
+    },
+    {
+      "title": "AFCL: An Abstract Function Choreography Language for serverless workflow specification",
+      "doi": "10.1016/j.future.2020.08.012",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

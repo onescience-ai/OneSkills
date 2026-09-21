@@ -1,0 +1,23 @@
+{
+  "name": "perovskite-stability-data-sources",
+  "type": "database",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:43:00Z",
+  "updated_at": "2026-09-21T12:43:00Z",
+  "description": "无铅杂化钙钛矿稳定性数据的公开来源，包括Materials Project、OQMD等数据库的API访问方法、数据格式和获取流程",
+  "tags": ["perovskite", "lead-free", "stability", "database", "materials-project", "oqmd", "data-source"],
+  "aliases": ["lead-free perovskite stability database", "halide perovskite data source", "perovskite screening dataset"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "无铅杂化钙钛矿稳定性数据的公开来源、数据格式、数据质量和获取方法",
+  "evidence_papers": [
+    {"title": "Screening for sustainable and lead-free perovskite halide absorbers – A database collecting insight from electronic-structure calculations", "doi": "10.1016/j.matdes.2023.112324", "year": 2023},
+    {"title": "Machine learning stability and band gap of lead-free halide double perovskite materials for perovskite solar cells", "doi": "10.1016/j.solener.2021.09.030", "year": 2021}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

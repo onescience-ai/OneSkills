@@ -1,0 +1,33 @@
+{
+  "name": "climate-pv-power-prediction-workflow",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:54:00Z",
+  "updated_at": "2026-09-21T12:54:00Z",
+  "description": "面向光伏功率预测任务，提供标准工作流步骤（s01-s06）的详细定义、每个步骤的输入输出契约、依赖关系以及验证要求。",
+  "tags": [
+    "photovoltaic",
+    "power prediction",
+    "workflow",
+    "standard steps",
+    "s01-s06",
+    "edge:task:climate-ml-model-selection-evaluation",
+    "edge:task:climate-pv-power-data-sources",
+    "edge:task:climate-pv-power-prediction-domain-knowledge",
+    "edge:task:climate-pv-power-validation-protocol"
+  ],
+  "aliases": [
+    "PV power forecast workflow",
+    "solar power prediction pipeline"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "光伏功率预测的标准工作流步骤（s01-s06）的详细定义、每个步骤的输入输出契约、依赖关系以及验证要求",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

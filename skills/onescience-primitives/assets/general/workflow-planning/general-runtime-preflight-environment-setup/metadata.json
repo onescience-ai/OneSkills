@@ -1,0 +1,38 @@
+{
+  "name": "general-runtime-preflight-environment-setup",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "面向 GPU 加速深度学习推理任务的运行前环境预检工作流：在执行阶段之前完成 discover→preflight→execute→diagnose 闭环中的 preflight 验证，包括硬件可用性检测（GPU/CPU）、软件依赖检查（JAX、CUDA）、模型 checkpoint 存在性验证和运行站点配置发现。适用于任何需要前置环境就绪验证的计算密集型科研任务。",
+  "tags": ["preflight", "environment validation", "GPU", "JAX", "CUDA", "checkpoint", "runtime setup", "SLURM", "compute node", "workflow", "deep learning", "inference"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "onescience runtime preflight environment setup, GPU availability check, JAX CUDA checkpoint validation",
+  "evidence_papers": [
+    {
+      "title": "Advancing regulatory variant effect prediction with AlphaGenome",
+      "doi": "10.1038/s41586-025-10014-0",
+      "year": 2026,
+      "venue": "Nature"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "OneScience Runtime SKILL.md",
+      "url": "internal://skills/onescience-runtime/SKILL.md",
+      "publisher": "OneScience",
+      "version": "current",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "OneScience Installer SKILL.md",
+      "url": "internal://skills/onescience-installer/SKILL.md",
+      "publisher": "OneScience",
+      "version": "current",
+      "accessed_at": "2026-09-21"
+    }
+  ]
+}

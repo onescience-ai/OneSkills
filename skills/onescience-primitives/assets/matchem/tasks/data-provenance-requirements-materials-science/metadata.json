@@ -1,0 +1,32 @@
+{
+  "name": "data-provenance-requirements-materials-science",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T05:00:00Z",
+  "updated_at": "2026-09-21T05:00:00Z",
+  "description": "材料科学任务中数据可追溯性要求：所有材料结构数据必须来自可追溯的权威来源（Materials Project MP-xxx、ICSD编号、文献DOI），性能数据必须标注具体文献来源和测量条件。假设数据或典型值只能用于方法验证，不能作为正式结论依据。",
+  "tags": [
+    "data-provenance",
+    "materials-science",
+    "traceability",
+    "Materials-Project",
+    "ICSD",
+    "citation-standards",
+    "edge:workflow:unsupervised-discovery-solid-state-lithium-ion-conductors"
+  ],
+  "aliases": [
+    "数据溯源",
+    "数据来源验证",
+    "文献引用标准"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "材料科学任务中数据可追溯性要求——所有材料结构数据必须来自可追溯的权威来源",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

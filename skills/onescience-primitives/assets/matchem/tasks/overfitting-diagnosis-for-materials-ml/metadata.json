@@ -1,0 +1,23 @@
+{
+  "name": "overfitting-diagnosis-for-materials-ml",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:47:00Z",
+  "updated_at": "2026-09-21T12:47:00Z",
+  "description": "过拟合诊断方法、正则化技术、交叉验证在材料机器学习中的应用",
+  "tags": ["overfitting", "diagnosis", "regularization", "cross-validation", "materials-ml", "model-selection"],
+  "aliases": ["overfitting detection", "model validation", "generalization"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "过拟合诊断方法、正则化技术、交叉验证",
+  "evidence_papers": [
+    {"title": "Machine learning analysis on stability of perovskite solar cells", "doi": "10.1016/j.solmat.2019.110284", "year": 2020},
+    {"title": "Associations of Normalization and Regularization with Machine Learning Overfitting in Cross-dataset Classification of Deaths Using Transcriptomic and Clinical Data: A Secondary Analysis of Publicly Available Databases", "doi": "10.14218/jctp.2025.00051", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

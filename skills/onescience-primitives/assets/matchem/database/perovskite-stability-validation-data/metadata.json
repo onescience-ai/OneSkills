@@ -1,0 +1,23 @@
+{
+  "name": "perovskite-stability-validation-data",
+  "type": "database",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:45:00Z",
+  "updated_at": "2026-09-21T12:45:00Z",
+  "description": "无铅杂化钙钛矿稳定性的独立验证数据来源，包括实验文献、DFT计算结果、验证标准和误差容忍度",
+  "tags": ["perovskite", "validation", "experimental-data", "dft", "stability", "independent-data"],
+  "aliases": ["perovskite experimental stability", "DFT perovskite calculation", "validation dataset"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "无铅杂化钙钛矿稳定性的独立验证数据来源、验证标准和误差容忍度",
+  "evidence_papers": [
+    {"title": "Machine learning stability and band gap of lead-free halide double perovskite materials for perovskite solar cells", "doi": "10.1016/j.solener.2021.09.030", "year": 2021},
+    {"title": "Efficiency and Stability Analysis of 2D/3D Perovskite Solar Cells Using Machine Learning", "doi": "10.1002/ente.202100948", "year": 2022}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,26 @@
+{
+  "name": "climate-remote-sensing-output-format-spec",
+  "type": "output-format",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:20:00Z",
+  "updated_at": "2026-09-21T12:20:00Z",
+  "description": "遥感制图产品的标准输出格式规范（GeoTIFF/COG）、空间元数据完整性要求（CRS、变换矩阵、nodata、pyramid）、质量标志与不确定性信息的标准编码方式",
+  "tags": ["GeoTIFF", "COG", "spatial metadata", "CRS", "nodata", "uncertainty", "output format"],
+  "aliases": ["raster product format", "geospatial output specification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "遥感制图产品的标准输出格式规范（GeoTIFF/COG）、空间元数据完整性要求（CRS、变换矩阵、nodata、pyramid）、质量标志与不确定性信息的标准编码方式",
+  "evidence_papers": [
+    {
+      "title": "Advances of Remote Sensing in Land Cover and Land Use Mapping",
+      "doi": "10.3390/rs15030195",
+      "year": 2023
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,42 @@
+{
+  "name": "climate-remote-sensing-data-authenticity-acceptance",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:18:00Z",
+  "updated_at": "2026-09-21T12:18:00Z",
+  "description": "遥感制图任务中真实传感器数据与合成数据的本质区别及其对验收判定的影响；当必需输入缺失时的标准处置流程（BLOCKED而非降级为演示）",
+  "tags": [
+    "remote sensing",
+    "data authenticity",
+    "acceptance criteria",
+    "synthetic data",
+    "blocked status",
+    "edge:workflow:climate-landsat-preprocessing-pipeline",
+    "edge:workflow:climate-remote-sensing-preprocessing-workflow"
+  ],
+  "aliases": [
+    "data quality verification",
+    "sensor data validation"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "遥感制图任务中真实传感器数据与合成数据的本质区别及其对验收判定的影响；当必需输入缺失时的标准处置流程（BLOCKED而非降级为演示）",
+  "evidence_papers": [
+    {
+      "title": "Accuracy, Bias, and Improvements in Mapping Crops and Cropland across the United States Using the USDA Cropland Data Layer",
+      "doi": "10.3390/rs13050968",
+      "year": 2021
+    },
+    {
+      "title": "Synergistic Use of Radar and Optical Satellite Data for Improved Monsoon Cropland Mapping in India",
+      "doi": "10.3390/rs12030522",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,21 @@
+{
+  "name": "matchem-dft-formation-energy-b2",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "使用第一性原理DFT计算B2金属间化合物的形成能和热力学稳定性，包括VASP输入文件配置（INCAR、KPOINTS、POTCAR）、收敛性检查和形成能公式",
+  "tags": ["DFT", "VASP", "formation-energy", "B2-intermetallic", "first-principles", "phase-stability", "INCAR", "KPOINTS"],
+  "aliases": ["density functional theory", "第一性原理计算", "VASP计算", "形成能计算"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "DFT formation energy calculation B2 intermetallic VASP; VASP INCAR KPOINTS formation energy intermetallic DFT first-principles",
+  "evidence_papers": [
+    {"title": "Point defects of intermetallic compounds B2 Nickel-based: DFT calculations", "doi": "10.1007/s11051-025-06243-z", "year": 2025},
+    {"title": "Atomistic simulations reveal slip selection in B2-type intermetallic alloys", "doi": "10.1016/j.actamat.2025.121561", "year": 2025},
+    {"title": "DFT-Based Calculation of Dissolution Activation Energy and Kinetics of Ni-Cr Alloys", "doi": "10.1149/1945-7111/abbbbd", "year": 2020},
+    {"title": "Enthalpy of Formation Modeling Using Third Order Group Contribution Technics and Calculation by DFT Method", "doi": "10.5541/ijot.647800", "year": 2020}
+  ]
+}

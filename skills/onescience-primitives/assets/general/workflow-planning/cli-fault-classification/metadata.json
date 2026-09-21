@@ -2,17 +2,28 @@
   "name": "cli-fault-classification",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-17T12:24:00Z",
-  "updated_at": "2026-09-17T12:24:00Z",
+  "updated_at": "2026-09-21T15:30:00Z",
   "description": "面向命令行接口非交互执行场景，提供故障分类、退出码解读与错误处理的知识框架，覆盖进程终止状态传递、errno错误码体系及故障诊断流程",
   "tags": ["CLI", "fault-classification", "exit-codes", "error-handling", "non-interactive-execution"],
   "aliases": ["command-line-interface", "exit-status", "errno", "process-termination"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "CLI非交互执行与故障分类知识",
-  "evidence_papers": [],
+  "evidence_papers": [
+    {
+      "title": "Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing",
+      "doi": "10.1109/tdsc.2023.3288876",
+      "year": 2024
+    },
+    {
+      "title": "Implementing Centralized Error Handling for Software Systems through the Integration of Machine Learning Techniques",
+      "doi": "10.33140/eoa.01.01.11",
+      "year": 2023
+    }
+  ],
   "evidence_docs": [
     {
       "title": "exit(3) - Linux manual page",
@@ -30,6 +41,6 @@
     }
   ],
   "evidence_user": [],
-  "merged_batches": [],
+  "merged_batches": ["2026-09-21: 基于归因分析任务18案例补充软件故障注入测试与错误覆盖率引导模糊测试"],
   "conflicts": []
 }

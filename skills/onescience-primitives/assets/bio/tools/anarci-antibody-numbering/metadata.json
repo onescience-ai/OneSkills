@@ -1,0 +1,28 @@
+{
+  "name": "anarci-antibody-numbering",
+  "type": "tool",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "ANARCI (Antibody Numbering And Receptor Classification) is a tool for standard antibody numbering using IMGT, Kabat, Chothia, and other schemes. It assigns positions to antibody residues and identifies CDR regions (CDR-H1/H2/H3, CDR-L1/L2/L3) for structural and functional analysis.",
+  "tags": ["ANARCI", "antibody numbering", "CDR", "IMGT", "Kabat", "Chothia", "immunoinformatics", "antibody structure"],
+  "aliases": ["Antibody Numbering and Receptor Classification", "bio-anarci-antibody-numbering"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "ANARCI工具的调用接口和标准抗体编号规则",
+  "evidence_papers": [
+    {
+      "title": "ANARCI: antigen receptor numbering and receptor classification",
+      "authors": ["James Dunbar", "Charlotte M. Deane"],
+      "venue": "Bioinformatics",
+      "year": 2015,
+      "doi": "10.1093/bioinformatics/btv552"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

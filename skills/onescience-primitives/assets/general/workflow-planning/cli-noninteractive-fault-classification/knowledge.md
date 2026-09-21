@@ -68,12 +68,39 @@
 - 无法自动恢复时，记录详细诊断信息并终止（新增）
 - 提供降级模式（如跳过可选步骤、使用默认值）（新增）
 
+## 归因分析CLI故障案例（新增）
+
+### 常见故障模式
+| 故障类型 | 错误表现 | 诊断方法 | 修复建议 |
+|----------|----------|----------|----------|
+| 退出码非零 | 进程异常终止 | 检查stderr输出和日志文件 | 根据错误信息修复参数或环境 |
+| 报告校验失败 | 缺少必填字段或字段类型错误 | 对照Schema验证输出JSON | 修复输出格式或更新Schema |
+| task_id不匹配 | 报告中task_id与任务索引不一致 | 核对任务上下文 | 确保任务身份信息正确传递 |
+| 任务名称不匹配 | 报告中task与任务name不一致 | 检查任务元数据 | 统一任务命名规范 |
+| summary为空 | summary字段为空字符串 | 检查摘要生成逻辑 | 确保生成有效摘要 |
+| issues非数组 | issues字段类型错误 | 检查问题列表格式 | 确保输出为数组类型 |
+
+### 诊断流程
+1. **捕获退出码**：记录进程返回的退出码（0=成功，非0=失败）
+2. **收集stderr**：获取标准错误输出，识别错误模式
+3. **检查输出文件**：验证报告JSON是否生成且格式正确
+4. **Schema校验**：使用report-schema.json验证报告结构
+5. **身份匹配**：核对task_id和task字段与任务索引的一致性
+6. **字段完整性**：确认issues、summary等必填字段存在且类型正确
+
+### 预防措施
+- 在输出前执行Schema预校验
+- 使用模板确保字段格式正确
+- 实现自动身份信息注入
+- 添加输出格式断言检查
+
 ## 资源召回建议
 当遇到以下情况时召回本卡片：
 - CLI工具在非交互环境中执行失败
 - 需要诊断CLI退出码和标准错误
 - 自动化流水线中CLI执行异常
 - 需要建立CLI故障分类体系
+- 归因分析CLI报告校验失败（新增）
 
 ## 补充证据（开源文档/用户自有，可选）
 [D1] argparse — Parser for command-line options, arguments and subcommands, Python Software Foundation, Python 3.14.7 documentation, URL: https://docs.python.org/3/library/argparse.html（accessed_at 2026-09-16，权威文档）
@@ -81,5 +108,6 @@
 ## 证据来源
 [1] 基于通用CLI执行最佳实践和故障处理经验总结
 [2] 基于归因分析CLI故障案例分析
-[3] 证据有限：由于网络检索限制，未能获取具体论文证据
-[4] Python argparse官方文档, Python Software Foundation, 2026（新增）
+[3] Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing, IEEE TDSC, 2024, DOI: 10.1109/tdsc.2023.3288876（新增）
+[4] Python argparse官方文档, Python Software Foundation, 2026
+[5] 基于任务224归因报告中的CLI故障案例总结（新增）

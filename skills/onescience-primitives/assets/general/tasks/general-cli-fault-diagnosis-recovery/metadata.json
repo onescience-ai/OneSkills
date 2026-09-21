@@ -1,0 +1,35 @@
+{
+  "name": "general-cli-fault-diagnosis-recovery",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T15:14:00Z",
+  "updated_at": "2026-09-21T15:14:00Z",
+  "description": "面向命令行界面（CLI）程序的非交互执行场景，提供故障分类、退出码解读、信号终止诊断与恢复策略，确保 CLI 进程稳定完成并保留诊断证据",
+  "tags": ["CLI", "command-line", "error-handling", "exit-codes", "fault-diagnosis", "troubleshooting"],
+  "aliases": ["CLI故障诊断", "命令行错误处理", "退出码解读"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Exit Codes With Special Meanings - Advanced Bash-Scripting Guide",
+      "url": "https://www.tldp.org/LDP/abs/html/exitcodes.html",
+      "publisher": "The Linux Documentation Project (TLDP)",
+      "version": "Appendix E",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "Termination Signals - The GNU C Library",
+      "url": "https://www.gnu.org/software/libc/manual/html_node/Termination-Signals.html",
+      "publisher": "GNU Project - Free Software Foundation (FSF)",
+      "version": "glibc 2.44",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

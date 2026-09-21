@@ -1,0 +1,28 @@
+{
+  "name": "cli-noninteractive-fault-taxonomy",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "面向非交互式 CLI 工具的执行故障分类与诊断方法论，覆盖退出码语义、超时处理、沙箱约束、认证失败和标准错误判读等场景，适用于科研自动化流水线中任意 CLI 进程的稳定性保障与故障恢复。",
+  "tags": ["cli", "fault-tolerance", "subprocess", "exit-code", "error-handling", "automation"],
+  "aliases": ["CLI故障分类", "subprocess退出码", "非交互执行诊断"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "subprocess — Subprocess management",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-21T00:00:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

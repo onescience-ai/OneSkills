@@ -1,0 +1,35 @@
+{
+  "name": "paper-retrieval-fallback-strategy",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:06:00Z",
+  "updated_at": "2026-09-21T11:06:00Z",
+  "description": "论文获取的替代方案和降级策略，当主源（如arXiv）不可访问时，可使用镜像站点、DOI检索服务、场景索引标准字段或本地缓存作为替代。",
+  "tags": [
+    "paper retrieval",
+    "fallback strategy",
+    "alternative sources",
+    "degradation strategy",
+    "edge:task:peptide-design-input-contract"
+  ],
+  "aliases": [
+    "论文获取降级策略",
+    "paper access fallback"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "论文获取的替代方案和降级策略",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-21T11:06:00Z",
+      "location": "归因报告E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-w2\\107\\report.json中issues[3].optimization_plan"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

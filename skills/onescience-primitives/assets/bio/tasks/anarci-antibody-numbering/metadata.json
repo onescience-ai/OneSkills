@@ -1,0 +1,24 @@
+{
+  "name": "anarci-antibody-numbering",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "ANARCI抗体编号工具的安装、调用与输出解析方法，支持IMGT和AHoT编号方案，用于标准化抗体序列编号和CDR区域定义",
+  "tags": ["ANARCI", "antibody-numbering", "IMGT", "CDR-definition", "immunoinformatics"],
+  "aliases": ["ANARCI", "Antibody Numbering And Receptor Classification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CDR环与抗体骨架联合生成任务中ANARCI工具的安装配置和使用方法",
+  "evidence_papers": [
+    {"title": "Thera-SAbDab: the Therapeutic Structural Antibody Database", "doi": "10.1093/nar/gkz827", "year": 2019},
+    {"title": "Antibody numbering schemes: advances, comparisons and tools for antibody engineering", "doi": "10.1093/protein/gzaf005", "year": 2025},
+    {"title": "AbRSA: A robust tool for antibody numbering", "doi": "10.1002/pro.3633", "year": 2019}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

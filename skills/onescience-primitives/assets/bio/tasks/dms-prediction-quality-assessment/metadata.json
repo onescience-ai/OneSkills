@@ -1,0 +1,32 @@
+{
+  "name": "dms-prediction-quality-assessment",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:55:00Z",
+  "updated_at": "2026-09-21T12:55:00Z",
+  "description": "Quality assessment standards for protein variant effect prediction results against DMS experimental data. Defines Spearman correlation significance thresholds, expected performance ranges for ESM-1v on TEM-1 DMS, and statistical gate criteria for result validation.",
+  "tags": ["quality assessment", "Spearman correlation", "variant effect prediction", "DMS", "benchmark", "statistical significance", "task", "bio"],
+  "aliases": ["variant prediction evaluation", "DMS prediction benchmark"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "protein variant effect prediction quality assessment standards and Spearman correlation thresholds",
+  "evidence_papers": [
+    {
+      "title": "Enhancing missense variant pathogenicity prediction with protein language models",
+      "authors": ["Pejaver, V.", "Urresti, J.", "Lugo-Martinez, J.", "Pagel, K.A.", "Lin, G.N.", "Nam, H.", "Biel, D.", "Jiang, J.", "Bosley, E.", "Thomas, A.", "Yeo, B.", "Lee, T.", "Babb, J.", "Park, C.Y.", "Vernon, H.", "Wheeler, M.M.", "Mullen, J.", "Lek, M.", "Liu, X.", "Bhatt, D."],
+      "year": 2024,
+      "doi": "10.1038/s41431-024-01548-1"
+    },
+    {
+      "title": "VenusMutHub - A benchmark for protein mutation effect prediction",
+      "authors": ["Zheng, Y.", "Liu, T.", "Wu, C.", "Li, J.", "Guo, Y.", "Tian, Y.", "Zeng, J.", "Wang, Y."],
+      "year": 2025,
+      "doi": "10.1016/j.apsb.2025.01.016"
+    }
+  ],
+  "evidence_docs": [],
+  "merged_batches": [],
+  "conflicts": []
+}

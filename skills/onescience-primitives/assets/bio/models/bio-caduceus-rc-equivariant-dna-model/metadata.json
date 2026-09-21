@@ -1,0 +1,33 @@
+{
+  "name": "bio-caduceus-rc-equivariant-dna-model",
+  "type": "model",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T05:01:00Z",
+  "updated_at": "2026-09-21T05:01:00Z",
+  "description": "Caduceus RC等变双向长程DNA语言模型资源卡。提供Caduceus模型家族（Caduceus-Ph、Caduceus-Vi）的公开权重获取渠道、checkpoint版本标识、模型架构规格与RC等变数学约束规范。Caduceus是首个基于Mamba架构扩展BiMamba和MambaDNA组件的RC等变双向DNA语言模型，支持百万碱基对级别长程建模。",
+  "tags": ["Caduceus", "DNA_language_model", "RC_equivariant", "Mamba", "BiMamba", "MambaDNA", "bidirectional", "long_range", "genomics", "pretrained_weights", "checkpoint", "HuggingFace", "reverse_complement"],
+  "aliases": ["caduceus", "caduceus-ph", "caduceus-vi", "MambaDNA"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Caduceus模型的公开权重获取渠道（HuggingFace/MODELZOO）、caduceus.ckpt文件的具体下载地址和版本标识、Caduceus-Ph/Caduceus-Vi等变体的适用场景与选择标准",
+  "evidence_papers": [
+    {
+      "title": "Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling",
+      "doi": "10.48550/arXiv.2403.03234",
+      "year": 2024,
+      "venue": "ICML 2024",
+      "authors": ["Yair Schiff", "Chia-Hsiang Kao", "Aaron Gokaslan", "Tri Dao", "Albert Gu", "Volodymyr Kuleshov"]
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "Caduceus GitHub Repository",
+      "url": "https://github.com/kuleshov-group/caduceus",
+      "publisher": "GitHub (kuleshov-group)",
+      "version": "main branch",
+      "accessed_at": "2026-09-21"
+    }
+  ]
+}

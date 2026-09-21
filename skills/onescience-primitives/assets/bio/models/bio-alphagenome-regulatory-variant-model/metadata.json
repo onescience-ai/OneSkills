@@ -1,0 +1,34 @@
+{
+  "name": "bio-alphagenome-regulatory-variant-model",
+  "type": "model",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "AlphaGenome 深度学习模型配置与接口规范：Google DeepMind 开发的统一 DNA 序列模型，输入 1 Mb DNA 序列预测数千条功能基因组轨迹（基因表达、转录起始、染色质可及性、组蛋白修饰、TF 结合、接触图、剪接等），支持人类和小鼠基因组的变异效应预测。涵盖 JAX/Haiku 框架依赖、organism_settings 配置、predict_variant 接口契约和 MUS_MUSCULUS 组织本体映射。",
+  "tags": ["AlphaGenome", "deep learning", "regulatory variant", "JAX", "Haiku", "enhancer", "mouse", "MUS_MUSCULUS", "UBERON", "tissue-specific", "genome tracks", "variant effect prediction", "Google DeepMind"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "AlphaGenome model JAX Haiku framework dependencies, organism_settings configuration, predict_variant interface contract, MUS_MUSCULUS settings",
+  "evidence_papers": [
+    {
+      "title": "Advancing regulatory variant effect prediction with AlphaGenome",
+      "doi": "10.1038/s41586-025-10014-0",
+      "year": 2026,
+      "venue": "Nature"
+    },
+    {
+      "title": "Predicting non-coding variant effects with AlphaGenome",
+      "doi": "10.1038/s41422-026-01249-1",
+      "year": 2026,
+      "venue": "Cell Research"
+    },
+    {
+      "title": "The AlphaGenome deep learning model predicts effects of non-coding variants",
+      "doi": "10.1038/s41594-026-01763-1",
+      "year": 2026,
+      "venue": "Nature Structural & Molecular Biology"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "algorithm-dry-run-validation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:56:00Z",
+  "updated_at": "2026-09-21T11:56:00Z",
+  "description": "最小干运行验证规范，包括子集数据验证算法输入输出契约、随机种子设置方法、方法工件身份报告的必需字段",
+  "tags": ["dry-run", "validation", "algorithm", "reproducibility", "quality-control"],
+  "aliases": ["最小干运行", "算法验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "最小干运行验证规范，包括子集数据验证算法输入输出契约、随机种子设置方法、方法工件身份报告的必需字段",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

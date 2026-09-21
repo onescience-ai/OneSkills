@@ -1,0 +1,20 @@
+{
+  "name": "onescience-deliverable-status-marking",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:18:00Z",
+  "updated_at": "2026-09-21T12:18:00Z",
+  "description": "OneScience交付物状态标记规范，包括PASS/PARTIAL/REJECT/BLOCKED的定义、适用条件、标注位置和验证要求。",
+  "tags": ["deliverable", "status-marking", "OneScience", "quality-assurance"],
+  "aliases": ["PASS PARTIAL REJECT BLOCKED", "deliverable status"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience deliverable status marking specification",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

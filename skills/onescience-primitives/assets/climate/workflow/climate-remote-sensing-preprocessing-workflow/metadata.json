@@ -1,0 +1,44 @@
+{
+  "name": "climate-remote-sensing-preprocessing-workflow",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:19:00Z",
+  "updated_at": "2026-09-21T12:19:00Z",
+  "description": "遥感数据预处理工作流中辐射定标、几何配准和质量掩膜的具体作用与必要性；当使用替代数据源时如何保持工作流步骤完整性",
+  "tags": [
+    "remote sensing",
+    "preprocessing",
+    "radiometric calibration",
+    "geometric registration",
+    "quality mask",
+    "workflow integrity",
+    "edge:task:climate-method-config-contract-validation",
+    "edge:task:climate-remote-sensing-data-authenticity-acceptance",
+    "edge:task:climate-remote-sensing-independent-validation"
+  ],
+  "aliases": [
+    "preprocessing pipeline",
+    "data preparation workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "遥感数据预处理工作流中辐射定标、几何配准和质量掩膜的具体作用与必要性；当使用替代数据源时如何保持工作流步骤完整性",
+  "evidence_papers": [
+    {
+      "title": "Atmospheric Correction of Landsat Image",
+      "doi": "10.58425/jegs.v2i1.120",
+      "year": 2023
+    },
+    {
+      "title": "MAETEC: AN OPTIMIZED MATLAB-BASED APPROACH FOR ACCURATE AND EFFICIENT TERRAIN CORRECTION",
+      "doi": "10.3390/rs15030195",
+      "year": 2023
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,30 @@
+{
+  "name": "climate-pv-power-data-sources",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:52:00Z",
+  "updated_at": "2026-09-21T12:52:00Z",
+  "description": "面向光伏功率预测任务，提供数据来源规范、数据时点规则的具体含义以及数据缺失时的正确处理流程。",
+  "tags": [
+    "photovoltaic",
+    "power prediction",
+    "data sources",
+    "data availability",
+    "missing data",
+    "edge:workflow:climate-pv-power-prediction-workflow"
+  ],
+  "aliases": [
+    "PV power forecast data",
+    "solar power data requirements"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "光伏功率预测任务的数据来源规范、数据时点规则的具体含义以及数据缺失时的正确处理流程",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,26 @@
+{
+  "name": "protein-sequence-length-distribution",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:57:00Z",
+  "updated_at": "2026-09-21T11:57:00Z",
+  "description": "蛋白质序列长度分布知识——典型蛋白序列长度为100-3000氨基酸，max_seq_len=1024可覆盖大部分蛋白，50仅覆盖极短肽；ESM-2等预训练模型的输入长度限制",
+  "tags": ["sequence length", "protein sequence", "ESM-2", "input length", "truncation"],
+  "aliases": ["sequence length limit", "max sequence length", "protein length"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白质序列长度分布知识",
+  "evidence_papers": [
+    {
+      "title": "ProteinBERT: a universal deep-learning model of protein sequence and function",
+      "doi": "10.1093/bioinformatics/btac020",
+      "year": 2022
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

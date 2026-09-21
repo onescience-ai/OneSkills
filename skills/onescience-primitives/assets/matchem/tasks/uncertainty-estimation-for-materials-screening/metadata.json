@@ -1,0 +1,23 @@
+{
+  "name": "uncertainty-estimation-for-materials-screening",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:45:00Z",
+  "updated_at": "2026-09-21T12:45:00Z",
+  "description": "机器学习模型不确定性估计的方法及其在材料筛选中的应用，包括集成方法、贝叶斯神经网络、dropout等技术",
+  "tags": ["uncertainty-estimation", "machine-learning", "materials-screening", "bayesian", "ensemble", "dropout"],
+  "aliases": ["prediction uncertainty", "model confidence", "reliability estimation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "机器学习模型不确定性估计的方法及其在材料筛选中的应用",
+  "evidence_papers": [
+    {"title": "From prediction to reliable screening: Explainable and uncertainty-aware machine learning for the limiting oxygen index of flame-retardant epoxy composites", "doi": "10.1016/j.matlet.2026.141596", "year": 2026},
+    {"title": "Machine learning incorporating stability features and Bayesian Optimization for perovskite structure prediction", "doi": "10.1016/j.ssc.2025.116174", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

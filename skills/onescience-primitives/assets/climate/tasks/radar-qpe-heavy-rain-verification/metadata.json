@@ -1,0 +1,26 @@
+{
+  "name": "radar-qpe-heavy-rain-verification",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "雷达QPE强降水检验的阈值定义、统计特征、检验指标（检测率、虚警率、CSI）计算方法及样本量要求，用于评估QPE方法对强降水事件的估计能力。",
+  "tags": ["radar", "QPE", "heavy-rain", "verification", "detection-rate", "false-alarm-ratio", "CSI", "threshold"],
+  "aliases": ["强降水检验", "heavy precipitation verification", "extreme rainfall QPE validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象领域强降水事件的统计特征和阈值定义，雷达QPE对强降水估计的典型误差特征，以及强降水检验指标的计算方法和样本量要求",
+  "evidence_papers": [
+    {"title": "Extreme Precipitation Events in Serbia: Defining the Threshold Criteria for Emergency Preparedness", "doi": "10.3390/atmos9050188", "year": 2018},
+    {"title": "Quantitative Precipitation Estimates Using Machine Learning Approaches with Operational Dual-Polarization Radar", "doi": "10.3390/rs13040694", "year": 2021},
+    {"title": "Operational Assessment of High Resolution Weather Radar Based Precipitation Nowcasting", "doi": "10.3390/atmos15071096", "year": 2024},
+    {"title": "An AI Training Dataset for Monitoring and Forecasting of Short-Duration Heavy Rainfall in China", "doi": "10.1007/s13351-026-5350-z", "year": 2026},
+    {"title": "Evaluation of the flagGraupelHail Product from Dual-Frequency Precipitation Radar", "doi": "10.3390/rs17051112", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

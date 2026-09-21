@@ -1,0 +1,21 @@
+{
+  "name": "matchem-gnn-alloy-phase-prediction",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "使用图神经网络（GNN）预测合金相稳定性和形成能，包括晶体图表示方法、CGCNN/MEGNet等开源实现的接口和训练流程，以及物理约束损失函数设计",
+  "tags": ["GNN", "CGCNN", "MEGNet", "crystal-graph", "phase-prediction", "formation-energy", "intermetallic", "deep-learning"],
+  "aliases": ["crystal graph neural network", "physics-informed GNN", "材料图神经网络", "PINN-GNN"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "physics informed graph neural network alloy phase prediction; graph neural network materials science crystal property prediction CGCNN MEGNet",
+  "evidence_papers": [
+    {"title": "A review on the applications of graph neural networks in materials science at the atomic scale", "doi": "10.1002/mgea.50", "year": 2024},
+    {"title": "Comparation of Graph Neural Networks and Traditional Machine Learning for Property Prediction in All-Inorganic Perovskite Materials", "doi": "10.3390/inorganics14020058", "year": 2026},
+    {"title": "CTGNN: Crystal Transformer Graph Neural Network for Crystal Material Property Prediction", "doi": "", "year": 2024},
+    {"title": "SR-CGCNN: Shared Recurrent Convolution in Crystal Graph Neural Networks for Materials Property Prediction", "doi": "", "year": 2026}
+  ]
+}

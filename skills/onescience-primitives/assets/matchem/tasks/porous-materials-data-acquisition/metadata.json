@@ -1,0 +1,50 @@
+{
+  "name": "porous-materials-data-acquisition",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "从公开数据库（Materials Project、ICSD、QMOF、COD、OQMD 等）获取真实多孔材料数据集的任务级知识，涵盖数据库选型、数据格式规范、质量要求、下载脚本和数据清洗流程，确保数据来源可追溯且符合基础模型训练需求。",
+  "tags": [
+    "porous-materials",
+    "data-acquisition",
+    "Materials-Project",
+    "ICSD",
+    "QMOF",
+    "database",
+    "dataset",
+    "data-quality"
+  ],
+  "aliases": ["多孔材料数据获取", "porous materials database", "MOF数据库"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔材料数据获取途径（如Materials Project、ICSD、QMOF等数据库）、数据格式规范、数据质量要求",
+  "evidence_papers": [
+    {
+      "title": "Generative AI for discovering porous oxide materials for next-generation energy storage",
+      "doi": "10.1016/j.xcrp.2025.102665",
+      "year": 2024
+    },
+    {
+      "title": "Hierarchical Computational Screening of Quantum Metal-Organic Framework Database to Identify MOFs for Volatile Organic-Compound Capture from Air",
+      "doi": "10.1021/acsengineeringau.3c00039",
+      "year": 2023
+    },
+    {
+      "title": "Predicting Synthesizability using Machine Learning on Databases of Existing Inorganic Materials",
+      "doi": "10.1021/acsomega.2c04856",
+      "year": 2023
+    },
+    {
+      "title": "Multidisciplinary database of permeability of fault zones and surrounding protolith rocks at world-wide sites",
+      "doi": "10.1038/s41597-020-0435-5",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

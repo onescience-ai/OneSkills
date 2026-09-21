@@ -1,0 +1,22 @@
+{
+  "name": "porous-silicon-anode-electrochemical-simulation-tool-selection",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "多孔硅负极电化学模拟的计算工具选择知识，包括VASP、LAMMPS、COMSOL等工具的适用条件、输入输出格式、资源需求和工作流集成方式。",
+  "tags": ["electrochemical simulation", "VASP", "LAMMPS", "COMSOL", "porous silicon", "anode"],
+  "aliases": ["simulation tool selection", "computational tool choice"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔硅负极电化学模拟的计算工具选择知识，包括VASP、LAMMPS、COMSOL等工具的适用条件、输入输出格式、资源需求和工作流集成方式",
+  "evidence_papers": [
+    {"title": "Comsol Simulation of Hierarchical Ordered Porous Microstructure Electrode", "doi": "10.1149/ma2019-01/22/1158", "year": 2019}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

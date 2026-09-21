@@ -1,0 +1,36 @@
+{
+  "name": "target-specific-peptide-design-workflow",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:03:00Z",
+  "updated_at": "2026-09-21T11:03:00Z",
+  "description": "靶标特异性全原子肽类设计的标准工作流规范，包含四个步骤：解析设计输入、加载权重并编码条件、生成设计候选、筛选候选。适用于使用PepFlow模型进行肽设计的任务。",
+  "tags": [
+    "peptide design",
+    "workflow",
+    "target-specific",
+    "all-atom",
+    "standard workflow",
+    "edge:task:peptide-design-input-contract"
+  ],
+  "aliases": [
+    "靶标特异性肽设计工作流",
+    "peptide design standard workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "靶标特异性全原子肽类设计的标准工作流规范",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-21T11:03:00Z",
+      "location": "归因报告E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-w2\\107\\report.json中issues[1].optimization_plan"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

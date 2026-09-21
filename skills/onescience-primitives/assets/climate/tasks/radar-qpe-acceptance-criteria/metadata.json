@@ -1,0 +1,26 @@
+{
+  "name": "radar-qpe-acceptance-criteria",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "雷达QPE产品验收标准体系，包括RMSE、相关系数、偏差等指标的业务门限值定义、预登记门限管理规范及验收判定流程。",
+  "tags": ["radar", "QPE", "acceptance", "threshold", "RMSE", "correlation", "bias", "operational", "quality-flag"],
+  "aliases": ["QPE验收标准", "precipitation product acceptance", "雷达降水产品验收"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象业务中雷达QPE产品的验收标准体系，包括RMSE、相关系数、偏差等指标的业务门限值，以及验收流程中预登记门限的管理规范",
+  "evidence_papers": [
+    {"title": "Required Time Steps for Weather Radar Quantitative Precipitation Estimation", "doi": "10.1175/jhm-d-25-0151.1", "year": 2026},
+    {"title": "Quality-based compositing of weather radar derived precipitation", "doi": "10.1002/met.1812", "year": 2019},
+    {"title": "The Dutch real-time gauge-adjusted radar precipitation product", "doi": "10.5194/essd-17-4715-2025", "year": 2025},
+    {"title": "Comparison between precipitation estimates of ground-based weather radar composites and GPM's DPR radar", "doi": "10.1127/metz/2020/1039", "year": 2020},
+    {"title": "Improvement in algorithms for quality control of weather radar data (RADVOL-QC system)", "doi": "10.5194/amt-15-261-2022", "year": 2022}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

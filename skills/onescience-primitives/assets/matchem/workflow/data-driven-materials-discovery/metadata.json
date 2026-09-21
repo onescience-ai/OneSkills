@@ -1,0 +1,48 @@
+{
+  "name": "data-driven-materials-discovery",
+  "type": "workflow",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:06:00Z",
+  "updated_at": "2026-09-21T11:06:00Z",
+  "description": "数据驱动材料发现标准工作流，包括数据获取、特征工程、模型训练、高通量筛选、DFT验证、实验验证等完整流程。适用于CO2光催化剂等材料的可合成性筛选任务。",
+  "tags": [
+    "data-driven",
+    "materials discovery",
+    "high-throughput screening",
+    "workflow",
+    "materials informatics",
+    "closed-loop discovery",
+    "edge:task:vasp-calculation-workflow"
+  ],
+  "aliases": [
+    "materials informatics workflow",
+    "high-throughput screening workflow",
+    "ML materials discovery"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "标准工作流步骤的详细执行要求和输入输出契约",
+  "evidence_papers": [
+    {
+      "title": "Data-Driven Strategies for Accelerated Materials Design",
+      "doi": "10.1021/acs.accounts.0c00785",
+      "year": 2021
+    },
+    {
+      "title": "Scaling deep learning for materials discovery",
+      "doi": "10.1038/s41586-023-06735-9",
+      "year": 2023
+    },
+    {
+      "title": "Machine Learning for Materials Scientists: An Introductory Guide toward Best Practices",
+      "doi": "10.1021/acs.chemmater.0c01907",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

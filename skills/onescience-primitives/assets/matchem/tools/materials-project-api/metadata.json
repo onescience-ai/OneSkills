@@ -1,0 +1,46 @@
+{
+  "name": "materials-project-api",
+  "type": "tool",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:02:00Z",
+  "updated_at": "2026-09-21T11:02:00Z",
+  "description": "Materials Project API (MPRester) for querying materials data including band gap, formation energy, structure, and electronic properties. Supports filtering by elements, material IDs, and property ranges for high-throughput materials screening.",
+  "tags": ["Materials Project", "API", "materials database", "high-throughput screening", "band gap", "formation energy", "DFT data"],
+  "aliases": ["MP API", "MPRester", "mp-api", "Materials Project database"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "从Materials Project等公开数据库获取CO2光催化剂材料数据的API和方法",
+  "evidence_papers": [
+    {
+      "title": "Scaling deep learning for materials discovery",
+      "doi": "10.1038/s41586-023-06735-9",
+      "year": 2023
+    },
+    {
+      "title": "Data-Driven Strategies for Accelerated Materials Design",
+      "doi": "10.1021/acs.accounts.0c00785",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "Materials Project Documentation - Getting Started",
+      "url": "https://docs.materialsproject.org/downloading-data/using-the-api/getting-started.md",
+      "publisher": "Materials Project",
+      "version": "2026",
+      "accessed_at": "2026-09-21T11:00:00Z"
+    },
+    {
+      "title": "Materials Project Documentation - Querying Data",
+      "url": "https://docs.materialsproject.org/downloading-data/using-the-api/querying-data.md",
+      "publisher": "Materials Project",
+      "version": "2026",
+      "accessed_at": "2026-09-21T11:00:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

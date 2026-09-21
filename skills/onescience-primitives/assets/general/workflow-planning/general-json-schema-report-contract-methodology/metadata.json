@@ -1,0 +1,26 @@
+{
+  "name": "general-json-schema-report-contract-methodology",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T15:30:00Z",
+  "updated_at": "2026-09-21T15:30:00Z",
+  "description": "面向结构化报告交付场景，提供JSON Schema验证契约的通用方法论框架，规定必填字段、任务身份、数组约束及输出格式，确保报告可解析、字段完整、格式一致，可迁移到不同领域的数据交付与验证场景。",
+  "tags": ["JSON-Schema", "validation", "report-contract", "data-delivery", "schema-validation", "output-format", "contract-testing"],
+  "aliases": ["JSON Schema验证", "报告契约", "数据交付格式"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema report delivery contract validation knowledge",
+  "evidence_papers": [
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

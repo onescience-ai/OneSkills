@@ -1,0 +1,20 @@
+{
+  "name": "onescience-weight-file-naming-contract",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:53:00Z",
+  "updated_at": "2026-09-21T11:53:00Z",
+  "description": "OneScience任务权重文件命名契约——权重文件名必须与标准workflow中指定的标识一致，且权重来源必须是预训练模型而非随机初始化训练",
+  "tags": ["weight file", "naming contract", "OneScience", "workflow", "pretrained model"],
+  "aliases": ["weight file naming", "model checkpoint", "saved model"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience任务权重文件命名契约",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

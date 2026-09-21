@@ -1,0 +1,20 @@
+{
+  "name": "meteorological-product-quality-control",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:58:00Z",
+  "updated_at": "2026-09-21T11:58:00Z",
+  "description": "气象产品质控规范，包括质量标志编码规则、物理范围核验方法、派生产品文档规范",
+  "tags": ["quality-control", "quality-flags", "physical-range", "documentation", "metadata"],
+  "aliases": ["质量控制", "产品质控"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象产品质控规范，包括质量标志编码规则、物理范围核验方法、派生产品文档规范",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

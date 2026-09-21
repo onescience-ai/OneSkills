@@ -1,0 +1,32 @@
+{
+  "name": "antibody-affinity-feature-engineering",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T13:50:00Z",
+  "updated_at": "2026-09-21T13:50:00Z",
+  "description": "基于序列的抗体-抗原亲和力预测特征工程方法，包括CDR区域序列编码、界面残基识别、序列比对特征、理化性质特征以及亲和力相关序列motif",
+  "tags": ["antibody", "affinity", "feature engineering", "CDR", "sequence", "machine learning"],
+  "aliases": ["antibody affinity feature engineering", "antibody sequence features"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "基于序列的抗体-抗原亲和力预测特征工程方法",
+  "evidence_papers": [
+    {
+      "title": "MVSF-AB: accurate antibody–antigen binding affinity prediction via multi-view sequence feature learning",
+      "doi": "10.1093/bioinformatics/btae579",
+      "year": 2024
+    },
+    {
+      "title": "Affinity Maturation for Antibody Engineering: The Critical Role of Residues on CDR Loops of Antibodies in Antigen Binding",
+      "doi": "10.3390/molecules30030532",
+      "year": 2025
+    },
+    {
+      "title": "Binding affinity prediction for antibody–protein antigen complexes: A machine learning analysis based on interface and surface areas",
+      "doi": "10.1016/j.jmgm.2022.108364",
+      "year": 2023
+    }
+  ]
+}

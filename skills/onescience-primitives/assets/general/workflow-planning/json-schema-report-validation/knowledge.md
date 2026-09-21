@@ -167,3 +167,90 @@ assert data["task"] == expected_task_name, f"task 不匹配: {data['task']} vs {
 ## 批次补充（2026-09-17）
 
 本次修改引入 3 篇 2026 年学术论文，揭示了 Schema 验证的关键工程警告：(1) schema 有效性不等于语义正确性 [1]，最强模型在 100% schema 有效时语义成功率仅约 80%；(2) 硬 schema 约束对小模型造成"约束税"，准确率从 19.7% 降至 11.0% [2]；(3) schema 描述可覆盖 prompt 指令，需保持单一事实来源 [3]。建议在 Schema 验证之上增加领域语义验证层。
+
+## 批次补充 2026-09-21（onescience-knowledge-harvester）
+
+### 归因报告Schema验证应用场景
+
+本次补充将JSON Schema验证流程应用于归因报告交付场景，提供具体的验证规范和修复流程。
+
+**归因报告Schema规范**：
+
+| 字段 | 类型 | 必填 | 约束条件 |
+|------|------|------|----------|
+| task_id | string/int | 是 | 必须与任务索引一致 |
+| task | string | 是 | 必须与任务名称一致 |
+| summary | string | 是 | 非空字符串 |
+| issues | array | 是 | 可为空数组，不可为null |
+| issues[].failed_check | string | 是 | 非空，描述失败检查项 |
+| issues[].error_detail | string | 是 | 非空，包含错误详情 |
+| issues[].location | string | 否 | 故障位置描述 |
+| issues[].capability_attributions | array | 否 | 能力归因列表 |
+| issues[].optimization_plan | array | 否 | 优化计划列表 |
+
+**验证流程**：
+
+1. **JSON解析检查**
+   ```python
+   try:
+       data = json.loads(json_string)
+   except json.JSONDecodeError as e:
+       # 记录行号、列号、字符位置
+   ```
+   - 验证点：JSON语法正确性
+   - 失败处理：记录精确错误位置，终止验证
+
+2. **必填字段检查**
+   ```python
+   required = ["task_id", "task", "summary", "issues"]
+   missing = [f for f in required if f not in data]
+   ```
+   - 验证点：所有必填字段存在
+   - 失败处理：记录缺失字段列表
+
+3. **类型约束检查**
+   - task_id: string或int
+   - task: string，非空
+   - summary: string，非空
+   - issues: array，可为空
+
+4. **任务身份一致性**
+   ```python
+   assert data["task_id"] == expected_task_id
+   assert data["task"] == expected_task_name
+   ```
+   - 验证点：task_id和task与预期完全一致
+   - 失败处理：记录期望值与实际值
+
+5. **数组约束验证**
+   - issues数组元素必须是对象
+   - 每个元素必须包含failed_check和error_detail
+   - 可选字段：location、capability_attributions、optimization_plan
+
+**验证结果格式**：
+
+```json
+{
+  "valid": true/false,
+  "errors": [
+    {
+      "type": "missing_field|type_error|identity_mismatch",
+      "field": "field_name",
+      "expected": "expected_value",
+      "actual": "actual_value",
+      "message": "错误描述"
+    }
+  ],
+  "warnings": ["额外字段警告列表"]
+}
+```
+
+**修复流程**：
+
+| 错误类型 | 修复策略 | 优先级 |
+|----------|----------|--------|
+| JSON语法错误 | 修正语法后重新提交 | 高 |
+| 必填字段缺失 | 添加缺失字段 | 高 |
+| 类型错误 | 转换为预期类型 | 中 |
+| 身份不一致 | 修正task_id/task | 高 |
+| 额外字段 | 记录警告，继续验证 | 低 |

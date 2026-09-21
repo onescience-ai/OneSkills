@@ -1,0 +1,48 @@
+{
+  "name": "bio-metagenome-contrastive-learning-implementation",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T13:17:00+08:00",
+  "updated_at": "2026-09-21T13:17:00+08:00",
+  "description": "宏基因组分箱中对比学习表征学习的具体实现方法，包括序列增强策略、对比损失函数（InfoNCE/NT-Xent）设计、k-mer分词与覆盖度特征编码、长度过滤阈值选择、参考数据库编码步骤，以及CLMB/COMEBin模型推理流程的标准I/O契约。适用于需要将对比学习方法落地为可运行代码的宏基因组分箱任务。",
+  "tags": ["metagenome", "binning", "contrastive learning", "CLMB", "COMEBin", "InfoNCE", "k-mer", "tokenization", "length filtering", "representation learning", "implementation"],
+  "aliases": ["CLMB inference", "COMEBin implementation", "contrastive metagenomic binning code"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "对比学习在宏基因组分箱中的应用原理，包括序列对比学习的样本对构造方法、对比损失函数设计、表征学习目标；CLMB模型的架构、输入输出接口、权重加载和推理流程；长度过滤、k-mer分词和参考数据库编码的具体实现方法",
+  "evidence_papers": [
+    {
+      "title": "Effective binning of metagenomic contigs using contrastive multi-view representation learning",
+      "doi": "10.1038/s41467-023-44290-z",
+      "year": 2024,
+      "venue": "Nature Communications",
+      "authors": ["Ziye Wang", "Ronghui You", "Haitao Han"],
+      "oa_url": "https://doi.org/10.1038/s41467-023-44290-z"
+    },
+    {
+      "title": "Benchmarking metagenomic binning tools on real datasets across sequencing platforms and binning modes",
+      "doi": "10.1038/s41467-025-57957-6",
+      "year": 2025,
+      "venue": "Nature Communications",
+      "authors": ["Haitao Han", "Ziye Wang", "Shanfeng Zhu"]
+    },
+    {
+      "title": "SemiBin2: self-supervised contrastive learning leads to better MAGs for short- and long-read sequencing",
+      "doi": "10.1093/bioinformatics/btad209",
+      "year": 2023,
+      "venue": "Bioinformatics"
+    },
+    {
+      "title": "Solving genomic puzzles: computational methods for metagenomic binning",
+      "doi": "10.1093/bib/bbae372",
+      "year": 2024,
+      "venue": "Briefings in Bioinformatics"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

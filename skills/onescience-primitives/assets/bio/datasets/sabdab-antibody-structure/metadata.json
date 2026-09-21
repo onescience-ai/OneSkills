@@ -1,0 +1,23 @@
+{
+  "name": "sabdab-antibody-structure",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "SAbDab抗体结构数据库的访问和使用方法，提供实验解析的抗体3D结构数据，支持CDR区域标注、序列比对、数据集创建等抗体研究任务",
+  "tags": ["SAbDab", "antibody-structure", "PDB", "structural-database", "CDR-annotation"],
+  "aliases": ["SAbDab", "Structural Antibody Database", "Thera-SAbDab", "SAbDab-nano"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CDR环与抗体骨架联合生成任务中真实抗原-抗体数据的来源和格式标准",
+  "evidence_papers": [
+    {"title": "Thera-SAbDab: the Therapeutic Structural Antibody Database", "doi": "10.1093/nar/gkz827", "year": 2019},
+    {"title": "SAbDab in the age of biotherapeutics: updates including SAbDab-nano, the nanobody structure tracker", "doi": "10.1093/nar/gkab1050", "year": 2021}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,26 @@
+{
+  "name": "bio-stratified-performance-evaluation",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:11:00Z",
+  "updated_at": "2026-09-21T12:11:00Z",
+  "description": "Stratified performance evaluation methodology for DNA language models across multiple dimensions including chromosome, gene, species, cell type, and variant category.",
+  "tags": ["DNA language model", "evaluation", "stratified", "benchmark", "performance metrics"],
+  "aliases": ["stratified evaluation", "分层评估"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "分层性能评估的标准方法、报告格式和验证指标",
+  "evidence_papers": [
+    {
+      "title": "A comprehensive survey of genome language models in bioinformatics",
+      "doi": "10.1093/bib/bbaf724",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

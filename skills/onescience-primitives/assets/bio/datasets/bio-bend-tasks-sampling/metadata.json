@@ -1,0 +1,26 @@
+{
+  "name": "bio-bend-tasks-sampling",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:10:00Z",
+  "updated_at": "2026-09-21T12:10:00Z",
+  "description": "BEND_tasks dataset sampling strategy and scale requirements for benchmarking DNA language models.",
+  "tags": ["DNA language model", "benchmark", "sampling", "dataset scale", "genomics"],
+  "aliases": ["BEND sampling", "BEND scale"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "BEND_tasks数据集的完整规模、采样要求和划分策略",
+  "evidence_papers": [
+    {
+      "title": "A comprehensive survey of genome language models in bioinformatics",
+      "doi": "10.1093/bib/bbaf724",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

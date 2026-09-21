@@ -1,0 +1,38 @@
+{
+  "name": "peptide-design-input-contract",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:04:00Z",
+  "updated_at": "2026-09-21T11:04:00Z",
+  "description": "靶标特异性全原子肽类设计任务的输入契约，定义必填和可选输入参数及其默认值。当默认值可用时，无需用户提供即可继续执行。",
+  "tags": [
+    "peptide design",
+    "input contract",
+    "target-specific",
+    "all-atom",
+    "task parameters",
+    "edge:workflow:paper-retrieval-fallback-strategy",
+    "edge:workflow:primitive-library-construction",
+    "edge:workflow:target-specific-peptide-design-workflow"
+  ],
+  "aliases": [
+    "肽设计输入契约",
+    "peptide design parameters"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "靶标特异性全原子肽类设计任务的输入契约",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-21T11:04:00Z",
+      "location": "归因报告E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-w2\\107\\report.json中issues[2].optimization_plan"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,34 @@
+{
+  "name": "bio-pertrack-robust-z-normalization",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "逐轨迹 robust z-score 标准化与变异效应筛选任务：对 AlphaGenome 预测的多轨迹变异效应值执行 per-track robust z-score 标准化（基于 median 和 MAD），按轨迹内秩阈值筛选高效应变异，并基于背景变异集计算效应分布。适用于跨轨迹聚合前的效应值标准化和组织特异候选变异筛选。",
+  "tags": ["robust z-score", "normalization", "MAD", "median", "variant effect", "rank threshold", "background variants", "tissue-specific", "enhancer", "candidate screening"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "per-track robust z-score normalization, variant effect size standardization, rank threshold, background variant set matching",
+  "evidence_papers": [
+    {
+      "title": "Advancing regulatory variant effect prediction with AlphaGenome",
+      "doi": "10.1038/s41586-025-10014-0",
+      "year": 2026,
+      "venue": "Nature"
+    },
+    {
+      "title": "GTEx pro enables accurate multi-tissue gene expression analysis using robust normalization and batch correction",
+      "doi": "10.1038/s41598-025-20697-0",
+      "year": 2025,
+      "venue": "Scientific Reports"
+    },
+    {
+      "title": "Robust and rigorous identification of tissue-specific genes by statistically extending tau score",
+      "doi": "10.1186/s13040-022-00315-9",
+      "year": 2022,
+      "venue": "BioData Mining"
+    }
+  ]
+}

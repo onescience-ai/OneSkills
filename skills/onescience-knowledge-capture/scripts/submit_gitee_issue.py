@@ -80,18 +80,48 @@ def find_gitee_cli() -> str | None:
     return shutil.which("gitee")
 
 
+def gitee_cli_argv() -> list[str] | None:
+    """Return the argv prefix used to invoke gitee-cli, or None if absent.
+
+    On Windows ``shutil.which("gitee")`` resolves to the npm ``gitee.cmd``
+    batch shim, which runs ``node <pkg>/bin/index.js %*``.  A batch shim
+    CANNOT forward arguments containing newlines: cmd.exe splits the command
+    line at the first LF, so a multi-line ``-b <body>`` is truncated to its
+    first line and every flag placed after it (``--json``, ``--labels``) is
+    silently dropped.  That is why issues created through the shim came out
+    with a one-line body, no labels and no machine-readable number.
+
+    To avoid this we bypass the shim and call ``node`` directly on the CLI
+    entrypoint; node's argv parsing preserves embedded newlines intact.  On
+    non-Windows platforms the ``gitee`` shell wrapper handles multi-line
+    arguments fine, so it is used as-is.
+    """
+    gitee = find_gitee_cli()
+    if gitee is None:
+        return None
+    if os.name == "nt" and gitee.lower().endswith((".cmd", ".bat")):
+        node = shutil.which("node")
+        index_js = (
+            Path(gitee).parent
+            / "node_modules" / "@gitee" / "gitee-cli" / "bin" / "index.js"
+        )
+        if node and index_js.exists():
+            return [node, str(index_js)]
+    return [gitee]
+
+
 def gitee_cli_ready() -> bool:
     """Return True if gitee-cli is installed AND authenticated.
 
     Authentication is set up once via ``gitee auth login``; the token is stored
     in the CLI's local config, so no env var is needed at call time.
     """
-    gitee = find_gitee_cli()
-    if gitee is None:
+    argv = gitee_cli_argv()
+    if argv is None:
         return False
     try:
         result = subprocess.run(
-            [gitee, "--no-tui", "auth", "status"],
+            argv + ["--no-tui", "auth", "status"],
             capture_output=True,
             text=True,
             timeout=15,
@@ -122,21 +152,30 @@ def _parse_cli_text(raw: str) -> dict:
 def submit_via_cli(payload: dict, repo: str) -> dict:
     """Create a Gitee Issue via gitee-cli.
 
-    Command: gitee --no-tui issue create -R <repo> -t <title> -b <body> --json
+    Effective command (argv form, see gitee_cli_argv for the node-direct
+    invocation used on Windows)::
+
+        gitee --no-tui issue create -R <repo> -t <title> --json \
+            [--labels <l1,l2>] -b <body> [-a <assignee>]
+
     Auth is handled by the CLI's stored credentials (see `gitee auth login`).
     """
-    gitee = find_gitee_cli()
-    if gitee is None:
+    argv = gitee_cli_argv()
+    if argv is None:
         raise RuntimeError("gitee-cli not found in PATH")
-    cmd = [
-        gitee, "--no-tui", "issue", "create",
+    # NOTE: ``--json`` and ``--labels`` are placed BEFORE ``-b <body>`` so that
+    # they survive even on a platform whose shell wrapper still truncates a
+    # multi-line body argument.  With the node-direct argv (see gitee_cli_argv)
+    # the full body is preserved regardless of ordering.
+    cmd = argv + [
+        "--no-tui", "issue", "create",
         "-R", repo,
         "-t", payload["title"],
-        "-b", payload["body"],
         "--json",
     ]
     if payload.get("labels"):
         cmd += ["--labels", ",".join(str(label) for label in payload["labels"])]
+    cmd += ["-b", payload["body"]]
     if payload.get("assignee"):
         cmd += ["-a", str(payload["assignee"])]
     result = subprocess.run(
@@ -164,7 +203,7 @@ def submit_via_cli(payload: dict, repo: str) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--payload", required=True, type=Path)
-    parser.add_argument("--repo", default="onescience-ai/oneskills-dev")
+    parser.add_argument("--repo", default="onescience-ai/oneskills")
     parser.add_argument("--api-base", default="https://gitee.com/api/v5")
     parser.add_argument("--submit", action="store_true", help="perform the network request")
     parser.add_argument(

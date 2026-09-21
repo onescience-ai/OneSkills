@@ -1,0 +1,36 @@
+{
+  "name": "co2-photocatalyst-ml-models",
+  "type": "model",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:03:00Z",
+  "updated_at": "2026-09-21T11:03:00Z",
+  "description": "机器学习模型用于CO2光催化剂性能预测，包括带隙预测、光催化活性预测、稳定性预测等。常用模型包括图神经网络(GNN)、梯度提升树、随机森林等，适用于材料筛选和性能优化。",
+  "tags": ["machine learning", "CO2 photocatalyst", "band gap prediction", "graph neural network", "materials screening", "random forest", "gradient boosting"],
+  "aliases": ["ML models for photocatalysis", "catalyst prediction models", "materials ML models"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CO2光催化剂领域常用的机器学习模型和预测方法",
+  "evidence_papers": [
+    {
+      "title": "Scaling deep learning for materials discovery",
+      "doi": "10.1038/s41586-023-06735-9",
+      "year": 2023
+    },
+    {
+      "title": "Data-Driven Strategies for Accelerated Materials Design",
+      "doi": "10.1021/acs.accounts.0c00785",
+      "year": 2021
+    },
+    {
+      "title": "Machine Learning for Materials Scientists: An Introductory Guide toward Best Practices",
+      "doi": "10.1021/acs.chemmater.0c01907",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

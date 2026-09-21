@@ -1,0 +1,36 @@
+{
+  "name": "climate-ml-model-selection-evaluation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:52:00Z",
+  "updated_at": "2026-09-21T12:52:00Z",
+  "description": "面向光伏功率预测任务，提供机器学习模型选择与评估的标准方法，包括训练集/验证集/测试集划分、交叉验证、过拟合检测指标以及模型选择应基于验证集性能而非训练集性能的原则。",
+  "tags": [
+    "machine learning",
+    "model selection",
+    "validation",
+    "overfitting",
+    "cross-validation",
+    "edge:workflow:climate-pv-power-prediction-workflow"
+  ],
+  "aliases": [
+    "ML model evaluation",
+    "PV power prediction model selection"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "机器学习模型选择与评估的标准方法，包括训练集/验证集/测试集划分、交叉验证、过拟合检测指标以及模型选择应基于验证集性能而非训练集性能的原则",
+  "evidence_papers": [
+    {
+      "title": "Short-Term Photovoltaic Power Output Prediction Based on k-Fold Cross-Validation and an Ensemble Model",
+      "doi": "10.3390/en12071220",
+      "year": 2019
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

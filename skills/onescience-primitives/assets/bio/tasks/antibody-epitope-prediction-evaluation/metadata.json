@@ -1,0 +1,56 @@
+{
+  "name": "antibody-epitope-prediction-evaluation",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "Task for evaluating antibody epitope/paratope prediction performance using standard metrics and benchmarks. Includes independent test set evaluation, baseline comparison, cross-validation, and statistical significance testing for computational immunology models.",
+  "tags": [
+    "evaluation",
+    "benchmark",
+    "AUPRC",
+    "F1",
+    "antibody",
+    "epitope",
+    "paratope",
+    "prediction assessment",
+    "edge:workflow:came-ab-binding-prediction-workflow"
+  ],
+  "aliases": [
+    "antibody prediction evaluation",
+    "epitope prediction benchmark"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "抗体结合位点预测的评估标准和最佳实践",
+  "evidence_papers": [
+    {
+      "title": "An expanded benchmark for antibody-antigen docking and affinity prediction reveals insights into antibody recognition determinants",
+      "authors": [
+        "Johnathan D. Guest",
+        "Thom Vreven",
+        "Jing Zhou"
+      ],
+      "venue": "Structure",
+      "year": 2021,
+      "doi": "10.1016/j.str.2021.01.005"
+    },
+    {
+      "title": "Evaluating deep learning based structure prediction methods on antibody-antigen complexes",
+      "authors": [
+        "Samuel Fromm",
+        "Marko Ludaic",
+        "Arne Elofsson"
+      ],
+      "venue": "Bioinformatics",
+      "year": 2026,
+      "doi": "10.1093/bioinformatics/btag136"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

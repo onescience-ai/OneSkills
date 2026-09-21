@@ -1,0 +1,31 @@
+{
+  "name": "vasp-gromacs-applicability-differentiation",
+  "type": "tool",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T05:00:00Z",
+  "updated_at": "2026-09-21T05:00:00Z",
+  "description": "VASP与GROMACS的适用场景区分：VASP用于第一性原理计算（DFT），适用于电子结构、离子迁移能垒、相稳定性等量子力学计算；GROMACS用于分子动力学模拟，适用于原子运动轨迹、扩散系数等经典力学模拟。固态锂离子导体的离子电导率预测通常需要DFT+AIMD（从头算分子动力学），而非经典MD。",
+  "tags": ["VASP", "GROMACS", "DFT", "molecular-dynamics", "ionic-conductivity", "solid-state-electrolyte", "computational-tools"],
+  "aliases": ["第一性原理计算", "分子动力学模拟", "从头算分子动力学"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "VASP与GROMACS的适用场景区分——VASP用于第一性原理计算，GROMACS用于分子动力学模拟",
+  "evidence_papers": [
+    {
+      "title": "Unsupervised discovery of solid-state lithium ion conductors",
+      "doi": "10.1038/s41467-019-13214-1",
+      "year": 2019
+    },
+    {
+      "title": "Ab initio molecular dynamics study of isotope effects in lithium-ion conductors",
+      "doi": "10.1016/j.ssi.2020.115567",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

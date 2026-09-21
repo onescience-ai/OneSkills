@@ -1,0 +1,20 @@
+{
+  "name": "scenario-workflow-executor-step-mapping",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T05:00:00Z",
+  "updated_at": "2026-09-21T05:00:00Z",
+  "description": "OneScience场景workflow步骤与executor步骤的映射规则：场景定义的s01-s04为领域工作流步骤，orchestrator应将其映射为executor可执行的步骤，每个场景步骤可映射为一个或多个executor步骤，但必须保持输入输出契约一致。映射关系需记录在execution-manifest.json的step_mapping字段中。",
+  "tags": ["workflow-mapping", "orchestration", "executor", "scenario", "step-mapping", "input-output-contract"],
+  "aliases": ["步骤映射", "工作流映射", "场景步骤映射"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience场景workflow步骤与executor步骤的映射规则",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

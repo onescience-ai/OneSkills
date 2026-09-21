@@ -1,0 +1,20 @@
+{
+  "name": "bio-openfold-offline-environment-setup",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:00:00Z",
+  "updated_at": "2026-09-21T12:00:00Z",
+  "description": "科学计算环境离线安装方法和离线包管理策略：当网络连接受限时，如何预下载依赖包、配置本地镜像源或使用conda离线安装OpenFold等科学计算工具。涵盖PyPI包依赖关系、版本兼容性检查、离线安装流程和异常恢复策略。",
+  "tags": ["offline installation", "package management", "conda", "PyPI", "scientific computing", "environment setup", "reproducibility", "OpenFold"],
+  "aliases": ["离线安装", "科学计算环境配置", "离线包管理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "科学计算环境离线安装方法和离线包管理策略",
+  "evidence_papers": [
+    {"title": "OpenFold: retraining AlphaFold2 yields new insights into its learning mechanisms and capacity for generalization", "doi": "10.1038/s41592-024-02272-z", "year": 2024}
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

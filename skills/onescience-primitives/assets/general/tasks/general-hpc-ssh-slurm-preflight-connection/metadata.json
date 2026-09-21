@@ -1,0 +1,42 @@
+{
+  "name": "general-hpc-ssh-slurm-preflight-connection",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "面向HPC远程计算环境，建立SSH连接并完成SLURM作业调度系统预检验证的任务级知识，涵盖连接配置、超时重试策略、模块加载规范及环境一致性校验方法",
+  "tags": ["HPC", "SSH", "SLURM", "remote-connection", "preflight-validation", "environment-setup", "timeout-retry", "module-loading"],
+  "aliases": ["SSH连接", "SLURM配置", "远程环境预检", "HPC环境设置", "作业调度预检"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "远程SSH/SLURM环境连接与预检执行知识，包括有效的连接配置、超时重试策略、SLURM模块加载规范、本地与远程环境一致性校验方法",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "SLURM Workload Manager Documentation",
+      "url": "https://slurm.schedmd.com/documentation.html",
+      "publisher": "SchedMD LLC",
+      "version": "2024.01",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "OpenSSH Manual Pages",
+      "url": "https://www.openssh.com/manual.html",
+      "publisher": "OpenBSD Project",
+      "version": "9.6",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "HPC Environment Best Practices Guide",
+      "url": "https://docs.rc.fas.harvard.edu/kb/hpc-best-practices/",
+      "publisher": "Harvard FAS Research Computing",
+      "version": "2024",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

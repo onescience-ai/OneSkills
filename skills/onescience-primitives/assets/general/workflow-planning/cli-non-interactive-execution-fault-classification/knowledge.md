@@ -206,3 +206,37 @@
 [4] "The Command Line GUIde: Graphical Interfaces from Man Pages via AI", Saketh Ram Kasibatla et al., IEEE VL/HCC 2025
 [5] "EQSANS-CLI: A natural-language, agent-ready command-line tool for small-angle neutron scattering data reduction at EQ-SANS", Changwoo Do, arXiv:2605.00651, 2026
 [D1] Python subprocess Module Documentation, Python Software Foundation, 版本 3.14.7
+
+## 批次补充 2026-09-21（onescience-knowledge-harvester）
+
+### 归因分析CLI故障诊断应用场景
+
+本次补充将CLI故障分类知识应用于归因分析场景，提供具体的诊断流程和验证方法。
+
+**归因分析CLI故障诊断流程**：
+
+1. **故障识别**
+   - 检查退出码：0=成功，非0=失败
+   - 检查stderr输出：错误信息、警告信息
+   - 检查超时：进程是否在规定时间内完成
+
+2. **故障分类**
+   | 故障类型 | 表现特征 | 诊断方法 |
+   |----------|----------|----------|
+   | 构建失败 | CLI工具无法安装或编译 | 检查依赖、构建配置 |
+   | 执行失败 | 进程崩溃或异常终止 | 分析stderr、coredump |
+   | 超时 | 进程未在规定时间内完成 | 检查资源限制、死循环 |
+   | 输出异常 | 输出格式不符合预期 | 检查Schema约束、编码 |
+
+3. **恢复策略**
+   - 重试机制：对瞬态故障进行重试
+   - 降级处理：使用简化模式或备选方案
+   - 环境重置：清理状态后重新执行
+
+**验证方法**：
+
+| 验证类型 | 成功用例 | 非零退出用例 | 超时用例 |
+|----------|----------|--------------|----------|
+| 退出码检查 | exit_code == 0 | exit_code != 0 | timeout expired |
+| stderr检查 | stderr为空或仅含警告 | stderr包含错误信息 | stderr包含超时信息 |
+| 日志检查 | 日志记录完整 | 日志记录失败原因 | 日志记录超时时间 |

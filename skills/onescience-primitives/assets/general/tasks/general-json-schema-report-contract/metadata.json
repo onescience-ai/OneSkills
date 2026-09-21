@@ -1,0 +1,24 @@
+{
+  "name": "general-json-schema-report-contract",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T06:38:00Z",
+  "updated_at": "2026-09-21T06:38:00Z",
+  "description": "JSON Schema报告交付契约验证任务的做法、参数、验收标准，规定必填字段、任务身份、数组约束及输出格式，用于确保report.json可解析且与任务身份一致。",
+  "tags": ["JSON-Schema", "validation", "report", "contract", "required-fields", "structured-output"],
+  "aliases": ["JSON模式验证报告", "结构化报告契约", "Schema验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {"title": "Schema validation and evaluation framework for extracted schemas in JSON databases", "doi": "10.1038/s41598-026-45554-6", "year": "2026"},
+    {"title": "AI-assisted JSON Schema Creation and Mapping", "doi": "10.1109/MODELS-C68889.2025.00019", "year": "2025"},
+    {"title": "Streaming Validation of JSON Documents Against Schemas", "doi": "10.14778/3778092.3778109", "year": "2025"}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

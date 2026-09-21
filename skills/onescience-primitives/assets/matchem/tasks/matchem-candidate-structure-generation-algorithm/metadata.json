@@ -1,0 +1,50 @@
+{
+  "name": "matchem-candidate-structure-generation-algorithm",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "任务卡：晶体结构预测中候选构型生成的具体算法与约束规则。涵盖随机结构搜索（RSS）、对称性约束生成、遗传算法、自回归生成等方法，以及原子重叠检测、等价结构判定、候选结构库格式等质量控制要求。",
+  "tags": [
+    "edge:workflow:matchem-composition-structure-search-space-definition-candidate-workflow",
+    "edge:task:matchem-candidate-structure-generation-deduplication-task",
+    "edge:scenario:matchem-graph-neural-network-crystal-structure-prediction-and-scenario",
+    "keyword:candidate-generation",
+    "keyword:random-structure-search",
+    "keyword:symmetry-constraint",
+    "keyword:structure-deduplication",
+    "edge:workflow:matchem-blocked-trigger-rules-comprehensive",
+    "edge:workflow:orchestrator-expert-skill-dispatch-rules"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "晶体结构预测中候选构型生成的具体算法与约束规则",
+  "evidence_papers": [
+    {
+      "title": "Crystal structure generation with autoregressive large language modeling",
+      "doi": "10.1038/s41467-024-54639-7",
+      "year": 2024
+    },
+    {
+      "title": "GAtor: A First-Principles Genetic Algorithm for Molecular Crystal Structure Prediction",
+      "doi": "10.1021/acs.jctc.7b01152",
+      "year": 2018
+    },
+    {
+      "title": "The seventh blind test of crystal structure prediction: structure generation methods",
+      "doi": "10.1107/s2052520624007492",
+      "year": 2024
+    },
+    {
+      "title": "Crystal structure prediction by combining graph network and optimization algorithm",
+      "doi": "10.1038/s41467-022-29241-4",
+      "year": 2022
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

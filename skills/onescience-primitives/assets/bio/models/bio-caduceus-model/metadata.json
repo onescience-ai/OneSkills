@@ -1,0 +1,26 @@
+{
+  "name": "bio-caduceus-model",
+  "type": "model",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:09:00Z",
+  "updated_at": "2026-09-21T12:09:00Z",
+  "description": "Caduceus is a bidirectional equivariant DNA language model based on BiMamba architecture, supporting reverse complement equivariance.",
+  "tags": ["DNA language model", "Caduceus", "BiMamba", "bidirectional", "equivariant"],
+  "aliases": ["Caduceus", "Caduceus-Ph"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Caduceus模型的下载地址、安装步骤、版本信息和许可证",
+  "evidence_papers": [
+    {
+      "title": "A comprehensive survey of genome language models in bioinformatics",
+      "doi": "10.1093/bib/bbaf724",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

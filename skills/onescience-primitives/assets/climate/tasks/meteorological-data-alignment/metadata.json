@@ -1,0 +1,23 @@
+{
+  "name": "meteorological-data-alignment",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:55:00Z",
+  "updated_at": "2026-09-21T11:55:00Z",
+  "description": "气象多要素数据时空对齐标准流程，包括时间轴一致性检查、空间网格对齐、单位标准化、质量标志编码约定和缺测值处理规范",
+  "tags": ["data-alignment", "spatiotemporal", "quality-control", "unit-conversion", "missing-values"],
+  "aliases": ["数据时空对齐", "多要素数据对齐"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象多要素数据时空对齐标准流程，包括时间轴一致性检查、空间网格对齐、单位标准化、质量标志编码约定和缺测值处理规范",
+  "evidence_papers": [
+    {"title": "Evaluation of spatial-temporal variation performance of ERA5 precipitation data in China", "doi": "10.1038/s41598-021-84674-6", "year": 2021},
+    {"title": "Comparison of Reanalysis and Observational Precipitation Datasets Including ERA5", "doi": "10.3390/atmos12091167", "year": 2021}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

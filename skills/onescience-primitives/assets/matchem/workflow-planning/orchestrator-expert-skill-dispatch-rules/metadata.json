@@ -1,0 +1,27 @@
+{
+  "name": "orchestrator-expert-skill-dispatch-rules",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "跨领域通用方法论：orchestrator对expert技能的调度规则。规定intent_profile识别后应调用expert技能进行专业规划的触发条件、输入输出格式、proposal融合流程，以及跳过专家规划的风险与处置。",
+  "tags": [
+    "edge:scenario:matchem-graph-neural-network-crystal-structure-prediction-and-scenario",
+    "keyword:orchestrator",
+    "keyword:expert-skill",
+    "keyword:dispatch-rules",
+    "keyword:planner-proposal",
+    "edge:task:matchem-candidate-structure-generation-algorithm",
+    "edge:task:matchem-gnn-crystal-structure-prediction-application-paradigm"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "orchestrator对expert技能的调度规则与proposal融合流程",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

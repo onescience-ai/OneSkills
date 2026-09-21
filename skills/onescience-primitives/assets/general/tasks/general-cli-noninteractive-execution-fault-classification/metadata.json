@@ -1,0 +1,26 @@
+{
+  "name": "general-cli-noninteractive-execution-fault-classification",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:00:00Z",
+  "updated_at": "2026-09-21T12:00:00Z",
+  "description": "命令行界面（CLI）非交互执行与故障分类知识，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，适用于自动化脚本、CI/CD流水线和远程执行场景。",
+  "tags": ["CLI", "command-line-interface", "non-interactive-execution", "fault-classification", "error-handling", "automation"],
+  "aliases": ["command line interface", "CLI execution", "terminal automation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "xgt: a command-line interface for the Genome Taxonomy Database with cross-release taxonomic comparison",
+      "doi": "10.1093/gigascience/giag086",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

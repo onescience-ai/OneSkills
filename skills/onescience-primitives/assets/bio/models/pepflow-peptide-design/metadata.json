@@ -1,0 +1,26 @@
+{
+  "name": "pepflow-peptide-design",
+  "type": "model",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:01:00Z",
+  "updated_at": "2026-09-21T11:01:00Z",
+  "description": "PepFlow是一种基于表面的生成算法，使用多模态条件流匹配（CFM）架构学习表面几何形状和生化性质分布，实现肽序列、结构和表面的综合协同设计。适用于靶标特异性全原子肽类设计任务。",
+  "tags": ["peptide design", "conditional flow matching", "surface generation", "all-atom", "target-specific"],
+  "aliases": ["PepFlow", "peptide flow matching", "surface-based peptide generation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "PepFlow模型的技术原理、输入输出契约、使用方法和适用条件",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-21T11:01:00Z",
+      "location": "归因报告E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-w2\\107\\report.json中issues[0].optimization_plan"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

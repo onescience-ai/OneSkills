@@ -1,0 +1,24 @@
+{
+  "name": "single-cell-foundation-model-weights",
+  "type": "model",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "单细胞基础模型（Geneformer、scGPT）预训练权重获取方法，涵盖HuggingFace Model Hub、GitHub releases的权重下载、版本验证、架构兼容性检查与输入格式适配，支持人类和小鼠转录组分析。",
+  "tags": ["single-cell", "Geneformer", "scGPT", "pretrained", "model-weights", "HuggingFace", "foundation-model"],
+  "aliases": ["Geneformer v2", "scGPT", "mouse-Geneformer", "Genecorpus-30M"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "单细胞基础模型权重获取知识，包括Geneformer和scGPT的公开权重下载地址、版本标识、模型架构、输入输出格式、预处理要求和许可证信息",
+  "evidence_papers": [
+    {"title": "Mouse-Geneformer: A deep learning model for mouse single-cell transcriptome and its cross-species utility", "doi": "10.1371/journal.pgen.1011420", "year": 2025},
+    {"title": "Assessing scale and predictive diversity in models for single-cell transcriptomics based on Geneformer", "doi": "10.1371/journal.pcbi.1013701", "year": 2026},
+    {"title": "Gene-Chronos: parameter-efficient developmental time inference using a pretrained single-cell foundation model", "doi": "10.1093/bib/bbag469", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

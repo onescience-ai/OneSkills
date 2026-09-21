@@ -1,0 +1,26 @@
+{
+  "name": "bio-data-lineage-documentation",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:11:00Z",
+  "updated_at": "2026-09-21T12:11:00Z",
+  "description": "Data lineage documentation standards for DNA language model benchmarking, ensuring traceability from input to output.",
+  "tags": ["data lineage", "documentation", "reproducibility", "benchmark", "DNA language model"],
+  "aliases": ["data lineage", "数据血缘"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "数据血缘记录的标准格式、必需字段和验证方法",
+  "evidence_papers": [
+    {
+      "title": "A comprehensive survey of genome language models in bioinformatics",
+      "doi": "10.1093/bib/bbaf724",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

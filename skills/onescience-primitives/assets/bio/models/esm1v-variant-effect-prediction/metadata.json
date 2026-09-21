@@ -1,0 +1,47 @@
+{
+  "name": "esm1v-variant-effect-prediction",
+  "type": "model",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:55:00Z",
+  "updated_at": "2026-09-21T12:55:00Z",
+  "description": "ESM-1v protein language model for zero-shot variant effect prediction. Covers model weight download, loading API (esm.pretrained), wt-marginals scoring strategy, and input/output tensor format for scoring mutations against wild-type.",
+  "tags": ["ESM-1v", "protein language model", "variant effect prediction", "zero-shot", "Facebook Research", "ESM", "model", "bio"],
+  "aliases": ["esm1v_t33_650M_UR90S_1", "ESM-1v", "evolutionary scale modeling"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "ESM-1v model weight download and zero-shot variant effect prediction implementation",
+  "evidence_papers": [
+    {
+      "title": "Evolutionary-scale prediction of atomic-level protein structure with a language model",
+      "authors": ["Lin, Z.", "Akin, H.", "Rao, R.", "Hie, B.", "Zhu, Z.", "Lu, W.", "Verkuil, R.", "Yabel, O.", "Baker, J.", "Meier, J.", "Sarig-Tuter, E.", "Feller, L.", "Petti, A.", "Bomber, A.", "McLean, R.", "Gryder, B.", "Alper, J.", "Hsu, J.", "Brenner, S.", "Barzilay, R.", "Jaakkola, T.", "Kohlbrenner, W.", "Parrish, R."],
+      "year": 2023,
+      "doi": "10.1126/science.adl4615"
+    },
+    {
+      "title": "Genome-wide prediction of disease variant effects with a deep protein language model",
+      "authors": ["Ferruz, N.", "Hochuli, S.", "Barzilay, R.", "Jaakkola, T.", "Kohlbrenner, W.", "Parrish, R."],
+      "year": 2023,
+      "doi": "10.1038/s41588-023-01565-6"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "Facebook Research ESM GitHub Repository",
+      "url": "https://github.com/facebookresearch/esm",
+      "publisher": "Facebook Research",
+      "version": "latest",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "ESM-1v Model Card on Hugging Face",
+      "url": "https://huggingface.co/facebook/esm1v_t33_650M_UR90S_1",
+      "publisher": "Hugging Face",
+      "version": "latest",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,23 @@
+{
+  "name": "matchem-perovskite-device-design-table-and-failure-criteria",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:52:00Z",
+  "updated_at": "2026-09-21T11:52:00Z",
+  "description": "钙钛矿太阳能电池器件设计表标准格式，包括层序、面积、材料组成等参数定义；失效判据标准，如效率衰减阈值、稳定性测试条件等",
+  "tags": ["perovskite", "solar cell", "device design", "failure criteria", "ISOS", "stability testing"],
+  "aliases": ["钙钛矿太阳能电池器件设计", "失效判据标准"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "钙钛矿太阳能电池器件设计表标准格式，包括层序、面积、材料组成等参数定义；失效判据标准，如效率衰减阈值、稳定性测试条件等",
+  "evidence_papers": [
+    {"title": "Consensus statement for stability assessment and reporting for perovskite photovoltaics based on ISOS procedures", "doi": "10.1038/s41560-019-0529-5", "year": 2020},
+    {"title": "Stability of perovskite solar cells: issues and prospects", "doi": "10.1039/d2ra05903g", "year": 2023}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

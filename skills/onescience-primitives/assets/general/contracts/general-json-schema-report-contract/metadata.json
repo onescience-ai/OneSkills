@@ -1,0 +1,39 @@
+{
+  "name": "general-json-schema-report-contract",
+  "type": "contract",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T14:06:00+08:00",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "JSON Schema报告交付契约：定义结构化报告的必填字段、类型约束、数组格式、任务身份匹配规则及验证流程，确保报告可被下游系统正确解析和校验。基于SVEF框架补充Schema验证维度与指标。",
+  "tags": ["json-schema", "validation", "contract", "report-format", "api-contract", "metadata", "schema-validation"],
+  "aliases": ["JSON schema validation", "report specification", "output contract"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {"title": "Schema validation and evaluation framework for extracted schemas in JSON databases", "doi": "10.1038/s41598-026-45554-6", "year": 2026},
+    {"title": "Improving Api Test Accuracy through Schema Validation and Real-time Json Assertions in Jenkins Pipelines", "doi": "10.71097/ijsat.v16.i3.10656", "year": 2025},
+    {"title": "Blaze: Compiling JSON Schema for 10x Faster Validation", "doi": "10.14778/3773749.3773764", "year": 2025}
+  ],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema Official Specification",
+      "url": "https://json-schema.org/draft/2020-12/json-schema-core",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "Understanding JSON Schema",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "json-schema.org",
+      "version": "2024",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-21: 基于SVEF框架补充Schema验证维度与指标"],
+  "conflicts": []
+}

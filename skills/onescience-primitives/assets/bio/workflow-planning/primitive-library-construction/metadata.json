@@ -1,0 +1,35 @@
+{
+  "name": "primitive-library-construction",
+  "type": "workflow-planning",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:07:00Z",
+  "updated_at": "2026-09-21T11:07:00Z",
+  "description": "生物信息学领域原语资源库构建的通用方法，包括模型、工作流、任务等原语资产的创建、组织和管理。适用于任何领域原语资源库的构建。",
+  "tags": [
+    "primitive library",
+    "resource construction",
+    "knowledge management",
+    "domain assets",
+    "edge:task:peptide-design-input-contract"
+  ],
+  "aliases": [
+    "原语资源库构建",
+    "primitive asset construction"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "生物信息学领域（特别是肽设计）的原语资源库构建",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-21T11:07:00Z",
+      "location": "归因报告E:\\works\\zhognkeshuguang\\knowledge_oneskills\\onescience-knowledge-driven-feedback\\results\\attr-w2\\107\\report.json中issues[4].optimization_plan"
+    }
+  ],
+  "merged_batches": [],
+  "conflicts": []
+}

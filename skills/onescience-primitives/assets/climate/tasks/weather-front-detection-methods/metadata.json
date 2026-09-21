@@ -1,0 +1,24 @@
+{
+  "name": "weather-front-detection-methods",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:57:00Z",
+  "updated_at": "2026-09-21T11:57:00Z",
+  "description": "天气锋面检测方法学对比知识，包括CNN方法与传统阈值方法的适用条件、输入要求、输出精度差异",
+  "tags": ["front-detection", "CNN", "threshold", "method-comparison", "deep-learning"],
+  "aliases": ["锋面检测方法", "锋面识别算法"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "天气锋面检测方法学对比知识，包括CNN方法与传统阈值方法的适用条件、输入要求、输出精度差异",
+  "evidence_papers": [
+    {"title": "Deep Learning for Spatially Explicit Prediction of Synoptic-Scale Fronts", "doi": "10.1175/waf-d-18-0100.1", "year": 2019},
+    {"title": "Climatology and Variability of Warm and Cold Fronts over North America from 1979 to 2018", "doi": "10.1175/jcli-d-19-0651.1", "year": 2020},
+    {"title": "Machine Learning-Based Detection of Weather Fronts and Associated Extreme Precipitation in Historical and Future Climates", "doi": "10.1029/2021gl095418", "year": 2021}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

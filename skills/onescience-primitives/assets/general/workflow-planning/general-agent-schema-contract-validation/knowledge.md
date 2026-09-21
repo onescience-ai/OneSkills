@@ -180,3 +180,42 @@
 - 从同一 canonical contract 生成 prose documentation 和 JSON Schema
 - 条件差异在于表示形式和反馈格式，而非约束语义内容
 - 此设计确保隔离表示效果，避免将"schema"与"更多信息"混淆
+
+### batch-2026-09-21-merge-svef-six-dimension
+
+来源：Scientific Reports 2026, DOI: 10.1038/s41598-026-45554-6 "Schema validation and evaluation framework for extracted schemas in JSON databases"
+
+**SVEF 六维评估框架** [6]：
+
+Schema Validation and Evaluation Framework (SVEF) 定义了六个互补维度评估 Schema 推断质量：
+
+| 维度 | 全称 | 验证内容 | 核心指标 |
+|------|------|----------|----------|
+| DTA | Data Type Accuracy | 基本类型推断正确性 | Type Conformance = \|交集\| / \|并集\| |
+| ROF | Required and Optional Fields | 必填字段与依赖关系 | Presence Accuracy = 正确识别数 / 总属性数 |
+| MTS | Multiple Type Support | 异构类型联合捕获 | MTS(p) = 覆盖率 - λ×过度泛化惩罚 |
+| CSC | Collection Structure Consistency | 数组嵌套深度与元素同质性 | CSC = α×同质性 + (1-α)×深度一致性 |
+| ERR | Entity Relationships Recovery | 跨文档实体引用与关系 | ERR = β×F1 + (1-β)×GED_norm |
+| TED | Temporal Evolution Detection | Schema版本边界与变化检测 | TED = (VDA + [1 - \|CDR_inf - CDR_ref\|]) / 2 |
+
+**Schema Quality Score (SQS) 聚合公式**：
+SQS = Σ(w_i × S_i)，默认权重：DTA:0.20, ROF:0.15, MTS:0.15, CSC:0.15, ERR:0.20, TED:0.15
+
+**关键参数阈值** [6]：
+- 必填字段频率阈值：0.90
+- 依赖置信度阈值：0.80
+- 依赖提升度阈值：1.20
+- 类型泛化惩罚系数 λ：0.5
+- 集合同构性权重 α：0.7
+- 关系恢复平衡系数 β：0.7
+
+**实证发现** [6]：
+- 原型类型推断（DTA）在所有方法中均表现良好（>0.95），区分度低
+- 必填/可选字段（ROF）是所有方法的系统性弱点，对数据稀疏性敏感
+- 时序演化检测（TED）需要专门的版本追踪机制，静态方法表现差
+- 无单一方法在所有维度占优，多维度评估是必要的
+
+**适用边界**：
+- 面向 JSON/类 JSON 格式的 schemaless 文档数据库
+- 评估需要参考 Schema（ground truth）才能计算完整六维分数
+- 不评估运行时效率、内存使用或可扩展性

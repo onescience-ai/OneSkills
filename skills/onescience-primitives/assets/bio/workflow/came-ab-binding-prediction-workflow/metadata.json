@@ -1,0 +1,62 @@
+{
+  "name": "came-ab-binding-prediction-workflow",
+  "type": "workflow",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "Standard 4-step workflow for antibody-antigen binding site prediction using CAME-AB or similar multimodal models. Covers input validation, feature preparation, inference execution, and evaluation/filtering with clear input-output contracts for each step.",
+  "tags": [
+    "workflow",
+    "CAME-AB",
+    "binding prediction",
+    "antibody",
+    "antigen",
+    "multimodal",
+    "pipeline",
+    "4-step",
+    "edge:task:antibody-antigen-data-acquisition",
+    "edge:task:antibody-epitope-prediction-evaluation",
+    "edge:task:pdb-structure-download-parsing"
+  ],
+  "aliases": [
+    "antibody prediction workflow",
+    "binding site prediction pipeline"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "标准CAME-AB工作流的4步定义和各步骤的具体输入输出契约",
+  "evidence_papers": [
+    {
+      "title": "CAME-AB: Cross-Modality Attention with Mixture-of-Experts for Antibody Binding Site Prediction",
+      "authors": [
+        "Hongzong Li",
+        "Jiahao Ma",
+        "Zhanpeng Shi",
+        "Rui Xiao",
+        "Fanming Jin",
+        "Ye-Fan Hu",
+        "Hangjun Che",
+        "Jian-Dong Huang"
+      ],
+      "venue": "arXiv",
+      "year": 2025,
+      "doi": "10.48550/arXiv.2509.06465"
+    },
+    {
+      "title": "AbFlex: designing antibody complementarity determining regions with flexible CDR definition",
+      "authors": [
+        "Woosung Jeon",
+        "Dongsup Kim"
+      ],
+      "venue": "Bioinformatics",
+      "year": 2024,
+      "doi": "10.1093/bioinformatics/btae122"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,31 @@
+{
+  "name": "blocked-trigger-rules-material-chemistry",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T05:00:00Z",
+  "updated_at": "2026-09-21T05:00:00Z",
+  "description": "材料化学任务中BLOCKED触发规则：当任务必填输入（材料结构CIF/POSCAR、电池工况参数、电解液/对电极信息）缺失时，必须标记BLOCKED并列出缺失项清单，不得自行假设或使用典型值继续执行。",
+  "tags": [
+    "blocked",
+    "input-validation",
+    "material-chemistry",
+    "workflow-quality",
+    "data-completeness",
+    "edge:workflow:unsupervised-discovery-solid-state-lithium-ion-conductors"
+  ],
+  "aliases": [
+    "BLOCKED状态",
+    "缺失输入处理",
+    "必填参数检查"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "材料化学任务中BLOCKED触发规则——当任务必填输入缺失时必须标记BLOCKED",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

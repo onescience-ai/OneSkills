@@ -1,0 +1,35 @@
+{
+  "name": "general-cli-execution-fault-diagnosis",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T14:06:00+08:00",
+  "updated_at": "2026-09-21T14:06:00+08:00",
+  "description": "CLI非交互执行故障诊断：覆盖命令参数解析、进程退出码语义、标准错误捕获、超时机制、沙箱环境隔离及自动化脚本中的错误分类与恢复策略",
+  "tags": ["cli", "exit-code", "fault-diagnosis", "error-handling", "automation", "subprocess", "non-interactive"],
+  "aliases": ["command-line execution", "CLI troubleshooting", "exit code analysis"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Python subprocess module documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.12",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "Linux exit codes convention",
+      "url": "https://tldp.org/LDP/abs/html/exitcodes.html",
+      "publisher": "The Linux Documentation Project",
+      "version": "2023",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

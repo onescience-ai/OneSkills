@@ -1,0 +1,49 @@
+{
+  "name": "matchem-gnn-crystal-structure-prediction-application-paradigm",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "任务卡：图神经网络在晶体结构预测中的应用范式。阐明CGCNN、CHGNet、MACE-MP-0等模型作为预训练势或性质预测器的正确使用方式，以及GNN如何集成到晶体结构预测工作流的稳定性计算、结构弛豫和候选筛选步骤中。",
+  "tags": [
+    "edge:scenario:matchem-graph-neural-network-crystal-structure-prediction-and-scenario",
+    "edge:workflow:matchem-composition-structure-search-space-definition-candidate-workflow",
+    "keyword:GNN",
+    "keyword:CGCNN",
+    "keyword:pretrained-potential",
+    "keyword:crystal-structure-prediction",
+    "edge:workflow:matchem-blocked-trigger-rules-comprehensive",
+    "edge:workflow:orchestrator-expert-skill-dispatch-rules"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "图神经网络晶体结构预测与优化任务中GNN模型的应用范式",
+  "evidence_papers": [
+    {
+      "title": "CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling",
+      "doi": "10.1038/s42256-023-00716-3",
+      "year": 2023
+    },
+    {
+      "title": "Scaling deep learning for materials discovery",
+      "doi": "10.1038/s41586-023-06735-9",
+      "year": 2023
+    },
+    {
+      "title": "Perovskite synthesizability using graph neural networks",
+      "doi": "10.1038/s41524-022-00595-5",
+      "year": 2022
+    },
+    {
+      "title": "Crystal structure prediction by combining graph network and optimization algorithm",
+      "doi": "10.1038/s41467-022-29241-4",
+      "year": 2022
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

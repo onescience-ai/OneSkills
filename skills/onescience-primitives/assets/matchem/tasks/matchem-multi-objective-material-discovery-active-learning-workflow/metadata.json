@@ -1,0 +1,26 @@
+{
+  "name": "matchem-multi-objective-material-discovery-active-learning-workflow",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T13:23:00Z",
+  "updated_at": "2026-09-21T13:23:00Z",
+  "description": "面向多目标材料优化，使用主动学习高效探索设计空间并找到Pareto最优解，同时处理缺失数据和不确定性量化。",
+  "tags": ["active learning", "multi-objective optimization", "materials discovery", "Pareto front", "Gaussian process regression"],
+  "aliases": ["epsilon-PAL", "Pareto active learning", "multi-objective materials design"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "有机半导体主动学习发现任务中关于环境设置和工作流的知识缺口",
+  "evidence_papers": [
+    {
+      "title": "Bias free multiobjective active learning for materials design and discovery",
+      "doi": "10.1038/s41467-021-22437-0",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

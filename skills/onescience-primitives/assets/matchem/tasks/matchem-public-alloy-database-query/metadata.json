@@ -1,0 +1,20 @@
+{
+  "name": "matchem-public-alloy-database-query",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "从公开合金数据库（Materials Project、OQMD、AFLOW、ICSD）查询B2金属间化合物的结构、热力学和形成能数据，包括composition query、phase stability filter和formation energy字段的使用方法",
+  "tags": ["materials-project", "oqmd", "aflow", "icsd", "alloy-database", "B2-intermetallic", "formation-energy", "data-acquisition"],
+  "aliases": ["mp_api", "pymatgen", "Materials Project API", "OQMD download", "AFLOW REST", "ICSD search"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Materials Project API mp_api intermetallic compound data query; OQMD AFLOW materials database bulk download alloy",
+  "evidence_papers": [
+    {"title": "Quantifying uncertainty in high-throughput density functional theory: A comparison", "doi": "10.1103/PhysRevMaterials.7.013802", "year": 2023},
+    {"title": "The AFLOW Library of Crystallographic Prototypes: Part 2", "doi": "10.1016/j.commatsci.2019.04.012", "year": 2019},
+    {"title": "MACHINE LEARNING ACCELERATED PROPERTY PREDICTION AND SCREENING OF STABLE LITHIUM-BASED BATTERY MATERIALS", "doi": "10.18173/2354-1059.2026-0005", "year": 2026}
+  ]
+}

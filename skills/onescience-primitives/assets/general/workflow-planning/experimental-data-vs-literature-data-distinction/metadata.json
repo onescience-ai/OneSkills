@@ -1,0 +1,22 @@
+{
+  "name": "experimental-data-vs-literature-data-distinction",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "实验数据与文献数据的区分标准，包括数据来源追溯方法、证据层级定义（实验测量 > 模拟计算 > 文献引用）和结果报告规范。",
+  "tags": ["experimental data", "literature data", "data distinction", "evidence hierarchy", "reporting standards"],
+  "aliases": ["data source", "evidence level", "result reporting"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "实验数据与文献数据的区分标准，包括数据来源追溯方法、证据层级定义（实验测量 > 模拟计算 > 文献引用）和结果报告规范",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {"title": "ICMJE Recommendations for Conduct, Reporting, Editing, and Publication of Scholarly Work in Medical Journals", "url": "https://www.icmje.org/recommendations/", "publisher": "International Committee of Medical Journal Editors", "version": "2023", "accessed_at": "2026-09-21"}
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

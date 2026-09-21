@@ -59,6 +59,7 @@
 | 必需字段 | task_id, steps, dependencies, artifacts | [OneScience规范] | 核心元数据 |
 | 超时设置 | 每个步骤和总任务超时 | [配置规范] | 防止执行超时 |
 | 校验规则 | 字段非空、依赖无环、路径有效 | [质量门禁] | 确保清单可用 |
+| 版本控制 | manifest_version字段，语义化版本号 | [最佳实践] | 跟踪清单格式变更 |
 
 ### 校准数值（体系专属值）
 
@@ -93,6 +94,11 @@
 - **清单格式错误**：修正JSON格式问题
 - **清单内容无效**：补充或修正清单内容
 
+### 缺失时的恢复策略
+- **编排器重建机制**：当执行agent未自写execution-manifest.json时，编排器可在预检前根据task_state.json与磁盘产物清单重建最小manifest，manifest_source字段标记为"orchestrator_synthesized"
+- **降级检查**：当manifest缺失时，workflow_preflight.py可执行降级检查，仅验证关键字段，允许任务以partial状态继续
+- **模板回退**：使用预定义的最小必填字段模板生成空manifest，确保预检通过
+
 ## 质量检查
 
 1. **格式检查**：验证JSON格式正确，可被标准JSON解析器解析
@@ -107,6 +113,7 @@
 2. **校验失败**：记录具体错误，提供修复建议
 3. **写入失败**：尝试备用路径，或输出到标准输出供手动保存
 4. **preflight失败**：执行降级检查，仅验证关键字段
+5. **清单缺失恢复**：触发编排器重建机制，生成orchestrator_synthesized清单，确保预检通过
 
 ## 资源召回建议
 
@@ -126,3 +133,4 @@
 [1] 归因报告：CFD_S073任务失败分析，指出execution-manifest.json缺失导致preflight失败
 [2] OneScience规范：工作流契约和清单生成标准
 [3] 最佳实践：preflight检查和错误处理经验
+[4] scenario_workflow_evolution.py：编排器重建机制实现，提供缺失清单恢复策略（用户自有数据，经代码分析佐证）

@@ -1,0 +1,55 @@
+{
+  "name": "antibody-antigen-data-acquisition",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "Task for acquiring real antibody-antigen binding data from public databases (SAbDab, PDB) for binding site prediction. Includes data download, format conversion, quality filtering, and annotation extraction for antibody sequences, antigen sequences, and binding site labels.",
+  "tags": [
+    "antibody",
+    "antigen",
+    "data acquisition",
+    "SAbDab",
+    "PDB",
+    "FASTA",
+    "binding data",
+    "dataset preparation",
+    "edge:workflow:came-ab-binding-prediction-workflow"
+  ],
+  "aliases": [
+    "antibody antigen data download",
+    "SAbDab data acquisition"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "抗体抗原结合位点预测任务的真实数据获取知识",
+  "evidence_papers": [
+    {
+      "title": "Prediction of Antibody-Antigen Binding via Machine Learning: Development of Data Sets and Evaluation of Methods",
+      "authors": [
+        "Chao Ye",
+        "Wenxing Hu",
+        "Bruno Gaeta"
+      ],
+      "venue": "JMIR Bioinformatics and Biotechnology",
+      "year": 2022,
+      "doi": "10.2196/29404"
+    },
+    {
+      "title": "AbFlex: designing antibody complementarity determining regions with flexible CDR definition",
+      "authors": [
+        "Woosung Jeon",
+        "Dongsup Kim"
+      ],
+      "venue": "Bioinformatics",
+      "year": 2024,
+      "doi": "10.1093/bioinformatics/btae122"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

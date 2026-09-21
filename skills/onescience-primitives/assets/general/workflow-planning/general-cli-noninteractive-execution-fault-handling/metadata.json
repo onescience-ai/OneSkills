@@ -4,25 +4,27 @@
   "domain": "general",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-17T11:01:00Z",
-  "updated_at": "2026-09-17T11:01:00Z",
-  "description": "面向命令行接口（CLI）工具的非交互执行与故障分类，提供错误处理、退出码诊断和故障恢复的通用方法，适用于自动化脚本和批处理任务。",
-  "tags": ["CLI", "non-interactive", "fault-classification", "error-handling", "exit-code", "argparse", "automation"],
-  "aliases": ["command-line interface", "CLI fault diagnosis", "non-interactive execution"],
+  "created_at": "2026-09-18T12:00:00Z",
+  "updated_at": "2026-09-18T12:00:00Z",
+  "description": "CLI 非交互执行与故障分类处理流程：面向命令行工具在非交互环境中的执行异常诊断与恢复，覆盖退出码分类、超时处理、沙箱限制、认证失败和标准错误判读。适用于需要自动化执行 CLI 工具并处理其非零退出状态的工作流场景。核心方法包括：退出码语义映射、错误分类分级、故障恢复策略选择。输出为故障类别判定与对应修复建议。",
+  "tags": ["CLI", "exit code", "fault classification", "non-interactive", "automation", "error handling", "troubleshooting", "command line", "shell scripting"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
-  "harvest_query": "CLI非交互执行与故障分类知识",
-  "evidence_papers": [],
+  "harvest_query": "CLI 非交互执行与故障分类知识",
   "evidence_docs": [
     {
-      "title": "argparse — Parser for command-line options, arguments and subcommands",
-      "url": "https://docs.python.org/3/library/argparse.html",
-      "publisher": "Python Software Foundation",
-      "version": "3.14.7",
-      "accessed_at": "2026-09-17T11:01:00Z"
+      "title": "Advanced Bash-Scripting Guide: Exit Codes With Special Meanings",
+      "url": "https://tldp.org/LDP/abs/html/exitcodes.html",
+      "publisher": "The Linux Documentation Project",
+      "version": "2024",
+      "accessed_at": "2026-09-18"
+    },
+    {
+      "title": "The GNU C Library Manual: Exit Status",
+      "url": "https://www.gnu.org/software/libc/manual/html_node/Exit-Status.html",
+      "publisher": "Free Software Foundation",
+      "version": "2.44",
+      "accessed_at": "2026-09-18"
     }
-  ],
-  "evidence_user": [],
-  "merged_batches": [],
-  "conflicts": []
+  ]
 }

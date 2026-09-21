@@ -1,0 +1,27 @@
+{
+  "name": "radar-z-r-parameter-selection",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "雷达Z-R关系参数选择的理论基础、不同降水类型（层状云/对流云/混合型）对应的典型参数范围及参数敏感性分析方法。",
+  "tags": ["radar", "Z-R", "reflectivity", "rainfall", "Marshall-Palmer", "power-law", "convective", "stratiform", "sensitivity-analysis"],
+  "aliases": ["Z-R参数选择", "reflectivity-rainfall relationship", "雷达降水参数"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达气象学中Z-R关系的理论基础和参数选择原则，包括不同降水类型对应的典型参数范围，以及参数敏感性分析的方法",
+  "evidence_papers": [
+    {"title": "Calibration of the reflectivity-rainfall rate (Z-R) relationship using long-term radar reflectivity data", "doi": "10.1016/j.jhydrol.2020.125790", "year": 2021},
+    {"title": "Improving Quantitative Precipitation Estimation Using Adaptive Z-R Relationship Adjustment", "doi": "10.1109/tgrs.2025.3552794", "year": 2025},
+    {"title": "SUBANG RADAR CAPPI DATA PROCESSING AND Z-R OPTIMIZATION FOR QUANTITATIVE PRECIPITATION ESTIMATES", "doi": "10.11113/jurnalteknologi.v84.17918", "year": 2022},
+    {"title": "Seasonality in power law scaling of convective and stratiform rainfall with lightning", "doi": "10.1016/j.atmosres.2021.105806", "year": 2021},
+    {"title": "Differences between Convective and Stratiform Precipitation Budgets in a Torrential Rain Event", "doi": "10.1007/s00376-019-9045-8", "year": 2019},
+    {"title": "Convective-Stratiform Rainfall of Typhoon Fitow (2013): Sensitivity to Rainfall Separation Methods", "doi": "10.1029/2019JD031535", "year": 2020}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

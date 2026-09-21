@@ -1,0 +1,27 @@
+{
+  "name": "era5-data-source-verification",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:54:00Z",
+  "updated_at": "2026-09-21T11:54:00Z",
+  "description": "ERA5再分析数据源核验流程知识，包括标准获取途径、数据版本标识、时空覆盖验证方法、质量标志解读以及合成数据使用边界",
+  "tags": ["ERA5", "data-source", "quality-control", "reanalysis", "ECMWF", "CDS"],
+  "aliases": ["ERA5数据核验", "再分析数据验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象数据源核验流程知识，包括ERA5再分析数据的标准获取途径、数据版本标识、时空覆盖验证方法、质量标志解读以及合成数据使用边界",
+  "evidence_papers": [
+    {"title": "ERA5-Land: a state-of-the-art global reanalysis dataset for land applications", "doi": "10.5194/essd-13-2097-2021", "year": 2021},
+    {"title": "Evaluation of the ERA5 reanalysis as a potential reference dataset for hydrological modelling", "doi": "10.5194/hess-24-2017-2020", "year": 2020},
+    {"title": "ERA5 hourly data on single levels from 1940 to present", "doi": "10.24381/cds.adbb2d47", "year": 2018}
+  ],
+  "evidence_docs": [
+    {"title": "ERA5 hourly data on single levels from 1940 to present", "url": "https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels", "publisher": "Copernicus Climate Data Store", "version": "2026-09-21", "accessed_at": "2026-09-21T11:54:00Z"},
+    {"title": "ERA5 hourly data on pressure levels from 1940 to present", "url": "https://cds.climate.copernicus.eu/datasets/reanalysis-era5-pressure-levels", "publisher": "Copernicus Climate Data Store", "version": "2026-09-21", "accessed_at": "2026-09-21T11:54:00Z"}
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

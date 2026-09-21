@@ -1,0 +1,23 @@
+{
+  "name": "matchem-perovskite-interface-passivation-preparation",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:53:00Z",
+  "updated_at": "2026-09-21T11:53:00Z",
+  "description": "界面钝化方案制备方法，包括分子设计、结构建模、DFT计算流程；工艺日志标准，记录计算参数、输入文件、运行环境等",
+  "tags": ["perovskite", "passivation", "molecular design", "DFT", "workflow"],
+  "aliases": ["钝化方案制备", "DFT计算流程"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "界面钝化方案制备方法，包括分子设计、结构建模、DFT计算流程；工艺日志标准",
+  "evidence_papers": [
+    {"title": "Rational design of Lewis base molecules for stable and efficient inverted perovskite solar cells", "doi": "10.1126/science.ade3970", "year": 2023},
+    {"title": "Defect passivation in methylammonium/bromine free inverted perovskite solar cells using charge-modulated molecular bonding", "doi": "10.1038/s41467-024-45228-9", "year": 2024}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

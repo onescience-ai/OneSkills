@@ -1,0 +1,48 @@
+{
+  "name": "orchestrator-expert-skill-recall-fusion",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "orchestrator 对专家技能（research-workflow、data-profile 等）的召回、调用与规划融合流程规范，确保所有命中的专家技能都被实际执行并收集 planner_proposal，不得因其他专家已返回而跳过。",
+  "tags": [
+    "orchestrator",
+    "expert-skill",
+    "planner-proposal",
+    "workflow-fusion",
+    "recall",
+    "onescience"
+  ],
+  "aliases": ["orchestrator专家技能调用规范", "expert recall fusion"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "onescience-orchestrator对专家技能的调用规范、专家规划结果的收集和融合流程",
+  "evidence_papers": [
+    {
+      "title": "Operationalizing Intelligence: A Unified Approach to MLOps and Scalable AI Workflows in Hybrid Cloud Environments",
+      "doi": "10.18535/ijecs.v11i12.4743",
+      "year": 2022
+    },
+    {
+      "title": "Controlled Agentic AI Systems: A Governance-Driven Architecture for Auditable and Reproducible Decision Pipelines",
+      "doi": "10.3390/make8050125",
+      "year": 2026
+    },
+    {
+      "title": "Agentic SWMM: Auditable and Reproducible Stormwater Modelling Workflow with Agent Skills and Model Context Protocol",
+      "doi": "10.3390/aieng1010005",
+      "year": 2026
+    },
+    {
+      "title": "A Skill-Mediated LLM Workflow for Migrating a.NET Monolith to Cloud-Deployed Microservices: a Controlled Case Study",
+      "doi": "10.1109/access.2026.3712587",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

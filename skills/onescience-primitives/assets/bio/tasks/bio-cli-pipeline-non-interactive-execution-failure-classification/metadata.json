@@ -1,0 +1,56 @@
+{
+  "name": "bio-cli-pipeline-non-interactive-execution-failure-classification",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "任务卡：生物信息学 CLI 流水线非交互执行与故障分类知识。覆盖命令参数解析、认证处理、沙箱执行、超时控制、退出码语义和标准错误判读，适用于 Nextflow/Snakemake/Bash 等流水线的自动化执行场景。",
+  "tags": [
+    "CLI",
+    "non-interactive",
+    "pipeline",
+    "error-handling",
+    "exit-code",
+    "timeout",
+    "bioinformatics",
+    "Nextflow",
+    "Snakemake",
+    "failure-classification"
+  ],
+  "aliases": [
+    "bio-cli-pipeline-error-handling",
+    "bioinformatics-pipeline-execution",
+    "cli-non-interactive-mode"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "PangenePro: an automated pipeline for rapid identification and classification of gene family members",
+      "doi": "10.1093/bioadv/vbaf159",
+      "year": 2024
+    },
+    {
+      "title": "CoSAG-nf: A Scalable Nextflow Pipeline for Co-assembly, Optimization, and Interactive Visualization of High-Throughput Single-Cell Genomes",
+      "doi": "10.1093/bioinformatics/btag671",
+      "year": 2026
+    },
+    {
+      "title": "DeSP: a systematic DNA storage error simulation pipeline",
+      "doi": "10.1186/s12864-022-08459-3",
+      "year": 2022
+    },
+    {
+      "title": "Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Test Generation",
+      "doi": "10.1109/TDSC.2024.3351456",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

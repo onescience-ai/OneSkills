@@ -1,0 +1,26 @@
+{
+  "name": "bio-bend-tasks-dataset",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:08:00Z",
+  "updated_at": "2026-09-21T12:08:00Z",
+  "description": "BEND_tasks dataset for benchmarking DNA language models on biological tasks including gene finding, enhancer annotation, chromatin accessibility, histone modification, CpG methylation, and non-coding variant effects.",
+  "tags": ["DNA language model", "benchmark", "genomics", "regulatory elements", "variant effects"],
+  "aliases": ["BEND", "BEND benchmark", "BEND tasks"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "BEND_tasks dataset获取方式、格式规范和版本信息",
+  "evidence_papers": [
+    {
+      "title": "A comprehensive survey of genome language models in bioinformatics",
+      "doi": "10.1093/bib/bbaf724",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

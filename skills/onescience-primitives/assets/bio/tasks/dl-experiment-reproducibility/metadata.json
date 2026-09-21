@@ -1,0 +1,26 @@
+{
+  "name": "dl-experiment-reproducibility",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T11:59:00Z",
+  "updated_at": "2026-09-21T11:59:00Z",
+  "description": "深度学习实验可复现性规范——需要同时固定numpy random seed、torch random seed（CPU和CUDA）、Python random seed、以及设置torch.backends.cudnn.deterministic",
+  "tags": ["reproducibility", "random seed", "PyTorch", "experiment", "deterministic"],
+  "aliases": ["random seed setting", "experiment reproducibility", "deterministic training"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "深度学习实验可复现性规范",
+  "evidence_papers": [
+    {
+      "title": "Leakage and the reproducibility crisis in machine-learning-based science",
+      "doi": "10.1016/j.patter.2023.100804",
+      "year": 2023
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

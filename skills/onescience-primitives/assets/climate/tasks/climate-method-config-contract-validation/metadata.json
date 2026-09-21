@@ -1,0 +1,37 @@
+{
+  "name": "climate-method-config-contract-validation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:19:00Z",
+  "updated_at": "2026-09-21T12:19:00Z",
+  "description": "方法配置与输入输出契约验证的具体执行要求，包括最小干运行的定义、输入输出兼容性矩阵的格式和随机性配置的冻结机制",
+  "tags": [
+    "method validation",
+    "input-output contract",
+    "dry run",
+    "compatibility matrix",
+    "randomness freeze",
+    "edge:workflow:climate-landsat-preprocessing-pipeline",
+    "edge:workflow:climate-remote-sensing-preprocessing-workflow"
+  ],
+  "aliases": [
+    "contract validation",
+    "dry run verification"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "方法配置与输入输出契约验证的具体执行要求，包括最小干运行的定义、输入输出兼容性矩阵的格式和随机性配置的冻结机制",
+  "evidence_papers": [
+    {
+      "title": "Validation of the Sentinel Simplified Level 2 Product Prototype Processor (SL2P) for mapping cropland biophysical variables using Sentinel-2/MSI and Landsat-8/OLI data",
+      "doi": "10.1016/j.rse.2019.03.020",
+      "year": 2019
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

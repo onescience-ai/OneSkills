@@ -1,0 +1,46 @@
+{
+  "name": "general-json-schema-report-delivery-contract",
+  "type": "contract",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T05:56:00Z",
+  "updated_at": "2026-09-21T05:56:00Z",
+  "description": "JSON Schema报告交付契约：定义结构化报告的必填字段、类型约束、嵌套对象结构和输出格式验证规则。适用于需要在CLI工具、API服务或自动化流水线之间通过JSON Schema校验报告完整性与一致性的场景。核心方法包括：Schema定义与版本管理、必填字段校验、类型约束验证、数组约束检查、任务身份一致性验证。输出为通过/未通过Schema校验的报告及校验错误详情。",
+  "tags": ["JSON-Schema", "validation", "contract", "structured-output", "report-validation", "API-contract", "type-constraint", "field-validation", "schema-versioning", "data-integrity"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3632891",
+      "year": 2024,
+      "venue": "Proceedings of the ACM on Programming Languages"
+    },
+    {
+      "title": "Adamant: a JSON schema-based metadata editor for research data management workflows",
+      "doi": "10.12688/f1000research.110875.2",
+      "year": 2022,
+      "venue": "F1000Research"
+    },
+    {
+      "title": "Improving Api Test Accuracy through Schema Validation and Real-time Json Assertions in Jenkins Pipelines",
+      "doi": "10.71097/ijsat.v16.i3.10656",
+      "year": 2025,
+      "venue": "International Journal on Science and Technology"
+    },
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.14778/3773749.3773764",
+      "year": 2025,
+      "venue": "Proceedings of the VLDB Endowment"
+    },
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026,
+      "venue": "Scientific Reports"
+    }
+  ]
+}

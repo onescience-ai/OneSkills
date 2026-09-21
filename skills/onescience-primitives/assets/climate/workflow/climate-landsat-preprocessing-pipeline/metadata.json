@@ -1,0 +1,46 @@
+{
+  "name": "climate-landsat-preprocessing-pipeline",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:22:00Z",
+  "updated_at": "2026-09-21T12:22:00Z",
+  "description": "Landsat数据预处理标准流程（Level-1T→大气校正→地形校正→云掩膜）、每步的输入输出契约、常用工具链（Sen2Cor、LaSRC、CFMask）、以及在管线中如何记录预处理参数",
+  "tags": [
+    "Landsat",
+    "preprocessing",
+    "atmospheric correction",
+    "terrain correction",
+    "cloud mask",
+    "Sen2Cor",
+    "LaSRC",
+    "CFMask",
+    "edge:task:climate-method-config-contract-validation",
+    "edge:task:climate-remote-sensing-data-authenticity-acceptance",
+    "edge:task:climate-remote-sensing-independent-validation"
+  ],
+  "aliases": [
+    "Landsat preprocessing workflow",
+    "Level-1T to surface reflectance"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "Landsat数据预处理标准流程（Level-1T→大气校正→地形校正→云掩膜）、每步的输入输出契约、常用工具链（Sen2Cor、LaSRC、CFMask）、以及在管线中如何记录预处理参数",
+  "evidence_papers": [
+    {
+      "title": "Atmospheric Correction of Landsat Image",
+      "doi": "10.58425/jegs.v2i1.120",
+      "year": 2023
+    },
+    {
+      "title": "Assessment of uncertainties in the computation of atmospheric correction parameters",
+      "doi": "10.58425/jegs.v2i1.120",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}
