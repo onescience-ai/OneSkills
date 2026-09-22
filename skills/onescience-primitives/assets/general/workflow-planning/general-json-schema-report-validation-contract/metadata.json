@@ -4,39 +4,34 @@
   "domain": "general",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-17",
-  "updated_at": "2026-09-17",
-  "description": "面向结构化报告的 JSON Schema 交付契约校验：覆盖必填字段约束、类型校验、数组/对象结构验证、任务身份一致性检查、错误诊断与修复建议，适用于任何需要以 JSON 格式交付结构化报告并在输出前执行 Schema 校验的自动化工作流",
-  "tags": ["json-schema", "validation", "report-contract", "schema-validation", "structured-output", "error-diagnostics", "contract-testing"],
-  "aliases": ["JSON Schema 校验", "报告契约验证", "结构化输出校验"],
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "面向需要验证 JSON 报告结构的应用，提供基于 JSON Schema 的报告交付契约规范，确保报告字段完整、类型正确且符合预定义结构。",
+  "tags": ["JSON Schema", "report validation", "contract", "schema validation", "data integrity"],
+  "aliases": ["JSON report schema", "report validation contract", "JSON Schema report contract"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "JSON Schema 报告交付契约",
-  "evidence_papers": [],
-  "evidence_docs": [
+  "evidence_papers": [
     {
-      "title": "jsonschema — Schema Validation (Python jsonschema 4.26.0 documentation)",
-      "url": "https://python-jsonschema.readthedocs.io/en/stable/validate/",
-      "publisher": "jsonschema community / Julian Berman",
-      "version": "4.26.0",
-      "accessed_at": "2026-09-17"
+      "title": "Schema First Tool APIs for LLM Agents: A Controlled Study of Tool Misuse, Recovery, and Budgeted Performance",
+      "doi": "10.48550/arXiv.2603.13404",
+      "year": 2026
     },
     {
-      "title": "jsonschema — Handling Validation Errors",
-      "url": "https://python-jsonschema.readthedocs.io/en/stable/errors/",
-      "publisher": "jsonschema community / Julian Berman",
-      "version": "4.26.0",
-      "accessed_at": "2026-09-17"
+      "title": "JTutor: JSON Schema Validation Explained",
+      "doi": "10.1145/3735106.3736532",
+      "year": 2025
     },
     {
-      "title": "JSON Schema reference — Understanding JSON Schema",
-      "url": "https://json-schema.org/understanding-json-schema/",
-      "publisher": "JSON Schema Org",
-      "version": "2020-12 draft",
-      "accessed_at": "2026-09-17"
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.48550/arXiv.2503.02770",
+      "year": 2025
+    },
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3632891",
+      "year": 2023
     }
-  ],
-  "evidence_user": [],
-  "merged_batches": [],
-  "conflicts": []
+  ]
 }

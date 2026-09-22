@@ -2,10 +2,10 @@
   "name": "cli-json-schema-validation",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "visibility": "public",
   "created_at": "2026-09-17",
-  "updated_at": "2026-09-17T14:45:00Z",
+  "updated_at": "2026-09-21T21:11:00Z",
   "description": "面向CLI工具的结构化输出交付，验证JSON Schema合规性，包括必填字段校验、类型约束检查、任务身份一致性验证和数组约束确认。",
   "tags": ["json-schema", "validation", "structured-output", "cli", "report-contract", "schema-validation"],
   "aliases": ["JSON Schema验证", "报告契约校验", "结构化输出校验"],
@@ -30,6 +30,6 @@
     }
   ],
   "evidence_user": [],
-  "merged_batches": ["2026-09-17: 基于归因分析任务334案例补充JSON Schema报告交付契约验证的实际应用案例", "2026-09-17: 基于归因分析任务70案例补充JSON Schema报告交付契约验证的实际应用案例"],
+  "merged_batches": ["2026-09-17: 基于归因分析任务334案例补充JSON Schema报告交付契约验证的实际应用案例", "2026-09-17: 基于归因分析任务70案例补充JSON Schema报告交付契约验证的实际应用案例", "2026-09-21: 基于归因分析任务305案例补充JSON Schema报告交付契约验证的实际应用案例"],
   "conflicts": []
 }

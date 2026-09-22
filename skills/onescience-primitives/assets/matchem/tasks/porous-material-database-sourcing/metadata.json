@@ -1,0 +1,26 @@
+{
+  "name": "porous-material-database-sourcing",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "Obtaining real porous material datasets from public databases (Materials Project, ICSD, QMOF, CoRE MOF, CSD MOF, hMOF) with proper data format handling, quality validation, and provenance tracking for materials informatics tasks.",
+  "tags": ["porous materials", "database", "Materials Project", "QMOF", "CoRE MOF", "CSD MOF", "hMOF", "ICSD", "dataset", "MOF", "data sourcing"],
+  "aliases": ["MOF database", "materials database", "crystal structure database"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔材料数据获取途径（如Materials Project、ICSD、QMOF等数据库）、数据格式规范、数据质量要求",
+  "evidence_papers": [
+    {"title": "Materials Informatics with PoreBlazer v4.0 and the CSD MOF Database", "doi": "10.1021/acs.chemmater.0c03575", "year": 2020},
+    {"title": "A Database of Porous Rigid Amorphous Materials", "doi": "10.1021/acs.chemmater.0c03057", "year": 2020},
+    {"title": "Fast process-level screening of metal-organic frameworks for adsorption-based gas separation", "doi": "10.1039/d6me00066e", "year": 2025},
+    {"title": "Benchmark Maturity in MOF Adsorption Machine Learning", "doi": "10.1039/d6dd00123a", "year": 2026},
+    {"title": "Breakthrough Screening of Porous Materials", "doi": "10.1016/j.apsusc.2020.146115", "year": 2020}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

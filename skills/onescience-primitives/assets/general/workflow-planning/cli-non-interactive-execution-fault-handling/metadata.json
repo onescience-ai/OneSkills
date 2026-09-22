@@ -1,0 +1,22 @@
+{
+  "name": "cli-non-interactive-execution-fault-handling",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T19:54:00Z",
+  "updated_at": "2026-09-21T19:54:00Z",
+  "description": "面向任意 CLI 工具的非交互执行故障诊断与处理方法论，覆盖命令参数配置、认证机制、沙箱隔离、超时控制、退出码分类和标准错误判读，适用于科研计算、数据处理、自动化测试等需要可靠 CLI 执行的场景。",
+  "tags": ["CLI", "fault-diagnosis", "exit-code", "timeout", "non-interactive", "error-handling", "structured-output"],
+  "aliases": ["命令行故障诊断", "CLI执行异常处理", "退出码分析"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识（命令参数、认证、沙箱、超时、退出码和标准错误判读）",
+  "evidence_papers": [
+    {
+      "title": "Detraque: Dynamic execution tracing techniques for automatic fault localization of hardware design code",
+      "doi": "10.1371/journal.pone.0274515",
+      "year": 2022
+    }
+  ]
+}

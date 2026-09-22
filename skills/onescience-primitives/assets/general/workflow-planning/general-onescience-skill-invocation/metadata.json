@@ -1,0 +1,18 @@
+{
+  "name": "general-onescience-skill-invocation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T00:00:00Z",
+  "updated_at": "2026-09-22T00:00:00Z",
+  "description": "OneScience技能调用规范，涵盖executor技能的输入输出契约、技能选择依据和调用流程，适用于任何领域任务的技能调度",
+  "tags": ["skill invocation", "executor", "input-output contract", "workflow", "onescience"],
+  "aliases": ["技能调用", "执行器调用", "技能调度"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "onescience技能的调用规范、输入输出契约、技能选择依据",
+  "evidence_papers": [
+    {"title": "Scalable Infrastructure Supporting Reproducible Nationwide Healthcare Data Analysis toward FAIR Stewardship", "doi": "10.1038/s41597-023-02580-7", "year": 2023}
+  ]
+}

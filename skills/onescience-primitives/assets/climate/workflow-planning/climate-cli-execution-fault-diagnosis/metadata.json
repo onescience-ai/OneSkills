@@ -2,12 +2,13 @@
   "name": "climate-cli-execution-fault-diagnosis",
   "type": "workflow-planning",
   "domain": "climate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-17T22:40:00Z",
-  "updated_at": "2026-09-17T22:40:00Z",
-  "description": "面向科学计算任务的CLI非交互执行与故障分类，提供命令参数、认证、沙箱、超时、退出码和标准错误判读的系统化方法。适用于归因分析、模型训练、数据处理等需要稳定执行CLI命令的场景。核心方法包括：命令生命周期监控、退出码语义解析、超时机制设计、沙箱隔离策略。输出为故障分类报告和修复策略建议。",
-  "tags": ["CLI", "command-line", "fault-diagnosis", "exit-code", "error-handling", "scientific-computing", "workflow-management", "execution-monitoring", "timeout", "sandbox", "reproducibility"],
+  "updated_at": "2026-09-21T12:00:00Z",
+  "description": "面向科学计算任务的CLI非交互执行与故障分类，提供命令参数、认证、沙箱、超时、退出码和标准错误判读的系统化方法。适用于归因分析、模型训练、数据处理等需要稳定执行CLI命令的场景。核心方法包括：命令生命周期监控、退出码语义解析、超时机制设计、沙箱隔离策略、容器化执行环境。输出为故障分类报告和修复策略建议。",
+  "tags": ["CLI", "command-line", "fault-diagnosis", "exit-code", "error-handling", "scientific-computing", "workflow-management", "execution-monitoring", "timeout", "sandbox", "reproducibility", "containerization", "docker", "podman", "environment-isolation"],
+  "aliases": ["CLI故障诊断", "命令行执行故障", "容器化CLI"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "CLI非交互执行与故障分类知识",
@@ -29,6 +30,13 @@
       "doi": "10.1107/s1600576726005431",
       "year": 2026,
       "venue": "Journal of Applied Crystallography"
+    },
+    {
+      "title": "TaxaScope: a container-native, visualization-centric workstation for genome-based bacterial taxonomy",
+      "doi": "10.3389/fmicb.2026.1809734",
+      "year": 2026,
+      "venue": "Frontiers in Microbiology"
     }
-  ]
+  ],
+  "merged_batches": ["harvest-2026-09-21-task278-cli"]
 }

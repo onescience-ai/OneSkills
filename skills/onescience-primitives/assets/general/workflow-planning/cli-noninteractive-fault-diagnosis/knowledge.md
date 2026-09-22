@@ -114,3 +114,6 @@
 ## 证据来源
 [1] argparse — Parser for command-line options, arguments and subcommands, Python 3.14.7 Documentation
 [2] Built-in Exceptions — Python 3.14.7 Documentation
+[3] Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing, Jia-Ju Bai et al., IEEE Transactions on Dependable and Secure Computing, 2024, DOI: 10.1109/tdsc.2023.3288876
+[4] Bumps in the Code: Error Handling During Software Development, Tamara Lopez et al., IEEE Software, 2021, DOI: 10.1109/ms.2020.3024981
+[5] Evaluating Command-Line Interface-Based Agentic Large Language Model Coding Tools, Chawalit Chanintonsongkhla et al., International Journal of Learning Teaching and Educational Research, 2026, DOI: 10.26803/ijlter.25.8.5

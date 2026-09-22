@@ -4,38 +4,27 @@
   "domain": "general",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-16T12:32:00Z",
-  "updated_at": "2026-09-16T12:32:00Z",
-  "description": "面向命令行接口工具，诊断非交互执行故障并分类处理退出码、超时、沙箱和认证错误，覆盖故障识别、根因定位和恢复策略选择",
-  "tags": ["CLI", "fault-diagnosis", "error-handling", "exit-code", "timeout", "non-interactive", "troubleshooting"],
-  "aliases": ["command-line fault", "CLI error", "process exit", "command failure"],
+  "created_at": "2026-09-21T10:00:00Z",
+  "updated_at": "2026-09-21T10:00:00Z",
+  "description": "面向命令行界面（CLI）工具的非交互执行与故障诊断场景，提供系统化的错误处理、故障分类和恢复策略，覆盖退出码诊断、超时管理、沙箱执行和标准错误判读等关键环节，确保CLI工具在自动化环境中的稳定性和可靠性。",
+  "tags": ["CLI", "fault diagnosis", "error handling", "exit code", "timeout management", "non-interactive execution"],
+  "aliases": ["command line fault classification", "CLI error diagnosis", "shell script error handling"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "CLI 非交互执行与故障分类知识",
-  "evidence_papers": [],
-  "evidence_docs": [
+  "evidence_papers": [
     {
-      "title": "POSIX.1-2017 Standard (IEEE Std 1003.1-2017)",
-      "url": "https://pubs.opengroup.org/openpubs/9699919799/",
-      "publisher": "IEEE/The Open Group",
-      "version": "2017",
-      "accessed_at": "2026-09-16T12:32:00Z"
+      "title": "Bumps in the Code: Error Handling During Software Development",
+      "doi": "10.1109/ms.2020.3024981",
+      "year": 2021
     },
     {
-      "title": "Python 3.12 Documentation: subprocess - Subprocess management",
-      "url": "https://docs.python.org/3/library/subprocess.html",
-      "publisher": "Python Software Foundation",
-      "version": "3.12",
-      "accessed_at": "2026-09-16T12:32:00Z"
-    },
-    {
-      "title": "Python 3.12 Documentation: argparse - Parser for command-line options",
-      "url": "https://docs.python.org/3/library/argparse.html",
-      "publisher": "Python Software Foundation",
-      "version": "3.12",
-      "accessed_at": "2026-09-16T12:32:00Z"
+      "title": "Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing",
+      "doi": "10.1109/tdsc.2023.3288876",
+      "year": 2024
     }
   ],
+  "evidence_docs": [],
   "evidence_user": [],
   "merged_batches": [],
   "conflicts": []

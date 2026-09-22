@@ -177,9 +177,63 @@
 - 需要构建自动化故障诊断系统
 
 **配套资源**：
-- `climate-json-schema-report-contract`：JSON Schema报告交付契约卡片
+- `climate-json-schema-report-delivery-contract`：JSON Schema报告交付契约卡片
 - `onescience-runtime`：统一运行与基础诊断技能
 - `onescience-installer`：环境安装技能
+
+## 批次补充 2026-09-21（onescience-knowledge-harvester）
+
+### 补充证据：容器化CLI执行与故障隔离方法
+
+本次补充引入容器化CLI执行方法，为CLI非交互执行提供标准化、可重复的执行环境，解决依赖地狱和环境不一致问题。
+
+**容器化CLI执行架构**（基于 [4]）：
+
+| 组件 | 说明 | 关键特性 |
+|------|------|----------|
+| 容器引擎 | Podman/Docker | OCI合规、无守护进程、rootless |
+| 版本锁定 | 容器镜像标签+SHA256摘要 | 确保工具版本一致性 |
+| 卷挂载 | 主机目录映射到容器 | 无缝数据交换 |
+| 环境隔离 | 容器内独立运行时 | 消除依赖冲突 |
+| 自动清理 | 容器执行后自动终止 | 无残留依赖或临时文件 |
+
+**故障分类扩展**（基于 [4]）：
+
+| 故障类型 | 症状 | 根本原因 | 处理建议 |
+|----------|------|----------|----------|
+| 依赖地狱 | 工具安装失败、版本冲突 | 库版本不兼容 | 使用容器化环境隔离 |
+| 环境不一致 | 不同机器执行结果不同 | 操作系统/库版本差异 | 使用容器锁定执行环境 |
+| 资源不足 | 内存/磁盘空间不足 | 硬件资源限制 | 检查资源配额、优化任务配置 |
+| 权限问题 | 文件访问被拒绝 | 权限设置不正确 | 验证文件权限、使用适当用户 |
+
+**执行环境标准化**（基于 [4]）：
+
+| 标准化维度 | 说明 | 实现方法 |
+|------------|------|----------|
+| 工具版本 | 锁定工具版本 | 容器镜像标签 |
+| 运行时环境 | 锁定Python/Perl/Java版本 | 容器内安装 |
+| 依赖库 | 锁定BioPerl/HMMER等版本 | 容器内安装 |
+| 参考数据库 | 锁定数据库版本 | 容器卷挂载 |
+| 操作系统 | 统一Linux环境 | WSL2/Docker |
+
+**关键参数**（基于 [4]）：
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 容器引擎 | Podman/Docker | [4] | OCI合规容器运行时 |
+| 内存要求 | ≥16 GB | [4] | 典型基因组分析工作流 |
+| 存储要求 | ≥50 GB | [4] | 容器镜像和参考数据库 |
+| 网络需求 | 仅下载时需要 | [4] | 执行时可离线运行 |
+| 并发控制 | 基于工具特性 | [4] | 计算密集型工具专用实例 |
+
+**应用场景**（基于 [4]）：
+- 生物信息学CLI工具的可重复执行
+- 科学计算工作流的环境隔离
+- 跨平台CLI工具部署（Windows/Linux/macOS）
+- 自动化批处理工作流
+
+**补充证据**：
+[4] TaxaScope: a container-native, visualization-centric workstation for genome-based bacterial taxonomy, Peng Y, Jiang Y, Lee YJ, Frontiers in Microbiology, 2026, DOI: 10.3389/fmicb.2026.1809734（accessed_at 2026-09-21，论文全文）
 
 ## 证据来源
 
@@ -188,3 +242,5 @@
 [2] "systemPipeR: a multipurpose workflow management system for reproducible data analysis", Zhang L, Cassol D, Gongol B, Girke T, NAR Genomics and Bioinformatics, 2026, DOI: 10.1093/nargab/lqag032
 
 [3] "mmCIF Validator: a comprehensive validation tool for structural biology data files", Harrus D, Evans GL, Nair SS, Bueno WM, Fleming J, Velankar S, Journal of Applied Crystallography, 2026, DOI: 10.1107/s1600576726005431
+
+[4] "TaxaScope: a container-native, visualization-centric workstation for genome-based bacterial taxonomy", Peng Y, Jiang Y, Lee YJ, Frontiers in Microbiology, 2026, DOI: 10.3389/fmicb.2026.1809734

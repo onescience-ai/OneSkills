@@ -2,17 +2,23 @@
   "name": "general-json-schema-report-delivery-contract",
   "type": "task",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.4.0",
   "visibility": "public",
   "created_at": "2026-09-21T15:15:00Z",
-  "updated_at": "2026-09-21T15:15:00Z",
+  "updated_at": "2026-09-21T20:30:00Z",
   "description": "面向 JSON 数据结构化输出场景，提供 JSON Schema 报告交付契约规范，包括必填字段校验、任务身份一致性验证、数组约束检查及输出格式标准化，确保报告可解析且与任务身份一致",
   "tags": ["JSON-Schema", "validation", "structured-output", "report-delivery", "schema-compliance"],
   "aliases": ["JSON Schema验证", "报告交付契约", "结构化输出校验"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "JSON Schema 报告交付契约",
-  "evidence_papers": [],
+  "evidence_papers": [
+    {"title": "Schema validation and evaluation framework for extracted schemas in JSON databases", "doi": "10.1038/s41598-026-45554-6", "year": 2026},
+    {"title": "Validation of Modern JSON Schema: Formalization and Complexity", "doi": "10.1145/3632891", "year": 2024},
+    {"title": "Blaze: Compiling JSON Schema for 10x Faster Validation", "doi": "10.48550/arXiv.2503.02770", "year": 2025},
+    {"title": "Learning to Generate Structured Output with Schema Reinforcement Learning", "doi": "10.48550/arXiv.2502.18878", "year": 2025},
+    {"title": "Improving Api Test Accuracy through Schema Validation and Real-time Json Assertions in Jenkins Pipelines", "doi": "10.71097/ijsat.v16.i3.10656", "year": 2025}
+  ],
   "evidence_docs": [
     {
       "title": "JSON Schema: A Media Type for Describing JSON Documents",
@@ -27,9 +33,16 @@
       "publisher": "Internet Engineering Task Force (IETF)",
       "version": "draft-bhutton-json-schema-validation-01",
       "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "Understanding JSON Schema - Object",
+      "url": "https://json-schema.org/understanding-json-schema/reference/object",
+      "publisher": "JSON Schema",
+      "version": "2026",
+      "accessed_at": "2026-09-21"
     }
   ],
   "evidence_user": [],
-  "merged_batches": [],
+  "merged_batches": ["2026-09-21: 基于SVEF框架论文补充JSON Schema验证维度", "2026-09-21: 基于单层MoS2纳米孔海水淡化设计任务归因报告补充JSON Schema验证复杂性、性能优化、LLM结构化输出生成知识", "2026-09-21: 基于钙钛矿氧化物与卤化物容忍因子稳定性筛选任务归因报告补充SVEF框架六维度验证、量化评估指标、实验验证方法知识", "2026-09-21: 基于气象预报驱动河流流量与洪峰预报任务归因报告补充JSON Schema官方文档证据", "2026-09-21: 基于草地地上生物量遥感估计与气候响应诊断任务归因报告补充API测试Schema验证集成知识"],
   "conflicts": []
 }

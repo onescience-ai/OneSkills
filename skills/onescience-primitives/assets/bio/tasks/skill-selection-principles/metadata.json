@@ -1,0 +1,26 @@
+{
+  "name": "skill-selection-principles",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "技能选择原则，即根据任务领域（bio）和具体任务类型选择对应的执行技能",
+  "tags": ["skill-selection", "domain-specific", "execution-skill", "task-matching"],
+  "aliases": ["技能选择", "执行技能匹配", "领域技能"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "技能选择原则，即根据任务领域（bio）和具体任务类型选择对应的执行技能",
+  "evidence_papers": [
+    {
+      "title": "Autonomous AI Agent for QSAR Modeling with Dataset Curation, Descriptor Selection, and Domain Assessment",
+      "doi": "10.51847/bhyi6rjara",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

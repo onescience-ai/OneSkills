@@ -1,0 +1,23 @@
+{
+  "name": "climate-tasks-weather-forecast-independent-verification",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22",
+  "updated_at": "2026-09-22",
+  "description": "气象预报独立验证规范，包括独立验证资料的定义、来源、与测试集的区别和同协议要求",
+  "tags": ["independent verification", "validation dataset", "ERA5", "performance evaluation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报独立验证规范，包括独立验证资料的定义（未参与训练、参数选择和阈值调优的参考资料）、独立验证资料的来源（ERA5再分析数据、独立站点观测、历史回放数据）、独立验证与测试集的区别和独立验证的同协议要求",
+  "evidence_papers": [
+    {"title": "Exploring the Use of Public Weather Station Data for Operational Weather Forecast Verification", "doi": "10.1002/met.70086", "year": 2025},
+    {"title": "Seasonal Forecast Skill of ENSO Teleconnection Maps", "doi": "10.1175/waf-d-19-0235.1", "year": 2020},
+    {"title": "Verification of the NOAA Space Weather Prediction Center Solar Flare Forecast (1998–2024)", "doi": "10.1029/2025sw004546", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

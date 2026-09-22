@@ -1,0 +1,36 @@
+{
+  "name": "json-schema-report-validation",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T00:57:00Z",
+  "updated_at": "2026-09-22T00:57:00Z",
+  "description": "针对 JSON Schema 报告交付契约的验证任务，提供数据契约设计、Schema 定义、验证规则、错误诊断和报告生成的方法论，适用于任何需要确保 JSON 数据符合预定义结构的科研数据管理、API 测试和数据集成场景。",
+  "tags": ["JSON-Schema", "data-validation", "report-contract", "schema-validation", "data-quality", "API-testing"],
+  "aliases": ["JSON Schema validation", "data contract", "schema compliance"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3632891",
+      "year": 2024
+    },
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.14778/3773749.3773764",
+      "year": 2025
+    },
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

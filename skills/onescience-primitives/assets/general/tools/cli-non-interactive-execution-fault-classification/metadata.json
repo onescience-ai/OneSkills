@@ -1,0 +1,21 @@
+{
+  "name": "cli-non-interactive-execution-fault-classification",
+  "type": "tool",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "CLI非交互执行与故障分类知识：覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，用于诊断CLI进程异常退出、超时和结构化输出失败等故障",
+  "tags": ["CLI", "exit-code", "error-handling", "process-management", "fault-classification", "timeout", "sandbox"],
+  "aliases": ["命令行执行", "进程退出码", "故障诊断"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {"title": "Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing", "doi": "10.1109/tdsc.2023.3288876", "year": 2024},
+    {"title": "Bumps in the Code: Error Handling During Software Development", "doi": "10.1109/ms.2020.3024981", "year": 2021}
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

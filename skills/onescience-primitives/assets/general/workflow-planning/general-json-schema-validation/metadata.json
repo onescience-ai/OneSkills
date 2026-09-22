@@ -4,32 +4,21 @@
   "domain": "general",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-17",
-  "updated_at": "2026-09-17",
-  "description": "针对JSON Schema定义的报告交付契约，执行结构化数据验证、错误诊断和修复的方法论框架，适用于自动化报告生成和数据交换场景。",
-  "tags": ["JSON", "schema", "validation", "report", "contract", "structured-data", "error-handling", "data-integrity"],
-  "aliases": ["JSON schema validation", "report schema validation", "structured data verification"],
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "面向结构化数据交付场景，提供JSON Schema验证与报告交付契约方法论，规定必填字段、任务身份、数组约束及输出格式。适用于任何需要验证JSON数据格式并确保交付物符合契约的科研计算任务。核心方法包括：Schema定义、验证规则、错误处理、格式转换。输出为验证通过的JSON数据和结构化验证报告。",
+  "tags": ["JSON", "schema", "validation", "report-delivery", "contract", "structured-data", "data-validation", "format-standardization", "scientific-reporting", "workflow-output"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
-  "harvest_query": "JSON Schema报告交付契约",
+  "harvest_query": "JSON Schema报告交付契约：规定必填字段、任务身份、数组约束及输出格式",
   "evidence_papers": [],
   "evidence_docs": [
     {
-      "title": "Python jsonschema Documentation",
-      "url": "https://python-jsonschema.readthedocs.io/en/stable/",
-      "publisher": "Python Software Foundation",
-      "version": "4.26.0",
-      "accessed_at": "2026-09-17"
-    },
-    {
-      "title": "JSON Schema Official Website",
-      "url": "https://json-schema.org/",
-      "publisher": "JSON Schema Organization",
-      "version": "2020-12",
-      "accessed_at": "2026-09-17"
+      "title": "JSON Schema reference",
+      "url": "https://json-schema.org/understanding-json-schema/",
+      "publisher": "JSON Schema",
+      "version": "2026",
+      "accessed_at": "2026-09-21"
     }
-  ],
-  "evidence_user": [],
-  "merged_batches": [],
-  "conflicts": []
+  ]
 }

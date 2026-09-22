@@ -1,0 +1,22 @@
+{
+  "name": "general-json-schema-report-validation-contract",
+  "type": "output-format",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T13:20:00Z",
+  "updated_at": "2026-09-21T13:20:00Z",
+  "description": "JSON Schema报告交付契约验证知识：定义科学计算报告JSON输出的结构化验证框架，覆盖必填字段完整性、任务身份一致性、数据类型准确性、数组结构规范性、字段依赖关系及时间演化检测。适用于需要确保自动化流水线输出报告符合预定Schema规范的场景。核心方法包括：六维Schema质量评估（类型精度、必填字段、多类型支持、集合结构一致性、实体关系恢复、时间演化检测）、Schema Quality Score加权聚合、基于SVEF框架的系统化验证。输出为Schema合规性评分与维度级诊断报告。",
+  "tags": ["JSON", "schema", "validation", "contract", "output-format", "data-quality", "API-contract", "report-validation", "SVEF", "type-accuracy", "field-dependency", "temporal-evolution"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026,
+      "venue": "Scientific Reports"
+    }
+  ]
+}

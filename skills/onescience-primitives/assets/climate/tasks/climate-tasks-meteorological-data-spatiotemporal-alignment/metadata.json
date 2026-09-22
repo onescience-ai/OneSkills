@@ -1,0 +1,23 @@
+{
+  "name": "climate-tasks-meteorological-data-spatiotemporal-alignment",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22",
+  "updated_at": "2026-09-22",
+  "description": "气象数据时空对齐的标准化流程规范，包括时间轴UTC对齐、空间坐标统一、单位标准化、质量标志编码体系和缺测处理策略，适用于earth域多站点时序预报任务",
+  "tags": ["temporal alignment", "spatial alignment", "UTC", "quality control", "missing data"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象数据时空对齐的标准化流程规范，包括时间轴UTC对齐规则、时区转换方法、空间坐标系统一（WGS84）、气象变量标准单位、质量标志编码体系、缺测处理策略和信息泄漏检查清单",
+  "evidence_papers": [
+    {"title": "Quality control and gap‐filling methods applied to hourly temperature observations over central Italy", "doi": "10.1002/met.1913", "year": 2020},
+    {"title": "Challenging problems of quality assurance and quality control (QA/QC) of meteorological time series data", "doi": "10.1007/s00477-021-02106-w", "year": 2021},
+    {"title": "On the Importance of Data Quality Assessment of Crowdsourced Meteorological Data", "doi": "10.3390/su15086941", "year": 2023}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

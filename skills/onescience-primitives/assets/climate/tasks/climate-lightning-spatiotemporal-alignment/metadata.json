@@ -1,0 +1,25 @@
+{
+  "name": "climate-lightning-spatiotemporal-alignment",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:13:00Z",
+  "updated_at": "2026-09-21T12:13:00Z",
+  "description": "雷达、闪电历史和对流环境场多源数据的时空对齐任务，包括时间轴UTC对齐、空间网格匹配、单位统一、质量标志传递和缺测处理，适用于0-6小时闪电发生临近预报的s02阶段。",
+  "tags": ["lightning", "nowcasting", "spatiotemporal-alignment", "radar", "multi-source-data", "quality-control"],
+  "aliases": ["闪电临近预报时空对齐", "多源气象数据对齐", "雷达闪电环境场对齐"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达与环境场驱动的0-6小时闪电发生临近预报任务中s02时空对齐的具体技术规范，包括雷达体扫与环境场的网格匹配方法、时间对齐策略、单位统一标准、质量标志传递规则和多源数据样本构造索引方法",
+  "evidence_papers": [
+    {"title": "Improving Nowcasting of Convective Development by Incorporating Polarimetric Radar Variables Into a Deep-Learning Model", "doi": "10.1029/2021gl095302", "year": 2021},
+    {"title": "Deep learning for spatiotemporal forecasting in Earth system science: a review", "doi": "10.1080/17538947.2024.2391952", "year": 2024},
+    {"title": "MDE-UNet: A Physically Guided Asymmetric Fusion Network for Multi-Source Meteorological Lightning Identification", "doi": "10.3390/rs18071027", "year": 2026},
+    {"title": "Multimodal Deep Learning in Precipitation Nowcasting: A Review from a Geometric Perspective", "doi": "10.1080/02564602.2026.2704967", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

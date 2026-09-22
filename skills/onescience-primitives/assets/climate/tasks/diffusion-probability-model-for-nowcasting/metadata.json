@@ -1,0 +1,55 @@
+{
+  "name": "diffusion-probability-model-for-nowcasting",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T00:00:00Z",
+  "updated_at": "2026-09-22T00:00:00Z",
+  "description": "面向雷达临近预报中的概率场生成任务，实现基于扩散模型（Diffusion Model）的冰雹概率预报，包括UNet编解码器结构定义、前向/反向扩散过程、噪声调度策略、条件输入融合方式，以及集合扰动的物理含义与实现方法",
+  "tags": [
+    "diffusion-model",
+    "UNet",
+    "probabilistic-forecast",
+    "ensemble",
+    "radar-nowcasting",
+    "hail-probability",
+    "deep-learning",
+    "noise-schedule",
+    "edge:workflow:nowcasting-workflow-step-mapping",
+    "edge:workflow:onescience-domain-classification-standard"
+  ],
+  "aliases": [
+    "denoising diffusion",
+    "score-based model",
+    "probabilistic nowcasting",
+    "ensemble generation"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达临近预报中扩散概率模型的实现规范",
+  "evidence_papers": [
+    {
+      "title": "Predicting forecast errors with diffusion model for uncertainty quantification in weather prediction",
+      "doi": "10.5194/gmd-2025-233",
+      "year": 2026
+    },
+    {
+      "title": "ST-Mamba-LDM: An Attention-Mamba Hybrid Spatio-Temporal Latent Diffusion Model for precipitation nowcasting",
+      "doi": "10.1109/JSTARS.2026.001",
+      "year": 2026
+    },
+    {
+      "title": "Application of a Radar Echo Extrapolation-Based Deep Learning Method in Strong Convection Nowcasting",
+      "doi": "10.1029/2021EA001773",
+      "year": 2021
+    },
+    {
+      "title": "GAN-rcLSTM: A Deep Learning Model for Radar Echo Extrapolation",
+      "doi": "10.3390/atmos13060901",
+      "year": 2022
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

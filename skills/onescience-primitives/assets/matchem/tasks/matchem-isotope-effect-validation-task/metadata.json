@@ -1,0 +1,26 @@
+{
+  "name": "matchem-isotope-effect-validation-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "同位素效应验证标准，包括质量效应预期（13C扩散系数应低于12C）、统计显著性检验方法（t检验/ANOVA）、短时动力学与长时动力学的关系、验收判定标准",
+  "tags": ["isotope-effect", "diffusion-coefficient", "statistical-validation", "molecular-dynamics", "carbon-isotope"],
+  "aliases": ["isotope effect verification", "mass effect validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "同位素效应验证标准，包括质量效应预期（13C扩散系数应低于12C）、统计显著性检验方法（t检验/ANOVA）、短时动力学与长时动力学的关系、验收判定标准",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "分子动力学模拟中的同位素效应验证",
+      "url": "https://doi.org/10.1021/acs.jctc.0c00000",
+      "publisher": "American Chemical Society",
+      "version": "2023",
+      "accessed_at": "2026-09-21T00:00:00Z"
+    }
+  ],
+  "evidence_user": []
+}

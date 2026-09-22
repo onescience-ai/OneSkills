@@ -1,0 +1,31 @@
+{
+  "name": "protein-ligand-docking-workflow-steps",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "蛋白质-配体对接工作流的标准步骤序列，包括受体结构准备、配体对接、结合模式筛选和验证的完整流程",
+  "tags": ["protein-ligand docking", "molecular docking", "drug discovery", "structural biology", "workflow"],
+  "aliases": ["docking workflow", "对接流程", "分子对接步骤"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白质-配体对接工作流的标准步骤序列及依赖关系知识",
+  "evidence_papers": [
+    {
+      "title": "CHARMM-GUI-Based Induced Fit Docking Workflow to Generate Reliable Protein–Ligand Binding Modes",
+      "doi": "10.1021/acs.jcim.3c00416",
+      "year": 2023
+    },
+    {
+      "title": "PLIDflow: an open-source workflow for the online analysis of protein–ligand docking using galaxy",
+      "doi": "10.1093/bioinformatics/btaa481",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

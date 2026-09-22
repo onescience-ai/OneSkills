@@ -1,0 +1,23 @@
+{
+  "name": "climate-tasks-weather-forecast-acceptance-criteria",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22",
+  "updated_at": "2026-09-22",
+  "description": "气象预报任务的验收门限规范，包括温度/湿度/风速RMSE合理范围、R2最低要求、Skill Score最低要求和分层验收标准",
+  "tags": ["acceptance criteria", "threshold", "RMSE", "R2", "skill score"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报任务的验收门限规范，包括温度RMSE合理范围（短期预报<3°C、中期预报<5°C）、湿度RMSE合理范围（<15%）、风速RMSE合理范围（<2m/s）、R2最低要求（>0为基本、>0.5为良好）、Skill Score最低要求（>0为优于基线）和分层验收标准",
+  "evidence_papers": [
+    {"title": "Verification of medium range weather forecast for the Kandi region of Punjab", "doi": "10.54302/mausam.v70i4.274", "year": 2021},
+    {"title": "DISTRICT LEVEL WEATHER FORECAST VERIFICATION IN CHHATTISGARH", "doi": "10.54302/mausam.v70i4.281", "year": 2021},
+    {"title": "Exploring the Use of Public Weather Station Data for Operational Weather Forecast Verification", "doi": "10.1002/met.70086", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

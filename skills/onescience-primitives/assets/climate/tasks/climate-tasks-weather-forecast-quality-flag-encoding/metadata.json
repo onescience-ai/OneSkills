@@ -1,0 +1,23 @@
+{
+  "name": "climate-tasks-weather-forecast-quality-flag-encoding",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22",
+  "updated_at": "2026-09-22",
+  "description": "气象预报产品质量标志编码规范，包括质量标志等级定义、编码体系、质量标志与不确定性关联关系和产品元数据标准",
+  "tags": ["quality flag", "encoding", "CF convention", "metadata", "uncertainty"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报产品质量标志编码规范，包括质量标志等级定义（观测质量、插值质量、预报质量）、质量标志编码体系（WMO标准或业务系统标准）、质量标志与不确定性的关联关系和产品元数据标准（CF约定、时间基准、坐标系统、单位）",
+  "evidence_papers": [
+    {"title": "Discussion on Quality Control Method of Environmental Meteorological Data", "doi": "10.54097/k8djwf68", "year": 2024},
+    {"title": "A Meteorological Data Quality Control Framework for Tea Plantations Using Association Rules Mined from ERA5 Reanalysis Data", "doi": "10.3390/agriculture16020226", "year": 2026},
+    {"title": "Data Quality Control and Calibration for Mini-Radiosonde System \"Storm Tracker\" in Taiwan", "doi": "10.2151/jmsj.2025-029", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

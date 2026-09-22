@@ -1,0 +1,51 @@
+{
+  "name": "cli-non-interactive-execution-parameters-authentication",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T02:45:00Z",
+  "updated_at": "2026-09-22T02:45:00Z",
+  "description": "面向CLI非交互执行场景的命令参数构建、认证机制、沙箱隔离与退出码语义分类方法，覆盖参数校验、环境认证、沙箱策略和标准错误判读，适用于自动化流水线和远程执行环境中的CLI工具故障诊断。",
+  "tags": ["CLI", "non-interactive", "parameters", "authentication", "sandbox", "exit-code", "error-handling", "automation"],
+  "aliases": ["命令行参数认证", "CLI沙箱执行", "非交互命令参数"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Useless Code Identification with Symbolic Execution",
+      "doi": "10.5373/jardcs/v12sp3/20201233",
+      "year": 2020
+    },
+    {
+      "title": "Detraque: Dynamic execution tracing techniques for automatic fault localization of hardware design code",
+      "doi": "10.1371/journal.pone.0274515",
+      "year": 2022
+    },
+    {
+      "title": "Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing",
+      "doi": "10.1109/tdsc.2023.3288876",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "The Open Group Base Specifications Issue 7 - Shell Command Language (Exit Status)",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html",
+      "publisher": "IEEE/The Open Group",
+      "version": "POSIX.1-2017 (IEEE Std 1003.1-2017)",
+      "accessed_at": "2026-09-22"
+    },
+    {
+      "title": "Python subprocess module documentation - Exit code handling",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.x",
+      "accessed_at": "2026-09-22"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

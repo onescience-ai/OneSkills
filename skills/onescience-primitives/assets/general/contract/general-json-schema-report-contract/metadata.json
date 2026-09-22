@@ -4,23 +4,29 @@
   "domain": "general",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-21T12:00:00Z",
-  "updated_at": "2026-09-21T12:00:00Z",
-  "description": "JSON Schema 报告交付契约，规定必填字段、任务身份、数组约束及输出格式，用于确保报告结构完整性和任务身份一致性。",
-  "tags": ["JSON-Schema", "validation", "report-contract", "schema-validation", "output-format"],
-  "aliases": ["schema validation", "report schema", "JSON contract"],
+  "created_at": "2026-09-21T18:01:00Z",
+  "updated_at": "2026-09-21T18:01:00Z",
+  "description": "定义使用JSON Schema作为报告交付契约的规范，规定必填字段、类型约束、验证流程和结构化诊断，适用于任何需要结构化JSON输出的自动化任务",
+  "tags": ["JSON-Schema", "validation", "contract", "structured-output", "report-delivery"],
+  "aliases": ["json-schema-validation", "schema-contract", "structured-report-spec"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
-  "harvest_query": "JSON Schema 报告交付契约",
+  "harvest_query": "JSON Schema报告交付契约",
   "evidence_papers": [
     {
-      "title": "Schema First Tool APIs for LLM Agents: A Controlled Study of Tool Misuse, Recovery, and Reporting",
-      "doi": "10.48550/arXiv.2601.12345",
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3632891",
+      "year": 2023
+    },
+    {
+      "title": "Schema First Tool APIs for LLM Agents: A Controlled Study of Tool Misuse, Recovery, and Budgeted Performance",
+      "doi": "10.48550/arXiv.2603.13404",
       "year": 2026
+    },
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.48550/arXiv.2503.02770",
+      "year": 2025
     }
-  ],
-  "evidence_docs": [],
-  "evidence_user": [],
-  "merged_batches": [],
-  "conflicts": []
+  ]
 }

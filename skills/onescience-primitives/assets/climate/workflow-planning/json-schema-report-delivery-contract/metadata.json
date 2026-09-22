@@ -1,0 +1,26 @@
+{
+  "name": "json-schema-report-delivery-contract",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "JSON Schema报告交付契约方法论，规定必填字段、任务身份、数组约束及输出格式，提供验证和校验机制",
+  "tags": ["JSON", "Schema", "validation", "report", "contract", "metadata", "data-quality"],
+  "aliases": ["json-schema-validation", "report-contract", "schema-validation", "data-contract"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

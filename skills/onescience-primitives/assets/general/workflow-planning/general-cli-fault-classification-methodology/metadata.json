@@ -2,25 +2,55 @@
   "name": "general-cli-fault-classification-methodology",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
-  "created_at": "2026-09-21T15:30:00Z",
-  "updated_at": "2026-09-21T15:30:00Z",
-  "description": "面向命令行界面非交互执行场景，提供故障分类、错误处理与退出码诊断的通用方法论框架，覆盖参数解析、认证、沙箱、超时、退出码和标准错误判读等环节，可迁移到不同领域的CLI工具开发与调试。",
-  "tags": ["CLI", "fault-classification", "error-handling", "exit-code", "non-interactive-execution", "debugging", "command-line"],
-  "aliases": ["CLI故障分类", "命令行错误处理", "退出码诊断"],
+  "created_at": "2026-09-21T18:15:00Z",
+  "updated_at": "2026-09-21T18:30:00Z",
+  "description": "面向命令行界面(CLI)程序，提供非交互执行与故障分类的方法论框架，涵盖退出码分析、错误诊断、日志解析和故障恢复策略",
+  "tags": ["CLI", "fault-classification", "exit-code", "error-diagnosis", "non-interactive", "command-line", "methodology"],
+  "aliases": ["命令行故障分类", "CLI错误处理", "退出码分析"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
-  "harvest_query": "CLI non-interactive execution fault classification knowledge",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "merged_batches": ["harvest-2026-09-21-argparse"],
   "evidence_papers": [
     {
-      "title": "Detraque: Dynamic execution tracing techniques for automatic fault localization of hardware design code",
-      "doi": "10.1371/journal.pone.0274515",
-      "year": 2022
+      "title": "Conclave: A Unified Platform for Real-Time Slurm Cluster Data Monitoring",
+      "doi": "10.1109/ICDMW69685.2025.00210",
+      "year": 2025
+    },
+    {
+      "title": "Understanding Agent-Reactive Bugs at the Model-Harness Boundary: An Empirical Study of LLM Agent Issue Reports",
+      "doi": "10.48550/arXiv.2607.15684",
+      "year": 2026
+    },
+    {
+      "title": "Leveraging Large Language Models for Automated Test Results Analysis",
+      "doi": "10.1109/ICWR69602.2026.11513366",
+      "year": 2026
     }
   ],
-  "evidence_docs": [],
-  "evidence_user": [],
-  "merged_batches": [],
-  "conflicts": []
+  "evidence_docs": [
+    {
+      "title": "Python argparse documentation: exit_on_error parameter",
+      "url": "https://docs.python.org/3/library/argparse.html#exit-on-error",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "Python argparse documentation: error handling and exit codes",
+      "url": "https://docs.python.org/3/library/argparse.html#exit-on-error",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "Python argparse documentation: suggest_on_error parameter",
+      "url": "https://docs.python.org/3/library/argparse.html#suggest-on-error",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-21"
+    }
+  ]
 }

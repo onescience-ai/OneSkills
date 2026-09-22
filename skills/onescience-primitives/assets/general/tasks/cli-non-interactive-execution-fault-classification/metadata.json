@@ -1,0 +1,54 @@
+{
+  "name": "cli-non-interactive-execution-fault-classification",
+  "type": "task",
+  "domain": "general",
+  "version": "1.2.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T14:24:00+08:00",
+  "updated_at": "2026-09-22T10:00:00+08:00",
+  "description": "CLI非交互执行与故障分类任务：面向命令行工具的自动化执行场景，覆盖退出码语义解析、超时检测、沙箱环境配置、标准错误判读与故障恢复策略，确保CLI进程在无人值守环境下稳定完成并保留诊断证据。",
+  "tags": ["CLI", "exit-code", "fault-classification", "automation", "error-handling", "non-interactive", "subprocess", "timeout"],
+  "aliases": ["command-line fault diagnosis", "CLI error handling", "exit code classification", "Python subprocess"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing",
+      "doi": "10.1109/tdsc.2023.3288876",
+      "year": 2024
+    },
+    {
+      "title": "Implementing Centralized Error Handling for Software Systems through the Integration of Machine Learning Techniques",
+      "doi": "10.33140/eoa.01.01.11",
+      "year": 2023
+    },
+    {
+      "title": "Error-Type–A Novel Set of Software Metrics for Software Fault Prediction",
+      "doi": "10.1109/access.2023.3297218",
+      "year": 2023
+    },
+    {
+      "title": "Bumps in the Code: Error Handling During Software Development",
+      "doi": "10.1109/ms.2020.3024981",
+      "year": 2021
+    },
+    {
+      "title": "Secure Command Line Solution for Token-based Authentication",
+      "doi": "10.1051/epjconf/202125102036",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "Python subprocess documentation - Subprocess management",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": ["batch-264-cli-subprocess-docs", "batch-45-cli-fault-additional-evidence"],
+  "conflicts": []
+}

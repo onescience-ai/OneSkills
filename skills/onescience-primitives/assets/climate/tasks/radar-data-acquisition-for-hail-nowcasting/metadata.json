@@ -1,0 +1,63 @@
+{
+  "name": "radar-data-acquisition-for-hail-nowcasting",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T00:00:00Z",
+  "updated_at": "2026-09-22T00:00:00Z",
+  "description": "面向冰雹临近预报任务，获取真实天气雷达观测数据（组合反射率、基数据）并完成格式转换与质量检查，涵盖CINRAD、MRMS、NEXRAD等国内外数据源的访问路径、数据格式（ODIM_H5/CF/Radial）、时空覆盖范围与实时性要求",
+  "tags": [
+    "radar",
+    "CINRAD",
+    "MRMS",
+    "NEXRAD",
+    "reflectivity",
+    "hail",
+    "nowcasting",
+    "data-acquisition",
+    "weather-radar",
+    "edge:workflow:nowcasting-workflow-step-mapping",
+    "edge:workflow:onescience-domain-classification-standard"
+  ],
+  "aliases": [
+    "CINRAD",
+    "MRMS",
+    "NEXRAD",
+    "weather radar data",
+    "radar reflectivity data",
+    "hail observation data"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "天气雷达临近预报任务中真实观测数据的获取渠道和格式规范",
+  "evidence_papers": [
+    {
+      "title": "TAASRAD19, a high-resolution weather radar reflectivity dataset for precipitation",
+      "doi": "10.1038/s41597-020-00545-9",
+      "year": 2020
+    },
+    {
+      "title": "An Hourly Climatology of Operational MRMS MESH-Diagnosed Severe and Significant Hail",
+      "doi": "10.1175/WAF-D-20-0191.1",
+      "year": 2021
+    },
+    {
+      "title": "Detection of hail signatures from single-polarization C-band radar reflectivity",
+      "doi": "10.1016/j.atmosres.2015.07.023",
+      "year": 2015
+    },
+    {
+      "title": "Improving CINRAD Radar QPE Through GPM-DPR Reflectivity Bias Correction",
+      "doi": "10.1029/2023WR035432",
+      "year": 2023
+    },
+    {
+      "title": "Use of Deep Learning for Weather Radar Nowcasting",
+      "doi": "10.1175/JTECH-D-20-0157.1",
+      "year": 2021
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

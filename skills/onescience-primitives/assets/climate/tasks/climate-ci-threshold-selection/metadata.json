@@ -1,0 +1,26 @@
+{
+  "name": "climate-ci-threshold-selection",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "对流初生（CI）概率检测中的阈值选择方法，包括基于数据分布的阈值校准、自适应阈值算法（ROC曲线优化、F1-score最大化）和概率校准技术，确保检测阈值与数据分布匹配。",
+  "tags": ["threshold", "calibration", "ROC", "F1-score", "probability", "adaptive-threshold", "convection-initiation"],
+  "aliases": ["CI阈值选择", "概率阈值校准", "检测阈值优化"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "对流初生概率的典型范围和阈值选择方法；自适应阈值调整算法；概率校准技术",
+  "evidence_papers": [
+    {"title": "Non-Gaussian Probability Densities of Convection Initiation and Development Investigated Using a Particle Filter", "doi": "10.1175/MWR-D-18-0313.1", "year": 2019},
+    {"title": "Convection Initiation over the Eastern Arabian Peninsula", "doi": "10.1127/metz/2020/0965", "year": 2020},
+    {"title": "Probabilistic Convective Initiation Nowcasting with Reduced Satellite-NWP Prediction Error", "doi": "10.1007/s13143-018-0009-z", "year": 2018},
+    {"title": "Backward Adaptive Brightness Temperature Threshold Technique (BAB3T)", "doi": "10.3390/rs12203363", "year": 2020},
+    {"title": "A New Convective Initiation Definition and Its Characteristics", "doi": "10.3390/rs17092106", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

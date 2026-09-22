@@ -2,17 +2,21 @@
   "name": "cli-noninteractive-fault-diagnosis",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-17",
-  "updated_at": "2026-09-17",
+  "updated_at": "2026-09-21T20:10:00Z",
   "description": "面向命令行接口的非交互执行场景，诊断CLI进程故障、退出码异常和标准错误输出，覆盖参数校验、超时、沙箱限制和退出状态分类。",
   "tags": ["cli", "fault-diagnosis", "exit-code", "non-interactive", "error-handling", "command-line"],
   "aliases": ["CLI故障诊断", "命令行退出码", "非交互执行错误"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "CLI非交互执行与故障分类知识；知识缺失证据：归因分析CLI未正常退出或未产生有效响应；知识内容与边界：覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，不扩展到任务领域结论",
-  "evidence_papers": [],
+  "evidence_papers": [
+    {"title": "Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing", "doi": "10.1109/tdsc.2023.3288876", "year": "2024"},
+    {"title": "Bumps in the Code: Error Handling During Software Development", "doi": "10.1109/ms.2020.3024981", "year": "2021"},
+    {"title": "Evaluating Command-Line Interface-Based Agentic Large Language Model Coding Tools", "doi": "10.26803/ijlter.25.8.5", "year": "2026"}
+  ],
   "evidence_docs": [
     {
       "title": "argparse — Parser for command-line options, arguments and subcommands",
@@ -30,6 +34,6 @@
     }
   ],
   "evidence_user": [],
-  "merged_batches": [],
+  "merged_batches": ["2026-09-21-harvest-cli-fault-classification"],
   "conflicts": []
 }

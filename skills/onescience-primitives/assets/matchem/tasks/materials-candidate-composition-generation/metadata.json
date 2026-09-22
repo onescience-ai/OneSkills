@@ -1,0 +1,42 @@
+{
+  "name": "materials-candidate-composition-generation",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:36:00Z",
+  "updated_at": "2026-09-21T12:36:00Z",
+  "description": "材料候选生成中化学组成的定义和约束方法，包括基于晶体结构原型的组成空间定义、化学式合法性检查、基于已知材料库的组成子集筛选",
+  "tags": [
+    "candidate-generation",
+    "chemical-composition",
+    "crystal-structure",
+    "materials-screening",
+    "composition-constraints",
+    "edge:resource:workflow-planning/few-shot-learning-materials-science"
+  ],
+  "aliases": [
+    "composition-generation",
+    "formula-generation",
+    "material-candidates"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "材料候选生成中化学组成的定义和约束方法，晶体结构原型、化学式合法性检查",
+  "evidence_papers": [
+    {
+      "title": "Crystal structure generation with autoregressive large language modeling",
+      "doi": "10.1038/s41467-024-54639-7",
+      "year": 2024
+    },
+    {
+      "title": "High-throughput computation and structure prototype analysis for two-dimensional ferromagnetic materials",
+      "doi": "10.1038/s41524-022-00813-8",
+      "year": 2022
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

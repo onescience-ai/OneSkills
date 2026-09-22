@@ -2,12 +2,12 @@
   "name": "general-cli-noninteractive-fault-classification",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-17",
-  "updated_at": "2026-09-17",
+  "updated_at": "2026-09-21",
   "description": "面向 CLI 工具的非交互式执行与故障分类：覆盖进程生命周期管理、退出码语义、超时处理、标准流重定向、异常分类与诊断日志采集，适用于自动化流水线中对第三方 CLI 进行可靠调用与故障定位的场景",
-  "tags": ["cli", "noninteractive", "exit-code", "timeout", "fault-classification", "subprocess", "error-handling", "automation"],
+  "tags": ["cli", "noninteractive", "exit-code", "timeout", "fault-classification", "subprocess", "error-handling", "automation", "argparse"],
   "aliases": ["命令行工具调用", "CLI 执行诊断", "进程退出码分类"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
@@ -20,9 +20,23 @@
       "publisher": "Python Software Foundation",
       "version": "Python 3.14.7",
       "accessed_at": "2026-09-17"
+    },
+    {
+      "title": "argparse — Parser for command-line options (Python 3.14.7 documentation)",
+      "url": "https://docs.python.org/3/library/argparse.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.14.7",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "Exit Codes With Special Meanings (Advanced Bash-Scripting Guide)",
+      "url": "https://tldp.org/LDP/abs/html/exitcodes.html",
+      "publisher": "The Linux Documentation Project",
+      "version": "2024",
+      "accessed_at": "2026-09-21"
     }
   ],
   "evidence_user": [],
-  "merged_batches": [],
+  "merged_batches": ["batch-2026-09-21-argparse-exitcodes"],
   "conflicts": []
 }

@@ -132,6 +132,8 @@
 [D2] Understanding JSON Schema, json-schema.org, 2024, https://json-schema.org/understanding-json-schema/ (accessed_at: 2026-09-21, 交叉验证)
 
 ## 证据来源
-[1] Schema validation and evaluation framework for extracted schemas in JSON databases, Scientific Reports, 2026, DOI: 10.1038/s41598-026-45554-6（新增）
+[1] Schema validation and evaluation framework for extracted schemas in JSON databases, Scientific Reports, 2026, DOI: 10.1038/s41598-026-45554-6
 [2] JSON Schema Official Specification, JSON Schema Organization, Draft 2020-12（交叉验证）
 [3] Understanding JSON Schema, json-schema.org, 2024（交叉验证）
+[4] Validation of Modern JSON Schema: Formalization and Complexity, ACM, 2024, DOI: 10.1145/3698811
+[5] Blaze: Compiling JSON Schema for 10x Faster Validation, VLDB, 2025, DOI: 10.14778/3773749.3773764

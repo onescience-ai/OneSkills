@@ -1,0 +1,31 @@
+{
+  "name": "cli-noninteractive-execution-fault-classification",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "覆盖命令行接口非交互执行时的故障分类知识，包括命令参数、认证、沙箱、超时、退出码和标准错误判读，用于依据故障类别修正启动配置或恢复策略。",
+  "tags": ["CLI", "non-interactive", "execution", "fault", "classification", "exit-code", "error-handling", "automation"],
+  "aliases": ["command line error handling", "exit code interpretation", "sandbox timeout"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_docs": [
+    {
+      "title": "POSIX.1-2017 Section 8: Environment Variables",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html",
+      "publisher": "IEEE/The Open Group",
+      "version": "POSIX.1-2017",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "exit(3) - Linux manual page",
+      "url": "https://man7.org/linux/man-pages/man3/exit.3.html",
+      "publisher": "Linux man-pages project",
+      "version": "6.19",
+      "accessed_at": "2026-09-21"
+    }
+  ]
+}

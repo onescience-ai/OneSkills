@@ -2,7 +2,7 @@
   "name": "general-json-schema-report-contract",
   "type": "contract",
   "domain": "general",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "visibility": "public",
   "created_at": "2026-09-21T14:06:00+08:00",
   "updated_at": "2026-09-21T00:00:00Z",
@@ -15,7 +15,8 @@
   "evidence_papers": [
     {"title": "Schema validation and evaluation framework for extracted schemas in JSON databases", "doi": "10.1038/s41598-026-45554-6", "year": 2026},
     {"title": "Improving Api Test Accuracy through Schema Validation and Real-time Json Assertions in Jenkins Pipelines", "doi": "10.71097/ijsat.v16.i3.10656", "year": 2025},
-    {"title": "Blaze: Compiling JSON Schema for 10x Faster Validation", "doi": "10.14778/3773749.3773764", "year": 2025}
+    {"title": "Blaze: Compiling JSON Schema for 10x Faster Validation", "doi": "10.14778/3773749.3773764", "year": 2025},
+    {"title": "Validation of Modern JSON Schema: Formalization and Complexity", "doi": "10.1145/3698811", "year": 2024}
   ],
   "evidence_docs": [
     {
@@ -34,6 +35,6 @@
     }
   ],
   "evidence_user": [],
-  "merged_batches": ["2026-09-21: 基于SVEF框架补充Schema验证维度与指标"],
+  "merged_batches": ["2026-09-21: 基于SVEF框架补充Schema验证维度与指标", "2026-09-21: 补充Validation of Modern JSON Schema和Blaze论文证据"],
   "conflicts": []
 }

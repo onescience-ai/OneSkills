@@ -1,0 +1,26 @@
+{
+  "name": "matchem-md-input-audit-task",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "分子动力学模拟任务输入审计规范，包括C12/C13结构文件格式要求、DFT收敛状态检查指标、AIMD数据验证方法、训练数据完整性检查清单、历史资料引用规则",
+  "tags": ["molecular-dynamics", "input-validation", "quality-control", "simulation-setup", "documentation"],
+  "aliases": ["MD input audit", "simulation input validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "分子动力学模拟任务输入审计规范，包括C12/C13结构文件格式要求、DFT收敛状态检查指标、AIMD数据验证方法、训练数据完整性检查清单、历史资料引用规则",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "LAMMPS官方文档 - 输入文件格式规范",
+      "url": "https://docs.lammps.org/Manual.html",
+      "publisher": "LAMMPS",
+      "version": "latest",
+      "accessed_at": "2026-09-21T00:00:00Z"
+    }
+  ],
+  "evidence_user": []
+}

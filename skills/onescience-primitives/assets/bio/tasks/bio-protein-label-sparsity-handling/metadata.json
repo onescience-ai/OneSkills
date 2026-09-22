@@ -1,0 +1,21 @@
+{
+  "name": "bio-protein-label-sparsity-handling",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "多标签蛋白功能预测中标签稀疏性（长尾分布）的处理策略，包括层级GO注释、类别分组、focal loss和长尾优化集成",
+  "tags": ["protein", "label-sparsity", "long-tail", "GO", "focal-loss", "ensemble"],
+  "aliases": ["标签稀疏", "长尾分布", "类别不平衡"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多标签蛋白功能预测中标签稀疏性的处理策略",
+  "evidence_papers": [
+    {"title": "GOBoost: leveraging long-tail gene ontology terms for accurate protein function prediction", "doi": "10.1093/bioinformatics/btaf267", "year": 2025},
+    {"title": "GOBeacon: An ensemble model for protein function prediction enhanced by contrastive learning", "doi": "10.1002/pro.70182", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

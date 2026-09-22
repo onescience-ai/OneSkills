@@ -1,0 +1,42 @@
+{
+  "name": "vibrationally-stable-materials-ml-screening-literature",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:38:00Z",
+  "updated_at": "2026-09-21T12:38:00Z",
+  "description": "振动稳定材料机器学习筛选的研究文献综述，包括振动稳定性的定义和计算方法、材料ML筛选的已发表工作流、Materials Project等数据库中振动稳定性相关数据的查询方法",
+  "tags": [
+    "vibrationally-stable-materials",
+    "ML-screening",
+    "literature-review",
+    "materials-informatics",
+    "research-workflow",
+    "edge:resource:workflow-planning/few-shot-learning-materials-science"
+  ],
+  "aliases": [
+    "vibration-stable-screening",
+    "phonon-stable-ML",
+    "dynamical-stability-screening"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "振动稳定材料机器学习筛选的研究文献，vibrationally stable materials machine learning screening",
+  "evidence_papers": [
+    {
+      "title": "Machine learning-based discovery of vibrationally stable materials",
+      "doi": "10.1038/s41524-022-00943-z",
+      "year": 2023
+    },
+    {
+      "title": "Accelerating the prediction of stable materials with machine learning",
+      "doi": "10.1038/s43588-023-00536-w",
+      "year": 2023
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

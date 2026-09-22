@@ -143,6 +143,36 @@
 - 资源故障：释放资源、增加配额或优化资源使用
 - 环境故障：修复环境配置或依赖版本
 
+## CLI最佳实践
+
+### 1. 统一接口设计
+- 支持多种查询方式：单个查询、文件输入（--file）、标准输入（--file -）
+- 确保所有子命令接受统一参数格式
+- 支持Unix管道组合
+
+### 2. 输出格式控制
+- 提供多种输出格式：CSV、TSV、JSON（--outfmt）
+- 支持输出重定向到文件（--out）
+- 支持按查询拆分输出（--split）
+- 使用stderr显示进度信息，保留stdout给下游工具
+
+### 3. 分页与完整性
+- 透明处理分页：自动获取所有结果页
+- 确保大结果集完整返回，无截断
+- 实现顺序分页，避免数据遗漏
+
+### 4. 错误处理与重试
+- 实现指数退避重试机制
+- 区分临时性错误和永久性错误
+- 提供有意义的错误信息
+- 记录详细的错误日志
+
+### 5. 性能优化
+- 使用系统编程语言（如Rust）提升性能
+- 减少进程调用开销
+- 实现并行处理（在适用场景）
+- 优化内存使用
+
 ## 最佳实践
 
 ### 命令执行
@@ -171,3 +201,28 @@
 - 业务结果验证（如模型精度不达标）
 
 业务逻辑错误应由对应的领域专家技能处理。本知识仅提供CLI执行层面的故障分类和诊断框架。
+
+## 资源召回建议
+
+当遇到以下场景时召回本卡片：
+- CLI工具执行失败需要故障诊断
+- 自动化脚本退出码异常
+- 非交互执行超时或资源不足
+- 输出格式解析错误
+- 需要设计健壮的CLI接口
+
+配套资源：
+- json_schema_report_contract：JSON报告交付契约
+- pipeline_error_handling：流水线错误处理
+
+## 证据来源
+
+[1] xgt: a command-line interface for the Genome Taxonomy Database with cross-release taxonomic comparison, Anicet E T Ebou et al., GigaScience, 2026, DOI: 10.1093/gigascience/giag086
+
+[2] Bionitio: demonstrating and facilitating best practices for bioinformatics command-line software, P. Georgeson et al., GigaScience, 2019, DOI: 10.1093/gigascience/giz109
+
+## 历史版本
+
+- v1.0.0 (2026-09-17): 初始版本，包含故障分类体系和诊断流程
+- v1.1.0 (2026-09-21): 补充CLI最佳实践，添加从xgt论文获取的接口设计和性能优化建议
+- v1.2.0 (2026-09-21): 补充Bionitio论文证据，强化CLI最佳实践部分

@@ -1,0 +1,20 @@
+{
+  "name": "matchem-porous-materials-foundation-model",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T00:00:00Z",
+  "updated_at": "2026-09-22T00:00:00Z",
+  "description": "构建多孔材料（MOF、沸石、多孔碳等）的图神经网络基础模型，用于原子级结构表示学习、性质预测和迁移学习任务",
+  "tags": ["porous materials", "foundation model", "graph neural network", "MOF", "molecular representation"],
+  "aliases": ["MOF基础模型", "多孔材料GNN", "分子势能模型"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔材料领域基础模型的定义、标准架构（如MACE、SchNet、DimeNet等图神经网络模型）、模型选择依据和适用条件",
+  "evidence_papers": [
+    {"title": "MGNN: Moment Graph Neural Network for Universal Molecular Potentials", "doi": "10.1038/s41524-025-01541-5", "year": 2025},
+    {"title": "Convolution Neural Network Model Framework to Predict Microscale Drag Force for Turbulent Flow in Porous Media", "doi": "10.1007/s11242-025-02209-w", "year": 2025},
+    {"title": "Modelling of porous metal-organic framework (MOF) materials used in catalysis", "doi": "10.37705/techtrans/e2020012", "year": 2020}
+  ]
+}

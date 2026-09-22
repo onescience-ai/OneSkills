@@ -1,0 +1,26 @@
+{
+  "name": "reproducibility-auditability-standards",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "Standards and best practices for ensuring computational research reproducibility and auditability, covering code/data provenance, decision logging, environment documentation, and FAIR principles compliance for scientific computing tasks.",
+  "tags": ["reproducibility", "auditability", "scientific research", "FAIR", "provenance", "computational science", "decision log", "environment documentation"],
+  "aliases": ["computation reproducibility", "FAIR principles", "可复现性", "可审计性"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "任务目标的具体技术要求、科学严谨性标准、可复现和可审计的具体含义",
+  "evidence_papers": [
+    {"title": "After Computational Reproducibility: Scientific Reproducibility and Trustworthy Computation", "doi": "10.1162/99608f92.ea5e6f9a", "year": 2024},
+    {"title": "Computational reproducibility in computational social science", "doi": "10.1140/epjds/s13688-024-00514-w", "year": 2024},
+    {"title": "Survey about Barriers and Solutions for Enhancing Computational Reproducibility", "doi": "10.5334/jors.1234", "year": 2025},
+    {"title": "Managing Software Provenance to Enhance Reproducibility in Computational Research", "doi": "10.1109/CSE.2023.00012", "year": 2023},
+    {"title": "Computational notebooks for more openness, reproducibility, and productivity in research", "doi": "10.1016/j.patter.2022.100567", "year": 2022}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

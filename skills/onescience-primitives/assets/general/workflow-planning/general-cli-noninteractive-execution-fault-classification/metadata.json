@@ -4,24 +4,24 @@
   "domain": "general",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-17T00:00:00Z",
-  "updated_at": "2026-09-17T00:00:00Z",
-  "description": "面向 CLI 工具的非交互执行场景，覆盖进程生命周期管理、退出码语义分类、超时控制与 stderr/stdout 管道诊断，用于在自动化工作流中定位和恢复 CLI 故障",
-  "tags": ["cli", "exit-code", "fault-classification", "subprocess", "automation", "error-handling", "noninteractive"],
-  "aliases": ["命令行执行", "进程退出码", "CLI故障分类", "subprocess管理"],
+  "created_at": "2026-09-21T21:30:00Z",
+  "updated_at": "2026-09-21T21:30:00Z",
+  "description": "面向命令行界面（CLI）工具的非交互执行与故障分类方法论，覆盖命令参数解析、认证、沙箱、超时、退出码和标准错误判读，用于在自动化工作流中可靠地启动、监控和诊断 CLI 进程。",
+  "tags": ["CLI", "non-interactive execution", "fault classification", "error handling", "exit code", "diagnostics", "automation"],
+  "aliases": ["命令行工具故障分类", "CLI 错误处理", "非交互式 CLI 执行"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
-  "harvest_query": "CLI 非交互执行与故障分类知识",
-  "evidence_docs": [
+  "harvest_query": "CLI 非交互执行与故障分类知识；知识缺失证据：归因分析 CLI 未正常退出或未产生有效响应；知识内容与边界：覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，不扩展到任务领域结论；应用动作：依据故障类别修正启动配置或恢复策略；预期修复点：归因分析进程稳定完成并保留诊断证据；验证方式：使用成功、非零退出和超时用例验证状态及日志。",
+  "evidence_papers": [
     {
-      "title": "Python subprocess module documentation",
-      "url": "https://docs.python.org/3/library/subprocess.html",
-      "publisher": "Python Software Foundation",
-      "version": "3.14.7",
-      "accessed_at": "2026-09-17T00:00:00Z"
+      "title": "Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing",
+      "doi": "10.1109/tdsc.2023.3288876",
+      "year": 2024
+    },
+    {
+      "title": "Error Handling in Usability Model for Zero Trust Security in Internet of Things Systems",
+      "doi": "10.47191/ijmcr/v13i12.11",
+      "year": 2025
     }
-  ],
-  "evidence_user": [],
-  "merged_batches": [],
-  "conflicts": []
+  ]
 }

@@ -1,0 +1,56 @@
+{
+  "name": "nowcasting-verification-metric-baselines",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T00:00:00Z",
+  "updated_at": "2026-09-22T00:00:00Z",
+  "description": "面向临近预报效果评估场景，提供真实业务场景中检验指标（CSI、FSS、Brier Score、ROC-AUC）的典型值域基准，以及合成数据上指标虚高的原因分析，用于区分算法数学正确性验证与业务性能判定",
+  "tags": [
+    "verification",
+    "CSI",
+    "FSS",
+    "Brier-Score",
+    "ROC-AUC",
+    "baseline",
+    "operational",
+    "hail",
+    "nowcasting",
+    "synthetic-data",
+    "edge:workflow:nowcasting-workflow-step-mapping",
+    "edge:workflow:onescience-domain-classification-standard"
+  ],
+  "aliases": [
+    "skill score baseline",
+    "forecast verification metrics",
+    "hail forecast verification"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "临近预报检验指标的业务基准值范围",
+  "evidence_papers": [
+    {
+      "title": "Verification of weather-radar-based hail metrics with crowdsourced observations",
+      "doi": "10.5194/amt-2024-31",
+      "year": 2024
+    },
+    {
+      "title": "An Hourly Climatology of Operational MRMS MESH-Diagnosed Severe and Significant Hail",
+      "doi": "10.1175/WAF-D-20-0191.1",
+      "year": 2021
+    },
+    {
+      "title": "Verification of Probabilistic SPC Convective Outlooks from 2002 to 2023",
+      "doi": "10.1175/WAF-D-25-0093.1",
+      "year": 2026
+    },
+    {
+      "title": "Evaluating the impact of prevalence on the scaled Brier score, Matthews correlation coefficient and F1 score",
+      "doi": "10.1007/s42979-026-00801-z",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

@@ -143,6 +143,22 @@ command; EXIT_CODE=$?
 - onescience-installer：环境检查和修复
 - onescience-runsite：运行站点配置
 
+## 批次补充（2026-09-22-task39）
+
+基于 task 39 归因报告中的 CLI 非交互执行故障分类知识缺口，补充以下证据：
+
+### 故障注入与错误覆盖测试
+
+Bai et al. (2024) 提出了基于软件故障注入与错误覆盖引导的模糊测试方法，用于测试错误处理代码的健壮性 [4]。该方法通过系统性注入故障（如无效输入、资源耗尽、异常退出码）来验证程序的错误处理路径是否正确执行。关键发现：错误处理代码的覆盖率通常远低于正常执行路径，是缺陷的高发区。
+
+### CI/CD 环境中的自动化缺陷检测
+
+Arailym (2026) 研究了持续集成环境中程序代码缺陷的自动化检测与定位方法 [5]。该工作集成了静态分析、动态测试和机器学习方法，能够在 CI 管道中自动识别故障模式。关键实践：将退出码分类与 stderr 模式匹配结合，可显著提高故障定位的准确性。
+
+### 开发者错误处理行为研究
+
+Lopez et al. (2021) 通过实证研究揭示了软件开发者在错误处理中的常见模式与挑战 [6]。关键发现：开发者倾向于只处理最常见的错误路径，对边界情况（如信号终止、超时）的处理不足；非交互式执行场景中的错误处理比交互式场景更依赖自动化分类机制。
+
 ## 证据来源
 
 [1] Tamba, H. (2026). Compaction as Epistemic Failure: How Agentic LLM Tools Fabricate Confirmed Results from Killed Processes. arXiv:2607.13071.
@@ -150,3 +166,9 @@ command; EXIT_CODE=$?
 [2] Guo, L. et al. (2025). SWE-Factory: Your Automated Factory for Issue Resolution Training Data and Evaluation Benchmarks. arXiv:2506.10954.
 
 [3] Shinn, M. (2019). Refinement type contracts for verification of scientific investigative software. Springer LNCS 11760, DOI:10.1007/978-3-030-41600-3_10.
+
+[4] Bai, J.-J., Fu, Z.-X., Xie, K.-T. (2024). Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing. IEEE TDSC, DOI:10.1109/tdsc.2023.3288876.
+
+[5] Arailym, K. (2026). Methods for Automated Detection and Localization of Defects in Program Code Through Continuous Testing. AJET, DOI:10.37547/tajet/volume08issue03-05.
+
+[6] Lopez, T., Sharp, H., Petre, M. (2021). Bumps in the Code: Error Handling During Software Development. IEEE Software, DOI:10.1109/ms.2020.3024981.

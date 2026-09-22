@@ -1,0 +1,36 @@
+{
+  "name": "general-cli-noninteractive-execution-fault-classification-v2",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "面向命令行界面（CLI）工具的非交互执行场景，提供故障分类、诊断与恢复的通用方法论，涵盖退出码解析、超时处理、沙箱环境、认证失败等常见故障模式，适用于任何需要自动化执行CLI工具的科研工作流。",
+  "tags": ["CLI", "non-interactive", "fault-classification", "error-handling", "automation", "workflow-planning"],
+  "aliases": ["command-line interface", "CLI故障分类", "命令行错误处理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Evaluating Command-Line Interface-Based Agentic Large Language Model Coding Tools for Non-English Thematic Analysis: A 3 x 3 x 3 Factorial Study of Models, Prompts and Stochastic Variability",
+      "doi": "10.26803/ijlter.25.8.5",
+      "year": 2026
+    },
+    {
+      "title": "EQSANS-CLI: a natural-language agent-ready command-line tool for small-angle neutron scattering data reduction at EQ-SANS",
+      "doi": "10.1107/s160057672600600x",
+      "year": 2026
+    },
+    {
+      "title": "taurenmd: A command-line interface for analysis of Molecular Dynamics simulations.",
+      "doi": "10.21105/joss.02175",
+      "year": 2020
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

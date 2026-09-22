@@ -126,9 +126,83 @@
 - Schema设计最佳实践
 - 性能优化技术
 
+## Schema质量多维度评估框架（SVEF）
+
+### 框架概述
+SVEF（Schema Validation and Evaluation Framework）为JSON Schema质量评估提供系统化方法，覆盖六个互补维度。Schema质量评分（SQS）为各维度加权组合。
+
+### 六个评估维度
+
+#### 1. 数据类型准确性（DTA）
+- **度量**：Type Conformance(p) = |PT_obs ∩ PT_inf| / |PT_obs ∪ PT_inf|
+- **含义**：推断Schema中属性的原始类型与数据中实际观察类型的匹配度
+- **判定**：分数接近1表示类型推断准确
+
+#### 2. 必填/可选字段准确性
+- **度量**：Presence Accuracy = (1/|P|) × Σ 1[R_inf = R_ref]
+- **含义**：正确识别必填属性和可选属性的能力
+- **依赖规则**：使用关联规则 A⇒B 的支持度、置信度、提升度评估字段依赖关系
+- **阈值**：τ_conf = 0.8, τ_lift = 1.2
+
+#### 3. 多类型支持（MTS）
+- **度量**：MTS(p) = |T_obs ∩ T_inf| / |T_obs| - λ × max(0, |T_inf| - |T_obs|) / |T_inf|
+- **含义**：Schema捕捉同一属性在不同记录中合法类型变体的能力
+- **参数**：λ控制过度泛化惩罚权重
+
+#### 4. 集合结构一致性（CSC）
+- **深度一致性**：DepthConformance(a) = 1 - |d_obs - d_inf| / max(d_obs, d_inf)
+- **均匀性**：Homogeneity(a) = 1 - H(I_obs) / log(|I_obs| + 1)
+- **含义**：数组结构的嵌套深度和元素类型同质性
+
+#### 5. 实体关系恢复（ERR）
+- **边级指标**：Precision、Recall、F1
+- **全局指标**：GED_norm = 1 - GED(G_inf, G_ref) / |E_ref|
+- **组合**：ERR = β × F1 + (1-β) × GED_norm（β=0.7）
+
+#### 6. 时序演化检测
+- **含义**：检测Schema随时间的变化模式
+- **方法**：比较不同时间快照的Schema差异
+
+### Schema质量评分（SQS）
+SQS = Σ(i=1 to 6) w_i × S_i, Σw_i = 1
+
+权重可根据评估重点调整，如侧重结构精度或时序行为。
+
+### 实验验证
+- 在基准数据集上验证框架有效性
+- 能够揭示不同Schema推断方法之间的有意义差异
+- 传统评估实践可能忽略的方法差异可通过SVEF检测
+
 ## 证据来源
 
 [1] "Validation of Modern JSON Schema: Formalization and Complexity", Lyes Attouche et al., arXiv:2307.10034, 2023
 [2] "Elimination of annotation dependencies in validation for Modern JSON Schema", Lyes Attouche et al., arXiv:2503.11288, 2025
 [3] "Blaze: Compiling JSON Schema for 10x Faster Validation", Juan Cruz Viotti et al., arXiv:2503.02770, 2025
 [4] "Witness Generation for JSON Schema", Lyes Attouche et al., arXiv:2202.12849, 2022
+[5] "Schema validation and evaluation framework for extracted schemas in JSON databases", Saad Belefqih et al., Scientific Reports, 2026, DOI: 10.1038/s41598-026-45554-6
+
+## 批次补充（2026-09-21）
+
+### SVEF校准数值补充
+以下数值来自SVEF框架实验，供量级校准；其他系统需以自身证据重新锚定：
+
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 维度权重 | DTA:0.20, ROF:0.15, MTS:0.15, CSC:0.15, ERR:0.20, TED:0.15 | [5] | SVEF六维评估权重配置 |
+| 必需字段阈值 | 0.90 | [5] | 属性在数据集中出现的最小频率 |
+| 依赖关系置信度 | 0.80 | [5] | 关联规则的最小置信度 |
+| 依赖关系提升度 | 1.2 | [5] | 关联规则的最小提升度 |
+| 惩罚系数λ | 0.5 | [5] | 多类型支持中的过度泛化惩罚 |
+| 同质性权重α | 0.7 | [5] | 集合结构一致性中的熵-深度平衡 |
+| 关系平衡系数β | 0.7 | [5] | 实体关系恢复中的F1-图编辑距离平衡 |
+
+### SVEF评估维度权重配置
+Schema质量评分（SQS）的加权组合：
+- DTA (数据类型准确性): 0.20
+- ROF (必填/可选字段): 0.15
+- MTS (多类型支持): 0.15
+- CSC (集合结构一致性): 0.15
+- ERR (实体关系恢复): 0.20
+- TED (时序演化检测): 0.15
+
+权重可根据评估重点调整，如侧重结构精度或时序行为。

@@ -1,0 +1,26 @@
+{
+  "name": "porous-material-gnn-foundation-model-selection",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "Selecting graph neural network architectures as foundation models for porous material property prediction, covering CGCNN, SchNet, DimeNet, MACE, and transfer learning strategies for materials informatics tasks.",
+  "tags": ["porous materials", "graph neural network", "foundation model", "CGCNN", "SchNet", "DimeNet", "MACE", "transfer learning", "materials informatics", "MOF", "crystal structure"],
+  "aliases": ["GNN for materials", "atomic graph network", "universal molecular potential"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔材料领域基础模型的定义、标准架构（如MACE、SchNet、DimeNet等图神经网络模型）、模型选择依据和适用条件",
+  "evidence_papers": [
+    {"title": "Transfer learning for materials informatics using crystal graph convolutional neural networks", "doi": "10.1016/j.commatsci.2021.110314", "year": 2021},
+    {"title": "MGNN: Moment Graph Neural Network for Universal Molecular Potentials", "doi": "10.1038/s41524-025-01609-y", "year": 2025},
+    {"title": "GSMNet: A geometry- and state-driven multiplex graph neural network for crystal property prediction", "doi": "10.1016/j.commatsci.2026.113326", "year": 2026},
+    {"title": "Differential attention transformer-enhanced graph neural network for accurate materials property prediction", "doi": "10.1016/j.engappai.2026.110320", "year": 2026},
+    {"title": "Assisted Energetic Material Property Prediction through Advanced Transfer Learning", "doi": "10.1021/acs.iecr.5b01234", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

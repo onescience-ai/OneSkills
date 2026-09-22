@@ -1,0 +1,44 @@
+{
+  "name": "json-schema-report-delivery-contract-validation",
+  "type": "contract",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T02:46:00Z",
+  "updated_at": "2026-09-22T02:46:00Z",
+  "description": "面向结构化报告交付的JSON Schema契约验证规范，覆盖必填字段定义、任务身份一致性判定、数组约束验证与额外字段检测，适用于归因报告、科研数据报告、模型评估报告等需要按契约格式交付的JSON文档验证场景。",
+  "tags": ["json-schema", "report-contract", "validation", "structured-output", "schema-validation", "report-delivery", "attribution-report"],
+  "aliases": ["JSON Schema契约验证", "报告交付验证", "结构化输出契约"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026
+    },
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3632891",
+      "year": 2024
+    },
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.14778/3773749.3773764",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema reference documentation",
+      "url": "https://json-schema.org/understanding-json-schema/reference",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-22"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,28 @@
+{
+  "name": "protein-pocket-preparation-molecular-generation",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "为靶标特异性分子生成任务准备蛋白口袋PDB文件。涵盖PDB文件格式要求、口袋几何特征提取、从PDB数据库获取结构、使用分子对接软件准备口袋，以及文件验证方法。",
+  "tags": ["protein-pocket", "PDB", "binding-site", "molecular-generation", "structure-preparation", "docking"],
+  "aliases": ["target-pocket", "binding-pocket"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "靶标特异性分子生成对蛋白口袋文件的格式要求；PDB文件的结构和原子坐标规范；如何获取或创建真实的蛋白口袋结构",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "BoKDiff GitHub Repository",
+      "url": "https://github.com/khodabandeh-ali/BoKDiff",
+      "publisher": "GitHub",
+      "version": "main branch",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

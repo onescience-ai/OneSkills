@@ -4,23 +4,35 @@
   "domain": "general",
   "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-21T12:00:00Z",
-  "updated_at": "2026-09-21T12:00:00Z",
-  "description": "命令行界面（CLI）非交互执行与故障分类知识，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，适用于自动化脚本、CI/CD流水线和远程执行场景。",
-  "tags": ["CLI", "command-line-interface", "non-interactive-execution", "fault-classification", "error-handling", "automation"],
-  "aliases": ["command line interface", "CLI execution", "terminal automation"],
+  "created_at": "2026-09-21T13:57:00Z",
+  "updated_at": "2026-09-21T13:57:00Z",
+  "description": "CLI 非交互执行与故障分类任务：在无人值守环境下启动、监控和终止命令行进程，正确处理退出码、超时、沙箱限制和标准错误输出。适用于自动化流水线、批量作业提交、远程 SSH/SLURM 环境中的命令调度场景。核心方法包括：进程生命周期管理（spawn/wait/kill）、退出码语义解析（0/非0/信号码）、超时控制与强制终止、stderr 与 stdout 分离捕获。输出为结构化的执行结果（exit_code, stdout, stderr, timeout_flag, signal_flag）。",
+  "tags": ["CLI", "non-interactive", "exit code", "fault classification", "automation", "batch mode", "timeout", "process management", "error handling", "subprocess", "slurm", "ssh", "stderr"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
-  "harvest_query": "CLI 非交互执行与故障分类知识",
-  "evidence_papers": [
+  "harvest_query": "CLI 非交互执行与故障分类知识：exit code、超时、退出码、标准错误判读",
+  "evidence_papers": [],
+  "evidence_docs": [
     {
-      "title": "xgt: a command-line interface for the Genome Taxonomy Database with cross-release taxonomic comparison",
-      "doi": "10.1093/gigascience/giag086",
-      "year": 2026
+      "title": "POSIX.1-2017 System Interfaces: exit()",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/functions/exit.html",
+      "publisher": "IEEE/The Open Group",
+      "version": "IEEE Std 1003.1-2017",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "Python subprocess module documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.12",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "SLURM sbatch documentation: Exit Codes and Signal Handling",
+      "url": "https://slurm.schedmd.com/sbatch.html",
+      "publisher": "SchedMD",
+      "version": "2024.01",
+      "accessed_at": "2026-09-21"
     }
-  ],
-  "evidence_docs": [],
-  "evidence_user": [],
-  "merged_batches": [],
-  "conflicts": []
+  ]
 }

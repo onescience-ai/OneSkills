@@ -1,0 +1,32 @@
+{
+  "name": "general-cli-fault-classification-troubleshooting",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T18:38:00+08:00",
+  "updated_at": "2026-09-21T18:38:00+08:00",
+  "description": "面向CLI非交互执行场景，执行命令、捕获退出码、分类故障类型并恢复执行的方法与流程，确保命令行工具在自动化环境中稳定运行。",
+  "tags": ["CLI", "exit-code", "fault-classification", "troubleshooting", "non-interactive", "automation"],
+  "aliases": ["command-line fault handling", "CLI error diagnosis", "exit status troubleshooting"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Designing the Fault-Detection and Troubleshooting Tests For the Troubleshooting Target Flowchart",
+      "doi": "10.1088/1757-899x/915/1/012033",
+      "year": 2020
+    },
+    {
+      "title": "Adaptive troubleshooting in maintenance – LLM-based fault trees with RAG and data governance",
+      "doi": "10.37544/1436-4980-2026-03-42",
+      "year": 2026
+    },
+    {
+      "title": "SimpleSecure-CLI: A PowerShell-Based Framework for Windows Security Hardening and Compliance Automation",
+      "doi": "10.55041/ijsrem50200",
+      "year": 2025
+    }
+  ]
+}

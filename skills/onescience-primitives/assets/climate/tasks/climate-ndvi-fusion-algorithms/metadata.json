@@ -1,0 +1,24 @@
+{
+  "name": "climate-ndvi-fusion-algorithms",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:49:00Z",
+  "updated_at": "2026-09-21T12:49:00Z",
+  "description": "NDVI数据融合算法选择与实现任务，涵盖神经网络融合、卡尔曼滤波、时空克里金、回归融合等先进方法，以及各算法的适用条件、参数设置和计算复杂度评估，用于AVHRR-MODIS跨传感器NDVI重建。",
+  "tags": ["NDVI", "data fusion", "neural network", "Kalman filter", "regression", "kriging", "AVHRR", "MODIS", "algorithm selection"],
+  "aliases": ["NDVI fusion methods", "cross-sensor NDVI harmonization", "NDVI reconstruction algorithms"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "NDVI数据融合的先进算法及其适用条件、参数设置和计算复杂度",
+  "evidence_papers": [
+    {"title": "Bayesian MODIS NDVI back-prediction by intersensor calibration with AVHRR", "doi": "10.1016/j.rse.2016.09.002", "year": "2016"},
+    {"title": "An Improved Method for Producing High Spatial-Resolution NDVI Time Series Datasets with Multi-Temporal MODIS NDVI Data and Landsat TM/ETM+ Images", "doi": "10.3390/rs70607865", "year": "2015"},
+    {"title": "Bayesian Method for Building Frequent Landsat-Like NDVI Datasets by Integrating MODIS and Landsat NDVI", "doi": "10.3390/rs8060452", "year": "2016"}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

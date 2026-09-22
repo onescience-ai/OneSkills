@@ -1,0 +1,21 @@
+{
+  "name": "bio-protein-prediction-target-validation",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "蛋白功能预测任务中预测目标类型（continuous/binary/multi-label）与GO标签类型的对应关系验证，确保训练目标与数据标签类型一致",
+  "tags": ["protein", "prediction-target", "GO", "multi-label", "binary", "label-type"],
+  "aliases": ["预测目标", "标签类型", "GO注释"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白功能预测任务中预测目标与GO标签类型的对应关系",
+  "evidence_papers": [
+    {"title": "GOBeacon: An ensemble model for protein function prediction enhanced by contrastive learning", "doi": "10.1002/pro.70182", "year": 2025},
+    {"title": "GOBoost: leveraging long-tail gene ontology terms for accurate protein function prediction", "doi": "10.1093/bioinformatics/btaf267", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

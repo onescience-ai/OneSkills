@@ -1,0 +1,36 @@
+{
+  "name": "general-json-schema-contract-validation-methodology",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "面向结构化JSON输出验证场景，提供基于JSON Schema的数据契约定义、验证执行与质量保证的方法论框架，覆盖必填字段、类型约束、格式验证、嵌套结构校验和跨系统数据一致性保障等通用技术，不扩展到特定科学领域的数据模型。",
+  "tags": ["JSON-Schema", "data-contract", "validation", "structured-output", "schema-compliance", "quality-assurance", "API-testing", "metadata-management"],
+  "aliases": ["JSON schema validation", "data contract enforcement", "structured output verification", "schema-based testing"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026
+    },
+    {
+      "title": "Improving Api Test Accuracy through Schema Validation and Real-time Json Assertions in Jenkins Pipelines",
+      "doi": "10.71097/ijsat.v16.i3.10656",
+      "year": 2025
+    },
+    {
+      "title": "Adamant: a JSON schema-based metadata editor for research data management workflows",
+      "doi": "10.12688/f1000research.110875.2",
+      "year": 2022
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

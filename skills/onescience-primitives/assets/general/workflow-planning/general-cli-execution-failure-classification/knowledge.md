@@ -68,6 +68,9 @@
 - general-json-schema-report-validation：用于结构化输出验证
 - 具体领域的CLI工具文档
 
+## 补充证据
+[3] Fault-Tolerant Sandboxing for AI Coding Agents: A Transactional Approach to Safe Autonomous Execution, arXiv 2025, DOI: 10.48550/arXiv.2512.12806（摘要级，全文未获取）
+
 ## 证据来源
 [1] Why Did the Test Execution Fail? Failure Classification Using Association Rules, IEEE ISSRE 2022, DOI: 10.1109/issre55969.2022.00056
 [2] condathis: Run Any CLI Tool on a Conda Environment, CRAN 2024, DOI: 10.32614/cran.package.condathis

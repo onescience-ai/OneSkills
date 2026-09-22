@@ -1,58 +1,28 @@
 {
-  "name": "cli-non-interactive-execution-fault-classification",
+  "name": "general-cli-non-interactive-execution-fault-classification",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "visibility": "public",
-  "created_at": "2026-09-17T03:01:00Z",
-  "updated_at": "2026-09-21T10:30:00Z",
-  "description": "面向CLI工具非交互执行场景，提供故障分类、错误处理和诊断的知识框架。适用于需要理解命令行接口执行流程、故障模式分类、错误码解读和标准错误分析的研究与工程场景。核心方法包括：黑盒差分测试、多层等价性评估、状态依赖分析和CLI安全知识库构建。输出为故障分类体系、诊断策略和验证方法。归因分析、科研工具链等场景可直接引用本卡进行CLI稳定性诊断。",
-  "tags": ["CLI", "command-line", "fault-classification", "error-handling", "diagnosis", "non-interactive-execution", "black-box-testing", "differential-testing", "exit-codes", "stderr", "subprocess", "Python", "attribution-analysis", "cli-stability"],
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "面向命令行接口（CLI）的非交互执行与故障分类方法论，涵盖命令参数解析、认证、沙箱、超时、退出码和标准错误判读，覆盖命令参数验证、认证失败、沙箱环境异常、超时处理、退出码判读和标准错误解析，确保自动化流水线中的CLI调用具备可恢复性与可诊断性。",
+  "tags": ["CLI", "non-interactive", "fault-classification", "exit-code", "error-handling", "command-line", "diagnostics", "recovery", "linux-exit-codes"],
+  "aliases": ["CLI非交互执行", "命令行故障分类", "退出码判读", "CLI错误处理"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
-  "harvest_query": "CLI非交互执行与故障分类知识；知识缺失证据：归因分析CLI未正常退出或未产生有效响应；知识内容与边界：覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，不扩展到任务领域结论",
-  "evidence_papers": [
-    {
-      "title": "Evaluating LLM-Based 0-to-1 Software Generation in End-to-End CLI Tool Scenarios",
-      "doi": "10.48550/arXiv.2604.06742",
-      "year": 2026,
-      "venue": "arXiv"
-    },
-    {
-      "title": "MOSAIC: Knowledge-Guided CLI Command Composition Attack in LLM Coding Agents",
-      "doi": "10.48550/arXiv.2607.02857",
-      "year": 2026,
-      "venue": "arXiv"
-    },
-    {
-      "title": "System Administrators Prefer Command Line Interfaces, Don't They? An Exploratory Study of Firewall Interfaces",
-      "doi": "10.48550/arXiv.1905.13582",
-      "year": 2019,
-      "venue": "SOUPS 2019"
-    },
-    {
-      "title": "The Command Line GUIde: Graphical Interfaces from Man Pages via AI",
-      "doi": "10.1109/VL-HCC65237.2025.00026",
-      "year": 2025,
-      "venue": "IEEE VL/HCC"
-    },
-    {
-      "title": "EQSANS-CLI: A natural-language, agent-ready command-line tool for small-angle neutron scattering data reduction at EQ-SANS",
-      "doi": "10.48550/arXiv.2605.00651",
-      "year": 2026,
-      "venue": "arXiv"
-    }
-  ],
+  "harvest_query": "CLI非交互执行与故障分类知识：覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读",
+  "evidence_papers": [],
   "evidence_docs": [
     {
-      "title": "Python subprocess Module Documentation",
-      "url": "https://docs.python.org/3/library/subprocess.html",
-      "publisher": "Python Software Foundation",
-      "version": "3.14.7",
-      "accessed_at": "2026-09-18"
+      "title": "Exit Codes With Special Meanings - Advanced Bash-Scripting Guide",
+      "url": "https://tldp.org/LDP/abs/html/exitcodes.html",
+      "publisher": "Linux Documentation Project",
+      "version": "2024",
+      "accessed_at": "2026-09-21"
     }
   ],
   "evidence_user": [],
-  "merged_batches": ["harvest-2026-09-18-subprocess-docs"],
+  "merged_batches": ["task-226-2026-09-21", "task-31-2026-09-21", "task-252-2026-09-21"],
   "conflicts": []
 }

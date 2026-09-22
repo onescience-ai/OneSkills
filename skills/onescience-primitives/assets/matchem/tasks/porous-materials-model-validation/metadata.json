@@ -2,18 +2,21 @@
   "name": "porous-materials-model-validation",
   "type": "task",
   "domain": "matchem",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-21",
-  "updated_at": "2026-09-21",
-  "description": "多孔材料预测模型的独立验证方法，涵盖实验吸附测试验证、高保真计算（GCMC/DFT）验证、验证数据获取途径和验证指标定义，确保模型预测结果的科学可信度。",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "多孔材料预测模型的独立验证方法，涵盖实验吸附测试验证、高保真计算（GCMC/DFT/cDFT）验证、验证数据获取途径和验证指标定义，确保模型预测结果的科学可信度。",
   "tags": [
     "porous-materials",
     "model-validation",
     "GCMC",
     "experimental-validation",
     "adsorption",
-    "independent-verification"
+    "independent-verification",
+    "cDFT",
+    "process-level-validation",
+    "MOF"
   ],
   "aliases": ["多孔材料验证方法", "porous materials validation", "MOF模型验证"],
   "harvested": true,
@@ -44,10 +47,25 @@
       "title": "GCMC kernel for analyzing the pore size distribution of porous carbons based on a simplified slit-pore model considering surface energetic heterogeneity",
       "doi": "10.1007/s10450-023-00418-7",
       "year": 2023
+    },
+    {
+      "title": "Fast process-level screening of metal-organic frameworks for adsorption-based gas separation",
+      "doi": "10.1039/d6me00066e",
+      "year": 2025
+    },
+    {
+      "title": "Analyzing the gas storage capacities of NU-2100 MOF via GCMC simulations: a materials informatics approach",
+      "doi": "10.1007/s10450-025-00641-4",
+      "year": 2025
+    },
+    {
+      "title": "GCMC-MD prediction of adsorption and diffusion behavior of shale gas in nanopores",
+      "doi": "10.1016/j.fuel.2024.133052",
+      "year": 2024
     }
   ],
   "evidence_docs": [],
   "evidence_user": [],
-  "merged_batches": [],
+  "merged_batches": ["2026-09-21-harvest-372"],
   "conflicts": []
 }

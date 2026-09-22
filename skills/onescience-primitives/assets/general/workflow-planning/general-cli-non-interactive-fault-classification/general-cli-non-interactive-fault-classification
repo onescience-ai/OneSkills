@@ -1,0 +1,24 @@
+{
+  "name": "general-cli-non-interactive-fault-classification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T20:07:00Z",
+  "updated_at": "2026-09-21T20:07:00Z",
+  "description": "面向命令行界面（CLI）工具的非交互执行与故障分类方法论，覆盖命令参数解析、认证、沙箱、超时、退出码和标准错误判读，用于依据故障类别修正启动配置或恢复策略。",
+  "tags": ["CLI", "command line interface", "fault classification", "error handling", "exit codes", "non-interactive execution"],
+  "aliases": ["CLI fault diagnosis", "command line error handling"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {"title": "Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing", "doi": "10.1109/tdsc.2023.3288876", "year": "2024"},
+    {"title": "Bumps in the Code: Error Handling During Software Development", "doi": "10.1109/ms.2020.3024981", "year": "2021"},
+    {"title": "Evaluating Command-Line Interface-Based Agentic Large Language Model Coding Tools", "doi": "10.26803/ijlter.25.8.5", "year": "2026"}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

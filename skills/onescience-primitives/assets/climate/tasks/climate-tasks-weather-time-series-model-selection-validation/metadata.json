@@ -1,0 +1,23 @@
+{
+  "name": "climate-tasks-weather-time-series-model-selection-validation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22",
+  "updated_at": "2026-09-22",
+  "description": "气象时序预报模型的选择与验证规范，包括LSTM/Transformer/GRU等模型在气象预报中的适用条件、输入输出契约定义、最小干运行验证流程和随机性控制要求",
+  "tags": ["LSTM", "model selection", "validation", "dry run", "weather forecasting"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象时序预报模型的选择与验证规范，包括LSTM/Transformer/GRU等模型在气象预报中的适用条件（序列长度、多变量交互、长期依赖）、输入输出契约定义、最小干运行验证流程和随机性控制要求",
+  "evidence_papers": [
+    {"title": "Short-Term Weather Forecast Skill of Artificial Neural Networks", "doi": "10.1175/waf-d-22-0009.1", "year": 2022},
+    {"title": "Redefining multi-target weather forecasting with a novel deep learning model: Hierarchical temporal convolutional long short-term memory with attention (HTC-LSTM-Attn) in Bangladesh", "doi": "10.1371/journal.pone.0342431", "year": 2026},
+    {"title": "Enhancing Weather Forecasting Integrating LSTM and GA", "doi": "10.3390/app14135769", "year": 2024}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

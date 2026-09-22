@@ -1,0 +1,305 @@
+{
+  "schema_version": "onescience-knowledge-contribution-v1",
+  "contribution_id": "2026-09-21_gitee_token_read_export_inheritance",
+  "title": "Gitee Token 安全注入：read -s -p 必须配 export 才能被 opencode 子进程继承",
+  "domain": "general",
+  "kind": "both",
+  "status": "submitted",
+  "created_at": "2026-09-21T17:10:00+08:00",
+  "source": {
+    "source_type": "mixed",
+    "session_id": null,
+    "redacted": true,
+    "raw_transcript_included": false,
+    "summary": "把知识贡献提交链路的令牌注入从明文 export/贴进对话改为 read -s -p 交互输入，并验证外层 shell 读入的 token 能否被同一 shell 启动的 opencode 及其技能子进程继承，最后端到端提交到 fork。"
+  },
+  "task": {
+    "goal": "确认 read -s -p 安全输入 GITEE_TOKEN 后，opencode 及 submit_gitee_issue.py 能继承到该 token，并端到端验证后提交到 wangqi00001/oneskills-dev。",
+    "context": [
+      "onescience-knowledge-capture 技能的 submit_gitee_issue.py 支持 --method api(读 GITEE_TOKEN 环境变量) 与 gitee-cli 两条后端",
+      "用户实际在 Linux 用外层 shell 设 token 后启动 opencode 驱动技能",
+      "开发机是 Windows(有 Git Bash/WSL)，运行机 scnet-infinity 是真 Linux 5.10"
+    ],
+    "inputs": [
+      "真实 GITEE_TOKEN(仅经 stdin 喂给 read -s -p，绝不落盘)",
+      "submit_gitee_issue.py 源码与 issue_payload.json",
+      "scnet-infinity(Linux 5.10) SSH 通道"
+    ],
+    "expected_outputs": [
+      "修正后的令牌注入写法",
+      "跨平台端到端验证证据",
+      "提交到 fork 的示范 Issue"
+    ],
+    "constraints": [
+      "token 绝不写入任何文件/日志，只在 shell 会话内存活一次",
+      "read 是 POSIX shell 内建，需跨 Windows Git Bash 与 Linux 验证",
+      "提交目标是个人 fork wangqi00001/oneskills-dev"
+    ],
+    "success_criteria": [
+      "read -s -p 后 export，孙进程 os.environ 能读到 GITEE_TOKEN(True)",
+      "submit_gitee_issue.py --method api --submit 返回 HTTP 201 并回带 Issue 编号",
+      "gitee api 回读 Issue 确认三标签生效、正文完整"
+    ]
+  },
+  "execution_trace": [
+    {
+      "step_id": "S1",
+      "name": "定位令牌注入流程归属",
+      "objective": "把 token 注入改成 read -s -p 安全输入并确认 Windows 能否验证",
+      "expected_inputs": ["仓库全文"],
+      "actual_inputs": ["仓库全文"],
+      "expected_action": ["grep read -s / export GITEE_TOKEN 定位流程"],
+      "actual_action": ["全仓 grep read -s/export GITEE_TOKEN"],
+      "resources": ["Git Bash grep"],
+      "skills": ["onescience-knowledge-capture"],
+      "tools": ["ripgrep"],
+      "knowledge": [],
+      "expected_outputs": ["确认流程是否在仓库文件里"],
+      "actual_outputs": ["该流程不在任何仓库文件里，是用户 shell 手敲步骤"],
+      "observation": "流程为外层 shell 三步：注入 token→启动 opencode→验证",
+      "decision": "把修正点定位在 shell 注入步骤而非仓库脚本",
+      "decision_reason": "仓库无此流程文件，属用户交互步骤",
+      "status": "success"
+    },
+    {
+      "step_id": "S2",
+      "name": "确认脚本取 token 的方式",
+      "objective": "确认 opencode 子进程能否拿到 token",
+      "expected_inputs": ["submit_gitee_issue.py"],
+      "actual_inputs": ["submit_gitee_issue.py"],
+      "expected_action": ["定位 token 读取与失败分支"],
+      "actual_action": ["读 submit_gitee_issue.py，定位 os.environ.get GITEE_TOKEN 与 exit 2 分支"],
+      "resources": [],
+      "skills": [],
+      "tools": ["Read"],
+      "knowledge": [],
+      "expected_outputs": ["token 来源结论"],
+      "actual_outputs": ["脚本只从环境变量取 token"],
+      "observation": "脚本从环境变量读 token，read 的 shell 变量不 export 则读不到",
+      "decision": "必须 export 才能被子/孙进程继承",
+      "decision_reason": "os.environ 只含被 export 的变量",
+      "status": "success"
+    },
+    {
+      "step_id": "S3",
+      "name": "对照实验证实 export 是关键",
+      "objective": "证实 export 是继承的关键",
+      "expected_inputs": ["假 token"],
+      "actual_inputs": ["假 token"],
+      "expected_action": ["Case A(不 export) vs Case B(export) 子进程回显"],
+      "actual_action": ["Git Bash 跑 Case A/Case B 对照"],
+      "resources": ["Git Bash"],
+      "skills": [],
+      "tools": ["bash", "python"],
+      "knowledge": [],
+      "expected_outputs": ["两 case 子进程 env 读数"],
+      "actual_outputs": ["Case A False / Case B True"],
+      "observation": "Case A 子进程读到 False，Case B 读到 True",
+      "decision": "确立 read 后必须 export 的结论",
+      "decision_reason": "对照实验直接证明",
+      "status": "success"
+    },
+    {
+      "step_id": "S4",
+      "name": "准备标签与远端连通性",
+      "objective": "准备可提交的示范并让标签生效",
+      "expected_inputs": ["gitee api 凭据", "scnet-infinity SSH"],
+      "actual_inputs": ["gitee api 凭据", "scnet-infinity SSH"],
+      "expected_action": ["建三标签；探测远端连通性与工具"],
+      "actual_action": ["gitee api 建三标签；SSH 探测 scnet-infinity"],
+      "resources": ["scnet-infinity", "gitee-cli"],
+      "skills": [],
+      "tools": ["gitee api", "ssh", "curl"],
+      "knowledge": [],
+      "expected_outputs": ["标签就绪；远端连通性结论"],
+      "actual_outputs": ["三标签建成；远端可达 gitee(401)、有 python3/git/node、无 opencode"],
+      "observation": "三标签建成；远端可达 gitee(401)、有 python3/git/node、无 opencode",
+      "decision": "因远端无 opencode，改用子/孙进程继承作等价验证",
+      "decision_reason": "opencode 仅是子进程，继承是 OS 级通用行为",
+      "status": "success"
+    },
+    {
+      "step_id": "S5",
+      "name": "端到端提交并回读核验",
+      "objective": "端到端验证并提交到 fork",
+      "expected_inputs": ["真实 token(read+export)"],
+      "actual_inputs": ["真实 token(read+export)"],
+      "expected_action": ["--method api --submit 提交；gitee api 回读"],
+      "actual_action": ["真实 token 经 read -s -p+export 走 --method api --submit，再用 gitee api 回读核验"],
+      "resources": ["gitee api"],
+      "skills": ["onescience-knowledge-capture"],
+      "tools": ["python", "submit_gitee_issue.py"],
+      "knowledge": [],
+      "expected_outputs": ["HTTP 201 + Issue 编号"],
+      "actual_outputs": ["HTTP 201，Issue IKHM4T 创建成功"],
+      "observation": "HTTP 201，Issue IKHM4T 创建成功；回读确认三标签生效、正文完整",
+      "decision": "确认端到端链路打通，提交成功",
+      "decision_reason": "201 + 回读标签/正文一致",
+      "status": "success"
+    }
+  ],
+  "verification": [
+    {
+      "target": "shell 变量→子进程环境继承机制",
+      "type": "workflow",
+      "method": "Git Bash Case A(read 不 export) / Case B(read+export) 用假 token 跑子进程与孙进程 os.environ 回显",
+      "expected_result": "Case A 读不到(False)，Case B 读到(True)，孙进程同样继承",
+      "actual_result": "Case A 子/孙进程 False；Case B 子/孙进程 True",
+      "status": "pass"
+    },
+    {
+      "target": "端到端真实提交(--method api)",
+      "type": "result",
+      "method": "真实 token 经 read -s -p+export，运行 submit_gitee_issue.py --method api --submit",
+      "expected_result": "Gitee 返回 HTTP 201 并回带 Issue 编号/URL",
+      "actual_result": "HTTP 201，Issue IKHM4T 创建成功并回带 URL",
+      "status": "pass"
+    },
+    {
+      "target": "已提交 Issue 的标签与正文完整性",
+      "type": "artifact",
+      "method": "gitee api 回读 Issue IKHM4T，检查 state/labels/body",
+      "expected_result": "state=open，三标签全部生效，正文完整",
+      "actual_result": "state=open，labels=[feedback,issue-only,resource-gap] 全生效，body 长度 17810",
+      "status": "pass"
+    },
+    {
+      "target": "远端 Linux 连通性与工具可用性",
+      "type": "workflow",
+      "method": "SSH scnet-infinity(Linux 5.10) curl https://gitee.com/api/v5/user 并检查 python3/git/node/opencode",
+      "expected_result": "可达 gitee 端点；确认工具链",
+      "actual_result": "返回 HTTP 401(到达端点、仅未带认证)；有 python3/git/node，登录 PATH 无 opencode",
+      "status": "pass"
+    }
+  ],
+  "failures": [
+    {
+      "failure_id": "FAIL-1",
+      "related_step": "S2",
+      "symptom": "submit_gitee_issue.py --method api 打印 no GITEE_TOKEN env var 并 exit 2，Issue 未创建",
+      "root_cause": "read -s -p 读入 token 后未 export 就启动子进程，shell 变量未进入环境块",
+      "impact": "自动提交失败，无法创建 Issue"
+    },
+    {
+      "failure_id": "FAIL-2",
+      "related_step": "S4",
+      "symptom": "Gitee 返回 201 但静默丢弃不存在的标签",
+      "root_cause": "目标仓尚未创建 resource-gap/feedback/issue-only 标签",
+      "impact": "Issue 标签缺失，反馈分类不可见"
+    },
+    {
+      "failure_id": "FAIL-3",
+      "related_step": "S3",
+      "symptom": "read -s 输入完 token 后提示符与后续输出挤在同一行",
+      "root_cause": "read -s 关闭回显会吞掉换行",
+      "impact": "终端 UX 混乱(不影响功能)"
+    }
+  ],
+  "recovery_trace": [
+    {
+      "trigger_failure": "FAIL-1",
+      "recovery_strategy": "在 read 之后补 export 再启动子进程",
+      "recovery_action": "read -s -p ... GITEE_TOKEN; echo; export GITEE_TOKEN",
+      "recovery_result": "子/孙进程 os.environ 读到 token，提交成功",
+      "status": "success"
+    },
+    {
+      "trigger_failure": "FAIL-2",
+      "recovery_strategy": "先建标签再提交",
+      "recovery_action": "POST /repos/{owner}/{repo}/labels 创建 resource-gap/feedback/issue-only",
+      "recovery_result": "回读 Issue 确认三标签全部生效",
+      "status": "success"
+    },
+    {
+      "trigger_failure": "FAIL-3",
+      "recovery_strategy": "静默输入后手动补换行",
+      "recovery_action": "read -s 后加一个裸 echo",
+      "recovery_result": "终端换行正常",
+      "status": "success"
+    }
+  ],
+  "capability_attribution": {
+    "knowledge_gaps": [],
+    "reasoning_gaps": [],
+    "planning_gaps": [],
+    "execution_gaps": [],
+    "verification_gaps": [
+      "未在真实 opencode 二进制上跑完整会话(两台测试机登录 PATH 均未见 opencode)，以子/孙进程环境继承作等价验证(见 OQ-1)"
+    ],
+    "resource_gaps": [
+      "Windows 开发机与 scnet-infinity 均未安装 opencode，无法直接复现真实运行环境"
+    ],
+    "contract_gaps": []
+  },
+  "knowledge_discovery": {
+    "facts": [
+      { "id": "F-1", "statement": "read -s -p \"prompt\" VAR 只赋值 shell 变量；未 export 前子进程 os.environ 读不到。" },
+      { "id": "F-2", "statement": "submit_gitee_issue.py --method api 从 GITEE_TOKEN/GITEE_ACCESS_TOKEN 环境变量取 token，缺失即 exit 2。" },
+      { "id": "F-3", "statement": "Gitee 会静默丢弃目标仓不存在的 Issue 标签，需先经 POST /repos/{owner}/{repo}/labels 创建。" }
+    ],
+    "heuristics": [
+      { "id": "H-1", "statement": "对外层 shell 注入密钥→子进程(opencode)→孙进程(技能脚本)链路，交互 read 后务必 export，并用孙进程 env 回显验证而非只验子进程。", "scope": "任何用 POSIX shell 驱动子进程树、需传递密钥的场景", "evidence_strength": "high" },
+      { "id": "H-2", "statement": "read -s 关闭回显会吞掉换行，其后补一个裸 echo 输出换行，终端 UX 更干净。", "scope": "所有 read -s 交互输入", "evidence_strength": "medium" }
+    ],
+    "constraints": [
+      { "id": "C-1", "statement": "token 绝不写入文件/日志/脚本，只在 shell 会话内存活一次；一旦出现在对话或历史中必须立即撤销重生成。" }
+    ],
+    "fallbacks": [
+      { "id": "FB-1", "statement": "若已 gitee auth login，--method auto/cli 用 CLI 本地凭据即可，无需 read+export token，是 token 注入的等价替代路径。" }
+    ],
+    "anti_patterns": [
+      { "id": "AP-1", "statement": "把 token 明文贴进对话/写进脚本/用 export 把 token 敲进 shell 历史——会泄漏到日志与 history。" },
+      { "id": "AP-2", "statement": "以为 read VAR 之后 VAR 自动对子进程可见，省略 export。" }
+    ],
+    "new_knowledge": [
+      { "id": "NK-1", "statement": "PowerShell 调 Git Bash 时，外层单引号里 printf 的换行转义会被吞掉，导致 read 读入的 token 尾部混入字面量 n(长度 32→33)而提交 401；把 printf 写进 .sh 脚本内部(而非经 -c 传参)可避免该陷阱。" }
+    ],
+    "open_questions": [
+      { "id": "OQ-1", "status": "UNVERIFIED", "question": "用户实际运行 opencode 的主机(scnet-infinity 登录 PATH 未见 opencode)在哪，需确认该环境里 export 后的 GITEE_TOKEN 确实存在于 opencode 进程环境。" }
+    ]
+  },
+  "integration": {
+    "target_layer": "executor",
+    "target_skill": "onescience-knowledge-capture",
+    "target_directory": "skills/onescience-knowledge-capture/SKILL.md",
+    "proposed_changes": [
+      "在 §6 认证小节补充推荐写法：read -s -p 提示语 GITEE_TOKEN; echo; export GITEE_TOKEN，然后再启动 opencode",
+      "明确警示：只 read 不 export 会导致 submit_gitee_issue.py --method api 报 no GITEE_TOKEN env var 并 exit 2",
+      "补充子进程/孙进程继承说明：export 后 opencode 及其派生的技能脚本都能读到"
+    ],
+    "contract_impact": [
+      "仅文档，无接口/契约变更"
+    ],
+    "validation_plan": [
+      "Git Bash + Linux 双平台机制测试(子/孙进程 env 回显)",
+      "真实 --method api 提交返回 201"
+    ]
+  },
+  "promotion": {
+    "recommendation": "human_review",
+    "confidence": "high",
+    "rationale": "这是可复用的令牌注入与进程环境继承经验，且直接指向 SKILL.md §6 文档补全；建议人工审核后并入技能文档，不直接升级为 primitive。",
+    "required_review": [
+      "确认是否把 read+export 写法写入 SKILL.md §6",
+      "确认 OQ-1 中 opencode 实际运行环境"
+    ]
+  },
+  "privacy": {
+    "redactions": [
+      "真实 token 全程只经 stdin 喂给 read，未写入任何文件；验证后清除 shell 环境变量并提醒用户撤销"
+    ],
+    "sensitive_content_detected": false,
+    "publication_scope": "repository_public",
+    "known_limits": [
+      "未在真实 opencode 二进制上跑完整会话(两台测试机均未安装 opencode)，以子/孙进程环境继承作等价验证"
+    ]
+  },
+  "submission": {
+    "mode": "submit",
+    "status": "submitted",
+    "repository": "wangqi00001/oneskills-dev",
+    "issue_number": "IKHM4T",
+    "issue_url": "https://gitee.com/wangqi00001/oneskills-dev/issues/IKHM4T",
+    "note": "IKHM4T 是仓库迁移到上游 v1 schema 之前、以 v2 正文提交的历史 Issue，按用户决定保持原样；issue_payload.json/submission_card.md 保留为该次提交的 v2 历史快照。"
+  }
+}

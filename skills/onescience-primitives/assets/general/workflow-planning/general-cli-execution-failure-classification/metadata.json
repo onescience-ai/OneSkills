@@ -2,10 +2,10 @@
   "name": "general-cli-execution-failure-classification",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-17T19:48:00Z",
-  "updated_at": "2026-09-17T19:48:00Z",
+  "updated_at": "2026-09-22T10:00:00Z",
   "description": "面向命令行接口（CLI）工具的非交互执行场景，提供故障分类、诊断与恢复的通用方法论，覆盖参数解析、认证、沙箱、超时、退出码和标准错误判读等环节，适用于各类CLI工具的自动化执行与故障排查。",
   "tags": ["cli", "command-line", "execution-failure", "fault-classification", "exit-code", "timeout", "error-handling"],
   "aliases": ["CLI故障分类", "命令行执行失败", "CLI错误诊断"],
@@ -22,6 +22,11 @@
       "title": "condathis: Run Any CLI Tool on a Conda Environment",
       "doi": "10.32614/cran.package.condathis",
       "year": 2024
+    },
+    {
+      "title": "Fault-Tolerant Sandboxing for AI Coding Agents: A Transactional Approach to Safe Autonomous Execution",
+      "doi": "10.48550/arXiv.2512.12806",
+      "year": 2025
     }
   ],
   "evidence_docs": [],

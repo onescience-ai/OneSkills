@@ -2,25 +2,53 @@
   "name": "general-json-schema-report-validation",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "visibility": "public",
-  "created_at": "2026-09-17",
-  "updated_at": "2026-09-17",
-  "description": "面向结构化报告生成场景，提供基于 JSON Schema 的报告交付契约验证方法，确保报告格式符合预定义规范，覆盖必填字段、数组约束、任务身份匹配等验证点，支持自动化报告质量保证。",
-  "tags": ["JSON-Schema", "report-validation", "structured-report", "contract", "compliance", "verification"],
+  "created_at": "2026-09-21T16:40:00Z",
+  "updated_at": "2026-09-22T00:20:00Z",
+  "description": "面向 JSON Schema 报告交付的验证与评估方法论，适用于任何需要生成结构化报告的场景。提供六个互补的验证维度：数据类型准确性、必需和可选字段、多类型支持、集合结构一致性、实体关系恢复和时间演化检测，确保报告质量与一致性。核心方法包括：基于经验频率的必需字段识别、基于关联规则的依赖关系发现、基于图对齐的实体关系评估。输出为维度级分数和总体 Schema 质量分数（SQS）。",
+  "tags": ["json-schema", "report-validation", "data-contract", "schema-evaluation", "workflow-planning", "required-fields", "array-constraints", "schema-inference", "structured-output", "validation-framework"],
+  "aliases": ["JSON Schema 报告验证", "报告交付契约", "JSON Schema validation", "schema evaluation"],
+  "merged_batches": ["batch-2026-09-21-task383", "batch-2026-09-21-task408", "batch-2026-09-22-task335"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "JSON Schema 报告交付契约",
   "evidence_papers": [
     {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026
+    },
+    {
       "title": "Validation of Modern JSON Schema: Formalization and Complexity",
-      "doi": "10.48550/arXiv.2307.10034",
-      "year": 2023
+      "doi": "10.1145/3632891",
+      "year": 2024
     },
     {
       "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
-      "doi": "10.48550/arXiv.2503.02770",
+      "doi": "10.14778/3773749.3773764",
       "year": 2025
+    },
+    {
+      "title": "ExtractBench: A Benchmark and Evaluation Methodology for Complex Structured Extraction",
+      "doi": "10.48550/arXiv.2602.12247",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema Specification",
+      "url": "https://json-schema.org/specification.html",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "evidence_user": [
+    {
+      "provider": "user",
+      "provided_at": "2026-09-21",
+      "location": "任务408归因报告：镍催化剂CO2活化与碳碳偶联分析，报告校验错误：缺少顶层字段、包含额外字段、task_id不一致"
     }
   ]
 }

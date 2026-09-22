@@ -1,0 +1,27 @@
+{
+  "name": "climate-ci-ml-detection-methods",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "机器学习在对流初生（CI）检测中的应用方法，包括随机森林、XGBoost、CNN等模型的训练流程、特征工程最佳实践和模型选择策略。",
+  "tags": ["machine-learning", "random-forest", "XGBoost", "CNN", "feature-engineering", "convection-initiation", "deep-learning"],
+  "aliases": ["CI机器学习方法", "CI检测ML模型", "对流初生深度学习"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "机器学习在对流初生检测中的应用方法；随机森林/XGBoost模型的训练和推理流程；特征工程的最佳实践",
+  "evidence_papers": [
+    {"title": "A Novel Framework of Detecting Convective Initiation Combining Automated Sampling and Machine Learning", "doi": "10.3390/rs11172057", "year": 2019},
+    {"title": "Convective Initiation Nowcasting in South China Using Physics-Augmented Random Forest", "doi": "10.1029/2023EA003252", "year": 2024},
+    {"title": "Physically Explainable Deep Learning for Convective Initiation Nowcasting", "doi": "10.1175/aies-d-23-0098.1", "year": 2024},
+    {"title": "Toward a Deep-Learning-Network-Based Convective Weather Initiation Algorithm", "doi": "10.1109/JSTARS.2023.3310056", "year": 2023},
+    {"title": "Probabilistic Convective Initiation Nowcasting Using Himawari-8 AHI with Explainable Deep Learning", "doi": "10.1175/MWR-D-22-0165.1", "year": 2023},
+    {"title": "Bayesian Deep Learning for Convective Initiation Nowcasting Uncertainty Estimation", "doi": "10.1175/AIES-D-25-0098.1", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

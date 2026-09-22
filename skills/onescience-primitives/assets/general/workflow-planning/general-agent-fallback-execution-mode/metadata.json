@@ -1,0 +1,36 @@
+{
+  "name": "general-agent-fallback-execution-mode",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T13:30:00Z",
+  "updated_at": "2026-09-21T13:30:00Z",
+  "description": "面向AI编排系统的直接执行降级模式，解决专家技能调用失败或无法触发时任务永久阻塞的问题，定义跳过专家规划直接基于原语工作流构建Global Plan的路径",
+  "tags": ["agent", "fallback", "direct-execution", "orchestration", "degradation", "workflow-planning"],
+  "aliases": ["fallback path", "direct execution", "degradation mode"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "编排智能体的直接执行模式——当专家技能调用失败或无法触发时，编排智能体应具备降级路径",
+  "evidence_papers": [
+    {
+      "title": "LLM-Based Multi-Agent Orchestration: A Survey of Frameworks, Communication Protocols",
+      "doi": "10.3390/fi18060308",
+      "year": 2026
+    },
+    {
+      "title": "Interactive Speculative Planning: Enhance Agent Efficiency through Co-design of System and User Interface",
+      "doi": "10.48550/arXiv.2410.00079",
+      "year": 2024
+    },
+    {
+      "title": "PowerAgentBench-SS: A Benchmark for Agentic AI in Power System Steady-State Studies",
+      "doi": "10.48550/arXiv.2606.18789",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

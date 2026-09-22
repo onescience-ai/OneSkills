@@ -1,0 +1,60 @@
+{
+  "name": "general-json-schema-report-validation-contract",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T21:40:00Z",
+  "updated_at": "2026-09-21T21:40:00Z",
+  "description": "JSON Schema 报告交付契约校验任务：在结构化报告输出前，使用 JSON Schema 校验报告的必填字段、数据类型、数组约束和格式合规性。适用于自动化流水线中的报告生成、API 响应验证、元数据质量保证场景。核心方法包括：Schema 定义（Draft 2019-09+）、Ajv/JSON Schema 验证库集成、错误信息解析与字段定位。输出为校验结果（valid: boolean, errors: []）。",
+  "tags": ["JSON Schema", "validation", "report contract", "schema compliance", "API", "metadata", "data quality", "Ajv", "structured output", "field validation", "type checking", "required fields"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约：必填字段、任务身份、数组约束、输出格式校验",
+  "evidence_papers": [
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3632891",
+      "year": 2024,
+      "venue": "Proceedings of the ACM on Programming Languages",
+      "authors": ["Lyes Attouche", "Mohamed-Amine Baazizi", "Dario Colazzo"]
+    },
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026,
+      "venue": "Scientific Reports",
+      "authors": ["Saad Belefqih", "Mohammed Barchane", "Ahmed Zellou"]
+    },
+    {
+      "title": "Improving Api Test Accuracy through Schema Validation and Real-time Json Assertions in Jenkins Pipelines",
+      "doi": "10.71097/ijsat.v16.i3.10656",
+      "year": 2025,
+      "venue": "International Journal on Science and Technology",
+      "authors": ["Udayan Verma"]
+    },
+    {
+      "title": "Adamant: a JSON schema-based metadata editor for research data management workflows",
+      "doi": "10.12688/f1000research.110875.2",
+      "year": 2022,
+      "venue": "F1000Research",
+      "authors": ["Ihda Chaerony Siffa", "Jan Schäfer", "Markus M. Becker"]
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema Official Specification",
+      "url": "https://json-schema.org/draft/2020-12/json-schema-core",
+      "publisher": "json-schema.org",
+      "version": "Draft 2020-12",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "Ajv: Another JSON Schema Validator Documentation",
+      "url": "https://ajv.js.org/",
+      "publisher": "Evgeny Poberezkin",
+      "version": "v8.x",
+      "accessed_at": "2026-09-21"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "general-mlip-exception-handling",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "机器学习原子势验证任务执行阻塞后的异常处理策略，包括数据缺失、配置错误、资源不足等情况的处理流程和恢复机制",
+  "tags": ["exception-handling", "recovery", "workflow", "machine-learning", "interatomic-potential"],
+  "aliases": ["异常处理", "阻塞恢复", "错误恢复"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "执行阻塞后的异常处理策略，包括数据补充、配置调整和用户交互流程",
+  "evidence_papers": [
+    {
+      "title": "Crash testing machine learning force fields for molecules, materials, and interfaces: molecular dynamics in the TEA challenge 2023",
+      "doi": "10.1039/d4sc06530a",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

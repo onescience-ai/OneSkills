@@ -1,0 +1,41 @@
+{
+  "name": "json-schema-report-delivery-contract",
+  "type": "contract",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T14:24:00+08:00",
+  "updated_at": "2026-09-21T18:30:00+08:00",
+  "description": "JSON Schema报告交付契约：规定结构化报告（如归因分析报告）的必填字段、任务身份约束、数组约束及输出格式，确保报告可解析且与任务身份一致，支持自动化校验与下游消费。包含多维度验证框架（SVEF），覆盖类型准确性、字段完整性、多类型支持、集合结构、实体关系和时间演化六个评估维度。",
+  "tags": ["JSON-Schema", "validation", "contract", "report-delivery", "API-contract", "data-validation", "multi-dimensional-evaluation", "SVEF"],
+  "aliases": ["report schema", "JSON validation contract", "structured report format", "schema evaluation framework"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3632891",
+      "year": 2024
+    },
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.14778/3773749.3773764",
+      "year": 2025
+    },
+    {
+      "title": "Improving Api Test Accuracy through Schema Validation and Real-time Json Assertions in Jenkins Pipelines",
+      "doi": "10.71097/ijsat.v16.i3.10656",
+      "year": 2025
+    },
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": ["2026-09-21-task-272-svef-verification"],
+  "conflicts": []
+}

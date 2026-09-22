@@ -2,17 +2,43 @@
   "name": "json-schema-report-contract-validation",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.1.0",
+  "version": "1.3.0",
   "visibility": "public",
   "created_at": "2026-09-17T00:00:00Z",
-  "updated_at": "2026-09-18T00:51:00Z",
+  "updated_at": "2026-09-21T20:00:00Z",
   "description": "面向JSON Schema报告交付契约验证场景，提供结构化输出校验、字段完整性检查与格式合规性验证，确保自动化系统间数据交换的可靠性",
   "tags": ["JSON-Schema", "validation", "report-contract", "data-integrity", "compliance-checking", "task-identity", "field-consistency"],
   "aliases": ["json-validation", "schema-check", "output-contract"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "JSON Schema报告交付契约",
-  "evidence_papers": [],
+  "evidence_papers": [
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3632891",
+      "year": 2024
+    },
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.14778/3773749.3773764",
+      "year": 2025
+    },
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026
+    },
+    {
+      "title": "Adamant: a JSON schema-based metadata editor for research data management workflows",
+      "doi": "10.12688/f1000research.110875.2",
+      "year": 2022
+    },
+    {
+      "title": "pyJSON Schema Loader and JSON Editor: A tool for file-based metadata management",
+      "doi": "10.1016/j.softx.2024.101945",
+      "year": 2024
+    }
+  ],
   "evidence_docs": [
     {
       "title": "JSON Schema Official Documentation",
@@ -37,6 +63,6 @@
     }
   ],
   "evidence_user": [],
-  "merged_batches": ["2026-09-18-task-291-identity-validation"],
+  "merged_batches": ["2026-09-18-task-291-identity-validation", "2026-09-21-task-89-cli-fault-classification"],
   "conflicts": []
 }

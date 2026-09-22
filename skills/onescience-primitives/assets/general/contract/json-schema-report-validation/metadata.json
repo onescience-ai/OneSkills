@@ -1,0 +1,36 @@
+{
+  "name": "json-schema-report-validation",
+  "type": "contract",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-22",
+  "description": "JSON Schema报告交付契约规范，规定报告必须包含的必填字段、任务身份标识、数组约束及输出格式标准，确保结构化报告可解析且与任务身份一致",
+  "tags": ["json-schema", "validation", "contract", "report-validation", "data-validation"],
+  "aliases": ["JSON Schema validation", "report schema", "data contract"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约：规定必填字段、任务身份、数组约束及输出格式",
+  "evidence_papers": [
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026
+    },
+    {
+      "title": "Adamant: a JSON schema-based metadata editor for research data management workflows",
+      "doi": "10.12688/f1000research.110875.2",
+      "year": 2022
+    },
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3632891",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": ["batch-45-schema-additional-evidence"],
+  "conflicts": []
+}

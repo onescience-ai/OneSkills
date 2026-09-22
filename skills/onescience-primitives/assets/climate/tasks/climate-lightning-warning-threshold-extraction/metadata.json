@@ -1,0 +1,24 @@
+{
+  "name": "climate-lightning-warning-threshold-extraction",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:13:00Z",
+  "updated_at": "2026-09-21T12:13:00Z",
+  "description": "从闪电概率场中提取超阈值告警区域的任务，包括概率阈值的业务定义、连通域分析算法、面积筛选规则和质量标志生成，适用于0-6小时闪电发生临近预报的s05阶段。",
+  "tags": ["lightning", "nowcasting", "warning", "threshold", "connected-component", "quality-flag"],
+  "aliases": ["闪电告警区域提取", "超阈值区域识别", "闪电预警产品生成"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达与环境场驱动的0-6小时闪电发生临近预报任务中s05超阈告警区域提取的技术规范，包括概率阈值的业务定义、超阈值区域的提取算法、质量标志的类型和生成规则",
+  "evidence_papers": [
+    {"title": "Impact Forecasting to Support Emergency Management of Natural Hazards", "doi": "10.1029/2020rg000704", "year": 2020},
+    {"title": "ProbSevere LightningCast: A Deep-Learning Model for Satellite-Based Lightning Nowcasting", "doi": "10.1175/waf-d-22-0019.1", "year": 2022},
+    {"title": "Exploring Convection-Allowing Model Evaluation Strategies for Severe Local Storm Forecasting", "doi": "10.1175/mwr-d-20-0118.1", "year": 2020}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

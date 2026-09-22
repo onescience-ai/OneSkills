@@ -1,0 +1,21 @@
+{
+  "name": "bio-protein-function-interpretability",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "多标签蛋白功能预测的可解释性方法，包括注意力可视化、梯度归因、SHAP值和特征重要性排序，用于识别预测错误的样本及原因",
+  "tags": ["protein", "interpretability", "explainability", "CAM", "attention", "SHAP", "GO"],
+  "aliases": ["可解释性", "模型解释", "归因分析"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多标签蛋白功能预测的可解释性方法",
+  "evidence_papers": [
+    {"title": "GOBoost: leveraging long-tail gene ontology terms for accurate protein function prediction", "doi": "10.1093/bioinformatics/btaf267", "year": 2025},
+    {"title": "GOBeacon: An ensemble model for protein function prediction enhanced by contrastive learning", "doi": "10.1002/pro.70182", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

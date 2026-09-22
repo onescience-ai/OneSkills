@@ -1,0 +1,54 @@
+{
+  "name": "nowcasting-verification-independence",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T00:00:00Z",
+  "updated_at": "2026-09-22T00:00:00Z",
+  "description": "面向临近预报验证任务，确保每个预报时效的验证标签具有时间独立性，覆盖独立验证数据的生成规范、验证标签与预报输入的无泄漏要求、不同时效标签的差异性保证方法",
+  "tags": [
+    "verification",
+    "independence",
+    "hail",
+    "nowcasting",
+    "contingency-table",
+    "data-leakage",
+    "lead-time",
+    "validation",
+    "edge:workflow:nowcasting-workflow-step-mapping",
+    "edge:workflow:onescience-domain-classification-standard"
+  ],
+  "aliases": [
+    "verification independence",
+    "verification data generation",
+    "hail verification labels"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "临近预报验证中独立验证资料的生成规范",
+  "evidence_papers": [
+    {
+      "title": "Verification of weather-radar-based hail metrics with crowdsourced observations",
+      "doi": "10.5194/amt-2024-31",
+      "year": 2024
+    },
+    {
+      "title": "Verification of Probabilistic SPC Convective Outlooks from 2002 to 2023 Using Posterior",
+      "doi": "10.1175/WAF-D-25-0093.1",
+      "year": 2026
+    },
+    {
+      "title": "An Hourly Climatology of Operational MRMS MESH-Diagnosed Severe and Significant Hail",
+      "doi": "10.1175/WAF-D-20-0191.1",
+      "year": 2021
+    },
+    {
+      "title": "Evaluating the impact of prevalence on the scaled Brier score",
+      "doi": "10.1007/s42979-026-00801-z",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

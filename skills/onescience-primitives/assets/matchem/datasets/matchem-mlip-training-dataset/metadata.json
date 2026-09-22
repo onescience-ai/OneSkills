@@ -1,0 +1,26 @@
+{
+  "name": "matchem-mlip-training-dataset",
+  "type": "dataset",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "机器学习原子势训练数据集的获取方式、数据要求和公开数据集来源，包括 DFT 参考数据、数据格式和质量标准",
+  "tags": ["machine-learning", "interatomic-potential", "dataset", "DFT", "training-data", "first-principles"],
+  "aliases": ["MLIP训练数据", "第一性原理数据集", "DFT数据"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "参考量子化学或第一性原理数据的获取方式、数据要求和公开数据集来源",
+  "evidence_papers": [
+    {
+      "title": "Crash testing machine learning force fields for molecules, materials, and interfaces: molecular dynamics in the TEA challenge 2023",
+      "doi": "10.1039/d4sc06530a",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

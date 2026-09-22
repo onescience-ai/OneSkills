@@ -125,6 +125,39 @@
 - 需要交互式输入时：回退到 `pexpect`（POSIX）或 `pexpect` 的 Windows 等价物
 - 需要异步执行时：回退到 `asyncio.create_subprocess_exec`
 
+## 批次补充（2026-09-21）
+
+### Python argparse exit_on_error 参数
+
+Python argparse 模块提供 `exit_on_error` 参数控制错误处理行为：
+- `exit_on_error=True`（默认）：解析错误时打印到 stderr 并以退出码 2 退出
+- `exit_on_error=False`：解析错误时抛出 `argparse.ArgumentError` 异常，由调用方处理
+
+```python
+parser = argparse.ArgumentParser(exit_on_error=False)
+try:
+    parser.parse_args('--integers a'.split())
+except argparse.ArgumentError:
+    print('Catching an argumentError')
+```
+
+证据来源 [D2]
+
+### 扩展退出码语义（POSIX 标准）
+
+| 退出码 | 含义 | 来源 | 说明 |
+|--------|------|------|------|
+| 0 | 成功 | [D3] | 正常退出 |
+| 1 | 一般错误 | [D3] | 杂项错误（如除零） |
+| 2 | shell 内置命令误用 | [D3] | 缺少关键字或命令 |
+| 126 | 命令不可执行 | [D3] | 权限问题或非可执行文件 |
+| 127 | 命令未找到 | [D3] | PATH 问题或拼写错误 |
+| 128+N | 被信号 N 终止 | [D3] | 如 137=SIGKILL, 130=Ctrl+C |
+| 130 | 脚本被 Ctrl+C 终止 | [D3] | 信号 2 的 128+2 |
+| 255 | 退出状态超出范围 | [D3] | exit 只接受 0-255 |
+
+证据来源 [D3]
+
 ## 资源召回建议
 
 当任务涉及以下场景时应召回本卡片：

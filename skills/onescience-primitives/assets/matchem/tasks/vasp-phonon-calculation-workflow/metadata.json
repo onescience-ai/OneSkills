@@ -1,0 +1,42 @@
+{
+  "name": "vasp-phonon-calculation-workflow",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:35:00Z",
+  "updated_at": "2026-09-21T12:35:00Z",
+  "description": "VASP第一性原理计算验证振动稳定性的标准流程，包括phonon频率计算（使用PHONOPY+VASP）、热力学稳定性分析（形成能、凸包分析）、声子色散关系检查（虚频判断）",
+  "tags": [
+    "VASP",
+    "PHONOPY",
+    "phonon-calculation",
+    "first-principles",
+    "vibration-stability",
+    "edge:resource:workflow-planning/few-shot-learning-materials-science"
+  ],
+  "aliases": [
+    "phonon-dispersion",
+    "dynamical-stability",
+    "thermal-stability"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "VASP第一性原理计算验证振动稳定性的标准流程，PHONOPY+VASP工作流",
+  "evidence_papers": [
+    {
+      "title": "First-principles Phonon Calculations with Phonopy and Phono3py",
+      "doi": "10.7566/jpsj.92.012001",
+      "year": 2023
+    },
+    {
+      "title": "Overview of the VASP Software and Its Applications in Materials Research",
+      "doi": "10.55677/csrb/07-v03i05y2026",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

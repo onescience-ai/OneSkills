@@ -2,22 +2,16 @@
   "name": "general-json-schema-report-delivery-contract",
   "type": "contract",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "visibility": "public",
-  "created_at": "2026-09-21T05:56:00Z",
-  "updated_at": "2026-09-21T05:56:00Z",
-  "description": "JSON Schema报告交付契约：定义结构化报告的必填字段、类型约束、嵌套对象结构和输出格式验证规则。适用于需要在CLI工具、API服务或自动化流水线之间通过JSON Schema校验报告完整性与一致性的场景。核心方法包括：Schema定义与版本管理、必填字段校验、类型约束验证、数组约束检查、任务身份一致性验证。输出为通过/未通过Schema校验的报告及校验错误详情。",
-  "tags": ["JSON-Schema", "validation", "contract", "structured-output", "report-validation", "API-contract", "type-constraint", "field-validation", "schema-versioning", "data-integrity"],
+  "created_at": "2026-09-17T11:00:00Z",
+  "updated_at": "2026-09-22T02:30:00Z",
+  "description": "面向结构化报告交付的 JSON Schema 契约：定义 CLI 工具或 Agent 系统输出报告的必填字段、任务身份校验、数组约束及格式标准。适用于需要在自动化工作流中验证报告完整性与一致性的场景。核心方法包括：Schema 定义与版本管理、字段校验规则、任务身份匹配、数组约束验证、现代 JSON Schema 特性（动态引用、注解依赖验证）。输出为可复用的 JSON Schema 模板与校验工作流。",
+  "tags": ["JSON-Schema", "report-delivery", "contract", "validation", "structured-output", "CLI", "automation", "schema-validation", "metadata", "FAIR", "dynamic-references", "annotation-dependent-validation"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
-  "harvest_query": "JSON Schema报告交付契约",
+  "harvest_query": "JSON Schema报告交付契约：规定必填字段、任务身份、数组约束及输出格式",
   "evidence_papers": [
-    {
-      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
-      "doi": "10.1145/3632891",
-      "year": 2024,
-      "venue": "Proceedings of the ACM on Programming Languages"
-    },
     {
       "title": "Adamant: a JSON schema-based metadata editor for research data management workflows",
       "doi": "10.12688/f1000research.110875.2",
@@ -25,10 +19,10 @@
       "venue": "F1000Research"
     },
     {
-      "title": "Improving Api Test Accuracy through Schema Validation and Real-time Json Assertions in Jenkins Pipelines",
-      "doi": "10.71097/ijsat.v16.i3.10656",
-      "year": 2025,
-      "venue": "International Journal on Science and Technology"
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3632891",
+      "year": 2024,
+      "venue": "Proceedings of the ACM on Programming Languages"
     },
     {
       "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
@@ -37,10 +31,20 @@
       "venue": "Proceedings of the VLDB Endowment"
     },
     {
-      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
-      "doi": "10.1038/s41598-026-45554-6",
-      "year": 2026,
-      "venue": "Scientific Reports"
+      "title": "Elimination of annotation dependencies in validation for Modern JSON Schema",
+      "doi": "10.1016/j.tcs.2025.115645",
+      "year": 2025,
+      "venue": "Theoretical Computer Science"
     }
-  ]
+  ],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema Official Documentation",
+      "url": "https://json-schema.org/",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-17"
+    }
+  ],
+  "merged_batches": ["411-2026-09-21", "2026-09-21: 基于任务306归因报告补充JSON Schema校验故障案例", "2026-09-22: 基于任务45归因报告补充JSON Schema校验故障案例"]
 }

@@ -1,0 +1,27 @@
+{
+  "name": "abaffinity-technical-knowledge",
+  "type": "model",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T13:53:00Z",
+  "updated_at": "2026-09-21T13:53:00Z",
+  "description": "AbAffinity模型的完整技术知识图谱，包括模型来源论文、代码仓库、预训练权重、输入输出契约、依赖工具版本要求、已知局限性和适用范围",
+  "tags": ["antibody", "affinity", "prediction", "deep learning", "AbAffinity", "model", "technical"],
+  "aliases": ["AbAffinity", "antibody affinity prediction model", "AbAffinity model"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "AbAffinity模型的完整技术知识图谱",
+  "evidence_papers": [
+    {
+      "title": "Phys-AbGAT: A Physics-Informed Multi-Task Graph Attention Network for Robust Antibody-Antigen Binding Affinity Prediction",
+      "doi": "10.1093/bioinformatics/btag669",
+      "year": 2026
+    },
+    {
+      "title": "MVSF-AB: accurate antibody–antigen binding affinity prediction via multi-view sequence feature learning",
+      "doi": "10.1093/bioinformatics/btae579",
+      "year": 2024
+    }
+  ]
+}

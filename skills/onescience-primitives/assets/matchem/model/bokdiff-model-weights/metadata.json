@@ -1,0 +1,28 @@
+{
+  "name": "bokdiff-model-weights",
+  "type": "model",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "BoKDiff模型权重的获取、存储与版本管理知识。涵盖权重文件(.ckpt)的下载途径（Google Drive）、本地缓存机制、离线环境分发方案，以及与DecompDiff基础模型的版本匹配要求。",
+  "tags": ["BoKDiff", "model-weights", "checkpoint", "DecompDiff", "diffusion-model", "SBDD", "molecular-generation", "3D-drug-design", "Google-Drive"],
+  "aliases": ["bokdiff.ckpt", "BoKDiff checkpoint"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "BoKDiff模型权重的获取途径、存储位置和访问协议；模型权重文件的版本管理与本地缓存机制；离线环境下的模型权重分发方案",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "BoKDiff GitHub Repository",
+      "url": "https://github.com/khodabandeh-ali/BoKDiff",
+      "publisher": "GitHub",
+      "version": "main branch",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

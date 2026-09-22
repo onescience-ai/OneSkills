@@ -1,0 +1,21 @@
+{
+  "name": "bio-protein-weight-checkpoint-management",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "蛋白功能预测模型权重文件的命名规范、获取途径与版本管理，确保模型权重与架构匹配，避免因权重加载失败导致使用非标准权重",
+  "tags": ["protein", "weight", "checkpoint", "ESM-2", "model-loading", "HuggingFace"],
+  "aliases": ["模型权重", "checkpoint", "预训练模型"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白功能预测模型权重文件命名规范与获取途径",
+  "evidence_papers": [
+    {"title": "GOBeacon: An ensemble model for protein function prediction enhanced by contrastive learning", "doi": "10.1002/pro.70182", "year": 2025},
+    {"title": "GOBoost: leveraging long-tail gene ontology terms for accurate protein function prediction", "doi": "10.1093/bioinformatics/btaf267", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}

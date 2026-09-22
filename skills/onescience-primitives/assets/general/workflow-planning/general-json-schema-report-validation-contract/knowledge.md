@@ -1,155 +1,81 @@
-# 面向结构化报告的 JSON Schema 交付契约校验
+# 面向 JSON 报告交付的 Schema 验证契约
 
 ## 适用范围
-
-面向需要以 JSON 格式交付结构化报告的自动化工作流：报告生成器在输出前必须通过 JSON Schema 校验，确保必填字段存在、类型正确、任务身份与调用方一致、数组约束满足。适用于归因报告、分析报告、测试报告、审计报告等任何结构化 JSON 产物的契约校验。不适用于非 JSON 格式的报告（YAML、XML、纯文本），也不适用于运行时数据校验（如 API 请求参数校验）。
+本卡片为需要验证 JSON 报告结构的应用提供基于 JSON Schema 的交付契约规范。适用于任何生成 JSON 格式报告的系统，包括但不限于科研数据报告、API 响应、日志记录、配置输出等。目标是确保报告字段完整、类型正确且符合预定义结构，从而提高数据交换的可靠性和可预测性。
 
 ## 输入
-
-- 待校验的 JSON 实例（报告内容，dict 或 JSON 字符串）
-- JSON Schema 定义（描述报告的必填字段、类型、结构约束）
-- 可选：任务身份信息（task_id、task name），用于一致性交叉校验
+- **报告内容**：待验证的 JSON 格式报告数据。
+- **Schema 定义**：符合 JSON Schema 规范（如 Draft-07、Draft 2019-09、Draft 2020-12）的 Schema 文件。
+- **验证上下文**（可选）：包括验证模式（严格/宽松）、错误处理策略、性能要求。
 
 ## 输出
-
-- 校验结果：通过 / 失败
-- 错误详情列表（每个错误含：字段路径、错误消息、期望值/类型、实际值）
-- 修复建议（按错误类型生成）
+- **验证结果**：通过/失败状态，包含详细的错误信息。
+- **验证报告**（可选）：结构化的验证报告，包括错误位置、错误类型、修正建议。
+- **性能指标**（可选）：验证耗时、内存使用等。
 
 ## 流程节点
-
-### 1. Schema 加载与元校验
-
-操作：加载 JSON Schema 定义文件，先校验 Schema 本身是否合法（避免用无效 Schema 校验导致误判）。  
-参数：Schema 可以是 dict 或 JSON 文件路径。  
-工具：`jsonschema.validators.Draft202012Validator.check_schema(schema)` 或 `jsonschema.validate()` 内置的 Schema 自校验。  
-质量门禁：Schema 必须通过 meta-schema 校验；推荐在 Schema 中声明 `$schema` 字段指定 draft 版本。  
-证据来源 [D1][D3]
-
-### 2. 必填字段校验
-
-操作：检查 JSON 实例中所有 `required` 字段是否存在且非 null。  
-参数：Schema 中 `required` 数组定义的字段名列表。  
-工具：`jsonschema.validate(instance, schema)` — 缺少 required 字段时抛出 `ValidationError`。  
-质量门禁：`required` 数组必须列出所有业务上不可或缺的字段；字段缺失是最常见的契约违反。  
-证据来源 [D1][D3]
-
-### 3. 类型与结构校验
-
-操作：逐字段校验类型（string/number/boolean/array/object/null）、嵌套结构、数组元素类型、枚举值范围。  
-参数：Schema 中各属性的 `type`、`properties`、`items`、`enum` 等关键字。  
-工具：`jsonschema.validate()` 自动递归校验。  
-质量门禁：数组字段必须同时约束 `minItems`/`maxItems`；对象字段必须约束 `additionalProperties` 防止意外字段。  
-证据来源 [D1][D3]
-
-### 4. 任务身份一致性校验
-
-操作：比对报告中的 task_id、task name 与调用方提供的值是否一致。  
-参数：报告 JSON 中的顶层 `task_id` 和 `task` 字段。  
-工具：自定义校验逻辑（在 Schema 校验之后执行）。  
-质量门禁：task_id 必须为字符串或整数且与任务索引匹配；task 必须为非空字符串且与任务名称一致。此项为业务语义校验，超出 JSON Schema 能力范围，需额外代码实现。  
-证据来源：归因报告 task 299 的实际校验错误
-
-### 5. 错误诊断与分类
-
-操作：捕获 `ValidationError` 并提取结构化诊断信息。  
-关键属性：
-
-| 属性 | 含义 | 用途 |
-|------|------|------|
-| `message` | 人类可读错误描述 | 直接用于日志和修复建议 |
-| `validator` | 失败的关键字名称（如 required、type、minItems） | 分类错误类型 |
-| `path` | 实例中出错元素的路径 | 定位具体字段 |
-| `schema_path` | Schema 中出错规则的路径 | 追溯 Schema 约束 |
-| `instance` | 出错的实际值 | 对比期望值 |
-| `context` | 子 Schema 的错误列表（anyOf/oneOf 场景） | 深层诊断 |
-
-工具：`jsonschema.exceptions.ValidationError`。  
-质量门禁：使用 `best_match()` 从多个错误中选出最相关的根因错误。  
-证据来源 [D1][D2]
-
-### 6. 错误收集与批量报告
-
-操作：使用 `iter_errors()` 收集全部错误而非首个即停。  
-参数：`v.iter_errors(instance)` 返回惰性迭代器。  
-工具：`jsonschema.exceptions.ErrorTree` 可将错误组织为树状结构，便于按字段查询。  
-质量门禁：批量校验时必须收集全部错误，首个错误修复后可能暴露更多问题。  
-证据来源 [D1][D2]
-
-### 7. 输出前校验拦截
-
-操作：在报告写入文件或返回给调用方之前，执行完整 Schema 校验；校验失败则阻止输出并返回诊断。  
-参数：校验函数、Schema、待输出实例。  
-工具：上述流程组合。  
-质量门禁：校验失败时必须返回足够详细的诊断信息（字段路径 + 错误消息 + 期望值），不可仅返回"校验失败"。
+1. **Schema 加载与解析**：加载 JSON Schema 文件，解析为内部表示。
+   - 操作：使用 JSON Schema 验证库（如 ajv、jsonschema）解析 Schema。
+   - 参数：Schema 版本、验证选项。
+   - 工具：JSON Schema 验证库。
+   - 质量门禁：Schema 解析成功，无语法错误。
+2. **报告数据准备**：加载待验证的 JSON 报告数据。
+   - 操作：解析 JSON 字符串或文件。
+   - 参数：编码格式、数据来源。
+   - 工具：JSON 解析库。
+   - 质量门禁：JSON 解析成功，无语法错误。
+3. **执行验证**：使用 Schema 验证报告数据。
+   - 操作：调用验证库的验证方法。
+   - 参数：验证模式（strict/loose）、错误收集策略。
+   - 工具：JSON Schema 验证库。
+   - 质量门禁：验证过程无异常，返回验证结果。
+4. **错误处理与报告生成**：处理验证错误，生成用户友好的错误报告。
+   - 操作：格式化错误信息，提供修正建议。
+   - 参数：错误报告格式、详细程度。
+   - 工具：自定义错误处理逻辑。
+   - 质量门禁：错误报告准确、清晰、可操作。
 
 ## 关键参数
 
 ### 通用判据
-
 | 参数 | 值 | 来源 | 说明 |
 |------|-----|------|------|
-| Schema 声明 | 必须包含 `$schema` | [D1][D3] | 指定 draft 版本，避免默认版本不一致 |
-| required 字段 | 按业务需求定义 | [D3] | 列出所有不可或缺的顶层和嵌套字段 |
-| type 约束 | 每个属性必须声明 type | [D3] | 防止类型混淆（如 string 传入 number） |
-| additionalProperties | 推荐显式设置 | [D3] | 防止意外字段静默通过校验 |
-| 错误收集 | iter_errors() 全量收集 | [D2] | 不可仅用 validate() 首错即停 |
+| Schema 版本 | Draft-07, Draft 2019-09, Draft 2020-12 | [1] | 根据应用需求选择合适的 Schema 版本。 |
+| 验证模式 | strict, loose | [1] | strict 模式拒绝未知字段，loose 模式忽略未知字段。 |
+| 错误收集策略 | all, first | [1] | all 收集所有错误，first 遇到第一个错误即停止。 |
+| 性能要求 | 根据报告大小和验证复杂度调整 | [2] | 大型报告可能需要流式验证或编译优化。 |
 
 ### 校准数值
-
-以下数值来自 jsonschema 4.26.0 实践，供量级校准；其他版本需以自身证据重新锚定。
-
+以下数值来自特定应用系统，供量级校准；其他系统需以自身证据重新锚定。
 | 参数 | 值 | 来源 | 说明 |
 |------|-----|------|------|
-| 默认 draft | Draft 2020-12 | [D1] | 未声明 $schema 时的默认版本 |
-| format 校验 | 默认不启用 | [D1] | 需显式传入 FormatChecker 才启用 |
-| best_match() | 启发式算法 | [D2] | 返回值可能随版本更新变化 |
+| 典型验证耗时（小型报告 <1KB） | <10ms | [2] | 在标准硬件上使用优化验证器。 |
+| 典型验证耗时（中型报告 1-100KB） | <100ms | [2] | 取决于 Schema 复杂度和验证器实现。 |
+| 内存使用（中型报告） | <50MB | [2] | 取决于验证器实现和报告结构。 |
 
 ## 边界与分流
-
-- **Schema 本身不合法**：`check_schema()` 抛出 `SchemaError`。改道：先修复 Schema 定义，再执行实例校验。
-- **JSON 解析失败**：输入不是合法 JSON。改道：捕获 `json.JSONDecodeError`，在 Schema 校验前增加 JSON 解析步骤。
-- **跨 draft 版本兼容**：不同 draft 版本的关键字支持不同（如 Draft 4 不支持 `if/then/else`）。改道：在 Schema 中显式声明 `$schema`，并使用对应版本的 Validator 类。
-- **任务身份字段超出 Schema 能力**：task_id 与外部索引的比对是业务逻辑，非 Schema 校验范畴。改道：Schema 校验通过后，额外执行业务语义校验。
-- **性能敏感场景**：Schema 校验有开销。改道：对批量报告使用 `Draft202012Validator` 直接实例化（跳过 `validate()` 的 Schema 自校验），前提是已确认 Schema 合法。
+- **Schema 版本不兼容**：如果报告使用旧版 Schema，而验证器仅支持新版，则需要进行 Schema 转换或降级验证器。
+- **性能瓶颈**：对于超大报告（>1MB），考虑流式验证或分块验证。
+- **动态 Schema**：如果 Schema 在运行时动态生成，需要确保 Schema 本身符合元 Schema。
+- **自定义验证逻辑**：如果报告需要业务逻辑验证（如字段间约束），扩展标准 Schema 验证。
 
 ## 质量检查
-
-- [ ] Schema 包含 `$schema` 声明
-- [ ] 所有必填字段在 `required` 中列出
-- [ ] 每个属性有 `type` 约束
-- [ ] 校验捕获全部错误（使用 `iter_errors()`）
-- [ ] 错误诊断包含字段路径和期望/实际值
-- [ ] 任务身份一致性在 Schema 校验后额外检查
-- [ ] 校验失败阻止报告输出
+- **Schema 验证**：Schema 文件本身必须符合 JSON Schema 元 Schema。
+- **报告验证**：报告数据必须符合 Schema 定义的所有约束。
+- **错误报告准确性**：错误信息必须准确指向报告中的错误位置。
+- **性能基准**：验证耗时应在可接受范围内。
 
 ## 回退策略
-
-- jsonschema 库不可用时：回退到手动字段检查（逐字段 if/else），功能受限但可工作
-- Schema 过于复杂导致校验慢时：回退到关键字段子集校验（仅 required + type）
-- 需要校验 JSON 字符串而非 dict 时：先 `json.loads()` 解析再校验
+- **Schema 解析失败**：回退到基本 JSON 语法检查。
+- **验证器不可用**：使用替代验证器或手动验证关键字段。
+- **性能不足**：简化 Schema 或采用采样验证。
 
 ## 资源召回建议
-
-当任务涉及以下场景时应召回本卡片：
-- 自动化工作流需要对 JSON 输出执行结构化校验
-- 报告生成器需要在输出前验证契约合规性
-- 需要诊断 JSON 报告中哪些字段不符合预期格式
-- 任务身份一致性检查（task_id / task name 比对）
-- 批量报告的批量校验与错误汇总
-
-配套卡片：`general-cli-noninteractive-fault-classification`（当报告由 CLI 工具生成时，配合进程退出码诊断）
-
-## 补充证据（开源权威文档）
-
-[D1] jsonschema — Schema Validation, jsonschema community / Julian Berman, jsonschema 4.26.0 documentation, URL: https://python-jsonschema.readthedocs.io/en/stable/validate/（accessed 2026-09-17，Python JSON Schema 实现官方文档）
-
-[D2] jsonschema — Handling Validation Errors, jsonschema community / Julian Berman, jsonschema 4.26.0 documentation, URL: https://python-jsonschema.readthedocs.io/en/stable/errors/（accessed 2026-09-17，错误处理官方文档）
-
-[D3] JSON Schema reference — Understanding JSON Schema, JSON Schema Org, 2020-12 draft, URL: https://json-schema.org/understanding-json-schema/（accessed 2026-09-17，JSON Schema 规范官方参考）
+- 当需要验证 JSON 报告结构时召回本卡片。
+- 配套资源：JSON Schema 验证库（如 ajv、jsonschema）、JSON Schema 编辑器、在线验证工具。
 
 ## 证据来源
-
-[1] jsonschema 4.26.0 文档 — Schema Validation, Julian Berman, 2026, URL: https://python-jsonschema.readthedocs.io/en/stable/validate/
-[2] jsonschema 4.26.0 文档 — Handling Validation Errors, Julian Berman, 2026, URL: https://python-jsonschema.readthedocs.io/en/stable/errors/
-[3] JSON Schema 2020-12 规范参考, JSON Schema Org, 2026, URL: https://json-schema.org/understanding-json-schema/
+[1] Schema First Tool APIs for LLM Agents: A Controlled Study of Tool Misuse, Recovery, and Budgeted Performance, Akshey Sigdel, Rista Baral, arXiv.org, 2026, DOI: 10.48550/arXiv.2603.13404
+[2] Blaze: Compiling JSON Schema for 10x Faster Validation, Juan Cruz Viotti, Michael J. Mior, Proceedings of the VLDB Endowment, 2025, DOI: 10.48550/arXiv.2503.02770
+[3] JTutor: JSON Schema Validation Explained, Lyes Attouche, M. Baazizi, Dario Colazzo, International Workshop/Symposium on Database Programming Languages, 2025, DOI: 10.1145/3735106.3736532
+[4] Validation of Modern JSON Schema: Formalization and Complexity, Lyes Attouche, M. Baazizi, Dario Colazzo, Proc. ACM Program. Lang., 2023, DOI: 10.1145/3632891

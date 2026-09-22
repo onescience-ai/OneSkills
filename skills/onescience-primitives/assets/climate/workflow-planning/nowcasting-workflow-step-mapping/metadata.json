@@ -1,0 +1,32 @@
+{
+  "name": "nowcasting-workflow-step-mapping",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T00:00:00Z",
+  "updated_at": "2026-09-22T00:00:00Z",
+  "description": "面向科研任务执行步骤与标准工作流的映射场景，明确核心必选步骤与可选扩展步骤的区分规范，确保实际执行步骤与场景索引定义的工作流节点严格对应，额外步骤标注为可选而非核心",
+  "tags": [
+    "workflow-mapping",
+    "step-definition",
+    "core-optional",
+    "execution-plan",
+    "workflow-planning",
+    "edge:task:diffusion-probability-model-for-nowcasting",
+    "edge:task:nowcasting-verification-independence",
+    "edge:task:nowcasting-verification-metric-baselines",
+    "edge:task:radar-data-acquisition-for-hail-nowcasting"
+  ],
+  "aliases": [
+    "workflow step mapping",
+    "execution step alignment",
+    "standard workflow"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience标准工作流步骤与实际执行步骤的映射规范",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": []
+}

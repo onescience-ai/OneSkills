@@ -1,0 +1,20 @@
+{
+  "name": "matchem-porous-materials-validation",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T00:00:00Z",
+  "updated_at": "2026-09-22T00:00:00Z",
+  "description": "多孔材料模型验证方法，涵盖实验吸附测试、高保真计算（如GCMC模拟）等验证手段，用于评估模型预测的准确性",
+  "tags": ["validation", "GCMC", "adsorption", "experimental verification", "porous materials"],
+  "aliases": ["模型验证", "吸附验证", "GCMC验证"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔材料验证方法（如实验吸附测试、高保真计算如GCMC模拟）、验证数据获取途径、验证指标定义",
+  "evidence_papers": [
+    {"title": "Grand canonical Monte Carlo (GCMC) study on adsorption performance of metal organic frameworks (MOFs) for carbon capture", "doi": "10.1016/j.susmat.2021.e00383", "year": 2022},
+    {"title": "High-efficiency prediction of water adsorption performance of porous adsorbents by lattice grand canonical Monte Carlo molecular simulation", "doi": "10.1039/d4lf00354c", "year": 2025},
+    {"title": "Microscopic adsorption of CO2 in metal organic frameworks (MOF-5, ZIF-8 and UiO-66) by grand canonical Monte Carlo simulation", "doi": "10.1007/s10450-025-00664-x", "year": 2025}
+  ]
+}

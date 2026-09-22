@@ -1,0 +1,25 @@
+{
+  "name": "climate-lightning-probability-field-generation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:13:00Z",
+  "updated_at": "2026-09-21T12:13:00Z",
+  "description": "从训练好的深度学习模型生成分时段（T+1h至T+6h）闪电发生概率场的任务，包括模型推理配置、输入格式规范、输出栅格生成和时间切分方法，适用于雷达与环境场驱动的0-6小时闪电发生临近预报的s04阶段。",
+  "tags": ["lightning", "nowcasting", "probability-field", "deep-learning", "inference", "lead-time"],
+  "aliases": ["闪电概率场生成", "分时效概率预报", "闪电临近预报推理"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "雷达与环境场驱动的0-6小时闪电发生临近预报任务中s04核心计算的具体要求，包括如何从训练好的模型生成分时段概率场、目标提前期的时间切分方法、闪电概率阈值的业务含义和设定依据",
+  "evidence_papers": [
+    {"title": "Lightning Nowcasting Using Solely Lightning Data", "doi": "10.3390/atmos14121713", "year": 2023},
+    {"title": "ProbSevere LightningCast: A Deep-Learning Model for Satellite-Based Lightning Nowcasting", "doi": "10.1175/waf-d-22-0019.1", "year": 2022},
+    {"title": "MCGLN: A multimodal ConvLSTM-GAN framework for lightning nowcasting utilizing multi-source spatiotemporal data", "doi": "10.1016/j.atmosres.2024.107625", "year": 2024},
+    {"title": "Seamless lightning nowcasting with recurrent-convolutional deep learning", "doi": "10.1175/JTECH-D-22-0030.1", "year": 2022}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

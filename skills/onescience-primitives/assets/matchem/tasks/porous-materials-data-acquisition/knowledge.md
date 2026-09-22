@@ -73,3 +73,22 @@
 [2] Ercakir G, et al. "Hierarchical Computational Screening of Quantum MOF Database." ACS Engineering Au, 2023, DOI: 10.1021/acsengineeringau.3c00039
 [3] Zhu R, et al. "Predicting Synthesizability using Machine Learning on Databases of Existing Inorganic Materials." ACS Omega, 2023, DOI: 10.1021/acsomega.2c04856
 [4] Scibek J. "Multidisciplinary database of permeability of fault zones." Scientific Data, 2020, DOI: 10.1038/s41597-020-0435-5
+
+## 补充证据（批次：2026-09-21）
+
+[5] Colón YJ, et al. "Materials Informatics with PoreBlazer v4.0 and the CSD MOF Database." Chemistry of Materials, 2020, 32(20): 8682-8692, DOI: 10.1021/acs.chemmater.0c03575（CSD MOF数据库覆盖>10万MOF，PoreBlazer v4.0兼容格式）
+
+[6] Smit B, et al. "A Database of Porous Rigid Amorphous Materials." Chemistry of Materials, 2020, 32(21): 9389-9400, DOI: 10.1021/acs.chemmater.0c03057
+
+[7] Schnieders MJ, et al. "Fast process-level screening of metal-organic frameworks for adsorption-based gas separation." Digital Discovery, 2025, DOI: 10.1039/d6me00066e（CoRE MOF 2025数据库：~5800实验验证MOF，公开可用；PrISMa数据库：>800 MOF含GCMC等温线）
+
+[8] MOF benchmark authors. "Benchmark Maturity in MOF Adsorption Machine Learning." Digital Discovery, 2026, DOI: 10.1039/d6dd00123a
+
+### 补充数据库信息
+
+| 数据库 | 覆盖范围 | 数据量级 | 特色 | 来源 |
+|--------|---------|---------|------|------|
+| CoRE MOF 2025 | 实验验证MOF | ~5800 | 最新策展MOF数据库，含推荐筛选列表 | [7] |
+| CSD MOF Database | 有机/金属有机 | >10万 | PoreBlazer v4.0兼容，含孔径分析 | [5] |
+| PrISMa Database | 吸附MOF | >800 | 含GCMC纯组分等温线 | [7] |
+| hMOF | 计算生成MOF | ~13万 | 高通量计算生成 | [5] |

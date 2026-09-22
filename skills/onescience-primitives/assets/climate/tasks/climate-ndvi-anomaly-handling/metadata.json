@@ -1,0 +1,23 @@
+{
+  "name": "climate-ndvi-anomaly-handling",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:49:00Z",
+  "updated_at": "2026-09-21T12:49:00Z",
+  "description": "NDVI数据异常值检测与处理任务，包括NDVI物理意义理解、标准范围确认、异常值识别方法（统计方法、质量标志加权）和处理策略（裁剪、掩膜、替换），用于确保输入数据质量满足融合重建要求。",
+  "tags": ["NDVI", "outlier detection", "anomaly handling", "quality control", "data preprocessing", "physical range", "cloud contamination"],
+  "aliases": ["NDVI outlier removal", "NDVI quality filtering", "NDVI anomaly detection"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "NDVI物理意义、标准范围和异常值处理方法",
+  "evidence_papers": [
+    {"title": "Relative range for skewed distributions: a tool for outlier detection", "doi": "10.56947/gjom.v16i2.1813", "year": "2024"},
+    {"title": "METHODS FOR OUTLIER DETECTION IN METROLOGICAL STUDIES", "doi": "10.23939/istcmtm2024.03.025", "year": "2024"}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

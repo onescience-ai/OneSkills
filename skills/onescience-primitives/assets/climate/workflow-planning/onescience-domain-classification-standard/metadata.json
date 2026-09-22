@@ -1,0 +1,35 @@
+{
+  "name": "onescience-domain-classification-standard",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T00:00:00Z",
+  "updated_at": "2026-09-22T00:00:00Z",
+  "description": "面向科研任务领域归属判定场景，明确 earth 与 climate 以及其他一级领域的边界定义与路由规则，确保任务初始化时领域标签与场景索引一致，避免领域术语理解偏差导致的知识路由错误",
+  "tags": [
+    "domain-classification",
+    "earth",
+    "climate",
+    "routing",
+    "taxonomy",
+    "scenario-index",
+    "workflow-planning",
+    "edge:task:diffusion-probability-model-for-nowcasting",
+    "edge:task:nowcasting-verification-independence",
+    "edge:task:nowcasting-verification-metric-baselines",
+    "edge:task:radar-data-acquisition-for-hail-nowcasting"
+  ],
+  "aliases": [
+    "domain profile",
+    "领域分类",
+    "earth domain",
+    "climate domain"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience领域分类体系中earth与climate的边界定义",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": []
+}

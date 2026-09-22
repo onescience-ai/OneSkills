@@ -1,0 +1,42 @@
+{
+  "name": "vibrationally-stable-materials-dataset-source",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:33:00Z",
+  "updated_at": "2026-09-21T12:33:00Z",
+  "description": "获取振动稳定材料真实数据集的方法，包括Materials Project API查询振动稳定性相关属性（phonon频率、热力学稳定性）的方式，OMDB等材料数据库中振动稳定性标签的数据获取方法，以及关联论文中使用的数据集格式和字段定义",
+  "tags": [
+    "vibrationally-stable-materials",
+    "Materials Project",
+    "phonon-stability",
+    "dataset-acquisition",
+    "materials-informatics",
+    "edge:resource:workflow-planning/few-shot-learning-materials-science"
+  ],
+  "aliases": [
+    "vibration-stable-materials",
+    "phonon-stable-materials",
+    "dynamically-stable-materials"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "振动稳定材料的真实数据集来源，Materials Project API查询振动稳定性相关属性的方法",
+  "evidence_papers": [
+    {
+      "title": "Machine learning-based discovery of vibrationally stable materials",
+      "doi": "10.1038/s41524-022-00943-z",
+      "year": 2023
+    },
+    {
+      "title": "Accelerating the prediction of stable materials with machine learning",
+      "doi": "10.1038/s43588-023-00536-w",
+      "year": 2023
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,27 @@
+{
+  "name": "general-cli-fault-handling-methodology",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "面向命令行工具的非交互执行与故障分类方法论，覆盖参数解析、认证、沙箱、超时、退出码和标准错误判读，适用于自动化CI/CD流水线和批量任务调度场景",
+  "tags": ["CLI", "error-handling", "exit-codes", "fault-diagnosis", "non-interactive", "automation", "CI-CD"],
+  "aliases": ["command-line fault handling", "CLI error diagnosis", "exit code classification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {"title": "Implementing Centralized Error Handling for Software Systems through the Integration of Machine Learning Techniques", "doi": "10.33140/eoa.01.01.11", "year": "2023"},
+    {"title": "Building Robust Data Pipelines: Best Practices for Error Handling, Monitoring, and Recovery", "doi": "10.14445/22312803/ijctt-v73i4p120", "year": "2025"},
+    {"title": "Theoretical and practical aspects of exception handling in the C# programming language", "doi": "10.36120/2587-3636.v40i2.28-38", "year": "2025"}
+  ],
+  "evidence_docs": [
+    {"title": "JSON Schema Reference", "url": "https://json-schema.org/understanding-json-schema/", "publisher": "JSON Schema Organization", "version": "2026", "accessed_at": "2026-09-21T00:00:00Z"},
+    {"title": "Introducing JSON", "url": "https://www.json.org/json-en.html", "publisher": "JSON.org", "version": "ECMA-404", "accessed_at": "2026-09-21T00:00:00Z"}
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

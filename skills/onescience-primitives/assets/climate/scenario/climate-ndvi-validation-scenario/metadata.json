@@ -1,0 +1,49 @@
+{
+  "name": "climate-ndvi-validation-scenario",
+  "type": "scenario",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:49:00Z",
+  "updated_at": "2026-09-21T12:49:00Z",
+  "description": "NDVI融合产品独立验证方案设计场景，包括验证数据源选择（高分辨率卫星、地面观测站、已发布产品）、验证指标体系构建（偏差、RMSE、相关系数、趋势保持、突变检测）和验收门限设定依据，用于评估跨传感器NDVI重建质量。",
+  "tags": [
+    "NDVI",
+    "validation",
+    "ground stations",
+    "Landsat",
+    "verification",
+    "RMSE",
+    "bias",
+    "correlation",
+    "acceptance criteria",
+    "edge:task:climate-avhrr-modis-data-acquisition",
+    "edge:task:climate-ndvi-acceptance-criteria",
+    "edge:task:climate-ndvi-anomaly-handling",
+    "edge:task:climate-ndvi-fusion-algorithms"
+  ],
+  "aliases": [
+    "NDVI product validation",
+    "remote sensing validation",
+    "satellite product verification"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "独立验证数据的获取方法、验证指标的选择标准和验收门限的设定依据",
+  "evidence_papers": [
+    {
+      "title": "Validation of precipitation obtained from GPM and H-SAF satellite data with relation to Ukrainian ground weather stations' data",
+      "doi": "10.31481/uhmj.32.2023.01",
+      "year": "2023"
+    },
+    {
+      "title": "The Ground-Based Absolute Radiometric Calibration of the Landsat 9 Operational Land Imager",
+      "doi": "10.3390/rs16061101",
+      "year": "2024"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

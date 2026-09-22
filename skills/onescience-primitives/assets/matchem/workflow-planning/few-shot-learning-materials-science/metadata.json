@@ -1,0 +1,46 @@
+{
+  "name": "few-shot-learning-materials-science",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:37:00Z",
+  "updated_at": "2026-09-21T12:37:00Z",
+  "description": "小样本机器学习在材料科学中的最佳实践，包括模型选择（简单模型、正则化）、评估方法（LOOCV、bootstrap）、过拟合诊断、不确定性量化",
+  "tags": [
+    "few-shot-learning",
+    "small-dataset",
+    "materials-ML",
+    "model-selection",
+    "overfitting-diagnosis",
+    "edge:task:materials-candidate-composition-generation",
+    "edge:task:materials-ml-applicability-domain-assessment",
+    "edge:task:vasp-phonon-calculation-workflow",
+    "edge:task:vibrationally-stable-materials-dataset-source",
+    "edge:task:vibrationally-stable-materials-ml-screening-literature"
+  ],
+  "aliases": [
+    "small-sample-ML",
+    "limited-data-learning",
+    "low-data-regime"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "小样本机器学习在材料科学中的最佳实践，few-shot learning materials science",
+  "evidence_papers": [
+    {
+      "title": "Supervised Learning on Small Datasets: Few-Shot Approaches and Generalization",
+      "doi": "10.51583/ijltemas.2025.1413sp023",
+      "year": 2025
+    },
+    {
+      "title": "Learning about few-shot concept learning",
+      "doi": "10.1038/s43588-022-00367-1",
+      "year": 2022
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

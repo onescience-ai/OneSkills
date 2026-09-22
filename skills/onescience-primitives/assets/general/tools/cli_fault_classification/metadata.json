@@ -1,11 +1,19 @@
 {
   "name": "cli_fault_classification",
-  "type": "tool_primitive",
+  "type": "tool",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "visibility": "public",
   "created_at": "2026-09-17",
-  "updated_at": "2026-09-17",
-  "description": "CLI非交互执行与故障分类知识，覆盖命令参数解析、认证、沙箱、超时、退出码和标准错误判读",
-  "tags": ["CLI", "故障分类", "退出码", "标准错误", "非交互执行"]
+  "updated_at": "2026-09-21",
+  "description": "CLI非交互执行与故障分类知识，覆盖命令参数解析、认证、沙箱、超时、退出码、标准错误判读及CLI最佳实践",
+  "tags": ["CLI", "故障分类", "退出码", "标准错误", "非交互执行", "命令行工具", "自动化"],
+  "aliases": ["command-line", "exit-code", "fault-diagnosis"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {"title": "xgt: a command-line interface for the Genome Taxonomy Database with cross-release taxonomic comparison", "doi": "10.1093/gigascience/giag086", "year": 2026},
+    {"title": "Bionitio: demonstrating and facilitating best practices for bioinformatics command-line software", "doi": "10.1093/gigascience/giz109", "year": 2019}
+  ]
 }

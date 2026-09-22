@@ -1,0 +1,19 @@
+{
+  "name": "matchem-porous-materials-databases",
+  "type": "database",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T00:00:00Z",
+  "updated_at": "2026-09-22T00:00:00Z",
+  "description": "多孔材料数据获取途径与数据库资源，包括Materials Project、ICSD、QMOF、CSD等公开数据库的数据格式、访问方式和质量要求",
+  "tags": ["Materials Project", "ICSD", "QMOF", "CSD", "porous materials database", "MOF database"],
+  "aliases": ["材料项目数据库", "无机晶体结构数据库", "量子MOF数据库"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔材料数据获取途径（如Materials Project、ICSD、QMOF等数据库）、数据格式规范、数据质量要求",
+  "evidence_papers": [
+    {"title": "Grand canonical Monte Carlo (GCMC) study on adsorption performance of metal organic frameworks (MOFs) for carbon capture", "doi": "10.1016/j.susmat.2021.e00383", "year": 2022},
+    {"title": "Microscopic adsorption of CO2 in metal organic frameworks (MOF-5, ZIF-8 and UiO-66) by grand canonical Monte Carlo simulation", "doi": "10.1007/s10450-025-00664-x", "year": 2025}
+  ]
+}

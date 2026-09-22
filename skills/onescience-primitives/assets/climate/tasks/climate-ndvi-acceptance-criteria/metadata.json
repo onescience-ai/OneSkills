@@ -1,0 +1,22 @@
+{
+  "name": "climate-ndvi-acceptance-criteria",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:49:00Z",
+  "updated_at": "2026-09-21T12:49:00Z",
+  "description": "NDVI融合产品验收门限设定任务，包括验收指标选择（偏差、RMSE、相关系数等）、门限值确定原则、行业标准参考（USGS、ESA、GLASS等产品验证标准）和验收流程制定，用于判定NDVI重建产品是否达到预期性能标准。",
+  "tags": ["NDVI", "acceptance criteria", "thresholds", "USGS", "ESA", "GLASS", "product validation", "performance standards"],
+  "aliases": ["NDVI product acceptance", "satellite product benchmarks", "quality thresholds"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "验收门限的设定原则、行业标准和具体数值范围",
+  "evidence_papers": [
+    {"title": "Acceptance sampling schemes for two-parameter Lindley lifetime products under a truncated life test", "doi": "10.1080/16843703.2020.1846269", "year": "2021"}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

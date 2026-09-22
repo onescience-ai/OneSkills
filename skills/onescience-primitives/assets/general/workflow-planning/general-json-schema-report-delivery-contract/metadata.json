@@ -2,75 +2,40 @@
   "name": "general-json-schema-report-delivery-contract",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.4.0",
+  "version": "1.0.0",
   "visibility": "public",
-  "created_at": "2026-09-17T00:00:00Z",
-  "updated_at": "2026-09-18T00:00:00Z",
-  "description": "面向结构化报告交付场景，定义 JSON Schema 契约以确保输出符合必填字段、任务身份、数据类型和格式要求，提供验证与校验策略。适用于自动化流水线中报告生成、API响应验证和系统间数据交换。",
-  "tags": ["JSON-Schema", "report-delivery", "contract", "validation", "structured-output", "required-fields", "type-constraint", "format-validation", "task-identity", "schema-complexity", "witness-generation"],
+  "created_at": "2026-09-22T00:00:00Z",
+  "updated_at": "2026-09-22T00:00:00Z",
+  "description": "面向结构化报告生成场景，提供基于 JSON Schema 的报告交付契约定义、校验与错误处理方法论，覆盖必填字段、任务身份、数组约束及输出格式，适用于科研计算、数据分析等领域的自动化报告生成。",
+  "tags": ["JSON Schema", "report-delivery", "contract", "validation", "structured-reporting", "workflow-planning"],
   "aliases": ["JSON Schema validation", "report schema", "structured output contract"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
-  "harvest_query": "JSON Schema 报告交付契约",
+  "harvest_query": "JSON Schema validation report delivery contract structured reporting schema-driven output",
   "evidence_papers": [
     {
-      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
-      "doi": "10.48550/arXiv.2307.10034",
-      "year": 2023
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026
     },
     {
-      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
-      "doi": "10.48550/arXiv.2503.02770",
+      "title": "Improving Api Test Accuracy through Schema Validation and Real-time Json Assertions in Jenkins Pipelines",
+      "doi": "10.71097/ijsat.v16.i3.10656",
       "year": 2025
     },
     {
-      "title": "Witness Generation for JSON Schema",
-      "doi": "10.48550/arXiv.2202.12849",
-      "year": 2022
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.14778/3773749.3773764",
+      "year": 2025
     },
     {
-      "title": "Negation-Closure for JSON Schema",
-      "doi": "10.48550/arXiv.2202.13434",
-      "year": 2022
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3632891",
+      "year": 2024
     }
   ],
-  "evidence_docs": [
-    {
-      "title": "JSON Schema Specification",
-      "url": "https://json-schema.org/specification.html",
-      "publisher": "JSON Schema Organization",
-      "version": "2020-12",
-      "accessed_at": "2026-09-17T00:00:00Z"
-    },
-    {
-      "title": "Understanding JSON Schema",
-      "url": "https://json-schema.org/understanding-json-schema/",
-      "publisher": "JSON Schema Organization",
-      "version": "2020-12",
-      "accessed_at": "2026-09-17T00:00:00Z"
-    },
-    {
-      "title": "JSON Schema - Type-specific Keywords",
-      "url": "https://json-schema.org/understanding-json-schema/reference/type",
-      "publisher": "JSON Schema Organization",
-      "version": "draft-07/latest",
-      "accessed_at": "2026-09-18"
-    },
-    {
-      "title": "JSON Schema - object",
-      "url": "https://json-schema.org/understanding-json-schema/reference/object",
-      "publisher": "JSON Schema Organization",
-      "version": "draft-07/latest",
-      "accessed_at": "2026-09-18"
-    }
-  ],
-  "evidence_user": [
-    {
-      "provider": "user",
-      "provided_at": "2026-09-18",
-      "location": "任务 254 归因报告：复杂地形风电场轮毂高度短期风速预报 JSON Schema 校验失败案例"
-    }
-  ],
-  "merged_batches": ["modify-json-schema-report-contract-2026-09-17", "harvest-2026-09-18", "harvest-2026-09-18-cli-json-schema", "batch-2026-09-18-task254"],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
   "conflicts": []
 }

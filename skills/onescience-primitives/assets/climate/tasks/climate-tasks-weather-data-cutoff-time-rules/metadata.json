@@ -1,0 +1,23 @@
+{
+  "name": "climate-tasks-weather-data-cutoff-time-rules",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22",
+  "updated_at": "2026-09-22",
+  "description": "气象预报数据时点规则的严格执行规范，包括资料截止时间定义、数据时点检查方法、事后分析数据排除规则和模拟数据使用限制",
+  "tags": ["cutoff time", "data timing", "point-in-time", "data lineage", "forecast constraint"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报数据时点规则的严格执行规范，包括资料截止时间的定义（观测签发时点）、数据时点检查方法（验证每条输入数据的观测时间是否早于资料截止时间）、事后分析数据的排除规则和模拟数据的使用限制",
+  "evidence_papers": [
+    {"title": "Short-term forecasting for Wind Speed based on machine learning using weather observation data", "doi": "10.7465/jkdi.2020.31.5.823", "year": 2020},
+    {"title": "Data-driven decision analysis for weather observation technology in Japan: Integrating patent forecasting, network analytics, and economic valuation", "doi": "10.55976/dma.32025145386-100", "year": 2025},
+    {"title": "IoT-Driven Smart Weather Monitoring System with Global Data Access and Real-Time Visualization", "doi": "10.21275/sr25417194734", "year": 2025}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

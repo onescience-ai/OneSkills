@@ -1,0 +1,36 @@
+{
+  "name": "general-agent-error-recovery-strategy",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T13:30:00Z",
+  "updated_at": "2026-09-21T13:30:00Z",
+  "description": "面向AI编排系统的异常自恢复策略，解决智能体在检测到工具调用连续返回相同内容时无法自动切换执行路径的问题，定义降级策略触发条件与执行流程",
+  "tags": ["agent", "error-recovery", "degradation", "retry", "orchestration", "fault-tolerance"],
+  "aliases": ["error recovery", "degradation strategy", "retry logic"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "编排智能体的异常自恢复策略——当检测到skill工具调用连续返回相同内容时，应自动触发降级策略",
+  "evidence_papers": [
+    {
+      "title": "Building Resilient Systems: Error Handling, Retry Mechanisms, and Predictive Analytics in Event-Driven Architecture",
+      "doi": "10.32996/jcsts.2025.7.7.34",
+      "year": 2025
+    },
+    {
+      "title": "AI Agent Systems: Architectures, Applications, and Evaluation",
+      "doi": "10.48550/arXiv.2601.01743",
+      "year": 2026
+    },
+    {
+      "title": "GRACE-Agent: a multi-stage LLM agent framework for grammatical error correction",
+      "doi": "10.1007/s44443-026-00859-4",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

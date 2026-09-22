@@ -2,10 +2,10 @@
   "name": "general-json-schema-contract-validation",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "visibility": "public",
   "created_at": "2026-09-17T23:00:00Z",
-  "updated_at": "2026-09-17T23:00:00Z",
+  "updated_at": "2026-09-21T10:00:00Z",
   "description": "面向结构化输出交付的JSON Schema契约验证，覆盖必填字段检查、类型约束、数组边界、任务身份一致性与格式规范化，适用于科学计算报告、自动化测试结果与API响应的标准化交付",
   "tags": ["JSON-Schema", "contract-validation", "structured-output", "schema-validation", "report-validation"],
   "aliases": ["JSON Schema验证", "结构化输出校验", "契约验证"],
@@ -26,9 +26,16 @@
       "publisher": "JSON Schema Organization",
       "version": "2024",
       "accessed_at": "2026-09-17T23:00:00Z"
+    },
+    {
+      "title": "JSON Schema - Specification",
+      "url": "https://json-schema.org/specification.html",
+      "publisher": "JSON Schema",
+      "version": "2020-12",
+      "accessed_at": "2026-09-21"
     }
   ],
   "evidence_user": [],
-  "merged_batches": [],
+  "merged_batches": ["batch-2026-09-21-spec-page", "batch-2026-09-21-task279-case"],
   "conflicts": []
 }

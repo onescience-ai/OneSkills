@@ -1,0 +1,37 @@
+{
+  "name": "forecast-independent-validation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T13:00:00Z",
+  "updated_at": "2026-09-21T13:00:00Z",
+  "description": "预报独立验证的执行规范，包括验证数据集划分原则、验证指标计算方法和验证结果解释标准",
+  "tags": [
+    "forecast-verification",
+    "independent-validation",
+    "POD",
+    "FAR",
+    "CSI",
+    "edge:workflow:convective-gust-nowcasting-workflow"
+  ],
+  "aliases": [
+    "预报验证",
+    "独立验证规范"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "独立验证的执行规范",
+  "evidence_papers": [
+    {
+      "title": "A Nowcasting System for Hydrometeorological Hazard Assessment – Part 2: On Verification and Validation Process",
+      "doi": "10.11137/1982-3908_2024_47_62979",
+      "year": 2024
+    },
+    {
+      "title": "Editorial: Forecast verification methods across time and space scales",
+      "doi": "10.1127/metz/2018/0955",
+      "year": 2018
+    }
+  ]
+}

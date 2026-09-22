@@ -2,10 +2,10 @@
   "name": "general-cli-fault-classification-non-interactive-execution",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "visibility": "public",
   "created_at": "2026-09-17T13:43:00Z",
-  "updated_at": "2026-09-17T14:15:00Z",
+  "updated_at": "2026-09-21T17:50:00Z",
   "description": "面向命令行工具非交互执行场景，提供故障分类、退出码解读、沙箱超时处理与标准错误判读的方法，确保归因分析等自动化流程稳定完成并保留诊断证据。涵盖黑箱差分测试、自愈恢复框架与科学工作流 I/O 监控的最新实践。",
   "tags": ["CLI", "non-interactive", "fault-classification", "exit-code", "timeout", "error-handling", "workflow-automation", "black-box-testing", "self-healing", "MAPE-K"],
   "aliases": ["command-line interface fault", "CLI error handling", "non-interactive execution", "CLI fault tolerance"],
@@ -27,6 +27,11 @@
       "title": "Low-level I/O Monitoring for Scientific Workflows",
       "doi": "arXiv:2408.00411",
       "year": 2024
+    },
+    {
+      "title": "Bionitio: demonstrating and facilitating best practices for bioinformatics command-line software",
+      "doi": "10.1093/gigascience/giz109",
+      "year": 2019
     }
   ],
   "evidence_docs": [

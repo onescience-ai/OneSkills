@@ -1,0 +1,35 @@
+{
+  "name": "json-schema-report-validation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T20:07:00Z",
+  "updated_at": "2026-09-21T20:07:00Z",
+  "description": "面向科研报告交付，基于JSON Schema标准校验报告字段完整性、数据类型合规性和结构约束，确保报告可解析且与任务身份一致。",
+  "tags": ["JSON-schema", "report-validation", "metadata", "data-integrity", "scientific-report"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约：规定必填字段、任务身份、数组约束及输出格式",
+  "evidence_papers": [
+    {
+      "title": "Adamant: a JSON schema-based metadata editor for research data management workflows",
+      "doi": "10.12688/f1000research.110875.2",
+      "year": 2022
+    },
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026
+    },
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.14778/3773749.3773764",
+      "year": 2025
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

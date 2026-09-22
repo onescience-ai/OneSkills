@@ -2,12 +2,12 @@
   "name": "json-schema-report-validation-contract",
   "type": "workflow-planning",
   "domain": "general",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-17T05:57:00Z",
-  "updated_at": "2026-09-17T05:57:00Z",
-  "description": "面向结构化报告交付场景，提供JSON Schema验证契约的知识框架。适用于需要定义、验证和执行JSON格式报告交付规范的研究与工程场景。核心方法包括：JSON Schema形式化、验证复杂性分析、动态引用消除、注释依赖处理。输出为Schema验证规则、交付契约规范和验证工具。",
-  "tags": ["JSON-Schema", "validation", "report-contract", "schema-validation", "dynamic-references", "annotation-dependency", "PSPACE-completeness", "formalization", "structured-report", "data-validation"],
+  "updated_at": "2026-09-21T10:11:00Z",
+  "description": "面向结构化报告交付场景，提供JSON Schema验证契约的知识框架。适用于需要定义、验证和执行JSON格式报告交付规范的研究与工程场景。核心方法包括：JSON Schema形式化、验证复杂性分析、动态引用消除、注释依赖处理、Schema质量多维度评估框架（SVEF）。输出为Schema验证规则、交付契约规范、验证工具和质量评估指标。",
+  "tags": ["JSON-Schema", "validation", "report-contract", "schema-validation", "dynamic-references", "annotation-dependency", "PSPACE-completeness", "formalization", "structured-report", "data-validation", "schema-quality", "SVEF", "type-conformance", "entity-relationship"],
   "harvested": true,
   "harvest_source": "onescience-knowledge-harvester",
   "harvest_query": "JSON Schema报告交付契约；知识缺失证据：最终响应缺失、无法解析或字段校验失败；知识内容与边界：规定必填字段、任务身份、数组约束及输出格式，不补写无证据的领域归因",
@@ -35,6 +35,19 @@
       "doi": "10.48550/arXiv.2202.12849",
       "year": 2022,
       "venue": "arXiv"
+    },
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026,
+      "venue": "Scientific Reports"
     }
-  ]
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [
+    "2026-09-21: 补充SVEF Schema质量多维度评估框架（6维度+SQS评分）",
+    "2026-09-21: 补充SVEF校准数值（维度权重、惩罚系数、同质性权重、关系平衡系数）"
+  ],
+  "conflicts": []
 }

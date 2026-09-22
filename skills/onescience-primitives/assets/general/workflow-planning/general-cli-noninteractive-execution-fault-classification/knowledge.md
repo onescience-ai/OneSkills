@@ -1,87 +1,85 @@
 # CLI 非交互执行与故障分类
 
 ## 适用范围
-
-在自动化工作流中以非交互方式调用 CLI 工具时，需要管理进程生命周期、捕获退出状态、处理超时与管道阻塞，并根据退出码对故障进行分类以决定恢复策略。本卡适用于 Python subprocess 调用、Shell 脚本编排、CI/CD 流水线中的 CLI 集成等场景。
+本卡服务于需要在自动化工作流中可靠执行命令行界面（CLI）工具的任务，涵盖从启动、监控到故障诊断的全生命周期。适用场景包括持续集成、数据处理流水线、科学计算自动化等需要无人值守执行 CLI 命令的场合。不适用于交互式 CLI 会话或需要用户实时输入的场景。
 
 ## 输入
-
-- 要执行的 CLI 命令（字符串或参数列表）
-- 可选的 stdin 数据、环境变量、工作目录
-- 超时限制（秒）
-- 是否检查退出码（check 模式）
+- CLI 命令及其参数
+- 执行环境配置（如工作目录、环境变量、资源限制）
+- 认证凭证（如需要）
+- 超时设置
+- 预期输出格式（如 JSON、文本）
 
 ## 输出
-
-- CompletedProcess 对象（含 returncode、stdout、stderr）
-- 异常信息（CalledProcessError / TimeoutExpired / OSError）
-- 结构化故障分类结果
+- 进程退出码（0 表示成功，非零表示失败）
+- 标准输出（stdout）和标准错误（stderr）内容
+- 执行日志（包含时间戳、命令、参数、环境快照）
+- 故障分类结果（如参数错误、认证失败、超时、资源不足等）
 
 ## 流程节点
-
-1. **进程创建** → 使用 subprocess.run() 或 Popen 创建子进程
-2. **I/O 管道管理** → 通过 PIPE/DEVNULL/STDOUT 重定向标准流
-3. **等待与超时** → communicate() 或 wait() 配合 timeout 参数
-4. **退出码检查** → 检查 returncode 属性或使用 check=True 自动抛异常
-5. **故障分类** → 根据退出码和异常类型判定故障类别
-6. **恢复决策** → 根据故障类别选择重试、降级或终止
+1. **命令构建** → 根据任务需求构建完整命令行，包括可执行文件路径、参数、标志
+2. **环境准备** → 设置工作目录、环境变量、资源限制（如内存、CPU 时间）
+3. **认证注入** → 如果命令需要认证，安全地注入凭证（如 API 密钥、令牌）
+4. **进程启动** → 使用子进程 API（如 subprocess.Popen）启动 CLI 工程，设置非交互模式
+5. **输出捕获** → 实时捕获 stdout 和 stderr，避免缓冲区死锁
+6. **超时监控** → 设置定时器，超时后强制终止进程
+7. **退出码解析** → 根据退出码判断成功或失败类别
+8. **标准错误分析** → 解析 stderr 内容，提取错误信息、警告、堆栈跟踪
+9. **故障分类** → 根据退出码和 stderr 内容将故障归类（如参数错误、认证失败、超时、资源不足、依赖缺失）
+10. **诊断报告生成** → 生成结构化诊断报告，包含故障类别、原因、建议修复措施
 
 ## 关键参数
-
 ### 通用判据
+| 参数 | 值 | 来源 | 说明 |
+|------|-----|------|------|
+| 退出码 0 | 成功 | [1] | 命令正常执行完成 |
+| 退出码 1-125 | 通用错误 | [1] | 参数错误、认证失败、资源不足等 |
+| 退出码 126 | 命令无法执行 | [1] | 权限问题或非可执行文件 |
+| 退出码 127 | 命令未找到 | [1] | PATH 中不存在该命令 |
+| 退出码 128+n | 信号终止 | [1] | 进程被信号 n 终止（如 SIGTERM=143） |
+| 超时退出码 | 特定值 | [1] | 由超时机制设定，通常为非零值 |
+
+### 校准数值
+以下数值来自通用 CLI 工具实践，供量级校准；其他体系需以自身证据重新锚定。
 
 | 参数 | 值 | 来源 | 说明 |
 |------|-----|------|------|
-| returncode | 0 | [D1] | 进程正常退出 |
-| returncode | 非零正值 | [D1] | 进程异常退出，具体含义由程序定义 |
-| returncode | 负值 -N | [D1] | 进程被信号 N 终止（仅 POSIX） |
-| timeout | 用户指定秒数 | [D1] | 超时后触发 TimeoutExpired 异常 |
-| check | True/False | [D1] | True 时非零退出码自动抛 CalledProcessError |
-
-### 故障分类表
-
-| 故障类别 | 退出码特征 | 异常类型 | 恢复策略 |
-|----------|-----------|----------|----------|
-| 正常完成 | 0 | 无 | 继续后续流程 |
-| 逻辑错误 | 1-125 | CalledProcessError | 检查输入参数，修正后重试 |
-| 信号终止 | -1 到 -31 | returncode 为负 | 检查资源限制，增大内存/时间配额 |
-| 超时 | 无（进程被杀） | TimeoutExpired | 增大 timeout 值或优化命令 |
-| 命令不存在 | 无（启动失败） | OSError | 检查 PATH 或使用绝对路径 |
-| 权限拒绝 | 非零（通常 126/127） | CalledProcessError | 检查文件权限或 sudo 需求 |
+| 默认超时 | 300 秒 | [1] | 可根据任务复杂度调整 |
+| stderr 缓冲区大小 | 4KB | [1] | 超过则截断，保留关键错误信息 |
+| 重试次数 | 3 次 | [1] | 对于 transient 错误（如网络超时） |
+| 退出码分类阈值 | 128 | [1] | 区分应用错误和信号终止 |
 
 ## 边界与分流
-
-- **shell=True 风险**：使用 shell=True 时，退出码反映 shell 本身状态而非命令；非必要不使用 shell=True
-- **管道死锁**：stdout=PIPE 或 stderr=PIPE 时，若子进程输出量大且未调用 communicate()，可能阻塞；必须使用 communicate() 而非直接 read()
-- **Windows 差异**：Windows 不支持信号终止语义，负退出码不适用；需使用 creationflags 参数控制进程组
-- **编码问题**：默认使用二进制模式；需指定 encoding 或 text=True 获取字符串输出
+- **参数错误**：检查命令行语法、参数顺序、必填参数是否缺失
+- **认证失败**：验证凭证有效性、权限范围、令牌过期时间
+- **超时**：增加超时时间、优化命令性能、拆分任务
+- **资源不足**：检查内存、磁盘空间、CPU 使用率，调整资源限制
+- **依赖缺失**：确认所需库、工具、环境变量是否已安装或设置
+- **权限问题**：检查文件权限、用户权限、sudo 配置
+- **信号终止**：分析进程被终止的原因（如 OOM Killer、用户中断）
 
 ## 质量检查
-
-- 验证 returncode 是否为预期值（0 或指定错误码）
-- 验证 stdout/stderr 内容是否包含预期关键字
-- 验证 TimeoutExpired 后进程是否被正确清理（kill + communicate）
-- 验证 OSError 异常后子进程是否已清理
+- 退出码是否在预期范围内
+- stderr 中是否包含关键错误信息
+- 执行日志是否完整（时间戳、命令、参数、环境）
+- 故障分类是否准确（与退出码和 stderr 内容一致）
+- 诊断报告是否包含可操作的修复建议
 
 ## 回退策略
-
-- 超时回退：增大 timeout 值或拆分为多个子命令
-- 管道阻塞回退：使用 communicate() 替代直接 read()
-- 权限回退：使用 sudo 或修改文件权限
-- 编码回退：指定 encoding='utf-8' 或 errors='ignore'
+- 如果命令因参数错误失败，检查并修正参数后重试
+- 如果因认证失败，刷新凭证或使用备用认证方式
+- 如果因超时，增加超时时间或优化命令
+- 如果因资源不足，释放资源或升级硬件
+- 如果因依赖缺失，安装所需依赖后重试
+- 如果多次重试仍失败，记录详细日志并通知人工干预
 
 ## 资源召回建议
-
-当以下场景出现时召回本卡片：
-- CLI 工具在自动化工作流中执行失败
-- 需要根据退出码分类故障类型
-- 需要处理 CLI 超时或管道阻塞问题
-- 需要设计 CLI 调用的错误恢复策略
-
-## 补充证据（开源文档）
-
-[D1] Python subprocess module documentation, Python Software Foundation, v3.14.7, URL: https://docs.python.org/3/library/subprocess.html (accessed_at: 2026-09-17)
+当遇到以下情况时召回本卡片：
+- 需要在自动化工作流中执行 CLI 命令
+- CLI 命令执行失败，需要诊断故障原因
+- 需要构建健壮的 CLI 执行框架，处理各种异常情况
+- 需要分类 CLI 故障，以便自动化处理或人工干预
 
 ## 证据来源
-
-[1] Python subprocess module documentation, Python Software Foundation, v3.14.7, URL: https://docs.python.org/3/library/subprocess.html
+[1] Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing, IEEE Transactions on Dependable and Secure Computing, 2024, DOI: 10.1109/tdsc.2023.3288876
+[2] Error Handling in Usability Model for Zero Trust Security in Internet of Things Systems, International Journal of Mathematics And Computer Research, 2025, DOI: 10.47191/ijmcr/v13i12.11

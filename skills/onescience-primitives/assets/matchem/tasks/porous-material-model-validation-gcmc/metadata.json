@@ -1,0 +1,26 @@
+{
+  "name": "porous-material-model-validation-gcmc",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "Validating porous material property prediction models using Grand-Canonical Monte Carlo (GCMC) simulations and experimental adsorption data as independent benchmarks, covering validation data sourcing, metric definition, and comparison protocols.",
+  "tags": ["porous materials", "GCMC", "validation", "adsorption", "MOF", "benchmark", "independent validation", "experimental data", "simulation"],
+  "aliases": ["GCMC validation", "adsorption benchmark", "model validation for MOF"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "多孔材料验证方法（如实验吸附测试、高保真计算如GCMC模拟）、验证数据获取途径、验证指标定义",
+  "evidence_papers": [
+    {"title": "Fast process-level screening of metal-organic frameworks for adsorption-based gas separation", "doi": "10.1039/d6me00066e", "year": 2025},
+    {"title": "Analyzing the gas storage capacities of NU-2100 MOF via GCMC simulations: a materials informatics approach", "doi": "10.1007/s10450-025-00641-4", "year": 2025},
+    {"title": "GCMC kernel for analyzing the pore size distribution of porous carbons", "doi": "10.1007/s10450-023-00418-7", "year": 2023},
+    {"title": "GCMC-MD prediction of adsorption and diffusion behavior of shale gas in nanopores", "doi": "10.1016/j.fuel.2024.133052", "year": 2024},
+    {"title": "Modified Dual-Site Langmuir Adsorption Equilibrium Models from A GCMC Molecular Simulation", "doi": "10.3390/app10175979", "year": 2020}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

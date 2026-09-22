@@ -1,0 +1,41 @@
+{
+  "name": "general-cli-fault-classification",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "CLI 非交互执行与故障分类知识，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，用于归因分析进程稳定完成并保留诊断证据",
+  "tags": ["CLI", "fault-classification", "exit-code", "timeout", "error-handling", "non-interactive"],
+  "aliases": ["command-line-interface", "shell-execution", "process-management"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing",
+      "doi": "10.1109/tdsc.2023.3288876",
+      "year": 2024
+    },
+    {
+      "title": "A Fault-Tolerant Timeout Framework for External Service Calls in Healthcare Integration Engines",
+      "doi": "10.37547/tajet/v8i3-323",
+      "year": 2026
+    },
+    {
+      "title": "Bumps in the Code: Error Handling During Software Development",
+      "doi": "10.1109/ms.2020.3024981",
+      "year": 2021
+    },
+    {
+      "title": "Exception handling bugs in Python: An empirical study of root causes, fix patterns",
+      "doi": "10.1016/j.infsof.2026.107385",
+      "year": 2026
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

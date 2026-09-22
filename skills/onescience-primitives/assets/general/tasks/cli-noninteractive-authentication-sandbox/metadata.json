@@ -1,0 +1,48 @@
+{
+  "name": "cli-noninteractive-authentication-sandbox",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T19:51:00Z",
+  "updated_at": "2026-09-21T19:51:00Z",
+  "description": "面向命令行接口非交互执行场景的认证与沙箱配置知识，覆盖命令参数验证、环境隔离、资源限制和超时控制，确保CLI工具在自动化流水线中安全稳定运行。",
+  "tags": [
+    "CLI",
+    "non-interactive",
+    "authentication",
+    "sandbox",
+    "timeout",
+    "security",
+    "automation",
+    "edge:workflow:json-schema-error-reporting-specification"
+  ],
+  "aliases": [
+    "command-line authentication",
+    "sandbox execution",
+    "CLI security configuration"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "Docker Security Best Practices",
+      "url": "https://docs.docker.com/engine/security/",
+      "publisher": "Docker Inc.",
+      "version": "2024",
+      "accessed_at": "2026-09-21T19:51:00Z"
+    },
+    {
+      "title": "Linux Security Guide - Sandboxing",
+      "url": "https://www.kernel.org/doc/html/latest/security/sandbox.html",
+      "publisher": "Linux Kernel Documentation",
+      "version": "6.8",
+      "accessed_at": "2026-09-21T19:51:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

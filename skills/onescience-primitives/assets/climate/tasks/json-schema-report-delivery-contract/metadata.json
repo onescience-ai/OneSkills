@@ -1,0 +1,23 @@
+{
+  "name": "json-schema-report-delivery-contract",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "JSON Schema报告交付契约：规定必填字段、任务身份、数组约束及输出格式，用于归因报告等结构化数据的校验与交付",
+  "tags": ["json-schema", "validation", "report-contract", "structured-output", "metadata"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约：必填字段、任务身份、数组约束及输出格式",
+  "evidence_docs": [
+    {
+      "title": "JSON Schema: A Media Type for Describing JSON Documents",
+      "url": "https://json-schema.org/draft/2020-12/json-schema-core",
+      "publisher": "IETF / json-schema-org",
+      "version": "draft-bhutton-json-schema-01 (2022)",
+      "accessed_at": "2026-09-21"
+    }
+  ]
+}

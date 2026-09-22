@@ -1,0 +1,22 @@
+{
+  "name": "general-attribution-cli-fault-diagnosis",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T20:00:00Z",
+  "updated_at": "2026-09-21T20:00:00Z",
+  "description": "归因分析CLI非交互执行与故障分类知识：覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，用于修正启动配置或恢复策略，确保归因分析进程稳定完成并保留诊断证据。",
+  "tags": ["CLI", "归因分析", "故障诊断", "退出码", "错误处理", "自动化"],
+  "aliases": ["attribution CLI", "归因分析命令行工具", "故障分类"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识；覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {"title": "bash(1) - Linux manual page", "url": "https://man7.org/linux/man-pages/man1/bash.1.html", "publisher": "Linux man-pages", "version": "5.10", "accessed_at": "2026-09-21"}
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

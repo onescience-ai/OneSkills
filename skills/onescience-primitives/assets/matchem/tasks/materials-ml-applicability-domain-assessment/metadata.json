@@ -1,0 +1,54 @@
+{
+  "name": "materials-ml-applicability-domain-assessment",
+  "type": "task",
+  "domain": "matchem",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:34:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "材料科学机器学习中适用域（Applicability Domain, AD）的评估方法，包括基于距离的方法（kNN、LOF）、概率密度估计、OCSVM单类边界学习、以及基于领域知识的约束；AUCR超参数优化准则；小样本条件下AD评估的特殊考虑；适用域外（OOD）预测结果的可靠性量化与candidate_report集成标记方法",
+  "tags": [
+    "applicability-domain",
+    "materials-ML",
+    "uncertainty-quantification",
+    "model-validation",
+    "small-sample",
+    "kNN",
+    "LOF",
+    "OCSVM",
+    "AUCR",
+    "OOD-detection",
+    "edge:resource:workflow-planning/few-shot-learning-materials-science"
+  ],
+  "aliases": [
+    "AD-assessment",
+    "domain-of-applicability",
+    "prediction-reliability"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "材料科学机器学习中适用域评估方法，Mahalanobis距离、KNN、概率密度估计",
+  "evidence_papers": [
+    {
+      "title": "Identifying domains of applicability of machine learning models for materials science",
+      "doi": "10.1038/s41467-020-17112-9",
+      "year": 2020
+    },
+    {
+      "title": "A general approach for determining applicability domain of machine learning models",
+      "doi": "10.1038/s41524-025-01573-x",
+      "year": 2025
+    },
+    {
+      "title": "Evaluation and Optimization Methods for Applicability Domain Methods and Their Hyperparameters, Considering the Prediction Performance of Machine Learning Models",
+      "doi": "10.1021/acsomega.3c08036",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [
+    "2026-09-21:matchem-ml-domain-applicability-detection"
+  ],
+  "conflicts": []
+}

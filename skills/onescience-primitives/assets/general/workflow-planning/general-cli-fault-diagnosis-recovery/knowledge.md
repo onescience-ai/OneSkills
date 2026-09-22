@@ -105,6 +105,9 @@
 
 配套资源：`general-json-schema-report-validation`（用于验证故障报告格式）。
 
+## 补充证据（开源文档/用户自有，可选）
+[D1] GNU Bash Reference Manual, GNU Project, 版本 5.3, 18 May 2025, URL: https://www.gnu.org/software/bash/manual/bash.html（accessed_at 2026-09-21，权威文档，提供退出状态标准定义）
+
 ## 证据来源
 
 [1] "Evaluating LLM-Based 0-to-1 Software Generation in End-to-End CLI Tool Scenarios", Ruida Hu et al., arXiv preprint, 2026, DOI: 10.48550/arXiv.2604.06742

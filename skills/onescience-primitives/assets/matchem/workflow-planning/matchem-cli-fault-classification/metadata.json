@@ -1,0 +1,39 @@
+{
+  "name": "matchem-cli-fault-classification",
+  "type": "workflow-planning",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "面向命令行界面（CLI）非交互执行任务，设计故障分类、退出码解读、超时处理与恢复策略的通用方法论。适用于任何领域中需要自动化执行CLI工具并处理异常情况的场景。",
+  "tags": ["cli", "fault-classification", "exit-codes", "timeout", "automation", "workflow-planning", "matchem"],
+  "aliases": ["command-line interface fault handling", "CLI error management"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "A Fault-Tolerant Timeout Framework for External Service Calls in Healthcare Integration Engines",
+      "doi": "10.37547/tajet/v8i3-323",
+      "year": 2026
+    },
+    {
+      "title": "Fault-Tolerance in the Scope of Cloud Computing",
+      "doi": "10.1109/access.2022.3182211",
+      "year": 2022
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "Advanced Bash-Scripting Guide: Exit Codes",
+      "url": "https://tldp.org/LDP/abs/html/exitcodes.html",
+      "publisher": "The Linux Documentation Project",
+      "version": "2023",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

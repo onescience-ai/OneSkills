@@ -1,0 +1,27 @@
+{
+  "name": "general-cli-fault-handling-automation",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T18:01:00Z",
+  "updated_at": "2026-09-21T18:01:00Z",
+  "description": "面向CLI非交互执行场景，提供故障分类、错误处理和自动化诊断的通用方法论，适用于任何领域需要通过命令行接口执行自动化任务并处理执行失败的情况",
+  "tags": ["CLI", "fault-handling", "error-classification", "automation", "diagnostics"],
+  "aliases": ["command-line-fault-handling", "cli-error-management", "exit-code-classification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing",
+      "doi": "10.1109/tdsc.2023.3288876",
+      "year": 2024
+    },
+    {
+      "title": "Implementing Centralized Error Handling for Software Systems through the Integration of Machine Learning Techniques",
+      "doi": "10.33140/eoa.01.01.11",
+      "year": 2023
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bio-workspace-data-file-location-standard",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "OneScience工作空间中数据文件的标准存放位置规范，包括任务产物目录、工作空间根目录、.onescience/data/子目录、模型注册表等可能的数据存放路径；明确各路径的优先级和查找顺序，用于在数据验证步骤前执行数据发现。",
+  "tags": ["data-discovery", "workspace", "file-location", "bio", "task"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "OneScience工作空间中数据文件的标准存放位置规范",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,40 @@
+{
+  "name": "convective-gust-nowcasting-workflow",
+  "type": "workflow",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T13:00:00Z",
+  "updated_at": "2026-09-21T13:00:00Z",
+  "description": "对流阵风临近预报的标准工作流步骤定义与依赖关系，涵盖从数据获取到独立验证的完整流程，适用于基于雷达数据的对流天气预报任务",
+  "tags": [
+    "nowcasting",
+    "convective-gust",
+    "radar",
+    "workflow",
+    "weather-forecasting",
+    "edge:scenario:nowcasting-temporal-constraint-rules",
+    "edge:task:forecast-independent-validation",
+    "edge:task:model-config-validation-weather",
+    "edge:task:radar-data-acquisition-preprocessing"
+  ],
+  "aliases": [
+    "阵风预报工作流",
+    "对流预警流程"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象临近预报任务的标准工作流步骤定义与依赖关系知识",
+  "evidence_papers": [
+    {
+      "title": "Convective-gust nowcasting based on radar reflectivity and a deep learning algorithm",
+      "doi": "10.5194/gmd-16-3611-2023",
+      "year": 2023
+    },
+    {
+      "title": "Advancing Convective Precipitation Nowcasting via 3D Polarimetric Radar Data and Physics‐Constrained Deep Learning Model",
+      "doi": "10.1029/2025gl120431",
+      "year": 2026
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "general-json-schema-validation-report-contract",
+  "type": "output-format",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T18:38:00+08:00",
+  "updated_at": "2026-09-21T18:38:00+08:00",
+  "description": "面向JSON格式结构化输出，定义报告交付契约的Schema规范，规定必填字段、类型约束、数组格式及验证标准，确保输出可解析、可校验、与任务身份一致。",
+  "tags": ["JSON-Schema", "validation", "report-contract", "output-format", "structured-output", "data-integrity"],
+  "aliases": ["JSON schema validation", "report schema", "structured output contract"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3632891",
+      "year": 2024
+    },
+    {
+      "title": "Think Inside the JSON: Reinforcement Strategy for Strict LLM Schema Adherence",
+      "doi": "10.48550/arXiv.2502.14905",
+      "year": 2025
+    },
+    {
+      "title": "PARSE: LLM Driven Schema Optimization for Reliable Entity Extraction",
+      "doi": "10.18653/v1/2025.emnlp-industry.184",
+      "year": 2025
+    },
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.14778/3773749.3773764",
+      "year": 2025
+    }
+  ]
+}

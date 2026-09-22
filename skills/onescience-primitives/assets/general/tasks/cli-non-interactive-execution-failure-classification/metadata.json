@@ -1,0 +1,25 @@
+{
+  "name": "cli-non-interactive-execution-failure-classification",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "面向 CLI 非交互执行场景，覆盖命令参数构造、超时处理、退出码分类与标准错误判读的知识",
+  "tags": ["CLI", "non-interactive", "exit-code", "timeout", "error-handling", "subprocess"],
+  "aliases": ["命令行执行", "退出码处理", "超时控制"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {"title": "Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing", "doi": "10.1109/tdsc.2023.3288876", "year": 2024},
+    {"title": "Implementing Centralized Error Handling for Software Systems through the Integration of Machine Learning Techniques", "doi": "10.33140/eoa.01.01.11", "year": 2023}
+  ],
+  "evidence_docs": [
+    {"title": "Python subprocess module documentation", "url": "https://docs.python.org/3/library/subprocess.html", "publisher": "Python Software Foundation", "version": "3.14", "accessed_at": "2026-09-21"}
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

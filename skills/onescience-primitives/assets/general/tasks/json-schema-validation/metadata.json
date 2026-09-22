@@ -1,0 +1,42 @@
+{
+  "name": "general-json-schema-validation",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T08:45:00Z",
+  "updated_at": "2026-09-21T08:45:00Z",
+  "description": "JSON Schema 报告交付契约验证任务：在自动化工作流中校验 JSON 输出是否符合预定义的 Schema 契约，确保必填字段存在、数据类型正确、数组结构一致、实体关系完整。适用于科研计算中需要验证 CLI 工具输出、API 响应、结构化报告等 JSON 格式产物的场景。核心方法包括：定义 JSON Schema 规范、执行字段存在性检查、类型一致性验证、嵌套结构深度校验。输出为验证通过/失败报告及详细的错误字段定位。",
+  "tags": ["JSON", "schema", "validation", "report-contract", "structured-output", "data-integrity", "field-check"],
+  "aliases": ["JSON Schema 校验", "报告契约验证", "输出格式检查"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约：规定必填字段、任务身份、数组约束及输出格式",
+  "evidence_papers": [
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026,
+      "venue": "Scientific Reports",
+      "authors": ["Saad Belefqih", "Mohammed Barchane", "Ahmed Zellou"]
+    },
+    {
+      "title": "Validation of Modern JSON Schema: Formalization and Complexity",
+      "doi": "10.1145/3632891",
+      "year": 2024,
+      "venue": "Proceedings of the ACM on Programming Languages",
+      "authors": ["Lyes Attouche", "Mohamed-Amine Baazizi", "Dario Colazzo"]
+    },
+    {
+      "title": "Adamant: a JSON schema-based metadata editor for research data management workflows",
+      "doi": "10.12688/f1000research.110875.2",
+      "year": 2022,
+      "venue": "F1000Research",
+      "authors": ["Ihda Chaerony Siffa", "Jan Schäfer", "Markus M. Becker"]
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

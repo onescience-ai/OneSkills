@@ -1,0 +1,20 @@
+{
+  "name": "cli-non-interactive-execution-fault-classification",
+  "type": "workflow-planning",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "面向CLI工具的非交互执行与故障分类方法论，覆盖命令参数、认证、沙箱、超时、退出码和标准错误判读，提供故障诊断和恢复策略",
+  "tags": ["CLI", "non-interactive", "fault-classification", "error-handling", "exit-code", "automation"],
+  "aliases": ["command-line-interface", "CLI-execution", "non-interactive-mode", "fault-diagnosis"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,44 @@
+{
+  "name": "general-cli-process-execution-fault-classification",
+  "type": "task",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T09:16:00Z",
+  "updated_at": "2026-09-21T09:16:00Z",
+  "description": "CLI 非交互式进程执行与故障分类：在无用户交互的自动化流水线中正确启动、监控和诊断 CLI 子进程，覆盖进程创建、参数传递、超时控制、退出码语义解读、stderr 捕获与错误恢复。适用于需要通过 subprocess 或 shell 脚本调用外部 CLI 工具（如归因分析器、科学计算 runner、数据处理管线）并要求可靠退出状态判读的场景。关键方法包括 Python subprocess.run() 与 Popen 接口、POSIX/Windows 退出码约定、指数退避重试策略、超时终止与信号处理。输出为结构化故障诊断结果（退出码+stderr+超时标志）。",
+  "tags": ["CLI", "subprocess", "exit-code", "fault-classification", "error-handling", "timeout", "automation", "pipeline"],
+  "aliases": ["命令行执行", "进程管理", "退出码诊断", "子进程故障"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI 非交互执行与故障分类知识",
+  "evidence_papers": [
+    {
+      "title": "Adaptive Resilience in API Polling Frameworks: A Hybrid Approach with Retry Strategies, Timeout Policies, Fallback Mechanisms, and Event-Driven Strategies",
+      "doi": "10.55041/ijsrem16747",
+      "year": 2024,
+      "venue": "International Journal of Scientific Research in Engineering and Management"
+    },
+    {
+      "title": "SimpleSecure-CLI: A PowerShell-Based Framework for Windows Security Hardening and Compliance Automation",
+      "doi": "10.55041/ijsrem50200",
+      "year": 2025,
+      "venue": "International Journal of Scientific Research in Engineering and Management"
+    },
+    {
+      "title": "Bumps in the Code: Error Handling During Software Development",
+      "doi": "10.1109/ms.2020.3024981",
+      "year": 2021,
+      "venue": "IEEE Software"
+    }
+  ],
+  "evidence_docs": [
+    {
+      "title": "Python subprocess module documentation",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "3.14.7",
+      "accessed_at": "2026-09-21"
+    }
+  ]
+}

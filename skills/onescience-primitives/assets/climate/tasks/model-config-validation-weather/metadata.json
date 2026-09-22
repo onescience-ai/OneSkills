@@ -1,0 +1,32 @@
+{
+  "name": "model-config-validation-weather",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T13:00:00Z",
+  "updated_at": "2026-09-21T13:00:00Z",
+  "description": "天气预报模型配置验证的具体内容和执行方法，包括模型版本确认、参数冻结、随机种子设置和最小干运行测试",
+  "tags": [
+    "model-configuration",
+    "dry-run",
+    "reproducibility",
+    "weather-model",
+    "validation",
+    "edge:workflow:convective-gust-nowcasting-workflow"
+  ],
+  "aliases": [
+    "模型配置验证",
+    "方法配置检查"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "模型配置验证的具体内容和执行方法",
+  "evidence_papers": [
+    {
+      "title": "Convective-gust nowcasting based on radar reflectivity and a deep learning algorithm",
+      "doi": "10.5194/gmd-16-3611-2023",
+      "year": 2023
+    }
+  ]
+}

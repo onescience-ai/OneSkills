@@ -1,0 +1,25 @@
+{
+  "name": "bio-workflow-planning-primitive-interpretation",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "workflow planning primitive的内容解读与应用方法，包括如何从primitive的metadata（source_papers、tags、tier）推断数据来源，如何从primitive的workflow_nodes提取标准步骤结构，如何从primitive的parameters获取默认配置；建立从primitive到执行决策的映射规则。",
+  "tags": ["workflow-planning", "primitive", "interpretation", "bio", "task"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "workflow planning primitive的内容解读与应用方法",
+  "evidence_papers": [
+    {
+      "title": "REVOLUTIONIZING ANTIBODY DISCOVERY INDUSTRY WITH HIGHLY EFFICIENT AND ACCURATE AI-BASED EPITOPE-SPECIFIC ANTIBODY DE NOVO DESIGN WORKFLOW",
+      "doi": "10.1093/abt/tbad014.024",
+      "year": 2023
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

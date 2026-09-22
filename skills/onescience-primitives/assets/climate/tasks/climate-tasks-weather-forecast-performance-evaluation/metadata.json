@@ -1,0 +1,23 @@
+{
+  "name": "climate-tasks-weather-forecast-performance-evaluation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22",
+  "updated_at": "2026-09-22",
+  "description": "气象时序预报模型性能评估标准，包括R2/Skill Score/RMSE等指标的合理范围、负R2的诊断方法、模型选择决策树和性能不达标时的回退策略",
+  "tags": ["skill score", "R2", "RMSE", "performance evaluation", "forecast verification"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象时序预报模型性能评估标准，包括R2/Skill Score/RMSE等指标的合理范围（R2>0为基本要求、Skill Score>0表示优于基线）、负R2的诊断方法、模型选择决策树和性能不达标时的回退策略",
+  "evidence_papers": [
+    {"title": "A method to improve binary forecast skill verification", "doi": "10.1016/j.mex.2024.103010", "year": 2024},
+    {"title": "How to Derive Skill from the Fractions Skill Score", "doi": "10.1175/mwr-d-24-0120.1", "year": 2025},
+    {"title": "The fractions skill score for ensemble forecast verification", "doi": "10.1002/qj.4824", "year": 2024}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

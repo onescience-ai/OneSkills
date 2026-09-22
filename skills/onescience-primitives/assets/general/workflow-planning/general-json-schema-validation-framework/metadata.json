@@ -1,0 +1,31 @@
+{
+  "name": "general-json-schema-validation-framework",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T10:00:00Z",
+  "updated_at": "2026-09-21T10:00:00Z",
+  "description": "面向需要验证从无模式文档数据库提取的JSON Schema质量的应用场景，提供系统化的验证框架，覆盖数据类型准确性、字段必需性、多类型支持、集合结构一致性、实体关系恢复和时间演化检测六个维度，确保提取的Schema在结构、语义和时间行为上的可靠性。",
+  "tags": ["JSON Schema", "validation", "schema evaluation", "data quality", "document-oriented databases"],
+  "aliases": ["SVEF", "Schema Validation and Evaluation Framework", "JSON Schema quality assessment"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Schema validation and evaluation framework for extracted schemas in JSON databases",
+      "doi": "10.1038/s41598-026-45554-6",
+      "year": 2026
+    },
+    {
+      "title": "Adamant: a JSON schema-based metadata editor for research data management workflows",
+      "doi": "10.12688/f1000research.110875.2",
+      "year": 2022
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

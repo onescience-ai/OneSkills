@@ -1,0 +1,24 @@
+{
+  "name": "climate-avhrr-modis-data-acquisition",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T12:49:00Z",
+  "updated_at": "2026-09-21T12:49:00Z",
+  "description": "AVHRR与MODIS卫星NDVI数据的获取任务，包括数据分发平台选择、数据格式识别、时空覆盖范围确认、版本信息查询和质量标志解读，用于支撑跨传感器NDVI时间序列融合重建的输入数据准备。",
+  "tags": ["AVHRR", "MODIS", "NDVI", "data acquisition", "NASA LAADS", "USGS EarthExplorer", "satellite data", "NetCDF4", "HDF5", "quality flags"],
+  "aliases": ["AVHRR data download", "MODIS data retrieval", "satellite NDVI data source"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "AVHRR与MODIS卫星数据的获取渠道、数据格式、时空覆盖范围、版本信息和质量标志含义",
+  "evidence_papers": [
+    {"title": "Intercomparison of AVHRR GIMMS3g, Terra MODIS, and SPOT-VGT NDVI Products over the Mongolian Plateau", "doi": "10.3390/rs11172030", "year": "2019"},
+    {"title": "Extending NDVI time series in Mongolia using spatial correlation analysis between AVHRR-GIMMS and MODIS TERRA data", "doi": "10.5564/mjgg.v62i46.4133", "year": "2025"},
+    {"title": "Bayesian MODIS NDVI back-prediction by intersensor calibration with AVHRR", "doi": "10.1016/j.rse.2016.09.002", "year": "2016"}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

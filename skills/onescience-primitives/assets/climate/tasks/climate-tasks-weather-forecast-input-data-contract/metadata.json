@@ -1,0 +1,23 @@
+{
+  "name": "climate-tasks-weather-forecast-input-data-contract",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-22",
+  "updated_at": "2026-09-22",
+  "description": "气象预报任务的输入数据契约规范，定义数据来源类型、资料截止时间、数据时点规则和数据血缘追溯要求，适用于所有earth域预报任务的输入预检",
+  "tags": ["weather forecast", "data contract", "cutoff time", "data lineage", "input validation"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "气象预报任务的输入数据契约规范，包括数据来源类型（ERA5、站点观测、再分析产品）、资料截止时间定义（观测签发时点）、数据时点规则（目标时刻之后的观测不得进入输入）和数据血缘追溯要求",
+  "evidence_papers": [
+    {"title": "Discussion on Quality Control Method of Environmental Meteorological Data", "doi": "10.54097/k8djwf68", "year": 2024},
+    {"title": "A Meteorological Data Quality Control Framework for Tea Plantations Using Association Rules Mined from ERA5 Reanalysis Data", "doi": "10.3390/agriculture16020226", "year": 2026},
+    {"title": "Challenging problems of quality assurance and quality control (QA/QC) of meteorological time series data", "doi": "10.1007/s00477-021-02106-w", "year": 2021}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

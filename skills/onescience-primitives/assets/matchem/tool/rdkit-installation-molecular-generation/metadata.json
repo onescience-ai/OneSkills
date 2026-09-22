@@ -1,0 +1,28 @@
+{
+  "name": "rdkit-installation-molecular-generation",
+  "type": "tool",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "rdkit在分子生成工作流中的安装、依赖管理与版本要求。涵盖通过conda/pip安装、离线环境安装方案、版本兼容性检查，以及在BoKDiff等分子生成任务中的核心作用。",
+  "tags": ["rdkit", "installation", "dependency", "molecular-generation", "conda", "pip", "cheminformatics"],
+  "aliases": ["rdkit-pypi", "rdkit-conda"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "rdkit在分子生成工作流中的作用和依赖关系；rdkit的版本要求和安装方式；离线环境下rdkit的安装方案",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "BoKDiff GitHub Repository",
+      "url": "https://github.com/khodabandeh-ali/BoKDiff",
+      "publisher": "GitHub",
+      "version": "main branch",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

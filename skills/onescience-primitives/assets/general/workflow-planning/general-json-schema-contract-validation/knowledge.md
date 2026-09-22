@@ -118,7 +118,9 @@
 ## 补充证据（开源文档/用户自有，可选）
 [D1] JSON Schema Specification, JSON Schema Organization, Draft 2020-12, URL: https://json-schema.org/specification（accessed_at，权威规范）
 [D2] Understanding JSON Schema, JSON Schema Organization, 2024, URL: https://json-schema.org/understanding-json-schema/（accessed_at，权威文档）
+[D3] JSON Schema - Specification, JSON Schema organization, version 2020-12, URL: https://json-schema.org/specification.html（accessed 2026-09-21，权威规范，包含完整词汇表与元 Schema）
 
 ## 证据来源
 [1] JSON Schema Organization. JSON Schema Specification. https://json-schema.org/specification
 [2] JSON Schema Organization. Understanding JSON Schema. https://json-schema.org/understanding-json-schema/
+[3] 基于任务279归因报告中的JSON Schema报告交付契约故障案例总结（新增）

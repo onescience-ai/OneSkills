@@ -1,0 +1,24 @@
+{
+  "name": "onescience-skill-invocation-orchestration",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "规范化的OneScience技能调用流程与编排方法论，覆盖executor技能的输入输出契约验证、调用时序、异常恢复和结果归集，适用于任何需要调用多个OneScience技能的复合科研任务。",
+  "tags": ["onescience", "skill invocation", "orchestration", "workflow", "executor", "contract", "input-output", "exception recovery"],
+  "aliases": ["skill dispatch", "executor orchestration", "技能调用"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "onescience技能的调用规范、输入输出契约、技能选择依据",
+  "evidence_papers": [
+    {"title": "DIVE-to-design: how a multi-agent workflow converts figure-centric literature into materials design data", "doi": "10.20517/aiagent.2026.07", "year": 2026},
+    {"title": "A closed-loop universal catalyst design workflow ready for AI agents", "doi": "10.20517/aiagent.2026.12", "year": 2026},
+    {"title": "A Multi-Agent Workflow Orchestration System for Complex Long-Cycle Tasks", "doi": "10.22399/ijajems.2026.001", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

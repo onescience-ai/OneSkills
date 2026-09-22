@@ -1,0 +1,47 @@
+{
+  "name": "json-schema-error-reporting-specification",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T19:53:00Z",
+  "updated_at": "2026-09-21T19:53:00Z",
+  "description": "面向JSON Schema验证的错误报告规范，定义错误信息格式、错误分类、错误位置报告和用户友好错误消息生成，确保验证错误可诊断、可修复。",
+  "tags": [
+    "JSON",
+    "Schema",
+    "validation",
+    "error-reporting",
+    "diagnostics",
+    "user-friendly",
+    "edge:task:cli-noninteractive-authentication-sandbox"
+  ],
+  "aliases": [
+    "JSON Schema error messages",
+    "validation error reporting",
+    "schema validation diagnostics"
+  ],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema报告交付契约",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "JSON Schema Official Documentation",
+      "url": "https://json-schema.org/",
+      "publisher": "JSON Schema Organization",
+      "version": "2020-12",
+      "accessed_at": "2026-09-21T19:53:00Z"
+    },
+    {
+      "title": "RFC 8259 - The JavaScript Object Notation (JSON) Data Interchange Format",
+      "url": "https://www.rfc-editor.org/rfc/rfc8259",
+      "publisher": "IETF",
+      "version": "2017",
+      "accessed_at": "2026-09-21T19:53:00Z"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

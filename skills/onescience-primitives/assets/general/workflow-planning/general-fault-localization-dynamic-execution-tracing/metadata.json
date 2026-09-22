@@ -1,0 +1,23 @@
+{
+  "name": "general-fault-localization-dynamic-execution-tracing",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T10:11:00Z",
+  "updated_at": "2026-09-21T10:11:00Z",
+  "description": "面向程序故障定位场景，提供基于动态执行追踪的故障定位方法论。适用于需要通过测试用例覆盖率信息定位程序中可疑语句的研究与工程场景。核心方法包括：覆盖率矩阵构建、错误向量记录、嫌疑值评估算法（SVE）、多度量排名策略。输出为按嫌疑值排序的可疑语句列表。",
+  "tags": ["fault-localization", "dynamic-execution", "coverage-matrix", "suspicion-value", "spectrum-based", "Dstar", "EXAM", "RImp", "test-suite", "debugging"],
+  "aliases": ["动态执行追踪故障定位", "基于频谱的故障定位", "spectrum-based fault localization"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识中的动态执行追踪故障定位方法论",
+  "evidence_papers": [
+    {"title": "Detraque: Dynamic execution tracing techniques for automatic fault localization of hardware design code", "doi": "10.1371/journal.pone.0274515", "year": 2022},
+    {"title": "Testing Error Handling Code With Software Fault Injection and Error-Coverage-Guided Fuzzing", "doi": "10.1109/tdsc.2023.3288876", "year": 2024}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

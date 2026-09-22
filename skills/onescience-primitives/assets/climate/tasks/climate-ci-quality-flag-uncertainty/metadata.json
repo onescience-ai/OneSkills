@@ -1,0 +1,26 @@
+{
+  "name": "climate-ci-quality-flag-uncertainty",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "对流初生（CI）检测产品的质量标志生成和不确定性估计方法，包括数据有效性、缺测、可疑状态标志以及观测误差、算法误差、代表性误差的量化。",
+  "tags": ["quality-flag", "uncertainty", "error-estimation", "metadata", "data-quality", "convection-initiation"],
+  "aliases": ["CI质量标志", "CI不确定性估计", "对流初生产品质量"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "质量标志的定义和生成方法；不确定性估计的常用技术；产品元数据的完整要求",
+  "evidence_papers": [
+    {"title": "A Novel Algorithm for Detection of Convective Initiation Using Multi-Source Satellite Data", "doi": "10.1007/s12524-025-01638-0", "year": 2025},
+    {"title": "Backward Adaptive Brightness Temperature Threshold Technique (BAB3T)", "doi": "10.3390/rs12203363", "year": 2020},
+    {"title": "Bayesian Deep Learning for Convective Initiation Nowcasting Uncertainty Estimation", "doi": "10.1175/AIES-D-25-0098.1", "year": 2026},
+    {"title": "Probabilistic Convective Initiation Nowcasting Using Himawari-8 AHI with Explainable Deep Learning", "doi": "10.1175/MWR-D-22-0165.1", "year": 2023},
+    {"title": "Cloud-Top Cooling Rate Based Rapidly Developing Convection Detection", "doi": "10.3390/aat9560", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

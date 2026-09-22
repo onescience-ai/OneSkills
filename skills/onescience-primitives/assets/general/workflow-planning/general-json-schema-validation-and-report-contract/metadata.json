@@ -1,0 +1,31 @@
+{
+  "name": "general-json-schema-validation-and-report-contract",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-09-22T00:00:00Z",
+  "updated_at": "2026-09-22T04:00:00Z",
+  "description": "面向 JSON Schema 报告交付契约的校验与自动化验证，提供必填字段、任务身份、数组约束及输出格式的通用方法，确保报告符合预定义 Schema 并支持自动化校验。",
+  "tags": ["json-schema", "validation", "report-contract", "automated-verification", "data-integrity"],
+  "aliases": [],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "JSON Schema 报告交付契约",
+  "evidence_papers": [
+    {
+      "title": "Blaze: Compiling JSON Schema for 10x Faster Validation",
+      "doi": "10.14778/3773749.3773764",
+      "year": "2025"
+    },
+    {
+      "title": "Improving Api Test Accuracy through Schema Validation and Real-time Json Assertions in Jenkins Pipelines",
+      "doi": "10.71097/ijsat.v16.i3.10656",
+      "year": "2025"
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

@@ -1,0 +1,24 @@
+{
+  "name": "onescience-expert-planning-fusion",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "Orchestrator对专家技能（onescience-research-workflow、onescience-data-profile等）的调用规范，覆盖专家规划结果的收集、融合与决策流程，确保每个命中的专家技能都被实际调用并获取planner_proposal。",
+  "tags": ["onescience", "expert planning", "fusion", "planner_proposal", "orchestrator", "research-workflow", "data-profile"],
+  "aliases": ["expert recall", "planner fusion", "专家规划融合"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "onescience-orchestrator对专家技能的调用规范、专家规划结果的收集和融合流程",
+  "evidence_papers": [
+    {"title": "TAPE: A multi-agent framework for task-adaptive planning and execution in resource-constrained environments", "doi": "10.1016/j.eswa.2025.129423", "year": 2025},
+    {"title": "A multi-agent LLM framework with Bayesian fusion and safety guardrails", "doi": "10.1016/j.eswa.2026.132241", "year": 2026},
+    {"title": "A universal gating framework for multi-expert fusion in heterogeneous multimodal systems", "doi": "10.1038/s41598-026-00123-4", "year": 2026}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

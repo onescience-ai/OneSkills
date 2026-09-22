@@ -1,0 +1,35 @@
+{
+  "name": "general-cli-fault-classification-non-interactive",
+  "type": "workflow-planning",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "面向命令行接口非交互执行场景的故障分类与诊断方法论，覆盖退出码语义、超时检测、沙箱隔离、标准错误判读及恢复策略，适用于任何CLI工具的自动化执行与故障定位。",
+  "tags": ["CLI", "fault-classification", "exit-code", "non-interactive", "error-handling", "timeout", "diagnosis", "POSIX"],
+  "aliases": ["CLI故障分类", "命令行错误诊断", "非交互执行故障", "退出码分类"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "CLI非交互执行与故障分类知识",
+  "evidence_papers": [],
+  "evidence_docs": [
+    {
+      "title": "The Open Group Base Specifications Issue 7 - Shell Command Language (Exit Status)",
+      "url": "https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html",
+      "publisher": "IEEE/The Open Group",
+      "version": "POSIX.1-2017 (IEEE Std 1003.1-2017)",
+      "accessed_at": "2026-09-21"
+    },
+    {
+      "title": "Python subprocess module documentation - Exit code handling",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "version": "Python 3.x",
+      "accessed_at": "2026-09-21"
+    }
+  ],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

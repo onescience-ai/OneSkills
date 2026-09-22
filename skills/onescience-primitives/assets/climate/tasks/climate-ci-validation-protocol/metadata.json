@@ -1,0 +1,26 @@
+{
+  "name": "climate-ci-validation-protocol",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "对流初生（CI）检测结果的独立验证协议设计，包括验证资料选择、POD/FAR/CSI指标计算方法和验证报告生成规范。",
+  "tags": ["validation", "verification", "POD", "FAR", "CSI", "independent-data", "radar", "convection-initiation"],
+  "aliases": ["CI验证协议", "CI检测评估", "对流初生验证方法"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "独立验证资料的类型和获取方法；验证协议的设计原则；POD/FAR/CSI等指标的计算方法",
+  "evidence_papers": [
+    {"title": "Observing the pre-convective environment and convection initiation with Doppler lidar and radar", "doi": "10.1127/metz/2021-0061", "year": 2022},
+    {"title": "Convection Initiation over the Eastern Arabian Peninsula", "doi": "10.1127/metz/2020/0965", "year": 2020},
+    {"title": "Evaluating Convective Initiation in High-Resolution Numerical Weather Prediction Models", "doi": "10.1175/MWR-D-20-0384.1", "year": 2021},
+    {"title": "Simultaneous Assimilation of Planetary Boundary Layer Observations from Radar and Satellite", "doi": "10.1175/MWR-D-22-0290.1", "year": 2023},
+    {"title": "A Novel Framework of Detecting Convective Initiation Combining Automated Sampling and Machine Learning", "doi": "10.3390/rs11172057", "year": 2019}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

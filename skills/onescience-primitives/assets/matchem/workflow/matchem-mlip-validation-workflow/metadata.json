@@ -1,0 +1,31 @@
+{
+  "name": "matchem-mlip-validation-workflow",
+  "type": "workflow",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21",
+  "updated_at": "2026-09-21",
+  "description": "机器学习原子势（MLIP）验证工作流，包括数据审计、模型训练、验证评估和分子动力学验证四个标准步骤，用于验证层状材料可迁移机器学习原子势的准确性和可靠性",
+  "tags": ["machine-learning", "interatomic-potential", "validation", "workflow", "layered-materials", "molecular-dynamics"],
+  "aliases": ["MLIP验证", "机器学习势验证", "层状材料MLIP"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "层状材料可迁移机器学习原子势验证的标准工作流步骤定义",
+  "evidence_papers": [
+    {
+      "title": "Crash testing machine learning force fields for molecules, materials, and interfaces: molecular dynamics in the TEA challenge 2023",
+      "doi": "10.1039/d4sc06530a",
+      "year": 2025
+    },
+    {
+      "title": "Machine learning interatomic potential with DFT accuracy for general grain boundaries in α-Fe",
+      "doi": "10.1038/s41524-024-01451-y",
+      "year": 2024
+    }
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

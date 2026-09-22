@@ -2,17 +2,21 @@
   "name": "porous-materials-data-acquisition",
   "type": "task",
   "domain": "matchem",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "visibility": "public",
   "created_at": "2026-09-21",
-  "updated_at": "2026-09-21",
-  "description": "从公开数据库（Materials Project、ICSD、QMOF、COD、OQMD 等）获取真实多孔材料数据集的任务级知识，涵盖数据库选型、数据格式规范、质量要求、下载脚本和数据清洗流程，确保数据来源可追溯且符合基础模型训练需求。",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "从公开数据库（Materials Project、ICSD、QMOF、CoRE MOF、CSD MOF、hMOF、PrISMa等）获取真实多孔材料数据集的任务级知识，涵盖数据库选型、数据格式规范、质量要求、下载脚本和数据清洗流程，确保数据来源可追溯且符合基础模型训练需求。",
   "tags": [
     "porous-materials",
     "data-acquisition",
     "Materials-Project",
     "ICSD",
     "QMOF",
+    "CoRE-MOF",
+    "CSD-MOF",
+    "hMOF",
+    "PrISMa",
     "database",
     "dataset",
     "data-quality"
@@ -41,10 +45,30 @@
       "title": "Multidisciplinary database of permeability of fault zones and surrounding protolith rocks at world-wide sites",
       "doi": "10.1038/s41597-020-0435-5",
       "year": 2020
+    },
+    {
+      "title": "Materials Informatics with PoreBlazer v4.0 and the CSD MOF Database",
+      "doi": "10.1021/acs.chemmater.0c03575",
+      "year": 2020
+    },
+    {
+      "title": "A Database of Porous Rigid Amorphous Materials",
+      "doi": "10.1021/acs.chemmater.0c03057",
+      "year": 2020
+    },
+    {
+      "title": "Fast process-level screening of metal-organic frameworks for adsorption-based gas separation",
+      "doi": "10.1039/d6me00066e",
+      "year": 2025
+    },
+    {
+      "title": "Benchmark Maturity in MOF Adsorption Machine Learning",
+      "doi": "10.1039/d6dd00123a",
+      "year": 2026
     }
   ],
   "evidence_docs": [],
   "evidence_user": [],
-  "merged_batches": [],
+  "merged_batches": ["2026-09-21-harvest-372"],
   "conflicts": []
 }

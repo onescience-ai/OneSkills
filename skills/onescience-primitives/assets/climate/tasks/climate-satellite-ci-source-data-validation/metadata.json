@@ -1,0 +1,26 @@
+{
+  "name": "climate-satellite-ci-source-data-validation",
+  "type": "task",
+  "domain": "climate",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "静止气象卫星源观测资料（FY-4A/AGRI、Himawari-8/AHI等）的标准格式识别、获取渠道验证和资料完整性判断，确保CI检测任务的输入数据可追溯且满足业务约束。",
+  "tags": ["satellite", "FY-4A", "AGRI", "Himawari-8", "AHI", "data-validation", "source-data", "convection-initiation"],
+  "aliases": ["FY-4A数据验证", "Himawari-8数据验证", "卫星数据格式检查"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "静止气象卫星源观测资料的标准格式、获取渠道和验证协议；对流初生标签的生成方法和独立验证要求；数据截止时间和资料完整性的判断标准",
+  "evidence_papers": [
+    {"title": "Radiometric Performance Evaluation of FY-4A/AGRI Based on Aqua/MODIS", "doi": "10.3390/s21072472", "year": 2021},
+    {"title": "Validation of FY-4A AGRI layer precipitable water products using radiosonde data", "doi": "10.1016/j.atmosres.2021.105832", "year": 2021},
+    {"title": "CACM-Net: Daytime Cloud Mask for AGRI Onboard the FY-4A Satellite", "doi": "10.3390/rs16142660", "year": 2024},
+    {"title": "Retrieval of cloud fraction using machine learning algorithms based on FY-4A AGRI", "doi": "10.5194/amt-17-1-2024", "year": 2024},
+    {"title": "Impact of assimilating atmospheric motion vectors from Himawari-8", "doi": "10.1016/j.atmosres.2022.106550", "year": 2023}
+  ],
+  "evidence_docs": [],
+  "evidence_user": [],
+  "merged_batches": [],
+  "conflicts": []
+}

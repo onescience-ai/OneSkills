@@ -1,0 +1,20 @@
+{
+  "name": "bio-protein-data-leakage-prevention",
+  "type": "task",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-21T00:00:00Z",
+  "description": "蛋白功能预测中数据泄漏的检测方法（accession-level/sequence-level分割）和危害（记忆化vs泛化），确保训练/测试分割无accession重叠",
+  "tags": ["protein", "data-leakage", "train-test-split", "accession", "generalization"],
+  "aliases": ["数据泄漏", "训练测试分割", "accession分割"],
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "蛋白功能预测中数据泄漏的检测方法和危害",
+  "evidence_papers": [
+    {"title": "Inflation of test accuracy due to data leakage in deep learning-based classification of OCT images", "doi": "10.1038/s41597-022-01618-6", "year": 2022}
+  ],
+  "evidence_docs": [],
+  "evidence_user": []
+}
