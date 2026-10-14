@@ -1,0 +1,55 @@
+{
+  "_schema": "model_contract/v1",
+  "_note": "在【建模之前】填写。检查器只核对几何是否满足这里的声明，不替使用者猜意图。用不到的条目删掉即可；species 的键名必须是化学式（Hill 式，个数为 1 省略），例如 H2O / CO2 / NH3 / K。",
+
+  "system": "一句话描述体系，例如: CO2 + K + H2O on Cu(111)",
+
+  "framework": {
+    "elements": ["Cu"],
+    "_note": "载体骨架元素。必须声明；否则吸附的碱金属/离子会被并进骨架，无法作为独立物种计数。"
+  },
+
+  "species": {
+    "H2O": {
+      "count": 18,
+      "role": "solvent",
+      "solvent_model": "liquid-film",
+      "_solvent_model": "liquid-film | monolayer | none。liquid-film 会按体相密度卡门限；monolayer 只报告密度，但需同时给 target_coverage。",
+      "bulk_number_density": 0.033429,
+      "_bulk_number_density": "可选，Å^-3。不填则查 scripts/elements.py 的 LIQUID_NUMBER_DENSITY。",
+      "density_ratio_range": [0.75, 1.35],
+      "hbond_per_molecule_range": [1.0, 4.5],
+      "hbond_accept_max": 2,
+      "target_coverage": "仅 solvent_model=monolayer 时必填，例如 \"1.0 ML\"",
+      "sink_tol": 0.2
+    },
+
+    "CO2": {
+      "count": 1,
+      "role": "adsorbate",
+      "mode": "physisorbed",
+      "_mode": "physisorbed | chemisorbed | any",
+      "min_metal_contact": null,
+      "_min_metal_contact": "可选，Å。显式声明最稳。留 null 且 mode=physisorbed 时按 0.90*(r_vdw_金属+r_vdw_近端原子) 推导；chemisorbed 必须显式给值。",
+      "physisorbed_vdw_factor": 0.9
+    },
+
+    "K": {
+      "count": 1,
+      "role": "ion",
+      "coordination_range": [4, 8],
+      "_coordination_range": "可选。不填则只报告配位数。",
+      "coordination_cutoff": null,
+      "_coordination_cutoff": "可选，Å。留 null 时按 1.25*(r_cov_离子+r_cov_受体) 推导。"
+    }
+  },
+
+  "slab": {
+    "layers": 4,
+    "layer_tol": 0.3,
+    "fix_bottom_layers": 2,
+    "vacuum_min": 12.0
+  },
+
+  "notes": "把来源、参考结构、已知近似写在这里；交付报告必须原样引用本文件（含 sha256）。"
+}
