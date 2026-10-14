@@ -1,10 +1,10 @@
 ---
-name: dft-model-gate
+name: onescience-dft-model-gate
 description: 构建/交付 DFT/VASP 初始模型（slab、吸附、溶剂化、界面）前必用：先写 model_contract.json 再跑硬性验收门限，未通过不得提交。
 type: executor
 ---
 
-# DFT 模型就绪门限（dft-model-gate）
+# DFT 模型就绪门限（onescience-dft-model-gate）
 
 ## 这个技能解决什么
 
@@ -63,7 +63,7 @@ type: executor
 症状的根因。用随附的通用排布器：
 
 ```python
-import sys; sys.path.insert(0, ".opencode/skills/dft-model-gate/scripts")
+import sys; sys.path.insert(0, ".opencode/skills/onescience-dft-model-gate/scripts")
 from hbond_pack import pack_solvent, WATER, hex_sites
 
 sites = [(x, y, z) for z in layer_z for (x, y) in hex_sites(cell, n_per_layer)]
@@ -73,16 +73,16 @@ mols = pack_solvent(cell, sites, WATER, existing=[(sym, pos), ...],
 
 它做三件朴素写法不做的事：**全局供体-受体匹配**（每受体接受数有上限、禁止互相双投）、
 **解析取向对准 + 随机搜索**、**与门限共用同一套非键合下限**。
-自测：`python3 .opencode/skills/dft-model-gate/scripts/hbond_pack.py --selftest`。
+自测：`python3 .opencode/skills/onescience-dft-model-gate/scripts/hbond_pack.py --selftest`。
 
 ### 3. 跑门限（在**最终交付的那份文件**上）
 
 ```bash
 cd <项目根>
-python3 .opencode/skills/dft-model-gate/scripts/check_geometry.py \
+python3 .opencode/skills/onescience-dft-model-gate/scripts/check_geometry.py \
         structures/POSCAR --contract model_contract.json --json /tmp/gate.json
 
-python3 .opencode/skills/dft-model-gate/scripts/check_vasp_inputs.py \
+python3 .opencode/skills/onescience-dft-model-gate/scripts/check_vasp_inputs.py \
         --poscar structures/POSCAR --potcar vasp_templates/POTCAR \
         --incar vasp_templates/INCAR --kpoints vasp_templates/KPOINTS
 ```
