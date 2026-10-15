@@ -1,0 +1,33 @@
+# CO2 + K + H2O on Cu(111) -- geometry relaxation template
+System = CO2_K_H2O_Cu111
+
+# --- electronic structure -------------------------------------------------
+ENCUT   = 520       # >= 1.3 * max ENMAX (C,O = 400 eV), computed from POTCAR
+PREC    = Accurate
+EDIFF   = 1E-5
+ALGO    = Normal
+NELM    = 120
+LREAL   = Auto
+LMAXMIX = 4         # d-electron (Cu) charge mixing
+ISPIN   = 1
+
+# --- metal smearing -------------------------------------------------------
+ISMEAR  = 1
+SIGMA   = 0.2
+
+# --- dispersion + dipole correction --------------------------------------
+# physisorbed CO2 / water on a metal slab: dispersion is essential
+IVDW    = 11
+LDIPOL  = .TRUE.
+IDIPOL  = 3
+
+# --- ionic relaxation -----------------------------------------------------
+IBRION  = 2
+ISIF    = 2         # relax ions only, keep the cell fixed
+NSW     = 300
+EDIFFG  = -0.03
+ISYM    = 0         # explicit disordered solvent/adsorbate
+
+# --- output ---------------------------------------------------------------
+LWAVE   = .FALSE.
+LCHARG  = .FALSE.

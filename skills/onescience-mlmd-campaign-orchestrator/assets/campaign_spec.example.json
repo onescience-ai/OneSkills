@@ -1,0 +1,97 @@
+{
+  "_schema": "mlmd-campaign/v1",
+  "_note": "由用户一句话需求归一化而来；agent 先据此与用户确认，再逐阶段执行。字段可被用户覆盖。",
+
+  "campaign": "co2_cu111_water_k_neutral_mlmd",
+  "goal": "把皮秒级 AIMD 推到纳秒级 MLMD，用于研究 CO2 在 Cu(111)/水/K+ 界面的动力学",
+
+  "system": {
+    "adsorbate": "CO2",
+    "metal": "Cu",
+    "hkl": 111,
+    "solvent": "H2O",
+    "ion": "K",
+    "natoms": 188,
+    "framework_elements": ["Cu"],
+    "elements": ["H", "C", "O", "K", "Cu"]
+  },
+
+  "slab": {
+    "layers": 4,
+    "fix_bottom_layers": 2,
+    "fixed_atoms_expected": 32,
+    "vacuum_min": 15.0
+  },
+
+  "electrochemistry": {
+    "mode": "neutral",
+    "_mode": "neutral | constant-potential",
+    "explicit_solvent": true,
+    "implicit_solvent": false,
+    "constant_potential": false
+  },
+
+  "dft_relax": {
+    "engine": "vasp",
+    "functional": "RPBE",
+    "dispersion": "IVDW=11",
+    "encut_eV": 400,
+    "ediff": 1e-5,
+    "ediffg_eVA": -0.03,
+    "isif": 2
+  },
+
+  "aimd": {
+    "engine": "vasp",
+    "ensemble": "NVT",
+    "thermostat": "Nose-Hoover",
+    "temperature_K": 300,
+    "timestep_fs": 1.0,
+    "duration_ps": 6.0,
+    "velocity_init": "fresh-MB",
+    "_velocity_init": "fresh-MB（截断起始文件的全零速度块）| continue（续跑）"
+  },
+
+  "dataset": {
+    "format": "extxyz",
+    "keys": {"energy": "REF_energy", "forces": "REF_forces", "stress": "REF_stress"},
+    "include_stress": false,
+    "mask_frozen_forces": true,
+    "split": {
+      "policy": "time-block",
+      "block_frames": 100,
+      "shuffle": false,
+      "ratios": {"train": 0.8, "valid": 0.1, "test": 0.1}
+    }
+  },
+
+  "train": {
+    "engine": "onescience-mace",
+    "r_max": 6.0,
+    "num_interactions": 2,
+    "hidden_irreps": "128x0e + 128x1o",
+    "E0s": "average",
+    "batch_size": 2,
+    "max_num_epochs": 500,
+    "forces_weight": 1000,
+    "energy_weight": 10,
+    "acceptance": {"forces_rmse_meV_per_A": 10.0}
+  },
+
+  "export": {
+    "format": "libtorch",
+    "dtype": "float64",
+    "elements": ["H", "C", "O", "K", "Cu"]
+  },
+
+  "long_md": {
+    "engine": "lammps",
+    "ensemble": "NVT",
+    "temperature_K": 300,
+    "timestep_fs": 1.0,
+    "target_duration_ns": 1.0
+  },
+
+  "runsite": "from onescience.json (不写死)",
+  "work_root": "<site remote_work_dir>/co2_cu111_mlmd"
+}

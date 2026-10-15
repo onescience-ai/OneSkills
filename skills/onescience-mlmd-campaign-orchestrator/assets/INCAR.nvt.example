@@ -1,0 +1,34 @@
+# AIMD NVT (Nose-Hoover) — 300 K, 1 fs. 电子结构设置沿用上一阶段(不在此处改物理参数)
+SYSTEM = interface_AIMD_NVT
+
+# --- electronic (same as the relax run) ---
+PREC    = Normal
+ENCUT   = 400
+ALGO    = Fast
+NELM    = 80
+EDIFF   = 1E-4
+ISMEAR  = 1
+SIGMA   = 0.2
+LREAL   = Auto
+ISPIN   = 1
+GGA     = RP
+
+# --- MD: NVT, Nose-Hoover ---
+IBRION  = 0
+MDALGO  = 2
+ISIF    = 2
+SMASS   = -3
+TEBEG   = 300
+TEEND   = 300
+NSW     = 1000      # duration(ps)/POTIM(fs); 1000 x 1 fs = 1 ps
+POTIM   = 1.0
+
+# --- dispersion (same as the relax run) ---
+IVDW    = 11
+
+# --- output / parallel ---
+ISYM    = 0
+LWAVE   = .FALSE.
+LCHARG  = .FALSE.
+NCORE   = 8
+# NBLOCK = 1

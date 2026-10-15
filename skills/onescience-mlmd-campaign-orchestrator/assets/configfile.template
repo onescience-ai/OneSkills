@@ -1,0 +1,17 @@
+# Intel MPI launcher configfile (one MPI rank per accelerator)
+# NOTE: the "-genv ..." globals must be on the SAME line as the first
+#       "-host ... -n 1 <exe>" entry. A newline in between -> exit 127
+#       "[mpiexec] no executable specified".
+#
+# Correct generation (bash), writing the globals WITHOUT a trailing newline:
+#   printf '%s' "-genv OMP_NUM_THREADS <OMP> " > config.$SLURM_JOB_ID
+#   for host in $(scontrol show hostnames "$SLURM_NODELIST"); do
+#     for ((dev=0; dev<N; dev++)); do
+#       echo "-host ${host} -env HIP_VISIBLE_DEVICES ${dev} -n 1 <exe>" >> config.$SLURM_JOB_ID
+#     done
+#   done
+#   mpirun -configfile config.$SLURM_JOB_ID
+#
+# Resulting file (illustration):
+-genv OMP_NUM_THREADS 8 -host node001 -env HIP_VISIBLE_DEVICES 0 -n 1 vasp_std
+-host node001 -env HIP_VISIBLE_DEVICES 1 -n 1 vasp_std

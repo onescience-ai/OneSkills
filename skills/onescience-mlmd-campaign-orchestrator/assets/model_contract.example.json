@@ -1,0 +1,35 @@
+{
+  "_schema": "model_contract/v1",
+  "system": "CO2 + K + H2O on Cu(111) initial model",
+  "framework": { "elements": ["Cu"] },
+  "species": {
+    "H2O": {
+      "count": 16,
+      "role": "solvent",
+      "solvent_model": "liquid-film",
+      "bulk_number_density": 0.033429,
+      "density_ratio_range": [0.75, 1.35],
+      "hbond_per_molecule_range": [1.0, 4.5],
+      "hbond_accept_max": 2,
+      "sink_tol": 0.20
+    },
+    "CO2": {
+      "count": 1,
+      "role": "adsorbate",
+      "mode": "physisorbed",
+      "physisorbed_vdw_factor": 0.90
+    },
+    "K": {
+      "count": 1,
+      "role": "ion",
+      "coordination_range": [4, 8]
+    }
+  },
+  "slab": {
+    "layers": 4,
+    "layer_tol": 0.3,
+    "fix_bottom_layers": 2,
+    "vacuum_min": 12.0
+  },
+  "notes": "Cu fcc a=3.615, 4x4x4 slab. Explicit water film: 2 quasi-planar layers, 16 molecules total (7 in the CO2/K layer + 9 above), ~0.92x bulk water density. CO2 physisorbed flat at the metal/water interface (C-Cu 3.45 A). K sits in a first-layer water vacancy with 7 O neighbours within 3.36 A. Bottom 2 Cu layers fixed (F F F)."
+}
