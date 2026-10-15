@@ -626,6 +626,40 @@ def contract_gates(P, G, pc, contract, cfg, R):
             problems.append("固定的不是最底部连续金属层: 固定 %s vs 金属层 %s" % (zf, metal_z))
     R.add("C4 固定原子", "FAIL" if problems else "PASS",
           detail + (" | " + "; ".join(problems) if problems else ""))
+
+    # ---- C5 POSCAR 元素顺序 ------------------------------------------------
+    want_order = contract.get("output_species_order")
+    if want_order:
+        got_order = P.get("order") or []
+        if list(got_order) != list(want_order):
+            R.add("C5 元素顺序", "FAIL",
+                  "POSCAR 元素顺序 %s 与契约声明 %s 不一致；VASP 按文件顺序读物种，"
+                  "顺序错位会让 POTCAR 拼接与后处理链静默错配" % (got_order, want_order))
+        else:
+            R.add("C5 元素顺序", "PASS", "POSCAR 元素顺序与契约一致: %s" % got_order)
+
+    # ---- C6 溶剂层顶无漂浮层 ------------------------------------------------
+    # 基准只禁止水层顶再叠金属/氧化物"层"；契约声明 role=ion 的水合离子
+    # （如 K+）合法地住在水层内，不计入漂浮层。
+    solv_idx, ion_idx = [], []
+    for name2, spec2 in declared.items():
+        role2 = spec2.get("role")
+        if role2 not in ("solvent", "ion"):
+            continue
+        for f in pc.fragments:
+            if f["formula"] == name2:
+                (solv_idx if role2 == "solvent" else ion_idx).extend(f["idx"])
+    if solv_idx and getattr(pc.g, "is_slab", False):
+        axis = getattr(pc.g, "vacuum", {}).get("axis", 2)
+        ztop_solv = max(pos[i][axis] for i in solv_idx)
+        exempt = set(solv_idx) | set(ion_idx)
+        floaters = [i for i in range(n) if i not in exempt
+                    and (E.is_metal(syms[i]) or syms[i] == "O")
+                    and pos[i][axis] > ztop_solv - 0.5]
+        R.add("C6 顶部无漂浮层", "FAIL" if floaters else "PASS",
+              ("%d 个金属/氧原子漂在溶剂层顶 %.3f Å 之上: %s"
+               % (len(floaters), ztop_solv, [(syms[i], i, round(pos[i][axis], 2)) for i in floaters[:8]]))
+              if floaters else "溶剂层顶 %.3f Å 之上无金属/氧化物层，顶部为真空" % ztop_solv)
     return stats
 
 
@@ -733,6 +767,52 @@ def _solvent_gate(name, spec, targets, P, G, pc, cfg, R, stats):
               ("%d 个溶剂原子低于金属顶层 %.3f Å: %s" % (len(deep), ztop,
                                                      [(pc.syms[i], i, round(pc.g.pos[i][axis], 3)) for i in deep[:8]]))
               if deep else "全部溶剂原子不低于金属顶层 %.3f Å" % ztop)
+
+    # ---- 溶剂子层数与面内均匀性（禁止用减层凑密度） ----------------------
+    layers_min = spec.get("layers_min")
+    layer_tol = spec.get("layer_tol", 1.0)
+    if getattr(pc.g, "is_slab", False) and heavy:
+        zs = sorted(pc.g.pos[i][axis] for i in heavy)
+        layers = cluster_1d(zs, layer_tol)
+        assign = {}
+        for i in heavy:
+            z = pc.g.pos[i][axis]
+            assign[i] = min(range(len(layers)), key=lambda m: abs(layers[m] - z))
+        counts_per = Counter(assign.values())
+        detail_l = "溶剂重原子 z 聚成 %d 个子层 (tol %.1f Å)，各层分子数 %s" % (
+            len(layers), layer_tol, [counts_per.get(k, 0) for k in range(len(layers))])
+        if layers_min and len(layers) < layers_min:
+            R.add("C2-%s(溶剂层数)" % name, "FAIL",
+                  detail_l + " | 契约声明 layers_min=%d；减少层数凑密度门限被禁止，"
+                             "应按 N=A·ρ·t 增加水分子并保持层数" % layers_min)
+        else:
+            R.add("C2-%s(溶剂层数)" % name, "PASS" if layers_min else "INFO", detail_l)
+        cvs = []
+        for k in range(len(layers)):
+            members = [i for i in heavy if assign[i] == k]
+            if len(members) < 4:
+                continue
+            nns = []
+            for aa in members:
+                best = None
+                for bb in members:
+                    if aa == bb:
+                        continue
+                    df = [pc.g.frac[aa][m] - pc.g.frac[bb][m] for m in (0, 1)]
+                    df = [x - round(x) for x in df]
+                    d = norm(frac_to_cart(df + [0.0], pc.g.cell))
+                    if best is None or d < best:
+                        best = d
+                nns.append(best)
+            mean = sum(nns) / len(nns)
+            sd = math.sqrt(sum((x - mean) ** 2 for x in nns) / len(nns))
+            cvs.append(sd / mean if mean > 1e-9 else 0.0)
+        cv_max = spec.get("inplane_cv_max", 0.45)
+        if cvs:
+            worst = max(cvs)
+            R.add("C2-%s(面内均匀)" % name, "FAIL" if worst > cv_max else "PASS",
+                  "各子层面内最近邻距离 CV = %s，最差 %.3f（门限 %.2f）；超阈说明面内聚团或留洞"
+                  % ([round(x, 3) for x in cvs], worst, cv_max))
     stats["solvent_%s" % name] = {"n": len(targets), "rho": rho, "ratio": ratio, "mean_hbond": mean_hb}
 
 
@@ -882,7 +962,7 @@ def main():
                    "contract": os.path.abspath(a.contract) if a.contract else None,
                    "contract_sha256": csha, "verdict": verdict,
                    "items": R.items, "stats": stats},
-                  open(a.json_out, "w"), ensure_ascii=False, indent=2, default=str)
+                  open(a.json_out, "w", encoding="utf-8"), ensure_ascii=False, indent=2, default=str)
         print("JSON: %s" % a.json_out)
     return 0 if verdict == "PASS" else 1
 

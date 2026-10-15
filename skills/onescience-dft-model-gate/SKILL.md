@@ -34,13 +34,15 @@ type: executor
 ```json
 {
   "system": "<吸附物> on <载体>(hkl) with <溶剂>/<离子>",
+  "output_species_order": ["H", "C", "O", "K", "Cu"],
+  "delivery_form": "A",
   "framework": { "elements": ["Cu"] },
   "species": {
-    "H2O": { "count": 18, "role": "solvent", "solvent_model": "liquid-film" },
+    "H2O": { "count": 40, "role": "solvent", "solvent_model": "liquid-film", "layers_min": 3 },
     "CO2": { "count": 1,  "role": "adsorbate", "mode": "physisorbed" },
     "K":   { "count": 1,  "role": "ion" }
   },
-  "slab": { "layers": 4, "fix_bottom_layers": 2, "vacuum_min": 12 }
+  "slab": { "layers": 4, "fix_bottom_layers": 2, "vacuum_min": 15 }
 }
 ```
 
@@ -58,9 +60,16 @@ type: executor
 ### 2. 构建
 
 建模脚本自便（ASE / 纯 Python / 手写均可）。唯一要求：**构建过程必须自己先满足契约**。
+界面体系（slab + 液膜 + 吸附物 + 离子）优先用随附的确定性构建器，同契约同 seed 必得同一文件：
 
-溶剂层是这类任务最容易写错的部分。**不要**用"每个分子把 H 指向最近邻"的写法，那是上表第 1、2 条
-症状的根因。用随附的通用排布器：
+```bash
+python3 .opencode/skills/onescience-dft-model-gate/scripts/build_interface.py \
+        --contract model_contract.json --out structures/POSCAR
+```
+
+溶剂层是这类任务最容易写错的部分。**不要**用“每个分子把 H 指向最近邻”的写法，那是上表第 1、2 条
+症状的根因；也**不要**用减层数去凑密度门限（水分子数按 `N = A·ρ·t` 反算，层数由契约 `layers_min`
+兜底）。用随附的通用排布器：
 
 ```python
 import sys; sys.path.insert(0, ".opencode/skills/onescience-dft-model-gate/scripts")
@@ -108,13 +117,23 @@ python3 .opencode/skills/onescience-dft-model-gate/scripts/check_vasp_inputs.py 
    放宽门槛必须在报告中注明）。
 5. 门限只看几何与输入一致性，**不判断科学合理性**（选哪个泛函、要不要预平衡、
    覆盖度是否代表真实条件，仍需人判断）。门限 PASS ≠ 科学结论可信。
+6. **交付形态二选一**：形态 A 仅 POSCAR（+契约+门限报告）；形态 B 四件套
+   POSCAR/INCAR/KPOINTS/POTCAR 齐且 POTCAR 通过 `check_vasp_inputs.py` 的 I2/I3。
+   授权赝势库不可得时 **BLOCKED 并回落形态 A**；禁止交付“有 INCAR/KPOINTS 而缺 POTCAR”的半套。
+   交付前跑 `check_vasp_inputs.py --poscar <P> --delivery-dir <交付目录>` 自证形态。
+7. **溶剂层数与面内均匀是硬门限**：契约必须声明 `species.<溶剂>.layers_min`（液膜 ≥3）；
+   水分子数按 `N = A·ρ·t` 反算；层内用 `hex_sites` 准均匀位点。门限 C2-溶剂层数 / C2-面内均匀 会
+   拦住“减层凑密度”和“面内聚团/留洞”。
+8. **POSCAR 元素顺序由契约声明**（`output_species_order`，如 H C O K Cu），门限 C5 逐位核对；
+   下游 POTCAR 拼接顺序跟随它，不允许交付时临时改序。
 
 ## 文件
 
 | 文件 | 作用 |
 |---|---|
 | `scripts/check_geometry.py` | 通用几何硬门限（纯标准库） |
-| `scripts/check_vasp_inputs.py` | POSCAR/POTCAR/INCAR/KPOINTS 一致性（纯标准库） |
+| `scripts/check_vasp_inputs.py` | POSCAR/POTCAR/INCAR/KPOINTS 一致性 + 交付形态门限（纯标准库） |
+| `scripts/build_interface.py` | 确定性界面构建器（slab+多层均匀水膜+吸附物+离子 → POSCAR） |
 | `scripts/hbond_pack.py` | 通用氢键溶剂层排布器（供体匹配 + 取向搜索） |
 | `scripts/elements.py` | 元素半径/质量数据表（门限与排布器的共同依据） |
 | `assets/model_contract.example.json` | 契约模板（逐字段说明） |

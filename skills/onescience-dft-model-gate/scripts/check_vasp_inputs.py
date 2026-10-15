@@ -105,6 +105,8 @@ def main():
     ap.add_argument("--metal", choices=["auto", "yes", "no"], default="auto")
     ap.add_argument("--kpoints-min", type=float, default=25.0,
                     help="金属体系每个倒格矢方向的最小 k 点线密度 (Å)")
+    ap.add_argument("--delivery-dir",
+                    help="交付目录：核对文件集形态（A 仅 POSCAR / B 四件套齐），禁止半套")
     a = ap.parse_args()
 
     if not os.path.isfile(a.poscar):
@@ -139,7 +141,14 @@ def main():
             "; ".join(problems) if problems else
             "顺序与段数一致: %s" % ", ".join(pot["titels"]))
     else:
-        add("I2 POTCAR 匹配", "WARN", "未提供 POTCAR，跳过顺序/ENMAX 校验")
+        if a.incar or a.kpoints:
+            add("I2 POTCAR 匹配", "FAIL",
+                "缺 POTCAR 却交付了 INCAR/KPOINTS：半套交付被禁止（BLOCKED）。POTCAR 依赖 VASP 商业赝势库，"
+                "不可伪造、无合法公开下载渠道；补救路径 ① 管理员将授权库放置到 PMG_VASP_PSP_DIR，"
+                "② 用户上传授权 POTCAR 集；两者皆不可得时回落形态 A 仅交付 POSCAR（撤掉 INCAR/KPOINTS）。")
+        else:
+            add("I2 POTCAR 匹配", "INFO",
+                "交付形态 A（仅 POSCAR）：本次不含 INCAR/KPOINTS，无需 POTCAR，此项不构成缺陷")
 
     # ---- ENCUT vs ENMAX，从 POTCAR 现算 ----
     if pot and pot["enmax"]:
@@ -166,12 +175,11 @@ def main():
         add("I3b 赝势实际 ENMAX", "INFO",
             "; ".join("%s %.1f" % (s, e) for s, e in zip(pot["species"], pot["enmax"])))
 
-    # ---- 金属体系关键开关 ----
-    is_metal = (a.metal == "yes") or (a.metal == "auto" and any(
-        el in {"Cu", "Ag", "Au", "Pt", "Pd", "Ni", "Fe", "Co", "Ru", "Rh", "Ir",
-               "Os", "Mo", "W", "Cr", "Mn", "V", "Nb", "Ta", "Ti", "Zr", "Hf", "Al"}
-        for el in order))
-    if is_metal:
+    # ---- 金属体系关键开关（形态 A 无 INCAR 时降级为 INFO） ----
+    if not a.incar:
+        add("I4-INCAR 类开关", "INFO",
+            "形态 A（未交付 INCAR）：smearing/色散/偶极/ISIF/ISYM 等开关在形态 B 交付 INCAR 时才校验")
+    else:
         ismear = incar.get("ISMEAR")
         sigma = incar.get("SIGMA")
         if ismear is None:
@@ -186,7 +194,9 @@ def main():
     # ---- slab / 色散 ----
     has_h = "H" in order
     has_mol = any(el in order for el in ("C", "N", "O", "S")) and has_h
-    if "IVDW" not in incar and not any(k in incar for k in ("LUSE_VDW", "VDW_SR")):
+    if not a.incar:
+        add("I5 色散修正", "INFO", "形态 A（未交付 INCAR）：色散开关在形态 B 才校验")
+    elif "IVDW" not in incar and not any(k in incar for k in ("LUSE_VDW", "VDW_SR")):
         if has_mol:
             add("I5 色散修正", "FAIL",
                 "体系含分子/吸附物且未开色散（IVDW / LUSE_VDW）；物理吸附能会被严重低估")
@@ -213,6 +223,11 @@ def main():
         else:
             add("I8 ISYM", "INFO", "ISYM=%s" % incar.get("ISYM"))
 
+    is_metal = (a.metal == "yes") or (a.metal == "auto" and any(
+        el in {"Cu", "Ag", "Au", "Pt", "Pd", "Ni", "Fe", "Co", "Ru", "Rh", "Ir",
+               "Os", "Mo", "W", "Cr", "Mn", "V", "Nb", "Ta", "Ti", "Zr", "Hf", "Al"}
+        for el in order))
+
     # ---- K 点密度 ----
     kp = parse_kpoints(a.kpoints) if a.kpoints else None
     if kp is not None and not kp.get("format_ok", True):
@@ -236,6 +251,34 @@ def main():
         add("I9 K 点密度", "INFO", "显式 k 点或无法解析网格: %s" % kp.get("mode"))
     else:
         add("I9 K 点密度", "WARN", "未提供 KPOINTS")
+
+    # ---- I10 交付形态（文件集一致性硬门限） ----
+    if a.delivery_dir:
+        found = set()
+        for _root, _dirs, files in os.walk(a.delivery_dir):
+            for fn in files:
+                u = fn.upper()
+                if u.startswith("POSCAR"):
+                    found.add("POSCAR")
+                elif u == "INCAR" or u.startswith("INCAR."):
+                    found.add("INCAR")
+                elif u == "KPOINTS" or u.startswith("KPOINTS."):
+                    found.add("KPOINTS")
+                elif u == "POTCAR" or u.startswith("POTCAR."):
+                    found.add("POTCAR")
+        half = ("INCAR" in found or "KPOINTS" in found) and "POTCAR" not in found
+        if half:
+            add("I10 交付形态", "FAIL",
+                "交付目录文件集 %s 构成半套：有 INCAR/KPOINTS 而缺 POTCAR。交付形态只允许二选一："
+                "A 仅 POSCAR；B 四件套齐且 POTCAR 通过 I2/I3。POTCAR 不可得（BLOCKED）时回落形态 A，"
+                "删掉 INCAR/KPOINTS 后重新交付。" % sorted(found))
+        elif "POSCAR" in found and {"INCAR", "KPOINTS", "POTCAR"} <= found:
+            add("I10 交付形态", "PASS", "形态 B：四件套齐 %s" % sorted(found))
+        elif "POSCAR" in found and not (found & {"INCAR", "KPOINTS", "POTCAR"}):
+            add("I10 交付形态", "PASS",
+                "形态 A：仅 POSCAR（model_contract/门限报告/构建脚本属过程证据，不计入输入件套）")
+        else:
+            add("I10 交付形态", "FAIL", "文件集形态无法识别: %s" % sorted(found))
 
     print("=== VASP 输入一致性检查 ===")
     print("poscar : %s" % os.path.abspath(a.poscar))

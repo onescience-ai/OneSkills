@@ -4,6 +4,12 @@
 
   "system": "一句话描述体系，例如: CO2 + K + H2O on Cu(111)",
 
+  "output_species_order": ["H", "C", "O", "K", "Cu"],
+  "_output_species_order": "POSCAR 输出元素顺序（门限 C5 逐位核对）；下游 POTCAR 拼接顺序跟随它。",
+
+  "delivery_form": "A",
+  "_delivery_form": "A = 仅 POSCAR（+契约+门限报告）；B = 四件套齐且 POTCAR 过校验。POTCAR 不可得时禁止半套，回落 A。",
+
   "framework": {
     "elements": ["Cu"],
     "_note": "载体骨架元素。必须声明；否则吸附的碱金属/离子会被并进骨架，无法作为独立物种计数。"
@@ -11,10 +17,13 @@
 
   "species": {
     "H2O": {
-      "count": 18,
+      "count": 40,
+      "_count": "由 N = A·ρ·t 反算（A=ab 面积，ρ=体相数密度，t=水膜区厚度）；禁止拍脑袋写小数字或用减层凑密度。",
       "role": "solvent",
       "solvent_model": "liquid-film",
       "_solvent_model": "liquid-film | monolayer | none。liquid-film 会按体相密度卡门限；monolayer 只报告密度，但需同时给 target_coverage。",
+      "layers_min": 3,
+      "_layers_min": "液膜最少子层数（门限 C2-溶剂层数）；层内位点用 hex_sites 准均匀排布（门限 C2-面内均匀）。",
       "bulk_number_density": 0.033429,
       "_bulk_number_density": "可选，Å^-3。不填则查 scripts/elements.py 的 LIQUID_NUMBER_DENSITY。",
       "density_ratio_range": [0.75, 1.35],
@@ -48,7 +57,7 @@
     "layers": 4,
     "layer_tol": 0.3,
     "fix_bottom_layers": 2,
-    "vacuum_min": 12.0
+    "vacuum_min": 15.0
   },
 
   "notes": "把来源、参考结构、已知近似写在这里；交付报告必须原样引用本文件（含 sha256）。"
