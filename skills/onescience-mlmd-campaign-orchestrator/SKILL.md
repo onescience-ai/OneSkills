@@ -55,6 +55,11 @@ S0（确认 spec）→ S1 →gate→ S2 →gate→ S3 →gate→ S4 →gate(误�
 - 每个 gate 输出 **PASS/FAIL + 实测值/门限值 + `sha256`**；FAIL → **停止并报告**。
 - 允许的“自动重试”仅限**基础设施层**（坏节点、QOS 记账、网络），且记录原因。
 - 需要改科学参数（时间步、温度、切分、超参）时，**先问用户**。
+- **todo 同步（界面状态）**：campaign 启动时必须用 `todowrite` 将 S0–S6 登记为 todo 列表；
+  阶段**开始**时将当前阶段置 `in_progress`，该阶段 gate **PASS 后立刻**再次调用 `todowrite`
+  置 `completed` 并将下一阶段置 `in_progress`；gate FAIL 置 `cancelled` 并停止。
+  todo 面板只随 `todowrite` 调用刷新，正文中“S0 完成”之类散文陈述**不会**更新面板，
+  阶段状态流转一律以 `todowrite` 工具调用落地。
 
 ## 三条不可动摇的规则
 
