@@ -45,8 +45,9 @@ When OneSkills prompts request actions, substitute OpenCode equivalents:
 - Fetch a URL → \`webfetch\``;
 
   const routingGuide = `**Default OneSkills routing:**
-- If the user says “使用 / 启动 / 打开 / 进入 onescience” or “使用 / 启动 / 打开 / 进入 oneskills”, start with \`onescience-orchestrator\` and ask for the concrete research goal before entering execution.
-- Use \`onescience-coder\` for code generation or code modification.
+- For ANY scientific computing task (DFT, VASP, MD, AIMD, LAMMPS, GROMACS, MACE, DeePMD, NEB, CFD, OpenFOAM, bioinformatics, genomics, protein, materials, crystal, surface, interface, adsorption, catalysis, battery, alloy, semiconductor, climate, weather, WRF, model training, fine-tuning, inference, paper reproduction, dataset construction, data analysis, visualization, HPC/SLURM job submission, slab building, adsorbate placement, solvation, doping, defect, POSCAR/INCAR/KPOINTS, selective dynamics, etc.), ALWAYS start with \`onescience-orchestrator\` — it performs intent recognition, primitive/knowledge recall, expert planning, and executor dispatch. The user does NOT need to say "使用OneScience" or any magic trigger words.
+- If the user explicitly names a specific sub-skill (e.g. "使用 onescience-runtime 执行"), route directly to that sub-skill, skipping orchestrator.
+- Use \`onescience-coder\` for code generation or code modification (when dispatched by orchestrator or explicitly requested).
 - Use \`onescience-runtime\` only for run / submit / poll / diagnose tasks.
 - Use \`onescience-installer\` only for install / repair / verify tasks.
 - For paper reproduction, do not search, open, download, clone, or reference official or third-party implementation repositories.`;

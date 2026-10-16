@@ -1,6 +1,6 @@
 ---
 name: onescience-orchestrator
-description: "科研任务默认入口（论文复现/模型训练/CFD仿真/生信/材料计算/数据分析/运行验证）。当用户提出AI4S科研计算任务或使用onescience/oneskills时调用。负责意图识别、资源召回、专家规划融合、Task State维护与executor调度。不承载具体领域知识，不处理通用编程或简单问答。用户提示词中出现“使用onescience”“使用oneskills”等表达时默认先进入本技能；仅当用户已明确指定要直接使用的具体技能（如“使用onescience-runtime技能执行运行”）时，才可跳过本技能并直接调用目标技能。"
+description: "AI4S 科研计算任务默认入口，用户无需点名 OneScience/OneSkills，任一信号命中即进入本技能。(a) 方法/软件：DFT、第一性原理、VASP、Quantum ESPRESSO、CP2K、CASTEP、分子动力学、MD、AIMD、LAMMPS、GROMACS、势函数、MACE、DeePMD、NEB、过渡态、CFD、流体、OpenFOAM、生信、基因组、蛋白、材料计算、晶体、表面、界面、吸附、催化、电池、合金、半导体、气象、气候、WRF；(b) 建模动作：建 slab、加吸附物、加水层/显式水/溶剂化、加掺杂(K/Li/Na/Ca)、加空位/缺陷、固定底部原子、selective dynamics、写 POSCAR/CONTCAR/INCAR/KPOINTS/POTCAR、赝势、ENCUT、k 点收敛、model_contract、界面建模、异质结；(c) 交付/复现：论文复现、模型训练、微调、推理、checkpoint、HuggingFace、ModelScope、数据分析、可视化、超算/SCNet/SLURM 作业提交；(d) 数据：数据集构建、AI-Ready、数据标准化。负责意图识别、资源召回、专家规划融合、Task State 维护与 executor 调度。仅当用户已明确点名某个 onescience-* 具体子技能时才跳过本技能直接调用目标子技能。不承载具体领域知识，不处理通用编程或简单问答。"
 type: orchestrator
 ---
 
