@@ -266,6 +266,8 @@ def main():
                     found.add("KPOINTS")
                 elif u == "POTCAR" or u.startswith("POTCAR."):
                     found.add("POTCAR")
+                elif u.endswith(".HTML"):
+                    found.add("VIEW_HTML")
         half = ("INCAR" in found or "KPOINTS" in found) and "POTCAR" not in found
         if half:
             add("I10 交付形态", "FAIL",
@@ -279,6 +281,26 @@ def main():
                 "形态 A：仅 POSCAR（model_contract/门限报告/构建脚本属过程证据，不计入输入件套）")
         else:
             add("I10 交付形态", "FAIL", "文件集形态无法识别: %s" % sorted(found))
+
+    # ---- I11 三维可视化交付物（硬门限） ----
+    # Form A / Form B 都必须附一份可交互三维视图（onescience-structure-viewer 生成
+    # 的 view.html），交付不只是“文件齐”，还要让审稿人打开就能看清几何。
+    if a.delivery_dir:
+        _html = []
+        for _root, _dirs, files in os.walk(a.delivery_dir):
+            for fn in files:
+                if fn.upper().endswith(".HTML"):
+                    _html.append(fn)
+        if _html:
+            add("I11 三维可视化", "PASS",
+                "交付目录含三维视图 %s（onescience-structure-viewer）" % sorted(_html)[:3])
+        elif os.path.isfile(os.path.abspath(a.poscar)):
+            add("I11 三维可视化", "FAIL",
+                "交付目录缺 view.html。Form A / Form B 都必须附三维视图：跑 "
+                "onescience-structure-viewer 的 render_structure.py <POSCAR> "
+                "--contract <契约> --outdir <交付目录> 生成后重新交付。")
+        else:
+            add("I11 三维可视化", "WARN", "未便判断：POSCAR 不可读且交付目录无 HTML")
 
     print("=== VASP 输入一致性检查 ===")
     print("poscar : %s" % os.path.abspath(a.poscar))

@@ -102,6 +102,11 @@ python3 .opencode/skills/onescience-dft-model-gate/scripts/check_vasp_inputs.py 
 ### 4. 交付
 
 - 报告里**原样包含**两个脚本的真实输出（含 sha256），不要摘抄或转述数字。
+- **必须附三维视图 `view.html`**（由兄弟技能 `onescience-structure-viewer` 生成，对最终 POSCAR 出图）；缺它 `check_vasp_inputs.py` 的 I11 会 FAIL：
+  ```bash
+  python3 .opencode/skills/onescience-structure-viewer/scripts/render_structure.py \
+          structures/POSCAR --contract model_contract.json --outdir structures
+  ```
 - FAIL 项必须写清楚：实测值、门限值、为什么、打算怎么改。**不允许把 FAIL 写成 PASS**，
   也不允许把没跑过的数字写成结论。
 - INFO/WARN 项要说明是否可接受。
@@ -126,6 +131,7 @@ python3 .opencode/skills/onescience-dft-model-gate/scripts/check_vasp_inputs.py 
    拦住“减层凑密度”和“面内聚团/留洞”。
 8. **POSCAR 元素顺序由契约声明**（`output_species_order`，如 H C O K Cu），门限 C5 逐位核对；
    下游 POTCAR 拼接顺序跟随它，不允许交付时临时改序。
+9. **交付必须含三维视图 `view.html`**（I11 硬门限）：`onescience-structure-viewer` 对最终 POSCAR 生成 `view.html` 并与结构文件同目录交付；Form A / Form B 都适用，缺 view.html 的交付视同未交付。
 
 ## 文件
 
@@ -133,6 +139,8 @@ python3 .opencode/skills/onescience-dft-model-gate/scripts/check_vasp_inputs.py 
 |---|---|
 | `scripts/check_geometry.py` | 通用几何硬门限（纯标准库） |
 | `scripts/check_vasp_inputs.py` | POSCAR/POTCAR/INCAR/KPOINTS 一致性 + 交付形态门限（纯标准库） |
+
+**依赖的兄弟技能**：`onescience-structure-viewer`（交付三维视图 `view.html`，对应 `check_vasp_inputs.py` 的 I11 门限）。
 | `scripts/build_interface.py` | 确定性界面构建器（slab+多层均匀水膜+吸附物+离子 → POSCAR） |
 | `scripts/hbond_pack.py` | 通用氢键溶剂层排布器（供体匹配 + 取向搜索） |
 | `scripts/elements.py` | 元素半径/质量数据表（门限与排布器的共同依据） |
