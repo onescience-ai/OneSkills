@@ -38,7 +38,7 @@ type: executor
 | 阶段 | 做什么 | 本 skill 内对应 | 交付 | 门限（不达标即停） |
 |---|---|---|---|---|
 | S0 | 归一化需求 + 站点解析 | `assets/campaign_spec.example.json`；`references/environment_notes.md` | spec + 站点画像 | 必备字段齐全；站点连通 |
-| S1 | DFT 结构优化 | `scripts/build_interface_example.py` + `assets/INCAR.relax.example` + `assets/submit.vasp.example.slurm` | `POSCAR/CONTCAR/契约` | 几何+输入一致性 PASS；力收敛 ≤ \|EDIFFG\| |
+| S1 | DFT 结构优化 | `scripts/build_interface_example.py` + `assets/INCAR.relax.example` + `assets/submit.vasp.example.slurm`；门限 → `onescience-dft-model-gate` (`check_vasp_inputs.py --delivery-dir`, I10+I11) | `POSCAR/CONTCAR/契约/view.html` | `check_geometry` + `check_vasp_inputs --delivery-dir` PASS（I11 含 view.html）；力收敛 ≤ \|EDIFFG\| |
 | S2 | 中性 AIMD 出轨迹 | `assets/INCAR.nvt.example` + `references/velocity_block_pitfall.md` + 提交模板 | `vasprun.xml/XDATCAR/OSZICAR` | 温度稳定、SCF 收敛、无 refuse、**速度块已处理**、**中性守卫** |
 | S3 | 轨迹 → 数据集 | `scripts/probe_traj.py` + `scripts/vasp2mace_dataset.py` + `scripts/validate_dataset.py` + `references/split_policy.md` | `*_train/valid/test.extxyz`(+h5) | 键为真值、计数一致、**time-block 且 shuffle=false** |
 | S4 | 训练 MACE | `assets/submit.mace.example.slurm` + `references/environment_notes.md` | `*_stagetwo.model` + 误差曲线 | **验证力 RMSE ≤ 门限（默认 10 meV/Å）** |
@@ -97,3 +97,8 @@ S0（确认 spec）→ S1 →gate→ S2 →gate→ S3 →gate→ S4 →gate(误�
 | `references/split_policy.md` | 时间块切分定义与实现 |
 | `references/acceptance.md` | 力误差门限与“不达标怎么办” |
 | `references/environment_notes.md` | onescience/torch/DCU/SLURM 环境排错 |
+
+## 依赖的兄弟技能
+
+- **`onescience-dft-model-gate`**：S1 建模几何门限（`check_geometry.py`）与交付门限（`check_vasp_inputs.py --delivery-dir` 含 I10 形态 + I11 三维视图）。
+- **`onescience-structure-viewer`**：S1 交付视图 `view.html`（I11 硬门限要求），缺图 check_vasp_inputs 会 FAIL(exit 1)，必须渲染后重跑门限。

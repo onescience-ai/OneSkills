@@ -26,10 +26,21 @@
 
 **跑松弛**（`assets/submit.vasp.example.slurm` + `assets/INCAR.relax.example`）。
 
-**门限**：
-- 几何门限 + 输入一致性（见下游 `dft-model-gate` 脚本族：`check_geometry.py` / `check_vasp_inputs.py`；本 skill 只要求“跑并在报告里贴原始输出+sha256”）。
+**门限**（由兄弟技能 `onescience-dft-model-gate` 承接）：
+```bash
+python3 .opencode/skills/onescience-dft-model-gate/scripts/check_geometry.py \
+        structures/POSCAR --contract model_contract.json --json /tmp/gate.json
+python3 .opencode/skills/onescience-dft-model-gate/scripts/check_vasp_inputs.py \
+        --poscar structures/POSCAR --delivery-dir structures
+```
+若 I11 报 FAIL（缺 `view.html`），先调 structure-viewer 出图再重跑门限：
+```bash
+python3 .opencode/skills/onescience-structure-viewer/scripts/render_structure.py \
+        structures/POSCAR --contract model_contract.json --outdir structures
+```
+门限全 PASS 后**原样贴输出 + sha256 到报告**。
 - 力收敛：可动原子最大力 ≤ `|EDIFFG|`（读 `OUTCAR` 的 `TOTAL-FORCE` 末块）。
-- 交付：`POSCAR`（Selective dynamics）、`CONTCAR`、契约、门限原始输出。
+- 交付：`POSCAR`（Selective dynamics）、`CONTCAR`、契约、门限原始输出、**`view.html`**。
 
 ## S2 AIMD 出轨迹（**中性**）
 
