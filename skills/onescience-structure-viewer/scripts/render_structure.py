@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shutil
 import sys
 from pathlib import Path
 
@@ -178,6 +179,13 @@ def main() -> int:
     paths = V.write_outputs(payload, outdir, basename=args.basename,
                             template_path=args.template,
                             write_json=not args.no_json)
+
+    # --- copy 3Dmol-min.js alongside view.html (CSP-safe local serving) ---
+    _assets = Path(__file__).resolve().parent.parent / "assets"
+    _src_js = _assets / "3Dmol-min.js"
+    _dst_js = outdir / "3Dmol-min.js"
+    if _src_js.is_file() and _src_js != _dst_js:
+        shutil.copy2(str(_src_js), str(_dst_js))
 
     print("[OK] html : %s" % paths["html"])
     if "json" in paths:
