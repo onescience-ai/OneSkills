@@ -10,10 +10,10 @@
   inlined below so the file works offline via file:// (only the JS lib
   needs network). If both CDNs fail, a text/JSON fallback is rendered.
 -->
-<script src="https://cdn.jsdelivr.net/npm/3dmol@2.4.2/build/3Dmol-min.js"></script>
+<script src="https://registry.npmmirror.com/3dmol/2.4.2/files/build/3Dmol-min.js"></script>
 <script>
   if (typeof $3Dmol === "undefined") {
-    document.write('<script src="https://unpkg.com/3dmol@2.4.2/build/3Dmol-min.js"><\/script>');
+    document.write('<script src="https://cdn.bootcdn.net/ajax/libs/3dmol/2.4.2/3Dmol-min.js"><\/script>');
   }
 </script>
 <style>
