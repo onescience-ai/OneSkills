@@ -302,6 +302,34 @@ def main():
         else:
             add("I11 三维可视化", "WARN", "未便判断：POSCAR 不可读且交付目录无 HTML")
 
+    # ---- I12 图表可视化交付物（硬门限：光栅图必须包成 HTML） ----
+    # OneCode 平台文件预览只渲染 HTML，裸 PNG/JPG 打开是 base64 乱码。任何作为
+    # 交付物的数据图表（MACE 训练曲线、MD 能量/温度演化、RDF 等）必须附同名 HTML
+    # 包装（onescience-structure-viewer 的 render_chart.py 把图 base64 内嵌成自包含 HTML）。
+    if a.delivery_dir:
+        _img_stems = {}
+        _html_stems = set()
+        for _root, _dirs, files in os.walk(a.delivery_dir):
+            for fn in files:
+                u = fn.upper()
+                if u.endswith((".PNG", ".JPG", ".JPEG", ".GIF", ".BMP")):
+                    _img_stems.setdefault(os.path.splitext(fn)[0].lower(), []).append(fn)
+                elif u.endswith(".HTML"):
+                    _html_stems.add(os.path.splitext(fn)[0].lower())
+        _bare = sorted({fn for stem, fns in _img_stems.items()
+                        if stem not in _html_stems for fn in fns})
+        if not _img_stems:
+            add("I12 图表可视化", "INFO",
+                "交付目录无光栅图表；若本阶段产出曲线图，须用 render_chart.py 包成 HTML 再交付")
+        elif _bare:
+            add("I12 图表可视化", "FAIL",
+                "以下图表仅有裸 PNG/JPG，OneCode 预览无法渲染：%s。每个图表须用 "
+                "onescience-structure-viewer 的 render_chart.py <img.png> --outdir <交付目录> "
+                "生成同名 .html 后重新交付。" % _bare[:6])
+        else:
+            add("I12 图表可视化", "PASS",
+                "全部 %d 个图表均有同名 HTML 包装（OneCode 可渲染）" % len(_img_stems))
+
     print("=== VASP 输入一致性检查 ===")
     print("poscar : %s" % os.path.abspath(a.poscar))
     print("potcar : %s" % (os.path.abspath(a.potcar) if a.potcar else "-"))
