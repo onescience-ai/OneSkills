@@ -132,6 +132,7 @@ python3 .opencode/skills/onescience-dft-model-gate/scripts/check_vasp_inputs.py 
 8. **POSCAR 元素顺序由契约声明**（`output_species_order`，如 H C O K Cu），门限 C5 逐位核对；
    下游 POTCAR 拼接顺序跟随它，不允许交付时临时改序。
 9. **交付必须含三维视图 `view.html`**（I11 硬门限）：`onescience-structure-viewer` 对最终 POSCAR 生成 `view.html` 并与结构文件同目录交付；Form A / Form B 都适用，缺 view.html 的交付视同未交付。
+10. **数据图表必须包成 HTML**（I12 硬门限）：OneCode 平台只渲染 HTML，裸 `.png`/`.jpg` 在预览里是 base64 乱码。任何作为交付物的图表（训练曲线、能量/温度演化、RDF、DOS…）必须用 `onescience-structure-viewer` 的 `render_chart.py <img.png> --outdir <交付目录>` 生成**同名** `.html`（base64 内嵌自包含）；交付目录里出现无同名 HTML 包装的光栅图 → I12 FAIL。
 
 ## 文件
 
@@ -140,7 +141,7 @@ python3 .opencode/skills/onescience-dft-model-gate/scripts/check_vasp_inputs.py 
 | `scripts/check_geometry.py` | 通用几何硬门限（纯标准库） |
 | `scripts/check_vasp_inputs.py` | POSCAR/POTCAR/INCAR/KPOINTS 一致性 + 交付形态门限（纯标准库） |
 
-**依赖的兄弟技能**：`onescience-structure-viewer`（交付三维视图 `view.html`，对应 `check_vasp_inputs.py` 的 I11 门限）。
+**依赖的兄弟技能**：`onescience-structure-viewer`（交付三维视图 `view.html` → I11 门限；交付图表 HTML `render_chart.py` → I12 门限）。
 | `scripts/build_interface.py` | 确定性界面构建器（slab+多层均匀水膜+吸附物+离子 → POSCAR） |
 | `scripts/hbond_pack.py` | 通用氢键溶剂层排布器（供体匹配 + 取向搜索） |
 | `scripts/elements.py` | 元素半径/质量数据表（门限与排布器的共同依据） |
