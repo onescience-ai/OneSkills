@@ -1,6 +1,6 @@
 ---
 name: onescience-structure-viewer
-description: 需要把原子结构（POSCAR/CONTCAR/XYZ）呈现为可交互三维图形，或把数据图表（PNG/JPG 训练曲线、能量温度演化、RDF）包成 OneCode 可渲染的 HTML 时使用：三维产出单文件 view.html（3Dmol.js）+ structure.json；图表用 render_chart.py 生成自包含 HTML（base64 内嵌）。任何"给出可视化/图表/效果图"的场景都应调用本技能——OneCode 平台只渲染 HTML，裸 PNG 在预览里是 base64 乱码。
+description: 需要把原子结构（POSCAR/CONTCAR/XYZ）呈现为可交互三维图形时使用：产出单文件 view.html（3Dmol.js）+ structure.json，可嵌进交付包或报告。任何"给出三维立体效果图"的场景（slab/界面/异质结/溶剂化/吸附/团簇/分子）都应调用本技能。
 type: executor
 ---
 
@@ -29,24 +29,6 @@ type: executor
 - 用户明确说"给我看一下""画个三维图""可视化"，或提交前需要自证几何合理。
 - 你**不需要**为了跑 VASP 而生成图；这个技能只是让"看图"这一步不再依赖
   VESTA/OVITO 是否装在本地。
-
-## 图表（PNG/JPG）→ HTML（render_chart.py）
-
-**OneCode 平台文件预览只渲染 HTML**，直接交 `.png` 打开是一屏 base64 乱码。因此任何
-作为交付物的二维数据图表（MACE 训练曲线、MD 能量/温度演化、RDF、DOS…）都必须先用
-本技能的 `render_chart.py` 包成**自包含 HTML**（图片以 base64 data-URI 内嵌，无外部
-请求、不受 CSP 影响）。每个 `X.png` 生成同名 `X.html`，正好满足 dft-model-gate 的
-**I12 硬门限**（裸光栅图无同名 HTML → FAIL）。
-
-```bash
-# 每张图生成同名 sibling HTML；--combine 再额外产出一个合并索引页
-python3 .opencode/skills/onescience-structure-viewer/scripts/render_chart.py \
-        mace_training.png md_energy_temp.png \
-        --outdir <交付目录> --title "Cu 3x3 MLMD 曲线" --combine --basename charts
-```
-
-matplotlib 出图时**先 `savefig('x.png')`，再 `render_chart.py x.png`** 即可；不要只交
-裸 PNG，也不要以"界面不支持图片"为由放弃出图——出 HTML 就支持。
 
 ## 用法
 

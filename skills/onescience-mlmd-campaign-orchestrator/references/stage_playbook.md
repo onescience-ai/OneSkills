@@ -79,10 +79,6 @@ python -m onescience.utils.mace.cli.run_train --name <name> \
 **门限**：验证集力 RMSE ≤ `train.acceptance.forces_rmse_meV_per_A`（默认 10 meV/Å）；
 同时报 `RMSE_E/atom`。不达标 → 停并报告（见 `acceptance.md`），不擅自改。
 
-**图表**：训练曲线（loss / energy RMSE / force RMSE vs epoch）出图后，**必须**用
-`onescience-structure-viewer` 的 `render_chart.py mace_training.png --outdir <交付目录>`
-包成同名 HTML 再交付（OneCode 只渲染 HTML，裸 PNG 会被 I12 拦下）。
-
 ## S5 导出 LAMMPS
 
 ```bash
@@ -100,13 +96,7 @@ pair_coeff  * * /abs/path/mace_<system>_lammps.pt H C O K Cu
 **门限（建议）**：先 `run 0`/数百步确认能量守恒量级，再放长到目标 ns；
 记录长轨迹与分析埋点（用于比 AIMD ps 级与 MLMD ns 级的界面动力学）。
 
-**图表**：能量/温度随时间演化曲线出图后，同样用 `render_chart.py md_energy_temp.png
---outdir <交付目录>` 包成同名 HTML 交付；不要只交裸 PNG，也不要因"界面不支持图片"而放弃出图。
-
 ## 贯穿要求
 
-- **可视化一律出 HTML**：OneCode 平台只渲染 HTML，不渲染裸 PNG/JPG。三维结构用
-  `render_structure.py`→`view.html`（I11）；二维数据图表用 `render_chart.py`→同名
-  `.html`（I12）。任何"给我看图表"的需求都走这两条路，绝不交裸光栅图。
 - 交付统一 `sha256 + 命令行` 证据；结构/数据一变就重跑门限。
 - 基础设施重试（坏节点/QOS 记账/网络）需留痕；科学参数改动必须先问。
