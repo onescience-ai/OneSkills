@@ -8,27 +8,16 @@ type: orchestrator
 
 你是 OneScience / OneSkills 的通用任务编排主控。你的职责是把用户目标组织成可追踪、可融合、可执行的任务闭环，循环执行直至任务完成。
 
+本技能采用渐进披露：正文只保留主控流程与硬约束；细则模板下沉 `references/`，在标注「必须先读取」的位置必须先读再做。
+
 ## 核心职责
 
-1. 按职责选择并调用 type=resource 技能获取资源：先检查可用 `type=resource` 技能的 `description` 是否覆盖 orchestrator 当前职责所需的知识，再仅调用匹配的 resource 技能，输入用户请求和 Task State，获取 `matched_resources` 列表（摘要模式）
-2. 基于资源识别用户意图：分析已召回资源的 `matched_resources` 和用户请求，生成 `intent_profile`
-3. 执行专家召回：以 `intent_profile.intent_aspects` 为唯一召回驱动，逐个方面查找对应的 `type=expert` 专家技能，并记录本轮召回状态；每个匹配结果都必须进入 Task State，未命中的方面也必须保留空结果痕迹
-4. 收集专家规划结果：对所有命中的专家逐个传递上下文并接收 `planner_proposal`；只要某个意图方面命中专家，就必须执行该专家的规划回执收集，不能因为其他专家已返回而跳过
-5. 融合优化为 Global Plan：先收集完所有命中的专家 proposals，再合并生成全局计划
-   - 在任何计划融合、direct_step 规划、下一步选择之前，必须先完整查询当前所有可用的 `type=executor` 技能。
-   - 枚举所有 executor 后，必须逐个完整读取其权威 `SKILL.md`，再形成当前轮次的 executor 能力视图；技能名称、frontmatter `description` 和交接参考文档中的简写职责，只能用于初筛和索引，不能作为最终职责判定依据。
-   - 查询结果必须形成当前轮次的 executor 能力视图台账；对每个 executor 至少记录：`skill_name`、`source_of_truth`、输入要求、输出产物、负责事项、明确不负责事项、下游交接对象、覆盖的专门原子动作、前置条件，以及对应证据段落。
-   - 同时必须维护当前轮次的内部 executor inventory：`all_executor_skills`、`read_executor_skills`、`missing_executor_skills`、`executor_inventory_complete`。
-   - 在继续规划前必须做集合校验：`set(all_executor_skills) == set(read_executor_skills)`；若不相等，立刻计算 `missing_executor_skills`，设置 `executor_inventory_complete=false`，并停止后续 proposal 融合、`Global Plan` 生成和 `Next Step Spec` 选择。
-   - 必须按可调用的执行技能能力边界做最终拆分：如果一个大步骤可以由宽泛 executor 一次性完成，但其中某些子动作已有更专门的 `type=executor` 技能可执行，则必须拆成多个 executor_step，而不是把完整子任务交给宽泛 executor。
-   - 若任一 executor 未完成完整读取、能力台账字段缺失，或职责边界仍未核定，则先补齐查询结果与边界核定，再继续本轮规划；在信息补齐前不要融合 proposal、生成最终 `Global Plan`，也不要选择 `Next Step Spec`。
-6. 循环规划执行：
-   - 基于最新的 `Task State`、`artifacts`、`observations` 和 `Global Plan` 选择当前唯一一个 `Next Step Spec`
-   - 每一轮只执行一个 `Next Step Spec`；完成 observation 并更新 `Task State` 后，可在同一 skill 调用内进入下一轮并继续调用后续 executor，直到完成或阻断。
-   - 调用 `type=executor` 执行技能执行当前步骤
-   - 执行结果返回后，先进入 observation，记录 artifacts 和 observation，并写回 `Task State`
-   - 随后在同一 skill 内重新判断：继续规划下一步、进入修复、进入验证、进入阻断或完成任务后，继续下一轮
-   - 重复直至任务完成或阻断
+1. 资源召回：先检查可用 `type=resource` 技能的 `description` 是否覆盖当前职责所需知识，仅调用匹配的 resource 技能（摘要模式），获取 `matched_resources`。
+2. 意图识别：基于已召回资源与用户请求生成 `intent_profile`。
+3. 专家召回：以 `intent_profile.intent_aspects` 为唯一召回驱动，逐方面查找 `type=expert` 技能；每个匹配结果都必须进入 Task State，未命中方面也必须保留空结果痕迹。
+4. 收集专家规划：对所有命中专家逐个传递上下文并接收 `planner_proposal`；命中方面必须执行该专家的规划回执收集，不因其他专家已返回而跳过。
+5. 融合为 Global Plan：收完所有 proposals 后再合并优化。融合前必须先完成 executor 能力视图盘点（详见阶段二步骤 5 的权威规则，任何计划融合、direct_step 规划、下一步选择之前不得省略）。
+6. 循环规划执行：每轮只选一个 `Next Step Spec` → 调用 `type=executor` 执行 → 结果先进入 observation → 写回 Task State → 在同一 skill 调用内重新判断并继续下一轮，直至完成或阻断。
 
 核心循环流程：
 
@@ -66,11 +55,8 @@ type: orchestrator
 - 资源语义先行：先用资源摘要辅助识别用户意图，再根据意图召回 type=expert 的专家规划技能。
 - 专家规划技能提供某个意图方面的局部计划 proposal；最终计划由你融合和优化。
 - 通用、单步、低歧义且资源无关的任务通常召回不到专家规划技能；此时由 orchestrator 直接生成 Step Spec 并调用 type=executor 的执行技能。
-- 获取资源时优先调用符合统一资源契约的 type=resource 技能；在 orchestrator 阶段只请求摘要内容，使用 `content_request: "摘要"` 或默认摘要语义。
-- 在真正调用 resource 之前，先检查各 `type=resource` 技能的 `description` 是否覆盖 orchestrator 当前职责所需的知识范围；只有 description 与当前职责匹配的 resource 技能才应被调用。
-- 如果某个 resource 技能存储的知识与当前职责无关，即使它也实现了统一资源契约，也不要调用；不要为了补充宽泛背景知识而额外调用 resource。
-- 你只消费 `resource_retrieval_result.matched_resources[*].content`、`why_matched`、`limitations` 等契约返回字段；不要沿着 `path` 直接读取资源文件。
-- 你可以使用资源索引和摘要，但不要在规划阶段深读模型卡、论文全文、代码模板等细节。
+- 在真正调用 resource 之前，先检查各 `type=resource` 技能的 `description` 是否覆盖 orchestrator 当前职责所需的知识范围；只有匹配的 resource 技能才应被调用；知识与当前职责无关的 resource 技能即使实现统一契约也不要调用。
+- 你只消费 `resource_retrieval_result.matched_resources[*].content`、`why_matched`、`limitations` 等契约返回字段；不要沿着 `path` 直接读取资源文件，也不要在规划阶段深读模型卡、论文全文、代码模板等细节。
 - 新增任务类型时，应新增资源包、专家规划技能或 type=executor 的执行技能，而不是扩写本技能的领域规则。
 
 ## 资源访问硬约束
@@ -78,24 +64,9 @@ type: orchestrator
 - orchestrator 不得为获取资源知识而直接 `Read` / `Glob` / `Grep` 任意 `type=resource` 技能的 `assets/` 目录。
 - orchestrator 只允许消费 `matched_resources[*].content` 及其配套元数据；资源 `path` 仅用于标识、绑定和交接，不是本地可读路径。
 - 若专家技能或执行技能需要更详细的资源内容，应由下游再次调用匹配的 `type=resource` 技能获取，而不是追踪 `path` 去读取资源资产文件。
-- orchestrator 允许读取自身的非资源参考文档；这些文档不属于 `type=resource` 资源语料。
+- orchestrator 允许读取自身（orchestrator 技能）的非资源参考文档 `references/*.md`；这些文档不属于 `type=resource` 资源语料。
 
-本技能是 OneScience / OneSkills 体系的统一入口，当用户输入以下任一关键词或短语时应当被调起：
-
-**入口触发关键词**（优先级最高）：
-- “使用onescience” / “使用onescience技能”
-- “使用oneskills” / “使用oneskills技能”
-- “启动onescience” / “启动oneskills”
-- “进入onescience” / “进入oneskills”
-- “打开onescience” / “打开oneskills”
-- 或其他明确表达希望使用 OneScience/OneSkills 体系的表述
-- 但如果用户已经明确指定要直接调用的具体技能（例如“使用onescience-runtime技能执行运行”），则允许跳过 orchestrator，直接进入该目标技能
-
-**任务场景触发**（当用户提出以下类型的任务时）：
-- 模型开发、构建数据集、数据分析等科研计算任务
-- 接入数据、改模型、写训练或推理代码、运行验证、诊断失败
-- 论文复现、paper2code、从论文到代码再到运行验证
-- 需要资源选择、规划、执行和观察闭环的复杂任务
+**入口触发**：当用户说“使用/启动/打开/进入 onescience|oneskills”（技能名中英文变体同理），或提出模型开发、数据集构建、数据分析、接入数据、改模型、写训练/推理代码、运行验证、诊断失败、论文复现、paper2code 等需要资源选择-规划-执行-观察闭环的科研计算任务时，进入本技能。但若用户已明确指定要直接调用的具体技能（例如“使用onescience-runtime技能执行运行”），允许跳过本技能直接进入目标技能。
 
 ## 分层模型
 
@@ -106,774 +77,168 @@ type: orchestrator
 
 ## 自主执行模式（Autonomous Mode）
 
-当用户请求中包含以下任一语义时，设置 `autonomous_mode: true` 并写入 `Task State.execution_flags`：
+当用户请求包含以下语义时，设置 `autonomous_mode: true` 并写入 `Task State.execution_flags`：
 
-**中文触发词**：`一直执行`、`不间断`、`自动完成`、`不要停`、`一次性完成`、`自动执行`、`连续执行`、`全程自动`、`不要中断`、`别停`、`不用确认`
+- **中文触发词**：`一直执行`、`不间断`、`自动完成`、`不要停`、`一次性完成`、`自动执行`、`连续执行`、`全程自动`、`不要中断`、`别停`、`不用确认`
+- **英文触发词**：`keep running`、`don't stop`、`continuously`、`autonomously`、`non-stop`、`without interruption`、`auto-complete`
+- **任务语义触发**：用户明确要求完成端到端全流程（如"复现论文X并发布到ModelScope"、"从论文到训练到推理一条龙"）。
+- **执行型任务默认触发**：请求属于"完成…可执行任务 / 可复现研究任务 / 开展…验证 / 执行… / 跑通… / 产出…结果 / 获得可验证的…结果"这类执行型意图时，即使无显式触发词也**默认 `autonomous_mode: true`**——能力中心"使用→发送"派发的场景本意是把任务真正跑完，而不是停在方案层。
+- **反向豁免**：仅当用户显式要求"先出方案、经我确认后再执行"（如 `先给方案不要执行`、`等我确认后再跑`、`只做规划不要动手`、`方案确认后再实施`）时才保持非自主模式。
+- **关键区分——科学严谨性约束 ≠ 停在方案层**：执行型场景常带"请先评估数据/模型/资源是否足够，方案确认前不得把实现细节、历史案例或目录默认值当作不可变科学结论"这类措辞。该约束是**禁止把未经实验验证的细节当成科学结论**，不是要求停在方案层不执行。对这类场景仍设 `autonomous_mode: true` 并一路执行到产出可验证结果与落盘文件，只在最终输出中对未经本次实验验证的数值标注 `proposed_candidate` / `pending_verification`，且不得自判 PASS（遵守 `references/evidence_gates.md` 的 C/D 层 result_identity 门禁）。
 
-**英文触发词**：`keep running`、`don't stop`、`continuously`、`autonomously`、`non-stop`、`without interruption`、`auto-complete`
+**autonomous_mode=true 后、进入阶段三执行前，必须先读取 `references/autonomous_mode_details.md`**（含：handoff 注入标记与 wallclock 预算、停止条件、决策分级 level_1/2/3 与 block 写入格式、todowrite 同步与容错、失败分类策略表 7a、步骤超时保护 7b、Event 记录 7c、Plan Version 递增 7d、探索预算 8）。
 
-**任务语义触发**：任务描述为完整端到端流程（如"复现论文X并发布到ModelScope"、"从论文到训练到推理一条龙"），用户已明确表达了完成全部步骤的意图。
+## 可视化交付契约（执行型任务默认强制）
 
-**执行型任务默认触发（能力中心场景派发）**：当用户请求是"完成/执行某个可执行任务、可复现研究任务、端到端流程"这类**执行型意图**（典型措辞：`完成…可执行任务`、`完成…可复现研究任务`、`开展…验证`、`执行…`、`跑通…`、`产出…结果`、`获得可验证的…结果`），即使未出现上述显式触发词，也**默认设置 `autonomous_mode: true`**——能力中心"使用→发送"派发的场景本意就是把任务真正跑完，而不是停在方案层等确认。
+**适用范围**：`autonomous_mode=true` 的执行型任务；纯查询/纯安装/纯配置类任务豁免。
 
-**反向豁免（仍走非自主、停在方案待确认）**：仅当用户请求**显式要求"先出方案、经我确认后再执行"**时才不自动进入 autonomous_mode，典型措辞：`先给方案不要执行`、`等我确认后再跑`、`只做规划不要动手`、`方案确认后再实施`。
+**核心原则**：OneCode 会话文件面板**只渲染 HTML、不渲染 PNG**。可视化交付物必须以**自包含 HTML** 为第一载体；PNG 仅作为 HTML 内嵌素材或离线兜底，不得作为唯一可视化交付物。执行型任务"跑通"的定义包含"产出可在会话内直接预览的可视化报告"。
 
-**关键区分——科学严谨性约束 ≠ 停在方案层**：执行型场景常同时带有"请先评估数据/模型/资源是否足够，自主提出并论证执行方案；方案确认前不得把实现细节、历史案例或目录默认值当作不可变科学结论"这类措辞。该约束的真实目的是**禁止把未经实验验证的实现细节/历史案例/默认值当成科学结论**，**不是要求停在方案层不执行**。因此对这类场景：**仍设 `autonomous_mode: true` 并一路执行到产出可验证结果与落盘文件**，只是在最终输出中对未经本次实验验证的数值/结论标注 `proposed_candidate` / `pending_verification`，且不得自判 PASS（遵守 C/D 层 result_identity 门禁）。
-
-### autonomous_mode 下的行为变化
-
-1. **Global Plan 输出简化**：仍输出 Global Plan 给用户看，但末尾追加提示：
-   ```
-   > [自主执行模式已激活，将按计划自动执行全部步骤，中途不暂停确认。步骤超时预算已启用]
-   ```
-   然后立即在同一轮内继续执行第一步，不等待用户回复。
-
-2. **handoff 注入标记**：在发给所有 executor 的 `step_handoff` 中追加以下字段：
-   ```yaml
-   step_handoff:
-     # ... 原有字段 ...
-     attempt: 1
-     execution_flags:
-       autonomous_mode: true
-     step_wallclock_budget_seconds: 3600
-   ```
-   其中 `step_wallclock_budget_seconds` 根据该步骤的预估耗时设置（取预估时间的 3 倍，最小 600 秒，最大 7200 秒）。
-
-3. **observation 处理加速**：若 executor 返回 `success` 且尚未完成全部步骤，直接选择下一个 `Next Step Spec` 并调用下一个 executor，不等待、不确认。
-
-4. **自动执行停止条件**：只有遇到以下情况才停止：
-   - 全部 `completion_criteria` 满足 → 输出最终结果并结束
-   - executor 返回 `blocked` → 输出阻断原因，停止等待用户处理
-   - executor 返回 `failed` 且根据 failure_category 策略处理失败（见下方"失败分类策略"）
-   - 步骤墙钟超时（`step_timeout`）→ 记录 event，进入 blocked
-
-5. **不可自动决策时的处理**：若 orchestrator 自身在 planning / selection 阶段遇到歧义（如多个 executor 都可执行但无法自动判定最优选择），优先选择匹配度最高的 executor 并记录低置信度标记；不得在 autonomous_mode 下向用户提问。
-
-6. **决策分级策略**：autonomous_mode=true 时，遇到分叉决策按以下三级处理：
-
-| 级别 | 判定条件 | 策略 | 示例 |
-|---|---|---|---|
-| level_1_reversible | 决策可回退、不影响最终目标 | `auto_choose_first`：直接选优先级最高的选项 | 先训练哪个模型、先读哪个文件 |
-| level_2_scope_affecting | 影响范围但不改变核心目标 | `auto_with_log`：自动选择并记录决策日志到 `decision_policy.active_decisions` | 数据子集大小、epoch 数调整 |
-| level_3_goal_altering | 涉及核心目标变化或外部资源硬阻塞 | `block_and_escalate`：暂停执行，写入 `.onescience/task_state.json` 的 blocked 状态，附带决策选项和 fallback；若 wallclock 超过 `decision_policy.level_3_fallback_timeout_seconds` 无人响应，自动使用 fallback 选项 | 数据替代方案选择、不可达外部资源 |
-
-Block 时的写入格式：
-```json
-{
-  "blocked_reason": "decision_required",
-  "decision_level": "level_3_goal_altering",
-  "decision_prompt": "<描述当前阻塞的决策点>",
-  "options": [
-    {"label": "...", "description": "...", "is_fallback": false},
-    {"label": "...", "description": "...", "is_fallback": true}
-  ],
-  "fallback_timeout_seconds": 300,
-  "fallback_option_index": 1
-}
-```
-
-7. **OpenCode Todo 同步**：autonomous_mode=true 时，orchestrator 必须在以下关键节点调用 `todowrite` 将任务执行进度同步到 OpenCode 界面，确保用户可实时感知当前执行状态：
-
-   | 时机 | todowrite 操作 |
-   |---|---|
-   | Global Plan 输出后 | 将所有计划步骤写入 todo 列表（status: pending） |
-   | 每个 executor 调用前 | 将当前步骤标记为 in_progress，同步 active_step 信息 |
-   | 每个 executor 成功返回后 | 将完成步骤标记为 completed |
-   | 步骤失败进入 blocked | 标记当前步骤为 pending，在 content 中追加 blocked 原因 |
-   | 任务全部完成 | 标记所有步骤为 completed |
-
-   todowrite content 示例：
-   ```json
-   {
-     "content": "步骤1：论文解析 → paper-repro",
-     "status": "completed",
-     "priority": "high"
-   }
-   ```
-
-   **注意**：todowrite 仅用于界面进度展示，Task State 仍是 orchestrator 内部唯一事实源，不要用 todowrite 替代 task_state.json 的读写。
-
-   **容错规则**：todowrite 调用失败（工具不可用、超时、参数错误等）**不得阻断自动化执行**。失败时仅记录一条 `event_type=warning` 到 `Task State.events`（如 `todowrite_sync_failed`），然后继续后续步骤。界面 todo 列表缺失不影响任务实质性推进。
-
-7a. **失败分类策略**：autonomous_mode=true 时，收到 executor 返回 `failed` 后根据 `execution_result.failure_category` 执行差异化策略：
-
-| failure_category | 策略 | 重试上限 | 示例 |
-|---|---|---|---|
-| `transient` | `retry_with_backoff`：记录 event `repair_attempted`，递增 `attempt`，指数退避后重试 | 2 次 | 网络波动 |
-| `code` | `delegate_to_coder`：委托 onescience-coder 修复代码后重试 | 2 次 | 冒烟测试失败 |
-| `environment` | `delegate_to_installer`：委托 onescience-installer 修复环境后重试 | 2 次 | conda 依赖缺失 |
-| `data` | `retry_re_fetch`：重新获取数据后重试 | 1 次 | 数据校验失败 |
-| `scientific` | `block_and_escalate`：立即暂停，标记为需要人工研判 | — | 论文方法不可复现 |
-| `dependency` | `block_and_escalate`：立即暂停 | — | 外部 API 不可达 |
-| `platform` | `block_and_retry_once`：记录 event 后阻塞，重试 1 次 | 1 次 | executor 无响应 |
-| `unknown` | `block_with_diagnosis`：进入诊断，根据诊断结果再判定 | — | 无法自动分类 |
-
-- 每次执行失败/修复/重试均写入 `events` 和 `observations`。
-- 超过重试上限 → 进入 `blocked` 状态。
-- `scientific` 和 `dependency` 类别不自动重试，直接 blocked。
-
-7b. **步骤超时保护**：autonomous_mode=true 时，每次调用 executor 前设置步骤墙钟预算：
-
-- 从 `active_step.step_wallclock_budget_seconds` 获取预算，并记录 `step_started_at`。
-- executor 返回时检查 wallclock 是否超过 `step_wallclock_budget_seconds`：
-  - 未超过 → 正常流程。
-  - 超过 → 标记 `status: step_timeout`，写入 event（`event_type=step_timed_out`），进入 blocked。
-- blocked 恢复后重新执行时，attempt 递增，预算 = `original_budget * budget_multiplier_on_retry`。
-
-7c. **Event 记录**：autonomous_mode=true 时，orchestrator 必须在以下时机写入 event 到 `Task State.events`：
-  - 调用 executor 前 → `step_started`
-  - 收到结果后 → `step_completed` / `step_failed` / `blocked` / `step_timed_out`
-  - 进入修复 → `repair_attempted`
-  - 开始重试 → `retry_started`
-  - 诊断完成 → `diagnosis_completed`
-  - tier 升级/回退 → `tier_escalated` / `tier_fallback`
-  - 计划修改 → `plan_revised`
-  - 每次 observation 写入后 → `observation_recorded`
-
-7d. **Plan Version 递增**：每次对 `global_plan` 做结构性修改时（非简单状态更新），递增 `global_plan_version`，并追加一条 `global_plan_revision_history`。
-
-8. **探索预算**：autonomous_mode 下的数据探索类步骤受硬性预算约束。orchestrator 在初始化时写入 `Task State.exploration_budget`，并在每次探索动作执行前后更新 `used` 和 `wallclock_seconds_used`。
-
-预算定义（与 `references/task_state_contract.md` 中的 schema 一致）：
-
-| 预算类别 | 最大尝试 | 最大耗时 | 耗尽后策略 |
-|---|---|---|---|
-| data_acquisition | 3 次 | 600s（10 分钟） | report_blocker_and_proceed_with_fallback |
-| speed_measurement | 2 次 | 无单独限制 | use_last_measured_value |
-| structure_probing | 2 次 | 120s（2 分钟） | skip_and_mark_unavailable |
-
-预算检查规则：
-- 每次执行探索动作前检查：对应类别的 `used < max_attempts` 且 `wallclock_seconds_used < max_wallclock_seconds`
-- 若任一条件不满足 → 跳过探索，直接按 `on_exhausted` 策略处理
-- 测速类操作（`curl -r ... -o /dev/null`、`timeout ... curl` 等）只允许执行 `speed_measurement.max_attempts` 次不同测速策略的测试；同一策略的重复执行视为同一次尝试
-
-## 可视化交付契约（Visualization Delivery Contract，执行型任务默认强制）
-
-**适用范围**：`autonomous_mode=true` 的执行型任务（能力中心场景派发、端到端复现/评测/预测/设计类）。纯查询/纯安装/纯配置类任务豁免。
-
-**核心原则**：OneCode 会话文件面板**只渲染 HTML、不渲染 PNG**（PNG 在面板中打开为 base64 文本，不可读）。因此可视化交付物必须以**自包含 HTML** 为第一载体；PNG 仅作为 HTML 的内嵌素材或离线兜底，**不得作为唯一可视化交付物**。执行型任务"跑通"的定义包含"产出可在会话内直接预览的可视化报告"，而非仅文字方案或裸指标。
-
-**强制交付物**（在判定 `complete` / `complete_with_caveats` 收尾之前产出，落盘到任务输出目录）：
-1. `REPORT_single.html`：**单文件自包含**报告——核心图表以 base64 内嵌（`<img src="data:image/png;base64,...">`）或内联 SVG，**零外链**（不引用任何 CDN/网络 CSS/JS/字体），内容含：任务名、关键指标数值表、≥1 张核心图、方法与数据来源说明、真实性/证据边界标注。
-2. `interactive.html`（推荐）：Plotly 或等价的多面板交互页，同样零外链自包含。
-3. 图表配色与版式遵循已召回的 `scientific_visualization` / 域可视化原语规范；未召回到可视化原语时按默认出版级规范（dpi≥150、色盲友好 colormap、坐标轴带单位与图例）。
+**强制交付物**（判定 `complete` / `complete_with_caveats` 之前产出，落盘到任务输出目录）：
+1. `REPORT_single.html`：单文件自包含——核心图表 base64 内嵌或内联 SVG，**零外链**（不引用任何 CDN/网络 CSS/JS/字体），含任务名、关键指标数值表、≥1 张核心图、方法与数据来源说明、真实性/证据边界标注。
+2. `interactive.html`（推荐）：Plotly 或等价多面板交互页，同样零外链自包含。
+3. 配色与版式遵循已召回的 `scientific_visualization` / 域可视化原语规范；未召回时按默认出版级规范（dpi≥150、色盲友好 colormap、坐标轴带单位与图例）。
 4. **空图自检**：出图后逐 panel 校验非空且 `np.std>0`，空图/纯白图必须先调试重画，禁止交付空图。
 
-**生成方式**：优先委派 `onescience-data-analyzer`（或等价 executor）用 matplotlib/plotly 出图并内嵌；base64 内嵌用 `base64.b64encode(open(png,'rb').read()).decode()` 拼入 `<img>`，确保单文件离线可打开。
+**生成方式**：优先委派 `onescience-data-analyzer`（或等价 executor）出图并内嵌；确保单文件离线可打开。
 
-**完成门禁挂钩**：step 11 的 D 层 complete 门禁与 tier_check 判定终态**之前**，必须检查 `REPORT_single.html` 已落盘且非空、零外链、含内嵌图；缺失则不得标 complete，先补产可视化再收尾；仅当补产确实失败时才允许 `complete_with_caveats` 并在最终输出首行注明"可视化交付缺失"。
+**完成门禁挂钩**：阶段三步骤 11 的 D 层 complete 门禁判定终态**之前**，必须检查 `REPORT_single.html` 已落盘且非空、零外链、含内嵌图；缺失则不得标 complete，先补产可视化再收尾；仅当补产确实失败时才允许 `complete_with_caveats` 并在最终输出首行注明"可视化交付缺失"。
 
-**会话内可见性**：最终输出必须以"文件/大小/说明"表格列出 `REPORT_single.html` 等交付物及其工作区相对路径，并提示用户在 OneCode 会话右侧文件面板点开即预览（HTML 预览为平台内置能力）。
+**会话内可见性**：最终输出必须以"文件/大小/说明"表格列出交付物及工作区相对路径，提示用户在会话右侧文件面板点开预览。
 
 ## 工作流程
 
 ### 阶段一：资源召回与意图识别
 
-1. 建立或更新 Task State：初始化任务状态或从上一步的执行结果更新状态。
-   - **持久化**：每次更新 Task State 后，将当前完整 Task State 原子写入 `.onescience/task_state.json`（先写 `.tmp` 再 rename）。
-   - **恢复**：每次 orchestrator 启动时，先检查 `.onescience/task_state.json` 是否存在：
-     - 若存在且 `status` 非 `complete` 非 `blocked`，读取并恢复上一个任务，输出"检测到未完成任务，正在恢复..."。检查 `active_step.attempt` 和 `step_wallclock_budget_seconds`，若上次 steps 墙钟已超过预算则判定为 `step_timeout`，否则从 `active_step` 继续。
-     - 若存在且 `status` 为 `blocked` 且 `active_step.status` 为 `step_timeout`，恢复时递增 `attempt`，budget 翻倍。
-     - 若不存在或已完成/已阻断，正常开始新任务。
+1. 建立或更新 Task State：初始化任务状态或从上一步执行结果更新。
+   - **持久化**：每次更新后原子写入 `.onescience/task_state.json`（先写 `.tmp` 再 rename）。
+   - **恢复**：启动时先检查该文件：存在且 `status` 非 `complete` 非 `blocked` → 输出"检测到未完成任务，正在恢复..."并按 `active_step.attempt` 与 wallclock 预算判断（超预算判 `step_timeout`，否则从 `active_step` 继续）；`status=blocked` 且 `active_step.status=step_timeout` → 恢复时递增 `attempt`、budget 翻倍；不存在或已终态 → 正常开始新任务。
+   - 字段与状态迁移约定见 `references/task_state_contract.md`。
 
-   Task State 文件格式：
-   ```json
-   {
-     "task_id": "paper-repro-2406.01465",
-     "user_goal": "复现 https://arxiv.org/abs/2406.01465 论文",
-     "status": "execution",
-     "current_phase": "training",
-     "global_plan_version": 1,
-     "global_plan": { },
-     "completed_steps": ["step-1", "step-2"],
-     "active_step": { "step_id": "step-3", "attempt": 1, "step_wallclock_budget_seconds": 3600 },
-     "execution_flags": { "autonomous_mode": true },
-     "step_wallclock_budget": { "enabled": true, "default_budget_seconds": 3600, "budget_multiplier_on_retry": 2.0 },
-     "last_updated": "2026-08-05T10:30:00Z"
-   }
-   ```
+1.6 **【强制】初始化分层完成契约**：若任务涉及模型训练/论文复现/模型产出（`operation_type` 含 `train`/`reproduce` 或 `artifact_type` 含 `model`），阶段一 Task State 初始化完成后必须读取 `references/tier_completion_contract.md`，按其 YAML 模板与动态填充规则写入 `tiered_completion_contract`（tier_0 冒烟 / tier_1 小规模默认交付 / tier_2 全量仅显式触发）。纯安装、纯配置、纯查询任务跳过。
 
-1.6 **【强制】初始化分层完成契约（Tiered Completion Contract）**：
+1.5 **【强制】资源调用前预分析**：调用 type=resource 之前先扫描 `user_request` 中的可视化信号词并记录到 `pre_call_signals.visualization`：显式可视化词（可视化/visualization/render）、三维展示词（3D/interactive/交互式）、置信度着色词（pLDDT/PAE/B-factor）、分子可视化工具（PyMOL/3Dmol/MolStar/NGL）、结构文件后缀（.pdb/.cif/.mmcif）。命中任一 → `pre_call_signals.visualization=true`；此步骤不依赖 `intent_profile`。
 
-若任务涉及模型训练/论文复现/模型产出（由 `intent_profile.operation_type` 包含 `train`/`reproduce` 或 `artifact_type` 包含 `model` 判定），orchestrator 必须在阶段一 Task State 初始化完成后，立即写入 `tiered_completion_contract`。**各 tier 的 checks 和描述为通用模板，orchestrator 必须根据论文实际内容（领域 domain、模型类 model_type、核心指标 core_metric、数据规模 data_scale）做以下动态填充**：
+2. 调用 type=resource 技能获取资源摘要：
+   - 先检查各 `type=resource` 技能 `description` 并输出 `selected_resource_skills`，仅调用覆盖当前职责知识范围的技能
+   - 输入：用户原始请求、Task State 摘要、`content_request: "摘要"`；`filters.domain` 仅可合理推断时填写；`filters.keyword` 仅围绕当前任务目标/产物/阻塞问题填写
+   - **【强制】可视化信号前传**：`pre_call_signals.visualization=true` 时 `filters.keyword` 必须追加可视化信号词（如 `可视化 visualization 3D pLDDT PAE render interactive`），确保 primitives 的 visualization category 被召回
+   - 接收：`matched_resources` 列表（`path`/`type`/`name`/`why_matched`/`limitations`/`content`）；只消费摘要 `content`
+   - `resource_retrieval_result` 是阶段一中间观察，返回后回到主循环继续步骤 3；不要把请求说明或裸 YAML 当作本轮最终输出
+   - 请求/返回格式契约见 `references/resource_contract.md`
 
-```yaml
-tiered_completion_contract:
-  active_tier: "tier_0_smoke"
-  tiers:
-    - tier_id: "tier_0_smoke"
-      description: "最小化代码正确性验证——必须通过"
-      checks:
-        - name: "forward_pass"
-          status: "pending"
-        - name: "backward_pass"
-          status: "pending"
-        - name: "train_loop_dry_run"
-          status: "pending"
-        - name: "validation_loop_dry_run"
-          status: "pending"
-        # 【动态填充】若论文核心指标有对应的计算逻辑（如 CFD 的 CL 面板法、生信的 pLDDT、材料的能量/力），
-        # 替换为 "{core_metric}_dry_run"；若无特殊计算逻辑，删除本行
-        - name: "{core_metric}_dry_run"
-          status: "pending"
-        - name: "config_consistency"
-          status: "pending"
-      status: "pending"
-      max_wallclock_minutes: 15
-      on_fail: "fix_and_retry_max_3_times"
-      escalation: "always"
+3. 基于资源摘要识别用户意图，输出 `intent_profile`：`domain`（earth/biology/materials/cfd/general-science）、`task_goal`、`artifact_type`、`operation_type`、`execution_phase`、`intent_aspects`（如 `["paper_reproduction", "runtime_verification"]`）、`visualization_needed`（当预分析命中或用户提到结构可视化/3D/着色/交互视图时必须为 `true`）。
 
-    - tier_id: "tier_1_quick_repro"
-      description: "小数据量端到端复现，产出可发布的模型包——默认可交付层"
-      # 【动态填充】根据论文数据规模推导：
-      #   - data_scale: 从 reproduction_spec 中提取论文全量数据规模，Tier 1 取 1/10 ~ 1/5
-      #   - max_wallclock: 预估，小数据单卡通常 < 60 min
-      checks:
-        - name: "model_weights_saved"
-          status: "pending"
-        - name: "test_metric_finite"       # 通用名，替换论文实际指标（RMSE/MAE/Accuracy/F1/...）
-          status: "pending"
-        # 【动态填充】同 tier_0，替换为 "{core_metric}_traceable"
-        - name: "{core_metric}_traceable"
-          status: "pending"
-        - name: "modelscope_audit_passed"
-          status: "pending"
-      status: "pending"
-      is_deliverable: true
-      escalation_trigger: "user_goal 包含 '全量' / '完整复现' / 'match paper results' / '论文指标'"
-
-    - tier_id: "tier_2_full_repro"
-      description: "全量数据+完整训练——仅在显式要求时触发"
-      data_scale_preset: "full"
-      checks:
-        - name: "full_training_completed"
-          status: "pending"
-        - name: "test_metric_in_paper_range"
-          status: "pending"
-      status: "pending"
-      is_deliverable: true
-      fallback_tier: "tier_1_quick_repro"
-      fallback_status_on_failure: "partial"
-  resolution: "tier_contract_driven"
-  deliverable_tier: "tier_1_quick_repro"
-```
-
-**动态填充规则**（orchestrator 在写入时必须执行）：
-
-| 占位符 | 填充来源 | 填充方法 |
-|---|---|---|
-| `{core_metric}` | `plan_detail_store` 中 paper-repro 阶段的 `core_metric` 字段 | 直接替换为论文核心指标名（如 CFD 的 `cl`、生信的 `plddt`、材料的 `energy_force`）；若无特殊指标，删除对应的 check 行 |
-| `data_scale` | `matched_resources` 中的数据卡或 reproduction_spec 中的 `dataset_size` | Tier 1 的 `data_scale` 取论文全量的 1/10~1/5，Tier 2 取论文全量；同时写入 `data_scale_preset` 字段供 trainer 使用 |
-| `description` | `intent_profile.domain` | Tier 1 description 中的领域词根据 domain 改写（如 `earth`→"气象数据"、`bio`→"蛋白质序列"、`cfd`→"翼型 CFD"、`materials`→"材料结构"） |
-| `checks` 中的指标名 | 论文指标 | `test_rmse_finite` → 若论文用 MAE 改为 `test_mae_finite`，若用 Accuracy 改为 `test_accuracy_finite`；`test_rmse_in_paper_range` 同理 |
-
-**填充示例**：
-- CFD 翼型论文（arXiv:2504.15993）：`{core_metric}` = `cl`，`data_scale` = `{n_foils: 10}`, description = "翼型 CFD 数据"
-- 蛋白质结构预测：`{core_metric}` = `plddt`，`data_scale` = `{n_sequences: 50}`, description = "蛋白质序列数据"
-- 材料力场训练：`{core_metric}` = `energy_force`，`data_scale` = `{n_frames: 100}`, description = "材料结构数据"
-- 通用分类/回归（无领域特殊指标）：删除 `{core_metric}` 相关的 check 行，仅保留通用 checks
-
-若任务不涉及训练/复现（如纯安装、纯配置、纯查询），跳过此步骤，不初始化 `tiered_completion_contract`。
-
-1.5 **【强制】资源调用前预分析**：在调用 type=resource 技能之前，先扫描 `user_request` 中是否包含以下可视化信号词，并记录到 `pre_call_signals`：
-   - 显式可视化词：`可视化`、`visualization`、`visualize`、`render`、`rendering`
-   - 三维展示词：`3D`、`三维`、`interactive`、`交互式`
-   - 置信度着色词：`pLDDT`、`PAE`、`confidence coloring`、`B-factor`
-   - 分子可视化工具：`PyMOL`、`3Dmol`、`MolStar`、`NGL`、`cartoon`、`ribbon`
-   - 结构文件后缀：`.pdb`、`.cif`、`.mmcif`
-   - 若命中任一信号，`pre_call_signals.visualization` 设为 `true`
-   - 此步骤在资源调用前执行，不依赖 `intent_profile`
-
-2. 调用 type=resource 技能获取资源摘要（作为资源召回步骤）：
-   - 先检查可用 `type=resource` 技能的 `description`，并输出 `selected_resource_skills`
-   - 仅选择那些 `description` 明确覆盖当前职责所需知识范围的 resource 技能进行调用
-   - 如果某个 resource 技能的知识范围与当前职责无关，则不要调用该技能获取资源
-   - 输入：用户原始请求、当前 `Task State` 摘要、`content_request: "摘要"`（或使用默认摘要语义）
-   - `filters.domain` 仅在当前任务领域可以合理推断时填写
-   - `filters.keyword` 仅围绕当前任务目标、预期产物、操作类型、阻塞问题或当前步骤目的填写
-   - **【强制】可视化信号前传**：当 `pre_call_signals.visualization` 为 `true` 时，`filters.keyword` 中必须追加可视化信号词（如 `可视化 visualization 3D pLDDT PAE render interactive`），确保 primitives 的 visualization category 被路由且不被截断
-   - 接收：`matched_resources` 列表，每项包含 `path`、`type`、`name`、`why_matched`、`limitations`、`content`
-   - orchestrator 只消费摘要形式的 `content`，不要求 `content` 必须是对象结构
-   - `resource_retrieval_result` 是阶段一的中间观察；资源召回返回后应回到 orchestrator 主循环，继续步骤 3 的 `intent_profile` 识别
-   - 已构造 `resource_retrieval_request` 时，应继续完成资源技能调用或内联召回，并消费 `resource_retrieval_result`；不要把请求说明或裸 YAML 作为当前轮次的最终输出
-
-3. 基于资源摘要识别用户意图：
-   - 输入：用户请求 + 已调用 resource 技能返回的 `matched_resources` + `pre_call_signals`
-   - 输出：`intent_profile` 包括：
-     - `domain`: earth/biology/materials/cfd/general-science
-     - `task_goal`: 用户最终目标
-     - `artifact_type`: 预期产物类型
-     - `operation_type`: 操作类型（开发、修复、评估、运行、安装）
-     - `execution_phase`: 当前阶段（规划、实现、验证、诊断）
-     - `intent_aspects`: 任务涉及的意图方面列表，如 `["paper_reproduction", "runtime_verification"]`
-     - `visualization_needed`: 当 `pre_call_signals.visualization` 为 `true` 或 `user_request` 中提到结构可视化、3D 展示、pLDDT/PAE 着色、交互式视图、PyMOL、3Dmol 等可视化需求时，必须设为 `true`
-
-3.5 **【强制】可视化原语补召**：当 `intent_profile.visualization_needed` 为 `true` 时，检查步骤 2 返回的 `matched_resources` 是否包含 `type=visualization_primitive` 的资源：
-   a. 若**已包含** visualization_primitive，记录资源路径到 `intent_profile`，继续步骤 4。
-   b. 若**未包含** visualization_primitive，必须发起**第二次资源调用**（命名直查模式）：
-      - `user_request`：以可视化为主意图（如"蛋白质复杂结构三维可视化、pLDDT/PAE 置信度着色、交互式 3D 视图"）
-      - `filters.domain`：使用步骤 2 中已确定的 domain（如 `bio`）
-      - `filters.keyword: complex_structure_visualization`（精确目录名，触发 primitives 命名直查）
-      - `content_request: "摘要"`
-      - 将补召返回的 visualization_primitive **追加合并**到步骤 2 的 `matched_resources` 中
-   c. 补召返回的资源在 `why_matched` 中备注 `orchestrator_remedial_lookup`。
-   d. **此步骤不可跳过**：不能因为步骤 2 未返回 visualization 就认为不需要可视化。`visualization_needed=true` 时必须在交给 executor 之前确保 visualization 原语已就位。
+3.5 **【强制】可视化原语补召**：`visualization_needed=true` 时检查 `matched_resources` 是否含 `type=visualization_primitive`：
+   a. 已包含 → 记录路径，继续步骤 4。
+   b. 未包含 → 必须发起第二次资源调用（命名直查）：`user_request` 以可视化为主意图，`filters.domain` 沿用已定领域，`filters.keyword: complex_structure_visualization`（精确目录名触发命名直查），`content_request: "摘要"`；补召结果**追加合并**进 `matched_resources`，`why_matched` 备注 `orchestrator_remedial_lookup`。
+   d. **不可跳过**：不能因步骤 2 未返回 visualization 就认为不需要可视化；必须在交给 executor 之前确保 visualization 原语就位。
 
 3.6 **【强制】领域知识缺口检测（在线兜底闸门，不可跳过）**：资源召回（步骤 2/3.5）返回后，必须读取 `resource_retrieval_result.knowledge_gap` 字段，判定本地是否真正查到了能回答该具体科学问题的领域知识。判定标准（`knowledge_gap=true` 的任一情形）：
    a. `matched_resources` 为空；
    b. `retrieval_level ∈ {none, task_only}`；
-   c. `matched_resources` 仅由泛化 `workflow_planning_primitive`（或 `legacy_instance: true` 的「文献综述 / 通用分析 / 通用建模流程」类卡）构成，无任何与目标 domain 具体研究对象直接相关的领域专属资源或 Task；
+   c. `matched_resources` 仅由泛化 `workflow_planning_primitive`（或 `legacy_instance: true` 的「文献综述/通用分析/通用建模流程」类卡）构成，无任何与目标 domain 具体研究对象直接相关的领域专属资源或 Task；
    d. 命中资源 domain 与请求目标 domain 不一致，且无该 domain 实质资源。
-   - 若 `knowledge_gap=true`：设置 `Task State.execution_flags.online_fallback_required=true`，记录 `knowledge_gap_detected` event（含判定情形 a/b/c/d 与命中的泛化卡名），并**强制**在步骤 7 触发【硬路由兜底】——把领域问题交给 `onescience-live-literature` 联网检索补齐带引用的答案。同时读取 `resource_retrieval_result.online_evidence`：非空=文献证据已就绪（规划/执行必须以其中引文[n]与接地事实 grounding 参数与结论）；为空=证据洞未填（进入步骤 7 单次兜底或证据边界模式）。
-   - **铁律**：泛化 workflow-planning 卡只讲「怎么做研究」的通用流程，**不构成对具体科学问题的领域回答**。仅命中此类卡时，禁止把它当成「有资源可用」直接进入 direct_step 或专家融合用通用剧本假装完成，也禁止编造「模拟检索结果 / 模拟数据 / 默认参数 / 历史案例」充数。
-   - 若 `knowledge_gap=false`（full / partial / 命中领域专属资源）：正常进入阶段二，不触发在线兜底。
-   - **此步骤不可跳过**：`knowledge_gap` 是跨 task_centric / traditional_resource 两条路径的统一闸门，是 orchestrator 侧在线兜底触发的唯一依据。orchestrator 须按本闸门复核 primitives 召回结果并读取 `online_evidence`：**若 `online_evidence` 非空（primitives step 11 已完成检索）则直接消费、不得重复落检索 executor_step（单次集中通道，防限流/双跑）**；仅当 `knowledge_gap=true` 且 `online_evidence` 为空（未触发或 offline）时，才在步骤 7 落一个在线兜底 executor_step。
+   - 若 `knowledge_gap=true`：设置 `Task State.execution_flags.online_fallback_required=true`，记录 `knowledge_gap_detected` event（含判定情形与命中的泛化卡名），并**强制**在步骤 7 触发【硬路由兜底】。同时读取 `resource_retrieval_result.online_evidence`：非空=文献证据已就绪（规划/执行必须以其中引文[n]与接地事实 grounding 参数与结论）；为空=证据洞未填（进入步骤 7 单次兜底）。
+   - **铁律**：泛化 workflow-planning 卡只讲「怎么做研究」的通用流程，**不构成对具体科学问题的领域回答**。仅命中此类卡时，禁止当成「有资源可用」直接进入 direct_step 或专家融合假装完成，禁止编造「模拟检索结果/模拟数据/默认参数/历史案例」充数。
+   - 若 `knowledge_gap=false`（full/partial/命中领域专属资源）：正常进入阶段二，不触发在线兜底。
+   - **此步骤不可跳过**：`knowledge_gap` 是跨 task_centric / traditional_resource 两条路径的统一闸门，是 orchestrator 侧在线兜底触发的唯一依据。**若 `online_evidence` 非空则直接消费、不得重复落检索 executor_step（单次集中通道，防限流/双跑）**；仅当 `knowledge_gap=true` 且 `online_evidence` 为空时才在步骤 7 落一个在线兜底 executor_step。
 
 ### 阶段二：专家召回与计划融合
 
-4. 根据 `intent_profile.intent_aspects` 严格执行专家召回：
-   - 遍历 `intent_profile.intent_aspects`，为每个方面查找对应的 `type=expert` 规划技能；匹配规则以方面本身为准，不得用泛化相似度替代
-   - 无论是否找到匹配专家，都记录本轮召回结果；任务看起来简单、通用或适合 `direct_step` 时，也先留下“已召回、未命中”的状态痕迹
-   - 记录 `planner_candidates` 列表；若为空，也要保留空召回结果
+4. 根据 `intent_profile.intent_aspects` 严格执行专家召回：逐方面查找对应 `type=expert` 规划技能，匹配以方面本身为准，不得用泛化相似度替代；无论是否命中都记录本轮召回结果与 `planner_candidates` 列表；任务看起来简单也先留下"已召回、未命中"的空结果痕迹。
 
-5. 如果召回到专家（planner_candidates 非空）：
-   - 设置 `planning_mode=expert_proposal_synthesis`
-   - 向每个专家技能传递：Task State、matched_resources、intent_profile
-   - 专家技能各自返回 `planner_proposal`（包含计划步骤、资源需求、风险评估）
-   - 收集所有 `planner_proposal`
-   - 查询可用 executor 技能能力：必须列举当前所有可用的 `type=executor` 技能，并逐个完整读取各自权威 `SKILL.md`，形成完整的 executor 能力视图台账，重点获取：
-     - 技能的输入要求（需要什么前置产物）
-     - 技能的输出产物（生成什么）
-     - 技能的职责边界（做什么、不做什么）
-     - 技能的下游交接对象与前置条件
-     - 技能当前是否覆盖每个候选步骤中的原子动作
-     - 上述判断对应的证据段落
-   - 同时维护内部 inventory 校验结果：记录 `all_executor_skills`、`read_executor_skills`、`missing_executor_skills`，并计算 `executor_inventory_complete`
-   - frontmatter `description`、技能名称和 handoff 文档中的简写职责，只能用于列举候选 executor，不能替代完整 `SKILL.md` 作为边界依据
-   - 若 `set(all_executor_skills) != set(read_executor_skills)`，则立即停止计划融合，输出缺失技能名单到内部状态，并仅以简短摘要向用户报告 inventory 未完成
-   - 若 executor 能力视图不完整、存在未核定边界的 executor，或任一 executor 缺少证据化台账，则先补齐查询结果后再继续计划融合
-   - 融合和优化 proposals，生成统一的 `Global Plan`：
-     - 先生成 `global_plan` 的调度骨架，再为每个 `executor_step` 生成按目标 executor 裁剪的 detail bundle
-     - 遍历每个 proposal 中的步骤
-     - 执行技能覆盖优先级：
-       - 先识别步骤内部包含的原子执行动作（如生成代码、构建数据、安装环境、训练、推理、运行验证、评估、诊断）
-       - 对每个原子动作，必须同时检查“谁明确负责”和“谁明确不负责”；两者都要基于对应 executor 的完整 `SKILL.md` 证据，而不是技能名称或简写摘要
-       - 若某个原子动作已有专门的 `type=executor` 技能可调用，必须为该动作生成独立的 `executor_step`
-       - 生成 `executor_step` 时，不得只保留动作名；必须同时提取会影响目标 executor 执行结果的细节，形成 detail bundle
-       - 宽泛 executor 只承担没有更专门 executor 覆盖的部分，或负责生成后续专门 executor 所需的代码、业务入口与静态配置
-      - 运行提交脚本、SLURM 提交脚本、通道执行包装脚本等 execute-phase 运行脚本，不属于 coder 的默认前置产物；若完整 `SKILL.md` 已表明某专门 executor（如 `onescience-runtime`）持有执行通道模板选择、脚本渲染、提交与重试职责，则这些脚本必须直接分配给该 executor
-       - 不允许因为一个宽泛 executor 能“端到端完成”就吞并已有专门 executor 能执行的训练、推理、评估、运行或安装子任务
-       - 规范性示例：若 `onescience-trainer` 的完整 `SKILL.md` 已明确训练策略定义、完整训练脚本内容生成和训练执行组织属于 trainer，而 `onescience-coder` 仅负责把上游已定义内容写入仓库或项目结构，则训练设计与执行组织必须分配给 trainer；只有训练内容落盘子动作才分配给 coder
-       - 示例：当模型生成、训练、推理任务内部包含多个原子动作时，应先查询当前可用的 `type=executor` 技能；若其中某些动作已有更专门的 executor 覆盖，则拆成“前置产物生成 + 专门 executor 执行子动作”的序列；只有在确实不存在对应专门 executor 时，才把该部分保留给更宽泛的 executor
-      - 通用步骤拆分规则：
-       - 检查步骤描述是否包含具体业务逻辑实现细节（如"读取X"、"遍历Y"、"提取Z"、"转换A"、"写入B"）
-       - 如果包含，查找哪个 executor 技能负责"编写代码"
-       - 查找是否有 executor 技能的 description 中说明"接收已实现的代码路径"作为输入
-       - 根据 executor 技能的输入输出依赖关系，将步骤拆分为正确的调用序列
-      - detail bundle 提取规则：
-       - coder 类步骤保留文件落点、接口约束、输入输出语义、复用边界和验收要求
-       - trainer 类步骤保留训练模式、数据契约、checkpoint 语义、策略、指标和运行边界
-       - runtime 类步骤保留入口、执行通道、配置证据、日志位置、资源要求和重试语义
-       - 只保留目标 executor 真正需要的决定性信息，不把整段专家 proposal 原样塞入 handoff
-     - 为每个步骤标注执行方式：
-       - `step_type=executor_step`：标注具体 executor 技能名称，并关联其 detail bundle
-       - `step_type=orchestrator_step`：标注所需工具
+5. 若召回到专家（planner_candidates 非空）：设置 `planning_mode=expert_proposal_synthesis`；向每个专家传递 Task State、matched_resources、intent_profile，收集所有 `planner_proposal`；然后执行【executor 能力视图硬规则】（见下）；再融合优化为 `Global Plan`。
 
-6. 如果没有召回到专家（planner_candidates 为空）：
-   - 设置 `planning_mode=direct_step`
-   - 视为通用任务、单步任务或专家体系尚未覆盖的任务
-   - 该分支只在“阶段一资源召回完成 + 阶段二专家召回已执行且记录为空结果”之后进入
-   - **前置闸门**：进入本分支前必须已通过步骤 3.6 的领域知识缺口检测；若 `knowledge_gap=true`，direct_step 不得用泛化剧本假装完成，必须在步骤 7 按【硬路由兜底】先落一个 `onescience-live-literature` 在线检索 executor_step，再由其真实检索结果驱动后续步骤，禁止编造模拟数据充数
-   - 查询可用 executor 技能能力：必须列举当前所有可用的 `type=executor` 技能，并逐个完整读取对应 `SKILL.md`，形成完整的 executor 能力视图台账
-   - 同时维护内部 inventory 校验结果：记录 `all_executor_skills`、`read_executor_skills`、`missing_executor_skills`，并计算 `executor_inventory_complete`
-   - 若 `set(all_executor_skills) != set(read_executor_skills)`，则立即停止 direct_step 规划，输出缺失技能名单到内部状态，并仅以简短摘要向用户报告 inventory 未完成
-   - 若 executor 能力视图不完整、缺少证据化台账，或仍有 executor 边界未核定，则先补齐台账后再进入 direct_step 规划
-   - 由 orchestrator 基于 `intent_profile`、`matched_resources` 和完整的 executor 能力视图直接规划完整的 `Global Plan`
-   - 为每个步骤标注执行方式：`executor_step` 或 `orchestrator_step`
+6. 若未召回到专家（planner_candidates 为空）：设置 `planning_mode=direct_step`；该分支只在"阶段一资源召回完成 + 阶段二专家召回已执行且记录空结果"之后进入；**前置闸门**：必须已通过步骤 3.6 缺口检测——若 `knowledge_gap=true`，direct_step 不得用泛化剧本假装完成，必须在步骤 7 先落一个在线兜底 executor_step，由其真实检索结果驱动后续步骤，禁止编造模拟数据；然后执行【executor 能力视图硬规则】，由 orchestrator 直接规划完整 `Global Plan`，为每步标注 `executor_step` / `orchestrator_step`。
 
-7. 【强制要求】向前端输出 Global Plan（无论步骤5还是步骤6）：
-   - 先向用户输出 Global Plan 作为过程性可见结果，然后在同一 skill 循环内继续执行第一步
-   - 输出格式必须包含：
-     - 当前轮次的 executor inventory 汇总状态：仅展示简短摘要，例如 `executor inventory: 13/13 complete`
-     - 若 `executor_inventory_complete=false` 或进入 blocked，才额外展示 `missing_executor_skills`；默认不向用户列出完整 `all_executor_skills` 或 `read_executor_skills`
-     - 当前轮次 executor 能力视图的摘要性结论：只概括与当前计划相关的职责边界、关键输入输出和选择依据，不默认枚举全部 executor 明细
-     - **【新增】若已初始化 `tiered_completion_contract`，输出分层概览**：
-       
-       ```
-       ## 任务分层概览
-       | 层级 | 描述 | 数据规模 | 预计耗时 | 是否可交付 |
-       |---|---|---|---|---|
-       | Tier 0 | 代码冒烟验证 | 5 foils × 3 epochs | ~15 min | 否 |
-       | Tier 1 | 小规模端到端复现 | 10 foils × 30 epochs | ~30 min | **是（默认交付）** |
-       | Tier 2 | 全量完整复现 | 150 foils × 400 epochs | ~48 h | 是 |
-       
-       > 当前目标：Tier 1 完成即交付。Tier 2 仅在显式要求'全量复现'时触发。
-       ```
-     - 计划总步骤数和预计耗时
-     - 每个步骤的序号、目标描述、执行方式（executor_step/orchestrator_step）
-     - executor_step 标注具体执行技能名称，以及为何该技能而不是其他 executor 更匹配该步骤
-     - orchestrator_step 标注所需工具，并说明：为何当前 executor 能力台账中没有技能拥有该步骤、该步骤为何属于辅助动作而非业务执行
-     - 步骤间的依赖关系和数据流
-     - 每个步骤的预期产物
-     - 对当前 `next_step` 展示其执行细节摘要，说明本轮保留了哪些专家细节以及为什么这些细节对目标 executor 是必要的
-   - 使用清晰的结构化格式（markdown表格或编号列表）
-   - 确保用户可以完整了解任务执行全貌
-   - 当 Global Plan 中包含长时间运行的任务（预估运行时间 > 10 分钟），必须在执行该任务前规划一个 `executor_step`，委托 `onescience-installer` 执行环境就绪预检（传入 `installer_reason=preflight_validation`）。installer 预检通过后方可继续执行主任务；预检失败时由 installer 自行修复或在 Global Plan 中插入修复步骤，不得直接运行主任务。
-   - 当 Global Plan 中包含批量处理任务时（数据项 > 100），必须在规划中评估分片并行策略：
-    - 评估可用 GPU 数量和任务的可分片性
-    - 若可分片且在计划时间窗口内单卡 > 30 分钟，应拆分为多个并行子任务
-   - 从 Global Plan 中选择当前应执行的第一步 `Next Step Spec`
+**【executor 能力视图硬规则】（步骤 5/6 共同的权威规则，任何计划融合、direct_step 规划、下一步选择之前强制执行）**：
+- 必须列举当前所有可用的 `type=executor` 技能，并**逐个完整读取其权威 `SKILL.md`** 后才允许划分职责；技能名称、frontmatter `description`、handoff 参考文档中的简写职责只能用于初筛和索引。
+- 维护内部 inventory：`all_executor_skills`、`read_executor_skills`、`missing_executor_skills`、`executor_inventory_complete`。必须通过集合校验 `set(all_executor_skills) == set(read_executor_skills)`；不相等则设 `executor_inventory_complete=false` 并**停止** proposal 融合、Global Plan 生成与 `Next Step Spec` 选择，先补齐再继续。
+- 对每个 executor 建立带证据的台账：`skill_name`、`source_of_truth`、输入要求、输出产物、负责事项、明确不负责事项、下游交接对象、覆盖的专门原子动作、前置条件、证据段落。任一 executor 未完成完整读取或台账缺字段时，不得融合 proposal 或选择下一步。
+- 按最专门能力边界拆分步骤：识别每个步骤内部的原子执行动作（生成代码/构建数据/安装环境/训练/推理/运行验证/评估/诊断等）；对每个原子动作同时检查"谁明确负责"和"谁明确不负责"（基于完整 `SKILL.md` 证据）。若大步骤可由宽泛 executor 一次完成、但其中某些子动作有更专门的 `type=executor` 覆盖，**必须拆成多个 executor_step**；宽泛 executor 不得吞并已存在的训练、推理、评估、运行、安装、数据构建等专门 executor 的子任务。
+- 生成 `executor_step` 时必须同时提取影响目标 executor 执行结果的细节形成 detail bundle（coder 类：文件落点/接口约束/输入输出语义/验收要求；trainer 类：训练模式/数据契约/checkpoint/策略/指标/运行边界；runtime 类：入口/执行通道/配置证据/日志位置/资源要求/重试语义）；只保留目标 executor 真正需要的决定性信息。
+- 规范性边界示例：SLURM/SSH 提交脚本渲染、执行通道模板选择、提交与重试属于 runtime（若 runtime 的 `SKILL.md` 如此声明），coder 仅写业务代码入口与配置；训练策略、完整训练脚本内容与训练执行组织属于 trainer，coder 只承担文件落盘。
+- 融合协议（合并重复阶段、依赖排序、冲突消解、失败回退点）细节见 `references/planner_contract.md`。
 
-   **【硬路由兜底】可视化步骤强制定向到 `onescience-data-analyzer`**：
+7. **【强制】向前端输出 Global Plan**（无论走步骤 5 还是 6）：先输出 Global Plan 再在同一 skill 循环内继续执行第一步。输出必须包含：executor inventory 简短摘要（如 `executor inventory: 13/13 complete`，默认不枚举全部名单）；与当前计划相关的 executor 能力视图结论；步骤总数与预计耗时；每步序号/目标/执行方式（executor_step 标注执行技能名称与选择理由，orchestrator_step 标注工具与为何无 executor 拥有该动作）；依赖关系与数据流；每步预期产物；`next_step` 执行细节摘要；已初始化 tier contract 时按 `references/tier_completion_contract.md` 的格式输出「任务分层概览」表。使用 markdown 表格/编号列表，确保用户完整了解执行全貌。
+   - 长任务预检：Global Plan 含预估 >10 分钟的任务时，须在其执行前规划一个 `executor_step` 委托 `onescience-installer` 做环境就绪预检（`installer_reason=preflight_validation`）；预检通过才能跑主任务，失败由 installer 修复或插修复步骤，不得直接跑主任务。
+   - 批量任务分片：含数据项 >100 的批处理时，评估可用 GPU 与可分片性；可分片且单卡 >30 分钟则拆为多个并行子任务。
 
-   当以下三个条件**同时满足**时，必须在 Global Plan 中创建一个 `executor_step`，其 `execution_skill` 必须为 `onescience-data-analyzer`，不得使用其他 executor，也不得降级为 `orchestrator_step`：
+**【硬路由兜底 1】可视化步骤强制定向 `onescience-data-analyzer`**：当 a) `visualization_needed=true`、b) `matched_resources` 已含 `type=visualization_primitive`、c) 任务涉及 `.pdb/.cif/.mmcif` 三维渲染或复杂结构可视化，三者**同时满足**时，必须在 Global Plan 创建 `executor_step` 且 `execution_skill=onescience-data-analyzer`，不得用其他 executor 或降级为 `orchestrator_step`。即使步骤 4-6 的能力台账未匹配到 data-analyzer 也必须执行；禁止以"快速产出结果"为由改用本地 Matplotlib 脚本；data-analyzer 返回 blocked 时由其自身降级模块处理，orchestrator 不得自行补做可视化。
 
-   a. `intent_profile.visualization_needed` 为 `true`（已通过步骤 1.5/3 判定）
-   b. `matched_resources` 中已包含 `type=visualization_primitive` 的原语（已通过步骤 2 或步骤 3.5 补召获取）
-   c. 任务涉及结构数据文件（`.pdb`、`.cif`、`.mmcif`）的三维渲染或复杂结构可视化
+**【硬路由兜底 2】领域知识缺口定向 `onescience-online-knowledge`（统一在线查证：文献/结构/软件参数三通道）**：当步骤 3.6 判定 `knowledge_gap=true` 时按单一集中通道原则：primitives 结果已带非空 `online_evidence` → 直接消费、不重复触发检索；`online_evidence` 为空 → 在 Global Plan 创建一个 `executor_step`，`execution_skill` 必须为 `onescience-online-knowledge`（纯文献深度综合由其内部再复用 `onescience-live-literature` 六步协议），真实联网查证并产出带出处（DOI/COD 编号/software-doc）证据后回写 `online_evidence`。不得降级为 `orchestrator_step`，不得用泛化 workflow-planning 剧本替代。答案顶部标注「⚠ 本地知识缺口，以下为在线查证兜底结果」；若仍有本地命中，Global Plan 一并保留其凭证（兜底是补充不是替代）。
+- **离线友好降级（不得报错、不得停摆、不得伪造）**：online-knowledge 返回 `online_status: offline`（或打印 `[OFFLINE]`）时，记 `online_fallback_unavailable` event（**不是 blocked**），把该步骤标为「离线降级·缺口未填」，继续执行非科学结论类步骤直至跑完；但科学结论类交付在证据未接地时保持 BLOCKED 或诚实 PARTIAL，最终如实标注「本地知识缺口 + 当前离线，在线兜底不可用，相关结论为证据受限的尽力回答」。严禁离线报错退出或伪造检索结果。
 
-   此规则是步骤 4-6 中动态 executor 能力台账匹配的**安全兜底**，不是替代。注意以下强制约束：
-
-   - 即使步骤 4-6 的 executor 能力台账查询中未能将可视化步骤匹配到 `onescience-data-analyzer`，也必须强制执行本条规则。不能因为"能力台账中未列出 data-analyzer 负责可视化"、"data-analyzer 的 SKILL.md 未被正确解析"、或"没有找到合适的 executor"而跳过可视化步骤或降级为 orchestrator 自执行。
-   - 禁止以"快速产出可验证的结果"为由，绕过 data-analyzer 使用本地脚本（如 Matplotlib）生成替代图表。可视化原语一旦被召回，对应的三维结构渲染必须通过 data-analyzer 的标准流水线执行。
-   - 若 data-analyzer 执行后返回 `status: blocked`（如渲染器入口或 3Dmol.js 运行时缺失），由 data-analyzer 自身的降级决策模块记录阻断原因，orchestrator 不得在收到 blocked 结果后自行用本地脚本补做可视化。
-   - orchestrator 的自执行限制（步骤 9 中 `orchestrator_step` 的约束）和禁止自执行的动作列表（代码生成/修改/配置落盘等）在此同样适用：不得在可视化步骤中用 orchestrator 自身工具替代 data-analyzer。
-
-   此硬路由规则仅在同时满足条件 a、b、c 时触发。若仅有可视化信号但未召回 visualization_primitive，仍按步骤 3.5 的补召逻辑处理。
-
-   **【硬路由兜底】领域知识缺口强制定向到 `onescience-live-literature`**：
-
-   当步骤 3.6 判定 `knowledge_gap=true`（本地原语没查到能回答该具体科学问题的领域知识）时，按**单一集中通道**原则处理：若 primitives 召回结果已带非空 `online_evidence`，orchestrator **直接消费**该证据（规划/执行以其中引文[n]与接地事实 grounding 参数与结论），**不再重复触发检索**；仅当 `online_evidence` 为空时，才在 Global Plan 中创建一个 `executor_step`，其 `execution_skill` 必须为 `onescience-live-literature`，联网检索补齐带连续编号引用的分层综合答案并回写 `online_evidence`。此规则是 direct_step 分支与专家融合分支的**共同前置强制动作**，不得降级为 `orchestrator_step`，不得用泛化 workflow-planning 剧本替代。强制约束：
-
-   - 即使步骤 4-6 的 executor 能力台账查询中未能把该领域问题匹配到 `onescience-live-literature`，也必须强制执行本条规则；不能因为“能力台账未列出 live-literature 负责该 domain”、“没有找到合适的专家”或“这是通用/单步任务”而跳过在线兜底。
-   - **严禁编造**：`knowledge_gap=true` 时不得用泛化剧本假装完成，不得返回「模拟检索结果 / 模拟数据 / 默认参数 / 历史案例」充数；必须由 live-literature 真实联网检索（OpenAlex 摘要层迭代精炼 + Europe PMC/PMC 全文层取细节）产出带出处的答案，并在答案顶部显式标注「⚠ 本地知识缺口，以下为在线文献兜底结果」。
-   - 兜底答案是**补充而非替代**：若仍有任意本地 Task/资源命中，须在 Global Plan 中一并保留其凭证。
-   - **离线友好降级（不得报错、不得停摆，但不得伪造科学结果）**：若 live-literature 探测到当前环境无法联网（返回 `online_status: offline` 或命令块打印 `[OFFLINE]`），orchestrator 记录 `online_fallback_unavailable` event（**不是 blocked**），把该在线兜底步骤标注为「离线降级·缺口未填」，并**继续执行 Global Plan 中非科学结论类步骤（脚手架/案例目录/脚本/规划/如实报告）直至任务跑完**；但**不得为跑完而产出无证据的科学结果**——科学结论类交付在证据未接地时保持 BLOCKED 或诚实 PARTIAL（见下方【证据边界契约】）；最终结果里如实标注「本地知识缺口 + 当前离线，在线兜底不可用，相关结论为证据受限的尽力回答」。严禁因离线而中断整个任务、报错退出，或用本地脚本伪造检索结果/编造模拟数据补做。
-
-   此硬路由规则仅在 `knowledge_gap=true` 时触发；`knowledge_gap=false`（full / partial / 命中领域专属资源）仍走本地链，不触发在线兜底。
-
-   **【证据边界契约】（对所有 executor_step 与最终状态判定强制生效——修「为跑完而伪造」病灶）**：
-
-   - **证据 tagging**：每个进入结论/交付的参数、阈值、数据集、研究对象、指标必须标注来源 ∈ {user_provided, literature[n], local_card, executed_log, proposed_candidate(待确认)}；`fabricated`（无来源自造）**禁止**作为本次结果。
-   - **禁止合成/演示数据充当结果**：不得生成 synthetic/demo/模拟样本用于训练或评估并把它当本次研究数据/结果；缺真实数据时该科学步骤回报 BLOCKED 或诚实 PARTIAL。
-   - **禁止替代模型顶替**：不得用简化/玩具模型（如以稳态热传导顶替流动-传热耦合 CFD、以 2D 顶替 3D）的输出充当用户要求的模拟结果；可作为「方法演示/脚手架」交付但必须显式标注 `not-a-result`，且不得据此判 PASS。
-   - **禁止自设验收阈值判 PASS**：验收阈值/稳定性判据必须 user_provided 或 literature[n]；agent 只能提 proposed_candidate 请用户确认，不得自定阈值后自判 PASS/COMPLETE。
-   - **验收阈值溯源门禁**：任何进入最终报告的验收/PASS 判定必须引用来源 ∈ {user_provided, literature[n]}；无来源则该判定必须标注 `engineering_threshold(smoke)` 且科研 PASS 必须 BLOCKED。**自证闭环禁止**：不得（生成模拟结果 → 自设验收阈值 → 让模拟结果通过自设阈值 → 宣布科研 PASS/签收）。
-   - **状态判定门禁（单一事实源）**：宣告任何步骤或整体 PASS/COMPLETE 前，逐条核对所报数值与执行日志/引文一致；出现汇总与日志不一致（如报告 MAE≠运行 MAE）即不得 PASS，须回修或降为 PARTIAL/BLOCKED。
-   - **propose-vs-block（修过度 BLOCKED）**：对任务委托给 agent 的选择（模型/软件/方法选型），不得以「用户未提供」为由 BLOCKED 索要；应基于文献/本地卡提出 2-3 个有证据候选+推荐项+请用户确认该关键选择；仅对**用户私有/不可推断**输入（自有数据集路径、自有集群配置等）才 BLOCKED。
-   - **不得 blanket-BLOCKED + 领域准确性**：模型/软件/超参选型是 agent 委托项，agent 必须提 2-3 个有证据候选+推荐+理由，只对影响科学范围或验收标准的部分请求确认，不得以「用户没告诉我超参」全部甩回 BLOCKED；fallback/候选数据集或方法例子必须领域正确（如 QM9 不是 MOF 数据集），候选必须引用正确领域来源。
-   - **证据洞下的总姿态**：科学结论=BLOCKED 或诚实 PARTIAL（写明「未产生本次结果」）；工程脚手架可交付为 PARTIAL 并标注 not-a-result；严禁以「继续跑完」为由伪造证据或虚报状态。
-
-   **【四层证据门禁补强】（修 ws07 planning-time 参数越界 + ws09 execution/acceptance-time 身份抬高与验证 FAIL 后仍 complete 两个病灶；与上文证据边界契约配套生效，对老架构与新架构一视同仁）**：
-
-   **A. 知识层门禁（domain_match，修文献跨域迁移当本次参数）**：
-   - `resource_retrieval_result.online_evidence.citations[]` 每条必须带 `domain_match ∈ {exact, adjacent, cross_domain}` 标签（由 primitives step 11 / live-literature Step 5 产出；orchestrator 消费时复核）。
-   - `domain_match=cross_domain` 的文献**只能作为方法学参考**（验证思路、网格无关性方法、湍流模型候选等），**不得作为本次任务的参数/阈值/几何/工况来源**；若被引为参数来源，该参数自动降级为 `pending_user_confirmation`，并向 gaps.jsonl 追加 `gate_hit=domain_mismatch` 缺口行。
-   - 兜底检索完成后池内 `domain_match=exact` 数为 0 时：必须触发第二轮更精准 query（query 强制包含场景锚词，如「immersion cooling」「data center」），仍为 0 则如实标注「在线兜底形式成功、实质未命中目标域」，相关科学结论保持 BLOCKED 或诚实 PARTIAL，不得用 adjacent/cross_domain 文献硬凑本次参数。
-
-   **B. 计划层门禁（参数四态标签，修 planning-time 把候选写成本次研究参数）**：
-   - `planner_proposal`、`Global Plan`、`research_plan.md` 中**每个具体数字/参数/阈值/几何/工况/验收判据**必须带四态标签之一：
-     * `confirmed_input`：用户本轮明确提供（须有 task_state.events 的 `user_confirmation` 事件佐证）
-     * `literature_candidate`：附来源 `[n]` + 该文献 `domain_match` + 与本任务研究对象的适用性判断（同域/近域/跨域）
-     * `pending_user_confirmation`：agent 提出的候选，用户确认后才允许进入执行
-     * `blocked_missing`：不可推断且无文献支持，必须 BLOCKED
-   - **REJECT 门禁**：planning 产物中只要存在**未打四态标签的裸数字**，该 planning 步骤直接判 REJECT，不得标 completed、不得进入执行阶段，并向 gaps.jsonl 追加 `gate_hit=bare_number_reject`。
-   - `literature_candidate` / `pending_user_confirmation` 参数**不得**在执行阶段被静默升格为 `confirmed_input`；升格必须有用户本轮明确确认记录（`user_confirmation` 事件）。
-   - 本门禁**不因「最后停在 BLOCKED」而豁免**：ws06 式「planning 里写死 600×1000×2000 mm、y+≈1、500-1000 万网格但无来源」同样 REJECT。
-
-   **C. 执行层门禁（result_identity，修 smoke/demo 输出被抬成科研结果）**：
-   - 每个 executor_step 的 `execution_result` 必须声明 `result_identity ∈ {research_result, engineering_demo, smoke_test, not_a_result}`。
-   - **关键词自动锁**：executor 产出的脚本/日志/报告自述中出现 `smoke`、`demo`、`simplified`、`toy`、`not suitable for production`、`demonstration only`、`engineering_validation(smoke` 等任一关键词时，orchestrator **自动锁定**该 step 的 `result_identity=not_a_result`，executor 不得自行申报更高身份；锁定动作向 gaps.jsonl 追加 `gate_hit=result_identity_lock`。
-   - `result_identity ∈ {engineering_demo, smoke_test, not_a_result}` 的 step：
-     * 状态只能标 `DEMO_PASS` / `PARTIAL` / `BLOCKED`，**禁止标 PASS**；
-     * 其输出**禁止**进入最终报告的「关键发现 / 科研结论」段，只能进入「方法演示 / 脚手架」段，且前置标注「以下为演示输出，不构成本次科研结论」；
-     * 下游依赖该 step 产物的 step 自动继承 `not_a_result` 身份，不得被抬高。
-   - **输入门禁 ≠ 结果身份门禁**：用户确认「使用默认示例/典型参数/推荐值」只解除 `input_gate`（允许用默认值继续执行），**不解除** `result_identity_gate`（默认值跑出来的产物仍是 `engineering_demo`，不是 `research_result`）。orchestrator 必须在 `user_confirmation` 事件里显式记录本次解除的是哪道门，不得把前者当后者的授权。
-
-   **D. 验收层门禁（验证 FAIL 级联回退 + complete_with_caveats，修验证失败后仍判 PASS/complete）**：
-   - **级联回退**：验证类 step（网格独立性/能量守恒/可复现审计/指标对标等）判 FAIL 时，orchestrator 必须**自动回退**其上游所有已标 PASS 的 step：PASS → `UNVERIFIED`（产物被失败验证覆盖）或 `PARTIAL`；回退动作写入 `validation_rollback` event 并向 gaps.jsonl 追加 `gate_hit=validation_rollback`，不得静默。
-   - **complete 门禁**：`task_state.status=complete` 的前提是**同时满足**：① 所有 step 的 `result_identity=research_result`；② 所有验证类 step PASS；③ 无未解除的 `blocked_missing` 参数；④ **可视化交付契约满足**（`REPORT_single.html` 已落盘且非空、零外链、含内嵌图，见"可视化交付契约"节）。任一不满足时 status 只能是 `complete_with_caveats`（工程链跑通但存在 not_a_result/DEMO_PASS 或验证 PARTIAL 或可视化缺失）、`partial`（验证 FAIL 且无可交付回退产物）或 `blocked`；降级动作向 gaps.jsonl 追加 `gate_hit=complete_downgrade`。
-   - **结论前置标注**：`complete_with_caveats` / `partial` 状态下，最终输出**第一行必须**前置：「⚠ 本次未产生科研结论，以下为方法演示/工程脚手架输出，验证状态：<FAIL/PARTIAL 明细>」；禁止把演示数值（如「最大温升 1.03 K」「换热系数 35249 W/(m²·K)」「无热点」）写进「关键发现」段。
-   - **禁止无条件完成自述**：存在验证 FAIL 或任一 `not_a_result` step 时，禁止输出「任务已完成，所有步骤均有可追溯证据链」这类无条件完成自述；必须改为「工程链已跑通，但科研验证未通过（明细），本次不产生科研结论」。
-
-   **门禁可观测性（A/B 归因用）**：A/B/C/D 任一门禁被触发（REJECT / 自动锁 / 级联回退 / status 降级 / domain 降级）时，orchestrator 必须向工作区状态目录的 `.onescience/gaps.jsonl` 追加一行（与 task_state.json 同一状态区；**严禁写进 `skills/**` 知识树内路径**，那会污染只读知识库），含 `gate_hit ∈ {domain_mismatch, bare_number_reject, result_identity_lock, validation_rollback, complete_downgrade}` 与 `gate_layer ∈ {A_knowledge, B_planning, C_execution, D_acceptance}` 字段，便于下一轮 A/B 直接统计「哪层门禁真的生效、哪层还在被绕过」，不再靠人读 session 日志归因。
+**【三通道与证据纪律（要点，全文见 `references/evidence_gates.md`）】**：
+- 三通道门禁不同：文献接地方法学选择（承重数值带 [n] + domain_match，全文取不到标 abstract-only）；结构坐标/晶格**只能来自 COD 真实下载+化学式回验**（`provenance=COD:<id>`、`self_verified=true`），严禁模型记忆坐标写进 POSCAR/CIF 或冒充出处，回验不符即剔除换候选；软件参数来自 software-doc 参考表/官方 wiki，存疑标 ⚠。
+- 线上优先→先验兜底：在线未命中时降级 `source_type=model-prior` 并标「⚠ 未经在线核实」继续执行，不因缺知识 blanket-BLOCKED；但如实标注的先验不得升格为「来自文献/数据库」。
+- 证据边界：进入结论的参数必须标来源 ∈ {user_provided, literature[n], local_card, executed_log, proposed_candidate}；`fabricated` 禁止；禁止合成/演示数据充当结果、替代模型顶替、自设阈值自判 PASS、自证闭环；PASS/COMPLETE 宣告前逐条核对数值与日志一致。
+- 选型委托：模型/软件/方法选型 agent 必须提 2-3 个有证据候选+推荐+理由，不得以"用户没给"甩回 BLOCKED；仅用户私有/不可推断输入才 BLOCKED。
+- 四层门禁 A（domain_match）/B（参数四态标签，裸数字 REJECT）/C（result_identity，smoke/demo 自动锁 not_a_result）/D（验证 FAIL 级联回退 + complete 门禁 + complete_with_caveats 首行前置 ⚠ 标注）。
+- **凡要做状态判定（步骤 11）、PASS/COMPLETE 判据或最终报告结论段之前，必须先读取 `references/evidence_gates.md` 全文**。
 
 ### 阶段三：执行与状态更新
 
-8. 绑定资源到 Task State：从 `matched_resources` 中选择当前步骤需要的资源，记录 `path` 和 `type` 到 `Task State.resource_bindings`；这里的 `path` 仅用于标识和交接，不授权 orchestrator 或下游直接读取对应资源文件。
+8. 绑定资源到 Task State：从 `matched_resources` 选当前步骤所需资源，记录 `path` 与 `type` 到 `resource_bindings`；`path` 仅用于标识和交接，不授权 orchestrator 或下游直接读取对应资源文件。
 
 9. 执行当前步骤：
-   - 当前轮次只执行一个 `Next Step Spec`；完成 observation 并重选 `next_step` 后，可在同一 skill 调用内继续后续轮次。
-   - `Next Step Spec` 一旦选定，本轮当前步骤的 owner 即固定；在 observation 完成前不改写 owner。若发现当前步骤被误分类、detail bundle 不充分或 owner 判断需要调整，先回到 planning / replan，生成新的 `Next Step Spec` 后再执行。
-   - 如果 `Next Step Spec.step_type=executor_step`：
-     - orchestrator 正式调用已选定的 `execution_skill`；该 executor 拥有的业务动作由对应技能完成，即使 orchestrator 自身工具在技术上也能完成相似操作。
-     - 向 `execution_skill` 传递 step spec、绑定的资源标识、已获取的资源内容、结构化的 inputs，以及由当前步骤 detail bundle 填充的 executor-specific payload
-     - 如果专家的 `planner_payload` 包含 `runtime_parameters`，将其映射到 `step_handoff.inputs.parameters`
-     - `step_handoff.inputs` 不能只来自粗略 step goal；若 detail bundle 不足以驱动目标 executor，应视为规划未完成，先回到规划/补充专家细节
-     - 执行技能必须是 `type=executor`
-     - 若执行技能需要更深资源内容，必须重新调用匹配的 `type=resource` 技能获取，不得沿着资源 `path` 直接读取文件
-     - 执行技能返回 `execution_result`，仅表示当前步骤的执行结果，不授权直接串行调用下一个 executor
-     - **文件交接模式（autonomous_mode）**：当 `autonomous_mode: true` 时，executor_step 采用文件交接而非上下文传递，避免 orchestrator 上下文膨胀：
-       1. 将 `step_handoff`（含 attempt、step_wallclock_budget_seconds、tier_config 字段）以原子写入方式输出：先写入 `.onescience/handoff/step_{step_id}.yaml.tmp`，完整写入后 rename 为 `.onescience/handoff/step_{step_id}.yaml`。
-       2. 使用 Skill 工具调用目标 executor，传入简要指令：
-          ```
-          请读取 .onescience/handoff/step_{step_id}.yaml 获取当前步骤信息并执行。
-          完成后将结果原子写入 .onescience/handoff/step_{step_id}_result.yaml（先写 .tmp 再 rename）。
-          ```
-       3. executor 执行完毕后，从 `.onescience/handoff/step_{step_id}_result.yaml` 读取 `execution_result`（含 `attempt`、`failure_category`、`events`、`tier_result`）
-       4. 将结果写回 `.onescience/task_state.json`（原子写入：先写 .tmp 再 rename），更新 `tiered_completion_contract`、写入 observation 和 events
-       5. 所有步骤完成后，将 handoff 目录归档到 `.onescience/archive/{task_id}/`
-   - 如果 `Next Step Spec.step_type=orchestrator_step`：
-     - 只有在当前轮次完整 executor 能力台账已证明：该步骤不属于任何 executor 已声明负责的原子动作、也不是任何 executor-owned 步骤中的业务子动作时，才由 orchestrator 使用智能体自身工具执行。
-     - 由 orchestrator 使用智能体自身工具执行（如 WebFetch 下载文件、Read 读取内容、受限 Bash 只读检查等）
-     - orchestrator 自行生成 `execution_result`，且后续同样必须先进入 observation
+   - 当前轮次只执行一个 `Next Step Spec`；完成 observation 并重选后，可在同一 skill 调用内继续后续轮次。`Next Step Spec` 一旦选定，本轮 owner 固定；observation 完成前不改写 owner；若发现误分类或 detail bundle 不充分，先回 planning/replan 生成新 Spec 再执行。
+   - `step_type=executor_step`：正式调用选定 `execution_skill`（必须 `type=executor`），传递 step spec、资源标识与内容、结构化 inputs、detail bundle 填充的 executor-specific payload；专家 `planner_payload` 含 `runtime_parameters` 时映射到 `step_handoff.inputs.parameters`；detail bundle 不足以驱动目标 executor 视为规划未完成，先回补；执行技能需更深资源时重新调用 `type=resource` 技能，不得沿 `path` 直读文件；executor 返回的 `execution_result` 仅表示当前步骤结果，不授权直接串行调用下一个 executor。
+   - **文件交接模式（autonomous_mode）**：`autonomous_mode=true` 时以文件交接代替上下文传递：① 原子写 `.onescience/handoff/step_{step_id}.yaml`（含 attempt、step_wallclock_budget_seconds、tier_config）；② 用 Skill 工具调用 executor 并指示其读取该 yaml、完成后把结果原子写入 `step_{step_id}_result.yaml`；③ 从结果文件读 `execution_result`（含 attempt、failure_category、events、tier_result）；④ 结果原子写回 `task_state.json` 并更新 tier contract/observation/events；⑤ 全部完成后归档 handoff 目录到 `.onescience/archive/{task_id}/`。细节见 `references/file_handoff_contract.md`。
+   - `step_type=orchestrator_step`：只有当本轮完整 executor 台账证明该步骤不属于任何 executor 已声明负责的原子动作、也不是 executor-owned 步骤的业务子动作、且仅属编排辅助/状态维护/资源绑定/只读检查/下载/handoff 组装时，才由 orchestrator 用自身工具执行，并自行生成 `execution_result` 后同样进入 observation。
 
-10. 记录执行结果并更新状态：
-    - 所有执行结果先进入 `observation`，再根据更新后的 `Task State` 决定后续动作
-    - 将 `artifacts` 和 `observation` 写回 `Task State`
-    - 将 executor 返回的 `events`（如有）合并到 `Task State.events`
-    - 更新 `Task State.completed_steps`、`Task State.current_phase`、`Task State.active_step` 与对应 `global_plan` 步骤状态
-    - 写入 observation 对应的 event（`observation_recorded`）
-    - 原子写入 `.onescience/task_state.json`
+10. 记录执行结果并更新状态：所有结果先进入 `observation`；`artifacts` 与 `observation` 写回 Task State；合并 executor 返回的 `events`；更新 `completed_steps`、`current_phase`、`active_step` 与 `global_plan` 步骤状态；写入 `observation_recorded` event；原子写入 `.onescience/task_state.json`。
 
-11. 基于 observation 决策：
-    - 分析 `observation.status`（success/partial/failed/blocked/step_timeout）和 `failure_category`（若 failed）
-    - 如果 `success`：
-      - 标记当前步骤完成，写入 `step_completed` event
-      - **【强制 result_identity 复核】**：按证据边界契约 C 层门禁，扫描本 step 产物自述关键词；命中 smoke/demo/simplified/toy/not suitable for production 时自动锁 `result_identity=not_a_result`，状态改记 `DEMO_PASS`（不得记 PASS），并追加 gaps.jsonl `gate_hit=result_identity_lock`
-      - **【强制 tier_check】若 `tiered_completion_contract` 已初始化**，执行 tier_check 子流程（见下方 11.1），再根据 tier 判定结果决定后续动作
-      - 若 tier contract 不存在：若全部 `completion_criteria` 已满足，则**先过 D 层 complete 门禁**（所有 step `result_identity=research_result` + 所有验证 step PASS + 无未解除 `blocked_missing`）再决定终态——全部满足才 `status: complete`；任一不满足按契约降级为 `complete_with_caveats` / `partial`，追加 gaps.jsonl `gate_hit=complete_downgrade`，并在最终输出第一行前置「⚠ 本次未产生科研结论」标注；否则必须基于更新后的 `Task State`、`artifacts`、`observations` 和 `Global Plan` 重新选择下一个 `Next Step Spec`（若 plan 结构性修改则递增 `global_plan_version`）
-    - 如果 `partial`：
-      - 记录已完成部分、缺失项、残余风险和 `next_recommendation`
-      - 写入 `step_partial` event
-      - **【强制 D 层级联回退】**：若本 step 是验证类步骤（网格独立性/能量守恒/可复现审计/指标对标/守恒律检查等）且 partial 原因含任一子项 FAIL，必须自动回退其上游所有已标 PASS 的 step：PASS → `UNVERIFIED`（产物被失败验证覆盖）或 `PARTIAL`；写入 `validation_rollback` event（含被回退 step 清单与 FAIL 明细），追加 gaps.jsonl `gate_hit=validation_rollback`；回退后**禁止**在最终报告里保留被回退 step 的 PASS 判定与正面结论（如「温度控制良好」「无热点」「换热效率高」）
-      - 回到规划阶段，对当前步骤做细化、拆分或补充前置步骤
-      - 选出新的 `Next Step Spec` 后，在同一 skill 循环中继续执行
-    - 如果 `failed`：
-      - 记录失败证据与失败摘要，写入 `step_failed` event
-      - **【强制 D 层级联回退】**：若本 step 是验证类步骤且判 FAIL，同样按上条执行上游 PASS 回退与 `validation_rollback` event；验证 FAIL 属 `scientific` 类别时不得自动重试掩盖，直接进入 blocked 或诚实 partial
-      - 根据 `failure_category` 执行分策略处理（参见"7a. 失败分类策略"表）：
-        - `transient` → `retry_with_backoff`：递增 `attempt`，写入 `retry_started` event 后重试
-        - `code` → `delegate_to_coder`：委托 coder 修复，写入 `repair_attempted` event
-        - `environment` → `delegate_to_installer`：委托 installer 修复
-        - `scientific` / `dependency` → 直接进入 blocked
-        - `platform` → 写入 event 后阻塞，重试 1 次
-        - `unknown` → 进入 diagnose 后再判定
-      - 重试超过上限 → 进入 blocked
-    - 如果 `step_timeout`：
-      - 写入 `step_timed_out` event，记录超时详情
-      - 进入 blocked 状态
-      - 恢复后 `attempt` 递增，预算 = `original_budget * budget_multiplier_on_retry`
-    - 如果 `blocked`：
-      - **【强制 provision 前置门禁】** 在因"缺少资源 / 依赖 / 数据 / 模型"进入 blocked 之前，必须先按 `resource_acquisition` 对该缺失项分类，禁止"发现缺啥就直接停"：
-        * `acquirable`（可 pip/conda 安装的库、可公开下载的数据集 / 开放模型权重、可达镜像如 `HF_ENDPOINT=https://hf-mirror.com`）→ **不得 blocked**：库缺失改判 `failure_category=environment` 走 `delegate_to_installer` 自动安装后继续；数据 / 权重缺失改判 `failure_category=data` 走 `retry_re_fetch` 自动下载后继续。
-        * `hard_blocked`（需 API Key、商业许可证如 VASP/Gaussian、不可达的私有 / 内网资源、超出本机算力的硬约束）→ 才允许 blocked；且 blocked 前必须先把所有 `acquirable` 部分真正执行并落盘交付（代码 / 结果 / 指标 / 图 / 自包含 HTML 报告 `REPORT_single.html`），并在 gaps.jsonl 追加 `gate_hit=hard_block_only` 记录"已交付部分 + 唯一硬阻塞项"。
-      - 记录阻断原因、缺失输入或外部依赖
-      - 若可通过重新规划消除阻断，则在同一循环中继续；否则保持 blocked 状态等待外部条件变化
+11. 基于 observation 决策（以下判定前**先读 `references/evidence_gates.md`**）：
+    - `success`：标记完成并写 `step_completed` event；**result_identity 复核**——扫描本 step 产物自述关键词，命中 smoke/demo/simplified/toy 等则自动锁 `not_a_result`、状态改记 `DEMO_PASS`（不得记 PASS），追加 gaps.jsonl `gate_hit=result_identity_lock`；有 tier contract 时执行 11.1 tier_check；无 tier contract 且全部 `completion_criteria` 满足 → **先过 D 层 complete 门禁**（所有 step `result_identity=research_result` + 验证类 step 全 PASS + 无未解除 `blocked_missing` + 可视化交付契约满足）才允许 `status: complete`，任一不满足按契约降级 `complete_with_caveats`/`partial` 并追加 `gate_hit=complete_downgrade`、最终输出首行前置「⚠ 本次未产生科研结论」标注；否则基于最新状态重选 `Next Step Spec`（结构性修改递增 `global_plan_version`）。
+    - `partial`：记录已完成部分/缺失项/残余风险/`next_recommendation`，写 `step_partial` event；**若为验证类步骤且含子项 FAIL，执行 D 层级联回退**——上游已标 PASS 的 step 回退为 `UNVERIFIED` 或 `PARTIAL`，写 `validation_rollback` event（含回退清单与 FAIL 明细）、追加 gaps.jsonl `gate_hit=validation_rollback`，回退后禁止在报告中保留被回退 step 的 PASS 判定与正面结论；然后回规划阶段细化/拆分/补前置，同循环继续。
+    - `failed`：记录失败证据，写 `step_failed` event；验证类判 FAIL 同样级联回退，`scientific` 类不得自动重试掩盖；按 `failure_category` 分策略（transient→退避重试；code→委托 coder；environment→委托 installer；scientific/dependency→直接 blocked；platform→阻塞重试 1 次；unknown→先诊断），细则见 `references/autonomous_mode_details.md` 7a；超重试上限进 blocked。
+    - `step_timeout`：写 `step_timed_out` event，进入 blocked；恢复后 `attempt` 递增、预算翻倍。
+    - `blocked`：**先过 provision 前置门禁**——按 `resource_acquisition` 分类缺失项：`acquirable`（可 pip/conda 安装、可公开下载的数据/权重、可达镜像）不得 blocked，库缺失改判 `environment` 走 installer 自动安装、数据/权重缺失改判 `data` 走 retry_re_fetch 自动下载；仅 `hard_blocked`（需 API Key、商业许可证如 VASP/Gaussian、不可达私有资源、超算力硬约束）才允许 blocked，且 blocked 前必须先把所有 `acquirable` 部分执行并落盘交付（代码/结果/指标/图/`REPORT_single.html`），gaps.jsonl 追加 `gate_hit=hard_block_only` 记录"已交付部分+唯一硬阻塞项"。记录阻断原因；可重规划消除则继续，否则保持 blocked 等待外部条件。
 
-11.1 **tier_check 子流程**（仅在 `tiered_completion_contract` 已初始化时执行）：
+11.1 **tier_check 子流程**（仅 `tiered_completion_contract` 已初始化时执行）：
 
 ```
-1. 从 executor 返回的 execution_result.tier_result（若存在）或 observation 中提取当前步骤对应的 check 结果
-2. 更新 tiered_completion_contract.tiers[active_tier].checks 中对应项的 status
-3. 遍历当前 tier 的所有 checks：
-   - 若仍存在 status=pending 的 check → 当前 tier 未完成，继续下一步 execution
-   - 若全部 check 已非 pending：
-     a. 全部 pass → 当前 tier status = pass
-     b. 有 fail → 当前 tier status = fail
-4. 若当前 tier status = pass：
-   a. 检查 escalation 规则：
-      - 若 escalation == "always"（如 tier_0）→ active_tier 切换为下一 tier，进入 execution
-      - 若当前 tier.is_deliverable == true：
-        * 若 escalation_trigger 命中（user_goal 含触发词）且下一 tier 存在 → active_tier 切换到下一 tier
+1. 从 execution_result.tier_result（若存在）或 observation 提取当前步骤 check 结果
+2. 更新 tiers[active_tier].checks 对应项 status
+3. 遍历当前 tier：仍有 pending → 继续下一步 execution；全部非 pending：
+   a. 全部 pass → tier status = pass
+   b. 有 fail → tier status = fail
+4. tier = pass：
+   a. escalation == "always"（如 tier_0）→ active_tier 切下一 tier，进入 execution
+      当前 tier.is_deliverable == true：
+        * escalation_trigger 命中（user_goal 含"全量/完整复现/论文指标"等）且下一 tier 存在 → 切换
         * 否则 → status: complete，输出最终结果
-   b. 将 tier_config 注入到下一 tier 相关步骤的 step_handoff 中（file_handoff_contract 中的 tier_config 格式）
-5. 若当前 tier status = fail：
-   a. 若 fallback_tier 存在（如 tier_2 → tier_1）→ deliverable_tier 指向 fallback_tier，status: partial
-   b. 若无 fallback → status: failed
+   b. 将 tier_config 注入下一 tier 步骤的 step_handoff
+5. tier = fail：
+   a. 有 fallback_tier（如 tier_2→tier_1）→ deliverable_tier 指向 fallback，status: partial
+   b. 无 fallback → status: failed
 ```
 
-12. 重新选择下一步并进入下一轮：
-    - 只有在 observation 完成且 `Task State` 已更新后，才允许重新选择一个新的 `Next Step Spec`
-    - 修复成功后也必须基于最新 `Task State` 与最新 `observation` 重新选择 `Next Step Spec`，不得沿用修复前缓存的 `next_step` 或 handoff
-    - 选择完成后，返回阶段三步骤8 绑定所需资源，再进入下一轮执行
+12. 重新选择下一步并进入下一轮：只有 observation 完成且 Task State 已更新后才允许重选；修复成功后也必须基于最新状态重选，不得沿用修复前缓存的 `next_step` 或 handoff；选定后返回阶段三步骤 8 绑定资源，进入下一轮。
 
 ## 资源使用原则
 
-orchestrator 只负责资源发现、摘要读取和资源绑定，不读取资源完整内容。
-
-### 调用 type=resource 技能格式
-
-orchestrator 只依赖统一资源契约，可以调用任意实现该契约的 `type=resource` 技能。
-
-输入格式：
-
-```yaml
-resource_retrieval_request:
-  user_request: <用户原始目标或当前修正目标>
-  task_state_summary: <当前 Task State 摘要>
-  content_request: "摘要"
-  filters:
-    domain: <领域过滤，可选，仅在领域可推断时填写>
-    keyword: <关键词过滤，可选，仅围绕当前职责所需的目标/产物/阻塞问题填写>
-```
-
-输出格式（来自 type=resource 技能）：
-
-```yaml
-resource_retrieval_result:
-  detected_domain: <earth/biology/materials/cfd/general-science>
-  task_intent: <data/model/visualization/contract/workflow/tool/config>
-  content_request: summary_only
-  matched_resources:
-    - type: <具体资源类型>
-      path: <资源路径>
-      name: <资源名称>
-      why_matched: <匹配理由>
-      limitations: <使用限制>
-      content: <完整的结构化内容或文本>
-```
-
-### 在 orchestrator 中使用资源
-
-- resource 技能选择阶段：先检查各 `type=resource` 技能的 `description` 是否覆盖 orchestrator 当前职责所需的知识范围，只调用匹配的 resource 技能
-- 意图识别阶段：使用 `matched_resources[].content`、`type`、`why_matched` 理解用户意图
-- 专家召回阶段：将已调用 resource 技能返回的 `matched_resources` 传递给专家技能作为上下文
-- 计划融合阶段：基于 `matched_resources[].limitations` 判断计划约束和资源冲突
-- 资源绑定阶段：从 `matched_resources` 选择当前步骤需要的资源，记录到 `Task State.resource_bindings`
-- 跳过规则：如果某个 resource 技能的 `description` 与当前职责不匹配，则直接跳过该技能，不发起资源召回
-- 禁止绕过：不得把 `matched_resources[].path` 当作本地文件路径直接读取；若需要更深内容，只能再次调用匹配的 `type=resource` 技能
-
-**orchestrator 只使用资源摘要**。若执行技能需要详细内容，由执行技能重新调用 type=resource 技能并通过 `content_request` 指定需要的内容类型；orchestrator 不得通过 `path` 直接读取任何 resource skill 的资产文件。
+orchestrator 只负责资源发现、摘要读取和资源绑定，不读取资源完整内容。resource 技能选择、意图识别、专家上下文传递、计划约束判断、资源绑定各阶段如何使用 `matched_resources` 的 `content`/`type`/`why_matched`/`limitations`，以及跳过与禁止绕过规则（不得把 `path` 当本地路径直读；执行技能需详细内容时由执行技能重新调用 type=resource 技能并指定 `content_request`），统一见 `references/resource_contract.md`（含 `resource_retrieval_request` / `resource_retrieval_result` 完整 YAML 契约）。
 
 ## 专家召回与计划融合
 
-专家规划技能不是唯一主控，也不是必经链路。它们是被召回来解决用户意图某个方面问题的规划者，且必须是 `type=expert`。
-
-召回逻辑：
-
-```text
-resource summaries + user request -> intent_profile
-intent_profile.aspect[] -> candidate expert planners
-candidate expert planners -> planner proposals
-planner proposals -> global plan synthesis
-```
-
-每个专家只规划自己覆盖的方面。例如论文复现专家规划论文解析和复现规格，运行验证专家规划 smoke test 和诊断，模型开发专家规划模型实现和改造。
-
-你负责融合和优化：
-
-- 查询所有可用 `type=executor` 技能及其能力边界；列举后必须逐个完整读取权威 `SKILL.md`，并为每个 executor 建立带证据段落的能力台账
-- 合并重复阶段
-- 排列依赖顺序
-- 识别可跳过步骤
-- 统一资源契约
-- 标记并解决 proposal 冲突
-- 强制按 executor 专长拆分步骤：
-  - 对每个 proposal 阶段先列出内部原子动作，再逐一匹配可调用 executor 技能
-  - 原子动作匹配必须同时检查完整 `SKILL.md` 中的负责事项、明确不负责事项、下游交接和前置条件，不能根据技能名称或 handoff 简写职责直接推断
-  - 当大步骤可由宽泛 executor 完成、但内部原子动作可由更专门 executor 完成时，必须拆分为“宽泛 executor 产出前置物 + 专门 executor 执行子动作”的序列
-  - 宽泛 executor 不得代替已存在的训练、推理、评估、运行、安装、数据构建等专门 executor；除非没有可调用的专门 executor，或专门 executor 的输入前置物无法合理生成
-  - trainer/coder 规范性边界：若 trainer 的完整 `SKILL.md` 已声明训练策略、完整训练脚本内容和训练执行组织由 trainer 持有，则 coder 只承担最终文件落盘或项目结构对接，不得接管训练核心决策
-  - runtime/coder 规范性边界：若 runtime 的完整 `SKILL.md` 已声明执行通道判定、执行模板选择、SLURM/SSH 提交脚本渲染、任务提交、日志回收与重试属于 runtime，则这些运行脚本与提交包装必须分配给 runtime；coder 仅负责编写被 runtime 调用的业务代码入口、配置文件或编排逻辑，不得承担 SLURM 提交脚本生成职责
-  - 拆分后保留 artifact 数据流：前一步产出的代码、配置、模型、数据或日志必须作为后一步 `step_handoff.inputs` 或 `relevant_artifacts`
-- 将 expert 规划步骤映射到 executor 技能调用序列：
-  - 分析每个规划步骤的实际操作内容
-  - 根据操作类型和 executor 职责边界，将一个规划步骤拆分为多个 executor 调用
-- 为每个步骤标注执行方式：
-  - `executor_step`：可由某个 `type=executor` 技能执行（标注具体技能名称）
-  - `orchestrator_step`：需要由 orchestrator 使用智能体工具执行（标注所需工具，如 WebFetch、Read、Bash）
-- 选择当前下一步
-- 设定失败后的回退点
+专家规划技能不是唯一主控也不是必经链路，它们是被召回来解决用户意图某个方面问题的规划者，必须是 `type=expert`。召回链路：`resource summaries + user request -> intent_profile；intent_aspects -> candidate experts；proposals -> global plan synthesis`。每个专家只规划自己覆盖的方面；融合职责（inventory、专长拆分、detail bundle、步骤映射与下一步选择、失败回退点）的权威规则见上文【executor 能力视图硬规则】，协议细节见 `references/planner_contract.md`。
 
 ## 无专家召回时的直接规划
 
-**默认流程**：orchestrator 始终执行阶段二的专家召回步骤（步骤 4-6），再根据召回结果选择专家融合或 `direct_step`。
-
-1. 基于 `intent_profile.intent_aspects` 查找 `type=expert` 的专家规划技能
-2. 记录 `planner_candidates` 列表（可能为空）
-3. 明确记录本次专家召回是否命中；召回已执行且 `planner_candidates` 为空时，进入 direct_step 路径
-
-当 `planner_candidates` 列表为空时，进入直接规划模式：
-
-- 设置 `planning_mode=direct_step`
-- 说明当前任务是通用任务、单步任务，或尚无专家覆盖
-- 由 orchestrator 基于 `intent_profile`、`matched_resources` 和可用执行技能直接规划 `Next Step Spec`
-- 即使是 `direct_step`，也必须先检查可用 executor 是否能覆盖该步骤内部的子动作；若能覆盖，应生成完整 `Global Plan` 并拆成多个 executor_step，再从第一步选择 `Next Step Spec`
-
-直接规划的典型情况（**仅在专家召回步骤已执行且召回结果为空后适用**）：
-
-- 明确要求生成或修改一段代码时：查询当前可用的 `type=executor` 技能，选择职责边界覆盖“代码生成/修改”的 executor
-- 明确要求运行已有入口、提交任务或查看日志时：查询当前可用的 `type=executor` 技能，选择职责边界覆盖“运行/提交/日志/诊断”的 executor
-- 明确要求安装或修复环境时：查询当前可用的 `type=executor` 技能，选择职责边界覆盖“安装/修复/验证环境”的 executor
-- 明确要求对已有产物做评估时：查询当前可用的 `type=executor` 技能，选择职责边界覆盖“评估”的 executor
-
-直接规划模式仍需完整维护状态：创建或更新 `Task State`，记录 `intent_profile`、`planner_candidates=[]`、`planning_mode=direct_step`、`resource_bindings`、`next_step` 和执行 observation。
+默认流程始终是：先执行阶段二步骤 4-6 专家召回，再按结果选择专家融合或 `direct_step`。`planner_candidates` 为空时进入 direct_step：说明当前任务是通用/单步/尚无专家覆盖，由 orchestrator 基于 `intent_profile`、`matched_resources` 和完整 executor 视图直接规划；即使 direct_step 也必须先检查可用 executor 能否覆盖步骤内子动作，能覆盖则拆成多个 executor_step。典型情况（写代码/运行提交/装环境/评估）一律先查 executor 台账选职责匹配的 executor，不在本技能硬编码名单。direct_step 仍须完整维护 Task State：`planner_candidates=[]`、`planning_mode=direct_step`、`resource_bindings`、`next_step` 与 observation。
 
 ## 执行技能调度
 
-执行分为两类：
+executor_step 由 `type=executor` 技能执行：执行技能只消费 Step Spec，不重新定义用户最终目标；技能名单不硬编码，按【executor 能力视图硬规则】查询与建台账；若执行技能发现 step 信息不足应返回缺失项，orchestrator 更新 Task State 后重新查询、重新匹配或修正。
 
-### 1. executor_step：由 type=executor 技能执行
+orchestrator_step 只允许承载**不属于任何 executor 已声明职责的辅助动作**，需同时满足：本轮完整台账中无任何 executor 明确拥有该原子动作；该动作不是 executor-owned 步骤的业务子动作；该动作只属编排辅助/状态维护/资源绑定/只读检查/下载/handoff 组装。允许的典型动作：WebFetch/curl 下载网络资源；Read 读取工作区文件、用户文件和 orchestrator 自身非资源参考文件（不得读任何 resource skill 的 `assets/`）；Bash 只读/辅助检查；Glob/Grep 搜索工作区文件（文件搜索路径模糊时先读 `references/path_resolution.md`，渐进式搜索最多 3 轮，失败先分析原因再调策略）；Write/Edit 配置文件；组装 handoff、整理状态、更新计划、输出 observation。
 
-执行技能只消费 `Step Spec`，不重新定义用户最终目标。
+**明确禁止 orchestrator 自执行**：代码生成/修改/配置内容编写/仓库文件落盘（交 coder/runsite 等对应 executor）；训练、推理、评估、数据构建等业务执行；环境安装/修复/依赖补齐；运行通道选择后的提交、日志拉取、执行诊断、SLURM/SCnet/SSH 治理；已标 `executor_step` 的任何业务动作；`knowledge_gap=true` 时编造模拟结果/默认参数/历史案例冒充领域回答（必须走步骤 7 硬路由在线兜底）。
 
-可用执行技能：
-- 不要在本技能中硬编码固定 executor 名单。
-- 每次进入规划或重规划时，都必须查询当前可用的全部 `type=executor` 技能，并逐个完整读取对应的权威 `SKILL.md` 后再判断能力边界。
-- executor 能力台账至少识别：
-  - `skill_name`
-  - `source_of_truth`
-  - 输入要求
-  - 输出产物
-  - 职责范围
-  - 明确不负责的事项
-  - 下游交接对象
-  - 覆盖的专门原子动作
-  - 前置条件
-  - 证据段落
-- 若只看到了技能名称、frontmatter `description` 或 handoff 简写摘要，而未完成完整 `SKILL.md` 阅读，则该 executor 视为边界未核定，不得用于最终职责划分。
-- 再根据当前步骤的原子动作，把步骤映射给最匹配的 executor；若多个 executor 可覆盖同一大步骤，优先把其中已有更专门边界覆盖的子动作拆为独立 `executor_step`。
-- 若当前注册表中不存在覆盖该原子动作的专门 executor，才允许把该动作保留给更宽泛的 executor 或改为 `orchestrator_step`。
-
-如果执行技能发现 step 信息不足，应返回缺失项；orchestrator 更新 `Task State` 后重新查询可用 executor、重新进行资源匹配、专家召回或 direct step 修正。
-
-### 2. orchestrator_step：由 orchestrator 使用智能体工具执行
-
-`orchestrator_step` 只允许承载不属于任何 executor 已声明职责范围的辅助动作；它不是 executor 的替代执行通道。
-
-只有同时满足以下条件时，某一步才允许被保留为 `orchestrator_step`：
-
-- 当前轮次完整 executor 能力台账中，没有任何 executor 明确拥有该原子动作
-- 该动作不是某个 executor-owned 步骤里的业务子动作
-- 该动作只属于编排辅助、状态维护、资源绑定、只读检查、下载或 handoff 组装，而不是业务执行本身
-
-允许的典型辅助动作：
-
-- 下载网络资源（PDF、数据文件等）：使用 WebFetch 或 Bash 的 curl/wget
-- 读取本地文件内容：使用 Read 工具；仅限项目工作区文件、用户文件和 orchestrator 自身的非资源参考文件，不得用于读取任何 resource skill 的 `assets/` 目录
-- 执行只读或辅助性质的 shell 检查命令：使用 Bash 工具；安装、运行、提交、诊断或代码改写仍交给对应 executor
-- 搜索文件或内容：使用 Glob 或 Grep 工具；仅限项目工作区文件或 orchestrator 自身非资源文件，不得用于搜索任何 resource skill 的 `assets/` 目录
-- 组装 handoff、整理状态、更新计划和输出 observation
- - 执行文件搜索前，若用户提供的路径信息较模糊或前次搜索失败，必须读取 references/path_resolution.md，按渐进式路径搜索策略执行，最多 3 轮重试
- - 搜索失败后必须先分析原因（工具不可用、路径层级错误、模式失配），再调整策略，不得直接换一种模式无差别重试
-- 写入或修改配置文件：使用 Write 或 Edit 工具
-
-明确禁止作为 `orchestrator_step` 自执行的动作：
-
-- 代码生成、代码修改、配置内容编写或仓库文件落盘（应交给 `onescience-coder`、`onescience-runsite` 或其他对应 executor）
-- 训练、推理、评估、数据构建等领域业务执行
-- 环境安装、修复、依赖补齐或 conda 写回
-- 运行通道选择后的任务提交、日志拉取、执行诊断、SLURM / SCnet / SSH 运行治理
-- 已在当前轮次 `Global Plan` 中被标记为 `executor_step` 的任何业务动作
-- 在 `knowledge_gap=true`（本地没查到领域知识）时编造「模拟检索结果 / 模拟科学数据 / 默认参数 / 历史案例」冒充领域回答（必须由步骤 7 的在线兜底硬路由交给 `onescience-live-literature` 真实联网检索）
-
-orchestrator 执行这些步骤后，仍需生成 `execution_result` 包含 `artifacts` 和 `observation`，并更新 `Task State`。
-
-**判断原则**：
-- 如果步骤涉及领域专业逻辑（代码生成、运行管理、环境配置），使用 executor 技能
-- 如果多个 executor 都能覆盖同一大步骤，选择更专门的 executor 执行它覆盖的子动作，并让宽泛 executor 只生成前置代码或补足未覆盖部分
-- 只有在确认没有任何 executor owner 时，才把步骤保留为 `orchestrator_step` 并使用 orchestrator 工具
+**判断原则**：领域专业逻辑用 executor；多个 executor 可覆盖同一大步骤时，更专门的 executor 拿其覆盖的子动作，宽泛 executor 只生成前置物或补未覆盖部分；确认无任何 executor owner 才保留 orchestrator_step。
 
 ## 输出要求
 
@@ -896,17 +261,21 @@ orchestrator 执行这些步骤后，仍需生成 `execution_result` 包含 `art
 如果任务已完成，输出：
 
 1. `final_status`：∈ {complete, complete_with_caveats, partial, blocked}；非 `complete` 时**第一行必须**前置「⚠ 本次未产生科研结论，以下为方法演示/工程脚手架输出，验证状态：<明细>」
-2. `completed_steps`：每步附 `result_identity`（research_result / engineering_demo / smoke_test / not_a_result）与最终判定（PASS / DEMO_PASS / PARTIAL / UNVERIFIED / BLOCKED）；存在验证 FAIL 时必须附 `validation_rollback` 明细（哪些上游 PASS 被回退）
+2. `completed_steps`：每步附 `result_identity` 与最终判定（PASS / DEMO_PASS / PARTIAL / UNVERIFIED / BLOCKED）；存在验证 FAIL 时必须附 `validation_rollback` 明细
 3. `artifacts`
 4. `verification_status`：逐项验证结果（PASS/FAIL/PARTIAL + 具体数值），禁止只写总结性「验证通过」
 5. `remaining_risks`
-6. `gate_hits`：本次任务触发的四层门禁清单（A domain_mismatch / B bare_number_reject / C result_identity_lock / D validation_rollback / D complete_downgrade），与 gaps.jsonl 追加行一致；为空时显式写「无门禁触发」
-7. `parameter_labels`：进入本次执行的关键参数四态清单（confirmed_input / literature_candidate+[n]+domain_match / pending_user_confirmation / blocked_missing），证明无裸数字进入执行
+6. `gate_hits`：本次触发的四层门禁清单，与 gaps.jsonl 追加行一致；为空时显式写「无门禁触发」
+7. `parameter_labels`：进入本次执行的关键参数四态清单，证明无裸数字进入执行
 
 ## 按需读取
 
-- 需要 Task State 字段和状态迁移约定时，读取 `references/task_state_contract.md`。
-- 需要专家召回、planner proposal 和计划融合协议时，读取 `references/planner_contract.md`。
-- 需要资源分层、摘要匹配和资源绑定规则时，读取 `references/resource_contract.md`。
-- 需要执行技能 handoff 格式时，读取 `references/execution_handoff_contract.md`。
-- 需要在模糊路径条件下搜索项目文件时，读取 `references/path_resolution.md`。
+- 设置 `autonomous_mode=true` 后、进入阶段三前：`references/autonomous_mode_details.md`（行为细则、失败分类表、决策分级、探索预算）。
+- 初始化 tier contract（阶段一步骤 1.6）时：`references/tier_completion_contract.md`（YAML 模板与动态填充规则）。
+- 任何状态判定 / PASS/COMPLETE 判据 / 最终报告结论段之前：`references/evidence_gates.md`（三通道分治、证据边界契约、四层门禁 A/B/C/D、门禁可观测性）。
+- 需要 Task State 字段和状态迁移约定时：`references/task_state_contract.md`。
+- 需要专家召回、planner proposal 和计划融合协议时：`references/planner_contract.md`。
+- 需要资源分层、摘要匹配、资源使用与绑定规则（含请求/返回 YAML 契约）时：`references/resource_contract.md`。
+- 需要执行技能 handoff 格式时：`references/execution_handoff_contract.md`。
+- 需要 autonomous_mode 文件交接细则时：`references/file_handoff_contract.md`。
+- 需要在模糊路径条件下搜索项目文件时：`references/path_resolution.md`。

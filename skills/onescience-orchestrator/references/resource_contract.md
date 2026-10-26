@@ -138,6 +138,26 @@ resource_retrieval_result:
 - `domain_match_summary.exact=0` 时，orchestrator 必须要求 resource 技能触发第二轮更精准的场景锚词检索，仍为 0 则记 `gate_hit=domain_mismatch` 到 `.onescience/gaps.jsonl`，并将依赖该证据的参数降级为 `literature_candidate` 或 `pending_user_confirmation`（见 planner_contract.md B 层门禁）。
 - 字段级定义以 `onescience-primitives` / `onescience-live-literature` 各自 SKILL.md 为准；本段仅为 orchestrator 侧消费锚点。
 
+当在线查证走 `onescience-online-knowledge` 时，`online_evidence` 追加 `knowledge_items[]`（统一 schema 见该技能 SKILL.md 第三节），把三类承重知识 + 先验兜底都结构化承载：
+
+```yaml
+resource_retrieval_result:
+  online_evidence:
+    knowledge_items:
+      - key: <槽位名，如 alpha_glycine_structure / ENCUT>
+        channel: <literature|structure|software-param>
+        provenance: <DOI:... / COD:<id> / software-doc:<tag> / model-prior(no online hit: <原因>)>
+        source_type: <literature|database|software-doc|model-prior>
+        evidence_level: <full-text|abstract|db-record|curated-ref|prior>
+        verified_online: <true|false>
+        self_verified: <true|false>   # structure 通道：化学式回验是否通过
+        domain_match: <exact|adjacent|cross_domain|null>
+        confidence: <high|medium|low>
+```
+
+- 消费规则：`verified_online=true` 条目可直接作承重参数并引用其 `provenance`；`source_type=model-prior` 条目允许继续用（不因缺知识 blocked），但方案/报告须原样保留 `⚠ 未经在线核实`，**严禁把 model-prior 的坐标/参数冒充为 literature[n] 或 COD 出处**。
+- `channel=structure` 且 `verified_online=true` 的前提是 `self_verified=true`（COD 化学式回验通过）；`source_type=software-doc` 不要求 domain_match/[n]，走软件文档出处。
+
 ### 字段说明
 
 - `status`：召回状态（success/partial/failed）

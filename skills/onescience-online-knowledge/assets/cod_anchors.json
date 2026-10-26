@@ -1,0 +1,13 @@
+{
+  "_comment": "已核实的常见基准物质 → COD 编号锚点。编号均经 structure_fetch.py 下载 + 化学式回验通过。锚点命中即走在线真取；未命中则回退到在线 formula 检索，再不行才允许带标注先验兜底。新增条目务必先回验再入库。",
+  "glycine": {
+    "formula": "C2H5NO2",
+    "cod_ids": ["1556577", "1556578", "1556579"],
+    "polymorphs": {
+      "alpha": {"cod_id": "1556577", "spacegroup": "P21/n", "cell": "a=5.223 b=12.435 c=5.563 beta=111.14"},
+      "beta": {"cod_id": "1556578", "spacegroup": "P21"},
+      "gamma": {"cod_id": "1556579", "spacegroup": "P31", "cell": "a=b=7.395 c=5.75 gamma=120"}
+    },
+    "verified": "2026-10-23 via structure_fetch.py self-verify (formula_sum 'C2 H5 N O2' match)"
+  }
+}

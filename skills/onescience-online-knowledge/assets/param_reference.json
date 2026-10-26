@@ -1,0 +1,31 @@
+{
+  "_comment": "软件级计算参数参考表（通道③）。这些值来自软件文档与领域惯例，不是论文数据，故 source_type=software-doc、出处不写 DOI。confidence=low 或 note 标『⚠』者为存疑项，务必核对官方 wiki 或降为带标注先验，严禁当作已核实事实冒充文献结论。",
+  "VASP": {
+    "opt": [
+      {"name": "ENCUT", "value": ">= 1.3 x max(ENMAX of constituent PAW potentials)", "applies": "结构优化/静态", "source": "VASP wiki:ENCUT", "confidence": "high", "note": "具体 eV 值随体系元素而变，需按 ENMAX 实算，不给死值"},
+      {"name": "EDIFF", "value": "1E-6", "applies": "电子自洽收敛", "source": "convention", "confidence": "medium", "note": ""},
+      {"name": "IBRION", "value": "2", "applies": "离子弛豫算法(共轭梯度)", "source": "VASP wiki:IBRION", "confidence": "high", "note": ""},
+      {"name": "ISIF", "value": "3", "applies": "允许 cell 形状与体积弛豫", "source": "VASP wiki:ISIF", "confidence": "high", "note": ""},
+      {"name": "IVDW", "value": "12", "applies": "DFT-D3(BJ) 色散校正", "source": "VASP wiki:IVDW", "confidence": "high", "note": "IVDW=11 为 DFT-D3 zero；=12 为 Becke-Johnson damping"},
+      {"name": "KPOINTS", "value": "Monkhorst-Pack, Gamma-centered for molecular crystals; spacing <= ~0.04 1/A", "applies": "k 网格", "source": "convention", "confidence": "medium", "note": "具体网格随 cell 尺寸而变；小晶胞常用 3-4 x 2-3；不要照抄别体系的固定三元组"}
+    ],
+    "NMR-GIPAW": [
+      {"name": "ENCUT", "value": "500-800 eV (response 性质需高于 opt 常规值)", "applies": "磁响应/GIPAW 屏蔽", "source": "VASP wiki:ENCUT(convergence)", "confidence": "medium", "note": "务必对本体系做 ENCUT 收敛测试后再定值"},
+      {"name": "EDIFF", "value": "1E-8", "applies": "DFPT 响应精度", "source": "convention", "confidence": "medium", "note": ""},
+      {"name": "LCHIMAG", "value": ".TRUE.", "applies": "磁化率/NMR 屏蔽响应计算", "source": "VASP wiki:LCHIMAG", "confidence": "high", "note": ""},
+      {"name": "LEPSILON", "value": ".TRUE.", "applies": "DFPT 介电常数与 Born 有效电荷", "source": "VASP wiki:LEPSILON", "confidence": "high", "note": "常与 LCHIMAG 一同开启"},
+      {"name": "LREAL", "value": ".FALSE.", "applies": "含精确交换/响应时关闭实空间投影", "source": "VASP wiki:LREAL", "confidence": "high", "note": ""},
+      {"name": "NPAR", "value": "1", "applies": "GIPAW NMR 常需不按 band 并行", "source": "convention", "confidence": "low", "note": "⚠ 并行行为随 VASP 版本而变，实测确认"},
+      {"name": "ISYM", "value": "0", "applies": "关闭对称性以显式列出全部原子位点", "source": "convention", "confidence": "medium", "note": ""},
+      {"name": "hybrid_functional", "value": "LHFCALC=.TRUE. + HFSCREEN/GAMMA (HSE06 或 PBE0)", "applies": "对 NMR 化学位移精度更好的泛函选择", "source": "literature+VASP wiki:LHFCALC", "confidence": "medium", "note": "『用杂化还是 PBE』属方法学选择，应走文献通道接地（如某体系报道 hybrid 显著提升屏蔽精度），本表不替你拍板"},
+      {"name": "ICHIBARE", "value": "(存疑)", "applies": "—", "source": "uncertain", "confidence": "low", "note": "⚠ 疑似非 VASP 标签（更像 CASTEP 用法）；写进 INCAR 前必须核对 VASP wiki，不得凭记忆默写"}
+    ]
+  },
+  "QuantumESPRESSO": {
+    "NMR-GIPAW": [
+      {"name": "ecutwfc", "value": "收敛测试确定；GIPAW 常需较高平面波截断", "applies": "截断能", "source": "QE convention", "confidence": "medium", "note": ""},
+      {"name": "K_POINTS", "value": "Monkhorst-Pack, 收敛测试确定", "applies": "k 网格", "source": "convention", "confidence": "medium", "note": ""},
+      {"name": "GIPAW", "value": "使用 Gauge-Including PAW，核屏蔽由 cs/相关模块计算", "applies": "方法", "source": "QE docs", "confidence": "medium", "note": "具体算符标签以 QE 版本文档为准"}
+    ]
+  }
+}
