@@ -2,6 +2,45 @@
 name: onescience-knowledge-harvester
 description: OneScience 知识缺口自动填补技能。当用户描述缺少某领域知识（如"缺少藏红花基因衍生推理的知识"）时，自动执行：文献检索 → 知识抽取 → 卡片生成 → 入库决策（new/modify/merge，相似知识归并同一张卡）→ 写入 onescience-primitives，使后续 OneScience 推理任务可召回这些知识卡片。论文证据为主体；附开源权威文档与用户自有数据两个低优先级补充通道。全程使用智能体原生能力（网络搜索、LLM 推理、文件操作），不依赖外部流水线或额外 API Key。触发词：缺少知识、补充知识、填补知识缺口、自动采集知识、harvest knowledge。
 type: executor
+capabilities:
+  owns:
+    - 文献检索
+    - 知识抽取
+    - 卡片生成
+    - 入库决策
+    - 知识归并
+    - 写入primitives
+  not_owns:
+    - 科研分析
+    - 代码生成
+    - 训练
+  inputs:
+    - knowledge_gap_description
+    - domain
+  outputs:
+    - knowledge_cards
+    - harvest_seed
+  downstream:
+    - onescience-primitives
+  prereq:
+    - 知识缺口已描述
+  intent_aspects:
+    - knowledge_harvesting
+    - knowledge_gap_filling
+  operation_types:
+    - create
+    - retrieve
+  artifact_types:
+    - knowledge
+    - report
+  domains:
+    - general
+  trigger_keywords:
+    - 缺少知识
+    - 补充知识
+    - 填补知识缺口
+    - harvest knowledge
+    - 知识采集
 ---
 
 # OneScience Knowledge Harvester

@@ -10,6 +10,49 @@ description: >
  "ColumnParallelLinear"、"RowParallelLinear"、"pretrain 接口"、"forward_step_func"、
  "model_provider"、"TP 并行"、"张量并行"、"多卡训练"、"Megatron"。
 type: executor
+capabilities:
+  owns:
+    - PyTorch模型分布式改造
+    - Pipeline Parallelism
+    - Tensor Parallelism
+    - 并行线性层替换
+    - forward_step_func编写
+    - Distributed模块创建
+  not_owns:
+    - 训练执行
+    - SLURM提交
+    - 环境安装
+  inputs:
+    - model_code_path
+    - parallel_config
+  outputs:
+    - distributed_model_code
+    - parallel_config
+  downstream:
+    - onescience-trainer
+    - onescience-runtime
+  prereq:
+    - 单机模型代码已存在
+  intent_aspects:
+    - model_parallelization
+    - distributed_training
+  operation_types:
+    - adapt
+    - create
+  artifact_types:
+    - code
+    - config
+  domains:
+    - general
+  trigger_keywords:
+    - 流水线并行
+    - pipeline parallel
+    - 模型并行改造
+    - 分布式训练
+    - TP并行
+    - 张量并行
+    - 多卡训练
+    - Megatron
 ---
 
 ## 输入获取方式

@@ -18,6 +18,11 @@
 
 ## Pipeline 要求
 
+论文复现时，生成前将训练计划和代码配置逐字段对照上游规格，检查实验/阶段/更新对象和来源。
+不得把未决值改成默认值，不得重新决定 split、网络拓扑、loss 或 best/last checkpoint 语义。
+科学必需值缺失时保留显式必填配置和清晰错误，先实现已确定部分，返回 `partial` 与缺项，不能
+将占位配置描述为可运行。若用户禁止训练，生成代码后只执行其允许的非训练检查。
+
 生成的训练代码应支持：
 
 - 对 config、checkpoint、train/val/test 数据、输出目录、device、dtype、batch size、seed 和领域参数提供显式 CLI 参数或配置项
@@ -30,6 +35,12 @@
 对于已有项目原生训练入口的模型，应优先复用原生 trainer、config、dataset 或 runner，不要重新实现内部逻辑。
 
 ## Trainer -> Coder 落盘交接
+
+对于来自 paper-repro 的任务，继续传递唯一规格的 `reproduction_spec_path`、完整
+`reproduction_spec_content`、`reproduction_spec_sha256` 和作用范围明确的未决项；coder 从
+`reference_resources[*].content` 消费同一规格。下述 trainer 派生任务书仅用于额外的训练落盘
+工作，不是 paper-repro 的交付前提，不能替代/改写上游规格，也不能因为缺少它而阻止论文代码
+生成。所有既有执行授权、禁止训练和输出目录约束随 handoff 传递。
 
 `onescience-coder` 在本阶段只负责把 trainer 已经定义完成的训练脚本内容物化为仓库文件，或对现有项目文件做对应修改；不负责重新决定训练脚本应包含的训练策略、数据语义、checkpoint 语义、日志策略和验证要求。
 
@@ -81,7 +92,7 @@ next_action=onescience-coder
 - CLI help/import 测试
 - 配置解析和 manifest shape 检查
 - checkpoint 参数语义检查
-- 可行时执行 tiny batch 训练或 dry-run
+- 用户允许训练且科学必需配置齐备时才执行 tiny batch 训练或训练 dry-run；禁止训练时不执行
 - 输出 schema 验证
 
 在测试或预检实际运行前，不要声称生成的训练 pipeline 可执行。

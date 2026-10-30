@@ -2,6 +2,43 @@
 name: onescience-primitive-distiller
 description: OneScience 原语蒸馏执行技能。用于将 scientific-agent-skills、第三方科研工具、数据库、服务、数据集、输出格式或工作流文档蒸馏为 onescience-primitives 资产包，并判断是否需要 resource、expert 或 executor 落地；不直接执行科研分析。
 type: executor
+capabilities:
+  owns:
+    - 原语蒸馏
+    - 第三方工具蒸馏
+    - 数据库蒸馏
+    - 资产包生成
+    - 落地判断
+  not_owns:
+    - 科研分析
+    - 代码生成
+    - 训练
+  inputs:
+    - source_repo
+    - tool_docs
+    - dataset_info
+  outputs:
+    - primitives_asset_pack
+    - landing_decision
+  downstream:
+    - onescience-primitives
+  prereq:
+    - 蒸馏源已确定
+  intent_aspects:
+    - primitive_distillation
+    - asset_packaging
+  operation_types:
+    - create
+  artifact_types:
+    - knowledge
+    - contract
+  domains:
+    - general
+  trigger_keywords:
+    - 原语蒸馏
+    - primitive distiller
+    - 资产包
+    - 蒸馏
 ---
 
 # OneScience Primitive Distiller

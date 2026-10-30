@@ -26,21 +26,27 @@
 
 4. **自动执行停止条件**：只有遇到以下情况才停止：
    - 全部 `completion_criteria` 满足 → 输出最终结果并结束
-   - executor 返回 `blocked` → 输出阻断原因，停止等待用户处理
+   - executor 返回 `blocked` → 先按当前规则复核并执行可用的重检、修复、重规划和独立可交付部分；只有仍存在的 `hard_blocked` 外部条件才停止等待用户处理
    - executor 返回 `failed` 且根据 failure_category 策略处理失败（见下方"失败分类策略"）
    - 步骤墙钟超时（`step_timeout`）→ 记录 event，进入 blocked
 
 5. **不可自动决策时的处理**：若 orchestrator 自身在 planning / selection 阶段遇到歧义（如多个 executor 都可执行但无法自动判定最优选择），优先选择匹配度最高的 executor 并记录低置信度标记；不得在 autonomous_mode 下向用户提问。
+
+**恢复同一任务时不重新要授权**：当前 worker assignment、当前用户请求和已保存的连续执行授权足以继续同一目标。历史 Task State 中由旧版资源访问策略写入的 `resource_asset_access_blocked`、`Terminate execution` 或 termination gate 只作为审计记录；按 `task_state_contract.md` 自动迁移，重新合法召回资源并继续。不得要求用户授权 fresh execution 或先清除历史 gate。
 
 6. **决策分级策略**：autonomous_mode=true 时，遇到分叉决策按以下三级处理：
 
 | 级别 | 判定条件 | 策略 | 示例 |
 |---|---|---|---|
 | level_1_reversible | 决策可回退、不影响最终目标 | `auto_choose_first`：直接选优先级最高的选项 | 先训练哪个模型、先读哪个文件 |
-| level_2_scope_affecting | 影响范围但不改变核心目标 | `auto_with_log`：自动选择并记录决策日志到 `decision_policy.active_decisions` | 数据子集大小、epoch 数调整 |
-| level_3_goal_altering | 涉及核心目标变化或外部资源硬阻塞 | `block_and_escalate`：暂停执行，写入 `.onescience/task_state.json` 的 blocked 状态，附带决策选项和 fallback；若 wallclock 超过 `decision_policy.level_3_fallback_timeout_seconds` 无人响应，自动使用 fallback 选项 | 数据替代方案选择、不可达外部资源 |
+| level_2_scope_affecting | 用户已授权的范围调整，且不改变核心目标 | `auto_with_log`：记录决策及授权；论文正式协议或未决科学字段不属于可自动调整项 | 已授权 smoke 的数据子集、epoch 数 |
+| level_3_goal_altering | 涉及核心目标变化或外部资源硬阻塞 | 记录受阻部分、选项及证据，先继续独立可交付部分；仅采用用户事先授权的 fallback，等待超时本身不构成授权 | 数据替代、未知科学协议、不可达私有资源 |
 
 Block 时的写入格式：
+
+论文复现的缺失字段先交 paper-repro 查论文/对应官方 GitHub；仍未明确时按模块保留未决，
+不得因自主模式或超时把它转为默认值。继承会话中的直接执行授权，不为已授权步骤重复询问；
+`training_allowed=false` 时禁止训练循环、参数更新和以 dry-run/tier 名义训练。
 ```json
 {
   "blocked_reason": "decision_required",
@@ -101,7 +107,7 @@ Block 时的写入格式：
 - executor 返回时检查 wallclock 是否超过 `step_wallclock_budget_seconds`：
   - 未超过 → 正常流程。
   - 超过 → 标记 `status: step_timeout`，写入 event（`event_type=step_timed_out`），进入 blocked。
-- blocked 恢复后重新执行时，attempt 递增，预算 = `original_budget * budget_multiplier_on_retry`。
+- step_timeout 导致的 blocked 恢复后重新执行时，attempt 递增，预算 = `original_budget * budget_multiplier_on_retry`。其它 blocked 先复核原因；旧策略或已消除条件直接写 `blocker_cleared` 并回 planning，不套用永久停止语义。
 
 7c. **Event 记录**：autonomous_mode=true 时，orchestrator 必须在以下时机写入 event 到 `Task State.events`：
   - 调用 executor 前 → `step_started`

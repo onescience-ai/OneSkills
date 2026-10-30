@@ -2,6 +2,58 @@
 name: onescience-trainer
 description: OneScience 科学模型训练执行技能。用于用户希望基于文本说明、网页说明、本地项目路径、已有 checkpoint 或项目原生训练入口来规划、生成并执行模型训练工作流，覆盖气象/地球系统、生信、材料、流体和通用科研模型等领域，包括训练信息获取、数据与切分规划、训练策略整理、完整训练脚本内容生成、训练执行组织以及结果验证。接收格式与 onescience-orchestrator 调用执行技能时的 step_handoff 保持一致，返回 execution_result。需要时协调交接给 onescience-coder、onescience-runtime 以及数据工作流技能。
 type: executor
+capabilities:
+  owns:
+    - 训练信息获取
+    - 数据切分规划
+    - 训练策略整理
+    - 训练脚本内容生成
+    - 训练执行组织
+    - 结果验证
+  not_owns:
+    - 代码落盘
+    - SLURM提交
+    - 环境安装
+  inputs:
+    - step_handoff
+    - training_config
+    - checkpoint
+    - data_path
+  outputs:
+    - training_script
+    - training_result
+    - checkpoint
+    - validation_result
+  downstream:
+    - onescience-coder
+    - onescience-runtime
+    - onescience-data-profile
+  prereq:
+    - 训练目标已明确
+    - 数据路径已知
+  intent_aspects:
+    - model_training
+    - training_execution
+  operation_types:
+    - create
+    - run
+  artifact_types:
+    - code
+    - model
+    - log
+  domains:
+    - earth
+    - biology
+    - materials
+    - cfd
+    - general
+  trigger_keywords:
+    - 训练
+    - train
+    - 微调
+    - finetune
+    - checkpoint
+    - 训练脚本
 ---
 
 ## 输入获取方式
@@ -25,6 +77,13 @@ type: executor
 本技能只消费当前执行步骤，不重新规划完整用户目标。本技能负责训练工作流契约和阶段顺序，负责明确训练策略、数据配置、split 假设、loss、optimizer、scheduler、评测频率、checkpoint 策略、日志与验证要求等完整训练脚本内容；这些内容由 trainer 直接定义并保留在 trainer_workdir 中。训练执行阶段的外层控制、入口确定、预检要求和结果归因也由 trainer 负责。只有当这些已定义内容需要写入仓库、修改现有项目文件或对接项目原生目录结构时，才把当前步骤中的文件落盘子动作交接给 `onescience-coder`。依赖包、硬件和运行环境需求不单独成阶段，而是在训练执行阶段通过 `onescience-runtime` 统一处理。
 
 ## 工作流
+
+先继承会话和 handoff 的执行范围、已有连续执行授权、输出目录及禁止事项。用户禁止训练或
+`execution_flags.training_allowed=false` 时，只完成所需计划/代码和获准检查，阶段 5 不执行
+训练、参数更新、训练 dry-run 或作业提交，阶段 6 只验证实际交付，不生成训练指标。
+论文任务以原始用户要求和上游唯一 `reproduction_spec.md` 为科学依据；通用训练建议不能覆盖
+该规格或填补其未决项。缺口按目标实验/阶段交回 paper-repro，从官方 GitHub 只读补证后更新
+同一规格；仍缺失则保留，继续独立可交付部分，不把 `ASSUMPTION` 当作论文设定。
 
 创建或更新工作目录；当 `step_handoff.inputs.runtime.code_save_dir`、上游交接物或用户明确指定了代码保存目录时，`trainer_workdir` 必须使用 `<code_save_dir>/.trainer_work/<run_id>/`。其中 `code_save_dir` 用于保存最终训练脚本、配置、日志引用和用户要求的结果输出，`trainer_workdir` 用于保存训练知识、计划、manifest、runtime 请求/结果、验证报告等 trainer 中间知识产物。若上游已显式提供 `step_handoff.inputs.runtime.trainer_workdir`，则应直接使用该目录，并要求其与 `code_save_dir` 语义保持一致；若未提供代码保存目录，但 `step_handoff.inputs.runtime.workdir`、`task_context.relevant_artifacts` 或用户明确指定了工作目录，则沿用该目录；否则兼容性回退到 `.onescience/trainer/<run_id>/`。进入具体代码生成或执行阶段时，必须从 `trainer_workdir` 中已保存的知识文件读取并交接，不依赖未落盘的会话上下文。
 

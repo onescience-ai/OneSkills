@@ -2,6 +2,46 @@
 name: onescience-modelscope-publish
 description: OneScience ModelScope 模型发布技能。将论文复现模型产物重组为 ModelScope 标准目录结构，检查核心目录内容完整性，生成平台必需的配置模板和审计工具，并输出 modelscope upload 命令引导用户推送到魔搭平台。作为 onescience-orchestrator 的执行技能使用。
 type: executor
+capabilities:
+  owns:
+    - 模型产物重组
+    - ModelScope目录结构
+    - 完整性检查
+    - 配置模板生成
+    - 审计工具
+    - 上传命令输出
+  not_owns:
+    - 模型训练
+    - 推理验证
+    - ModelScope账号认证
+    - token管理
+    - 执行upload
+  inputs:
+    - model_artifacts_path
+  outputs:
+    - modelscope_directory
+    - config_templates
+    - upload_command
+  downstream: []
+  prereq:
+    - 模型产物已存在
+  intent_aspects:
+    - model_publish
+    - modelscope_upload
+  operation_types:
+    - create
+  artifact_types:
+    - config
+    - code
+    - report
+  domains:
+    - general
+  trigger_keywords:
+    - ModelScope
+    - 模型发布
+    - 魔搭
+    - 上传模型
+    - publish model
 ---
 
 ## 输入获取方式

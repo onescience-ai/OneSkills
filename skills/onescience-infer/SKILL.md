@@ -2,6 +2,60 @@
 name: onescience-infer
 description: OneScience 科学模型推理执行技能。用于用户希望运行或构建 HuggingFace 模型、官方文档模型、本地 checkpoint 或项目原生 runner 的推理工作流时，覆盖气象/地球系统、生信、材料、流体和通用科研模型等领域，包括模型卡与配置发现、输入数据准备、checkpoint 加载、推理入口生成或复用、执行、结果验证、可视化和 baseline 对比。接收格式与 onescience-orchestrator 调用执行技能时的 step_handoff 保持一致，返回 execution_result。需要时协调交接给 onescience-coder、onescience-runtime 以及数据准备类技能。
 type: executor
+capabilities:
+  owns:
+    - 模型卡发现
+    - 配置发现
+    - 输入数据准备
+    - checkpoint加载
+    - 推理入口生成
+    - 推理执行
+    - 结果验证
+    - 可视化
+    - baseline对比
+  not_owns:
+    - 训练
+    - 代码落盘
+    - SLURM提交
+    - 环境安装
+  inputs:
+    - step_handoff
+    - model_source
+    - checkpoint
+    - input_data
+  outputs:
+    - inference_result
+    - validation_result
+    - visualization
+  downstream:
+    - onescience-coder
+    - onescience-runtime
+    - onescience-data-analyzer
+  prereq:
+    - 模型来源已确定
+  intent_aspects:
+    - model_inference
+    - inference_execution
+  operation_types:
+    - run
+    - evaluate
+  artifact_types:
+    - model
+    - report
+    - log
+  domains:
+    - earth
+    - biology
+    - materials
+    - cfd
+    - general
+  trigger_keywords:
+    - 推理
+    - inference
+    - predict
+    - 模型加载
+    - HuggingFace
+    - checkpoint推理
 ---
 
 ## 输入获取方式
@@ -67,6 +121,23 @@ type: executor
 - 除非遇到用户确认、缺少凭据、缺少模型 / 数据 / 入口、运行时失败或其他真实阻断，否则本技能在当前调用内应从已完成阶段自动进入下一阶段。
 - 当本阶段存在多个待执行输入、多个候选结果或多个待处理目标时，执行阶段应按批或逐个完成全部项，而不是在第一个对象结束后返回“下一步建议”。
 - 只有 `success` 且全部需要的候选、验证和落盘产物都已完成时，才返回最终 `execution_result`；如果还保留未执行候选或未完成的下游步骤，状态应视为 `partial` 或 `blocked`。
+
+## 推理专业契约门禁
+
+对“实现推理脚本 / 适配 checkpoint / 完成推理验证”任务，在代码生成或 coder 交接前，必须把用户要求整理为 `inference_contract`，并写入 `inference_plan.md`。契约至少逐项覆盖：
+
+- 预处理函数、通道顺序、大小写/字符策略、最小长度、batch 与 shape；
+- 模型类、组件类、方法、属性、构造参数名、默认值和模块层次；
+- forward 的参数名、位置/关键字调用、seed/recycle/sample 语义、返回键和 shape；
+- checkpoint 的单文件/目录入口、原始或包装 state dict、`strict=True`、device 映射；
+- CLI 参数名、布尔参数语义、默认值、合法最小调用和明确失败条件；
+- 输出目录、文件名、rank/sample 组织、schema、dtype、有限性和指标公式。
+
+生成代码时不得用“功能近似”的接口替代指定公共 API。模型属性名和模块层次可能被 checkpoint、hook 或结构检查直接依赖；`forward(self, x)` 的参数名也可能被关键字调用。默认构造、至少一个合法自定义构造、位置调用和关键字调用都要验证。
+
+输入校验应先做无损规范化再判非法，避免误拒绝大小写或等价容器；可选配置映射未覆盖的项默认与标准配置合并，除非任务明确要求完整映射。缺少 checkpoint 中非必需的审计元数据时，不得让最小合法推理命令提前退出；只有无法从用户契约、CLI、配置或安全默认值解析的必需推理语义才允许阻断。
+
+若委托 `onescience-coder`，handoff 必须携带完整 `inference_contract`，不能只传计划摘要或模型知识。coder 返回后，infer 必须在允许范围内独立核验：导入与公开签名、默认/自定义构造、预处理边界、checkpoint 变体、真实最小 CLI、全部约定输出文件及 schema。仅 `--help`、单次 forward 或自写 happy-path smoke 通过，不足以将代码生成阶段标为 success。
 
 ## 交接边界
 

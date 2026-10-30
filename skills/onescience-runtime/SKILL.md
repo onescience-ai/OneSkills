@@ -2,6 +2,55 @@
 name: onescience-runtime
 description: 【统一运行与基础诊断技能】按 discover、preflight、execute、diagnose 固定闭环执行测试任务，依据 onescience.json 的 execution_profile 三元组路由执行通道。preflight 阶段完整委托 onescience-installer 执行环境就绪预检（installer_reason=preflight_validation），runtime 只消费 readiness 结果；SCnet 提交任务时必须读取根级 onescience.json.runtime.scnet 并把 region、partition/queue、work_dir 和资源参数交给 scnet-chat；配置问题自动委托 onescience-runsite 补齐；环境问题由 onescience-installer 安装或修复并 verify 成功后回到 runtime 继续原测试任务；当 execution_mode 为 slurm 且提交或运行反馈表明 partition、gpus_per_node、memory 等资源不可用时，探测可用 SLURM 资源并受控调整后重试。
 type: executor
+capabilities:
+  owns:
+    - 运行通道判定
+    - preflight预检
+    - 任务提交
+    - 日志回收
+    - 执行诊断
+    - SLURM/SSH/SCnet运行治理
+  not_owns:
+    - 代码生成
+    - 环境安装
+    - 训练策略
+    - 推理逻辑
+  inputs:
+    - runnable_entry
+    - config
+    - execution_target
+    - onescience.json
+  outputs:
+    - run_evidence
+    - failure_classification
+    - logs
+  downstream:
+    - onescience-installer
+    - onescience-runsite
+    - scnet-chat
+  prereq:
+    - 可运行入口已存在
+    - onescience.json已配置
+  intent_aspects:
+    - runtime_verification
+    - job_submission
+    - execution_diagnosis
+  operation_types:
+    - run
+    - diagnose
+  artifact_types:
+    - log
+    - report
+  domains:
+    - general
+  trigger_keywords:
+    - 运行
+    - 提交作业
+    - 查看日志
+    - 诊断
+    - SLURM
+    - SCnet
+    - 跑起来
 ---
 
 ## 输入获取方式

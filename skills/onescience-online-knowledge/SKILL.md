@@ -2,6 +2,41 @@
 name: onescience-online-knowledge
 description: OneScience 统一在线查证技能。为任务一次性补齐三类承重知识——①文献（论文题录/摘要/数值/引用）②晶体结构与物质数据（COD 等开放数据库的真实 CIF→晶格参数/空间群/分数坐标）③软件级计算参数（VASP/QE/CASTEP 的 INCAR 标签、截断能、k 点、GIPAW 设置等惯例值）。核心纪律：线上优先，线上确实取不到才允许回退到模型先验，但模型先验必须显式标注「⚠ 未经在线核实」且严禁冒充某篇文献/数据库的出处；结构数据下载后必须用化学式回验、绝不默写坐标；任何一类知识缺失都不构成 blocked 理由（不因缺知识而停摆，而是降级为「带标注的先验」继续跑）。type=executor，作为 primitives 本地召回降到 none/task_only 时的在线兜底通道，以及 orchestrator knowledge_gap=true 时的硬路由在线查证 executor。只产出会话级结构化证据对象与交接种子，不写卡片库。
 type: executor
+capabilities:
+  owns:
+    - 在线文献查证
+    - 晶体结构数据查证
+    - 软件计算参数查证
+    - 降级先验标注
+  not_owns:
+    - 写卡片库
+    - 代码生成
+    - 训练
+  inputs:
+    - knowledge_query
+    - domain
+  outputs:
+    - structured_evidence
+    - seed_list
+  downstream: []
+  prereq:
+    - 知识查证需求已明确
+  intent_aspects:
+    - online_verification
+    - knowledge_gap_filling
+  operation_types:
+    - retrieve
+  artifact_types:
+    - knowledge
+    - report
+  domains:
+    - general
+  trigger_keywords:
+    - 在线查证
+    - 文献查证
+    - 晶体结构
+    - 计算参数
+    - online knowledge
 ---
 
 ## 输入获取方式

@@ -2,6 +2,43 @@
 name: onescience-data-profile
 description: OneScience 数据处理规划专家技能（type=expert）。由 onescience-orchestrator 召回，用于把已识别好的任务上下文、数据处理需求和可用知识映射为数据处理方案、数据契约、处理步骤和风险说明，并以 planner_proposal 返回给 onescience-orchestrator；不负责领域识别、不负责质量检查、不直接执行代码、运行作业或调度下游技能。
 type: expert
+capabilities:
+  owns:
+    - 数据处理方案规划
+    - 数据契约设计
+    - 处理步骤规划
+    - 风险说明
+  not_owns:
+    - 领域识别
+    - 质量检查
+    - 代码执行
+    - 作业提交
+    - 下游调度
+  inputs:
+    - task_context
+    - data_processing_needs
+    - available_knowledge
+  outputs:
+    - planner_proposal
+  downstream: []
+  prereq:
+    - 任务上下文已识别
+    - 数据处理需求已明确
+  intent_aspects:
+    - data_processing
+    - data_pipeline_design
+  operation_types:
+    - create
+  artifact_types:
+    - spec
+    - contract
+  domains:
+    - general
+  trigger_keywords:
+    - 数据处理
+    - 数据方案
+    - 数据契约
+    - data profile
 ---
 
 # OneScience Data Processing Planner

@@ -1,5 +1,10 @@
 # 分层完成契约模板（从 SKILL.md 剥离）
 
+**用户范围优先**：用户禁止训练、只要求论文规格或代码时不启用本训练契约，改以
+`completion_scope=spec_delivery|code_delivery` 验收。禁止以 tier_0/smoke/dry-run 名义
+进行参数更新；未运行项不能记通过。已授权缩放实验才使用以下 tier，不用其预设值填补论文
+未决项，不用缩小实验替代用户明确要求的论文协议。禁止训练约束随每个 handoff 传递。
+
 > 对应 SKILL.md 阶段一步骤 1.6。**凡任务涉及模型训练/论文复现/模型产出，orchestrator 必须在阶段一 Task State 初始化完成后立即按本文模板初始化 `tiered_completion_contract`**（写入 Task State 并原子落盘 `.onescience/task_state.json`）。纯安装、纯配置、纯查询任务跳过。
 
 若任务涉及模型训练/论文复现/模型产出（由 `intent_profile.operation_type` 包含 `train`/`reproduce` 或 `artifact_type` 包含 `model` 判定），orchestrator 必须在阶段一 Task State 初始化完成后，立即写入 `tiered_completion_contract`。**各 tier 的 checks 和描述为通用模板，orchestrator 必须根据论文实际内容（领域 domain、模型类 model_type、核心指标 core_metric、数据规模 data_scale）做以下动态填充**：

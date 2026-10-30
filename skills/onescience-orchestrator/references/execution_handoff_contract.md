@@ -13,6 +13,7 @@ step_handoff:
   step_wallclock_budget_seconds: <步骤墙钟预算，autonomous_mode 下必填>
   execution_flags:
     autonomous_mode: <true|false>
+    training_allowed: <true|false，继承用户约束，false 包含训练 dry-run/参数更新>
   task_context:
     user_goal: <用户最终目标>
     constraints: <约束列表>
@@ -24,6 +25,7 @@ step_handoff:
   inputs: <执行所需输入，根据任务类型可为空或包含具体字段>
   required_outputs: <要求输出>
   completion_criteria: <完成标准>
+  completion_scope: <spec_delivery | code_delivery | scientific_result>
 ```
 
 ## 执行技能返回格式
@@ -50,7 +52,14 @@ execution_result:
       description: <事件描述>
 ```
 
+**授权与约束传递**：用户原始要求、会话已有连续执行授权、输出目录和禁止训练必须传到每个
+executor。已有明确授权不重新确认；未决科学值仍保留未决，自主执行不等于允许猜测。
+
 **result_identity 与状态判定约束（C/D 层门禁）**：
+
+- `completion_scope=spec_delivery|code_delivery` 的纯交付步骤按文件和约定检查验收，可返回
+  `status=success`，但 `result_identity=not_a_result`，仅表示规格/代码交付完成。不得据此宣称
+  科研 PASS。科研结果的下面各项判据不要求源码或文档本身成为 `research_result`。
 
 - `result_identity ∈ {engineering_demo, smoke_test, not_a_result}` 的 step：状态只能标 `DEMO_PASS` / `PARTIAL` / `BLOCKED`，**禁止标 PASS**；其输出禁止进入最终报告「关键发现/科研结论」段，只能进入「方法演示/脚手架」段并前置「以下为演示输出，不构成本次科研结论」；下游依赖其产物的 step 自动继承 `not_a_result` 身份。
 - **输入门禁 ≠ 结果身份门禁**：用户确认「使用默认示例/典型参数/推荐值」只解除 input_gate（允许用默认值继续执行），不解除 result_identity_gate——默认值跑出的产物仍是 `engineering_demo`，不得申报 `research_result`。
@@ -69,9 +78,9 @@ execution_result:
 
 本节只用于帮助上游快速组织 handoff 字段，不是 orchestrator 判定 executor 职责边界、排他范围或明确不负责事项的权威来源。
 
-- 最终 scope / exclusivity / non-responsibility 判断，必须回到对应 executor 的完整 `SKILL.md`。
+- 最终 scope / exclusivity / non-responsibility 判断，以对应 executor 的 `capabilities` 元信息为权威来源；仅在 `capabilities` 无法判定边界归属时，按需深读对应 SKILL.md。
 - 若本节简写摘要与 executor 自身 `SKILL.md` 冲突，以 executor 自身 `SKILL.md` 为准。
-- 技能名称、frontmatter `description` 和本节摘要都只能用于初筛，不得替代完整 `SKILL.md` 阅读来做最终任务拆分。
+- 技能名称和 `description` 用于初筛；`capabilities` 元信息用于最终任务拆分。仅在 `capabilities` 边界重叠时按需深读 SKILL.md。
 
 ### onescience-coder
 - 接收：step spec、资源路径、目标目录、运行时参数（数据源路径、输出路径等）
@@ -108,9 +117,27 @@ source_dir = os.path.join(source_dir, "ERA5")
 ```
 
 ### onescience-paper-repro
-- 接收：论文资源路径
-- 执行：解析论文、生成复现规格
-- 返回：复现规格、方法抽取结果、coder 任务描述
+- 接收：当前任务目标、用户明确要求、论文来源、输出约束，以及用户/上游显式提供的
+  acceptance contract 或 evaluation artifacts（如有）
+- 执行：意图审计、全文获取、逐字段充分性判断、必要的官方仓库只读补证、结构化提取、
+  同一规格内的实现契约、核验和落盘交接门禁
+- 返回：唯一 `reproduction_spec.md` 的路径、完整内容、SHA-256、conflicts、按实验/阶段及
+  构建/运行影响分类的 unresolved、recommended consumer；不得再要求旧版独立任务书/JSON 契约
+- 完成后必须回 orchestrator observation/planning；不得在同一回执中附带 coder 生成的源码、
+  trainer 训练结果或 infer 评测结果，也不得把 `next_action` 固定为 coder
+
+无原生 skill bridge 时，内联执行仍须使用独立的 `step_handoff` 和
+`execution_result.skill=onescience-paper-repro`，并完整执行 paper-repro 的 stages/references/
+gates。只生成一份概念 spec、随后由 orchestrator 直接写代码，不构成合法的 paper-repro 回执。
+
+有 Skill 工具时必须实际调用 paper-repro，不把加载 primitives、直接 webfetch PDF 或复述
+prompt 记作执行了该技能。来源获取失败或全文未核验不得以“prompt 已完整”跳过。
+可交接时，给 coder 传 `paper_repro_handoff=true`、`reproduction_spec_path`、
+`reproduction_spec_content`、`reproduction_spec_sha256`、conflicts、key_unresolved，并将
+完整内容映射到 `reference_resources[*].content`。规格落盘后计算散列，修改后重新读回计算；
+不能传摘要，不能在下游生成另一份规格。`partial` 时继续独立可实现模块，保留受阻部分。
+代码请求只有在所需源码/配置实际存在、非空且约定验收完成后才满足；未决必填值导致构建或运行
+受阻时明确返回 `partial`，不得将静态通过等同于可运行。
 
 ### onescience-runtime
 - 接收：可运行入口、配置、执行目标

@@ -2,6 +2,52 @@
 name: onescience-data-analyzer
 description: OneScience 数据分析执行技能（type=executor）。负责数据分析、可视化与报告输出，不涉及任务规划。接收规划好的任务，调用工作流执行统计分析、可视化生成和报告输出，根据领域自动匹配可视化规范（气象、生信、流体、材料等）。
 type: executor
+capabilities:
+  owns:
+    - 数据分析
+    - 统计分析
+    - 可视化生成
+    - 报告输出
+    - 领域可视化规范匹配
+  not_owns:
+    - 任务规划
+    - 代码生成
+    - 训练
+    - 推理
+  inputs:
+    - planned_task
+    - data_path
+    - analysis_config
+  outputs:
+    - analysis_report
+    - visualization
+    - charts
+  downstream: []
+  prereq:
+    - 数据已就绪
+    - 分析任务已规划
+  intent_aspects:
+    - data_analysis
+    - visualization
+  operation_types:
+    - evaluate
+    - create
+  artifact_types:
+    - report
+    - visualization
+  domains:
+    - earth
+    - biology
+    - materials
+    - cfd
+    - general
+  trigger_keywords:
+    - 数据分析
+    - 可视化
+    - visualization
+    - 图表
+    - 统计分析
+    - 报告
 ---
 
 ## 输入获取方式

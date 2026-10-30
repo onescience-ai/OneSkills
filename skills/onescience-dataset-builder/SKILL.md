@@ -2,6 +2,42 @@
 name: onescience-dataset-builder
 description: OneScience 数据集构建执行技能，包含两个独立任务：(1) 生成数据集构建启动脚本（wrapper） - 接收数据处理代码路径（核心业务逻辑已由其他技能实现），分析代码接口，生成加载和调用这些接口的启动脚本（不包含数据读取、处理、转换等业务逻辑）；(2) 数据集验证任务 - 接收数据集路径，验证数据集、执行质量检查、生成元数据（该任务依赖于其它技能试用local模式执行启动脚本生成数据集后才能执行）。两个任务由 orchestrator 分别调用。
 type: executor
+capabilities:
+  owns:
+    - 数据集构建启动脚本生成
+    - 数据集验证
+    - 质量检查
+    - 元数据生成
+  not_owns:
+    - 数据处理业务逻辑
+    - 代码生成
+  inputs:
+    - data_processing_code_path
+    - dataset_path
+  outputs:
+    - wrapper_script
+    - validation_report
+    - metadata
+  downstream: []
+  prereq:
+    - 数据处理代码已存在
+  intent_aspects:
+    - dataset_construction
+    - dataset_validation
+  operation_types:
+    - create
+    - evaluate
+  artifact_types:
+    - dataset
+    - code
+    - report
+  domains:
+    - general
+  trigger_keywords:
+    - 数据集构建
+    - dataset builder
+    - 数据集验证
+    - 启动脚本
 ---
 
 ## 输入获取方式

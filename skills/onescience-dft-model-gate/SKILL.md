@@ -2,6 +2,53 @@
 name: onescience-dft-model-gate
 description: "DFT/VASP 初始原子结构建模与交付门限。任一信号命中必用：(a) 表面/界面：Cu/Fe/Pt/Pd/Ni/Au/Ag/TiO2/MoS2/石墨烯/ZnO/CeO2 等 slab、(111)/(100)/(110)/(001) 晶面、异质结、界面建模；(b) 吸附/溶剂化：吸附物放置、CO2/CO/H2O/N2/OH/H/O 等分子加到表面、显式水/水层/水膜、电解质、溶剂化；(c) 掺杂/缺陷：K/Li/Na/Ca 掺杂、空位、取代、表面重构；(d) VASP 输入交付：POSCAR/CONTCAR/INCAR/KPOINTS/POTCAR、model_contract.json、selective dynamics、固定底部原子、ENCUT、赝势、几何合理性；(e) 场景关键词：初始模型、起始结构、建模交付、计算前验收、VASP 计算前。构建前必先写 model_contract.json，通过硬性验收门限才能提交。本技能为 executor 类型，通常由 onescience-orchestrator 调度；用户未点名时优先走 orchestrator 入口。"
 type: executor
+capabilities:
+  owns:
+    - DFT/VASP初始原子结构建模
+    - 表面/界面建模
+    - 吸附物放置
+    - 掺杂/缺陷
+    - VASP输入交付
+    - model_contract
+    - 验收门限
+  not_owns:
+    - DFT计算执行
+    - 训练
+    - 推理
+    - 代码生成
+  inputs:
+    - structure_requirements
+    - surface_info
+    - adsorbate_info
+  outputs:
+    - POSCAR/CONTCAR/INCAR/KPOINTS/POTCAR
+    - model_contract.json
+  downstream:
+    - onescience-runtime
+  prereq:
+    - 建模需求已明确
+  intent_aspects:
+    - dft_modeling
+    - structure_building
+    - vasp_input
+  operation_types:
+    - create
+  artifact_types:
+    - config
+    - code
+  domains:
+    - materials
+  trigger_keywords:
+    - DFT
+    - VASP
+    - POSCAR
+    - INCAR
+    - slab
+    - 吸附
+    - 掺杂
+    - 缺陷
+    - 表面建模
+    - 界面建模
 ---
 
 # DFT 模型就绪门限（onescience-dft-model-gate）

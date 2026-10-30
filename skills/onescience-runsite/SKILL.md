@@ -2,6 +2,46 @@
 name: onescience-runsite
 description: 解析、校验、保存和复用 OneScience 运行站点配置。用于任意技能在继续执行任务前补齐运行站点配置，完成配置发现、缺失字段补问、已有配置复用、remote 连接验证、运行平台 DCU/GPU 类型确认、modules 写入和结构化回传。不做安装、不提交作业、不执行运行、不做远端环境诊断。
 type: executor
+capabilities:
+  owns:
+    - 运行站点配置解析
+    - 校验
+    - 保存
+    - 复用
+    - 缺失字段补问
+    - 远程连接验证
+    - 平台类型确认
+    - modules写入
+  not_owns:
+    - 安装
+    - 作业提交
+    - 运行执行
+    - 远端环境诊断
+  inputs:
+    - onescience.json
+    - user_input
+  outputs:
+    - onescience.json
+    - runsite_handoff
+  downstream: []
+  prereq: []
+  intent_aspects:
+    - runsite_config
+    - site_configuration
+  operation_types:
+    - create
+    - adapt
+  artifact_types:
+    - config
+  domains:
+    - general
+  trigger_keywords:
+    - 运行站点
+    - run_site
+    - SSH配置
+    - SLURM配置
+    - 远程连接
+    - 平台配置
 ---
 
 ## 输入获取方式

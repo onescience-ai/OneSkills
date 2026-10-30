@@ -2,6 +2,42 @@
 name: onescience-primitives
 description: OneScience 原语资源召回技能。根据自然语言需求检索相关原语资源（模型、组件、数据管线、应用、可视化规范、工作流规划、契约等）以及 Task-Centric 科研知识（Task、Method、Operation、Validation、Scenario、Workflow），通过范围判定、快速过滤和语义匹配召回，按内容需求返回相应知识；不做科研规划与代码实现。
 type: resource
+capabilities:
+  owns:
+    - 原语资源检索
+    - 范围判定
+    - 快速过滤
+    - 语义匹配
+    - 知识召回
+  not_owns:
+    - 科研规划
+    - 代码实现
+  inputs:
+    - resource_retrieval_request
+  outputs:
+    - resource_retrieval_result
+  downstream: []
+  prereq: []
+  intent_aspects:
+    - resource_retrieval
+  operation_types:
+    - retrieve
+  artifact_types:
+    - knowledge
+    - contract
+  domains:
+    - earth
+    - biology
+    - materials
+    - cfd
+    - general
+  trigger_keywords:
+    - 原语
+    - primitive
+    - 资源召回
+    - 知识检索
+    - 模型卡
+    - 数据卡
 ---
 
 # OneScience Primitives Resource
@@ -32,9 +68,11 @@ type: resource
 
 调用方必须通过 `resource_retrieval_request → resource_retrieval_result` 完整闭环获取资源。
 
-**协议范围豁免**：调用方已构造合法 `resource_retrieval_request` 并按本技能召回流程执行时，可以以下操作——这属于召回逻辑的执行，不是违规直接消费：
+**资源检索的执行边界**：收到或构造 `resource_retrieval_request` 后，按本技能流程执行以下检索。原生 skill 工具若仅返回说明，需在同一轮继续实际检索并返回结果；不要求另建智能体或切换角色标记。请求内的任务需求、检索范围及内容需求应保留到结果返回；检索尚未结束、尚无 result 时也允许继续以下操作：
 - **优先路径 —— `catalog_search` + `catalog_resolve`**：`catalog_search`（kind=primitive, domain=..., q=...）搜索原语；`catalog_resolve`（part=body/contract/location）获取 companions 和契约。`catalog_search` 搜 OneCode 内置 catalog（含 bundled seed），不依赖本地文件系统。
-- **降级路径 —— 文件系统 Glob/Read**（仅当 `catalog_search` 无结果且确认本地 `skills/onescience-primitives/assets/` 存在）：枚举候选（Glob 列目录）、快速过滤/语义匹配（Read `metadata.json`）、内容组织（Read `spec.md`/`usage.md`/`workflow_planning.md` 及白名单执行资产）、命名直查（Glob 目录名 + Read `metadata.json`）。
+- **降级路径 —— 文件系统 Glob/Grep/Read**（宿主未提供 catalog 工具，或 `catalog_search` 无结果，且本地 `assets/` 存在）：枚举候选、在请求范围内过滤/语义匹配、组织所需内容、执行命名直查。以本次实际加载的技能目录定位 `assets/`，不假定技能安装在当前工作目录。未提供的工具记录为不可用，不尝试调用不存在的接口。
+
+这类内部检索不属于调用方绕过协议。若此前确有无请求读取，不沿用其未核验结论；按当前请求重新检索、生成正式 result 并继续上层任务，不因调用偏差终止任务。
 
 调用方仍**不得**沿 `matched_resources[].path` 自由读取任意文件、不得在无请求时浏览 `assets/`、不得消费未在 `execution_assets` 白名单声明的脚本。当本技能被上游调用时，`resource_retrieval_request` 是输入控制消息而非最终输出；本技能直接执行召回并返回 `resource_retrieval_result`。
 
@@ -138,12 +176,12 @@ TC 三层各独占 category：`scenario/`（type=scenario）、`workflow/`（typ
 
 ## 召回流程
 
-> **【检索路径优先级】** 原语可能存于两处：1) **数据库/Blob Store**（`catalog_search` + `catalog_resolve`，OneCode 内置 catalog）——默认路径，优先级最高；2) **本地文件系统**（Glob + Read `skills/onescience-primitives/assets/`）——降级路径，仅当路径 1 无结果且确认本地 assets 目录存在时使用。
-> **强制规则**：召回**必须先尝试路径 1**，不得跳过；回退路径 2 后，命名直查与常规管道（步骤 0-9）的文件系统操作规则仍适用。
+> **【检索路径优先级】** 先检查宿主是否提供 `catalog_search` + `catalog_resolve`。提供时优先调用；未提供或检索无结果时，确认实际技能目录下 `assets/` 存在后走本地检索。后文所有“catalog 优先”步骤均遵守此可用性判断，工具不存在时直接执行对应本地步骤，不中断任务。
+> 回退本地检索后，命名直查与常规管道（步骤 0-9）的文件系统操作规则仍适用。
 
 > 本技能无统一索引文件，原语信息以各资源目录 `metadata.json` 为主。必须先确定检索范围，再枚举资源目录逐个读 `metadata.json`，不要凭目录名猜测。
 >
-> **【路径规范】** `assets/` 绝对路径为 `skills/onescience-primitives/assets/`；三层嵌套 `<domain>/<category>/<primitive_name>/`。凡出现 `assets/<domain>/...` 均指代相对仓库根的 `skills/onescience-primitives/assets/<domain>/...`。Glob 必须用 `**` 递归模式（如 `assets/bio/**/metadata.json`），不得单层 `*` 漏目录；Read 必须拼接完整前缀 `skills/onescience-primitives/`。
+> **【路径规范】** 文中 `assets/` 或 `skills/onescience-primitives/assets/` 均指实际加载的本技能目录下的 `assets/`；三层嵌套 `<domain>/<category>/<primitive_name>/`。用技能加载返回的位置拼接完整路径，不能将安装路径当作工作区相对路径。跨类别 Glob 使用 `**` 递归，已确定 category 时可在该 category 内精确匹配。
 >
 > **【命名直查优先】** 执行常规管道（步骤 0-6）前先检查是否满足命名直查条件。
 
@@ -154,7 +192,7 @@ TC 三层各独占 category：`scenario/`（type=scenario）、`workflow/`（typ
 **执行步骤**：
 1. 从 `filters.keyword` 提取名称候选（规范化：下划线连接、去空格标点，与目录名比对）
 2. **优先 `catalog_search`**（kind=primitive, domain, q=名称）；若命中，`catalog_resolve` 取 body/contract，跳步骤 6
-3. **回退文件系统**：`catalog_search` 未命中且本地 assets 存在时，Glob `skills/onescience-primitives/assets/<domain>/**/<name>/metadata.json`（必须 `**` 递归）
+3. **回退文件系统**：catalog 工具未提供或 `catalog_search` 未命中，且本地 assets 存在时，Glob `skills/onescience-primitives/assets/<domain>/**/<name>/metadata.json`（必须 `**` 递归）
 4. 唯一匹配直接读 `metadata.json`；多匹配（跨 category）读全部取语义最接近
 5. 未找到则回退常规管道（步骤 0-6）
 6. 命中后直接跳步骤 7（组织内容），**跳过步骤 0-6 枚举、过滤、语义匹配和截断**
@@ -166,7 +204,7 @@ TC 三层各独占 category：`scenario/`（type=scenario）、`workflow/`（typ
 
 仅在命名直查未命中时执行。
 
-0. **优先 `catalog_search`**（kind=primitive，传 domain/keyword）；非空则 `catalog_resolve(part=body)` 取内容，跳过文件系统枚举。无结果时继续以下流程。
+0. **catalog 可用时优先检索**（kind=primitive，传 domain/keyword）；非空则 `catalog_resolve(part=body)` 取内容，跳过文件系统枚举。工具未提供或无结果时继续以下本地流程。
    **判定 domain scope**：`filters.domain` 明确 → 直接用该 domain，**不再读** `references/domain_profile.md`；未提供/为空/不可靠 → **必须先读** `domain_profile.md` 按领域信号回退判定；判定为 `climate|cfd|matchem|bio|general` 时只检索对应目录；`unknown` 时允许搜全部 domain 目录且输出 `detected_domain: unknown`。请求已路由生信且涉及生信工作流/模型/管线/应用选择时，可读 `references/bio_profile.md` 作候选排序提示（只辅助排序与边界解释，不能替代 `metadata.json` 证据）。
 1. **判定 category scope**：请求明确指定模型/组件/管线/应用/可视化/工作流规划/输出格式/契约/数据库等类别时只检索对应 category；未指定则搜当前 domain scope 下全部实际 category。
    **【强制】可视化信号识别**：`user_request` 或 `filters.keyword` 出现任一信号时必须将 `visualization` 纳入检索范畴——显式可视化词（可视化/visualization/visualize/render）、三维渲染词（3D/三维/结构展示/interactive/交互式）、置信度着色词（pLDDT/PAE/confidence coloring/B-factor/chain coloring）、分子可视化工具（PyMOL/3Dmol/MolStar/NGL/cartoon/ribbon/surface/stick）、结构文件格式（.pdb/.cif/.mmcif/.pse/.pml）；即使主意图被判为 model/datapipe/application 也不可遗漏。

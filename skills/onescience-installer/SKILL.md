@@ -2,6 +2,46 @@
 name: onescience-installer
 description: OneScience 环境安装技能。用于根据 onescience.json 安装或验证 OneScience、创建或复用 conda 环境、检测已有 onescience 包、在记录的 conda 环境或当前环境中安装 Python 包、安装 HPC 科学计算软件（如 GROMACS、LAMMPS）；缺少 run_site 或远程 SSH 配置时先调用 onescience-runsite 补齐运行站点配置。
 type: executor
+capabilities:
+  owns:
+    - 环境安装
+    - 环境验证
+    - conda环境创建
+    - Python包安装
+    - HPC科学计算软件安装
+  not_owns:
+    - 代码生成
+    - 任务提交
+    - 训练
+    - 推理
+  inputs:
+    - onescience.json
+    - env_gap
+    - install_profile
+  outputs:
+    - install_result
+    - env_status
+  downstream:
+    - onescience-runsite
+  prereq:
+    - onescience.json存在或可创建
+  intent_aspects:
+    - environment_setup
+    - environment_repair
+  operation_types:
+    - install
+    - diagnose
+  artifact_types:
+    - config
+    - log
+  domains:
+    - general
+  trigger_keywords:
+    - 安装
+    - 环境配置
+    - conda
+    - 依赖
+    - 修复环境
 ---
 
 ## 输入获取方式

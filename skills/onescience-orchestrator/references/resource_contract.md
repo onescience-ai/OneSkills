@@ -69,10 +69,28 @@ content:
 ## 调用方合规约束
 
 - **唯一入口**：资源知识只能通过调用 `type=resource` 技能获取。
-- **禁止直读资产**：调用方不得使用 `Read` / `Glob` / `Grep` 直接访问任何 `type=resource` 技能的 `assets/` 目录。
+- **禁止绕过协议**：调用方不得在资源请求/返回闭环之外自行读取、消费 `assets/`。资源技能按请求执行的内部枚举、过滤、读取是召回流程的一部分，不受此禁令限制。
 - **只消费契约返回内容**：调用方只能消费 `resource_retrieval_result.matched_resources[*].content` 中承载的资源内容。
 - **路径仅为元数据**：`path` / `name` / `type` / `why_matched` / `limitations` 仅用于标识、匹配说明和绑定，不构成直接读文件授权。
 - **允许的本地读取例外**：技能可以读取自身的非资源参考文档或运行初始化资产；该例外不适用于任何 `type=resource` 技能的资源资产目录。
+
+### 内容不足时的唯一替代路径
+
+摘要不足时，不得沿 `matched_resources[*].path` 读取文件。必须重新调用对应 resource 技能，并把缺失内容写成精确 `content_request`，例如“返回训练入口接口、配置 key 与字段依赖”，而不是笼统写“更多内容”。补召仍不足时：
+
+1. 在 Task State 写入 `resource_insufficient`，包含 resource 名称、已请求内容、仍缺字段和对当前步骤的影响。
+2. 由 orchestrator 选择缩小范围、其它合法来源、重规划或 `blocked`。
+3. 不得用 `Read` / `Glob` / `Grep` / `Bash` 直读 `assets/` 作为 fallback。
+
+### 文件工具调用前置检查
+
+检查规范化目标路径及间接构造的路径是否涉及 resource `assets/`。涉及时，依据已有 `resource_retrieval_request`、目标资源技能的检索流程和本次请求范围判断：内部检索允许继续；绕过协议的读取才拦截并记录 `resource_asset_access_blocked`，随后改用精确资源请求恢复执行。
+
+原生 skill 工具若只加载说明，仍需同一智能体按资源技能流程完成检索；没有原生桥接时也相同。请求应包含任务需求、检索范围和内容需求，并保留请求与正式结果，不能仅宣布调用或修改角色标记。检索进行中尚未返回 result 不构成违规。调用方在检索完成后只消费正式 result，不沿返回的 path 自行深读。
+
+若已发生协议外读取，仅丢弃未经资源技能核验的内容及其派生结论，通过资源技能重新获取后继续；不因该事件终止整项任务。无法补齐时记录具体 `resource_insufficient` 并按内容不足规则处理。
+
+恢复时若 Task State 仍保存旧版 `resource_asset_access_blocked` 且 action 含 `terminate/终止`，该 action 仅是历史记录，不是当前控制指令。按 `task_state_contract.md` 追加迁移事件、重做正式召回并继续；不得保留 termination gate 或要求用户另行授权 fresh execution。
 
 ## 统一输入格式
 
@@ -267,9 +285,10 @@ resource_bindings:
 
 - [ ] 已向 type=resource 技能发出 `resource_retrieval_request`
 - [ ] 已收到 `resource_retrieval_result` 并确认 `status`
-- [ ] 调用方未使用 `Read` / `Glob` / `Grep` 直接访问任何 resource 技能 `assets/` 下的文件
+- [ ] 涉及 resource `assets/` 的操作属于已发起请求的资源技能内部检索；协议外读取已丢弃其未核验结论并通过正式召回恢复，不以历史偏差终止任务
 - [ ] 调用方只基于 `matched_resources[*].content` 消费资源内容，未在契约外引用、概括或拼接资源内容
 - [ ] 调用方不得在输出 `resource_retrieval_request` 之前消费原语内容
+- [ ] 若资源内容不足，已通过精确 `content_request` 补召或记录 `resource_insufficient`，未 fallback 到直读 `assets/`
 
 ## 资源冲突处理
 

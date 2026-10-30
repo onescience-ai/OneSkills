@@ -19,6 +19,8 @@ execution_skill: "onescience-coder"
 step_goal: "实现 ResNet 模型定义"
 execution_flags:
   autonomous_mode: true
+  training_allowed: false
+completion_scope: code_delivery
 step_wallclock_budget_seconds: 1800
 task_context:
   user_goal: "复现论文 2406.01465"
@@ -26,15 +28,18 @@ task_context:
     - "使用 PyTorch 框架"
     - "支持 GPU 训练"
   relevant_artifacts:
-    - path: "outputs/reproduction_spec.md"
-      description: "论文复现规格"
-    - path: "outputs/coder_task_description.md"
-      description: "编码任务描述"
+    - path: ".paper2code_work/2406.01465/reproduction_spec.md"
+      description: "唯一论文复现规格，全文与散列在 inputs/reference_resources 传递"
 resource_bindings:
   - type: "model_card"
     path: "assets/matchem/models/deepmd"
     purpose: "模型架构参考"
 inputs:
+  paper_repro_handoff: true
+  reproduction_spec_path: ".paper2code_work/2406.01465/reproduction_spec.md"
+  reproduction_spec_content: "<磁盘规格完整内容，不能传摘要>"
+  reproduction_spec_sha256: "<磁盘全文的 SHA-256>"
+  key_unresolved: []
   target_dir: "models/"
   target_file: "models/resnet.py"
   parameters:
@@ -47,15 +52,12 @@ completion_criteria:
   - "模型类定义完整，可通过 import 导入"
   - "支持三种配置变体"
   - "代码可通过静态检查"
-tier_config:
-  active_tier: "tier_1_quick_repro"
-  data_scale:
-    n_foils: 10
-    n_epochs: 30
-    subsample_points: 8000
-  is_deliverable: true
-  fallback_tier: null
 ```
+
+以上为结构示例；`training_allowed=false` 的代码交付任务不传训练 `tier_config`，不激活训练
+层级。已授权训练时才按分层契约添加 tier_config。论文输入同时将规格全文放入
+`reference_resources[*].content`，路径只用于追踪；不创建旧版 `coder_task_description.md`。
+每次交接携带会话持续授权、禁止事项和输出根目录，不能只传任务标题。
 
 ## Result 文件格式
 
@@ -67,6 +69,8 @@ attempt: 2
 execution_skill: "onescience-coder"
 status: "success"
 failure_category: null
+completion_scope: code_delivery
+result_identity: not_a_result
 artifacts:
   - path: "models/resnet.py"
     description: "ResNet 模型实现"
@@ -78,7 +82,7 @@ observation:
     - "三种配置变体 (resnet18/resnet50/resnet101)"
     - "forward 方法实现"
   risks: []
-  next_recommendation: "可进入训练步骤"
+  next_recommendation: "代码交付完成；本次禁止训练，运行/论文指标未验证"
 events:
   - event_type: "repair_attempted"
     timestamp: "2026-08-12T10:30:01Z"
@@ -86,17 +90,6 @@ events:
   - event_type: "retry_started"
     timestamp: "2026-08-12T10:31:00Z"
     description: "第 2 次重试"
-tier_result:
-  tier_id: "tier_1_quick_repro"
-  status: "pass"
-  checks_passed: 4
-  checks_total: 4
-  model_weights_paths:
-    MLP: "metrics/10_samples/MLP/model.pt"
-    PointNet: "metrics/10_samples/PointNet/model.pt"
-  test_rmse:
-    MLP: 0.589
-    PointNet: 0.757
 ```
 
 status 取值：

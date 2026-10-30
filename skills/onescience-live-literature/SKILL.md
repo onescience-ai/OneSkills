@@ -2,6 +2,46 @@
 name: onescience-live-literature
 description: OneScience 实时文献两级检索推理技能（对齐 Biomni 的 LiteratureSearch/Fetch 工具链），领域无关的通用流程。第一级按相关性实时检索 OpenAlex 拿论文摘要、建全局编号引用池并迭代精炼检索词；第二级对选中的开放获取论文经 Europe PMC/PMC 结构化 API 取全文细节；最终输出分层深度推理答案，References 按正文出现顺序连续编号。触发：任何需要跨论文实时综合推理并带引用列表的问题（物种×性状、通路机制、基因家族、材料体系、药物靶点等）。只产出会话级证据与 harvest 种子清单，不写卡片库。亦可作为 onescience-primitives 本地检索降级到 none/task_only（命中不到可用 Task 知识）时的在线兜底通道被调用；更作为 orchestrator 在步骤 3.6 判定 knowledge_gap=true（本地原语没查到领域实质知识，含空召回 / 仅命中泛化 workflow-planning 流程卡 / domain 不符）时【硬路由兜底】强制调用的在线检索 executor，为无法用本地知识回答的需求补齐带引用的准确完整答案，严禁编造模拟检索结果或模拟数据。
 type: executor
+capabilities:
+  owns:
+    - 实时文献检索
+    - OpenAlex检索
+    - 全文获取
+    - 分层深度推理
+    - 引用列表
+    - 在线兜底检索
+  not_owns:
+    - 写卡片库
+    - 代码生成
+    - 训练
+  inputs:
+    - research_question
+    - domain
+  outputs:
+    - layered_reasoning_answer
+    - references
+    - harvest_seed
+  downstream: []
+  prereq:
+    - 研究问题已明确
+  intent_aspects:
+    - literature_search
+    - online_retrieval
+    - knowledge_gap_filling
+  operation_types:
+    - retrieve
+    - evaluate
+  artifact_types:
+    - report
+    - knowledge
+  domains:
+    - general
+  trigger_keywords:
+    - 文献检索
+    - literature search
+    - 跨论文推理
+    - OpenAlex
+    - 在线检索
 ---
 
 # OneScience 实时文献两级检索推理

@@ -2,6 +2,18 @@
 
 目标：在完整代码生成或执行前，证明训练目标、优化策略、checkpoint 语义和验证标准是一致的。
 
+## 论文协议与未决项优先
+
+论文复现任务以原始用户要求和上游唯一 `reproduction_spec.md` 为科学协议依据；本阶段的
+通用训练建议不能覆盖已核验设定或填补 `UNRESOLVED`。每个 optimizer/lr/epoch、split、
+checkpoint 选择绑定目标实验、训练阶段与更新对象；不能把一个阶段的值传播到另一阶段。
+缺失时把字段及作用范围交回 paper-repro，按官方 GitHub 补证流程更新同一规格；仍缺失则保留
+未决和受影响的构建/运行限制，不用 `ASSUMPTION` 将其变成已采用值。
+
+已授权的 smoke/quick 缩放仅用于明确标注的实验变体，与论文正式配置分开保存。没有 validation
+split/选择规则时，不自动设“全部训练”“best val”或“final checkpoint”；禁止训练时只生成
+计划/代码，不执行本阶段或后续阶段的训练 smoke、参数更新及作业提交。
+
 ## 阶段资源评估
 
 进入本阶段前，必须评估已召回资源是否足以支撑训练策略规划。
@@ -66,6 +78,9 @@ run_evaluation(model_or_checkpoint, eval_loader, parameters) -> metrics_and_repo
 
 若上游 `step_handoff.tier_config` 存在，trainer 按以下预设尺度生成训练计划。若 `tier_config` 缺失，回退到本节以上的默认逻辑。
 
+下表是用户已授权缩放实验时的工程预设，不是论文事实。它不能填充论文未决项，也不能更改用户
+明确范围；缺少变体授权时保留论文协议/未决状态。用户禁止训练时不激活训练 tier。
+
 ### 预设尺度定义
 
 Tier 的语义是跨领域通用的（smoke → quick → full），但具体参数值需根据论文领域和 `tier_config.data_scale` 动态填充。
@@ -102,9 +117,10 @@ tier_config.active_tier == "tier_2_full_repro"    → 生成 full 训练计划�
 无 tier_config                                     → 回退到当前 phase_3 默认逻辑
 ```
 
-### Early Stopping 兜底（Tier 1 和 Tier 2 必须实现）
+### Early Stopping（仅在目标协议允许时启用）
 
-训练脚本必须包含 Early Stopping 逻辑，确保在模型收敛时自动停止，不浪费 SLURM 机时：
+论文或用户已规定停止/选模规则时遵守该规则，不能用 early stopping 替换。仅对已授权的工程
+变体且具有明确 validation split 时，才可采用以下候选策略，记录来源和偏离：
 
 - 监控指标：validation loss
 - 阈值：val_loss 在 patience 个 epoch 内无改善（min_delta=1e-4）时停止

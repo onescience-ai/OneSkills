@@ -2,6 +2,45 @@
 name: onescience-research-workflow
 description: OneScience 科研工作流规划专家技能（type=expert）。为 orchestrator 提供气象、生信、材料、流体等科研领域的工作流编排计划，支持 Task-Centric 规划模式（以 Task 为核心节点编排工作流）和传统资源驱动模式，基于资源和领域知识生成 planner proposal，包含工作流节点、资源绑定、依赖关系和执行建议。
 type: expert
+capabilities:
+  owns:
+    - 科研工作流编排计划
+    - 工作流节点设计
+    - 资源绑定
+    - 依赖关系
+    - 执行建议
+  not_owns:
+    - 代码执行
+    - 任务提交
+    - 环境安装
+  inputs:
+    - task_state
+    - intent_profile
+    - resource_summaries
+  outputs:
+    - planner_proposal
+  downstream: []
+  prereq:
+    - 意图已识别
+    - 资源已召回
+  intent_aspects:
+    - research_workflow
+    - workflow_planning
+  operation_types:
+    - create
+  artifact_types:
+    - spec
+    - workflow
+  domains:
+    - earth
+    - biology
+    - materials
+    - cfd
+  trigger_keywords:
+    - 工作流
+    - workflow
+    - 科研流程
+    - 编排计划
 ---
 
 # OneScience Research Workflow Planner

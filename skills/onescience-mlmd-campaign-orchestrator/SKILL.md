@@ -2,6 +2,52 @@
 name: onescience-mlmd-campaign-orchestrator
 description: 端到端编排“DFT 结构优化 → AIMD 出轨迹 → MACE 数据集 → MACE 势函数训练 → LAMMPS 长时 MD”的机器学习分子动力学流水线。当用户用一句话要求“给 <界面体系> 做一套 MLMD：先 VASP 做 DFT 优化，再跑 VASP AIMD 出轨迹，转成带能量/力的 MACE extxyz 数据集（按时间块切 train/valid/test，不要随机打散），训一个 MACE 势函数（力误差达标），最后导出 LAMMPS 模型跑长时 MD，把皮秒 AIMD 推到纳秒”时加载。负责把自然语言变成结构化 campaign 规格、逐阶段执行并设硬门限、不达标即停并报告。
 type: executor
+capabilities:
+  owns:
+    - MLMD流水线编排
+    - DFT优化
+    - AIMD出轨迹
+    - MACE数据集
+    - MACE训练
+    - LAMMPS长时MD
+    - 硬门限管理
+  not_owns:
+    - 通用代码生成
+    - 环境安装
+  inputs:
+    - campaign_description
+    - interface_system
+  outputs:
+    - campaign_spec
+    - stage_results
+    - md_trajectory
+  downstream:
+    - onescience-dft-model-gate
+    - onescience-runtime
+    - onescience-trainer
+  prereq:
+    - 界面体系已描述
+  intent_aspects:
+    - mlmd_campaign
+    - pipeline_orchestration
+  operation_types:
+    - create
+    - run
+  artifact_types:
+    - model
+    - dataset
+    - log
+    - report
+  domains:
+    - materials
+  trigger_keywords:
+    - MLMD
+    - 机器学习分子动力学
+    - MACE
+    - LAMMPS
+    - AIMD
+    - 势函数
+    - campaign
 ---
 
 # Skill: onescience-mlmd-campaign-orchestrator

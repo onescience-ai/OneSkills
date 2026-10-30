@@ -18,6 +18,48 @@ clawhub:
   autoEnable: true
   version: 2.1.0
 type: executor
+capabilities:
+  owns:
+    - SCNet超算平台管理
+    - 作业查询
+    - 作业提交
+    - 文件管理
+    - 账户信息
+    - 区域切换
+  not_owns:
+    - 代码生成
+    - 训练
+    - 推理
+    - 环境安装
+  inputs:
+    - scnet_command
+    - region
+  outputs:
+    - scnet_result
+  downstream: []
+  prereq:
+    - SCNet账号已配置
+  intent_aspects:
+    - scnet_management
+    - hpc_job_management
+  operation_types:
+    - run
+    - manage
+  artifact_types:
+    - log
+    - report
+  domains:
+    - general
+  trigger_keywords:
+    - scnet
+    - 超算
+    - 作业管理
+    - 文件管理
+    - 账户
+    - 余额
+    - 机时
+    - 集群
+    - 队列
 ---
 
 # SCNet Chat 技能

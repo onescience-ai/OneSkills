@@ -2,6 +2,46 @@
 name: onescience-data-standardizer
 description: OneScience 数据标准化执行技能（type=executor）。将原始数据集转换为 AI-Ready 数据集，覆盖 cfd / bio / climate(earth) / matchem 四个领域。目标契约从 onescience-primitives 的 dataset spec.md 拉取；数据源支持用户显式路径、本地自动探测与 ModelScope 下载三段式解析；转换采用 Tier1 确定性 adapter 与 Tier2 LLM 合成 converter 双层架构；所有处理在本地文件系统完成；产出统一注册到 ~/.onescience/data_management.json，并在宿主 Agent 提供 dataset_report 工具时自动上报 {name, target_dir, source_dir}。
 type: executor
+capabilities:
+  owns:
+    - 原始数据集转AI-Ready
+    - 确定性adapter
+    - LLM合成converter
+    - 数据源解析
+    - 产出注册
+  not_owns:
+    - 数据处理规划
+    - 代码生成
+    - 训练
+    - 推理
+  inputs:
+    - raw_dataset_path
+    - domain
+    - target_contract
+  outputs:
+    - ai_ready_dataset
+    - dataset_report
+  downstream: []
+  prereq:
+    - 原始数据已就绪
+  intent_aspects:
+    - data_standardization
+    - data_preparation
+  operation_types:
+    - create
+    - adapt
+  artifact_types:
+    - dataset
+  domains:
+    - cfd
+    - biology
+    - earth
+    - materials
+  trigger_keywords:
+    - 数据标准化
+    - AI-Ready
+    - 数据转换
+    - data standardization
 ---
 
 ## 输入获取方式

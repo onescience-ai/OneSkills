@@ -21,7 +21,7 @@
 - surface、forcing、static、output-only 变量要分组记录，避免变量数和 scalar channel 数混用。
 - 训练 rollout horizon、推理 horizon、评估 lead time 分开记录。
 - 面积权重、气候态、ACC/RMSE、区域/层级/变量平均方式要标注证据。
-- 非均匀网格的面积权重优先查论文或数据协议；没有证据时写 `ASSUMPTION:`。
+- 非均匀网格的面积权重优先查论文或数据协议；没有证据且会影响指标时写 `UNRESOLVED`。
 
 ## 常见评估提示
 

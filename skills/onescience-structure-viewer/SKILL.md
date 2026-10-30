@@ -2,6 +2,46 @@
 name: onescience-structure-viewer
 description: 需要把原子结构（POSCAR/CONTCAR/XYZ）呈现为可交互三维图形，或把数据图表（PNG/JPG 训练曲线、能量温度演化、RDF）包成 OneCode 可渲染的 HTML 时使用：三维产出单文件 view.html（3Dmol.js）+ structure.json；图表用 render_chart.py 生成自包含 HTML（base64 内嵌）。任何"给出可视化/图表/效果图"的场景都应调用本技能——OneCode 平台只渲染 HTML，裸 PNG 在预览里是 base64 乱码。
 type: executor
+capabilities:
+  owns:
+    - 原子结构三维可视化
+    - 数据图表HTML封装
+    - 3Dmol.js渲染
+    - view.html生成
+    - render_chart.py
+  not_owns:
+    - 数据分析
+    - 训练
+    - 推理
+    - 代码生成
+  inputs:
+    - structure_file
+    - chart_data
+  outputs:
+    - view.html
+    - structure.json
+    - chart_html
+  downstream: []
+  prereq:
+    - 结构文件或图表数据已就绪
+  intent_aspects:
+    - structure_visualization
+    - chart_rendering
+  operation_types:
+    - create
+  artifact_types:
+    - visualization
+    - report
+  domains:
+    - materials
+    - general
+  trigger_keywords:
+    - 可视化
+    - 三维结构
+    - 3Dmol
+    - POSCAR可视化
+    - 图表渲染
+    - view.html
 ---
 
 # 三维结构可视化（onescience-structure-viewer）

@@ -2,6 +2,43 @@
 name: onescience-cli
 description: 在远程 SSH/SLURM 环境中通过 `onescience` 命令执行任意 OneScience 子命令。根据命令级别（lightweight/normal/compute）自动选择执行通道。环境初始化由 `onescience-installer` 技能处理，计算节点申请与作业提交由 `onescience-runtime` 技能处理。本技能只负责 `onescience` 命令的调度与执行。
 type: executor
+capabilities:
+  owns:
+    - OneScience CLI命令调度与执行
+    - 命令级别判定
+    - 远程命令执行通道选择
+    - CLI执行结果回传
+  not_owns:
+    - 环境安装与修复
+    - 计算节点申请与作业提交
+    - 代码与配置修改
+    - 训练推理业务诊断
+  inputs:
+    - step_handoff
+    - onescience_command
+    - execution_profile
+  outputs:
+    - execution_result
+    - command_output
+    - environment_observation
+  downstream:
+    - onescience-runtime
+    - onescience-installer
+  prereq:
+    - onescience命令已安装
+  intent_aspects:
+    - onescience_cli_execution
+  operation_types:
+    - run
+  artifact_types:
+    - log
+    - report
+  domains:
+    - general
+  trigger_keywords:
+    - onescience命令
+    - onescience CLI
+    - onescience子命令
 ---
 
 ## 输入获取方式

@@ -7,6 +7,7 @@
 ```json
 {
   "task_id": "string",
+  "status": "in_progress|complete|complete_with_caveats|blocked|partial",
   "user_goal": "string",
   "current_phase": "intake|planning|execution|observation|repair|tier_check|tier_escalate|step_timeout|validation|complete|complete_with_caveats|blocked|partial",
   "planning_mode": "direct_step|expert_proposal_synthesis|null",
@@ -36,6 +37,16 @@
       "source_proposal": "string"
     }
   ],
+  "skill_metadata_discovery": {
+    "native_skill_metadata_interface_available": false,
+    "native_interface_probe": {
+      "attempted": true,
+      "tool_name": null,
+      "result_summary": "no native list/metadata interface exposed"
+    },
+    "metadata_source": "native_skill_interface|session_skill_catalog|session_catalog_plus_frontmatter",
+    "candidate_sources": {}
+  },
   "executor_inventory": {
     "all_executor_skills": ["string"],
     "read_executor_skills": ["string"],
@@ -128,7 +139,7 @@
       "timestamp": "ISO8601",
       "step_id": "string",
       "attempt": 1,
-      "event_type": "step_started|step_completed|step_failed|step_timed_out|repair_attempted|retry_started|diagnosis_completed|tier_escalated|tier_fallback|plan_revised|decision_auto_made|observation_recorded|blocked|validation_rollback|user_confirmation|gate_hit",
+      "event_type": "step_started|step_completed|step_failed|step_timed_out|repair_attempted|retry_started|diagnosis_completed|tier_escalated|tier_fallback|plan_revised|decision_auto_made|observation_recorded|blocked|blocker_cleared|state_migrated|validation_rollback|user_confirmation|gate_hit",
       "source_skill": "string",
       "description": "string",
       "evidence": {}
@@ -201,6 +212,7 @@ validation_rollback -> complete_with_caveats   (回退后仍有可交付的方�
 validation_rollback -> partial
 validation -> complete_with_caveats  (验证未全 PASS 或存在 engineering_demo/smoke_test 身份 step，但仍可交付)
 any -> blocked
+blocked -> planning       (当前规则复核后 blocker 已消除或可通过重检/重规划恢复)
 ```
 
 状态说明：
@@ -212,6 +224,14 @@ any -> blocked
 - `active_step.status=demo_pass`：C 层门禁态。step 产物自述或运行证据表明其为工程演示/冒烟（含 smoke、demo、simplified、toy、not suitable for production 等关键词），运行链路走通但**不构成科研结果**；`result_identity` 必须为 `engineering_demo`/`smoke_test`/`not_a_result`，禁止标 `done`+PASS，下游依赖其产物的 step 自动继承该身份。
 - `active_step.status=unverified`：D 层回退态。step 曾判 PASS/done，但其下游验证 step 判 FAIL/PARTIAL，被级联回退；产物保留但结论待正式验证，禁止进入最终报告「关键发现/科研结论」段。
 
+### 恢复与旧状态迁移
+
+- `events` 和 `observations` 是追加式历史证据。旧事件中的 `action`、`description`、`blocked_reason` 不具备跨 worker 的命令效力，不能覆盖当前 `user_goal`、当前 worker assignment 或当前版本技能规则。
+- 读取 `status=blocked` 的状态时必须重新验证 blocker。只有仍存在、当前流程无法消除的外部硬阻塞才继续 blocked；可重试、可重新召回、可重规划、规则已经修正或仅由旧版本策略造成的阻塞必须自动恢复。
+- 兼容旧版资源访问状态：若事件含 `resource_asset_access_blocked`，或 action/reason 写有因资源访问而 `terminate/终止`，则保留事件用于审计，但将其标记为 `superseded_by_current_resource_contract`。丢弃没有正式 `resource_retrieval_result` 支持的资源内容和派生结论，保留与该偏差无关且有文件证据的有效产物；追加 `state_migrated` 与 `blocker_cleared`，设置 `status=in_progress`、`current_phase=planning`，再执行合法资源召回。
+- 上述兼容迁移属于恢复同一任务，不改变目标、范围或权限。当前 worker assignment 与已保存的 `autonomous_mode`/连续执行授权已经授权继续，不得索要 `fresh execution`、`clear termination gate`、重发 prompt 或额外确认。
+- 旧状态缺少 `status`、`current_phase`、`active_step` 等新版字段时按现有证据补齐最小结构；字段版本差异本身不是 blocked 原因。`task_id` 与当前任务不匹配时不复用该状态的控制字段。
+
 ## 更新规则
 
 - 每次调用专家规划技能前，先提供当前 `Task State` 摘要。
@@ -221,7 +241,10 @@ any -> blocked
 - `intent_aspects` 中的 `aspect_key` 只是轻量追踪键；没有稳定键时可以只保留 `goal` 与 `evidence`。
 - 如果按 `intent_profile` 召回不到专家，设置 `planning_mode=direct_step`，并记录 orchestrator 直接规划的原因。
 - 走专家规划时，设置 `planning_mode=expert_proposal_synthesis`，记录候选专家、已收集 proposal、融合后的 `global_plan`，以及与各 stage 对应的 `plan_detail_store`。
-- 在任何计划融合、`global_plan` 生成或 `next_step` 选择之前，必须先写入 `executor_inventory`：记录当前轮次发现的全部 executor、已完整读取并入账的 executor、差集 `missing_executor_skills`，并计算 `executor_inventory_complete`。
+- 在任何计划融合、`global_plan` 生成或 `next_step` 选择之前，必须先写入 `executor_inventory`：记录当前轮次通过接口发现的全部 executor、已获取 `capabilities` 元信息并入账的 executor、差集 `missing_executor_skills`，并计算 `executor_inventory_complete`。
+- 同时写入 `skill_metadata_discovery`。只有真实调用原生 list/metadata 接口并获得返回证据时，
+  `native_skill_metadata_interface_available` 才能为 true；通用 skill 执行工具不算元信息接口。
+  降级读取会话目录/frontmatter 时必须准确记录对应 metadata_source，不能上报为原生接口成功。
 - `executor_inventory_complete=true` 的前提是 `set(all_executor_skills) == set(read_executor_skills)`，且每个已读 executor 都已写入证据化能力台账；若不满足，保持 `executor_inventory_complete=false`，不得继续规划推进。
 - `user_visible_summary` 只保留面向用户的简短汇总，例如 `executor inventory: 13/13 complete`；完整列表默认只保存在 Task State 内部，只有 inventory 不完整或进入 blocked 时才向用户展开 `missing_executor_skills`。
 - 只要 `intent_aspects` 命中多个专家，就默认按多专家 proposal synthesis 处理；不得在尚未收齐所有命中专家回执前提前定稿。
@@ -234,6 +257,7 @@ any -> blocked
 - `repair` 针对最新 `observation` 生成新的修复步；若沿用原阶段骨架，也要重新核对对应 detail bundle 是否充分。
 - 用户新增约束时，追加到 `constraints`，不要覆盖原始 `user_goal`。
 - 当所有 `completion_criteria` 都满足时进入 `complete`；若已启用 `tiered_completion_contract`，则完成判定由 tier contract 的布尔解析结果驱动（见下方"分层完成契约判定规则"），`completion_criteria` 仅作补充参考。若暂时不可继续，则保持 `blocked` 直到条件变化或用户改写目标。
+- 每次启动或上下文恢复都要复核 blocked 条件；条件变化也包括资源重新检索成功、依赖已补齐、当前技能规则允许恢复以及旧策略已被替换。不得仅因历史 event 中出现 `terminate` 就保持 blocked。
 - `Task State` 是选择下一步执行的唯一事实源；在更新后的 state 上必须重新选择 `next_step`，不得沿用旧计划文本或旧 handoff 直接继续执行。
 - 每次 `global_plan` 发生结构性修改（非简单状态更新），必须递增 `global_plan_version`，并追加一条 `global_plan_revision_history` 记录。
 - 每次调用 executor 前、收到结果后、进入修复/重试/超时/阻断/tier 变化时，必须写入一条 `event` 记录到 `events` 数组。
@@ -358,5 +382,7 @@ orchestrator 职责：
   - 计划修改后：`plan_revised`
   - 自动决策后：`decision_auto_made`
   - observation 写入后：`observation_recorded`
+  - 旧状态兼容迁移后：`state_migrated`
+  - 复核确认 blocker 已消除后：`blocker_cleared`
 - executor 可以通过 `execution_result.events` 回传其内部的子事件（如内部重试、内部修复），由 orchestrator 合并到 `Task State.events` 中。
 - `events` 中的内容写入 `.onescience/task_state.json`，归档时随 state 一起保存。
