@@ -121,8 +121,8 @@ capabilities:
    | `entity-only` | 锚定实体命中但**零方法词** | 同物质、不同问题（如问谱学时命中的「Interstellar Glycine」），封顶 `adjacent`，排在 `method-only` 之后 |
    | `low` / `low-fallback` | 以上都不满足 | 丢弃；仅当门把全部命中挡下时 fail-safe 回退保留最高分 5 条，**绝不可当证据用** |
    > `entity-only` 只降优先级、**不踢出池子**：当任务问的是晶型结构而非谱学时，「Crystal growth of α and γ glycine polymorphs」这类零方法词命中的结晶学文献恰恰是靶心。判档只看词面命中，**上层不要自行改判**。
-4. 加 `--with-arxiv`：arXiv 走 `abs:"X" AND abs:"Y" AND (cat:… OR cat:…)` 布尔检索（**绝不用 `all:<裸串>`**，实测裸串返回大量跳领域噪声）。缺 PDF 直链的 DOI 会走 **Unpaywall** 补查（机构库/预印本合法 OA 版）：补查在相关性门**之后**按相关性顺序消耗预算（`--unpaywall-limit`，默认 20，`--no-unpaywall` 可关），不浪费在将被丢弃的噪声上；用量与预算写在输出的 `paywall.unpaywall_tried` / `unpaywall_budget`。green OA 常只给到仓储落地页而无 PDF，此时 Unpaywall 也可能查不到直链——**这是付费墙成立，不是脚本故障**。
-5. 加 `--fetch-oa`：**只对通过相关性门的条目**下载 PDF 并抽全文（有 pymupdf/pdfminer 时 `evidence_level` 升为 `full-text-oa`）。名额严格按 `relevance` 档位 > `domain_match` > 被引数排序消耗，`low`/`low-fallback` 永不下载。**不要按被引数判断谁更该下载**：实测 `entity-only` 档的「Interstellar Glycine」(cited=377)、「glycine receptor signalling」(cited=100) 会靠高被引抢光全部名额，而 cited=1~12 的 NMR crystallography、周期 DFT ¹³C shielding 精度等方法学文献一篇都下不到。
+4. 加 `--with-arxiv`：arXiv 走 `abs:"X" AND abs:"Y" AND (cat:… OR cat:…)` 布尔检索（**绝不用 `all:<裸串>`**，实测裸串返回大量跳领域噪声）。缺 PDF 直链的 DOI 会走 **Unpaywall** 补查（机构库/预印本合法 OA 版）：补查在相关性门**之后**按相关性顺序消耗预算（`--unpaywall-limit`，默认 20，`--no-unpaywall` 可关），不浪费在将被丢弃的噪声上；用量与预算写在输出的 `paywall.unpaywall_tried` / `unpaywall_budget`。Unpaywall 必须带 email 参数（实测空值 422），未设 `ONESCIENCE_CONTACT_EMAIL` 时脚本自动用中性占位，输出以 `paywall.unpaywall_email_source=placeholder` 标明**用的是占位而非你的邮箱**（不影响能否查到）。green OA 常只给到仓储落地页而无 PDF，此时 Unpaywall 也可能查不到直链——**这是付费墙成立，不是脚本故障**。
+5. 加 `--fetch-oa`：**只对通过相关性门的条目**下载 PDF 并抽全文（**只有真抽出文本**才升 `full-text-oa`；PDF 下载成功但本机缺 pymupdf/pdfminer 时停在 `abstract` 并在 `note` 里说明，`oa_fulltext_count` 随之为 0 并触发 `caveat_fulltext`——抽不出文本就当没拿到全文，绝不高标）。名额严格按 `relevance` 档位 > `domain_match` > 被引数排序消耗，`low`/`low-fallback` 永不下载。**不要按被引数判断谁更该下载**：实测 `entity-only` 档的「Interstellar Glycine」(cited=377)、「glycine receptor signalling」(cited=100) 会靠高被引抢光全部名额，而 cited=1~12 的 NMR crystallography、周期 DFT ¹³C shielding 精度等方法学文献一篇都下不到。
 6. 靶心文献被付费墙挡住时加 `--citing-oa`：走 OpenAlex 施引反查（`filter=cites:W…,is_oa:true`）找**开放获取的下游文献**承载同一数值。实测两篇 closed 靶心分别给出 8 / 17 篇 OA 施引文献（含 ¹³C shielding tensors、NMR crystallography 专题）。**付费墙仍然成立：拿不到合法 OA 版的如实停在 `abstract`，绝不绕墙。**
 7. 需要 PMC 系全文细节时：复用 `onescience-live-literature` 的命令块 B（Europe PMC fullTextXML → NCBI BioC）。`evidence_level=abstract-only` 的条目**禁止**作为数值来源。
 8. 每条接地数值写 `items[]`：`channel=literature`，`provenance=<DOI/编号>`，`evidence_level=full-text-oa|full-text|abstract`，`domain_match` 沿用脚本判定值并原样带上 `domain_match_basis`。
@@ -154,39 +154,51 @@ capabilities:
 ## 六、命令块
 
 > 均为纯标准库（urllib），网络不可用时捕获异常打 `[OFFLINE]` 后正常退出。脚本随技能置于 `scripts/`，参数表置于 `assets/`。
+>
+> **必须 `python3`**：脚本依赖 `http.client` 等 Python 3 标准库；HPC 站点的 `python` 常指向 Python 2，
+> 首调即崩在 `ImportError: No module named http.client`（实测两个会话各白烧一次调用才换 `python3`）。
+>
+> **OpenAlex 配额与 429 的真实成因**：现为 credits 制——list 检索每次 10 credits，免费档 100,000 credits/天
+> 且 ≤100 req/s，超出即 `HTTP 429`。**`mailto` 只决定进 polite pool（响应更稳定）、不提高配额**；额度杠杆是
+> 免费 API key（官方：日额度 ×10）。无 key 时额度按**出口 IP** 归属，集群共享 NAT 出口下会同 IP 互相耗尽——
+> 实测同一台机器相隔 3 小时从 0 次 429 变成连续 429，**与检索式与相关性门都无关**。邮箱与 key 只从环境变量读，
+> 不硬编也不走命令行（命令行会进 `ps` 与 shell 历史）：`ONESCIENCE_CONTACT_EMAIL`、`OPENALEX_API_KEY`（额度 ×10）。
+> 不设邮箱时的实测行为：OpenAlex **不带 mailto 走匿名池、照常出数**（本机实测 `count=16`）；Unpaywall
+> 自动改用中性占位邮箱继续工作（实测 `email=""` 会被 422 拒、占位值 200），**两条通道都不因缺配置而失效**。
+> 连续 429 时应如实记 `knowledge_gap` 并改走数据/参数通道，不要反复重跑同一检索式。
 
 **A · 文献检索（多子查询 + 三源并行 + 相关性门 + 免费全文降级链）**（详见 `scripts/lit_search.py`）
 ```bash
 # 基本快查（自动分解子查询 + OpenAlex/EuropePMC 并行 + 相关性门）：
-python scripts/lit_search.py "glycine 13C 15N chemical shift GIPAW" \
+python3 scripts/lit_search.py "glycine 13C 15N chemical shift GIPAW" \
     --entities "glycine,polymorph" --methods "GIPAW,chemical shift,solid-state NMR" --max 12 --top 12
 
 # 全量推荐：arXiv 布尔 + Unpaywall + OA 全文下载 + 付费墙靶心的施引反查 + 年份下限：
-python scripts/lit_search.py "glycine polymorph alpha gamma 13C 15N solid-state NMR chemical shift GIPAW DFT" \
+python3 scripts/lit_search.py "glycine polymorph alpha gamma 13C 15N solid-state NMR chemical shift GIPAW DFT" \
     --entities "glycine,polymorph" \
     --methods "GIPAW,chemical shift,magnetic shielding,solid-state NMR,DFT" \
     --with-arxiv --fetch-oa --oa-limit 5 --citing-oa --year-from 1990 \
     --max 10 --top 14 --workdir ./online_kb
 
 # 检索式自己控（| 分隔多条，每条 ≤4 词）：
-python scripts/lit_search.py "glycine GIPAW" --sub-queries "glycine GIPAW|glycine NMR chemical shift|polymorph magnetic shielding"
+python3 scripts/lit_search.py "glycine GIPAW" --sub-queries "glycine GIPAW|glycine NMR chemical shift|polymorph magnetic shielding"
 ```
 > 输出条数用 `--top N` 控制，**不要用 shell `head`/`tail` 再截**（截断会使上层看不到 `domain_match_summary`/`caveat` 而误判）。完整结果始终落在 `<workdir>/lit_result.json`。脚本输出的 `domain_match_summary` 可直接抄进 `gaps.jsonl`，无需自行点数。
 
 **B · 结构取数**（详见 `scripts/structure_fetch.py`）
 ```bash
 # 只给化学式即可自动发现真编号（走 COD session 握手 + format=lst + 化学式回验）：
-python scripts/structure_fetch.py --name glycine --formula C2H5NO2 --workdir ./online_kb
+python3 scripts/structure_fetch.py --name glycine --formula C2H5NO2 --workdir ./online_kb
 # 直接指定已核实编号：
-python scripts/structure_fetch.py --cod-id 1556577 --formula C2H5NO2 --workdir ./online_kb
+python3 scripts/structure_fetch.py --cod-id 1556577 --formula C2H5NO2 --workdir ./online_kb
 ```
 
 **C · 软件参数**（详见 `scripts/param_lookup.py`）
 ```bash
 # 静态表基线：
-python scripts/param_lookup.py --software VASP --calc NMR-GIPAW
+python3 scripts/param_lookup.py --software VASP --calc NMR-GIPAW
 # 推荐：加 --live 实时抓 VASP wiki 核对（失败自动退静态表）：
-python scripts/param_lookup.py --software VASP --calc NMR-GIPAW --live --workdir ./online_kb
+python3 scripts/param_lookup.py --software VASP --calc NMR-GIPAW --live --workdir ./online_kb
 ```
 
 ## 七、纪律铁律（自检清单）

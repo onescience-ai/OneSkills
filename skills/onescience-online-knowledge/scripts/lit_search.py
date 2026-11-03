@@ -50,7 +50,22 @@ OA = "https://api.openalex.org/works"
 EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
 UNPAYWALL = "https://api.unpaywall.org/v2/"
 ARXIV = "https://export.arxiv.org/api/query"   # 实测 http:// 会 502，必须 https
-DEFAULT_MAILTO = "research@example.org"
+# 联系邮箱 / API key 一律只从环境读，**绝不硬编占位符**。理由是按实测纠偏过的认知：
+#  · OpenAlex 的 mailto 只决定能否进 polite pool（官方：响应时间更稳定）以及"出事能联系到人"，
+#    它**不提高配额**。配额现在是 credits 制：list 检索每次 10 credits，免费 100k credits/天
+#    + 100 req/s，超出即 HTTP 429。无 API key 时额度按**出口 IP** 归属，HPC 共享 NAT 出口下
+#    同 IP 用户互相耗尽——实测同一台机器相隔 3 小时从 0 次 429 变成连续 429，与检索式无关。
+#  · 真正的额度杠杆是免费 API key（官方：日额度 10 倍），故一并支持。
+#  · Unpaywall 与 OpenAlex 相反，它**必须带一个 email 参数**：实测 email="" 直接
+#    HTTP 422 "Email address required"，而 research@example.org / a@b.co 都返回 200
+#    ——它只校验"有没有这个参数"，不校验域名归属。所以这里**必须有非空兜底值**，
+#    "没配置就跳过 Unpaywall"是回归（会关掉一条本来可用的降级链），已按实测改回。
+DEFAULT_MAILTO = os.environ.get("ONESCIENCE_CONTACT_EMAIL", "").strip()
+# OpenAlex 侧：为空就不带 mailto（实测匿名照样出数），不冒充 polite pool。
+# Unpaywall 侧：为空时用中性占位，保证这条链始终可用。
+UNPAYWALL_EMAIL = DEFAULT_MAILTO or "onescience-online-knowledge@example.org"
+# key 只走环境变量、不做命令行参数：命令行会进 ps 与 shell 历史，凭证不得明文出现在进程列表。
+OA_API_KEY = os.environ.get("OPENALEX_API_KEY", "").strip()
 DEFAULT_ARXIV_CATS = "cond-mat.mtrl-sci,physics.chem-ph,physics.comp-ph"
 OA_SELECT = ("id,doi,title,publication_year,publication_date,authorships,abstract_inverted_index,"
              "cited_by_count,open_access,best_oa_location,primary_location")
@@ -144,6 +159,26 @@ def _ctx():
         return None
 
 
+def _oa_auth_params():
+    """只在真的有值时才附加 mailto / api_key。
+
+    空串拼进 querystring 会得到 `mailto=`——形式上带了参数、实质上仍是无身份请求，
+    还可能被服务端判为非法输入；宁可不带。
+    """
+    p = {}
+    if _MAILTO:
+        p["mailto"] = _MAILTO
+    if OA_API_KEY:
+        p["api_key"] = OA_API_KEY
+    return p
+
+
+def _user_agent():
+    """OpenAlex 也接受在 User-Agent 里给 mailto；无邮箱时只报身份，不冒充 polite pool。"""
+    base = "onescience-online-knowledge/2.0"
+    return "%s (mailto:%s)" % (base, _MAILTO) if _MAILTO else base
+
+
 def http_get(url, timeout=30, mode="json", retries=3):
     """统一 GET：429/5xx 指数退避重试。mode ∈ {json, text, binary}。
 
@@ -154,7 +189,7 @@ def http_get(url, timeout=30, mode="json", retries=3):
     last = None
     for i in range(retries):
         try:
-            req = request.Request(url, headers={"User-Agent": "onescience-online-knowledge/2.0 (mailto:%s)" % _MAILTO})
+            req = request.Request(url, headers={"User-Agent": _user_agent()})
             with request.urlopen(req, timeout=timeout, context=_ctx()) as r:
                 raw = r.read()
             if mode == "binary":
@@ -349,7 +384,8 @@ def openalex(query, maxn, year_from=None, sort="cited", field="title_and_abstrac
         if year_from:
             filt += ",from_publication_date:%s-01-01" % year_from
         params = {"filter": filt}
-    params.update({"per-page": maxn, "select": OA_SELECT, "mailto": _MAILTO})
+    params.update({"per-page": maxn, "select": OA_SELECT})
+    params.update(_oa_auth_params())
     params["sort"] = "cited_by_count:desc" if sort == "cited" else "relevance_score:desc"
     d = get_json(OA + "?" + parse.urlencode(params))
     if not d or "results" not in d:
@@ -459,9 +495,10 @@ def citing_oa(openalex_id, maxn=5):
     """
     if not openalex_id:
         return []
-    d = get_json(OA + "?" + parse.urlencode({
-        "filter": "cites:%s,is_oa:true,type:article" % openalex_id,
-        "sort": "publication_date:desc", "per-page": maxn, "select": OA_SELECT, "mailto": _MAILTO}))
+    qparams = {"filter": "cites:%s,is_oa:true,type:article" % openalex_id,
+               "sort": "publication_date:desc", "per-page": maxn, "select": OA_SELECT}
+    qparams.update(_oa_auth_params())
+    d = get_json(OA + "?" + parse.urlencode(qparams))
     if not d or "results" not in d:
         return []
     out = []
@@ -492,7 +529,9 @@ def unpaywall_lookup(doi):
     """查 DOI 的合法 OA 版（Unpaywall 聚合机构库/预印本）。返回 (is_oa, pdf_url)。"""
     if not doi:
         return None, None
-    d = get_json(UNPAYWALL + parse.quote(doi, "") + "?" + parse.urlencode({"email": _MAILTO}), timeout=20)
+    # 用 UNPAYWALL_EMAIL 而非 _MAILTO：_MAILTO 允许为空（OpenAlex 侧匿名可用），
+    # 但 Unpaywall 空值会被 422 拒掉。占位值实测 200，能力不丢。
+    d = get_json(UNPAYWALL + parse.quote(doi, "") + "?" + parse.urlencode({"email": UNPAYWALL_EMAIL}), timeout=20)
     if not d or not isinstance(d, dict):
         return None, None
     loc = d.get("best_oa_location") or {}
@@ -702,7 +741,7 @@ def rank_key(rec):
 
 
 def main():
-    global _MAILTO
+    global _MAILTO, UNPAYWALL_EMAIL
     ap = argparse.ArgumentParser(description="文献通道：多子查询 + 三源并行 + 相关性门 + 免费全文降级链")
     ap.add_argument("query")
     ap.add_argument("--max", type=int, default=15, help="每条子查询最多取多少条")
@@ -736,9 +775,15 @@ def main():
                     help="保留未过门条目并标 relevance=low（仍绝不进下载队列）")
     ap.add_argument("--no-epmc", dest="no_epmc", action="store_true", help="关闭 Europe PMC 并行源")
     ap.add_argument("--top", type=int, default=12, help="stdout 打印前 N 条（勿再用 shell tail 截断）")
-    ap.add_argument("--mailto", default=DEFAULT_MAILTO, help="OpenAlex polite pool 邮箱")
+    ap.add_argument("--mailto", default=DEFAULT_MAILTO,
+                    help="联系邮箱：OpenAlex polite pool 身份（**不提高配额**）+ Unpaywall 必需参数。"
+                         "默认取环境变量 ONESCIENCE_CONTACT_EMAIL。为空时 OpenAlex 走匿名池"
+                         "（实测可用），Unpaywall 自动改用中性占位（它只要求参数存在）")
     args = ap.parse_args()
     _MAILTO = args.mailto or DEFAULT_MAILTO
+    # --mailto 显式传参时 Unpaywall 侧要同步跟上：help 里承诺了它是"OpenAlex 身份 + Unpaywall 必需参数"
+    # 两处，若只在 import 期算一次，CLI 传邮箱就会只作用于 OpenAlex、Unpaywall 仍是占位，前后不自洽。
+    UNPAYWALL_EMAIL = _MAILTO or "onescience-online-knowledge@example.org"
     os.makedirs(args.workdir, exist_ok=True)
 
     entities, methods = auto_split(args.query, args.entities, args.methods)
@@ -860,9 +905,17 @@ def main():
             pdf_path, txt_path = fetch_oa_pdf(r, args.workdir)
             if pdf_path:
                 oa_fetched += 1
-                ev = "full-text-oa"
+                # 拿到 PDF != 拿到全文。本机缺 pymupdf/pdfminer 时 txt_path 为 None，
+                # 此时**绝不可**标 full-text-oa：那会把 confidence 升到 high，并把
+                # oa_fulltext_count 顶成非 0，从而**吞掉**本该提示"全文通道整体失效"的
+                # caveat_fulltext——与同条目 note 自述"未能抽文本"直接矛盾。实测会话 200
+                # 即如此：2 条标 full-text-oa、confidence=high，而 fulltext_path 全为 null，
+                # 且 caveat_fulltext 一次都没触发。
+                # 退回既有 abstract 档而非新增枚举值，不动上层按 evidence_level 的既有判据。
+                ev = "full-text-oa" if txt_path else "abstract"
                 note = ("OA 全文已抽取：%s" % txt_path) if txt_path else \
-                       ("OA PDF 已下载但本机缺 pymupdf/pdfminer，未能抽文本：%s" % pdf_path)
+                       ("OA PDF 已下载但本机缺 pymupdf/pdfminer，未能抽文本（%s）；"
+                        "evidence_level 保持 abstract，**不得**据此引用任何数值" % pdf_path)
                 # 拿到全文不等于对题。余量名额会轮到 entity-only / method-only 档，
                 # 实测「Glycine and glycine receptor signalling in non-neuronal cells」
                 # （神经科学综述，零方法词命中）会因高排位候选 PDF 下载失败而拿到名额；
@@ -913,6 +966,9 @@ def main():
         "paywall": {"closed_count": sum(1 for r in pool if not r.get("is_oa")),
                     "unpaywall_tried": upw_tried,
                     "unpaywall_budget": args.unpaywall_limit,
+                    "unpaywall_email_source": "configured" if _MAILTO else "placeholder",
+                    "openalex_identity": ("api_key" if OA_API_KEY else
+                                          ("mailto" if _MAILTO else "anonymous")),
                     "citing_oa_found": citing_found, "citing_oa_dropped": citing_dropped},
         "oa_fulltext_count": sum(1 for x in items if x["evidence_level"] == "full-text-oa"),
         "found": len(items) > 0, "count": len(items), "items": items,
