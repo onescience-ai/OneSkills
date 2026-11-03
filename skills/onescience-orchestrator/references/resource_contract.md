@@ -215,7 +215,7 @@ content:
 
 ## 资源物化扩展（`intent=provision`，`onescience-resource-fetch`）
 
-`type=resource` 现有两个技能，共用同一信封但职责不同：`onescience-primitives` 回答"这个资源是什么/怎么用/什么参数"（知识召回），`onescience-resource-fetch` 回答"这个资源在本地哪个路径可用"（把 ModelScope 的 dataset / model 仓库物化到本地统一缓存）。判据是调用方关心的是**内容知识**还是**落盘路径可用性**：缺权重、缺数据集、要准备训练数据走后者；要规格说明、参数惯例、工作流规划走前者。两者都要时先物化再按资源卡消费，不互相替代。调用方只给任务、连资源名都没有时，可只发 `user_request`（`intent=provision`）而不填 `provision_spec`，由 `onescience-resource-fetch` 按 `resource_planning.md` 做任务级资源规划：自行拆需求、派生逻辑名、检索并打分择优，全程不回问用户。
+`type=resource` 现有两个技能，共用同一信封但职责不同：`onescience-primitives` 回答"这个资源是什么/怎么用/什么参数"（知识召回），`onescience-resource-fetch` 回答"这个资源在本地哪个路径可用"（按评估从共享目录 / ModelScope / HuggingFace / 官网直链择一物化到本地统一缓存，ModelScope 为默认但非唯一最优来源）。判据是调用方关心的是**内容知识**还是**落盘路径可用性**：缺权重、缺数据集、要准备训练数据走后者；要规格说明、参数惯例、工作流规划走前者。两者都要时先物化再按资源卡消费，不互相替代。调用方只给任务、连资源名都没有时，可只发 `user_request`（`intent=provision`）而不填 `provision_spec`，由 `onescience-resource-fetch` 按 `resource_planning.md` 做任务级资源规划：自行拆需求、派生逻辑名、检索并打分择优，全程不回问用户。
 
 请求扩展（字段细则以 `onescience-resource-fetch/references/provision_contract.md` 为准）：
 
@@ -237,7 +237,7 @@ resource_retrieval_request:
 消费规则：
 
 - `provisioned_resources[*].local_path` 可直接读取并写入 `Task State.resource_bindings`（`resource_type` 取 `dataset`/`model`，`path` 取 `local_path`，并保留 `repo_id` 与 `content_digest` 供复现追溯）。
-- `resolution_method` 说明数据从哪来：`explicit_path`（调用方给的）、`cache_hit`（统一缓存命中）、`local_probe`（工作区/共享库/注册表里的其它路径）、`modelscope_fetch`（本次真的走了网络）。前三种**未发生**网络请求，不得在报告里描述成"已下载"。`repo_id_source=name_search`（只给裸名、默认约定仓库不存在、由官方检索定位到逐字同名仓库）与 `name_search_ranked`（只给任务或裸名、按元数据打分自动择优命中）都表示换过仓库，配套 `warnings` 与 `selection.reasons` 写明原委；这只可能发生在 `modelscope_fetch` 段，额外花的是若干次不传输数据的只读查询（长句 0 命中时脚本会自动拆词重试）。转述给用户时必须带上选中的 `repo_id` 与主要 `reasons`，不能只报本地路径。
+- `resolution_method` 说明数据从哪来：`explicit_path`（调用方给的）、`cache_hit`（统一缓存命中）、`local_probe`（工作区/注册表里的其它路径）、`shared_find`（有界共享目录按名 find 命中的现成副本）、`modelscope_fetch`/`huggingface_fetch`/`url_fetch`（本次真的走了网络，`provider` 进一步区分 modelscope/huggingface/url）。前四种（explicit/cache/local/shared）**未发生**网络请求，不得在报告里描述成"已下载"。`repo_id_source=name_search`（只给裸名、默认约定仓库不存在、由官方检索定位到逐字同名仓库）与 `name_search_ranked`（只给任务或裸名、按元数据打分自动择优命中）都表示换过仓库，配套 `warnings` 与 `selection.reasons` 写明原委；这只可能发生在 `modelscope_fetch` 段，额外花的是若干次不传输数据的只读查询（长句 0 命中时脚本会自动拆词重试）。转述给用户时必须带上选中的 `repo_id` 与主要 `reasons`，不能只报本地路径。
 - `missing_resources` 非空即视为该资源缺口未闭合，按 `reason` 分流：`backend_unavailable`/`network_error` 交 `onescience-installer` 或重试；`repo_not_found`/`authentication_failed` 是需要用户介入的硬约束（记 gap / 走提问协议）；`repo_ambiguous` 只在调用方显式 `strict_name=true` 时出现，此时把同名候选列在 `details.candidates` 由调用方选定 `repo_id`（默认非 strict 不报此因，而是自动择优并逐候选降级重试）；`no_selectable_repo`（有候选但都需凭据或超 `max_repo_bytes`）出路是配凭据 + `allow_gated`、放宽 `max_repo_bytes`、或显式 `repo_id`；`resource_plan_empty`（只给任务且规划 + 两轮检索都无候选）需补更具体的领域/模态/检索词；`verification_failed` 保留已落盘路径与逐项 checks，由调用方决定换 `repo_id` 还是补 `revision`。
 - **禁止**在物化失败时用占位数据、示例文件或随机张量凑出可用目录（对应 `evidence_gates.md` 的 fabricated 禁令）；不得把 `status: failed|partial` 改写成 `success`。
 - 取回的原始资源若还需格式标准化，把 `local_path` 作为 `source_dir` 交给 `onescience-data-standardizer`，其 AI-Ready 注册由该技能的 `data_management.json` 维护，与本技能的 `resource_registry.json` 互不覆盖。

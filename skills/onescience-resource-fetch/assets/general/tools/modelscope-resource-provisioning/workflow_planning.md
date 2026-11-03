@@ -5,9 +5,15 @@
    把任务拆成资源需求、派生稳定英文安全逻辑名、构造检索词（不回问用户）。
 2. 调用方显式路径：显式给了 repo_id / 本地路径则优先采用。
 3. 本地探测：~/.onescience 缓存、工作区 data/、注册表记录命中即复用（cache_hit）。
-4. ModelScope 下载：定位 repo_id 后物化。
+4. 网络物化：先按 references/source_selection.md 评估选源（ModelScope 默认，
+   或 HuggingFace / 官网直链），再定位 repo_id / 直链后物化。
 
-## repo_id 定位链
+## 选源（ModelScope 默认但非唯一最优）
+共享目录 find（--find-shared）→ ModelScope（默认，SDK→CLI→Git LFS）→
+HuggingFace（--source hf --hf-repo org/name）→ 官网直链（--source url --source-url）；
+四类来源共用同一套缓存/锁/原子落位/完整性校验/体积上限纪律，来源只允许权威源。
+
+## repo_id 定位链（选 ModelScope 时）
 显式 → 资源卡抽取 → 默认约定 OneScience/<name> → 官方 OpenAPI 检索并按元数据打分自动择优。
 
 ## 自动择优打分（确定性，附理由）

@@ -1,6 +1,6 @@
-# ModelScope 物化工作流
+# 取源与物化工作流（ModelScope / HuggingFace / 官网直链 / 共享目录）
 
-本文件是段 3（ModelScope 下载）的权威流程。实现落在 `scripts/modelscope_hub.py` + `scripts/fetch_resource.py`，与 `onescience-data-standardizer` 内置的下载器**互不依赖**（各自独立演进），但缓存目录、可见文件口径、失败分类保持一致，便于同一份数据被两条链路复用。
+本文件是段 2.5（共享目录 find）与段 3（网络物化）的权威流程。**从哪里取由调用方按 `source_selection.md` 评估决定**：ModelScope 是默认但非唯一最优，HuggingFace（`--source hf`）、官网直链（`--source url`）与共享目录 find（`--find-shared`）走同一套缓存/锁/原子落位/完整性校验/体积上限纪律。实现落在 `scripts/modelscope_hub.py` + `scripts/fetch_resource.py`，与 `onescience-data-standardizer` 内置的下载器**互不依赖**（各自独立演进），但缓存目录、可见文件口径、失败分类保持一致，便于同一份数据被两条链路复用。
 
 ## 1. 触发与门控
 
@@ -52,6 +52,20 @@ Git LFS（默认关闭，需 --allow-git-lfs-fallback）
 - 降级不能抹真因：SDK 已给出具体分类（如 `repo_not_found`/`network_error`）而 CLI 回退仅仅因为未安装而失败时，上报的 `blocked_reason` 仍取前者，后者进 `details.fallback_errors`；只有所有尝试都说"后端不可用"时才报 `backend_unavailable`。
 - SDK 落点可能多一层仓库名目录，归一化时把唯一子目录上提到正式路径，避免下游拿到两层嵌套目录。
 
+## 4.5 其他来源后端（HuggingFace / 官网直链 / 共享目录）
+
+```text
+共享目录 find   --find-shared [--shared-root <根>]：本地探测未命中、下载前，对有界共享根按名查找
+                （深度≤4、命中目录不下钻、扫描封顶），命中现成副本 provider=shared、零网络
+HuggingFace     hub.fetch_hf -> huggingface_hub.snapshot_download(repo_id=org/name, local_dir=<tmp>)
+                repo_id 必须 org/name（HF 无单命名空间默认约定，不给不猜）；镜像用 --hf-endpoint/HF_ENDPOINT
+官网直链        hub.fetch_url -> urllib 下载单个 http(s) 文件/归档到 <tmp>，归档自动解包，受体积上限
+                非 http(s) 一律 invalid_source_link；落盘后同样过完整性校验并注册
+```
+
+- 三种新后端与 ModelScope 三级降级共享 `_fetch_lock`/临时目录/`_normalize`/非空校验/失败清理，换来源不降标准；`fetch.method` 分别记 `hf`/`url`，`resolution_method` 记 `huggingface_fetch`/`url_fetch`/`shared_find`，`provider` 记 `huggingface`/`url`/`shared`。
+- HuggingFace/官网直链同样**不代管凭据**：gated HF 仓或需登录的官网失败只报 `authentication_failed`/`network_error`；来源权威性由调用方负责，禁止用来路不明的镜像/网盘顶替。
+
 ## 5. 失败分类与上报
 
 分类函数 `modelscope_hub.classify_error`，判定顺序**不可调换**：认证 → 网络 → 磁盘 → 校验和 → 仓库不存在 → 兜底。网络信号必须先于 repo 措辞——DNS/断网的 traceback 里常混有 "repo ... not exist"，先匹配仓库规则会把可重试的网络故障误判成 `repo_not_found`（标准器链路已实测过该缺陷）。
@@ -81,4 +95,4 @@ Git LFS（默认关闭，需 --allow-git-lfs-fallback）
 
 ## 7. 观测字段
 
-`provisioned_resources[].fetch` 必含：`repo_id`、`repo_id_source`、`repo_type`、`local_path`、`method`（`sdk|cli|git_lfs|cache_hit`）、`files`、`bytes`、`duration_seconds`、`retries`。段 1/段 2 命中时 `fetch.method` 记解析方式（`explicit_path`/`local_probe`）并附 `note: resolved locally, no provider call`，避免让调用方误以为发生过网络请求。
+`provisioned_resources[].fetch` 必含：`repo_id`、`repo_id_source`、`repo_type`、`local_path`、`method`（`sdk|cli|git_lfs|hf|url|cache_hit`）、`files`、`bytes`、`duration_seconds`、`retries`；顶层 `provider` 标明最终来源（`modelscope|huggingface|url|shared|cache|local|explicit`）。段 1/段 2/段 2.5 命中时 `fetch.method` 记解析方式（`explicit_path`/`local_probe`/`shared_find`）并附 `note: resolved locally, no provider call`，避免让调用方误以为发生过网络请求。

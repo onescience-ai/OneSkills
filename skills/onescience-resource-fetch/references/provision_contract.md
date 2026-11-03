@@ -36,6 +36,12 @@ resource_retrieval_request:
       candidate_attempts: <最多试几个候选，默认 3>
       strict_name: <默认 false；true 时多同名不代作选择>
       allow_gated: <默认 false；true 时把需凭据的仓库纳入择优>
+      source: <modelscope | hf | url，段3 取源供应商，默认 modelscope；判据见 source_selection.md>
+      hf_repo: <HuggingFace org/name，source=hf 时必需>
+      source_url: <官网 http(s) 直链，source=url 时必需>
+      hf_endpoint: <HF 镜像 endpoint，默认读 HF_ENDPOINT，如 https://hf-mirror.com>
+      shared_roots: [<共享目录根，配合 find_shared 做按名 find>]
+      find_shared: <默认 false；true 时下载前对有界共享根按名查找现成副本>
 ```
 
 `name` 无法从 `user_request` 抽取时**不回问用户**：按 `resource_planning.md` 做任务级资源规划，自行派生安全逻辑名与检索词（填 `search_query`/`task_hint`）；`kind` 判不准时按"消费方怎么用它"决定（喂给训练/推理的是 model，喂给 datapipe/dataset-builder 的是 dataset），仍不确定就先 `search` 验证候选存在再定。没有 `repo_id` 只有裸 `name` 时，默认约定 `OneScience/<name>` 不存在会自动走官方 OpenAPI 检索 + 元数据打分择优，多个候选按分数降级重试（细则见 `repo_id_inference.md` 第 4 节）；`allow_name_search=false` 关掉整层，`strict_name=true` 退回"多同名不代作选择"。规划加两轮检索都拿不到候选，才报 `resource_plan_empty` / `no_selectable_repo`，不得凭空捏仓库名，也不得用占位数据顶替。
@@ -50,10 +56,11 @@ resource_retrieval_result:
   provisioned_resources:
     - name / kind / domain
       local_path: <绝对路径，调用方可直接读>
-      resolution_method: explicit_path | local_probe | cache_hit | modelscope_fetch | probe_only_miss
+      resolution_method: explicit_path | local_probe | shared_find | cache_hit | modelscope_fetch | huggingface_fetch | url_fetch | probe_only_miss
+      provider: explicit | local | shared | cache | modelscope | huggingface | url
       repo_id: <实际来源；本地命中可为 null>
       repo_id_source: explicit | card_extract | default_convention | name_search | name_search_ranked | registry_or_unknown
-      fetch: {method: sdk|cli|git_lfs|cache_hit, files, bytes, retries, duration_seconds, repo_id}
+      fetch: {method: sdk|cli|git_lfs|hf|url|cache_hit, files, bytes, retries, duration_seconds, repo_id}
       selection: {chosen, score, reasons[], name_exact, file_size, downloads, license,
                   searched[], max_repo_bytes, alternatives[], excluded[]}
       fetch_attempts: [{repo_id, repo_id_source, outcome, files, bytes}]
@@ -75,7 +82,7 @@ resource_retrieval_result:
 ## 4. 下游消费规则
 
 - 只有 `provisioned_resources[].local_path` 是**落盘事实**，调用方可直接读取；`content_digest` 与 `verification.checks` 是它被验收过的证据。
-- `resolution_method` 的区分对调用方有用：`cache_hit` = 命中统一缓存（同一份数据以前取过），`local_probe` = 工作区/共享库/注册表里的其他路径，`modelscope_fetch` = 本次真的走了网络。需要"强制重新拉取"时只能清缓存或传 `revision`，不能靠重复调用同一名字期待刷新。
+- `resolution_method` 的区分对调用方有用：`cache_hit` = 命中统一缓存（同一份数据以前取过），`local_probe` = 工作区/共享库/注册表里的其他路径，`shared_find` = 有界共享目录按名 find 命中的现成副本（零下载），`modelscope_fetch`/`huggingface_fetch`/`url_fetch` = 本次真的走了网络（`provider` 进一步区分 modelscope/huggingface/url）。需要"强制重新拉取"时只能清缓存或传 `revision`，不能靠重复调用同一名字期待刷新。
 - 零网络承诺只针对不落盘的前三种 `resolution_method`：`explicit_path` / `local_probe` / `cache_hit` 不产生任何请求。走到下载那一步时，若 `repo_id` 是按默认约定拼的，会先花 1–2 次只读轻量请求做存在性确认与必要时检索（它们不传输数据文件）；`repo_id_source=name_search`（逐字同名命中）与 `name_search_ranked`（按任务语义与元数据择优命中）就是这一层换过仓库的标记，配套 `warnings` 与 `selection.reasons` 会写明原委；检索长句无命中时脚本会自动拆词重试，多花的仍是不传输数据的只读查询。
 - 写进 `Task State.resource_bindings` 时：`resource_type` 取 `dataset`/`model`，`path` 取 `local_path`，`purpose` 写明服务于哪个步骤，并保留 `repo_id` 与 `content_digest` 以便复现追溯。
 - `missing_resources` 非空即视为该资源缺口未闭合：orchestrator 按 `reason` 分类——`backend_unavailable`/`network_error` 走 installer 或重试，`repo_not_found`/`authentication_failed` 才是需要用户介入的硬约束；`repo_ambiguous` 只在调用方显式要求 `strict_name=true` 时出现（`details.candidates` 是同名候选列表，此时本技能不代作选择）；`no_selectable_repo` 表示有候选但都需凭据或超体积上限（配好凭据加 `--allow-gated`、或放宽 `--max-repo-bytes`、或显式指定 `--repo-id`）；`resource_plan_empty` 表示任务里推不出可检索的资源需求（说明还缺领域/模态/任务类型哪一项）；`details.probed[]` 里的 `exists=true/usable=false` 条目意味着上次下载中断过，而不是路径写错；**任何情况下都不得用占位数据、示例文件或随机张量顶替**（对应 evidence_gates 的 `fabricated` 禁令）。

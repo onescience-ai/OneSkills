@@ -4,8 +4,16 @@ Resolves one logical resource (a dataset or a model/checkpoint bundle) to a
 usable local directory through three ordered stages:
 
     1. explicit path   — caller gave ``--local-dir`` / ``source_dir``
-    2. local probe     — unified cache, workspace data dirs, registry record
-    3. ModelScope fetch— taken by default when stages 1-2 miss (缺即下)
+    2. local probe     — unified cache, workspace data dirs, shared-store find,
+                        registry record (nearest-first, no download)
+    3. fetch           — ModelScope (default), HuggingFace (``--source hf``) or an
+                        official direct link (``--source url``) when 1-2 miss (缺即下)
+
+Which provider fills stage 3 is the host model's decision (see
+``references/source_selection.md``): ModelScope is a solid default for its CN
+reach and validated pipeline, but is *not* automatically first — a shared-store
+hit always wins, and HuggingFace/an official link is chosen when the resource's
+canonical or latest home is there rather than the ModelScope mirror.
 
 Then the payload is verified (visible files / required patterns / size floor),
 registered in ``~/.onescience/resource_registry.json``, and reported as a
@@ -49,6 +57,8 @@ import modelscope_hub as hub          # noqa: E402
 import resource_paths as rp           # noqa: E402
 
 REPO_URL_RE = re.compile(r"modelscope\.cn/(datasets|models)/([\w.\-]+/[\w.\-]+)")
+HF_URL_RE = re.compile(
+    r"huggingface\.co/(datasets|models)/([\w.\-]+/[\w.\-]+)", re.IGNORECASE)
 REPO_ID_RE = re.compile(r"repo[_-]?id\s*[:=]\s*[\"']?([\w.\-]+/[\w.\-]+)", re.IGNORECASE)
 
 STATUS_SUCCESS = "success"
@@ -57,8 +67,22 @@ STATUS_FAILED = "failed"
 
 METHOD_EXPLICIT = "explicit_path"
 METHOD_PROBE = "local_probe"
+METHOD_SHARED_FIND = "shared_find"
 METHOD_CACHE_HIT = "cache_hit"
 METHOD_FETCH = "modelscope_fetch"
+METHOD_HF_FETCH = "huggingface_fetch"
+METHOD_URL_FETCH = "url_fetch"
+
+# resolution_method -> which provider actually supplied the bytes.
+PROVIDER_BY_METHOD = {
+    METHOD_EXPLICIT: "explicit",
+    METHOD_PROBE: "local",
+    METHOD_SHARED_FIND: "shared",
+    METHOD_CACHE_HIT: "cache",
+    METHOD_FETCH: "modelscope",
+    METHOD_HF_FETCH: "huggingface",
+    METHOD_URL_FETCH: "url",
+}
 
 SOURCE_NAME_SEARCH = "name_search"
 SOURCE_SEARCH_RANKED = "name_search_ranked"
@@ -263,7 +287,9 @@ def resolve_local(name: str,
                   kind: str,
                   local_dir: Optional[str],
                   extra_probe_paths: List[str],
-                  domain: Optional[str] = None) -> Optional[Dict[str, Any]]:
+                  domain: Optional[str] = None,
+                  shared_roots: Optional[List[str]] = None,
+                  find_shared: bool = False) -> Optional[Dict[str, Any]]:
     if local_dir:
         cand = Path(local_dir).expanduser()
         stats = rp.dir_stats(cand) if cand.is_dir() else {"files": 0, "bytes": 0}
@@ -284,6 +310,16 @@ def resolve_local(name: str,
             return {"path": probe["path"],
                     "method": METHOD_CACHE_HIT if hit_cache else METHOD_PROBE,
                     "files": probe["files"], "bytes": probe["bytes"]}
+
+    # Shared-store find: a bounded, read-only name search across the site's
+    # pre-seeded shared roots. Nearest-first — a copy that already exists on a
+    # shared volume beats any download, so it runs before stage 3. Opt-in via
+    # --find-shared / --shared-root / ONESCIENCE_SHARED_ROOTS.
+    if find_shared or shared_roots:
+        for hit in rp.find_shared(name, extra_roots=shared_roots):
+            return {"path": hit["path"], "method": METHOD_SHARED_FIND,
+                    "files": hit["files"], "bytes": hit["bytes"],
+                    "shared_root": hit["root"]}
     return None
 
 
@@ -346,6 +382,80 @@ def validate_name(name: str) -> str:
     return name
 
 
+def _provider_for(method: str) -> str:
+    return PROVIDER_BY_METHOD.get(method, "unknown")
+
+
+def _provider_name(source: str) -> str:
+    return {"modelscope": "ModelScope", "hf": "HuggingFace",
+            "url": "官网直链"}.get(source, source or "ModelScope")
+
+
+def _stage3_plan(name: str, kind: str, args: argparse.Namespace,
+                 warnings: List[str]) -> List[Dict[str, Any]]:
+    """Where stage 3 should fetch from, given the chosen provider.
+
+    ModelScope keeps the full infer→search→rank plan; HuggingFace and the
+    official direct link are single-target (the model already decided the exact
+    repo / URL after weighing the selection dimensions).
+    """
+    if args.source == "hf":
+        return [{"repo_id": _hf_repo_id(name, args),
+                 "repo_id_source": "explicit", "selection": None}]
+    if args.source == "url":
+        if not getattr(args, "source_url", None):
+            raise Blocked(
+                "官网直链取源需要 --source-url <http(s) 链接>",
+                hub.REASON_BAD_LINK, {"name": name, "provider": "url"})
+        return [{"repo_id": args.source_url,
+                 "repo_id_source": "explicit", "selection": None}]
+    return plan_repos(name, kind, args, warnings)
+
+
+def _stage3_fetch(name: str, kind: str, cache_dir: Path,
+                  step: Dict[str, Any],
+                  args: argparse.Namespace):
+    """Call the backend for the chosen provider; all share cache primitives."""
+    work = rp.work_dir_for(name, kind)
+    if args.source == "hf":
+        return hub.fetch_hf(
+            name=name, cache_dir=cache_dir, repo_id=step["repo_id"],
+            repo_type=kind, revision=args.revision,
+            repo_id_source=step["repo_id_source"], work_dir=work,
+            endpoint=getattr(args, "hf_endpoint", None))
+    if args.source == "url":
+        return hub.fetch_url(
+            name=name, cache_dir=cache_dir, url=step["repo_id"],
+            repo_type=kind, max_bytes=hub.auto_max_bytes(args.max_repo_bytes),
+            repo_id_source=step["repo_id_source"], work_dir=work)
+    return hub.fetch(
+        name=name, cache_dir=cache_dir, repo_id=step["repo_id"],
+        repo_type=kind, revision=args.revision,
+        allow_git_lfs_fallback=args.allow_git_lfs_fallback,
+        repo_id_source=step["repo_id_source"], work_dir=work)
+
+
+def _hf_repo_id(name: str, args: argparse.Namespace) -> str:
+    """Resolve a HuggingFace ``org/name`` from --hf-repo or an HF page link.
+
+    HuggingFace has no implicit single-namespace fallback, so without an
+    explicit repo or an ``huggingface.co/...`` hint the caller must supply one
+    rather than have a repo name guessed.
+    """
+    if getattr(args, "hf_repo", None):
+        return args.hf_repo
+    for hint in list(getattr(args, "repo_hint", None) or []):
+        m = HF_URL_RE.search(hint or "")
+        if m:
+            return m.group(2)
+    raise Blocked(
+        "HuggingFace 取源需要显式 --hf-repo <org/name>（或 --repo-hint 里给出 "
+        "huggingface.co/datasets|models/<org>/<name> 链接）；不提供可猜测的默认仓库",
+        hub.REASON_REPO_NOT_FOUND,
+        {"name": name, "provider": "huggingface"},
+    )
+
+
 def provision_one(name: str,
                   kind: str,
                   args: argparse.Namespace) -> Dict[str, Any]:
@@ -357,7 +467,9 @@ def provision_one(name: str,
     if registry_warning:
         warnings.append(registry_warning)
     resolved = resolve_local(name, kind, args.local_dir,
-                             args.extra_probe_path, args.domain)
+                             args.extra_probe_path, args.domain,
+                             shared_roots=args.shared_root,
+                             find_shared=args.find_shared)
 
     if resolved is None and args.probe_only:
         raise Blocked(
@@ -379,20 +491,11 @@ def provision_one(name: str,
                 hub.REASON_DISK,
                 {"free_bytes": free, "required_bytes": rp.MIN_FREE_BYTES},
             )
-        plan = plan_repos(name, kind, args, warnings)
+        plan = _stage3_plan(name, kind, args, warnings)
         last: Optional[Blocked] = None
         for idx, step in enumerate(plan):
             try:
-                result = hub.fetch(
-                    name=name,
-                    cache_dir=cache_dir,
-                    repo_id=step["repo_id"],
-                    repo_type=kind,
-                    revision=args.revision,
-                    allow_git_lfs_fallback=args.allow_git_lfs_fallback,
-                    repo_id_source=step["repo_id_source"],
-                    work_dir=rp.work_dir_for(name, kind),
-                )
+                result = _stage3_fetch(name, kind, cache_dir, step, args)
             except hub.FetchError as exc:
                 last = Blocked(str(exc), exc.reason, dict(exc.details or {}))
                 attempts.append({"repo_id": step["repo_id"],
@@ -407,7 +510,14 @@ def provision_one(name: str,
                                 % (step["repo_id"], exc.reason))
                 continue
 
-            method = METHOD_CACHE_HIT if result.method == "cache_hit" else METHOD_FETCH
+            if result.method == "cache_hit":
+                method = METHOD_CACHE_HIT
+            elif args.source == "hf":
+                method = METHOD_HF_FETCH
+            elif args.source == "url":
+                method = METHOD_URL_FETCH
+            else:
+                method = METHOD_FETCH
             fetch_details = result.to_dict()
             warnings.extend(result.warnings)
             report = verify(result.local_path, args.required_file,
@@ -432,7 +542,8 @@ def provision_one(name: str,
 
         if resolved is None:
             raise Blocked(
-                f"{kind} '{name}' could not be materialized from ModelScope",
+                f"{kind} '{name}' could not be materialized from "
+                f"{_provider_name(args.source)}",
                 (last or Blocked("no candidate", hub.REASON_FAILED)).reason,
                 {"fetch_attempts": attempts, "selection": selection},
             )
@@ -456,6 +567,7 @@ def provision_one(name: str,
         "repo_id": (fetch_details or {}).get("repo_id") or registry_repo_id(name),
         "repo_id_source": (fetch_details or {}).get("repo_id_source", "registry_or_unknown"),
         "fetch_method": (fetch_details or {}).get("method", resolved["method"]),
+        "provider": _provider_for(resolved["method"]),
         "local_path": resolved["path"],
         "files": report["files"],
         "bytes": report["bytes"],
@@ -475,6 +587,7 @@ def provision_one(name: str,
         "path": resolved["path"],
         "local_path": resolved["path"],
         "resolution_method": resolved["method"],
+        "provider": _provider_for(resolved["method"]),
         "registry_key": registry_key,
         "repo_id": entry["repo_id"],
         "repo_id_source": entry["repo_id_source"],
@@ -512,6 +625,15 @@ def _limitations(method: str, fetch_details: Optional[Dict[str, Any]]) -> str:
         return "命中本地已有缓存，未核对版本/修订是否与需求一致。"
     if method == METHOD_CACHE_HIT:
         return "缓存命中直接复用；如需强制更新请清理缓存目录或指定 --revision。"
+    if method == METHOD_SHARED_FIND:
+        return ("命中共享目录中的现成副本，未联网；未核对其版本/完整性是否与权威源一致，"
+                "如需最新版应改用 HuggingFace 或官网直链。")
+    if fetch_details and fetch_details.get("method") == "hf":
+        return ("内容来自 HuggingFace Hub 仓库；完整性仅校验可见文件数、必需文件通配与"
+                "大小下界，未做语义级校验。")
+    if fetch_details and fetch_details.get("method") == "url":
+        return ("内容来自调用方解析的官网直链（http(s) 文件或归档包）；来源权威性由调用方"
+                "负责，本技能只做可见文件/必需文件/大小下界与体积上限校验。")
     if fetch_details and fetch_details.get("method") == "git_lfs":
         return "经 Git LFS 兜底获取，未走 SDK 校验链路；完整性仅按可见文件/必需文件判定。"
     return ("内容来自 ModelScope 公开仓库；完整性仅校验可见文件数、必需文件通配与大小下界，"
@@ -567,6 +689,10 @@ RECOMMENDATIONS = {
         "仓库为空或仅含元数据：确认该 repo_id 是否真的发布了数据/权重。",
     hub.REASON_BACKEND_MISSING:
         "执行环境缺少 modelscope 后端：pip install modelscope（Git LFS 兜底需另装 git-lfs）。",
+    hub.REASON_SIZE:
+        "直链内容超出体积上限：确认来源是否正确，或用 --max-repo-bytes 放宽上限。",
+    hub.REASON_BAD_LINK:
+        "官网直链不合法（只允许 http(s)）或 --source url 未给 --source-url：换成合法直链重试。",
     hub.REASON_FAILED:
         "按 details 定位后重试；持续失败则如实报告 blocked，不得改用占位数据继续。",
     "resource_missing":
@@ -607,6 +733,20 @@ def _add_common(p: argparse.ArgumentParser) -> None:
 
 
 def _add_provision(p: argparse.ArgumentParser) -> None:
+    p.add_argument("--source", default="modelscope",
+                   choices=("modelscope", "hf", "url"),
+                   help="段3 取源供应商：modelscope（默认）| hf（HuggingFace）| url（官网直链）；"
+                        "由调用方按 references/source_selection.md 评估后选定")
+    p.add_argument("--hf-repo", dest="hf_repo", default=None,
+                   help="HuggingFace 仓库 org/name（--source hf 时必需，或由 --repo-hint 抽取）")
+    p.add_argument("--source-url", dest="source_url", default=None,
+                   help="官网直链 http(s) 地址（--source url 时必需），文件或归档包")
+    p.add_argument("--hf-endpoint", dest="hf_endpoint", default=None,
+                   help="HuggingFace endpoint 覆盖（镜像，如 https://hf-mirror.com）；缺省读 HF_ENDPOINT")
+    p.add_argument("--shared-root", dest="shared_root", action="append", default=[],
+                   help="共享目录根（可重复），配合 --find-shared 按名查找现成副本；也可用 ONESCIENCE_SHARED_ROOTS")
+    p.add_argument("--find-shared", dest="find_shared", action="store_true",
+                   help="在本地探测未命中时，对共享目录做一次有界按名 find（就近优先，命中即免下载）")
     p.add_argument("--repo-id", dest="repo_id", default=None,
                    help="显式 ModelScope repo_id（最高优先级）")
     p.add_argument("--repo-hint", dest="repo_hint", action="append", default=[],

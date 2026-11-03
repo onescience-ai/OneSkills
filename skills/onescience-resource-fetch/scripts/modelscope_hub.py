@@ -1,6 +1,17 @@
-"""ModelScope fetch backend with SDK -> CLI -> Git LFS degradation.
+"""Fetch backends for the resource providers this skill can materialize from.
 
-Public entry: :func:`fetch`. Behaviour contract (see
+ModelScope is the primary provider (SDK -> CLI -> Git LFS degradation, see
+:func:`fetch`). Two further providers share the same cache/lock/atomic
+primitives so a hit lands identically regardless of source:
+
+* :func:`fetch_hf`  -- a HuggingFace Hub repo (``huggingface_hub.snapshot_download``),
+  preferred when a resource's canonical/latest home is HuggingFace rather than
+  the ModelScope mirror;
+* :func:`fetch_url` -- a single official direct download link (http(s) file or
+  archive), used when neither the shared store, ModelScope nor HuggingFace has a
+  usable copy and the caller has resolved an authoritative page link.
+
+Public entry for ModelScope: :func:`fetch`. Behaviour contract (see
 ``references/download_workflow.md``):
 
 * idempotent — a populated cache short-circuits to ``method=cache_hit``;
@@ -29,9 +40,11 @@ import shutil
 import subprocess
 import sys
 import time
+import tarfile
 import urllib.error
 import urllib.parse
 import urllib.request
+import zipfile
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -53,6 +66,15 @@ REASON_EMPTY = "empty_payload"
 REASON_BACKEND_MISSING = "backend_unavailable"
 REASON_FAILED = "fetch_failed"
 REASON_NO_CANDIDATE = "no_selectable_repo"
+REASON_SIZE = "over_max_bytes"
+REASON_BAD_LINK = "invalid_source_link"
+
+# Only http(s) links may be fetched directly; anything else is refused so a
+# caller cannot smuggle file:// or shell-piped URIs into the download path.
+URL_SCHEME_RE = re.compile(r"^https?://", re.IGNORECASE)
+URL_CHUNK = 1 << 20
+# Archive suffixes that are unpacked into the payload directory after download.
+ARCHIVE_SUFFIXES = (".zip", ".tar", ".tar.gz", ".tgz", ".tar.bz2")
 
 # Reasons that must not burn the retry budget on the SDK path.
 NON_RETRYABLE = frozenset({REASON_REPO_NOT_FOUND, REASON_AUTH, REASON_DISK,
@@ -615,6 +637,215 @@ def _select_error(errors: List[FetchError]) -> FetchError:
         if err.reason != REASON_BACKEND_MISSING:
             return err
     return errors[-1] if errors else FetchError("fetch failed", reason=REASON_FAILED)
+
+
+# ----------------------------------------------------------------------
+# Shared atomic materialization (used by the non-ModelScope providers)
+# ----------------------------------------------------------------------
+
+def _cache_hit_result(cache_dir: Path, repo_id: str, repo_type: str,
+                      repo_id_source: str) -> FetchResult:
+    files = list(_visible_files(cache_dir))
+    return FetchResult(
+        repo_id=repo_id, repo_type=repo_type, local_path=str(cache_dir),
+        method="cache_hit", files=len(files),
+        bytes=sum(_size(f) for f in files), repo_id_source=repo_id_source,
+        warnings=["cache already populated; fetch skipped"],
+    )
+
+
+def _atomic_fetch(name: str, cache_dir: Path, scope: Path, repo_id: str,
+                  repo_type: str, repo_id_source: str, produce) -> FetchResult:
+    """Run ``produce(tmp_dir)`` under the resource lock, then move + verify.
+
+    Mirrors :func:`fetch`'s post-download discipline (isolated temp dir, atomic
+    normalize into the canonical cache path, non-empty check, cleanup that only
+    touches this resource) so HF/URL payloads are indistinguishable downstream.
+    """
+    with _fetch_lock(scope):
+        started = time.time()
+        tmp_dir = scope / f".{cache_dir.name}.tmp.{os.getpid()}"
+        if tmp_dir.exists():
+            shutil.rmtree(tmp_dir, ignore_errors=True)
+        tmp_dir.mkdir(parents=True, exist_ok=True)
+        try:
+            chosen = produce(tmp_dir)
+        except FetchError:
+            shutil.rmtree(tmp_dir, ignore_errors=True)
+            _drop_unusable_cache(cache_dir)
+            _prune_work_dir(scope, cache_dir)
+            raise
+        landed = _normalize(chosen["local_path"], tmp_dir, cache_dir,
+                            repo_id, name)
+        files = list(_visible_files(landed))
+        if not files:
+            shutil.rmtree(landed, ignore_errors=True)
+            _prune_work_dir(scope, cache_dir)
+            raise FetchError(
+                f"fetch reported success but no visible file landed in {landed}",
+                reason=REASON_EMPTY, details={"repo_id": repo_id})
+        return FetchResult(
+            repo_id=repo_id, repo_type=repo_type, local_path=str(landed),
+            method=chosen["method"], files=len(files),
+            bytes=sum(_size(f) for f in files),
+            duration_seconds=time.time() - started, retries=0,
+            repo_id_source=repo_id_source)
+
+
+# ----------------------------------------------------------------------
+# HuggingFace provider
+# ----------------------------------------------------------------------
+
+def _via_hf(repo_id: str, repo_type: str, dest: Path,
+            revision: Optional[str], endpoint: Optional[str]) -> Dict[str, Any]:
+    try:
+        from huggingface_hub import snapshot_download  # type: ignore
+    except ImportError as exc:
+        raise FetchError(
+            "huggingface_hub not importable; install with: pip install huggingface_hub",
+            reason=REASON_BACKEND_MISSING, details={"import_error": str(exc)}) from exc
+    kwargs: Dict[str, Any] = {
+        "repo_id": repo_id,
+        "local_dir": str(dest),
+        "repo_type": "dataset" if repo_type == "dataset" else "model",
+    }
+    if revision:
+        kwargs["revision"] = revision
+    ep = endpoint or os.environ.get("HF_ENDPOINT")
+    if ep:
+        kwargs["endpoint"] = ep
+    try:
+        with _quiet_sdk_streams():
+            local_path = snapshot_download(**kwargs)
+    except FetchError:
+        raise
+    except Exception as exc:
+        raise FetchError(f"HuggingFace fetch failed: {exc}",
+                         reason=classify_error(str(exc)),
+                         details={"repo_id": repo_id}) from exc
+    return {"local_path": str(local_path), "method": "hf"}
+
+
+def fetch_hf(name: str, cache_dir: Path, repo_id: str, work_dir: Path,
+             repo_type: str = "dataset", revision: Optional[str] = None,
+             repo_id_source: str = "explicit",
+             endpoint: Optional[str] = None) -> FetchResult:
+    """Materialize a HuggingFace Hub repo into ``cache_dir`` (idempotent).
+
+    ``repo_id`` must be a HuggingFace ``org/name`` (or ``dataset`` namespace);
+    a bare name with no ``/`` is refused because HuggingFace has no implicit
+    single-namespace convention the way ModelScope's OneScience/ fallback does.
+    """
+    if not repo_id or "/" not in repo_id:
+        raise FetchError(
+            "HuggingFace repo_id must be org/name; got %r" % (repo_id,),
+            reason=REASON_REPO_NOT_FOUND, details={"repo_id": repo_id})
+    scope = Path(work_dir) if work_dir else cache_dir.parent
+    scope.mkdir(parents=True, exist_ok=True)
+    if _is_populated(cache_dir):
+        return _cache_hit_result(cache_dir, repo_id, repo_type, repo_id_source)
+    if cache_dir.exists() and not any(cache_dir.iterdir()):
+        with contextlib.suppress(OSError):
+            cache_dir.rmdir()
+    return _atomic_fetch(
+        name, cache_dir, scope, repo_id, repo_type, repo_id_source,
+        lambda tmp: _via_hf(repo_id, repo_type, tmp, revision, endpoint))
+
+
+# ----------------------------------------------------------------------
+# Official direct-link provider
+# ----------------------------------------------------------------------
+
+def _looks_like_archive(path: Path) -> bool:
+    low = path.name.lower()
+    return any(low.endswith(sfx) for sfx in ARCHIVE_SUFFIXES)
+
+
+def _extract_archive(archive: Path, dest: Path) -> None:
+    low = archive.name.lower()
+    if low.endswith(".zip"):
+        with zipfile.ZipFile(archive) as zf:
+            zf.extractall(dest)
+    else:
+        mode = "r:*" if (low.endswith(".gz") or low.endswith(".tgz")) else "r"
+        if low.endswith(".bz2"):
+            mode = "r:bz2"
+        with tarfile.open(archive, mode) as tf:
+            tf.extractall(dest)
+    with contextlib.suppress(OSError):
+        archive.unlink()
+
+
+def _via_url(url: str, dest: Path, name: str,
+             max_bytes: int) -> Dict[str, Any]:
+    if not URL_SCHEME_RE.match(url or ""):
+        raise FetchError(
+            "only http(s) direct links may be fetched: %r" % (url,),
+            reason=REASON_BAD_LINK, details={"url": url})
+    base = urllib.parse.unquote(urlparse_path(url)) or name
+    base = os.path.basename(base) or name
+    target = dest / base
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    cap = max_bytes if max_bytes and max_bytes > 0 else AUTO_MAX_BYTES_DEFAULT
+    total = 0
+    try:
+        with urllib.request.urlopen(req, timeout=DOWNLOAD_TIMEOUT_SECONDS) as resp, \
+                open(target, "wb") as fh:
+            while True:
+                chunk = resp.read(URL_CHUNK)
+                if not chunk:
+                    break
+                total += len(chunk)
+                if total > cap:
+                    raise FetchError(
+                        "direct download exceeded size ceiling (%d > %d bytes)"
+                        % (total, cap), reason=REASON_SIZE,
+                        details={"url": url, "max_bytes": cap})
+                fh.write(chunk)
+    except FetchError:
+        with contextlib.suppress(OSError):
+            target.unlink()
+        raise
+    except (urllib.error.URLError, OSError) as exc:
+        with contextlib.suppress(OSError):
+            target.unlink()
+        reason = classify_error(str(exc))
+        if reason == REASON_FAILED:
+            reason = REASON_NETWORK
+        raise FetchError("direct link fetch failed: %s" % exc,
+                         reason=reason, details={"url": url}) from exc
+    if _looks_like_archive(target):
+        try:
+            _extract_archive(target, dest)
+        except (tarfile.TarError, zipfile.BadZipFile, zipfile.LargeZipFile) as exc:
+            raise FetchError("archive could not be unpacked: %s" % exc,
+                           reason=REASON_CHECKSUM, details={"url": url}) from exc
+    return {"local_path": str(dest), "method": "url"}
+
+
+def urlparse_path(url: str) -> str:
+    return urllib.parse.urlparse(url).path
+
+
+def fetch_url(name: str, cache_dir: Path, url: str, work_dir: Path,
+              repo_type: str = "dataset", max_bytes: int = 0,
+              repo_id_source: str = "explicit") -> FetchResult:
+    """Download one official direct link (file or archive) into ``cache_dir``.
+
+    The link is treated as an authoritative source the caller resolved; it must
+    be http(s) and is size-capped exactly like an auto-selected repo, so a wrong
+    URL cannot pull an unbounded payload onto the cache volume.
+    """
+    scope = Path(work_dir) if work_dir else cache_dir.parent
+    scope.mkdir(parents=True, exist_ok=True)
+    if _is_populated(cache_dir):
+        return _cache_hit_result(cache_dir, url, repo_type, repo_id_source)
+    if cache_dir.exists() and not any(cache_dir.iterdir()):
+        with contextlib.suppress(OSError):
+            cache_dir.rmdir()
+    return _atomic_fetch(
+        name, cache_dir, scope, url, repo_type, repo_id_source,
+        lambda tmp: _via_url(url, tmp, name, max_bytes))
 
 
 # ----------------------------------------------------------------------

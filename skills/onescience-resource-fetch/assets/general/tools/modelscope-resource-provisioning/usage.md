@@ -29,7 +29,11 @@
 - `--candidate-attempts`：逐候选降级重试次数（默认 3）。
 - `--strict-name`：多同名不猜，报 `repo_ambiguous`。
 - `--allow-gated`：允许需登录的受控仓库。
+- `--source modelscope|hf|url`：段3 取源供应商（默认 modelscope）；判据见 `references/source_selection.md`。
+- `--hf-repo <org/name>` / `--hf-endpoint <镜像>`：HuggingFace 仓库与镜像（如 https://hf-mirror.com）。
+- `--source-url <https://…>`：官网直链（http(s) 文件或归档包，自动解包）。
+- `--find-shared` / `--shared-root <根>`：下载前对有界共享根按名 find 现成副本（零下载）。
 
 ## 输出解读
 `selection` 字段透明给出 chosen / score / reasons / alternatives / excluded / searched，
-可据此判断为何选中该仓库；`fetch.method` 表明实际走了 SDK / CLI / Git LFS 哪条路。
+可据此判断为何选中该仓库；`fetch.method` 表明实际走了 SDK / CLI / Git LFS / HuggingFace / 直链哪条路；顶层 `provider` 与 `resolution_method`（`shared_find`/`modelscope_fetch`/`huggingface_fetch`/`url_fetch`）标明最终从哪个来源取得。

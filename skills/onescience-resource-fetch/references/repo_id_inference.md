@@ -47,9 +47,9 @@
 
 ## 5. 为什么这不等于“随便抓一个仓库”
 
-下面第 6 节的禁止项仍然成立：不得从公开搜索引擎 / 第三方镜像抓来源不明的权重。自动择优的边界是：
+本节的边界仍是"不随便抓"：不得从公开搜索引擎 / 来路不明的网盘、第三方镜像抓来源不明的权重。技能已从只认 ModelScope 放宽到可评估选源（共享目录 / ModelScope / HuggingFace / 官网直链，判据见 `source_selection.md`），但只有**权威来源**被放行——官方 org 的 ModelScope/HuggingFace 仓库、论文附件/项目官网直链、站点声明的共享根。自动择优的边界是：
 
-- **只走 ModelScope 官方 OpenAPI**，候选全部来自站内检索结果，不拼接、不猜测 `org/name`；
+- **ModelScope 候选只走官方 OpenAPI 站内检索**，不拼接、不猜测 `org/name`；HuggingFace 走官方 `huggingface_hub`、且必须给 `org/name`（不猜默认仓库）；官网直链只允许 http(s) 并受体积上限与完整性校验；
 - **打分可审计**：`selection` 里带回 `chosen`/`score`/`reasons`/`alternatives`/`excluded`/`searched`，调用方能看出为什么是它、还考虑过谁；
 - **有体积上限**：自动选中的仓库不会超过 `--max-repo-bytes`（缺省 8 GiB），避免一句话任务拉下几百 GB；
 - **有校验与降级**：落盘后要过完整性校验，不过就换下一个候选，而不是把坏数据交下去；
@@ -64,7 +64,7 @@
 
 - 不可重试，SDK 立即短路，CLI / Git LFS 各试一次；
 - 下一步只有四种合法出路：换更短/更准的检索词再试一轮（`search`）、调用方给出真实 `repo_id`、提供本地 `source_dir`、或改由 `onescience-primitive-distiller` / `onescience-modelscope-publish` 把资源发布进约定仓库；
-- 不得因为“仓库不存在”就退化去公开搜索引擎或镜像站抓一个名字相近的仓库——那会把来源不明的权重写进训练链路。
+- 不得因为“仓库不存在”就退化去公开搜索引擎或镜像站抓一个名字相近的仓库——那会把来源不明的权重写进训练链路。合法的换来源只有：按 `source_selection.md` 评估后切到该资源的**权威首发**（HuggingFace 官方 org / 项目官网直链），而不是随便找一个同名镜像顶替。
 
 ## 7. revision 与版本可追溯
 

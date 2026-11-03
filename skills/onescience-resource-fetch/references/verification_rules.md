@@ -4,7 +4,7 @@
 
 所有统计（命中判定、文件数、字节数、`content_digest`）都只算**可见文件**：相对根目录的路径中每一段都不以 `.` 开头。
 
-原因是 ModelScope SDK 会在缓存树里留下记账产物（`.lock/`、`._____temp/`、`.mdl`/`.msc`）。把这些算进去会让中断或空下载看起来"已就绪"，进而让下游拿到半截数据。实现见 `resource_paths.visible_files` / `is_visible_file`。
+原因是 ModelScope SDK 会在缓存树里留下记账产物（`.lock/`、`._____temp/`、`.mdl`/`.msc`），HuggingFace 的 `local_dir` 布局会留 `.cache/huggingface/`，官网直链解包前后也可能残留归档——这些都不算可见文件。把这些算进去会让中断或空下载看起来"已就绪"，进而让下游拿到半截数据。实现见 `resource_paths.visible_files` / `is_visible_file`。
 
 ## 2. 校验项（`fetch_resource.verify`）
 
@@ -42,6 +42,7 @@
       "repo_id": "OneScience/era5-tutorial",
       "repo_id_source": "default_convention",
       "fetch_method": "sdk",
+      "provider": "modelscope",
       "local_path": "/home/u/.onescience/datasets/era5-tutorial/raw",
       "files": 12, "bytes": 1073741824,
       "content_digest": "<sha256>", "verified": true,

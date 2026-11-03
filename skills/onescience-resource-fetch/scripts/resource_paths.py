@@ -39,10 +39,20 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 ENV_CACHE_ROOT = "ONESCIENCE_RESOURCE_HOME"
 ENV_DATASETS_DIR = "ONESCIENCE_DATASETS_DIR"
 ENV_MODELS_DIR = "ONESCIENCE_MODELS_DIR"
+# Extra read-only shared roots the site pre-seeds data into, searched by name
+# when the caller enables a shared ``find`` (nearest-first, offline-friendly).
+# Path-separator separated, like the other roots.
+ENV_SHARED_ROOTS = "ONESCIENCE_SHARED_ROOTS"
 
 # Read-only shared store some sites pre-seed datasets into; the standardizer
 # probes it, so the candidate list keeps the same shape for consistency.
 PUBLIC_DATASETS_ROOT = Path("/public/share/onestore/onedatasets")
+
+# A shared ``find`` is bounded so a mistyped root can never walk the whole
+# filesystem: only the resolved roots are searched, only down to this many
+# path segments below each root, and matched directories are not descended.
+SHARED_FIND_MAX_DEPTH = 4
+SHARED_FIND_MAX_SCAN = 20000
 
 
 def cache_root() -> Path:
@@ -217,6 +227,84 @@ def probe_candidates(name: str,
             "bytes": stats["bytes"],
         })
     return out
+
+
+def shared_roots(extra: Optional[List[str]] = None) -> List[Path]:
+    """Existing shared roots to search, in caller-then-env-then-default order.
+
+    Read-only: only directories that actually exist are returned, so a site
+    without a shared store simply yields no roots and the ``find`` is a no-op.
+    """
+    raws: List[str] = list(extra or [])
+    env = os.environ.get(ENV_SHARED_ROOTS) or ""
+    raws.extend(part for part in env.split(os.pathsep) if part.strip())
+    raws.append(str(PUBLIC_DATASETS_ROOT))
+    seen: set = set()
+    out: List[Path] = []
+    for raw in raws:
+        raw = (raw or "").strip()
+        if not raw:
+            continue
+        cand = Path(raw).expanduser()
+        try:
+            key = str(cand.resolve())
+        except OSError:
+            key = str(cand)
+        if key in seen or not cand.is_dir():
+            continue
+        seen.add(key)
+        out.append(cand)
+    return out
+
+
+def _name_key(text: str) -> str:
+    return (text or "").lower().replace("-", "_")
+
+
+def find_shared(name: str,
+                extra_roots: Optional[List[str]] = None,
+                max_depth: int = SHARED_FIND_MAX_DEPTH,
+                max_scan: int = SHARED_FIND_MAX_SCAN
+                ) -> List[Dict[str, Any]]:
+    """Bounded name search across shared roots; returns populated hits.
+
+    A directory matches when its basename equals ``name`` ignoring case and
+    treating ``-``/``_`` as interchangeable. Only directories holding at least
+    one visible file are returned (an empty skeleton is not a hit). The walk is
+    depth-limited, matched directories are pruned from further descent, and a
+    scan budget caps the total directories visited -- together these make a
+    ``find`` over a large shared store cheap and, crucially, terminating.
+    """
+    needle = _name_key(name)
+    hits: List[Dict[str, Any]] = []
+    seen: set = set()
+    scanned = 0
+    for root in shared_roots(extra_roots):
+        base_depth = len(root.parts)
+        for dirpath, dirnames, _ in os.walk(root):
+            d = Path(dirpath)
+            if len(d.parts) - base_depth >= max_depth:
+                dirnames[:] = []
+            for sub in list(dirnames):
+                scanned += 1
+                if scanned > max_scan:
+                    return hits
+                sd = d / sub
+                if _name_key(sub) != needle and sub.lower() != (name or "").lower():
+                    continue
+                dirnames.remove(sub)
+                try:
+                    key = str(sd.resolve())
+                except OSError:
+                    key = str(sd)
+                if key in seen:
+                    continue
+                seen.add(key)
+                stats = dir_stats(sd)
+                if stats["files"] > 0:
+                    hits.append({"path": key, "root": str(root),
+                                 "files": stats["files"], "bytes": stats["bytes"]})
+    return hits
 
 
 def free_bytes(path: Path) -> Optional[int]:
