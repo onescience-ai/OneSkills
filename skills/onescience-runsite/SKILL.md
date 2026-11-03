@@ -1,6 +1,6 @@
 ---
 name: onescience-runsite
-description: 解析、校验、保存和复用 OneScience 运行站点配置。用于任意技能在继续执行任务前补齐运行站点配置，完成配置发现、缺失字段补问、已有配置复用、remote 连接验证、运行平台 DCU/GPU 类型确认、modules 写入和结构化回传。不做安装、不提交作业、不执行运行、不做远端环境诊断。
+description: 解析、校验、保存和复用 OneScience 运行站点配置。用于任意技能在继续执行任务前补齐运行站点配置，完成配置发现、缺失字段补问、已有配置复用、remote 连接验证、运行平台 DCU/GPU 类型确认、modules 写入和结构化回传。当任务需要远端算力或特定软件（如 VASP/QE/CP2K）且存在多个 SSH 工作台连接时，必须对候选连接做只读软件环境探测，并通过 question 工具弹出工作台选择框、把拥有目标环境的连接标注（推荐）供用户确认。不做安装、不提交作业、不执行运行；仅允许连接验证、DCU/GPU 类型检测和有限的只读软件矩阵探测。
 type: executor
 capabilities:
   owns:
@@ -12,11 +12,13 @@ capabilities:
     - 远程连接验证
     - 平台类型确认
     - modules写入
+    - 多远程工作台选择
+    - 远程软件环境只读探测
+    - question工作台弹窗推荐
   not_owns:
     - 安装
     - 作业提交
     - 运行执行
-    - 远端环境诊断
   inputs:
     - onescience.json
     - user_input
@@ -42,6 +44,10 @@ capabilities:
     - SLURM配置
     - 远程连接
     - 平台配置
+    - 工作台选择
+    - 多SSH连接
+    - 环境探测
+    - VASP
 ---
 
 ## 输入获取方式
@@ -110,7 +116,38 @@ capabilities:
 - 只要 `execution_mode=slurm`，都必须校验并补齐 Slurm 字段：`partition`、`nodes`、`gpus_per_node`、`cpus_per_task`、`memory`、`time_limit`、`gpu_type`、`ntasks_per_node`。
 - 用户提供完整运行信息后，必须检测对应运行平台加速器类型：本地直接/本地 Slurm 检测本机；远程 SSH 直接/远程 SSH Slurm 通过已验证 SSH Host 别名检测远程。若未检测出，先询问用户确认 `dcu` 还是 `gpu`，再生成配置。
 
-有脚本时优先用 `scripts/runsite_config.py`、`scripts/ssh_config.py`、`scripts/scnet_config.py`。
+### 多远程工作台选择与推荐（question 弹窗硬规则）
+
+适用条件（同时满足即必须触发，不得跳过、不得替用户自行决定）：
+
+1. 当前任务需要远端算力或特定软件环境（如 VASP、QE、CP2K 等第一性原理/商软，或大规模 MD/训练），本地不具备；**且**
+2. `~/.ssh/config` 中存在 **2 个及以上** 平台 SSH 连接（`# >>> opencode ssh <name>` 块）。
+
+> **强制覆盖 autonomous_mode**：本工作台选择弹窗是面向用户的执行位置决策（涉及商软许可证、账号归属），**即使上游 `step_handoff.execution_flags.autonomous_mode` 为 `true` 也必须触发**，不受上文“autonomous_mode 禁止交互式提问”限制；此处应把 `next_action` 置为 `ask_user` 并调用 `question`，不得静默选定连接。
+
+命中后必须按顺序执行：
+
+1. 从任务上下文解析软件需求清单 `needs`（小写，逗号分隔，如 `vasp,lammps`）。
+2. 运行 `python3 skills/onescience-runsite/scripts/probe_remote_env.py list-connections` 枚举候选连接。
+3. 运行 `python3 skills/onescience-runsite/scripts/probe_remote_env.py probe --needs <needs> --cache ./onescience.probe_cache.json`，对每个连接做**只读**探测（`command -v`/`module avail`/加速器列表），得到 `connections[]`、`recommended`、每个连接 `reason`、`reachable`。
+4. **必须且只能调用一次 `question` 工具**，且该弹窗**只包含“工作台连接选择”这一个问题**，规则：
+   - `header` 固定为 `工作台环境`；`question` 用中文说明当前任务需要哪类环境（如“MOF-5 第一性原理参考计算需要 VASP，请选择执行该任务的工作台环境”）。
+   - `options` 每个候选连接一项：`label` 为连接名，`description` 写入探测依据（命中的软件、加速器、连通状态、`reason`）。
+   - `options` 顺序直接沿用 probe 返回的 `connections[]`（probe 已按 `recommendable`→`score` 降序排好）。**仅当顶层 `recommended` 非空时**，才在该连接 `label` 末尾追加 `（推荐）`；**`recommended` 为空（含 `null`）时不得给任何连接追加 `（推荐）`，严禁退而选 `score` 最高或“可达但无商软”的连接当推荐**。当 `probe_incomplete=true` 或某连接 `unverified=true` 时，在该连接 `description` 如实标注“探测超时/未验证，需重试”（不得等同于不可达），将其排在列表前列供用户注意，并在 question 正文提示“存在未完成验证的候选（如 xsl），建议重试探测或据此手动选择”，但**不标（推荐）**。无论是否探到，都不得省略弹窗。
+   - `multiple=false`；**不得在同一个 question 里再塞入“工作目录 / 是否用 Slurm / 加速器类型 / 分区”等其它问题**——这些字段由下一步自动推导，不向用户提问。
+5. 用户选定连接后，**其余远程字段一律自动确定、不得再弹任何 question**：
+   - `remote_work_dir`：取探测返回的远端家目录（`echo $HOME`）；缺省用 `/public/home/<user>` 或用户家目录，直接写入不追问。
+   - `execution_mode`：探测到 `sbatch`/SBATCH 即置 `slurm`，否则置 `null`（直连），不追问。
+   - `partition`：优先取探测到的默认分区（`sinfo`/`scontrol` 或 config 注释）；探不到则留空并在正文标注为待下游补全，不追问。
+   - `accelerator_kind`：探测到 `dtk`/DCU 置 `dcu`，`nvidia-smi` 置 `gpu`；都探不到时按模块线索推断（含 `dtk`→`dcu`），仍无法判定则默认 `dcu` 并在正文标注假设，不向用户提问。
+   - 用选定连接的 SSH 参数 + 上述自动值写入 `onescience.json`（`run_site=remote`、`access_mode=ssh`、`runtime.ssh`、`runtime.cluster`、`runtime.target`）。
+6. 仅 1 个连接、或任务本地即可满足时，不触发该弹窗，走原有流程；此时同样**不得**为工作目录/Slurm/加速器逐字段弹问，全部按第 5 步自动推导。
+
+> **唯一交互点原则**：runsite 面向用户的交互式弹窗**有且只有“工作台连接选择”这一个**。`remote_work_dir`、`execution_mode`、`partition`、`accelerator_kind` 等运行细节即便无法自动确定，也只能写入配置或用默认值落地并在正文标注假设，**严禁再用 question 逐字段追问用户**。下文“标准补问规则”仅在 `~/.ssh/config` 中完全没有可用连接、必须让用户首次提供 SSH 凭据时才生效；一旦存在 ≥1 个已配置连接，即按本节单弹窗流程处理，不进入逐字段补问。
+
+探测与弹窗边界：只做只读探测，不安装、不提交作业；私钥只按 `~/.ssh/config` 中的路径引用，脚本与 `question` 选项文本**一律不得读取或展示密钥内容**；连接不可达或探测失败必须在对应 `description` 中如实标注。**超时/连接失败而 `unverified=true` 的连接属“未验证”，不得表述为“不可达”，也不得因此把它排除出候选或把不满足需求的连接改标为推荐。**
+
+有脚本时优先用 `scripts/runsite_config.py`、`scripts/ssh_config.py`、`scripts/scnet_config.py`、`scripts/probe_remote_env.py`。
 
 ## 字段所有权
 
@@ -161,7 +198,7 @@ capabilities:
 
 - 安装环境：`conda create`、`pip install`、`git clone`、`bash install.sh`
 - 提交或运行作业：`sbatch`、`srun`、训练脚本、推理脚本
-- 除连接验证和有限 DCU/GPU 类型检测外做远端就绪探测：远端 `sbatch`、`squeue`、`sacct`、module/conda 检查、远端可写性检查
+- 除“连接验证、有限 DCU/GPU 类型检测、以及多远程工作台选择下的只读软件矩阵探测（`scripts/probe_remote_env.py`）”外做远端就绪探测：远端 `sbatch`、`squeue`、`sacct`、远端可写性检查、安装性探测
 - 提交任务或调用 `scnet-chat` 执行任务
 - 明文输出 SCnet 密钥
 - 重新创建已存在的项目根目录 `onescience.json`
@@ -179,6 +216,7 @@ capabilities:
 - 仅在 `onescience.json` 不存在时创建它
 - 仅按用户明确要求修改已有 `onescience.json`
 - 回传控制信息只出现在技能交接输出中，不写入 `onescience.json`
+- 多远程工作台选择时，通过 `scripts/probe_remote_env.py` 对各 SSH 连接做只读软件矩阵/加速器探测，并调用 `question` 工具弹出工作台选择框（推荐项标（推荐））
 
 ## 工具入口
 

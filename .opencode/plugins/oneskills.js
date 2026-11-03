@@ -23,6 +23,12 @@
  *        while the gap is open — the skill's self-verifying scripts must be
  *        used instead.
  *    Fail-open: sessions that never load the orchestrator are never gated.
+ *      Breakpoint 3 — remote commercial-software compute without a workbench:
+ *        Gate R: when ~/.ssh/config declares >=2 platform SSH connections, any
+ *        remote entry (skill onescience-runtime / onescience-mlmd-campaign-
+ *        orchestrator, or bash sbatch/srun/ssh/scp/rsync) is blocked until
+ *        onescience-runsite has been invoked, forcing the workbench selection
+ *        popup to appear before any remote job. Fail-open when <2 connections.
  *    Session state is keyed by sessionID so concurrent sessions stay isolated.
  *
  * The gap gates consume runtime artifacts on disk (`.onescience/gaps.jsonl`)
@@ -32,6 +38,7 @@
 
 import path from 'path';
 import fs from 'fs';
+import os from 'os';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -80,6 +87,44 @@ const WRITE_TOKENS = [
 // is an improvised-retrieval bypass — the model must use the skill scripts.
 const IMPROVISED_RETRIEVAL_RE =
   /(crystallography\.net|qiserver\.ugr\.es|api\.openalex\.org|europepmc|ebi\.ac\.uk|unpaywall|export\.arxiv\.org|arxiv\.org\/(?:abs|pdf)|doi\.org\/api|icsd|materialsproject\.org)/i;
+
+// ---------------------------------------------------------------------------
+// Gate R configuration — runsite workbench gate. Remote commercial-software
+// compute (a campaign/pipeline executor handoff or a submitted remote job) must
+// be preceded by an onescience-runsite workbench selection whenever >=2 platform
+// SSH connections exist, so the SSH selection popup reliably appears. Consumes
+// the real ~/.ssh/config on disk and the runsite skill-invocation trace, not
+// model self-declaration. Fail-open when fewer than 2 connections.
+// ---------------------------------------------------------------------------
+
+const RUNSITE_SKILL_KEY = 'runsite';
+const REMOTE_ENTRY_SKILL_KEYS = ['runtime', 'mlmd-campaign-orchestrator', 'campaign-orchestrator'];
+const REMOTE_EXEC_TOKENS = ['ssh ', 'sbatch', 'srun', 'salloc', 'scp ', 'rsync '];
+
+const isRunsiteSkill = (name) => name.includes(RUNSITE_SKILL_KEY);
+const isRemoteEntrySkill = (name) => REMOTE_ENTRY_SKILL_KEYS.some((k) => name.includes(k));
+const looksRemoteExec = (cmd) => {
+  const s = ` ${String(cmd || '').toLowerCase()} `;
+  return REMOTE_EXEC_TOKENS.some((t) => s.includes(t));
+};
+
+// Count platform SSH connections declared in ~/.ssh/config (opencode ssh marker
+// preferred; falls back to distinct Host aliases). Read-only, best-effort.
+const sshConnectionCount = (cwd) => {
+  let content = null;
+  for (const p of [path.join(os.homedir(), '.ssh', 'config'), path.join(cwd, '.ssh', 'config')]) {
+    const t = readTextIfExists(p);
+    if (t) { content = t; break; }
+  }
+  if (!content) return 0;
+  const markers = (content.match(/#\s*>{3}\s*opencode\s+ssh/gi) || []).length;
+  if (markers > 0) return markers;
+  const hosts = (content.match(/^Host\s+(.+)$/gim) || [])
+    .map((l) => l.replace(/^Host\s+/i, '').trim())
+    .flatMap((v) => v.split(/\s+/))
+    .filter((h) => h && h !== '*' && !h.includes('*'));
+  return new Set(hosts).size;
+};
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -197,6 +242,7 @@ const getSessionState = (sessionID) => {
       onlineFallbackCalled: false,
       gapPending: false,
       awaitPrimitivesResult: false,
+      runsiteCalled: false,
     };
     sessionStates.set(key, state);
   }
@@ -234,8 +280,7 @@ When OneSkills prompts request actions, substitute OpenCode equivalents:
 - Use \`onescience-coder\` for code generation or code modification (when dispatched by orchestrator or explicitly requested).
 - Use \`onescience-runtime\` only for run / submit / poll / diagnose tasks.
 - Use \`onescience-installer\` only for install / repair / verify tasks.
-- For paper reproduction, do not search, open, download, clone, or reference official or third-party implementation repositories.
-- Only EXCLUDE (when clearly unrelated to science/engineering/data-analysis/simulation): pure web/app frontend, pure CRUD business code, pure IT ops (deployment/network/account), syntax/API-usage daily Q&A. Any task involving experimental data fitting, scientific model selection, parameter identification, error analysis, result interpretation, or scientific code writing MUST go through \`onescience-orchestrator\` — even if it looks like just 'writing code' or 'running a script'.`;
+- For paper reproduction, do not search, open, download, clone, or reference official or third-party implementation repositories.`;
 
   const gateNote = `**Enforced gates (this plugin will block tool calls that violate them):**
 - Breakpoint 1: after \`onescience-orchestrator\` is loaded, before \`onescience-primitives\` has been invoked, execution tools (bash / write / edit / apply_patch / task) are blocked. Load primitives first and complete resource recall.
@@ -244,11 +289,16 @@ When OneSkills prompts request actions, substitute OpenCode equivalents:
 - If \`knowledge_gap=true\` (no domain-specific local hit), you MUST call \`onescience-online-knowledge\` (unified online verification: literature + crystal structure via COD + software parameters) to retrieve verified, cited evidence before writing scripts, submitting jobs, or answering domain parameters. Never substitute model memory, default parameters, fabricated data, or hand-rolled curl/wget queries against COD / OpenAlex / arXiv for this step — use the skill's scripts, which self-verify results.
 - Retrieved values must be consumed with provenance: literature facts carry [n] citations, structures carry COD ids, software parameters carry software-doc sources; model-prior fallbacks must be explicitly marked as “⚠ 未经在线核实” and never disguised as a cited source.`;
 
+  const runsiteGateNote = `**Runsite workbench gate (Gate R, enforced by this plugin):**
+- When \`~/.ssh/config\` declares 2 or more platform SSH connections, any remote commercial-software compute — handing off to \`onescience-runtime\` or \`onescience-mlmd-campaign-orchestrator\`, or running \`sbatch\`/\`srun\`/\`ssh\`/\`scp\`/\`rsync\` — is blocked until \`onescience-runsite\` has been invoked for this task.
+- Call \`onescience-runsite\` first: it read-only probes each SSH connection's software matrix (VASP/LAMMPS/accelerator/Slurm/conda) and pops the workbench selection box via the question tool, marking the connection that truly has the required software and is reachable as （推荐）. This is the ONLY interactive popup; all other remote fields (remote_work_dir / execution_mode / partition / accelerator) are auto-derived.`;
+
   const sections = [
     bootstrapMarker,
     'OneSkills is available from the local repository checkout.',
     routingGuide,
     gateNote,
+    runsiteGateNote,
     toolMapping,
     installGuide ? `**Local install note:**\nUse \.opencode/plugins/oneskills.js from this repository as the OpenCode plugin entry.` : null,
   ].filter(Boolean);
@@ -323,6 +373,7 @@ export const OneSkillsPlugin = async ({ client, directory, worktree } = {}) => {
             state.primitivesCalled = false;
             state.onlineFallbackCalled = false;
             state.gapPending = false;
+            state.runsiteCalled = false;
           }
           state.orchestratorLoaded = true;
           return;
@@ -338,6 +389,13 @@ export const OneSkillsPlugin = async ({ client, directory, worktree } = {}) => {
           state.onlineFallbackCalled = true;
           state.gapPending = false;
           await note(client, 'info', `online fallback skill invoked (${name}); knowledge-gap gate released`);
+          return;
+        }
+        if (isRunsiteSkill(name)) {
+          // runsite is the workbench resolver itself — always allowed, and it
+          // releases Gate R because a workbench selection is being made now.
+          state.runsiteCalled = true;
+          await note(client, 'info', 'runsite invoked; workbench gate released for this session');
           return;
         }
       }
@@ -402,6 +460,27 @@ export const OneSkillsPlugin = async ({ client, directory, worktree } = {}) => {
             );
           }
           // fileDecision === false → verified local hit, allow execution.
+        }
+      }
+
+      // --- Gate R (runsite workbench gate): remote commercial-software compute
+      // must be preceded by an onescience-runsite workbench selection whenever
+      // >=2 platform SSH connections exist. Blocks handing off to a campaign/
+      // pipeline executor or submitting a remote job until runsite has resolved
+      // the workbench (which pops the SSH selection box). Fail-open when <2.
+      if (state.orchestratorLoaded && !state.runsiteCalled && sshConnectionCount(cwd) >= 2) {
+        const remoteViaSkill = toolName === 'skill' && isRemoteEntrySkill(name);
+        const remoteViaBash = toolName === 'bash' && looksRemoteExec(args.command);
+        if (remoteViaSkill || remoteViaBash) {
+          await note(client, 'warn', `Gate R blocked ${toolName}: remote compute before runsite workbench selection`);
+          throw new Error(
+            '[OneSkills] 检测到 ~/.ssh/config 存在 2 个及以上平台 SSH 连接，且当前操作要进入远端计算' +
+            '（调用远端执行/流水线类技能，或 sbatch/srun/ssh/scp 等远端作业），但本会话尚未经 ' +
+            '`onescience-runsite` 确定执行工作台。必须先调用 skill `onescience-runsite`：它会只读探测各 ' +
+            'SSH 连接的软件矩阵（VASP/LAMMPS/加速器/Slurm/conda），并通过 question 工具弹出工作台选择框，' +
+            '把真正具备所需商软且可连通的连接标（推荐）供用户确认。在 runsite 工作台弹窗返回用户选择之前，' +
+            '不得提交任何远端作业或进入远端执行类技能。',
+          );
         }
       }
 

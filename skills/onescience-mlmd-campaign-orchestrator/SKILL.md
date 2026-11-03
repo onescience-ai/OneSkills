@@ -22,6 +22,7 @@ capabilities:
     - stage_results
     - md_trajectory
   downstream:
+    - onescience-runsite
     - onescience-dft-model-gate
     - onescience-runtime
     - onescience-trainer
@@ -70,7 +71,7 @@ capabilities:
 
 ## 一句话 → 结构化规格
 
-先把需求填进 `assets/campaign_spec.example.json`，与用户确认后落 `campaign_spec.json`。本场景默认：
+先把需求填进 `assets/campaign_spec.example.json` 并**直接按下列默认值自主落 `campaign_spec.json`，不向用户逐项确认科学参数**（泛函/色散/门限/温度/AIMD 时长/切分/超参一律取默认值，仅在正文标注为 `proposed_candidate`/`pending_verification`）；**唯一允许的用户交互是 S0 由 `onescience-runsite` 弹出的工作台连接选择**。本场景默认：
 
 - `electrochemistry.mode = "neutral"`（禁 VASPsol/CP）。
 - `slab.fix_bottom_layers = 2`（188 原子中底部 **32 个 Cu 固定**）。
@@ -83,7 +84,7 @@ capabilities:
 
 | 阶段 | 做什么 | 本 skill 内对应 | 交付 | 门限（不达标即停） |
 |---|---|---|---|---|
-| S0 | 归一化需求 + 站点解析 | `assets/campaign_spec.example.json`；`references/environment_notes.md` | spec + 站点画像 | 必备字段齐全；站点连通 |
+| S0 | 归一化需求 + 站点解析（**必须调用 `onescience-runsite` 选工作台**，见下“站点解析硬门”） | `assets/campaign_spec.example.json`；**`onescience-runsite`（多远程工作台选择弹窗 + 只读环境探测推荐）** | spec + execution_target | 必备字段齐全；**runsite 已返回用户确认的可用站点**（不得自行定站） |
 | S1 | DFT 结构优化 | `scripts/build_interface_example.py` + `assets/INCAR.relax.example` + `assets/submit.vasp.example.slurm`；门限 → `onescience-dft-model-gate` (`check_vasp_inputs.py --delivery-dir`, I10+I11) | `POSCAR/CONTCAR/契约/view.html` | `check_geometry` + `check_vasp_inputs --delivery-dir` PASS（I11 含 view.html）；力收敛 ≤ \|EDIFFG\| |
 | S2 | 中性 AIMD 出轨迹 | `assets/INCAR.nvt.example` + `references/velocity_block_pitfall.md` + 提交模板 | `vasprun.xml/XDATCAR/OSZICAR` | 温度稳定、SCF 收敛、无 refuse、**速度块已处理**、**中性守卫** |
 | S3 | 轨迹 → 数据集 | `scripts/probe_traj.py` + `scripts/vasp2mace_dataset.py` + `scripts/validate_dataset.py` + `references/split_policy.md` | `*_train/valid/test.extxyz`(+h5) | 键为真值、计数一致、**time-block 且 shuffle=false** |
@@ -93,14 +94,23 @@ capabilities:
 
 详细的每步命令见 **`references/stage_playbook.md`**（自包含，含建模型/AIMD/数据集/训练/导出/长 MD）。
 
+## 站点解析硬门（S0 必须先经 onescience-runsite 选工作台）
+
+**任何远端计算（S1 VASP 优化 / S2 AIMD / S4 MACE 训练 / S6 长时 MD）开始前，S0 的“站点解析”必须调用 `onescience-runsite` 完成，不得自行假设或用自己的一次性探测代替。**
+
+- 当 `~/.ssh/config` 存在 **2 个及以上平台 SSH 连接**时，`onescience-runsite` 会弹出**多远程工作台选择框**，只读探测各连接软件矩阵（VASP/LAMMPS/加速器/Slurm/conda），并把**真正具备本次所需商软且可连通**的连接标 `（推荐）`；缺密钥/不可达、或无可达商软的连接一律不得写成推荐。
+- 本技能**禁止**默认锁定某个集群（如 SCNet），也禁止用 `references/environment_notes.md` 的自探测替代 runsite 的选择弹窗；执行站点由 runsite 弹窗返回的用户选择决定。
+- runsite 返回的 `execution_target`（host / user / partition / module / remote_work_dir / 调度方式）随 spec 落到 `campaign_spec.json`，供 S1–S6 消费；未拿到 runsite 选择前不得提交任何远端作业（`sbatch`/`srun`/远端脚本执行）。
+- 即便上层 `autonomous_mode=true`，此弹窗仍必须出现——它是任务级执行位置决策，不受“自主模式禁止交互提问”限制。
+
 ## 控制流
 
 ```
-S0（确认 spec）→ S1 →gate→ S2 →gate→ S3 →gate→ S4 →gate(误差)→ S5 →gate→ S6
+S0（确认 spec + runsite 站点）→ S1 →gate→ S2 →gate→ S3 →gate→ S4 →gate(误差)→ S5 →gate→ S6
 ```
 - 每个 gate 输出 **PASS/FAIL + 实测值/门限值 + `sha256`**；FAIL → **停止并报告**。
 - 允许的“自动重试”仅限**基础设施层**（坏节点、QOS 记账、网络），且记录原因。
-- 需要改科学参数（时间步、温度、切分、超参）时，**先问用户**。
+- 科学参数（时间步、温度、切分、超参、泛函、色散、门限等）由本技能按默认值**自主决定并在正文记录假设，不得用 question 弹窗向用户确认**；仅 `onescience-runsite` 的工作台连接选择弹窗例外。确需偏离默认时，在正文声明依据（文献/理由）并继续执行，不中断等待用户。
 - **todo 同步（界面状态）**：campaign 启动时必须用 `todowrite` 将 S0–S6 登记为 todo 列表；
   阶段**开始**时将当前阶段置 `in_progress`，该阶段 gate **PASS 后立刻**再次调用 `todowrite`
   置 `completed` 并将下一阶段置 `in_progress`；gate FAIL 置 `cancelled` 并停止。
@@ -123,6 +133,7 @@ S0（确认 spec）→ S1 →gate→ S2 →gate→ S3 →gate→ S4 →gate(误�
 3. 交付统一 **契约 + 硬门限 + 证据绑定（sha256 + 命令行）**；文件一变就重跑门限。
 4. 站点相关常量（分区/module/路径/DTK 版本）只从配置取，不写死。
 5. 交付必须声明计算语义（中性/恒电位、泛函、色散、溶剂），供下游判断适用性。
+6. **弹窗最小化**：整条流水线中**只允许 `onescience-runsite` 的工作台连接选择这一个 question 弹窗**；任何科学参数、spec 确认、门限、温度、时长、切分、超参都走默认值自主决策，**禁止为其弹 question 让用户确认**。
 
 ## 文件
 
@@ -146,5 +157,6 @@ S0（确认 spec）→ S1 →gate→ S2 →gate→ S3 →gate→ S4 →gate(误�
 
 ## 依赖的兄弟技能
 
+- **`onescience-runsite`**：S0 站点解析——多远程 SSH 工作台选择弹窗 + 只读环境探测，把拥有目标商软（VASP/LAMMPS）且可连通的连接标（推荐）；本技能不得自行定站。
 - **`onescience-dft-model-gate`**：S1 建模几何门限（`check_geometry.py`）与交付门限（`check_vasp_inputs.py --delivery-dir` 含 I10 形态 + I11 三维视图）。
 - **`onescience-structure-viewer`**：S1 交付视图 `view.html`（I11 硬门限要求），缺图 check_vasp_inputs 会 FAIL(exit 1)，必须渲染后重跑门限。
