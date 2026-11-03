@@ -71,7 +71,7 @@ content:
 - **唯一入口**：资源知识只能通过调用 `type=resource` 技能获取。
 - **禁止绕过协议**：调用方不得在资源请求/返回闭环之外自行读取、消费 `assets/`。资源技能按请求执行的内部枚举、过滤、读取是召回流程的一部分，不受此禁令限制。
 - **只消费契约返回内容**：调用方只能消费 `resource_retrieval_result.matched_resources[*].content` 中承载的资源内容。
-- **路径仅为元数据**：`path` / `name` / `type` / `why_matched` / `limitations` 仅用于标识、匹配说明和绑定，不构成直接读文件授权。
+- **路径仅为元数据**：`path` / `name` / `type` / `why_matched` / `limitations` 仅用于标识、匹配说明和绑定，不构成直接读文件授权。**唯一例外**：`intent=provision` 类物化结果中的 `provisioned_resources[*].local_path` 是已落盘事实（带 `content_digest` 与 `verification`），调用方可直接读取该目录；详见下文「资源物化扩展」。
 - **允许的本地读取例外**：技能可以读取自身的非资源参考文档或运行初始化资产；该例外不适用于任何 `type=resource` 技能的资源资产目录。
 
 ### 内容不足时的唯一替代路径
@@ -98,6 +98,7 @@ content:
 resource_retrieval_request:
   user_request: <用户需求描述>
   task_state_summary: <任务状态摘要，可选>
+  intent: <resource | task | workflow | scenario | provision，可选>
   content_request: <内容需求，可选>
   filters: <过滤条件，可选>
     domain: <领域过滤，可选>
@@ -108,6 +109,7 @@ resource_retrieval_request:
 
 - `user_request`：必填，用户的需求描述
 - `task_state_summary`：可选，当前任务状态摘要
+- `intent`：可选，取 `provision` 时请求的是**把资源取到本地**而非召回知识，走下文「资源物化扩展」；其余取值与缺省都是知识召回
 - `content_request`：可选，用中文自然语义描述需要的内容类型
   - 留空或不填：返回资源摘要（默认）
   - 自然语言描述示例：
@@ -211,6 +213,35 @@ content:
   limitations: "仅支持 0.25° 分辨率，需要 GPU 推理"
 ```
 
+## 资源物化扩展（`intent=provision`，`onescience-resource-fetch`）
+
+`type=resource` 现有两个技能，共用同一信封但职责不同：`onescience-primitives` 回答"这个资源是什么/怎么用/什么参数"（知识召回），`onescience-resource-fetch` 回答"这个资源在本地哪个路径可用"（把 ModelScope 的 dataset / model 仓库物化到本地统一缓存）。判据是调用方关心的是**内容知识**还是**落盘路径可用性**：缺权重、缺数据集、要准备训练数据走后者；要规格说明、参数惯例、工作流规划走前者。两者都要时先物化再按资源卡消费，不互相替代。调用方只给任务、连资源名都没有时，可只发 `user_request`（`intent=provision`）而不填 `provision_spec`，由 `onescience-resource-fetch` 按 `resource_planning.md` 做任务级资源规划：自行拆需求、派生逻辑名、检索并打分择优，全程不回问用户。
+
+请求扩展（字段细则以 `onescience-resource-fetch/references/provision_contract.md` 为准）：
+
+```yaml
+resource_retrieval_request:
+  intent: provision
+  provision_spec:
+    - name: <逻辑资源名>      kind: dataset | model
+      repo_id: <可选，最高优先级>    source_dir: <可选，显式本地目录>
+      required_files: [<必需文件通配式>]   min_bytes: <大小下界，可选>
+      allow_download: <默认 true>        allow_name_search: <默认 true>
+      search_query: [<任务级检索短词，可选>]   task_hint: [<任务描述原文，可选，参与打分>]
+      max_repo_bytes: <自动择优体积上限，默认 8 GiB>   candidate_attempts: <最多试几个候选，默认 3>
+      strict_name: <默认 false；true 时多同名不代作选择>   allow_gated: <默认 false>
+```
+
+结果扩展：`task_intent=resource_provision`，附 `provisioned_resources[]`（`local_path`、`resolution_method`、`repo_id`、`repo_id_source`、`files`、`bytes`、`content_digest`、`verification`、`limitations`；走过站内检索择优时另附 `selection`＝{chosen,score,reasons[],alternatives[],excluded[],searched[]} 与 `fetch_attempts`＝[{repo_id,repo_id_source,outcome,files,bytes}]）与 `missing_resources[]`。
+
+消费规则：
+
+- `provisioned_resources[*].local_path` 可直接读取并写入 `Task State.resource_bindings`（`resource_type` 取 `dataset`/`model`，`path` 取 `local_path`，并保留 `repo_id` 与 `content_digest` 供复现追溯）。
+- `resolution_method` 说明数据从哪来：`explicit_path`（调用方给的）、`cache_hit`（统一缓存命中）、`local_probe`（工作区/共享库/注册表里的其它路径）、`modelscope_fetch`（本次真的走了网络）。前三种**未发生**网络请求，不得在报告里描述成"已下载"。`repo_id_source=name_search`（只给裸名、默认约定仓库不存在、由官方检索定位到逐字同名仓库）与 `name_search_ranked`（只给任务或裸名、按元数据打分自动择优命中）都表示换过仓库，配套 `warnings` 与 `selection.reasons` 写明原委；这只可能发生在 `modelscope_fetch` 段，额外花的是若干次不传输数据的只读查询（长句 0 命中时脚本会自动拆词重试）。转述给用户时必须带上选中的 `repo_id` 与主要 `reasons`，不能只报本地路径。
+- `missing_resources` 非空即视为该资源缺口未闭合，按 `reason` 分流：`backend_unavailable`/`network_error` 交 `onescience-installer` 或重试；`repo_not_found`/`authentication_failed` 是需要用户介入的硬约束（记 gap / 走提问协议）；`repo_ambiguous` 只在调用方显式 `strict_name=true` 时出现，此时把同名候选列在 `details.candidates` 由调用方选定 `repo_id`（默认非 strict 不报此因，而是自动择优并逐候选降级重试）；`no_selectable_repo`（有候选但都需凭据或超 `max_repo_bytes`）出路是配凭据 + `allow_gated`、放宽 `max_repo_bytes`、或显式 `repo_id`；`resource_plan_empty`（只给任务且规划 + 两轮检索都无候选）需补更具体的领域/模态/检索词；`verification_failed` 保留已落盘路径与逐项 checks，由调用方决定换 `repo_id` 还是补 `revision`。
+- **禁止**在物化失败时用占位数据、示例文件或随机张量凑出可用目录（对应 `evidence_gates.md` 的 fabricated 禁令）；不得把 `status: failed|partial` 改写成 `success`。
+- 取回的原始资源若还需格式标准化，把 `local_path` 作为 `source_dir` 交给 `onescience-data-standardizer`，其 AI-Ready 注册由该技能的 `data_management.json` 维护，与本技能的 `resource_registry.json` 互不覆盖。
+
 ## 使用场景
 
 ### orchestrator 调用（获取摘要）
@@ -289,6 +320,7 @@ resource_bindings:
 - [ ] 调用方只基于 `matched_resources[*].content` 消费资源内容，未在契约外引用、概括或拼接资源内容
 - [ ] 调用方不得在输出 `resource_retrieval_request` 之前消费原语内容
 - [ ] 若资源内容不足，已通过精确 `content_request` 补召或记录 `resource_insufficient`，未 fallback 到直读 `assets/`
+- [ ] 若为 `intent=provision`：只消费 `provisioned_resources[*].local_path` 与 `verification`，缺失时按 `missing_resources[*].reason` 分流，未把部分/失败结果当成功继续
 
 ## 资源冲突处理
 

@@ -1,0 +1,23 @@
+{
+  "name": "modelscope-resource-provisioning",
+  "type": "tool",
+  "domain": "general",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-03",
+  "updated_at": "2026-11-03",
+  "description": "ModelScope 资源物化能力卡（general 语义域）：任务需要的模型权重/checkpoint 或数据集在本地不存在时，从 ModelScope 直接下载到本地统一缓存并返回可用绝对路径。关键实体为裸名/repo_id 与 dataset|model 两类仓库；能力包含官方 OpenAPI 检索候选、按元数据打分自动择优、SDK→CLI→Git LFS 三级降级下载、完整性校验与幂等缓存注册；连接关系：作为 onescience-resource-fetch 技能对外暴露的资源供给原语，供 orchestrator 在 resource 层通过 resource_retrieval_request/result 调用。",
+  "tags": [
+    "modelscope",
+    "resource-provisioning",
+    "dataset-download",
+    "model-download",
+    "openapi-search",
+    "auto-selection",
+    "sdk-cli-git-lfs-degradation",
+    "idempotent-cache",
+    "src:skill:onescience-resource-fetch",
+    "src:provider:modelscope",
+    "src:accessed:2026-11-03"
+  ]
+}

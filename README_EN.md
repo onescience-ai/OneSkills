@@ -44,7 +44,7 @@ The current primary entry point is `onescience-orchestrator`. When a user says "
 ```text
 User Research Goal
   -> onescience-orchestrator
-       -> type=resource: Recall resource summaries and planning knowledge
+       -> type=resource: Recall resource summaries and planning knowledge; materialize missing resources locally
        -> type=expert: Generate domain-specific or task-specific planner proposals
        -> Global Plan: Merge plans, bind resources, select next step
        -> type=executor: Coding, paper reproduction, runtime, installation, analysis, inference, etc.
@@ -61,11 +61,11 @@ User Research Goal
 
 ### Layer 2: Resource
 
-- Skill: `onescience-primitives`
-- Responsibilities: Recall unified primitive resources from `skills/onescience-primitives/assets/`, including first-party OneScience resources and distilled third-party scientific tools / databases / services
+- Skill: `onescience-primitives` (knowledge recall), `onescience-resource-fetch` (resource provisioning)
+- Responsibilities: the former recalls unified primitive resources from `skills/onescience-primitives/assets/`, including first-party OneScience resources and distilled third-party scientific tools / databases / services; the latter materializes a missing model checkpoint or dataset from ModelScope into the `~/.onescience` unified cache when `intent=provision`, verifies it, and returns a ready-to-use absolute path (SDK -> CLI -> Git LFS degradation, with the outcome recorded in `resource_registry.json` for reuse)
 - Coverage: currently `bio`, `cfd`, `climate`, `matchem`, and `general`; `general` carries cross-domain research methods, databases, workflows, and delivery-format primitives
 - Common resources: models, components, datapipes, datasets, tools, databases, services, applications, visualization, workflow-planning, contracts, output formats
-- Constraint: Callers may only consume `matched_resources[*].content` returned by the resource skill; they may not bypass the resource contract by directly reading assets
+- Constraint: Callers may only consume `matched_resources[*].content` returned by the resource skill; they may not bypass the resource contract by directly reading assets. The one on-disk exception is `provisioned_resources[*].local_path`, which is a verified on-disk fact (carrying `verification` and `content_digest`) and may be read directly
 
 ### Layer 3: Expert
 

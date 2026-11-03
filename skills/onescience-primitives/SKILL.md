@@ -76,6 +76,8 @@ capabilities:
 
 调用方仍**不得**沿 `matched_resources[].path` 自由读取任意文件、不得在无请求时浏览 `assets/`、不得消费未在 `execution_assets` 白名单声明的脚本。当本技能被上游调用时，`resource_retrieval_request` 是输入控制消息而非最终输出；本技能直接执行召回并返回 `resource_retrieval_result`。
 
+**物化不属本技能**：请求为 `intent=provision`（要把 ModelScope 的模型权重 / 数据集取到本地、缺资源需下载、准备训练数据）时，本技能不执行下载，也不得给出一个"看起来可用"的本地路径；这类请求由调用方按统一资源契约调度 `onescience-resource-fetch`。本技能只回答"是什么 / 怎么用 / 什么参数"；资源卡正文（`spec.md` / `usage.md` / `metadata.json`）里出现的 `modelscope.cn/<datasets|models>/<org>/<name>` 链接或 `repo_id:` 原文应作为对方的 `repo_hints` 原样传递，不要改写后只给结论。
+
 ## 原语资产目录
 
 ```text
@@ -239,7 +241,7 @@ resource_retrieval_request:
     method_id: <Method ID 过滤，可选，用于 Task-Centric 检索>
 ```
 
-> `intent`：`resource`（默认）走传统原语路径；`task` 返回 Task 定义及关联 Method/Resource/Operation/Validation；`workflow` 返回 Workflow 的 Task Graph 及各 Task；`scenario` 返回 Scenario 及关联 Workflow 和 Task。
+> `intent`：`resource`（默认）走传统原语路径；`task` 返回 Task 定义及关联 Method/Resource/Operation/Validation；`workflow` 返回 Workflow 的 Task Graph 及各 Task；`scenario` 返回 Scenario 及关联 Workflow 和 Task。`provision`（物化资源到本地）不由本技能处理，转 `onescience-resource-fetch`。
 
 ## 输出格式
 
