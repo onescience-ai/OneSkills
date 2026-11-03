@@ -113,6 +113,24 @@ METHOD_ALIASES = {
     "molecular dynamics": ["md simulation", "md simulations"],
     "geometry optimization": ["structural optimization", "geometry optimisation",
                               "structural relaxation"],
+    # ---- 第二轮（MOF-5/MLMD 探针实测补入，均为同一方法的不同写法=真同义词，非放宽门槛）----
+    # 证据：唯一真靶心 "Neural Network Potential for MOF-5"(cited=133) 曾被判 strong=[]，
+    # "active learning" 命中的 3 篇全部被 drop。补别名把它们救回正确档位。
+    # 刻意不含裸 "gap"/"snap"/"mace"：实测 "gap" 会命中 "band gap" 造成假阳性。
+    "machine learning interatomic potential": [
+        "machine learned potential", "machine learning potential",
+        "machine-learned potential", "ml potential",
+        "neural network potential", "neural network potentials",
+        "high-dimensional neural network potential",
+        "message passing neural network", "deep potential", "deeppmd",
+        "behler-parrinello", "spectral neighbor analysis potential",
+        "gaussian approximation potential"],
+    "active learning": ["on-the-fly learning", "on the fly learning",
+                        "query by committee", "active-learning"],
+    # 与现有表同风格的标准缩写对（xrd/dos/efg/ssnmr 已在表内）
+    "nudged elastic band": ["neb", "climbing image neb"],
+    "ab initio molecular dynamics": ["aimd"],
+    "density functional theory": ["dft"],
 }
 
 _net_ok = True
@@ -180,6 +198,13 @@ def _norm(t):
     return re.sub(r"[^\w]+", "", (t or "").lower())
 
 
+# 排版连字符归一：文献标题/摘要里的 "metal–organic"(U+2013)、"13C–13C"、"Ti–O"、
+# 以及 U+2212 数学减号 常是排版连字符，而查询词与别名写的是 ASCII hyphen，
+# re.escape 后两者不相等 -> 系统性漏匹配（全域通用缺陷，非某一领域专属）。
+# 归一为 ASCII '-' 后再匹配；两侧（候选词与 blob）都要归一，否则任一侧带连字符仍漏。
+_DASH_RE = re.compile("[\u2010\u2011\u2012\u2013\u2014\u2015\u2212\u2043\u00ad]")
+
+
 def term_hit(term, blob):
     """词/短语是否命中 blob（已 lower）。先整体匹配，再试 METHOD_ALIASES 别名。
 
@@ -192,8 +217,9 @@ def term_hit(term, blob):
     t = (term or "").lower().strip()
     if not t:
         return False
+    blob = _DASH_RE.sub("-", blob)
     for c in [t] + list(METHOD_ALIASES.get(t, [])):
-        c = (c or "").lower().strip()
+        c = _DASH_RE.sub("-", (c or "").lower().strip())
         if c and re.search(r"(?<!\w)%s(?!\w)" % re.escape(c), blob):
             return True
     return False
