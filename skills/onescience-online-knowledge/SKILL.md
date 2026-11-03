@@ -94,6 +94,8 @@ capabilities:
       "verified_online": true,
       "self_verified": true,
       "domain_match": "exact | adjacent | cross_domain | null",
+      "domain_match_basis": "<脚本给出的客观依据：哪个词落在 title / abstract>",
+      "relevance": "anchor | method-only | entity-only | low-fallback | low",
       "confidence": "high | medium | low",
       "note": "<回验结论 / 兜底原因 / abstract-only / OFFLINE 等>"
     }
@@ -109,11 +111,22 @@ capabilities:
 
 ### 通道① 文献（快查数值 + 免费全文 + 深度综合复用）
 1. 从任务里抽出「需要文献接地的方法学/数值问题」列表。
-2. 检索：运行 `scripts/lit_search.py "<query>"`（OpenAlex 相关性检索 + Europe PMC 兜底，离线打 `[OFFLINE]`），拿题录+摘要，按 `domain_match` 打标。**OpenAlex 响应自带合法 OA 标记（`is_oa`/`best_oa_location.pdf_url`），不再浪费免费全文线索**。
-3. 加 `--with-arxiv` 附加 arXiv API 通道（cond-mat 等计算领域论文大量免费预印本），并对缺 OA 直链的 DOI 做 **Unpaywall** 补查（机构库/预印本合法 OA 版）。
-4. 加 `--fetch-oa` 下载有合法 OA 直链的 PDF 并尽力抽取全文文本（本机有 pymupdf/pdfminer 时产出 `*_fulltext.txt`，`evidence_level` 升为 `full-text-oa`；缺库则只落 PDF 如实标注）。**付费墙仍然成立**：拿不到合法 OA 版的如实停在 `abstract`，绝不绕墙。
-5. 需要 PMC 系全文细节时：复用 `onescience-live-literature` 的命令块 B（Europe PMC fullTextXML → NCBI BioC），**全文通道全失败的论文只引用摘要级事实并标 `abstract-only`**。
-6. 每条接地数值写 `items[]`：`channel=literature`，`provenance=<DOI/编号>`，`evidence_level=full-text-oa|full-text|abstract`。
+2. **先把问题拆成检索要素再跑脚本**：`--entities` 填目标体系名（如 `glycine,polymorph`），`--methods` 填方法与实验手段（如 `GIPAW,chemical shift,solid-state NMR`）。脚本据此自动分解出多条 ≤4 词子查询并行打 OpenAlex，并与 Europe PMC / arXiv **并行**检索后合并去重（EPMC 不再是「OpenAlex 返空才兜底」的死代码）。
+   > **不要把整句任务描述当一条查询串塞进去**：OpenAlex 的 `search=<长串>` 是全字段逐词 AND，实测 14 词长串只返回 count=2 且头部全不对题；拆成子查询走 `filter=title_and_abstract.search:` 后同一语料 count=370、头部即靶心。
+3. 脚本内置**四档相关性门**（核心实体词/强方法词加权计分，宽泛词如 NMR/DFT 不计分）与**客观 `domain_match`**（只看词落在 title 还是 abstract，附 `domain_match_basis`）。未过门（`relevance=low`）的条目**不进下载队列**——这修掉了旧版「只要 is_oa 就下载」使量子计算综述、缪子探测器论文占满 `online_kb` 与 `--oa-limit` 名额的问题。四档含义（写在每条的 `relevance` 字段）：
+   | `relevance` | 判据 | 对下游的意义 |
+   | --- | --- | --- |
+   | `anchor` | 锚定实体（`--entities` 第一个词）命中 **且** ≥1 个方法词命中 | 直接对题，可判 `exact`，下载名额第一优先 |
+   | `method-only` | 锚定实体未命中，但 ≥2 个强方法词命中 | 方法学参考（怎么做/精度多少），`domain_match` 封顶 `adjacent` |
+   | `entity-only` | 锚定实体命中但**零方法词** | 同物质、不同问题（如问谱学时命中的「Interstellar Glycine」），封顶 `adjacent`，排在 `method-only` 之后 |
+   | `low` / `low-fallback` | 以上都不满足 | 丢弃；仅当门把全部命中挡下时 fail-safe 回退保留最高分 5 条，**绝不可当证据用** |
+   > `entity-only` 只降优先级、**不踢出池子**：当任务问的是晶型结构而非谱学时，「Crystal growth of α and γ glycine polymorphs」这类零方法词命中的结晶学文献恰恰是靶心。判档只看词面命中，**上层不要自行改判**。
+4. 加 `--with-arxiv`：arXiv 走 `abs:"X" AND abs:"Y" AND (cat:… OR cat:…)` 布尔检索（**绝不用 `all:<裸串>`**，实测裸串返回大量跳领域噪声）。缺 PDF 直链的 DOI 会走 **Unpaywall** 补查（机构库/预印本合法 OA 版）：补查在相关性门**之后**按相关性顺序消耗预算（`--unpaywall-limit`，默认 20，`--no-unpaywall` 可关），不浪费在将被丢弃的噪声上；用量与预算写在输出的 `paywall.unpaywall_tried` / `unpaywall_budget`。green OA 常只给到仓储落地页而无 PDF，此时 Unpaywall 也可能查不到直链——**这是付费墙成立，不是脚本故障**。
+5. 加 `--fetch-oa`：**只对通过相关性门的条目**下载 PDF 并抽全文（有 pymupdf/pdfminer 时 `evidence_level` 升为 `full-text-oa`）。名额严格按 `relevance` 档位 > `domain_match` > 被引数排序消耗，`low`/`low-fallback` 永不下载。**不要按被引数判断谁更该下载**：实测 `entity-only` 档的「Interstellar Glycine」(cited=377)、「glycine receptor signalling」(cited=100) 会靠高被引抢光全部名额，而 cited=1~12 的 NMR crystallography、周期 DFT ¹³C shielding 精度等方法学文献一篇都下不到。
+6. 靶心文献被付费墙挡住时加 `--citing-oa`：走 OpenAlex 施引反查（`filter=cites:W…,is_oa:true`）找**开放获取的下游文献**承载同一数值。实测两篇 closed 靶心分别给出 8 / 17 篇 OA 施引文献（含 ¹³C shielding tensors、NMR crystallography 专题）。**付费墙仍然成立：拿不到合法 OA 版的如实停在 `abstract`，绝不绕墙。**
+7. 需要 PMC 系全文细节时：复用 `onescience-live-literature` 的命令块 B（Europe PMC fullTextXML → NCBI BioC）。`evidence_level=abstract-only` 的条目**禁止**作为数值来源。
+8. 每条接地数值写 `items[]`：`channel=literature`，`provenance=<DOI/编号>`，`evidence_level=full-text-oa|full-text|abstract`，`domain_match` 沿用脚本判定值并原样带上 `domain_match_basis`。
+9. **数值型知识（如具体 ppm）不要指望文献通道兜底**：全文拿不到就如实标 `knowledge_gap`、改走通道②/③ 的数据源，或标带 `⚠` 的先验值，**绝不无出处默写**。
 
 ### 通道② 结构 / 物质数据（本技能新增核心能力）
 运行 `scripts/structure_fetch.py`（详见第六节命令块）。内部逻辑：
@@ -142,13 +155,23 @@ capabilities:
 
 > 均为纯标准库（urllib），网络不可用时捕获异常打 `[OFFLINE]` 后正常退出。脚本随技能置于 `scripts/`，参数表置于 `assets/`。
 
-**A · 文献检索（含免费全文线索）**（详见 `scripts/lit_search.py`）
+**A · 文献检索（多子查询 + 三源并行 + 相关性门 + 免费全文降级链）**（详见 `scripts/lit_search.py`）
 ```bash
-# 基本快查（题录+摘要+OA 标记）：
-python scripts/lit_search.py "glycine 13C 15N chemical shift GIPAW reference compound" --max 20
-# 加 arXiv/Unpaywall 免费全文通道，并下载抽取 OA 全文（最多 5 篇）：
-python scripts/lit_search.py "glycine GIPAW NMR" --max 12 --with-arxiv --fetch-oa --oa-limit 5 --workdir ./online_kb
+# 基本快查（自动分解子查询 + OpenAlex/EuropePMC 并行 + 相关性门）：
+python scripts/lit_search.py "glycine 13C 15N chemical shift GIPAW" \
+    --entities "glycine,polymorph" --methods "GIPAW,chemical shift,solid-state NMR" --max 12 --top 12
+
+# 全量推荐：arXiv 布尔 + Unpaywall + OA 全文下载 + 付费墙靶心的施引反查 + 年份下限：
+python scripts/lit_search.py "glycine polymorph alpha gamma 13C 15N solid-state NMR chemical shift GIPAW DFT" \
+    --entities "glycine,polymorph" \
+    --methods "GIPAW,chemical shift,magnetic shielding,solid-state NMR,DFT" \
+    --with-arxiv --fetch-oa --oa-limit 5 --citing-oa --year-from 1990 \
+    --max 10 --top 14 --workdir ./online_kb
+
+# 检索式自己控（| 分隔多条，每条 ≤4 词）：
+python scripts/lit_search.py "glycine GIPAW" --sub-queries "glycine GIPAW|glycine NMR chemical shift|polymorph magnetic shielding"
 ```
+> 输出条数用 `--top N` 控制，**不要用 shell `head`/`tail` 再截**（截断会使上层看不到 `domain_match_summary`/`caveat` 而误判）。完整结果始终落在 `<workdir>/lit_result.json`。脚本输出的 `domain_match_summary` 可直接抄进 `gaps.jsonl`，无需自行点数。
 
 **B · 结构取数**（详见 `scripts/structure_fetch.py`）
 ```bash
@@ -175,4 +198,6 @@ python scripts/param_lookup.py --software VASP --calc NMR-GIPAW --live --workdir
 5. 缺任何一类知识都**不 blocked**——降级为带标注先验继续跑；如实标注即可。
 6. 网络异常 → `[OFFLINE]` + 如实标注 + 正常退出，绝不崩溃中断上层。
 7. 输出统一走 `online_knowledge.json` schema，字段齐全（source_type / evidence_level / verified_online / self_verified / provenance）。
-8. 交付前逐条自检：这条真值是哪来的？在线的有没有出处？先验的有没有 `⚠` 标注且没赖给文献？
+8. `domain_match` 以脚本给出的客观判定为准（看 `domain_match_basis`）：上层**只能改严（exact→adjacent）不得改松**；`gaps.jsonl` 的 `domain_match_summary` 直接抄脚本输出的同名字段，不得自行点数。
+9. `evidence_level=abstract-only` 的文献**禁止承载任何数值**；缺数值就如实标 `knowledge_gap` 或走带 `⚠` 的先验值，绝不无出处默写。
+10. 交付前逐条自检：这条真值是哪来的？在线的有没有出处？先验的有没有 `⚠` 标注且没赖给文献？
