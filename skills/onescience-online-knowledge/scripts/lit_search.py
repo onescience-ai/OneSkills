@@ -66,6 +66,7 @@ DEFAULT_MAILTO = os.environ.get("ONESCIENCE_CONTACT_EMAIL", "").strip()
 UNPAYWALL_EMAIL = DEFAULT_MAILTO or "onescience-online-knowledge@example.org"
 # key 只走环境变量、不做命令行参数：命令行会进 ps 与 shell 历史，凭证不得明文出现在进程列表。
 OA_API_KEY = os.environ.get("OPENALEX_API_KEY", "").strip()
+CROSSREF = "https://api.crossref.org/works"   # 备用摘要层：独立基础设施/限流池，免 key
 DEFAULT_ARXIV_CATS = "cond-mat.mtrl-sci,physics.chem-ph,physics.comp-ph"
 OA_SELECT = ("id,doi,title,publication_year,publication_date,authorships,abstract_inverted_index,"
              "cited_by_count,open_access,best_oa_location,primary_location")
@@ -347,14 +348,27 @@ def epmc_query(entities, methods, raw):
     return " AND ".join(parts)
 
 
-def arxiv_query(entities, methods, cats, raw):
-    """arXiv 布尔检索。绝不使用 `all:<裸串>`——实测会返回量子计算/缪子探测器级噪声。"""
-    terms = (entities[:1] + methods[:2]) or split_terms(raw)[:3]
+def arxiv_query(entities, methods, cats, raw, rescue=False):
+    """arXiv 布尔检索。绝不使用 `all:<裸串>`——实测会返回量子计算/绢子探测器级噪声。
+
+    rescue=True（OpenAlex 被限流取空时的降级救援）刻意放宽：只 AND 首个实体+首个方法两条
+    abs 子句、且**不加 cat: 过滤**——实测 `(cat:X OR cat:Y) AND abs:"…"` 会被 arXiv API 判成
+    0 命中（cat 组与 abs 布尔式合取失效），而纯 abs 布尔式能正常回血（TBG 热输返 4 条、
+    甘氨酸 chemical shift 3 条）。常规 --with-arxiv 仍走严格式保精度，不改既有行为。
+    """
+    if rescue:
+        terms = ([entities[0]] if entities else []) + (
+            [methods[0]] if methods else ([entities[1]] if len(entities) > 1 else []))
+        cap = 2
+        cat_list = []
+    else:
+        terms = (entities[:1] + methods[:2]) or split_terms(raw)[:3]
+        cap = 3
+        cat_list = [c.strip() for c in (cats or "").split(",") if c.strip()]
     clauses = ["abs:\"%s\"" % t.strip('"') for t in terms if t.strip()]
     if not clauses:
         return None
-    cat_list = [c.strip() for c in (cats or "").split(",") if c.strip()]
-    q = " AND ".join(clauses[:3])
+    q = " AND ".join(clauses[:cap])
     if cat_list:
         q = "(%s) AND %s" % (" OR ".join("cat:%s" % c for c in cat_list), q)
     return q
@@ -443,6 +457,63 @@ def europepmc(query, maxn):
             "pmcid": pmcid,
             "source": "EuropePMC",
         })
+    return out
+
+
+def crossref(query, maxn, year_from=None):
+    """Crossref REST 备用摘要源：独立于 OpenAlex/EPMC 的限流池，免 key、限额宽松。
+    当 OpenAlex 被 IP 级 429、EPMC 亦无果时，本层仍可交付候选，避免
+    「单源限流 → 整个在线兜底清零」（全域通用健壮性，非某领域专属）。
+    Crossref abstract 字段稀疏且常缺，本层主要贡献 title 匹配 + DOI/元数据；
+    abstract 缺失时 relevance_gate 仍按 title 判定，语义与其它源一致。
+    用 query.bibliographic（短语感知），不加 select 以免字段名触发 400；
+    逐条 try/except，单条畸形绝不崩全局（沿用 OpenAlex IncompleteRead 教训）。
+    """
+    params = {"query.bibliographic": query, "rows": max(1, min(maxn, 30)), "mailto": _MAILTO}
+    if year_from:
+        params["filter"] = "from-pub-date:%s-01-01" % year_from
+    d = get_json(CROSSREF + "?" + parse.urlencode(params))
+    if not d:
+        return []
+    out = []
+    for it in (d.get("message") or {}).get("items", [])[:maxn]:
+        try:
+            titles = it.get("title") or []
+            title = titles[0] if titles else ""
+            sub = it.get("subtitle") or []
+            if not title and sub:
+                title = sub[0]
+            if not title:                     # 无题条目不能贡献 title 匹配、只会污染统计，直接跳过
+                continue
+            authors = [(a.get("given", "") + " " + a.get("family", "")).strip()
+                       for a in (it.get("author") or [])][:3]
+            ct = it.get("container-title") or []
+            venue = ct[0] if ct else ""
+            dp = ((it.get("issued") or {}).get("date-parts") or [[None]])[0]
+            year = dp[0] if dp else None
+            abstract = re.sub(r"<[^>]+>", " ", it.get("abstract") or "")
+            abstract = re.sub(r"\s+", " ", abstract).strip()[:1200]
+            oa_pdf = ""
+            for lk in (it.get("link") or []):
+                if "pdf" in (lk.get("content-type") or "").lower() and lk.get("URL"):
+                    oa_pdf = lk["URL"]; break
+            res = ((it.get("resource") or {}).get("primary") or {}).get("URL") or ""
+            out.append({
+                "title": title,
+                "year": year,
+                "doi": (it.get("DOI") or "").lower(),
+                "authors": [a for a in authors if a],
+                "venue": venue,
+                "cited_by": it.get("is-referenced-by-count"),
+                "abstract": abstract,
+                "is_oa": bool(oa_pdf),
+                "oa_status": "green" if oa_pdf else "",
+                "oa_pdf_url": oa_pdf or None,
+                "oa_url": oa_pdf or res or None,
+                "source": "Crossref",
+            })
+        except Exception:
+            continue
     return out
 
 
@@ -774,6 +845,9 @@ def main():
     ap.add_argument("--keep-irrelevant", dest="keep_irrelevant", action="store_true",
                     help="保留未过门条目并标 relevance=low（仍绝不进下载队列）")
     ap.add_argument("--no-epmc", dest="no_epmc", action="store_true", help="关闭 Europe PMC 并行源")
+    ap.add_argument("--no-crossref", dest="no_crossref", action="store_true", help="关闭 Crossref 备用摘要源")
+    ap.add_argument("--no-arxiv-fallback", dest="no_arxiv_fallback", action="store_true",
+                    help="关闭『OpenAlex 被限流取空时自动降级到 arXiv』的定向救援")
     ap.add_argument("--top", type=int, default=12, help="stdout 打印前 N 条（勿再用 shell tail 截断）")
     ap.add_argument("--mailto", default=DEFAULT_MAILTO,
                     help="联系邮箱：OpenAlex polite pool 身份（**不提高配额**）+ Unpaywall 必需参数。"
@@ -803,8 +877,20 @@ def main():
         erecs = europepmc(eq, args.max)
         groups.append(("EuropePMC[%s]" % eq[:60], erecs))
         src_stat["EuropePMC"] = len(erecs)
-    if args.with_arxiv:
-        asq = arxiv_query(entities, methods, args.arxiv_cats, args.query)
+    # Crossref 备用源：只打一次（与 EPMC 同为 query 级、不随子查询重复），
+    # 独立限流池，专门兜住 OpenAlex/EPMC 同时无果的情形。
+    if not args.no_crossref:
+        crecs = crossref(args.query, args.max, year_from=args.year_from or None)
+        groups.append(("Crossref[%s]" % args.query[:60], crecs))
+        src_stat["Crossref"] = len(crecs)
+    # arXiv 定向救援：显式 --with-arxiv（严格式），或 OpenAlex 被 IP 级限流取空(src_stat==0)
+    # 时自动启用降级救援（arxiv_query rescue=True：放宽为 首实体+首方法、去 cat，实测 cat 组
+    # 合取会致 arXiv 0 命中）。arXiv 走独立限流池，是 OpenAlex 死掉时的补源；但预印本缺
+    # DOI/引用数，故仅作降级救援并显式标 arxiv_fallback_applied + caveat 供上层区分证据强度。
+    oa_throttled = (src_stat.get("OpenAlex", 0) == 0)
+    arxiv_fallback_applied = (not args.with_arxiv) and oa_throttled and (not args.no_arxiv_fallback)
+    if args.with_arxiv or arxiv_fallback_applied:
+        asq = arxiv_query(entities, methods, args.arxiv_cats, args.query, rescue=arxiv_fallback_applied)
         arecs = arxiv_search(asq, max(5, args.max // 3))
         groups.append(("arXiv[%s]" % (asq or "")[:60], arecs))
         src_stat["arXiv"] = len(arecs)
@@ -950,9 +1036,13 @@ def main():
         "channel": "literature", "query": args.query,
         "sub_queries": [{"kind": k, "query": q} for k, q in subs],
         "entities": entities, "methods": methods,
-        "source": "multi(OpenAlex+EuropePMC%s)" % ("+arXiv" if args.with_arxiv else ""),
+        "source": "multi(OpenAlex+EuropePMC%s%s)" % (
+            "+arXiv" if args.with_arxiv else ("+arXiv-fallback" if arxiv_fallback_applied else ""),
+            "+Crossref" if not args.no_crossref else ""),
         "source_stats": src_stat,
         "network": "online" if online else "offline",
+        "arxiv_fallback_applied": arxiv_fallback_applied,
+        "openalex_throttled": oa_throttled,
         "relevance_gate": {"enabled": not args.no_gate, "threshold": GATE_THRESHOLD,
                            "anchor_entity": (entities or [""])[0],
                            "entities": entities,
@@ -987,6 +1077,10 @@ def main():
             "未取到任何 OA 全文（%s）。所有 evidence_level 停在 abstract/abstract-only，"
             "**不得**作为数值来源；付费墙靶心可加 --citing-oa 走施引反查找 OA 下游载体，"
             "仍无则如实标 knowledge_gap。" % nxt)
+    if arxiv_fallback_applied:
+        result["caveat_arxiv"] = ("OpenAlex 疑被 IP 级限流取空，已自动降级到 arXiv 预印本源补召回。"
+                                  "arXiv 条目缺 DOI/引用数、为预印本，证据强度低于同行评审正文；"
+                                  "relevance 门仍按题录命中判档，但请勿把 arXiv 命中当作已验证的最终数值来源。")
 
     outp = os.path.join(args.workdir, "lit_result.json")
     with open(outp, "w", encoding="utf-8") as f:

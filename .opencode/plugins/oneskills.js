@@ -86,7 +86,7 @@ const WRITE_TOKENS = [
 // Data/knowledge endpoints: querying them by hand while the gap gate is open
 // is an improvised-retrieval bypass — the model must use the skill scripts.
 const IMPROVISED_RETRIEVAL_RE =
-  /(crystallography\.net|qiserver\.ugr\.es|api\.openalex\.org|europepmc|ebi\.ac\.uk|unpaywall|export\.arxiv\.org|arxiv\.org\/(?:abs|pdf)|doi\.org\/api|icsd|materialsproject\.org)/i;
+  /(crystallography\.net|qiserver\.ugr\.es|api\.openalex\.org|europepmc|ebi\.ac\.uk|unpaywall|export\.arxiv\.org|arxiv\.org\/(?:abs|pdf)|doi\.org\/api|icsd|materialsproject\.org|rcsb\.org|wwpdb\.org|drugbank\.ca|uniprot\.org|climate\.copernicus\.eu)/i;
 
 // ---------------------------------------------------------------------------
 // Gate R configuration — runsite workbench gate. Remote commercial-software
@@ -286,8 +286,8 @@ When OneSkills prompts request actions, substitute OpenCode equivalents:
 - Breakpoint 1: after \`onescience-orchestrator\` is loaded, before \`onescience-primitives\` has been invoked, execution tools (bash / write / edit / apply_patch / task) are blocked. Load primitives first and complete resource recall.
 - Do not read or grep \`onescience-primitives/assets/\` directly. Invoke the \`onescience-primitives\` skill first; only its own retrieval may touch the assets.
 - Breakpoint 2: after calling primitives, before any run / write / calculation, record the retrieval decision by appending a \`gaps.jsonl\` line under \`.onescience/\` with a \`knowledge_gap\` boolean (primitives step 10).
-- If \`knowledge_gap=true\` (no domain-specific local hit), you MUST call \`onescience-online-knowledge\` (unified online verification: literature + crystal structure via COD + software parameters) to retrieve verified, cited evidence before writing scripts, submitting jobs, or answering domain parameters. Never substitute model memory, default parameters, fabricated data, or hand-rolled curl/wget queries against COD / OpenAlex / arXiv for this step — use the skill's scripts, which self-verify results.
-- Retrieved values must be consumed with provenance: literature facts carry [n] citations, structures carry COD ids, software parameters carry software-doc sources; model-prior fallbacks must be explicitly marked as “⚠ 未经在线核实” and never disguised as a cited source.`;
+- If \`knowledge_gap=true\` (no domain-specific local hit), you MUST call \`onescience-online-knowledge\` to retrieve verified, cited evidence before writing scripts, submitting jobs, or answering domain parameters. The literature channel is always lit_search (OpenAlex + Europe PMC + Crossref); the structure/parameter channel is chosen BY DOMAIN, not a fixed COD mandate: materials/crystal->COD, bio/protein/docking->PDB/UniProt/DrugBank, climate/weather->reanalysis datasets (e.g. ERA5), fluid/CFD/plasma->property model libraries; if the domain has no structured reference database, the literature channel alone suffices. Never substitute model memory, default parameters, fabricated data, or hand-rolled curl/wget queries against the authoritative domain endpoints (COD / PDB / OpenAlex / arXiv, ...) for this step — use the skill's scripts, which self-verify results.
+- Retrieved values must be consumed with provenance: literature facts carry [n] citations, structures carry a domain-appropriate identifier (COD id for crystals, PDB id for proteins, dataset DOI for climate reanalysis), software parameters carry software-doc sources; model-prior fallbacks must be explicitly marked as “⚠ 未经在线核实” and never disguised as a cited source.`;
 
   const runsiteGateNote = `**Runsite workbench gate (Gate R, enforced by this plugin):**
 - When \`~/.ssh/config\` declares 2 or more platform SSH connections, any remote commercial-software compute — handing off to \`onescience-runtime\` or \`onescience-mlmd-campaign-orchestrator\`, or running \`sbatch\`/\`srun\`/\`ssh\`/\`scp\`/\`rsync\` — is blocked until \`onescience-runsite\` has been invoked for this task.
@@ -452,10 +452,10 @@ export const OneSkillsPlugin = async ({ client, directory, worktree } = {}) => {
             await note(client, 'warn', `Gate B blocked ${toolName}: knowledge_gap=true, online fallback not called`);
             throw new Error(
               '[OneSkills] 检测到本地知识缺口（knowledge_gap=true），且尚未调用在线查证兜底。' +
-                '必须先调用 skill `onescience-online-knowledge`（文献+晶体结构COD+软件参数三通道）' +
-                '真实联网查证并产出带出处（DOI / COD编号 / software-doc）的证据后，' +
+                '必须先调用 skill `onescience-online-knowledge`（文献通道走 lit_search；结构/参数通道按任务领域选权威源，而非一律 COD：材料/晶体→COD、生化/蛋白/分子对接→PDB/UniProt/DrugBank、气候/天气→再分析观测数据集(如 ERA5)、流体/CFD/等离子→物性模型库；若该领域没有对应结构化参考库，仅走文献通道即可）' +
+                '真实联网查证并产出带该领域权威出处（文献 DOI / 结构编号 COD 或 PDB / 气候数据集 DOI / software-doc）的证据后，' +
                 '再继续写脚本、提交作业或回答领域参数。' +
-                '禁止用模型记忆、默认参数或模拟数据替代检索，也禁止自行 curl/wget 查询 COD/OpenAlex/arXiv 等端点——' +
+                '禁止用模型记忆、默认参数或模拟数据替代检索，也禁止自行 curl/wget 查询 COD/PDB/OpenAlex/arXiv 等权威端点——' +
                 '必须使用该技能内带化学式回验等自校验机制的脚本。',
             );
           }

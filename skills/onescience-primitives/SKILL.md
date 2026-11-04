@@ -153,9 +153,9 @@ TC 三层各独占 category：`scenario/`（type=scenario）、`workflow/`（typ
     - `domain_match_summary`：兜底完成后按 step 11 标签统计三档数量；未触发时三档填 0。
     - `gate_hit` ∈ {`domain_mismatch`, `bare_number_reject`, `result_identity_lock`, `validation_rollback`, `complete_downgrade`, null}：本技能只在 A 层命中时填 `domain_mismatch`（cross_domain 文献被当参数来源、或兜底后 exact=0）；B/C/D 层由 orchestrator 各自追加（同一 gaps.jsonl 四层共用，便于 A/B 归因）。`gate_layer` ∈ {`A_knowledge`, `B_planning`, `C_execution`, `D_acceptance`}。
 
-11. **在线兜底检索（`knowledge_gap=true` 时强制触发——涵盖 none / task_only / 空召回 / 仅命中泛化卡 / domain 不符五种情形）**：本地资产无法产出准确完整回答 → **调用 `onescience-live-literature` 技能联网兜底**：把上层需求转成该技能 Step 1 查询分解，走两级在线检索（OpenAlex 摘要层迭代精炼 + Europe PMC/PMC 全文层取细节），产出带连续编号引用 `[n]` 的分层综合答案。硬约束：
+11. **在线兜底检索（`knowledge_gap=true` 时强制触发——涵盖 none / task_only / 空召回 / 仅命中泛化卡 / domain 不符五种情形）**：本地资产无法产出准确完整回答 → **调用 `onescience-online-knowledge` 技能联网兜底（统一在线查证·单一集中通道）**：把上层需求转成查询分解，**文献通道**走 lit_search（OpenAlex 摘要层迭代精炼 + Europe PMC/PMC 全文层取细节 + Crossref/arXiv 备用）；**结构/参数通道按任务领域选权威源、而非一律 COD**（材料/晶体→COD、生化/蛋白/分子对接→PDB/UniProt/DrugBank、气候/天气→再分析观测数据集如 ERA5、流体/CFD/等离子→物性模型库；若该领域无对应结构化参考库，仅文献通道即可），产出带连续编号引用 `[n]` 的分层综合答案。硬约束：
     ① 答案顶部显式标注「⚠ 本地知识缺口（knowledge_gap=true, retrieval_level=<值>），以下为在线文献兜底结果」；
-    ② 全程遵守 live-literature 纪律铁律（只引池内论文、数值/极性有出处、abstract-only 降权标注、失败通道显式报告）；
+    ② 全程遵守在线兜底纪律铁律（原 live-literature 与 online-knowledge 同源）（只引池内论文、数值/极性有出处、abstract-only 降权标注、失败通道显式报告）；
     ③ 在 step 10 缺口行 `suggested_fill` 末尾追加「已触发在线兜底」；
     ④ 兜底答案是**补充而非替代**——仍有本地 Task/资源命中时须一并列出本地凭证；
     ⑤ **严禁编造**：不得用泛化剧本假装完成、不得返回「模拟检索结果/模拟数据/默认参数/历史案例」充数；联网通道不可用（离线）时**不得报错、不得中断整个任务**：如实标注「本地知识缺口 + 当前离线，在线兜底不可用」，把缺口作为已知限制交回上层继续任务其余部分（离线不构成 blocked）；
@@ -221,7 +221,7 @@ TC 三层各独占 category：`scenario/`（type=scenario）、`workflow/`（typ
 9. **填充输出字段**：按「字段取值规则」推导 `detected_domain`、`task_intent`、各资源 `type`，并按「质量要求」生成 `why_matched`、摘要 `content`、`limitations`。**填充前必须先读取 `references/field_value_rules.md`**（domain/category scope 判定细则、枚举映射表、质量要求全文）。
    **【强制·跨路径兜底闸门，不可跳过】**本 traditional_resource 路径填充输出后**同样必须**执行上文 TC 检索步骤的 step 9b（跨路径实质命中判定）、step 10（缺口记录）、step 11（在线兜底）——不因走常规管道而豁免（否则 off-shape 场景会因回退本路径命中泛化卡而绕过兜底）：
    - 按 9b 计算 `knowledge_gap`：`matched_resources` 为空、或**仅**命中泛化 `workflow_planning_primitive`（legacy「文献综述/通用分析/通用建模流程/通用四步筛选」类卡）而无领域专属资源、或命中 domain 与请求不符 → 一律 `knowledge_gap=true`，`retrieval_level` 折算 `none`。
-   - `knowledge_gap=true` 时按 step 10 追加 gaps.jsonl、按 step 11 强制调用 `onescience-live-literature` 联网兜底，`online_fallback` 置 `live_literature`；**严禁**把泛化卡当领域知识回答返回，更严禁编造模拟结果充数。
+   - `knowledge_gap=true` 时按 step 10 追加 gaps.jsonl、按 step 11 强制调用 `onescience-online-knowledge` 联网兜底，`online_fallback` 置 `online_knowledge`；**严禁**把泛化卡当领域知识回答返回，更严禁编造模拟结果充数。
    - `knowledge_gap=false`（命中领域专属资源）时 `online_fallback` 置 `not_triggered`，正常返回。
 
 ## 输入格式
@@ -256,7 +256,7 @@ resource_retrieval_result:
   retrieval_path: <traditional_resource | task_centric>
   retrieval_level: <full | partial | task_only | none>     # TC 路径产出；traditional 路径按 step 9b 折算
   knowledge_gap: <true | false>                            # step 9b 跨路径实质命中判定，在线兜底触发的唯一依据
-  online_fallback: <not_triggered | live_literature>       # gap=true 时置 live_literature
+  online_fallback: <not_triggered | online_knowledge | live_literature>   # gap=true 置 online_knowledge（统一兜底通道·按域取结构/参数）；live_literature 为纯文献旧路径别名，插件 Gate B 两者均放行
   online_fallback_status: <online | offline | not_applicable>  # offline=联网失败/限流已优雅降级（不报错不停摆）
   online_evidence:                                         # 兜底真实检索到的文献证据（单一集中通道产出；orchestrator 见非空不得重复检索）
     citations: [ "[n] 标题 | venue | year | doi | domain_match=<exact|adjacent|cross_domain> | evidence_level=<full-text|abstract-only>" ]
