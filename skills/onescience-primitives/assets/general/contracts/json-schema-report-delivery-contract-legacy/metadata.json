@@ -1,5 +1,5 @@
 {
-  "name": "json-schema-report-delivery-contract",
+  "name": "json-schema-report-delivery-contract-legacy",
   "type": "contract",
   "domain": "general",
   "version": "1.0.0",

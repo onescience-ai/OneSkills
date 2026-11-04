@@ -55,7 +55,9 @@ capabilities:
 - **Resource**（`type: model | tool | dataset | ...`，各资源 category）：被 Task 引用的资源，含带可运行脚本的资源卡
 - **Method / Operation / Validation**：不单独建卡，作为 Task 卡 `knowledge.md` 章节 + `tags` 词表边存在
 
-知识图的**全部连接关系编码在 `tags`**（命名空间前缀 `edge:` / `slot:` / `atom:`），字段契约见 `references/tc/card_contract.md`。TC 的 Workflow/Scenario 卡与 legacy 实例卡（`workflow-planning/`）物理隔离，不做别名归并。类别集合是开放的：`models`、`components`、`datapipes`、`datasets`、`tools`、`databases`、`services`、`application`、`visualization`、`workflow-planning`、`contracts`、`output-format`，加 TC 的 `tasks`、`workflow`、`scenario`；保留既有 legacy category 名。
+知识图的**全部连接关系编码在 `tags`**（命名空间前缀 `edge:` / `slot:` / `atom:`），字段契约见 `references/tc/card_contract.md`。TC 的 Workflow/Scenario 卡与 legacy 实例卡（`workflow-planning/`）物理隔离，不做别名归并。
+
+**category 词表（闭集，硬规则）**：资源类一律复数——`models`、`components`、`datapipes`、`datasets`、`tools`、`databases`、`contracts`、`services`、`application`、`visualization`、`output-format`、`workflow-planning`；TC 三层沿用法定名——`tasks`、`workflow`、`scenario`。目录名用复数、`metadata.type` 用单数（`models/mace` → `type: model`）是既定约定，不是错误。**禁止**再建 `model/`、`task/`、`tool/`、`database/`、`contract/`、`workflows/` 等单数或别名目录（已于 2026-11 收敛并入）；同名不同内容的历史冲突卡以 `-legacy` 后缀共存（如 `general/contracts/`），召回时优先取不带后缀的权威版本并如实报告冲突。
 
 你负责从 `skills/onescience-primitives/assets/` 找到最相关原语，通过范围判定、快速过滤和语义匹配召回。不生成实现方案、不改代码、不执行脚本。
 
@@ -97,7 +99,7 @@ TC 三层各独占 category：`scenario/`（type=scenario）、`workflow/`（typ
 
 > **卡片双形态**：(A) 四文件形态（metadata + spec + usage + workflow_planning）；(B) 单文档形态（`metadata.json` + `knowledge.md`）。目录仅有后者时，`knowledge.md` 即完整正文，必须读取。
 
-顶层 domain 以仓库现状为准，当前包括：`bio`、`cfd`、`climate`、`matchem`、`general`。每个 domain 下的 category 目录可能不同，按**实际存在的目录**检索；常见 category：`scenario`、`workflow`、`tasks`、`components`、`models`、`datapipes`、`application`、`visualization`、`workflow-planning`、`contracts`、`databases`、`output-format`。
+顶层 domain 以仓库现状为准，当前包括：`bio`、`cfd`、`climate`、`matchem`、`general`。每个 domain 下的 category 目录不完全相同，按**实际存在的目录**检索；合法 category 见上文闭集词表（当前实际使用：`scenario`、`workflow`、`tasks`、`workflow-planning`、`components`、`models`、`datasets`、`datapipes`、`tools`、`databases`、`contracts`、`application`、`visualization`、`output-format`）。
 
 ## Task-Centric 知识检索路径
 
