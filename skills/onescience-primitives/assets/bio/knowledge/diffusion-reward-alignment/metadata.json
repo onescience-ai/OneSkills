@@ -1,0 +1,60 @@
+{
+  "name": "diffusion-reward-alignment",
+  "type": "knowledge_card",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-06",
+  "updated_at": "2026-11-06",
+  "description": "扩散模型奖励对齐知识卡：RAFT/Best-of-K/Best-of-N 多目标 reward 设计（QED/SA/Vina 归一化加权）、可微属性约束与 DecompDiff 分解先验。用于垂直扩散标记物生成的对齐优化。",
+  "tags": [
+    "molecule-generation",
+    "reward-alignment",
+    "best-of-k",
+    "best-of-n",
+    "raft",
+    "diffusion",
+    "qed",
+    "vina",
+    "ranking",
+    "reward-ranking",
+    "weight-tuning",
+    "top-k-selection",
+    "fine-tuning",
+    "normalization",
+    "scoring",
+    "multiobjective-reward"
+  ],
+  "source_refs": [
+    {
+      "kid": "KNOW-BD-005",
+      "uri": "papers/2501.15631.pdf",
+      "version": "v1",
+      "locator": "§3 RAFT / Eq.2"
+    },
+    {
+      "kid": "KNOW-BD-006",
+      "uri": "papers/2501.15631.pdf",
+      "version": "v1",
+      "locator": "§5 Best-of-N Section + Table.3"
+    },
+    {
+      "kid": "KNOW-P-BD-002",
+      "uri": "papers/2501.15631.pdf",
+      "version": "v1",
+      "locator": "§3.3 / Data Ranking"
+    },
+    {
+      "kid": "KNOW-C-BD-001",
+      "uri": "papers/2501.15631.pdf",
+      "version": "v1",
+      "locator": "§3.2 / 可微属性约束"
+    },
+    {
+      "kid": "KNOW-BD-003",
+      "uri": "papers/2501.15631.pdf",
+      "version": "v1",
+      "locator": "§2 Method / DecompDiff / Eq.1-3"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "sbdd-toolchain-requirements",
+  "type": "knowledge_card",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-06",
+  "updated_at": "2026-11-06",
+  "description": "SBDD/扩散分子工具链资源需求知识卡：RDKit、AutoDock Vina、AlphaSpace、DecompDiff/TargetDiff 权重等依赖与资源清单（环境安装交由 installer）。",
+  "tags": [
+    "molecule-generation",
+    "toolchain",
+    "rdkit",
+    "autodock-vina",
+    "resource-requirement",
+    "alphaspace2",
+    "decompdiff",
+    "targetdiff",
+    "pre-trained-weights",
+    "pytorch-geometric",
+    "dependencies",
+    "environment-setup"
+  ],
+  "source_refs": [
+    {
+      "kid": "KNOW-R-BD-003",
+      "uri": "papers/2501.15631.pdf",
+      "version": "v1",
+      "locator": "§4 + §Evaluation"
+    },
+    {
+      "kid": "KNOW-R-TM-002",
+      "uri": "papers/2406.01650.pdf",
+      "version": "v1",
+      "locator": "§4.4 + Appendix"
+    }
+  ]
+}

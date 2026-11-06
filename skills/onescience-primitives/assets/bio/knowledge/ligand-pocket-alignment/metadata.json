@@ -1,0 +1,45 @@
+{
+  "name": "ligand-pocket-alignment",
+  "type": "knowledge_card",
+  "domain": "biology",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-06",
+  "updated_at": "2026-11-06",
+  "description": "配体-口袋空间对齐与数据准备知识卡：CoM 重定位、子结构/亚袋提取失败模式、Vina 重对接替换反模式。用于生成分子后处理对齐与 SBDD 数据流水线。",
+  "tags": [
+    "molecule-generation",
+    "com-relocation",
+    "docking-pose",
+    "data-preparation",
+    "failure-mode",
+    "sbd",
+    "alignment",
+    "relocation",
+    "center-of-mass",
+    "pocket-extraction",
+    "substructure-extraction",
+    "pose-fitting",
+    "spatial-alignment"
+  ],
+  "source_refs": [
+    {
+      "kid": "KNOW-P-BD-003",
+      "uri": "papers/2501.15631.pdf",
+      "version": "v1",
+      "locator": "§3.3 / Data Preparation / CoM Relocation"
+    },
+    {
+      "kid": "KNOW-BD-007",
+      "uri": "papers/2501.15631.pdf",
+      "version": "v1",
+      "locator": "§3.3 / Data Preparation / Challenges"
+    },
+    {
+      "kid": "KNOW-BD-008",
+      "uri": "papers/2501.15631.pdf",
+      "version": "v1",
+      "locator": "§3.3 / Data Preparation / Initial Solution"
+    }
+  ]
+}
