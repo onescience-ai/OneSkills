@@ -1,0 +1,19 @@
+{
+  "name": "carbon_variant_effect_reference",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "Carbon/GENERator 本地 variant-effect-prediction 资源原语，分别登记 hg38 参考序列与 ClinVar 预计算模型结果，说明与 coding 子集、ref/alt 序列重建和新模型评测的关系。",
+  "tags": [
+    "Carbon",
+    "GENERator",
+    "hg38",
+    "ClinVar",
+    "VEP",
+    "reference-genome",
+    "precomputed-scores"
+  ]
+}

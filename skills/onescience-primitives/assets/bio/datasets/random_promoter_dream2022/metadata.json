@@ -1,0 +1,18 @@
+{
+  "name": "random_promoter_dream2022",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "Carbon 本地 Random Promoter DREAM 2022 酵母合成启动子数据，区分带活性的 supervised、无标签 challenge 序列和子集/leaderboard ID 元数据，保留原始划分与样本标识。",
+  "tags": [
+    "Carbon",
+    "DREAM2022",
+    "yeast",
+    "synthetic-promoter",
+    "regression",
+    "parquet"
+  ]
+}

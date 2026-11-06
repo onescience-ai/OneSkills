@@ -1,0 +1,20 @@
+{
+  "name": "omat24_1m",
+  "type": "dataset",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "OMat24-1m 本地 MessagePack LMDB 衍生视图，实际 1,009,850 帧，含 coord/box/atype/energy/force/virial；尚无已确认 split，需核实元素编码及与全量包重叠。",
+  "tags": [
+    "matchem",
+    "omat24-1m",
+    "omat24_1m",
+    "OMat24",
+    "LMDB",
+    "MessagePack",
+    "MLIP",
+    "virial"
+  ]
+}

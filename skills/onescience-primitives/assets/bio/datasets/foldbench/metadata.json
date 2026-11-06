@@ -1,0 +1,18 @@
+{
+  "name": "foldbench",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "FoldBench 本地 full1515_v20260821 结构评测原语，绑定 AF3 canonical inputs、目标/链映射、MSA registry 和 ground_truth_20250520，区分单体与各类界面评测及权限受限的 manifest。",
+  "tags": [
+    "FoldBench",
+    "full1515",
+    "structure-benchmark",
+    "assembly",
+    "MSA",
+    "mmcif"
+  ]
+}

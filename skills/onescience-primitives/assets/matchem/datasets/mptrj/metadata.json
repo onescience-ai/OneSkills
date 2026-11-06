@@ -1,0 +1,22 @@
+{
+  "name": "mptrj",
+  "type": "dataset",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "MPtrj 2022.9 材料结构与能量、力、应力数据的本地过滤视图，包含 extxyz、HDF5 和 ASELMDB train/val 分片及原始 JSON；区分能量口径和占位标签。",
+  "tags": [
+    "matchem",
+    "mptrj",
+    "Materials-Project",
+    "MLIP",
+    "energy",
+    "forces",
+    "stress",
+    "extxyz",
+    "HDF5",
+    "ASELMDB"
+  ]
+}

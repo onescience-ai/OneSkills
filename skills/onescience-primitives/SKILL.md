@@ -164,6 +164,8 @@ TC 三层各独占 category：`scenario/`（type=scenario）、`workflow/`（typ
     ⑥ **单一集中通道 + 证据并回召回结果**：本 step 是在线兜底**唯一集中执行点**；产出的带编号引用与接地事实必须以 `online_evidence` 字段**并入本技能召回结果**（见输出格式），作为上层消费文献证据的唯一来源；orchestrator 见 `online_evidence` 非空**不得重复触发**（防限流/防双跑）；
     ⑦ **召回阶段证据边界（严禁自造）**：召回结果不得填入任何未经「用户提供/本地卡/在线引文[n]」支持的参数、阈值、数据集或研究对象；无法支持者只能标 `proposed_candidate(待确认)` 或留空；
     ⑧ **domain_match 标签与跨域降级（A 层门禁）**：`online_evidence.citations[]` 每条必须带 `domain_match ∈ {exact, adjacent, cross_domain}`——`exact`=研究对象与本任务目标域及具体对象直接一致；`adjacent`=同域不同子场景；`cross_domain`=不同应用领域。**cross_domain 只能作方法学参考，不得作本次参数/阈值/几何/工况来源**；违反则该参数降级 `proposed_candidate(待确认)` 并追加 gaps.jsonl `gate_hit=domain_mismatch, gate_layer=A_knowledge`。兜底后池内 `exact`=0：必须触发第二轮场景锚词精炼检索（锚词=目标域+具体研究对象）；仍为 0 则在 `online_evidence` 顶部标注「在线兜底形式成功、实质未命中目标域（exact=0）」，相关科学结论保持 BLOCKED/诚实 PARTIAL，不得用 adjacent/cross_domain 硬凑。`knowledge_gap=false` 不触发兜底，仅在缺口处按 step 10 记录。
+    ⑨ **引用溯源可机判（交付前必跑）**：终稿里每个具体标识符（DOI / COD 号 / arXiv 号 / PDB / UniProt）必须满足二者之一——**逐字见于本轮工具产出证据**（`lit_result.json` / `structure_result.json` / `param_result.json` / 回验通过的 CIF），或在**同一行**如实标注为「模型先验·未经在线核实」。交付前执行
+    `python3 skills/onescience-online-knowledge/scripts/check_provenance.py --answer <终稿.md> --workdir <在线产物目录>`，**退出码 2（存在 violation）时必须先修正再交付**（把无回执标识符改成先验标注，或补一轮针对性检索取回真实回执）。注意：你自己写的 `online_knowledge.json` **不构成出处**（循环论证），该脚本默认已将其排除。
 
 12. **可执行落点识别**：Task 的 `edge:operation:*` 在某资源卡有对应实现且该卡带 `runnable:script` tag 时，该操作**本机可执行**：输出脚本相对路径与可直接运行命令；否则标「无可执行落点，仅规划」。
 

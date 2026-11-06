@@ -1,10 +1,10 @@
 # File Handoff Contract
 
-文件交接模式是 autonomous_mode 下 orchestrator 与 executor 之间的通信机制。它通过文件系统传递 step_handoff 和 execution_result，使 executor 可以在独立上下文中运行，避免 orchestrator 上下文膨胀。
+文件交接模式是多技能任务中 orchestrator 与 executor 之间的数据传递机制；`autonomous_mode` 下强制使用。它通过文件系统传递 step_handoff 和 execution_result，使 executor 可在原生独立上下文或非持久化临时技能上下文中运行，避免 orchestrator 上下文膨胀。
 
 ## 核心原则
 
-1. **独立上下文**：executor 读取 handoff 文件获取任务，不依赖 orchestrator 的上下文传递。
+1. **上下文隔离**：executor 读取 handoff 文件获取任务；使用原生独立调用或只挂载当前技能的非持久化上下文，不继承无关技能正文。
 2. **持久化中间产物**：handoff 文件和 result 文件作为中间产物，可审查、可回放。
 3. **自动清理**：所有步骤完成后，handoff 目录归档到 `.onescience/archive/{task_id}/`。
 
@@ -29,7 +29,9 @@ task_context:
     - "支持 GPU 训练"
   relevant_artifacts:
     - path: ".paper2code_work/2406.01465/reproduction_spec.md"
-      description: "唯一论文复现规格，全文与散列在 inputs/reference_resources 传递"
+      kind: "reproduction_spec"
+      sha256: "<磁盘规格文件的 SHA-256>"
+      description: "唯一论文复现规格，由目标 executor 按需读取并校验"
 resource_bindings:
   - type: "model_card"
     path: "assets/matchem/models/deepmd"
@@ -37,7 +39,6 @@ resource_bindings:
 inputs:
   paper_repro_handoff: true
   reproduction_spec_path: ".paper2code_work/2406.01465/reproduction_spec.md"
-  reproduction_spec_content: "<磁盘规格完整内容，不能传摘要>"
   reproduction_spec_sha256: "<磁盘全文的 SHA-256>"
   key_unresolved: []
   target_dir: "models/"
@@ -55,8 +56,8 @@ completion_criteria:
 ```
 
 以上为结构示例；`training_allowed=false` 的代码交付任务不传训练 `tier_config`，不激活训练
-层级。已授权训练时才按分层契约添加 tier_config。论文输入同时将规格全文放入
-`reference_resources[*].content`，路径只用于追踪；不创建旧版 `coder_task_description.md`。
+层级。已授权训练时才按分层契约添加 tier_config。论文规格通过路径和 SHA-256 作为任务产物
+交接，由目标 executor 在其技能执行上下文中读取并校验；不创建旧版 `coder_task_description.md`。
 每次交接携带会话持续授权、禁止事项和输出根目录，不能只传任务标题。
 
 ## Result 文件格式
@@ -126,7 +127,7 @@ status 取值：
 1. Wait for executor 完成
 2. 读取 .onescience/handoff/step_{step_id}_result.yaml
 3. Parse execution_result（含 attempt、failure_category、events 字段）
-4. 写入 observation 并更新 Task State（递增 global_plan_version 如需修改计划）
+4. 只将状态、result_identity、artifacts、observation 和 events 写入 Task State；完整日志和大文本保留在文件产物中
 5. 原子写入 .onescience/task_state.json
 ```
 
@@ -157,7 +158,7 @@ status 取值：
 2. 先写入临时文件 `.onescience/handoff/step_{step_id}_result.yaml.tmp`
 3. 确保内容完整写入（flush/fsync）
 4. 原子重命名：将 .tmp 文件 rename 为 `.onescience/handoff/step_{step_id}_result.yaml`
-5. 同时在上下文输出中返回 `execution_result` 摘要（供 orchestrator 快速判断）
+5. 同时在上下文输出中返回 `execution_result` 摘要（供 orchestrator 快速判断），不返回技能正文、references 或完整执行转录
 
 ## 目录结构
 
@@ -180,11 +181,11 @@ status 取值：
 
 ## 与上下文 handoff 的关系
 
-文件 handoff 是上下文 handoff 的补充，不是替代：
+原生智能体 / skill 调用或非持久化技能挂载负责激活执行上下文，文件 handoff 负责传递步骤数据：
 
-- **autonomous_mode + 多步骤任务**：使用文件 handoff（避免上下文膨胀）
-- **单步骤任务 / non-autonomous mode**：使用上下文 handoff（更简单）
-- **混合模式**：Orchestrator 优先检查文件 handoff 是否存在，存在则使用文件模式
+- **多技能任务**：默认使用文件 handoff；`autonomous_mode=true` 时强制使用
+- **单技能单步骤任务**：可直接把结构化 `step_handoff` 传入当前技能执行上下文
+- **已有 handoff 文件**：executor 优先读取文件，不再把同一大文本复制进调用上下文
 
 ## 幂等性与重试安全
 

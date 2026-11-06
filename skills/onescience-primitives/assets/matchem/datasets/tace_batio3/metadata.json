@@ -1,0 +1,22 @@
+{
+  "name": "tace_batio3",
+  "type": "dataset",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "TACE 本地 BaTiO3 扩展 XYZ，59 帧、每帧 135 原子，含能量/力/应力、Born 有效电荷、极化、极化率和电场，保留张量轴序及周期极化约束。",
+  "tags": [
+    "matchem",
+    "TACE",
+    "tace",
+    "BaTiO3",
+    "extxyz",
+    "Born-effective-charges",
+    "polarization",
+    "polarizability",
+    "electric-field",
+    "tensor"
+  ]
+}

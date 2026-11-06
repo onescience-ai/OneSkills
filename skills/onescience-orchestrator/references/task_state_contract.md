@@ -38,14 +38,13 @@
     }
   ],
   "skill_metadata_discovery": {
-    "native_skill_metadata_interface_available": false,
-    "native_interface_probe": {
-      "attempted": true,
-      "tool_name": null,
-      "result_summary": "no native list/metadata interface exposed"
-    },
-    "metadata_source": "native_skill_interface|session_skill_catalog|session_catalog_plus_frontmatter",
-    "candidate_sources": {}
+    "metadata_source": "skill_frontmatter_script",
+    "script_path": "<installed orchestrator>/scripts/discover_skill_metadata.py",
+    "skills_roots": ["<installed skills root>"],
+    "command": ["python", "<actual script path>"],
+    "exit_code": 0,
+    "inventory_complete": true,
+    "errors": []
   },
   "executor_inventory": {
     "all_executor_skills": ["string"],
@@ -241,17 +240,16 @@ blocked -> planning       (当前规则复核后 blocker 已消除或可通过�
 - `intent_aspects` 中的 `aspect_key` 只是轻量追踪键；没有稳定键时可以只保留 `goal` 与 `evidence`。
 - 如果按 `intent_profile` 召回不到专家，设置 `planning_mode=direct_step`，并记录 orchestrator 直接规划的原因。
 - 走专家规划时，设置 `planning_mode=expert_proposal_synthesis`，记录候选专家、已收集 proposal、融合后的 `global_plan`，以及与各 stage 对应的 `plan_detail_store`。
-- 在任何计划融合、`global_plan` 生成或 `next_step` 选择之前，必须先写入 `executor_inventory`：记录当前轮次通过接口发现的全部 executor、已获取 `capabilities` 元信息并入账的 executor、差集 `missing_executor_skills`，并计算 `executor_inventory_complete`。
-- 同时写入 `skill_metadata_discovery`。只有真实调用原生 list/metadata 接口并获得返回证据时，
-  `native_skill_metadata_interface_available` 才能为 true；通用 skill 执行工具不算元信息接口。
-  降级读取会话目录/frontmatter 时必须准确记录对应 metadata_source，不能上报为原生接口成功。
+- 在任何计划融合、`global_plan` 生成或 `next_step` 选择之前，必须先写入 `executor_inventory`：记录当前轮次通过元信息脚本发现的全部 executor、已获取 `capabilities` 元信息并入账的 executor、差集 `missing_executor_skills`，并计算 `executor_inventory_complete`。
+- 同时写入 `skill_metadata_discovery`，只记录真实脚本运行的 `metadata_source=skill_frontmatter_script`、路径、根目录、命令、退出码和 errors；不得伪造成功。脚本失败或元信息不完整时按 `skill_metadata_contract.md` 修复后重跑，不使用原生元信息接口。
+- 历史“缺少原生元信息接口”阻断按新契约恢复：运行脚本成功后更新发现证据与 inventory、清除旧阻断并继续原任务，不要求 fresh execution 或用户重新授权；脚本实际报告的元信息错误仍须处理。
 - `executor_inventory_complete=true` 的前提是 `set(all_executor_skills) == set(read_executor_skills)`，且每个已读 executor 都已写入证据化能力台账；若不满足，保持 `executor_inventory_complete=false`，不得继续规划推进。
 - `user_visible_summary` 只保留面向用户的简短汇总，例如 `executor inventory: 13/13 complete`；完整列表默认只保存在 Task State 内部，只有 inventory 不完整或进入 blocked 时才向用户展开 `missing_executor_skills`。
 - 只要 `intent_aspects` 命中多个专家，就默认按多专家 proposal synthesis 处理；不得在尚未收齐所有命中专家回执前提前定稿。
 - proposal 融合后，不仅要写入 `global_plan` 骨架，还必须为每个 executor_step 写入按目标 executor 裁剪后的 detail bundle；不得只保留阶段 `goal`。
 - 选择 `next_step` 时，必须同时选出对应的 `detail_bundle_id` 和 detail bundle 内容，写入 `active_step`。
 - 若当前 `active_step.execution_skill` 非空，则该步骤视为 executor-owned；在收到对应 executor 的 `execution_result` 之前，orchestrator 不以自身 direct tool 结果替代该步骤，也不绕过该 owner 推进后续步骤。
-- 每次调用执行技能后，先进入 `observation`，再写入 `artifacts` 和 `observations`；随后可在同一 orchestrator 循环中选择下一步继续执行。
+- 每次调用执行技能后，先进入 `observation`，再写入 `artifacts` 和 `observations`；只保留正式 execution_result 的必要字段和文件引用，不把技能正文、references、内部日志、完整执行转录或 `active_skill_context` 写入 Task State。临时技能上下文由宿主请求组装层维护，并在结果持久化后的下一次模型请求卸载。随后可在同一 orchestrator 循环中选择下一步继续执行。
 - `partial` 记录已完成部分、缺失项、残余风险和下一步建议，并默认回到 `observation -> planning`。
 - `failed` 记录失败证据，再由规划阶段决定进入 `repair` 或 `blocked` 分支。
 - `repair` 针对最新 `observation` 生成新的修复步；若沿用原阶段骨架，也要重新核对对应 detail bundle 是否充分。

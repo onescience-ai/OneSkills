@@ -1,0 +1,19 @@
+{
+  "name": "carbon_pretraining_corpus",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "Carbon 本地 DNA/转录本预训练集合，覆盖 GENERator 真核语料及 10B 子集、Evo2 mRNA/splice/原核语料和 smoke 数据，区分 sequence 与 text schema、元数据标签和特殊分隔符。",
+  "tags": [
+    "Carbon",
+    "GENERator",
+    "OpenGenome2",
+    "pretraining",
+    "dna",
+    "mrna",
+    "parquet"
+  ]
+}

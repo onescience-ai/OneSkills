@@ -25,6 +25,8 @@ capabilities:
     - reproduction_spec.md
   downstream:
     - onescience-coder
+  prereq:
+    - 已提供可定位的论文、PDF、arXiv、DOI、标题或论文内容
   intent_aspects:
     - paper_reproduction
     - paper_parsing
@@ -34,6 +36,12 @@ capabilities:
     - spec
   domains:
     - general
+  trigger_keywords:
+    - 论文复现
+    - paper reproduction
+    - reproduction_spec
+    - arXiv
+    - DOI
 ---
 
 # OneScience 论文复现信息提取
@@ -201,6 +209,8 @@ Implementation Contract 或 coder 视图。来源没有约束的内容分类为 
 统一规格结构。结构用于保证科学链和实现链不遗漏，不以标题数量或表格非空判定正确；每个任务
 只展开适用内容，不适用项写明 `NOT_APPLICABLE` 及证据，未知项写明来源检查范围和处理策略。
 工作流中的示例只示范内容粒度和证据写法，不能原样复制为当前论文事实。
+按该工作流第 4、6、7.17 节在同一规格内落实公开类职责、维度算术、轴/定义域和梯度路径，
+并记录原始证据回查、发现与修订；只加载文档、列科学名词或自述“核验通过”不满足交接要求。
 
 关键数值、公式、变量、shape、split、模型组件和指标必须紧邻简短 `source_id`，详细定位集中在
 来源索引中。正文不得使用“Table/Chapter/Section/page 显示”一类论文导航语句污染科学描述。
@@ -214,7 +224,7 @@ Implementation Contract 或 coder 视图。来源没有约束的内容分类为 
 1. `paper_workdir` 的规范化路径必须严格等于 `.paper2code_work/<canonical-id>/`。
 2. `reproduction_spec_path` 必须严格等于 `<paper_workdir>/reproduction_spec.md`；不得指向实现产物根目录。
 3. 文件必须存在、非空，并覆盖统一规格结构；不适用项必须有理由，未知项必须有来源范围和处理策略。
-4. 从磁盘读回的完整内容必须与 `reproduction_spec_content` 逐字一致。
+4. 从磁盘读回的完整内容必须与本次生成的规格逐字一致。
 5. 落盘一致性失败时先修正同一份规格再交接；来源不完整不能用落盘门禁伪装成内容完整。
 6. 核对同一实验/阶段的字段在正文、配置、契约与未决表中状态一致；不得同时写为
    `UNRESOLVED` 和已采用默认值。为磁盘全文计算 SHA-256，连同未决项作用范围一起传递。
@@ -234,7 +244,6 @@ Implementation Contract 或 coder 视图。来源没有约束的内容分类为 
   "status": "success | partial | failed",
   "paper_workdir": ".paper2code_work/<canonical-id>/",
   "reproduction_spec_path": ".paper2code_work/<canonical-id>/reproduction_spec.md",
-  "reproduction_spec_content": "reproduction_spec.md 完整内容",
   "reproduction_spec_sha256": "磁盘规格文件的 SHA-256",
   "source_status": "verified_fulltext | partial_official_sources | identity_only",
   "paper_fidelity": "exact | evidence_aligned | candidate",
@@ -246,6 +255,9 @@ Implementation Contract 或 coder 视图。来源没有约束的内容分类为 
   "next_action": "onescience-orchestrator"
 }
 ```
+
+规格全文只保存在 `reproduction_spec_path` 指向的任务产物中，不复制进返回上下文；下游技能在
+自己的技能执行上下文读取并核对 `reproduction_spec_sha256`。
 
 `paper_repro_handoff` 由 `implementation_readiness` 决定，而不是由全文是否完整单独决定。
 `ready` 或 `ready_with_configurable_choices` 时应交给 coder；`failed/insufficient` 时才设为 false，

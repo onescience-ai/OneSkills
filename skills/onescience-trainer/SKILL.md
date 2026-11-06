@@ -91,7 +91,7 @@ capabilities:
 
 在消费上游交接或生成产物前，先读取 `references/workflow_contract.md`。随后必须先根据 `step_handoff.step_goal`、`task_context.user_goal`、`inputs`、`resource_bindings` 和用户直接请求，从 `type=resource` 技能中召回与训练目标相关的资源，获取训练规格知识、模型/数据使用知识和训练规划决策知识；无论上游是否提供了 `resource_bindings`，都不能跳过初始资源召回。资源 `path` 仅用于标识和追踪，允许作为训练依据的只有用户明确提供内容、上游已展开的资源内容和资源技能返回的 `matched_resources[*].content`。
 
-资源召回是 trainer 内部子流程，`resource_retrieval_request` 不是面向用户或上游的最终执行结果。构造请求后必须调用或内联执行匹配的 `type=resource` 技能，取得 `resource_retrieval_result` 后继续阶段 0 到阶段 3；不得只输出请求 YAML 后结束当前训练步骤。
+资源召回是 trainer 内部子流程，`resource_retrieval_request` 不是面向用户或上游的最终执行结果。先运行已安装 `onescience-orchestrator/scripts/discover_skill_metadata.py`（默认扫描其兄弟技能，独立调用时从当前技能目录定位 `../onescience-orchestrator/scripts/`；多根目录用 `--skills-root` 指定，不调用原生元信息接口），根据完整的 frontmatter 元信息选择匹配的 `type=resource` 技能；优先原生调用，不可用时只临时挂载已选 resource 技能正文，取得 `resource_retrieval_result` 后卸载并继续阶段 0 到阶段 3。两种上下文能力都不可用时才返回明确缺失；不得只输出请求 YAML 后结束当前训练步骤。
 
 阶段 0 到阶段 3 在执行具体任务前，必须先基于当前阶段目标评估已召回资源是否足够；若资源缺失、粒度不足或与当前阶段目标不匹配，应再次调用 `type=resource` 技能，按当前阶段目标补充召回资源，再结合资源内容完成该阶段产物。阶段 4 之后消费阶段 0 到阶段 3 已落盘的知识产物与资源使用记录，由 trainer 生成完整训练脚本内容；仅在需要仓库改写或最终文件落点时，按需交接给 `onescience-coder`。
 

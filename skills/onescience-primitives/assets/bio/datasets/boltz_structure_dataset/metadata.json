@@ -1,0 +1,19 @@
+{
+  "name": "boltz_structure_dataset",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "Boltz 本地 RCSB/OpenFold 结构及 MSA 资源原语，绑定 Manifest、结构 NPZ、MSA NPZ、CCD/mols 和 FoldBench YAML 推理输入，区分下载缓存与可用训练资源。",
+  "tags": [
+    "Boltz",
+    "RCSB",
+    "OpenFold",
+    "structure",
+    "MSA",
+    "CCD",
+    "npz"
+  ]
+}

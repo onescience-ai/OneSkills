@@ -1,0 +1,20 @@
+{
+  "name": "state_parse_filtered",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "State Parse Biosciences 人类 PBMC 单细胞扰动数据原语，绑定 parse_concat_full.h5ad 和 few-shot/zero-shot TOML，保留供体、细胞类型与细胞因子划分以及 HVG/State 表示。",
+  "tags": [
+    "State",
+    "Parse",
+    "PBMC",
+    "single-cell",
+    "cytokine",
+    "few-shot",
+    "zero-shot",
+    "h5ad"
+  ]
+}

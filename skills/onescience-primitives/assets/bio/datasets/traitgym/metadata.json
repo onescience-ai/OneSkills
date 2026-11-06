@@ -1,0 +1,19 @@
+{
+  "name": "traitgym",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "Carbon 本地 TraitGym Mendelian/complex traits 非编码变异评测数据，绑定 hg38 8192 bp ref/alt 窗口、因果标签与 match_group，保留匹配对照和全测试集评测协议。",
+  "tags": [
+    "TraitGym",
+    "Carbon",
+    "VEP",
+    "hg38",
+    "non-coding",
+    "matched-controls",
+    "parquet"
+  ]
+}

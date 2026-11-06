@@ -1,0 +1,19 @@
+{
+  "name": "clinvar_vep",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "Carbon 本地 ClinVar VEP coding 与 non-coding 评测数据原语，区分坐标标签表、预计算模型分数和非编码质控注释，说明缺少直接 ref/alt 序列窗口及参考版本核对要求。",
+  "tags": [
+    "ClinVar",
+    "Carbon",
+    "VEP",
+    "clinical-variant",
+    "coding",
+    "non-coding",
+    "parquet"
+  ]
+}

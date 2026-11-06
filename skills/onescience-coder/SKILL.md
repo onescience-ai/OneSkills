@@ -70,36 +70,47 @@ capabilities:
 2. 从用户原始请求、handoff 和资源内容建立逐项需求台账，再规划目录结构、文件闭包和步骤依赖。
 3. 每个步骤先输出执行信息；已有连续执行授权或 `autonomous_mode=true` 时直接编码，其余按工作流确认。
 4. 编码时优先复用已有实现，保持最小改动；精确保持公开符号、签名、默认值、模块结构、配置键、CLI 和输出 schema，不猜测缺失契约。
-5. 所有步骤完成后按需求台账验证公共边界，而不只验证自选 happy path。禁止训练时不运行 train loop、optimizer update 或以 dry-run 名义训练；仍应验证允许的导入、签名、构造、forward、CLI 和输出 schema。静态通过不能宣称可运行或已复现论文指标。
+5. 所有步骤完成后按实际要求验证适用的公共边界，而不只验证自选 happy path。禁止训练时不运行 train loop、optimizer update 或以 dry-run 名义训练；仅执行本任务涉及且获准的导入、接口、forward、CLI 或输出检查。静态通过不能宣称可运行或已复现论文指标。
 6. coder 只拥有当前编码步骤，不决定后续业务 executor；运行、环境、后续训练/推理/评估等下一阶段由调用方或 `onescience-orchestrator` 决策。
 7. 若上游 `step_handoff.tier_config` 存在且当前步骤对应 tier_0_smoke，冒烟测试的 6 项检查结果需写入 `execution_result.tier_result` 回传给 orchestrator。
 
 ## 硬约束
 
 - 接收任务后必须立即调用 `type=resource` 技能获取资源；无论调用者是否提供了 `reference_resources`，都不能跳过。
-- `resource_retrieval_request` 是技能间控制消息，不是面向用户的执行结果；不得只输出请求 YAML 后停止。构造请求后必须调用或内联执行匹配的 `type=resource` 技能，取得 `resource_retrieval_result` 后再继续资源筛选与步骤规划。
+- `resource_retrieval_request` 是技能间控制消息，不是面向用户的执行结果；不得只输出请求 YAML 后停止。先运行已安装 `onescience-orchestrator/scripts/discover_skill_metadata.py`（默认扫描其兄弟技能，独立调用时从当前技能目录定位 `../onescience-orchestrator/scripts/`；多根目录用 `--skills-root` 指定，不调用原生元信息接口），根据完整的 frontmatter 元信息选择匹配的 `type=resource` 技能；优先原生调用，不可用时只临时挂载已选 resource 技能正文，取得 `resource_retrieval_result` 后卸载。两种能力都不可用时才返回明确缺失。
 - 每个步骤如需补充知识，必须再次调用 `type=resource` 技能；不能沿资源 `path` 直接读取文件补洞。
-- 允许作为编码依据的只有两类内容：
+- 允许作为编码依据的只有三类内容：
   - `reference_resources[*].content`
   - `resource_retrieval_result.matched_resources[*].content`
+- 上游技能生成并登记在 `task_context.relevant_artifacts` 或 handoff 中的任务产物，可凭 `path + sha256` 在 coder 技能执行上下文读取；这不适用于 resource skill 的 `assets` 路径。
 - `reference_resources[*].path`、`resource_bindings[*].path`、`matched_resources[*].path` 只用于标识和追踪，不授权直接读文件。
 - coder 可以读取自身 `references/*.md` 工作流文档；这些文档属于本技能协议，不属于资源技能返回内容。
 - 用户原始请求和 `step_handoff` 中的明确文件名、符号名、参数名、默认值、shape、行为、限制和验收要求是实现契约。补充资源不得静默改写这些要求；存在冲突时必须记录并按用户契约实现，确实无法兼容时返回明确缺口。
 - 不得把“数学上相似”当作接口等价。checkpoint、hook、关键字调用和自动验证可能依赖精确属性名、子模块层次、函数签名与输出键。
 - 自写 smoke test 通过不等于契约通过；返回 success 前必须逐项结清需求台账，并核对实际文件集合与必须存在、保持不变、禁止新增的文件集合。
 - 没有运行证据时，不得声称“已验证通过”。
-- 论文复现直接消费上游唯一 `reproduction_spec.md` 的路径、全文和 SHA-256；完整规格作为
-  `reference_resources[*].content` 提供，不要求另造旧版任务书。保留未决项的实验/阶段和作用
+- 论文复现直接消费上游唯一 `reproduction_spec.md` 的路径和 SHA-256，在当前技能执行上下文读回并
+  校验后使用，不要求另造旧版任务书。保留未决项的实验/阶段和作用
   范围，不能补默认值或跨阶段套用参数。补证需求回交 paper-repro，由其只读核验官方仓库。
+  实现与逐项证据沿用该规格 ID；公开类职责、实际字段维度和、layout/差分轴、梯度与 resume 语义
+  按 `implementation_contract_review.md` 验证。真实数据链 not_run、空切片或 NaN/inf 不能被随机输入
+  smoke 或总结性 OK 覆盖；已知规格矛盾回交修订，不以散列一致代替语义核对。
 - 会话已有“直接执行/不用再问”授权持续有效；继承 `autonomous_mode`、禁止训练和输出目录
   等约束，不能因 handoff 漏传标记而再次确认。
 - 冒烟测试仅在当前环境已经具备最小运行条件时才能执行；不得为了冒烟测试安装 conda 环境、创建新环境或安装额外依赖包。
 - **证据边界（严禁伪造，修「为跑完而造数据/玩具模型」病灶）**：不得生成合成/演示/模拟数据充当本次研究数据用于训练或评估；不得用简化/玩具模型输出顶替用户要求的模拟结果（如以稳态热传导顶替流动-传热耦合 CFD、以 2D 顶替 3D）；不得自设验收阈值后自判 PASS；缺失关键科学输入时该步骤回报 BLOCKED 或诚实 PARTIAL 并附 2-3 个有证据候选供确认，绝不伪造。汇总/报告中的指标必须与执行日志一致（单一事实源），不一致即不得声称 PASS。
 - **工程验证 vs 科研结果（修「把流程验证偷换成结果验证」病灶）**：本地环境支持最小冒烟测试时，可以用模拟数据验证工作流/脚本能否运行，但所有此类输出必须标注 `engineering_validation(smoke/demo)`，不得进入科研结论/交付/验收；冒烟测试所用验收阈值必须标注 `engineering_threshold(smoke)`，不得充当科研验收标准；最终报告必须对科研任务在缺失关键科学输入（真实数据集、目标定义、独立验证数据）时报 BLOCKED，不得基于冒烟测试输出宣布科研 PASS/签收。**自证闭环禁止**：不得（生成模拟结果 → 自设验收阈值 → 让模拟结果通过自设阈值 → 宣布科研 PASS）。
 
-## 必须读取的参考文档
+## 审查范围与参考文档
 
-- 建立编码计划前，必须读取：`references/implementation_contract_review.md`
+- 普通直接编码任务取得所需原语内容后进入 coder；专项审查不新增前置技能，也不要求论文规格。
+  按本次用户要求核对文件、接口、行为和允许的验证；简单任务的需求台账可在执行信息中简短列出，
+  不为审查额外生成文件、科学配置或模型验证步骤。
+- 论文复现编码必须读取 `references/implementation_contract_review.md`，并消费上游唯一规格；
+  其它任务仅当实际涉及模型/数据流/状态或严格接口兼容时，读取该参考的适用小节。
+- 数据链、forward/loss、梯度、checkpoint/resume/RNG 只在本次范围涉及对应行为时核验；
+  未涉及的类别为不适用，简要说明或不展开，不作为缺失输入、not_run 或阻断理由。
+  已约定的必需验收项不能由 coder 自行改为不适用；若上游误加了范围外检查，回交调用方修正。
 - 进入分步执行前，必须读取：`references/stepwise_coding_workflow.md`
 - 开始编码前，必须读取：`references/coding_conventions.md`
 - 当最终验证进入静态检查分支时，必须读取：`references/static_requirement_review.md`
@@ -119,7 +130,7 @@ capabilities:
    - 执行当前已确认步骤
 -> 所有步骤完成后：
    - 按允许范围执行公共边界验证和需求台账复核
-   - 无法运行的条目标记 not_run，不由其他检查推断通过
+   - 适用但无法运行的条目标记 not_run；不适用类别不纳入必需验收，不由其他检查推断通过
 -> 返回 execution_result
 ```
 
@@ -185,7 +196,7 @@ execution_result:
   observation:
     completed_steps: <已完成步骤列表>
     verification_mode: <smoke_test | static_review>
-    verification_results: <最终验证结果；包含需求台账统计、文件闭包及 files/signatures/constructors/structure/forward/checkpoint/CLI/output schema 的状态>
+    verification_results: <本任务适用的逐项检查结果、预期与实测、证据定位及台账汇总；not_run 附原因>
     remaining_steps: <剩余步骤，如有>
     next_action_needed: <需要的下一步行动>
   notes: <其他说明>

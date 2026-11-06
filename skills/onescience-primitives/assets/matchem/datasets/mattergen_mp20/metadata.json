@@ -1,0 +1,20 @@
+{
+  "name": "mattergen_mp20",
+  "type": "dataset",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "MatterGen MP20 本地 train/val/test 缓存，45,229 个不超过 20 原子的晶体结构；包含分数坐标、晶胞和带缺失值的条件属性，供晶体生成使用。",
+  "tags": [
+    "matchem",
+    "mattergen",
+    "MP20",
+    "mp_20",
+    "crystal-generation",
+    "fractional-coordinates",
+    "numpy",
+    "conditional-generation"
+  ]
+}

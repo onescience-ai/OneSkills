@@ -1,0 +1,19 @@
+{
+  "name": "rosettafold_reference_databases",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "RoseTTAFold 本地 BFD、PDB100_2021Mar03、UniRef30_2020_06 及 uniref30 别名参考数据库原语，登记 HH-suite 文件前缀、版本与软链接，明确别名实际指向 UniRef30_2021_03。",
+  "tags": [
+    "RoseTTAFold",
+    "BFD",
+    "PDB100",
+    "UniRef30",
+    "HH-suite",
+    "reference-database",
+    "MSA"
+  ]
+}

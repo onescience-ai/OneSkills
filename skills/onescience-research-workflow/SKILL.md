@@ -165,7 +165,7 @@ task_centric_proposal:
 
 当接收到规划请求时：
 
-0. **调用闭环**：补充资源召回是内部子流程，`resource_retrieval_request` 不是最终输出。构造请求后应调用或内联执行匹配的 `type=resource` 技能，取得 `resource_retrieval_result` 并消费其中的 `matched_resources[*].content`，再继续规划或判断仍缺信息。
+0. **调用闭环**：补充资源召回是内部子流程，`resource_retrieval_request` 不是最终输出。先运行已安装 `onescience-orchestrator/scripts/discover_skill_metadata.py`（默认扫描其兄弟技能，独立调用时从当前技能目录定位 `../onescience-orchestrator/scripts/`；多根目录用 `--skills-root` 指定，不调用原生元信息接口），根据完整的 frontmatter 元信息选择匹配的 `type=resource` 技能；优先原生调用，不可用时只临时挂载已选 resource 技能正文。取得 `resource_retrieval_result` 并消费其中的 `matched_resources[*].content` 后卸载临时正文。
 1. **识别领域**：从 `intent_profile.domain` 确定领域（earth/biology/materials/cfd/general-science）
 2. **先复用现有候选**：先检查 `planning_request.matched_resources` 是否已经足够支持当前 `assigned_aspect` 的资源选择、节点设计与风险判断；足够时不再额外召回资源
    - **相关不等于充分**：`why_matched`、资源标题、资源摘要或资源类型只能证明“可能相关”，不能证明“足以规划”

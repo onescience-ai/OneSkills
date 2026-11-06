@@ -14,7 +14,7 @@
 - 运行目标和硬件约束
 - 必需输出和验证标准
 
-本阶段由 trainer 负责生成完整训练脚本内容与代码级契约，包括训练策略、数据配置、split 假设、loss、optimizer、scheduler、评测频率、checkpoint 策略、日志与验证要求。这里的“生成”指 trainer 先行定义脚本应包含的全部内容，而不是把这些内容再交给 `onescience-coder` 重新决定。仅当需要将这些已定义内容写入仓库、修改仓库现有文件、补齐最终文件路径或对接项目原生目录结构时，才使用 `onescience-coder`。交接内容必须自包含，包含路径、契约、参数默认值和阻塞项；在 trainer -> coder 落盘交接时，路径只用于追踪，供 coder 直接消费的知识必须同时以内容形式提供，不能只传文件路径。
+本阶段由 trainer 负责生成完整训练脚本内容与代码级契约，包括训练策略、数据配置、split 假设、loss、optimizer、scheduler、评测频率、checkpoint 策略、日志与验证要求。这里的“生成”指 trainer 先行定义脚本应包含的全部内容，而不是把这些内容再交给 `onescience-coder` 重新决定。仅当需要将这些已定义内容写入仓库、修改仓库现有文件、补齐最终文件路径或对接项目原生目录结构时，才使用 `onescience-coder`。交接包含当前步骤需要的路径、散列、契约、参数默认值和阻塞项；大文本保持为 trainer 任务产物，由 coder 在技能执行上下文按需读取并校验，不重复内嵌全文。
 
 ## Pipeline 要求
 
@@ -36,10 +36,9 @@
 
 ## Trainer -> Coder 落盘交接
 
-对于来自 paper-repro 的任务，继续传递唯一规格的 `reproduction_spec_path`、完整
-`reproduction_spec_content`、`reproduction_spec_sha256` 和作用范围明确的未决项；coder 从
-`reference_resources[*].content` 消费同一规格。下述 trainer 派生任务书仅用于额外的训练落盘
-工作，不是 paper-repro 的交付前提，不能替代/改写上游规格，也不能因为缺少它而阻止论文代码
+对于来自 paper-repro 的任务，继续传递唯一规格的 `reproduction_spec_path`、
+`reproduction_spec_sha256` 和作用范围明确的未决项；coder 在技能执行上下文读取并校验同一规格。
+下述 trainer 派生任务书仅用于额外的训练落盘工作，不是 paper-repro 的交付前提，不能替代/改写上游规格，也不能因为缺少它而阻止论文代码
 生成。所有既有执行授权、禁止训练和输出目录约束随 handoff 传递。
 
 `onescience-coder` 在本阶段只负责把 trainer 已经定义完成的训练脚本内容物化为仓库文件，或对现有项目文件做对应修改；不负责重新决定训练脚本应包含的训练策略、数据语义、checkpoint 语义、日志策略和验证要求。
@@ -53,24 +52,24 @@ task_method=training_codegen
 trainer_workdir=<code_save_dir>/.trainer_work/<run_id>
 code_save_dir=<用户代码保存目录>
 source_capture_path=<trainer_workdir>/source_capture.md
-source_capture_content=<source_capture.md 全文或执行所需完整内容>
+source_capture_sha256=<文件 SHA-256>
 training_knowledge_path=<trainer_workdir>/training_knowledge.md
-training_knowledge_content=<training_knowledge.md 全文或执行所需完整内容>
+training_knowledge_sha256=<文件 SHA-256>
 data_preparation_plan_path=<trainer_workdir>/data_preparation_plan.md
-data_preparation_plan_content=<可选，但只要下游需要就必须提供>
+data_preparation_plan_sha256=<文件存在且下游需要时提供>
 data_manifest_path=<trainer_workdir>/data_manifest.json
-data_manifest_content=<可选，但只要下游需要就必须提供>
+data_manifest_sha256=<文件存在且下游需要时提供>
 training_plan_path=<trainer_workdir>/training_plan.md
-training_plan_content=<training_plan.md 全文或执行所需完整内容>
+training_plan_sha256=<文件 SHA-256>
 task_description_path=<trainer_workdir>/coder_task_description.md
-task_description_content=<coder_task_description.md 全文>
+task_description_sha256=<文件 SHA-256>
 required_outputs=<当前步骤要求输出>
 validation_criteria=<当前步骤完成标准>
 coder_static_review_required=true
 next_action=onescience-coder
 ```
 
-具体代码生成前，必须先从 `trainer_workdir` 中保存的知识文件读取，再由 trainer 明确训练核心逻辑与文件级契约后组织交接内容。训练策略、数据配置、loss、optimizer、scheduler、eval/checkpoint cadence、日志与验证要求必须先由 trainer 明确给出；`onescience-coder` 不负责补全这些核心训练决策，只负责按 trainer 契约写入仓库并做静态对齐。由于 `onescience-coder` 只允许直接消费 `reference_resources[*].content` 或资源技能返回内容，trainer 交接给 coder 时必须同时传递 `*_path` 与 `*_content`；路径用于追踪与 provenance，内容用于直接消费。
+具体代码生成前，必须先从 `trainer_workdir` 中保存的知识文件读取，再由 trainer 明确训练核心逻辑与文件级契约后组织交接内容。训练策略、数据配置、loss、optimizer、scheduler、eval/checkpoint cadence、日志与验证要求必须先由 trainer 明确给出；`onescience-coder` 不负责补全这些核心训练决策，只负责按 trainer 契约写入仓库并做静态对齐。trainer 交接给 coder 时传递执行所需任务产物的 `*_path` 与 `*_sha256`，由 coder 在技能执行上下文按需读取；resource skill 的 assets 仍只能通过资源结果消费。
 
 ## 任务描述要求
 

@@ -1,0 +1,22 @@
+{
+  "name": "nequip_fcu",
+  "type": "dataset",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "NequIP 目录下 fcu.xyz 本地扩展 XYZ 数据，6,855 帧、每帧 52 原子，含 C/Cu/H/O、周期晶胞及能量/力；源单位和现成 split 尚未声明。",
+  "tags": [
+    "matchem",
+    "NequIP",
+    "nequip",
+    "fcu",
+    "Cu",
+    "C-H-O",
+    "extxyz",
+    "energy",
+    "forces",
+    "MLIP"
+  ]
+}

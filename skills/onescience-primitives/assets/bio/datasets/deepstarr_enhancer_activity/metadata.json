@@ -1,0 +1,17 @@
+{
+  "name": "deepstarr_enhancer_activity",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "Carbon 本地 DeepSTARR 增强子双目标活性回归数据原语，绑定 train/valid/test Parquet，区分原始、scaled、quantile-normalized 活性及 label 向量。",
+  "tags": [
+    "Carbon",
+    "DeepSTARR",
+    "enhancer",
+    "regression",
+    "parquet"
+  ]
+}

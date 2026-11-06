@@ -811,6 +811,55 @@ def rank_key(rec):
     return (rel, dm, -(rec.get("cited_by") or 0))
 
 
+DM_RANK = {"exact": 0, "adjacent": 1, "cross_domain": 2}
+# 摘要里的带单位数值：让"可直接承重的参数"在终端就露出来，不必再翻落盘文件
+ABS_NUM_RE = re.compile(
+    r"\d+(?:[.,]\d+)?\s*(?:meV|keV|eV|GPa|MPa|kPa|W/cmK|W/mK|W/m|K|℃|°C|Å|nm|μm|ps|fs|ns"
+    r"|THz|GHz|MHz|cm-1|%|ppm|mol%|at%|nM|μM|mM|kJ|kcal|bit|层|维)")
+
+
+def abs_numbers(txt):
+    """从摘要抽带单位数值，保序去重（只取前 8 个，避免终端被数字塞满）。"""
+    out = []
+    for m in ABS_NUM_RE.finditer(txt or ""):
+        t = re.sub(r"\s+", "", m.group(0))
+        if t not in out:
+            out.append(t)
+    return out[:8]
+
+
+def build_top_view(items, top_n, abs_n, abs_chars):
+    """旧行为：stdout 只回题录（标题/年份/DOI/被引），摘要虽在 lit_result.json 里，但 agent
+    看完终端就下结论 —— 实测 8 个真实会话里题录消费 209 条、摘要只读进 44 条（21%），
+    方法路线槽位仅 4/8 会话填上。这里把内容层前移：在打印出的条目里挑 abs_n 条（域匹配
+    exact 优先，且只从确实带摘要的条目中选）附截断摘要与其中的带单位数值；
+    其他条目仍只给题录，控住 token。"""
+    span = min(max(0, top_n), len(items))
+    # 额度只在"真的有摘要"的条目里分配:不限流时 OpenAlex 题录多数自带摘要,
+    # 而 Crossref/arXiv 兜底源常无摘要,若按原排序硬取前 N 条会把额度耗在空摘要上。
+    cand = [i for i in range(span) if (items[i]["value"].get("abstract") or "").strip()]
+    order = sorted(cand, key=lambda i: (DM_RANK.get(items[i].get("domain_match"), 3), i))
+    with_abs = set(order[:max(0, abs_n)])
+    view = []
+    for i in range(span):
+        x = items[i]
+        v = x["value"]
+        row = {"title": v["title"], "year": v["year"], "doi": v["doi"],
+               "cited_by": v.get("cited_by"), "venue": v.get("venue"),
+               "is_oa": v.get("is_oa"), "oa_status": v.get("oa_status"),
+               "src": v.get("source"), "rel": x["relevance"],
+               "dm": x["domain_match"], "ev": x["evidence_level"]}
+        if i in with_abs:
+            ab = re.sub(r"\s+", " ", v.get("abstract") or "").strip()
+            if ab:
+                row["abs"] = ab[:max(0, abs_chars)]
+                nums = abs_numbers(ab)
+                if nums:
+                    row["abs_nums"] = nums
+        view.append(row)
+    return view
+
+
 def main():
     global _MAILTO, UNPAYWALL_EMAIL
     ap = argparse.ArgumentParser(description="文献通道：多子查询 + 三源并行 + 相关性门 + 免费全文降级链")
@@ -849,6 +898,10 @@ def main():
     ap.add_argument("--no-arxiv-fallback", dest="no_arxiv_fallback", action="store_true",
                     help="关闭『OpenAlex 被限流取空时自动降级到 arXiv』的定向救援")
     ap.add_argument("--top", type=int, default=12, help="stdout 打印前 N 条（勿再用 shell tail 截断）")
+    ap.add_argument("--abstract-top", dest="abstract_top", type=int, default=5,
+                    help="stdout 里给前 N 条（域匹配 exact 优先）附摘要正文与其中带单位数值；0=关闭")
+    ap.add_argument("--abstract-chars", dest="abstract_chars", type=int, default=600,
+                    help="附到 stdout 的每条摘要截断长度")
     ap.add_argument("--mailto", default=DEFAULT_MAILTO,
                     help="联系邮箱：OpenAlex polite pool 身份（**不提高配额**）+ Unpaywall 必需参数。"
                          "默认取环境变量 ONESCIENCE_CONTACT_EMAIL。为空时 OpenAlex 走匿名池"
@@ -1097,12 +1150,7 @@ def main():
                            "strong_methods": [m for m in methods if m.lower() not in WEAK_METHODS]},
         "citing_oa_found": citing_found, "citing_oa_dropped": citing_dropped,
         "sub_queries": [q for _, q in subs],
-        "top": [{"title": x["value"]["title"], "year": x["value"]["year"], "doi": x["value"]["doi"],
-                 "cited_by": x["value"].get("cited_by"), "venue": x["value"].get("venue"),
-                 "is_oa": x["value"].get("is_oa"), "oa_status": x["value"].get("oa_status"),
-                 "src": x["value"].get("source"), "rel": x["relevance"],
-                 "dm": x["domain_match"], "ev": x["evidence_level"]}
-                for x in items[:args.top]],
+        "top": build_top_view(items, args.top, args.abstract_top, args.abstract_chars),
     }, ensure_ascii=False, indent=2))
     for k in ("caveat", "caveat_gate", "caveat_fulltext"):
         if result.get(k):

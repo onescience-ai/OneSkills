@@ -73,6 +73,7 @@ capabilities:
 4. **软件参数不套引文门**：ENCUT/k 网格/INCAR 标签这类来自软件文档与惯例，**不该被『必须带文献 [n]』的门误卡**；它们的出处写 `source_type=software-doc`（指向参考表/官方文档），不伪造论文引用。
 5. **离线降级不崩溃**：所有命令块必须捕获网络异常，网络不可用时打印 `[OFFLINE]` 并如实标注，让上层继续，绝不抛栈中断。
 6. **domain_match 逐条打标**（文献通道）：沿用 live-literature 口径 `exact/adjacent/cross_domain`，`cross_domain` 只能作方法学参考、不得生成本任务的具体数值。
+7. **参数必须读自内容层，不许看题录就下结论**：`scripts/lit_search.py` 默认已在 stdout 的 `top[].abs` / `top[].abs_nums` 里带上前几条（域匹配 `exact` 优先）的**摘要正文与其中带单位数值**。写进方案的每个数值只能来自 ①`abs`/`abs_nums` ②已下载的全文 ③数据库记录。**只看过标题/年份/被引数就给出的数值，一律按先验处理**（按第 1 条标 `source_type=model-prior` + `⚠`）。若一次检索的 `top` 里**完全没有 `abs` 字段**（多为源被限流、或命中源本身不含摘要），必须换源/重试或如实标 `knowledge_gap`，不得退回凭标题作答。
 
 ## 三、统一输出 schema（每通道产出一个 JSON 对象，落到会话工作目录）
 
@@ -127,6 +128,7 @@ capabilities:
 7. 需要 PMC 系全文细节时：复用 `onescience-live-literature` 的命令块 B（Europe PMC fullTextXML → NCBI BioC）。`evidence_level=abstract-only` 的条目**禁止**作为数值来源。
 8. 每条接地数值写 `items[]`：`channel=literature`，`provenance=<DOI/编号>`，`evidence_level=full-text-oa|full-text|abstract`，`domain_match` 沿用脚本判定值并原样带上 `domain_match_basis`。
 9. **数值型知识（如具体 ppm）不要指望文献通道兜底**：全文拿不到就如实标 `knowledge_gap`、改走通道②/③ 的数据源，或标带 `⚠` 的先验值，**绝不无出处默写**。
+10. **读完内容层再落参数（必经）**：stdout 的 `top[]` 默认附 `abs`（摘要正文，条数由 `--abstract-top` 控制，默认 5，且只从确实带摘要的条目里选；`--abstract-chars` 默认 600 字符）与 `abs_nums`（摘要中带单位的数值，如 `873K`/`513MPa`/`3.5meV`）。**每个写进交付的数值必须能指到 `abs`/`abs_nums`、全文或数据库记录三者之一**；只有题录时不许据此推参数。带出的摘要仍是 `evidence_level=abstract`：可作方法学与量级依据，不等于全文精度，需要更细的数值仍要 `--fetch-oa`。要回到旧的精简输出用 `--abstract-top 0`。
 
 ### 通道② 结构 / 物质数据（本技能新增核心能力）
 运行 `scripts/structure_fetch.py`（详见第六节命令块）。内部逻辑：
@@ -201,6 +203,14 @@ python3 scripts/param_lookup.py --software VASP --calc NMR-GIPAW
 python3 scripts/param_lookup.py --software VASP --calc NMR-GIPAW --live --workdir ./online_kb
 ```
 
+**D · 引用溯源自检（终稿交付前必跑，把铁律 1 变成可机判断言）**（详见 `scripts/check_provenance.py`）
+```bash
+# 把终稿里的 DOI / COD 号 / arXiv / PDB / UniProt 标识符与本轮工具产出做集合差：
+python3 scripts/check_provenance.py --answer ./answer.md --workdir ./online_kb
+# 退出码：0=全部可溯源或已如实标注先验；2=存在 violation（无工具回执且未标先验）——必须修正
+# 可选：--strict（已标先验也计违规）/ --evidence <工具输出转储> / --allow-selfauthored（慎用的自写文件纳入）
+```
+
 ## 七、纪律铁律（自检清单）
 
 1. 承重数值先在线取，取不到才用先验；先验必标 `⚠ 未经在线核实`，绝不冒充 [n] 或 COD 出处。
@@ -213,3 +223,4 @@ python3 scripts/param_lookup.py --software VASP --calc NMR-GIPAW --live --workdi
 8. `domain_match` 以脚本给出的客观判定为准（看 `domain_match_basis`）：上层**只能改严（exact→adjacent）不得改松**；`gaps.jsonl` 的 `domain_match_summary` 直接抄脚本输出的同名字段，不得自行点数。
 9. `evidence_level=abstract-only` 的文献**禁止承载任何数值**；缺数值就如实标 `knowledge_gap` 或走带 `⚠` 的先验值，绝不无出处默写。
 10. 交付前逐条自检：这条真值是哪来的？在线的有没有出处？先验的有没有 `⚠` 标注且没赖给文献？
+11. **可机判版铁律 1**：终稿交付前必跑 `scripts/check_provenance.py`——每个具体标识符要么逐字见于本轮工具证据（`lit_result.json`/`structure_result.json`/`param_result.json`/回验 CIF），要么**同一行**标为模型先验；退出码 2 未修而交付即协议错误。自己写的 `online_knowledge.json` 不构成出处（循环论证）。

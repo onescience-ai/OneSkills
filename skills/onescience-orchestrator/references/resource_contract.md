@@ -86,7 +86,7 @@ content:
 
 检查规范化目标路径及间接构造的路径是否涉及 resource `assets/`。涉及时，依据已有 `resource_retrieval_request`、目标资源技能的检索流程和本次请求范围判断：内部检索允许继续；绕过协议的读取才拦截并记录 `resource_asset_access_blocked`，随后改用精确资源请求恢复执行。
 
-原生 skill 工具若只加载说明，仍需同一智能体按资源技能流程完成检索；没有原生桥接时也相同。请求应包含任务需求、检索范围和内容需求，并保留请求与正式结果，不能仅宣布调用或修改角色标记。检索进行中尚未返回 result 不构成违规。调用方在检索完成后只消费正式 result，不沿返回的 path 自行深读。
+resource 技能必须先运行 orchestrator 的 `scripts/discover_skill_metadata.py` 读取 frontmatter（见 `skill_metadata_contract.md`，不调用原生元信息接口），按 `name`、`description`、`type`、`capabilities` 选择。优先通过原生智能体 / skill 执行接口调用；接口只加载说明或不能执行时，可在 caller 中只挂载已选 resource 技能的非持久化正文，完成正式 result 后从下一次模型请求卸载。请求应包含任务需求、检索范围和内容需求；调用方只消费正式 result，不沿返回的 resource path 自行深读。宿主既不能原生执行也不能动态裁剪临时上下文时，才记录调用能力缺失。
 
 若已发生协议外读取，仅丢弃未经资源技能核验的内容及其派生结论，通过资源技能重新获取后继续；不因该事件终止整项任务。无法补齐时记录具体 `resource_insufficient` 并按内容不足规则处理。
 

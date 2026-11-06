@@ -17,7 +17,7 @@ step_handoff:
   task_context:
     user_goal: <用户最终目标>
     constraints: <约束列表>
-    relevant_artifacts: <相关产物>
+    relevant_artifacts: <相关任务产物；大文件使用 path + kind + sha256，不内嵌全文>
   resource_bindings:
     - path: <资源路径>
       type: <资源类型>
@@ -27,6 +27,11 @@ step_handoff:
   completion_criteria: <完成标准>
   completion_scope: <spec_delivery | code_delivery | scientific_result>
 ```
+
+executor 优先在原生独立上下文中完成当前步骤；原生执行接口不可用时，可在当前智能体中把
+唯一已选技能挂载为非持久化 `active_skill_context`。caller 最终只保留下文 `execution_result`
+的正式字段；技能正文、references、内部工具日志和完整执行转录不写入持久上下文。大文本和日志
+写入 `artifacts` 指向的文件。resource skill 的 `assets` 路径仍受资源协议限制，不能以任务产物规则绕过。
 
 ## 执行技能返回格式
 
@@ -52,6 +57,11 @@ execution_result:
       description: <事件描述>
 ```
 
+`execution_result` 是当前技能上下文的释放边界。技能仍有本步骤内操作、重试或验证时继续执行，
+不要提前返回；结果已持久化并由 caller 接收后，独立执行上下文结束，或从下一次模型请求卸载
+`active_skill_context`。后续再次需要同一技能时，根据 Task State、handoff 和任务产物重新调用，
+不保留上一次调用加载的技能正文。
+
 **授权与约束传递**：用户原始要求、会话已有连续执行授权、输出目录和禁止训练必须传到每个
 executor。已有明确授权不重新确认；未决科学值仍保留未决，自主执行不等于允许猜测。
 
@@ -71,6 +81,7 @@ executor。已有明确授权不重新确认；未决科学值仍保留未决，
 - `step_handoff.execution_skill` 是当前步骤的权威 owner；当前步骤被选定为 `executor_step` 后，orchestrator 正式 dispatch 给该 owner。若 owner 判断需要调整，先回到新一轮 planning / selection。
 - `execution_result` 是 `executor_step` 的正式完成回执；caller 以该回执更新 observation，而不是用自身工具结果替代 executor-owned 步骤。
 - executor 只在自身 `SKILL.md` 明确写出的窄委托 / 恢复合同内调用下游技能。该合同至少说明：可委托技能、触发条件、委托覆盖范围，以及委托完成后的恢复位置。
+- executor 调用下游技能时优先使用原生智能体 / skill 执行接口；不可用时只挂载唯一已选下游技能的非持久化正文。父技能只消费下游正式结果；结果持久化后卸载下游正文。两种上下文能力都不可用时才返回当前步骤缺失。
 - 若当前 skill 没有写明上述合同，或当前问题已超出合同范围，则返回 `execution_result` 给 `onescience-orchestrator`，由 orchestrator 决定后续技能与下一步。
 - 运行通道歧义、环境歧义、下一业务阶段归属、跨技能后续链路选择等，默认由 `onescience-orchestrator` 决定；只有当前 skill 明确声明可在窄范围内恢复当前任务时，才继续内部委托。
 
@@ -78,9 +89,9 @@ executor。已有明确授权不重新确认；未决科学值仍保留未决，
 
 本节只用于帮助上游快速组织 handoff 字段，不是 orchestrator 判定 executor 职责边界、排他范围或明确不负责事项的权威来源。
 
-- 最终 scope / exclusivity / non-responsibility 判断，以对应 executor 的 `capabilities` 元信息为权威来源；仅在 `capabilities` 无法判定边界归属时，按需深读对应 SKILL.md。
+- 最终 scope / exclusivity / non-responsibility 判断，只以 `discover_skill_metadata.py` 从 frontmatter 返回的 `name`、`description`、`type`、`capabilities` 为路由依据；无法判定时返回路由歧义，不读取候选 SKILL.md 正文。
 - 若本节简写摘要与 executor 自身 `SKILL.md` 冲突，以 executor 自身 `SKILL.md` 为准。
-- 技能名称和 `description` 用于初筛；`capabilities` 元信息用于最终任务拆分。仅在 `capabilities` 边界重叠时按需深读 SKILL.md。
+- 技能名称和 `description` 用于初筛；`capabilities` 元信息用于最终任务拆分。
 
 ### onescience-coder
 - 接收：step spec、资源路径、目标目录、运行时参数（数据源路径、输出路径等）
@@ -121,21 +132,17 @@ source_dir = os.path.join(source_dir, "ERA5")
   acceptance contract 或 evaluation artifacts（如有）
 - 执行：意图审计、全文获取、逐字段充分性判断、必要的官方仓库只读补证、结构化提取、
   同一规格内的实现契约、核验和落盘交接门禁
-- 返回：唯一 `reproduction_spec.md` 的路径、完整内容、SHA-256、conflicts、按实验/阶段及
+- 返回：唯一 `reproduction_spec.md` 的路径、SHA-256、conflicts、按实验/阶段及
   构建/运行影响分类的 unresolved、recommended consumer；不得再要求旧版独立任务书/JSON 契约
 - 完成后必须回 orchestrator observation/planning；不得在同一回执中附带 coder 生成的源码、
   trainer 训练结果或 infer 评测结果，也不得把 `next_action` 固定为 coder
 
-无原生 skill bridge 时，内联执行仍须使用独立的 `step_handoff` 和
-`execution_result.skill=onescience-paper-repro`，并完整执行 paper-repro 的 stages/references/
-gates。只生成一份概念 spec、随后由 orchestrator 直接写代码，不构成合法的 paper-repro 回执。
-
-有 Skill 工具时必须实际调用 paper-repro，不把加载 primitives、直接 webfetch PDF 或复述
-prompt 记作执行了该技能。来源获取失败或全文未核验不得以“prompt 已完整”跳过。
+paper-repro 优先通过原生智能体 / skill 执行接口调用；接口不可用时，在 metadata 路由已明确
+选中它之后临时挂载其正文执行，并在正式结果持久化后卸载。不把加载 primitives、直接 webfetch PDF 或复述 prompt 记作执行了该技能。
+来源获取失败或全文未核验不得以“prompt 已完整”跳过。
 可交接时，给 coder 传 `paper_repro_handoff=true`、`reproduction_spec_path`、
-`reproduction_spec_content`、`reproduction_spec_sha256`、conflicts、key_unresolved，并将
-完整内容映射到 `reference_resources[*].content`。规格落盘后计算散列，修改后重新读回计算；
-不能传摘要，不能在下游生成另一份规格。`partial` 时继续独立可实现模块，保留受阻部分。
+`reproduction_spec_sha256`、conflicts、key_unresolved。coder 在自己的技能执行上下文按路径读取并
+校验散列；不能在下游生成另一份规格。`partial` 时继续独立可实现模块，保留受阻部分。
 代码请求只有在所需源码/配置实际存在、非空且约定验收完成后才满足；未决必填值导致构建或运行
 受阻时明确返回 `partial`，不得将静态通过等同于可运行。
 

@@ -98,27 +98,29 @@ orchestrator 不得绕过 `resource_retrieval_request → resource_retrieval_res
 ## 技能调用闭环
 
 - `resource_retrieval_request`、专家召回请求和 `step_handoff` 都是工作流内部控制消息。发起请求后，应取得对应结果对象，并把控制权接回 orchestrator 主循环。
-- 如果宿主环境提供原生 skill 调用工具，先使用它调用目标技能。工具若只返回技能说明，调用尚未完成：同一轮按说明执行子流程并生成正式结果；若工具已返回执行结果，则核验并接回主循环。没有原生桥接时读取目标技能后按相同流程执行。
-- **执行子流程须遵守目标技能契约**：完整读取目标技能
-  `SKILL.md` 及其标为必读的 references，执行其 stages、来源策略、写入边界和 workflow
-  gates，并生成符合目标技能契约的正式 result。目标技能 `not_owns` 的动作在内联时仍然禁止。
-- 内联 executor 也必须分别形成 `step_handoff -> execution_result -> observation` 三个对象并
-  写回 Task State；不得把 orchestrator 自己的工具调用、源码、checkpoint 或 smoke 结果包装成
-  executor 回执。任一 stage/gate 未执行时只能返回 partial/failed，不能声称该技能已完成。
+- 优先通过宿主的原生智能体 / skill 执行接口调用目标技能。只有正式选定目标技能后，目标技能执行上下文才加载其 `SKILL.md` 和按需 references；路由阶段不读取任何候选正文。
+- 原生执行接口不可用或只返回技能说明时，在当前智能体中只把已选技能正文挂载为非持久化 `active_skill_context`。该内容仅在 `active_step.status=pending|running` 时参与模型请求，不写入持久会话历史、Task State 或 handoff；references 仍按技能正文指示逐项加载。
+- 技能产生并持久化正式 `execution_result` 后，从下一次模型请求中卸载该技能正文和 references；当前步骤仍有操作、重试或验证时保持挂载，不提前返回。只有宿主既不能原生执行技能，也不能动态组装或裁剪临时上下文时才进入 `blocked`。
+- executor 内部调用下游技能时遵守同一边界：优先独立调用，必要时临时挂载唯一已选下游技能；只把正式结果接回当前步骤，不持久化下游技能正文、references 或执行转录。
+- caller 只消费正式 result 中的状态、产物引用、observation 和 events。完整日志及大文本保存在文件产物中，不复制到后续技能上下文。
 - 当前轮次只有在产出 `final result`、进入真实 `blocked`，或需要用户补充不可推断的信息 / 确认时才结束。资源召回、专家召回和执行技能交接本身都只是中间状态。
 
-## 技能元信息发现契约（原生接口优先，强制可观测）
+## 技能元信息发现契约（Python 读取 frontmatter）
 
-专家和 executor 的选择必须先尝试宿主提供的智能体技能列表/元信息接口，但不得假定该接口在所有宿主中存在：
+resource、expert 和 executor 的选择统一通过本技能的脚本获取元信息，**不调用、不探测宿主的智能体技能元信息接口**。按当前检索阶段选择查询范围，例如资源召回前执行：
 
-1. 枚举当前可用工具并查找原生技能列表或元信息接口；存在时必须调用，并记录 `metadata_source=native_skill_interface`。
-2. 接口不存在时，记录 `native_skill_metadata_interface_available=false` 和探测证据；改用宿主注入当前会话的技能目录，记录 `metadata_source=session_skill_catalog`。这不是原生接口成功，不得混淆上报。
-3. 会话目录只有名称、description 和 SKILL.md 位置而缺少 `type/capabilities` 时，只允许读取**目录中已列出的候选技能** SKILL.md YAML frontmatter 补齐元信息，记录 `metadata_source=session_catalog_plus_frontmatter`；不得扫描技能目录猜测未注入技能。
-4. 无论使用哪种来源，都要维护 `all_*_skills`、`read_*_skills`、`missing_*_skills`、`*_inventory_complete` 并做集合校验。目录缺失、frontmatter 不可读或字段不全才阻塞；“原生接口不存在但会话目录完整”不得自锁。
-5. Task State 必须保存接口可用性、实际元信息来源和每个候选的来源；最终审计必须区分“原生接口验证成功”和“降级路由验证成功”。
-6. 工具列表中只出现通用 agent/skill 执行接口，不等于存在技能元信息列表接口；必须有一次真实
-   list/metadata 调用及其返回证据，才能标记 `native_skill_metadata_interface_available=true`。
-   不得用读取 SKILL.md 或会话目录的结果冒充原生接口验证。
+```bash
+python "<本次安装的 onescience-orchestrator 目录>/scripts/discover_skill_metadata.py" --type resource
+```
+
+上方目录占位符替换为本次实际技能目录（技能名为 `onescience-orchestrator`），不要假定安装在当前工作目录。脚本默认扫描该目录的兄弟技能；技能分布在多个安装根目录时，以重复的 `--skills-root <技能父目录>` 明确提供本次可用范围。使用方法、输出和恢复细则见 `references/skill_metadata_contract.md`。
+
+1. 实际运行脚本并记录 `metadata_source=skill_frontmatter_script`、脚本路径、扫描根目录和退出码；脚本只读取各 `SKILL.md` 的 YAML frontmatter，不读取正文、references 或 assets。
+2. 路由只使用脚本返回的 `name`、`description`、`type`、`capabilities`；不由智能体猜测或补写字段，不深读候选正文消歧或构造 detail bundle。脚本读取 frontmatter 是合法的元信息发现，不属于资源内容访问。
+3. 按需求选择查询类型：资源召回使用 `--type resource`，专家召回使用 `--type expert`，计划融合或执行技能选择前使用 `--type executor`；需要所有类型时不传 `--type`，`--type orchestrator` 仅用于检索编排技能。单次返回查询范围内的全部完整元信息，不按名称预先缩减候选。已有本轮相同安装范围的完整结果覆盖所需类型时可复用。执行工具应提供足够的输出预算，完整接收单个紧凑 JSON 文档。
+4. 只采用完整可解析、退出码为 0、`inventory_complete=true` 且末尾 `output_complete=true` 的响应；核对 `skill_count` 等于记录数、技能名称无重复、本次 `query_types` 与请求一致、其中各类型名称集合等于 `inventories` 中对应的 `all_*_skills`，再维护 `all_*_skills`、`read_*_skills`、`missing_*_skills`、`*_inventory_complete`。只更新已完整接收类型的调用方库存；查询 resource 不代表已获取 expert/executor 元信息。禁止用 `head`、`tail`、字符切片或仅打印名称/部分能力字段替代完整输出。
+5. 实际路径、依赖或元信息错误时，按脚本 `errors` 修复后重新运行；工具提示截断时增大该次工具调用的输出预算，重新一次性获取完整文档。不能完整接收时报告具体输出限制，不得根据部分元信息继续路由，也不得把空扫描当作完整发现。
+6. Task State 记录脚本运行证据、`query_types`、`skill_count`、`metadata_received_complete`、inventory 状态和最终选择依据；只有完整接收并核对通过后才设置 `metadata_received_complete=true`。不持久化候选技能正文，技能的正式调用仍遵循“技能调用闭环”。
 
 ## 核心边界
 
@@ -139,13 +141,8 @@ orchestrator 不得绕过 `resource_retrieval_request → resource_retrieval_res
 
 ## 分层模型
 
-**论文复现的来源与代码交付检查**：识别到论文复现且尚无本次目标实验的已核验规格时，必须正式
-调度 `onescience-paper-repro`（有 Skill 工具时实际调用；无 bridge 时按其完整工作流内联执行并
-保留独立回执）。不能只调用 primitives/coder，不能以“prompt 很详细”跳过全文获取。PDF 的
-工具响应超限由 paper-repro 按其来源工作流切换到落盘下载/本地解析，不能据此直接进入 coder。
-全文不可用、`paper_repro_handoff=false` 时不视为规格就绪；官方 GitHub 只用于补充已读论文的
-实现缺口。用户要求代码时，paper-repro 的返回只完成提取步骤，须继续调度 coder，直到源码、
-配置和入口实际交付，或如实报告受阻模块；不得停在规格文件后宣布完成。
+**论文复现的来源与代码交付检查**：识别到意图为论文复现时必须正式调度 `onescience-paper-repro`（按“技能调用闭环”优先原生执行；不可用时为已选中的 paper-repro 临时挂载正文并取得正式回执，持久化后在下一次模型请求卸载正文）。执行完成后，回到编排流程按职责选择后续执行技能。
+全文不可用、`paper_repro_handoff=false` 时不视为规格就绪；官方 GitHub 只用于补充已读论文的实现缺口。用户要求代码时，paper-repro 的返回只完成提取步骤，须继续调度 coder，直到源码、配置和入口实际交付，或如实报告受阻模块；不得停在规格文件后宣布完成。
 
 调度时传递当前任务目标、用户明确要求、约束、论文线索及输出目录；已有上下文或 handoff
 足以表达这些内容时直接进入 paper-repro，不要求用户重新整理输入格式或重发逐字 prompt。
@@ -215,7 +212,7 @@ orchestrator 不得绕过 `resource_retrieval_request → resource_retrieval_res
 1.5 **【强制】资源调用前预分析**：调用 type=resource 之前先扫描 `user_request` 中的可视化信号词并记录到 `pre_call_signals.visualization`：显式可视化词（可视化/visualization/render）、三维展示词（3D/interactive/交互式）、置信度着色词（pLDDT/PAE/B-factor）、分子可视化工具（PyMOL/3Dmol/MolStar/NGL）、结构文件后缀（.pdb/.cif/.mmcif）。命中任一 → `pre_call_signals.visualization=true`；此步骤不依赖 `intent_profile`。
 
 2. 调用 type=resource 技能获取资源摘要：
-   - 先检查各 `type=resource` 技能 `description` 并输出 `selected_resource_skills`，仅调用覆盖当前职责知识范围的技能
+   - 先通过元信息脚本 `--type resource` 获取完整候选（已有本轮完整结果可复用），检查各技能 `description` 并输出 `selected_resource_skills`，仅调用覆盖当前职责知识范围的技能
    - 输入：用户原始请求、Task State 摘要、`content_request: "摘要"`；`filters.domain` 仅可合理推断时填写；`filters.keyword` 仅围绕当前任务目标/产物/阻塞问题填写
    - **【强制】可视化信号前传**：`pre_call_signals.visualization=true` 时 `filters.keyword` 必须追加可视化信号词（如 `可视化 visualization 3D pLDDT PAE render interactive`），确保 primitives 的 visualization category 被召回
    - 接收：`matched_resources` 列表（`path`/`type`/`name`/`why_matched`/`limitations`/`content`）；只消费摘要 `content`
@@ -243,14 +240,14 @@ orchestrator 不得绕过 `resource_retrieval_request → resource_retrieval_res
 
 4. 根据 `intent_profile.intent_aspects` 严格执行专家召回，采用**基于 capabilities 的多维度检索**：
 
-   **检索方式**：按“技能元信息发现契约”获取所有 `type=expert` 技能的 `capabilities` 元信息（原生接口优先；不可用时使用会话目录并按需补读 frontmatter），按以下维度逐项匹配：
+   **检索方式**：按“技能元信息发现契约”通过元信息脚本 `--type expert`（或复用本轮已完整接收的该类型结果）获取所有 `type=expert` 技能的 `name`、`description`、`type`、`capabilities`，按以下维度逐项匹配：
    - **T1 精确匹配**：用 `intent_aspects` 中的每个 aspect 直接匹配专家技能 `capabilities.intent_aspects` 列表
    - **T2 关键词匹配**：用 `intent_profile` 中的关键词匹配专家技能 `capabilities.trigger_keywords`
    - **T3 语义兜底**：T1/T2 未命中时，用 `description` 做宽阈值语义匹配作为 fallback
 
    **多维度交叉**：同时用 `intent_profile.operation_type` 匹配 `capabilities.operation_types`，用 `intent_profile.artifact_type` 匹配 `capabilities.artifact_types`，用 `intent_profile.domain` 匹配 `capabilities.domains`；任一维度命中即进入候选，按命中维度数排序。
 
-   **完整性校验（防漏检）**：检索末尾强制执行——对每个 `intent_aspect`，必须确认已遍历接口返回的全部 `type=expert` 技能（记录 `checked_expert_skills` 列表），与接口全量列表做集合校验；若 `checked != all`，标记 `retrieval_incomplete=true` 并强制补检。未命中的 aspect 也必须保留空结果痕迹。
+   **完整性校验（防漏检）**：检索末尾强制执行——对每个 `intent_aspect`，必须确认已遍历脚本返回的全部 `type=expert` 技能（记录 `checked_expert_skills` 列表），与脚本全量列表做集合校验；若 `checked != all`，标记 `retrieval_incomplete=true` 并强制补检。未命中的 aspect 也必须保留空结果痕迹。
 
    无论是否命中都记录本轮召回结果与 `planner_candidates` 列表；任务看起来简单也先留下"已召回、未命中"的空结果痕迹。
 
@@ -259,10 +256,10 @@ orchestrator 不得绕过 `resource_retrieval_request → resource_retrieval_res
 6. 若未召回到专家（planner_candidates 为空）：设置 `planning_mode=direct_step`；该分支只在"阶段一资源召回完成 + 阶段二专家召回已执行且记录空结果"之后进入；**前置闸门**：必须已通过步骤 3.6 缺口检测——若 `knowledge_gap=true`，direct_step 不得用泛化剧本假装完成，必须在步骤 7 先落一个在线兜底 executor_step，由其真实检索结果驱动后续步骤，禁止编造模拟数据；然后执行【executor 能力视图硬规则】，由 orchestrator 直接规划完整 `Global Plan`，为每步标注 `executor_step` / `orchestrator_step`。
 
 **【executor 能力视图硬规则】（步骤 5/6 共同的权威规则，任何计划融合、direct_step 规划、下一步选择之前强制执行）**：
-- 必须按“技能元信息发现契约”获取当前所有可用的 `type=executor` 技能元信息（`name`、`description`、`type`、`capabilities`），基于 `capabilities` 字段（`owns`、`not_owns`、`inputs`、`outputs`、`downstream`、`prereq`、`intent_aspects`、`operation_types`、`artifact_types`、`domains`、`trigger_keywords`）形成 executor 能力台账后才允许划分职责。原生接口不可用时，frontmatter 读取只用于补齐会话目录已列出的技能，不得伪称接口结果。仅在以下情况深读正文：(1) 两个 executor 的 `capabilities` 边界重叠且无法从元信息判定归属；(2) 构造 detail bundle 需要具体接口格式。
+- 必须按“技能元信息发现契约”通过元信息脚本 `--type executor`（或复用本轮已完整接收的该类型结果）获取当前所有可用的 `type=executor` 技能元信息（`name`、`description`、`type`、`capabilities`），基于 `capabilities` 字段（`owns`、`not_owns`、`inputs`、`outputs`、`downstream`、`prereq`、`intent_aspects`、`operation_types`、`artifact_types`、`domains`、`trigger_keywords`）形成 executor 能力台账后才允许划分职责。能力重叠时仍只使用这些元信息判定；无法判定则记录路由歧义并停止选择，不得深读候选正文。detail bundle 来自用户请求、Task State、proposal、资源结果和任务产物，不从候选技能正文提取。
 - 维护内部 inventory：`all_executor_skills`（实际元信息来源发现的全部 type=executor 技能）、`read_executor_skills`（已获得完整 `capabilities` 的技能）、`missing_executor_skills`、`executor_inventory_complete`。必须通过集合校验 `set(all_executor_skills) == set(read_executor_skills)`；不相等则设 `executor_inventory_complete=false` 并**停止** proposal 融合、Global Plan 生成与 `Next Step Spec` 选择，先补齐再继续。
-- 对每个 executor 建立能力台账：`skill_name`、`source_of_truth`、`metadata_source`、`owns`、`not_owns`、`inputs`、`outputs`、`downstream`、`intent_aspects`/`operation_types`/`artifact_types`、`prereq`。任一 executor 未完成元信息获取或台账缺字段时，不得融合 proposal 或选择下一步。
-- 按最专门能力边界拆分步骤：识别每个步骤内部的原子执行动作（生成代码/构建数据/安装环境/训练/推理/运行验证/评估/诊断等）；对每个原子动作同时检查"谁明确负责"和"谁明确不负责"（基于接口 `capabilities` 的 `owns` 和 `not_owns` 字段）。若大步骤可由宽泛 executor 一次完成、但其中某些子动作有更专门的 `type=executor` 覆盖，**必须拆成多个 executor_step**；宽泛 executor 不得吞并已存在的训练、推理、评估、运行、安装、数据构建等专门 executor 的子任务。
+- 对每个 executor 建立能力台账：`skill_name`、`metadata_source`、`owns`、`not_owns`、`inputs`、`outputs`、`downstream`、`intent_aspects`/`operation_types`/`artifact_types`、`prereq`。任一 executor 未完成元信息获取或台账缺字段时，不得融合 proposal 或选择下一步。
+- 按最专门能力边界拆分步骤：识别每个步骤内部的原子执行动作（生成代码/构建数据/安装环境/训练/推理/运行验证/评估/诊断等）；对每个原子动作同时检查"谁明确负责"和"谁明确不负责"（基于脚本返回的 `capabilities` 的 `owns` 和 `not_owns` 字段）。若大步骤可由宽泛 executor 一次完成、但其中某些子动作有更专门的 `type=executor` 覆盖，**必须拆成多个 executor_step**；宽泛 executor 不得吞并已存在的训练、推理、评估、运行、安装、数据构建等专门 executor 的子任务。
 - 生成 `executor_step` 时必须同时提取影响目标 executor 执行结果的细节形成 detail bundle（coder 类：文件落点/接口约束/输入输出语义/验收要求；trainer 类：训练模式/数据契约/checkpoint/策略/指标/运行边界；runtime 类：入口/执行通道/配置证据/日志位置/资源要求/重试语义）；只保留目标 executor 真正需要的决定性信息。
 - 规范性边界示例：SLURM/SSH 提交脚本渲染、执行通道模板选择、提交与重试属于 runtime（由 runtime 的 `capabilities.owns` 声明），coder 仅写业务代码入口与配置；训练策略、完整训练脚本内容与训练执行组织属于 trainer（由 trainer 的 `capabilities.owns` 声明），coder 只承担文件落盘。
 - 融合协议（合并重复阶段、依赖排序、冲突消解、失败回退点）细节见 `references/planner_contract.md`。
@@ -294,19 +291,23 @@ orchestrator 不得绕过 `resource_retrieval_request → resource_retrieval_res
 9. 执行当前步骤：
    - **工具路径前置检查**：检查目标路径及 Bash 参数。涉及 resource `assets/` 时，先判断是否属于已发起请求的资源技能内部检索；属于则按该技能流程和请求范围继续。否则拦截该次操作，改为调用对应 resource 技能并指定 `content_request`，取得结果后继续本步。路径间接构造且范围不明时同样改走资源请求。检查结果写入本步 `resource_access_preflight`；拦截时写 `resource_asset_access_blocked`，不据此终止任务。
    - 当前轮次只执行一个 `Next Step Spec`；完成 observation 并重选后，可在同一 skill 调用内继续后续轮次。`Next Step Spec` 一旦选定，本轮 owner 固定；observation 完成前不改写 owner；若发现误分类或 detail bundle 不充分，先回 planning/replan 生成新 Spec 再执行。
-   - `step_type=executor_step`：正式调用选定 `execution_skill`（必须 `type=executor`），传递 step spec、资源标识与内容、结构化 inputs、detail bundle 填充的 executor-specific payload；专家 `planner_payload` 含 `runtime_parameters` 时映射到 `step_handoff.inputs.parameters`；detail bundle 不足以驱动目标 executor 视为规划未完成，先回补；执行技能需更深资源时重新调用 `type=resource` 技能，不得沿 `path` 直读文件；executor 返回的 `execution_result` 仅表示当前步骤结果，不授权直接串行调用下一个 executor。
-   - paper-repro 返回可交接的 success/partial 时，先把唯一 spec 的路径、全文、SHA-256、
+   - `step_type=executor_step`：按“技能调用闭环”调用选定 `execution_skill`（必须 `type=executor`）：优先原生独立执行，接口不可用时临时挂载唯一已选技能正文。传递 step spec、资源标识与内容、结构化 inputs、detail bundle 填充的 executor-specific payload；专家 `planner_payload` 含 `runtime_parameters` 时映射到 `step_handoff.inputs.parameters`；detail bundle 不足以驱动目标 executor 视为规划未完成，先回补；执行技能需更深资源时重新调用 `type=resource` 技能，不得沿 resource `path` 直读文件；executor 返回的 `execution_result` 仅表示当前步骤结果，不授权直接串行调用下一个 executor。
+   - paper-repro 返回可交接的 success/partial 时，先把唯一 spec 的路径、SHA-256、
      conflicts、作用范围明确的 unresolved 和 recommended consumer 写入 observation，
      再回 planning 重新查询 trainer/infer/coder/runtime 的
      capabilities 并选下一步；不得沿 paper-repro 的建议直接跳到 coder，也不得在同一个
      executor 回执中合并编码、训练或推理结果。
-   - **文件交接模式（autonomous_mode）**：`autonomous_mode=true` 时以文件交接代替上下文传递：① 原子写 `.onescience/handoff/step_{step_id}.yaml`（含 attempt、step_wallclock_budget_seconds、tier_config）；② 用 Skill 工具调用 executor 并指示其读取该 yaml、完成后把结果原子写入 `step_{step_id}_result.yaml`；③ 从结果文件读 `execution_result`（含 attempt、failure_category、events、tier_result）；④ 结果原子写回 `task_state.json` 并更新 tier contract/observation/events；⑤ 全部完成后归档 handoff 目录到 `.onescience/archive/{task_id}/`。细节见 `references/file_handoff_contract.md`。
+   - **文件交接模式（多技能任务默认）**：多技能任务以文件交接承载步骤输入和完整结果；`autonomous_mode=true` 时强制使用。① 原子写 `.onescience/handoff/step_{step_id}.yaml`（含 attempt、step_wallclock_budget_seconds、tier_config）；② 按“技能调用闭环”启动 executor，并指示其读取该 yaml、完成后把结果原子写入 `step_{step_id}_result.yaml`；③ 从结果文件只提取正式 `execution_result` 所需字段；④ 将 observation/artifacts/events 写回 `task_state.json`；⑤ 全部完成后归档 handoff 目录到 `.onescience/archive/{task_id}/`。细节见 `references/file_handoff_contract.md`。
    - `step_type=orchestrator_step`：只有当本轮完整 executor 台账证明该步骤不属于任何 executor 已声明负责的原子动作、也不是 executor-owned 步骤的业务子动作、且仅属编排辅助/状态维护/资源绑定/只读检查/下载/handoff 组装时，才由 orchestrator 用自身工具执行，并自行生成 `execution_result` 后同样进入 observation。
 
-10. 记录执行结果并更新状态：所有结果先进入 `observation`；`artifacts` 与 `observation` 写回 Task State；合并 executor 返回的 `events`；更新 `completed_steps`、`current_phase`、`active_step` 与 `global_plan` 步骤状态；写入 `observation_recorded` event；原子写入 `.onescience/task_state.json`。
+10. 记录执行结果并更新状态：所有结果先进入 `observation`；只把 `execution_result` 的状态、`result_identity`、`artifacts`、`observation` 和 `events` 写回 Task State，技能正文、references、内部工具日志和完整执行转录只存在于独立执行上下文或非持久化 `active_skill_context`，不写回状态；更新 `completed_steps`、`current_phase`、`active_step` 与 `global_plan` 步骤状态；写入 `observation_recorded` event；原子写入 `.onescience/task_state.json`。
     代码交付按 `required_outputs` 核对实际路径、文件存在/非空、职责和验证状态；技能加载成功、
     agent 退出码为 0、仅有规格或空目录都不能代替源码交付。缺文件则回 coder 继续，不把提取
     回执或静态检查计数当作代码完成证据。
+    按用户要求及本步完成标准逐项核对正式回执中的验证结果与证据；失败为 failed，未执行为
+    not_run，不能被退出码 0 或“Full pipeline OK”覆盖。必需项 failed/not_run 时不得接受 success；
+    允许交付的独立部分记录 partial，并重新规划缺失部分。代码交付、获准运行验证、科研指标验证
+    分别判断，不因文件已生成就宣称运行或科学结论通过。
 
 11. 基于 observation 决策（以下判定前**先读 `references/evidence_gates.md`**）：
     - **先判断完成范围**：`spec_delivery`/`code_delivery` 按 evidence_gates 中的交付范围例外

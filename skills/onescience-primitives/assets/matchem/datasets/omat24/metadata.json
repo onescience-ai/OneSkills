@@ -1,0 +1,21 @@
+{
+  "name": "omat24",
+  "type": "dataset",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "OMat24 本地归档及全量、下采样、合并 LMDB 视图；全量 train 89,505,421 帧、val 908,976 帧，记录元素编码和 virial 接入约束。",
+  "tags": [
+    "matchem",
+    "omat24",
+    "OMat24",
+    "MLIP",
+    "LMDB",
+    "MessagePack",
+    "energy",
+    "forces",
+    "virial"
+  ]
+}

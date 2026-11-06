@@ -1,0 +1,23 @@
+{
+  "name": "gue_genomic_benchmark",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "GUE 基因组分类基准数据原语，绑定 DNABERT-2_dataset 下的 GUE、GUE_v2/GUE 和 sample_data，描述启动子、剪接、表观遗传、增强子—启动子互作及物种相关分类数据的接入规范，区分单序列与序列对输入，保留各任务的 train/dev/test 划分，用于 DNA 模型适配和基准评测。",
+  "tags": [
+    "GUE",
+    "DNABERT-2",
+    "DNABERT-2_dataset",
+    "genomics",
+    "dna",
+    "benchmark",
+    "classification",
+    "sequence-pair",
+    "promoter",
+    "enhancer",
+    "csv"
+  ]
+}

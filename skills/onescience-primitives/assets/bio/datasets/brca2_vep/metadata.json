@@ -1,0 +1,18 @@
+{
+  "name": "brca2_vep",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "Carbon 本地 BRCA2 VEP 表与来源缓存原语，绑定 6836 个变异的功能 score/class、8192 bp 成对窗口及 hg19 chr13/实验表缓存，区分实验功能类别和临床致病性。",
+  "tags": [
+    "Carbon",
+    "BRCA2",
+    "VEP",
+    "variant-effect",
+    "functional-assay",
+    "parquet"
+  ]
+}

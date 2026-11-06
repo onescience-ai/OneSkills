@@ -231,6 +231,21 @@ const referencesAssets = (toolName, args) => {
 };
 
 // Per-session state keyed by sessionID → concurrent sessions stay isolated.
+// Delivered verbatim to the model while the provenance self-check is still
+// outstanding for a session that went online. ASCII only: this string is pushed
+// into chat parts and must not perturb the surrounding template literals.
+const PROV_GATE_NOTE = [
+  '',
+  '[oneskills] PROVENANCE GATE - before delivering the final answer, run:',
+  '  python skills/onescience-online-knowledge/scripts/check_provenance.py --answer <draft.md> --workdir <online dir>',
+  'Every concrete identifier (DOI / COD / arXiv / PDB / UniProt id) must appear verbatim in tool-produced',
+  'evidence (lit_result.json / structure_result.json / param_result.json / formula-verified CIF), or be',
+  'marked as a model prior on the same line. Exit code 2 means fix the draft before delivery, and the',
+  'agent-authored online_knowledge.json does not count as a source (circular).',
+  'Never present an identifier that cannot be traced to a retrieval receipt.',
+  '',
+].join('\n');
+
 const sessionStates = new Map();
 const getSessionState = (sessionID) => {
   const key = sessionID || '__default__';
@@ -243,6 +258,9 @@ const getSessionState = (sessionID) => {
       gapPending: false,
       awaitPrimitivesResult: false,
       runsiteCalled: false,
+      litSearchSeen: false,
+      provDone: false,
+      provNotes: 0,
     };
     sessionStates.set(key, state);
   }
@@ -287,7 +305,7 @@ When OneSkills prompts request actions, substitute OpenCode equivalents:
 - Do not read or grep \`onescience-primitives/assets/\` directly. Invoke the \`onescience-primitives\` skill first; only its own retrieval may touch the assets.
 - Breakpoint 2: after calling primitives, before any run / write / calculation, record the retrieval decision by appending a \`gaps.jsonl\` line under \`.onescience/\` with a \`knowledge_gap\` boolean (primitives step 10).
 - If \`knowledge_gap=true\` (no domain-specific local hit), you MUST call \`onescience-online-knowledge\` to retrieve verified, cited evidence before writing scripts, submitting jobs, or answering domain parameters. The literature channel is always lit_search (OpenAlex + Europe PMC + Crossref); the structure/parameter channel is chosen BY DOMAIN, not a fixed COD mandate: materials/crystal->COD, bio/protein/docking->PDB/UniProt/DrugBank, climate/weather->reanalysis datasets (e.g. ERA5), fluid/CFD/plasma->property model libraries; if the domain has no structured reference database, the literature channel alone suffices. Never substitute model memory, default parameters, fabricated data, or hand-rolled curl/wget queries against the authoritative domain endpoints (COD / PDB / OpenAlex / arXiv, ...) for this step — use the skill's scripts, which self-verify results.
-- Retrieved values must be consumed with provenance: literature facts carry [n] citations, structures carry a domain-appropriate identifier (COD id for crystals, PDB id for proteins, dataset DOI for climate reanalysis), software parameters carry software-doc sources; model-prior fallbacks must be explicitly marked as “⚠ 未经在线核实” and never disguised as a cited source.`;
+- Retrieved values must be consumed with provenance: literature facts carry [n] citations, structures carry a domain-appropriate identifier (COD id for crystals, PDB id for proteins, dataset DOI for climate reanalysis), software parameters carry software-doc sources; model-prior fallbacks must be explicitly marked as “⚠ 未经在线核实” and never disguised as a cited source. Before delivering the final answer, run scripts/check_provenance.py (from the onescience-online-knowledge skill) on it: every concrete identifier (DOI / COD id / arXiv id / PDB id / UniProt id) must either appear verbatim in this round's tool-produced evidence (lit_result.json / structure_result.json / param_result.json / formula-verified CIF) or be marked as model prior on the same line; exit code 2 means fix the draft before delivery, and the agent-authored online_knowledge.json does not count as a source (circular).`;
 
   const runsiteGateNote = `**Runsite workbench gate (Gate R, enforced by this plugin):**
 - When \`~/.ssh/config\` declares 2 or more platform SSH connections, any remote commercial-software compute — handing off to \`onescience-runtime\` or \`onescience-mlmd-campaign-orchestrator\`, or running \`sbatch\`/\`srun\`/\`ssh\`/\`scp\`/\`rsync\` — is blocked until \`onescience-runsite\` has been invoked for this task.
@@ -327,6 +345,30 @@ export const OneSkillsPlugin = async ({ client, directory, worktree } = {}) => {
 
     // Inject bootstrap into the first user message of each session.
     'experimental.chat.messages.transform': async (_input, output) => {
+      // Deliver the provenance gate on every request while it is outstanding:
+      // an online retrieval has already run (flagged in tool.execute.before) and
+      // the self-check has not been executed yet. This channel is used because the
+      // after-hook does not reliably expose the command that just ran, and because
+      // the Gate-B note only fires when knowledge_gap=true (measured adoption 1/2).
+      // Non-blocking: it appends one text part, and it gives up after 3 deliveries.
+      try {
+        const msgs = (output && output.messages) || [];
+        let lastUser = null;
+        for (let i = msgs.length - 1; i >= 0; i -= 1) {
+          const m = msgs[i];
+          if (m && m.info && m.info.role === 'user') { lastUser = m; break; }
+        }
+        if (lastUser) {
+          const stP = getSessionState(lastUser.info.sessionID);
+          if (stP.litSearchSeen && !stP.provDone && stP.provNotes < 3 && lastUser.parts.length) {
+            const refP = lastUser.parts[lastUser.parts.length - 1];
+            lastUser.parts.push({ ...refP, type: 'text', text: PROV_GATE_NOTE });
+            stP.provNotes += 1;
+          }
+        }
+      } catch (_) {
+        /* never break the chat pipeline over a reminder */
+      }
       const bootstrap = getBootstrapContent();
       if (!bootstrap || !output.messages.length) return;
       const firstUser = output.messages.find((m) => m.info.role === 'user');
@@ -362,6 +404,11 @@ export const OneSkillsPlugin = async ({ client, directory, worktree } = {}) => {
       const toolName = String(input.tool || '').toLowerCase();
       const args = (output && output.args) || (input && input.args) || {};
       const state = getSessionState(input && input.sessionID);
+      // Remember whether this session already went online, and whether the
+      // provenance self-check has run; the messages transform reads these flags.
+      const cmdProv = String(args.command || '');
+      if (/lit_search\.py/.test(cmdProv)) state.litSearchSeen = true;
+      if (/check_provenance\.py/.test(cmdProv)) { state.provDone = true; state.litSearchSeen = true; }
       const name = toolName === 'skill' ? extractSkillName(input, output) : '';
 
       // Track skill-chain progress as soon as the model invokes a skill.

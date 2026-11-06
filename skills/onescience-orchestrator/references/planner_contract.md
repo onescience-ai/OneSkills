@@ -41,25 +41,19 @@ orchestrator 在召回专家前，先基于用户请求和资源摘要形成意�
   "available_resource_summaries": [],
   "available_execution_skills": [
     {
-      "skill_name": "string",
-      "source_of_truth": "<executor SKILL.md>",
-      "accepted_inputs": [],
-      "produced_outputs": [],
-      "owns_responsibilities": [],
-      "explicit_non_responsibilities": [],
-      "downstream_handoffs": [],
-      "specialized_atomic_actions_covered": [],
-      "gating_conditions_or_prerequisites": [],
-      "evidence_sections_or_lines": []
+      "name": "string",
+      "description": "string",
+      "type": "executor",
+      "capabilities": {}
     }
   ],
   "latest_observation": {}
 }
 ```
 
-`available_execution_skills` 不是技能名称列表；它必须来自 orchestrator 按 SKILL.md“技能元信息发现契约”形成的能力台账：原生智能体技能列表接口优先；接口不存在时使用宿主注入的会话技能目录，并只对目录已列出的技能读取 YAML frontmatter 补齐 `type/capabilities`。每项必须带 `metadata_source=native_skill_interface|session_catalog_plus_frontmatter`，不得把降级来源宣称为原生接口结果。`description`、技能名称用于初筛，`capabilities` 字段作为职责边界依据。
+`available_execution_skills` 必须来自 orchestrator 的 `scripts/discover_skill_metadata.py` 实际读取的已安装技能 frontmatter，只投影路由所需的 `name`、`description`、`type`、`capabilities`（见 `skill_metadata_contract.md`）。不调用原生元信息接口，不由智能体补写字段或读取候选正文、references 扩展该列表。
 
-orchestrator 还必须维护一份仅供内部校验的 executor inventory 状态，至少包含：`native_skill_metadata_interface_available`、`metadata_source`、`all_executor_skills`、`read_executor_skills`、`missing_executor_skills`、`executor_inventory_complete`。其中 `all_executor_skills` 是当前轮次从实际元信息来源发现的全部 `type=executor` 技能集合，`read_executor_skills` 是已获得完整 `capabilities` 并写入能力台账的技能集合。
+orchestrator 还必须维护仅供内部校验的两块状态：`skill_metadata_discovery` 记录 `metadata_source`、`script_path`、`skills_roots`、`exit_code` 等实际运行证据；`executor_inventory` 记录 `all_executor_skills`、`read_executor_skills`、`missing_executor_skills`、`executor_inventory_complete`。其中 `all_executor_skills` 是当前轮次脚本发现的全部 `type=executor` 技能集合，`read_executor_skills` 是脚本已返回四类完整元信息并写入能力台账的技能集合。
 
 ## Planner Proposal 输出
 
@@ -117,10 +111,10 @@ orchestrator 对多个 proposal 做融合和优化：
 - 保留覆盖用户目标所需的最小阶段集合。
 - 按 `depends_on`、资源前置条件和 artifact 流向排序。
 - 合并重复 stage。
-- 在合并后、生成最终 `global_plan` 前，必须按“原生接口优先、会话目录 + frontmatter 降级”的元信息发现契约获取当前所有可用 `type=executor` 技能的 `capabilities`，形成 executor 能力视图。
-- executor 能力视图至少应覆盖：`skill_name`、`source_of_truth`、输入要求、输出产物、职责边界、明确不负责事项、下游交接对象、覆盖的专门原子动作、前置条件，以及对应证据段落。
+- 在合并后、生成最终 `global_plan` 前，必须通过元信息脚本读取 frontmatter 获取当前所有可用 `type=executor` 技能的 `name`、`description`、`type`、`capabilities`，形成 executor 能力视图。
+- executor 能力视图从 `capabilities` 提取输入要求、输出产物、职责边界、明确不负责事项、下游交接对象、覆盖的专门原子动作和前置条件；不得添加来自候选技能正文的证据段落。
 - 必须先做集合校验：`set(all_executor_skills) == set(read_executor_skills)`；若不相等，立刻计算 `missing_executor_skills`，设置 `executor_inventory_complete=false`，并停止后续计划融合、`global_plan` 生成与 `next_step` 选择。
-- 若 executor 能力视图不完整、任一台账字段缺失，或只基于技能名称 / `description` 而未获取 `capabilities` 元信息，则不得继续计划融合或选择 `next_step`。原生接口不可用本身不是阻断条件，但必须记录探测结果与降级来源。
+- 若元信息脚本运行失败、executor 能力视图不完整、任一台账字段缺失，或只基于技能名称 / `description` 而未获取 `capabilities` 元信息，则根据脚本错误修复并重新运行，校验通过前不得继续计划融合或选择 `next_step`。宿主缺少原生元信息接口不是阻断条件。
 - 上述全量技能列表和读取状态用于 orchestrator 内部校验与 Task State 记录，不作为默认前端输出内容；默认只向用户展示 inventory 汇总状态（例如 `executor inventory: 13/13 complete`），仅在 `executor_inventory_complete=false` 或进入阻断时展示 `missing_executor_skills`。
 - 在合并后、生成最终 `global_plan` 前，必须按可调用 `type=executor` 技能做能力覆盖拆分。
 - 如果一个阶段可由宽泛 executor 一次性完成，但阶段内部包含已有专门 executor 可执行的子动作，必须拆成多个阶段，并用 `depends_on` 串接 artifact 流。

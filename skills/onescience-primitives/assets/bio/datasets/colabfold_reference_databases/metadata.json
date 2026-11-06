@@ -1,0 +1,19 @@
+{
+  "name": "colabfold_reference_databases",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "OpenDDE 本地 ColabFold 参考数据库归档原语，登记 environmental 202108 与 UniRef30 2103 版本、首个 tar 成员及重复下载候选，标明小归档截断和 MMseqs 搜索索引尚未验证。",
+  "tags": [
+    "OpenDDE",
+    "ColabFold",
+    "ColabFoldDB",
+    "UniRef30",
+    "MMseqs2",
+    "reference-database",
+    "archive"
+  ]
+}

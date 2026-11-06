@@ -1,0 +1,20 @@
+{
+  "name": "iggm_sab23",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "IGGM 本地 SAb-23-H2-Ab/Nano 抗体设计数据原语，绑定 native FASTA/PDB、prot_ids 与含 X 掩码的 CDR design FASTA，区分重轻链/抗原及两子集不同的 PDB 目录名。",
+  "tags": [
+    "IGGM",
+    "SAb-23-H2-Ab",
+    "SAb-23-H2-Nano",
+    "antibody",
+    "nanobody",
+    "CDR",
+    "fasta",
+    "pdb"
+  ]
+}

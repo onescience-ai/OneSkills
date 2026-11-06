@@ -1,0 +1,22 @@
+{
+  "name": "esen_oxides",
+  "type": "dataset",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "eSEN 本地氧化物微调数据：295 条 ASE SQLite 结构记录，按 oxide/polymorph 分组保留 238/28/29 train/val/test，包含能量、力与已转换的应力。",
+  "tags": [
+    "matchem",
+    "esen",
+    "eSEN",
+    "oxides",
+    "ASE",
+    "SQLite",
+    "fine-tuning",
+    "energy",
+    "forces",
+    "stress"
+  ]
+}

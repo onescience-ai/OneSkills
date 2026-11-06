@@ -1,0 +1,19 @@
+{
+  "name": "nucleotide_transformer_benchmarks",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-05",
+  "updated_at": "2026-11-05",
+  "description": "Carbon 本地 Nucleotide Transformer 下游 18 项 DNA 分类数据原语，登记 Parquet/FNA 双格式、sequence/name/label/task 与 train/test 划分，明确与 HyenaDNA 同类分支需核验后复用。",
+  "tags": [
+    "Carbon",
+    "Nucleotide-Transformer",
+    "NT",
+    "dna",
+    "classification",
+    "parquet",
+    "fna"
+  ]
+}

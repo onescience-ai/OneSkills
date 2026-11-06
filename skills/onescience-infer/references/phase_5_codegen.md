@@ -13,7 +13,7 @@
 - 运行目标和硬件约束
 - 必需输出和验证标准
 
-非平凡代码生成或仓库编辑应使用 `onescience-coder`。交接内容必须自包含，包含路径、契约、参数默认值和阻塞项；在 infer -> coder 交接时，路径只用于追踪，供 coder 直接消费的知识必须同时以内容形式提供，不能只传文件路径。
+非平凡代码生成或仓库编辑应使用 `onescience-coder`。交接包含当前步骤需要的路径、散列、契约、参数默认值和阻塞项；大文本保持为 infer 任务产物，由 coder 在技能执行上下文按需读取并校验，不重复内嵌全文。
 
 ## Pipeline 要求
 
@@ -133,21 +133,21 @@ infer_workdir=<code_save_dir>/.infer_work/<run_id>
 repro_artifact_dir=<repro_artifact_dir>
 code_save_dir=<用户代码保存目录>
 model_knowledge_path=<infer_workdir>/model_knowledge.md
-model_knowledge_content=<model_knowledge.md 全文或执行所需完整内容>
+model_knowledge_sha256=<文件 SHA-256>
 data_preparation_plan_path=<infer_workdir>/data_preparation_plan.md
-data_preparation_plan_content=<可选，但只要下游需要就必须提供>
+data_preparation_plan_sha256=<文件存在且下游需要时提供>
 data_manifest_path=<infer_workdir>/data_manifest.json
-data_manifest_content=<可选，但只要下游需要就必须提供>
+data_manifest_sha256=<文件存在且下游需要时提供>
 model_loading_plan_path=<infer_workdir>/model_loading_plan.md
-model_loading_plan_content=<可选，但只要下游需要就必须提供>
+model_loading_plan_sha256=<文件存在且下游需要时提供>
 inference_plan_path=<infer_workdir>/inference_plan.md
-inference_plan_content=<inference_plan.md 全文或执行所需完整内容>
+inference_plan_sha256=<文件 SHA-256>
 required_outputs=<当前步骤要求输出>
 validation_criteria=<当前步骤完成标准>
 next_action=onescience-coder
 ```
 
-具体代码生成前，必须先从 `infer_workdir` 中保存的知识文件读取，再组织交接内容。由于 `onescience-coder` 只允许直接消费 `reference_resources[*].content` 或资源技能返回内容，infer 交接给 coder 时必须同时传递 `*_path` 与 `*_content`；路径用于追踪与 provenance，内容用于直接消费。
+具体代码生成前，必须先从 `infer_workdir` 中保存的知识文件读取，再组织交接内容。infer 交接给 coder 时传递执行所需任务产物的 `*_path` 与 `*_sha256`，由 coder 在技能执行上下文按需读取；resource skill 的 assets 仍只能通过资源结果消费。
 
 ## 输入输出适配器
 
