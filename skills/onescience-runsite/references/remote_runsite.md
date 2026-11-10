@@ -9,14 +9,14 @@
 远程接入方式优先按 `~/.ssh/config` 平台连接数自动判定（判定与弹窗硬规则见 `SKILL.md` “多远程工作台选择”段），不无条件先问 SSH/SCnet：
 
 - 平台连接 ≤ 1 个（用户未自加 SSH）→ 默认 `run_site=remote`、`access_mode=mcp`，**不弹框、不补问凭据**，直接走 MCP 分支。
-- 平台连接 ≥ 2 个（用户自加了 SSH）→ 弹工作台选择弹窗，首位固定为“平台默认（SCNet MCP 优先）”，其余为各 SSH 连接；选平台默认→ `access_mode=mcp`，选某 SSH→ `access_mode=ssh`。
+- 平台连接 ≥ 2 个（用户自加了 SSH）→ 弹工作台选择弹窗，只列各 SSH 连接本身（含预置连接），**不插入“平台默认（SCNet MCP 优先）”合成选项、不描述连接方式**；选中某连接一律写该连接 `runtime.ssh`，`access_mode` 由 runsite 内部判定：平台预置 SCNet 连接→ `mcp`（MCP 优先、`runtime.ssh` 兜底），其余→ `ssh`；无法判定时按 `ssh`。
 - 仅当完全没有可用连接、需用户首次提供凭据时，才向用户问：
 
 ```text
 远程运行准备通过 SSH 连接，还是通过 SCnet 连接？
 ```
 
-- MCP（平台默认）：`run_site=remote`，`access_mode=mcp`
+- MCP（连接数 ≤ 1 时的默认路径，非弹窗选项）：`run_site=remote`，`access_mode=mcp`
 - SSH：`run_site=remote`，`access_mode=ssh`
 - SCnet：`run_site=remote`，`access_mode=scnet`
 
