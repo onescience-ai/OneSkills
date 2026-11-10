@@ -1,6 +1,9 @@
 # Execute SCnet Skill
 
-当 `execution_channel=scnet_mcp` 时读取本文件。
+当 `execution_channel=scnet_mcp` 时读取本文件。该通道涵盖两种 `access_mode`：
+
+- `access_mode=scnet`：走本文件下文的 `scnet-chat`（HTTP API，需用户提供 `runtime.scnet` 密钥）流程。
+- `access_mode=mcp`：**平台优先**，先试 OneCode 注入的 SCNet MCP 工具（凭据由平台托管，无需 `runtime.scnet`），调不通时回退读 `~/.ssh/config` 走 SSH（见下文“MCP 优先与 SSH 回退”）。
 
 ## Inputs
 
@@ -26,6 +29,18 @@
 ## Routing Boundary
 
 `scnet_skill` 表示 `run_site=remote + access_mode=scnet` 的 SCnet 平台执行上下文；`execution_mode` 可以为空、`none` 或 `slurm`。当 `execution_mode=slurm` 时，runtime2 仍然委托 `scnet-chat` 提交任务，只把队列和资源字段整理为 scnet-chat 参数，不在本地或远端直接执行 `sbatch`。
+
+## MCP 优先与 SSH 回退（`access_mode=mcp`）
+
+当 `access_mode=mcp` 时，本分支采用 EAFP（先调用、后回退），**不做任何 MCP 存在性前置检测**（SCNet MCP 是 OneCode 侧能力，OneSkills 无法检测其注册与否）：
+
+1. **先试 SCNet MCP 工具**：直接调用当前会话可用的 SCNet MCP 工具完成平台动作（提交/上传/下载/查状态/日志），凭据由平台托管，不读 `runtime.scnet`（该块对 mcp 不存在）。
+2. **判定“调不通”**：仅当 SCNet MCP 工具在当前会话根本不可调用（无对应工具）、或调用明确报错/不可用时，视为调不通。**不要把作业本身失败（如 OOM、代码报错）误判为 MCP 调不通。**
+3. **回退 SSH**：调不通时，从 `~/.ssh/config` 现取平台连接（可复用 `python skills/onescience-runsite/scripts/probe_remote_env.py list-connections` 枚举），按 `execution_mode` 选择 `null`→转 `./references/execute-ssh-direct.md`、`slurm`→转 `./references/execute-ssh-slurm.md` 继续执行；回退不写回 `onescience.json`（`access_mode` 保持 `mcp`）。
+4. **回退粒度**：首版为无状态（每次先试 MCP，调不通就回退）；不在本地缓存“上次是否可用”。
+5. 若 SCNet MCP 和 `~/.ssh/config` SSH 回退都不可用，归为配置/环境阻断，按本文件下文 Step 11/12 自动委托 `onescience-runsite`/`onescience-installer` 或停止并报告。
+
+以下 `Inputs`/`SCnet Config Handoff`/`Steps` 各节仅适用于 `access_mode=scnet`（走 `scnet-chat`）；`access_mode=mcp` 需回退 SSH 时改读 `execute-ssh-direct.md`/`execute-ssh-slurm.md`。
 
 命中以下平台动作时，继续直接委托 `scnet-chat`：
 

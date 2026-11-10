@@ -19,7 +19,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 
 VALID_RUN_SITES = {"local", "remote"}
-VALID_ACCESS_MODES = {"ssh", "scnet"}
+VALID_ACCESS_MODES = {"ssh", "scnet", "mcp"}
 LEGACY_CHANNELS: dict[str, tuple[str, str | None, str]] = {
     "local_direct": ("local", None, ""),
     "local_slurm": ("local", "slurm", ""),
@@ -27,6 +27,8 @@ LEGACY_CHANNELS: dict[str, tuple[str, str | None, str]] = {
     "ssh_slurm": ("remote", "slurm", "ssh"),
     "scnet_direct": ("remote", None, "scnet"),
     "scnet_slurm": ("remote", "slurm", "scnet"),
+    "mcp_direct": ("remote", None, "mcp"),
+    "mcp_slurm": ("remote", "slurm", "mcp"),
 }
 
 SSH_FIELD_SPECS: dict[str, dict[str, str]] = {
@@ -68,7 +70,7 @@ EXECUTION_PROFILE_FIELD_SPECS: dict[str, dict[str, str]] = {
     "runtime.execution_profile.execution_mode": {"label": "execution_mode", "description": "调度方式；填写 slurm 或 null"},
     "runtime.execution_profile.access_mode": {
         "label": "access_mode",
-        "description": "接入方式；run_site=local 时留空字符串，run_site=remote 时填写 ssh 或 scnet",
+        "description": "接入方式；run_site=local 时留空字符串，run_site=remote 时填写 ssh、scnet 或 mcp（mcp=平台优先，先试 SCNet MCP 调不通回退 SSH）",
     },
 }
 
@@ -186,7 +188,7 @@ def normalize_access_mode(run_site: str, value: str | None) -> str:
         raise ValueError("access_mode must be empty when run_site=local.")
     if normalized in VALID_ACCESS_MODES:
         return normalized
-    raise ValueError("access_mode must be ssh or scnet when run_site=remote.")
+    raise ValueError("access_mode must be ssh, scnet or mcp when run_site=remote.")
 
 
 def normalize_profile(
@@ -413,8 +415,13 @@ def infer_required_sections(config: dict[str, Any]) -> dict[str, bool]:
     execution_mode = exec_profile.get("execution_mode")
     access_mode = exec_profile.get("access_mode")
 
+    # 远程接入块仅在对应 access_mode 下才必填；
+    # - ssh：必须补齐 runtime.ssh。
+    # - scnet：必须补齐 runtime.scnet（密钥由用户提供）；不再强制 SSH。
+    # - mcp：平台优先，凭据由平台托管，runtime.ssh/runtime.scnet 均不必填；
+    #       SSH 回退在运行期从 ~/.ssh/config 读取，不写入 onescience.json。
     return {
-        "runtime.ssh": run_site == "remote",
+        "runtime.ssh": run_site == "remote" and access_mode == "ssh",
         "runtime.scnet": run_site == "remote" and access_mode == "scnet",
         "runtime.cluster": execution_mode == "slurm",
     }
@@ -478,12 +485,8 @@ def build_missing_field_guidance(config: dict[str, Any], missing_fields: list[st
         )
 
     if required_sections["runtime.ssh"] and ssh_fields:
-        stage = "remote_ssh_after_scnet" if access_mode == "scnet" else "remote_ssh_first"
-        message = (
-            "因为 run_site=remote，所以 SSH 字段仍然必填；请在 SCnet 补齐并验证后，再补齐 SSH 连接字段。"
-            if access_mode == "scnet"
-            else "因为 run_site=remote，所以必须先补齐并验证 SSH 连接字段。"
-        )
+        stage = "remote_ssh_first"
+        message = "因为 access_mode=ssh，所以必须先补齐并验证 SSH 连接字段。"
         guidance["missing_field_groups"].append(
             {
                 "group": "ssh",
@@ -681,7 +684,7 @@ def build_onescience_config(
         }
     }
 
-    if run_site == "remote":
+    if run_site == "remote" and (access_mode == "ssh" or ssh_data):
         config["runtime"]["ssh"] = normalize_ssh_data(ssh_data) or {}
     if run_site == "remote" and access_mode == "scnet":
         config["runtime"]["scnet"] = normalize_scnet_data(scnet_data) or {}
@@ -874,7 +877,7 @@ def cmd_generate(args: argparse.Namespace) -> None:
         print(json.dumps(payload_error, ensure_ascii=False, indent=2))
         return
 
-    if run_site == "remote" and not ssh_data:
+    if run_site == "remote" and access_mode == "ssh" and not ssh_data:
         print(
             json.dumps(
                 {

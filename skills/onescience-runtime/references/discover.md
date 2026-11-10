@@ -20,6 +20,7 @@
    - `execution_mode` 为空、`none`、`None` 或 `null` 时，视为非调度直接执行
    - `access_mode=scnet` 表示 SCnet 平台接入
    - `access_mode=ssh` 表示 SSH 接入
+   - `access_mode=mcp` 表示平台优先（先试 SCNet MCP，调不通回退 SSH）；与 `scnet` 一样归一为远程平台接入语义，但回退行为由 execute 阶段控制
    - `run_site=local` 且 `access_mode` 为空、缺失、`none`、`None` 或 `null` 时，视为本地访问路径
    - 兼容旧写法时，只把它们归一到上述语义，不反向用旧字段驱动 routing
    - `onescience.json` 缺失时先委托 `onescience-runsite`；`runtime.conda` 缺失则留给后续 preflight 再委托 `onescience-installer`
@@ -30,6 +31,8 @@
    - `(remote, slurm, ssh)` -> `ssh_slurm`
    - `(remote, none, scnet)` -> `scnet_mcp`
    - `(remote, slurm, scnet)` -> `scnet_mcp`；SCnet 平台提交仍委托 `scnet-chat`，`execution_mode=slurm` 只表示需要消费队列/资源字段
+   - `(remote, none, mcp)` -> `scnet_mcp`（平台优先：execute 阶段先试 SCNet MCP 工具，调不通回退到 `ssh_direct` 语义）
+   - `(remote, slurm, mcp)` -> `scnet_mcp`（平台优先：execute 阶段先试 SCNet MCP 工具，调不通回退到 `ssh_slurm` 语义）
 6. 若 runsite 校验完成后，`onescience.json` 仍缺失、关键字段为空、归一后仍无法派生通道：
    - 说明 runsite 未能产出可复用配置，或当前配置仍存在真实阻断。
    - `blocking_reason=missing_runtime_config` / `unsupported_execution_tuple` / `config_tuple_conflict`

@@ -79,7 +79,7 @@ capabilities:
 - `runtime.execution_profile.execution_mode`
 - `runtime.execution_profile.access_mode`
 
-`execution_channel` 由这三个字段派生；当前约定是 `run_site=local` 时 `access_mode` 允许为空，`execution_mode` 为空/`none` 视为非调度直接执行。若配置中已有 `execution_channel`，只作为对照证据，不作为唯一 routing 来源。
+`execution_channel` 由这三个字段派生；当前约定是 `run_site=local` 时 `access_mode` 允许为空，`execution_mode` 为空/`none` 视为非调度直接执行。`run_site=remote` 且 `access_mode` 为 `scnet` 或 `mcp` 时均派生 `scnet_mcp` 通道；`mcp` 为平台优先，execute 阶段先试 SCNet MCP 工具、调不通再回退读 `~/.ssh/config` 走 SSH（见 `references/execute-scnet-skill.md`）。若配置中已有 `execution_channel`，只作为对照证据，不作为唯一 routing 来源。
 
 需要进入 discover 细节时，读取：
 
@@ -118,7 +118,7 @@ execute 分支映射：
 - `local_slurm` -> `./references/execute-local-slurm.md`
 - `ssh_direct` -> `./references/execute-ssh-direct.md`
 - `ssh_slurm` -> `./references/execute-ssh-slurm.md`
-- `scnet_mcp` -> `./references/execute-scnet-skill.md`
+- `scnet_mcp` -> `./references/execute-scnet-skill.md`（`access_mode=scnet` 与 `access_mode=mcp` 均走此分支；mcp 先试 SCNet MCP、调不通回退 SSH）
 
 ### 进度监控与超时策略
 

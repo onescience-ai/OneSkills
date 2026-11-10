@@ -6,16 +6,30 @@
 
 ## 1. 选择接入方式
 
-远程工作流必须分阶段补问，先问：
+远程接入方式优先按 `~/.ssh/config` 平台连接数自动判定（判定与弹窗硬规则见 `SKILL.md` “多远程工作台选择”段），不无条件先问 SSH/SCnet：
+
+- 平台连接 ≤ 1 个（用户未自加 SSH）→ 默认 `run_site=remote`、`access_mode=mcp`，**不弹框、不补问凭据**，直接走 MCP 分支。
+- 平台连接 ≥ 2 个（用户自加了 SSH）→ 弹工作台选择弹窗，首位固定为“平台默认（SCNet MCP 优先）”，其余为各 SSH 连接；选平台默认→ `access_mode=mcp`，选某 SSH→ `access_mode=ssh`。
+- 仅当完全没有可用连接、需用户首次提供凭据时，才向用户问：
 
 ```text
 远程运行准备通过 SSH 连接，还是通过 SCnet 连接？
 ```
 
+- MCP（平台默认）：`run_site=remote`，`access_mode=mcp`
 - SSH：`run_site=remote`，`access_mode=ssh`
 - SCnet：`run_site=remote`，`access_mode=scnet`
 
-用户选定接入方式后，立即进入对应的 SSH 或 SCnet 分支补问连接信息并验证连接。不要在这一轮询问 Slurm，也不要把连接字段和 Slurm 资源字段放在同一次补问中。远程执行必须补齐 SSH 信息；如果用户选择 SCnet，先补问并验证 SCnet，再单独补问并验证 SSH。
+用户选定接入方式后，立即进入对应分支。`access_mode=mcp` 无需任何凭据字段、不做远程连接验证（见第 1.1 节）；SSH/SCnet 分支才逐字段补问并验证。不要把连接字段和 Slurm 资源字段放在同一次补问中。`access_mode=scnet` 不再强制补齐 SSH 信息（如需回退能力由运行期 `~/.ssh/config` 现取）。
+
+## 1.1 MCP 分支（平台优先）
+
+`access_mode=mcp` 表示优先调用 OneCode 平台注入的 SCNet MCP 工具，调不通时回退读取 `~/.ssh/config` 走 SSH。该分支：
+
+- **不补问、不写入任何凭据**：既不写 `runtime.ssh`，也不写 `runtime.scnet`（SCNet MCP 凭据由平台托管，不落盘）。
+- **不做远程连接验证**：SCNet MCP 是 OneCode 侧能力，OneSkills 无法前置检测，连通与回退判定下放到 runtime 运行期“先试 MCP、调不通回退 SSH”。
+- `accelerator_kind`：runsite 无法前置确定，交由 runtime 运行期探测或按任务上下文合理默认；若可从工作台选择弹窗的 probe 结果复用则更佳，但不得因此弹问用户。
+- 确定 `access_mode=mcp` 后，直接跳到第 4 节“是否使用 Slurm”选择；`execution_mode=slurm` 时才补问/写入 `runtime.cluster`。
 
 ## 2. SSH 分支
 
@@ -107,11 +121,11 @@ python skills/onescience-runsite/scripts/scnet_config.py check-login
 
 SCnet 验证只检查凭据能否获取 token，不提交作业、不管理文件。若无法登录，停止流程并告诉用户：“提供的信息无法连接上远程，请按 SCnet 字段清单重新提交远程连接信息”，并列出 `SCNET_ACCESS_KEY`、`SCNET_SECRET_KEY`、`SCNET_USER`、`region`、`remote_work_dir`。
 
-SCnet 登录验证成功后，继续读取 `assets/runsite_profiles/ssh_remote.json`，按 SSH 字段清单补问并保存 SSH 配置，然后执行 SSH 连接验证。SSH 验证成功后，才进入“是否使用 Slurm”选择。
+SCnet 登录验证成功后，即可进入第 4 节“是否使用 Slurm”选择；`access_mode=scnet` 不再强制补问与验证 SSH（如需 SSH 回退能力由运行期 `~/.ssh/config` 现取）。
 
 ## 4. Slurm 选择与字段
 
-SSH 连接信息完成并验证通过后，再问：
+连接信息完成并验证通过（`access_mode=ssh`/`access_mode=scnet`）后，或 `access_mode=mcp` 确定接入方式后，再问：
 
 ```text
 是否使用 Slurm 提交任务？
@@ -153,7 +167,7 @@ SSH 连接信息完成并验证通过后，再问：
 
 ## 5. 硬件检测与 modules
 
-当 SSH 连接信息完成并验证通过，且 Slurm 选择与资源字段也已完成后，必须检测远程运行平台的加速器类型：
+当 `access_mode=ssh`/`access_mode=scnet` 连接信息完成并验证通过、且 Slurm 选择与资源字段也已完成后，必须检测远程运行平台的加速器类型（`access_mode=mcp` 跳过本阶段，`accelerator_kind` 下放到 runtime 运行期）：
 
 ```bash
 python skills/onescience-runsite/scripts/runsite_config.py detect-hardware --ssh-alias <alias>
@@ -218,6 +232,27 @@ python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onesc
   --accelerator-kind dcu \
   --scnet-data '{"SCNET_ACCESS_KEY":"<key>","SCNET_SECRET_KEY":"<secret>","SCNET_USER":"alice","region":"核心节点","remote_work_dir":"~/work"}' \
   --ssh-data '{"host":"my-cluster","hostname":"192.168.1.100","port":22,"user":"alice","identity_file":"~/.ssh/id_rsa","remote_work_dir":"/home/alice/work"}' \
+  --cluster-data '{"partition":"hpctest01","nodes":1,"gpus_per_node":1,"cpus_per_task":8,"memory":"64GB","time_limit":"02:00:00","gpu_type":"dcu","ntasks_per_node":1}'
+```
+
+### MCP（平台优先）直连，不使用 Slurm
+
+不传 `--ssh-data`/`--scnet-data`（凭据由平台托管、不落盘）；`--accelerator-kind` 可取工作台弹窗 probe 结果或合理默认，确实未知时可省略并交由 runtime 运行期探测。
+
+```bash
+python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onescience.json generate \
+  --run-site remote \
+  --execution-mode none \
+  --access-mode mcp
+```
+
+### MCP（平台优先）连接，使用 Slurm
+
+```bash
+python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onescience.json generate \
+  --run-site remote \
+  --execution-mode slurm \
+  --access-mode mcp \
   --cluster-data '{"partition":"hpctest01","nodes":1,"gpus_per_node":1,"cpus_per_task":8,"memory":"64GB","time_limit":"02:00:00","gpu_type":"dcu","ntasks_per_node":1}'
 ```
 

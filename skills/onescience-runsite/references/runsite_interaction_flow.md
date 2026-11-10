@@ -28,18 +28,23 @@
 1. 逐字段询问，每次明确字段名、含义、默认值或是否可留空。
 2. 一次性给出字段清单，让用户按清单填写；清单必须列出所有需要的字段。
 
-远程配置必须按阶段补问：
+远程接入方式先按优先级自动判定，不无条件要求补问 SSH（判定与弹窗规则见 `SKILL.md` “多远程工作台选择”段）：
 
-1. 先确认接入方式：SSH 或 SCnet。
+- `~/.ssh/config` 平台连接 **≥ 2 个**（用户自加了 SSH）→ 触发工作台选择弹窗，首位固定为“平台默认（SCNet MCP 优先）”，其余为各 SSH 连接。
+- 平台连接 **≤ 1 个**且任务本地不满足 → **不弹框**，默认 `access_mode=mcp`（平台优先），不补问任何凭据。
+- 仅当完全没有可用连接、需用户首次提供凭据时，才进入下面的逐字段补问。
+
+确定接入方式后，按阶段补问：
+
+1. `access_mode=mcp`：无需任何凭据字段，既不补问 SSH也不补问 SCnet，直接进入 Slurm 选择阶段。
 2. 用户选定 SSH 后，立刻只补问 SSH 连接字段并验证连接；不要同时补问 Slurm 字段。
-3. 用户选定 SCnet 后，立刻只补问 SCnet 连接字段并验证登录；不要同时补问 SSH 字段或 Slurm 字段。
-4. SCnet 登录验证成功后，继续单独补问 SSH 连接字段并验证 SSH；远程执行必须补齐 SSH 信息。
-5. 连接信息完成后，再询问是否使用 Slurm。
-6. 只有用户回答使用 Slurm，才补问 Slurm 集群资源字段。
+3. 用户选定 SCnet 后，立刻只补问 SCnet 连接字段并验证登录；不再强制补问 SSH 字段或 Slurm 字段。
+4. 连接信息完成后，再询问是否使用 Slurm。
+5. 只有用户回答使用 Slurm，才补问 Slurm 集群资源字段。
 
 不要出现“需要提供 SCnet 连接信息、SSH 连接信息和 Slurm 集群资源信息，请一次性填写以下字段”这类把不同阶段信息混在一起的补问。
 
-已有 `onescience.json` 不完整时，必须先根据 `run_site`、`execution_mode`、`access_mode` 判断哪些配置块必填，再只补问这些必填块中的缺失字段，但仍必须逐一列出缺失字段。远程连接验证失败后要求用户重新提交连接信息时，也必须列出 SSH 或 SCnet 所需字段。
+已有 `onescience.json` 不完整时，必须先根据 `run_site`、`execution_mode`、`access_mode` 判断哪些配置块必填（`access_mode=mcp` 时 `runtime.ssh`/`runtime.scnet` 均不必填），再只补问这些必填块中的缺失字段，但仍必须逐一列出缺失字段。远程连接验证失败后（仅适用于 `ssh`/`scnet`）要求用户重新提交连接信息时，也必须列出 SSH 或 SCnet 所需字段。
 
 ## 2. 已有配置话术
 
@@ -62,10 +67,11 @@
 - “修改 XXX”：只修改指定字段。
 - “重新配置”：提示先删除或重命名现有 `onescience.json`。
 
-若已有配置是 `run_site=remote`，在输出交接信息前必须先做连接验证：
+若已有配置是 `run_site=remote`，在输出交接信息前需先做连接验证（`access_mode=mcp` 时跳过验证，凭据由平台托管，连通与回退交由 runtime）：
 
-- 始终运行 `ssh_config.py check --alias <ssh_host_alias> --max-attempts 3`。
-- `access_mode=scnet` 时，还要运行 `scnet_config.py check-login`。
+- `access_mode=ssh` 时运行 `ssh_config.py check --alias <ssh_host_alias> --max-attempts 3`。
+- `access_mode=scnet` 时运行 `scnet_config.py check-login`（不再强制验证 SSH）。
+- `access_mode=mcp` 时不做任何远程连接验证，直接交接。
 - 验证失败时停止，不输出 runtime/installer 交接，告知“提供的信息无法连接上远程，请按下面字段重新提交远程连接信息”，并按失败的验证类型列出字段：SSH 验证失败列 SSH 字段，SCnet 验证失败列 SCnet 字段。
 
 ## 3. 新建配置第一问
@@ -104,7 +110,11 @@
 
 ## 5. 远程话术
 
-远程第一问：
+远程接入方式优先按 `~/.ssh/config` 连接数自动判定，不无条件向用户追问 SSH/SCnet：
+
+- 平台连接 ≤ 1 个（用户未自加 SSH）→ **不问**，默认 `access_mode=mcp`（平台优先，运行期先试 SCNet MCP，调不通回退 SSH），不补问凭据。
+- 平台连接 ≥ 2 个（用户自加了 SSH）→ 弹出工作台选择弹窗（首位固定为“平台默认（SCNet MCP 优先）”，其余为各 SSH 连接）；详见 `SKILL.md`。
+- 仅当完全没有可用连接、必须让用户首次提供凭据时，才问下面这句：
 
 ```text
 远程运行准备通过 SSH 连接，还是通过 SCnet 连接？
@@ -116,7 +126,7 @@
 {
   "run_site": "remote",
   "execution_mode": "slurm|null",
-  "access_mode": "ssh|scnet"
+  "access_mode": "ssh|scnet|mcp"
 }
 ```
 
@@ -168,7 +178,7 @@
 
 保存 SCnet 凭据后必须尝试登录验证。无法登录时停止，并列出 SCnet 字段清单要求用户重新提交远程连接信息。
 
-SCnet 登录验证成功后，必须继续按 SSH 字段清单补问并验证 SSH；远程执行必须具备 SSH 信息。
+SCnet 登录验证成功后即可进入 Slurm 选择阶段；`access_mode=scnet` 不再强制补问 SSH 信息（如需 SSH 回退能力由运行期 `~/.ssh/config` 现取）。
 
 ## 6. Slurm 选择与字段
 
@@ -211,6 +221,7 @@ SSH 连接验证成功后，才询问：
 
 - 本地直接执行、本地 Slurm 执行：检测本机。
 - 远程 SSH 直接执行、远程 SSH Slurm 执行：在 SSH 验证成功后，通过该 SSH Host 别名检测远程平台。
+- `access_mode=mcp`（平台优先）：runsite 无法前置确定具体加速器，不在此阶段检测；`accelerator_kind` 下放到 runtime 运行期探测（或按任务上下文合理默认），不弹问用户。
 - 检测目标只判断加速器是 `dcu` 还是 `gpu`；不要做 module、conda、作业队列或远端环境诊断。
 
 检测命令：
