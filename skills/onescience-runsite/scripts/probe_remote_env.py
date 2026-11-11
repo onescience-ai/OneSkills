@@ -13,6 +13,7 @@
   python probe_remote_env.py probe --needs vasp --cache ./onescience.probe_cache.json
 """
 import argparse
+import glob
 import json
 import os
 import re
@@ -114,11 +115,88 @@ def parse_plain_hosts(text):
     return [c for c in conns if c.get("user")]
 
 
+def _read_config_text(path, seen_files):
+    """读取一个 ssh config 文件文本；路径无效/已读过/非普通文件/读失败均返回 None。"""
+    if not path:
+        return None
+    try:
+        rp = os.path.realpath(os.path.expanduser(path))
+    except (OSError, ValueError):
+        return None
+    if rp in seen_files or not os.path.isfile(rp):
+        return None
+    seen_files.add(rp)
+    try:
+        return open(rp, encoding="utf-8", errors="replace").read()
+    except OSError:
+        return None
+
+
+def _include_targets(text, base_dir):
+    """解析 ssh config 的 `Include` 指令，展开通配后返回被包含文件路径列表。"""
+    out = []
+    for line in (text or "").splitlines():
+        s = line.strip()
+        if s.lower().startswith("include ") or s.lower().startswith("include\t"):
+            for token in s.split(None, 1)[1].split():
+                token = os.path.expandvars(os.path.expanduser(token))
+                if not os.path.isabs(token) and base_dir:
+                    token = os.path.join(base_dir, token)
+                out.extend(glob.glob(token))
+    return out
+
+
+def _platform_ssh_config_paths(conns):
+    """定位账号隔离的平台 SSH 配置 `platform-ssh/<accountId>/config`：
+    一是从已解析连接的 identity_file 路径反推其所在 acct 目录，二是扫描常见基路径
+    （ONESCIENCE_PLATFORM_SSH_HOME、XDG_DATA_HOME/opencode/platform-ssh）。预置连接
+    通常只写在这里，只读 ~/.ssh/config 会漏掉它们。"""
+    dirs = set()
+    for c in conns:
+        idf = (c.get("identity_file") or "").replace("\\", "/")
+        m = re.search(r"(.*platform-ssh/[^/]+)", idf)
+        if m:
+            dirs.add(m.group(1))
+    bases = [os.environ.get("ONESCIENCE_PLATFORM_SSH_HOME"),
+             os.path.join(os.environ.get("XDG_DATA_HOME") or os.path.expanduser("~/.local/share"),
+                          "opencode", "platform-ssh")]
+    for b in bases:
+        if b and os.path.isdir(b):
+            try:
+                for acct in os.listdir(b):
+                    dirs.add(os.path.join(b, acct))
+            except OSError:
+                pass
+    return [os.path.join(d, "config") for d in sorted(dirs)]
+
+
 def load_connections(path=CONFIG_PATH):
-    if not os.path.exists(path):
-        return []
-    text = open(path, encoding="utf-8", errors="replace").read()
-    return parse_platform_blocks(text) or parse_plain_hosts(text)
+    """枚举所有平台 SSH 连接：`~/.ssh/config`（含其 `Include`）+ 账号隔离的
+    `platform-ssh/<accountId>/config`，合并后按连接 name 去重。预置连接常只落在
+    platform-ssh 目录，只读 ~/.ssh/config 会漏判，导致工作台弹窗少列候选连接。"""
+    seen_files, conns, names = set(), [], set()
+
+    def ingest(p):
+        text = _read_config_text(p, seen_files)
+        if text is None:
+            return
+        for c in (parse_platform_blocks(text) or parse_plain_hosts(text)):
+            key = c.get("name") or (c.get("user"), c.get("host"), c.get("port"))
+            if key in names:
+                continue
+            names.add(key)
+            conns.append(c)
+        base_dir = os.path.dirname(os.path.realpath(os.path.expanduser(p)))
+        for inc in _include_targets(text, base_dir):
+            ingest(inc)
+
+    ingest(path)
+    # 先按已解析连接的 identity_file 反推 acct 目录，再按常见基路径兜底；
+    # 读入后可能带出新 acct，故做第二轮发现。
+    for rnd in (1, 2):
+        for cfg in _platform_ssh_config_paths(list(conns)):
+            ingest(cfg)
+    return conns
 
 
 def build_remote_probe(needs):

@@ -105,7 +105,7 @@ capabilities:
 - 需要用户提供信息时，必须逐一列出字段名、含义、是否可留空或默认值。
 - 可以逐字段一问一答，也可以给出一个字段清单让用户一次性填写；但字段清单必须完整。
 - 远程接入方式按优先级自动判定，不无条件要求 SSH：
-  1. `~/.ssh/config` 中平台连接 ≥ 2 个（`# >>> opencode ssh` 块）→ 触发下文“多远程工作台选择”弹窗；弹窗只列各 SSH 连接本身（含预置连接与用户自加连接），**不插入“平台默认（SCNet MCP 优先）”这类合成选项，也不在选项里描述 MCP/SSH 连接方式**。用户选中某连接后由 runsite 内部定接入方式（弹窗不体现）：选中的若是**平台预置 SCNet 连接**（SCNet MCP 所对应、由平台注入的默认那条）→ `access_mode=mcp` 并**同时写该连接 `runtime.ssh` 作运行期回退**；其余连接 → `access_mode=ssh` 写 `runtime.ssh`。无法判定是否预置时按 `ssh` 处理（用所选连接本身，最稳妥）。
+  1. `probe_remote_env.py list-connections` 枚举到的平台 SSH 连接 ≥ 2 个（来源含 `~/.ssh/config` 与账号隔离的 `platform-ssh/<accountId>/config`，`# >>> opencode ssh` 块，预置连接与用户自加连接合并去重）→ 触发下文“多远程工作台选择”弹窗；弹窗只列各 SSH 连接本身（含预置连接与用户自加连接），**不插入“平台默认（SCNet MCP 优先）”这类合成选项，也不在选项里描述 MCP/SSH 连接方式**。用户选中某连接后由 runsite 内部定接入方式（弹窗不体现）：选中的若是**平台预置 SCNet 连接**（SCNet MCP 所对应、由平台注入的默认那条）→ `access_mode=mcp` 并**同时写该连接 `runtime.ssh` 作运行期回退**；其余连接 → `access_mode=ssh` 写 `runtime.ssh`。无法判定是否预置时按 `ssh` 处理（用所选连接本身，最稳妥）。
   2. 平台连接 ≤ 1 个且任务本地不满足 → 不弹框，默认 `access_mode=mcp`（运行期先试 SCNet MCP，调不通回退读 `~/.ssh/config` 走该连接 SSH）。
   3. 完全没有可用连接、需用户首次提供凭据时 → 才进入逐字段补问。
 - 接入方式确定后，只补问该方式需要的字段：
@@ -125,7 +125,7 @@ capabilities:
 适用条件（同时满足即必须触发，不得跳过、不得替用户自行决定）：
 
 1. 当前任务需要远端算力或特定软件环境（如 VASP、QE、CP2K 等第一性原理/商软，或大规模 MD/训练），本地不具备；**且**
-2. `~/.ssh/config` 中存在 **2 个及以上** 可选的平台 SSH 连接（`# >>> opencode ssh <name>` 块，含预置连接与用户自加连接）——需要让用户在多个执行环境之间选择具体在哪一台上执行；连接方式（MCP/SSH）是实现细节，不在弹窗中呈现。
+2. `probe_remote_env.py list-connections` 枚举到 **2 个及以上** 可选的平台 SSH 连接（来源含 `~/.ssh/config` 与 `platform-ssh/<accountId>/config`，`# >>> opencode ssh <name>` 块，预置连接与用户自加连接合并去重）——需要让用户在多个执行环境之间选择具体在哪一台上执行；连接方式（MCP/SSH）是实现细节，不在弹窗中呈现。
 
 > **连接数 ≤ 1（未自加 SSH）时不弹框**：默认走 `access_mode=mcp`（平台优先），直接进入下文“单连接/零连接”流程，不触发本弹窗。
 
@@ -149,7 +149,7 @@ capabilities:
    - 写回 `onescience.json`：用户选 **某个连接** → `run_site=remote`，一律用该连接 SSH 参数 + 上述自动值写 `runtime.ssh`、`runtime.cluster`、`runtime.target`；`access_mode` 取 `mcp`（选中项为平台预置 SCNet 连接时，MCP 优先、`runtime.ssh` 兜底）或 `ssh`（其余连接）。
 6. 仅 1 个连接、或任务本地即可满足时，不触发该弹窗；**远程且连接数 ≤ 1 时默认 `access_mode=mcp`（平台优先，运行期先试 SCNet MCP、调不通回退 SSH），不写 `runtime.ssh`**。此时同样**不得**为工作目录/Slurm/加速器逐字段弹问，全部按第 5 步自动推导。
 
-> **唯一交互点原则**：runsite 面向用户的交互式弹窗**有且只有“工作台连接选择”这一个**。`remote_work_dir`、`execution_mode`、`partition`、`accelerator_kind` 等运行细节即便无法自动确定，也只能写入配置或用默认值落地并在正文标注假设，**严禁再用 question 逐字段追问用户**。下文“标准补问规则”仅在 `~/.ssh/config` 中完全没有可用连接、必须让用户首次提供 SSH 凭据时才生效；一旦存在 ≥1 个已配置连接，即按本节单弹窗流程处理，不进入逐字段补问。
+> **唯一交互点原则**：runsite 面向用户的交互式弹窗**有且只有“工作台连接选择”这一个**。`remote_work_dir`、`execution_mode`、`partition`、`accelerator_kind` 等运行细节即便无法自动确定，也只能写入配置或用默认值落地并在正文标注假设，**严禁再用 question 逐字段追问用户**。下文“标准补问规则”仅在 `list-connections` 枚举后完全没有可用连接、必须让用户首次提供 SSH 凭据时才生效；一旦存在 ≥1 个已配置连接，即按本节单弹窗流程处理，不进入逐字段补问。
 
 探测与弹窗边界：只做只读探测，不安装、不提交作业；私钥只按 `~/.ssh/config` 中的路径引用，脚本与 `question` 选项文本**一律不得读取或展示密钥内容**；连接不可达或探测失败必须在对应 `description` 中如实标注。**超时/连接失败而 `unverified=true` 的连接属“未验证”，不得表述为“不可达”，也不得因此把它排除出候选或把不满足需求的连接改标为推荐。**
 
