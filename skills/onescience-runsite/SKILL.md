@@ -105,7 +105,7 @@ capabilities:
 - 需要用户提供信息时，必须逐一列出字段名、含义、是否可留空或默认值。
 - 可以逐字段一问一答，也可以给出一个字段清单让用户一次性填写；但字段清单必须完整。
 - 远程接入方式按优先级自动判定，不无条件要求 SSH：
-  1. `probe_remote_env.py list-connections` 枚举到的平台 SSH 连接 ≥ 2 个（主源=当前账号注册表 `platform-config/<accountId>.json` 的 `ssh` 字段，由会话环境变量 `ONECODE_PLATFORM_SSH_HOME` 唯一定位账号，含预置连接且不依赖 `~/.ssh/config` 是否为空；辅源=`~/.ssh/config`（`# >>> opencode ssh` 块）；预置连接与用户自加连接按名合并去重）→ 触发下文“多远程工作台选择”弹窗；弹窗只列各 SSH 连接本身（含预置连接与用户自加连接），**不插入“平台默认（SCNet MCP 优先）”这类合成选项，也不在选项里描述 MCP/SSH 连接方式**。用户选中某连接后由 runsite 内部定接入方式（弹窗不体现）：选中的若是**平台预置 SCNet 连接**（SCNet MCP 所对应、由平台注入的默认那条）→ `access_mode=mcp` 并**同时写该连接 `runtime.ssh` 作运行期回退**；其余连接 → `access_mode=ssh` 写 `runtime.ssh`。无法判定是否预置时按 `ssh` 处理（用所选连接本身，最稳妥）。
+  1. `probe_remote_env.py list-connections` 枚举到的平台 SSH 连接 ≥ 2 个（主源=当前账号注册表 `platform-config/<accountId>.json` 的 `ssh` 字段，由会话环境变量 `ONECODE_PLATFORM_SSH_HOME` 唯一定位账号，含预置连接且不依赖 `~/.ssh/config` 是否为空；辅源=`~/.ssh/config`（`# >>> opencode ssh` 块）；预置连接与用户自加连接按名合并去重；若容器沙箱未挂载 `platform-config/` 导致注册表不可达，probe 会自动注入最小预置条目 `{"name":"scnet","preset":true,"description":"平台预置工作台"}`）→ 触发下文“多远程工作台选择”弹窗；弹窗只列各 SSH 连接本身（含预置连接与用户自加连接），**不插入“平台默认（SCNet MCP 优先）”这类合成选项，也不在选项里描述 MCP/SSH 连接方式**。带 `preset: true` 的条目展示为“scnet（平台预置工作台）”，**不用 ssh 探可达性**（它走 MCP 通道，ssh 探不到不代表不可用）。用户选中某连接后由 runsite 内部定接入方式（弹窗不体现）：选中的若是**平台预置 SCNet 连接**（带 `preset: true` 或名称为 `scnet`）→ `access_mode=mcp` 并**同时写该连接 `runtime.ssh` 作运行期回退**（预置条目无 SSH 详情时回退从 `~/.ssh/config` 取）；其余连接 → `access_mode=ssh` 写 `runtime.ssh`。无法判定是否预置时按 `ssh` 处理（用所选连接本身，最稳妥）。
   2. 平台连接 ≤ 1 个且任务本地不满足 → 不弹框，默认 `access_mode=mcp`（运行期先试 SCNet MCP，调不通回退读 `~/.ssh/config` 走该连接 SSH）。
   3. 完全没有可用连接、需用户首次提供凭据时 → 才进入逐字段补问。
 - 接入方式确定后，只补问该方式需要的字段：

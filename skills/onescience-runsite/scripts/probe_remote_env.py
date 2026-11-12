@@ -218,7 +218,10 @@ def load_connections(path=CONFIG_PATH):
     主源=账号注册表 `platform-config/<acct>.json`（由会话环境变量
     `ONECODE_PLATFORM_SSH_HOME` 唯一定位当前账号，含预置连接，且不依赖 ~/.ssh/config
     是否为空）；辅源=`~/.ssh/config`（含 Include），用于覆盖未进注册表的手动 host。
-    合并后按连接 name 去重，主源优先。"""
+    合并后按连接 name 去重，主源优先。
+    兜底：若容器沙箱未挂载 platform-config/ 导致注册表不可达，但会话已认证
+    （ONECODE_PLATFORM_SSH_HOME 存在），则注入最小预置条目（仅供弹窗展示，
+    选中后走 MCP 不需要 SSH 详情）。"""
     conns, names = [], set()
 
     def ingest(items):
@@ -233,6 +236,11 @@ def load_connections(path=CONFIG_PATH):
     if reg:
         ingest(parse_registry_ssh(reg))
     ingest(_load_ssh_config(path, set()))
+    # 兜底：会话已认证但未拿到预置 scnet（容器未挂载 platform-config）
+    # → 注入最小条目，弹窗展示为“预置工作台”，选中后走 MCP 不需 SSH 详情。
+    if _platform_ssh_home() and "scnet" not in names:
+        conns.append({"name": "scnet", "preset": True,
+                      "description": "平台预置工作台"})
     return conns
 
 
