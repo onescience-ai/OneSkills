@@ -105,7 +105,7 @@ capabilities:
 - 需要用户提供信息时，必须逐一列出字段名、含义、是否可留空或默认值。
 - 可以逐字段一问一答，也可以给出一个字段清单让用户一次性填写；但字段清单必须完整。
 - 远程接入方式按优先级自动判定，不无条件要求 SSH：
-  1. `probe_remote_env.py list-connections` 枚举到的平台 SSH 连接 ≥ 2 个（来源含 `~/.ssh/config` 与账号隔离的 `platform-ssh/<accountId>/config`，`# >>> opencode ssh` 块，预置连接与用户自加连接合并去重）→ 触发下文“多远程工作台选择”弹窗；弹窗只列各 SSH 连接本身（含预置连接与用户自加连接），**不插入“平台默认（SCNet MCP 优先）”这类合成选项，也不在选项里描述 MCP/SSH 连接方式**。用户选中某连接后由 runsite 内部定接入方式（弹窗不体现）：选中的若是**平台预置 SCNet 连接**（SCNet MCP 所对应、由平台注入的默认那条）→ `access_mode=mcp` 并**同时写该连接 `runtime.ssh` 作运行期回退**；其余连接 → `access_mode=ssh` 写 `runtime.ssh`。无法判定是否预置时按 `ssh` 处理（用所选连接本身，最稳妥）。
+  1. `probe_remote_env.py list-connections` 枚举到的平台 SSH 连接 ≥ 2 个（主源=当前账号注册表 `platform-config/<accountId>.json` 的 `ssh` 字段，由会话环境变量 `ONECODE_PLATFORM_SSH_HOME` 唯一定位账号，含预置连接且不依赖 `~/.ssh/config` 是否为空；辅源=`~/.ssh/config`（`# >>> opencode ssh` 块）；预置连接与用户自加连接按名合并去重）→ 触发下文“多远程工作台选择”弹窗；弹窗只列各 SSH 连接本身（含预置连接与用户自加连接），**不插入“平台默认（SCNet MCP 优先）”这类合成选项，也不在选项里描述 MCP/SSH 连接方式**。用户选中某连接后由 runsite 内部定接入方式（弹窗不体现）：选中的若是**平台预置 SCNet 连接**（SCNet MCP 所对应、由平台注入的默认那条）→ `access_mode=mcp` 并**同时写该连接 `runtime.ssh` 作运行期回退**；其余连接 → `access_mode=ssh` 写 `runtime.ssh`。无法判定是否预置时按 `ssh` 处理（用所选连接本身，最稳妥）。
   2. 平台连接 ≤ 1 个且任务本地不满足 → 不弹框，默认 `access_mode=mcp`（运行期先试 SCNet MCP，调不通回退读 `~/.ssh/config` 走该连接 SSH）。
   3. 完全没有可用连接、需用户首次提供凭据时 → 才进入逐字段补问。
 - 接入方式确定后，只补问该方式需要的字段：
@@ -125,7 +125,7 @@ capabilities:
 适用条件（同时满足即必须触发，不得跳过、不得替用户自行决定）：
 
 1. 当前任务需要远端算力或特定软件环境（如 VASP、QE、CP2K 等第一性原理/商软，或大规模 MD/训练），本地不具备；**且**
-2. `probe_remote_env.py list-connections` 枚举到 **2 个及以上** 可选的平台 SSH 连接（来源含 `~/.ssh/config` 与 `platform-ssh/<accountId>/config`，`# >>> opencode ssh <name>` 块，预置连接与用户自加连接合并去重）——需要让用户在多个执行环境之间选择具体在哪一台上执行；连接方式（MCP/SSH）是实现细节，不在弹窗中呈现。
+2. `probe_remote_env.py list-connections` 枚举到 **2 个及以上** 可选的平台 SSH 连接（主源=账号注册表 `platform-config/<accountId>.json`（`ONECODE_PLATFORM_SSH_HOME` 定位当前账号），辅源=`~/.ssh/config`（`# >>> opencode ssh <name>` 块）；预置连接与用户自加连接按名合并去重）——需要让用户在多个执行环境之间选择具体在哪一台上执行；连接方式（MCP/SSH）是实现细节，不在弹窗中呈现。
 
 > **连接数 ≤ 1（未自加 SSH）时不弹框**：默认走 `access_mode=mcp`（平台优先），直接进入下文“单连接/零连接”流程，不触发本弹窗。
 

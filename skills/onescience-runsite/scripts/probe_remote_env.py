@@ -3,7 +3,8 @@
 """OneScience 远程工作台探测：枚举平台 SSH 连接、只读探测软件矩阵、输出推荐依据。
 
 边界：只做 `command -v` / `module avail` / 加速器列表等只读探测；不安装、不提交作业、
-不修改远端状态。私钥只按 ~/.ssh/config 中的路径引用，脚本不读取、不打印密钥内容。
+不修改远端状态。连接枚举以账号注册表 `platform-config/<acct>.json` 为主源、
+`~/.ssh/config` 为辅源；私钥只按其中记录的路径引用，脚本不读取、不打印密钥内容。
 
 用法：
   python probe_remote_env.py list-connections
@@ -146,56 +147,92 @@ def _include_targets(text, base_dir):
     return out
 
 
-def _platform_ssh_config_paths(conns):
-    """定位账号隔离的平台 SSH 配置 `platform-ssh/<accountId>/config`：
-    一是从已解析连接的 identity_file 路径反推其所在 acct 目录，二是扫描常见基路径
-    （ONESCIENCE_PLATFORM_SSH_HOME、XDG_DATA_HOME/opencode/platform-ssh）。预置连接
-    通常只写在这里，只读 ~/.ssh/config 会漏掉它们。"""
-    dirs = set()
-    for c in conns:
-        idf = (c.get("identity_file") or "").replace("\\", "/")
-        m = re.search(r"(.*platform-ssh/[^/]+)", idf)
-        if m:
-            dirs.add(m.group(1))
-    bases = [os.environ.get("ONESCIENCE_PLATFORM_SSH_HOME"),
-             os.path.join(os.environ.get("XDG_DATA_HOME") or os.path.expanduser("~/.local/share"),
-                          "opencode", "platform-ssh")]
-    for b in bases:
-        if b and os.path.isdir(b):
-            try:
-                for acct in os.listdir(b):
-                    dirs.add(os.path.join(b, acct))
-            except OSError:
-                pass
-    return [os.path.join(d, "config") for d in sorted(dirs)]
+def _platform_ssh_home():
+    """OneCode 在每个会话注入 `ONECODE_PLATFORM_SSH_HOME`，指向当前账号的平台 SSH
+    目录 `<base>/platform-ssh/<acct>`。据此可唯一定位当前账号，且不依赖 ~/.ssh/config
+    是否为空——未添加个人 SSH 的用户（如仅有预置连接者）也能拿到预置。兼容旧变量名。"""
+    return os.environ.get("ONECODE_PLATFORM_SSH_HOME") or os.environ.get("ONESCIENCE_PLATFORM_SSH_HOME")
+
+
+def _registry_config_path():
+    """由 ONECODE_PLATFORM_SSH_HOME 反推账号注册表 `platform-config/<acct>.json` 路径。
+    该注册表是 OneCode 资源配置页与 /global/ssh/targets 的权威数据源，个人与预置连接
+    都在其 `ssh` 字段内；只取当前账号一份，绝不广扫 platform-ssh/* 以免串入他人账号。"""
+    home = _platform_ssh_home()
+    if not home:
+        return None
+    home = os.path.expandvars(os.path.expanduser(home)).rstrip("/\\")
+    acct = os.path.basename(home)
+    if not acct.startswith("acct-"):
+        return None
+    base = os.path.dirname(os.path.dirname(home))  # 去掉 <acct> 与 platform-ssh 两级
+    return os.path.join(base, "platform-config", acct + ".json")
+
+
+def parse_registry_ssh(json_path):
+    """解析账号注册表 `platform-config/<acct>.json` 的 `ssh` 字典，返回已启用的连接。
+    仅用于枚举候选（含预置 scnet）；走 SSH 还是 MCP 由上层按 access_mode 决定，此处
+    不判可达性——预置连接若用 ssh 探会因缺私钥/仅 MCP 而误判不可达，反而又被漏列。"""
+    try:
+        data = json.load(open(json_path, encoding="utf-8", errors="replace"))
+    except (OSError, ValueError):
+        return []
+    ssh = data.get("ssh") if isinstance(data, dict) else None
+    if not isinstance(ssh, dict):
+        return []
+    conns = []
+    for name, e in ssh.items():
+        if not isinstance(e, dict) or e.get("enabled") is False:
+            continue
+        auth = e.get("auth") or {}
+        conn = {
+            "name": name,
+            "host": e.get("hostName") or e.get("host") or name,
+            "user": e.get("username") or "",
+            "port": str(e.get("port") or "22"),
+        }
+        if auth.get("keyPath"):
+            conn["identity_file"] = auth.get("keyPath")
+        if e.get("remotePath"):
+            conn["remote_work_dir"] = e.get("remotePath")
+        if conn["user"]:
+            conns.append(conn)
+    return conns
+
+
+def _load_ssh_config(path, seen_files):
+    """解析 `~/.ssh/config` 及其 `Include` 链，返回连接列表（去重由调用方处理）。"""
+    out = []
+    text = _read_config_text(path, seen_files)
+    if text is None:
+        return out
+    out.extend(parse_platform_blocks(text) or parse_plain_hosts(text))
+    base_dir = os.path.dirname(os.path.realpath(os.path.expanduser(path)))
+    for inc in _include_targets(text, base_dir):
+        out.extend(_load_ssh_config(inc, seen_files))
+    return out
 
 
 def load_connections(path=CONFIG_PATH):
-    """枚举所有平台 SSH 连接：`~/.ssh/config`（含其 `Include`）+ 账号隔离的
-    `platform-ssh/<accountId>/config`，合并后按连接 name 去重。预置连接常只落在
-    platform-ssh 目录，只读 ~/.ssh/config 会漏判，导致工作台弹窗少列候选连接。"""
-    seen_files, conns, names = set(), [], set()
+    """枚举当前账号可用的平台 SSH 连接：
+    主源=账号注册表 `platform-config/<acct>.json`（由会话环境变量
+    `ONECODE_PLATFORM_SSH_HOME` 唯一定位当前账号，含预置连接，且不依赖 ~/.ssh/config
+    是否为空）；辅源=`~/.ssh/config`（含 Include），用于覆盖未进注册表的手动 host。
+    合并后按连接 name 去重，主源优先。"""
+    conns, names = [], set()
 
-    def ingest(p):
-        text = _read_config_text(p, seen_files)
-        if text is None:
-            return
-        for c in (parse_platform_blocks(text) or parse_plain_hosts(text)):
+    def ingest(items):
+        for c in items:
             key = c.get("name") or (c.get("user"), c.get("host"), c.get("port"))
             if key in names:
                 continue
             names.add(key)
             conns.append(c)
-        base_dir = os.path.dirname(os.path.realpath(os.path.expanduser(p)))
-        for inc in _include_targets(text, base_dir):
-            ingest(inc)
 
-    ingest(path)
-    # 先按已解析连接的 identity_file 反推 acct 目录，再按常见基路径兜底；
-    # 读入后可能带出新 acct，故做第二轮发现。
-    for rnd in (1, 2):
-        for cfg in _platform_ssh_config_paths(list(conns)):
-            ingest(cfg)
+    reg = _registry_config_path()
+    if reg:
+        ingest(parse_registry_ssh(reg))
+    ingest(_load_ssh_config(path, set()))
     return conns
 
 
@@ -341,7 +378,7 @@ def probe_connection(conn, needs, timeout, retries=2):
 def main():
     ap = argparse.ArgumentParser(description="OneScience remote workbench probe")
     sub = ap.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("list-connections", help="枚举 ~/.ssh/config 中的平台 SSH 连接")
+    sub.add_parser("list-connections", help="枚举当前账号可用的平台 SSH 连接（注册表 platform-config 为主源 + ~/.ssh/config 辅源）")
     pp = sub.add_parser("probe", help="只读探测各连接软件矩阵并给出推荐")
     pp.add_argument("--needs", default="", help="逗号分隔的软件需求，如 vasp,lammps")
     pp.add_argument("--conn", action="append", default=[], help="只探测指定连接名（可多次）")

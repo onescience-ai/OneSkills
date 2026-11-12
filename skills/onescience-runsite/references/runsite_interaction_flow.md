@@ -30,7 +30,7 @@
 
 远程接入方式先按优先级自动判定，不无条件要求补问 SSH（判定与弹窗规则见 `SKILL.md` “多远程工作台选择”段）：
 
-- `probe_remote_env.py list-connections` 枚举到平台 SSH 连接 **≥ 2 个**（来源含 `~/.ssh/config` 与账号隔离的 `platform-ssh/<accountId>/config`，预置连接与用户自加连接合并去重）→ 触发工作台选择弹窗，弹窗只列各 SSH 连接本身（含预置连接），**不插入“平台默认（SCNet MCP 优先）”合成选项、不描述连接方式**；选中某连接一律写该连接 `runtime.ssh`，`access_mode` 由 runsite 内部判定：平台预置 SCNet 连接→ `mcp`（MCP 优先、`runtime.ssh` 兜底），其余→ `ssh`。
+- `probe_remote_env.py list-connections` 枚举到平台 SSH 连接 **≥ 2 个**（主源=当前账号注册表 `platform-config/<accountId>.json`，由会话环境变量 `ONECODE_PLATFORM_SSH_HOME` 唯一定位账号，含预置连接且不依赖 `~/.ssh/config` 是否为空；辅源=`~/.ssh/config`；预置连接与用户自加连接按名合并去重）→ 触发工作台选择弹窗，弹窗只列各 SSH 连接本身（含预置连接），**不插入“平台默认（SCNet MCP 优先）”合成选项、不描述连接方式**；选中某连接一律写该连接 `runtime.ssh`，`access_mode` 由 runsite 内部判定：平台预置 SCNet 连接→ `mcp`（MCP 优先、`runtime.ssh` 兜底），其余→ `ssh`。
 - 平台连接 **≤ 1 个**且任务本地不满足 → **不弹框**，默认 `access_mode=mcp`（平台优先），不补问任何凭据。
 - 仅当完全没有可用连接、需用户首次提供凭据时，才进入下面的逐字段补问。
 
@@ -110,7 +110,7 @@
 
 ## 5. 远程话术
 
-远程接入方式优先按 `probe_remote_env.py list-connections` 枚举到的连接数自动判定（来源含 `~/.ssh/config` 与 `platform-ssh/<accountId>/config`），不无条件向用户追问 SSH/SCnet：
+远程接入方式优先按 `probe_remote_env.py list-connections` 枚举到的连接数自动判定（主源=账号注册表 `platform-config/<accountId>.json`，由 `ONECODE_PLATFORM_SSH_HOME` 定位当前账号；辅源=`~/.ssh/config`），不无条件向用户追问 SSH/SCnet：
 
 - 平台连接 ≤ 1 个（用户未自加 SSH）→ **不问**，默认 `access_mode=mcp`（平台优先，运行期先试 SCNet MCP，调不通回退 SSH），不补问凭据。
 - 平台连接 ≥ 2 个（用户自加了 SSH）→ 弹出工作台选择弹窗（只列各 SSH 连接本身，含预置连接，无“平台默认”合成选项、不描述连接方式）；详见 `SKILL.md`。

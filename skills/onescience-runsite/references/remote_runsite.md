@@ -6,7 +6,7 @@
 
 ## 1. 选择接入方式
 
-远程接入方式优先按 `probe_remote_env.py list-connections` 枚举到的平台连接数自动判定（来源含 `~/.ssh/config` 与账号隔离的 `platform-ssh/<accountId>/config`，含预置连接；判定与弹窗硬规则见 `SKILL.md` “多远程工作台选择”段），不无条件先问 SSH/SCnet：
+远程接入方式优先按 `probe_remote_env.py list-connections` 枚举到的平台连接数自动判定（主源=当前账号注册表 `platform-config/<accountId>.json`，由会话环境变量 `ONECODE_PLATFORM_SSH_HOME` 唯一定位账号，含预置连接且不依赖 `~/.ssh/config` 是否为空；辅源=`~/.ssh/config`；判定与弹窗硬规则见 `SKILL.md` “多远程工作台选择”段），不无条件先问 SSH/SCnet：
 
 - 平台连接 ≤ 1 个（用户未自加 SSH）→ 默认 `run_site=remote`、`access_mode=mcp`，**不弹框、不补问凭据**，直接走 MCP 分支。
 - 平台连接 ≥ 2 个（用户自加了 SSH）→ 弹工作台选择弹窗，只列各 SSH 连接本身（含预置连接），**不插入“平台默认（SCNet MCP 优先）”合成选项、不描述连接方式**；选中某连接一律写该连接 `runtime.ssh`，`access_mode` 由 runsite 内部判定：平台预置 SCNet 连接→ `mcp`（MCP 优先、`runtime.ssh` 兜底），其余→ `ssh`；无法判定时按 `ssh`。
