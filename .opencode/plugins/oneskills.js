@@ -29,6 +29,17 @@
  *        orchestrator, or bash sbatch/srun/ssh/scp/rsync) is blocked until
  *        onescience-runsite has been invoked, forcing the workbench selection
  *        popup to appear before any remote job. Fail-open when <2 connections.
+ *      Breakpoint 4 — artifacts dumping into a remote home root (Gate H):
+ *        for bash scp / rsync / ssh / sbatch, when an output artifact would land
+ *        directly in the target node's HOME root, output.args.command is
+ *        MUTATED to redirect it under ~/rsi-<sessionKey>/ (English+digits,
+ *        derived from sessionID) and create that dir first; paths that already
+ *        carry a subdirectory are left untouched. A prefilter regex lets the
+ *        overwhelming majority of non-transfer commands pass through untouched.
+ *      Breakpoint 5 — main-process long waits (Gate L):
+ *        a bash sleep >=30s, timeout >=60s, or while/for..sleep poll loop is
+ *        blocked; the model is told to dispatch the wait to a task subagent
+ *        instead of stalling the main agent. Short waits fall through.
  *    Session state is keyed by sessionID so concurrent sessions stay isolated.
  *
  * The gap gates consume runtime artifacts on disk (`.onescience/gaps.jsonl`)
@@ -124,6 +135,294 @@ const sshConnectionCount = (cwd) => {
     .flatMap((v) => v.split(/\s+/))
     .filter((h) => h && h !== '*' && !h.includes('*'));
   return new Set(hosts).size;
+};
+
+// ---------------------------------------------------------------------------
+// Artifact-home rewrite (Gate H): when an scp / rsync / ssh / sbatch command
+// would drop an output artifact directly into the target node's HOME root,
+// rewrite the destination so it lands under a per-session subdirectory
+// ~/rsi-<key>/ (English + digits, traceable to the sessionID) instead of
+// littering home. Paths that already carry a meaningful subdirectory (~/work/x, ~/runs/e42/x,
+// ./data/x, /abs/dir/x) are left untouched — the model is expected to name a
+// real task dir, Gate H is only the lazy-dump-to-home safety net.
+// Implemented by MUTATING output.args.command (best-effort; falls through
+// silently if a shape is not confidently parseable).
+// ---------------------------------------------------------------------------
+
+const ARTIFACT_HOME_PREFIX = 'rsi'; // ~/rsi-<key>/
+const sessionKeyOf = (sessionID) => {
+  const raw = String(sessionID || '').replace(/[^a-zA-Z0-9]/g, '');
+  const tail = raw.slice(-8) || 'run';
+  return `${ARTIFACT_HOME_PREFIX}-${tail}`.toLowerCase();
+};
+
+// True when a remote path points at the bare home root: a single filename
+// directly under ~ / $HOME / /home/<user> / the default (home-relative) scp
+// location — NOT inside any existing subdirectory.
+const isBareHomePath = (p) => {
+  if (!p) return false;
+  const s = p.trim();
+  if (s === '~' || s === '~/' || s === '$HOME' || s === '$HOME/' || s === '.') return true;
+  let rest = null;
+  if (/^~\/[^/]+$/.test(s)) rest = s.slice(2);
+  else if (/^\$HOME\/[^/]+$/.test(s)) rest = s.slice(6);
+  else if (/^\/home\/[^/]+\/[^/]+$/.test(s)) rest = s.split('/').pop();
+  else if (/^[^./][^/]*$/.test(s) && !s.includes('/')) rest = s; // bare "foo.dat"
+  return rest !== null && !!rest && !rest.includes('/');
+};
+
+// Split a shell-ish command tail into tokens, honoring single/double quotes
+// and treating whitespace and a trailing `;` as boundaries outside quotes.
+// Each token keeps its raw text (with quotes) and its unquoted value.
+const tokenizeShell = (s) => {
+  const toks = [];
+  let i = 0;
+  while (i < s.length) {
+    while (i < s.length && (/\s/.test(s[i]) || s[i] === ';')) i++;
+    if (i >= s.length) break;
+    let raw = '';
+    let val = '';
+    while (i < s.length && !/\s/.test(s[i]) && s[i] !== ';') {
+      const ch = s[i];
+      if (ch === '"' || ch === "'") {
+        const q = ch; raw += ch; i++;
+        while (i < s.length && s[i] !== q) { raw += s[i]; val += s[i]; i++; }
+        if (i < s.length) { raw += s[i]; i++; }
+      } else { raw += ch; val += ch; i++; }
+    }
+    toks.push({ raw, val });
+  }
+  return toks;
+};
+
+// A scp destination path that dumps into the home root: empty (host:),
+// ~ / ~/ / $HOME / $HOME/ (dir-only) or a single bare filename.
+const isBareHomeTarget = (p) => {
+  if (p === '' || p === undefined || p === null) return true;
+  return isBareHomePath(p);
+};
+
+// Rewrite scp/rsync upload destination: `[scp|rsync] [src...] [[user@]host:]<bare>`.
+// Quote-aware (handles `scp "a.txt" "host:~/"`), and treats a dir-only
+// destination (`host:` / `host:~/`) as "copy the source basename into the key
+// dir". Only a REMOTE destination is in scope; a purely local copy is skipped.
+// rsync is same-family as scp for the `host:path` destination syntax.
+const rewriteScp = (cmd, key) => {
+  const lead = cmd.match(/^\s*(?:scp|rsync)\s+/);
+  if (!lead) return null;
+  const rest = cmd.slice(lead[0].length);
+  const trailing = (rest.match(/(\s*;?\s*)$/) || ['', ''])[0];
+  const core = rest.slice(0, rest.length - trailing.length);
+  const toks = tokenizeShell(core);
+  if (toks.length === 0) return null;
+  const dest = toks[toks.length - 1];
+  const colon = dest.val.indexOf(':');
+  if (colon < 0) return null; // local dest -> not a remote artifact upload
+  const hostSpec = dest.val.slice(0, colon); // may be user@host or host
+  if (!/^[\w.+-]*@?[\w.-]+$/.test(hostSpec) || hostSpec.includes('/')) return null;
+  const path = dest.val.slice(colon + 1);
+  if (!isBareHomeTarget(path)) return null;
+  let newPath;
+  if (path === '' || path === '~' || path === '~/' || path === '$HOME' || path === '$HOME/') {
+    newPath = `~/${key}/`; // dir-only: source basename lands inside the key dir
+  } else {
+    const fn = path.replace(/^(?:~\/|\$HOME\/)/, '').split('/').pop();
+    newPath = `~/${key}/${fn}`;
+  }
+  const newDestVal = `${hostSpec}:${newPath}`;
+  const q = dest.raw[0] === '"' || dest.raw[0] === "'" ? dest.raw[0] : '';
+  const newDestRaw = q ? `${q}${newDestVal}${q}` : newDestVal;
+  const idx = cmd.lastIndexOf(dest.raw);
+  const head = cmd.slice(0, idx);
+  const tailAfter = cmd.slice(idx + dest.raw.length);
+  const mkdir = `ssh ${hostSpec} 'mkdir -p ~/${key}'; `;
+  return `${mkdir}${head}${newDestRaw}${tailAfter}`;
+};
+
+// Match `ssh [host] "remote command"`, allowing the host to be quoted
+// (`ssh "host" "..."`). Returns { host, q, inner, tail } or null.
+const matchSshQuoted = (cmd) => {
+  const m = cmd.match(/^(\s*ssh\s+)(["']?)([\w.+-]*@?[\w.-]+)\2\s+(['"])([\s\S]*?)\4(\s*;?\s*)$/);
+  if (!m) return null;
+  return { host: m[3], q: m[4], inner: m[5], tail: m[6] };
+};
+
+// Rewrite ssh remote-command output redirections: `ssh host "cmd > <bare>"`
+const rewriteSsh = (cmd, key) => {
+  const mm = matchSshQuoted(cmd);
+  if (!mm) return null;
+  const { host, q, inner, tail } = mm;
+  // find `> path` / `>> path` whose target is a bare home path
+  let changed = false;
+  const newInner = inner.replace(/(>>?)\s*([^\s;|&]+)/g, (op2, op, pathTok) => {
+    const clean = pathTok.replace(/^['"]|['"]$/g, '');
+    if (!isBareHomePath(clean)) return op2;
+    const fn = clean.replace(/^(?:~\/|\$HOME\/)/, '').split('/').pop();
+    changed = true;
+    return `${op} ~/${key}/${fn}`;
+  });
+  if (!changed) return null;
+  const mkdir = `ssh ${host} 'mkdir -p ~/${key}'; `;
+  return `${mkdir}ssh ${host} ${q}${newInner}${q}${tail}`.replace(/\s+$/, '');
+};
+
+// Rewrite sbatch: force --output/--error under the key dir when absent or bare.
+// Handles both a bare `sbatch job.sbatch` and one wrapped in `ssh host "..."`.
+const rewriteSbatch = (cmd, key) => {
+  if (!/\bsbatch\b/.test(cmd)) return null;
+  // Fix a bare --output/--error/-o/-e value that points at the home root.
+  const fixFlags = (str) =>
+    str.replace(/(--output|--error|-o|-e)([=\s])([^\s'"]+)/g, (mm, flag, sep, val) => {
+      const clean = val.replace(/^['"]|['"]$/g, '');
+      if (isBareHomePath(clean)) {
+        const fn = clean.replace(/^(?:~\/|\$HOME\/)/, '').split('/').pop();
+        return `${flag}${sep}~/${key}/${fn}`;
+      }
+      return mm;
+    });
+  const hasOut = /(?:\s-o\s|--output[=\s])/.test(cmd);
+  const hasErr = /(?:\s-e\s|--error[=\s])/.test(cmd);
+  const extra = `${hasOut ? '' : ` --output=~/${key}/slurm-%j.out`}${hasErr ? '' : ` --error=~/${key}/slurm-%j.err`}`;
+
+  const sshWrapped = matchSshQuoted(cmd);
+  if (sshWrapped) {
+    const { host, q, inner, tail } = sshWrapped;
+    const already = new RegExp(`/${key}/`).test(inner);
+    if (!extra && already) return null;
+    let newInner = fixFlags(inner);
+    if (extra) newInner = newInner.replace(/(\bsbatch\b[^'";]*)/, `$1${extra}`);
+    const mkdir = `ssh ${host} 'mkdir -p ~/${key}'; `;
+    return `${mkdir}ssh ${host} ${q}${newInner}${q}${tail}`.replace(/\s+$/, '');
+  }
+
+  // plain local sbatch
+  const already = new RegExp(`/${key}/`).test(cmd);
+  if (!extra && already) return null;
+  let fixed = fixFlags(cmd);
+  if (extra) fixed = fixed.replace(/(\bsbatch\b[^;]*)/, `$1${extra}`);
+  return fixed.replace(/\s+$/, '');
+};
+
+// Master dispatcher: return the rewritten command, or null if nothing changed.
+// Fast-path prefilter: only commands mentioning scp/rsync/ssh/sbatch can ever
+// touch the remote-home rewrite logic, so the vast majority of bash calls
+// (file edits, python, git, ls, ...) exit on a single regex test and pass
+// through untouched. Only the small scp/rsync/ssh/sbatch subset is inspected.
+const ARTIFACT_PREFILTER_RE = /\b(?:scp|rsync|ssh|sbatch)\b/;
+const rewriteArtifactCommand = (cmd, key) => {
+  const s = String(cmd || '');
+  if (!ARTIFACT_PREFILTER_RE.test(s)) return null; // 99.5% pass-through
+  if (/\b(?:scp|rsync)\b/.test(s)) {
+    const r = rewriteScp(s, key);
+    if (r) return r;
+  }
+  if (/\bsbatch\b/.test(s)) {
+    const r = rewriteSbatch(s, key);
+    if (r) return r;
+  }
+  if (/\bssh\b/.test(s)) {
+    const r = rewriteSsh(s, key);
+    if (r) return r;
+  }
+  return null;
+};
+
+// ---------------------------------------------------------------------------
+// Long-wait blocking guard (Gate L): a main-process bash that would stall the
+// session on sleep / timeout / a poll-loop is refused so the agent dispatches
+// the wait to a task subagent instead of blocking. Thresholds are seconds.
+// ---------------------------------------------------------------------------
+
+const LONG_SLEEP_SEC = 30;   // sleep >= 30s -> blocking
+const LONG_TIMEOUT_SEC = 60; // timeout >= 60s -> blocking
+
+const parseDur = (n, unit) => {
+  const v = parseFloat(n);
+  if (Number.isNaN(v)) return 0;
+  if (/h$/i.test(unit)) return v * 3600;
+  if (/m$/i.test(unit) && !/ms$/i.test(unit)) return v * 60;
+  return v; // plain seconds
+};
+
+// Returns { blocking, reason } for a bash command string.
+const looksLongBlocking = (cmd) => {
+  const s = String(cmd || '');
+  // explicit sleep with a duration >= threshold
+  const sleepRe = /\bsleep\s+(\d+(?:\.\d+)?\s*(?:s|m|h|ms)?|\d+h\d*m?|\d*m\d*s?)/gi;
+  let m;
+  while ((m = sleepRe.exec(s)) !== null) {
+    const tok = m[1].trim();
+    const unit = (tok.match(/[a-z]+$/i) || ['s'])[0];
+    const num = tok.replace(/[a-z]+$/i, '');
+    if (parseDur(num, unit) >= LONG_SLEEP_SEC) {
+      return { blocking: true, reason: `sleep ${tok} (>=${LONG_SLEEP_SEC}s)` };
+    }
+  }
+  // timeout <duration> ... with duration >= threshold
+  const toRe = /\btimeout\s+(\d+(?:\.\d+)?[smh]?|\d+:\d+(?::\d+)?)/gi;
+  while ((m = toRe.exec(s)) !== null) {
+    const tok = m[1].trim();
+    let sec;
+    if (tok.includes(':')) {
+      const parts = tok.split(':').map((x) => parseInt(x, 10) || 0);
+      sec = parts.length === 3 ? parts[0] * 3600 + parts[1] * 60 + parts[2]
+        : parts.length === 2 ? parts[0] * 60 + parts[1] : parts[0];
+    } else {
+      const unit = (tok.match(/[a-z]+$/i) || ['s'])[0];
+      sec = parseDur(tok.replace(/[a-z]+$/i, ''), unit);
+    }
+    if (sec >= LONG_TIMEOUT_SEC) {
+      return { blocking: true, reason: `timeout ${tok} (>=${LONG_TIMEOUT_SEC}s)` };
+    }
+  }
+  // busy poll loop: while ... sleep/watch, or repeated squeue|grep RUNNING
+  if (/\bwhile\b[\s\S]*\bsleep\b/.test(s) || /\bfor\b[\s\S]*\bsleep\b/.test(s)) {
+    return { blocking: true, reason: 'while/for 轮询循环内嵌 sleep' };
+  }
+  if (/\bwatch\s+-n\s+(\d{2,})/.test(s)) {
+    const n = parseInt((s.match(/\bwatch\s+-n\s+(\d+)/) || [])[1], 10);
+    if (n >= LONG_SLEEP_SEC) return { blocking: true, reason: `watch -n ${n}s` };
+  }
+  return { blocking: false, reason: '' };
+};
+
+// Build a copy-paste-ready `task(...)` handoff for a blocked long-wait command,
+// so the model dispatches a subagent to carry out the wait instead of stalling
+// the main agent (or just reporting the block). The plugin cannot call `task`
+// itself — only the model can — so this returns the exact call to issue now.
+const buildSubagentHandoff = (cmd) => {
+  const s = String(cmd || '').trim();
+  // bare `sleep <dur>` -> subagent just waits that long and reports
+  const sleepOnly = s.match(/^sleep\s+(\S+)(?:\s+.*)?$/i);
+  if (sleepOnly && !/ssh|srun|sbatch|squeue/.test(s)) {
+    const d = sleepOnly[1];
+    return `task(subagent_type="general", prompt="Wait ${d} (run: sleep ${d}) in the background, then report that the wait is complete. Do not block the main agent.")`;
+  }
+  // job / remote wait -> subagent polls to completion
+  return `task(subagent_type="general", prompt="Run and supervise this long job without blocking the main agent: ${s}. Poll its status read-only every 60s until it finishes, then return a short summary and the artifact path(s).")`;
+};
+
+// Detect whether a session is a subagent (spawned by the task tool) by reading
+// its parentID via the client. Gate L must NOT block long waits inside a
+// subagent — that is exactly where the wait is supposed to happen. Best-effort
+// with a per-session cache; on any failure we treat it as the main agent.
+const subagentCache = new Map();
+const isSubagentSession = async (client, sessionID) => {
+  const id = String(sessionID || '');
+  if (!id) return false;
+  if (subagentCache.has(id)) return subagentCache.get(id);
+  let isSub = false;
+  try {
+    if (client && client.session && typeof client.session.get === 'function') {
+      const res = await client.session.get({ path: { id } });
+      const data = (res && res.data) || res;
+      isSub = !!(data && data.parentID);
+    }
+  } catch (_) {
+    isSub = false;
+  }
+  subagentCache.set(id, isSub);
+  return isSub;
 };
 
 // ---------------------------------------------------------------------------
@@ -311,12 +610,17 @@ When OneSkills prompts request actions, substitute OpenCode equivalents:
 - When \`~/.ssh/config\` declares 2 or more platform SSH connections, any remote commercial-software compute — handing off to \`onescience-runtime\` or \`onescience-mlmd-campaign-orchestrator\`, or running \`sbatch\`/\`srun\`/\`ssh\`/\`scp\`/\`rsync\` — is blocked until \`onescience-runsite\` has been invoked for this task.
 - Call \`onescience-runsite\` first: it read-only probes each SSH connection's software matrix (VASP/LAMMPS/accelerator/Slurm/conda) and pops the workbench selection box via the question tool, marking the connection that truly has the required software and is reachable as （推荐）. This is the ONLY interactive popup; all other remote fields (remote_work_dir / execution_mode / partition / accelerator) are auto-derived.`;
 
+  const artifactGateNote = `**Artifact-home & long-wait guards (Gate H + Gate L, enforced by this plugin):**
+- Gate H (artifact-home rewrite): when a bash \`scp\` / \`rsync\` / \`ssh\` / \`sbatch\` command would write an output artifact directly into the remote node's HOME root, the plugin rewrites the target path to \`~/rsi-<sessionKey>/\` and creates that dir first, so home stays tidy. A prefilter means ordinary commands pass through untouched. Name a meaningful task dir yourself (e.g. \`~/dft-slab-42/out.log\`) when you can; the rewrite is only the safety net for lazy bare-home dumps.
+- Gate L (long-wait guard): a main-process bash \`sleep\` of 30s or more, a \`timeout\` of 60s or more, or a \`while/for ... sleep\` poll loop is BLOCKED. When blocked, do NOT just report the block or retry in bash - immediately dispatch the wait to a \`task\` subagent (the gate error hands you the exact call to issue) so the main agent stays free to do other work while the subagent waits/polls read-only and returns a summary plus artifact path. Short waits below the thresholds run normally.`;
+
   const sections = [
     bootstrapMarker,
     'OneSkills is available from the local repository checkout.',
     routingGuide,
     gateNote,
     runsiteGateNote,
+    artifactGateNote,
     toolMapping,
     installGuide ? `**Local install note:**\nUse \.opencode/plugins/oneskills.js from this repository as the OpenCode plugin entry.` : null,
   ].filter(Boolean);
@@ -531,6 +835,53 @@ export const OneSkillsPlugin = async ({ client, directory, worktree } = {}) => {
         }
       }
 
+      // --- Gate H (artifact-home rewrite): when a bash scp / rsync / ssh /
+      // sbatch command would drop an artifact directly into the remote node's
+      // home root, rewrite output.args.command to redirect it under ~/rsi-<key>/
+      // and create that dir first. A prefilter regex short-circuits the vast
+      // majority of non-transfer commands. Non-blocking best-effort: only mutate
+      // when the rewrite function is confident, otherwise leave the command
+      // untouched.
+      if (toolName === 'bash') {
+        try {
+          const original = String(args.command || '');
+          const key = sessionKeyOf(input && input.sessionID);
+          const rewritten = rewriteArtifactCommand(original, key);
+          if (rewritten && rewritten !== original) {
+            if (output && output.args) output.args.command = rewritten;
+            else if (input && input.args) input.args.command = rewritten;
+            await note(client, 'info', `Gate H rewrote home artifact path under ~/${key}/`);
+          }
+        } catch (_) {
+          /* never let a rewrite failure block the command */
+        }
+      }
+
+      // --- Gate L (long-wait blocking guard): a main-process bash sleep /
+      // timeout / poll-loop that would stall the session for a long time is
+      // blocked; the model is told to dispatch the wait to a task subagent so
+      // the main agent stays responsive. Short waits fall through.
+      if (toolName === 'bash') {
+        const lw = looksLongBlocking(args.command);
+        if (lw.blocking) {
+          // A subagent session is exactly where the long wait SHOULD happen —
+          // let it run. Only the main (root) agent is forced to hand off.
+          const isSub = await isSubagentSession(client, input && input.sessionID);
+          if (isSub) {
+            await note(client, 'info', `Gate L allowed long wait inside subagent: ${lw.reason}`);
+          } else {
+            await note(client, 'warn', `Gate L blocked bash: ${lw.reason}`);
+            const handoff = buildSubagentHandoff(args.command);
+            throw new Error(
+              '[OneSkills] 检测到长耗时阻塞命令（' + lw.reason + '），主 agent 进程禁止 sleep/timeout 空等。\n' +
+              '不要只是复述本拦截信息，也不要用 bash 重试 sleep/timeout。请立即调用下面这个 task 把等待交给子智能体，' +
+              '主 agent 在子智能体等待期间继续处理其他事项，拿到结果后再回报用户：\n' +
+              '  ' + handoff,
+            );
+          }
+        }
+      }
+
       // Read-only intents (read/glob/grep/webfetch/todowrite, primitives,
       // online-knowledge, live-literature, planning skills) fall through and
       // are always allowed.
@@ -538,3 +889,7 @@ export const OneSkillsPlugin = async ({ client, directory, worktree } = {}) => {
     },
   };
 };
+
+// Exported for unit testing of the pure rewrite / guard helpers; the OpenCode
+// plugin loader only consumes OneSkillsPlugin above and ignores these.
+export { rewriteArtifactCommand, looksLongBlocking, isBareHomePath, sessionKeyOf };
