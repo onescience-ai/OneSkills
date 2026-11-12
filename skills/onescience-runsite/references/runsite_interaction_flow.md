@@ -30,7 +30,7 @@
 
 远程接入方式先按优先级自动判定，不无条件要求补问 SSH（判定与弹窗规则见 `SKILL.md` “多远程工作台选择”段）：
 
-- `probe_remote_env.py list-connections` 枚举到平台 SSH 连接 **≥ 2 个**（主源=当前账号注册表 `platform-config/<accountId>.json`，由会话环境变量 `ONECODE_PLATFORM_SSH_HOME` 唯一定位账号，含预置连接且不依赖 `~/.ssh/config` 是否为空；辅源=`~/.ssh/config`；预置连接与用户自加连接按名合并去重）→ 触发工作台选择弹窗，弹窗只列各 SSH 连接本身（含预置连接），**不插入“平台默认（SCNet MCP 优先）”合成选项、不描述连接方式**；选中某连接一律写该连接 `runtime.ssh`，`access_mode` 由 runsite 内部判定：平台预置 SCNet 连接→ `mcp`（MCP 优先、`runtime.ssh` 兜底），其余→ `ssh`。
+- `probe_remote_env.py list-connections` 枚举到平台 SSH 连接 **≥ 2 个**（主源=当前账号注册表 `platform-config/<accountId>.json`，由会话环境变量 `ONECODE_PLATFORM_SSH_HOME` 唯一定位账号，含预置连接且不依赖 `~/.ssh/config` 是否为空；辅源=`~/.ssh/config`；预置连接与用户自加连接按名合并去重）→ 触发工作台选择弹窗，弹窗只列各 SSH 连接本身（含预置连接），**不插入“平台默认（SCNet MCP 优先）”合成选项、不描述连接方式**。渲染弹窗前，agent 必须对每个连接获取真实资源信息：用户自加 SSH 连接→调 `probe_remote_env.py --ssh` 探测远端 GPU/驱动/环境；预置连接（`preset:true`）→调 `scnet_scnet_get_resources` MCP 工具获取集群/队列/区域信息，将返回结果作为选项描述展示。探测失败则如实标注“无法获取资源信息”，不得编造。选中某连接一律写该连接 `runtime.ssh`，`access_mode` 由 runsite 内部判定：平台预置 SCNet 连接→ `mcp`（MCP 优先、`runtime.ssh` 兜底），其余→ `ssh`。
 - 平台连接 **≤ 1 个**且任务本地不满足 → **不弹框**，默认 `access_mode=mcp`（平台优先），不补问任何凭据。
 - 仅当完全没有可用连接、需用户首次提供凭据时，才进入下面的逐字段补问。
 
