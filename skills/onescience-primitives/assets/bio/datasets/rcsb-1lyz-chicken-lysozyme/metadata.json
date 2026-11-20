@@ -1,0 +1,17 @@
+{
+  "name": "rcsb-1lyz-chicken-lysozyme",
+  "type": "dataset",
+  "domain": "bio",
+  "version": "1.0.1",
+  "visibility": "public",
+  "created_at": "2026-11-19",
+  "updated_at": "2026-11-19",
+  "description": "RCSB 1LYZ 鸡溶菌酶实体 1、链 A 的既有实验结构及来源元数据，用于免疫对象与任务定义中的结构身份、坐标映射与质控；关联 B26 实例 Task，不含完整预测特征或独立标签。",
+  "tags": [
+    "rcsb",
+    "1lyz",
+    "chicken-lysozyme",
+    "structure-input-qc",
+    "edge:task:bio-immune-target-task-definition-cd4-t-cell-epitope-processin-inst"
+  ]
+}

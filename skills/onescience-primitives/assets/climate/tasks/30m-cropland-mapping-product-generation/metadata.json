@@ -17,15 +17,5 @@
     "task",
     "climate",
     "edge:workflow:30m-cropland-mapping-preprocessing-validation"
-  ],
-  "harvested": true,
-  "harvest_source": "onescience-knowledge-harvester",
-  "harvest_query": "遥感制图产品的标准输出格式规范（GeoTIFF/COG）、空间元数据完整性要求（CRS、变换矩阵、nodata、pyramid）、质量标志与不确定性信息的标准编码方式",
-  "evidence_papers": [
-    {
-      "title": "30 m 5-yearly land cover maps of Qilian Mountain Area (QMA_LC30) from 1990 to 2020",
-      "doi": "10.1038/s41597-024-03976-9",
-      "year": 2024
-    }
   ]
 }

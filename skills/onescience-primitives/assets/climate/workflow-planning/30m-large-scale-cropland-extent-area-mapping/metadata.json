@@ -29,28 +29,5 @@
     "e56",
     "edge:scenario:climate-30m-large-scale-farmland-extent-area-mapping-scenario",
     "edge:workflow:climate-remote-sensing-label-and-boundary-precheck-remote-sensing-workflow"
-  ],
-  "scenario_id": "E56",
-  "source_papers": [
-    "sha256:d8f6e93975205c5a798d060be80d4e3d6697427117926aaa3cef7aaffb7eb10e",
-    "sha256:8c5d6dff962d1b6ec54b3b9d79df3b7f1e2be5a4be801a659619174cf4a41e29"
-  ],
-  "harvested": true,
-  "tier": "medium",
-  "score": 0.0,
-  "source_paper": {
-    "title": "30米大范围农田范围与面积制图（场景工作流）",
-    "doi": "",
-    "source": "scenario_json",
-    "external_id": "E56",
-    "venue": "",
-    "cited_by_count": null,
-    "objective_score": 0.0
-  },
-  "lifecycle": "probation",
-  "grounded_ratio": 1.0,
-  "scenario_ids": [
-    "E56"
-  ],
-  "batch": "2026-09-14"
+  ]
 }

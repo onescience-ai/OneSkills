@@ -1584,61 +1584,168 @@
    }
   },
   {
-   "domain": "bio",
-   "scenario_title": "B26",
-   "entry_points": {
-    "graph_scenario": "bio/scenario/sc-9bd29e90/",
-    "legacy_workflow_planning": [
-     "bio/workflow-planning/cd4-t-cell-epitope-processing-presentation/"
-    ]
-   },
-   "lineages": {
-    "graph": {
-     "scenario_card": "bio/scenario/sc-9bd29e90/",
-     "workflows": [
-      {
-       "name": "wf-bio-c6a05f8d",
-       "path": "bio/workflow/wf-bio-c6a05f8d/",
-       "exists": true,
-       "tasks": []
+    "domain": "bio",
+    "scenario_title": "B26",
+    "entry_points": {
+      "legacy_workflow_planning": [
+        "bio/workflow-planning/cd4-t-cell-epitope-processing-presentation/"
+      ],
+      "semantic_scenario": "bio/scenario/bio-cd4-t-cell-epitope-processing-presentation-prediction-scenario/"
+    },
+    "lineages": {
+      "semantic": {
+        "scenario_card": "bio/scenario/bio-cd4-t-cell-epitope-processing-presentation-prediction-scenario/",
+        "workflows": [
+          {
+            "name": "bio-immune-target-task-definition-numbering-and-interface-feature-workflow",
+            "path": "bio/workflow/bio-immune-target-task-definition-numbering-and-interface-feature-workflow/",
+            "exists": true,
+            "tasks": [
+              {
+                "name": "bio-immune-target-task-definition-task",
+                "path": "bio/tasks/bio-immune-target-task-definition-task/",
+                "resources": [
+                  "models/proteinmpnn",
+                  "tools/simplefold-protein-structure-prediction-model-and-pipeline"
+                ],
+                "dangling_resources": [],
+                "exists": true
+              },
+              {
+                "name": "bio-immune-target-task-definition-cd4-t-cell-epitope-processin-inst",
+                "path": "bio/tasks/bio-immune-target-task-definition-cd4-t-cell-epitope-processin-inst/",
+                "resources": [
+                  "tools/simplefold-protein-structure-prediction-model-and-pipeline",
+                  "datasets/rcsb-1lyz-chicken-lysozyme",
+                  "tools/aplsuite-antigen-processing-likelihood"
+                ],
+                "dangling_resources": [],
+                "exists": true
+              },
+              {
+                "name": "bio-numbering-and-interface-feature-preparation-task",
+                "path": "bio/tasks/bio-numbering-and-interface-feature-preparation-task/",
+                "resources": [],
+                "dangling_resources": [],
+                "exists": true
+              },
+              {
+                "name": "bio-numbering-and-interface-cd4-t-cell-epitope-processin-inst",
+                "path": "bio/tasks/bio-numbering-and-interface-cd4-t-cell-epitope-processin-inst/",
+                "resources": [],
+                "dangling_resources": [],
+                "exists": true
+              },
+              {
+                "name": "bio-immune-prediction-candidate-generation-task",
+                "path": "bio/tasks/bio-immune-prediction-candidate-generation-task/",
+                "resources": [
+                  "models/proteinmpnn"
+                ],
+                "dangling_resources": [],
+                "exists": true
+              },
+              {
+                "name": "bio-immune-prediction-candidate-cd4-t-cell-epitope-processin-inst",
+                "path": "bio/tasks/bio-immune-prediction-candidate-cd4-t-cell-epitope-processin-inst/",
+                "resources": [],
+                "dangling_resources": [],
+                "exists": true
+              },
+              {
+                "name": "bio-specificity-developability-qc-task",
+                "path": "bio/tasks/bio-specificity-developability-qc-task/",
+                "resources": [
+                  "datasets/tm-score-evaluation"
+                ],
+                "dangling_resources": [],
+                "exists": true
+              },
+              {
+                "name": "bio-specificity-developability-qc-cd4-t-cell-epitope-processin-inst",
+                "path": "bio/tasks/bio-specificity-developability-qc-cd4-t-cell-epitope-processin-inst/",
+                "resources": [
+                  "datasets/tm-score-evaluation"
+                ],
+                "dangling_resources": [],
+                "exists": true
+              }
+            ]
+          }
+        ],
+        "tasks": [
+          {
+            "name": "bio-immune-target-task-definition-task",
+            "path": "bio/tasks/bio-immune-target-task-definition-task/",
+            "resources": [
+              "models/proteinmpnn",
+              "tools/simplefold-protein-structure-prediction-model-and-pipeline"
+            ],
+            "dangling_resources": [],
+            "exists": true
+          },
+          {
+            "name": "bio-immune-target-task-definition-cd4-t-cell-epitope-processin-inst",
+            "path": "bio/tasks/bio-immune-target-task-definition-cd4-t-cell-epitope-processin-inst/",
+            "resources": [
+              "tools/simplefold-protein-structure-prediction-model-and-pipeline",
+              "datasets/rcsb-1lyz-chicken-lysozyme",
+              "tools/aplsuite-antigen-processing-likelihood"
+            ],
+            "dangling_resources": [],
+            "exists": true
+          },
+          {
+            "name": "bio-numbering-and-interface-feature-preparation-task",
+            "path": "bio/tasks/bio-numbering-and-interface-feature-preparation-task/",
+            "resources": [],
+            "dangling_resources": [],
+            "exists": true
+          },
+          {
+            "name": "bio-numbering-and-interface-cd4-t-cell-epitope-processin-inst",
+            "path": "bio/tasks/bio-numbering-and-interface-cd4-t-cell-epitope-processin-inst/",
+            "resources": [],
+            "dangling_resources": [],
+            "exists": true
+          },
+          {
+            "name": "bio-immune-prediction-candidate-generation-task",
+            "path": "bio/tasks/bio-immune-prediction-candidate-generation-task/",
+            "resources": [
+              "models/proteinmpnn"
+            ],
+            "dangling_resources": [],
+            "exists": true
+          },
+          {
+            "name": "bio-immune-prediction-candidate-cd4-t-cell-epitope-processin-inst",
+            "path": "bio/tasks/bio-immune-prediction-candidate-cd4-t-cell-epitope-processin-inst/",
+            "resources": [],
+            "dangling_resources": [],
+            "exists": true
+          },
+          {
+            "name": "bio-specificity-developability-qc-task",
+            "path": "bio/tasks/bio-specificity-developability-qc-task/",
+            "resources": [
+              "datasets/tm-score-evaluation"
+            ],
+            "dangling_resources": [],
+            "exists": true
+          },
+          {
+            "name": "bio-specificity-developability-qc-cd4-t-cell-epitope-processin-inst",
+            "path": "bio/tasks/bio-specificity-developability-qc-cd4-t-cell-epitope-processin-inst/",
+            "resources": [
+              "datasets/tm-score-evaluation"
+            ],
+            "dangling_resources": [],
+            "exists": true
+          }
+        ]
       }
-     ],
-     "tasks": [
-      {
-       "name": "tk-bio-6c6601c7",
-       "path": "bio/tasks/tk-bio-6c6601c7/",
-       "resources": [
-        "models/proteinmpnn"
-       ],
-       "dangling_resources": [],
-       "exists": true
-      },
-      {
-       "name": "tk-bio-5070a32d",
-       "path": "bio/tasks/tk-bio-5070a32d/",
-       "resources": [],
-       "dangling_resources": [],
-       "exists": true
-      },
-      {
-       "name": "tk-bio-ff8556fa",
-       "path": "bio/tasks/tk-bio-ff8556fa/",
-       "resources": [
-        "models/proteinmpnn"
-       ],
-       "dangling_resources": [],
-       "exists": true
-      },
-      {
-       "name": "tk-bio-78af6937",
-       "path": "bio/tasks/tk-bio-78af6937/",
-       "resources": [],
-       "dangling_resources": [],
-       "exists": true
-      }
-     ]
     }
-   }
   },
   {
    "domain": "bio",
@@ -3102,51 +3209,158 @@
    "domain": "bio",
    "scenario_title": "B53",
    "entry_points": {
-    "graph_scenario": "bio/scenario/sc-9335eb1f/",
+    "graph_scenario": "bio/scenario/bio-best-of-k-aligned-target-specific-3d-molecule-generation-scenario/",
     "legacy_workflow_planning": [
      "bio/workflow-planning/best-of-k-target-specific-3d-molecule-generation/"
     ]
    },
    "lineages": {
     "graph": {
-     "scenario_card": "bio/scenario/sc-9335eb1f/",
+     "scenario_card": "bio/scenario/bio-best-of-k-aligned-target-specific-3d-molecule-generation-scenario/",
      "workflows": [
       {
-       "name": "wf-bio-856a5702",
-       "path": "bio/workflow/wf-bio-856a5702/",
+       "name": "bio-molecular-design-objective-definition-model-property-condition-workflow",
+       "path": "bio/workflow/bio-molecular-design-objective-definition-model-property-condition-workflow/",
        "exists": true,
-       "tasks": []
+       "tasks": [
+        {
+         "name": "bio-molecular-design-objective-definition-task",
+         "path": "bio/tasks/bio-molecular-design-objective-definition-task/",
+         "resources": [
+          "tools/simplefold-protein-structure-prediction-model-and-pipeline"
+         ],
+         "dangling_resources": [],
+         "exists": true
+        },
+        {
+         "name": "bio-molecular-design-objective-best-of-k-aligned-target-inst",
+         "path": "bio/tasks/bio-molecular-design-objective-best-of-k-aligned-target-inst/",
+         "resources": [
+          "tools/simplefold-protein-structure-prediction-model-and-pipeline"
+         ],
+         "dangling_resources": [],
+         "exists": true
+        },
+        {
+         "name": "bio-model-property-condition-preparation-task",
+         "path": "bio/tasks/bio-model-property-condition-preparation-task/",
+         "resources": [],
+         "dangling_resources": [],
+         "exists": true
+        },
+        {
+         "name": "bio-model-property-condition-best-of-k-aligned-target-inst",
+         "path": "bio/tasks/bio-model-property-condition-best-of-k-aligned-target-inst/",
+         "resources": [],
+         "dangling_resources": [],
+         "exists": true
+        },
+        {
+         "name": "bio-3d-molecular-generation-sampling-task",
+         "path": "bio/tasks/bio-3d-molecular-generation-sampling-task/",
+         "resources": [],
+         "dangling_resources": [],
+         "exists": true
+        },
+        {
+         "name": "bio-3d-molecular-generation-best-of-k-aligned-target-inst",
+         "path": "bio/tasks/bio-3d-molecular-generation-best-of-k-aligned-target-inst/",
+         "resources": [],
+         "dangling_resources": [],
+         "exists": true
+        },
+        {
+         "name": "bio-property-filtering-candidate-ranking-task",
+         "path": "bio/tasks/bio-property-filtering-candidate-ranking-task/",
+         "resources": [
+          "models/diffdock"
+         ],
+         "dangling_resources": [
+          "models/diffdock"
+         ],
+         "exists": true
+        },
+        {
+         "name": "bio-property-filtering-candidate-best-of-k-aligned-target-inst",
+         "path": "bio/tasks/bio-property-filtering-candidate-best-of-k-aligned-target-inst/",
+         "resources": [
+          "models/diffdock"
+         ],
+         "dangling_resources": [
+          "models/diffdock"
+         ],
+         "exists": true
+        }
+       ]
       }
      ],
      "tasks": [
       {
-       "name": "tk-bio-28834bb7",
-       "path": "bio/tasks/tk-bio-28834bb7/",
+       "name": "bio-molecular-design-objective-definition-task",
+       "path": "bio/tasks/bio-molecular-design-objective-definition-task/",
+       "resources": [
+        "tools/simplefold-protein-structure-prediction-model-and-pipeline"
+       ],
+       "dangling_resources": [],
+       "exists": true
+      },
+      {
+       "name": "bio-molecular-design-objective-best-of-k-aligned-target-inst",
+       "path": "bio/tasks/bio-molecular-design-objective-best-of-k-aligned-target-inst/",
+       "resources": [
+        "tools/simplefold-protein-structure-prediction-model-and-pipeline"
+       ],
+       "dangling_resources": [],
+       "exists": true
+      },
+      {
+       "name": "bio-model-property-condition-preparation-task",
+       "path": "bio/tasks/bio-model-property-condition-preparation-task/",
        "resources": [],
        "dangling_resources": [],
        "exists": true
       },
       {
-       "name": "tk-bio-352f4229",
-       "path": "bio/tasks/tk-bio-352f4229/",
+       "name": "bio-model-property-condition-best-of-k-aligned-target-inst",
+       "path": "bio/tasks/bio-model-property-condition-best-of-k-aligned-target-inst/",
        "resources": [],
        "dangling_resources": [],
        "exists": true
       },
       {
-       "name": "tk-bio-820519e6",
-       "path": "bio/tasks/tk-bio-820519e6/",
+       "name": "bio-3d-molecular-generation-sampling-task",
+       "path": "bio/tasks/bio-3d-molecular-generation-sampling-task/",
        "resources": [],
        "dangling_resources": [],
        "exists": true
       },
       {
-       "name": "tk-bio-9d5cad44",
-       "path": "bio/tasks/tk-bio-9d5cad44/",
+       "name": "bio-3d-molecular-generation-best-of-k-aligned-target-inst",
+       "path": "bio/tasks/bio-3d-molecular-generation-best-of-k-aligned-target-inst/",
+       "resources": [],
+       "dangling_resources": [],
+       "exists": true
+      },
+      {
+       "name": "bio-property-filtering-candidate-ranking-task",
+       "path": "bio/tasks/bio-property-filtering-candidate-ranking-task/",
        "resources": [
         "models/diffdock"
        ],
-       "dangling_resources": [],
+       "dangling_resources": [
+        "models/diffdock"
+       ],
+       "exists": true
+      },
+      {
+       "name": "bio-property-filtering-candidate-best-of-k-aligned-target-inst",
+       "path": "bio/tasks/bio-property-filtering-candidate-best-of-k-aligned-target-inst/",
+       "resources": [
+        "models/diffdock"
+       ],
+       "dangling_resources": [
+        "models/diffdock"
+       ],
        "exists": true
       }
      ]

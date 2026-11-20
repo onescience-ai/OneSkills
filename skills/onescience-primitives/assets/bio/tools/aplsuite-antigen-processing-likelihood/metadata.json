@@ -1,0 +1,17 @@
+{
+  "name": "aplsuite-antigen-processing-likelihood",
+  "type": "tool",
+  "domain": "bio",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-19",
+  "updated_at": "2026-11-19",
+  "description": "APLSuite 抗原加工似然应用及 EasyAPI-APLSuite、gpuCOREX 固定版本、输入输出与技术依赖说明；关联 B26 免疫对象与任务定义实例，区分源码、软件加载与科学适用条件。",
+  "tags": [
+    "aplsuite",
+    "antigen-processing-likelihood",
+    "easyapi-aplsuite",
+    "gpucorex",
+    "edge:task:bio-immune-target-task-definition-cd4-t-cell-epitope-processin-inst"
+  ]
+}

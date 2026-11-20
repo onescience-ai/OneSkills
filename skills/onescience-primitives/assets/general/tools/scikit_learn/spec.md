@@ -14,7 +14,9 @@ Expected outputs include source-grounded workflow guidance, relevant parameters 
 
 # key_dependencies
 
-Requires Python 3.11+ and scikit-learn 1.7+. NumPy and SciPy are required dependencies. Optional matplotlib/seaborn for bundled example scripts that save plots.
+The CPU RandomForestClassifier implementation uses CPU memory and has no GPU or pretrained-weight requirement. Its memory footprint includes the training matrix, fitted tree nodes and prediction batches. A float32 matrix with N rows and F features occupies 4 × N × F bytes before copies, labels and estimator storage; memory also depends on tree count/depth and parallel execution.
+
+Source examples target Python 3.11+ and scikit-learn 1.7+. Compatibility for an actual application depends on its APIs and serialized estimators; the CPU RandomForestClassifier workflow also operates with Python 3.11 and scikit-learn 1.6. NumPy and SciPy are core dependencies, joblib supports estimator persistence, and rasterio/GDAL provides raster I/O in geospatial applications. Matplotlib/seaborn is optional for plotting.
 
 # source_knowledge_outline
 

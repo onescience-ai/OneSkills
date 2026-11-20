@@ -1,0 +1,92 @@
+## 核心结论
+
+用有来源的四特征计算抗原加工似然（APL），再将残基分数投影到真实肽实体，按指定 MHC-II 方法逐等位基因组合并独立评价。先区分抗原加工/呈递排序与抗体结合位点任务：CAME-AB 的 VH/CDR 多模态模型属于后者，不能作为 APL 的权重、输入或算法前提。
+
+## 适用条件
+
+- 固定算法身份：arXiv:2606.02462v2 → 官方父仓库 `Jiarui0923/APL`，commit `182c0faaf4f104f1621089f9b4a7899ed62deaa0`（APL 0.0.5）→ `Jiarui0923/EasyAPI-APLSuite`，commit `a76754506c7515bc58b967ff16537ee0440619d4`（组件 2.0.11）。父应用说明依赖 Python 3.12；此处源码可复核不代表目标环境已安装、离线依赖已就绪或其他 Python 版本已验证。来源见下表 identity/parent。
+- 准备真实 FASTA、PDB/mmCIF、四特征及生成版本/单位、残基映射、实验肽表、队列/测定记录和精确 MHC 缓存或工具。先在获准本地资源目录核验身份、完整性、许可和可读性；同名文件或旧场景中记录的默认文件名 `aplsuite.pt` 都不是资源已核验的证据。官方仓库是获准联网时的获取线索，离线任务不得把获取线索当已具备资源。
+- 保持 protein/chain、残基号/插入码、peptide_id、供体/队列和等位基因血缘。APL 不要求抗体 CDR 或受体配对；抗体/TCR 分支才核验相应编号、链配对、物种和模型适用域。未覆盖的修饰或免疫过程须有额外验证方案。
+- 从真实受测全集定义正、负、未知；只有确有受测且按适用实验规则未达阳性的记录才能作阴性。保留未测、缺失、不可判定和排除原因，不把未见于阳性表的肽写成阴性。重复供体/响应如何合并、评价哪一队列、时间点和测定，须由任务协议预先声明。
+- 将方法版本、权重、阈值、归一化总体、逐等位基因聚合、对照、Top-K 及并列规则、重采样配置与计算预算从任务输入冻结；不得用评价标签调参。单抗原历史再分析可作条件内比较，不能宣称家族外泛化；只有实际存在供体/HLA 真值才做对应分层。
+- 保留全量预测、失败和异常及最后健康产物；区分静态检查、工程夹具和真实科学执行。预测结合或 APL 排序不能直接证明中和、免疫原性、感染保护、临床疗效或安全性。
+
+## 关键参数与公式
+
+### 四特征与残基算法
+
+按 `get_apl_residue(seq_entropy, bfactor, corex, sasa, ...)` 对齐四个完整残基数组，固定顺序为 `[序列熵, B-factor或已确认的柔性量, COREX, SASA]`。保留原始单位及其生成方法；先核对同一抗原/链、长度、缺段和顺序。不要把其他定义的“保守性”分数直接当熵输入。以下为 features 来源固定版本的实现步骤。
+
+1. 对熵、柔性量和 SASA 取负，COREX 保持方向。各数组独立作两轮 15 点滑动均值；每轮首尾 7 位保留输入值，端部不是缩窗平均。
+2. 对每个完整平滑数组作 `z=(x-mean(x))/std(x, ddof=0)`。以 `w=[w_entropy,w_bfactor,w_corex,w_sasa]` 计算 `G_i=Σ_j(w_j*z_ji)/sqrt(Σ_j w_j²)`；随后以归一化的 10 点 `np.hanning(10)` 窗对 G 作 `np.convolve(..., mode='same')`，保存该聚合中间量。
+3. `domain_identifier` 以 0 为界，`G>=0` 为稳定域，`G<0` 为不稳定域；连续不稳定段短于 `loop_size` 时并回稳定域并合并相邻段。先将分数截到 `max(G,0)`，再作域/侧翼加权。`MAG=2`；稳定段当前侧翼宽 `min(flank_size, floor(段长/2))`，两端相应位置乘 MAG；稳定段长小于 2 时，源码改为整段乘 MAG。按源码计算稳定段连接点，对相邻不稳定段中点与稳定段连接点作线性插值，保存分段、加权和插值结果。不能省略这一步把聚合 G 当最终残基 APL。
+4. 使用的 API 层级决定默认参数，不得混用：
+
+| API | 四特征权重（按上述顺序） | loop_size | flank_size |
+|---|---|---|---|
+| `get_apl_residue` | `[0.3474973544973545, 0.1643121693121693, 0.2651851851851852, 0.22300529100529098]` | 21 | 20 |
+| 下层 `residue_APL` | `[1,1,1,1]`（L2 组合下等权） | 10 | 24 |
+
+显式记录常量、缺失、非有限输入及零权重范数。源码在某特征 zscore 总和为 NaN 时把整列 zscore 替成零，这既可能来自常量也可能来自缺失，不能据此宣称退化输入已有效处理。短数组还会触发滑动均值长度异常或 10 点滤波拒绝；全稳定/全不稳定时 `domain_identifier` 会访问空索引列表。对这些情况留下原因并阻断受影响数值产出；若为等价实现修订边界，须单独留变更和独立中间量对照，不能把修订版冒充原版已通过。
+
+### 结构字段语义与真实肽坐标
+
+`get_plddt` 实际提取 CA 的 `b_factor`，选择最大占据率记录且只按 `residue_number` 分组；函数没有计算 `100-pLDDT`，也不能保证多链/插入码实体安全。先建立 FASTA 与结构的链、缺段、插入码/替代构象映射；只有来源明确该字段承载 pLDDT 时，在 APL 柔性量入口显式转换 `flexibility=100-pLDDT` 一次，并保存原值、来源和已转换标记。之后 aggregator 对柔性量取负属于算法方向步骤，不能再作一次 100 减法。晶体 B-factor 按其原语义直接作为该特征输入；不要把 pLDDT 置信度解释为实验稳定性。来源：plddt/features。
+
+以 `(protein_id, chain_id, peptide_id, start, end, coordinate_convention)` 与真实肽序列建立映射。例如任务选择 1-based 闭区间时，先核验 `FASTA[start-1:end] == peptide_sequence`，再对恰好属于该肽的残基分数取算术均值；记录所用残基键与数量。保留同序列不同位置/实体、歧义和缺段，禁止悄悄取首个匹配或只平均可见残基。对声明的同一肽全集 U 作 `minmax(x)=(x-min_U)/(max_U-min_U)`，保存 U 与极值；若 U 为空、分母为零或数值非有限，留空并报告原因，不能自动造零分。
+
+`apl_peptide.get_apl_peptide(residue_likelihood, mers)` 按 `mers.values()` 顺序，从 `pos=0` 累加每个 `step`（None 为 0），使用 `[pos:pos+length]` 均值后 minmax。此接口隐含首肽位于原点、后续 step 正确且顺序可信；须与实际坐标逐肽核对。`measure_frags` 由相邻序列后缀/前缀重叠推 step，字典以序列为键会丢失重复实体，其宽松标签强制转换也不能代替实验真值定义。另一个下层示例 `peptide_APL(..., mer_size=15, hop=7)` 是滑窗生成，不能重造或替换真实实验肽库。来源：coordinates/mers/features。
+
+### MHC-II 方法、方向与组合
+
+精确绑定工具、方法、版本、等位基因、肽实体、预测字段和缓存来源/hash。固定版本源码把 `NN_align-NetMHCII-2_3` 映射为 `nn_align-2.3`；`iedb_mhcii` 的七个默认等位基因是 `HLA-DRB1*03:01`、`HLA-DRB1*07:01`、`HLA-DRB1*15:01`、`HLA-DRB3*01:01`、`HLA-DRB3*02:02`、`HLA-DRB4*01:01`、`HLA-DRB5*01:01`。这是版本化接口示例，任务仍须明确选择；上层 `get_mhcii` 的默认列表只有 `HLA-DRB1*03:01`，不能靠省略参数获得同样范围。
+
+源码的 `recommended` 默认不在其 `method_mapping` 中，模糊等位基因使用最小编辑距离且要访问网络，缺项透视后 `fillna(0)`；这些行为不能作为精确方法任务的有效回退。显式选择支持的方法，核对原等位基因与实际接口值一致并禁用模糊替换。源码 `requests.post` 在线包装器不是离线预测器；离线任务只消费身份完整匹配的真实缓存或实际可用的同版本离线工具及参数，缺资源保持缺失，不能以其他方法补齐。来源：mhc-method。
+
+保留 percentile rank 原值及 0–100 尺度，越小表示越强结合；它与 IC50 的量纲、字段不同。任务若要求统一高值更强，预先选择并记录例如 `M=-rank` 的单调变换，真实 rank=0 是有效值，缺失绝不能填零。以下组合函数本身不反转 rank；将原 rank 直接当高值更强的 M 会颠倒解释。来源：rank/combination。
+
+在同一声明肽总体上，对每个指定等位基因 a 依次计算：
+
+1. 分别取 `zA=zscore(APL,ddof=0)`、`zM_a=zscore(M_a,ddof=0)`。
+2. `C_a=[r*zA+(1-r)*zM_a]/sqrt(r²+(1-r)²)`，对 C_a 作第一次 minmax。
+3. 对原 APL 与方向已统一的 M_a 各自作 minmax；若 `APL_norm<TProc` 或 `M_a_norm<TMHC`，将对应 C_a 置零。
+4. 对过滤后 C_a 再 minmax。保存每一阶段的输入总体、极值、过滤标记及结果；任一常量、空集、非有限数组或过滤后全同均须记录退化，不用标签或静默零填充修复。
+
+下层 `combine_APL_MHC(structure,MHC,r=0.5,TProc=0,TMHC=0)` 与上层 `combine_apl_mhc(...,w_apl=0.31,apl_threshold=0,mhc_threshold=0)` 默认权重不同。上层按浮点 dtype 列调用下层，不能让列类型推断代替指定等位基因清单与完整性校验。组合后的跨等位基因聚合和 MHC-only 对照聚合均由任务预声明；不把等权均值写成官方统一默认。来源：combination/wrapper。
+
+### 实验标签与独立比较
+
+把 Voic 等 VZV/Shingrix 研究（doi:10.1128/JVI.01641-20，PMCID:PMC7925171）仅作测定语义实例：Table S1 是 non-gE 肽清单，Table S3 列 identified epitopes；二者不能自动重建完整 gE 受测阴性集。其 FluoroSpot 阳性条件包括每个分析细胞因子扣背景后 `>=100 SFC/10^6 PBMC`、`SI>2` 且 Poisson 或 t 检验 `P<0.05`。先核对现场原表、队列和测定是否确实适用这些条件；不能把该条件直接套到 AIM、其他功能实验或所有 Shingrix 记录。本卡来源未核验补充工作簿逐行内容，不提供肽级答案、推定标签或样本数。来源：assay。
+
+在有真实标签且所有比较方法所需分数有效的共同集 E 上比较 APL-only、MHC-only 和组合；同时报告原受测全集 U 的大小、有效数、阳性数、阳性率基线、覆盖率及按原因的排除。不得只评 Top-K；Top-K 清单是独立交付，不能缩小正式评价分母。
+
+若任务选择非插值 AP，令正类为 1、高分指向正类，以每个不同得分阈值整体纳入同分项，计算 `AP=Σ_n (R_n-R_(n-1))*P_n`；与梯形 PR 面积明确区分。正式比较协议若规定 E 同时有 0/1 两类，则空集、全阳性或全阴性时正式 AP 留 null、PR 不作为正式结果，保留分母、阳性率和原因；此为协议门禁，不代表 sklearn 的单类输入一律没有数值返回。来源：ap；共同集/正式门禁和不确定度为任务协议。
+
+将统计交给 data-analyzer：对重叠肽采用符合依赖结构的配对块重采样，各方法使用同一抽样实体与重复次数；保留重复抽中的块，不按 peptide_id 去重破坏样本多重性。块定义/宽度、抽样次数、种子、区间和敏感性分析由任务预声明，记录有效和无效单类抽样计数。冻结参数后分析，不能用评价标签选择权重、阈值或最好分层。按真实抗原/受体家族、供体或 HLA 资料报告可支持的分层及最差案例；不制造不存在的真值。minmax 分数不是校准概率；没有校准验证不称其为概率。
+
+## 常见误用
+
+- 把 CDR、温度、`aplsuite.pt`、固定候选数或 0.7 阈值作为 APL 默认，会改变对象和算法；只在独立抗体/设计任务确有模型与协议依据时启用相关参数。
+- 混用两层 API 默认、原 rank 方向、IC50 或不同归一化全集，会产生不可比较分数；显式保存版本、输入实体、方向、默认覆盖及每次归一化范围。
+- 用阳性表补阴性、宽松字符串转布尔、缺失 rank 填零或丢失重复肽，会改变真值/分母；核验原测定记录并保留未知及排除。
+- 只通过预检、工程夹具或卡片结构检查便宣称科学完成，会掩盖缺失计算；让 runtime 留真实终态与数值证据，再由 data-analyzer 作独立全量比较。保留最后健康产物及失败位置、影响、已排除原因和下一步建议。
+- 继承相邻领域性能门槛、仅报有利子集、用同一标签选参并评价，会产生偏差；按原任务独立验证，分开观察、模型误差、标签/采样不确定度和未验证假设。
+
+## source_refs
+
+下表以来源主题绑定原始文献/实现；固定版本和冻结正文 URI/hash 由表内定位提供。算法事实来自源码，实验条件来自论文；共同集、正式双类门禁、聚合和重采样具体参数属于预声明任务协议。原卡的通用血缘、独立证据、失败保留和抗体条件支路见 [knowledge.md](knowledge.md)；按 [usage.md](usage.md) 和 [workflow_planning.md](workflow_planning.md) 消费。
+
+| kid / 来源主题 | uri | version | locator |
+|---|---|---|---|
+| scene-2f6ae4c52a83f0ed25c2e20b-knowledge-identity / identity | https://arxiv.org/abs/2606.02462v2；[冻结正文](/public/home/kangdf/onersi-work/.rsi-workspaces/bio1-20-002/round/round_01/build/process.json#/source_texts/4d625612ca40403a035d79ac519fc3bc459e55d9914f59633dcb42ee248b3405) | arXiv:2606.02462v2 | quote:https://github.com/Jiarui0923/APL; Pipeline Overview；正文 SHA-256 `4d625612ca40403a035d79ac519fc3bc459e55d9914f59633dcb42ee248b3405` |
+| scene-2f6ae4c52a83f0ed25c2e20b-knowledge-identity / parent | https://github.com/Jiarui0923/APL；[冻结正文](/public/home/kangdf/onersi-work/.rsi-workspaces/bio1-20-002/round/round_01/build/process.json#/source_texts/9b1cbc5867b1ff158e0a2b9a956122bb249c7ee52bc3b2bc13ba1bd9b0890685) | 182c0faaf4f104f1621089f9b4a7899ed62deaa0 | link:https://github.com/Jiarui0923/EasyAPI-APLSuite；正文 SHA-256 `9b1cbc5867b1ff158e0a2b9a956122bb249c7ee52bc3b2bc13ba1bd9b0890685` |
+| scene-2f6ae4c52a83f0ed25c2e20b-knowledge-features / features | https://github.com/Jiarui0923/EasyAPI-APLSuite/tree/a76754506c7515bc58b967ff16537ee0440619d4；[冻结正文](/public/home/kangdf/onersi-work/.rsi-workspaces/bio1-20-002/round/round_01/build/process.json#/source_texts/7653efa890025f55e87e1b44d9532c3e9e1bafa98e6f3c42fc0687c2f59381e1) | a76754506c7515bc58b967ff16537ee0440619d4 | aggregator; smooth; combine_zscores; domain_identifier; weighing_method; get_apl_residue; residue_APL；正文 SHA-256 `7653efa890025f55e87e1b44d9532c3e9e1bafa98e6f3c42fc0687c2f59381e1` |
+| scene-2f6ae4c52a83f0ed25c2e20b-knowledge-coordinates / coordinates | https://github.com/Jiarui0923/EasyAPI-APLSuite/tree/a76754506c7515bc58b967ff16537ee0440619d4；[冻结正文](/public/home/kangdf/onersi-work/.rsi-workspaces/bio1-20-002/round/round_01/build/process.json#/source_texts/7d61cf94da810faebbd3586d47caea365ae43eab08252eed3333c1d3e4443d83) | a76754506c7515bc58b967ff16537ee0440619d4 | peptide_APL, get_apl_peptide; _vals = residue_scores[pos:pos+prop['length']]；正文 SHA-256 `7d61cf94da810faebbd3586d47caea365ae43eab08252eed3333c1d3e4443d83` |
+| scene-2f6ae4c52a83f0ed25c2e20b-knowledge-coordinates / mers | https://github.com/Jiarui0923/EasyAPI-APLSuite/tree/a76754506c7515bc58b967ff16537ee0440619d4；[冻结正文](/public/home/kangdf/onersi-work/.rsi-workspaces/bio1-20-002/round/round_01/build/process.json#/source_texts/be926c322016a31aeba8adc63b7a28b4d0bb66a560a0f63b8cb9a48956a74b81) | a76754506c7515bc58b967ff16537ee0440619d4 | measure_frag; measure_frags (dict keyed by sequence)；正文 SHA-256 `be926c322016a31aeba8adc63b7a28b4d0bb66a560a0f63b8cb9a48956a74b81` |
+| scene-2f6ae4c52a83f0ed25c2e20b-knowledge-plddt / plddt | https://github.com/Jiarui0923/EasyAPI-APLSuite/tree/a76754506c7515bc58b967ff16537ee0440619d4；[冻结正文](/public/home/kangdf/onersi-work/.rsi-workspaces/bio1-20-002/round/round_01/build/process.json#/source_texts/f6f849443f8fee2064350431f62d3ecf1f748e79ace360e15ea84f382c4647b9) | a76754506c7515bc58b967ff16537ee0440619d4 | get_plddt; return _df.b_factor.to_list()；正文 SHA-256 `f6f849443f8fee2064350431f62d3ecf1f748e79ace360e15ea84f382c4647b9` |
+| scene-2f6ae4c52a83f0ed25c2e20b-knowledge-mhc-method / mhc-method | https://github.com/Jiarui0923/EasyAPI-APLSuite/tree/a76754506c7515bc58b967ff16537ee0440619d4；[冻结正文](/public/home/kangdf/onersi-work/.rsi-workspaces/bio1-20-002/round/round_01/build/process.json#/source_texts/0bc88068efa3eda199d76082317318d6bbe3876b0fbe94ed9f9d351f551f0f81) | a76754506c7515bc58b967ff16537ee0440619d4 | method_mapping; iedb_mhcii; get_mhcii; allele_translate; fillna(0)；正文 SHA-256 `0bc88068efa3eda199d76082317318d6bbe3876b0fbe94ed9f9d351f551f0f81` |
+| scene-2f6ae4c52a83f0ed25c2e20b-knowledge-rank / rank | https://tools.iedb.org/mhcii/help/；[冻结正文](/public/home/kangdf/onersi-work/.rsi-workspaces/bio1-20-002/round/round_01/build/process.json#/source_texts/cf905fe81b2611ef5804cfb98d5bb3017f82498c0f5fb454a724a2740718d7d6) | retrieved-2026-11-16 | quote:A small numbered percentile rank indicates high affinity.；正文 SHA-256 `cf905fe81b2611ef5804cfb98d5bb3017f82498c0f5fb454a724a2740718d7d6` |
+| scene-2f6ae4c52a83f0ed25c2e20b-knowledge-combination / combination | https://github.com/Jiarui0923/EasyAPI-APLSuite/tree/a76754506c7515bc58b967ff16537ee0440619d4；[冻结正文](/public/home/kangdf/onersi-work/.rsi-workspaces/bio1-20-002/round/round_01/build/process.json#/source_texts/17683b24ffcefef83849b099cfea880d768e832864eca89c80837f669a1e70fd) | a76754506c7515bc58b967ff16537ee0440619d4 | combine_APL_MHC；正文 SHA-256 `17683b24ffcefef83849b099cfea880d768e832864eca89c80837f669a1e70fd` |
+| scene-2f6ae4c52a83f0ed25c2e20b-knowledge-combination / wrapper | https://github.com/Jiarui0923/EasyAPI-APLSuite/tree/a76754506c7515bc58b967ff16537ee0440619d4；[冻结正文](/public/home/kangdf/onersi-work/.rsi-workspaces/bio1-20-002/round/round_01/build/process.json#/source_texts/77e97dfa49ddc2950c5da30f4702c98fbc69955fc20128a33a3d443f95c24f46) | a76754506c7515bc58b967ff16537ee0440619d4 | combine_apl_mhc; w_apl default 0.31；正文 SHA-256 `77e97dfa49ddc2950c5da30f4702c98fbc69955fc20128a33a3d443f95c24f46` |
+| scene-2f6ae4c52a83f0ed25c2e20b-knowledge-assay / assay | https://pmc.ncbi.nlm.nih.gov/articles/PMC7925171/；[冻结正文](/public/home/kangdf/onersi-work/.rsi-workspaces/bio1-20-002/round/round_01/build/process.json#/source_texts/efef5f728422eb53224334ef68033c922f4585dc53ba619fbbc9ab68266bbeb6) | doi:10.1128/JVI.01641-20; PMCID:PMC7925171 | gE peptide library; S1 non-gE proteins; identified epitopes Table S3; FluoroSpot response definition；正文 SHA-256 `efef5f728422eb53224334ef68033c922f4585dc53ba619fbbc9ab68266bbeb6` |
+| scene-2f6ae4c52a83f0ed25c2e20b-knowledge-ap / ap | https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html；[冻结正文](/public/home/kangdf/onersi-work/.rsi-workspaces/bio1-20-002/round/round_01/build/process.json#/source_texts/274934aa7319eb819680afc123a0f96bb9cee913091a739ea7a805d277f209f8) | retrieved-2026-11-16 | AP formula; quote:This implementation is not interpolated and is different；正文 SHA-256 `274934aa7319eb819680afc123a0f96bb9cee913091a739ea7a805d277f209f8` |

@@ -16,6 +16,11 @@
 
 ## 研究对象与输入
 
+**已有数据**：
+- Landsat 8 Collection 2 Level-2 两季影像位于 `/public/share/sugonhpcapp01/onestore/rsi/onedatasets/landsat-8-c2-l2-044033-2021-sacramento-30m-window/`，覆盖 Sacramento Valley 2021-05-08 和 2021-08-28。每个场景目录包含 `SR_B2-B7.tif`、`QA_PIXEL-QA_RADSAT.tif` 和 `stac-item.json`；共同网格为 EPSG:5070、30 m、256×256 像元。
+- USDA NASS CDL 2021 分类数据位于 `/public/share/sugonhpcapp01/onestore/rsi/onedatasets/usda-cdl-2021-sacramento-30m-training-window/cropland-2021.tif`，类别说明位于同目录 `stac-item.json`，与上述 Landsat 窗口同网格。该资料用于 Sacramento 2021 农田/非农田标签，作为训练来源时不同时具有独立精度参考身份。
+- 印度一级行政区边界位于 `/public/share/sugonhpcapp01/onestore/rsi/onedatasets/geoboundaries-ind-adm1-1811400/geoBoundaries-IND-ADM1.geojson`，版本为 geoBoundaries IND-ADM1-1811400、release `9469f09`，代表年为 2011。Punjab 对应唯一的 `shapeISO=IN-PB` 成员；该文件包含印度多个行政区，全国几何与 Punjab 几何具有不同的空间范围。2011 代表年与后续年份的边界适用性是不同概念。
+
 ## 核心科学问题
 
 1. 在遵守数据时点、任务边界和输入输出契约的前提下，能否可靠完成“30米大范围农田范围与面积制图”的核心分析与目标结果生成并形成30米农田范围图及区域面积、质量标志与不确定性信息、产品元数据与文件清单？
@@ -50,6 +55,8 @@
 
 ### 步骤 2：遥感观测标签时空对齐与样本构造
 
+Landsat Level-1T 与 Collection 2 Level-2 的准备路径不同。Level-1T 涉及辐射定标和大气校正；Level-2 已是地表反射率产品，仍有定标缩放、质量掩膜和共同网格处理。上述 C2 L2 影像的反射率换算为 `SR = DN × 0.0000275 − 0.2`，参数来自对应 STAC 波段元数据；QA_PIXEL 和 QA_RADSAT 分别描述像元质量与辐射饱和状态。
+
 **目的**：执行“遥感观测标签时空对齐与样本构造”，统一多季节Landsat影像、植被指数和训练样本的时间、空间、单位、质量标志和缺测处理，形成可复现输入。
 
 **依赖步骤**：s01
@@ -72,6 +79,14 @@
 
 ### 步骤 3：方法配置与输入输出契约验证
 
+**随机森林方法说明**：采用 scikit-learn 随机森林时，训练输入为多季节反射率/NDVI 特征及同区域、同时间语义的监督标签。`RandomForestClassifier.fit` 形成分类模型，`predict_proba` 的概率列顺序与 `classes_` 一致。该 CPU 方法不依赖预训练权重；NumPy、scikit-learn、rasterio/GDAL 和 joblib 分别承担数组运算、分类、栅格读写和模型持久化。通用接口知识见 `general.tools.scikit_learn`。
+
+**计算资源**：
+- 上述 Sacramento 256×256 两季数据形成 14 维 float32 特征，特征数组占 3.5 MiB。32 条训练样本、4 棵树、最大深度 4 的 CPU 随机森林在单线程下完成特征处理、拟合、模型保存重载、整窗预测和 GeoTIFF 写入重开，进程峰值主存为 289.41 MiB；GPU 数量为 0，显存需求为 0。
+- 该已测工作负载可按 1 个 CPU 核、1 GiB 主存作为初始资源配置；1 GiB 是留有余量的配置建议，289.41 MiB 是观测峰值，均不是大范围任务的最低配置结论。测量不包含印度行政区 GeoJSON 解析，也不包含更大训练集或更深森林。
+- 分块特征数组的基础内存为 `块高 × 块宽 × 特征数 × 每元素字节数`。四季、每季六个反射率波段加 NDVI 共 28 维，1024×1024 float32 块为 112 MiB，2048×2048 块为 448 MiB；总主存另含训练样本、树节点、掩膜、预测缓冲及栅格缓存，随并发数增长。
+- 两个 Sacramento 影像/标签目录合计约 2.14 MiB，印度行政区 GeoJSON 约 44.03 MiB。输出特征栅格、概率、质量和计数图另占存储空间。
+
 **目的**：执行“方法配置与输入输出契约验证”，冻结方法工件、参数和随机性配置，并以小样本检查输入输出契约。
 
 **依赖步骤**：s02
@@ -93,6 +108,8 @@
 **操作指令**：`依据{METHOD_ARTIFACT}、{METHOD_CONFIG}、{RANDOM_SEED}加载方法工件与配置并完成方法配置与输入输出契约验证。核对变量顺序、张量或表结构、目标定义和输出契约，执行最小干运行；版本不匹配、出现缺失字段或异常数值时停止并标记BLOCKED。`
 
 ### 步骤 4：批量生成并拼接农田概率图
+
+同一共享模型、特征顺序、类别顺序和农田阈值确定了各分块结果的可比性。保存后重载的模型用于分块概率预测；概率图、二值图、QA 和有效观测次数使用相同网格。模型版本、输入数据及参数属于产品来源信息。
 
 **目的**：按冻结配置执行“批量生成并拼接农田概率图”，完成从多季节Landsat影像、植被指数和训练样本到30米农田范围图及区域面积的核心计算并保存逐阶段日志。
 
@@ -210,6 +227,8 @@
 
 ## 边界与限制
 
+Sacramento 两季窗口的地域和年份为美国加州 2021 年，与印度 Punjab 2019/2020 农业年度不同。前者提供两季观测和 CDL 标签，不能说明 Punjab 对应年份的分类精度、面积或变化。上述已有资料不包含 Punjab 双年度监督标签、独立配对参考或行政统计。独立参考、统计资料和共同边界的时空适用性分别决定各项科学结论的范围。
+
 **本工作流关注**：
 - 利用多时相Landsat和物候特征生成30米农田—非农田图并汇总面积；适用于静态农田清查，不预测产量。
 - 需求覆盖输入检查、数据对齐、方法契约、空间制图、产品质控和独立验收；具体技术路线和执行顺序由agent论证。
@@ -239,6 +258,38 @@
 - **结论结果**：给出区分已验证结果、探索性观察、未通过项和无法回答问题的结论报告，不得把文件生成成功等同于科学或业务性能通过。
 
 ## 关联文献
+
+**来源资料信息**：
+
+```json
+{
+  "scenario_id": "E56",
+  "source_papers": [
+    "sha256:d8f6e93975205c5a798d060be80d4e3d6697427117926aaa3cef7aaffb7eb10e",
+    "sha256:8c5d6dff962d1b6ec54b3b9d79df3b7f1e2be5a4be801a659619174cf4a41e29"
+  ],
+  "harvested": true,
+  "tier": "medium",
+  "score": 0.0,
+  "source_paper": {
+    "title": "30米大范围农田范围与面积制图（场景工作流）",
+    "doi": "",
+    "source": "scenario_json",
+    "external_id": "E56",
+    "venue": "",
+    "cited_by_count": null,
+    "objective_score": 0.0
+  },
+  "lifecycle": "probation",
+  "grounded_ratio": 1.0,
+  "scenario_ids": [
+    "E56"
+  ],
+  "batch": "2026-09-14"
+}
+```
+
+数据来源：Microsoft Planetary Computer 的 [Landsat C2 L2 集合](https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2)及 [USDA CDL 集合](https://planetarycomputer.microsoft.com/api/stac/v1/collections/usda-cdl)；边界来源：[geoBoundaries IND ADM1](https://www.geoboundaries.org/api/current/gbOpen/IND/ADM1/)，固定发布版本 `9469f09`。计算资源数值对应上述小窗口、模型规模和单线程实现。
 
 1. **A 30-m landsat-derived cropland extent product of Australia and China using random forest machine learning algorithm on Google Earth Engine cloud computing platform** — [sha256:d8f6e93975205c5a798d060be80d4e3d6697427117926aaa3cef7aaffb7eb10e](https://doi.org/10.1016/j.isprsjprs.2018.07.017)
 2. **Agricultural cropland extent and areas of South Asia derived using Landsat satellite 30-m time-series big-data using random forest machine learning algorithms on the Google Earth Engine cloud** — [sha256:8c5d6dff962d1b6ec54b3b9d79df3b7f1e2be5a4be801a659619174cf4a41e29](https://doi.org/10.1080/15481603.2019.1690780)

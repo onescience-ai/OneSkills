@@ -13,6 +13,10 @@
 
 ## 输入契约
 
+**已有资料的用途**：`/public/share/sugonhpcapp01/onestore/rsi/onedatasets/usda-cdl-2021-sacramento-30m-training-window/cropland-2021.tif` 提供 Sacramento 2021 分类标签，与 `/public/share/sugonhpcapp01/onestore/rsi/onedatasets/landsat-8-c2-l2-044033-2021-sacramento-30m-window/` 下的两季影像同网格。该 CDL 用于模型训练或阈值选择时，与同一模型的独立精度参考用途不相容；上述资料的地域和时间也不同于 Punjab 双年度参考。
+
+**边界资料**：`/public/share/sugonhpcapp01/onestore/rsi/onedatasets/geoboundaries-ind-adm1-1811400/geoBoundaries-IND-ADM1.geojson` 是 geoBoundaries 2011 年代表边界，Punjab 对应 `shapeISO=IN-PB`。源文件包含多个印度行政区，区域面积统计的空间支持域是所选 Punjab 几何；其后续年份适用性单独于分类参考资料的独立性。
+
 **必需输入**：
 - 分类结果（30米农田范围图）
 - 独立验证资料（与训练数据生成过程无关的外部参考数据）
@@ -25,6 +29,8 @@
 ## 操作步骤
 
 ### 步骤1：独立参考数据获取
+
+**参考身份与覆盖**：独立性取决于资料与训练、参数选择和阈值确定之间的关系，单独的文件路径不形成独立性。WorldCover 2020/2021 的年份不能直接代表 2019；异地或异年的标签不能直接说明目标地区相应年度精度。
 获取与训练数据生成过程无关的外部参考数据。
 
 **标准数据来源**：
@@ -113,11 +119,35 @@
 
 ## 资源召回建议
 
+**计算资源**：混淆矩阵和分层统计属于 CPU 数组/表格运算，可使用 NumPy、SciPy 及 scikit-learn 指标接口；该路线 GPU 数量和显存需求均为 0。两幅 256×256 的 uint8 分类/参考栅格原始数组合计 128 KiB，加权指标另有权重、掩膜和样本表开销；总内存与参考样本数、数据类型和分层数量有关。该统计步骤的独立峰值主存尚无测量值。
+
 - 当需要执行独立验证时召回本卡片
 - 当需要进行基线比较时召回本卡片
 - 当需要给出验收判定时召回本卡片
 
 ## 证据来源
+
+**来源资料信息**：
+
+```json
+{
+  "harvested": true,
+  "harvest_source": "onescience-knowledge-harvester",
+  "harvest_query": "遥感分类独立验证的标准要求，包括独立参考数据的来源（GlobeLand30、FROM-GLC、ESA WorldCover等）、同协议基线比较的具体执行方式、验收门限的设定原则",
+  "evidence_papers": [
+    {
+      "title": "Spatial-temporal distribution of global production-living-ecological space during the period 2000-2020",
+      "doi": "10.1038/s41597-023-02497-1",
+      "year": 2023
+    },
+    {
+      "title": "30 m 5-yearly land cover maps of Qilian Mountain Area (QMA_LC30) from 1990 to 2020",
+      "doi": "10.1038/s41597-024-03976-9",
+      "year": 2024
+    }
+  ]
+}
+```
 
 [1] Fu J, Gao Q, Jiang D, et al. Spatial-temporal distribution of global production-living-ecological space during the period 2000-2020. Sci Data. 2023;10(1):589. DOI: 10.1038/s41597-023-02497-1
 [2] Yang A, Zhong B, Wang X, et al. 30 m 5-yearly land cover maps of Qilian Mountain Area (QMA_LC30) from 1990 to 2020. Sci Data. 2024;11(1):1339. DOI: 10.1038/s41597-024-03976-9

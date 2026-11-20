@@ -6,7 +6,7 @@
   "visibility": "public",
   "created_at": "2026-09-15",
   "updated_at": "2026-09-15",
-  "description": "场景卡：B58（bio）。工作流 4 步，经 edge:workflow 指向 bio-molecular-design-objective-definition-model-property-condition-workflow，经 edge:task 指向其骨架任务。",
+  "description": "场景卡：B58（bio）。工作流 4 步，经 edge:workflow 指向 bio-molecular-design-objective-definition-model-property-condition-workflow，经 edge:task 指向其骨架任务。 围绕反应模板和可购砌块约束下的高奖励分子生成，提供 RGFN 离散反应构建、化学身份与索引、训练/恢复、外部构象/对接及独立逆合成评价的完整专业契约。可合成率须绑定全队列、库存与搜索预算；构建轨迹、对接高分和计算获解不能当作实验合成或活性证明。",
   "tags": [
     "edge:workflow:bio-molecular-design-objective-definition-model-property-condition-workflow",
     "edge:task:bio-molecular-design-objective-definition-task",
@@ -23,6 +23,12 @@
     "slot:TEMPERATURE:采样温度",
     "slot:SEED:随机种子",
     "slot:PROPERTY_LIMITS:性质阈值",
-    "slot:TOP_K:保留分子数"
+    "slot:TOP_K:保留分子数",
+    "rgfn",
+    "reaction",
+    "building-blocks",
+    "reaction-trajectory",
+    "retrosynthesis",
+    "aizynthfinder"
   ]
 }

@@ -1,10 +1,10 @@
 # typical_workflow
 
-1. Match the task to `general.tools.scikit_learn` by domain, package, workflow, or artifact type.
-2. Retrieve the summary content first and inspect `knowledge_assets` when detailed guidance is needed.
-3. Bind task-specific inputs, versions, and provenance before choosing an execution route.
-4. Hand off computation to a reviewed executor, notebook, or future execution asset.
-5. Return outputs with limitations, validation checks, and source assumptions.
+1. **Task and inputs.** The research goal, input schema, label meaning, feature order and package/API version determine the applicable estimator or transformation.
+2. **Learning and transformations.** Supervised estimators learn from `fit(X, y)`; preprocessing and unsupervised estimators use their corresponding fit/transform interfaces. Existing references describe classification, regression, clustering, dimensionality reduction, pipelines and parameter selection.
+3. **Model use.** `predict` returns labels or values, while classification `predict_proba` columns correspond to `classes_`. Consistent feature order and preprocessing make a persisted model's predictions comparable with its original use.
+4. **Persistence and products.** Joblib stores and reloads fitted estimators. Serialized model compatibility is version dependent. Raster applications combine estimator output with rasterio/GDAL spatial metadata and nodata conventions.
+5. **Interpretation and resources.** Predictive performance refers to the stated data population and independent evaluation design. CPU RandomForest memory depends on training rows, feature precision, tree nodes and prediction batch size; `n_jobs` controls supported CPU parallelism. This estimator does not require external pretrained weights or GPU memory.
 
 # source_usage_signals
 
