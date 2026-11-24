@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import hashlib
+import tempfile
 import os
 import shutil
 import subprocess
@@ -94,15 +96,38 @@ def default_config_path(config_path: str | None = None) -> Path:
     return Path(__file__).resolve().parents[3] / "onescience.json"
 
 
+_loaded_revisions: dict[str, str | None] = {}
+
+
 def load_config(path: Path) -> dict[str, Any]:
-    if not path.exists():
-        return {}
-    return json.loads(path.read_text(encoding="utf-8"))
+    raw = path.read_bytes() if path.exists() else None
+    _loaded_revisions[str(path.resolve())] = hashlib.sha256(raw).hexdigest() if raw is not None else None
+    return json.loads(raw) if raw is not None else {}
 
 
 def save_config(path: Path, config: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(config, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    lock_path = Path(str(path) + ".lock")
+    lock = os.open(str(lock_path), os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+    temporary = None
+    try:
+        raw = path.read_bytes() if path.exists() else None
+        current = hashlib.sha256(raw).hexdigest() if raw is not None else None
+        expected = _loaded_revisions.get(str(path.resolve()))
+        if current != expected:
+            raise ValueError("Configuration changed; reload before updating")
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=path.parent, delete=False) as stream:
+            temporary = stream.name
+            json.dump(config, stream, ensure_ascii=False, indent=2)
+            stream.write("\n")
+        os.replace(temporary, path)
+        temporary = None
+        _loaded_revisions[str(path.resolve())] = hashlib.sha256(path.read_bytes()).hexdigest()
+    finally:
+        if temporary:
+            Path(temporary).unlink(missing_ok=True)
+        os.close(lock)
+        lock_path.unlink()
 
 
 def load_asset_json(filename: str) -> dict[str, Any]:

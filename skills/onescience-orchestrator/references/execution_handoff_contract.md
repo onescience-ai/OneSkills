@@ -156,6 +156,10 @@ paper-repro 优先通过原生智能体 / skill 执行接口调用；接口不�
 - 执行：安装、修复或验证环境
 - 返回：安装结果、环境状态
 
+## 显式训练监控需求
+
+该需求沿用 inputs/task_context/required_outputs/completion_criteria 交接，按 `optional_monitoring_handoff.md` 保留用户原话、接入/查看/诊断范围和运行授权。代码接入、监控采集、训练作业和展示分别写入 observation；不新增监控顶层执行状态，不把代码 success 当作事件或展示通过。
+
 ## Observation 处理
 
 - success：写入 artifacts 和 events，交给 orchestrator 基于最新 Task State 判断是否需要继续规划下一步

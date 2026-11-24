@@ -301,3 +301,9 @@ python skills/onescience-runsite/scripts/runsite_config.py --config-path ./onesc
 
 `onescience-runsite` 只做配置发现、补问、保存、复用和交接。新版入口是 `run_site + execution_mode + access_mode`，当
 `run_site=local` 时 `access_mode` 必须为空。
+
+## 共享配置的训练字段边界
+
+训练任务由现有 training_monitor 配置维护动作管理，保存在同一 onescience.json 的 training_tasks；采集映射保存在 runtime.monitoring.execution_target_ref。runsite 不生成或删除这些业务字段。检查、修改站点、更新环境时必须保留它们及未知字段，不能重建已有文件覆盖其它 owner 的内容。
+
+runsite_config.py 使用同目录排他锁、读取版本比对及临时文件原子替换。发现配置并发变化应重新读取、重新应用本次站点字段变更；不得用旧内存对象覆盖新任务。配置锁冲突应停止写入并检查持锁写入方，不能直接删除正在使用的锁。运行身份、目录回报与监控数据不写入长期站点字段。

@@ -1,0 +1,22 @@
+{
+  "name": "onecode-training-monitoring",
+  "type": "contracts",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-11-23",
+  "updated_at": "2026-11-23",
+  "description": "OneCode 训练监控的平台接入契约：持久化训练任务、执行身份注入、运行清单上报、指标/状态/清单来源分离及历史缓存查看；连接 OneScience 通用监控工具和验收，不负责指标写入实现，不是独立启动器。",
+  "tags": [
+    "训练监控",
+    "OneCode",
+    "runtime.json",
+    "自动关联",
+    "历史曲线",
+    "采集来源",
+    "source-independent",
+    "src:provider:OneCode",
+    "edge:resource:tools/onescience-training-monitoring",
+    "edge:resource:contracts/training-monitoring-verification"
+  ]
+}

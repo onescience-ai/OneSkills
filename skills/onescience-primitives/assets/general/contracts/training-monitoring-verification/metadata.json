@@ -1,0 +1,27 @@
+{
+  "name": "training-monitoring-verification",
+  "type": "contracts",
+  "domain": "general",
+  "version": "1.1.0",
+  "visibility": "public",
+  "created_at": "2026-11-17",
+  "updated_at": "2026-11-23",
+  "description": "训练监控接入的验收契约，区分代码交付、真实采集、训练作业和 OneCode 展示状态，约束 run/attempt、参数更新步数、指标权重及多 rank 完整性，依据 OneScience verify 和真实事件判断可用、部分可用或采集异常。",
+  "tags": [
+    "训练监控",
+    "监控验收",
+    "监控没有数据",
+    "真实事件",
+    "run_id",
+    "attempt_id",
+    "global_step",
+    "verify",
+    "TensorBoard",
+    "edge:task:pytorch-training-monitoring-integration",
+    "source-independent",
+    "resource-only",
+    "src:provider:OneScience",
+    "src:api:1",
+    "src:contract:1.0"
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 name: onescience-primitives
-description: OneScience 原语资源召回技能。根据自然语言需求检索相关原语资源（模型、组件、数据管线、应用、可视化规范、工作流规划、契约等）以及 Task-Centric 科研知识（Task、Method、Operation、Validation、Scenario、Workflow），通过范围判定、快速过滤和语义匹配召回，按内容需求返回相应知识；不做科研规划与代码实现。
+description: OneScience 原语资源召回技能。根据自然语言需求检索相关原语资源（模型、组件、数据管线、应用、可视化规范、工作流规划、契约等）以及 Task-Centric 科研知识（Task、Method、Operation、Validation、Scenario、Workflow），包含明确要求的训练监控接入、曲线查看和采集诊断知识；通过范围判定、快速过滤和语义匹配召回，按内容需求返回相应知识；不做科研规划与代码实现。
 type: resource
 capabilities:
   owns:
@@ -285,9 +285,31 @@ resource_retrieval_result:
 
 **knowledge_gap 说明**：`false`=命中领域专属 Task/资源，本地足以作答；`true`=本地没查到领域实质知识（none/task_only/空召回/仅泛化卡/domain 不符）——**泛化流程卡只讲「怎么做研究」，不等于领域回答，仅命中它一律 true**。true 时按 step 11 强制触发联网兜底并显式标注「本地知识缺口」；false 不触发。
 
+## 共享训练监控知识的召回
+
+训练监控知识位于 general 的 Task、tools 与 contracts。仅用户明确要求训练监控接入、查看已有曲线或采集诊断时针对性召回；普通训练不因资源推荐而变成强制监控任务。跨领域模型请求保留原 domain，另行以 general 查询共享知识，不混淆领域。
+
+可用命名直查：`pytorch-training-monitoring-integration`、`onescience-training-monitoring`、`training-monitoring-verification`；OneCode 平台任务再召回 `onecode-training-monitoring`。仍按现有命名直查/Task 展开规则，返回真实 content；不能只返回路径或假定已有独立监控 expert。
+
 ## 按需读取
 
 - 组织非摘要内容或处理 `include_execution_assets` 前：`references/asset_materialization.md`。
 - 填充输出字段（常规管道步骤 9）前：`references/field_value_rules.md`。
 - TC 卡 9 字段与 tags 边契约：`references/tc/card_contract.md`；原子事实：`references/tc/atoms.jsonl`；场景确定性索引：`references/tc/scenario_task_index.json`。
 - domain 回退判定：`references/domain_profile.md`；生信召回提示：`references/bio_profile.md`。
+
+### 明确监控需求的检索完成条件
+
+用户明确要求训练监控时，生成代码前必须取得监控 Task、工具和验收契约的真实正文。优先按以下三个名称检索，不用一条宽泛查询代替：`pytorch-training-monitoring-integration`、`onescience-training-monitoring`、`training-monitoring-verification`；OneCode 平台任务再召回 `onecode-training-monitoring`。
+
+catalog 返回非空但只有模型或无关条目，也属于未命中；不能把“有结果”当作监控知识已召回。catalog 不支持 general 过滤时省略 domain；模型查询仍保留原领域。逐项 resolve 正文并确认内容属于目标监控能力。
+
+若任一项未命中或正文缺失，以实际加载的技能目录为根，直接读取 assets/general/tasks/pytorch-training-monitoring-integration/knowledge.md、assets/general/tools/onescience-training-monitoring/{spec,usage,workflow_planning}.md 和 assets/general/contracts/training-monitoring-verification/{spec,usage,workflow_planning}.md。OneCode 平台任务还读取 assets/general/contracts/onecode-training-monitoring/{spec,usage,workflow_planning}.md。不存在的文件如实报告，不猜内容。
+
+补召回仍失败时报告资源阻塞，不自行使用原生 TensorBoard、替代 writer 或双后端回退冒充 OneScience 监控。TensorBoard 是可能的输出格式，不代表已使用 OneScience 接口。
+
+## 版本化监控知识的内容交付
+
+监控接入请求返回工具卡 spec/usage 与验收正文；OneCode 平台任务同时返回 contracts/onecode-training-monitoring 的 spec/usage/workflow_planning。共享规则只在平台契约维护，不以重复嵌入其他卡替代依赖召回。平台卡缺失或 catalog 快照没有新卡时，按本技能既有本地降级规则命名直查；不存在则如实返回缺口，不能只给路径。
+
+source.json 是蒸馏维护溯源，不是执行资产或普通编码前置材料；日常生成无需读取其上游定位。知识必须适配实际公共版本，包不匹配时报告缺口并交维护侧更新，不能要求用户提供源仓库补足常规接入知识。

@@ -4,6 +4,7 @@ description: OneScience 分步编码执行技能。调用资源技能获取规�
 type: executor
 capabilities:
   owns:
+    - 用户明确要求的训练监控代码接入或修复
     - 代码生成
     - 代码修改
     - 冒烟测试
@@ -46,6 +47,8 @@ capabilities:
     - 实现脚本
     - 写代码
     - 编码
+    - 接入训练监控
+    - 修复训练监控代码
 ---
 
 ## 输入获取方式
@@ -100,6 +103,10 @@ capabilities:
 - 冒烟测试仅在当前环境已经具备最小运行条件时才能执行；不得为了冒烟测试安装 conda 环境、创建新环境或安装额外依赖包。
 - **证据边界（严禁伪造，修「为跑完而造数据/玩具模型」病灶）**：不得生成合成/演示/模拟数据充当本次研究数据用于训练或评估；不得用简化/玩具模型输出顶替用户要求的模拟结果（如以稳态热传导顶替流动-传热耦合 CFD、以 2D 顶替 3D）；不得自设验收阈值后自判 PASS；缺失关键科学输入时该步骤回报 BLOCKED 或诚实 PARTIAL 并附 2-3 个有证据候选供确认，绝不伪造。汇总/报告中的指标必须与执行日志一致（单一事实源），不一致即不得声称 PASS。
 - **工程验证 vs 科研结果（修「把流程验证偷换成结果验证」病灶）**：本地环境支持最小冒烟测试时，可以用模拟数据验证工作流/脚本能否运行，但所有此类输出必须标注 `engineering_validation(smoke/demo)`，不得进入科研结论/交付/验收；冒烟测试所用验收阈值必须标注 `engineering_threshold(smoke)`，不得充当科研验收标准；最终报告必须对科研任务在缺失关键科学输入（真实数据集、目标定义、独立验证数据）时报 BLOCKED，不得基于冒烟测试输出宣布科研 PASS/签收。**自证闭环禁止**：不得（生成模拟结果 → 自设验收阈值 → 让模拟结果通过自设阈值 → 宣布科研 PASS）。
+
+## 明确要求的训练监控接入
+
+仅用户请求或继承的 handoff 明确要求接入/修复训练监控时，读取 `references/training_monitoring_integration.md` 并按 resource 返回的知识实现。普通训练不主动接入；只查看曲线不修改代码。继承禁止训练约束，代码交付与真实采集/展示分别报告。
 
 ## 审查范围与参考文档
 
@@ -205,3 +212,13 @@ execution_result:
 `verification_mode` 与 `verification_results` 为必填项。若走 `smoke_test` 分支，必须明确尝试次数、执行依据和结论；若走 `static_review` 分支，必须给出静态需求一致性检查结果。
 
 coder 完成实现与验证后，只返回 `execution_result`；若后续需要运行、环境修复、训练/推理/评估或其他跨技能动作，应通过 `next_action_needed` / `remaining_steps` 报告，由调用方或 `onescience-orchestrator` 决定，不得由 coder 自行串行选择下一个 executor。
+
+## 持久化训练监控要求
+
+本节仅适用于 OneCode 中用户明确要求监控，或已有训练任务配置要求监控的训练。普通代码生成、未要求监控的训练和其他宿主继续使用各自原有流程，无需为本节额外登记 OneCode 平台任务。
+
+在上述场景中，训练代码交付或执行前读取项目 onescience.json 的 training_tasks，复用稳定任务及其 monitoring.requested 要求（兼容旧 required=true，均表示监控请求）；跨会话执行继承已有要求，不要求用户重复“接入监控”。按 [监控接入指导](references/training_monitoring_integration.md) 维护实际训练入口、包装脚本和监控任务配置，复用既有执行通道。只生成训练代码时保存该任务配置，不登记运行、不提交作业。
+
+## 源码独立的监控知识
+
+明确或持久化的监控需求使用已蒸馏的任务、工具和验收正文；OneCode 另取 onecode-training-monitoring 平台契约，均通过 resource 请求/结果消费。常规生成不要求访问 OneScience 源码；运行仍需兼容的已安装包，版本或知识缺口单列报告。具体规则沿现有监控参考入口，不新增执行器。

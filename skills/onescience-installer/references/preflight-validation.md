@@ -53,10 +53,10 @@ conda run -n <env_name> python --version
 
 ### 3.3 核心依赖导入检查
 
-**适用场景**：所有通道。
+**适用场景**：所有通道。原有业务依赖检查保持不变；模型、数据处理或损失函数本身依赖 OneScience 时，`checks.onescience_import` 仍为必需项，导入失败按原规则处理。仅为监控引入的依赖按文末“明确训练监控需求的环境预检”单独检查，不影响业务训练的 readiness。此时业务侧的 `checks.onescience_import` 可记 `skipped`，但必须另行记录实际监控检查结果，不能用 `skipped` 代替监控可用性结论。
 
 ```bash
-# onescience 包
+# 业务本身依赖 OneScience 时必须通过；仅监控使用时按文末流程检查实际监控接口
 python -c "import onescience; print('onescience import OK')"
 
 # torch 及 CUDA
@@ -192,7 +192,7 @@ test -f <文件路径> && echo "EXISTS" || echo "MISSING"
 ### 4.1 核心验证项（必须在登录节点通过）
 
 - Python 解释器存在且可执行
-- `import onescience` 成功
+- 业务必需依赖导入成功；模型、数据处理或损失函数依赖 OneScience 时仍必须检查其导入。仅监控依赖的检查结果单独记录，不作为业务训练门禁
 - `import torch` 成功（或对应框架）
 - conda 环境可激活
 - 入口脚本存在
@@ -220,7 +220,7 @@ test -f <文件路径> && echo "EXISTS" || echo "MISSING"
 
 ### 4.4 执行通道差异
 
-- `local_direct` 通道：所有库依赖必须在当前环境通过，不允许 defer
+- `local_direct` 通道：所有业务必需库依赖必须在当前环境通过，不允许 defer；仅监控依赖的检查结果单列，失败记录 warning
 - `local_slurm` 通道：允许将计算节点特有的库检查推迟到 SLURM 作业执行阶段
 - `ssh_*` 通道：远端检查按上述规则，登录节点/计算节点以远端环境为准
 
@@ -231,7 +231,7 @@ test -f <文件路径> && echo "EXISTS" || echo "MISSING"
 - `runtime.script.work_dir` 存在；缺失时可退回到 `runtime.script.code_path` 所在目录
 - 当前解释器可执行
 - conda 环境可激活（若 `enabled=true`）
-- `onescience`、`torch` 及业务依赖可导入
+- `torch`（或业务框架）及实际业务依赖可导入；模型、数据处理或损失函数依赖 OneScience 时，其导入仍为必检项
 - `runtime.modules` 为空或可加载
 
 ### 5.2 `local_slurm`
@@ -266,7 +266,8 @@ test -f <文件路径> && echo "EXISTS" || echo "MISSING"
 | 失败类型 | 判定条件 | 处理方式 |
 |----------|----------|----------|
 | Conda 配置缺失 | `runtime.conda` 缺失或结构无效 | 进入 conda 发现/安装流程 |
-| 缺失 Python 包 | `ModuleNotFoundError` | 进入 `install_intent=python_packages` 安装流程 |
+| 仅监控依赖/版本/配置不可用 | 不影响模型、数据或优化器运行 | 记录 monitoring=unavailable/warnings，保留训练 readiness；不自动修复或安装 |
+| 缺失业务必需 Python 包 | `ModuleNotFoundError` | 进入 `install_intent=python_packages` 安装流程 |
 | 缺失 CUDA 扩展 | `ImportError` + CUDA 相关 | 进入源码编译安装流程 |
 | 缺失数据文件 | 文件不存在 | 返回阻断，建议 orchestrator 插入下载/定位步骤 |
 | 权限问题 | `PermissionError` / `Access denied` | 返回阻断，要求用户授权或调整 |
@@ -286,6 +287,7 @@ test -f <文件路径> && echo "EXISTS" || echo "MISSING"
 ### 6.3 不应阻塞的情况
 
 以下情况不应判定为预检失败：
+- 仅用于监控的 OneScience/TensorBoard、平台身份或采集连接不可用：单列监控 warning，不降低业务 readiness，不自动重训
 - SLURM 通道中登录节点缺失计算节点专属共享库（按 4.3 规则处理为 deferred）
 - 预估显存使用 < 60% 但 `nvidia-smi` 显示有其他进程占用（记录 warning，不阻塞）
 
@@ -338,3 +340,14 @@ preflight_result:
 - 直接进入本文件的预检流程
 - 若预检发现环境缺失需要修复，再路由到对应安装分支
 - 完成后按 `resume_target` 回到调用方
+
+## 明确训练监控需求的环境预检
+
+仅当用户请求、已有训练任务要求或 runtime 预检上下文明示训练监控时执行本节；普通任务不新增监控依赖检查。监控检查由 installer 在实际训练环境、使用实际训练解释器执行，runtime 消费检查结果。
+
+1. 按资源返回的 `tools/onescience-training-monitoring` 版本化正文，检查 `onescience.monitoring.training` 的实际公共接口是否可导入；仅 `import onescience` 成功不能证明监控组件可用。日常预检不要求读取 OneScience 源码。
+2. 接口可用时查询 `capabilities`，保留实际报告并核对 `api_version`、`contract_version`、TensorBoard 及本次请求指标的依赖。导入失败、报告缺失或版本不匹配应记录具体原因，不能推断为兼容或已通过。
+3. 在现有预检回传和证据中单独说明监控可用、部分可用、不可用或未验证，以及判断依据；缺失或失败项列入 `preflight_result.warnings`。业务侧 `checks.onescience_import=skipped` 仅表示 OneScience 不是业务必需依赖，不代替本节检查或监控状态报告。
+4. 仅监控依赖、接口或版本不可用时，不将业务训练的 readiness 改为 failed/blocked，不改变训练退出码、不自动重训。若模型、数据处理或损失函数也依赖 OneScience，则该业务依赖仍按原检查和失败处理规则执行。
+
+capabilities 只反映环境能力，不证明已生成事件；配置 check 与真实事件 verify 由 runtime 按任务范围承接。不能把本机包或设备能力当作远端训练环境事实。只读查看不自动安装或修复；所需依赖的安装或修复沿用现有授权规则。

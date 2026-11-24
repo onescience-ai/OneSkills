@@ -1,0 +1,51 @@
+{
+  "distillation_status": "resource_only",
+  "copied_execution_assets": false,
+  "distilled_from": "OneCode/platform-training-monitor",
+  "provider_name": "OneCode",
+  "baseline_commit": "36581ebfcdc1453905811119c97d89243b88f90d",
+  "snapshot_date": "2026-11-23",
+  "baseline_is_exact_snapshot": false,
+  "runtime_schema": "onecode.training/v1",
+  "record_schema_version": 3,
+  "files": [
+    {
+      "path": "packages/platform-training-monitor/src/contracts.ts",
+      "sha256": "1c34f8babcf4cf619080d3de283d6715c540be2a2fa7e6f29e7e384bca671240"
+    },
+    {
+      "path": "packages/platform-training-monitor/src/runtime.ts",
+      "sha256": "d2123b231992dfa7d17dee27bf495850ca7658b1b35922a975ad68a4351098cd"
+    },
+    {
+      "path": "packages/platform-training-monitor/src/tasks.ts",
+      "sha256": "20b1cbe8c0b34bd4e664101ab1d8250fdeb70a63fe027eed82ea4c081d56ca4b"
+    },
+    {
+      "path": "packages/platform-training-monitor/src/handoff.ts",
+      "sha256": "6be294cfadb02a6f1a35b8b905e6fcb47cff7f6e16643d76c911af8f19c9d624"
+    },
+    {
+      "path": "packages/platform-training-monitor/src/observation.ts",
+      "sha256": "c018cbc1467c490c25b239ba4c76f8315b3bb1fd3c08f357cc82f024baa84ded"
+    },
+    {
+      "path": "packages/platform-training-monitor/src/tracking.ts",
+      "sha256": "8c6beb101ca26865254b6911232931f31df854f53c8067e7836e6a8e2fcd8b27"
+    },
+    {
+      "path": "packages/platform-training-monitor/src/scheduler.ts",
+      "sha256": "17916b1304d3504e548b3a368e5de46a40b0ddd17e23b438d861784ff78f7f09"
+    },
+    {
+      "path": "packages/platform-training-monitor/src/preparation.ts",
+      "sha256": "5f6c663842f32bf026275211dd02af685104385649c9a71c234d3433ee12e2de"
+    },
+    {
+      "path": "packages/platform-training-monitor/src/preflight.ts",
+      "sha256": "b7cb3dc6ab383d4ea848cc1341cca5015ef0fdc726b5789114c6532d502a898f"
+    }
+  ],
+  "primitive_id": "general.contracts.onecode-training-monitoring",
+  "knowledge_version": "1.1.0"
+}

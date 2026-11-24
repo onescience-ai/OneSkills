@@ -1,0 +1,79 @@
+{
+  "distillation_status": "resource_only",
+  "copied_execution_assets": false,
+  "distilled_from": "OneScience/monitoring.training",
+  "provider_name": "OneScience",
+  "baseline_commit": "31065ce4838ca4848a82350fd31b792e0b113a8a",
+  "snapshot_date": "2026-11-23",
+  "baseline_is_exact_snapshot": false,
+  "note": "Source worktree contained uncommitted monitoring changes; file hashes are authoritative evidence. No upstream release version was established.",
+  "api_version": "1",
+  "contract_version": "1.0",
+  "files": [
+    {
+      "path": "examples/earth/pangu_weather/train_adapter.py",
+      "sha256": "b9eb5c23170889c95b8d1322fd183aa899f629c7bb0fb1d4e3af814977e31738"
+    },
+    {
+      "path": "examples/earth/xihe/train_adapter.py",
+      "sha256": "73bfc96201f136f4cb12eb923be8275eac054aca809a70e73bd634811326ce6d"
+    },
+    {
+      "path": "examples/monitoring/README.md",
+      "sha256": "e031ca66fc55035015e866e19e893ebfec14dac716de33441c5b8e1e1b9eb22c"
+    },
+    {
+      "path": "examples/monitoring/train_adapter_example.py",
+      "sha256": "6d41a6ba8d81396e82781c49720d4b830fee8a203fa3fa1da866278bbadde9b7"
+    },
+    {
+      "path": "src/onescience/monitoring/training/__init__.py",
+      "sha256": "346ec12aabdbf14367d7aeaf8aa9bbb5a94975e0343535688c7438346bfd19f0"
+    },
+    {
+      "path": "src/onescience/monitoring/training/__main__.py",
+      "sha256": "3b269d46d837e0289859ec830d0b2fc4f5dffff51d445fe72d8746ec1e9e8a22"
+    },
+    {
+      "path": "src/onescience/monitoring/training/capabilities.py",
+      "sha256": "ada9276ed4ac4b07b98dd94d70a086b9d748d596643eada2c95fbdc87029eff8"
+    },
+    {
+      "path": "src/onescience/monitoring/training/config.py",
+      "sha256": "2748edf469e27d34bb59825861e922a82d8c4a0adb50d6b39e7e7560b267dec5"
+    },
+    {
+      "path": "src/onescience/monitoring/training/diagnostics.py",
+      "sha256": "8d5989ba5d020564099705b1f8a2d6b6c33695f4904eceb64a3a31435eb43fd4"
+    },
+    {
+      "path": "src/onescience/monitoring/training/files.py",
+      "sha256": "2f8eca2abd1de302516afc2b4ad5661252003ce79b455245ab5b727a478c6074"
+    },
+    {
+      "path": "src/onescience/monitoring/training/monitor.py",
+      "sha256": "d155dd51a1459f0fd39f64a8d366faf2c3eb6bfbf306676da36671cdb646670e"
+    },
+    {
+      "path": "src/onescience/monitoring/training/reload.py",
+      "sha256": "005c896c282fc9b48ee958faa898bf0b48df2138d9390776dba089ca130d05fc"
+    },
+    {
+      "path": "src/onescience/monitoring/training/resources.py",
+      "sha256": "45808e962a5fa0c751e435c1990c1c906b216ca97c4adf84bcc9bd6d4926113f"
+    },
+    {
+      "path": "src/onescience/monitoring/training/service.py",
+      "sha256": "b76d4b81da3bdd262fe7921b03a142bc5e23219aa0021dd3ec8c0ed845948e16"
+    },
+    {
+      "path": "src/onescience/monitoring/training/transport.py",
+      "sha256": "c841941e81574a13174425be234f3cfecdc976829e84aa5777a90837ba5f83e2"
+    },
+    {
+      "path": "src/onescience/monitoring/training/verify.py",
+      "sha256": "bef2268577c71c8b541fa36fe1235c88398e3315deac30ab80d85e3d1c182728"
+    }
+  ],
+  "primitive_id": "general.contracts.training-monitoring-verification"
+}

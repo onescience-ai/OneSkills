@@ -195,3 +195,17 @@ trainer 只拥有当前执行步骤，不拥有全局工作流；除上述显式
 - `validation_report.md`：脚本、日志、checkpoint、指标和剩余风险
 
 最终回复和结构化返回必须报告状态、`code_save_dir`、`trainer_workdir`、关键产物、执行状态、验证状态和未解决阻塞项，并以 `execution_result` 作为返回交接物。
+
+## 显式训练监控要求
+
+用户明确要求接入训练监控时，生成或修改训练脚本前必须通过资源技能取得 pytorch-training-monitoring-integration、onescience-training-monitoring、training-monitoring-verification 的真实正文。非空但无关的目录结果不算命中，按资源技能规则继续命名直查和本地回退。使用对应版本的 OneScience 公共监控接口；缺少监控依赖时报告监控不可用，继续获准训练，不自动改成原生 TensorBoard 或双后端回退。只有明确获准的范围才能安装依赖或启动训练；“先给脚本，暂不运行”只交付代码和静态检查。
+
+## 持久化训练监控要求
+
+本节仅适用于 OneCode 中用户明确要求监控，或已有训练任务配置要求监控的训练。普通代码生成、未要求监控的训练和其他宿主继续使用各自原有流程，无需为本节额外登记 OneCode 平台任务。
+
+在上述场景中，训练代码交付或执行前读取项目 onescience.json 的 training_tasks，复用稳定任务及其 monitoring.requested 要求（兼容旧 required=true，均表示监控请求）；跨会话执行继承已有要求，不要求用户重复“接入监控”。按 [监控接入指导](references/phase_5_execution.md) 维护实际训练入口、包装脚本和监控任务配置，复用既有执行通道。只生成训练代码时保存该任务配置，不登记运行、不提交作业。
+
+## 源码独立的监控知识
+
+明确或持久化的监控需求使用已蒸馏的任务、工具和验收正文；OneCode 另取 onecode-training-monitoring 平台契约，均通过 resource 请求/结果消费。常规生成不要求访问 OneScience 源码；运行仍需兼容的已安装包，版本或知识缺口单列报告。具体规则沿现有监控参考入口，不新增执行器。

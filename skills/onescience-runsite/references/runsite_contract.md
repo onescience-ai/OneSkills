@@ -182,3 +182,9 @@ installer 负责：
 不要在交接信息中输出 SSH 私钥内容、`SCNET_ACCESS_KEY` 或 `SCNET_SECRET_KEY` 明文。
 
 若 remote 验证失败（仅适用于 `access_mode=ssh`/`access_mode=scnet`），`next_action` 必须是 `ask_user`，并明确告知“提供的信息无法连接上远程，请按当前接入方式的字段清单重新提交远程连接信息”。SSH 验证失败时列出 SSH 所需字段；SCnet 验证失败时列出 SCnet 所需字段；`access_mode=mcp` 不进入该验证失败分支（运行期回退由 runtime 处理）；不要只让用户“提供远程信息”。
+
+## 共享配置的训练字段边界
+
+训练任务由现有 training_monitor 配置维护动作管理，保存在同一 onescience.json 的 training_tasks；采集映射保存在 runtime.monitoring.execution_target_ref。runsite 不生成或删除这些业务字段。检查、修改站点、更新环境时必须保留它们及未知字段，不能重建已有文件覆盖其它 owner 的内容。
+
+runsite_config.py 使用同目录排他锁、读取版本比对及临时文件原子替换。发现配置并发变化应重新读取、重新应用本次站点字段变更；不得用旧内存对象覆盖新任务。配置锁冲突应停止写入并检查持锁写入方，不能直接删除正在使用的锁。运行身份、目录回报与监控数据不写入长期站点字段。

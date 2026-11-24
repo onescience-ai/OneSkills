@@ -144,3 +144,7 @@ installer 的环境信息写回位置是 `onescience.json.runtime.conda`。除 `
 - `next_action`
 - `resume_target`
 - `resume_phase`
+
+## 训练与监控就绪状态
+
+训练预检仍检查框架、模型依赖、数据、设备和执行权限。OneScience 监控组件、平台身份、采集连接和目录上报属于可选监控检查；这些检查失败单独记录 monitoring=unavailable/warnings，不把训练 preflight_result.status 改为 blocked。禁止把监控依赖加入训练必需项后阻止已获准训练；禁止安装时保留训练执行和监控缺口，不自动安装、替换 writer 或重训。真实模型/数据/设备异常仍按原错误处理。

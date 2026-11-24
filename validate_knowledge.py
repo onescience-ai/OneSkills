@@ -61,7 +61,7 @@ CONTRACT_FIELDS = {
 }
 ALLOWED_TYPES = {
     "task", "workflow", "scenario", "model", "tool", "dataset",
-    "benchmark", "metric", "method", "workflow-planning",
+    "benchmark", "metric", "method", "workflow-planning", "contracts",
 }
 TC_TYPES = {"task", "workflow", "scenario"}
 TC_TYPE_CATEGORY = {"scenario": "scenario", "workflow": "workflow", "task": "tasks"}

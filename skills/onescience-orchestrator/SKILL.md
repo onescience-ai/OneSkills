@@ -45,6 +45,10 @@ capabilities:
     - 模型训练
 ---
 
+## 显式可选需求的保持
+
+用户明确要求训练监控接入、查看曲线或采集诊断时，先读取 `references/optional_monitoring_handoff.md`，按资源知识与现有 executor 能力纳入当前计划、handoff 和验收；未要求监控的普通训练不主动增加接入。具体 API、指标公式和插入点由 resource 提供，不新增领域硬编码或监控 expert。
+
 ## 资源检索边界与恢复
 
 orchestrator 不得绕过 `resource_retrieval_request → resource_retrieval_result` 协议，通过 `Read` / `Glob` / `Grep` / `Bash` 自行消费任何 `type=resource` 技能的 `assets/` 内容。
@@ -401,3 +405,13 @@ orchestrator_step 只允许承载**不属于任何 executor 已声明职责的�
 - 需要执行技能 handoff 格式时：`references/execution_handoff_contract.md`。
 - 需要 autonomous_mode 文件交接细则时：`references/file_handoff_contract.md`。
 - 需要在模糊路径条件下搜索项目文件时：`references/path_resolution.md`。
+
+## 持久化训练监控要求
+
+本节仅适用于 OneCode 中用户明确要求监控，或已有训练任务配置要求监控的训练。普通代码生成、未要求监控的训练和其他宿主继续使用各自原有流程，无需为本节额外登记 OneCode 平台任务。
+
+在上述场景中，训练代码交付或执行前读取项目 onescience.json 的 training_tasks，复用稳定任务及其 monitoring.requested 要求（兼容旧 required=true，均表示监控请求）；跨会话执行继承已有要求，不要求用户重复“接入监控”。按 [监控接入指导](references/optional_monitoring_handoff.md) 维护实际训练入口、包装脚本和监控任务配置，复用既有执行通道。只生成训练代码时保存该任务配置，不登记运行、不提交作业。
+
+## 源码独立的监控知识
+
+明确或持久化的监控需求使用已蒸馏的任务、工具和验收正文；OneCode 另取 onecode-training-monitoring 平台契约，均通过 resource 请求/结果消费。常规生成不要求访问 OneScience 源码；运行仍需兼容的已安装包，版本或知识缺口单列报告。具体规则沿现有监控参考入口，不新增执行器。
