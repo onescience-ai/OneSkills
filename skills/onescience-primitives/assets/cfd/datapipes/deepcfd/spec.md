@@ -50,7 +50,7 @@
 
 - `sample["x"]`: 输入规则网格张量。
 - `sample["y"]`: 目标规则网格张量。
-- `get_loss_weights()` 返回训练集目标通道权重。
+- `get_loss_weights()` 从训练 dataset 实例取回权重，但该实例用切分前的完整目标数组计算 RMS，不是仅训练子集。
 
 # constraints
 

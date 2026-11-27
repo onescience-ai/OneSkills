@@ -29,7 +29,7 @@ python train.py --config-name deepcfd datapipe.source.data_dir=/data/DeepCFD dat
 
 - `DeepCFDDataset(config, mode)`: 构造 train/test/val 样本段。
 - `DeepCFDDatapipe(config, distributed=False)`: 构造训练和测试 dataloader。
-- `get_loss_weights()`: 返回训练目标通道权重。
+- `get_loss_weights()`: 返回切分前完整目标数组的通道 RMS；严格留出验证需要改用只在训练段拟合的固定权重。
 - `train_dataloader()`: 返回训练 loader 和 sampler。
 - `test_dataloader()`: 返回测试 loader 和 sampler。
 

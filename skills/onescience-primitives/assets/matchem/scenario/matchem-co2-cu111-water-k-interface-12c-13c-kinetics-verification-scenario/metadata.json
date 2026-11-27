@@ -2,11 +2,11 @@
   "name": "matchem-co2-cu111-water-k-interface-12c-13c-kinetics-verification-scenario",
   "type": "scenario",
   "domain": "matchem",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "visibility": "public",
   "created_at": "2026-09-15",
-  "updated_at": "2026-09-15",
-  "description": "场景卡：CO2_Cu111_12C13C_MACE_LAMMPS动力学验证（matchem）。工作流 5 步，经 edge:workflow 指向 matchem-verifying-structure-available-data-verify-candidate-potential-workflow，经 edge:task 指向其骨架任务。",
+  "updated_at": "2026-11-23",
+  "description": "CO2/Cu(111)/水/K 界面的五步短时验证场景，涵盖共用优化原胞、MACE 独立准入、同位素超胞部署、每组 2 ps 短测和证据归档。",
   "tags": [
     "edge:workflow:matchem-verifying-structure-available-data-verify-candidate-potential-workflow",
     "edge:task:matchem-verifying-structure-available-data-task",
@@ -14,6 +14,7 @@
     "edge:task:matchem-supercell-preparation-dynamics-testing-task",
     "edge:task:matchem-executing-2ps-short-term-validation-task",
     "edge:task:matchem-forming-validation-conclusions-recommendations-task",
+    "slot:OPTIMIZED_PRIMITIVE_CELL:共用优化原胞",
     "slot:C12_STRUCTURE:C12 初始结构",
     "slot:C13_STRUCTURE:C13 初始结构",
     "slot:HISTORICAL_DATA:历史数据资料",
@@ -23,6 +24,7 @@
     "slot:FIXED_CU_PER_CELL:原胞固定铜数",
     "slot:TEST_DURATION_PS:短时测试时长",
     "slot:TARGET_TEMPERATURE:目标温度",
-    "slot:LONG_RUN_GOAL:长时目标"
+    "slot:LONG_RUN_GOAL:长时目标",
+    "src:scenario_id:CO2_Cu111_12C13C_MACE_LAMMPS动力学验证"
   ]
 }

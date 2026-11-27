@@ -1,0 +1,11 @@
+{
+  "name": "scfnn",
+  "type": "tool",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-21",
+  "updated_at": "2026-11-21",
+  "description": "SCFNN v1.0.0 的体相水数据装配、特征生成、训练、参考条件化诊断及 MD 构建入口。",
+  "tags": ["scfnn", "pytorch", "libtorch", "descriptors"]
+}

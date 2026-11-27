@@ -1,0 +1,11 @@
+{
+  "name": "scfnn-water-reference-v2",
+  "type": "dataset",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-21",
+  "updated_at": "2026-11-21",
+  "description": "SCFNN 体相水三外场 DFT 参考数据（Zenodo v2）的组级读取、血缘与适用范围。",
+  "tags": ["scfnn", "water", "dft", "electric-field"]
+}

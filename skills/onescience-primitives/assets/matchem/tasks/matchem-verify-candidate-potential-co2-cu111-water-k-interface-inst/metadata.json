@@ -2,17 +2,19 @@
   "name": "matchem-verify-candidate-potential-co2-cu111-water-k-interface-inst",
   "type": "task",
   "domain": "matchem",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "visibility": "public",
   "created_at": "2026-09-15",
-  "updated_at": "2026-09-15",
-  "description": "实例任务卡（matchem）：骨架「验证候选势能模型可用性」在场景「CO2_Cu111_12C13C_MACE_LAMMPS动力学验证」中的实例化；资源引用 ['models/data-efficient-machine-learning-potentials-modeling-catalytic', 'tools/reaxnet-polarizable-long-range-neural-network-potential']。",
+  "updated_at": "2026-11-23",
+  "description": "核验或补充目标界面 DFT 标签，按来源分组划分数据，通过独立能量误差、分元素力误差、最差构型和界面覆盖判定 MACE 势准入。models/mace 和 tools/onescience-mace 提供已登记权重及其原生加载资料。",
   "tags": [
     "edge:skeleton:matchem-verify-candidate-potential-energy-model-availability-task",
     "edge:scenario:matchem-co2-cu111-water-k-interface-12c-13c-kinetics-verification-scenario",
     "edge:resource:models/data-efficient-machine-learning-potentials-modeling-catalytic",
     "edge:resource:tools/reaxnet-polarizable-long-range-neural-network-potential",
     "slot:TRAINING_DATA:训练验证数据",
-    "slot:CANDIDATE_POTENTIAL:候选势能模型"
+    "slot:CANDIDATE_POTENTIAL:候选势能模型",
+    "edge:resource:models/mace",
+    "edge:resource:tools/onescience-mace"
   ]
 }

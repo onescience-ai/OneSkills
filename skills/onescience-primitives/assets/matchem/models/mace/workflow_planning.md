@@ -24,6 +24,8 @@ MACE 原语用于材料原子体系的机器学习势函数规划：当任务目
 - 资源条件：单卡/多卡、CPU 核数、最大构型规模、训练时限。
 - 是否微调：`foundation_model`、checkpoint 来源、预训练模型元素表与 cutoff。
 
+复用所选 portable 时，输入为 usage/launch 的完整同身份权重及 companion、工具卡描述的原生接口、数据卡提供的合格目标几何/标签与训练暴露说明。原训练版本和血缘仍未核实，不从文件名推断。
+
 # outputs
 - 选型结果：`MACE`、`ScaleShiftMACE` 或偶极扩展类。
 - 数据契约：输入文件格式、字段名、单位、元素表和划分策略。
@@ -32,6 +34,8 @@ MACE 原语用于材料原子体系的机器学习势函数规划：当任务目
 - 运行方式：demo YAML、直接训练命令、dry-run 检查结果和输出目录策略。
 - 验证计划：能量 MAE、力 MAE、stress/virial 检查、MD 稳定性和部署 smoke test。
 - 风险清单：字段不匹配、单位错配、cutoff 不兼容、元素缺失、内存不足和下游不稳定。
+
+portable 分支逐项交付文件身份/配置、原生导入和 strict 状态、实际目标 energy/forces 与独立误差、适用范围及 MD 准入。前提不齐时交付最后健康权重/config 与具体缺口，不把序列化成功记为模型科学通过。
 
 # procedure
 1. 确认任务是否是原子尺度势函数问题，并判断需要 energy-only、energy-force、energy-force-stress 还是偶极扩展。
@@ -47,6 +51,8 @@ MACE 原语用于材料原子体系的机器学习势函数规划：当任务目
 9. 完整训练后用测试集、异常构型和下游 MD/relaxation 评估模型。
 10. 若要部署到 LAMMPS 或 ASE，单独验证导出模型与原训练模型在同一 batch 上输出一致。
 
+复用 portable 的分支从两文件身份/完整配置核对开始，按 usage/launch 做原生类型还原和 strict 重构；通过后才对合格目标周期构型计算 energy/forces，并以未参与训练的独立标签检验精度、最差构型和适用域。最后验证部署到 ASE/LAMMPS 的同构型输出等价性，向 s02 交接各项真实状态；训练分支与已支持格式的通用步骤保留。
+
 # constraints
 - 不改变 foundation checkpoint 的关键结构约束，尤其是 `r_max`、元素表和 hidden irreps，除非明确重新初始化相关权重。
 - 数据字段和单位必须在训练、验证、评估、部署中保持一致。
@@ -55,12 +61,16 @@ MACE 原语用于材料原子体系的机器学习势函数规划：当任务目
 - 多卡训练应通过项目 demo 入口生成命令，先 dry-run 再提交。
 - `compute_hessian` 和逐原子 stress 只在必要时开启。
 
+所选 portable 的元素顺序、cutoff、head、原子参考能、scale/shift 与 strict 语义不可为通过加载而放宽。不用 EMT 或其他权重替代所选模型；独立标签和正式结构不齐时 MD 准入阻塞，2 ps 测试也不证明同位素科学效应。
+
 # next_phase_recommendation
 - 为目标材料体系补充一份数据卡，记录字段名、单位、元素表、DFT 设置和 train/valid/test 划分。
 - 建立最小 benchmark：能量 MAE、力 MAE、stress MAE、短 MD 稳定性、结构弛豫收敛性。
 - 对 foundation fine-tuning 任务，优先比较 `medium`、`medium-mpa-0`、`medium-omat-0` 与本地 checkpoint。
 - 对部署任务，增加 ASE 与 LAMMPS 一致性测试，并固定导出脚本和环境版本。
 - 若任务涉及偶极或电荷相关性质，再规划 `AtomicDipolesMACE` 或 `EnergyDipolesMACE` 分支。
+
+s02 沿模型资源边取得 usage/launch 的绝对实体位置、配置与适用范围，沿 tools/onescience-mace 取得原生加载边界；原生与独立数据质量均通过后再交超胞与 MD 环节。文件检查通过仅支持工程资产交付。
 
 # fallback
 - 字段名不匹配：先统一 extxyz 字段或修改 `energy_key`、`forces_key`、`stress_key`，不要在模型层临时修补。
@@ -69,3 +79,6 @@ MACE 原语用于材料原子体系的机器学习势函数规划：当任务目
 - 显存不足：降低 `batch_size`、`num_channels`、`max_L` 或邻域 cutoff，先保持物理字段正确。
 - MD 不稳定：增加异常近邻构型、检查短程排斥、重新权衡力和应力损失，并用更严格验证集筛选 checkpoint。
 - LAMMPS/ASE 输出不一致：固定同一构型做逐项对比，优先检查元素顺序、单位、cell、periodic shifts 和导出路径。
+
+所选 portable 若在原生导入的可选 GPU 依赖链失败，应交 [工具所有者](../../tools/onescience-mace/workflow_planning.md#fallback) 修复急切导入与设备查询，保留原错误、受影响阶段及最后健康权重/config；该分支不静默切换模型、关闭 strict 或伪造设备。缺正式数据时继续可行来源与划分审计，科学测试与 MD 保留未验证/阻塞。
+

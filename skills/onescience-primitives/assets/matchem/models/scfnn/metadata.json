@@ -1,0 +1,11 @@
+{
+  "name": "scfnn",
+  "type": "model",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-21",
+  "updated_at": "2026-11-21",
+  "description": "体相水 SCFNN 长程静电根源架构、从头训练状态及独立预测边界。",
+  "tags": ["scfnn", "water", "ewald", "neural-network-potential"]
+}

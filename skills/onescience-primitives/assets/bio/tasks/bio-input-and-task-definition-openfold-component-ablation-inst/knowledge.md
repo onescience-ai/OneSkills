@@ -14,7 +14,7 @@
 校验OpenFold组件消融与结构泛化评测所需的序列、链组成和任务设置。
 
 ## 本实例执行 prompt
-读取{INPUT_DATA}，检查实体、序列和链标识，使用{MODEL_NAME}并按{CHAIN_MODE}建立OpenFold组件消融与结构泛化评测任务。
+读取{INPUT_DATA}，按来源记录把序列映射到靶标、实体和链，再使用{MODEL_NAME}判定与{CHAIN_MODE}是否兼容。FASTA 每条记录是一条序列，不代表一个独立单链靶标；多链输入须有来源支持的链及实体组合。 对可核对的原链标识、残基编号和插入码保留到规范化输入的映射，不能从 FASTA 中推定缺失的结构编号。
 
 ## 本实例输入槽
 - {INPUT_DATA} | required=True | type=doc | var_name=序列或结构输入 | hint=输入FASTA或结构文件 | default=CAMEO_targets.fasta
@@ -23,7 +23,7 @@
 
 ## 本实例产出
 - 标准化输入
-- 实体清单
+- 实体清单：靶标、实体和链的对应关系，以及序列和原残基编号的映射；下游步骤沿用该映射。
 - 任务配置
 
 ## 本实例质量门禁

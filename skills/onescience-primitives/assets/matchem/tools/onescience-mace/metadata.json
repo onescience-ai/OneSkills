@@ -1,0 +1,19 @@
+{
+  "name": "onescience-mace",
+  "type": "tool",
+  "domain": "matchem",
+  "version": "1.0.0",
+  "visibility": "public",
+  "created_at": "2026-11-20",
+  "updated_at": "2026-11-20",
+  "description": "OneScience MACE 原生构造与加载接口：关联 models/mace 的完整权重/config，供候选势验证 Task 使用；记录模块0.3.0/发行0.3.1的实际入口和可选GPU依赖导致CPU导入失败的边界，尚未完成修复部署。",
+  "tags": [
+    "OneScience",
+    "MACE",
+    "ScaleShiftMACE",
+    "portable",
+    "CPU",
+    "edge:resource:models/mace",
+    "edge:task:matchem-verify-candidate-potential-co2-cu111-water-k-interface-inst"
+  ]
+}
