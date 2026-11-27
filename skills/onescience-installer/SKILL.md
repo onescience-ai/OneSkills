@@ -147,4 +147,4 @@ installer 的环境信息写回位置是 `onescience.json.runtime.conda`。除 `
 
 ## 训练与监控就绪状态
 
-训练预检仍检查框架、模型依赖、数据、设备和执行权限。OneScience 监控组件、平台身份、采集连接和目录上报属于可选监控检查；这些检查失败单独记录 monitoring=unavailable/warnings，不把训练 preflight_result.status 改为 blocked。禁止把监控依赖加入训练必需项后阻止已获准训练；禁止安装时保留训练执行和监控缺口，不自动安装、替换 writer 或重训。真实模型/数据/设备异常仍按原错误处理。
+训练预检保持业务必需依赖、模型、数据和设备门禁。监控后端按监控任务卡选择：OneScience 优先，组件不可用时使用原生 TensorBoard；两个后端都不可用才单列 unavailable/warnings。平台身份和采集连接单独诊断，不通过更换 writer 绕过。禁止安装时不自动补包，原生已有依赖仍可使用；监控失败不改变训练 readiness、退出码或触发重训。

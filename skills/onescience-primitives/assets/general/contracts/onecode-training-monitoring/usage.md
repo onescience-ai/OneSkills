@@ -4,7 +4,7 @@
 
 ## 运行时绑定配置
 
-平台只注入 ONECODE_* 身份和清单上下文，不保证替你生成 ONESC_MONITOR_CONFIG。业务训练脚本在启动后、进入可选监控初始化边界内读取注入 run/attempt，构建独立绝对 output_dir（例如项目配置允许的 monitor 根目录/run/attempt），再创建 MonitorConfig；或写本次独立配置文件后 from_file。ONESC_MONITOR_CONFIG 若使用，必须指向这份本次实际配置，禁止所有任务共享覆盖同一个文件。
+平台只注入 ONECODE_* 身份和清单上下文，不保证替你生成 ONESC_MONITOR_CONFIG。业务训练脚本沿现有交接读取注入 run/attempt，构建独立绝对 output_dir（例如项目配置允许的 monitor 根目录/run/attempt），在两个后端之外保留该上下文；OneScience 分支再创建 MonitorConfig；或写本次独立配置文件后 from_file。ONESC_MONITOR_CONFIG 若使用，必须指向这份本次实际配置，禁止所有任务共享覆盖同一个文件。
 
 未拿到完整身份时可以独立采集，但不能伪造平台身份、默认写共享 runtime.json 或称已关联。sbatch 脚本保留环境导出，不用 --export=NONE 丢弃身份；Slurm spool 中的 BASH_SOURCE 不能用来推断项目路径，使用已配置的实际工作目录。
 
@@ -66,7 +66,7 @@ def publish_onecode_runtime(context, *, title, rank, training_exit_code=None):
             except OSError: pass
 ```
 
-先 `context=onecode_runtime_context(项目监控根目录)`，再在监控专属初始化边界中用 MonitorConfig(output_dir=context["eventRoot"],run_id=context["runId"],attempt_id=context["attemptId"],profile="base",record_every_updates=1,shutdown_timeout_seconds=120) 创建当前配置；其它选项依据通用卡和实际版本选择。不要只等 ONESC_MONITOR_CONFIG：平台注入的是 ONECODE_*，不会自动生成该变量指向的文件。
+沿用已有 `context=onecode_runtime_context(项目监控根目录)`，不为后端回退新增上报动作。两个后端共用该上下文；仅 OneScience factory 内用 MonitorConfig(output_dir=context["eventRoot"],run_id=context["runId"],attempt_id=context["attemptId"],profile="base",record_every_updates=1,shutdown_timeout_seconds=120) 创建当前配置；其它选项依据通用卡和实际版本选择。不要只等 ONESC_MONITOR_CONFIG：平台注入的是 ONECODE_*，不会自动生成该变量指向的文件。
 
 初始化后 `publish_onecode_runtime(context,title=实际标题,rank=rank)`，训练体用 try/except/finally 保留原异常；正常训练结束设置 training_exit_code=0，真实训练异常设置非零并重新抛出。finally 中先用通用窄边界关闭监控，再用 `publish_onecode_runtime(context,title=实际标题,rank=rank,training_exit_code=实际训练退出码)` 报告结束；即使监控初始化失败，context 仍可上报真实训练结果。监控 verify/writer/关闭失败不能把该训练退出码改成失败。MONITOR_EVENT_DIR 文本不是替代上报。
 

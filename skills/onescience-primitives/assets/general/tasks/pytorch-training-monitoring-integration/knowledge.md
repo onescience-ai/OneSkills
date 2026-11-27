@@ -1,60 +1,34 @@
-# PyTorch 训练监控接入 (pytorch-training-monitoring-integration)
+# PyTorch 训练监控接入
 
-## 任务目标
+## 适用范围
 
-在现有科研任务流程内按需接入、查看或诊断 OneScience 训练监控。不新增监控 expert，不建立平行训练入口；编码、环境就绪与运行继续交给各自的现有 executor。
+用户明确要求监控或已有持久化训练任务要求监控时使用。普通训练保留已有行为；已有 writer 满足需求时复用。查看已有曲线沿现有只读流程，不修改代码或启动训练。
 
-## 适用范围 / 不适用场景
+## 正常流程与后端策略
 
-- 用户明确提出训练指标采集、训练监控、接入监控、查看曲线或诊断监控时使用。中文、英文及上下文明确的“监控 Loss”等同义表达均可，不依赖单个关键词。
-- “训练 Xihe”“运行训练脚本”本身不构成新增监控需求；模型卡、资源推荐或模板中出现监控也不构成用户授权。未要求监控时保留脚本既有逻辑，不主动接入、删除或切换。
-- 首期接入支持可修改的原生 PyTorch 单卡、普通 DDP。AMP/梯度累积先核对原更新语义。JAX、FSDP、TP、PP 不直接套用普通 DDP 规则；仅对实际支持的部分交付。
-- 服务监控、文件变化监控、普通日志进度查询不是训练监控代码接入。
-- 查看已有曲线仅做只读查看。排查无数据先取证；修复代码需要进入独立编码步骤。只要求接入且禁止运行时不启动训练，包括 smoke/dry-run。
+正常流程：生成训练代码 → 初始化时选择后端 → 训练写事件并在结束时刷新、关闭 → OneCode 按现有流程采集展示。训练结果以真实进程/调度结果为准，不增加监控验收门槛。
 
-## 实体槽（Entity Slots）
+OneScience 监控接口兼容且初始化成功时优先使用；缺包、接口/依赖不兼容或初始化失败时使用原生 TensorBoard。两者均不可用时告警并继续已获准的训练。后端在初始化时确定，训练中不反复切换；显式关闭监控时不初始化任一后端。监控异常不改变训练退出码、不触发重训，真实训练异常正常传播。
 
-从用户请求和既有任务上下文提取：操作（接入/查看/诊断）、真实训练入口、目标工作区/环境、框架/并行模式、AMP/累积规则、所需指标及统计口径、已有配置/事件、运行授权和恢复需求。run_id、attempt_id、output_dir 必须对应本次实际运行，不从示例照抄。
+1. 编码时按两个后端的工具知识生成自适应接入。目标环境未知时保留运行未验证状态，不以生成机的依赖决定远端后端。
+2. 在实际训练解释器中完成现有环境预检；OneScience 公共接口可用时核对兼容性，否则检查 SummaryWriter。预检不创建 writer 或测试事件，最终选择由真实初始化决定。
+3. 真实训练入口只增加必要的监控调用，结束时 flush/close；模型、数据、更新、AMP、通信、checkpoint 与早停语义保持原样。
+4. 两个后端复用现有任务身份、独立事件目录及采集交接，OneCode 继续按已绑定目录采集标准 TensorBoard 事件。不新增上报机制、任务类型或采集服务。只生成代码时不启动训练，不登记实际运行。
 
-## 输入输出契约
+## 职责与指标范围
 
-沿用 step_handoff：task_context.user_goal/constraints 保留原始监控需求和运行限制；inputs 携带入口、配置与环境；required_outputs/completion_criteria 明确本步交付范围。资源内容只通过 resource_retrieval_result.matched_resources[*].content 传递，path 仅追踪。
+coder/trainer 负责接入代码；installer 负责实际训练环境依赖；runtime 复用原执行通道；OneCode 负责现有采集和展示。不新增执行器、测试任务或独立验收作业。
 
-编码产出适配代码、配置和接入说明（指标范围、权重、步数、hook 与恢复方式）。运行产出目标环境预检、真实事件 verify 回执和事件目录；展示状态另列。所有结果沿用 execution_result.artifacts/observation，不把代码交付当作运行或科研结论。
+原生基础后端记录已有 Loss、学习率和输入充分的吞吐，验证集按真实权重统计。普通 DDP 仅 rank 0 写并明确标注局部范围，不增加训练通信。OneScience 所需多 rank 汇总属于它的事件产出机制，按原工具知识安排并有界收尾；原生分支不使用该汇总。高级指标按实际能力说明，不承诺两个后端功能完全等价。
 
-## 方法路线（可替换）
+## 结果与按需诊断
 
-以 tools/onescience-training-monitoring 的公共 API 为准，默认 threaded_files。复用已有完整接入；缺失时只在实际循环/Callback 中补齐。通用示例仅说明插入位置，不替代训练代码。
+沿用 step_handoff/execution_result，可报告 backend、fallback_reason、事件目录、训练状态和监控告警。代码交付、训练结果和采集展示分别如实说明，不把监控缺失判为训练失败。
 
-## 操作序列（Operations）
+正常流程不增加 verify、最小点数或页面验收步骤。用户明确要求验证、无曲线排查或指标诊断时，再召回 contracts/training-monitoring-verification，检查指定运行的已有日志/事件；不为诊断制造事件或重跑训练。
 
-1. 区分接入、查看、诊断。查看定位指定 run/attempt 的真实数据；诊断检查原配置、调用、事件和同步证据，不默认重新接入或重跑。
-2. 接入时识别实际训练入口与已有采集。复用脚本优先在任务工作区制作适配版本；修改脚本最小插入；新代码按公共接口生成。避免修改未执行的样例或重复 SummaryWriter。
-3. 编码 executor 获取规格/使用知识，核对单卡/DDP、全局/本地指标、AMP/累积和恢复语义，交付代码、配置与静态检查。
-4. 仅在获准运行时交给运行 executor。环境检查仍由 installer 承接；运行 executor 消费 readiness，调用配置检查、安排单个外部汇总任务、同步和验证。
-5. 结果回到 orchestrator。必需事件未验证则不把整项监控标完成；仅代码交付任务可以完成，但采集/展示状态保持 not_run。
+## 资源
 
-## 验证契约（Validations）
-
-消费 contracts/training-monitoring-verification：真实训练点、验证点（如适用）、统计口径、多卡完整性和当前 attempt 关联分别核验。没有事件不能推断训练失败；仅能力查询或 association 更新不能证明接入成功。
-
-## 资源引用（Resources）
-
-- tools/onescience-training-monitoring：接口、配置、CLI、示例差异与能力边界。
-- contracts/training-monitoring-verification：阶段结果、事件证据与异常判定。
-
-## 前后置任务（Task Graph）
-
-本任务是既有训练/代码任务的可选组成部分，由明确需求触发。编码、运行、环境修复各自产出正式回执，再由 orchestrator 决定下一步；不由 executor 私自串行选择业务 executor。不要求新建 scenario/workflow 或监控 expert。
-
-## 缺口与降级（Fallback / Gap）
-
-目标环境缺公共 API 或依赖时报告版本/依赖证据并按现有环境流程处理，不猜测接口。缺共享目录/同步时不能宣称 DDP 全局指标完整。未实现的 OneCode 展示报告未验证；不新增数据库、展示系统或在 OneCode 重写加权。无法运行时可交付代码与静态证据，明确 not_run 原因。
-
-## 宿主与独立知识边界
-
-OneScience 公共 API 与接入示例通过 tools/onescience-training-monitoring 的 spec/usage 召回，无需源仓库。OneCode 项目另召回 contracts/onecode-training-monitoring，核对持久化配置、平台身份、清单、独立来源、缓存权限和分阶段诊断；不把这些平台规则当成 OneScience 公共 API。训练业务源码仍由相应 executor 按任务范围处理。
-
-## 蒸馏来源
-
-2026-11-23 按 primitive-distiller 的 resource_only 流程从 OneScience monitoring.training 公共接口、测试判据及 Xihe/Pangu 使用经验提炼。适用 api=1、contract=1.0；精确来源指纹随工具卡 source.json 维护。Task metadata 保持九字段，关系继续使用原有 tags，不在任务卡增加 provider/source 新字段。普通生成不访问来源路径；缺兼容知识返回缺口，不猜 API。
+- tools/onescience-training-monitoring：OneScience 接口与事件产出。
+- tools/native-tensorboard-monitoring：原生后端接口与基础指标。
+- contracts/onecode-training-monitoring：OneCode 的现有身份、目录及采集交接。

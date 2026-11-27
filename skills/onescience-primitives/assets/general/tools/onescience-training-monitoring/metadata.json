@@ -2,10 +2,10 @@
   "name": "onescience-training-monitoring",
   "type": "tool",
   "domain": "general",
-  "version": "1.1.0",
+  "version": "1.3.0",
   "visibility": "public",
   "created_at": "2026-11-17",
-  "updated_at": "2026-11-23",
+  "updated_at": "2026-11-24",
   "description": "OneScience monitoring.training 公共适配层的规格、配置、调用位置和命令知识，支持明确要求的 PyTorch 训练监控接入、已有曲线查看与采集诊断，连接 MetricSpec 指标口径、threaded_files、多卡外部汇总及事件验证；不是普通训练默认依赖。",
   "tags": [
     "训练监控",
@@ -22,6 +22,7 @@
     "resource-only",
     "src:provider:OneScience",
     "src:api:1",
-    "src:contract:1.0"
+    "src:contract:1.0",
+    "edge:resource:tools/native-tensorboard-monitoring"
   ]
 }

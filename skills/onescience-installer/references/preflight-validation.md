@@ -266,7 +266,7 @@ test -f <文件路径> && echo "EXISTS" || echo "MISSING"
 | 失败类型 | 判定条件 | 处理方式 |
 |----------|----------|----------|
 | Conda 配置缺失 | `runtime.conda` 缺失或结构无效 | 进入 conda 发现/安装流程 |
-| 仅监控依赖/版本/配置不可用 | 不影响模型、数据或优化器运行 | 记录 monitoring=unavailable/warnings，保留训练 readiness；不自动修复或安装 |
+| 仅监控依赖/版本/配置不可用 | 不影响模型、数据或优化器运行 | 明确要求监控时，缺失依赖沿用现有缺包处理流程；无法补齐或仍不可用时记录 unavailable/warnings，保留训练 readiness |
 | 缺失业务必需 Python 包 | `ModuleNotFoundError` | 进入 `install_intent=python_packages` 安装流程 |
 | 缺失 CUDA 扩展 | `ImportError` + CUDA 相关 | 进入源码编译安装流程 |
 | 缺失数据文件 | 文件不存在 | 返回阻断，建议 orchestrator 插入下载/定位步骤 |
@@ -287,7 +287,7 @@ test -f <文件路径> && echo "EXISTS" || echo "MISSING"
 ### 6.3 不应阻塞的情况
 
 以下情况不应判定为预检失败：
-- 仅用于监控的 OneScience/TensorBoard、平台身份或采集连接不可用：单列监控 warning，不降低业务 readiness，不自动重训
+- OneScience 监控不可用时先检查原生 TensorBoard；两个后端均不可用，或平台身份/采集连接不可用时单列监控 warning，不降低业务 readiness，不自动重训
 - SLURM 通道中登录节点缺失计算节点专属共享库（按 4.3 规则处理为 deferred）
 - 预估显存使用 < 60% 但 `nvidia-smi` 显示有其他进程占用（记录 warning，不阻塞）
 
@@ -343,11 +343,11 @@ preflight_result:
 
 ## 明确训练监控需求的环境预检
 
-仅当用户请求、已有训练任务要求或 runtime 预检上下文明示训练监控时执行本节；普通任务不新增监控依赖检查。监控检查由 installer 在实际训练环境、使用实际训练解释器执行，runtime 消费检查结果。
+仅明确或持久化要求监控时检查，在实际训练环境使用实际训练解释器；远端训练不以本机环境代替。检查继续由 installer 负责，完整选路策略由监控任务卡维护。
 
-1. 按资源返回的 `tools/onescience-training-monitoring` 版本化正文，检查 `onescience.monitoring.training` 的实际公共接口是否可导入；仅 `import onescience` 成功不能证明监控组件可用。日常预检不要求读取 OneScience 源码。
-2. 接口可用时查询 `capabilities`，保留实际报告并核对 `api_version`、`contract_version`、TensorBoard 及本次请求指标的依赖。导入失败、报告缺失或版本不匹配应记录具体原因，不能推断为兼容或已通过。
-3. 在现有预检回传和证据中单独说明监控可用、部分可用、不可用或未验证，以及判断依据；缺失或失败项列入 `preflight_result.warnings`。业务侧 `checks.onescience_import=skipped` 仅表示 OneScience 不是业务必需依赖，不代替本节检查或监控状态报告。
-4. 仅监控依赖、接口或版本不可用时，不将业务训练的 readiness 改为 failed/blocked，不改变训练退出码、不自动重训。若模型、数据处理或损失函数也依赖 OneScience，则该业务依赖仍按原检查和失败处理规则执行。
+1. 检查 OneScience 监控公共接口和目标版本兼容性；可用时保留 capabilities 原始报告。
+2. OneScience 不可用时检查 `from torch.utils.tensorboard import SummaryWriter`。预检不创建 writer 或测试事件；最终后端由训练启动时的真实初始化决定。
+3. 明确要求监控时，缺失依赖沿用现有缺包处理流程。无法补齐或仍不可用时报告监控告警，保留业务 readiness；模型本身依赖 OneScience 时，该业务依赖仍按原规则检查。
+4. 显式关闭监控时跳过后端选择，缺身份或采集连接单独报告；安装沿用已有授权。
 
-capabilities 只反映环境能力，不证明已生成事件；配置 check 与真实事件 verify 由 runtime 按任务范围承接。不能把本机包或设备能力当作远端训练环境事实。只读查看不自动安装或修复；所需依赖的安装或修复沿用现有授权规则。
+环境预检不附加 verify 或真实事件验收。正常训练写事件后交给现有采集流程；用户明确要求验证或诊断时，runtime 再按范围检查已有证据。

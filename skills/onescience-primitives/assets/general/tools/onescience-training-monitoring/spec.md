@@ -6,6 +6,8 @@
 
 公共入口 `onescience.monitoring.training`，当前 `api_version="1"`、`contract_version="1.0"`。不要直接实例化内部 Publisher、采集器或复制汇总算法。
 
+公共 `capabilities()` 返回与 capabilities CLI 对应的能力报告；初始化工厂核对实际 api_version、contract_version 和 tensorboard 依赖，不兼容时交统一适配层选择原生后端。能力报告不代替初始化、事件或页面证据，完整选择策略见任务卡。
+
 ## 配置和创建
 
 - `MonitorConfig.from_file(path)` 或 `MonitorConfig.from_env()`；后者读取显式提供的 `ONESC_MONITOR_CONFIG` 配置路径，不从环境猜测数据集/工作区路径。

@@ -1,0 +1,18 @@
+{
+  "primitive_id": "general.tools.native-tensorboard-monitoring",
+  "distillation_status": "resource_only",
+  "copied_execution_assets": false,
+  "provider_name": "PyTorch/TensorBoard",
+  "snapshot_date": "2026-11-24",
+  "note": "OneSkills-authored integration policy and basic adapter. Not a OneScience API or upstream source snapshot. Validation uses real TensorBoard event files and existing OneCode collection/display components.",
+  "references": [
+    "https://docs.pytorch.org/docs/stable/tensorboard.html",
+    "https://github.com/tensorflow/tensorboard/tree/master/tensorboard/backend/event_processing"
+  ],
+  "files": [
+    {
+      "path": "skills/onescience-coder/scripts/training_monitor_adapter.py",
+      "sha256": "74d65cb27f7787006b07c742d8e92a165327a5819375cf83bce1d32561afd6e4"
+    }
+  ]
+}

@@ -261,8 +261,8 @@ execute 分支映射：
 
 ## 训练与监控就绪状态
 
-训练预检仍检查框架、模型依赖、数据、设备和执行权限。OneScience 监控组件、平台身份、采集连接和目录上报属于可选监控检查；这些检查失败单独记录 monitoring=unavailable/warnings，不把训练 preflight_result.status 改为 blocked。禁止把监控依赖加入训练必需项后阻止已获准训练；禁止安装时保留训练执行和监控缺口，不自动安装、替换 writer 或重训。真实模型/数据/设备异常仍按原错误处理。
+训练预检保持业务必需依赖、模型、数据和设备门禁。监控后端按监控任务卡选择：OneScience 优先，组件不可用时使用原生 TensorBoard；两个后端都不可用才单列 unavailable/warnings。平台身份和采集连接单独诊断，不通过更换 writer 绕过。禁止安装时不自动补包，原生已有依赖仍可使用；监控失败不改变训练 readiness、退出码或触发重训。
 
-## 源码独立的监控知识
+## 训练监控知识
 
-明确或持久化的监控需求使用已蒸馏的任务、工具和验收正文；OneCode 另取 onecode-training-monitoring 平台契约，均通过 resource 请求/结果消费。常规生成不要求访问 OneScience 源码；运行仍需兼容的已安装包，版本或知识缺口单列报告。具体规则沿现有监控参考入口，不新增执行器。
+通过 resource 取得 pytorch-training-monitoring-integration、onescience-training-monitoring 和 native-tensorboard-monitoring 的真实正文；OneCode 另取 onecode-training-monitoring。任务卡统一维护正常流程和后端策略，各工具卡提供接口与示例。正常生成、提交和训练不额外执行 verify，也不要求召回监控验收契约；仅用户明确要求验证或诊断时读取 training-monitoring-verification。

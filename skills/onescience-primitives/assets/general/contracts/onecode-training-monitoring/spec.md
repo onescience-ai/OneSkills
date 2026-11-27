@@ -1,6 +1,6 @@
 # OneCode 训练监控平台接入契约
 
-本卡只描述 OneCode 平台协议，不是 OneScience API。通用指标调用需另召回 tools/onescience-training-monitoring。运行清单 onecode.training/v1 与数据库记录 schemaVersion=3 是不同协议，不可混改。
+本卡只描述 OneCode 平台协议，不是 OneScience API。通用指标调用分别召回 tools/onescience-training-monitoring 与 tools/native-tensorboard-monitoring。运行清单 onecode.training/v1 与数据库记录 schemaVersion=3 是不同协议，不可混改。
 
 来源版本与核对文件见 source.json；生成和执行无需访问平台或 OneScience 源码。保留现有工具实际可用性，不虚构工具动作。
 
@@ -9,7 +9,7 @@
 
 ### 训练优先与持久化配置
 
-训练是否成功以真实进程退出或调度器结果为准；监控是尽力接入的附加能力。缺少 OneScience、配置不完整、连接不可达、初始化、写指标、目录上报或关闭失败，都只记录监控告警，不阻止训练、不改变训练退出码，也不自动重新提交。模型、数据、forward/backward、优化器与 checkpoint 的真实异常仍正常失败，禁止把训练循环放进监控异常捕获中。不要自动更换为原生 TensorBoard、替代 writer 或双后端。
+训练是否成功以真实进程退出或调度器结果为准；监控是尽力接入的附加能力。监控后端按任务卡优先 OneScience、不可用时使用原生 TensorBoard。两者均不可用，或配置、连接、写入、上报、关闭失败时记录监控告警，不阻止训练、不改变训练退出码，也不自动重新提交。模型、数据、forward/backward、优化器与 checkpoint 的真实异常仍正常失败，禁止把训练循环放进监控异常捕获中。两个后端共用已有身份、目录绑定和采集流程；初始化完成后不切换，不同时写两套指标。
 
 生成监控代码时交付训练脚本、业务训练配置及监控适配代码，并通过现有 training_monitor 的 tasks/save_task 维护项目 onescience.json。先读取 revision，再用 expectedRevision 合并 training_tasks：稳定 id、title、真实 entrypoint、config、execution_entrypoints（实际包装脚本），以及 monitoring:{requested:true}。collectionTarget 保存已核对的账号采集连接引用，工具只合并本任务和 runtime.monitoring.execution_target_ref，保留其它 owner 字段。旧 monitoring.required=true 按“请求监控”兼容读取，不再表示训练门禁；保存任务时转为 requested。配置中不存每次运行身份、作业号、凭据或运行结果。只生成代码时不登记运行，不启动训练。
 
@@ -27,23 +27,23 @@
 
 ### 训练代码的可选监控边界
 
-按通用工具卡的可选监控边界隔离调用；已有 OptionalTrainingMonitor 可复用，但它是项目/技能辅助而不是 OneScience 公共 API，不要求复制新的执行资产。OneScience 的 import、MonitorConfig、MetricSpec 和 create_monitor 放进 factory 内部；factory 只做监控初始化，不能包含模型/数据初始化或训练计算。用真实公共 API，不猜签名。
+按通用工具卡的可选监控边界隔离调用；已有 OptionalTrainingMonitor 可复用，但它是项目/技能辅助而不是 OneScience 公共 API，不要求复制新的执行资产。OneScience 的 import、MonitorConfig、MetricSpec 和 create_monitor 放进 factory；原生后端独立于这些类型。既有运行身份和输出目录在 factory 外准备，两个后端共用。factory 不能包含模型/数据初始化或训练计算。
 
-有完整平台身份时，以 ONECODE_RUN_ID/ONECODE_ATTEMPT_ID 配置 OneScience，创建当前 attempt 独立目录；所有 rank 共用身份，不能每个 rank 自行产生不同 attempt。若完全独立运行，允许使用训练配置中的显式 OneScience 身份采集本地数据，但不得伪造平台绑定。没有完整平台 task/run/attempt/target/manifest 时，跳过平台报告并记录告警；禁止写空字符串身份的 runtime.json，禁止自行默认到共享 $ROOT/runtime.json。
+有完整平台身份时，以 ONECODE_RUN_ID/ONECODE_ATTEMPT_ID 配置实际后端，创建当前 attempt 独立目录；所有 rank 共用身份，不能每个 rank 自行产生不同 attempt。若完全独立运行，允许使用训练配置中的显式运行身份采集本地数据，但不得伪造平台绑定。没有完整平台 task/run/attempt/target/manifest 时，跳过平台报告并记录告警；禁止写空字符串身份的 runtime.json，禁止自行默认到共享 $ROOT/runtime.json。
 
-使用适配器的 record_train/record_validation、start_phase/end_phase、flush/close 等监控调用。with monitor.stage(...) 仅包围测时，训练体异常必须继续向外传播。Loss 使用训练已有且口径正确的 scalar，不因监控改变通信、梯度、AMP、优化器、checkpoint 或早停逻辑。生命周期以 finally/with 关闭；close 的 closed/error/pending_records 与训练结果分别报告。组件缺失且禁止安装时，保留训练执行、监控标 unavailable，不能声称监控完成。
+使用适配器的 record_train/record_validation、start_phase/end_phase、flush/close 等监控调用。with monitor.stage(...) 仅包围测时，训练体异常必须继续向外传播。Loss 使用训练已有且口径正确的 scalar，不因监控改变通信、梯度、AMP、优化器、checkpoint 或早停逻辑。生命周期以 finally/with 关闭；close 的 closed/error/pending_records 与训练结果分别报告。OneScience 组件不可用时按任务卡使用已有原生 TensorBoard；两个后端均不可用且禁止安装时才标 unavailable。原生分支按真实能力报告，不声称高级指标或全局聚合完整。
 
 rank 0 初始化真实 writer 后，通过平台接入辅助上报真实绝对目录；裸 TrainingMonitor 没有 publish_runtime 方法。已有 OptionalTrainingMonitor 提供该辅助，新生成代码可使用本卡 usage 的等价清单上报片段。写入位置仅为实际执行环境注入的 ONECODE_RUNTIME_MANIFEST；原子写 onecode.training/v1、kind=training、taskId/runId/attemptId、executionTargetRef、eventRoot，以及有值时的真实 SLURM_JOB_ID/region。eventRoot 指向当前 attempt 中实际事件所在目录或其精确独立根目录；多 rank 不读取旧汇总代，不将 sources 原始分段当 TensorBoard 事件。不得按 latest、ls|tail、名称相似或旧日志选择目录。
 
-### 当前采集、人工关联与验收
+### 当前采集、展示与按需诊断
 
-平台只轮询本次执行分配的精确运行报告，验证身份、目标、作业与路径后接入已有增量同步器和 TensorBoard。输出中的运行事件也只能更新当前调用已分配的身份；读取旧日志/报告、下载历史文件、服务重启都不能新增历史关联。重启仅继续已有记录的采集，不重放训练提交。
+平台继续读取本次执行的精确运行报告，校验身份、目标、作业与事件目录后交给已有增量采集器和 TensorBoard。标准事件产生后按已绑定目录采集展示，正常流程不额外执行 verify、最小点数检查或页面验收。
 
-此前未关联的训练默认不处理。只有用户明确要求人工关联指定训练时，才使用 declare/bind 并提供真实 task/run/attempt、作业号、目标和实际事件目录；缺证据就报告缺口，不发明身份、不重训、不按目录猜测。status 可只读查询同工作区已存在的记录，但查询不是关联授权。
+普通作业、未提交候选和准备失败项不伪装成已执行训练；已确认训练可以显示等待数据或采集失败。真实训练结果、事件写入、采集状态和页面状态分别报告，监控缺失不推断训练失败。
 
-新训练默认新 run、新 attempt。用户明确重试/续训时使用 mode=retry/resume 与 previous_monitor_id；须先确认此前作业终止。retry 保留 run、新建 attempt；resume 还需实际 checkpoint 和原训练恢复参数。监控失败不自动触发这些动作。
+已有身份与目录绑定规则不因后端改变。历史未关联训练只在用户明确指定时人工关联；需真实 task/run/attempt、作业号、目标与事件目录，不能扫描旧日志或按相似名称猜测。新训练用新 run/attempt；明确 retry/resume 才沿用 prior monitor 及所需 checkpoint，监控故障不自动触发重训。
 
-页面只展示确认提交/实际执行的训练，准备失败或未提交候选、普通作业和非训练任务不展示；已确认训练可以显示等待目录、无数据或采集失败。训练状态、目录绑定、事件字节、有效指标和页面展示分别验收。当前 attempt 的真实 verify 不能替代平台采集验证，平台关联也不能替代训练成功。无展示证据标 not_run；没有监控数据不推断训练失败。
+用户明确要求验证或排查时，再检查指定运行的现有事件、runtime、metrics、缓存与展示状态；组件报告不代替页面证据，也不成为训练成功门槛。重启只继续已有采集，不重放训练提交。
 
 ## 执行与来源分离
 

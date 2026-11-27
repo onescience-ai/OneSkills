@@ -412,6 +412,6 @@ orchestrator_step 只允许承载**不属于任何 executor 已声明职责的�
 
 在上述场景中，训练代码交付或执行前读取项目 onescience.json 的 training_tasks，复用稳定任务及其 monitoring.requested 要求（兼容旧 required=true，均表示监控请求）；跨会话执行继承已有要求，不要求用户重复“接入监控”。按 [监控接入指导](references/optional_monitoring_handoff.md) 维护实际训练入口、包装脚本和监控任务配置，复用既有执行通道。只生成训练代码时保存该任务配置，不登记运行、不提交作业。
 
-## 源码独立的监控知识
+## 训练监控知识
 
-明确或持久化的监控需求使用已蒸馏的任务、工具和验收正文；OneCode 另取 onecode-training-monitoring 平台契约，均通过 resource 请求/结果消费。常规生成不要求访问 OneScience 源码；运行仍需兼容的已安装包，版本或知识缺口单列报告。具体规则沿现有监控参考入口，不新增执行器。
+通过 resource 取得 pytorch-training-monitoring-integration、onescience-training-monitoring 和 native-tensorboard-monitoring 的真实正文；OneCode 另取 onecode-training-monitoring。任务卡统一维护正常流程和后端策略，各工具卡提供接口与示例。正常生成、提交和训练不额外执行 verify，也不要求召回监控验收契约；仅用户明确要求验证或诊断时读取 training-monitoring-verification。

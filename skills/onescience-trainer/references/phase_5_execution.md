@@ -80,22 +80,16 @@
 
 `runtime_result.json` 中引用的日志、输出文件、checkpoint 和 metrics，必须来自同一条真实执行命令或提交记录。若执行在产出结果前失败或被阻断，`runtime_result.json` 只能记录阻断 / 失败原因、命令或提交状态、已有日志（若有）以及缺失的 expected outputs；不得为了满足 `expected_outputs` 回填模拟 metrics、predictions、targets 或合成日志片段。
 
-## 可选训练监控补充
+## 可选训练监控
 
-仅当用户明确要求监控，或项目中已登记的训练任务要求监控时，执行本节。普通训练继续按上文的 Runtime 交接、执行前检查和证据捕获流程执行，不要求额外登记平台任务。
+仅用户明确要求或已有任务配置要求监控时使用。
 
-通过 `resource_retrieval_request/result` 获取训练监控任务、OneScience 工具和监控验收契约的真实正文，按兼容的公共接口接入；常规生成不要求读取 OneScience 源仓库。运行时仍由 installer 核对实际训练环境中的组件兼容性。仅监控依赖或配置不可用时单列 warning；模型、数据、设备等业务必需项仍按原预检规则处理。
+通过 resource 取得 pytorch-training-monitoring-integration、onescience-training-monitoring 和 native-tensorboard-monitoring 的真实正文；OneCode 另取 onecode-training-monitoring。任务卡统一维护正常流程和后端策略，各工具卡提供接口与示例。正常生成、提交和训练不额外执行 verify，也不要求召回监控验收契约；仅用户明确要求验证或诊断时读取 training-monitoring-verification。
 
-### OneCode 平台内的监控训练
+正常流程：生成训练代码 → 初始化时选择后端 → 训练写事件并在结束时刷新、关闭 → OneCode 按现有流程采集展示。训练结果以真实进程/调度结果为准，不增加监控验收门槛。
 
-本小节仅适用于提供相应平台能力的 OneCode 宿主；其他宿主按通用监控契约执行，不要求调用 `training_monitor`。
+OneScience 监控接口兼容且初始化成功时优先使用；缺包、接口/依赖不兼容或初始化失败时使用原生 TensorBoard。两者均不可用时告警并继续已获准的训练。后端在初始化时确定，训练中不反复切换；显式关闭监控时不初始化任一后端。监控异常不改变训练退出码、不触发重训，真实训练异常正常传播。
 
-1. 通过 `training_monitor action=tasks` 读取项目任务；通过 `save_task` 维护稳定任务、实际训练入口、业务配置、包装脚本及 `monitoring.requested=true`（兼容旧 `required=true`，均表示监控请求）。保留任务 id 和其他配置。代码生成和执行分开时从该配置继承要求；只交付代码时不登记运行、不提交作业。
-2. 额外获取 `onecode-training-monitoring` 的真实正文。runtime 仍按原有交接和权限调用既有执行工具，在执行调用中引用 `task_ref`；平台准备本次运行身份并关联实际作业。运行身份不写入长期任务配置。
-3. 执行前核对已有接入代码会使用平台 `ONECODE_RUN_ID/ONECODE_ATTEMPT_ID` 构造真实 MonitorConfig 和独立事件目录，在初始化后、结束关闭后向 `ONECODE_RUNTIME_MANIFEST` 上报实际目录及真实训练退出结果。具体字段与示例以平台契约为准，不把项目上报辅助函数当作 OneScience 公共方法。
+两个后端复用现有任务身份、独立事件目录及采集交接，OneCode 继续按已绑定目录采集标准 TensorBoard 事件。不新增上报机制、任务类型或采集服务。只生成代码时不启动训练，不登记实际运行。
 
-### 监控收尾与证据
-
-多 rank 汇总、事件验证和关闭按召回契约执行，独立 verify 作业与训练作业分别记录。监控初始化、记录、上报、关闭或 verify 失败只记录监控缺口，不改变真实训练退出码、不因监控问题重训；真实训练失败仍按原有编排处理，OneCode 的失败重试按平台契约沿用 run、新建 attempt。
-
-在上文原有 `runtime_result.json`、`trainer_run_manifest.json` 和 `execution_result` 中补充当前 run/attempt、实际事件目录、原始 verify 报告及缺失项，分别说明代码接入、训练结果、指标采集和页面展示状态。未在页面取证时标记展示 `not_run`，不将组件验证或已有缓存可读宣称为本次页面验收成功。
+保留实际训练入口和原有运行回执，记录事件目录与监控告警即可。正常训练不提交独立 verify 作业、不附加事件点数或页面验收；用户明确要求排查时再检查当前运行，不为监控问题重训。
